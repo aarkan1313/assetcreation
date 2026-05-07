@@ -1,0 +1,89 @@
+{
+  "kit": "forest_floor",
+  "anchor": "forest_floor_loam",
+  "anchor_palette": {
+    "dominant_colors": [
+      {
+        "rgb": [
+          76,
+          60,
+          46
+        ],
+        "weight": 0.2907400131225586
+      },
+      {
+        "rgb": [
+          49,
+          38,
+          29
+        ],
+        "weight": 0.23743629455566406
+      },
+      {
+        "rgb": [
+          111,
+          89,
+          70
+        ],
+        "weight": 0.19165897369384766
+      },
+      {
+        "rgb": [
+          159,
+          125,
+          98
+        ],
+        "weight": 0.15989112854003906
+      },
+      {
+        "rgb": [
+          183,
+          156,
+          125
+        ],
+        "weight": 0.12027359008789062
+      }
+    ],
+    "lab_means": [
+      102.58009815216064,
+      82.22130870819092,
+      64.64595603942871
+    ]
+  },
+  "match_strength": 0.4,
+  "members": [
+    "forest_floor_loam",
+    "forest_floor_moss_carpet",
+    "forest_floor_oak_bark",
+    "forest_floor_mossy_stone",
+    "forest_floor_muddy_path",
+    "forest_floor_rotten_log"
+  ],
+  "additions": [
+    {
+      "id": "forest_floor_moss_carpet",
+      "prompt": "dense moss carpet with small mushrooms",
+      "category": "Ground"
+    },
+    {
+      "id": "forest_floor_oak_bark",
+      "prompt": "fallen oak bark plank texture",
+      "category": "Wood"
+    },
+    {
+      "id": "forest_floor_mossy_stone",
+      "prompt": "moss-covered grey stone outcropping",
+      "category": "Rock"
+    },
+    {
+      "id": "forest_floor_muddy_path",
+      "prompt": "muddy forest path with tire tracks",
+      "category": "Ground"
+    },
+    {
+      "id": "forest_floor_rotten_log",
+      "prompt": "rotten fallen log with fungus",
+      "category": "Wood"
+    }
+  ]
+}

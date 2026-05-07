@@ -1,0 +1,12 @@
+{
+  "duration_s": 0.55,
+  "samplerate": 44100,
+  "rms_dbfs": -17.31755861999507,
+  "peak_dbfs": -1.0004493301428767,
+  "clipped_samples": 0,
+  "dc_offset": 0.0003234183823224157,
+  "click_count_estimate": 0,
+  "source": "D:\\assets\\audio\\sfx\\spell_arcane_impact_v2.wav",
+  "waveform": "D:\\assets\\audio\\sfx\\spell_arcane_impact_v2_qa\\waveform.png",
+  "spectrogram": "D:\\assets\\audio\\sfx\\spell_arcane_impact_v2_qa\\spectrogram.png"
+}

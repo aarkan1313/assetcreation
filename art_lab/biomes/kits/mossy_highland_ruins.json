@@ -1,0 +1,41 @@
+{
+  "biome": "mossy_highland_ruins",
+  "description": "Wet stone hills with overgrown ruins and mossy basalt outcroppings",
+  "materials": [
+    {"id": "mossy_basalt", "category": "Rock", "wetness": 0.6, "tint": [0.85, 1.0, 0.85]},
+    {"id": "wet_soil", "category": "Ground", "wetness": 0.7, "tint": [0.7, 0.65, 0.5]},
+    {"id": "lichen_rock", "category": "Rock", "wetness": 0.4, "tint": [0.95, 1.0, 0.85]}
+  ],
+  "decals": [
+    {"id": "moss_patch_01", "size_m": 1.2, "max_per_m2": 0.4, "wetness_min": 0.4},
+    {"id": "mud_splash_02", "size_m": 0.7, "max_per_m2": 0.6, "wetness_min": 0.5},
+    {"id": "cracked_stone_03", "size_m": 1.5, "max_per_m2": 0.15, "slope_min": 0.2},
+    {"id": "rune_stain_01", "size_m": 0.5, "max_per_m2": 0.05, "near_landmark": "ruin"},
+    {"id": "scorch_01", "size_m": 0.8, "max_per_m2": 0.05, "near_landmark": "ruin"}
+  ],
+  "scatter": [
+    {"asset": "rock_cluster_small", "density_per_m2": 0.8, "slope_max": 0.65, "avoid_roads_m": 1.5,
+     "scale_min": 0.6, "scale_max": 1.4, "rotation_random": true},
+    {"asset": "rock_cluster_medium", "density_per_m2": 0.15, "slope_max": 0.5, "avoid_roads_m": 2.5,
+     "scale_min": 0.8, "scale_max": 1.6, "rotation_random": true},
+    {"asset": "fern_clump", "density_per_m2": 0.5, "wetness_min": 0.35, "shade_min": 0.4,
+     "scale_min": 0.7, "scale_max": 1.3, "rotation_random": true},
+    {"asset": "moss_tuft", "density_per_m2": 1.5, "wetness_min": 0.5,
+     "scale_min": 0.4, "scale_max": 1.0, "rotation_random": true},
+    {"asset": "mushroom_cluster", "density_per_m2": 0.08, "wetness_min": 0.6, "shade_min": 0.6,
+     "scale_min": 0.6, "scale_max": 1.2, "rotation_random": true},
+    {"asset": "fallen_log", "density_per_m2": 0.02, "slope_max": 0.3,
+     "scale_min": 0.9, "scale_max": 1.5, "rotation_random": true},
+    {"asset": "ruin_block", "density_per_m2": 0.01, "near_landmark": "ruin", "avoid_roads_m": 3.0,
+     "scale_min": 0.8, "scale_max": 1.2, "rotation_random": true},
+    {"asset": "ruin_pillar", "density_per_m2": 0.005, "near_landmark": "ruin",
+     "scale_min": 1.0, "scale_max": 1.4}
+  ],
+  "shader_rules": {
+    "wind_sway": {"applies_to": ["fern_clump", "moss_tuft"], "amplitude": 0.06, "freq": 1.4},
+    "wetness_darkening": {"applies_to": "all_materials", "factor": 0.18},
+    "moss_overlay": {"applies_to": ["rock_cluster_small", "rock_cluster_medium", "ruin_block",
+                                     "ruin_pillar"], "strength": 0.55},
+    "distance_fade": {"applies_to": "all_scatter", "start_m": 60, "end_m": 120}
+  }
+}

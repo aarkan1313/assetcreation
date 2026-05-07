@@ -1,0 +1,30 @@
+{
+  "effect_id": "spark_arcane",
+  "backend": "particle_cpu",
+  "n_frames": 15,
+  "fps": 30,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "flipbook": "D:\\assets\\vfx\\catalog\\spells\\spark_arcane\\flipbook.png",
+  "frames_dir": "D:\\assets\\vfx\\catalog\\spells\\spark_arcane\\frames",
+  "extras": {
+    "particles_json": "D:\\assets\\vfx\\catalog\\spells\\spark_arcane\\particles.json",
+    "audio_cues": [
+      {
+        "t": 0.0,
+        "name": "chime"
+      },
+      {
+        "t": 0.25,
+        "name": "fade"
+      }
+    ]
+  },
+  "metrics": {
+    "max_alive": 50,
+    "total_energy": 296.68107432127
+  },
+  "timestamp": "2026-05-06T20:50:54+00:00"
+}

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="AbilityRecord" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://game_data/scripts/ability_record.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "nature_self_t3_44"
+display_name = "Nature Self T3"
+schema_version = "1.0.0"
+tags = ["nature", "poison", "self"]
+localization_key = "ABILITY_NATURE_SELF_T3_44"
+provenance = { "source": "synthetic", "model": null, "seed": 44, "prompt_id": null, "timestamp": "2026-05-06T18:46:42+00:00", "target_file_sha256": "da75a24b3a8b20b42063c45bf98edbc691e0807070ed813871afc1be1155c987", "constraint_technique": "synthetic_schema_bounds", "constraint_pass": "first_pass", "sim_digest": "de3cf608434f7061", "parent_id": null }
+notes = ""
+kind = "active"
+school = "nature"
+tier = 3
+shape = "self"
+cost = { "mana": 25, "stamina": 0, "cooldown_sec": 2.0 }
+effect = { "damage": 50, "damage_type": "poison", "healing": 0, "radius_m": 0.0, "duration_sec": 0.7, "status_tags": ["poison_touched"] }
+icon_id = "ico_potion_blue"
+vfx_id = "smoke_pulse"
+sfx_id = "fireball_cast"
+description = "A tier 3 nature ability tuned by the balance target."

@@ -1,0 +1,75 @@
+{
+  "kind": "spell",
+  "phenomenon": "particle",
+  "backend": "particle_cpu",
+  "duration_s": 0.5,
+  "fps": 30,
+  "bounds_px": [
+    320,
+    320
+  ],
+  "visual": {
+    "palette": [
+      "#f5e8ff",
+      "#d8a8ff",
+      "#7a4fdb",
+      "#2a0a4a"
+    ],
+    "blend": "additive",
+    "background": "#00000000",
+    "bloom": true
+  },
+  "visual3d": {
+    "billboard_mode": "enabled",
+    "world_size_m": 2.5
+  },
+  "backend_params": {
+    "emitter": "burst",
+    "count": 180,
+    "seed": 34159,
+    "initial_speed": 80.0,
+    "speed_jitter": 80.0,
+    "direction_deg": 90.0,
+    "spread_deg": 360.0,
+    "gravity": [
+      0.0,
+      0.0
+    ],
+    "drag": 1.6,
+    "size_px": 7.0,
+    "size_jitter": 4.0,
+    "fade": 1.0,
+    "emission_pos": [
+      160,
+      160
+    ],
+    "_audio_cues": [
+      {
+        "t": 0.0,
+        "name": "burst"
+      },
+      {
+        "t": 0.3,
+        "name": "settle"
+      }
+    ]
+  },
+  "gameplay": {
+    "shape": "aura",
+    "damage_tags": [
+      "arcane"
+    ],
+    "collision": "pierce"
+  },
+  "element": "arcane",
+  "archetype": "burst",
+  "tags": [
+    "arcane",
+    "burst",
+    "aoe",
+    "arcane"
+  ],
+  "export_target": "3d_billboard",
+  "id": "arcane_burst",
+  "notes": "Auto-authored arcane burst from element-archetype grid."
+}

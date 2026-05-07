@@ -1,0 +1,33 @@
+{
+  "_doc": "Registry of terrain shader presets. Each preset names a .gdshader file plus default uniform values that complete the look. The stager reads this to pick a shader by --shader-preset NAME (or use the default 'topdown'). User-supplied --triplanar overrides the preset default.",
+  "_schema_version": 1,
+  "presets": {
+    "topdown": {
+      "shader_file": "biome_terrain.gdshader",
+      "triplanar_strength": 0.0,
+      "triplanar_sharpness": 8.0,
+      "description": "Pure top-down UV. Recommended for ARPG iso/topdown character cam. Cleanest tessellation; texture stretches on near-vertical cliff faces. Default."
+    },
+    "triplanar": {
+      "shader_file": "biome_terrain.gdshader",
+      "triplanar_strength": 1.0,
+      "triplanar_sharpness": 8.0,
+      "description": "Slope-aware top-down + cliff blend. Removes cliff stretch but introduces visible artifacts on peaky terrain (e.g. mana_crystal cliffs). Use for first-person scenes."
+    },
+    "hextile": {
+      "shader_file": "biome_terrain_hextile.gdshader",
+      "triplanar_strength": 0.0,
+      "triplanar_sharpness": 8.0,
+      "description": "RESERVED — Mikkelsen 2022 hex-tiling. Stochastic per-hex-cell UV offset+rotation breaks visible repeats AND eliminates cliff stretch. Implementation pending; falls back to topdown if shader file missing.",
+      "fallback_preset": "topdown"
+    },
+    "heightblend": {
+      "shader_file": "biome_terrain_heightblend.gdshader",
+      "triplanar_strength": 0.0,
+      "triplanar_sharpness": 8.0,
+      "description": "RESERVED — height-based splat blending instead of weighted average. Sharp pebble-into-sand transitions at biome boundaries; drops the gaussian splat blur dependency. Implementation pending; falls back to topdown.",
+      "fallback_preset": "topdown"
+    }
+  },
+  "default": "topdown"
+}

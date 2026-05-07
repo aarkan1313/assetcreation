@@ -1,0 +1,20 @@
+{
+  "biome": "forest",
+  "stem": "bed_air",
+  "backend_requested": "library",
+  "backend_actual": "fallback->stable_audio_open",
+  "out_path": "D:\\assets\\audio\\ambience\\forest\\bed_air.wav",
+  "duration_s": 22.058956916099774,
+  "samplerate": 44100,
+  "rms_dbfs": -30.0,
+  "peak_dbfs": -16.024658203125,
+  "lufs_target": -30.0,
+  "seed": 5002,
+  "prompt": "forest leaves wind canopy",
+  "dry_run": false,
+  "loop": true,
+  "seam_rms": 0.009677243418991566,
+  "fitness": 0.5150269014629605,
+  "library_query": "forest leaves wind canopy",
+  "fallback_prompt": "wind through dense forest canopy with leaf rustle, no music, 30 second seamless loop"
+}

@@ -1,0 +1,512 @@
+{
+  "batch": "shader_evolve_smoke_001",
+  "created": "2026-05-06T10:44:54.266774+00:00",
+  "candidate_count": 12,
+  "recommended_for_user_review": [
+    {
+      "id": "shader_evolve_smoke_001_g01_portal_swirl_2d_001",
+      "score": 90.26,
+      "grade": "keep",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "preview": "shader_evolve_smoke_001_g01_portal_swirl_2d_001\\flipbook.png",
+      "metrics": {
+        "coverage": 0.09326,
+        "mean_alpha": 0.07377,
+        "luma_mean": 0.04042,
+        "contrast": 0.02153,
+        "colorfulness": 0.12271,
+        "edge_energy": 0.00584,
+        "center_distance": 0.0,
+        "clip_high": 0.0,
+        "clip_low": 0.023,
+        "aspect": 1.0,
+        "motion": 0.01257,
+        "flicker": 0.0,
+        "frames": 3.0
+      },
+      "hints": [
+        "coverage low: increase radius/thickness/edge_width/opacity, or reduce dissolve threshold",
+        "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors",
+        "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width"
+      ],
+      "gate_issues": [],
+      "gate_warnings": [
+        "weak contrast"
+      ],
+      "params": {
+        "color_outer": [
+          0.005471320503757912,
+          0.0,
+          0.06039307254313726
+        ],
+        "color_mid": [
+          0.0,
+          0.10577229592074697,
+          0.07190967886336994
+        ],
+        "color_inner": [
+          0.24404356376413716,
+          0.00967810146056751,
+          0.42181398916171653
+        ],
+        "color_void": [
+          0.033495391813405,
+          0.0,
+          0.02521360880462776
+        ],
+        "radius": 0.3003,
+        "swirl": 8.3594,
+        "spin_speed": 4.3989,
+        "depth_pulse": 0.932,
+        "arms": 5.8248,
+        "arm_strength": 0.926,
+        "opacity": 0.8876
+      }
+    },
+    {
+      "id": "shader_evolve_smoke_001_g00_portal_swirl_2d_001",
+      "score": 89.95,
+      "grade": "keep",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "preview": "shader_evolve_smoke_001_g00_portal_swirl_2d_001\\flipbook.png",
+      "metrics": {
+        "coverage": 0.1106,
+        "mean_alpha": 0.09035,
+        "luma_mean": 0.03646,
+        "contrast": 0.02245,
+        "colorfulness": 0.1198,
+        "edge_energy": 0.00574,
+        "center_distance": 0.0,
+        "clip_high": 0.0,
+        "clip_low": 0.0265,
+        "aspect": 1.0,
+        "motion": 0.00554,
+        "flicker": 0.0,
+        "frames": 3.0
+      },
+      "hints": [
+        "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors",
+        "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width",
+        "motion low: increase speed/pulse/spin/scroll parameters"
+      ],
+      "gate_issues": [],
+      "gate_warnings": [
+        "weak contrast",
+        "motion below role target"
+      ],
+      "params": {
+        "color_outer": [
+          0.0,
+          0.0,
+          0.07940984806838902
+        ],
+        "color_mid": [
+          0.0,
+          0.07187344367382663,
+          0.10509248349930092
+        ],
+        "color_inner": [
+          0.23877864651694058,
+          0.034471303770630075,
+          0.4523210111326636
+        ],
+        "color_void": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "radius": 0.332,
+        "swirl": 8.3969,
+        "spin_speed": 3.3273,
+        "depth_pulse": 0.9927,
+        "arms": 6,
+        "arm_strength": 0.9271,
+        "opacity": 0.9002
+      }
+    },
+    {
+      "id": "shader_evolve_smoke_001_g01_portal_swirl_2d_004",
+      "score": 89.08,
+      "grade": "keep",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "preview": "shader_evolve_smoke_001_g01_portal_swirl_2d_004\\flipbook.png",
+      "metrics": {
+        "coverage": 0.12451,
+        "mean_alpha": 0.09845,
+        "luma_mean": 0.0323,
+        "contrast": 0.02296,
+        "colorfulness": 0.10441,
+        "edge_energy": 0.00515,
+        "center_distance": 0.0,
+        "clip_high": 0.0,
+        "clip_low": 0.00805,
+        "aspect": 1.0,
+        "motion": 0.01511,
+        "flicker": 0.0,
+        "frames": 3.0
+      },
+      "hints": [
+        "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors",
+        "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width"
+      ],
+      "gate_issues": [],
+      "gate_warnings": [
+        "weak contrast"
+      ],
+      "params": {
+        "color_outer": [
+          0.02532584542069225,
+          0.002512828034631105,
+          0.050180473290221
+        ],
+        "color_mid": [
+          0.007285268313271594,
+          0.040704660601558806,
+          0.11469564361531881
+        ],
+        "color_inner": [
+          0.2576006200787792,
+          0.05737593043259882,
+          0.44795411477343505
+        ],
+        "color_void": [
+          0.008077713569018166,
+          0.012162589910199438,
+          0.0
+        ],
+        "radius": 0.3552,
+        "swirl": 7.5917,
+        "spin_speed": 3.0896,
+        "depth_pulse": 1.0,
+        "arms": 10,
+        "arm_strength": 0.8534,
+        "opacity": 0.8655
+      }
+    },
+    {
+      "id": "shader_evolve_smoke_001_g01_portal_swirl_2d_006",
+      "score": 87.49,
+      "grade": "review",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "preview": "shader_evolve_smoke_001_g01_portal_swirl_2d_006\\flipbook.png",
+      "metrics": {
+        "coverage": 0.07007,
+        "mean_alpha": 0.05453,
+        "luma_mean": 0.03161,
+        "contrast": 0.02718,
+        "colorfulness": 0.07997,
+        "edge_energy": 0.00299,
+        "center_distance": 0.0,
+        "clip_high": 0.0,
+        "clip_low": 0.00549,
+        "aspect": 1.0,
+        "motion": 0.01643,
+        "flicker": 0.0,
+        "frames": 3.0
+      },
+      "hints": [
+        "coverage low: increase radius/thickness/edge_width/opacity, or reduce dissolve threshold",
+        "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors",
+        "color weak: switch palette or push core/edge/glow colors farther apart",
+        "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width"
+      ],
+      "gate_issues": [],
+      "gate_warnings": [
+        "weak contrast"
+      ],
+      "params": {
+        "color_outer": [
+          0.01894345955256079,
+          0.0011707677458814847,
+          0.13822214686853448
+        ],
+        "color_mid": [
+          0.00639801725474632,
+          0.03462094035267944,
+          0.023114418188658066
+        ],
+        "color_inner": [
+          0.1971575723339833,
+          0.10476884650382992,
+          0.3581532425538975
+        ],
+        "color_void": [
+          0.0,
+          0.03928796438528382,
+          0.0015014530097481951
+        ],
+        "radius": 0.254,
+        "swirl": 9.398,
+        "spin_speed": 4.7293,
+        "depth_pulse": 0.1841,
+        "arms": 8,
+        "arm_strength": 1.036,
+        "opacity": 0.8907
+      }
+    },
+    {
+      "id": "shader_evolve_smoke_001_g00_portal_swirl_2d_005",
+      "score": 87.4,
+      "grade": "review",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "preview": "shader_evolve_smoke_001_g00_portal_swirl_2d_005\\flipbook.png",
+      "metrics": {
+        "coverage": 0.07422,
+        "mean_alpha": 0.0553,
+        "luma_mean": 0.0239,
+        "contrast": 0.02873,
+        "colorfulness": 0.06734,
+        "edge_energy": 0.00252,
+        "center_distance": 0.0,
+        "clip_high": 0.0,
+        "clip_low": 0.01832,
+        "aspect": 1.0,
+        "motion": 0.00927,
+        "flicker": 0.0,
+        "frames": 3.0
+      },
+      "hints": [
+        "coverage low: increase radius/thickness/edge_width/opacity, or reduce dissolve threshold",
+        "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors",
+        "color weak: switch palette or push core/edge/glow colors farther apart",
+        "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width",
+        "motion low: increase speed/pulse/spin/scroll parameters"
+      ],
+      "gate_issues": [],
+      "gate_warnings": [
+        "weak contrast"
+      ],
+      "params": {
+        "color_outer": [
+          0.0,
+          0.0,
+          0.10322430688768805
+        ],
+        "color_mid": [
+          0.04380766959824353,
+          0.0,
+          0.06101163210045639
+        ],
+        "color_inner": [
+          0.18759120414342725,
+          0.11734468451038294,
+          0.35348736214414195
+        ],
+        "color_void": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "radius": 0.2631,
+        "swirl": 9.8798,
+        "spin_speed": 4.584,
+        "depth_pulse": 0.2475,
+        "arms": 4,
+        "arm_strength": 1.0469,
+        "opacity": 0.8469
+      }
+    },
+    {
+      "id": "shader_evolve_smoke_001_g01_portal_swirl_2d_003",
+      "score": 87.11,
+      "grade": "review",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "preview": "shader_evolve_smoke_001_g01_portal_swirl_2d_003\\flipbook.png",
+      "metrics": {
+        "coverage": 0.07471,
+        "mean_alpha": 0.06163,
+        "luma_mean": 0.03073,
+        "contrast": 0.03435,
+        "colorfulness": 0.06338,
+        "edge_energy": 0.00277,
+        "center_distance": 0.0,
+        "clip_high": 0.0,
+        "clip_low": 0.0168,
+        "aspect": 1.0,
+        "motion": 0.00645,
+        "flicker": 0.0,
+        "frames": 3.0
+      },
+      "hints": [
+        "coverage low: increase radius/thickness/edge_width/opacity, or reduce dissolve threshold",
+        "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors",
+        "color weak: switch palette or push core/edge/glow colors farther apart",
+        "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width",
+        "motion low: increase speed/pulse/spin/scroll parameters"
+      ],
+      "gate_issues": [],
+      "gate_warnings": [
+        "weak contrast",
+        "motion below role target"
+      ],
+      "params": {
+        "color_outer": [
+          0.037488193793586706,
+          0.0,
+          0.09184960955520827
+        ],
+        "color_mid": [
+          0.04703726686284972,
+          0.0,
+          0.04973529865744748
+        ],
+        "color_inner": [
+          0.22969308484326473,
+          0.1183191048581348,
+          0.3467018748231699
+        ],
+        "color_void": [
+          0.0,
+          0.009842823025941229,
+          0.0018496146510947192
+        ],
+        "radius": 0.2654,
+        "swirl": 9.7575,
+        "spin_speed": 3.9286,
+        "depth_pulse": 0.2446,
+        "arms": 4.1974,
+        "arm_strength": 1.0747,
+        "opacity": 0.9285
+      }
+    },
+    {
+      "id": "shader_evolve_smoke_001_g00_portal_swirl_2d_003",
+      "score": 83.68,
+      "grade": "review",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "preview": "shader_evolve_smoke_001_g00_portal_swirl_2d_003\\flipbook.png",
+      "metrics": {
+        "coverage": 0.10205,
+        "mean_alpha": 0.08258,
+        "luma_mean": 0.01537,
+        "contrast": 0.01448,
+        "colorfulness": 0.04903,
+        "edge_energy": 0.00199,
+        "center_distance": 0.0,
+        "clip_high": 0.0,
+        "clip_low": 0.02926,
+        "aspect": 1.0,
+        "motion": 0.00586,
+        "flicker": 0.0,
+        "frames": 3.0
+      },
+      "hints": [
+        "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors",
+        "color weak: switch palette or push core/edge/glow colors farther apart",
+        "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width",
+        "motion low: increase speed/pulse/spin/scroll parameters"
+      ],
+      "gate_issues": [],
+      "gate_warnings": [
+        "weak contrast",
+        "motion below role target"
+      ],
+      "params": {
+        "color_outer": [
+          0.008321205596525477,
+          0.005949895616688017,
+          0.0
+        ],
+        "color_mid": [
+          0.026459155602297262,
+          0.0,
+          0.08554643014700183
+        ],
+        "color_inner": [
+          0.16531378808441463,
+          0.09158696272308883,
+          0.37648633333542547
+        ],
+        "color_void": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "radius": 0.3177,
+        "swirl": 9.7566,
+        "spin_speed": 5.4595,
+        "depth_pulse": 0.3448,
+        "arms": 10,
+        "arm_strength": 0.5581,
+        "opacity": 0.8947
+      }
+    }
+  ],
+  "low_score_summary": [
+    {
+      "id": "shader_evolve_smoke_001_g00_portal_swirl_2d_005",
+      "score": 87.4,
+      "hints": [
+        "coverage low: increase radius/thickness/edge_width/opacity, or reduce dissolve threshold",
+        "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors"
+      ]
+    },
+    {
+      "id": "shader_evolve_smoke_001_g01_portal_swirl_2d_003",
+      "score": 87.11,
+      "hints": [
+        "coverage low: increase radius/thickness/edge_width/opacity, or reduce dissolve threshold",
+        "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors"
+      ]
+    },
+    {
+      "id": "shader_evolve_smoke_001_g00_portal_swirl_2d_003",
+      "score": 83.68,
+      "hints": [
+        "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors",
+        "color weak: switch palette or push core/edge/glow colors farther apart"
+      ]
+    },
+    {
+      "id": "shader_evolve_smoke_001_g01_shield_ripple_2d_005",
+      "score": 42.19,
+      "hints": [
+        "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold",
+        "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors"
+      ]
+    },
+    {
+      "id": "shader_evolve_smoke_001_g00_shield_ripple_2d_004",
+      "score": 41.4,
+      "hints": [
+        "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold",
+        "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors"
+      ]
+    },
+    {
+      "id": "shader_evolve_smoke_001_g01_shield_ripple_2d_002",
+      "score": 40.37,
+      "hints": [
+        "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold",
+        "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors"
+      ]
+    },
+    {
+      "id": "shader_evolve_smoke_001_g00_shield_ripple_2d_006",
+      "score": 36.38,
+      "hints": [
+        "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold"
+      ]
+    },
+    {
+      "id": "shader_evolve_smoke_001_g00_shield_ripple_2d_002",
+      "score": 34.61,
+      "hints": [
+        "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold"
+      ]
+    }
+  ],
+  "next_iteration_policy": [
+    "Preserve top candidate params and make local mutations around them.",
+    "Do not ask the LLM to OCR the image; use metrics plus gallery thumbnails.",
+    "Use Godot-rendered previews for final acceptance when the Godot binary is available.",
+    "Escalate only keep/review candidates to human review."
+  ]
+}

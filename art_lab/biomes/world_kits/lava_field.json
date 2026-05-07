@@ -1,0 +1,41 @@
+{
+  "id": "lava_field",
+  "display_name": "Cinder Plains",
+  "category": "elemental_fire",
+  "identity": {
+    "world_color": [180, 60, 30],
+    "regional_palette": [
+      [40, 18, 12],
+      [180, 50, 20],
+      [240, 110, 40],
+      [255, 200, 80]
+    ],
+    "icon_glyph": "lava",
+    "ambient_hex": "#1a0a08"
+  },
+  "terrain": {
+    "height_bias": "low_with_local_peaks",
+    "slope_tendency": "broken",
+    "water_behaviour": "lava",
+    "carve_features": ["lava_cracks", "ash_drifts"],
+    "altitude_range": [0.10, 0.55],
+    "preferred_slope_range": [0.0, 0.45]
+  },
+  "transitions": {
+    "anchor_to": ["river", "altitude_band"],
+    "blend_neighbours": {
+      "default": {"width_px": 18, "noise_strength": 0.35, "feature_priority": "ridges"},
+      "ice_cavern": {"width_px": 4, "noise_strength": 0.05, "feature_priority": "ridges", "intermediate_label": "scoured_basalt"},
+      "grassland": {"width_px": 30, "noise_strength": 0.4, "feature_priority": "rivers"},
+      "mana_crystal": {"width_px": 12, "noise_strength": 0.15, "feature_priority": "ridges"}
+    },
+    "exclusion": ["ice_cavern"]
+  },
+  "texture_kit": "lava_field",
+  "decoration_kit": "lava_field",
+  "world_map_priority": 8,
+  "regional_glyph_density": 0.65,
+  "season_variants": {
+    "winter": {"world_color": [200, 90, 60], "ambient_hex": "#2a1010"}
+  }
+}

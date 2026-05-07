@@ -1,0 +1,215 @@
+{
+  "queue": "art_lab\\props\\output\\mossy_highland_prep_001\\decal_queue.json",
+  "ran": 26,
+  "skipped": [],
+  "results": [
+    {
+      "id": "moss_patch_01_01",
+      "out_dir": "world/props/library/moss_patch_01_01",
+      "decal": "world/props/library/moss_patch_01_01/decal.png",
+      "thumbnail": "world/props/library/moss_patch_01_01/thumbnail.png",
+      "qa_passed": true,
+      "alpha_coverage": 0.5369
+    },
+    {
+      "id": "moss_patch_01_02",
+      "out_dir": "world/props/library/moss_patch_01_02",
+      "decal": "world/props/library/moss_patch_01_02/decal.png",
+      "thumbnail": "world/props/library/moss_patch_01_02/thumbnail.png",
+      "qa_passed": true,
+      "alpha_coverage": 0.522
+    },
+    {
+      "id": "moss_patch_01_03",
+      "out_dir": "world/props/library/moss_patch_01_03",
+      "decal": "world/props/library/moss_patch_01_03/decal.png",
+      "thumbnail": "world/props/library/moss_patch_01_03/thumbnail.png",
+      "qa_passed": true,
+      "alpha_coverage": 0.6119
+    },
+    {
+      "id": "moss_patch_01_04",
+      "out_dir": "world/props/library/moss_patch_01_04",
+      "decal": "world/props/library/moss_patch_01_04/decal.png",
+      "thumbnail": "world/props/library/moss_patch_01_04/thumbnail.png",
+      "qa_passed": true,
+      "alpha_coverage": 0.5339
+    },
+    {
+      "id": "moss_patch_01_05",
+      "out_dir": "world/props/library/moss_patch_01_05",
+      "decal": "world/props/library/moss_patch_01_05/decal.png",
+      "thumbnail": "world/props/library/moss_patch_01_05/thumbnail.png",
+      "qa_passed": true,
+      "alpha_coverage": 0.5032
+    },
+    {
+      "id": "moss_patch_01_06",
+      "out_dir": "world/props/library/moss_patch_01_06",
+      "decal": "world/props/library/moss_patch_01_06/decal.png",
+      "thumbnail": "world/props/library/moss_patch_01_06/thumbnail.png",
+      "qa_passed": true,
+      "alpha_coverage": 0.3709
+    },
+    {
+      "id": "mud_splash_02_01",
+      "out_dir": "world/props/library/mud_splash_02_01",
+      "decal": "world/props/library/mud_splash_02_01/decal.png",
+      "thumbnail": "world/props/library/mud_splash_02_01/thumbnail.png",
+      "qa_passed": true,
+      "alpha_coverage": 0.5846
+    },
+    {
+      "id": "mud_splash_02_02",
+      "out_dir": "world/props/library/mud_splash_02_02",
+      "decal": "world/props/library/mud_splash_02_02/decal.png",
+      "thumbnail": "world/props/library/mud_splash_02_02/thumbnail.png",
+      "qa_passed": true,
+      "alpha_coverage": 0.4882
+    },
+    {
+      "id": "mud_splash_02_03",
+      "out_dir": "world/props/library/mud_splash_02_03",
+      "decal": "world/props/library/mud_splash_02_03/decal.png",
+      "thumbnail": "world/props/library/mud_splash_02_03/thumbnail.png",
+      "qa_passed": true,
+      "alpha_coverage": 0.4659
+    },
+    {
+      "id": "mud_splash_02_04",
+      "out_dir": "world/props/library/mud_splash_02_04",
+      "decal": "world/props/library/mud_splash_02_04/decal.png",
+      "thumbnail": "world/props/library/mud_splash_02_04/thumbnail.png",
+      "qa_passed": true,
+      "alpha_coverage": 0.5885
+    },
+    {
+      "id": "mud_splash_02_05",
+      "out_dir": "world/props/library/mud_splash_02_05",
+      "decal": "world/props/library/mud_splash_02_05/decal.png",
+      "thumbnail": "world/props/library/mud_splash_02_05/thumbnail.png",
+      "qa_passed": true,
+      "alpha_coverage": 0.5048
+    },
+    {
+      "id": "mud_splash_02_06",
+      "out_dir": "world/props/library/mud_splash_02_06",
+      "decal": "world/props/library/mud_splash_02_06/decal.png",
+      "thumbnail": "world/props/library/mud_splash_02_06/thumbnail.png",
+      "qa_passed": true,
+      "alpha_coverage": 0.5536
+    },
+    {
+      "id": "cracked_stone_03_01",
+      "out_dir": "world/props/library/cracked_stone_03_01",
+      "decal": "world/props/library/cracked_stone_03_01/decal.png",
+      "thumbnail": "world/props/library/cracked_stone_03_01/thumbnail.png",
+      "qa_passed": true,
+      "alpha_coverage": 0.0332
+    },
+    {
+      "id": "cracked_stone_03_02",
+      "out_dir": "world/props/library/cracked_stone_03_02",
+      "decal": "world/props/library/cracked_stone_03_02/decal.png",
+      "thumbnail": "world/props/library/cracked_stone_03_02/thumbnail.png",
+      "qa_passed": true,
+      "alpha_coverage": 0.0271
+    },
+    {
+      "id": "cracked_stone_03_03",
+      "out_dir": "world/props/library/cracked_stone_03_03",
+      "decal": "world/props/library/cracked_stone_03_03/decal.png",
+      "thumbnail": "world/props/library/cracked_stone_03_03/thumbnail.png",
+      "qa_passed": true,
+      "alpha_coverage": 0.0211
+    },
+    {
+      "id": "cracked_stone_03_04",
+      "out_dir": "world/props/library/cracked_stone_03_04",
+      "decal": "world/props/library/cracked_stone_03_04/decal.png",
+      "thumbnail": "world/props/library/cracked_stone_03_04/thumbnail.png",
+      "qa_passed": true,
+      "alpha_coverage": 0.032
+    },
+    {
+      "id": "cracked_stone_03_05",
+      "out_dir": "world/props/library/cracked_stone_03_05",
+      "decal": "world/props/library/cracked_stone_03_05/decal.png",
+      "thumbnail": "world/props/library/cracked_stone_03_05/thumbnail.png",
+      "qa_passed": true,
+      "alpha_coverage": 0.0283
+    },
+    {
+      "id": "cracked_stone_03_06",
+      "out_dir": "world/props/library/cracked_stone_03_06",
+      "decal": "world/props/library/cracked_stone_03_06/decal.png",
+      "thumbnail": "world/props/library/cracked_stone_03_06/thumbnail.png",
+      "qa_passed": true,
+      "alpha_coverage": 0.0341
+    },
+    {
+      "id": "rune_stain_01_01",
+      "out_dir": "world/props/library/rune_stain_01_01",
+      "decal": "world/props/library/rune_stain_01_01/decal.png",
+      "thumbnail": "world/props/library/rune_stain_01_01/thumbnail.png",
+      "qa_passed": true,
+      "alpha_coverage": 0.0159
+    },
+    {
+      "id": "rune_stain_01_02",
+      "out_dir": "world/props/library/rune_stain_01_02",
+      "decal": "world/props/library/rune_stain_01_02/decal.png",
+      "thumbnail": "world/props/library/rune_stain_01_02/thumbnail.png",
+      "qa_passed": true,
+      "alpha_coverage": 0.0185
+    },
+    {
+      "id": "rune_stain_01_03",
+      "out_dir": "world/props/library/rune_stain_01_03",
+      "decal": "world/props/library/rune_stain_01_03/decal.png",
+      "thumbnail": "world/props/library/rune_stain_01_03/thumbnail.png",
+      "qa_passed": false,
+      "alpha_coverage": 0.0068
+    },
+    {
+      "id": "rune_stain_01_04",
+      "out_dir": "world/props/library/rune_stain_01_04",
+      "decal": "world/props/library/rune_stain_01_04/decal.png",
+      "thumbnail": "world/props/library/rune_stain_01_04/thumbnail.png",
+      "qa_passed": false,
+      "alpha_coverage": 0.0031
+    },
+    {
+      "id": "scorch_01_01",
+      "out_dir": "world/props/library/scorch_01_01",
+      "decal": "world/props/library/scorch_01_01/decal.png",
+      "thumbnail": "world/props/library/scorch_01_01/thumbnail.png",
+      "qa_passed": true,
+      "alpha_coverage": 0.4869
+    },
+    {
+      "id": "scorch_01_02",
+      "out_dir": "world/props/library/scorch_01_02",
+      "decal": "world/props/library/scorch_01_02/decal.png",
+      "thumbnail": "world/props/library/scorch_01_02/thumbnail.png",
+      "qa_passed": true,
+      "alpha_coverage": 0.5211
+    },
+    {
+      "id": "scorch_01_03",
+      "out_dir": "world/props/library/scorch_01_03",
+      "decal": "world/props/library/scorch_01_03/decal.png",
+      "thumbnail": "world/props/library/scorch_01_03/thumbnail.png",
+      "qa_passed": true,
+      "alpha_coverage": 0.5241
+    },
+    {
+      "id": "scorch_01_04",
+      "out_dir": "world/props/library/scorch_01_04",
+      "decal": "world/props/library/scorch_01_04/decal.png",
+      "thumbnail": "world/props/library/scorch_01_04/thumbnail.png",
+      "qa_passed": true,
+      "alpha_coverage": 0.6161
+    }
+  ]
+}

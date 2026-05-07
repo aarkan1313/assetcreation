@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://amus_combat_a"]
+
+[ext_resource type="Script" path="res://audio/godot/music/combat_a/AdaptiveMusicTrack.gd" id="1_ctrl"]
+
+[node name="AdaptiveMusicTrack" type="Node"]
+script = ExtResource("1_ctrl")

@@ -1,0 +1,5722 @@
+{
+  "schema": "prop_plan.v1",
+  "id": "mossy_highland_prep_001",
+  "created_utc": "2026-05-06T13:48:26.003758+00:00",
+  "kit": "mossy_highland_ruins",
+  "kit_path": "art_lab/props/kits/mossy_highland_ruins.props.json",
+  "library_root": "world/props/library",
+  "validation_issues": [],
+  "summary": {
+    "families": 13,
+    "variants": 76,
+    "ready": 26,
+    "partial": 0,
+    "missing": 50,
+    "blender_tasks": 50,
+    "local_ai_tasks": 0,
+    "decal_tasks": 0,
+    "godot_export_tasks": 26,
+    "validation_issues": 0
+  },
+  "families": [
+    {
+      "family": "rock_cluster_small",
+      "section": "families",
+      "recipe": "art_lab/props/recipes/rock_cluster_small.recipe.json",
+      "variants_required": 8,
+      "generator": "blender_rock_cluster_v1",
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "source_lanes": [
+        "blender_procedural"
+      ],
+      "variant_ids": [
+        "rock_cluster_small_01",
+        "rock_cluster_small_02",
+        "rock_cluster_small_03",
+        "rock_cluster_small_04",
+        "rock_cluster_small_05",
+        "rock_cluster_small_06",
+        "rock_cluster_small_07",
+        "rock_cluster_small_08"
+      ]
+    },
+    {
+      "family": "rock_cluster_medium",
+      "section": "families",
+      "recipe": "art_lab/props/recipes/rock_cluster_medium.recipe.json",
+      "variants_required": 6,
+      "generator": "blender_rock_cluster_v1",
+      "render_class": "scatter_multimesh",
+      "collision": "simple",
+      "source_lanes": [
+        "blender_procedural"
+      ],
+      "variant_ids": [
+        "rock_cluster_medium_01",
+        "rock_cluster_medium_02",
+        "rock_cluster_medium_03",
+        "rock_cluster_medium_04",
+        "rock_cluster_medium_05",
+        "rock_cluster_medium_06"
+      ]
+    },
+    {
+      "family": "fern_clump",
+      "section": "families",
+      "recipe": "art_lab/props/recipes/fern_clump.recipe.json",
+      "variants_required": 6,
+      "generator": "blender_foliage_cards_v1",
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "source_lanes": [
+        "blender_procedural",
+        "texture_cards"
+      ],
+      "variant_ids": [
+        "fern_clump_01",
+        "fern_clump_02",
+        "fern_clump_03",
+        "fern_clump_04",
+        "fern_clump_05",
+        "fern_clump_06"
+      ]
+    },
+    {
+      "family": "moss_tuft",
+      "section": "families",
+      "recipe": "art_lab/props/recipes/moss_tuft.recipe.json",
+      "variants_required": 8,
+      "generator": "blender_foliage_cards_v1",
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "source_lanes": [
+        "blender_procedural",
+        "texture_cards"
+      ],
+      "variant_ids": [
+        "moss_tuft_01",
+        "moss_tuft_02",
+        "moss_tuft_03",
+        "moss_tuft_04",
+        "moss_tuft_05",
+        "moss_tuft_06",
+        "moss_tuft_07",
+        "moss_tuft_08"
+      ]
+    },
+    {
+      "family": "mushroom_cluster",
+      "section": "families",
+      "recipe": "art_lab/props/recipes/mushroom_cluster.recipe.json",
+      "variants_required": 5,
+      "generator": "blender_mushroom_cluster_v1",
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "source_lanes": [
+        "blender_procedural"
+      ],
+      "variant_ids": [
+        "mushroom_cluster_01",
+        "mushroom_cluster_02",
+        "mushroom_cluster_03",
+        "mushroom_cluster_04",
+        "mushroom_cluster_05"
+      ]
+    },
+    {
+      "family": "fallen_log",
+      "section": "families",
+      "recipe": "art_lab/props/recipes/fallen_log.recipe.json",
+      "variants_required": 4,
+      "generator": "blender_log_v1",
+      "render_class": "scene_prop",
+      "collision": "simple",
+      "source_lanes": [
+        "blender_procedural",
+        "local_ai_optional"
+      ],
+      "variant_ids": [
+        "fallen_log_01",
+        "fallen_log_02",
+        "fallen_log_03",
+        "fallen_log_04"
+      ]
+    },
+    {
+      "family": "ruin_block",
+      "section": "families",
+      "recipe": "art_lab/props/recipes/ruin_block.recipe.json",
+      "variants_required": 8,
+      "generator": "blender_ruins_v1",
+      "render_class": "scatter_multimesh",
+      "collision": "simple",
+      "source_lanes": [
+        "blender_procedural",
+        "cc0_reference_optional"
+      ],
+      "variant_ids": [
+        "ruin_block_01",
+        "ruin_block_02",
+        "ruin_block_03",
+        "ruin_block_04",
+        "ruin_block_05",
+        "ruin_block_06",
+        "ruin_block_07",
+        "ruin_block_08"
+      ]
+    },
+    {
+      "family": "ruin_pillar",
+      "section": "families",
+      "recipe": "art_lab/props/recipes/ruin_pillar.recipe.json",
+      "variants_required": 5,
+      "generator": "blender_ruins_v1",
+      "render_class": "scene_prop",
+      "collision": "simple",
+      "source_lanes": [
+        "blender_procedural",
+        "cc0_reference_optional"
+      ],
+      "variant_ids": [
+        "ruin_pillar_01",
+        "ruin_pillar_02",
+        "ruin_pillar_03",
+        "ruin_pillar_04",
+        "ruin_pillar_05"
+      ]
+    },
+    {
+      "family": "moss_patch_01",
+      "section": "decal_families",
+      "recipe": "art_lab/props/recipes/moss_patch_01.recipe.json",
+      "variants_required": 6,
+      "generator": "texture_decal_v1",
+      "render_class": "decal",
+      "collision": "none",
+      "source_lanes": [
+        "texture_pipeline",
+        "shader_template"
+      ],
+      "variant_ids": [
+        "moss_patch_01_01",
+        "moss_patch_01_02",
+        "moss_patch_01_03",
+        "moss_patch_01_04",
+        "moss_patch_01_05",
+        "moss_patch_01_06"
+      ]
+    },
+    {
+      "family": "mud_splash_02",
+      "section": "decal_families",
+      "recipe": "art_lab/props/recipes/mud_splash_02.recipe.json",
+      "variants_required": 6,
+      "generator": "texture_decal_v1",
+      "render_class": "decal",
+      "collision": "none",
+      "source_lanes": [
+        "texture_pipeline"
+      ],
+      "variant_ids": [
+        "mud_splash_02_01",
+        "mud_splash_02_02",
+        "mud_splash_02_03",
+        "mud_splash_02_04",
+        "mud_splash_02_05",
+        "mud_splash_02_06"
+      ]
+    },
+    {
+      "family": "cracked_stone_03",
+      "section": "decal_families",
+      "recipe": "art_lab/props/recipes/cracked_stone_03.recipe.json",
+      "variants_required": 6,
+      "generator": "texture_decal_v1",
+      "render_class": "decal",
+      "collision": "none",
+      "source_lanes": [
+        "texture_pipeline",
+        "shader_template"
+      ],
+      "variant_ids": [
+        "cracked_stone_03_01",
+        "cracked_stone_03_02",
+        "cracked_stone_03_03",
+        "cracked_stone_03_04",
+        "cracked_stone_03_05",
+        "cracked_stone_03_06"
+      ]
+    },
+    {
+      "family": "rune_stain_01",
+      "section": "decal_families",
+      "recipe": "art_lab/props/recipes/rune_stain_01.recipe.json",
+      "variants_required": 4,
+      "generator": "texture_decal_v1",
+      "render_class": "decal",
+      "collision": "none",
+      "source_lanes": [
+        "shader_template",
+        "texture_pipeline"
+      ],
+      "variant_ids": [
+        "rune_stain_01_01",
+        "rune_stain_01_02",
+        "rune_stain_01_03",
+        "rune_stain_01_04"
+      ]
+    },
+    {
+      "family": "scorch_01",
+      "section": "decal_families",
+      "recipe": "art_lab/props/recipes/scorch_01.recipe.json",
+      "variants_required": 4,
+      "generator": "texture_decal_v1",
+      "render_class": "decal",
+      "collision": "none",
+      "source_lanes": [
+        "texture_pipeline",
+        "shader_template"
+      ],
+      "variant_ids": [
+        "scorch_01_01",
+        "scorch_01_02",
+        "scorch_01_03",
+        "scorch_01_04"
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "rock_cluster_small_01",
+      "family": "rock_cluster_small",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 1,
+      "recipe": "art_lab/props/recipes/rock_cluster_small.recipe.json",
+      "generator": "blender_rock_cluster_v1",
+      "source_lanes": [
+        "blender_procedural"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "placement_tags": [
+        "rock",
+        "mossy",
+        "slope_ok",
+        "ruin_edge"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/rock_cluster_small_01",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "rock_cluster_small_02",
+      "family": "rock_cluster_small",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 2,
+      "recipe": "art_lab/props/recipes/rock_cluster_small.recipe.json",
+      "generator": "blender_rock_cluster_v1",
+      "source_lanes": [
+        "blender_procedural"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "placement_tags": [
+        "rock",
+        "mossy",
+        "slope_ok",
+        "ruin_edge"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/rock_cluster_small_02",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "rock_cluster_small_03",
+      "family": "rock_cluster_small",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 3,
+      "recipe": "art_lab/props/recipes/rock_cluster_small.recipe.json",
+      "generator": "blender_rock_cluster_v1",
+      "source_lanes": [
+        "blender_procedural"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "placement_tags": [
+        "rock",
+        "mossy",
+        "slope_ok",
+        "ruin_edge"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/rock_cluster_small_03",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "rock_cluster_small_04",
+      "family": "rock_cluster_small",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 4,
+      "recipe": "art_lab/props/recipes/rock_cluster_small.recipe.json",
+      "generator": "blender_rock_cluster_v1",
+      "source_lanes": [
+        "blender_procedural"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "placement_tags": [
+        "rock",
+        "mossy",
+        "slope_ok",
+        "ruin_edge"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/rock_cluster_small_04",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "rock_cluster_small_05",
+      "family": "rock_cluster_small",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 5,
+      "recipe": "art_lab/props/recipes/rock_cluster_small.recipe.json",
+      "generator": "blender_rock_cluster_v1",
+      "source_lanes": [
+        "blender_procedural"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "placement_tags": [
+        "rock",
+        "mossy",
+        "slope_ok",
+        "ruin_edge"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/rock_cluster_small_05",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "rock_cluster_small_06",
+      "family": "rock_cluster_small",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 6,
+      "recipe": "art_lab/props/recipes/rock_cluster_small.recipe.json",
+      "generator": "blender_rock_cluster_v1",
+      "source_lanes": [
+        "blender_procedural"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "placement_tags": [
+        "rock",
+        "mossy",
+        "slope_ok",
+        "ruin_edge"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/rock_cluster_small_06",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "rock_cluster_small_07",
+      "family": "rock_cluster_small",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 7,
+      "recipe": "art_lab/props/recipes/rock_cluster_small.recipe.json",
+      "generator": "blender_rock_cluster_v1",
+      "source_lanes": [
+        "blender_procedural"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "placement_tags": [
+        "rock",
+        "mossy",
+        "slope_ok",
+        "ruin_edge"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/rock_cluster_small_07",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "rock_cluster_small_08",
+      "family": "rock_cluster_small",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 8,
+      "recipe": "art_lab/props/recipes/rock_cluster_small.recipe.json",
+      "generator": "blender_rock_cluster_v1",
+      "source_lanes": [
+        "blender_procedural"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "placement_tags": [
+        "rock",
+        "mossy",
+        "slope_ok",
+        "ruin_edge"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/rock_cluster_small_08",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "rock_cluster_medium_01",
+      "family": "rock_cluster_medium",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 1,
+      "recipe": "art_lab/props/recipes/rock_cluster_medium.recipe.json",
+      "generator": "blender_rock_cluster_v1",
+      "source_lanes": [
+        "blender_procedural"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "simple",
+      "placement_tags": [
+        "rock",
+        "mossy",
+        "landmark_edge",
+        "slope_ok"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/rock_cluster_medium_01",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "rock_cluster_medium_02",
+      "family": "rock_cluster_medium",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 2,
+      "recipe": "art_lab/props/recipes/rock_cluster_medium.recipe.json",
+      "generator": "blender_rock_cluster_v1",
+      "source_lanes": [
+        "blender_procedural"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "simple",
+      "placement_tags": [
+        "rock",
+        "mossy",
+        "landmark_edge",
+        "slope_ok"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/rock_cluster_medium_02",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "rock_cluster_medium_03",
+      "family": "rock_cluster_medium",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 3,
+      "recipe": "art_lab/props/recipes/rock_cluster_medium.recipe.json",
+      "generator": "blender_rock_cluster_v1",
+      "source_lanes": [
+        "blender_procedural"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "simple",
+      "placement_tags": [
+        "rock",
+        "mossy",
+        "landmark_edge",
+        "slope_ok"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/rock_cluster_medium_03",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "rock_cluster_medium_04",
+      "family": "rock_cluster_medium",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 4,
+      "recipe": "art_lab/props/recipes/rock_cluster_medium.recipe.json",
+      "generator": "blender_rock_cluster_v1",
+      "source_lanes": [
+        "blender_procedural"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "simple",
+      "placement_tags": [
+        "rock",
+        "mossy",
+        "landmark_edge",
+        "slope_ok"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/rock_cluster_medium_04",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "rock_cluster_medium_05",
+      "family": "rock_cluster_medium",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 5,
+      "recipe": "art_lab/props/recipes/rock_cluster_medium.recipe.json",
+      "generator": "blender_rock_cluster_v1",
+      "source_lanes": [
+        "blender_procedural"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "simple",
+      "placement_tags": [
+        "rock",
+        "mossy",
+        "landmark_edge",
+        "slope_ok"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/rock_cluster_medium_05",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "rock_cluster_medium_06",
+      "family": "rock_cluster_medium",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 6,
+      "recipe": "art_lab/props/recipes/rock_cluster_medium.recipe.json",
+      "generator": "blender_rock_cluster_v1",
+      "source_lanes": [
+        "blender_procedural"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "simple",
+      "placement_tags": [
+        "rock",
+        "mossy",
+        "landmark_edge",
+        "slope_ok"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/rock_cluster_medium_06",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "fern_clump_01",
+      "family": "fern_clump",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 1,
+      "recipe": "art_lab/props/recipes/fern_clump.recipe.json",
+      "generator": "blender_foliage_cards_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "texture_cards"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "placement_tags": [
+        "foliage",
+        "shade",
+        "wet",
+        "wind_sway"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/fern_clump_01",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "fern_clump_02",
+      "family": "fern_clump",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 2,
+      "recipe": "art_lab/props/recipes/fern_clump.recipe.json",
+      "generator": "blender_foliage_cards_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "texture_cards"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "placement_tags": [
+        "foliage",
+        "shade",
+        "wet",
+        "wind_sway"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/fern_clump_02",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "fern_clump_03",
+      "family": "fern_clump",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 3,
+      "recipe": "art_lab/props/recipes/fern_clump.recipe.json",
+      "generator": "blender_foliage_cards_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "texture_cards"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "placement_tags": [
+        "foliage",
+        "shade",
+        "wet",
+        "wind_sway"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/fern_clump_03",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "fern_clump_04",
+      "family": "fern_clump",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 4,
+      "recipe": "art_lab/props/recipes/fern_clump.recipe.json",
+      "generator": "blender_foliage_cards_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "texture_cards"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "placement_tags": [
+        "foliage",
+        "shade",
+        "wet",
+        "wind_sway"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/fern_clump_04",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "fern_clump_05",
+      "family": "fern_clump",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 5,
+      "recipe": "art_lab/props/recipes/fern_clump.recipe.json",
+      "generator": "blender_foliage_cards_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "texture_cards"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "placement_tags": [
+        "foliage",
+        "shade",
+        "wet",
+        "wind_sway"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/fern_clump_05",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "fern_clump_06",
+      "family": "fern_clump",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 6,
+      "recipe": "art_lab/props/recipes/fern_clump.recipe.json",
+      "generator": "blender_foliage_cards_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "texture_cards"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "placement_tags": [
+        "foliage",
+        "shade",
+        "wet",
+        "wind_sway"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/fern_clump_06",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "moss_tuft_01",
+      "family": "moss_tuft",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 1,
+      "recipe": "art_lab/props/recipes/moss_tuft.recipe.json",
+      "generator": "blender_foliage_cards_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "texture_cards"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "placement_tags": [
+        "moss",
+        "wet",
+        "ground_detail",
+        "wind_sway"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/moss_tuft_01",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "moss_tuft_02",
+      "family": "moss_tuft",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 2,
+      "recipe": "art_lab/props/recipes/moss_tuft.recipe.json",
+      "generator": "blender_foliage_cards_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "texture_cards"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "placement_tags": [
+        "moss",
+        "wet",
+        "ground_detail",
+        "wind_sway"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/moss_tuft_02",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "moss_tuft_03",
+      "family": "moss_tuft",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 3,
+      "recipe": "art_lab/props/recipes/moss_tuft.recipe.json",
+      "generator": "blender_foliage_cards_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "texture_cards"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "placement_tags": [
+        "moss",
+        "wet",
+        "ground_detail",
+        "wind_sway"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/moss_tuft_03",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "moss_tuft_04",
+      "family": "moss_tuft",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 4,
+      "recipe": "art_lab/props/recipes/moss_tuft.recipe.json",
+      "generator": "blender_foliage_cards_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "texture_cards"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "placement_tags": [
+        "moss",
+        "wet",
+        "ground_detail",
+        "wind_sway"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/moss_tuft_04",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "moss_tuft_05",
+      "family": "moss_tuft",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 5,
+      "recipe": "art_lab/props/recipes/moss_tuft.recipe.json",
+      "generator": "blender_foliage_cards_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "texture_cards"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "placement_tags": [
+        "moss",
+        "wet",
+        "ground_detail",
+        "wind_sway"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/moss_tuft_05",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "moss_tuft_06",
+      "family": "moss_tuft",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 6,
+      "recipe": "art_lab/props/recipes/moss_tuft.recipe.json",
+      "generator": "blender_foliage_cards_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "texture_cards"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "placement_tags": [
+        "moss",
+        "wet",
+        "ground_detail",
+        "wind_sway"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/moss_tuft_06",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "moss_tuft_07",
+      "family": "moss_tuft",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 7,
+      "recipe": "art_lab/props/recipes/moss_tuft.recipe.json",
+      "generator": "blender_foliage_cards_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "texture_cards"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "placement_tags": [
+        "moss",
+        "wet",
+        "ground_detail",
+        "wind_sway"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/moss_tuft_07",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "moss_tuft_08",
+      "family": "moss_tuft",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 8,
+      "recipe": "art_lab/props/recipes/moss_tuft.recipe.json",
+      "generator": "blender_foliage_cards_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "texture_cards"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "placement_tags": [
+        "moss",
+        "wet",
+        "ground_detail",
+        "wind_sway"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/moss_tuft_08",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "mushroom_cluster_01",
+      "family": "mushroom_cluster",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 1,
+      "recipe": "art_lab/props/recipes/mushroom_cluster.recipe.json",
+      "generator": "blender_mushroom_cluster_v1",
+      "source_lanes": [
+        "blender_procedural"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "placement_tags": [
+        "fungus",
+        "wet",
+        "shade",
+        "ground_detail"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/mushroom_cluster_01",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "mushroom_cluster_02",
+      "family": "mushroom_cluster",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 2,
+      "recipe": "art_lab/props/recipes/mushroom_cluster.recipe.json",
+      "generator": "blender_mushroom_cluster_v1",
+      "source_lanes": [
+        "blender_procedural"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "placement_tags": [
+        "fungus",
+        "wet",
+        "shade",
+        "ground_detail"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/mushroom_cluster_02",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "mushroom_cluster_03",
+      "family": "mushroom_cluster",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 3,
+      "recipe": "art_lab/props/recipes/mushroom_cluster.recipe.json",
+      "generator": "blender_mushroom_cluster_v1",
+      "source_lanes": [
+        "blender_procedural"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "placement_tags": [
+        "fungus",
+        "wet",
+        "shade",
+        "ground_detail"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/mushroom_cluster_03",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "mushroom_cluster_04",
+      "family": "mushroom_cluster",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 4,
+      "recipe": "art_lab/props/recipes/mushroom_cluster.recipe.json",
+      "generator": "blender_mushroom_cluster_v1",
+      "source_lanes": [
+        "blender_procedural"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "placement_tags": [
+        "fungus",
+        "wet",
+        "shade",
+        "ground_detail"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/mushroom_cluster_04",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "mushroom_cluster_05",
+      "family": "mushroom_cluster",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 5,
+      "recipe": "art_lab/props/recipes/mushroom_cluster.recipe.json",
+      "generator": "blender_mushroom_cluster_v1",
+      "source_lanes": [
+        "blender_procedural"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "none",
+      "placement_tags": [
+        "fungus",
+        "wet",
+        "shade",
+        "ground_detail"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/mushroom_cluster_05",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "fallen_log_01",
+      "family": "fallen_log",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 1,
+      "recipe": "art_lab/props/recipes/fallen_log.recipe.json",
+      "generator": "blender_log_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "local_ai_optional"
+      ],
+      "render_class": "scene_prop",
+      "collision": "simple",
+      "placement_tags": [
+        "wood",
+        "wet",
+        "medium_prop",
+        "simple_collision"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/fallen_log_01",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "fallen_log_02",
+      "family": "fallen_log",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 2,
+      "recipe": "art_lab/props/recipes/fallen_log.recipe.json",
+      "generator": "blender_log_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "local_ai_optional"
+      ],
+      "render_class": "scene_prop",
+      "collision": "simple",
+      "placement_tags": [
+        "wood",
+        "wet",
+        "medium_prop",
+        "simple_collision"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/fallen_log_02",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "fallen_log_03",
+      "family": "fallen_log",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 3,
+      "recipe": "art_lab/props/recipes/fallen_log.recipe.json",
+      "generator": "blender_log_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "local_ai_optional"
+      ],
+      "render_class": "scene_prop",
+      "collision": "simple",
+      "placement_tags": [
+        "wood",
+        "wet",
+        "medium_prop",
+        "simple_collision"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/fallen_log_03",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "fallen_log_04",
+      "family": "fallen_log",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 4,
+      "recipe": "art_lab/props/recipes/fallen_log.recipe.json",
+      "generator": "blender_log_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "local_ai_optional"
+      ],
+      "render_class": "scene_prop",
+      "collision": "simple",
+      "placement_tags": [
+        "wood",
+        "wet",
+        "medium_prop",
+        "simple_collision"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/fallen_log_04",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "ruin_block_01",
+      "family": "ruin_block",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 1,
+      "recipe": "art_lab/props/recipes/ruin_block.recipe.json",
+      "generator": "blender_ruins_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "cc0_reference_optional"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "simple",
+      "placement_tags": [
+        "ruin",
+        "stone",
+        "landmark_edge",
+        "simple_collision"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/ruin_block_01",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "ruin_block_02",
+      "family": "ruin_block",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 2,
+      "recipe": "art_lab/props/recipes/ruin_block.recipe.json",
+      "generator": "blender_ruins_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "cc0_reference_optional"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "simple",
+      "placement_tags": [
+        "ruin",
+        "stone",
+        "landmark_edge",
+        "simple_collision"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/ruin_block_02",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "ruin_block_03",
+      "family": "ruin_block",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 3,
+      "recipe": "art_lab/props/recipes/ruin_block.recipe.json",
+      "generator": "blender_ruins_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "cc0_reference_optional"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "simple",
+      "placement_tags": [
+        "ruin",
+        "stone",
+        "landmark_edge",
+        "simple_collision"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/ruin_block_03",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "ruin_block_04",
+      "family": "ruin_block",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 4,
+      "recipe": "art_lab/props/recipes/ruin_block.recipe.json",
+      "generator": "blender_ruins_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "cc0_reference_optional"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "simple",
+      "placement_tags": [
+        "ruin",
+        "stone",
+        "landmark_edge",
+        "simple_collision"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/ruin_block_04",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "ruin_block_05",
+      "family": "ruin_block",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 5,
+      "recipe": "art_lab/props/recipes/ruin_block.recipe.json",
+      "generator": "blender_ruins_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "cc0_reference_optional"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "simple",
+      "placement_tags": [
+        "ruin",
+        "stone",
+        "landmark_edge",
+        "simple_collision"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/ruin_block_05",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "ruin_block_06",
+      "family": "ruin_block",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 6,
+      "recipe": "art_lab/props/recipes/ruin_block.recipe.json",
+      "generator": "blender_ruins_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "cc0_reference_optional"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "simple",
+      "placement_tags": [
+        "ruin",
+        "stone",
+        "landmark_edge",
+        "simple_collision"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/ruin_block_06",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "ruin_block_07",
+      "family": "ruin_block",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 7,
+      "recipe": "art_lab/props/recipes/ruin_block.recipe.json",
+      "generator": "blender_ruins_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "cc0_reference_optional"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "simple",
+      "placement_tags": [
+        "ruin",
+        "stone",
+        "landmark_edge",
+        "simple_collision"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/ruin_block_07",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "ruin_block_08",
+      "family": "ruin_block",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 8,
+      "recipe": "art_lab/props/recipes/ruin_block.recipe.json",
+      "generator": "blender_ruins_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "cc0_reference_optional"
+      ],
+      "render_class": "scatter_multimesh",
+      "collision": "simple",
+      "placement_tags": [
+        "ruin",
+        "stone",
+        "landmark_edge",
+        "simple_collision"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/ruin_block_08",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "ruin_pillar_01",
+      "family": "ruin_pillar",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 1,
+      "recipe": "art_lab/props/recipes/ruin_pillar.recipe.json",
+      "generator": "blender_ruins_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "cc0_reference_optional"
+      ],
+      "render_class": "scene_prop",
+      "collision": "simple",
+      "placement_tags": [
+        "ruin",
+        "pillar",
+        "landmark",
+        "simple_collision"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/ruin_pillar_01",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "ruin_pillar_02",
+      "family": "ruin_pillar",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 2,
+      "recipe": "art_lab/props/recipes/ruin_pillar.recipe.json",
+      "generator": "blender_ruins_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "cc0_reference_optional"
+      ],
+      "render_class": "scene_prop",
+      "collision": "simple",
+      "placement_tags": [
+        "ruin",
+        "pillar",
+        "landmark",
+        "simple_collision"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/ruin_pillar_02",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "ruin_pillar_03",
+      "family": "ruin_pillar",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 3,
+      "recipe": "art_lab/props/recipes/ruin_pillar.recipe.json",
+      "generator": "blender_ruins_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "cc0_reference_optional"
+      ],
+      "render_class": "scene_prop",
+      "collision": "simple",
+      "placement_tags": [
+        "ruin",
+        "pillar",
+        "landmark",
+        "simple_collision"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/ruin_pillar_03",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "ruin_pillar_04",
+      "family": "ruin_pillar",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 4,
+      "recipe": "art_lab/props/recipes/ruin_pillar.recipe.json",
+      "generator": "blender_ruins_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "cc0_reference_optional"
+      ],
+      "render_class": "scene_prop",
+      "collision": "simple",
+      "placement_tags": [
+        "ruin",
+        "pillar",
+        "landmark",
+        "simple_collision"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/ruin_pillar_04",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "ruin_pillar_05",
+      "family": "ruin_pillar",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 5,
+      "recipe": "art_lab/props/recipes/ruin_pillar.recipe.json",
+      "generator": "blender_ruins_v1",
+      "source_lanes": [
+        "blender_procedural",
+        "cc0_reference_optional"
+      ],
+      "render_class": "scene_prop",
+      "collision": "simple",
+      "placement_tags": [
+        "ruin",
+        "pillar",
+        "landmark",
+        "simple_collision"
+      ],
+      "status": "missing",
+      "library_dir": "world/props/library/ruin_pillar_05",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "present_files": [],
+      "missing_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "model_lod0.glb"
+      ],
+      "next_action": "run_blender_generator"
+    },
+    {
+      "id": "moss_patch_01_01",
+      "family": "moss_patch_01",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 1,
+      "recipe": "art_lab/props/recipes/moss_patch_01.recipe.json",
+      "generator": "texture_decal_v1",
+      "source_lanes": [
+        "texture_pipeline",
+        "shader_template"
+      ],
+      "render_class": "decal",
+      "collision": "none",
+      "placement_tags": [
+        "decal",
+        "moss",
+        "wet",
+        "stone_overlay"
+      ],
+      "status": "ready",
+      "library_dir": "world/props/library/moss_patch_01_01",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "present_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "missing_files": [],
+      "next_action": "review_or_export"
+    },
+    {
+      "id": "moss_patch_01_02",
+      "family": "moss_patch_01",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 2,
+      "recipe": "art_lab/props/recipes/moss_patch_01.recipe.json",
+      "generator": "texture_decal_v1",
+      "source_lanes": [
+        "texture_pipeline",
+        "shader_template"
+      ],
+      "render_class": "decal",
+      "collision": "none",
+      "placement_tags": [
+        "decal",
+        "moss",
+        "wet",
+        "stone_overlay"
+      ],
+      "status": "ready",
+      "library_dir": "world/props/library/moss_patch_01_02",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "present_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "missing_files": [],
+      "next_action": "review_or_export"
+    },
+    {
+      "id": "moss_patch_01_03",
+      "family": "moss_patch_01",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 3,
+      "recipe": "art_lab/props/recipes/moss_patch_01.recipe.json",
+      "generator": "texture_decal_v1",
+      "source_lanes": [
+        "texture_pipeline",
+        "shader_template"
+      ],
+      "render_class": "decal",
+      "collision": "none",
+      "placement_tags": [
+        "decal",
+        "moss",
+        "wet",
+        "stone_overlay"
+      ],
+      "status": "ready",
+      "library_dir": "world/props/library/moss_patch_01_03",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "present_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "missing_files": [],
+      "next_action": "review_or_export"
+    },
+    {
+      "id": "moss_patch_01_04",
+      "family": "moss_patch_01",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 4,
+      "recipe": "art_lab/props/recipes/moss_patch_01.recipe.json",
+      "generator": "texture_decal_v1",
+      "source_lanes": [
+        "texture_pipeline",
+        "shader_template"
+      ],
+      "render_class": "decal",
+      "collision": "none",
+      "placement_tags": [
+        "decal",
+        "moss",
+        "wet",
+        "stone_overlay"
+      ],
+      "status": "ready",
+      "library_dir": "world/props/library/moss_patch_01_04",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "present_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "missing_files": [],
+      "next_action": "review_or_export"
+    },
+    {
+      "id": "moss_patch_01_05",
+      "family": "moss_patch_01",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 5,
+      "recipe": "art_lab/props/recipes/moss_patch_01.recipe.json",
+      "generator": "texture_decal_v1",
+      "source_lanes": [
+        "texture_pipeline",
+        "shader_template"
+      ],
+      "render_class": "decal",
+      "collision": "none",
+      "placement_tags": [
+        "decal",
+        "moss",
+        "wet",
+        "stone_overlay"
+      ],
+      "status": "ready",
+      "library_dir": "world/props/library/moss_patch_01_05",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "present_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "missing_files": [],
+      "next_action": "review_or_export"
+    },
+    {
+      "id": "moss_patch_01_06",
+      "family": "moss_patch_01",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 6,
+      "recipe": "art_lab/props/recipes/moss_patch_01.recipe.json",
+      "generator": "texture_decal_v1",
+      "source_lanes": [
+        "texture_pipeline",
+        "shader_template"
+      ],
+      "render_class": "decal",
+      "collision": "none",
+      "placement_tags": [
+        "decal",
+        "moss",
+        "wet",
+        "stone_overlay"
+      ],
+      "status": "ready",
+      "library_dir": "world/props/library/moss_patch_01_06",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "present_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "missing_files": [],
+      "next_action": "review_or_export"
+    },
+    {
+      "id": "mud_splash_02_01",
+      "family": "mud_splash_02",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 1,
+      "recipe": "art_lab/props/recipes/mud_splash_02.recipe.json",
+      "generator": "texture_decal_v1",
+      "source_lanes": [
+        "texture_pipeline"
+      ],
+      "render_class": "decal",
+      "collision": "none",
+      "placement_tags": [
+        "decal",
+        "mud",
+        "wet",
+        "path_edge"
+      ],
+      "status": "ready",
+      "library_dir": "world/props/library/mud_splash_02_01",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "present_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "missing_files": [],
+      "next_action": "review_or_export"
+    },
+    {
+      "id": "mud_splash_02_02",
+      "family": "mud_splash_02",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 2,
+      "recipe": "art_lab/props/recipes/mud_splash_02.recipe.json",
+      "generator": "texture_decal_v1",
+      "source_lanes": [
+        "texture_pipeline"
+      ],
+      "render_class": "decal",
+      "collision": "none",
+      "placement_tags": [
+        "decal",
+        "mud",
+        "wet",
+        "path_edge"
+      ],
+      "status": "ready",
+      "library_dir": "world/props/library/mud_splash_02_02",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "present_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "missing_files": [],
+      "next_action": "review_or_export"
+    },
+    {
+      "id": "mud_splash_02_03",
+      "family": "mud_splash_02",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 3,
+      "recipe": "art_lab/props/recipes/mud_splash_02.recipe.json",
+      "generator": "texture_decal_v1",
+      "source_lanes": [
+        "texture_pipeline"
+      ],
+      "render_class": "decal",
+      "collision": "none",
+      "placement_tags": [
+        "decal",
+        "mud",
+        "wet",
+        "path_edge"
+      ],
+      "status": "ready",
+      "library_dir": "world/props/library/mud_splash_02_03",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "present_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "missing_files": [],
+      "next_action": "review_or_export"
+    },
+    {
+      "id": "mud_splash_02_04",
+      "family": "mud_splash_02",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 4,
+      "recipe": "art_lab/props/recipes/mud_splash_02.recipe.json",
+      "generator": "texture_decal_v1",
+      "source_lanes": [
+        "texture_pipeline"
+      ],
+      "render_class": "decal",
+      "collision": "none",
+      "placement_tags": [
+        "decal",
+        "mud",
+        "wet",
+        "path_edge"
+      ],
+      "status": "ready",
+      "library_dir": "world/props/library/mud_splash_02_04",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "present_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "missing_files": [],
+      "next_action": "review_or_export"
+    },
+    {
+      "id": "mud_splash_02_05",
+      "family": "mud_splash_02",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 5,
+      "recipe": "art_lab/props/recipes/mud_splash_02.recipe.json",
+      "generator": "texture_decal_v1",
+      "source_lanes": [
+        "texture_pipeline"
+      ],
+      "render_class": "decal",
+      "collision": "none",
+      "placement_tags": [
+        "decal",
+        "mud",
+        "wet",
+        "path_edge"
+      ],
+      "status": "ready",
+      "library_dir": "world/props/library/mud_splash_02_05",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "present_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "missing_files": [],
+      "next_action": "review_or_export"
+    },
+    {
+      "id": "mud_splash_02_06",
+      "family": "mud_splash_02",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 6,
+      "recipe": "art_lab/props/recipes/mud_splash_02.recipe.json",
+      "generator": "texture_decal_v1",
+      "source_lanes": [
+        "texture_pipeline"
+      ],
+      "render_class": "decal",
+      "collision": "none",
+      "placement_tags": [
+        "decal",
+        "mud",
+        "wet",
+        "path_edge"
+      ],
+      "status": "ready",
+      "library_dir": "world/props/library/mud_splash_02_06",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "present_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "missing_files": [],
+      "next_action": "review_or_export"
+    },
+    {
+      "id": "cracked_stone_03_01",
+      "family": "cracked_stone_03",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 1,
+      "recipe": "art_lab/props/recipes/cracked_stone_03.recipe.json",
+      "generator": "texture_decal_v1",
+      "source_lanes": [
+        "texture_pipeline",
+        "shader_template"
+      ],
+      "render_class": "decal",
+      "collision": "none",
+      "placement_tags": [
+        "decal",
+        "stone",
+        "crack",
+        "slope_detail"
+      ],
+      "status": "ready",
+      "library_dir": "world/props/library/cracked_stone_03_01",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "present_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "missing_files": [],
+      "next_action": "review_or_export"
+    },
+    {
+      "id": "cracked_stone_03_02",
+      "family": "cracked_stone_03",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 2,
+      "recipe": "art_lab/props/recipes/cracked_stone_03.recipe.json",
+      "generator": "texture_decal_v1",
+      "source_lanes": [
+        "texture_pipeline",
+        "shader_template"
+      ],
+      "render_class": "decal",
+      "collision": "none",
+      "placement_tags": [
+        "decal",
+        "stone",
+        "crack",
+        "slope_detail"
+      ],
+      "status": "ready",
+      "library_dir": "world/props/library/cracked_stone_03_02",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "present_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "missing_files": [],
+      "next_action": "review_or_export"
+    },
+    {
+      "id": "cracked_stone_03_03",
+      "family": "cracked_stone_03",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 3,
+      "recipe": "art_lab/props/recipes/cracked_stone_03.recipe.json",
+      "generator": "texture_decal_v1",
+      "source_lanes": [
+        "texture_pipeline",
+        "shader_template"
+      ],
+      "render_class": "decal",
+      "collision": "none",
+      "placement_tags": [
+        "decal",
+        "stone",
+        "crack",
+        "slope_detail"
+      ],
+      "status": "ready",
+      "library_dir": "world/props/library/cracked_stone_03_03",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "present_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "missing_files": [],
+      "next_action": "review_or_export"
+    },
+    {
+      "id": "cracked_stone_03_04",
+      "family": "cracked_stone_03",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 4,
+      "recipe": "art_lab/props/recipes/cracked_stone_03.recipe.json",
+      "generator": "texture_decal_v1",
+      "source_lanes": [
+        "texture_pipeline",
+        "shader_template"
+      ],
+      "render_class": "decal",
+      "collision": "none",
+      "placement_tags": [
+        "decal",
+        "stone",
+        "crack",
+        "slope_detail"
+      ],
+      "status": "ready",
+      "library_dir": "world/props/library/cracked_stone_03_04",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "present_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "missing_files": [],
+      "next_action": "review_or_export"
+    },
+    {
+      "id": "cracked_stone_03_05",
+      "family": "cracked_stone_03",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 5,
+      "recipe": "art_lab/props/recipes/cracked_stone_03.recipe.json",
+      "generator": "texture_decal_v1",
+      "source_lanes": [
+        "texture_pipeline",
+        "shader_template"
+      ],
+      "render_class": "decal",
+      "collision": "none",
+      "placement_tags": [
+        "decal",
+        "stone",
+        "crack",
+        "slope_detail"
+      ],
+      "status": "ready",
+      "library_dir": "world/props/library/cracked_stone_03_05",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "present_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "missing_files": [],
+      "next_action": "review_or_export"
+    },
+    {
+      "id": "cracked_stone_03_06",
+      "family": "cracked_stone_03",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 6,
+      "recipe": "art_lab/props/recipes/cracked_stone_03.recipe.json",
+      "generator": "texture_decal_v1",
+      "source_lanes": [
+        "texture_pipeline",
+        "shader_template"
+      ],
+      "render_class": "decal",
+      "collision": "none",
+      "placement_tags": [
+        "decal",
+        "stone",
+        "crack",
+        "slope_detail"
+      ],
+      "status": "ready",
+      "library_dir": "world/props/library/cracked_stone_03_06",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "present_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "missing_files": [],
+      "next_action": "review_or_export"
+    },
+    {
+      "id": "rune_stain_01_01",
+      "family": "rune_stain_01",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 1,
+      "recipe": "art_lab/props/recipes/rune_stain_01.recipe.json",
+      "generator": "texture_decal_v1",
+      "source_lanes": [
+        "shader_template",
+        "texture_pipeline"
+      ],
+      "render_class": "decal",
+      "collision": "none",
+      "placement_tags": [
+        "decal",
+        "rune",
+        "landmark",
+        "magic_subtle"
+      ],
+      "status": "ready",
+      "library_dir": "world/props/library/rune_stain_01_01",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "present_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "missing_files": [],
+      "next_action": "review_or_export"
+    },
+    {
+      "id": "rune_stain_01_02",
+      "family": "rune_stain_01",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 2,
+      "recipe": "art_lab/props/recipes/rune_stain_01.recipe.json",
+      "generator": "texture_decal_v1",
+      "source_lanes": [
+        "shader_template",
+        "texture_pipeline"
+      ],
+      "render_class": "decal",
+      "collision": "none",
+      "placement_tags": [
+        "decal",
+        "rune",
+        "landmark",
+        "magic_subtle"
+      ],
+      "status": "ready",
+      "library_dir": "world/props/library/rune_stain_01_02",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "present_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "missing_files": [],
+      "next_action": "review_or_export"
+    },
+    {
+      "id": "rune_stain_01_03",
+      "family": "rune_stain_01",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 3,
+      "recipe": "art_lab/props/recipes/rune_stain_01.recipe.json",
+      "generator": "texture_decal_v1",
+      "source_lanes": [
+        "shader_template",
+        "texture_pipeline"
+      ],
+      "render_class": "decal",
+      "collision": "none",
+      "placement_tags": [
+        "decal",
+        "rune",
+        "landmark",
+        "magic_subtle"
+      ],
+      "status": "ready",
+      "library_dir": "world/props/library/rune_stain_01_03",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "present_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "missing_files": [],
+      "next_action": "review_or_export"
+    },
+    {
+      "id": "rune_stain_01_04",
+      "family": "rune_stain_01",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 4,
+      "recipe": "art_lab/props/recipes/rune_stain_01.recipe.json",
+      "generator": "texture_decal_v1",
+      "source_lanes": [
+        "shader_template",
+        "texture_pipeline"
+      ],
+      "render_class": "decal",
+      "collision": "none",
+      "placement_tags": [
+        "decal",
+        "rune",
+        "landmark",
+        "magic_subtle"
+      ],
+      "status": "ready",
+      "library_dir": "world/props/library/rune_stain_01_04",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "present_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "missing_files": [],
+      "next_action": "review_or_export"
+    },
+    {
+      "id": "scorch_01_01",
+      "family": "scorch_01",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 1,
+      "recipe": "art_lab/props/recipes/scorch_01.recipe.json",
+      "generator": "texture_decal_v1",
+      "source_lanes": [
+        "texture_pipeline",
+        "shader_template"
+      ],
+      "render_class": "decal",
+      "collision": "none",
+      "placement_tags": [
+        "decal",
+        "scorch",
+        "ruin",
+        "magic_residue"
+      ],
+      "status": "ready",
+      "library_dir": "world/props/library/scorch_01_01",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "present_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "missing_files": [],
+      "next_action": "review_or_export"
+    },
+    {
+      "id": "scorch_01_02",
+      "family": "scorch_01",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 2,
+      "recipe": "art_lab/props/recipes/scorch_01.recipe.json",
+      "generator": "texture_decal_v1",
+      "source_lanes": [
+        "texture_pipeline",
+        "shader_template"
+      ],
+      "render_class": "decal",
+      "collision": "none",
+      "placement_tags": [
+        "decal",
+        "scorch",
+        "ruin",
+        "magic_residue"
+      ],
+      "status": "ready",
+      "library_dir": "world/props/library/scorch_01_02",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "present_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "missing_files": [],
+      "next_action": "review_or_export"
+    },
+    {
+      "id": "scorch_01_03",
+      "family": "scorch_01",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 3,
+      "recipe": "art_lab/props/recipes/scorch_01.recipe.json",
+      "generator": "texture_decal_v1",
+      "source_lanes": [
+        "texture_pipeline",
+        "shader_template"
+      ],
+      "render_class": "decal",
+      "collision": "none",
+      "placement_tags": [
+        "decal",
+        "scorch",
+        "ruin",
+        "magic_residue"
+      ],
+      "status": "ready",
+      "library_dir": "world/props/library/scorch_01_03",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "present_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "missing_files": [],
+      "next_action": "review_or_export"
+    },
+    {
+      "id": "scorch_01_04",
+      "family": "scorch_01",
+      "kit": "mossy_highland_ruins",
+      "variant_index": 4,
+      "recipe": "art_lab/props/recipes/scorch_01.recipe.json",
+      "generator": "texture_decal_v1",
+      "source_lanes": [
+        "texture_pipeline",
+        "shader_template"
+      ],
+      "render_class": "decal",
+      "collision": "none",
+      "placement_tags": [
+        "decal",
+        "scorch",
+        "ruin",
+        "magic_residue"
+      ],
+      "status": "ready",
+      "library_dir": "world/props/library/scorch_01_04",
+      "expected_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "present_files": [
+        "prop.json",
+        "qa.json",
+        "thumbnail.png",
+        "decal.png"
+      ],
+      "missing_files": [],
+      "next_action": "review_or_export"
+    }
+  ],
+  "queues": {
+    "blender": [
+      {
+        "id": "rock_cluster_small_01",
+        "family": "rock_cluster_small",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 1,
+        "recipe": "art_lab/props/recipes/rock_cluster_small.recipe.json",
+        "generator": "blender_rock_cluster_v1",
+        "source_lanes": [
+          "blender_procedural"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "none",
+        "placement_tags": [
+          "rock",
+          "mossy",
+          "slope_ok",
+          "ruin_edge"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/rock_cluster_small_01",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "rock_cluster_small_02",
+        "family": "rock_cluster_small",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 2,
+        "recipe": "art_lab/props/recipes/rock_cluster_small.recipe.json",
+        "generator": "blender_rock_cluster_v1",
+        "source_lanes": [
+          "blender_procedural"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "none",
+        "placement_tags": [
+          "rock",
+          "mossy",
+          "slope_ok",
+          "ruin_edge"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/rock_cluster_small_02",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "rock_cluster_small_03",
+        "family": "rock_cluster_small",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 3,
+        "recipe": "art_lab/props/recipes/rock_cluster_small.recipe.json",
+        "generator": "blender_rock_cluster_v1",
+        "source_lanes": [
+          "blender_procedural"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "none",
+        "placement_tags": [
+          "rock",
+          "mossy",
+          "slope_ok",
+          "ruin_edge"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/rock_cluster_small_03",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "rock_cluster_small_04",
+        "family": "rock_cluster_small",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 4,
+        "recipe": "art_lab/props/recipes/rock_cluster_small.recipe.json",
+        "generator": "blender_rock_cluster_v1",
+        "source_lanes": [
+          "blender_procedural"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "none",
+        "placement_tags": [
+          "rock",
+          "mossy",
+          "slope_ok",
+          "ruin_edge"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/rock_cluster_small_04",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "rock_cluster_small_05",
+        "family": "rock_cluster_small",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 5,
+        "recipe": "art_lab/props/recipes/rock_cluster_small.recipe.json",
+        "generator": "blender_rock_cluster_v1",
+        "source_lanes": [
+          "blender_procedural"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "none",
+        "placement_tags": [
+          "rock",
+          "mossy",
+          "slope_ok",
+          "ruin_edge"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/rock_cluster_small_05",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "rock_cluster_small_06",
+        "family": "rock_cluster_small",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 6,
+        "recipe": "art_lab/props/recipes/rock_cluster_small.recipe.json",
+        "generator": "blender_rock_cluster_v1",
+        "source_lanes": [
+          "blender_procedural"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "none",
+        "placement_tags": [
+          "rock",
+          "mossy",
+          "slope_ok",
+          "ruin_edge"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/rock_cluster_small_06",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "rock_cluster_small_07",
+        "family": "rock_cluster_small",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 7,
+        "recipe": "art_lab/props/recipes/rock_cluster_small.recipe.json",
+        "generator": "blender_rock_cluster_v1",
+        "source_lanes": [
+          "blender_procedural"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "none",
+        "placement_tags": [
+          "rock",
+          "mossy",
+          "slope_ok",
+          "ruin_edge"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/rock_cluster_small_07",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "rock_cluster_small_08",
+        "family": "rock_cluster_small",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 8,
+        "recipe": "art_lab/props/recipes/rock_cluster_small.recipe.json",
+        "generator": "blender_rock_cluster_v1",
+        "source_lanes": [
+          "blender_procedural"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "none",
+        "placement_tags": [
+          "rock",
+          "mossy",
+          "slope_ok",
+          "ruin_edge"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/rock_cluster_small_08",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "rock_cluster_medium_01",
+        "family": "rock_cluster_medium",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 1,
+        "recipe": "art_lab/props/recipes/rock_cluster_medium.recipe.json",
+        "generator": "blender_rock_cluster_v1",
+        "source_lanes": [
+          "blender_procedural"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "simple",
+        "placement_tags": [
+          "rock",
+          "mossy",
+          "landmark_edge",
+          "slope_ok"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/rock_cluster_medium_01",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "rock_cluster_medium_02",
+        "family": "rock_cluster_medium",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 2,
+        "recipe": "art_lab/props/recipes/rock_cluster_medium.recipe.json",
+        "generator": "blender_rock_cluster_v1",
+        "source_lanes": [
+          "blender_procedural"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "simple",
+        "placement_tags": [
+          "rock",
+          "mossy",
+          "landmark_edge",
+          "slope_ok"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/rock_cluster_medium_02",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "rock_cluster_medium_03",
+        "family": "rock_cluster_medium",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 3,
+        "recipe": "art_lab/props/recipes/rock_cluster_medium.recipe.json",
+        "generator": "blender_rock_cluster_v1",
+        "source_lanes": [
+          "blender_procedural"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "simple",
+        "placement_tags": [
+          "rock",
+          "mossy",
+          "landmark_edge",
+          "slope_ok"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/rock_cluster_medium_03",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "rock_cluster_medium_04",
+        "family": "rock_cluster_medium",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 4,
+        "recipe": "art_lab/props/recipes/rock_cluster_medium.recipe.json",
+        "generator": "blender_rock_cluster_v1",
+        "source_lanes": [
+          "blender_procedural"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "simple",
+        "placement_tags": [
+          "rock",
+          "mossy",
+          "landmark_edge",
+          "slope_ok"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/rock_cluster_medium_04",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "rock_cluster_medium_05",
+        "family": "rock_cluster_medium",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 5,
+        "recipe": "art_lab/props/recipes/rock_cluster_medium.recipe.json",
+        "generator": "blender_rock_cluster_v1",
+        "source_lanes": [
+          "blender_procedural"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "simple",
+        "placement_tags": [
+          "rock",
+          "mossy",
+          "landmark_edge",
+          "slope_ok"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/rock_cluster_medium_05",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "rock_cluster_medium_06",
+        "family": "rock_cluster_medium",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 6,
+        "recipe": "art_lab/props/recipes/rock_cluster_medium.recipe.json",
+        "generator": "blender_rock_cluster_v1",
+        "source_lanes": [
+          "blender_procedural"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "simple",
+        "placement_tags": [
+          "rock",
+          "mossy",
+          "landmark_edge",
+          "slope_ok"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/rock_cluster_medium_06",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "fern_clump_01",
+        "family": "fern_clump",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 1,
+        "recipe": "art_lab/props/recipes/fern_clump.recipe.json",
+        "generator": "blender_foliage_cards_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "texture_cards"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "none",
+        "placement_tags": [
+          "foliage",
+          "shade",
+          "wet",
+          "wind_sway"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/fern_clump_01",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "fern_clump_02",
+        "family": "fern_clump",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 2,
+        "recipe": "art_lab/props/recipes/fern_clump.recipe.json",
+        "generator": "blender_foliage_cards_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "texture_cards"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "none",
+        "placement_tags": [
+          "foliage",
+          "shade",
+          "wet",
+          "wind_sway"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/fern_clump_02",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "fern_clump_03",
+        "family": "fern_clump",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 3,
+        "recipe": "art_lab/props/recipes/fern_clump.recipe.json",
+        "generator": "blender_foliage_cards_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "texture_cards"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "none",
+        "placement_tags": [
+          "foliage",
+          "shade",
+          "wet",
+          "wind_sway"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/fern_clump_03",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "fern_clump_04",
+        "family": "fern_clump",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 4,
+        "recipe": "art_lab/props/recipes/fern_clump.recipe.json",
+        "generator": "blender_foliage_cards_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "texture_cards"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "none",
+        "placement_tags": [
+          "foliage",
+          "shade",
+          "wet",
+          "wind_sway"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/fern_clump_04",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "fern_clump_05",
+        "family": "fern_clump",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 5,
+        "recipe": "art_lab/props/recipes/fern_clump.recipe.json",
+        "generator": "blender_foliage_cards_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "texture_cards"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "none",
+        "placement_tags": [
+          "foliage",
+          "shade",
+          "wet",
+          "wind_sway"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/fern_clump_05",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "fern_clump_06",
+        "family": "fern_clump",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 6,
+        "recipe": "art_lab/props/recipes/fern_clump.recipe.json",
+        "generator": "blender_foliage_cards_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "texture_cards"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "none",
+        "placement_tags": [
+          "foliage",
+          "shade",
+          "wet",
+          "wind_sway"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/fern_clump_06",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "moss_tuft_01",
+        "family": "moss_tuft",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 1,
+        "recipe": "art_lab/props/recipes/moss_tuft.recipe.json",
+        "generator": "blender_foliage_cards_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "texture_cards"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "none",
+        "placement_tags": [
+          "moss",
+          "wet",
+          "ground_detail",
+          "wind_sway"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/moss_tuft_01",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "moss_tuft_02",
+        "family": "moss_tuft",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 2,
+        "recipe": "art_lab/props/recipes/moss_tuft.recipe.json",
+        "generator": "blender_foliage_cards_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "texture_cards"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "none",
+        "placement_tags": [
+          "moss",
+          "wet",
+          "ground_detail",
+          "wind_sway"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/moss_tuft_02",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "moss_tuft_03",
+        "family": "moss_tuft",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 3,
+        "recipe": "art_lab/props/recipes/moss_tuft.recipe.json",
+        "generator": "blender_foliage_cards_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "texture_cards"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "none",
+        "placement_tags": [
+          "moss",
+          "wet",
+          "ground_detail",
+          "wind_sway"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/moss_tuft_03",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "moss_tuft_04",
+        "family": "moss_tuft",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 4,
+        "recipe": "art_lab/props/recipes/moss_tuft.recipe.json",
+        "generator": "blender_foliage_cards_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "texture_cards"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "none",
+        "placement_tags": [
+          "moss",
+          "wet",
+          "ground_detail",
+          "wind_sway"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/moss_tuft_04",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "moss_tuft_05",
+        "family": "moss_tuft",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 5,
+        "recipe": "art_lab/props/recipes/moss_tuft.recipe.json",
+        "generator": "blender_foliage_cards_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "texture_cards"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "none",
+        "placement_tags": [
+          "moss",
+          "wet",
+          "ground_detail",
+          "wind_sway"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/moss_tuft_05",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "moss_tuft_06",
+        "family": "moss_tuft",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 6,
+        "recipe": "art_lab/props/recipes/moss_tuft.recipe.json",
+        "generator": "blender_foliage_cards_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "texture_cards"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "none",
+        "placement_tags": [
+          "moss",
+          "wet",
+          "ground_detail",
+          "wind_sway"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/moss_tuft_06",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "moss_tuft_07",
+        "family": "moss_tuft",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 7,
+        "recipe": "art_lab/props/recipes/moss_tuft.recipe.json",
+        "generator": "blender_foliage_cards_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "texture_cards"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "none",
+        "placement_tags": [
+          "moss",
+          "wet",
+          "ground_detail",
+          "wind_sway"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/moss_tuft_07",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "moss_tuft_08",
+        "family": "moss_tuft",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 8,
+        "recipe": "art_lab/props/recipes/moss_tuft.recipe.json",
+        "generator": "blender_foliage_cards_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "texture_cards"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "none",
+        "placement_tags": [
+          "moss",
+          "wet",
+          "ground_detail",
+          "wind_sway"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/moss_tuft_08",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "mushroom_cluster_01",
+        "family": "mushroom_cluster",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 1,
+        "recipe": "art_lab/props/recipes/mushroom_cluster.recipe.json",
+        "generator": "blender_mushroom_cluster_v1",
+        "source_lanes": [
+          "blender_procedural"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "none",
+        "placement_tags": [
+          "fungus",
+          "wet",
+          "shade",
+          "ground_detail"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/mushroom_cluster_01",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "mushroom_cluster_02",
+        "family": "mushroom_cluster",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 2,
+        "recipe": "art_lab/props/recipes/mushroom_cluster.recipe.json",
+        "generator": "blender_mushroom_cluster_v1",
+        "source_lanes": [
+          "blender_procedural"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "none",
+        "placement_tags": [
+          "fungus",
+          "wet",
+          "shade",
+          "ground_detail"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/mushroom_cluster_02",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "mushroom_cluster_03",
+        "family": "mushroom_cluster",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 3,
+        "recipe": "art_lab/props/recipes/mushroom_cluster.recipe.json",
+        "generator": "blender_mushroom_cluster_v1",
+        "source_lanes": [
+          "blender_procedural"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "none",
+        "placement_tags": [
+          "fungus",
+          "wet",
+          "shade",
+          "ground_detail"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/mushroom_cluster_03",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "mushroom_cluster_04",
+        "family": "mushroom_cluster",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 4,
+        "recipe": "art_lab/props/recipes/mushroom_cluster.recipe.json",
+        "generator": "blender_mushroom_cluster_v1",
+        "source_lanes": [
+          "blender_procedural"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "none",
+        "placement_tags": [
+          "fungus",
+          "wet",
+          "shade",
+          "ground_detail"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/mushroom_cluster_04",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "mushroom_cluster_05",
+        "family": "mushroom_cluster",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 5,
+        "recipe": "art_lab/props/recipes/mushroom_cluster.recipe.json",
+        "generator": "blender_mushroom_cluster_v1",
+        "source_lanes": [
+          "blender_procedural"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "none",
+        "placement_tags": [
+          "fungus",
+          "wet",
+          "shade",
+          "ground_detail"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/mushroom_cluster_05",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "fallen_log_01",
+        "family": "fallen_log",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 1,
+        "recipe": "art_lab/props/recipes/fallen_log.recipe.json",
+        "generator": "blender_log_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "local_ai_optional"
+        ],
+        "render_class": "scene_prop",
+        "collision": "simple",
+        "placement_tags": [
+          "wood",
+          "wet",
+          "medium_prop",
+          "simple_collision"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/fallen_log_01",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "fallen_log_02",
+        "family": "fallen_log",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 2,
+        "recipe": "art_lab/props/recipes/fallen_log.recipe.json",
+        "generator": "blender_log_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "local_ai_optional"
+        ],
+        "render_class": "scene_prop",
+        "collision": "simple",
+        "placement_tags": [
+          "wood",
+          "wet",
+          "medium_prop",
+          "simple_collision"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/fallen_log_02",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "fallen_log_03",
+        "family": "fallen_log",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 3,
+        "recipe": "art_lab/props/recipes/fallen_log.recipe.json",
+        "generator": "blender_log_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "local_ai_optional"
+        ],
+        "render_class": "scene_prop",
+        "collision": "simple",
+        "placement_tags": [
+          "wood",
+          "wet",
+          "medium_prop",
+          "simple_collision"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/fallen_log_03",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "fallen_log_04",
+        "family": "fallen_log",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 4,
+        "recipe": "art_lab/props/recipes/fallen_log.recipe.json",
+        "generator": "blender_log_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "local_ai_optional"
+        ],
+        "render_class": "scene_prop",
+        "collision": "simple",
+        "placement_tags": [
+          "wood",
+          "wet",
+          "medium_prop",
+          "simple_collision"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/fallen_log_04",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "ruin_block_01",
+        "family": "ruin_block",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 1,
+        "recipe": "art_lab/props/recipes/ruin_block.recipe.json",
+        "generator": "blender_ruins_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "cc0_reference_optional"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "simple",
+        "placement_tags": [
+          "ruin",
+          "stone",
+          "landmark_edge",
+          "simple_collision"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/ruin_block_01",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "ruin_block_02",
+        "family": "ruin_block",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 2,
+        "recipe": "art_lab/props/recipes/ruin_block.recipe.json",
+        "generator": "blender_ruins_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "cc0_reference_optional"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "simple",
+        "placement_tags": [
+          "ruin",
+          "stone",
+          "landmark_edge",
+          "simple_collision"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/ruin_block_02",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "ruin_block_03",
+        "family": "ruin_block",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 3,
+        "recipe": "art_lab/props/recipes/ruin_block.recipe.json",
+        "generator": "blender_ruins_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "cc0_reference_optional"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "simple",
+        "placement_tags": [
+          "ruin",
+          "stone",
+          "landmark_edge",
+          "simple_collision"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/ruin_block_03",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "ruin_block_04",
+        "family": "ruin_block",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 4,
+        "recipe": "art_lab/props/recipes/ruin_block.recipe.json",
+        "generator": "blender_ruins_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "cc0_reference_optional"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "simple",
+        "placement_tags": [
+          "ruin",
+          "stone",
+          "landmark_edge",
+          "simple_collision"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/ruin_block_04",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "ruin_block_05",
+        "family": "ruin_block",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 5,
+        "recipe": "art_lab/props/recipes/ruin_block.recipe.json",
+        "generator": "blender_ruins_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "cc0_reference_optional"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "simple",
+        "placement_tags": [
+          "ruin",
+          "stone",
+          "landmark_edge",
+          "simple_collision"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/ruin_block_05",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "ruin_block_06",
+        "family": "ruin_block",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 6,
+        "recipe": "art_lab/props/recipes/ruin_block.recipe.json",
+        "generator": "blender_ruins_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "cc0_reference_optional"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "simple",
+        "placement_tags": [
+          "ruin",
+          "stone",
+          "landmark_edge",
+          "simple_collision"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/ruin_block_06",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "ruin_block_07",
+        "family": "ruin_block",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 7,
+        "recipe": "art_lab/props/recipes/ruin_block.recipe.json",
+        "generator": "blender_ruins_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "cc0_reference_optional"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "simple",
+        "placement_tags": [
+          "ruin",
+          "stone",
+          "landmark_edge",
+          "simple_collision"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/ruin_block_07",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "ruin_block_08",
+        "family": "ruin_block",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 8,
+        "recipe": "art_lab/props/recipes/ruin_block.recipe.json",
+        "generator": "blender_ruins_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "cc0_reference_optional"
+        ],
+        "render_class": "scatter_multimesh",
+        "collision": "simple",
+        "placement_tags": [
+          "ruin",
+          "stone",
+          "landmark_edge",
+          "simple_collision"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/ruin_block_08",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "ruin_pillar_01",
+        "family": "ruin_pillar",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 1,
+        "recipe": "art_lab/props/recipes/ruin_pillar.recipe.json",
+        "generator": "blender_ruins_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "cc0_reference_optional"
+        ],
+        "render_class": "scene_prop",
+        "collision": "simple",
+        "placement_tags": [
+          "ruin",
+          "pillar",
+          "landmark",
+          "simple_collision"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/ruin_pillar_01",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "ruin_pillar_02",
+        "family": "ruin_pillar",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 2,
+        "recipe": "art_lab/props/recipes/ruin_pillar.recipe.json",
+        "generator": "blender_ruins_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "cc0_reference_optional"
+        ],
+        "render_class": "scene_prop",
+        "collision": "simple",
+        "placement_tags": [
+          "ruin",
+          "pillar",
+          "landmark",
+          "simple_collision"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/ruin_pillar_02",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "ruin_pillar_03",
+        "family": "ruin_pillar",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 3,
+        "recipe": "art_lab/props/recipes/ruin_pillar.recipe.json",
+        "generator": "blender_ruins_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "cc0_reference_optional"
+        ],
+        "render_class": "scene_prop",
+        "collision": "simple",
+        "placement_tags": [
+          "ruin",
+          "pillar",
+          "landmark",
+          "simple_collision"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/ruin_pillar_03",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "ruin_pillar_04",
+        "family": "ruin_pillar",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 4,
+        "recipe": "art_lab/props/recipes/ruin_pillar.recipe.json",
+        "generator": "blender_ruins_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "cc0_reference_optional"
+        ],
+        "render_class": "scene_prop",
+        "collision": "simple",
+        "placement_tags": [
+          "ruin",
+          "pillar",
+          "landmark",
+          "simple_collision"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/ruin_pillar_04",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      },
+      {
+        "id": "ruin_pillar_05",
+        "family": "ruin_pillar",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 5,
+        "recipe": "art_lab/props/recipes/ruin_pillar.recipe.json",
+        "generator": "blender_ruins_v1",
+        "source_lanes": [
+          "blender_procedural",
+          "cc0_reference_optional"
+        ],
+        "render_class": "scene_prop",
+        "collision": "simple",
+        "placement_tags": [
+          "ruin",
+          "pillar",
+          "landmark",
+          "simple_collision"
+        ],
+        "status": "missing",
+        "library_dir": "world/props/library/ruin_pillar_05",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "present_files": [],
+        "missing_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "model_lod0.glb"
+        ],
+        "next_action": "run_blender_generator"
+      }
+    ],
+    "local_ai": [],
+    "decal": [],
+    "godot_export": [
+      {
+        "id": "moss_patch_01_01",
+        "family": "moss_patch_01",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 1,
+        "recipe": "art_lab/props/recipes/moss_patch_01.recipe.json",
+        "generator": "texture_decal_v1",
+        "source_lanes": [
+          "texture_pipeline",
+          "shader_template"
+        ],
+        "render_class": "decal",
+        "collision": "none",
+        "placement_tags": [
+          "decal",
+          "moss",
+          "wet",
+          "stone_overlay"
+        ],
+        "status": "ready",
+        "library_dir": "world/props/library/moss_patch_01_01",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "present_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "missing_files": [],
+        "next_action": "review_or_export"
+      },
+      {
+        "id": "moss_patch_01_02",
+        "family": "moss_patch_01",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 2,
+        "recipe": "art_lab/props/recipes/moss_patch_01.recipe.json",
+        "generator": "texture_decal_v1",
+        "source_lanes": [
+          "texture_pipeline",
+          "shader_template"
+        ],
+        "render_class": "decal",
+        "collision": "none",
+        "placement_tags": [
+          "decal",
+          "moss",
+          "wet",
+          "stone_overlay"
+        ],
+        "status": "ready",
+        "library_dir": "world/props/library/moss_patch_01_02",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "present_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "missing_files": [],
+        "next_action": "review_or_export"
+      },
+      {
+        "id": "moss_patch_01_03",
+        "family": "moss_patch_01",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 3,
+        "recipe": "art_lab/props/recipes/moss_patch_01.recipe.json",
+        "generator": "texture_decal_v1",
+        "source_lanes": [
+          "texture_pipeline",
+          "shader_template"
+        ],
+        "render_class": "decal",
+        "collision": "none",
+        "placement_tags": [
+          "decal",
+          "moss",
+          "wet",
+          "stone_overlay"
+        ],
+        "status": "ready",
+        "library_dir": "world/props/library/moss_patch_01_03",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "present_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "missing_files": [],
+        "next_action": "review_or_export"
+      },
+      {
+        "id": "moss_patch_01_04",
+        "family": "moss_patch_01",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 4,
+        "recipe": "art_lab/props/recipes/moss_patch_01.recipe.json",
+        "generator": "texture_decal_v1",
+        "source_lanes": [
+          "texture_pipeline",
+          "shader_template"
+        ],
+        "render_class": "decal",
+        "collision": "none",
+        "placement_tags": [
+          "decal",
+          "moss",
+          "wet",
+          "stone_overlay"
+        ],
+        "status": "ready",
+        "library_dir": "world/props/library/moss_patch_01_04",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "present_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "missing_files": [],
+        "next_action": "review_or_export"
+      },
+      {
+        "id": "moss_patch_01_05",
+        "family": "moss_patch_01",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 5,
+        "recipe": "art_lab/props/recipes/moss_patch_01.recipe.json",
+        "generator": "texture_decal_v1",
+        "source_lanes": [
+          "texture_pipeline",
+          "shader_template"
+        ],
+        "render_class": "decal",
+        "collision": "none",
+        "placement_tags": [
+          "decal",
+          "moss",
+          "wet",
+          "stone_overlay"
+        ],
+        "status": "ready",
+        "library_dir": "world/props/library/moss_patch_01_05",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "present_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "missing_files": [],
+        "next_action": "review_or_export"
+      },
+      {
+        "id": "moss_patch_01_06",
+        "family": "moss_patch_01",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 6,
+        "recipe": "art_lab/props/recipes/moss_patch_01.recipe.json",
+        "generator": "texture_decal_v1",
+        "source_lanes": [
+          "texture_pipeline",
+          "shader_template"
+        ],
+        "render_class": "decal",
+        "collision": "none",
+        "placement_tags": [
+          "decal",
+          "moss",
+          "wet",
+          "stone_overlay"
+        ],
+        "status": "ready",
+        "library_dir": "world/props/library/moss_patch_01_06",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "present_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "missing_files": [],
+        "next_action": "review_or_export"
+      },
+      {
+        "id": "mud_splash_02_01",
+        "family": "mud_splash_02",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 1,
+        "recipe": "art_lab/props/recipes/mud_splash_02.recipe.json",
+        "generator": "texture_decal_v1",
+        "source_lanes": [
+          "texture_pipeline"
+        ],
+        "render_class": "decal",
+        "collision": "none",
+        "placement_tags": [
+          "decal",
+          "mud",
+          "wet",
+          "path_edge"
+        ],
+        "status": "ready",
+        "library_dir": "world/props/library/mud_splash_02_01",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "present_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "missing_files": [],
+        "next_action": "review_or_export"
+      },
+      {
+        "id": "mud_splash_02_02",
+        "family": "mud_splash_02",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 2,
+        "recipe": "art_lab/props/recipes/mud_splash_02.recipe.json",
+        "generator": "texture_decal_v1",
+        "source_lanes": [
+          "texture_pipeline"
+        ],
+        "render_class": "decal",
+        "collision": "none",
+        "placement_tags": [
+          "decal",
+          "mud",
+          "wet",
+          "path_edge"
+        ],
+        "status": "ready",
+        "library_dir": "world/props/library/mud_splash_02_02",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "present_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "missing_files": [],
+        "next_action": "review_or_export"
+      },
+      {
+        "id": "mud_splash_02_03",
+        "family": "mud_splash_02",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 3,
+        "recipe": "art_lab/props/recipes/mud_splash_02.recipe.json",
+        "generator": "texture_decal_v1",
+        "source_lanes": [
+          "texture_pipeline"
+        ],
+        "render_class": "decal",
+        "collision": "none",
+        "placement_tags": [
+          "decal",
+          "mud",
+          "wet",
+          "path_edge"
+        ],
+        "status": "ready",
+        "library_dir": "world/props/library/mud_splash_02_03",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "present_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "missing_files": [],
+        "next_action": "review_or_export"
+      },
+      {
+        "id": "mud_splash_02_04",
+        "family": "mud_splash_02",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 4,
+        "recipe": "art_lab/props/recipes/mud_splash_02.recipe.json",
+        "generator": "texture_decal_v1",
+        "source_lanes": [
+          "texture_pipeline"
+        ],
+        "render_class": "decal",
+        "collision": "none",
+        "placement_tags": [
+          "decal",
+          "mud",
+          "wet",
+          "path_edge"
+        ],
+        "status": "ready",
+        "library_dir": "world/props/library/mud_splash_02_04",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "present_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "missing_files": [],
+        "next_action": "review_or_export"
+      },
+      {
+        "id": "mud_splash_02_05",
+        "family": "mud_splash_02",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 5,
+        "recipe": "art_lab/props/recipes/mud_splash_02.recipe.json",
+        "generator": "texture_decal_v1",
+        "source_lanes": [
+          "texture_pipeline"
+        ],
+        "render_class": "decal",
+        "collision": "none",
+        "placement_tags": [
+          "decal",
+          "mud",
+          "wet",
+          "path_edge"
+        ],
+        "status": "ready",
+        "library_dir": "world/props/library/mud_splash_02_05",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "present_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "missing_files": [],
+        "next_action": "review_or_export"
+      },
+      {
+        "id": "mud_splash_02_06",
+        "family": "mud_splash_02",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 6,
+        "recipe": "art_lab/props/recipes/mud_splash_02.recipe.json",
+        "generator": "texture_decal_v1",
+        "source_lanes": [
+          "texture_pipeline"
+        ],
+        "render_class": "decal",
+        "collision": "none",
+        "placement_tags": [
+          "decal",
+          "mud",
+          "wet",
+          "path_edge"
+        ],
+        "status": "ready",
+        "library_dir": "world/props/library/mud_splash_02_06",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "present_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "missing_files": [],
+        "next_action": "review_or_export"
+      },
+      {
+        "id": "cracked_stone_03_01",
+        "family": "cracked_stone_03",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 1,
+        "recipe": "art_lab/props/recipes/cracked_stone_03.recipe.json",
+        "generator": "texture_decal_v1",
+        "source_lanes": [
+          "texture_pipeline",
+          "shader_template"
+        ],
+        "render_class": "decal",
+        "collision": "none",
+        "placement_tags": [
+          "decal",
+          "stone",
+          "crack",
+          "slope_detail"
+        ],
+        "status": "ready",
+        "library_dir": "world/props/library/cracked_stone_03_01",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "present_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "missing_files": [],
+        "next_action": "review_or_export"
+      },
+      {
+        "id": "cracked_stone_03_02",
+        "family": "cracked_stone_03",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 2,
+        "recipe": "art_lab/props/recipes/cracked_stone_03.recipe.json",
+        "generator": "texture_decal_v1",
+        "source_lanes": [
+          "texture_pipeline",
+          "shader_template"
+        ],
+        "render_class": "decal",
+        "collision": "none",
+        "placement_tags": [
+          "decal",
+          "stone",
+          "crack",
+          "slope_detail"
+        ],
+        "status": "ready",
+        "library_dir": "world/props/library/cracked_stone_03_02",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "present_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "missing_files": [],
+        "next_action": "review_or_export"
+      },
+      {
+        "id": "cracked_stone_03_03",
+        "family": "cracked_stone_03",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 3,
+        "recipe": "art_lab/props/recipes/cracked_stone_03.recipe.json",
+        "generator": "texture_decal_v1",
+        "source_lanes": [
+          "texture_pipeline",
+          "shader_template"
+        ],
+        "render_class": "decal",
+        "collision": "none",
+        "placement_tags": [
+          "decal",
+          "stone",
+          "crack",
+          "slope_detail"
+        ],
+        "status": "ready",
+        "library_dir": "world/props/library/cracked_stone_03_03",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "present_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "missing_files": [],
+        "next_action": "review_or_export"
+      },
+      {
+        "id": "cracked_stone_03_04",
+        "family": "cracked_stone_03",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 4,
+        "recipe": "art_lab/props/recipes/cracked_stone_03.recipe.json",
+        "generator": "texture_decal_v1",
+        "source_lanes": [
+          "texture_pipeline",
+          "shader_template"
+        ],
+        "render_class": "decal",
+        "collision": "none",
+        "placement_tags": [
+          "decal",
+          "stone",
+          "crack",
+          "slope_detail"
+        ],
+        "status": "ready",
+        "library_dir": "world/props/library/cracked_stone_03_04",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "present_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "missing_files": [],
+        "next_action": "review_or_export"
+      },
+      {
+        "id": "cracked_stone_03_05",
+        "family": "cracked_stone_03",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 5,
+        "recipe": "art_lab/props/recipes/cracked_stone_03.recipe.json",
+        "generator": "texture_decal_v1",
+        "source_lanes": [
+          "texture_pipeline",
+          "shader_template"
+        ],
+        "render_class": "decal",
+        "collision": "none",
+        "placement_tags": [
+          "decal",
+          "stone",
+          "crack",
+          "slope_detail"
+        ],
+        "status": "ready",
+        "library_dir": "world/props/library/cracked_stone_03_05",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "present_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "missing_files": [],
+        "next_action": "review_or_export"
+      },
+      {
+        "id": "cracked_stone_03_06",
+        "family": "cracked_stone_03",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 6,
+        "recipe": "art_lab/props/recipes/cracked_stone_03.recipe.json",
+        "generator": "texture_decal_v1",
+        "source_lanes": [
+          "texture_pipeline",
+          "shader_template"
+        ],
+        "render_class": "decal",
+        "collision": "none",
+        "placement_tags": [
+          "decal",
+          "stone",
+          "crack",
+          "slope_detail"
+        ],
+        "status": "ready",
+        "library_dir": "world/props/library/cracked_stone_03_06",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "present_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "missing_files": [],
+        "next_action": "review_or_export"
+      },
+      {
+        "id": "rune_stain_01_01",
+        "family": "rune_stain_01",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 1,
+        "recipe": "art_lab/props/recipes/rune_stain_01.recipe.json",
+        "generator": "texture_decal_v1",
+        "source_lanes": [
+          "shader_template",
+          "texture_pipeline"
+        ],
+        "render_class": "decal",
+        "collision": "none",
+        "placement_tags": [
+          "decal",
+          "rune",
+          "landmark",
+          "magic_subtle"
+        ],
+        "status": "ready",
+        "library_dir": "world/props/library/rune_stain_01_01",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "present_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "missing_files": [],
+        "next_action": "review_or_export"
+      },
+      {
+        "id": "rune_stain_01_02",
+        "family": "rune_stain_01",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 2,
+        "recipe": "art_lab/props/recipes/rune_stain_01.recipe.json",
+        "generator": "texture_decal_v1",
+        "source_lanes": [
+          "shader_template",
+          "texture_pipeline"
+        ],
+        "render_class": "decal",
+        "collision": "none",
+        "placement_tags": [
+          "decal",
+          "rune",
+          "landmark",
+          "magic_subtle"
+        ],
+        "status": "ready",
+        "library_dir": "world/props/library/rune_stain_01_02",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "present_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "missing_files": [],
+        "next_action": "review_or_export"
+      },
+      {
+        "id": "rune_stain_01_03",
+        "family": "rune_stain_01",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 3,
+        "recipe": "art_lab/props/recipes/rune_stain_01.recipe.json",
+        "generator": "texture_decal_v1",
+        "source_lanes": [
+          "shader_template",
+          "texture_pipeline"
+        ],
+        "render_class": "decal",
+        "collision": "none",
+        "placement_tags": [
+          "decal",
+          "rune",
+          "landmark",
+          "magic_subtle"
+        ],
+        "status": "ready",
+        "library_dir": "world/props/library/rune_stain_01_03",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "present_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "missing_files": [],
+        "next_action": "review_or_export"
+      },
+      {
+        "id": "rune_stain_01_04",
+        "family": "rune_stain_01",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 4,
+        "recipe": "art_lab/props/recipes/rune_stain_01.recipe.json",
+        "generator": "texture_decal_v1",
+        "source_lanes": [
+          "shader_template",
+          "texture_pipeline"
+        ],
+        "render_class": "decal",
+        "collision": "none",
+        "placement_tags": [
+          "decal",
+          "rune",
+          "landmark",
+          "magic_subtle"
+        ],
+        "status": "ready",
+        "library_dir": "world/props/library/rune_stain_01_04",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "present_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "missing_files": [],
+        "next_action": "review_or_export"
+      },
+      {
+        "id": "scorch_01_01",
+        "family": "scorch_01",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 1,
+        "recipe": "art_lab/props/recipes/scorch_01.recipe.json",
+        "generator": "texture_decal_v1",
+        "source_lanes": [
+          "texture_pipeline",
+          "shader_template"
+        ],
+        "render_class": "decal",
+        "collision": "none",
+        "placement_tags": [
+          "decal",
+          "scorch",
+          "ruin",
+          "magic_residue"
+        ],
+        "status": "ready",
+        "library_dir": "world/props/library/scorch_01_01",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "present_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "missing_files": [],
+        "next_action": "review_or_export"
+      },
+      {
+        "id": "scorch_01_02",
+        "family": "scorch_01",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 2,
+        "recipe": "art_lab/props/recipes/scorch_01.recipe.json",
+        "generator": "texture_decal_v1",
+        "source_lanes": [
+          "texture_pipeline",
+          "shader_template"
+        ],
+        "render_class": "decal",
+        "collision": "none",
+        "placement_tags": [
+          "decal",
+          "scorch",
+          "ruin",
+          "magic_residue"
+        ],
+        "status": "ready",
+        "library_dir": "world/props/library/scorch_01_02",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "present_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "missing_files": [],
+        "next_action": "review_or_export"
+      },
+      {
+        "id": "scorch_01_03",
+        "family": "scorch_01",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 3,
+        "recipe": "art_lab/props/recipes/scorch_01.recipe.json",
+        "generator": "texture_decal_v1",
+        "source_lanes": [
+          "texture_pipeline",
+          "shader_template"
+        ],
+        "render_class": "decal",
+        "collision": "none",
+        "placement_tags": [
+          "decal",
+          "scorch",
+          "ruin",
+          "magic_residue"
+        ],
+        "status": "ready",
+        "library_dir": "world/props/library/scorch_01_03",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "present_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "missing_files": [],
+        "next_action": "review_or_export"
+      },
+      {
+        "id": "scorch_01_04",
+        "family": "scorch_01",
+        "kit": "mossy_highland_ruins",
+        "variant_index": 4,
+        "recipe": "art_lab/props/recipes/scorch_01.recipe.json",
+        "generator": "texture_decal_v1",
+        "source_lanes": [
+          "texture_pipeline",
+          "shader_template"
+        ],
+        "render_class": "decal",
+        "collision": "none",
+        "placement_tags": [
+          "decal",
+          "scorch",
+          "ruin",
+          "magic_residue"
+        ],
+        "status": "ready",
+        "library_dir": "world/props/library/scorch_01_04",
+        "expected_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "present_files": [
+          "prop.json",
+          "qa.json",
+          "thumbnail.png",
+          "decal.png"
+        ],
+        "missing_files": [],
+        "next_action": "review_or_export"
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "grassland",
+  "display_name": "Verdant Steppe",
+  "category": "temperate",
+  "identity": {
+    "world_color": [110, 160, 70],
+    "regional_palette": [
+      [80, 130, 50],
+      [110, 165, 70],
+      [160, 195, 110],
+      [200, 220, 140]
+    ],
+    "icon_glyph": "tree",
+    "ambient_hex": "#0c1810"
+  },
+  "terrain": {
+    "height_bias": "mid_rolling",
+    "slope_tendency": "rolling",
+    "water_behaviour": "water",
+    "carve_features": ["forest_canopy"],
+    "altitude_range": [0.32, 0.55],
+    "preferred_slope_range": [0.0, 0.30]
+  },
+  "transitions": {
+    "anchor_to": ["river", "altitude_band"],
+    "blend_neighbours": {
+      "default": {"width_px": 24, "noise_strength": 0.35, "feature_priority": "rivers"},
+      "lava_field": {"width_px": 30, "noise_strength": 0.4, "feature_priority": "rivers"},
+      "ice_cavern": {"width_px": 22, "noise_strength": 0.30, "feature_priority": "altitude_band"},
+      "mana_crystal": {"width_px": 24, "noise_strength": 0.35, "feature_priority": "altitude_band"}
+    },
+    "exclusion": []
+  },
+  "texture_kit": "grassland",
+  "decoration_kit": "grassland",
+  "world_map_priority": 3,
+  "regional_glyph_density": 0.4
+}

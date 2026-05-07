@@ -1,0 +1,12 @@
+{
+  "duration_s": 0.19882086167800453,
+  "samplerate": 44100,
+  "rms_dbfs": -16.00074005322522,
+  "peak_dbfs": -3.8344713560873247,
+  "clipped_samples": 0,
+  "dc_offset": 0.003912664484232664,
+  "click_count_estimate": 0,
+  "source": "D:\\assets\\audio\\sfx\\impact_flesh_v1.wav",
+  "waveform": "D:\\assets\\audio\\sfx\\impact_flesh_v1_qa\\waveform.png",
+  "spectrogram": "D:\\assets\\audio\\sfx\\impact_flesh_v1_qa\\spectrogram.png"
+}

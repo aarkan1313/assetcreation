@@ -1,0 +1,24 @@
+{
+  "schema": "upscale_microtool.plan.v1",
+  "backend": "comfy_hat_l_upscale",
+  "model_name": "HAT-L_SRx4_ImageNet-pretrain.pth",
+  "input": "images\\archived\\witch.png",
+  "out": "pipelines\\_meta\\reports\\phase9_witch_upscaled.png",
+  "workflow": "D:\\assets\\pipelines\\_meta\\comfy_workflows\\simple_image_upscale.json",
+  "output_node": "4",
+  "timestamp": "2026-05-06T21:20:03+00:00",
+  "comfy_runner_plan": {
+    "schema": "comfy_runner.result.v1",
+    "workflow_path": "D:\\assets\\pipelines\\_meta\\comfy_workflows\\simple_image_upscale.json",
+    "host": "http://127.0.0.1:8188",
+    "dry_run": true,
+    "node_count": 4,
+    "output_node_ids": [
+      "4"
+    ],
+    "prompt_id": null,
+    "missing_node_types": [],
+    "downloaded": [],
+    "elapsed_s": 0.0
+  }
+}

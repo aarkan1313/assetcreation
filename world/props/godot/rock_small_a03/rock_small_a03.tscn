@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="PackedScene" path="res://props/rock_small_a03/model_lod0.glb" id="1"]
+[ext_resource type="PackedScene" path="res://props/rock_small_a03/model_lod1.glb" id="2"]
+[ext_resource type="PackedScene" path="res://props/rock_small_a03/model_lod2.glb" id="3"]
+[ext_resource type="PackedScene" path="res://props/rock_small_a03/model_lod3.glb" id="4"]
+[ext_resource type="Texture2D" path="res://props/rock_small_a03/billboard.png" id="5"]
+[ext_resource type="Script" path="res://props/_shared/PropMaterialBinder.gd" id="6"]
+[ext_resource type="Material" path="res://props/_materials/biome_lava_field/biome_lava_field.tres" id="7"]
+
+[node name="rock_small_a03" type="Node3D"]
+script = ExtResource("6")
+material_overrides = [ExtResource("7")]
+
+[node name="LOD0" parent="." instance=ExtResource("1")]
+visibility_range_end = 25.00
+visibility_range_end_margin = 3.00
+visibility_range_fade_mode = 1
+
+[node name="LOD1" parent="." instance=ExtResource("2")]
+visibility_range_begin = 25.00
+visibility_range_begin_margin = 3.00
+visibility_range_end = 60.00
+visibility_range_end_margin = 3.00
+visibility_range_fade_mode = 1
+
+[node name="LOD2" parent="." instance=ExtResource("3")]
+visibility_range_begin = 60.00
+visibility_range_begin_margin = 3.00
+visibility_range_end = 120.00
+visibility_range_end_margin = 3.00
+visibility_range_fade_mode = 1
+
+[node name="LOD3" parent="." instance=ExtResource("4")]
+visibility_range_begin = 120.00
+visibility_range_begin_margin = 3.00
+visibility_range_end = 200.00
+visibility_range_end_margin = 3.00
+visibility_range_fade_mode = 1
+
+[node name="Billboard" type="Sprite3D" parent="."]
+texture = ExtResource("5")
+visibility_range_begin = 200.00
+visibility_range_end = 400.00
+visibility_range_fade_mode = 1
+billboard = 1
+shaded = false
+

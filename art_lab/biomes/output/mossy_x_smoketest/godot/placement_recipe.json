@@ -1,0 +1,94 @@
+{
+  "what_to_place": {
+    "scatter": [
+      {
+        "asset": "rock_cluster_small",
+        "instances": 6087
+      },
+      {
+        "asset": "rock_cluster_medium",
+        "instances": 2457
+      },
+      {
+        "asset": "fern_clump",
+        "instances": 196
+      },
+      {
+        "asset": "moss_tuft",
+        "instances": 731
+      },
+      {
+        "asset": "mushroom_cluster",
+        "instances": 20
+      },
+      {
+        "asset": "fallen_log",
+        "instances": 327
+      },
+      {
+        "asset": "ruin_block",
+        "instances": 0
+      },
+      {
+        "asset": "ruin_pillar",
+        "instances": 0
+      }
+    ],
+    "decals": [
+      {
+        "id": "moss_patch_01",
+        "instances": 236
+      },
+      {
+        "id": "mud_splash_02",
+        "instances": 191
+      },
+      {
+        "id": "cracked_stone_03",
+        "instances": 176
+      },
+      {
+        "id": "rune_stain_01",
+        "instances": 0
+      },
+      {
+        "id": "scorch_01",
+        "instances": 0
+      }
+    ]
+  },
+  "shader_rules_to_apply": {
+    "wind_sway": {
+      "applies_to": [
+        "fern_clump",
+        "moss_tuft"
+      ],
+      "amplitude": 0.06,
+      "freq": 1.4
+    },
+    "wetness_darkening": {
+      "applies_to": "all_materials",
+      "factor": 0.18
+    },
+    "moss_overlay": {
+      "applies_to": [
+        "rock_cluster_small",
+        "rock_cluster_medium",
+        "ruin_block",
+        "ruin_pillar"
+      ],
+      "strength": 0.55
+    },
+    "distance_fade": {
+      "applies_to": "all_scatter",
+      "start_m": 60,
+      "end_m": 120
+    }
+  },
+  "next_steps": [
+    "Each scatter row in placements/scatter.csv is one MultiMesh instance.",
+    "In Godot 4.5: import scatter.csv into a MultiMeshInstance3D per asset.",
+    "Apply shader_rules from the manifest to the source materials/scenes.",
+    "decals.csv -> Godot Decal nodes with the listed size_m extents."
+  ]
+}

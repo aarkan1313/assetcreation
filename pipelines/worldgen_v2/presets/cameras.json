@@ -1,0 +1,29 @@
+{
+  "character": {
+    "fov": 70,
+    "near": 0.1,
+    "far": 50000,
+    "y_offset_m": 1.7
+  },
+  "iso": {
+    "ortho_size_m": 350.0,
+    "near": 0.1,
+    "far": 80000,
+    "elevation_deg": 30,
+    "azimuth_deg": 45
+  },
+  "topdown": {
+    "ortho_size_m": 350.0,
+    "near": 0.1,
+    "far": 80000,
+    "elevation_deg": 90,
+    "azimuth_deg": 0
+  },
+  "worldview": {
+    "ortho_size_m": 50000,
+    "near": 0.1,
+    "far": 100000,
+    "elevation_deg": 60,
+    "azimuth_deg": 0
+  }
+}

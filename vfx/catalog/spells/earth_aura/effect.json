@@ -1,0 +1,66 @@
+{
+  "kind": "ambient",
+  "phenomenon": "smoke",
+  "backend": "smoke_field",
+  "duration_s": 1.6,
+  "fps": 18,
+  "bounds_px": [
+    192,
+    192
+  ],
+  "visual": {
+    "palette": [
+      "#d8c79a",
+      "#a07a4a",
+      "#553820"
+    ],
+    "blend": "alpha",
+    "background": "#00000000",
+    "bloom": false
+  },
+  "visual3d": {
+    "billboard_mode": "y_axis",
+    "world_size_m": 3.0
+  },
+  "backend_params": {
+    "grid_size": 64,
+    "seed": 36223,
+    "emit_pos": [
+      0.5,
+      0.85
+    ],
+    "emit_radius": 4.0,
+    "emit_density": 4.5,
+    "buoyancy": -7.0,
+    "dissipation": 0.5,
+    "viscosity": 0.45,
+    "_audio_cues": [
+      {
+        "t": 0.0,
+        "name": "loop_in"
+      },
+      {
+        "t": 1.2,
+        "name": "loop_out"
+      }
+    ]
+  },
+  "gameplay": {
+    "shape": "aura",
+    "damage_tags": [
+      "physical"
+    ],
+    "collision": "none"
+  },
+  "element": "earth",
+  "archetype": "aura",
+  "tags": [
+    "earth",
+    "aura",
+    "buff",
+    "physical"
+  ],
+  "export_target": "decal",
+  "id": "earth_aura",
+  "notes": "Auto-authored earth aura from element-archetype grid."
+}

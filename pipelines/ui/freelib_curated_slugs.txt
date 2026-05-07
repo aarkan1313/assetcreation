@@ -1,0 +1,236 @@
+# freelib_curated_slugs.txt
+# Curated game-icons.net slug allowlist for an action-RPG / fantasy game.
+# Used by `freelib_ingest.py --filter-by-list pipelines/ui/freelib_curated_slugs.txt`.
+#
+# 200 slugs grouped by intended use. Lines starting with '#' are comments; blank
+# lines ignored. Lines may be 'slug' (we match the slug part only) or
+# 'author/slug' (only slug part is used by the matcher; author hint is for
+# human reference). When a slug doesn't appear in the live archive, the
+# ingester silently skips it -- the curated list is a best-effort target, not
+# a hard requirement.
+#
+# License: every entry below is CC-BY 3.0 unless the author has opted into
+# CC-BY 4.0 on their game-icons.net profile. ATTRIBUTION.md is regenerated
+# automatically with author + URL per icon.
+#
+# Counts as authored (lines that aren't '#' / blank): 200. Verify with
+#   grep -vc -E '^\s*(#|$)' pipelines/ui/freelib_curated_slugs.txt
+
+# === Weapons (40) ===
+# melee
+broadsword
+axe-sword
+gladius
+bone-knife
+dagger
+plain-dagger
+machete
+sai
+crowned-axe
+battle-axe
+warlord-helmet
+flanged-mace
+spiked-mace
+lucerne-hammer
+bo
+quarterstaff
+pole-hammer
+scythe
+trident
+trident-emblem
+spear-hook
+crossed-swords
+sword-array
+sword-clash
+sword-hilt
+sword-tie
+swords-emblem
+saber-and-pistol
+two-handed-sword
+
+# ranged
+high-shot
+crossbow
+recurve-bow
+bow-arrow
+flat-hammer
+boomerang
+sling
+javelin
+crossed-axes
+ninja-stars
+throwing-stars
+
+# === Armor + body (25) ===
+chest-armor
+shoulder-armor
+leg-armor
+back-pain
+visored-helm
+horned-helm
+crowned-helm
+viking-helmet
+cape
+cloak-dagger
+boots
+greaves
+gauntlet
+metal-bar
+chain-mail
+checked-shield
+heater-shield
+viking-shield
+shield
+energy-shield
+edged-shield
+shield-disabled
+warlord-helmet-broken
+overhead
+royal-love
+
+# === Consumables / loot (35) ===
+round-potion
+square-bottle
+bottle-vapors
+gold-bar
+gold-stack
+silver-bullet
+emerald
+gem-pendant
+gem-chain
+gold-nuggets
+diamonds
+diamond-ring
+crystal-cluster
+crystal-shine
+crystal-ball
+treasure-map
+chest
+locked-chest
+open-treasure-chest
+gold-shell
+amber
+amber-mosquito
+elixir-bottle
+medical-pack
+fairy-wand
+ankh
+holy-water
+old-wagon
+chestnut-leaf
+swiss-army-knife
+banana-bunch
+apple
+backpack
+satchel
+camping-tent
+
+# === Ability schools — fire (8) ===
+flame
+fire-bowl
+fire-bomb
+fire-breath
+flaming-claw
+flaming-arrow
+flame-spin
+explosion-rays
+
+# === Ability schools — ice/water (8) ===
+icicles-aura
+frozen-orb
+ice-cube
+ice-bolt
+snowflake-1
+water-drop
+water-splash
+sea-storm
+
+# === Ability schools — lightning/storm (6) ===
+lightning-bolt
+lightning-trio
+lightning-tree
+storm-arrow
+poseidon-trident
+energy-arrow
+
+# === Ability schools — nature (6) ===
+oak-leaf
+maple-leaf
+nature
+sprout
+poison-ivy
+vine-whip
+
+# === Ability schools — shadow/void (6) ===
+shadow-grasp
+spectre
+death-skull
+black-hole-bolas
+overhead-shadow
+witch-flight
+
+# === Ability schools — arcane/holy (8) ===
+mana-burst
+magic-swirl
+fireflake
+sun
+sun-priest
+divine-shield
+prayer
+holy-symbol
+
+# === Buffs / status (12) ===
+healing
+heart-bottle
+heart-shield
+broken-heart
+cracked-shield
+trembling-chest
+running-shoe
+boot-prints
+brain
+braided-skull
+pummeled-skull
+double-team
+
+# === UI primitives (16) ===
+gear-hammer
+gears
+plain-circle
+power-button
+exit-door
+return-arrow
+back-forth
+checkbox-tree
+check-mark
+plain-cross
+broken-skull
+cancel
+upgrade
+spell-book
+quill-ink
+scroll-quill
+
+# === World / map (10) ===
+treasure-map
+compass
+map
+campfire-trio
+position-marker
+dungeon-gate
+broken-tower
+small-fort
+stable
+village
+
+# === Inventory categories (10) ===
+swap-bag
+crystal-shrine
+spell-book-flames
+backpack
+locked-chest
+crystal-bars
+mineral-pearls
+horseshoe
+frostfire
+arrowhead

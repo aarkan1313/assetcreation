@@ -1,0 +1,20 @@
+{
+  "biome": "desert",
+  "stem": "wildlife_sparse/desert_scorpion_v0",
+  "backend_requested": "local_audio_open",
+  "backend_actual": "stable_audio_open",
+  "out_path": "D:\\assets\\audio\\ambience\\desert\\wildlife_sparse\\desert_scorpion_v0.wav",
+  "duration_s": 0.09163265306122449,
+  "samplerate": 44100,
+  "rms_dbfs": -42.3101806640625,
+  "peak_dbfs": -22.0,
+  "lufs_target": -22.0,
+  "seed": 6015,
+  "prompt": "scorpion claw click on stone, short, dry",
+  "dry_run": false,
+  "loop": false,
+  "seam_rms": null,
+  "fitness": null,
+  "model": "large",
+  "steps": 50
+}

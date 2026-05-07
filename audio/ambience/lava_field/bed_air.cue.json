@@ -1,0 +1,20 @@
+{
+  "biome": "lava_field",
+  "stem": "bed_air",
+  "backend_requested": "local_audio_open",
+  "backend_actual": "stable_audio_open",
+  "out_path": "D:\\assets\\audio\\ambience\\lava_field\\bed_air.wav",
+  "duration_s": 19.135600907029477,
+  "samplerate": 44100,
+  "rms_dbfs": -30.000001907348633,
+  "peak_dbfs": -15.182452201843262,
+  "lufs_target": -30.0,
+  "seed": 1002,
+  "prompt": "hot dry desert wind with faint ember whoosh, no music, no melody, 30 second seamless loop",
+  "dry_run": false,
+  "loop": true,
+  "seam_rms": 0.04058285057544708,
+  "fitness": 0.6588803756840442,
+  "model": "large",
+  "steps": 100
+}

@@ -1,0 +1,72 @@
+{
+  "id": "spark_metal",
+  "kind": "spell",
+  "phenomenon": "particle",
+  "backend": "particle_cpu",
+  "duration_s": 0.35,
+  "fps": 30,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "visual": {
+    "palette": [
+      "#fff8c2",
+      "#ffce4a",
+      "#a06010",
+      "#1a0e02"
+    ],
+    "blend": "additive",
+    "background": "#00000000",
+    "bloom": true
+  },
+  "visual3d": {
+    "billboard_mode": "y_axis",
+    "world_size_m": 1.4
+  },
+  "backend_params": {
+    "emitter": "burst",
+    "count": 40,
+    "seed": 8984,
+    "initial_speed": 180.0,
+    "speed_jitter": 90.0,
+    "direction_deg": 90.0,
+    "spread_deg": 160.0,
+    "gravity": [
+      0.0,
+      80.0
+    ],
+    "drag": 1.2,
+    "size_px": 2.5,
+    "size_jitter": 1.0,
+    "fade": 1.0,
+    "emission_pos": [
+      128,
+      160
+    ],
+    "_audio_cues": [
+      {
+        "t": 0.0,
+        "name": "clang"
+      },
+      {
+        "t": 0.1,
+        "name": "shower"
+      }
+    ]
+  },
+  "gameplay": {
+    "shape": "point",
+    "damage_tags": [],
+    "collision": "first_hit"
+  },
+  "element": "physical",
+  "archetype": "impact",
+  "tags": [
+    "sparks",
+    "physical",
+    "metal"
+  ],
+  "export_target": "decal",
+  "notes": "Damage/impact: spark_metal"
+}

@@ -1,0 +1,175 @@
+{
+  "_doc": "Hunyuan3D-2.1 image -> textured GLB workflow (kijai chain). Uses the v2.0 'paint' pipeline (auto-downloads tencent/Hunyuan3D-2 hunyuan3d-paint-v2-0 to models/diffusers/ on first use, ~5 GB). This produces a base-color texture (no metallic/roughness/normal). For full PBR use the visualbruno fork's hunyuan3d_21_image_to_glb_pbr.json. Use this as gate-2 verification — geometry+color only, then we know whether the texture stage works at all before adding PBR complexity.",
+  "_owner": "pipelines/props/hunyuan3d_route.py",
+  "_required_models": [
+    "models/diffusion_models/hunyuan3d-dit-v2-1.ckpt",
+    "models/diffusers/hunyuan3d-delight-v2-0/  (auto-download)",
+    "models/diffusers/hunyuan3d-paint-v2-0/    (auto-download)"
+  ],
+  "_node_packs": [
+    "ComfyUI-Hunyuan3DWrapper (kijai)"
+  ],
+
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "source.png"
+    }
+  },
+
+  "2": {
+    "class_type": "Hy3DModelLoader",
+    "inputs": {
+      "model": "hunyuan_3d_v2.1.safetensors",
+      "attention_mode": "sdpa",
+      "cublas_ops": false
+    }
+  },
+
+  "3": {
+    "class_type": "DownloadAndLoadHy3DDelightModel",
+    "inputs": {
+      "model": "hunyuan3d-delight-v2-0"
+    }
+  },
+
+  "4": {
+    "class_type": "DownloadAndLoadHy3DPaintModel",
+    "inputs": {
+      "model": "hunyuan3d-paint-v2-0"
+    }
+  },
+
+  "5": {
+    "class_type": "Hy3DDelightImage",
+    "inputs": {
+      "delight_pipe": ["3", 0],
+      "image": ["1", 0],
+      "steps": 50,
+      "width": 512,
+      "height": 512,
+      "cfg_image": 1.0,
+      "seed": 42
+    }
+  },
+
+  "6": {
+    "class_type": "Hy3DGenerateMesh",
+    "inputs": {
+      "pipeline": ["2", 0],
+      "image": ["5", 0],
+      "guidance_scale": 5.5,
+      "steps": 30,
+      "seed": 42,
+      "scheduler": "FlowMatchEulerDiscreteScheduler",
+      "force_offload": true
+    }
+  },
+
+  "7": {
+    "class_type": "Hy3DVAEDecode",
+    "inputs": {
+      "vae": ["2", 1],
+      "latents": ["6", 0],
+      "box_v": 1.01,
+      "octree_resolution": 384,
+      "num_chunks": 8000,
+      "mc_level": 0.0,
+      "mc_algo": "mc",
+      "enable_flash_vdm": true,
+      "force_offload": true
+    }
+  },
+
+  "8": {
+    "class_type": "Hy3DPostprocessMesh",
+    "inputs": {
+      "trimesh": ["7", 0],
+      "remove_floaters": true,
+      "remove_degenerate_faces": true,
+      "reduce_faces": true,
+      "max_facenum": 40000,
+      "smooth_normals": false
+    }
+  },
+
+  "9": {
+    "class_type": "Hy3DMeshUVWrap",
+    "inputs": {
+      "trimesh": ["8", 0]
+    }
+  },
+
+  "10": {
+    "class_type": "Hy3DCameraConfig",
+    "inputs": {
+      "camera_azimuths": "0, 90, 180, 270, 0, 180",
+      "camera_elevations": "0, 0, 0, 0, 90, -90",
+      "view_weights": "1, 0.1, 0.5, 0.1, 0.05, 0.05",
+      "camera_distance": 1.45,
+      "ortho_scale": 1.2
+    }
+  },
+
+  "11": {
+    "class_type": "Hy3DRenderMultiView",
+    "inputs": {
+      "trimesh": ["9", 0],
+      "render_size": 1024,
+      "texture_size": 1024,
+      "camera_config": ["10", 0],
+      "normal_space": "world"
+    }
+  },
+
+  "12": {
+    "class_type": "Hy3DSampleMultiView",
+    "inputs": {
+      "pipeline": ["4", 0],
+      "ref_image": ["5", 0],
+      "normal_maps": ["11", 0],
+      "position_maps": ["11", 1],
+      "view_size": 512,
+      "steps": 30,
+      "seed": 42,
+      "camera_config": ["10", 0],
+      "denoise_strength": 1.0
+    }
+  },
+
+  "13": {
+    "class_type": "Hy3DBakeFromMultiview",
+    "inputs": {
+      "images": ["12", 0],
+      "renderer": ["11", 2],
+      "camera_config": ["10", 0]
+    }
+  },
+
+  "14": {
+    "class_type": "Hy3DMeshVerticeInpaintTexture",
+    "inputs": {
+      "texture": ["13", 0],
+      "mask": ["13", 1],
+      "renderer": ["13", 2]
+    }
+  },
+
+  "15": {
+    "class_type": "Hy3DApplyTexture",
+    "inputs": {
+      "texture": ["14", 0],
+      "renderer": ["14", 2]
+    }
+  },
+
+  "16": {
+    "class_type": "Hy3DExportMesh",
+    "inputs": {
+      "trimesh": ["15", 0],
+      "filename_prefix": "props/hy3d_21_textured",
+      "file_format": "glb",
+      "save_file": true
+    }
+  }
+}

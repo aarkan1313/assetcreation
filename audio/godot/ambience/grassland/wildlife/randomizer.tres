@@ -1,0 +1,31 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=9 format=3]
+
+[ext_resource type="AudioStream" path="res://audio/ambience/grassland/wildlife/grass_bird_v0.wav" id="1_grassland_wildlife_v0"]
+[ext_resource type="AudioStream" path="res://audio/ambience/grassland/wildlife/grass_bird_v1.wav" id="2_grassland_wildlife_v1"]
+[ext_resource type="AudioStream" path="res://audio/ambience/grassland/wildlife/grass_bird_v2.wav" id="3_grassland_wildlife_v2"]
+[ext_resource type="AudioStream" path="res://audio/ambience/grassland/wildlife/grass_bird_v3.wav" id="4_grassland_wildlife_v3"]
+[ext_resource type="AudioStream" path="res://audio/ambience/grassland/wildlife/grass_cricket_v0.wav" id="5_grassland_wildlife_v4"]
+[ext_resource type="AudioStream" path="res://audio/ambience/grassland/wildlife/grass_cricket_v1.wav" id="6_grassland_wildlife_v5"]
+[ext_resource type="AudioStream" path="res://audio/ambience/grassland/wildlife/grass_rustle_v0.wav" id="7_grassland_wildlife_v6"]
+[ext_resource type="AudioStream" path="res://audio/ambience/grassland/wildlife/grass_rustle_v1.wav" id="8_grassland_wildlife_v7"]
+
+[resource]
+random_pitch = 1.08
+random_volume_offset_db = 2.0
+streams_count = 8
+stream_0/stream = ExtResource("1_grassland_wildlife_v0")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_grassland_wildlife_v1")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_grassland_wildlife_v2")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_grassland_wildlife_v3")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("5_grassland_wildlife_v4")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("6_grassland_wildlife_v5")
+stream_5/weight = 1.0
+stream_6/stream = ExtResource("7_grassland_wildlife_v6")
+stream_6/weight = 1.0
+stream_7/stream = ExtResource("8_grassland_wildlife_v7")
+stream_7/weight = 1.0

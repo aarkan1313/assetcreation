@@ -1,0 +1,16 @@
+{
+  "api_key": "msy_Meiq40erkmCv6MICkcoAnDbsFeX2Q0U7lfzl",
+  "base_url": "https://api.meshy.ai",
+  "blender_exe": "C:\\Program Files\\Blender Foundation\\Blender 5.1\\blender.exe",
+  "defaults": {
+    "model_type": "standard",
+    "ai_model": "latest",
+    "should_texture": true,
+    "enable_pbr": false,
+    "target_polycount": 30000,
+    "topology": "triangle",
+    "target_formats": ["glb"],
+    "pose_mode": "t-pose",
+    "symmetry_mode": "auto"
+  }
+}

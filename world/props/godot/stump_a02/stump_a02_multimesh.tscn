@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="PackedScene" path="res://props/stump_a02/model_lod0.glb" id="1"]
+
+[node name="stump_a02_multimesh" type="Node3D"]
+
+[node name="MM_LOD0" type="MultiMeshInstance3D" parent="."]
+# placement compiler should set: multimesh = MultiMesh<Mesh from ExtResource("1")>
+visibility_range_end = 25.00
+visibility_range_fade_mode = 0  # MultiMesh fade not supported in 4.5
+

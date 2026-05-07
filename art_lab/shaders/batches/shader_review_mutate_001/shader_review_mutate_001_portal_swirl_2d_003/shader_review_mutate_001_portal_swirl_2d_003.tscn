@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://shader_review_mutate_001_portal_swirl_2d_003_preview"]
+
+[ext_resource type="Shader" path="res://shader_review_mutate_001_portal_swirl_2d_003.gdshader" id="1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1"]
+shader = ExtResource("1")
+shader_parameter/color_outer = Color(0.4216495657107683, 0.6315200058502645, 0.9668972483349646, 1.0)
+shader_parameter/color_mid = Color(0.386738355704815, 0.6418744894452556, 0.9723264799123579, 1.0)
+shader_parameter/color_inner = Color(0.8221400752640102, 0.9360069890041228, 1.0, 1.0)
+shader_parameter/color_void = Color(0.11170018546050067, 0.009207181710849888, 0.04021740618311635, 1.0)
+shader_parameter/radius = 0.3961
+shader_parameter/swirl = 8.4886
+shader_parameter/spin_speed = -1.7622
+shader_parameter/depth_pulse = 0.0646
+shader_parameter/arms = 6.0383
+shader_parameter/arm_strength = 1.039
+shader_parameter/opacity = 0.9377
+
+[sub_resource type="GDScript" id="GDScript_1"]
+script/source = "extends Node
+func _ready():
+	get_window().size = Vector2i(160, 160)
+	get_window().borderless = true
+	await get_tree().create_timer(0.5).timeout
+	var img = get_viewport().get_texture().get_image()
+	img.save_png(\"user://preview.png\")
+	get_tree().quit()
+"
+
+[node name="Root" type="Node"]
+script = SubResource("GDScript_1")
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.0350, 0.0350, 0.0550, 1.0000)
+
+[node name="Quad" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+material = SubResource("ShaderMaterial_1")

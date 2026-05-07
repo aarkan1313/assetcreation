@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://props/mushroom_lantern_a02/model_lod0.glb" id="1"]
+[ext_resource type="PackedScene" path="res://props/mushroom_lantern_a02/model_lod1.glb" id="2"]
+[ext_resource type="PackedScene" path="res://props/mushroom_lantern_a02/model_lod2.glb" id="3"]
+
+[node name="mushroom_lantern_a02_multimesh" type="Node3D"]
+
+[node name="MM_LOD0" type="MultiMeshInstance3D" parent="."]
+# placement compiler should set: multimesh = MultiMesh<Mesh from ExtResource("1")>
+visibility_range_end = 25.00
+visibility_range_fade_mode = 0  # MultiMesh fade not supported in 4.5
+
+[node name="MM_LOD1" type="MultiMeshInstance3D" parent="."]
+# placement compiler should set: multimesh = MultiMesh<Mesh from ExtResource("2")>
+visibility_range_begin = 25.00
+visibility_range_end = 60.00
+visibility_range_fade_mode = 0  # MultiMesh fade not supported in 4.5
+
+[node name="MM_LOD2" type="MultiMeshInstance3D" parent="."]
+# placement compiler should set: multimesh = MultiMesh<Mesh from ExtResource("3")>
+visibility_range_begin = 60.00
+visibility_range_end = 120.00
+visibility_range_fade_mode = 0  # MultiMesh fade not supported in 4.5
+

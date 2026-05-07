@@ -1,0 +1,39 @@
+{
+  "id": "swamp",
+  "display_name": "Quagmire",
+  "category": "wetland",
+  "identity": {
+    "world_color": [70, 85, 50],
+    "regional_palette": [
+      [40, 50, 30],
+      [70, 85, 50],
+      [110, 115, 70],
+      [150, 145, 90]
+    ],
+    "icon_glyph": "marsh",
+    "ambient_hex": "#10160c"
+  },
+  "terrain": {
+    "height_bias": "very_low_with_micro_relief",
+    "slope_tendency": "flat",
+    "water_behaviour": "stagnant_water",
+    "carve_features": ["bog_pits", "winding_channels"],
+    "altitude_range": [0.20, 0.40],
+    "preferred_slope_range": [0.0, 0.18]
+  },
+  "transitions": {
+    "anchor_to": ["river"],
+    "blend_neighbours": {
+      "default": {"width_px": 30, "noise_strength": 0.45, "feature_priority": "rivers"},
+      "grassland": {"width_px": 32, "noise_strength": 0.45, "feature_priority": "rivers"},
+      "forest": {"width_px": 28, "noise_strength": 0.4, "feature_priority": "rivers"},
+      "tundra": {"width_px": 14, "noise_strength": 0.20, "feature_priority": "rivers"},
+      "underwater": {"width_px": 22, "noise_strength": 0.30, "feature_priority": "rivers"}
+    },
+    "exclusion": ["lava_field", "charred_wasteland", "desert", "ice_cavern"]
+  },
+  "texture_kit": "swamp",
+  "decoration_kit": "swamp",
+  "world_map_priority": 3,
+  "regional_glyph_density": 0.35
+}

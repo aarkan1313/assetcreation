@@ -1,0 +1,14 @@
+{
+  "id": "mushroom_lantern_a01",
+  "kind": "mushroom_lantern",
+  "seed": 200,
+  "target_tris": 1500,
+  "params": {
+    "cap_color": "death_purple",
+    "cap_squash": 0.6957,
+    "emission_strength": 0.0497
+  },
+  "blender_version": "5.1",
+  "timestamp": "2026-05-06T18:45:58+00:00",
+  "ok": true
+}

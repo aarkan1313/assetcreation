@@ -1,0 +1,95 @@
+{
+  "id": "shader_evolve_smoke_001_g01_portal_swirl_2d_003",
+  "intent": "evolve luminous portal shield effects toward reference",
+  "role": "portal",
+  "template": "portal_swirl_2d",
+  "params": {
+    "color_outer": [
+      0.037488193793586706,
+      0.0,
+      0.09184960955520827
+    ],
+    "color_mid": [
+      0.04703726686284972,
+      0.0,
+      0.04973529865744748
+    ],
+    "color_inner": [
+      0.22969308484326473,
+      0.1183191048581348,
+      0.3467018748231699
+    ],
+    "color_void": [
+      0.0,
+      0.009842823025941229,
+      0.0018496146510947192
+    ],
+    "radius": 0.2654,
+    "swirl": 9.7575,
+    "spin_speed": 3.9286,
+    "depth_pulse": 0.2446,
+    "arms": 4.1974,
+    "arm_strength": 1.0747,
+    "opacity": 0.9285
+  },
+  "preview": {
+    "size": [
+      128,
+      128
+    ],
+    "frames": 3,
+    "duration_s": 1.8,
+    "background": [
+      0.035,
+      0.035,
+      0.055,
+      1.0
+    ]
+  },
+  "created": "2026-05-06T10:44:54.020676+00:00",
+  "review": {
+    "score": 87.11,
+    "grade": "review",
+    "components": {
+      "coverage": 0.951,
+      "motion": 0.987,
+      "center": 1.0,
+      "color": 0.219,
+      "edge": 0.973,
+      "contrast": 0.25
+    },
+    "gate_issues": [],
+    "gate_warnings": [
+      "weak contrast",
+      "motion below role target"
+    ],
+    "metrics": {
+      "coverage": 0.07471,
+      "mean_alpha": 0.06163,
+      "luma_mean": 0.03073,
+      "contrast": 0.03435,
+      "colorfulness": 0.06338,
+      "edge_energy": 0.00277,
+      "center_distance": 0.0,
+      "clip_high": 0.0,
+      "clip_low": 0.0168,
+      "aspect": 1.0,
+      "motion": 0.00645,
+      "flicker": 0.0,
+      "frames": 3.0
+    },
+    "hints": [
+      "coverage low: increase radius/thickness/edge_width/opacity, or reduce dissolve threshold",
+      "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors",
+      "color weak: switch palette or push core/edge/glow colors farther apart",
+      "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width",
+      "motion low: increase speed/pulse/spin/scroll parameters"
+    ],
+    "base_score": 75.37,
+    "reference_score": 93.43,
+    "reference_distance": 0.0309,
+    "nearest_reference": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+    "render_source": "cpu_proxy",
+    "selection_score": 87.11
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "biome": "charred_wasteland",
+  "stem": "wildlife_sparse/charred_ash_v0",
+  "backend_requested": "local_audio_open",
+  "backend_actual": "stable_audio_open",
+  "out_path": "D:\\assets\\audio\\ambience\\charred_wasteland\\wildlife_sparse\\charred_ash_v0.wav",
+  "duration_s": 0.33328798185941044,
+  "samplerate": 44100,
+  "rms_dbfs": -54.82204055786133,
+  "peak_dbfs": -22.0,
+  "lufs_target": -22.0,
+  "seed": 9015,
+  "prompt": "ash drift settle on ground, soft, short",
+  "dry_run": false,
+  "loop": false,
+  "seam_rms": null,
+  "fitness": null,
+  "model": "large",
+  "steps": 50
+}

@@ -1,0 +1,42 @@
+{
+  "schema": "prop_recipe.v1",
+  "family": "ruin_pillar",
+  "kit": "mossy_highland_ruins",
+  "generator": "blender_ruins_v1",
+  "count": 5,
+  "source_lanes": ["blender_procedural", "cc0_reference_optional"],
+  "style": {
+    "prompt": "broken ancient basalt pillars, mossy ruin columns",
+    "silhouette": "upright or tilted column fragments with broken tops",
+    "avoid": ["perfect Greek column", "thin spike", "single cube"]
+  },
+  "budgets": {
+    "lod0_tris_max": 2600,
+    "lod1_tris_max": 950,
+    "lod2_tris_max": 240
+  },
+  "scale_m": {
+    "x": [0.45, 1.10],
+    "y": [1.00, 2.80],
+    "z": [0.45, 1.10]
+  },
+  "materials": [
+    {"slot": "basalt_stone", "color": "#333835", "roughness": 0.84},
+    {"slot": "moss", "color": "#536d3e", "roughness": 0.95},
+    {"slot": "lichen", "color": "#9eb28a", "roughness": 0.90}
+  ],
+  "placement": {
+    "render_class": "scene_prop",
+    "collision": "simple",
+    "origin": "bottom_center",
+    "footprint_radius_m": [0.35, 0.85],
+    "placement_tags": ["ruin", "pillar", "landmark", "simple_collision"]
+  },
+  "outputs": {
+    "lods": true,
+    "thumbnail": true,
+    "billboard": true,
+    "godot_scene": true
+  }
+}
+

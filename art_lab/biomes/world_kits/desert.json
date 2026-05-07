@@ -1,0 +1,39 @@
+{
+  "id": "desert",
+  "display_name": "Sunblasted Reach",
+  "category": "arid",
+  "identity": {
+    "world_color": [220, 190, 110],
+    "regional_palette": [
+      [180, 145, 80],
+      [220, 190, 110],
+      [240, 215, 150],
+      [255, 240, 200]
+    ],
+    "icon_glyph": "dune",
+    "ambient_hex": "#1a1408"
+  },
+  "terrain": {
+    "height_bias": "low_with_dunes",
+    "slope_tendency": "rolling",
+    "water_behaviour": "dry",
+    "carve_features": ["dune_ripples", "dry_riverbeds"],
+    "altitude_range": [0.05, 0.45],
+    "preferred_slope_range": [0.0, 0.30]
+  },
+  "transitions": {
+    "anchor_to": ["altitude_band"],
+    "blend_neighbours": {
+      "default": {"width_px": 26, "noise_strength": 0.40, "feature_priority": "altitude_band"},
+      "grassland": {"width_px": 32, "noise_strength": 0.45, "feature_priority": "rivers"},
+      "lava_field": {"width_px": 14, "noise_strength": 0.20, "feature_priority": "ridges"},
+      "charred_wasteland": {"width_px": 16, "noise_strength": 0.25, "feature_priority": "ridges"},
+      "mana_crystal": {"width_px": 14, "noise_strength": 0.20, "feature_priority": "altitude_band"}
+    },
+    "exclusion": ["ice_cavern", "tundra", "swamp", "forest", "underwater"]
+  },
+  "texture_kit": "desert",
+  "decoration_kit": "desert",
+  "world_map_priority": 5,
+  "regional_glyph_density": 0.20
+}

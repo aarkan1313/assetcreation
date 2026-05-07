@@ -1,0 +1,58 @@
+{
+  "id": "ui_select",
+  "category": "ui",
+  "variants": [
+    "audio/ui/ui_select/ui_select_v0.wav",
+    "audio/ui/ui_select/ui_select_v1.wav",
+    "audio/ui/ui_select/ui_select_v2.wav"
+  ],
+  "preset": "ui_select",
+  "target_rms_db": -22.0,
+  "tags": [
+    "ui",
+    "select"
+  ],
+  "notes": "",
+  "backend": "synth_sfx_extended",
+  "processing": [
+    {
+      "variant": 0,
+      "duration_s": 0.03843537414965986,
+      "rms_dbfs_in": -21.199581146240234,
+      "rms_dbfs_out": -22.000003814697266,
+      "peak_dbfs_out": -11.01563835144043,
+      "trim_ms": 61,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    },
+    {
+      "variant": 1,
+      "duration_s": 0.038253968253968255,
+      "rms_dbfs_in": -21.199665069580078,
+      "rms_dbfs_out": -22.0,
+      "peak_dbfs_out": -11.114720344543457,
+      "trim_ms": 61,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    },
+    {
+      "variant": 2,
+      "duration_s": 0.03834467120181406,
+      "rms_dbfs_in": -21.199705123901367,
+      "rms_dbfs_out": -22.0,
+      "peak_dbfs_out": -11.157151222229004,
+      "trim_ms": 61,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "biome": "underwater",
+  "stem": "wildlife_sparse/underwater_pebble_v0",
+  "backend_requested": "local_audio_open",
+  "backend_actual": "stable_audio_open",
+  "out_path": "D:\\assets\\audio\\ambience\\underwater\\wildlife_sparse\\underwater_pebble_v0.wav",
+  "duration_s": 0.6410430839002268,
+  "samplerate": 44100,
+  "rms_dbfs": -45.240234375,
+  "peak_dbfs": -22.0,
+  "lufs_target": -22.0,
+  "seed": 10019,
+  "prompt": "small pebble fall on seabed, dry, short",
+  "dry_run": false,
+  "loop": false,
+  "seam_rms": null,
+  "fitness": null,
+  "model": "large",
+  "steps": 50
+}

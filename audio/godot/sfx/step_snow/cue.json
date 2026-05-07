@@ -1,0 +1,73 @@
+{
+  "id": "step_snow",
+  "category": "sfx",
+  "variants": [
+    "audio/sfx/step_snow/step_snow_v0.wav",
+    "audio/sfx/step_snow/step_snow_v1.wav",
+    "audio/sfx/step_snow/step_snow_v2.wav",
+    "audio/sfx/step_snow/step_snow_v3.wav"
+  ],
+  "preset": "step_snow",
+  "target_rms_db": -18.0,
+  "tags": [
+    "step",
+    "snow",
+    "outdoor"
+  ],
+  "notes": "",
+  "backend": "synth_sfx_extended",
+  "processing": [
+    {
+      "variant": 0,
+      "duration_s": 0.07222222222222222,
+      "rms_dbfs_in": -30.820209503173828,
+      "rms_dbfs_out": -18.0,
+      "peak_dbfs_out": -2.543285369873047,
+      "trim_ms": 147,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 25
+      }
+    },
+    {
+      "variant": 1,
+      "duration_s": 0.07369614512471655,
+      "rms_dbfs_in": -30.886737823486328,
+      "rms_dbfs_out": -18.0,
+      "peak_dbfs_out": -2.7229161262512207,
+      "trim_ms": 146,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 45
+      }
+    },
+    {
+      "variant": 2,
+      "duration_s": 0.07247165532879818,
+      "rms_dbfs_in": -30.674888610839844,
+      "rms_dbfs_out": -18.0,
+      "peak_dbfs_out": -2.595629930496216,
+      "trim_ms": 147,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 34
+      }
+    },
+    {
+      "variant": 3,
+      "duration_s": 0.07251700680272109,
+      "rms_dbfs_in": -30.891460418701172,
+      "rms_dbfs_out": -18.0,
+      "peak_dbfs_out": -3.471421718597412,
+      "trim_ms": 147,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 39
+      }
+    }
+  ]
+}

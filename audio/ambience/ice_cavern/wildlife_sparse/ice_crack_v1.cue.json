@@ -1,0 +1,20 @@
+{
+  "biome": "ice_cavern",
+  "stem": "wildlife_sparse/ice_crack_v1",
+  "backend_requested": "local_audio_open",
+  "backend_actual": "stable_audio_open",
+  "out_path": "D:\\assets\\audio\\ambience\\ice_cavern\\wildlife_sparse\\ice_crack_v1.wav",
+  "duration_s": 0.7996145124716554,
+  "samplerate": 44100,
+  "rms_dbfs": -50.18902587890625,
+  "peak_dbfs": -22.0,
+  "lufs_target": -22.0,
+  "seed": 2012,
+  "prompt": "single ice crack, dry, short",
+  "dry_run": false,
+  "loop": false,
+  "seam_rms": null,
+  "fitness": null,
+  "model": "large",
+  "steps": 50
+}

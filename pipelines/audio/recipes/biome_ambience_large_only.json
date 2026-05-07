@@ -1,0 +1,419 @@
+{
+  "_doc": "Per research/E2_audio_local_ambience.md section 2.2/2.3. 4-layer biome ambience: bed_drone (-28 LUFS, looped) + bed_air (-30 LUFS, looped) + wildlife_sparse (Poisson, -22 LUFS peak) + distant_event (Poisson, -20 LUFS peak). Matches Skyrim/Elden Ring/BotW pattern. Backends: 'local_audio_open' (Stable Audio Open small/large), 'library' (CC0 ingest from cc0_ingest.py), 'synth' (synth_sfx.py procedural fallback for placeholders). 2026-05-06 v3: extended to all 10 biomes registered in art_lab/biomes/biome_texture_registry.json. Reverb presets per E2 §3.3 logic (open/dry/cavernous/wet). Poisson lambdas tuned per-biome (lush biomes denser wildlife, harsh biomes sparser).",
+  "version": 2,
+  "schema_version": 1,
+  "negative_prompt_default": "music, melody, vocals, rhythm, drum, song, beat",
+  "biomes": {
+    "lava_field": {
+      "reverb": {"room_size": 0.6, "damp": 0.4, "wet": 0.15, "predelay_ms": 30},
+      "bed_drone": {
+        "backend": "local_audio_open",
+        "model": "large",
+        "prompt": "deep continuous magma rumble, low sub-bass with distant fire crackle, no melody, no music, dry, seamless 30 second loop",
+        "duration": 30,
+        "steps": 100,
+        "seed": 1001,
+        "lufs_target": -28.0,
+        "loop": true
+      },
+      "bed_air": {
+        "backend": "local_audio_open",
+        "model": "large",
+        "prompt": "hot dry desert wind with faint ember whoosh, no music, no melody, 30 second seamless loop",
+        "duration": 30,
+        "steps": 100,
+        "seed": 1002,
+        "lufs_target": -30.0,
+        "loop": true
+      },
+      "wildlife_sparse": {
+        "lufs_target_peak": -22.0,
+        "poisson_lambda_per_sec": 0.05,
+        "sources": [
+          {"backend": "local_audio_open", "model": "large", "prompt": "small dry rock pop, short", "duration": 1.5, "steps": 50, "seed": 1011, "count": 4, "id_prefix": "lava_rock_pop"},
+          {"backend": "local_audio_open", "model": "large", "prompt": "short gas hiss release, dry", "duration": 1.0, "steps": 50, "seed": 1015, "count": 2, "id_prefix": "lava_gas_hiss"},
+          {"backend": "library", "query": "fire crackle short", "count": 2, "id_prefix": "lava_lib_crackle"}
+        ]
+      },
+      "distant_event": {
+        "lufs_target_peak": -20.0,
+        "poisson_lambda_per_sec": 0.01,
+        "sources": [
+          {"backend": "local_audio_open", "model": "large", "prompt": "far rumbling volcanic boom with reverb tail, no music", "duration": 6, "steps": 100, "seed": 1031, "count": 2, "id_prefix": "lava_far_boom"},
+          {"backend": "library", "query": "distant rockslide ash gust", "count": 2, "id_prefix": "lava_lib_rockslide"}
+        ]
+      }
+    },
+    "ice_cavern": {
+      "reverb": {"room_size": 0.95, "damp": 0.1, "wet": 0.45, "predelay_ms": 80},
+      "bed_drone": {
+        "backend": "local_audio_open",
+        "model": "large",
+        "prompt": "deep cavern drone, sub-low cave hum, distant water drip, no melody, no music, 30 second seamless loop",
+        "duration": 30,
+        "steps": 100,
+        "seed": 2001,
+        "lufs_target": -28.0,
+        "loop": true
+      },
+      "bed_air": {
+        "backend": "local_audio_open",
+        "model": "large",
+        "prompt": "thin reverberant cavernous wind with faint ice shimmer, no music, no rhythm, 30 second seamless loop",
+        "duration": 30,
+        "steps": 100,
+        "seed": 2002,
+        "lufs_target": -30.0,
+        "loop": true
+      },
+      "wildlife_sparse": {
+        "lufs_target_peak": -22.0,
+        "poisson_lambda_per_sec": 0.05,
+        "sources": [
+          {"backend": "local_audio_open", "model": "large", "prompt": "single ice crack, dry, short", "duration": 1.2, "steps": 50, "seed": 2011, "count": 4, "id_prefix": "ice_crack"},
+          {"backend": "local_audio_open", "model": "large", "prompt": "single water drip in cave, reverberant", "duration": 0.8, "steps": 50, "seed": 2015, "count": 2, "id_prefix": "ice_drip"}
+        ]
+      },
+      "distant_event": {
+        "lufs_target_peak": -20.0,
+        "poisson_lambda_per_sec": 0.01,
+        "sources": [
+          {"backend": "local_audio_open", "model": "large", "prompt": "far crevasse rupture, deep glacier groan, long reverb tail, no music", "duration": 6, "steps": 100, "seed": 2031, "count": 2, "id_prefix": "ice_far_groan"},
+          {"backend": "library", "query": "distant howl wind", "count": 2, "id_prefix": "ice_lib_howl"}
+        ]
+      }
+    },
+    "mana_crystal": {
+      "reverb": {"room_size": 0.75, "damp": 0.2, "wet": 0.30, "predelay_ms": 50},
+      "bed_drone": {
+        "backend": "local_audio_open",
+        "model": "large",
+        "prompt": "resonant harmonic drone with clean fifth, deep arcane hum, no melody, no music, 30 second seamless loop",
+        "duration": 30,
+        "steps": 100,
+        "seed": 3001,
+        "lufs_target": -28.0,
+        "loop": true
+      },
+      "bed_air": {
+        "backend": "local_audio_open",
+        "model": "large",
+        "prompt": "shimmering crystal pad, gentle magical air, no music, no rhythm, 30 second seamless loop",
+        "duration": 30,
+        "steps": 100,
+        "seed": 3002,
+        "lufs_target": -30.0,
+        "loop": true
+      },
+      "wildlife_sparse": {
+        "lufs_target_peak": -22.0,
+        "poisson_lambda_per_sec": 0.05,
+        "sources": [
+          {"backend": "local_audio_open", "model": "large", "prompt": "single soft crystal chime, short, magical", "duration": 1.5, "steps": 50, "seed": 3011, "count": 4, "id_prefix": "mana_chime"},
+          {"backend": "local_audio_open", "model": "large", "prompt": "tiny sparkle cluster, glassy, short", "duration": 1.0, "steps": 50, "seed": 3015, "count": 2, "id_prefix": "mana_sparkle"}
+        ]
+      },
+      "distant_event": {
+        "lufs_target_peak": -20.0,
+        "poisson_lambda_per_sec": 0.01,
+        "sources": [
+          {"backend": "local_audio_open", "model": "large", "prompt": "distant crystalline bell bloom with long magical reverb tail, no melody", "duration": 6, "steps": 100, "seed": 3031, "count": 2, "id_prefix": "mana_far_bell"},
+          {"backend": "local_audio_open", "model": "large", "prompt": "low arcane pulse, slow, subterranean magic, no music", "duration": 6, "steps": 100, "seed": 3035, "count": 2, "id_prefix": "mana_far_pulse"}
+        ]
+      }
+    },
+    "grassland": {
+      "reverb": {"room_size": 0.30, "damp": 0.8, "wet": 0.05, "predelay_ms": 10},
+      "bed_drone": {
+        "backend": "local_audio_open",
+        "model": "large",
+        "prompt": "warm low pad with faint earth hum, gentle outdoor day ambience, no melody, no music, 30 second seamless loop",
+        "duration": 30,
+        "steps": 100,
+        "seed": 4001,
+        "lufs_target": -28.0,
+        "loop": true
+      },
+      "bed_air": {
+        "backend": "library",
+        "query": "gentle breeze grass field",
+        "fallback_backend": "local_audio_open",
+        "fallback_model": "large",
+        "fallback_prompt": "gentle breeze through grass, no music, 30 second seamless loop",
+        "duration": 30,
+        "steps": 100,
+        "seed": 4002,
+        "lufs_target": -30.0,
+        "loop": true
+      },
+      "wildlife_sparse": {
+        "lufs_target_peak": -22.0,
+        "poisson_lambda_per_sec": 0.05,
+        "sources": [
+          {"backend": "library", "query": "bird chirp short", "count": 4, "id_prefix": "grass_bird"},
+          {"backend": "library", "query": "cricket chirp single", "count": 2, "id_prefix": "grass_cricket"},
+          {"backend": "local_audio_open", "model": "large", "prompt": "soft leaf rustle in grass, short, dry", "duration": 1.0, "steps": 50, "seed": 4011, "count": 2, "id_prefix": "grass_rustle"}
+        ]
+      },
+      "distant_event": {
+        "lufs_target_peak": -20.0,
+        "poisson_lambda_per_sec": 0.01,
+        "sources": [
+          {"backend": "library", "query": "distant thunder roll", "count": 2, "id_prefix": "grass_lib_thunder"},
+          {"backend": "library", "query": "far birdcall flock", "count": 2, "id_prefix": "grass_lib_birds"}
+        ]
+      }
+    },
+    "forest": {
+      "_notes": "Lush canopy biome. Reverb is moderate (canopy diffusion) with high damp (foliage absorbs highs). Densest wildlife of the catalogue.",
+      "reverb": {"room_size": 0.45, "damp": 0.7, "wet": 0.12, "predelay_ms": 18},
+      "bed_drone": {
+        "backend": "local_audio_open",
+        "model": "large",
+        "prompt": "deep forest ambience, low warm hum of canopy, distant rustling, no melody, no music, 30 second seamless loop",
+        "duration": 30,
+        "steps": 100,
+        "seed": 5001,
+        "lufs_target": -28.0,
+        "loop": true
+      },
+      "bed_air": {
+        "backend": "library",
+        "query": "forest leaves wind canopy",
+        "fallback_backend": "local_audio_open",
+        "fallback_model": "large",
+        "fallback_prompt": "wind through dense forest canopy with leaf rustle, no music, 30 second seamless loop",
+        "duration": 30,
+        "steps": 100,
+        "seed": 5002,
+        "lufs_target": -30.0,
+        "loop": true
+      },
+      "wildlife_sparse": {
+        "lufs_target_peak": -22.0,
+        "poisson_lambda_per_sec": 0.08,
+        "sources": [
+          {"backend": "library", "query": "songbird forest chirp", "count": 4, "id_prefix": "forest_bird"},
+          {"backend": "library", "query": "twig snap forest", "count": 2, "id_prefix": "forest_twig"},
+          {"backend": "local_audio_open", "model": "large", "prompt": "small woodland creature scurry through leaves, dry, short", "duration": 1.2, "steps": 50, "seed": 5011, "count": 2, "id_prefix": "forest_scurry"},
+          {"backend": "local_audio_open", "model": "large", "prompt": "single owl hoot, distant, short", "duration": 1.6, "steps": 50, "seed": 5015, "count": 2, "id_prefix": "forest_owl"}
+        ]
+      },
+      "distant_event": {
+        "lufs_target_peak": -20.0,
+        "poisson_lambda_per_sec": 0.012,
+        "sources": [
+          {"backend": "library", "query": "distant wolf howl", "count": 2, "id_prefix": "forest_lib_howl"},
+          {"backend": "library", "query": "distant tree creak fall", "count": 2, "id_prefix": "forest_lib_creak"}
+        ]
+      }
+    },
+    "desert": {
+      "_notes": "Open arid biome. Reverb is minimal (sand absorbs reflection); air layer dominates. Sparse wildlife (snakes, scorpions, vultures), wide-spaced distant events.",
+      "reverb": {"room_size": 0.25, "damp": 0.85, "wet": 0.04, "predelay_ms": 8},
+      "bed_drone": {
+        "backend": "local_audio_open",
+        "model": "large",
+        "prompt": "vast dry desert ambience, low sub hum of expansive heat, no melody, no music, 30 second seamless loop",
+        "duration": 30,
+        "steps": 100,
+        "seed": 6001,
+        "lufs_target": -28.0,
+        "loop": true
+      },
+      "bed_air": {
+        "backend": "local_audio_open",
+        "model": "large",
+        "prompt": "constant dry desert wind across dunes, hint of sand grain hiss, no music, no rhythm, 30 second seamless loop",
+        "duration": 30,
+        "steps": 100,
+        "seed": 6002,
+        "lufs_target": -30.0,
+        "loop": true
+      },
+      "wildlife_sparse": {
+        "lufs_target_peak": -22.0,
+        "poisson_lambda_per_sec": 0.025,
+        "sources": [
+          {"backend": "local_audio_open", "model": "large", "prompt": "single snake hiss, short, dry", "duration": 1.2, "steps": 50, "seed": 6011, "count": 2, "id_prefix": "desert_snake"},
+          {"backend": "local_audio_open", "model": "large", "prompt": "scorpion claw click on stone, short, dry", "duration": 0.8, "steps": 50, "seed": 6015, "count": 2, "id_prefix": "desert_scorpion"},
+          {"backend": "library", "query": "vulture distant cry", "count": 2, "id_prefix": "desert_lib_vulture"},
+          {"backend": "local_audio_open", "model": "large", "prompt": "small sand grain shift on dune, soft, short", "duration": 1.0, "steps": 50, "seed": 6019, "count": 2, "id_prefix": "desert_sand"}
+        ]
+      },
+      "distant_event": {
+        "lufs_target_peak": -20.0,
+        "poisson_lambda_per_sec": 0.008,
+        "sources": [
+          {"backend": "local_audio_open", "model": "large", "prompt": "distant sandstorm gust roll, deep low rumble, no music", "duration": 6, "steps": 100, "seed": 6031, "count": 2, "id_prefix": "desert_far_storm"},
+          {"backend": "library", "query": "far thunder dry desert", "count": 2, "id_prefix": "desert_lib_thunder"}
+        ]
+      }
+    },
+    "tundra": {
+      "_notes": "Cold open biome. Mid-room reverb (snow absorbs but landscape is open), high damp (cold air dampens highs). Sparse wildlife.",
+      "reverb": {"room_size": 0.35, "damp": 0.75, "wet": 0.07, "predelay_ms": 12},
+      "bed_drone": {
+        "backend": "local_audio_open",
+        "model": "large",
+        "prompt": "vast cold tundra ambience, low frozen earth hum, faint distant wind moan, no melody, no music, 30 second seamless loop",
+        "duration": 30,
+        "steps": 100,
+        "seed": 7001,
+        "lufs_target": -28.0,
+        "loop": true
+      },
+      "bed_air": {
+        "backend": "local_audio_open",
+        "model": "large",
+        "prompt": "constant biting cold wind across snowy tundra, high lonely whistle, no music, no rhythm, 30 second seamless loop",
+        "duration": 30,
+        "steps": 100,
+        "seed": 7002,
+        "lufs_target": -30.0,
+        "loop": true
+      },
+      "wildlife_sparse": {
+        "lufs_target_peak": -22.0,
+        "poisson_lambda_per_sec": 0.03,
+        "sources": [
+          {"backend": "local_audio_open", "model": "large", "prompt": "single boot or paw step on packed snow, short, dry", "duration": 0.7, "steps": 50, "seed": 7011, "count": 4, "id_prefix": "tundra_snowstep"},
+          {"backend": "library", "query": "raven crow caw cold", "count": 2, "id_prefix": "tundra_lib_raven"},
+          {"backend": "local_audio_open", "model": "large", "prompt": "ice surface creak, short, dry", "duration": 1.0, "steps": 50, "seed": 7015, "count": 2, "id_prefix": "tundra_creak"}
+        ]
+      },
+      "distant_event": {
+        "lufs_target_peak": -20.0,
+        "poisson_lambda_per_sec": 0.01,
+        "sources": [
+          {"backend": "library", "query": "distant wolf howl winter", "count": 2, "id_prefix": "tundra_lib_wolf"},
+          {"backend": "local_audio_open", "model": "large", "prompt": "far ice sheet groan and crack, deep low, no music", "duration": 6, "steps": 100, "seed": 7031, "count": 2, "id_prefix": "tundra_far_groan"}
+        ]
+      }
+    },
+    "swamp": {
+      "_notes": "Wet damp biome. Mid-high room (the tree canopy + still water reflect), low damp (water has lots of high mid). Densest wildlife of all, mostly insects and frogs.",
+      "reverb": {"room_size": 0.55, "damp": 0.45, "wet": 0.18, "predelay_ms": 25},
+      "bed_drone": {
+        "backend": "local_audio_open",
+        "model": "large",
+        "prompt": "dense humid swamp ambience, low warm hum, faint bubbling water, no melody, no music, 30 second seamless loop",
+        "duration": 30,
+        "steps": 100,
+        "seed": 8001,
+        "lufs_target": -28.0,
+        "loop": true
+      },
+      "bed_air": {
+        "backend": "local_audio_open",
+        "model": "large",
+        "prompt": "still warm air through swamp reeds and hanging moss, distant water lap, no music, 30 second seamless loop",
+        "duration": 30,
+        "steps": 100,
+        "seed": 8002,
+        "lufs_target": -30.0,
+        "loop": true
+      },
+      "wildlife_sparse": {
+        "lufs_target_peak": -22.0,
+        "poisson_lambda_per_sec": 0.10,
+        "sources": [
+          {"backend": "library", "query": "frog croak swamp", "count": 4, "id_prefix": "swamp_frog"},
+          {"backend": "library", "query": "cricket insect chirp wet", "count": 3, "id_prefix": "swamp_cricket"},
+          {"backend": "local_audio_open", "model": "large", "prompt": "single mud bubble pop, wet, short", "duration": 0.8, "steps": 50, "seed": 8011, "count": 3, "id_prefix": "swamp_bubble"},
+          {"backend": "local_audio_open", "model": "large", "prompt": "single twig snap in wet leaves, short, dry", "duration": 0.7, "steps": 50, "seed": 8015, "count": 2, "id_prefix": "swamp_twig"}
+        ]
+      },
+      "distant_event": {
+        "lufs_target_peak": -20.0,
+        "poisson_lambda_per_sec": 0.012,
+        "sources": [
+          {"backend": "library", "query": "distant alligator bellow", "count": 2, "id_prefix": "swamp_lib_gator"},
+          {"backend": "library", "query": "distant bird call swamp heron", "count": 2, "id_prefix": "swamp_lib_heron"}
+        ]
+      }
+    },
+    "charred_wasteland": {
+      "_notes": "Burned-out post-apocalyptic biome. Mid-low room with high damp (smoke absorbs reflection). Almost no wildlife — that's the point. Distant events lean on geological / fire sounds.",
+      "reverb": {"room_size": 0.40, "damp": 0.80, "wet": 0.10, "predelay_ms": 20},
+      "bed_drone": {
+        "backend": "local_audio_open",
+        "model": "large",
+        "prompt": "smoldering scorched earth ambience, low ember crackle hum, distant wind moan, no melody, no music, 30 second seamless loop",
+        "duration": 30,
+        "steps": 100,
+        "seed": 9001,
+        "lufs_target": -28.0,
+        "loop": true
+      },
+      "bed_air": {
+        "backend": "local_audio_open",
+        "model": "large",
+        "prompt": "ash-laden hot wind across charred ruins, dry crackle dust, no music, no rhythm, 30 second seamless loop",
+        "duration": 30,
+        "steps": 100,
+        "seed": 9002,
+        "lufs_target": -30.0,
+        "loop": true
+      },
+      "wildlife_sparse": {
+        "lufs_target_peak": -22.0,
+        "poisson_lambda_per_sec": 0.02,
+        "sources": [
+          {"backend": "local_audio_open", "model": "large", "prompt": "single soft ember crackle, short, dry", "duration": 1.0, "steps": 50, "seed": 9011, "count": 4, "id_prefix": "charred_ember"},
+          {"backend": "local_audio_open", "model": "large", "prompt": "ash drift settle on ground, soft, short", "duration": 0.8, "steps": 50, "seed": 9015, "count": 2, "id_prefix": "charred_ash"},
+          {"backend": "local_audio_open", "model": "large", "prompt": "small charred wood crack, short, dry", "duration": 0.9, "steps": 50, "seed": 9019, "count": 2, "id_prefix": "charred_crack"}
+        ]
+      },
+      "distant_event": {
+        "lufs_target_peak": -20.0,
+        "poisson_lambda_per_sec": 0.012,
+        "sources": [
+          {"backend": "local_audio_open", "model": "large", "prompt": "far building collapse rumble in burnt ruins, deep low, no music", "duration": 6, "steps": 100, "seed": 9031, "count": 2, "id_prefix": "charred_far_collapse"},
+          {"backend": "local_audio_open", "model": "large", "prompt": "distant ember roar in burning wreckage, deep, no music", "duration": 6, "steps": 100, "seed": 9035, "count": 2, "id_prefix": "charred_far_fire"}
+        ]
+      }
+    },
+    "underwater": {
+      "_notes": "Submerged biome. Cavernous reverb (water transmits low freq long), very low damp (water doesn't absorb low/mid), low wet (mostly direct underwater hum). Wildlife is bubble pops and faint creature whales.",
+      "reverb": {"room_size": 0.85, "damp": 0.15, "wet": 0.35, "predelay_ms": 60},
+      "bed_drone": {
+        "backend": "local_audio_open",
+        "model": "large",
+        "prompt": "deep underwater ambience, low pressurized hum, distant whale moan, no melody, no music, 30 second seamless loop",
+        "duration": 30,
+        "steps": 100,
+        "seed": 10001,
+        "lufs_target": -28.0,
+        "loop": true
+      },
+      "bed_air": {
+        "backend": "local_audio_open",
+        "model": "large",
+        "prompt": "submerged water flow with distant current rush, faint bubble stream, no music, no rhythm, 30 second seamless loop",
+        "duration": 30,
+        "steps": 100,
+        "seed": 10002,
+        "lufs_target": -30.0,
+        "loop": true
+      },
+      "wildlife_sparse": {
+        "lufs_target_peak": -22.0,
+        "poisson_lambda_per_sec": 0.06,
+        "sources": [
+          {"backend": "local_audio_open", "model": "large", "prompt": "single small bubble pop underwater, dry, short", "duration": 0.6, "steps": 50, "seed": 10011, "count": 4, "id_prefix": "underwater_bubble"},
+          {"backend": "local_audio_open", "model": "large", "prompt": "fish flick fin underwater, soft swish, short", "duration": 0.8, "steps": 50, "seed": 10015, "count": 2, "id_prefix": "underwater_fish"},
+          {"backend": "local_audio_open", "model": "large", "prompt": "small pebble fall on seabed, dry, short", "duration": 0.7, "steps": 50, "seed": 10019, "count": 2, "id_prefix": "underwater_pebble"}
+        ]
+      },
+      "distant_event": {
+        "lufs_target_peak": -20.0,
+        "poisson_lambda_per_sec": 0.008,
+        "sources": [
+          {"backend": "local_audio_open", "model": "large", "prompt": "distant whale song, slow low call with long reverb, no music", "duration": 6, "steps": 100, "seed": 10031, "count": 2, "id_prefix": "underwater_far_whale"},
+          {"backend": "local_audio_open", "model": "large", "prompt": "far underwater rockslide rumble, deep low, no music", "duration": 6, "steps": 100, "seed": 10035, "count": 2, "id_prefix": "underwater_far_rockslide"}
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "schema": "prop_asset.v1",
+  "id": "log_a02",
+  "family": "log",
+  "kit": "first_party_proc",
+  "source_method": "blender_procedural",
+  "source_recipe": "pipelines/props/blender_scripts/proc_props.py:log",
+  "license": "project_generated",
+  "render_class": "scene_prop",
+  "collision": "convex",
+  "origin": "bottom_center",
+  "scale_m": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "footprint_radius_m": 0.85,
+  "lods": [
+    {
+      "file": "model_lod0.glb",
+      "max_distance_m": 25.0,
+      "triangles": 1200,
+      "ratio_of_lod0": 1.0
+    }
+  ],
+  "thumbnail": "thumbnail.png",
+  "placement_tags": [
+    "wood",
+    "ground",
+    "obstacle"
+  ],
+  "material_slots": [
+    "bark"
+  ],
+  "qa": "qa.json",
+  "provenance": {
+    "seed": 301,
+    "params": {
+      "length": 1.4003,
+      "radius": 0.1683,
+      "color_variant": "ash"
+    },
+    "target_tris_hint": 1200
+  },
+  "lod_ladder_ratios": [
+    1.0
+  ],
+  "lod_render_class": "scene_prop",
+  "collision_file": "collision.json",
+  "collision_hull_count": 1,
+  "sweep_spec": "log_a",
+  "sweep_seed": 301,
+  "sweep_params": {
+    "length": 1.4003,
+    "radius": 0.1683,
+    "color_variant": "ash"
+  },
+  "material_lod": {
+    "kit_atlas": "world/props/kits/first_party_proc/kit_atlas_lod_far.png",
+    "kit_atlas_manifest": "world/props/kits/first_party_proc/kit_atlas_manifest.json",
+    "slots": [
+      {
+        "material_index": 0,
+        "tile_xy": [
+          1,
+          1
+        ],
+        "uv_center": [
+          0.1875,
+          0.1875
+        ],
+        "rgb": [
+          0.5,
+          0.42,
+          0.3
+        ]
+      }
+    ]
+  },
+  "pbr_material_bindings": {
+    "schema": "prop_pbr_bindings.v1",
+    "bound_at": "2026-05-06T20:37:04+00:00",
+    "texture_library": "world/textures/library",
+    "slots": [
+      {
+        "material_index": 0,
+        "slot": "bark",
+        "texture_set": "forest_floor_oak_bark",
+        "maps": {
+          "albedo": "world/textures/library/forest_floor_oak_bark/forest_floor_oak_bark_albedo.png",
+          "normal": "world/textures/library/forest_floor_oak_bark/forest_floor_oak_bark_normal.png",
+          "roughness": "world/textures/library/forest_floor_oak_bark/forest_floor_oak_bark_roughness.png",
+          "metallic": "world/textures/library/forest_floor_oak_bark/forest_floor_oak_bark_metallic.png",
+          "ao": "world/textures/library/forest_floor_oak_bark/forest_floor_oak_bark_ao.png",
+          "height": "world/textures/library/forest_floor_oak_bark/forest_floor_oak_bark_height.png"
+        },
+        "tiling": 1.0,
+        "source": "existing_aaa_texture"
+      }
+    ]
+  }
+}

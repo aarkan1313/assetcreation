@@ -1,0 +1,87 @@
+{
+  "id": "shader_evolve_smoke_001_g01_shield_ripple_2d_005",
+  "intent": "evolve luminous portal shield effects toward reference",
+  "role": "shield",
+  "template": "shield_ripple_2d",
+  "params": {
+    "color_shield": [
+      0.12370177705141722,
+      0.10104450757250519,
+      0.4028180236179353
+    ],
+    "color_hit": [
+      0.8032078310091809,
+      0.2799342373294586,
+      0.9679789778732023
+    ],
+    "hex_scale": 2.9591,
+    "hex_strength": 0.1593,
+    "fresnel_power": 1.9747,
+    "ripple_speed": 5.0594,
+    "ripple_strength": 0.3556,
+    "ripple_freq": 30.5594,
+    "hit_position": [
+      0.5279,
+      0.3481
+    ],
+    "hit_age": 1.8478,
+    "opacity": 0.7887
+  },
+  "preview": {
+    "size": [
+      128,
+      128
+    ],
+    "frames": 3,
+    "duration_s": 1.8,
+    "background": [
+      0.035,
+      0.035,
+      0.055,
+      1.0
+    ]
+  },
+  "created": "2026-05-06T10:44:54.134730+00:00",
+  "review": {
+    "score": 42.19,
+    "grade": "reject",
+    "components": {
+      "coverage": 0.68,
+      "motion": 1.0,
+      "center": 1.0,
+      "color": 0.848,
+      "edge": 0.968,
+      "contrast": 0.13
+    },
+    "gate_issues": [],
+    "gate_warnings": [
+      "weak contrast"
+    ],
+    "metrics": {
+      "coverage": 0.82621,
+      "mean_alpha": 0.25213,
+      "luma_mean": 0.03777,
+      "contrast": 0.02038,
+      "colorfulness": 0.13876,
+      "edge_energy": 0.00539,
+      "center_distance": 1e-05,
+      "clip_high": 0.0,
+      "clip_low": 0.0,
+      "aspect": 1.0,
+      "motion": 0.03134,
+      "flicker": 0.00551,
+      "frames": 3.0
+    },
+    "hints": [
+      "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold",
+      "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors",
+      "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width"
+    ],
+    "base_score": 78.38,
+    "reference_score": 22.7,
+    "reference_distance": 0.67405,
+    "nearest_reference": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+    "render_source": "cpu_proxy",
+    "selection_score": 42.19
+  }
+}

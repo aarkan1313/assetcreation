@@ -1,0 +1,87 @@
+{
+  "schema": "prop_asset.v1",
+  "id": "obelisk_egyptian_a04",
+  "family": "obelisk",
+  "kit": "ai_hero_props",
+  "source_method": "trellis2_image_to_3d",
+  "license": "MIT",
+  "render_class": "hero_prop",
+  "collision": "convex",
+  "origin": "model_origin",
+  "scale_m": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "footprint_radius_m": 0.5,
+  "lods": [
+    {
+      "file": "model_lod0.glb",
+      "max_distance_m": 25.0,
+      "triangles": 194324,
+      "ratio_of_lod0": 1.0
+    },
+    {
+      "file": "model_lod1.glb",
+      "max_distance_m": 60.0,
+      "triangles": 126311,
+      "ratio_of_lod0": 0.65
+    },
+    {
+      "file": "model_lod2.glb",
+      "max_distance_m": 120.0,
+      "triangles": 68013,
+      "ratio_of_lod0": 0.35
+    },
+    {
+      "file": "model_lod3.glb",
+      "max_distance_m": 200.0,
+      "triangles": 29149,
+      "ratio_of_lod0": 0.15
+    }
+  ],
+  "placement_tags": [
+    "ai_prop",
+    "obelisk"
+  ],
+  "material_slots": [
+    "pbr_default"
+  ],
+  "qa": "qa.json",
+  "provenance": {
+    "source_glb": "D:\\assets\\world\\props\\ai_routes\\trellis2\\ruined_obelisk_a_gate\\model_lod0.glb",
+    "staged_at_utc": "2026-05-07T02:07:32+00:00",
+    "source_image": "D:\\assets\\world\\props\\concepts\\ruined_obelisk_a\\source.png"
+  },
+  "lod_ladder_ratios": [
+    1.0,
+    0.65,
+    0.35,
+    0.15
+  ],
+  "lod_render_class": "hero_prop",
+  "collision_file": "collision.json",
+  "collision_hull_count": 19,
+  "pbr_material_bindings": {
+    "schema": "prop_pbr_bindings.v1",
+    "bound_at": "2026-05-07T02:08:08+00:00",
+    "texture_library": "world/textures/library",
+    "slots": [
+      {
+        "material_index": 0,
+        "slot": "pbr_default",
+        "texture_set": "biome_grassland",
+        "maps": {
+          "albedo": "world/textures/library/biome_grassland/biome_grassland_albedo.png",
+          "normal": "world/textures/library/biome_grassland/biome_grassland_normal.png",
+          "roughness": "world/textures/library/biome_grassland/biome_grassland_roughness.png",
+          "metallic": "world/textures/library/biome_grassland/biome_grassland_metallic.png",
+          "ao": "world/textures/library/biome_grassland/biome_grassland_ao.png",
+          "height": "world/textures/library/biome_grassland/biome_grassland_height.png"
+        },
+        "tiling": 1.0,
+        "source": "existing_aaa_texture"
+      }
+    ]
+  }
+}

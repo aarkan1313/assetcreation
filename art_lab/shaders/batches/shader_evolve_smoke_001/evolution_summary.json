@@ -1,0 +1,78 @@
+{
+  "batch": "shader_evolve_smoke_001",
+  "created": "2026-05-06T10:44:54.264774+00:00",
+  "intent": "evolve luminous portal shield effects toward reference",
+  "seed": 91,
+  "templates": [
+    "portal_swirl_2d",
+    "shield_ripple_2d"
+  ],
+  "references": [
+    "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png"
+  ],
+  "population": 6,
+  "generations": 2,
+  "elites": 3,
+  "reference_weight": 0.65,
+  "generation_summaries": [
+    {
+      "generation": 0,
+      "best": [
+        {
+          "id": "shader_evolve_smoke_001_g00_portal_swirl_2d_001",
+          "template": "portal_swirl_2d",
+          "score": 89.95,
+          "base_score": 79.6,
+          "reference_score": 95.52,
+          "grade": "keep"
+        },
+        {
+          "id": "shader_evolve_smoke_001_g00_shield_ripple_2d_004",
+          "template": "shield_ripple_2d",
+          "score": 41.4,
+          "base_score": 79.14,
+          "reference_score": 21.08,
+          "grade": "reject"
+        },
+        {
+          "id": "shader_evolve_smoke_001_g00_portal_swirl_2d_005",
+          "template": "portal_swirl_2d",
+          "score": 87.4,
+          "base_score": 74.97,
+          "reference_score": 94.1,
+          "grade": "review"
+        }
+      ]
+    },
+    {
+      "generation": 1,
+      "best": [
+        {
+          "id": "shader_evolve_smoke_001_g01_portal_swirl_2d_001",
+          "template": "portal_swirl_2d",
+          "score": 90.26,
+          "base_score": 79.79,
+          "reference_score": 95.89,
+          "grade": "keep"
+        },
+        {
+          "id": "shader_evolve_smoke_001_g01_shield_ripple_2d_005",
+          "template": "shield_ripple_2d",
+          "score": 42.19,
+          "base_score": 78.38,
+          "reference_score": 22.7,
+          "grade": "reject"
+        },
+        {
+          "id": "shader_evolve_smoke_001_g01_portal_swirl_2d_004",
+          "template": "portal_swirl_2d",
+          "score": 89.08,
+          "base_score": 78.56,
+          "reference_score": 94.74,
+          "grade": "keep"
+        }
+      ]
+    }
+  ],
+  "count": 12
+}

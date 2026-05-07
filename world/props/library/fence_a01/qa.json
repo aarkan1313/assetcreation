@@ -1,0 +1,14 @@
+{
+  "id": "fence_a01",
+  "kind": "fence",
+  "seed": 800,
+  "target_tris": 1000,
+  "params": {
+    "span": 1.5625,
+    "post_height": 1.0269,
+    "color_variant": "weathered_grey"
+  },
+  "blender_version": "5.1",
+  "timestamp": "2026-05-06T18:56:11+00:00",
+  "ok": true
+}

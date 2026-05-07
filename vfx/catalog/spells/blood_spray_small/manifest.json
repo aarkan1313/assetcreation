@@ -1,0 +1,30 @@
+{
+  "effect_id": "blood_spray_small",
+  "backend": "particle_cpu",
+  "n_frames": 14,
+  "fps": 30,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "flipbook": "D:\\assets\\vfx\\catalog\\spells\\blood_spray_small\\flipbook.png",
+  "frames_dir": "D:\\assets\\vfx\\catalog\\spells\\blood_spray_small\\frames",
+  "extras": {
+    "particles_json": "D:\\assets\\vfx\\catalog\\spells\\blood_spray_small\\particles.json",
+    "audio_cues": [
+      {
+        "t": 0.0,
+        "name": "hit"
+      },
+      {
+        "t": 0.18,
+        "name": "settle"
+      }
+    ]
+  },
+  "metrics": {
+    "max_alive": 60,
+    "total_energy": 312.5768620967865
+  },
+  "timestamp": "2026-05-06T20:50:49+00:00"
+}

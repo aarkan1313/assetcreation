@@ -1,0 +1,72 @@
+[
+  {
+    "id": "l000",
+    "name": "The Iron Mire",
+    "kind": "cave",
+    "x": 170,
+    "y": 185
+  },
+  {
+    "id": "l001",
+    "name": "The Sundered Pass",
+    "kind": "shrine",
+    "x": 745,
+    "y": 813
+  },
+  {
+    "id": "l002",
+    "name": "Whispering Cairns",
+    "kind": "tomb",
+    "x": 818,
+    "y": 923
+  },
+  {
+    "id": "l003",
+    "name": "Bonewood Crossing",
+    "kind": "ruin",
+    "x": 584,
+    "y": 853
+  },
+  {
+    "id": "l004",
+    "name": "Star-Lit Mere",
+    "kind": "cave",
+    "x": 215,
+    "y": 719
+  },
+  {
+    "id": "l005",
+    "name": "Whispering Cairns",
+    "kind": "cave",
+    "x": 894,
+    "y": 989
+  },
+  {
+    "id": "l006",
+    "name": "Star-Lit Mere",
+    "kind": "ruin",
+    "x": 762,
+    "y": 678
+  },
+  {
+    "id": "l007",
+    "name": "Frozen Sentinel",
+    "kind": "cairn",
+    "x": 821,
+    "y": 511
+  },
+  {
+    "id": "l008",
+    "name": "Whispering Cairns",
+    "kind": "spire",
+    "x": 661,
+    "y": 743
+  },
+  {
+    "id": "l009",
+    "name": "Sunken Tor",
+    "kind": "spire",
+    "x": 669,
+    "y": 77
+  }
+]

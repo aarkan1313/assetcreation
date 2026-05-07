@@ -1,0 +1,30 @@
+{
+  "schema": "prop_asset.v1",
+  "id": "scorch_01_03",
+  "family": "scorch_01",
+  "kit": "mossy_highland_ruins",
+  "source_method": "cpu_texture_decal",
+  "source_recipe": "art_lab/props/recipes/scorch_01.recipe.json",
+  "license": "project_generated",
+  "render_class": "decal",
+  "collision": "none",
+  "origin": "center",
+  "scale_m": [
+    0.875,
+    0.015,
+    0.875
+  ],
+  "footprint_radius_m": 0.5,
+  "decal": "decal.png",
+  "thumbnail": "thumbnail.png",
+  "placement_tags": [
+    "decal",
+    "scorch",
+    "ruin",
+    "magic_residue"
+  ],
+  "material_slots": [
+    "scorch_decal"
+  ],
+  "qa": "qa.json"
+}

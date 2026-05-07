@@ -1,0 +1,41 @@
+{
+  "schema": "prop_recipe.v1",
+  "family": "rock_cluster_small",
+  "kit": "mossy_highland_ruins",
+  "generator": "blender_rock_cluster_v1",
+  "count": 8,
+  "source_lanes": ["blender_procedural"],
+  "style": {
+    "prompt": "small clustered wet basalt rocks with moss and lichen",
+    "silhouette": "low uneven cluster, readable from gameplay camera",
+    "avoid": ["perfect spheres", "spiky fantasy crystals", "single pebble"]
+  },
+  "budgets": {
+    "lod0_tris_max": 1200,
+    "lod1_tris_max": 450,
+    "lod2_tris_max": 120
+  },
+  "scale_m": {
+    "x": [0.45, 1.25],
+    "y": [0.20, 0.65],
+    "z": [0.45, 1.10]
+  },
+  "materials": [
+    {"slot": "basalt", "color": "#2d3431", "roughness": 0.82},
+    {"slot": "moss", "color": "#4d6b38", "roughness": 0.95}
+  ],
+  "placement": {
+    "render_class": "scatter_multimesh",
+    "collision": "none",
+    "origin": "bottom_center",
+    "footprint_radius_m": [0.35, 0.80],
+    "placement_tags": ["rock", "mossy", "slope_ok", "ruin_edge"]
+  },
+  "outputs": {
+    "lods": true,
+    "thumbnail": true,
+    "billboard": true,
+    "godot_scene": true
+  }
+}
+

@@ -1,0 +1,58 @@
+{
+  "id": "impact_metal",
+  "category": "sfx",
+  "variants": [
+    "audio/sfx/impact_metal/impact_metal_v0.wav",
+    "audio/sfx/impact_metal/impact_metal_v1.wav",
+    "audio/sfx/impact_metal/impact_metal_v2.wav"
+  ],
+  "preset": "impact_metal",
+  "target_rms_db": -16.0,
+  "tags": [
+    "impact",
+    "metal"
+  ],
+  "notes": "",
+  "backend": "synth_sfx_extended",
+  "processing": [
+    {
+      "variant": 0,
+      "duration_s": 0.46095238095238095,
+      "rms_dbfs_in": -19.817975593946944,
+      "rms_dbfs_out": -18.924656066107104,
+      "peak_dbfs_out": -1.0000003576278687,
+      "trim_ms": 39,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    },
+    {
+      "variant": 1,
+      "duration_s": 0.46095238095238095,
+      "rms_dbfs_in": -19.8428323729652,
+      "rms_dbfs_out": -18.833387897068516,
+      "peak_dbfs_out": -1.0000003576278687,
+      "trim_ms": 39,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    },
+    {
+      "variant": 2,
+      "duration_s": 0.46095238095238095,
+      "rms_dbfs_in": -19.83472337543882,
+      "rms_dbfs_out": -18.780825621781666,
+      "peak_dbfs_out": -0.9999997019767761,
+      "trim_ms": 39,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    }
+  ]
+}

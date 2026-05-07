@@ -1,0 +1,23 @@
+{
+  "id": "arcane_shield_ring",
+  "template": "ring_field_2d",
+  "params": {
+    "color_inner": [0.33, 0.84, 1.0],
+    "color_outer": [0.65, 0.42, 1.0],
+    "color_glow": [1.0, 1.0, 1.0],
+    "radius": 0.42,
+    "edge_width": 0.04,
+    "noise_scale": 11.0,
+    "pulse_speed": 1.8,
+    "distortion": 0.12,
+    "rune_count": 12.0,
+    "rune_strength": 0.7,
+    "opacity": 1.0
+  },
+  "preview": {
+    "size": [512, 512],
+    "frames": 1,
+    "duration_s": 2.0,
+    "background": [0.05, 0.05, 0.08, 1.0]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "biome": "forest",
+  "stem": "wildlife_sparse/forest_owl_v0",
+  "backend_requested": "local_audio_open",
+  "backend_actual": "stable_audio_open",
+  "out_path": "D:\\assets\\audio\\ambience\\forest\\wildlife_sparse\\forest_owl_v0.wav",
+  "duration_s": 0.9635827664399093,
+  "samplerate": 44100,
+  "rms_dbfs": -33.041473388671875,
+  "peak_dbfs": -21.999998092651367,
+  "lufs_target": -22.0,
+  "seed": 5015,
+  "prompt": "single owl hoot, distant, short",
+  "dry_run": false,
+  "loop": false,
+  "seam_rms": null,
+  "fitness": null,
+  "model": "large",
+  "steps": 50
+}

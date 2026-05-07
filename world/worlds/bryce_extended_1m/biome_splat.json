@@ -1,0 +1,13 @@
+{
+  "channel_to_biome": {
+    "R": "desert",
+    "G": "charred_wasteland",
+    "B": "grassland",
+    "A": "forest"
+  },
+  "blur_px": 1.6,
+  "size": [
+    1024,
+    1024
+  ]
+}

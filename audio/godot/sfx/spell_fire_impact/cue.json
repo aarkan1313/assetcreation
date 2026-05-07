@@ -1,0 +1,59 @@
+{
+  "id": "spell_fire_impact",
+  "category": "sfx",
+  "variants": [
+    "audio/sfx/spell_fire_impact/spell_fire_impact_v0.wav",
+    "audio/sfx/spell_fire_impact/spell_fire_impact_v1.wav",
+    "audio/sfx/spell_fire_impact/spell_fire_impact_v2.wav"
+  ],
+  "preset": "spell_fire_impact",
+  "target_rms_db": -16.0,
+  "tags": [
+    "spell",
+    "fire",
+    "impact"
+  ],
+  "notes": "",
+  "backend": "synth_sfx_extended",
+  "processing": [
+    {
+      "variant": 0,
+      "duration_s": 0.445578231292517,
+      "rms_dbfs_in": -17.346234316950767,
+      "rms_dbfs_out": -18.96818755280867,
+      "peak_dbfs_out": -1.0000003576278687,
+      "trim_ms": 4,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    },
+    {
+      "variant": 1,
+      "duration_s": 0.44412698412698415,
+      "rms_dbfs_in": -17.391982956848203,
+      "rms_dbfs_out": -19.654201592136577,
+      "peak_dbfs_out": -1.0000003576278687,
+      "trim_ms": 5,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    },
+    {
+      "variant": 2,
+      "duration_s": 0.4453514739229025,
+      "rms_dbfs_in": -17.468007831399238,
+      "rms_dbfs_out": -18.601544947193506,
+      "peak_dbfs_out": -1.0000003576278687,
+      "trim_ms": 4,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 2
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="LoreTermRecord" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://game_data/scripts/lore_term_record.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "lore_erdan_the_wise_0"
+display_name = "Erdan the Wise"
+schema_version = "1.0.0"
+tags = ["deity"]
+localization_key = "LORE_LORE_ERDAN_THE_WISE_0"
+provenance = { "source": "synthetic", "model": null, "seed": 42, "prompt_id": null, "timestamp": "2026-05-06T18:46:54+00:00", "target_file_sha256": null, "constraint_technique": null, "constraint_pass": null, "sim_digest": null, "parent_id": null }
+notes = ""
+canonical_spelling = "Erdan the Wise"
+aliases = []
+category = "deity"
+description = "Erdan the Wise - a deity of regional importance. (placeholder lore body)"
+source_doc = null

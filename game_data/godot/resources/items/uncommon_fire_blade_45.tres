@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemRecord" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://game_data/scripts/item_record.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "uncommon_fire_blade_45"
+display_name = "Uncommon Training Blade"
+schema_version = "1.0.0"
+tags = ["fire", "uncommon", "weapon"]
+localization_key = "ITEM_UNCOMMON_FIRE_BLADE_45"
+provenance = { "source": "synthetic", "model": null, "seed": 45, "prompt_id": null, "timestamp": "2026-05-06T18:46:36+00:00", "target_file_sha256": "da75a24b3a8b20b42063c45bf98edbc691e0807070ed813871afc1be1155c987", "constraint_technique": "synthetic_schema_bounds", "constraint_pass": "first_pass", "sim_digest": "14566adea501cc1e", "parent_id": null }
+notes = ""
+category = "weapon"
+rarity = "uncommon"
+damage_type = "fire"
+stats = { "damage": 18, "armor": 0, "weight": 0.5, "durability": 120, "value_gold": 80 }
+icon_id = "ico_sword"
+description = "A uncommon fire weapon tuned by the balance target."
+stack_max = 1

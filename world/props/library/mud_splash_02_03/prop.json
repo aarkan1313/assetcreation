@@ -1,0 +1,30 @@
+{
+  "schema": "prop_asset.v1",
+  "id": "mud_splash_02_03",
+  "family": "mud_splash_02",
+  "kit": "mossy_highland_ruins",
+  "source_method": "cpu_texture_decal",
+  "source_recipe": "art_lab/props/recipes/mud_splash_02.recipe.json",
+  "license": "project_generated",
+  "render_class": "decal",
+  "collision": "none",
+  "origin": "center",
+  "scale_m": [
+    0.775,
+    0.015,
+    0.775
+  ],
+  "footprint_radius_m": 0.45,
+  "decal": "decal.png",
+  "thumbnail": "thumbnail.png",
+  "placement_tags": [
+    "decal",
+    "mud",
+    "wet",
+    "path_edge"
+  ],
+  "material_slots": [
+    "mud_decal"
+  ],
+  "qa": "qa.json"
+}

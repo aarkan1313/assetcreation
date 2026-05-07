@@ -1,0 +1,17 @@
+{
+  "schema": "local_tts_open.report.v1",
+  "engine": "kokoro",
+  "model_id": "hexgrad/Kokoro-82M",
+  "text": "Need a quick bark for this guard.",
+  "reference_audio": null,
+  "reference_text": null,
+  "voice": null,
+  "seed": 42,
+  "speed": 1.0,
+  "samplerate": 24000,
+  "samples": 65520,
+  "backend": "dry_run_placeholder_voice",
+  "dry_run": true,
+  "out_path": "audio\\voice\\phase9_kokoro_smoke.wav",
+  "timestamp": "2026-05-06T21:19:55+00:00"
+}

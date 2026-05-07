@@ -1,0 +1,81 @@
+{
+  "id": "shader_review_mutate_001_portal_swirl_2d_006",
+  "intent": "local mutations around top portal candidate",
+  "role": "portal",
+  "template": "portal_swirl_2d",
+  "params": {
+    "color_outer": [
+      0.39300177915111456,
+      0.6273923280921961,
+      0.9400351649713119
+    ],
+    "color_mid": [
+      0.36129119452900116,
+      0.5888460718034325,
+      1.0
+    ],
+    "color_inner": [
+      0.8152098536250151,
+      0.8846608283638381,
+      0.9955228288670689
+    ],
+    "color_void": [
+      0.054598839772885925,
+      0.006031220902793781,
+      0.0
+    ],
+    "radius": 0.4192,
+    "swirl": 7.9727,
+    "spin_speed": -1.4706,
+    "depth_pulse": 0.0108,
+    "arms": 6,
+    "arm_strength": 1.1135,
+    "opacity": 0.9702
+  },
+  "preview": {
+    "size": [
+      160,
+      160
+    ],
+    "frames": 4,
+    "duration_s": 1.8,
+    "background": [
+      0.035,
+      0.035,
+      0.055,
+      1.0
+    ]
+  },
+  "created": "2026-05-06T10:15:19.455306+00:00",
+  "review": {
+    "score": 99.99,
+    "grade": "keep",
+    "components": {
+      "coverage": 1.0,
+      "motion": 1.0,
+      "center": 1.0,
+      "color": 1.0,
+      "edge": 1.0,
+      "contrast": 1.0
+    },
+    "metrics": {
+      "coverage": 0.16844,
+      "mean_alpha": 0.15023,
+      "luma_mean": 0.553,
+      "contrast": 0.15843,
+      "colorfulness": 0.2576,
+      "edge_energy": 0.0204,
+      "center_distance": 0.0,
+      "clip_high": 0.01785,
+      "clip_low": 1e-05,
+      "aspect": 1.0,
+      "motion": 0.00992,
+      "flicker": 0.0,
+      "frames": 4.0
+    },
+    "hints": [
+      "motion low: increase speed/pulse/spin/scroll parameters"
+    ],
+    "render_source": "cpu_proxy"
+  }
+}

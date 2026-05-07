@@ -1,0 +1,172 @@
+{
+  "weapons": {
+    "adjective": [
+      "iron",
+      "steel",
+      "rusted",
+      "ember",
+      "frost",
+      "moonsilver",
+      "obsidian",
+      "bronze",
+      "thornwood",
+      "stormcast"
+    ],
+    "weapon": [
+      "sword",
+      "dagger",
+      "spear",
+      "axe",
+      "mace",
+      "bow",
+      "staff",
+      "warhammer",
+      "scimitar",
+      "halberd"
+    ]
+  },
+  "armor": {
+    "adjective": [
+      "leather",
+      "chain",
+      "plate",
+      "scale",
+      "padded",
+      "studded"
+    ],
+    "armor": [
+      "helm",
+      "cuirass",
+      "greaves",
+      "gauntlets",
+      "shield",
+      "boots"
+    ]
+  },
+  "consumables": {
+    "kind": [
+      "potion",
+      "elixir",
+      "draught",
+      "tonic",
+      "philtre"
+    ],
+    "effect": [
+      "healing",
+      "mana",
+      "fire-resist",
+      "speed",
+      "stoneflesh"
+    ]
+  },
+  "abilities": {
+    "verb": [
+      "bolt",
+      "burst",
+      "lance",
+      "ward",
+      "pulse",
+      "veil",
+      "mend",
+      "shatter",
+      "summon",
+      "rebuke"
+    ],
+    "element": [
+      "frost",
+      "fire",
+      "arc",
+      "shadow",
+      "verdant",
+      "radiant",
+      "void",
+      "stone"
+    ]
+  },
+  "factions": {
+    "name": [
+      "Order",
+      "Concord",
+      "Hand",
+      "Circle",
+      "Pact",
+      "Guild",
+      "Conclave"
+    ],
+    "epithet": [
+      "Ashen",
+      "Verdant",
+      "Iron",
+      "Silent",
+      "Wandering",
+      "Riven",
+      "Sunken",
+      "Hollow"
+    ]
+  },
+  "npc_first": [
+    "Mara",
+    "Erdan",
+    "Thorne",
+    "Ysolde",
+    "Brann",
+    "Kira",
+    "Sef",
+    "Vellan",
+    "Lira",
+    "Orwin",
+    "Caedis",
+    "Pell",
+    "Nessa",
+    "Hakon",
+    "Junie"
+  ],
+  "npc_last": [
+    "Vex",
+    "Halloran",
+    "of-the-Pines",
+    "Stormrest",
+    "Ash",
+    "Brightwater",
+    "the-Grim",
+    "Marchant",
+    "Hollow",
+    "Thrice-Born"
+  ],
+  "biomes": [
+    "forest",
+    "highland",
+    "fen",
+    "tundra",
+    "desert",
+    "coast",
+    "ruin",
+    "cavern",
+    "marsh",
+    "alpine"
+  ],
+  "lore_categories": [
+    "place",
+    "person",
+    "concept",
+    "artifact",
+    "event",
+    "deity"
+  ],
+  "lore_places": [
+    "Fenmoor",
+    "Aldwyck",
+    "Saltreach",
+    "Greyspine",
+    "Hollowfen",
+    "the Riven Coast",
+    "the Pale Reach"
+  ],
+  "lore_concepts": [
+    "the Sundering",
+    "the Long Hush",
+    "the Verdant Pact",
+    "the Ash Compact",
+    "the Tidewatch"
+  ]
+}

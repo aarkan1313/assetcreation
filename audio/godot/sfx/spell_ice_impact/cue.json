@@ -1,0 +1,59 @@
+{
+  "id": "spell_ice_impact",
+  "category": "sfx",
+  "variants": [
+    "audio/sfx/spell_ice_impact/spell_ice_impact_v0.wav",
+    "audio/sfx/spell_ice_impact/spell_ice_impact_v1.wav",
+    "audio/sfx/spell_ice_impact/spell_ice_impact_v2.wav"
+  ],
+  "preset": "spell_ice_impact",
+  "target_rms_db": -16.0,
+  "tags": [
+    "spell",
+    "ice",
+    "impact"
+  ],
+  "notes": "",
+  "backend": "synth_sfx_extended",
+  "processing": [
+    {
+      "variant": 0,
+      "duration_s": 0.42,
+      "rms_dbfs_in": -17.55621455095037,
+      "rms_dbfs_out": -17.224838703641904,
+      "peak_dbfs_out": -1.0000003576278687,
+      "trim_ms": 0,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 13
+      }
+    },
+    {
+      "variant": 1,
+      "duration_s": 0.42,
+      "rms_dbfs_in": -17.507032694894434,
+      "rms_dbfs_out": -16.768406891146892,
+      "peak_dbfs_out": -1.0000003576278687,
+      "trim_ms": 0,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 19
+      }
+    },
+    {
+      "variant": 2,
+      "duration_s": 0.42,
+      "rms_dbfs_in": -17.530332309064327,
+      "rms_dbfs_out": -17.814418040418776,
+      "peak_dbfs_out": -1.0000008344650269,
+      "trim_ms": 0,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 10
+      }
+    }
+  ]
+}

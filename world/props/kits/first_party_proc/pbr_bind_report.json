@@ -1,0 +1,18 @@
+{
+  "schema": "pbr_material_bind_report.v1",
+  "generated_at": "2026-05-07T02:08:08+00:00",
+  "dry_run": false,
+  "rows": [
+    {
+      "id": "obelisk_egyptian_a04",
+      "ok": true,
+      "slots": 1,
+      "textures": [
+        "biome_grassland"
+      ],
+      "dry_run": false
+    }
+  ],
+  "ok": 1,
+  "total": 1
+}

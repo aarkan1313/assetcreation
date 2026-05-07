@@ -1,0 +1,41 @@
+{
+  "schema": "prop_recipe.v1",
+  "family": "fern_clump",
+  "kit": "mossy_highland_ruins",
+  "generator": "blender_foliage_cards_v1",
+  "count": 6,
+  "source_lanes": ["blender_procedural", "texture_cards"],
+  "style": {
+    "prompt": "shade-loving fern clumps, wet highland ruin floor",
+    "silhouette": "radial card cluster, medium leaves, readable crown",
+    "avoid": ["tree saplings", "tropical palm leaves", "flat single card"]
+  },
+  "budgets": {
+    "lod0_tris_max": 900,
+    "lod1_tris_max": 360,
+    "lod2_tris_max": 96
+  },
+  "scale_m": {
+    "x": [0.55, 1.25],
+    "y": [0.35, 0.85],
+    "z": [0.55, 1.25]
+  },
+  "materials": [
+    {"slot": "fern_leaf", "color": "#3d7540", "roughness": 0.88},
+    {"slot": "dark_leaf_back", "color": "#24452d", "roughness": 0.90}
+  ],
+  "placement": {
+    "render_class": "scatter_multimesh",
+    "collision": "none",
+    "origin": "bottom_center",
+    "footprint_radius_m": [0.35, 0.85],
+    "placement_tags": ["foliage", "shade", "wet", "wind_sway"]
+  },
+  "outputs": {
+    "lods": true,
+    "thumbnail": true,
+    "billboard": true,
+    "godot_scene": true
+  }
+}
+

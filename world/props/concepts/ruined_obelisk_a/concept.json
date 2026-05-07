@@ -1,0 +1,12 @@
+{
+  "schema": "prop_concept.v1",
+  "id": "ruined_obelisk_a",
+  "prompt": "weathered tapered four-sided stone obelisk with carved relief bands, chipped tip, mossy vertical crack, three-quarter view",
+  "backend": "procedural_placeholder",
+  "model": "concept_placeholder.py:draw_obelisk_placeholder",
+  "size_px": 1024,
+  "image": "source.png",
+  "image_sha256_16": "6f3733f0116b3956",
+  "generated_at_utc": "2026-05-06T22:43:28.576070+00:00",
+  "_warning": "Procedural placeholder \u2014 geometry-quality lower bound. Replace with concept_gen.py output or hand-authored PNG before scoring AI-route quality."
+}

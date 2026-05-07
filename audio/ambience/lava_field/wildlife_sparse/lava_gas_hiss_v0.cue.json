@@ -1,0 +1,20 @@
+{
+  "biome": "lava_field",
+  "stem": "wildlife_sparse/lava_gas_hiss_v0",
+  "backend_requested": "local_audio_open",
+  "backend_actual": "stable_audio_open",
+  "out_path": "D:\\assets\\audio\\ambience\\lava_field\\wildlife_sparse\\lava_gas_hiss_v0.wav",
+  "duration_s": 0.8285034013605442,
+  "samplerate": 44100,
+  "rms_dbfs": -36.50900650024414,
+  "peak_dbfs": -22.0,
+  "lufs_target": -22.0,
+  "seed": 1015,
+  "prompt": "short gas hiss release, dry",
+  "dry_run": false,
+  "loop": false,
+  "seam_rms": null,
+  "fitness": null,
+  "model": "large",
+  "steps": 50
+}

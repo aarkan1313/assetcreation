@@ -1,0 +1,91 @@
+{
+  "schema": "prop_asset.v1",
+  "id": "wooden_crate_demo",
+  "family": "wooden_crate",
+  "kit": "first_party_proc",
+  "source_method": "blender_procedural",
+  "source_recipe": "pipelines/props/blender_scripts/proc_props.py:wooden_crate",
+  "license": "project_generated",
+  "render_class": "scene_prop",
+  "collision": "simple",
+  "origin": "bottom_center",
+  "scale_m": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "footprint_radius_m": 0.7,
+  "lods": [
+    {
+      "file": "model_lod0.glb",
+      "max_distance_m": 25.0,
+      "triangles": 600,
+      "ratio_of_lod0": 1.0
+    },
+    {
+      "file": "model_lod1.glb",
+      "max_distance_m": 60.0,
+      "triangles": 300,
+      "ratio_of_lod0": 0.5
+    }
+  ],
+  "thumbnail": "thumbnail.png",
+  "placement_tags": [
+    "wood",
+    "ground",
+    "interactable"
+  ],
+  "material_slots": [
+    "wood"
+  ],
+  "qa": "qa.json",
+  "material_lod": {
+    "kit_atlas": "world/props/kits/first_party_proc/kit_atlas_lod_far.png",
+    "kit_atlas_manifest": "world/props/kits/first_party_proc/kit_atlas_manifest.json",
+    "slots": [
+      {
+        "material_index": 0,
+        "tile_xy": [
+          5,
+          3
+        ],
+        "uv_center": [
+          0.6875,
+          0.4375
+        ],
+        "rgb": [
+          0.45,
+          0.3,
+          0.18
+        ]
+      }
+    ]
+  },
+  "lod_ladder_ratios": [
+    1.0,
+    0.5
+  ],
+  "lod_render_class": "scene_prop",
+  "pbr_material_bindings": {
+    "schema": "prop_pbr_bindings.v1",
+    "bound_at": "2026-05-06T20:37:04+00:00",
+    "texture_library": "world/textures/library",
+    "slots": [
+      {
+        "material_index": 0,
+        "slot": "wood",
+        "texture_set": "forest_floor_oak_bark",
+        "maps": {
+          "albedo": "world/textures/library/forest_floor_oak_bark/forest_floor_oak_bark_albedo.png",
+          "normal": "world/textures/library/forest_floor_oak_bark/forest_floor_oak_bark_normal.png",
+          "roughness": "world/textures/library/forest_floor_oak_bark/forest_floor_oak_bark_roughness.png",
+          "metallic": "world/textures/library/forest_floor_oak_bark/forest_floor_oak_bark_metallic.png",
+          "ao": "world/textures/library/forest_floor_oak_bark/forest_floor_oak_bark_ao.png",
+          "height": "world/textures/library/forest_floor_oak_bark/forest_floor_oak_bark_height.png"
+        },
+        "tiling": 1.0,
+        "source": "existing_aaa_texture"
+      }
+    ]
+  }
+}

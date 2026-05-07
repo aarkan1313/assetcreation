@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemRecord" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://game_data/scripts/item_record.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "frost_spear_0"
+display_name = "Frost Spear"
+schema_version = "1.0.0"
+tags = ["arcane", "frost", "spear", "weapon"]
+localization_key = "ITEM_FROST_SPEAR_0"
+provenance = { "source": "synthetic", "model": null, "seed": 43, "prompt_id": null, "timestamp": "2026-05-06T18:46:36+00:00", "target_file_sha256": "da75a24b3a8b20b42063c45bf98edbc691e0807070ed813871afc1be1155c987", "constraint_technique": "synthetic_schema_bounds", "constraint_pass": "first_pass", "sim_digest": "388a49d66a821cdc", "parent_id": null }
+notes = ""
+category = "weapon"
+rarity = "common"
+damage_type = "arcane"
+stats = { "damage": 20, "armor": 0, "weight": 5.5, "durability": 129, "value_gold": 90 }
+icon_id = "ico_sword"
+description = "A frost spear. Forged for siege."
+stack_max = 1

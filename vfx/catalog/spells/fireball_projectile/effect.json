@@ -1,0 +1,36 @@
+{
+  "id": "fireball_projectile",
+  "kind": "spell",
+  "phenomenon": "fire",
+  "backend": "particle_cpu",
+  "duration_s": 0.8,
+  "fps": 24,
+  "bounds_px": [256, 256],
+  "visual": {
+    "palette": ["#fff7c2", "#ffae3b", "#c83a2a", "#3a0a06"],
+    "blend": "additive",
+    "background": "#00000000",
+    "bloom": false
+  },
+  "backend_params": {
+    "emitter": "burst",
+    "count": 120,
+    "seed": 7,
+    "initial_speed": 30.0,
+    "speed_jitter": 60.0,
+    "direction_deg": 90.0,
+    "spread_deg": 360.0,
+    "gravity": [0.0, -10.0],
+    "drag": 1.4,
+    "size_px": 9.0,
+    "size_jitter": 4.0,
+    "fade": 1.0,
+    "emission_pos": [128, 128]
+  },
+  "gameplay": {
+    "shape": "projectile",
+    "damage_tags": ["fire"],
+    "collision": "first_hit"
+  },
+  "notes": "Fireball burst: warm-to-dark palette, additive blend, omnidirectional spawn with strong drag for the puff-out feel."
+}

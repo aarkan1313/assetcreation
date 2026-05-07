@@ -1,0 +1,20 @@
+{
+  "biome": "underwater",
+  "stem": "bed_air",
+  "backend_requested": "local_audio_open",
+  "backend_actual": "stable_audio_open",
+  "out_path": "D:\\assets\\audio\\ambience\\underwater\\bed_air.wav",
+  "duration_s": 22.058956916099774,
+  "samplerate": 44100,
+  "rms_dbfs": -29.999998092651367,
+  "peak_dbfs": -4.7837910652160645,
+  "lufs_target": -30.0,
+  "seed": 10002,
+  "prompt": "submerged water flow with distant current rush, faint bubble stream, no music, no rhythm, 30 second seamless loop",
+  "dry_run": false,
+  "loop": true,
+  "seam_rms": 0.015803510323166847,
+  "fitness": 0.8671618356829408,
+  "model": "large",
+  "steps": 100
+}

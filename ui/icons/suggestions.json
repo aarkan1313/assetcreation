@@ -1,0 +1,278 @@
+{
+  "icons_manifest": "D:\\assets\\ui\\icons\\manifest.json",
+  "game_data_root": "D:\\assets\\game_data\\validated",
+  "kinds": [
+    "item",
+    "ability",
+    "npc"
+  ],
+  "top_k": 3,
+  "threshold": 0.0,
+  "total_records": 10,
+  "by_kind": {
+    "items": [
+      {
+        "record_id": "iron_mace_0",
+        "display_name": "Iron Mace",
+        "current_icon_id": "ico_sword",
+        "matches": [
+          {
+            "icon_id": "ico_mace",
+            "score": 0.5,
+            "reasons": [
+              "overlap=[mace]"
+            ],
+            "current_icon_id": "ico_sword"
+          },
+          {
+            "icon_id": "ico_gi_spiked_mace",
+            "score": 0.4472,
+            "reasons": [
+              "overlap=[mace,weapon]"
+            ],
+            "current_icon_id": "ico_sword"
+          },
+          {
+            "icon_id": "ico_gi_battered_axe",
+            "score": 0.25,
+            "reasons": [
+              "overlap=[weapon]"
+            ],
+            "current_icon_id": "ico_sword"
+          }
+        ]
+      },
+      {
+        "record_id": "frost_spear_0",
+        "display_name": "Frost Spear",
+        "current_icon_id": "ico_sword",
+        "matches": [
+          {
+            "icon_id": "ico_arcane_orb",
+            "score": 0.8536,
+            "reasons": [
+              "overlap=[arcane]",
+              "category-in-id+0.5"
+            ],
+            "current_icon_id": "ico_sword"
+          },
+          {
+            "icon_id": "ico_spear",
+            "score": 0.5,
+            "reasons": [
+              "overlap=[spear]"
+            ],
+            "current_icon_id": "ico_sword"
+          },
+          {
+            "icon_id": "ico_gi_thrown_spear",
+            "score": 0.4472,
+            "reasons": [
+              "overlap=[spear,weapon]"
+            ],
+            "current_icon_id": "ico_sword"
+          }
+        ]
+      },
+      {
+        "record_id": "uncommon_fire_blade_45",
+        "display_name": "Uncommon Training Blade",
+        "current_icon_id": "ico_sword",
+        "matches": [
+          {
+            "icon_id": "ico_gi_fire",
+            "score": 0.7041,
+            "reasons": [
+              "overlap=[fire]",
+              "category-in-id+0.5"
+            ],
+            "current_icon_id": "ico_sword"
+          },
+          {
+            "icon_id": "ico_flame_rune",
+            "score": 0.2041,
+            "reasons": [
+              "overlap=[fire]"
+            ],
+            "current_icon_id": "ico_sword"
+          },
+          {
+            "icon_id": "ico_gi_battered_axe",
+            "score": 0.2041,
+            "reasons": [
+              "overlap=[weapon]"
+            ],
+            "current_icon_id": "ico_sword"
+          }
+        ]
+      },
+      {
+        "record_id": "obsidian_sword_0",
+        "display_name": "Obsidian Sword",
+        "current_icon_id": "ico_sword",
+        "matches": [
+          {
+            "icon_id": "ico_sword",
+            "score": 0.5,
+            "reasons": [
+              "overlap=[sword]"
+            ],
+            "current_icon_id": "ico_sword"
+          },
+          {
+            "icon_id": "ico_gi_sword_wound",
+            "score": 0.4472,
+            "reasons": [
+              "overlap=[sword,weapon]"
+            ],
+            "current_icon_id": "ico_sword"
+          },
+          {
+            "icon_id": "ico_gi_winged_sword",
+            "score": 0.4472,
+            "reasons": [
+              "overlap=[sword,weapon]"
+            ],
+            "current_icon_id": "ico_sword"
+          }
+        ]
+      },
+      {
+        "record_id": "rare_cold_blade_1042",
+        "display_name": "Rare Training Blade",
+        "current_icon_id": "ico_sword",
+        "matches": [
+          {
+            "icon_id": "ico_gi_battered_axe",
+            "score": 0.2041,
+            "reasons": [
+              "overlap=[weapon]"
+            ],
+            "current_icon_id": "ico_sword"
+          },
+          {
+            "icon_id": "ico_gi_crossbow",
+            "score": 0.2041,
+            "reasons": [
+              "overlap=[weapon]"
+            ],
+            "current_icon_id": "ico_sword"
+          },
+          {
+            "icon_id": "ico_gi_broadhead_arrow",
+            "score": 0.1826,
+            "reasons": [
+              "overlap=[weapon]"
+            ],
+            "current_icon_id": "ico_sword"
+          }
+        ]
+      }
+    ],
+    "abilities": [
+      {
+        "record_id": "shadow_aura_t1_42",
+        "display_name": "Shadow Aura T1",
+        "current_icon_id": "ico_scroll",
+        "matches": [
+          {
+            "icon_id": "ico_shadow_bolt",
+            "score": 0.8162,
+            "reasons": [
+              "overlap=[shadow]",
+              "category-in-id+0.5"
+            ],
+            "current_icon_id": "ico_scroll"
+          },
+          {
+            "icon_id": "ico_gi_shadow_grasp",
+            "score": 0.7236,
+            "reasons": [
+              "overlap=[shadow]",
+              "category-in-id+0.5"
+            ],
+            "current_icon_id": "ico_scroll"
+          }
+        ]
+      },
+      {
+        "record_id": "arcane_self_t2_43",
+        "display_name": "Arcane Self T2",
+        "current_icon_id": "ico_gem_blue",
+        "matches": [
+          {
+            "icon_id": "ico_arcane_orb",
+            "score": 0.8162,
+            "reasons": [
+              "overlap=[arcane]",
+              "category-in-id+0.5"
+            ],
+            "current_icon_id": "ico_gem_blue"
+          },
+          {
+            "icon_id": "ico_gi_magic_swirl",
+            "score": 0.2,
+            "reasons": [
+              "overlap=[arcane]"
+            ],
+            "current_icon_id": "ico_gem_blue"
+          },
+          {
+            "icon_id": "ico_gi_rune_stone",
+            "score": 0.2,
+            "reasons": [
+              "overlap=[arcane]"
+            ],
+            "current_icon_id": "ico_gem_blue"
+          }
+        ]
+      },
+      {
+        "record_id": "nature_self_t3_44",
+        "display_name": "Nature Self T3",
+        "current_icon_id": "ico_potion_blue",
+        "matches": [
+          {
+            "icon_id": "ico_nature_thorn",
+            "score": 0.7887,
+            "reasons": [
+              "overlap=[nature]",
+              "category-in-id+0.5"
+            ],
+            "current_icon_id": "ico_potion_blue"
+          },
+          {
+            "icon_id": "ico_poison_drop",
+            "score": 0.2887,
+            "reasons": [
+              "overlap=[poison]"
+            ],
+            "current_icon_id": "ico_potion_blue"
+          },
+          {
+            "icon_id": "ico_gi_poison_bottle",
+            "score": 0.2041,
+            "reasons": [
+              "overlap=[poison]"
+            ],
+            "current_icon_id": "ico_potion_blue"
+          }
+        ]
+      }
+    ],
+    "npcs": [
+      {
+        "record_id": "caedis_halloran_0",
+        "display_name": "Caedis Halloran",
+        "current_icon_id": null,
+        "matches": []
+      },
+      {
+        "record_id": "mara_vex_1",
+        "display_name": "Mara Vex",
+        "current_icon_id": null,
+        "matches": []
+      }
+    ]
+  }
+}

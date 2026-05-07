@@ -1,0 +1,17 @@
+{
+  "schema": "local_tts_open.report.v1",
+  "engine": "f5",
+  "model_id": "SWivid/F5-TTS",
+  "text": "The old gate opens at dusk.",
+  "reference_audio": null,
+  "reference_text": null,
+  "voice": null,
+  "seed": 42,
+  "speed": 1.0,
+  "samplerate": 24000,
+  "samples": 57360,
+  "backend": "dry_run_placeholder_voice",
+  "dry_run": true,
+  "out_path": "audio\\voice\\phase9_f5_smoke.wav",
+  "timestamp": "2026-05-06T21:19:45+00:00"
+}

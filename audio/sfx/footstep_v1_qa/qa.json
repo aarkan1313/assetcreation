@@ -1,0 +1,12 @@
+{
+  "duration_s": 0.0509750566893424,
+  "samplerate": 44100,
+  "rms_dbfs": -16.000715551759544,
+  "peak_dbfs": -2.742858002058104,
+  "clipped_samples": 0,
+  "dc_offset": 0.017706114798784256,
+  "click_count_estimate": 0,
+  "source": "D:\\assets\\audio\\sfx\\footstep_v1.wav",
+  "waveform": "D:\\assets\\audio\\sfx\\footstep_v1_qa\\waveform.png",
+  "spectrogram": "D:\\assets\\audio\\sfx\\footstep_v1_qa\\spectrogram.png"
+}

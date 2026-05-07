@@ -1,0 +1,35 @@
+{
+  "schema": "depth_normal.plan.v1",
+  "backend": "comfy_depthanything_geowizard",
+  "models": [
+    "depth-anything/Depth-Anything-V2-Large-hf",
+    "fuxiao0719/GeoWizard"
+  ],
+  "input": "images\\archived\\witch.png",
+  "out_dir": "pipelines\\_meta\\reports\\phase9_depth_witch",
+  "workflow": "D:\\assets\\pipelines\\_meta\\comfy_workflows\\depthanything_v2_normal.json",
+  "output_nodes": [
+    "4",
+    "5"
+  ],
+  "required_custom_nodes": [
+    "ComfyUI-DepthAnythingV2",
+    "GeoWizard normal/depth node pack"
+  ],
+  "timestamp": "2026-05-06T21:20:03+00:00",
+  "comfy_runner_plan": {
+    "schema": "comfy_runner.result.v1",
+    "workflow_path": "D:\\assets\\pipelines\\_meta\\comfy_workflows\\depthanything_v2_normal.json",
+    "host": "http://127.0.0.1:8188",
+    "dry_run": true,
+    "node_count": 5,
+    "output_node_ids": [
+      "4",
+      "5"
+    ],
+    "prompt_id": null,
+    "missing_node_types": [],
+    "downloaded": [],
+    "elapsed_s": 0.0
+  }
+}

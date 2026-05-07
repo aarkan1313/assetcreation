@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="PackedScene" path="res://props/log_a01/model_lod0.glb" id="1"]
+[ext_resource type="Script" path="res://props/_shared/PropMaterialBinder.gd" id="2"]
+[ext_resource type="Material" path="res://props/_materials/forest_floor_oak_bark/forest_floor_oak_bark.tres" id="3"]
+
+[sub_resource type="ConvexPolygonShape3D" id="hull_0"]
+points = PackedVector3Array(-0.936328, 0.168835, -0.167971, 0.927702, 0.172603, -0.175147, -0.929935, 0.0952121, -0.148361, 0.925045, 0.0983866, -0.148013, -0.928808, 0.0432394, -0.111709, 0.931705, 0.0369259, -0.110261, -0.927999, 0.0073179, -0.043691, 0.926606, -0.0025859, -0.0345138, -0.926987, 0.0107746, 0.0333302, 0.935136, -0.000366237, 0.0397537, -0.935832, 0.0333823, 0.101467, 0.932327, 0.0323083, 0.0993658, -0.932283, 0.0972458, 0.151663, 0.93097, 0.100963, 0.147546, -0.930215, 0.16466, 0.174228, 0.929166, 0.165487, 0.175691, -0.925057, 0.244876, 0.157341, 0.932799, 0.241814, 0.154908, -0.921403, 0.296286, 0.112333, 0.924481, 0.306926, 0.107212, -0.934569, 0.343044, 0.0369153, 0.933564, 0.334868, 0.0313615, -0.923449, 0.341187, -0.0333123, 0.926788, 0.336072, -0.045306, -0.935032, 0.302312, -0.104702, 0.927049, 0.303546, -0.10638, -0.933555, 0.236801, -0.156553, 0.92362, 0.251614, -0.147286)
+
+[node name="log_a01" type="Node3D"]
+script = ExtResource("2")
+material_overrides = [ExtResource("3")]
+
+[node name="LOD0" parent="." instance=ExtResource("1")]
+visibility_range_end = 25.00
+visibility_range_end_margin = 3.00
+visibility_range_fade_mode = 1
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D_0" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("hull_0")
+

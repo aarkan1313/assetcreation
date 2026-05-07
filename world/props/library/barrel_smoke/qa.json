@@ -1,0 +1,10 @@
+{
+  "id": "barrel_smoke",
+  "kind": "barrel",
+  "seed": 1,
+  "target_tris": 1200,
+  "params": {},
+  "blender_version": "5.1",
+  "timestamp": "2026-05-06T18:30:50+00:00",
+  "ok": true
+}

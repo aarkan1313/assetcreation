@@ -1,0 +1,12 @@
+{
+  "duration_s": 0.07222222222222222,
+  "samplerate": 44100,
+  "rms_dbfs": -18.00091549182023,
+  "peak_dbfs": -2.5437766883765662,
+  "clipped_samples": 0,
+  "dc_offset": 3.8067923014750704e-05,
+  "click_count_estimate": 25,
+  "source": "D:\\assets\\audio\\sfx\\step_snow_v0.wav",
+  "waveform": "D:\\assets\\audio\\sfx\\step_snow_v0_qa\\waveform.png",
+  "spectrogram": "D:\\assets\\audio\\sfx\\step_snow_v0_qa\\spectrogram.png"
+}

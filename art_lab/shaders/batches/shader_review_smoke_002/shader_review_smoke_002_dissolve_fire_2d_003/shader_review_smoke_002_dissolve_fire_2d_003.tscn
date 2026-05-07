@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://shader_review_smoke_002_dissolve_fire_2d_003_preview"]
+
+[ext_resource type="Shader" path="res://shader_review_smoke_002_dissolve_fire_2d_003.gdshader" id="1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1"]
+shader = ExtResource("1")
+shader_parameter/color_burn = Color(0.8997635282314309, 1.0, 1.0, 1.0)
+shader_parameter/color_ash = Color(0.04463800303076179, 0.0439602275839468, 0.00976627837908113, 1.0)
+shader_parameter/color_ember = Color(0.2151672477993341, 0.27318737243042723, 0.8835431121574798, 1.0)
+shader_parameter/threshold = 0.5755
+shader_parameter/edge_width = 0.0444
+shader_parameter/noise_scale = 25.5874
+shader_parameter/scroll_speed = 1.7552
+shader_parameter/warp_strength = 0.2836
+shader_parameter/opacity = 0.7424
+
+[sub_resource type="GDScript" id="GDScript_1"]
+script/source = "extends Node
+func _ready():
+	get_window().size = Vector2i(160, 160)
+	get_window().borderless = true
+	await get_tree().create_timer(0.5).timeout
+	var img = get_viewport().get_texture().get_image()
+	img.save_png(\"user://preview.png\")
+	get_tree().quit()
+"
+
+[node name="Root" type="Node"]
+script = SubResource("GDScript_1")
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.0350, 0.0350, 0.0550, 1.0000)
+
+[node name="Quad" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+material = SubResource("ShaderMaterial_1")

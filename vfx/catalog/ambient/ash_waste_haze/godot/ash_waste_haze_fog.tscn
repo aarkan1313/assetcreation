@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="FogMaterial" path="res://vfx/ambient/ash_waste_haze/fog_material.tres" id="1_fog"]
+
+[node name="ash_waste_haze_fog" type="FogVolume"]
+size = Vector3(28.0, 5.0, 28.0)
+shape = 1
+material = ExtResource("1_fog")

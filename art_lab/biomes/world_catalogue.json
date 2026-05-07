@@ -1,0 +1,103 @@
+{
+  "_doc": "Curated combinations of (OpenTopo preset, fantasy style, biome mix) that are known to look great. Each entry is a one-line region_pipeline command. The catalogue is the 'starter kit' — a tested set of starting points so you don't have to guess. Add new entries as you discover them.",
+  "version": 1,
+  "regions": [
+    {
+      "id": "frostfang_fjord",
+      "tagline": "Towering ice spires above an arctic fjord. Dark water, glacial peaks.",
+      "preset": "norwegian_fjord",
+      "dataset": "AW3D30",
+      "bathymetry": true,
+      "style": "sharpened",
+      "strength": 1.3,
+      "biomes": "ice_cavern,ice_cavern,mana_crystal,grassland",
+      "command": "python pipelines\\terrain\\region_pipeline.py --preset norwegian_fjord --bathymetry --style sharpened --strength 1.3 --biomes ice_cavern,ice_cavern,mana_crystal,grassland --id frostfang_fjord --project C:\\Users\\josep\\test\\new-game-project --size 1024 --res 2048"
+    },
+    {
+      "id": "embercaldera",
+      "tagline": "Active-volcano caldera with ember plains, glassy black rock, lava fissures.",
+      "preset": "iceland_volcanic",
+      "dataset": "AW3D30",
+      "style": "exaggerated",
+      "strength": 1.6,
+      "biomes": "lava_field,lava_field,mana_crystal,grassland",
+      "command": "python pipelines\\terrain\\region_pipeline.py --preset iceland_volcanic --style exaggerated --strength 1.6 --biomes lava_field,lava_field,mana_crystal,grassland --id embercaldera --project C:\\Users\\josep\\test\\new-game-project --size 1024 --res 2048"
+    },
+    {
+      "id": "spire_garden",
+      "tagline": "Bryce Canyon's hoodoos turned into a forest of glowing crystal spires.",
+      "preset": "bryce_hoodoo",
+      "style": "spired",
+      "strength": 1.5,
+      "biomes": "mana_crystal,mana_crystal,grassland,grassland",
+      "command": "python pipelines\\terrain\\region_pipeline.py --preset bryce_hoodoo --style spired --strength 1.5 --biomes mana_crystal,mana_crystal,grassland,grassland --id spire_garden --project C:\\Users\\josep\\test\\new-game-project --size 1024 --res 2048"
+    },
+    {
+      "id": "stormhalls",
+      "tagline": "Glen Coe's moors and lochs with wind-carved ridges and lichen-stained cliffs.",
+      "preset": "scottish_highlands",
+      "dataset": "AW3D30",
+      "bathymetry": true,
+      "style": "mythic",
+      "strength": 1.0,
+      "biomes": "grassland,grassland,ice_cavern,mana_crystal",
+      "command": "python pipelines\\terrain\\region_pipeline.py --preset scottish_highlands --bathymetry --style mythic --strength 1.0 --biomes grassland,grassland,ice_cavern,mana_crystal --id stormhalls --project C:\\Users\\josep\\test\\new-game-project --size 1024 --res 2048"
+    },
+    {
+      "id": "obsidian_mesas",
+      "tagline": "Vermilion Cliffs' canyons re-imagined as terraced obsidian temples.",
+      "preset": "utah_canyon",
+      "style": "terraced",
+      "strength": 0.5,
+      "biomes": "lava_field,mana_crystal,grassland,grassland",
+      "command": "python pipelines\\terrain\\region_pipeline.py --preset utah_canyon --style terraced --strength 0.5 --biomes lava_field,mana_crystal,grassland,grassland --id obsidian_mesas --project C:\\Users\\josep\\test\\new-game-project --size 1024 --res 2048"
+    },
+    {
+      "id": "skyforest",
+      "tagline": "Patagonian spires lifted into the clouds — Avatar-style floating mountains.",
+      "preset": "patagonian_spires",
+      "dataset": "AW3D30",
+      "style": "floating",
+      "strength": 1.4,
+      "biomes": "mana_crystal,mana_crystal,grassland,ice_cavern",
+      "command": "python pipelines\\terrain\\region_pipeline.py --preset patagonian_spires --style floating --strength 1.4 --biomes mana_crystal,mana_crystal,grassland,ice_cavern --id skyforest --project C:\\Users\\josep\\test\\new-game-project --size 1024 --res 2048"
+    },
+    {
+      "id": "alpenheart",
+      "tagline": "Dolomite peaks made mythic — sharpened ridges, deep alpine valleys.",
+      "preset": "alps_dolomites",
+      "style": "mythic",
+      "strength": 1.2,
+      "biomes": "grassland,ice_cavern,mana_crystal,grassland",
+      "command": "python pipelines\\terrain\\region_pipeline.py --preset alps_dolomites --style mythic --strength 1.2 --biomes grassland,ice_cavern,mana_crystal,grassland --id alpenheart --project C:\\Users\\josep\\test\\new-game-project --size 1024 --res 2048"
+    },
+    {
+      "id": "endless_dunes",
+      "tagline": "Sahara dunes with mana wells in the deep depressions — desert temple country.",
+      "preset": "sahara_dunes",
+      "style": "exaggerated",
+      "strength": 1.4,
+      "biomes": "grassland,mana_crystal,lava_field,grassland",
+      "command": "python pipelines\\terrain\\region_pipeline.py --preset sahara_dunes --style exaggerated --strength 1.4 --biomes grassland,mana_crystal,lava_field,grassland --id endless_dunes --project C:\\Users\\josep\\test\\new-game-project --size 1024 --res 2048"
+    },
+    {
+      "id": "kami_alps",
+      "tagline": "Japanese Alps as mountain shrine country — tiered ridges + cherry valleys.",
+      "preset": "japanese_alps",
+      "style": "terraced",
+      "strength": 0.4,
+      "biomes": "grassland,grassland,ice_cavern,mana_crystal",
+      "command": "python pipelines\\terrain\\region_pipeline.py --preset japanese_alps --style terraced --strength 0.4 --biomes grassland,grassland,ice_cavern,mana_crystal --id kami_alps --project C:\\Users\\josep\\test\\new-game-project --size 1024 --res 2048"
+    },
+    {
+      "id": "the_titansteps",
+      "tagline": "Mt Cook turned into towering god-mountains — exaggerated verticals, hard ridges.",
+      "preset": "nz_glacier",
+      "dataset": "AW3D30",
+      "style": "mythic",
+      "strength": 1.6,
+      "biomes": "ice_cavern,ice_cavern,mana_crystal,grassland",
+      "command": "python pipelines\\terrain\\region_pipeline.py --preset nz_glacier --style mythic --strength 1.6 --biomes ice_cavern,ice_cavern,mana_crystal,grassland --id the_titansteps --project C:\\Users\\josep\\test\\new-game-project --size 1024 --res 2048"
+    }
+  ]
+}

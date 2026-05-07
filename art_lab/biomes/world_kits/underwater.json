@@ -1,0 +1,39 @@
+{
+  "id": "underwater",
+  "display_name": "Sunken Reach",
+  "category": "submerged",
+  "identity": {
+    "world_color": [40, 80, 130],
+    "regional_palette": [
+      [15, 35, 60],
+      [40, 80, 130],
+      [80, 130, 170],
+      [140, 180, 210]
+    ],
+    "icon_glyph": "wave",
+    "ambient_hex": "#06101c"
+  },
+  "terrain": {
+    "height_bias": "submerged",
+    "slope_tendency": "rolling",
+    "water_behaviour": "submerged",
+    "carve_features": ["seabed_ripples", "kelp_patches"],
+    "altitude_range": [0.0, 0.25],
+    "preferred_slope_range": [0.0, 0.40]
+  },
+  "transitions": {
+    "anchor_to": ["altitude_band"],
+    "blend_neighbours": {
+      "default": {"width_px": 30, "noise_strength": 0.35, "feature_priority": "altitude_band"},
+      "swamp": {"width_px": 22, "noise_strength": 0.30, "feature_priority": "rivers"},
+      "grassland": {"width_px": 26, "noise_strength": 0.35, "feature_priority": "altitude_band"},
+      "desert": {"width_px": 18, "noise_strength": 0.25, "feature_priority": "altitude_band"},
+      "ice_cavern": {"width_px": 18, "noise_strength": 0.25, "feature_priority": "altitude_band"}
+    },
+    "exclusion": ["lava_field", "charred_wasteland"]
+  },
+  "texture_kit": "underwater",
+  "decoration_kit": "underwater",
+  "world_map_priority": 2,
+  "regional_glyph_density": 0.10
+}

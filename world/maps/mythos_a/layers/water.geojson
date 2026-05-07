@@ -1,0 +1,1 @@
+{"type": "FeatureCollection", "features": [{"type": "Feature", "geometry": {"type": "Polygon", "coordinates": [[[0, 0], [512, 0], [512, 512], [0, 512], [0, 0]]]}, "properties": {"note": "see fog_mask.png for actual water mask"}}]}

@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="PackedScene" path="res://props/tombstone_a02/model_lod0.glb" id="1"]
+[ext_resource type="PackedScene" path="res://props/tombstone_a02/model_lod1.glb" id="2"]
+[ext_resource type="Script" path="res://props/_shared/PropMaterialBinder.gd" id="3"]
+[ext_resource type="Material" path="res://props/_materials/biome_lava_field/biome_lava_field.tres" id="4"]
+
+[sub_resource type="ConvexPolygonShape3D" id="hull_0"]
+points = PackedVector3Array(-0.0884596, 0.221477, 0.0239702, -0.0871207, 0.237461, 0.0413084, -0.102831, 0.242126, 0.0261858, -0.0899011, 0.224103, 0.0366228, -0.0961791, 0.229543, 0.0359506, -0.0987777, 0.242164, 0.0358725, -0.101029, 0.224769, 0.0261342, -0.0933443, 0.656225, 0.0430539, -0.102221, 0.657858, 0.028713, -0.0957528, 0.667986, 0.0362935, -0.0963701, 0.670005, 0.0232455, -0.10184, 0.240259, -0.0240716, -0.100205, 0.226191, -0.0373612, -0.101354, 0.234982, -0.0351144, -0.0870732, 0.227237, -0.0391283, -0.0880177, 0.669097, -0.0231128, -0.0882228, 0.652458, -0.0401097, -0.100656, 0.656541, -0.0289156, -0.086184, 0.665699, -0.0342873, -0.10008, 0.657658, -0.0331703, -0.0991132, 0.66615, -0.0242637, 0.107235, 0.235602, 0.0273623, 0.0916008, 0.240921, 0.0387324, 0.104173, 0.23134, 0.0232674, 0.0958894, 0.23299, 0.034448, 0.101885, 0.237716, 0.0344642, 0.0874448, 0.224324, 0.0326837, 0.0927572, 0.674198, 0.0223011, 0.0858674, 0.657445, 0.039684, 0.10381, 0.657009, 0.0213888, 0.0922622, 0.669862, 0.0392666, 0.10226, 0.65516, 0.0388532, 0.103034, 0.664831, 0.0243421, 0.0900909, 0.220217, -0.0222634, 0.089162, 0.239005, -0.0379543, 0.100332, 0.230316, -0.0352281, 0.103083, 0.224513, -0.027837, 0.0925088, 0.674358, -0.022855, 0.106123, 0.655649, -0.0238743, 0.0906632, 0.656134, -0.0399392, 0.102636, 0.665122, -0.0215735, 0.101762, 0.66395, -0.0351048, 0.0961852, 0.654422, -0.0379586)
+
+[node name="tombstone_a02" type="Node3D"]
+script = ExtResource("3")
+material_overrides = [ExtResource("4")]
+
+[node name="LOD0" parent="." instance=ExtResource("1")]
+visibility_range_end = 25.00
+visibility_range_end_margin = 3.00
+visibility_range_fade_mode = 1
+
+[node name="LOD1" parent="." instance=ExtResource("2")]
+visibility_range_begin = 25.00
+visibility_range_begin_margin = 3.00
+visibility_range_end = 60.00
+visibility_range_end_margin = 3.00
+visibility_range_fade_mode = 1
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D_0" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("hull_0")
+

@@ -1,0 +1,38 @@
+{
+  "effect_id": "ruins_haze",
+  "backend": "volumetric_fog",
+  "n_frames": 0,
+  "fps": 0,
+  "bounds_px": [
+    2048,
+    64
+  ],
+  "flipbook": "",
+  "frames_dir": "",
+  "extras": {
+    "density_volume": "D:\\assets\\vfx\\catalog\\ambient\\ruins_haze\\density.png",
+    "fog_shader": "D:\\assets\\vfx\\catalog\\ambient\\ruins_haze\\fog.gdshader",
+    "fog_material": "D:\\assets\\vfx\\catalog\\ambient\\ruins_haze\\fog_material.tres",
+    "volume_resolution": [
+      64,
+      64,
+      32
+    ],
+    "color_top": [
+      0.6588235294117647,
+      0.611764705882353,
+      0.5019607843137255
+    ],
+    "color_bottom": [
+      0.2,
+      0.16862745098039217,
+      0.12156862745098039
+    ]
+  },
+  "metrics": {
+    "voxels": 131072,
+    "density_max": 0.4000000059604645,
+    "density_mean": 0.1366712749004364
+  },
+  "timestamp": "2026-05-06T20:50:45+00:00"
+}

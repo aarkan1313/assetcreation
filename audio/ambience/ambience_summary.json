@@ -1,0 +1,149 @@
+{
+  "version": 2,
+  "schema_version": 1,
+  "generated_at": "2026-05-07T02:41:55+00:00",
+  "biomes": {
+    "lava_field": {
+      "reverb": {
+        "room_size": 0.6,
+        "damp": 0.4,
+        "wet": 0.15,
+        "predelay_ms": 30
+      },
+      "poisson_lambda_per_sec": {
+        "wildlife_sparse": 0.05,
+        "distant_event": 0.01
+      },
+      "stem_count": 14,
+      "all_dry_run": false
+    },
+    "ice_cavern": {
+      "reverb": {
+        "room_size": 0.95,
+        "damp": 0.1,
+        "wet": 0.45,
+        "predelay_ms": 80
+      },
+      "poisson_lambda_per_sec": {
+        "wildlife_sparse": 0.05,
+        "distant_event": 0.01
+      },
+      "stem_count": 12,
+      "all_dry_run": false
+    },
+    "mana_crystal": {
+      "reverb": {
+        "room_size": 0.75,
+        "damp": 0.2,
+        "wet": 0.3,
+        "predelay_ms": 50
+      },
+      "poisson_lambda_per_sec": {
+        "wildlife_sparse": 0.05,
+        "distant_event": 0.01
+      },
+      "stem_count": 12,
+      "all_dry_run": false
+    },
+    "grassland": {
+      "reverb": {
+        "room_size": 0.3,
+        "damp": 0.8,
+        "wet": 0.05,
+        "predelay_ms": 10
+      },
+      "poisson_lambda_per_sec": {
+        "wildlife_sparse": 0.05,
+        "distant_event": 0.01
+      },
+      "stem_count": 14,
+      "all_dry_run": false
+    },
+    "forest": {
+      "reverb": {
+        "room_size": 0.45,
+        "damp": 0.7,
+        "wet": 0.12,
+        "predelay_ms": 18
+      },
+      "poisson_lambda_per_sec": {
+        "wildlife_sparse": 0.08,
+        "distant_event": 0.012
+      },
+      "stem_count": 16,
+      "all_dry_run": false
+    },
+    "desert": {
+      "reverb": {
+        "room_size": 0.25,
+        "damp": 0.85,
+        "wet": 0.04,
+        "predelay_ms": 8
+      },
+      "poisson_lambda_per_sec": {
+        "wildlife_sparse": 0.025,
+        "distant_event": 0.008
+      },
+      "stem_count": 14,
+      "all_dry_run": false
+    },
+    "tundra": {
+      "reverb": {
+        "room_size": 0.35,
+        "damp": 0.75,
+        "wet": 0.07,
+        "predelay_ms": 12
+      },
+      "poisson_lambda_per_sec": {
+        "wildlife_sparse": 0.03,
+        "distant_event": 0.01
+      },
+      "stem_count": 14,
+      "all_dry_run": false
+    },
+    "swamp": {
+      "reverb": {
+        "room_size": 0.55,
+        "damp": 0.45,
+        "wet": 0.18,
+        "predelay_ms": 25
+      },
+      "poisson_lambda_per_sec": {
+        "wildlife_sparse": 0.1,
+        "distant_event": 0.012
+      },
+      "stem_count": 18,
+      "all_dry_run": false
+    },
+    "charred_wasteland": {
+      "reverb": {
+        "room_size": 0.4,
+        "damp": 0.8,
+        "wet": 0.1,
+        "predelay_ms": 20
+      },
+      "poisson_lambda_per_sec": {
+        "wildlife_sparse": 0.02,
+        "distant_event": 0.012
+      },
+      "stem_count": 14,
+      "all_dry_run": false
+    },
+    "underwater": {
+      "reverb": {
+        "room_size": 0.85,
+        "damp": 0.15,
+        "wet": 0.35,
+        "predelay_ms": 60
+      },
+      "poisson_lambda_per_sec": {
+        "wildlife_sparse": 0.06,
+        "distant_event": 0.008
+      },
+      "stem_count": 14,
+      "all_dry_run": false
+    }
+  },
+  "total_stems": 142,
+  "dry_run": false
+}

@@ -1,0 +1,5 @@
+{"kind": "abilities", "record_id": "arcane_self_t2_43", "lane": "cast_sfx_id", "current": "fireball_cast", "suggested": "spell_arcane_cast", "score": 1.0236, "reasons": ["overlap=[arcane]", "school-in-id+0.5", "lane-cast+0.3"]}
+{"kind": "abilities", "record_id": "arcane_self_t2_43", "lane": "impact_sfx_id", "current": null, "suggested": "spell_arcane_impact", "score": 1.0236, "reasons": ["overlap=[arcane]", "school-in-id+0.5", "lane-impact+0.3"]}
+{"kind": "items", "record_id": "frost_spear_0", "lane": "sfx_id", "current": null, "suggested": "spell_arcane_cast", "score": 0.75, "reasons": ["overlap=[arcane]", "damage_type-in-id+0.5"]}
+{"kind": "items", "record_id": "uncommon_fire_blade_45", "lane": "sfx_id", "current": null, "suggested": "spell_fire_cast", "score": 0.7041, "reasons": ["overlap=[fire]", "damage_type-in-id+0.5"]}
+{"kind": "items", "record_id": "obsidian_sword_0", "lane": "sfx_id", "current": null, "suggested": "sword_swing", "score": 0.2887, "reasons": ["overlap=[sword]"]}

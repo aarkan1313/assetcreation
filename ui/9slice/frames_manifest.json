@@ -1,0 +1,288 @@
+{
+  "frames": [
+    {
+      "id": "button_ashen_pact",
+      "base": "button",
+      "faction": "ashen_pact",
+      "palette_id": "ashen_pact",
+      "ornament_corner": "brackets",
+      "ornament_edge": "none",
+      "size_px": [
+        256,
+        80
+      ],
+      "margin": 18,
+      "path": "ui/9slice/button_ashen_pact.png"
+    },
+    {
+      "id": "button_ember_legion",
+      "base": "button",
+      "faction": "ember_legion",
+      "palette_id": "ember_legion",
+      "ornament_corner": "brackets",
+      "ornament_edge": "none",
+      "size_px": [
+        256,
+        80
+      ],
+      "margin": 18,
+      "path": "ui/9slice/button_ember_legion.png"
+    },
+    {
+      "id": "button_tide_bound",
+      "base": "button",
+      "faction": "tide_bound",
+      "palette_id": "tide_bound",
+      "ornament_corner": "brackets",
+      "ornament_edge": "none",
+      "size_px": [
+        256,
+        80
+      ],
+      "margin": 18,
+      "path": "ui/9slice/button_tide_bound.png"
+    },
+    {
+      "id": "button_verdant_court",
+      "base": "button",
+      "faction": "verdant_court",
+      "palette_id": "verdant_court",
+      "ornament_corner": "brackets",
+      "ornament_edge": "none",
+      "size_px": [
+        256,
+        80
+      ],
+      "margin": 18,
+      "path": "ui/9slice/button_verdant_court.png"
+    },
+    {
+      "id": "frame_ashen_pact",
+      "base": "frame",
+      "faction": "ashen_pact",
+      "palette_id": "ashen_pact",
+      "ornament_corner": "scrollwork",
+      "ornament_edge": "beads",
+      "size_px": [
+        192,
+        192
+      ],
+      "margin": 24,
+      "path": "ui/9slice/frame_ashen_pact.png"
+    },
+    {
+      "id": "frame_ember_legion",
+      "base": "frame",
+      "faction": "ember_legion",
+      "palette_id": "ember_legion",
+      "ornament_corner": "scrollwork",
+      "ornament_edge": "beads",
+      "size_px": [
+        192,
+        192
+      ],
+      "margin": 24,
+      "path": "ui/9slice/frame_ember_legion.png"
+    },
+    {
+      "id": "frame_tide_bound",
+      "base": "frame",
+      "faction": "tide_bound",
+      "palette_id": "tide_bound",
+      "ornament_corner": "scrollwork",
+      "ornament_edge": "beads",
+      "size_px": [
+        192,
+        192
+      ],
+      "margin": 24,
+      "path": "ui/9slice/frame_tide_bound.png"
+    },
+    {
+      "id": "frame_verdant_court",
+      "base": "frame",
+      "faction": "verdant_court",
+      "palette_id": "verdant_court",
+      "ornament_corner": "scrollwork",
+      "ornament_edge": "beads",
+      "size_px": [
+        192,
+        192
+      ],
+      "margin": 24,
+      "path": "ui/9slice/frame_verdant_court.png"
+    },
+    {
+      "id": "healthbar_ashen_pact",
+      "base": "healthbar",
+      "faction": "ashen_pact",
+      "palette_id": "ashen_pact",
+      "ornament_corner": "none",
+      "ornament_edge": "ridge",
+      "size_px": [
+        256,
+        32
+      ],
+      "margin": 8,
+      "path": "ui/9slice/healthbar_ashen_pact.png"
+    },
+    {
+      "id": "healthbar_ember_legion",
+      "base": "healthbar",
+      "faction": "ember_legion",
+      "palette_id": "ember_legion",
+      "ornament_corner": "none",
+      "ornament_edge": "ridge",
+      "size_px": [
+        256,
+        32
+      ],
+      "margin": 8,
+      "path": "ui/9slice/healthbar_ember_legion.png"
+    },
+    {
+      "id": "healthbar_tide_bound",
+      "base": "healthbar",
+      "faction": "tide_bound",
+      "palette_id": "tide_bound",
+      "ornament_corner": "none",
+      "ornament_edge": "ridge",
+      "size_px": [
+        256,
+        32
+      ],
+      "margin": 8,
+      "path": "ui/9slice/healthbar_tide_bound.png"
+    },
+    {
+      "id": "healthbar_verdant_court",
+      "base": "healthbar",
+      "faction": "verdant_court",
+      "palette_id": "verdant_court",
+      "ornament_corner": "none",
+      "ornament_edge": "ridge",
+      "size_px": [
+        256,
+        32
+      ],
+      "margin": 8,
+      "path": "ui/9slice/healthbar_verdant_court.png"
+    },
+    {
+      "id": "panel_ashen_pact",
+      "base": "panel",
+      "faction": "ashen_pact",
+      "palette_id": "ashen_pact",
+      "ornament_corner": "filigree",
+      "ornament_edge": "ridge",
+      "size_px": [
+        256,
+        256
+      ],
+      "margin": 24,
+      "path": "ui/9slice/panel_ashen_pact.png"
+    },
+    {
+      "id": "panel_ashen_pact_signature",
+      "base": "panel",
+      "faction": "ashen_pact",
+      "palette_id": "ashen_pact",
+      "ornament_corner": "chains",
+      "ornament_edge": "none",
+      "size_px": [
+        256,
+        256
+      ],
+      "margin": 24,
+      "path": "ui/9slice/panel_ashen_pact_signature.png",
+      "signature": true
+    },
+    {
+      "id": "panel_ember_legion",
+      "base": "panel",
+      "faction": "ember_legion",
+      "palette_id": "ember_legion",
+      "ornament_corner": "filigree",
+      "ornament_edge": "ridge",
+      "size_px": [
+        256,
+        256
+      ],
+      "margin": 24,
+      "path": "ui/9slice/panel_ember_legion.png"
+    },
+    {
+      "id": "panel_ember_legion_signature",
+      "base": "panel",
+      "faction": "ember_legion",
+      "palette_id": "ember_legion",
+      "ornament_corner": "fangs",
+      "ornament_edge": "ridge",
+      "size_px": [
+        256,
+        256
+      ],
+      "margin": 24,
+      "path": "ui/9slice/panel_ember_legion_signature.png",
+      "signature": true
+    },
+    {
+      "id": "panel_tide_bound",
+      "base": "panel",
+      "faction": "tide_bound",
+      "palette_id": "tide_bound",
+      "ornament_corner": "filigree",
+      "ornament_edge": "ridge",
+      "size_px": [
+        256,
+        256
+      ],
+      "margin": 24,
+      "path": "ui/9slice/panel_tide_bound.png"
+    },
+    {
+      "id": "panel_tide_bound_signature",
+      "base": "panel",
+      "faction": "tide_bound",
+      "palette_id": "tide_bound",
+      "ornament_corner": "runes",
+      "ornament_edge": "beads",
+      "size_px": [
+        256,
+        256
+      ],
+      "margin": 24,
+      "path": "ui/9slice/panel_tide_bound_signature.png",
+      "signature": true
+    },
+    {
+      "id": "panel_verdant_court",
+      "base": "panel",
+      "faction": "verdant_court",
+      "palette_id": "verdant_court",
+      "ornament_corner": "filigree",
+      "ornament_edge": "ridge",
+      "size_px": [
+        256,
+        256
+      ],
+      "margin": 24,
+      "path": "ui/9slice/panel_verdant_court.png"
+    },
+    {
+      "id": "panel_verdant_court_signature",
+      "base": "panel",
+      "faction": "verdant_court",
+      "palette_id": "verdant_court",
+      "ornament_corner": "vines",
+      "ornament_edge": "beads",
+      "size_px": [
+        256,
+        256
+      ],
+      "margin": 24,
+      "path": "ui/9slice/panel_verdant_court_signature.png",
+      "signature": true
+    }
+  ]
+}

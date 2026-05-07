@@ -1,0 +1,20 @@
+{
+  "biome": "tundra",
+  "stem": "distant_event/tundra_far_groan_v0",
+  "backend_requested": "local_audio_open",
+  "backend_actual": "stable_audio_open",
+  "out_path": "D:\\assets\\audio\\ambience\\tundra\\distant_event\\tundra_far_groan_v0.wav",
+  "duration_s": 5.1414512471655325,
+  "samplerate": 44100,
+  "rms_dbfs": -36.63793182373047,
+  "peak_dbfs": -19.999998092651367,
+  "lufs_target": -20.0,
+  "seed": 7031,
+  "prompt": "far ice sheet groan and crack, deep low, no music",
+  "dry_run": false,
+  "loop": false,
+  "seam_rms": null,
+  "fitness": null,
+  "model": "large",
+  "steps": 100
+}

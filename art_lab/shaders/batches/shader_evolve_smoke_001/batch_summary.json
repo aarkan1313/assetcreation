@@ -1,0 +1,1207 @@
+{
+  "batch": "shader_evolve_smoke_001",
+  "created": "2026-05-06T10:44:54.264774+00:00",
+  "intent": "evolve luminous portal shield effects toward reference",
+  "seed": 91,
+  "templates": [
+    "portal_swirl_2d",
+    "shield_ripple_2d"
+  ],
+  "references": [
+    "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png"
+  ],
+  "population": 6,
+  "generations": 2,
+  "elites": 3,
+  "reference_weight": 0.65,
+  "generation_summaries": [
+    {
+      "generation": 0,
+      "best": [
+        {
+          "id": "shader_evolve_smoke_001_g00_portal_swirl_2d_001",
+          "template": "portal_swirl_2d",
+          "score": 89.95,
+          "base_score": 79.6,
+          "reference_score": 95.52,
+          "grade": "keep"
+        },
+        {
+          "id": "shader_evolve_smoke_001_g00_shield_ripple_2d_004",
+          "template": "shield_ripple_2d",
+          "score": 41.4,
+          "base_score": 79.14,
+          "reference_score": 21.08,
+          "grade": "reject"
+        },
+        {
+          "id": "shader_evolve_smoke_001_g00_portal_swirl_2d_005",
+          "template": "portal_swirl_2d",
+          "score": 87.4,
+          "base_score": 74.97,
+          "reference_score": 94.1,
+          "grade": "review"
+        }
+      ]
+    },
+    {
+      "generation": 1,
+      "best": [
+        {
+          "id": "shader_evolve_smoke_001_g01_portal_swirl_2d_001",
+          "template": "portal_swirl_2d",
+          "score": 90.26,
+          "base_score": 79.79,
+          "reference_score": 95.89,
+          "grade": "keep"
+        },
+        {
+          "id": "shader_evolve_smoke_001_g01_shield_ripple_2d_005",
+          "template": "shield_ripple_2d",
+          "score": 42.19,
+          "base_score": 78.38,
+          "reference_score": 22.7,
+          "grade": "reject"
+        },
+        {
+          "id": "shader_evolve_smoke_001_g01_portal_swirl_2d_004",
+          "template": "portal_swirl_2d",
+          "score": 89.08,
+          "base_score": 78.56,
+          "reference_score": 94.74,
+          "grade": "keep"
+        }
+      ]
+    }
+  ],
+  "count": 12,
+  "rows": [
+    {
+      "id": "shader_evolve_smoke_001_g01_portal_swirl_2d_001",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "params": {
+        "color_outer": [
+          0.005471320503757912,
+          0.0,
+          0.06039307254313726
+        ],
+        "color_mid": [
+          0.0,
+          0.10577229592074697,
+          0.07190967886336994
+        ],
+        "color_inner": [
+          0.24404356376413716,
+          0.00967810146056751,
+          0.42181398916171653
+        ],
+        "color_void": [
+          0.033495391813405,
+          0.0,
+          0.02521360880462776
+        ],
+        "radius": 0.3003,
+        "swirl": 8.3594,
+        "spin_speed": 4.3989,
+        "depth_pulse": 0.932,
+        "arms": 5.8248,
+        "arm_strength": 0.926,
+        "opacity": 0.8876
+      },
+      "preview": {
+        "size": [
+          128,
+          128
+        ],
+        "frames": 3,
+        "duration_s": 1.8,
+        "background": [
+          0.035,
+          0.035,
+          0.055,
+          1.0
+        ]
+      },
+      "frames": [
+        "frames\\frame_000.png",
+        "frames\\frame_001.png",
+        "frames\\frame_002.png"
+      ],
+      "review": {
+        "score": 90.26,
+        "grade": "keep",
+        "components": {
+          "coverage": 0.987,
+          "motion": 1.0,
+          "center": 1.0,
+          "color": 0.558,
+          "edge": 0.989,
+          "contrast": 0.103
+        },
+        "gate_issues": [],
+        "gate_warnings": [
+          "weak contrast"
+        ],
+        "metrics": {
+          "coverage": 0.09326,
+          "mean_alpha": 0.07377,
+          "luma_mean": 0.04042,
+          "contrast": 0.02153,
+          "colorfulness": 0.12271,
+          "edge_energy": 0.00584,
+          "center_distance": 0.0,
+          "clip_high": 0.0,
+          "clip_low": 0.023,
+          "aspect": 1.0,
+          "motion": 0.01257,
+          "flicker": 0.0,
+          "frames": 3.0
+        },
+        "hints": [
+          "coverage low: increase radius/thickness/edge_width/opacity, or reduce dissolve threshold",
+          "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors",
+          "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width"
+        ],
+        "base_score": 79.79,
+        "reference_score": 95.89,
+        "reference_distance": 0.01909,
+        "nearest_reference": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+        "render_source": "cpu_proxy",
+        "selection_score": 90.26
+      },
+      "generation": 1
+    },
+    {
+      "id": "shader_evolve_smoke_001_g00_portal_swirl_2d_001",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "params": {
+        "color_outer": [
+          0.0,
+          0.0,
+          0.07940984806838902
+        ],
+        "color_mid": [
+          0.0,
+          0.07187344367382663,
+          0.10509248349930092
+        ],
+        "color_inner": [
+          0.23877864651694058,
+          0.034471303770630075,
+          0.4523210111326636
+        ],
+        "color_void": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "radius": 0.332,
+        "swirl": 8.3969,
+        "spin_speed": 3.3273,
+        "depth_pulse": 0.9927,
+        "arms": 6,
+        "arm_strength": 0.9271,
+        "opacity": 0.9002
+      },
+      "preview": {
+        "size": [
+          128,
+          128
+        ],
+        "frames": 3,
+        "duration_s": 1.8,
+        "background": [
+          0.035,
+          0.035,
+          0.055,
+          1.0
+        ]
+      },
+      "frames": [
+        "frames\\frame_000.png",
+        "frames\\frame_001.png",
+        "frames\\frame_002.png"
+      ],
+      "review": {
+        "score": 89.95,
+        "grade": "keep",
+        "components": {
+          "coverage": 1.0,
+          "motion": 0.983,
+          "center": 1.0,
+          "color": 0.542,
+          "edge": 0.988,
+          "contrast": 0.114
+        },
+        "gate_issues": [],
+        "gate_warnings": [
+          "weak contrast",
+          "motion below role target"
+        ],
+        "metrics": {
+          "coverage": 0.1106,
+          "mean_alpha": 0.09035,
+          "luma_mean": 0.03646,
+          "contrast": 0.02245,
+          "colorfulness": 0.1198,
+          "edge_energy": 0.00574,
+          "center_distance": 0.0,
+          "clip_high": 0.0,
+          "clip_low": 0.0265,
+          "aspect": 1.0,
+          "motion": 0.00554,
+          "flicker": 0.0,
+          "frames": 3.0
+        },
+        "hints": [
+          "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors",
+          "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width",
+          "motion low: increase speed/pulse/spin/scroll parameters"
+        ],
+        "base_score": 79.6,
+        "reference_score": 95.52,
+        "reference_distance": 0.02082,
+        "nearest_reference": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+        "render_source": "cpu_proxy",
+        "selection_score": 89.95
+      },
+      "generation": 0
+    },
+    {
+      "id": "shader_evolve_smoke_001_g01_portal_swirl_2d_004",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "params": {
+        "color_outer": [
+          0.02532584542069225,
+          0.002512828034631105,
+          0.050180473290221
+        ],
+        "color_mid": [
+          0.007285268313271594,
+          0.040704660601558806,
+          0.11469564361531881
+        ],
+        "color_inner": [
+          0.2576006200787792,
+          0.05737593043259882,
+          0.44795411477343505
+        ],
+        "color_void": [
+          0.008077713569018166,
+          0.012162589910199438,
+          0.0
+        ],
+        "radius": 0.3552,
+        "swirl": 7.5917,
+        "spin_speed": 3.0896,
+        "depth_pulse": 1.0,
+        "arms": 10,
+        "arm_strength": 0.8534,
+        "opacity": 0.8655
+      },
+      "preview": {
+        "size": [
+          128,
+          128
+        ],
+        "frames": 3,
+        "duration_s": 1.8,
+        "background": [
+          0.035,
+          0.035,
+          0.055,
+          1.0
+        ]
+      },
+      "frames": [
+        "frames\\frame_000.png",
+        "frames\\frame_001.png",
+        "frames\\frame_002.png"
+      ],
+      "review": {
+        "score": 89.08,
+        "grade": "keep",
+        "components": {
+          "coverage": 1.0,
+          "motion": 1.0,
+          "center": 1.0,
+          "color": 0.454,
+          "edge": 0.985,
+          "contrast": 0.12
+        },
+        "gate_issues": [],
+        "gate_warnings": [
+          "weak contrast"
+        ],
+        "metrics": {
+          "coverage": 0.12451,
+          "mean_alpha": 0.09845,
+          "luma_mean": 0.0323,
+          "contrast": 0.02296,
+          "colorfulness": 0.10441,
+          "edge_energy": 0.00515,
+          "center_distance": 0.0,
+          "clip_high": 0.0,
+          "clip_low": 0.00805,
+          "aspect": 1.0,
+          "motion": 0.01511,
+          "flicker": 0.0,
+          "frames": 3.0
+        },
+        "hints": [
+          "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors",
+          "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width"
+        ],
+        "base_score": 78.56,
+        "reference_score": 94.74,
+        "reference_distance": 0.02458,
+        "nearest_reference": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+        "render_source": "cpu_proxy",
+        "selection_score": 89.08
+      },
+      "generation": 1
+    },
+    {
+      "id": "shader_evolve_smoke_001_g01_portal_swirl_2d_006",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "params": {
+        "color_outer": [
+          0.01894345955256079,
+          0.0011707677458814847,
+          0.13822214686853448
+        ],
+        "color_mid": [
+          0.00639801725474632,
+          0.03462094035267944,
+          0.023114418188658066
+        ],
+        "color_inner": [
+          0.1971575723339833,
+          0.10476884650382992,
+          0.3581532425538975
+        ],
+        "color_void": [
+          0.0,
+          0.03928796438528382,
+          0.0015014530097481951
+        ],
+        "radius": 0.254,
+        "swirl": 9.398,
+        "spin_speed": 4.7293,
+        "depth_pulse": 0.1841,
+        "arms": 8,
+        "arm_strength": 1.036,
+        "opacity": 0.8907
+      },
+      "preview": {
+        "size": [
+          128,
+          128
+        ],
+        "frames": 3,
+        "duration_s": 1.8,
+        "background": [
+          0.035,
+          0.035,
+          0.055,
+          1.0
+        ]
+      },
+      "frames": [
+        "frames\\frame_000.png",
+        "frames\\frame_001.png",
+        "frames\\frame_002.png"
+      ],
+      "review": {
+        "score": 87.49,
+        "grade": "review",
+        "components": {
+          "coverage": 0.942,
+          "motion": 1.0,
+          "center": 1.0,
+          "color": 0.314,
+          "edge": 0.974,
+          "contrast": 0.168
+        },
+        "gate_issues": [],
+        "gate_warnings": [
+          "weak contrast"
+        ],
+        "metrics": {
+          "coverage": 0.07007,
+          "mean_alpha": 0.05453,
+          "luma_mean": 0.03161,
+          "contrast": 0.02718,
+          "colorfulness": 0.07997,
+          "edge_energy": 0.00299,
+          "center_distance": 0.0,
+          "clip_high": 0.0,
+          "clip_low": 0.00549,
+          "aspect": 1.0,
+          "motion": 0.01643,
+          "flicker": 0.0,
+          "frames": 3.0
+        },
+        "hints": [
+          "coverage low: increase radius/thickness/edge_width/opacity, or reduce dissolve threshold",
+          "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors",
+          "color weak: switch palette or push core/edge/glow colors farther apart",
+          "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width"
+        ],
+        "base_score": 75.8,
+        "reference_score": 93.79,
+        "reference_distance": 0.02914,
+        "nearest_reference": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+        "render_source": "cpu_proxy",
+        "selection_score": 87.49
+      },
+      "generation": 1
+    },
+    {
+      "id": "shader_evolve_smoke_001_g00_portal_swirl_2d_005",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "params": {
+        "color_outer": [
+          0.0,
+          0.0,
+          0.10322430688768805
+        ],
+        "color_mid": [
+          0.04380766959824353,
+          0.0,
+          0.06101163210045639
+        ],
+        "color_inner": [
+          0.18759120414342725,
+          0.11734468451038294,
+          0.35348736214414195
+        ],
+        "color_void": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "radius": 0.2631,
+        "swirl": 9.8798,
+        "spin_speed": 4.584,
+        "depth_pulse": 0.2475,
+        "arms": 4,
+        "arm_strength": 1.0469,
+        "opacity": 0.8469
+      },
+      "preview": {
+        "size": [
+          128,
+          128
+        ],
+        "frames": 3,
+        "duration_s": 1.8,
+        "background": [
+          0.035,
+          0.035,
+          0.055,
+          1.0
+        ]
+      },
+      "frames": [
+        "frames\\frame_000.png",
+        "frames\\frame_001.png",
+        "frames\\frame_002.png"
+      ],
+      "review": {
+        "score": 87.4,
+        "grade": "review",
+        "components": {
+          "coverage": 0.95,
+          "motion": 0.997,
+          "center": 1.0,
+          "color": 0.242,
+          "edge": 0.971,
+          "contrast": 0.186
+        },
+        "gate_issues": [],
+        "gate_warnings": [
+          "weak contrast"
+        ],
+        "metrics": {
+          "coverage": 0.07422,
+          "mean_alpha": 0.0553,
+          "luma_mean": 0.0239,
+          "contrast": 0.02873,
+          "colorfulness": 0.06734,
+          "edge_energy": 0.00252,
+          "center_distance": 0.0,
+          "clip_high": 0.0,
+          "clip_low": 0.01832,
+          "aspect": 1.0,
+          "motion": 0.00927,
+          "flicker": 0.0,
+          "frames": 3.0
+        },
+        "hints": [
+          "coverage low: increase radius/thickness/edge_width/opacity, or reduce dissolve threshold",
+          "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors",
+          "color weak: switch palette or push core/edge/glow colors farther apart",
+          "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width",
+          "motion low: increase speed/pulse/spin/scroll parameters"
+        ],
+        "base_score": 74.97,
+        "reference_score": 94.1,
+        "reference_distance": 0.02762,
+        "nearest_reference": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+        "render_source": "cpu_proxy",
+        "selection_score": 87.4
+      },
+      "generation": 0
+    },
+    {
+      "id": "shader_evolve_smoke_001_g01_portal_swirl_2d_003",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "params": {
+        "color_outer": [
+          0.037488193793586706,
+          0.0,
+          0.09184960955520827
+        ],
+        "color_mid": [
+          0.04703726686284972,
+          0.0,
+          0.04973529865744748
+        ],
+        "color_inner": [
+          0.22969308484326473,
+          0.1183191048581348,
+          0.3467018748231699
+        ],
+        "color_void": [
+          0.0,
+          0.009842823025941229,
+          0.0018496146510947192
+        ],
+        "radius": 0.2654,
+        "swirl": 9.7575,
+        "spin_speed": 3.9286,
+        "depth_pulse": 0.2446,
+        "arms": 4.1974,
+        "arm_strength": 1.0747,
+        "opacity": 0.9285
+      },
+      "preview": {
+        "size": [
+          128,
+          128
+        ],
+        "frames": 3,
+        "duration_s": 1.8,
+        "background": [
+          0.035,
+          0.035,
+          0.055,
+          1.0
+        ]
+      },
+      "frames": [
+        "frames\\frame_000.png",
+        "frames\\frame_001.png",
+        "frames\\frame_002.png"
+      ],
+      "review": {
+        "score": 87.11,
+        "grade": "review",
+        "components": {
+          "coverage": 0.951,
+          "motion": 0.987,
+          "center": 1.0,
+          "color": 0.219,
+          "edge": 0.973,
+          "contrast": 0.25
+        },
+        "gate_issues": [],
+        "gate_warnings": [
+          "weak contrast",
+          "motion below role target"
+        ],
+        "metrics": {
+          "coverage": 0.07471,
+          "mean_alpha": 0.06163,
+          "luma_mean": 0.03073,
+          "contrast": 0.03435,
+          "colorfulness": 0.06338,
+          "edge_energy": 0.00277,
+          "center_distance": 0.0,
+          "clip_high": 0.0,
+          "clip_low": 0.0168,
+          "aspect": 1.0,
+          "motion": 0.00645,
+          "flicker": 0.0,
+          "frames": 3.0
+        },
+        "hints": [
+          "coverage low: increase radius/thickness/edge_width/opacity, or reduce dissolve threshold",
+          "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors",
+          "color weak: switch palette or push core/edge/glow colors farther apart",
+          "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width",
+          "motion low: increase speed/pulse/spin/scroll parameters"
+        ],
+        "base_score": 75.37,
+        "reference_score": 93.43,
+        "reference_distance": 0.0309,
+        "nearest_reference": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+        "render_source": "cpu_proxy",
+        "selection_score": 87.11
+      },
+      "generation": 1
+    },
+    {
+      "id": "shader_evolve_smoke_001_g00_portal_swirl_2d_003",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "params": {
+        "color_outer": [
+          0.008321205596525477,
+          0.005949895616688017,
+          0.0
+        ],
+        "color_mid": [
+          0.026459155602297262,
+          0.0,
+          0.08554643014700183
+        ],
+        "color_inner": [
+          0.16531378808441463,
+          0.09158696272308883,
+          0.37648633333542547
+        ],
+        "color_void": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "radius": 0.3177,
+        "swirl": 9.7566,
+        "spin_speed": 5.4595,
+        "depth_pulse": 0.3448,
+        "arms": 10,
+        "arm_strength": 0.5581,
+        "opacity": 0.8947
+      },
+      "preview": {
+        "size": [
+          128,
+          128
+        ],
+        "frames": 3,
+        "duration_s": 1.8,
+        "background": [
+          0.035,
+          0.035,
+          0.055,
+          1.0
+        ]
+      },
+      "frames": [
+        "frames\\frame_000.png",
+        "frames\\frame_001.png",
+        "frames\\frame_002.png"
+      ],
+      "review": {
+        "score": 83.68,
+        "grade": "review",
+        "components": {
+          "coverage": 1.0,
+          "motion": 0.985,
+          "center": 1.0,
+          "color": 0.137,
+          "edge": 0.969,
+          "contrast": 0.023
+        },
+        "gate_issues": [],
+        "gate_warnings": [
+          "weak contrast",
+          "motion below role target"
+        ],
+        "metrics": {
+          "coverage": 0.10205,
+          "mean_alpha": 0.08258,
+          "luma_mean": 0.01537,
+          "contrast": 0.01448,
+          "colorfulness": 0.04903,
+          "edge_energy": 0.00199,
+          "center_distance": 0.0,
+          "clip_high": 0.0,
+          "clip_low": 0.02926,
+          "aspect": 1.0,
+          "motion": 0.00586,
+          "flicker": 0.0,
+          "frames": 3.0
+        },
+        "hints": [
+          "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors",
+          "color weak: switch palette or push core/edge/glow colors farther apart",
+          "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width",
+          "motion low: increase speed/pulse/spin/scroll parameters"
+        ],
+        "base_score": 71.65,
+        "reference_score": 90.16,
+        "reference_distance": 0.04707,
+        "nearest_reference": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+        "render_source": "cpu_proxy",
+        "selection_score": 83.68
+      },
+      "generation": 0
+    },
+    {
+      "id": "shader_evolve_smoke_001_g01_shield_ripple_2d_005",
+      "template": "shield_ripple_2d",
+      "role": "shield",
+      "params": {
+        "color_shield": [
+          0.12370177705141722,
+          0.10104450757250519,
+          0.4028180236179353
+        ],
+        "color_hit": [
+          0.8032078310091809,
+          0.2799342373294586,
+          0.9679789778732023
+        ],
+        "hex_scale": 2.9591,
+        "hex_strength": 0.1593,
+        "fresnel_power": 1.9747,
+        "ripple_speed": 5.0594,
+        "ripple_strength": 0.3556,
+        "ripple_freq": 30.5594,
+        "hit_position": [
+          0.5279,
+          0.3481
+        ],
+        "hit_age": 1.8478,
+        "opacity": 0.7887
+      },
+      "preview": {
+        "size": [
+          128,
+          128
+        ],
+        "frames": 3,
+        "duration_s": 1.8,
+        "background": [
+          0.035,
+          0.035,
+          0.055,
+          1.0
+        ]
+      },
+      "frames": [
+        "frames\\frame_000.png",
+        "frames\\frame_001.png",
+        "frames\\frame_002.png"
+      ],
+      "review": {
+        "score": 42.19,
+        "grade": "reject",
+        "components": {
+          "coverage": 0.68,
+          "motion": 1.0,
+          "center": 1.0,
+          "color": 0.848,
+          "edge": 0.968,
+          "contrast": 0.13
+        },
+        "gate_issues": [],
+        "gate_warnings": [
+          "weak contrast"
+        ],
+        "metrics": {
+          "coverage": 0.82621,
+          "mean_alpha": 0.25213,
+          "luma_mean": 0.03777,
+          "contrast": 0.02038,
+          "colorfulness": 0.13876,
+          "edge_energy": 0.00539,
+          "center_distance": 1e-05,
+          "clip_high": 0.0,
+          "clip_low": 0.0,
+          "aspect": 1.0,
+          "motion": 0.03134,
+          "flicker": 0.00551,
+          "frames": 3.0
+        },
+        "hints": [
+          "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold",
+          "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors",
+          "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width"
+        ],
+        "base_score": 78.38,
+        "reference_score": 22.7,
+        "reference_distance": 0.67405,
+        "nearest_reference": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+        "render_source": "cpu_proxy",
+        "selection_score": 42.19
+      },
+      "generation": 1
+    },
+    {
+      "id": "shader_evolve_smoke_001_g00_shield_ripple_2d_004",
+      "template": "shield_ripple_2d",
+      "role": "shield",
+      "params": {
+        "color_shield": [
+          0.14874346583151585,
+          0.07678805080280093,
+          0.4332045000935882
+        ],
+        "color_hit": [
+          0.7606183425256792,
+          0.3149430746093996,
+          1.0
+        ],
+        "hex_scale": 2.0,
+        "hex_strength": 0.1875,
+        "fresnel_power": 1.8036,
+        "ripple_speed": 4.9729,
+        "ripple_strength": 0.3106,
+        "ripple_freq": 33.2965,
+        "hit_position": [
+          0.5307,
+          0.3426
+        ],
+        "hit_age": 1.8715,
+        "opacity": 0.8041
+      },
+      "preview": {
+        "size": [
+          128,
+          128
+        ],
+        "frames": 3,
+        "duration_s": 1.8,
+        "background": [
+          0.035,
+          0.035,
+          0.055,
+          1.0
+        ]
+      },
+      "frames": [
+        "frames\\frame_000.png",
+        "frames\\frame_001.png",
+        "frames\\frame_002.png"
+      ],
+      "review": {
+        "score": 41.4,
+        "grade": "reject",
+        "components": {
+          "coverage": 0.663,
+          "motion": 1.0,
+          "center": 1.0,
+          "color": 0.951,
+          "edge": 0.966,
+          "contrast": 0.126
+        },
+        "gate_issues": [],
+        "gate_warnings": [
+          "weak contrast"
+        ],
+        "metrics": {
+          "coverage": 0.83557,
+          "mean_alpha": 0.26483,
+          "luma_mean": 0.03583,
+          "contrast": 0.02008,
+          "colorfulness": 0.1531,
+          "edge_energy": 0.0049,
+          "center_distance": 1e-05,
+          "clip_high": 0.0,
+          "clip_low": 0.0,
+          "aspect": 1.0,
+          "motion": 0.02961,
+          "flicker": 0.00413,
+          "frames": 3.0
+        },
+        "hints": [
+          "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold",
+          "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors",
+          "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width"
+        ],
+        "base_score": 79.14,
+        "reference_score": 21.08,
+        "reference_distance": 0.70757,
+        "nearest_reference": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+        "render_source": "cpu_proxy",
+        "selection_score": 41.4
+      },
+      "generation": 0
+    },
+    {
+      "id": "shader_evolve_smoke_001_g01_shield_ripple_2d_002",
+      "template": "shield_ripple_2d",
+      "role": "shield",
+      "params": {
+        "color_shield": [
+          0.16185616606348885,
+          0.10100663311595662,
+          0.39662541241007543
+        ],
+        "color_hit": [
+          0.7477990963182536,
+          0.2994870764598247,
+          1.0
+        ],
+        "hex_scale": 3.5442,
+        "hex_strength": 0.2493,
+        "fresnel_power": 1.909,
+        "ripple_speed": 5.0557,
+        "ripple_strength": 0.2919,
+        "ripple_freq": 34.1281,
+        "hit_position": [
+          0.5262,
+          0.3561
+        ],
+        "hit_age": 1.9848,
+        "opacity": 0.8099
+      },
+      "preview": {
+        "size": [
+          128,
+          128
+        ],
+        "frames": 3,
+        "duration_s": 1.8,
+        "background": [
+          0.035,
+          0.035,
+          0.055,
+          1.0
+        ]
+      },
+      "frames": [
+        "frames\\frame_000.png",
+        "frames\\frame_001.png",
+        "frames\\frame_002.png"
+      ],
+      "review": {
+        "score": 40.37,
+        "grade": "reject",
+        "components": {
+          "coverage": 0.679,
+          "motion": 1.0,
+          "center": 1.0,
+          "color": 0.764,
+          "edge": 0.981,
+          "contrast": 0.167
+        },
+        "gate_issues": [],
+        "gate_warnings": [
+          "weak contrast"
+        ],
+        "metrics": {
+          "coverage": 0.8267,
+          "mean_alpha": 0.26727,
+          "luma_mean": 0.04197,
+          "contrast": 0.02339,
+          "colorfulness": 0.12692,
+          "edge_energy": 0.00806,
+          "center_distance": 0.0,
+          "clip_high": 0.0,
+          "clip_low": 0.0,
+          "aspect": 1.0,
+          "motion": 0.02708,
+          "flicker": 0.0038,
+          "frames": 3.0
+        },
+        "hints": [
+          "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold",
+          "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors",
+          "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width"
+        ],
+        "base_score": 78.1,
+        "reference_score": 20.06,
+        "reference_distance": 0.73024,
+        "nearest_reference": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+        "render_source": "cpu_proxy",
+        "selection_score": 40.37
+      },
+      "generation": 1
+    },
+    {
+      "id": "shader_evolve_smoke_001_g00_shield_ripple_2d_006",
+      "template": "shield_ripple_2d",
+      "role": "shield",
+      "params": {
+        "color_shield": [
+          0.17050080283739044,
+          0.033884348427405404,
+          0.3727014559308419
+        ],
+        "color_hit": [
+          0.7753181714123831,
+          0.3477975132563857,
+          1.0
+        ],
+        "hex_scale": 45.4546,
+        "hex_strength": 0.7494,
+        "fresnel_power": 0.8572,
+        "ripple_speed": 2.1685,
+        "ripple_strength": 0.7472,
+        "ripple_freq": 32.4153,
+        "hit_position": [
+          0.4041,
+          0.4747
+        ],
+        "hit_age": 1.1371,
+        "opacity": 0.8103
+      },
+      "preview": {
+        "size": [
+          128,
+          128
+        ],
+        "frames": 3,
+        "duration_s": 1.8,
+        "background": [
+          0.035,
+          0.035,
+          0.055,
+          1.0
+        ]
+      },
+      "frames": [
+        "frames\\frame_000.png",
+        "frames\\frame_001.png",
+        "frames\\frame_002.png"
+      ],
+      "review": {
+        "score": 36.38,
+        "grade": "reject",
+        "components": {
+          "coverage": 0.63,
+          "motion": 1.0,
+          "center": 1.0,
+          "color": 1.0,
+          "edge": 1.0,
+          "contrast": 0.735
+        },
+        "gate_issues": [],
+        "gate_warnings": [],
+        "metrics": {
+          "coverage": 0.85335,
+          "mean_alpha": 0.47279,
+          "luma_mean": 0.08641,
+          "contrast": 0.06879,
+          "colorfulness": 0.22889,
+          "edge_energy": 0.03726,
+          "center_distance": 0.02383,
+          "clip_high": 0.0,
+          "clip_low": 0.0,
+          "aspect": 1.0,
+          "motion": 0.05626,
+          "flicker": 0.00068,
+          "frames": 3.0
+        },
+        "hints": [
+          "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold"
+        ],
+        "base_score": 88.06,
+        "reference_score": 8.56,
+        "reference_distance": 1.11714,
+        "nearest_reference": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+        "render_source": "cpu_proxy",
+        "selection_score": 36.38
+      },
+      "generation": 0
+    },
+    {
+      "id": "shader_evolve_smoke_001_g00_shield_ripple_2d_002",
+      "template": "shield_ripple_2d",
+      "role": "shield",
+      "params": {
+        "color_shield": [
+          0.18177870220809894,
+          0.0854970383168234,
+          0.45182771962768187
+        ],
+        "color_hit": [
+          0.680133448520917,
+          0.4365431151202345,
+          1.0
+        ],
+        "hex_scale": 13.1141,
+        "hex_strength": 0.7297,
+        "fresnel_power": 0.5,
+        "ripple_speed": 3.0929,
+        "ripple_strength": 0.8484,
+        "ripple_freq": 33.1238,
+        "hit_position": [
+          0.5904,
+          0.5072
+        ],
+        "hit_age": 2.5221,
+        "opacity": 0.9716
+      },
+      "preview": {
+        "size": [
+          128,
+          128
+        ],
+        "frames": 3,
+        "duration_s": 1.8,
+        "background": [
+          0.035,
+          0.035,
+          0.055,
+          1.0
+        ]
+      },
+      "frames": [
+        "frames\\frame_000.png",
+        "frames\\frame_001.png",
+        "frames\\frame_002.png"
+      ],
+      "review": {
+        "score": 34.61,
+        "grade": "reject",
+        "components": {
+          "coverage": 0.63,
+          "motion": 1.0,
+          "center": 1.0,
+          "color": 1.0,
+          "edge": 1.0,
+          "contrast": 0.68
+        },
+        "gate_issues": [],
+        "gate_warnings": [],
+        "metrics": {
+          "coverage": 0.85323,
+          "mean_alpha": 0.54074,
+          "luma_mean": 0.10982,
+          "contrast": 0.06442,
+          "colorfulness": 0.24354,
+          "edge_energy": 0.05053,
+          "center_distance": 0.0,
+          "clip_high": 0.00454,
+          "clip_low": 0.0,
+          "aspect": 1.0,
+          "motion": 0.10157,
+          "flicker": 0.00063,
+          "frames": 3.0
+        },
+        "hints": [
+          "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold"
+        ],
+        "base_score": 87.31,
+        "reference_score": 6.23,
+        "reference_distance": 1.26168,
+        "nearest_reference": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+        "render_source": "cpu_proxy",
+        "selection_score": 34.61
+      },
+      "generation": 0
+    }
+  ]
+}

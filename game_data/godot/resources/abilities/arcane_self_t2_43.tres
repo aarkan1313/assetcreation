@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="AbilityRecord" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://game_data/scripts/ability_record.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "arcane_self_t2_43"
+display_name = "Arcane Self T2"
+schema_version = "1.0.0"
+tags = ["arcane", "self"]
+localization_key = "ABILITY_ARCANE_SELF_T2_43"
+provenance = { "source": "synthetic", "model": null, "seed": 43, "prompt_id": null, "timestamp": "2026-05-06T18:46:42+00:00", "target_file_sha256": "da75a24b3a8b20b42063c45bf98edbc691e0807070ed813871afc1be1155c987", "constraint_technique": "synthetic_schema_bounds", "constraint_pass": "first_pass", "sim_digest": "1f3e00a7680d4985", "parent_id": null }
+notes = ""
+kind = "active"
+school = "arcane"
+tier = 2
+shape = "self"
+cost = { "mana": 12, "stamina": 0, "cooldown_sec": 1.0 }
+effect = { "damage": 27, "damage_type": "arcane", "healing": 0, "radius_m": 0.0, "duration_sec": 2.7, "status_tags": ["arcane_touched"] }
+icon_id = "ico_gem_blue"
+vfx_id = "arcane_shock_ring_legacy"
+sfx_id = "fireball_cast"
+description = "A tier 2 arcane ability tuned by the balance target."

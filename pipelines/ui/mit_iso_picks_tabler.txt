@@ -1,0 +1,26 @@
+# tabler curated UI-primitive picks (auto-generated)
+# license: MIT
+# Used by: freelib_ingest.py --source mit-iso-libs --library tabler --slugs-file <this>
+
+chevron-left
+chevron-right
+chevron-up
+chevron-down
+arrow-left
+arrow-right
+arrow-up
+arrow-down
+settings
+menu-2
+x
+plus
+minus
+search
+info-circle
+alert-triangle
+check
+circle
+filter
+list
+trash
+device-floppy

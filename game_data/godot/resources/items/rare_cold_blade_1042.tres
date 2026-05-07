@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemRecord" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://game_data/scripts/item_record.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "rare_cold_blade_1042"
+display_name = "Rare Training Blade"
+schema_version = "1.0.0"
+tags = ["cold", "rare", "weapon"]
+localization_key = "ITEM_RARE_COLD_BLADE_1042"
+provenance = { "source": "synthetic", "model": null, "seed": 1042, "prompt_id": null, "timestamp": "2026-05-06T18:46:36+00:00", "target_file_sha256": "da75a24b3a8b20b42063c45bf98edbc691e0807070ed813871afc1be1155c987", "constraint_technique": "synthetic_schema_bounds", "constraint_pass": "oversample", "sim_digest": "f42509eba05a699b", "parent_id": null }
+notes = ""
+category = "weapon"
+rarity = "rare"
+damage_type = "cold"
+stats = { "damage": 30, "armor": 0, "weight": 7.0, "durability": 233, "value_gold": 265 }
+icon_id = "ico_sword"
+description = "A rare cold weapon tuned by the balance target."
+stack_max = 1

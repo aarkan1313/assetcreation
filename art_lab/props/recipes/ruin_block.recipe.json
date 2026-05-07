@@ -1,0 +1,42 @@
+{
+  "schema": "prop_recipe.v1",
+  "family": "ruin_block",
+  "kit": "mossy_highland_ruins",
+  "generator": "blender_ruins_v1",
+  "count": 8,
+  "source_lanes": ["blender_procedural", "cc0_reference_optional"],
+  "style": {
+    "prompt": "ancient chipped basalt ruin blocks with moss and cracked edges",
+    "silhouette": "broken rectangular stone chunks, varied chips, clear block identity",
+    "avoid": ["clean new bricks", "ornate statue", "tiny gravel"]
+  },
+  "budgets": {
+    "lod0_tris_max": 1800,
+    "lod1_tris_max": 700,
+    "lod2_tris_max": 180
+  },
+  "scale_m": {
+    "x": [0.60, 1.80],
+    "y": [0.25, 1.10],
+    "z": [0.45, 1.40]
+  },
+  "materials": [
+    {"slot": "basalt_stone", "color": "#323734", "roughness": 0.84},
+    {"slot": "moss", "color": "#566f3f", "roughness": 0.95},
+    {"slot": "crack_shadow", "color": "#161a18", "roughness": 0.90}
+  ],
+  "placement": {
+    "render_class": "scatter_multimesh",
+    "collision": "simple",
+    "origin": "bottom_center",
+    "footprint_radius_m": [0.45, 1.15],
+    "placement_tags": ["ruin", "stone", "landmark_edge", "simple_collision"]
+  },
+  "outputs": {
+    "lods": true,
+    "thumbnail": true,
+    "billboard": true,
+    "godot_scene": true
+  }
+}
+

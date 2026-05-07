@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://shader_review_smoke_001_shield_ripple_2d_011_preview"]
+
+[ext_resource type="Shader" path="res://shader_review_smoke_001_shield_ripple_2d_011.gdshader" id="1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1"]
+shader = ExtResource("1")
+shader_parameter/color_shield = Color(0.8445563622343275, 0.9576663198640785, 1.0, 1.0)
+shader_parameter/color_hit = Color(0.19573641054095534, 0.34118129202251807, 0.8721938639553439, 1.0)
+shader_parameter/hex_scale = 18.679
+shader_parameter/hex_strength = 0.2573
+shader_parameter/fresnel_power = 4.3657
+shader_parameter/ripple_speed = 1.9486
+shader_parameter/ripple_strength = 0.5171
+shader_parameter/ripple_freq = 31.7789
+shader_parameter/hit_position = Vector2(0.3573, 0.5491)
+shader_parameter/hit_age = 1.8978
+shader_parameter/opacity = 0.737
+
+[sub_resource type="GDScript" id="GDScript_1"]
+script/source = "extends Node
+func _ready():
+	get_window().size = Vector2i(192, 192)
+	get_window().borderless = true
+	await get_tree().create_timer(0.5).timeout
+	var img = get_viewport().get_texture().get_image()
+	img.save_png(\"user://preview.png\")
+	get_tree().quit()
+"
+
+[node name="Root" type="Node"]
+script = SubResource("GDScript_1")
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.0350, 0.0350, 0.0550, 1.0000)
+
+[node name="Quad" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+material = SubResource("ShaderMaterial_1")

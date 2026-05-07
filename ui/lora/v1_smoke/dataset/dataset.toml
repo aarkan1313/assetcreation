@@ -1,0 +1,13 @@
+# Auto-written by pipelines/ui/lora_train.py — DO NOT hand-edit;
+# re-run lora_train.py with new args to regenerate.
+
+[general]
+resolution = 1024
+shuffle_caption = true
+caption_extension = ".txt"
+keep_tokens = 1
+
+[[datasets]]
+  [[datasets.subsets]]
+  image_dir = 'D:/assets/ui/lora/v1_smoke/dataset/img/repeats_10_tlteic0n'
+  num_repeats = 10

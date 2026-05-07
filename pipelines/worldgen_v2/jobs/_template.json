@@ -1,0 +1,27 @@
+{
+  "id": "_template",
+  "dem": {
+    "source": "opentopography",
+    "dataset": "COP30",
+    "bbox": [
+      0.0,
+      0.0,
+      0.1,
+      0.1
+    ]
+  },
+  "edit": {
+    "style": "realistic",
+    "strength": 1.0
+  },
+  "biomes": [
+    "desert",
+    "salt_flat",
+    "rocky_highland",
+    "sparse_pine"
+  ],
+  "quality": "good",
+  "cameras": [
+    "character"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "schema": "prop_sweep.v1",
+  "family": "mushroom_lantern",
+  "kit": "first_party_proc",
+  "count": 2,
+  "id_prefix": "mushroom_lantern_a",
+  "id_start_index": 1,
+  "base_seed": 200,
+  "render_class": "scatter_multimesh",
+  "collision": "none",
+  "params": {
+    "cap_color": {"type": "categorical",
+                   "values": ["amanita_red", "death_purple", "boletus_brown"],
+                   "weights": [0.5, 0.3, 0.2]},
+    "cap_squash": {"type": "float_range", "min": 0.45, "max": 0.75},
+    "emission_strength": {"type": "float_range", "min": 0.0, "max": 0.6}
+  },
+  "target_tris": 1500,
+  "lod_ladder": [1.00, 0.50, 0.20, 0.08]
+}

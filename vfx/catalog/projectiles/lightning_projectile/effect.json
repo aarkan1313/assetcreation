@@ -1,0 +1,74 @@
+{
+  "kind": "projectile",
+  "phenomenon": "lightning",
+  "backend": "particle_cpu",
+  "duration_s": 0.6,
+  "fps": 24,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "visual": {
+    "palette": [
+      "#fcfcff",
+      "#bce8ff",
+      "#7a4fdb",
+      "#1a0a3a"
+    ],
+    "blend": "additive",
+    "background": "#00000000",
+    "bloom": true
+  },
+  "visual3d": {
+    "billboard_mode": "y_axis",
+    "world_size_m": 1.5
+  },
+  "backend_params": {
+    "emitter": "burst",
+    "count": 110,
+    "seed": 62905,
+    "initial_speed": 40.0,
+    "speed_jitter": 88.0,
+    "direction_deg": 90.0,
+    "spread_deg": 360.0,
+    "gravity": [
+      0.0,
+      -8.0
+    ],
+    "drag": 1.4,
+    "size_px": 5.6,
+    "size_jitter": 3.5,
+    "fade": 1.0,
+    "emission_pos": [
+      128,
+      128
+    ],
+    "_audio_cues": [
+      {
+        "t": 0.0,
+        "name": "spawn"
+      },
+      {
+        "t": 0.35,
+        "name": "tail"
+      }
+    ]
+  },
+  "gameplay": {
+    "shape": "projectile",
+    "damage_tags": [
+      "shock"
+    ],
+    "collision": "first_hit"
+  },
+  "element": "lightning",
+  "archetype": "projectile",
+  "tags": [
+    "lightning",
+    "projectile",
+    "shock"
+  ],
+  "export_target": "3d_billboard",
+  "id": "lightning_projectile",
+  "notes": "Auto-authored lightning projectile from element-archetype grid."
+}

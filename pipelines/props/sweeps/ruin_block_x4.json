@@ -1,0 +1,22 @@
+{
+  "schema": "prop_sweep.v1",
+  "family": "ruin_block",
+  "kit": "first_party_proc",
+  "count": 4,
+  "id_prefix": "ruin_block_a",
+  "id_start_index": 1,
+  "base_seed": 400,
+  "render_class": "scatter_multimesh",
+  "collision": "none",
+  "params": {
+    "size_x": {"type": "float_range", "min": 0.45, "max": 0.85},
+    "size_y": {"type": "float_range", "min": 0.45, "max": 0.85},
+    "size_z": {"type": "float_range", "min": 0.30, "max": 0.55},
+    "chip_magnitude": {"type": "float_range", "min": 0.02, "max": 0.06},
+    "color_variant": {"type": "categorical",
+                      "values": ["granite_grey", "sandstone_warm", "weathered_grey"],
+                      "weights": [0.5, 0.3, 0.2]}
+  },
+  "target_tris": 1400,
+  "lod_ladder": [1.00, 0.50, 0.20, 0.08]
+}

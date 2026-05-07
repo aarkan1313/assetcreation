@@ -1,0 +1,66 @@
+{
+  "kind": "ambient",
+  "phenomenon": "field",
+  "backend": "smoke_field",
+  "duration_s": 1.6,
+  "fps": 18,
+  "bounds_px": [
+    192,
+    192
+  ],
+  "visual": {
+    "palette": [
+      "#fff7c2",
+      "#ffae3b",
+      "#c83a2a"
+    ],
+    "blend": "additive",
+    "background": "#00000000",
+    "bloom": true
+  },
+  "visual3d": {
+    "billboard_mode": "y_axis",
+    "world_size_m": 3.0
+  },
+  "backend_params": {
+    "grid_size": 64,
+    "seed": 14432,
+    "emit_pos": [
+      0.5,
+      0.85
+    ],
+    "emit_radius": 4.0,
+    "emit_density": 4.5,
+    "buoyancy": -7.0,
+    "dissipation": 0.5,
+    "viscosity": 0.45,
+    "_audio_cues": [
+      {
+        "t": 0.0,
+        "name": "loop_in"
+      },
+      {
+        "t": 1.2,
+        "name": "loop_out"
+      }
+    ]
+  },
+  "gameplay": {
+    "shape": "aura",
+    "damage_tags": [
+      "fire"
+    ],
+    "collision": "none"
+  },
+  "element": "fire",
+  "archetype": "aura",
+  "tags": [
+    "fire",
+    "aura",
+    "buff",
+    "fire"
+  ],
+  "export_target": "decal",
+  "id": "fire_aura",
+  "notes": "Auto-authored fire aura from element-archetype grid."
+}

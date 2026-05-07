@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BiomeAmbiencePreset" load_steps=5 format=3]
+
+[ext_resource type="AudioStream" path="res://audio/ambience/forest/bed_drone.wav" id="1_bed_drone"]
+[ext_resource type="AudioStream" path="res://audio/ambience/forest/bed_air.wav" id="2_bed_air"]
+[ext_resource type="AudioStream" path="res://audio/ambience/forest/wildlife/randomizer.tres" id="3_wildlife"]
+[ext_resource type="AudioStream" path="res://audio/ambience/forest/distant/randomizer.tres" id="4_distant"]
+
+[resource]
+biome_id = "forest"
+bed_drone = ExtResource("1_bed_drone")
+bed_air = ExtResource("2_bed_air")
+wildlife_randomizer = ExtResource("3_wildlife")
+distant_randomizer = ExtResource("4_distant")
+reverb_room_size = 0.45
+reverb_damp = 0.7
+reverb_wet = 0.12
+reverb_predelay_ms = 18.0
+wildlife_lambda = 0.08
+distant_lambda = 0.012

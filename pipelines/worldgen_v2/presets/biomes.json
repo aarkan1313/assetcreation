@@ -1,0 +1,65 @@
+{
+  "desert": {
+    "albedo_rgb": [
+      180,
+      152,
+      105
+    ],
+    "roughness": 0.92,
+    "flux_prompt": "sandy desert ground with fine wind ripples and small pebbles, warm tan color, top-down"
+  },
+  "salt_flat": {
+    "albedo_rgb": [
+      205,
+      198,
+      178
+    ],
+    "roughness": 0.85,
+    "flux_prompt": "cracked dry salt flat ground, white salt crystal polygons with hairline cracks, badwater basin, top-down"
+  },
+  "rocky_highland": {
+    "albedo_rgb": [
+      120,
+      110,
+      102
+    ],
+    "roughness": 0.95,
+    "flux_prompt": "dry rocky alluvial fan ground, weathered grey-brown stones embedded in coarse sand, top-down"
+  },
+  "sparse_pine": {
+    "albedo_rgb": [
+      110,
+      130,
+      95
+    ],
+    "roughness": 0.88,
+    "flux_prompt": "dry alpine forest floor with pine needles, cracked granite gravel, sparse moss, top-down"
+  },
+  "tundra": {
+    "albedo_rgb": [
+      200,
+      205,
+      210
+    ],
+    "roughness": 0.9,
+    "flux_prompt": "arctic tundra ground with lichen-covered rocks and patches of dry moss, top-down"
+  },
+  "swamp": {
+    "albedo_rgb": [
+      70,
+      85,
+      60
+    ],
+    "roughness": 0.85,
+    "flux_prompt": "mossy swamp ground with wet decaying leaves, dark organic mud, top-down"
+  },
+  "charred_wasteland": {
+    "albedo_rgb": [
+      50,
+      45,
+      42
+    ],
+    "roughness": 0.95,
+    "flux_prompt": "charred volcanic ground with cracked black ash and red ember veins, top-down"
+  }
+}

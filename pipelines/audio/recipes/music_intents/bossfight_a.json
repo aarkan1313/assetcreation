@@ -1,0 +1,52 @@
+{
+  "id": "bossfight_a",
+  "display_name": "Boss Fight \u2014 Track A",
+  "bpm": 140,
+  "bars": 16,
+  "loop": true,
+  "stems": [
+    {
+      "id": "drums",
+      "intensity_min": 0.0,
+      "intensity_max": 1.0
+    },
+    {
+      "id": "low_brass",
+      "intensity_min": 0.0,
+      "intensity_max": 1.0
+    },
+    {
+      "id": "choir",
+      "intensity_min": 0.3,
+      "intensity_max": 1.0
+    },
+    {
+      "id": "lead_strings",
+      "intensity_min": 0.5,
+      "intensity_max": 1.0
+    },
+    {
+      "id": "perc_taiko",
+      "intensity_min": 0.8,
+      "intensity_max": 1.0
+    }
+  ],
+  "states": {
+    "intro": {
+      "intensity": 0.5
+    },
+    "phase_1": {
+      "intensity": 0.7
+    },
+    "phase_2": {
+      "intensity": 0.9
+    },
+    "phase_3": {
+      "intensity": 1.0
+    },
+    "defeated": {
+      "intensity": 0.4,
+      "next_track": "victory_a"
+    }
+  }
+}

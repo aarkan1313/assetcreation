@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shader Batch Review</title>
+  <style>
+    :root { color-scheme: dark; font-family: Segoe UI, system-ui, sans-serif; background:#0b0d12; color:#e6edf7; }
+    body { margin:0; padding:24px; }
+    header { display:flex; align-items:end; justify-content:space-between; gap:20px; margin-bottom:18px; }
+    h1 { margin:0; font-size:24px; }
+    .sub { color:#94a3b8; font-size:13px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(330px, 1fr)); gap:14px; }
+    .card { background:#111722; border:1px solid #263246; border-radius:8px; overflow:hidden; }
+    .card.keep { border-color:#63e6be; }
+    .card.review { border-color:#ffd166; }
+    .card.maybe { border-color:#748ffc; }
+    .card.reject { opacity:.72; }
+    .thumb { background:#05070a; min-height:180px; display:flex; align-items:center; justify-content:center; }
+    img { max-width:100%; display:block; image-rendering:auto; }
+    .body { padding:12px; }
+    h2 { margin:0 0 8px; font-size:16px; }
+    .meta { display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
+    .meta span, .meta strong { background:#1c2635; border-radius:999px; padding:3px 8px; font-size:12px; }
+    .meta strong { color:#111722; background:#e6edf7; }
+    .metrics { color:#b6c2d2; font-size:12px; margin-top:8px; line-height:1.5; }
+    .gates { color:#ffd166; font-size:12px; margin-top:8px; }
+    .gates strong { text-transform:uppercase; letter-spacing:.08em; font-size:10px; }
+    .gates ul { margin-top:4px; }
+    ul { color:#cbd5e1; font-size:12px; padding-left:18px; }
+    details { margin-top:8px; }
+    summary { cursor:pointer; color:#9ab7ff; }
+    pre { overflow:auto; white-space:pre-wrap; font-size:11px; color:#d8dee9; background:#080b10; padding:8px; border-radius:6px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Shader Batch Review</h1>
+      <div class="sub">Sorted by non-OCR review score. Keep/review candidates are the ones to inspect visually.</div>
+    </div>
+    <div class="sub">shader_evolve_smoke_001 | 12 candidates</div>
+  </header>
+  <section class="grid">
+    
+        <article class="card keep">
+          <div class="thumb"><img src="shader_evolve_smoke_001_g01_portal_swirl_2d_001/flipbook.png" loading="lazy" alt="shader_evolve_smoke_001_g01_portal_swirl_2d_001"></div>
+          <div class="body">
+            <h2>shader_evolve_smoke_001_g01_portal_swirl_2d_001</h2>
+            <div class="meta">
+              <span>portal_swirl_2d</span>
+              <span>portal</span>
+              <strong>90.26</strong>
+              <span>keep</span>
+            </div>
+            <div class="metrics">
+              cov 0.093 | motion 0.013 | contrast 0.022 |
+              color 0.123 | edge 0.006 | center 0.000
+            </div>
+            <div class="gates"><strong>gates</strong><ul><li>weak contrast</li></ul></div>
+            <ul><li>coverage low: increase radius/thickness/edge_width/opacity, or reduce dissolve threshold</li><li>contrast low: widen color separation, add hotter core/edge, or reduce background-like colors</li><li>too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_outer&quot;: [
+    0.005471320503757912,
+    0.0,
+    0.06039307254313726
+  ],
+  &quot;color_mid&quot;: [
+    0.0,
+    0.10577229592074697,
+    0.07190967886336994
+  ],
+  &quot;color_inner&quot;: [
+    0.24404356376413716,
+    0.00967810146056751,
+    0.42181398916171653
+  ],
+  &quot;color_void&quot;: [
+    0.033495391813405,
+    0.0,
+    0.02521360880462776
+  ],
+  &quot;radius&quot;: 0.3003,
+  &quot;swirl&quot;: 8.3594,
+  &quot;spin_speed&quot;: 4.3989,
+  &quot;depth_pulse&quot;: 0.932,
+  &quot;arms&quot;: 5.8248,
+  &quot;arm_strength&quot;: 0.926,
+  &quot;opacity&quot;: 0.8876
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card keep">
+          <div class="thumb"><img src="shader_evolve_smoke_001_g00_portal_swirl_2d_001/flipbook.png" loading="lazy" alt="shader_evolve_smoke_001_g00_portal_swirl_2d_001"></div>
+          <div class="body">
+            <h2>shader_evolve_smoke_001_g00_portal_swirl_2d_001</h2>
+            <div class="meta">
+              <span>portal_swirl_2d</span>
+              <span>portal</span>
+              <strong>89.95</strong>
+              <span>keep</span>
+            </div>
+            <div class="metrics">
+              cov 0.111 | motion 0.006 | contrast 0.022 |
+              color 0.120 | edge 0.006 | center 0.000
+            </div>
+            <div class="gates"><strong>gates</strong><ul><li>weak contrast</li><li>motion below role target</li></ul></div>
+            <ul><li>contrast low: widen color separation, add hotter core/edge, or reduce background-like colors</li><li>too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width</li><li>motion low: increase speed/pulse/spin/scroll parameters</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_outer&quot;: [
+    0.0,
+    0.0,
+    0.07940984806838902
+  ],
+  &quot;color_mid&quot;: [
+    0.0,
+    0.07187344367382663,
+    0.10509248349930092
+  ],
+  &quot;color_inner&quot;: [
+    0.23877864651694058,
+    0.034471303770630075,
+    0.4523210111326636
+  ],
+  &quot;color_void&quot;: [
+    0.0,
+    0.0,
+    0.0
+  ],
+  &quot;radius&quot;: 0.332,
+  &quot;swirl&quot;: 8.3969,
+  &quot;spin_speed&quot;: 3.3273,
+  &quot;depth_pulse&quot;: 0.9927,
+  &quot;arms&quot;: 6,
+  &quot;arm_strength&quot;: 0.9271,
+  &quot;opacity&quot;: 0.9002
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card keep">
+          <div class="thumb"><img src="shader_evolve_smoke_001_g01_portal_swirl_2d_004/flipbook.png" loading="lazy" alt="shader_evolve_smoke_001_g01_portal_swirl_2d_004"></div>
+          <div class="body">
+            <h2>shader_evolve_smoke_001_g01_portal_swirl_2d_004</h2>
+            <div class="meta">
+              <span>portal_swirl_2d</span>
+              <span>portal</span>
+              <strong>89.08</strong>
+              <span>keep</span>
+            </div>
+            <div class="metrics">
+              cov 0.125 | motion 0.015 | contrast 0.023 |
+              color 0.104 | edge 0.005 | center 0.000
+            </div>
+            <div class="gates"><strong>gates</strong><ul><li>weak contrast</li></ul></div>
+            <ul><li>contrast low: widen color separation, add hotter core/edge, or reduce background-like colors</li><li>too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_outer&quot;: [
+    0.02532584542069225,
+    0.002512828034631105,
+    0.050180473290221
+  ],
+  &quot;color_mid&quot;: [
+    0.007285268313271594,
+    0.040704660601558806,
+    0.11469564361531881
+  ],
+  &quot;color_inner&quot;: [
+    0.2576006200787792,
+    0.05737593043259882,
+    0.44795411477343505
+  ],
+  &quot;color_void&quot;: [
+    0.008077713569018166,
+    0.012162589910199438,
+    0.0
+  ],
+  &quot;radius&quot;: 0.3552,
+  &quot;swirl&quot;: 7.5917,
+  &quot;spin_speed&quot;: 3.0896,
+  &quot;depth_pulse&quot;: 1.0,
+  &quot;arms&quot;: 10,
+  &quot;arm_strength&quot;: 0.8534,
+  &quot;opacity&quot;: 0.8655
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card review">
+          <div class="thumb"><img src="shader_evolve_smoke_001_g01_portal_swirl_2d_006/flipbook.png" loading="lazy" alt="shader_evolve_smoke_001_g01_portal_swirl_2d_006"></div>
+          <div class="body">
+            <h2>shader_evolve_smoke_001_g01_portal_swirl_2d_006</h2>
+            <div class="meta">
+              <span>portal_swirl_2d</span>
+              <span>portal</span>
+              <strong>87.49</strong>
+              <span>review</span>
+            </div>
+            <div class="metrics">
+              cov 0.070 | motion 0.016 | contrast 0.027 |
+              color 0.080 | edge 0.003 | center 0.000
+            </div>
+            <div class="gates"><strong>gates</strong><ul><li>weak contrast</li></ul></div>
+            <ul><li>coverage low: increase radius/thickness/edge_width/opacity, or reduce dissolve threshold</li><li>contrast low: widen color separation, add hotter core/edge, or reduce background-like colors</li><li>color weak: switch palette or push core/edge/glow colors farther apart</li><li>too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_outer&quot;: [
+    0.01894345955256079,
+    0.0011707677458814847,
+    0.13822214686853448
+  ],
+  &quot;color_mid&quot;: [
+    0.00639801725474632,
+    0.03462094035267944,
+    0.023114418188658066
+  ],
+  &quot;color_inner&quot;: [
+    0.1971575723339833,
+    0.10476884650382992,
+    0.3581532425538975
+  ],
+  &quot;color_void&quot;: [
+    0.0,
+    0.03928796438528382,
+    0.0015014530097481951
+  ],
+  &quot;radius&quot;: 0.254,
+  &quot;swirl&quot;: 9.398,
+  &quot;spin_speed&quot;: 4.7293,
+  &quot;depth_pulse&quot;: 0.1841,
+  &quot;arms&quot;: 8,
+  &quot;arm_strength&quot;: 1.036,
+  &quot;opacity&quot;: 0.8907
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card review">
+          <div class="thumb"><img src="shader_evolve_smoke_001_g00_portal_swirl_2d_005/flipbook.png" loading="lazy" alt="shader_evolve_smoke_001_g00_portal_swirl_2d_005"></div>
+          <div class="body">
+            <h2>shader_evolve_smoke_001_g00_portal_swirl_2d_005</h2>
+            <div class="meta">
+              <span>portal_swirl_2d</span>
+              <span>portal</span>
+              <strong>87.40</strong>
+              <span>review</span>
+            </div>
+            <div class="metrics">
+              cov 0.074 | motion 0.009 | contrast 0.029 |
+              color 0.067 | edge 0.003 | center 0.000
+            </div>
+            <div class="gates"><strong>gates</strong><ul><li>weak contrast</li></ul></div>
+            <ul><li>coverage low: increase radius/thickness/edge_width/opacity, or reduce dissolve threshold</li><li>contrast low: widen color separation, add hotter core/edge, or reduce background-like colors</li><li>color weak: switch palette or push core/edge/glow colors farther apart</li><li>too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width</li><li>motion low: increase speed/pulse/spin/scroll parameters</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_outer&quot;: [
+    0.0,
+    0.0,
+    0.10322430688768805
+  ],
+  &quot;color_mid&quot;: [
+    0.04380766959824353,
+    0.0,
+    0.06101163210045639
+  ],
+  &quot;color_inner&quot;: [
+    0.18759120414342725,
+    0.11734468451038294,
+    0.35348736214414195
+  ],
+  &quot;color_void&quot;: [
+    0.0,
+    0.0,
+    0.0
+  ],
+  &quot;radius&quot;: 0.2631,
+  &quot;swirl&quot;: 9.8798,
+  &quot;spin_speed&quot;: 4.584,
+  &quot;depth_pulse&quot;: 0.2475,
+  &quot;arms&quot;: 4,
+  &quot;arm_strength&quot;: 1.0469,
+  &quot;opacity&quot;: 0.8469
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card review">
+          <div class="thumb"><img src="shader_evolve_smoke_001_g01_portal_swirl_2d_003/flipbook.png" loading="lazy" alt="shader_evolve_smoke_001_g01_portal_swirl_2d_003"></div>
+          <div class="body">
+            <h2>shader_evolve_smoke_001_g01_portal_swirl_2d_003</h2>
+            <div class="meta">
+              <span>portal_swirl_2d</span>
+              <span>portal</span>
+              <strong>87.11</strong>
+              <span>review</span>
+            </div>
+            <div class="metrics">
+              cov 0.075 | motion 0.006 | contrast 0.034 |
+              color 0.063 | edge 0.003 | center 0.000
+            </div>
+            <div class="gates"><strong>gates</strong><ul><li>weak contrast</li><li>motion below role target</li></ul></div>
+            <ul><li>coverage low: increase radius/thickness/edge_width/opacity, or reduce dissolve threshold</li><li>contrast low: widen color separation, add hotter core/edge, or reduce background-like colors</li><li>color weak: switch palette or push core/edge/glow colors farther apart</li><li>too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width</li><li>motion low: increase speed/pulse/spin/scroll parameters</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_outer&quot;: [
+    0.037488193793586706,
+    0.0,
+    0.09184960955520827
+  ],
+  &quot;color_mid&quot;: [
+    0.04703726686284972,
+    0.0,
+    0.04973529865744748
+  ],
+  &quot;color_inner&quot;: [
+    0.22969308484326473,
+    0.1183191048581348,
+    0.3467018748231699
+  ],
+  &quot;color_void&quot;: [
+    0.0,
+    0.009842823025941229,
+    0.0018496146510947192
+  ],
+  &quot;radius&quot;: 0.2654,
+  &quot;swirl&quot;: 9.7575,
+  &quot;spin_speed&quot;: 3.9286,
+  &quot;depth_pulse&quot;: 0.2446,
+  &quot;arms&quot;: 4.1974,
+  &quot;arm_strength&quot;: 1.0747,
+  &quot;opacity&quot;: 0.9285
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card review">
+          <div class="thumb"><img src="shader_evolve_smoke_001_g00_portal_swirl_2d_003/flipbook.png" loading="lazy" alt="shader_evolve_smoke_001_g00_portal_swirl_2d_003"></div>
+          <div class="body">
+            <h2>shader_evolve_smoke_001_g00_portal_swirl_2d_003</h2>
+            <div class="meta">
+              <span>portal_swirl_2d</span>
+              <span>portal</span>
+              <strong>83.68</strong>
+              <span>review</span>
+            </div>
+            <div class="metrics">
+              cov 0.102 | motion 0.006 | contrast 0.014 |
+              color 0.049 | edge 0.002 | center 0.000
+            </div>
+            <div class="gates"><strong>gates</strong><ul><li>weak contrast</li><li>motion below role target</li></ul></div>
+            <ul><li>contrast low: widen color separation, add hotter core/edge, or reduce background-like colors</li><li>color weak: switch palette or push core/edge/glow colors farther apart</li><li>too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width</li><li>motion low: increase speed/pulse/spin/scroll parameters</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_outer&quot;: [
+    0.008321205596525477,
+    0.005949895616688017,
+    0.0
+  ],
+  &quot;color_mid&quot;: [
+    0.026459155602297262,
+    0.0,
+    0.08554643014700183
+  ],
+  &quot;color_inner&quot;: [
+    0.16531378808441463,
+    0.09158696272308883,
+    0.37648633333542547
+  ],
+  &quot;color_void&quot;: [
+    0.0,
+    0.0,
+    0.0
+  ],
+  &quot;radius&quot;: 0.3177,
+  &quot;swirl&quot;: 9.7566,
+  &quot;spin_speed&quot;: 5.4595,
+  &quot;depth_pulse&quot;: 0.3448,
+  &quot;arms&quot;: 10,
+  &quot;arm_strength&quot;: 0.5581,
+  &quot;opacity&quot;: 0.8947
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card reject">
+          <div class="thumb"><img src="shader_evolve_smoke_001_g01_shield_ripple_2d_005/flipbook.png" loading="lazy" alt="shader_evolve_smoke_001_g01_shield_ripple_2d_005"></div>
+          <div class="body">
+            <h2>shader_evolve_smoke_001_g01_shield_ripple_2d_005</h2>
+            <div class="meta">
+              <span>shield_ripple_2d</span>
+              <span>shield</span>
+              <strong>42.19</strong>
+              <span>reject</span>
+            </div>
+            <div class="metrics">
+              cov 0.826 | motion 0.031 | contrast 0.020 |
+              color 0.139 | edge 0.005 | center 0.000
+            </div>
+            <div class="gates"><strong>gates</strong><ul><li>weak contrast</li></ul></div>
+            <ul><li>coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold</li><li>contrast low: widen color separation, add hotter core/edge, or reduce background-like colors</li><li>too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_shield&quot;: [
+    0.12370177705141722,
+    0.10104450757250519,
+    0.4028180236179353
+  ],
+  &quot;color_hit&quot;: [
+    0.8032078310091809,
+    0.2799342373294586,
+    0.9679789778732023
+  ],
+  &quot;hex_scale&quot;: 2.9591,
+  &quot;hex_strength&quot;: 0.1593,
+  &quot;fresnel_power&quot;: 1.9747,
+  &quot;ripple_speed&quot;: 5.0594,
+  &quot;ripple_strength&quot;: 0.3556,
+  &quot;ripple_freq&quot;: 30.5594,
+  &quot;hit_position&quot;: [
+    0.5279,
+    0.3481
+  ],
+  &quot;hit_age&quot;: 1.8478,
+  &quot;opacity&quot;: 0.7887
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card reject">
+          <div class="thumb"><img src="shader_evolve_smoke_001_g00_shield_ripple_2d_004/flipbook.png" loading="lazy" alt="shader_evolve_smoke_001_g00_shield_ripple_2d_004"></div>
+          <div class="body">
+            <h2>shader_evolve_smoke_001_g00_shield_ripple_2d_004</h2>
+            <div class="meta">
+              <span>shield_ripple_2d</span>
+              <span>shield</span>
+              <strong>41.40</strong>
+              <span>reject</span>
+            </div>
+            <div class="metrics">
+              cov 0.836 | motion 0.030 | contrast 0.020 |
+              color 0.153 | edge 0.005 | center 0.000
+            </div>
+            <div class="gates"><strong>gates</strong><ul><li>weak contrast</li></ul></div>
+            <ul><li>coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold</li><li>contrast low: widen color separation, add hotter core/edge, or reduce background-like colors</li><li>too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_shield&quot;: [
+    0.14874346583151585,
+    0.07678805080280093,
+    0.4332045000935882
+  ],
+  &quot;color_hit&quot;: [
+    0.7606183425256792,
+    0.3149430746093996,
+    1.0
+  ],
+  &quot;hex_scale&quot;: 2.0,
+  &quot;hex_strength&quot;: 0.1875,
+  &quot;fresnel_power&quot;: 1.8036,
+  &quot;ripple_speed&quot;: 4.9729,
+  &quot;ripple_strength&quot;: 0.3106,
+  &quot;ripple_freq&quot;: 33.2965,
+  &quot;hit_position&quot;: [
+    0.5307,
+    0.3426
+  ],
+  &quot;hit_age&quot;: 1.8715,
+  &quot;opacity&quot;: 0.8041
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card reject">
+          <div class="thumb"><img src="shader_evolve_smoke_001_g01_shield_ripple_2d_002/flipbook.png" loading="lazy" alt="shader_evolve_smoke_001_g01_shield_ripple_2d_002"></div>
+          <div class="body">
+            <h2>shader_evolve_smoke_001_g01_shield_ripple_2d_002</h2>
+            <div class="meta">
+              <span>shield_ripple_2d</span>
+              <span>shield</span>
+              <strong>40.37</strong>
+              <span>reject</span>
+            </div>
+            <div class="metrics">
+              cov 0.827 | motion 0.027 | contrast 0.023 |
+              color 0.127 | edge 0.008 | center 0.000
+            </div>
+            <div class="gates"><strong>gates</strong><ul><li>weak contrast</li></ul></div>
+            <ul><li>coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold</li><li>contrast low: widen color separation, add hotter core/edge, or reduce background-like colors</li><li>too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_shield&quot;: [
+    0.16185616606348885,
+    0.10100663311595662,
+    0.39662541241007543
+  ],
+  &quot;color_hit&quot;: [
+    0.7477990963182536,
+    0.2994870764598247,
+    1.0
+  ],
+  &quot;hex_scale&quot;: 3.5442,
+  &quot;hex_strength&quot;: 0.2493,
+  &quot;fresnel_power&quot;: 1.909,
+  &quot;ripple_speed&quot;: 5.0557,
+  &quot;ripple_strength&quot;: 0.2919,
+  &quot;ripple_freq&quot;: 34.1281,
+  &quot;hit_position&quot;: [
+    0.5262,
+    0.3561
+  ],
+  &quot;hit_age&quot;: 1.9848,
+  &quot;opacity&quot;: 0.8099
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card reject">
+          <div class="thumb"><img src="shader_evolve_smoke_001_g00_shield_ripple_2d_006/flipbook.png" loading="lazy" alt="shader_evolve_smoke_001_g00_shield_ripple_2d_006"></div>
+          <div class="body">
+            <h2>shader_evolve_smoke_001_g00_shield_ripple_2d_006</h2>
+            <div class="meta">
+              <span>shield_ripple_2d</span>
+              <span>shield</span>
+              <strong>36.38</strong>
+              <span>reject</span>
+            </div>
+            <div class="metrics">
+              cov 0.853 | motion 0.056 | contrast 0.069 |
+              color 0.229 | edge 0.037 | center 0.024
+            </div>
+            
+            <ul><li>coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_shield&quot;: [
+    0.17050080283739044,
+    0.033884348427405404,
+    0.3727014559308419
+  ],
+  &quot;color_hit&quot;: [
+    0.7753181714123831,
+    0.3477975132563857,
+    1.0
+  ],
+  &quot;hex_scale&quot;: 45.4546,
+  &quot;hex_strength&quot;: 0.7494,
+  &quot;fresnel_power&quot;: 0.8572,
+  &quot;ripple_speed&quot;: 2.1685,
+  &quot;ripple_strength&quot;: 0.7472,
+  &quot;ripple_freq&quot;: 32.4153,
+  &quot;hit_position&quot;: [
+    0.4041,
+    0.4747
+  ],
+  &quot;hit_age&quot;: 1.1371,
+  &quot;opacity&quot;: 0.8103
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card reject">
+          <div class="thumb"><img src="shader_evolve_smoke_001_g00_shield_ripple_2d_002/flipbook.png" loading="lazy" alt="shader_evolve_smoke_001_g00_shield_ripple_2d_002"></div>
+          <div class="body">
+            <h2>shader_evolve_smoke_001_g00_shield_ripple_2d_002</h2>
+            <div class="meta">
+              <span>shield_ripple_2d</span>
+              <span>shield</span>
+              <strong>34.61</strong>
+              <span>reject</span>
+            </div>
+            <div class="metrics">
+              cov 0.853 | motion 0.102 | contrast 0.064 |
+              color 0.244 | edge 0.051 | center 0.000
+            </div>
+            
+            <ul><li>coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_shield&quot;: [
+    0.18177870220809894,
+    0.0854970383168234,
+    0.45182771962768187
+  ],
+  &quot;color_hit&quot;: [
+    0.680133448520917,
+    0.4365431151202345,
+    1.0
+  ],
+  &quot;hex_scale&quot;: 13.1141,
+  &quot;hex_strength&quot;: 0.7297,
+  &quot;fresnel_power&quot;: 0.5,
+  &quot;ripple_speed&quot;: 3.0929,
+  &quot;ripple_strength&quot;: 0.8484,
+  &quot;ripple_freq&quot;: 33.1238,
+  &quot;hit_position&quot;: [
+    0.5904,
+    0.5072
+  ],
+  &quot;hit_age&quot;: 2.5221,
+  &quot;opacity&quot;: 0.9716
+}</pre></details>
+          </div>
+        </article>
+        
+  </section>
+</body>
+</html>

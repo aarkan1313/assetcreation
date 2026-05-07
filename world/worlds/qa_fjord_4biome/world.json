@@ -1,0 +1,49 @@
+{
+  "id": "qa_fjord_4biome",
+  "created": "2026-05-06T14:06:29.651486+00:00",
+  "source": "world_biome_engine",
+  "base_heightmap": "D:\\assets\\pipelines\\terrain\\output\\qa_norwegian_fjord\\height_16.png",
+  "biomes": [
+    "lava_field",
+    "ice_cavern",
+    "mana_crystal",
+    "grassland"
+  ],
+  "biome_display_names": [
+    "Cinder Plains",
+    "Frostmaw Caverns",
+    "Aetherspire Wastes",
+    "Verdant Steppe"
+  ],
+  "size": 1024,
+  "seed": 7,
+  "erosion": 15,
+  "n_seeds": 20,
+  "biome_seed_counts": {
+    "lava_field": 6,
+    "ice_cavern": 6,
+    "mana_crystal": 4,
+    "grassland": 4
+  },
+  "biome_pixel_counts": {
+    "lava_field": 152927,
+    "ice_cavern": 266639,
+    "mana_crystal": 150908,
+    "grassland": 63191
+  },
+  "views": {
+    "world": "world_view.png",
+    "regional": "regional_view.png",
+    "local": "local_view.png"
+  },
+  "layers": {
+    "height": "height_16.png",
+    "normal": "normal.png",
+    "splat": "splat_rgba.png",
+    "biome_rgb": "biome.png",
+    "biome_labels": "biome_labels.png",
+    "vegetation_density": "vegetation_density.png",
+    "water_mask": "water_mask.png",
+    "flow": "flow.png"
+  }
+}

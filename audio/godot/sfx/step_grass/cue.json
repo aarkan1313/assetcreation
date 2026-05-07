@@ -1,0 +1,73 @@
+{
+  "id": "step_grass",
+  "category": "sfx",
+  "variants": [
+    "audio/sfx/step_grass/step_grass_v0.wav",
+    "audio/sfx/step_grass/step_grass_v1.wav",
+    "audio/sfx/step_grass/step_grass_v2.wav",
+    "audio/sfx/step_grass/step_grass_v3.wav"
+  ],
+  "preset": "step_grass",
+  "target_rms_db": -18.0,
+  "tags": [
+    "step",
+    "grass",
+    "outdoor"
+  ],
+  "notes": "",
+  "backend": "synth_sfx_extended",
+  "processing": [
+    {
+      "variant": 0,
+      "duration_s": 0.05317460317460317,
+      "rms_dbfs_in": -25.886003494262695,
+      "rms_dbfs_out": -18.0,
+      "peak_dbfs_out": -4.939174175262451,
+      "trim_ms": 106,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    },
+    {
+      "variant": 1,
+      "duration_s": 0.053514739229024944,
+      "rms_dbfs_in": -25.664688110351562,
+      "rms_dbfs_out": -18.0,
+      "peak_dbfs_out": -4.352936267852783,
+      "trim_ms": 106,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    },
+    {
+      "variant": 2,
+      "duration_s": 0.05378684807256236,
+      "rms_dbfs_in": -25.97193145751953,
+      "rms_dbfs_out": -18.0,
+      "peak_dbfs_out": -3.7167727947235107,
+      "trim_ms": 106,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    },
+    {
+      "variant": 3,
+      "duration_s": 0.05290249433106576,
+      "rms_dbfs_in": -25.785297393798828,
+      "rms_dbfs_out": -18.0,
+      "peak_dbfs_out": -4.219169616699219,
+      "trim_ms": 107,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    }
+  ]
+}

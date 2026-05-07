@@ -1,0 +1,237 @@
+{
+  "_doc": "Per-biome scatter rules driving stage_biome_scatter.py. v3 adds prop_pool / prop_weights / lod_swap_distances_m so real GLB props from world/props/library/<id>/ replace placeholder primitives. Backwards-compatible: when prop_pool is empty/missing, the placeholder_mesh fallback is used as before.",
+  "version": 3,
+  "_v3_fields": {
+    "prop_pool": "list of prop ids in world/props/library/<id>/ (must have model_lod0.glb + prop.json). Sampled per scatter instance.",
+    "prop_weights": "optional sampling distribution; same length as prop_pool; defaults to uniform.",
+    "lod_swap_distances_m": "optional override for VisibilityRange ends. Defaults to per-prop prop.json.lods[*].max_distance_m.",
+    "render_class_hint": "optional per-asset hint. If absent, the prop's own render_class controls Godot scatter mode (scatter_multimesh -> MultiMesh chunked by 8m terrain region; scene_prop -> plain instance)."
+  },
+  "biomes": {
+    "lava_field": {
+      "assets": [
+        {
+          "id": "obsidian_shard",
+          "prop_pool": [],
+          "prop_weights": [],
+          "render_class_hint": "scatter_multimesh",
+          "placeholder_mesh": "prism", "size_m": [0.5, 1.4, 0.5], "color": [0.05, 0.05, 0.07],
+          "density_per_m2": 0.10, "slope_max": 0.45, "scale_min": 0.7, "scale_max": 1.6,
+          "metallic": 0.4, "roughness": 0.3
+        },
+        {
+          "id": "ash_mound",
+          "prop_pool": [],
+          "placeholder_mesh": "sphere", "size_m": [1.4, 0.5, 1.4], "color": [0.20, 0.15, 0.13],
+          "density_per_m2": 0.04, "slope_max": 0.30, "scale_min": 0.7, "scale_max": 1.5,
+          "roughness": 0.95
+        },
+        {
+          "id": "ember_pebble",
+          "prop_pool": [],
+          "placeholder_mesh": "box", "size_m": [0.3, 0.3, 0.3], "color": [0.70, 0.20, 0.05],
+          "density_per_m2": 0.30, "slope_max": 0.55, "scale_min": 0.5, "scale_max": 1.2,
+          "emission": 1.5, "emission_color": [1.0, 0.4, 0.05]
+        },
+        {
+          "id": "burnt_bone_pile",
+          "prop_pool": ["bone_pile_a01", "bone_pile_a02", "bone_pile_a03"],
+          "prop_weights": [0.5, 0.3, 0.2],
+          "render_class_hint": "scatter_multimesh",
+          "lod_swap_distances_m": [22, 55, 110, 180],
+          "placeholder_mesh": "sphere", "size_m": [0.5, 0.25, 0.5], "color": [0.85, 0.78, 0.68],
+          "density_per_m2": 0.03, "slope_max": 0.35, "scale_min": 0.7, "scale_max": 1.3
+        }
+      ]
+    },
+    "ice_cavern": {
+      "assets": [
+        {
+          "id": "ice_spire",
+          "prop_pool": [],
+          "placeholder_mesh": "cone", "size_m": [0.6, 4.0, 0.6], "color": [0.70, 0.85, 0.95],
+          "density_per_m2": 0.05, "slope_max": 0.85, "scale_min": 0.6, "scale_max": 1.8,
+          "metallic": 0.2, "roughness": 0.15
+        },
+        {
+          "id": "frost_boulder",
+          "prop_pool": ["rock_small_a01", "rock_small_a02", "rock_small_a03", "rock_small_a04"],
+          "prop_weights": [0.3, 0.3, 0.2, 0.2],
+          "render_class_hint": "scatter_multimesh",
+          "placeholder_mesh": "sphere", "size_m": [1.0, 0.9, 1.0], "color": [0.78, 0.86, 0.92],
+          "density_per_m2": 0.08, "slope_max": 0.50, "scale_min": 0.8, "scale_max": 1.6,
+          "roughness": 0.4
+        },
+        {
+          "id": "snow_drift",
+          "prop_pool": [],
+          "placeholder_mesh": "sphere", "size_m": [2.0, 0.4, 1.4], "color": [0.95, 0.97, 1.00],
+          "density_per_m2": 0.06, "slope_max": 0.25, "scale_min": 0.7, "scale_max": 1.4,
+          "roughness": 0.7
+        },
+        {
+          "id": "frozen_log",
+          "prop_pool": ["log_a01", "log_a02"],
+          "render_class_hint": "scene_prop",
+          "placeholder_mesh": "cyl", "size_m": [0.3, 0.3, 1.5], "color": [0.55, 0.65, 0.75],
+          "density_per_m2": 0.005, "slope_max": 0.30, "scale_min": 0.8, "scale_max": 1.2,
+          "roughness": 0.4
+        }
+      ]
+    },
+    "mana_crystal": {
+      "assets": [
+        {
+          "id": "crystal_tall",
+          "prop_pool": [],
+          "placeholder_mesh": "cone", "size_m": [0.5, 5.0, 0.5], "color": [0.65, 0.30, 0.95],
+          "density_per_m2": 0.012, "slope_max": 0.95, "scale_min": 0.7, "scale_max": 2.4,
+          "metallic": 0.4, "roughness": 0.1, "emission": 0.8, "emission_color": [0.85, 0.45, 1.0]
+        },
+        {
+          "id": "crystal_cluster",
+          "prop_pool": [],
+          "placeholder_mesh": "prism", "size_m": [0.7, 1.6, 0.7], "color": [0.78, 0.50, 1.00],
+          "density_per_m2": 0.04, "slope_max": 0.60, "scale_min": 0.6, "scale_max": 1.5,
+          "metallic": 0.3, "roughness": 0.15, "emission": 0.5, "emission_color": [0.85, 0.55, 1.0]
+        },
+        {
+          "id": "amethyst_shard",
+          "prop_pool": [],
+          "placeholder_mesh": "prism", "size_m": [0.3, 0.8, 0.3], "color": [0.45, 0.20, 0.75],
+          "density_per_m2": 0.18, "slope_max": 0.70, "scale_min": 0.5, "scale_max": 1.3,
+          "metallic": 0.3, "roughness": 0.2, "emission": 0.15, "emission_color": [0.7, 0.4, 0.95]
+        },
+        {
+          "id": "mana_mushroom",
+          "prop_pool": ["mushroom_lantern_a01", "mushroom_lantern_a02"],
+          "prop_weights": [0.6, 0.4],
+          "render_class_hint": "scatter_multimesh",
+          "lod_swap_distances_m": [18, 45, 95, 160],
+          "placeholder_mesh": "cone", "size_m": [0.3, 0.6, 0.3], "color": [0.78, 0.20, 0.22],
+          "density_per_m2": 0.05, "slope_max": 0.35, "scale_min": 0.8, "scale_max": 1.4,
+          "emission": 0.3, "emission_color": [0.95, 0.30, 0.30]
+        }
+      ]
+    },
+    "grassland": {
+      "assets": [
+        {
+          "id": "tree_oak_trunk",
+          "prop_pool": [],
+          "placeholder_mesh": "cyl", "size_m": [0.45, 3.0, 0.45], "color": [0.28, 0.18, 0.10],
+          "density_per_m2": 0.025, "slope_max": 0.30, "scale_min": 0.8, "scale_max": 1.4,
+          "vegetation_min": 0.30, "roughness": 0.95
+        },
+        {
+          "id": "tree_oak_canopy_lo",
+          "prop_pool": [],
+          "placeholder_mesh": "sphere", "size_m": [2.6, 1.8, 2.6], "color": [0.16, 0.30, 0.09],
+          "share_positions_with": "tree_oak_trunk",
+          "scale_min": 0.8, "scale_max": 1.4, "y_offset_m": 3.2, "roughness": 0.85
+        },
+        {
+          "id": "tree_oak_canopy_hi",
+          "prop_pool": [],
+          "placeholder_mesh": "sphere", "size_m": [2.0, 1.6, 2.0], "color": [0.22, 0.40, 0.14],
+          "share_positions_with": "tree_oak_trunk",
+          "scale_min": 0.7, "scale_max": 1.3, "y_offset_m": 4.4, "roughness": 0.8
+        },
+        {
+          "id": "tree_pine_trunk",
+          "prop_pool": [],
+          "placeholder_mesh": "cyl", "size_m": [0.30, 5.0, 0.30], "color": [0.35, 0.22, 0.13],
+          "density_per_m2": 0.020, "slope_max": 0.45, "scale_min": 0.8, "scale_max": 1.4,
+          "vegetation_min": 0.20, "roughness": 0.95
+        },
+        {
+          "id": "tree_pine_canopy",
+          "prop_pool": [],
+          "placeholder_mesh": "cone", "size_m": [1.6, 4.5, 1.6], "color": [0.13, 0.26, 0.12],
+          "share_positions_with": "tree_pine_trunk",
+          "scale_min": 0.8, "scale_max": 1.4, "y_offset_m": 4.5, "roughness": 0.8
+        },
+        {
+          "id": "shrub",
+          "prop_pool": [],
+          "placeholder_mesh": "sphere", "size_m": [0.7, 0.6, 0.7], "color": [0.25, 0.45, 0.15],
+          "density_per_m2": 0.18, "slope_max": 0.40, "scale_min": 0.7, "scale_max": 1.3,
+          "roughness": 0.9
+        },
+        {
+          "id": "grass_clump",
+          "prop_pool": [],
+          "placeholder_mesh": "sphere", "size_m": [0.4, 0.25, 0.4], "color": [0.40, 0.55, 0.20],
+          "density_per_m2": 0.60, "slope_max": 0.35, "scale_min": 0.6, "scale_max": 1.2,
+          "roughness": 0.95
+        },
+        {
+          "id": "wildflower",
+          "prop_pool": [],
+          "placeholder_mesh": "box", "size_m": [0.15, 0.4, 0.15], "color": [0.95, 0.80, 0.30],
+          "density_per_m2": 0.30, "slope_max": 0.30, "scale_min": 0.6, "scale_max": 1.4,
+          "roughness": 0.7
+        },
+        {
+          "id": "stump_field",
+          "prop_pool": ["stump_a01", "stump_a02"],
+          "prop_weights": [0.6, 0.4],
+          "render_class_hint": "scatter_multimesh",
+          "placeholder_mesh": "cyl", "size_m": [0.4, 0.4, 0.4], "color": [0.40, 0.30, 0.18],
+          "density_per_m2": 0.008, "slope_max": 0.25, "scale_min": 0.7, "scale_max": 1.2,
+          "vegetation_min": 0.20, "roughness": 0.95
+        },
+        {
+          "id": "fallen_log",
+          "prop_pool": ["log_a01", "log_a02"],
+          "render_class_hint": "scene_prop",
+          "placeholder_mesh": "cyl", "size_m": [0.35, 0.35, 1.6], "color": [0.45, 0.30, 0.18],
+          "density_per_m2": 0.003, "slope_max": 0.20, "scale_min": 0.8, "scale_max": 1.3,
+          "roughness": 0.95
+        },
+        {
+          "id": "boulder",
+          "prop_pool": ["rock_small_a01", "rock_small_a02", "rock_small_a03", "rock_small_a04"],
+          "prop_weights": [0.3, 0.3, 0.2, 0.2],
+          "render_class_hint": "scatter_multimesh",
+          "lod_swap_distances_m": [25, 60, 120, 200],
+          "placeholder_mesh": "sphere", "size_m": [0.7, 0.5, 0.7], "color": [0.50, 0.48, 0.44],
+          "density_per_m2": 0.020, "slope_max": 0.55, "scale_min": 0.8, "scale_max": 1.7,
+          "roughness": 0.9
+        }
+      ]
+    },
+    "ruins": {
+      "_doc": "New v3 biome — wires the procedural ruin/grave kit. Use as biome for graveyards / abandoned outposts.",
+      "assets": [
+        {
+          "id": "ruin_block_field",
+          "prop_pool": ["ruin_block_a01", "ruin_block_a02", "ruin_block_a03", "ruin_block_a04"],
+          "prop_weights": [0.3, 0.3, 0.2, 0.2],
+          "render_class_hint": "scatter_multimesh",
+          "lod_swap_distances_m": [22, 55, 110, 180],
+          "placeholder_mesh": "box", "size_m": [0.6, 0.45, 0.6], "color": [0.45, 0.43, 0.40],
+          "density_per_m2": 0.040, "slope_max": 0.45, "scale_min": 0.7, "scale_max": 1.5,
+          "roughness": 0.92
+        },
+        {
+          "id": "tombstone_grave",
+          "prop_pool": ["tombstone_a01", "tombstone_a02"],
+          "prop_weights": [0.6, 0.4],
+          "render_class_hint": "scene_prop",
+          "placeholder_mesh": "box", "size_m": [0.5, 0.85, 0.16], "color": [0.55, 0.52, 0.48],
+          "density_per_m2": 0.006, "slope_max": 0.20, "scale_min": 0.85, "scale_max": 1.15,
+          "roughness": 0.85
+        },
+        {
+          "id": "fence_section",
+          "prop_pool": ["fence_a01"],
+          "render_class_hint": "scene_prop",
+          "placeholder_mesh": "box", "size_m": [1.6, 1.0, 0.06], "color": [0.40, 0.38, 0.34],
+          "density_per_m2": 0.002, "slope_max": 0.15, "scale_min": 0.95, "scale_max": 1.05,
+          "roughness": 0.95
+        }
+      ]
+    }
+  }
+}

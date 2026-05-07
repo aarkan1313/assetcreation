@@ -1,0 +1,16 @@
+{
+  "id": "ruin_block_a03",
+  "kind": "ruin_block",
+  "seed": 402,
+  "target_tris": 1400,
+  "params": {
+    "size_x": 0.55,
+    "size_y": 0.7112,
+    "size_z": 0.4858,
+    "chip_magnitude": 0.0309,
+    "color_variant": "granite_grey"
+  },
+  "blender_version": "5.1",
+  "timestamp": "2026-05-06T18:48:49+00:00",
+  "ok": true
+}

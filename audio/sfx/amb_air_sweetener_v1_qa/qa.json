@@ -1,0 +1,12 @@
+{
+  "duration_s": 1.554126984126984,
+  "samplerate": 44100,
+  "rms_dbfs": -29.74125068865614,
+  "peak_dbfs": -14.75466392700184,
+  "clipped_samples": 0,
+  "dc_offset": 0.0003088568337261677,
+  "click_count_estimate": 0,
+  "source": "D:\\assets\\audio\\sfx\\amb_air_sweetener_v1.wav",
+  "waveform": "D:\\assets\\audio\\sfx\\amb_air_sweetener_v1_qa\\waveform.png",
+  "spectrogram": "D:\\assets\\audio\\sfx\\amb_air_sweetener_v1_qa\\spectrogram.png"
+}

@@ -1,0 +1,30 @@
+{
+  "effect_id": "dust_puff_small",
+  "backend": "particle_cpu",
+  "n_frames": 21,
+  "fps": 30,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "flipbook": "D:\\assets\\vfx\\catalog\\spells\\dust_puff_small\\flipbook.png",
+  "frames_dir": "D:\\assets\\vfx\\catalog\\spells\\dust_puff_small\\frames",
+  "extras": {
+    "particles_json": "D:\\assets\\vfx\\catalog\\spells\\dust_puff_small\\particles.json",
+    "audio_cues": [
+      {
+        "t": 0.0,
+        "name": "step"
+      },
+      {
+        "t": 0.5,
+        "name": "settle"
+      }
+    ]
+  },
+  "metrics": {
+    "max_alive": 45,
+    "total_energy": 376.2754590511322
+  },
+  "timestamp": "2026-05-06T20:50:50+00:00"
+}

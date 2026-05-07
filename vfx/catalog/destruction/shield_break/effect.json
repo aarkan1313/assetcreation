@@ -1,0 +1,35 @@
+{
+  "id": "shield_break",
+  "kind": "destruction",
+  "phenomenon": "shatter",
+  "backend": "fracture2d",
+  "duration_s": 1.2,
+  "fps": 24,
+  "bounds_px": [256, 256],
+  "visual": {
+    "palette": ["#9ec8ff"],
+    "blend": "alpha",
+    "background": "#00000000"
+  },
+  "backend_params": {
+    "seed": 13,
+    "source_shape": "ngon",
+    "source_n_sides": 16,
+    "source_radius_px": 80.0,
+    "shard_count": 12,
+    "impact_center": [128, 128],
+    "gravity": [0.0, 90.0],
+    "drag": 0.4,
+    "burst_speed": 80.0,
+    "burst_jitter": 25.0,
+    "spin_max": 6.0,
+    "base_color": "#9ec8ff",
+    "outline_color": "#162a4a"
+  },
+  "gameplay": {
+    "shape": "self",
+    "damage_tags": [],
+    "collision": "none"
+  },
+  "notes": "Magic shield break: 12 cyan shards radiate outward, fall under gravity, spin freely."
+}

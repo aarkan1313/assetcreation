@@ -1,0 +1,89 @@
+{
+  "id": "shader_review_upgrade_smoke_001_ring_field_2d_006",
+  "intent": "high quality portal shield beam aura dissolve Godot shaders",
+  "role": "aura",
+  "template": "ring_field_2d",
+  "params": {
+    "color_inner": [
+      0.20653538967217405,
+      0.06891830443346328,
+      0.43185306113490435
+    ],
+    "color_outer": [
+      0.011271076894864434,
+      0.023538219319196738,
+      0.0
+    ],
+    "color_glow": [
+      0.7776370859720074,
+      0.36933627497968186,
+      1.0
+    ],
+    "radius": 0.2589,
+    "edge_width": 0.0542,
+    "noise_scale": 24.9175,
+    "pulse_speed": 2.2685,
+    "distortion": 0.1047,
+    "rune_count": 10,
+    "rune_strength": 0.4816,
+    "opacity": 0.9619
+  },
+  "preview": {
+    "size": [
+      160,
+      160
+    ],
+    "frames": 4,
+    "duration_s": 1.8,
+    "background": [
+      0.035,
+      0.035,
+      0.055,
+      1.0
+    ]
+  },
+  "created": "2026-05-06T10:38:23.171924+00:00",
+  "review": {
+    "score": 77.66,
+    "grade": "review",
+    "components": {
+      "coverage": 0.261,
+      "motion": 1.0,
+      "center": 1.0,
+      "color": 0.798,
+      "edge": 1.0,
+      "contrast": 0.778
+    },
+    "gate_issues": [],
+    "gate_warnings": [
+      "role coverage far above target"
+    ],
+    "metrics": {
+      "coverage": 0.94964,
+      "mean_alpha": 0.40332,
+      "luma_mean": 0.07059,
+      "contrast": 0.07226,
+      "colorfulness": 0.16469,
+      "edge_energy": 0.00993,
+      "center_distance": 0.00665,
+      "clip_high": 0.0,
+      "clip_low": 0.00272,
+      "aspect": 1.0,
+      "motion": 0.07961,
+      "flicker": 0.00064,
+      "frames": 4.0
+    },
+    "hints": [
+      "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold",
+      "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width"
+    ],
+    "render_source": "cpu_proxy"
+  },
+  "reference_review": {
+    "reference_set": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref",
+    "reference_score": 21.37,
+    "nearest_reference": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+    "reference_distance": 0.70152,
+    "created": "2026-05-06T10:38:38.738915+00:00"
+  }
+}

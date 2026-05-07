@@ -1,0 +1,39 @@
+{
+  "id": "forest",
+  "display_name": "Mosswood",
+  "category": "temperate",
+  "identity": {
+    "world_color": [50, 100, 45],
+    "regional_palette": [
+      [25, 50, 25],
+      [50, 95, 45],
+      [85, 130, 60],
+      [140, 165, 90]
+    ],
+    "icon_glyph": "tree",
+    "ambient_hex": "#08120a"
+  },
+  "terrain": {
+    "height_bias": "mid_rolling",
+    "slope_tendency": "rolling",
+    "water_behaviour": "water",
+    "carve_features": ["forest_canopy", "fallen_logs"],
+    "altitude_range": [0.28, 0.62],
+    "preferred_slope_range": [0.0, 0.40]
+  },
+  "transitions": {
+    "anchor_to": ["river", "altitude_band"],
+    "blend_neighbours": {
+      "default": {"width_px": 24, "noise_strength": 0.35, "feature_priority": "rivers"},
+      "grassland": {"width_px": 36, "noise_strength": 0.45, "feature_priority": "rivers"},
+      "swamp": {"width_px": 28, "noise_strength": 0.4, "feature_priority": "rivers"},
+      "tundra": {"width_px": 22, "noise_strength": 0.30, "feature_priority": "altitude_band"},
+      "ice_cavern": {"width_px": 18, "noise_strength": 0.25, "feature_priority": "altitude_band"}
+    },
+    "exclusion": ["lava_field", "charred_wasteland", "desert", "underwater"]
+  },
+  "texture_kit": "forest",
+  "decoration_kit": "forest",
+  "world_map_priority": 4,
+  "regional_glyph_density": 0.55
+}

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shader Review Queue</title>
+  <style>
+    :root { color-scheme: dark; font-family: Segoe UI, system-ui, sans-serif; background:#0b0d12; color:#e6edf7; }
+    body { margin:0; padding:24px; }
+    header { margin-bottom:18px; }
+    h1 { margin:0 0 4px; font-size:24px; }
+    .sub { color:#94a3b8; font-size:13px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(360px, 1fr)); gap:14px; }
+    .card { background:#111722; border:1px solid #263246; border-radius:8px; overflow:hidden; }
+    .card.keep { border-color:#63e6be; }
+    .card.review { border-color:#ffd166; }
+    .thumb { display:block; background:#05070a; min-height:180px; }
+    img { max-width:100%; display:block; margin:auto; }
+    .body { padding:12px; }
+    h2 { font-size:15px; margin:0 0 8px; }
+    .meta { display:flex; flex-wrap:wrap; gap:6px; }
+    .meta span, .meta strong { background:#1c2635; border-radius:999px; padding:3px 8px; font-size:12px; }
+    .meta strong { color:#111722; background:#e6edf7; }
+    .metrics, li { color:#cbd5e1; font-size:12px; line-height:1.45; }
+    pre { white-space:pre-wrap; overflow:auto; background:#080b10; color:#d8dee9; padding:8px; border-radius:6px; }
+    summary { color:#9ab7ff; cursor:pointer; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Shader Review Queue</h1>
+    <div class="sub">review_upgrade_smoke_001 | 5 candidates | generated 2026-05-06T10:38:29.238458+00:00</div>
+  </header>
+  <section class="grid">
+        <article class="card review">
+          <a class="thumb" href="shader_review_upgrade_smoke_001_shield_ripple_2d_004\flipbook.png"><img src="shader_review_upgrade_smoke_001_shield_ripple_2d_004\flipbook.png" loading="lazy"></a>
+          <div class="body">
+            <h2>shader_review_upgrade_smoke_001_shield_ripple_2d_004</h2>
+            <div class="meta">
+              <span>shield_ripple_2d</span>
+              <span>shield</span>
+              <strong>87.76</strong>
+              <span>review</span>
+            </div>
+            <div class="metrics">
+              cov 0.759 |
+              motion 0.006 |
+              contrast 0.050 |
+              edge 0.035
+            </div>
+            <ul><li>coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold</li></ul>
+            <details><summary>mutate</summary><pre>python &quot;D:\assets\art_lab\tools\shader_batch_review.py&quot; --batch-id mutate_shader_review_upgrade_smoke_001_shield_ripple_2d_004 --count 24 --frames 8 --size 256 --parent-request &quot;D:\assets\art_lab\shaders\review_queues\review_upgrade_smoke_001\shader_review_upgrade_smoke_001_shield_ripple_2d_004\request.json&quot; --mutation-strength 0.12</pre></details>
+          </div>
+        </article>
+        
+        <article class="card review">
+          <a class="thumb" href="shader_review_upgrade_smoke_001_dissolve_fire_2d_003\flipbook.png"><img src="shader_review_upgrade_smoke_001_dissolve_fire_2d_003\flipbook.png" loading="lazy"></a>
+          <div class="body">
+            <h2>shader_review_upgrade_smoke_001_dissolve_fire_2d_003</h2>
+            <div class="meta">
+              <span>dissolve_fire_2d</span>
+              <span>dissolve</span>
+              <strong>87.70</strong>
+              <span>review</span>
+            </div>
+            <div class="metrics">
+              cov 0.595 |
+              motion 0.109 |
+              contrast 0.165 |
+              edge 0.096
+            </div>
+            <ul><li>color weak: switch palette or push core/edge/glow colors farther apart</li></ul>
+            <details><summary>mutate</summary><pre>python &quot;D:\assets\art_lab\tools\shader_batch_review.py&quot; --batch-id mutate_shader_review_upgrade_smoke_001_dissolve_fire_2d_003 --count 24 --frames 8 --size 256 --parent-request &quot;D:\assets\art_lab\shaders\review_queues\review_upgrade_smoke_001\shader_review_upgrade_smoke_001_dissolve_fire_2d_003\request.json&quot; --mutation-strength 0.12</pre></details>
+          </div>
+        </article>
+        
+        <article class="card review">
+          <a class="thumb" href="shader_review_upgrade_smoke_001_beam_lightning_2d_007\flipbook.png"><img src="shader_review_upgrade_smoke_001_beam_lightning_2d_007\flipbook.png" loading="lazy"></a>
+          <div class="body">
+            <h2>shader_review_upgrade_smoke_001_beam_lightning_2d_007</h2>
+            <div class="meta">
+              <span>beam_lightning_2d</span>
+              <span>beam</span>
+              <strong>81.49</strong>
+              <span>review</span>
+            </div>
+            <div class="metrics">
+              cov 0.361 |
+              motion 0.027 |
+              contrast 0.057 |
+              edge 0.006
+            </div>
+            <ul><li>coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold</li><li>contrast low: widen color separation, add hotter core/edge, or reduce background-like colors</li><li>too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width</li></ul>
+            <details><summary>mutate</summary><pre>python &quot;D:\assets\art_lab\tools\shader_batch_review.py&quot; --batch-id mutate_shader_review_upgrade_smoke_001_beam_lightning_2d_007 --count 24 --frames 8 --size 256 --parent-request &quot;D:\assets\art_lab\shaders\review_queues\review_upgrade_smoke_001\shader_review_upgrade_smoke_001_beam_lightning_2d_007\request.json&quot; --mutation-strength 0.12</pre></details>
+          </div>
+        </article>
+        
+        <article class="card review">
+          <a class="thumb" href="shader_review_upgrade_smoke_001_portal_swirl_2d_005\flipbook.png"><img src="shader_review_upgrade_smoke_001_portal_swirl_2d_005\flipbook.png" loading="lazy"></a>
+          <div class="body">
+            <h2>shader_review_upgrade_smoke_001_portal_swirl_2d_005</h2>
+            <div class="meta">
+              <span>portal_swirl_2d</span>
+              <span>portal</span>
+              <strong>80.22</strong>
+              <span>review</span>
+            </div>
+            <div class="metrics">
+              cov 0.110 |
+              motion 0.002 |
+              contrast 0.018 |
+              edge 0.004
+            </div>
+            <ul><li>contrast low: widen color separation, add hotter core/edge, or reduce background-like colors</li><li>too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width</li><li>motion low: increase speed/pulse/spin/scroll parameters</li></ul>
+            <details><summary>mutate</summary><pre>python &quot;D:\assets\art_lab\tools\shader_batch_review.py&quot; --batch-id mutate_shader_review_upgrade_smoke_001_portal_swirl_2d_005 --count 24 --frames 8 --size 256 --parent-request &quot;D:\assets\art_lab\shaders\review_queues\review_upgrade_smoke_001\shader_review_upgrade_smoke_001_portal_swirl_2d_005\request.json&quot; --mutation-strength 0.12</pre></details>
+          </div>
+        </article>
+        
+        <article class="card review">
+          <a class="thumb" href="shader_review_upgrade_smoke_001_ring_field_2d_006\flipbook.png"><img src="shader_review_upgrade_smoke_001_ring_field_2d_006\flipbook.png" loading="lazy"></a>
+          <div class="body">
+            <h2>shader_review_upgrade_smoke_001_ring_field_2d_006</h2>
+            <div class="meta">
+              <span>ring_field_2d</span>
+              <span>aura</span>
+              <strong>77.66</strong>
+              <span>review</span>
+            </div>
+            <div class="metrics">
+              cov 0.950 |
+              motion 0.080 |
+              contrast 0.072 |
+              edge 0.010
+            </div>
+            <ul><li>coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold</li><li>too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width</li></ul>
+            <details><summary>mutate</summary><pre>python &quot;D:\assets\art_lab\tools\shader_batch_review.py&quot; --batch-id mutate_shader_review_upgrade_smoke_001_ring_field_2d_006 --count 24 --frames 8 --size 256 --parent-request &quot;D:\assets\art_lab\shaders\review_queues\review_upgrade_smoke_001\shader_review_upgrade_smoke_001_ring_field_2d_006\request.json&quot; --mutation-strength 0.12</pre></details>
+          </div>
+        </article>
+        </section>
+</body>
+</html>

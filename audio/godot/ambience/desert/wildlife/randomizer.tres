@@ -1,0 +1,31 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=9 format=3]
+
+[ext_resource type="AudioStream" path="res://audio/ambience/desert/wildlife/desert_lib_vulture_v0.wav" id="1_desert_wildlife_v0"]
+[ext_resource type="AudioStream" path="res://audio/ambience/desert/wildlife/desert_lib_vulture_v1.wav" id="2_desert_wildlife_v1"]
+[ext_resource type="AudioStream" path="res://audio/ambience/desert/wildlife/desert_sand_v0.wav" id="3_desert_wildlife_v2"]
+[ext_resource type="AudioStream" path="res://audio/ambience/desert/wildlife/desert_sand_v1.wav" id="4_desert_wildlife_v3"]
+[ext_resource type="AudioStream" path="res://audio/ambience/desert/wildlife/desert_scorpion_v0.wav" id="5_desert_wildlife_v4"]
+[ext_resource type="AudioStream" path="res://audio/ambience/desert/wildlife/desert_scorpion_v1.wav" id="6_desert_wildlife_v5"]
+[ext_resource type="AudioStream" path="res://audio/ambience/desert/wildlife/desert_snake_v0.wav" id="7_desert_wildlife_v6"]
+[ext_resource type="AudioStream" path="res://audio/ambience/desert/wildlife/desert_snake_v1.wav" id="8_desert_wildlife_v7"]
+
+[resource]
+random_pitch = 1.08
+random_volume_offset_db = 2.0
+streams_count = 8
+stream_0/stream = ExtResource("1_desert_wildlife_v0")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_desert_wildlife_v1")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_desert_wildlife_v2")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_desert_wildlife_v3")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("5_desert_wildlife_v4")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("6_desert_wildlife_v5")
+stream_5/weight = 1.0
+stream_6/stream = ExtResource("7_desert_wildlife_v6")
+stream_6/weight = 1.0
+stream_7/stream = ExtResource("8_desert_wildlife_v7")
+stream_7/weight = 1.0

@@ -1,0 +1,6 @@
+id,category,rarity,damage,armor,value_gold,value_per_power
+frost_spear_0,weapon,common,20.0,0.0,90.0,4.5
+iron_mace_0,weapon,common,19.0,0.0,90.0,4.7368421052631575
+obsidian_sword_0,weapon,rare,45.0,0.0,560.0,12.444444444444445
+rare_cold_blade_1042,weapon,rare,30.0,0.0,265.0,8.833333333333334
+uncommon_fire_blade_45,weapon,uncommon,18.0,0.0,80.0,4.444444444444445

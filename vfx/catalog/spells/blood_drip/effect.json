@@ -1,0 +1,67 @@
+{
+  "id": "blood_drip",
+  "kind": "spell",
+  "phenomenon": "particle",
+  "backend": "particle_cpu",
+  "duration_s": 1.2,
+  "fps": 30,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "visual": {
+    "palette": [
+      "#a02a20",
+      "#6a1510",
+      "#2a0606"
+    ],
+    "blend": "alpha",
+    "background": "#00000000",
+    "bloom": false
+  },
+  "visual3d": {
+    "billboard_mode": "y_axis",
+    "world_size_m": 1.4
+  },
+  "backend_params": {
+    "emitter": "burst",
+    "count": 20,
+    "seed": 62250,
+    "initial_speed": 10.0,
+    "speed_jitter": 5.0,
+    "direction_deg": 270.0,
+    "spread_deg": 30.0,
+    "gravity": [
+      0.0,
+      180.0
+    ],
+    "drag": 0.4,
+    "size_px": 3.0,
+    "size_jitter": 1.2000000000000002,
+    "fade": 1.0,
+    "emission_pos": [
+      128,
+      160
+    ],
+    "_audio_cues": [
+      {
+        "t": 0.0,
+        "name": "drip_start"
+      }
+    ]
+  },
+  "gameplay": {
+    "shape": "point",
+    "damage_tags": [],
+    "collision": "first_hit"
+  },
+  "element": "physical",
+  "archetype": "impact",
+  "tags": [
+    "blood",
+    "physical",
+    "ambient"
+  ],
+  "export_target": "3d_billboard",
+  "notes": "Damage/impact: blood_drip"
+}

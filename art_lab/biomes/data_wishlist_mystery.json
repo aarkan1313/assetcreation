@@ -1,0 +1,6009 @@
+{
+  "_doc": "Mystery tier of data_wishlist.json \u2014 procedurally sampled unknown bboxes worldwide.",
+  "version": 1,
+  "count": 300,
+  "seed": 42,
+  "size_deg": 0.2,
+  "regions": [
+    {
+      "id": "mystery_000_indonesia_oceania",
+      "bbox": [
+        91.9009,
+        -32.7237,
+        92.1009,
+        -32.5237
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "indonesia_oceania"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled indonesia_oceania bbox"
+    },
+    {
+      "id": "mystery_001_andes",
+      "bbox": [
+        -70.3706,
+        -31.4155,
+        -70.1706,
+        -31.2155
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "andes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled andes bbox"
+    },
+    {
+      "id": "mystery_002_australia",
+      "bbox": [
+        132.0735,
+        -30.3327,
+        132.2735,
+        -30.1327
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "australia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled australia bbox"
+    },
+    {
+      "id": "mystery_003_north_america_arctic",
+      "bbox": [
+        -151.6771,
+        65.0607,
+        -151.4771,
+        65.2607
+      ],
+      "dataset": "AW3D30",
+      "tags": [
+        "mystery",
+        "north_america_arctic"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled north_america_arctic bbox"
+    },
+    {
+      "id": "mystery_004_north_america_arctic",
+      "bbox": [
+        -154.2511,
+        69.3965,
+        -154.0511,
+        69.5965
+      ],
+      "dataset": "AW3D30",
+      "tags": [
+        "mystery",
+        "north_america_arctic"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled north_america_arctic bbox"
+    },
+    {
+      "id": "mystery_005_himalaya",
+      "bbox": [
+        67.6154,
+        33.739,
+        67.8154,
+        33.939
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "himalaya"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled himalaya bbox"
+    },
+    {
+      "id": "mystery_006_north_africa",
+      "bbox": [
+        -19.6776,
+        31.9873,
+        -19.4776,
+        32.1873
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "north_africa"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled north_africa bbox"
+    },
+    {
+      "id": "mystery_007_new_zealand",
+      "bbox": [
+        170.0038,
+        -47.6123,
+        170.2038,
+        -47.4123
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "new_zealand"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled new_zealand bbox"
+    },
+    {
+      "id": "mystery_008_kamchatka_kurils",
+      "bbox": [
+        149.9489,
+        46.2912,
+        150.1489,
+        46.4912
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "kamchatka_kurils"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled kamchatka_kurils bbox"
+    },
+    {
+      "id": "mystery_009_rockies_cascades",
+      "bbox": [
+        -104.6752,
+        46.9745,
+        -104.4752,
+        47.1745
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "rockies_cascades"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled rockies_cascades bbox"
+    },
+    {
+      "id": "mystery_010_north_africa",
+      "bbox": [
+        27.3326,
+        27.9434,
+        27.5326,
+        28.1434
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "north_africa"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled north_africa bbox"
+    },
+    {
+      "id": "mystery_011_kamchatka_kurils",
+      "bbox": [
+        150.578,
+        53.1806,
+        150.778,
+        53.3806
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "kamchatka_kurils"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled kamchatka_kurils bbox"
+    },
+    {
+      "id": "mystery_012_north_africa",
+      "bbox": [
+        20.1038,
+        32.8256,
+        20.3038,
+        33.0256
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "north_africa"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled north_africa bbox"
+    },
+    {
+      "id": "mystery_013_east_asia",
+      "bbox": [
+        135.1286,
+        21.5039,
+        135.3286,
+        21.7039
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "east_asia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled east_asia bbox"
+    },
+    {
+      "id": "mystery_014_andes",
+      "bbox": [
+        -79.3122,
+        -52.3073,
+        -79.1122,
+        -52.1073
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "andes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled andes bbox"
+    },
+    {
+      "id": "mystery_015_andes",
+      "bbox": [
+        -83.08,
+        -45.3709,
+        -82.88,
+        -45.1709
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "andes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled andes bbox"
+    },
+    {
+      "id": "mystery_016_indonesia_oceania",
+      "bbox": [
+        119.0866,
+        -28.4419,
+        119.2866,
+        -28.2419
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "indonesia_oceania"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled indonesia_oceania bbox"
+    },
+    {
+      "id": "mystery_017_andes",
+      "bbox": [
+        -79.7604,
+        -22.3171,
+        -79.5604,
+        -22.1171
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "andes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled andes bbox"
+    },
+    {
+      "id": "mystery_018_indonesia_oceania",
+      "bbox": [
+        138.6305,
+        -37.3988,
+        138.8305,
+        -37.1988
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "indonesia_oceania"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled indonesia_oceania bbox"
+    },
+    {
+      "id": "mystery_019_africa_east",
+      "bbox": [
+        19.8412,
+        -23.7163,
+        20.0412,
+        -23.5163
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "africa_east"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled africa_east bbox"
+    },
+    {
+      "id": "mystery_020_kamchatka_kurils",
+      "bbox": [
+        154.5,
+        53.2542,
+        154.7,
+        53.4542
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "kamchatka_kurils"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled kamchatka_kurils bbox"
+    },
+    {
+      "id": "mystery_021_new_zealand",
+      "bbox": [
+        177.5428,
+        -37.684,
+        177.7428,
+        -37.484
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "new_zealand"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled new_zealand bbox"
+    },
+    {
+      "id": "mystery_022_andes",
+      "bbox": [
+        -84.458,
+        -44.0591,
+        -84.258,
+        -43.8591
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "andes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled andes bbox"
+    },
+    {
+      "id": "mystery_023_med_alps",
+      "bbox": [
+        -1.6607,
+        49.0436,
+        -1.4607,
+        49.2436
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "med_alps"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled med_alps bbox"
+    },
+    {
+      "id": "mystery_024_australia",
+      "bbox": [
+        137.7669,
+        -22.1596,
+        137.9669,
+        -21.9596
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "australia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled australia bbox"
+    },
+    {
+      "id": "mystery_025_iceland_faroes",
+      "bbox": [
+        -15.9545,
+        65.4062,
+        -15.7545,
+        65.6062
+      ],
+      "dataset": "AW3D30",
+      "tags": [
+        "mystery",
+        "iceland_faroes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled iceland_faroes bbox"
+    },
+    {
+      "id": "mystery_026_med_alps",
+      "bbox": [
+        -0.2349,
+        43.3205,
+        -0.0349,
+        43.5205
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "med_alps"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled med_alps bbox"
+    },
+    {
+      "id": "mystery_027_med_alps",
+      "bbox": [
+        13.2834,
+        48.3673,
+        13.4834,
+        48.5673
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "med_alps"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled med_alps bbox"
+    },
+    {
+      "id": "mystery_028_iceland_faroes",
+      "bbox": [
+        -22.9068,
+        71.8705,
+        -22.7068,
+        72.0705
+      ],
+      "dataset": "AW3D30",
+      "tags": [
+        "mystery",
+        "iceland_faroes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled iceland_faroes bbox"
+    },
+    {
+      "id": "mystery_029_himalaya",
+      "bbox": [
+        63.0818,
+        25.6067,
+        63.2818,
+        25.8067
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "himalaya"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled himalaya bbox"
+    },
+    {
+      "id": "mystery_030_rockies_cascades",
+      "bbox": [
+        -111.2766,
+        50.7416,
+        -111.0766,
+        50.9416
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "rockies_cascades"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled rockies_cascades bbox"
+    },
+    {
+      "id": "mystery_031_central_asia_high",
+      "bbox": [
+        23.7117,
+        32.5324,
+        23.9117,
+        32.7324
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "central_asia_high"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled central_asia_high bbox"
+    },
+    {
+      "id": "mystery_032_kamchatka_kurils",
+      "bbox": [
+        152.8367,
+        59.4662,
+        153.0367,
+        59.6662
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "kamchatka_kurils"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled kamchatka_kurils bbox"
+    },
+    {
+      "id": "mystery_033_australia",
+      "bbox": [
+        130.187,
+        -19.8747,
+        130.387,
+        -19.6747
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "australia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled australia bbox"
+    },
+    {
+      "id": "mystery_034_new_zealand",
+      "bbox": [
+        172.9546,
+        -45.8308,
+        173.1546,
+        -45.6308
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "new_zealand"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled new_zealand bbox"
+    },
+    {
+      "id": "mystery_035_indonesia_oceania",
+      "bbox": [
+        98.8242,
+        -25.5356,
+        99.0242,
+        -25.3356
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "indonesia_oceania"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled indonesia_oceania bbox"
+    },
+    {
+      "id": "mystery_036_central_asia_high",
+      "bbox": [
+        77.129,
+        42.4171,
+        77.329,
+        42.6171
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "central_asia_high"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled central_asia_high bbox"
+    },
+    {
+      "id": "mystery_037_med_alps",
+      "bbox": [
+        9.9234,
+        37.5798,
+        10.1234,
+        37.7798
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "med_alps"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled med_alps bbox"
+    },
+    {
+      "id": "mystery_038_caribbean_central_am",
+      "bbox": [
+        -67.0422,
+        15.272,
+        -66.8422,
+        15.472
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "caribbean_central_am"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled caribbean_central_am bbox"
+    },
+    {
+      "id": "mystery_039_indonesia_oceania",
+      "bbox": [
+        138.6176,
+        -38.2222,
+        138.8176,
+        -38.0222
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "indonesia_oceania"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled indonesia_oceania bbox"
+    },
+    {
+      "id": "mystery_040_africa_east",
+      "bbox": [
+        26.6088,
+        -11.7412,
+        26.8088,
+        -11.5412
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "africa_east"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled africa_east bbox"
+    },
+    {
+      "id": "mystery_041_himalaya",
+      "bbox": [
+        59.92,
+        29.7623,
+        60.12,
+        29.9623
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "himalaya"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled himalaya bbox"
+    },
+    {
+      "id": "mystery_042_north_america_arctic",
+      "bbox": [
+        -59.3172,
+        76.2617,
+        -59.1172,
+        76.4617
+      ],
+      "dataset": "AW3D30",
+      "tags": [
+        "mystery",
+        "north_america_arctic"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled north_america_arctic bbox"
+    },
+    {
+      "id": "mystery_043_north_africa",
+      "bbox": [
+        -0.1116,
+        20.7689,
+        0.0884,
+        20.9689
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "north_africa"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled north_africa bbox"
+    },
+    {
+      "id": "mystery_044_australia",
+      "bbox": [
+        153.5737,
+        -42.1021,
+        153.7737,
+        -41.9021
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "australia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled australia bbox"
+    },
+    {
+      "id": "mystery_045_himalaya",
+      "bbox": [
+        62.3224,
+        36.309,
+        62.5224,
+        36.509
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "himalaya"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled himalaya bbox"
+    },
+    {
+      "id": "mystery_046_africa_south",
+      "bbox": [
+        -4.9643,
+        -20.8415,
+        -4.7643,
+        -20.6415
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "africa_south"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled africa_south bbox"
+    },
+    {
+      "id": "mystery_047_himalaya",
+      "bbox": [
+        69.177,
+        37.9865,
+        69.377,
+        38.1865
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "himalaya"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled himalaya bbox"
+    },
+    {
+      "id": "mystery_048_central_asia_high",
+      "bbox": [
+        32.6079,
+        35.6859,
+        32.8079,
+        35.8859
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "central_asia_high"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled central_asia_high bbox"
+    },
+    {
+      "id": "mystery_049_africa_east",
+      "bbox": [
+        20.5207,
+        -25.7485,
+        20.7207,
+        -25.5485
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "africa_east"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled africa_east bbox"
+    },
+    {
+      "id": "mystery_050_kamchatka_kurils",
+      "bbox": [
+        154.6482,
+        51.4715,
+        154.8482,
+        51.6715
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "kamchatka_kurils"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled kamchatka_kurils bbox"
+    },
+    {
+      "id": "mystery_051_himalaya",
+      "bbox": [
+        64.1351,
+        28.2705,
+        64.3351,
+        28.4705
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "himalaya"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled himalaya bbox"
+    },
+    {
+      "id": "mystery_052_scandinavia",
+      "bbox": [
+        22.5493,
+        58.812,
+        22.7493,
+        59.012
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "scandinavia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled scandinavia bbox"
+    },
+    {
+      "id": "mystery_053_andes",
+      "bbox": [
+        -83.6801,
+        -33.0114,
+        -83.4801,
+        -32.8114
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "andes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled andes bbox"
+    },
+    {
+      "id": "mystery_054_andes",
+      "bbox": [
+        -66.9916,
+        -25.0128,
+        -66.7916,
+        -24.8128
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "andes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled andes bbox"
+    },
+    {
+      "id": "mystery_055_rockies_cascades",
+      "bbox": [
+        -122.9599,
+        48.2796,
+        -122.7599,
+        48.4796
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "rockies_cascades"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled rockies_cascades bbox"
+    },
+    {
+      "id": "mystery_056_andes",
+      "bbox": [
+        -82.4538,
+        -22.357,
+        -82.2538,
+        -22.157
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "andes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled andes bbox"
+    },
+    {
+      "id": "mystery_057_east_asia",
+      "bbox": [
+        123.5336,
+        47.3617,
+        123.7336,
+        47.5617
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "east_asia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled east_asia bbox"
+    },
+    {
+      "id": "mystery_058_north_africa",
+      "bbox": [
+        -7.7234,
+        21.354,
+        -7.5234,
+        21.554
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "north_africa"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled north_africa bbox"
+    },
+    {
+      "id": "mystery_059_central_asia_high",
+      "bbox": [
+        45.3147,
+        34.2405,
+        45.5147,
+        34.4405
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "central_asia_high"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled central_asia_high bbox"
+    },
+    {
+      "id": "mystery_060_africa_east",
+      "bbox": [
+        29.0206,
+        -5.575,
+        29.2206,
+        -5.375
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "africa_east"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled africa_east bbox"
+    },
+    {
+      "id": "mystery_061_rockies_cascades",
+      "bbox": [
+        -118.0214,
+        41.6861,
+        -117.8214,
+        41.8861
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "rockies_cascades"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled rockies_cascades bbox"
+    },
+    {
+      "id": "mystery_062_australia",
+      "bbox": [
+        136.1164,
+        -38.4427,
+        136.3164,
+        -38.2427
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "australia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled australia bbox"
+    },
+    {
+      "id": "mystery_063_central_asia_high",
+      "bbox": [
+        45.2129,
+        30.4709,
+        45.4129,
+        30.6709
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "central_asia_high"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled central_asia_high bbox"
+    },
+    {
+      "id": "mystery_064_med_alps",
+      "bbox": [
+        26.8306,
+        41.547,
+        27.0306,
+        41.747
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "med_alps"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled med_alps bbox"
+    },
+    {
+      "id": "mystery_065_australia",
+      "bbox": [
+        143.6581,
+        -43.3294,
+        143.8581,
+        -43.1294
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "australia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled australia bbox"
+    },
+    {
+      "id": "mystery_066_kamchatka_kurils",
+      "bbox": [
+        157.4404,
+        59.4349,
+        157.6404,
+        59.6349
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "kamchatka_kurils"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled kamchatka_kurils bbox"
+    },
+    {
+      "id": "mystery_067_arabian_peninsula",
+      "bbox": [
+        56.1174,
+        9.8957,
+        56.3174,
+        10.0957
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "arabian_peninsula"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled arabian_peninsula bbox"
+    },
+    {
+      "id": "mystery_068_himalaya",
+      "bbox": [
+        67.3812,
+        30.9156,
+        67.5812,
+        31.1156
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "himalaya"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled himalaya bbox"
+    },
+    {
+      "id": "mystery_069_rockies_cascades",
+      "bbox": [
+        -118.7308,
+        54.6062,
+        -118.5308,
+        54.8062
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "rockies_cascades"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled rockies_cascades bbox"
+    },
+    {
+      "id": "mystery_070_med_alps",
+      "bbox": [
+        21.2628,
+        41.7251,
+        21.4628,
+        41.9251
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "med_alps"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled med_alps bbox"
+    },
+    {
+      "id": "mystery_071_central_asia_high",
+      "bbox": [
+        77.3391,
+        44.8085,
+        77.5391,
+        45.0085
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "central_asia_high"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled central_asia_high bbox"
+    },
+    {
+      "id": "mystery_072_himalaya",
+      "bbox": [
+        85.0443,
+        27.222,
+        85.2443,
+        27.422
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "himalaya"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled himalaya bbox"
+    },
+    {
+      "id": "mystery_073_med_alps",
+      "bbox": [
+        28.6484,
+        43.5877,
+        28.8484,
+        43.7877
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "med_alps"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled med_alps bbox"
+    },
+    {
+      "id": "mystery_074_himalaya",
+      "bbox": [
+        86.0791,
+        25.7575,
+        86.2791,
+        25.9575
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "himalaya"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled himalaya bbox"
+    },
+    {
+      "id": "mystery_075_east_asia",
+      "bbox": [
+        125.0425,
+        49.7452,
+        125.2425,
+        49.9452
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "east_asia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled east_asia bbox"
+    },
+    {
+      "id": "mystery_076_great_basin",
+      "bbox": [
+        -95.8844,
+        31.1017,
+        -95.6844,
+        31.3017
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "great_basin"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled great_basin bbox"
+    },
+    {
+      "id": "mystery_077_andes",
+      "bbox": [
+        -73.1993,
+        -31.4676,
+        -72.9993,
+        -31.2676
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "andes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled andes bbox"
+    },
+    {
+      "id": "mystery_078_andes",
+      "bbox": [
+        -82.7023,
+        -23.9399,
+        -82.5023,
+        -23.7399
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "andes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled andes bbox"
+    },
+    {
+      "id": "mystery_079_med_alps",
+      "bbox": [
+        13.6808,
+        44.1907,
+        13.8808,
+        44.3907
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "med_alps"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled med_alps bbox"
+    },
+    {
+      "id": "mystery_080_central_asia_high",
+      "bbox": [
+        54.9203,
+        35.3557,
+        55.1203,
+        35.5557
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "central_asia_high"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled central_asia_high bbox"
+    },
+    {
+      "id": "mystery_081_arabian_peninsula",
+      "bbox": [
+        40.0065,
+        16.4943,
+        40.2065,
+        16.6943
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "arabian_peninsula"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled arabian_peninsula bbox"
+    },
+    {
+      "id": "mystery_082_andes",
+      "bbox": [
+        -77.1843,
+        -31.5908,
+        -76.9843,
+        -31.3908
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "andes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled andes bbox"
+    },
+    {
+      "id": "mystery_083_med_alps",
+      "bbox": [
+        2.5471,
+        46.178,
+        2.7471,
+        46.378
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "med_alps"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled med_alps bbox"
+    },
+    {
+      "id": "mystery_084_rockies_cascades",
+      "bbox": [
+        -116.3514,
+        54.8691,
+        -116.1514,
+        55.0691
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "rockies_cascades"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled rockies_cascades bbox"
+    },
+    {
+      "id": "mystery_085_kamchatka_kurils",
+      "bbox": [
+        145.9989,
+        48.0973,
+        146.1989,
+        48.2973
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "kamchatka_kurils"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled kamchatka_kurils bbox"
+    },
+    {
+      "id": "mystery_086_med_alps",
+      "bbox": [
+        27.2304,
+        48.113,
+        27.4304,
+        48.313
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "med_alps"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled med_alps bbox"
+    },
+    {
+      "id": "mystery_087_australia",
+      "bbox": [
+        139.1382,
+        -39.5789,
+        139.3382,
+        -39.3789
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "australia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled australia bbox"
+    },
+    {
+      "id": "mystery_088_north_africa",
+      "bbox": [
+        25.6301,
+        29.0752,
+        25.8301,
+        29.2752
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "north_africa"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled north_africa bbox"
+    },
+    {
+      "id": "mystery_089_kamchatka_kurils",
+      "bbox": [
+        154.7096,
+        45.0173,
+        154.9096,
+        45.2173
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "kamchatka_kurils"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled kamchatka_kurils bbox"
+    },
+    {
+      "id": "mystery_090_north_africa",
+      "bbox": [
+        -0.6404,
+        29.8508,
+        -0.4404,
+        30.0508
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "north_africa"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled north_africa bbox"
+    },
+    {
+      "id": "mystery_091_arabian_peninsula",
+      "bbox": [
+        38.2573,
+        9.2851,
+        38.4573,
+        9.4851
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "arabian_peninsula"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled arabian_peninsula bbox"
+    },
+    {
+      "id": "mystery_092_rockies_cascades",
+      "bbox": [
+        -113.5033,
+        40.347,
+        -113.3033,
+        40.547
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "rockies_cascades"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled rockies_cascades bbox"
+    },
+    {
+      "id": "mystery_093_east_asia",
+      "bbox": [
+        135.7806,
+        27.0259,
+        135.9806,
+        27.2259
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "east_asia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled east_asia bbox"
+    },
+    {
+      "id": "mystery_094_indonesia_oceania",
+      "bbox": [
+        111.0187,
+        -23.1161,
+        111.2187,
+        -22.9161
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "indonesia_oceania"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled indonesia_oceania bbox"
+    },
+    {
+      "id": "mystery_095_caribbean_central_am",
+      "bbox": [
+        -67.4084,
+        11.5614,
+        -67.2084,
+        11.7614
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "caribbean_central_am"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled caribbean_central_am bbox"
+    },
+    {
+      "id": "mystery_096_central_asia_high",
+      "bbox": [
+        36.5008,
+        24.9709,
+        36.7008,
+        25.1709
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "central_asia_high"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled central_asia_high bbox"
+    },
+    {
+      "id": "mystery_097_africa_south",
+      "bbox": [
+        15.3845,
+        -27.2413,
+        15.5845,
+        -27.0413
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "africa_south"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled africa_south bbox"
+    },
+    {
+      "id": "mystery_098_africa_east",
+      "bbox": [
+        26.8302,
+        -22.2694,
+        27.0302,
+        -22.0694
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "africa_east"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled africa_east bbox"
+    },
+    {
+      "id": "mystery_099_north_america_arctic",
+      "bbox": [
+        -170.3183,
+        76.3932,
+        -170.1183,
+        76.5932
+      ],
+      "dataset": "AW3D30",
+      "tags": [
+        "mystery",
+        "north_america_arctic"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled north_america_arctic bbox"
+    },
+    {
+      "id": "mystery_100_caribbean_central_am",
+      "bbox": [
+        -71.9161,
+        24.9227,
+        -71.7161,
+        25.1227
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "caribbean_central_am"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled caribbean_central_am bbox"
+    },
+    {
+      "id": "mystery_101_east_asia",
+      "bbox": [
+        107.3047,
+        24.3606,
+        107.5047,
+        24.5606
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "east_asia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled east_asia bbox"
+    },
+    {
+      "id": "mystery_102_scandinavia",
+      "bbox": [
+        31.8694,
+        68.4341,
+        32.0694,
+        68.6341
+      ],
+      "dataset": "AW3D30",
+      "tags": [
+        "mystery",
+        "scandinavia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled scandinavia bbox"
+    },
+    {
+      "id": "mystery_103_australia",
+      "bbox": [
+        152.3731,
+        -37.7473,
+        152.5731,
+        -37.5473
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "australia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled australia bbox"
+    },
+    {
+      "id": "mystery_104_med_alps",
+      "bbox": [
+        -5.9883,
+        46.6017,
+        -5.7883,
+        46.8017
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "med_alps"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled med_alps bbox"
+    },
+    {
+      "id": "mystery_105_australia",
+      "bbox": [
+        140.0594,
+        -23.3768,
+        140.2594,
+        -23.1768
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "australia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled australia bbox"
+    },
+    {
+      "id": "mystery_106_great_basin",
+      "bbox": [
+        -96.5024,
+        42.8691,
+        -96.3024,
+        43.0691
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "great_basin"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled great_basin bbox"
+    },
+    {
+      "id": "mystery_107_kamchatka_kurils",
+      "bbox": [
+        157.0616,
+        58.1212,
+        157.2616,
+        58.3212
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "kamchatka_kurils"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled kamchatka_kurils bbox"
+    },
+    {
+      "id": "mystery_108_north_america_arctic",
+      "bbox": [
+        -84.3466,
+        59.8656,
+        -84.1466,
+        60.0656
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "north_america_arctic"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled north_america_arctic bbox"
+    },
+    {
+      "id": "mystery_109_arabian_peninsula",
+      "bbox": [
+        54.9559,
+        18.2688,
+        55.1559,
+        18.4688
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "arabian_peninsula"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled arabian_peninsula bbox"
+    },
+    {
+      "id": "mystery_110_north_africa",
+      "bbox": [
+        -2.7576,
+        31.7106,
+        -2.5576,
+        31.9106
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "north_africa"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled north_africa bbox"
+    },
+    {
+      "id": "mystery_111_rockies_cascades",
+      "bbox": [
+        -103.935,
+        52.0719,
+        -103.735,
+        52.2719
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "rockies_cascades"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled rockies_cascades bbox"
+    },
+    {
+      "id": "mystery_112_andes",
+      "bbox": [
+        -68.7683,
+        -38.9894,
+        -68.5683,
+        -38.7894
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "andes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled andes bbox"
+    },
+    {
+      "id": "mystery_113_med_alps",
+      "bbox": [
+        21.7138,
+        38.3139,
+        21.9138,
+        38.5139
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "med_alps"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled med_alps bbox"
+    },
+    {
+      "id": "mystery_114_north_america_arctic",
+      "bbox": [
+        -154.9931,
+        59.7479,
+        -154.7931,
+        59.9479
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "north_america_arctic"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled north_america_arctic bbox"
+    },
+    {
+      "id": "mystery_115_australia",
+      "bbox": [
+        154.0722,
+        -35.3306,
+        154.2722,
+        -35.1306
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "australia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled australia bbox"
+    },
+    {
+      "id": "mystery_116_indonesia_oceania",
+      "bbox": [
+        121.8743,
+        -0.9483,
+        122.0743,
+        -0.7483
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "indonesia_oceania"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled indonesia_oceania bbox"
+    },
+    {
+      "id": "mystery_117_himalaya",
+      "bbox": [
+        92.7733,
+        26.6301,
+        92.9733,
+        26.8301
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "himalaya"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled himalaya bbox"
+    },
+    {
+      "id": "mystery_118_kamchatka_kurils",
+      "bbox": [
+        147.5785,
+        59.338,
+        147.7785,
+        59.538
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "kamchatka_kurils"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled kamchatka_kurils bbox"
+    },
+    {
+      "id": "mystery_119_med_alps",
+      "bbox": [
+        -5.7639,
+        41.4185,
+        -5.5639,
+        41.6185
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "med_alps"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled med_alps bbox"
+    },
+    {
+      "id": "mystery_120_africa_east",
+      "bbox": [
+        22.5462,
+        -16.9137,
+        22.7462,
+        -16.7137
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "africa_east"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled africa_east bbox"
+    },
+    {
+      "id": "mystery_121_himalaya",
+      "bbox": [
+        73.3818,
+        33.5488,
+        73.5818,
+        33.7488
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "himalaya"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled himalaya bbox"
+    },
+    {
+      "id": "mystery_122_med_alps",
+      "bbox": [
+        18.2514,
+        34.9254,
+        18.4514,
+        35.1254
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "med_alps"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled med_alps bbox"
+    },
+    {
+      "id": "mystery_123_arabian_peninsula",
+      "bbox": [
+        48.3613,
+        16.5332,
+        48.5613,
+        16.7332
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "arabian_peninsula"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled arabian_peninsula bbox"
+    },
+    {
+      "id": "mystery_124_africa_east",
+      "bbox": [
+        28.9713,
+        -24.1734,
+        29.1713,
+        -23.9734
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "africa_east"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled africa_east bbox"
+    },
+    {
+      "id": "mystery_125_rockies_cascades",
+      "bbox": [
+        -110.1729,
+        41.504,
+        -109.9729,
+        41.704
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "rockies_cascades"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled rockies_cascades bbox"
+    },
+    {
+      "id": "mystery_126_scandinavia",
+      "bbox": [
+        30.3405,
+        67.1358,
+        30.5405,
+        67.3358
+      ],
+      "dataset": "AW3D30",
+      "tags": [
+        "mystery",
+        "scandinavia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled scandinavia bbox"
+    },
+    {
+      "id": "mystery_127_med_alps",
+      "bbox": [
+        2.2714,
+        41.0259,
+        2.4714,
+        41.2259
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "med_alps"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled med_alps bbox"
+    },
+    {
+      "id": "mystery_128_iceland_faroes",
+      "bbox": [
+        -22.1434,
+        61.4275,
+        -21.9434,
+        61.6275
+      ],
+      "dataset": "AW3D30",
+      "tags": [
+        "mystery",
+        "iceland_faroes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled iceland_faroes bbox"
+    },
+    {
+      "id": "mystery_129_central_asia_high",
+      "bbox": [
+        76.3218,
+        38.4464,
+        76.5218,
+        38.6464
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "central_asia_high"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled central_asia_high bbox"
+    },
+    {
+      "id": "mystery_130_caribbean_central_am",
+      "bbox": [
+        -70.8673,
+        15.3171,
+        -70.6673,
+        15.5171
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "caribbean_central_am"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled caribbean_central_am bbox"
+    },
+    {
+      "id": "mystery_131_himalaya",
+      "bbox": [
+        59.9142,
+        29.2037,
+        60.1142,
+        29.4037
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "himalaya"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled himalaya bbox"
+    },
+    {
+      "id": "mystery_132_central_asia_high",
+      "bbox": [
+        54.6991,
+        37.9941,
+        54.8991,
+        38.1941
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "central_asia_high"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled central_asia_high bbox"
+    },
+    {
+      "id": "mystery_133_central_asia_high",
+      "bbox": [
+        46.4296,
+        29.174,
+        46.6296,
+        29.374
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "central_asia_high"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled central_asia_high bbox"
+    },
+    {
+      "id": "mystery_134_central_asia_high",
+      "bbox": [
+        73.9708,
+        40.8205,
+        74.1708,
+        41.0205
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "central_asia_high"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled central_asia_high bbox"
+    },
+    {
+      "id": "mystery_135_great_basin",
+      "bbox": [
+        -113.4041,
+        37.6318,
+        -113.2041,
+        37.8318
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "great_basin"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled great_basin bbox"
+    },
+    {
+      "id": "mystery_136_indonesia_oceania",
+      "bbox": [
+        116.7151,
+        -8.2709,
+        116.9151,
+        -8.0709
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "indonesia_oceania"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled indonesia_oceania bbox"
+    },
+    {
+      "id": "mystery_137_africa_east",
+      "bbox": [
+        29.0103,
+        -28.3608,
+        29.2103,
+        -28.1608
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "africa_east"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled africa_east bbox"
+    },
+    {
+      "id": "mystery_138_andes",
+      "bbox": [
+        -84.6115,
+        -46.5305,
+        -84.4115,
+        -46.3305
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "andes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled andes bbox"
+    },
+    {
+      "id": "mystery_139_central_asia_high",
+      "bbox": [
+        70.8843,
+        26.3566,
+        71.0843,
+        26.5566
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "central_asia_high"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled central_asia_high bbox"
+    },
+    {
+      "id": "mystery_140_iceland_faroes",
+      "bbox": [
+        -18.8023,
+        62.2332,
+        -18.6023,
+        62.4332
+      ],
+      "dataset": "AW3D30",
+      "tags": [
+        "mystery",
+        "iceland_faroes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled iceland_faroes bbox"
+    },
+    {
+      "id": "mystery_141_new_zealand",
+      "bbox": [
+        172.3157,
+        -46.1962,
+        172.5157,
+        -45.9962
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "new_zealand"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled new_zealand bbox"
+    },
+    {
+      "id": "mystery_142_indonesia_oceania",
+      "bbox": [
+        90.3436,
+        -11.3066,
+        90.5436,
+        -11.1066
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "indonesia_oceania"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled indonesia_oceania bbox"
+    },
+    {
+      "id": "mystery_143_africa_south",
+      "bbox": [
+        -5.8365,
+        -22.3456,
+        -5.6365,
+        -22.1456
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "africa_south"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled africa_south bbox"
+    },
+    {
+      "id": "mystery_144_andes",
+      "bbox": [
+        -65.9407,
+        -36.9715,
+        -65.7407,
+        -36.7715
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "andes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled andes bbox"
+    },
+    {
+      "id": "mystery_145_rockies_cascades",
+      "bbox": [
+        -122.6241,
+        51.8667,
+        -122.4241,
+        52.0667
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "rockies_cascades"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled rockies_cascades bbox"
+    },
+    {
+      "id": "mystery_146_central_asia_high",
+      "bbox": [
+        67.985,
+        38.2516,
+        68.185,
+        38.4516
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "central_asia_high"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled central_asia_high bbox"
+    },
+    {
+      "id": "mystery_147_kamchatka_kurils",
+      "bbox": [
+        153.8318,
+        59.1506,
+        154.0318,
+        59.3506
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "kamchatka_kurils"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled kamchatka_kurils bbox"
+    },
+    {
+      "id": "mystery_148_australia",
+      "bbox": [
+        145.2163,
+        -19.9254,
+        145.4163,
+        -19.7254
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "australia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled australia bbox"
+    },
+    {
+      "id": "mystery_149_himalaya",
+      "bbox": [
+        88.9699,
+        33.1181,
+        89.1699,
+        33.3181
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "himalaya"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled himalaya bbox"
+    },
+    {
+      "id": "mystery_150_caribbean_central_am",
+      "bbox": [
+        -68.9452,
+        18.4441,
+        -68.7452,
+        18.6441
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "caribbean_central_am"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled caribbean_central_am bbox"
+    },
+    {
+      "id": "mystery_151_med_alps",
+      "bbox": [
+        -0.2104,
+        44.4649,
+        -0.0104,
+        44.6649
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "med_alps"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled med_alps bbox"
+    },
+    {
+      "id": "mystery_152_africa_south",
+      "bbox": [
+        10.752,
+        -16.2975,
+        10.952,
+        -16.0975
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "africa_south"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled africa_south bbox"
+    },
+    {
+      "id": "mystery_153_med_alps",
+      "bbox": [
+        -7.0007,
+        39.1859,
+        -6.8007,
+        39.3859
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "med_alps"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled med_alps bbox"
+    },
+    {
+      "id": "mystery_154_med_alps",
+      "bbox": [
+        2.6884,
+        43.0023,
+        2.8884,
+        43.2023
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "med_alps"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled med_alps bbox"
+    },
+    {
+      "id": "mystery_155_great_basin",
+      "bbox": [
+        -110.4748,
+        40.3092,
+        -110.2748,
+        40.5092
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "great_basin"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled great_basin bbox"
+    },
+    {
+      "id": "mystery_156_new_zealand",
+      "bbox": [
+        165.8634,
+        -43.5784,
+        166.0634,
+        -43.3784
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "new_zealand"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled new_zealand bbox"
+    },
+    {
+      "id": "mystery_157_himalaya",
+      "bbox": [
+        74.4521,
+        28.0025,
+        74.6521,
+        28.2025
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "himalaya"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled himalaya bbox"
+    },
+    {
+      "id": "mystery_158_central_asia_high",
+      "bbox": [
+        74.1903,
+        36.5816,
+        74.3903,
+        36.7816
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "central_asia_high"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled central_asia_high bbox"
+    },
+    {
+      "id": "mystery_159_new_zealand",
+      "bbox": [
+        177.751,
+        -37.8505,
+        177.951,
+        -37.6505
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "new_zealand"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled new_zealand bbox"
+    },
+    {
+      "id": "mystery_160_iceland_faroes",
+      "bbox": [
+        -25.041,
+        64.1211,
+        -24.841,
+        64.3211
+      ],
+      "dataset": "AW3D30",
+      "tags": [
+        "mystery",
+        "iceland_faroes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled iceland_faroes bbox"
+    },
+    {
+      "id": "mystery_161_africa_east",
+      "bbox": [
+        32.2621,
+        -6.4971,
+        32.4621,
+        -6.2971
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "africa_east"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled africa_east bbox"
+    },
+    {
+      "id": "mystery_162_central_asia_high",
+      "bbox": [
+        64.7509,
+        35.8226,
+        64.9509,
+        36.0226
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "central_asia_high"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled central_asia_high bbox"
+    },
+    {
+      "id": "mystery_163_east_asia",
+      "bbox": [
+        110.9269,
+        27.5798,
+        111.1269,
+        27.7798
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "east_asia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled east_asia bbox"
+    },
+    {
+      "id": "mystery_164_central_asia_high",
+      "bbox": [
+        21.6415,
+        31.6226,
+        21.8415,
+        31.8226
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "central_asia_high"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled central_asia_high bbox"
+    },
+    {
+      "id": "mystery_165_new_zealand",
+      "bbox": [
+        170.9648,
+        -47.4593,
+        171.1648,
+        -47.2593
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "new_zealand"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled new_zealand bbox"
+    },
+    {
+      "id": "mystery_166_central_asia_high",
+      "bbox": [
+        27.5577,
+        37.3451,
+        27.7577,
+        37.5451
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "central_asia_high"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled central_asia_high bbox"
+    },
+    {
+      "id": "mystery_167_north_america_arctic",
+      "bbox": [
+        -128.8774,
+        66.8318,
+        -128.6774,
+        67.0318
+      ],
+      "dataset": "AW3D30",
+      "tags": [
+        "mystery",
+        "north_america_arctic"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled north_america_arctic bbox"
+    },
+    {
+      "id": "mystery_168_north_america_arctic",
+      "bbox": [
+        -96.5425,
+        53.971,
+        -96.3425,
+        54.171
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "north_america_arctic"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled north_america_arctic bbox"
+    },
+    {
+      "id": "mystery_169_central_asia_high",
+      "bbox": [
+        22.9171,
+        32.4821,
+        23.1171,
+        32.6821
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "central_asia_high"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled central_asia_high bbox"
+    },
+    {
+      "id": "mystery_170_andes",
+      "bbox": [
+        -78.5631,
+        -28.457,
+        -78.3631,
+        -28.257
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "andes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled andes bbox"
+    },
+    {
+      "id": "mystery_171_iceland_faroes",
+      "bbox": [
+        -17.5799,
+        69.8831,
+        -17.3799,
+        70.0831
+      ],
+      "dataset": "AW3D30",
+      "tags": [
+        "mystery",
+        "iceland_faroes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled iceland_faroes bbox"
+    },
+    {
+      "id": "mystery_172_med_alps",
+      "bbox": [
+        -6.8238,
+        35.1907,
+        -6.6238,
+        35.3907
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "med_alps"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled med_alps bbox"
+    },
+    {
+      "id": "mystery_173_himalaya",
+      "bbox": [
+        94.8968,
+        30.1494,
+        95.0968,
+        30.3494
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "himalaya"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled himalaya bbox"
+    },
+    {
+      "id": "mystery_174_indonesia_oceania",
+      "bbox": [
+        152.3986,
+        -15.771,
+        152.5986,
+        -15.571
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "indonesia_oceania"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled indonesia_oceania bbox"
+    },
+    {
+      "id": "mystery_175_africa_east",
+      "bbox": [
+        33.993,
+        -29.1192,
+        34.193,
+        -28.9192
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "africa_east"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled africa_east bbox"
+    },
+    {
+      "id": "mystery_176_north_america_arctic",
+      "bbox": [
+        -160.2903,
+        53.6866,
+        -160.0903,
+        53.8866
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "north_america_arctic"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled north_america_arctic bbox"
+    },
+    {
+      "id": "mystery_177_indonesia_oceania",
+      "bbox": [
+        135.0176,
+        -35.2916,
+        135.2176,
+        -35.0916
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "indonesia_oceania"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled indonesia_oceania bbox"
+    },
+    {
+      "id": "mystery_178_new_zealand",
+      "bbox": [
+        176.4035,
+        -47.4154,
+        176.6035,
+        -47.2154
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "new_zealand"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled new_zealand bbox"
+    },
+    {
+      "id": "mystery_179_east_asia",
+      "bbox": [
+        137.2963,
+        23.9087,
+        137.4963,
+        24.1087
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "east_asia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled east_asia bbox"
+    },
+    {
+      "id": "mystery_180_north_africa",
+      "bbox": [
+        42.6069,
+        21.5215,
+        42.8069,
+        21.7215
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "north_africa"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled north_africa bbox"
+    },
+    {
+      "id": "mystery_181_north_america_arctic",
+      "bbox": [
+        -139.5456,
+        70.2204,
+        -139.3456,
+        70.4204
+      ],
+      "dataset": "AW3D30",
+      "tags": [
+        "mystery",
+        "north_america_arctic"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled north_america_arctic bbox"
+    },
+    {
+      "id": "mystery_182_kamchatka_kurils",
+      "bbox": [
+        150.8498,
+        55.6252,
+        151.0498,
+        55.8252
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "kamchatka_kurils"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled kamchatka_kurils bbox"
+    },
+    {
+      "id": "mystery_183_rockies_cascades",
+      "bbox": [
+        -109.3816,
+        47.4448,
+        -109.1816,
+        47.6448
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "rockies_cascades"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled rockies_cascades bbox"
+    },
+    {
+      "id": "mystery_184_rockies_cascades",
+      "bbox": [
+        -106.9256,
+        51.9059,
+        -106.7256,
+        52.1059
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "rockies_cascades"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled rockies_cascades bbox"
+    },
+    {
+      "id": "mystery_185_east_asia",
+      "bbox": [
+        105.9528,
+        54.3346,
+        106.1528,
+        54.5346
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "east_asia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled east_asia bbox"
+    },
+    {
+      "id": "mystery_186_africa_south",
+      "bbox": [
+        3.7882,
+        -22.2487,
+        3.9882,
+        -22.0487
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "africa_south"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled africa_south bbox"
+    },
+    {
+      "id": "mystery_187_iceland_faroes",
+      "bbox": [
+        -20.0404,
+        63.9948,
+        -19.8404,
+        64.1948
+      ],
+      "dataset": "AW3D30",
+      "tags": [
+        "mystery",
+        "iceland_faroes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled iceland_faroes bbox"
+    },
+    {
+      "id": "mystery_188_australia",
+      "bbox": [
+        150.4583,
+        -41.4061,
+        150.6583,
+        -41.2061
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "australia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled australia bbox"
+    },
+    {
+      "id": "mystery_189_kamchatka_kurils",
+      "bbox": [
+        154.4338,
+        57.3306,
+        154.6338,
+        57.5306
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "kamchatka_kurils"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled kamchatka_kurils bbox"
+    },
+    {
+      "id": "mystery_190_new_zealand",
+      "bbox": [
+        171.4323,
+        -38.3593,
+        171.6323,
+        -38.1593
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "new_zealand"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled new_zealand bbox"
+    },
+    {
+      "id": "mystery_191_kamchatka_kurils",
+      "bbox": [
+        148.9512,
+        57.023,
+        149.1512,
+        57.223
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "kamchatka_kurils"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled kamchatka_kurils bbox"
+    },
+    {
+      "id": "mystery_192_himalaya",
+      "bbox": [
+        76.8224,
+        31.4336,
+        77.0224,
+        31.6336
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "himalaya"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled himalaya bbox"
+    },
+    {
+      "id": "mystery_193_africa_east",
+      "bbox": [
+        21.7311,
+        -9.5486,
+        21.9311,
+        -9.3486
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "africa_east"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled africa_east bbox"
+    },
+    {
+      "id": "mystery_194_north_africa",
+      "bbox": [
+        -14.4669,
+        33.1245,
+        -14.2669,
+        33.3245
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "north_africa"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled north_africa bbox"
+    },
+    {
+      "id": "mystery_195_med_alps",
+      "bbox": [
+        8.4883,
+        44.055,
+        8.6883,
+        44.255
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "med_alps"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled med_alps bbox"
+    },
+    {
+      "id": "mystery_196_iceland_faroes",
+      "bbox": [
+        -24.813,
+        70.1114,
+        -24.613,
+        70.3114
+      ],
+      "dataset": "AW3D30",
+      "tags": [
+        "mystery",
+        "iceland_faroes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled iceland_faroes bbox"
+    },
+    {
+      "id": "mystery_197_andes",
+      "bbox": [
+        -80.8576,
+        -27.1759,
+        -80.6576,
+        -26.9759
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "andes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled andes bbox"
+    },
+    {
+      "id": "mystery_198_scandinavia",
+      "bbox": [
+        31.3096,
+        66.8201,
+        31.5096,
+        67.0201
+      ],
+      "dataset": "AW3D30",
+      "tags": [
+        "mystery",
+        "scandinavia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled scandinavia bbox"
+    },
+    {
+      "id": "mystery_199_med_alps",
+      "bbox": [
+        -9.694,
+        49.1209,
+        -9.494,
+        49.3209
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "med_alps"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled med_alps bbox"
+    },
+    {
+      "id": "mystery_200_rockies_cascades",
+      "bbox": [
+        -108.4978,
+        44.6716,
+        -108.2978,
+        44.8716
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "rockies_cascades"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled rockies_cascades bbox"
+    },
+    {
+      "id": "mystery_201_africa_east",
+      "bbox": [
+        29.331,
+        -15.7229,
+        29.531,
+        -15.5229
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "africa_east"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled africa_east bbox"
+    },
+    {
+      "id": "mystery_202_himalaya",
+      "bbox": [
+        87.6527,
+        26.2958,
+        87.8527,
+        26.4958
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "himalaya"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled himalaya bbox"
+    },
+    {
+      "id": "mystery_203_andes",
+      "bbox": [
+        -71.2643,
+        -44.3828,
+        -71.0643,
+        -44.1828
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "andes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled andes bbox"
+    },
+    {
+      "id": "mystery_204_east_asia",
+      "bbox": [
+        123.563,
+        38.4823,
+        123.763,
+        38.6823
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "east_asia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled east_asia bbox"
+    },
+    {
+      "id": "mystery_205_central_asia_high",
+      "bbox": [
+        64.6561,
+        31.5158,
+        64.8561,
+        31.7158
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "central_asia_high"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled central_asia_high bbox"
+    },
+    {
+      "id": "mystery_206_new_zealand",
+      "bbox": [
+        168.9637,
+        -46.0775,
+        169.1637,
+        -45.8775
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "new_zealand"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled new_zealand bbox"
+    },
+    {
+      "id": "mystery_207_great_basin",
+      "bbox": [
+        -111.2483,
+        31.6933,
+        -111.0483,
+        31.8933
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "great_basin"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled great_basin bbox"
+    },
+    {
+      "id": "mystery_208_himalaya",
+      "bbox": [
+        86.5766,
+        27.6772,
+        86.7766,
+        27.8772
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "himalaya"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled himalaya bbox"
+    },
+    {
+      "id": "mystery_209_andes",
+      "bbox": [
+        -75.416,
+        -29.7395,
+        -75.216,
+        -29.5395
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "andes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled andes bbox"
+    },
+    {
+      "id": "mystery_210_kamchatka_kurils",
+      "bbox": [
+        152.7696,
+        49.145,
+        152.9696,
+        49.345
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "kamchatka_kurils"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled kamchatka_kurils bbox"
+    },
+    {
+      "id": "mystery_211_rockies_cascades",
+      "bbox": [
+        -124.2765,
+        39.4497,
+        -124.0765,
+        39.6497
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "rockies_cascades"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled rockies_cascades bbox"
+    },
+    {
+      "id": "mystery_212_andes",
+      "bbox": [
+        -84.817,
+        -36.4053,
+        -84.617,
+        -36.2053
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "andes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled andes bbox"
+    },
+    {
+      "id": "mystery_213_med_alps",
+      "bbox": [
+        28.8718,
+        43.2004,
+        29.0718,
+        43.4004
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "med_alps"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled med_alps bbox"
+    },
+    {
+      "id": "mystery_214_new_zealand",
+      "bbox": [
+        166.7942,
+        -36.2046,
+        166.9942,
+        -36.0046
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "new_zealand"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled new_zealand bbox"
+    },
+    {
+      "id": "mystery_215_himalaya",
+      "bbox": [
+        90.4452,
+        33.511,
+        90.6452,
+        33.711
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "himalaya"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled himalaya bbox"
+    },
+    {
+      "id": "mystery_216_central_asia_high",
+      "bbox": [
+        46.3281,
+        28.5873,
+        46.5281,
+        28.7873
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "central_asia_high"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled central_asia_high bbox"
+    },
+    {
+      "id": "mystery_217_rockies_cascades",
+      "bbox": [
+        -101.8681,
+        44.4546,
+        -101.6681,
+        44.6546
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "rockies_cascades"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled rockies_cascades bbox"
+    },
+    {
+      "id": "mystery_218_north_africa",
+      "bbox": [
+        5.946,
+        21.0112,
+        6.146,
+        21.2112
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "north_africa"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled north_africa bbox"
+    },
+    {
+      "id": "mystery_219_indonesia_oceania",
+      "bbox": [
+        94.1887,
+        -38.3861,
+        94.3887,
+        -38.1861
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "indonesia_oceania"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled indonesia_oceania bbox"
+    },
+    {
+      "id": "mystery_220_himalaya",
+      "bbox": [
+        70.5342,
+        39.8088,
+        70.7342,
+        40.0088
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "himalaya"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled himalaya bbox"
+    },
+    {
+      "id": "mystery_221_great_basin",
+      "bbox": [
+        -99.8111,
+        38.9948,
+        -99.6111,
+        39.1948
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "great_basin"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled great_basin bbox"
+    },
+    {
+      "id": "mystery_222_africa_south",
+      "bbox": [
+        -1.0725,
+        -19.4228,
+        -0.8725,
+        -19.2228
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "africa_south"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled africa_south bbox"
+    },
+    {
+      "id": "mystery_223_central_asia_high",
+      "bbox": [
+        46.4633,
+        42.1033,
+        46.6633,
+        42.3033
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "central_asia_high"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled central_asia_high bbox"
+    },
+    {
+      "id": "mystery_224_kamchatka_kurils",
+      "bbox": [
+        149.4807,
+        54.2154,
+        149.6807,
+        54.4154
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "kamchatka_kurils"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled kamchatka_kurils bbox"
+    },
+    {
+      "id": "mystery_225_east_asia",
+      "bbox": [
+        136.9045,
+        53.0657,
+        137.1045,
+        53.2657
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "east_asia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled east_asia bbox"
+    },
+    {
+      "id": "mystery_226_andes",
+      "bbox": [
+        -80.8795,
+        -31.985,
+        -80.6795,
+        -31.785
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "andes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled andes bbox"
+    },
+    {
+      "id": "mystery_227_great_basin",
+      "bbox": [
+        -111.6237,
+        31.026,
+        -111.4237,
+        31.226
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "great_basin"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled great_basin bbox"
+    },
+    {
+      "id": "mystery_228_north_america_arctic",
+      "bbox": [
+        -121.5345,
+        67.7143,
+        -121.3345,
+        67.9143
+      ],
+      "dataset": "AW3D30",
+      "tags": [
+        "mystery",
+        "north_america_arctic"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled north_america_arctic bbox"
+    },
+    {
+      "id": "mystery_229_med_alps",
+      "bbox": [
+        -0.841,
+        45.5043,
+        -0.641,
+        45.7043
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "med_alps"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled med_alps bbox"
+    },
+    {
+      "id": "mystery_230_new_zealand",
+      "bbox": [
+        171.7105,
+        -39.1018,
+        171.9105,
+        -38.9018
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "new_zealand"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled new_zealand bbox"
+    },
+    {
+      "id": "mystery_231_arabian_peninsula",
+      "bbox": [
+        54.5957,
+        15.4007,
+        54.7957,
+        15.6007
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "arabian_peninsula"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled arabian_peninsula bbox"
+    },
+    {
+      "id": "mystery_232_indonesia_oceania",
+      "bbox": [
+        164.5935,
+        -25.9687,
+        164.7935,
+        -25.7687
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "indonesia_oceania"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled indonesia_oceania bbox"
+    },
+    {
+      "id": "mystery_233_himalaya",
+      "bbox": [
+        82.5672,
+        38.5262,
+        82.7672,
+        38.7262
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "himalaya"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled himalaya bbox"
+    },
+    {
+      "id": "mystery_234_north_africa",
+      "bbox": [
+        -15.4584,
+        22.3888,
+        -15.2584,
+        22.5888
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "north_africa"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled north_africa bbox"
+    },
+    {
+      "id": "mystery_235_scandinavia",
+      "bbox": [
+        27.3687,
+        64.5765,
+        27.5687,
+        64.7765
+      ],
+      "dataset": "AW3D30",
+      "tags": [
+        "mystery",
+        "scandinavia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled scandinavia bbox"
+    },
+    {
+      "id": "mystery_236_med_alps",
+      "bbox": [
+        -5.1259,
+        45.2302,
+        -4.9259,
+        45.4302
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "med_alps"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled med_alps bbox"
+    },
+    {
+      "id": "mystery_237_new_zealand",
+      "bbox": [
+        179.0401,
+        -42.0924,
+        179.2401,
+        -41.8924
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "new_zealand"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled new_zealand bbox"
+    },
+    {
+      "id": "mystery_238_himalaya",
+      "bbox": [
+        62.7155,
+        25.4979,
+        62.9155,
+        25.6979
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "himalaya"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled himalaya bbox"
+    },
+    {
+      "id": "mystery_239_central_asia_high",
+      "bbox": [
+        39.2393,
+        29.9074,
+        39.4393,
+        30.1074
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "central_asia_high"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled central_asia_high bbox"
+    },
+    {
+      "id": "mystery_240_rockies_cascades",
+      "bbox": [
+        -101.2427,
+        51.6192,
+        -101.0427,
+        51.8192
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "rockies_cascades"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled rockies_cascades bbox"
+    },
+    {
+      "id": "mystery_241_east_asia",
+      "bbox": [
+        147.4393,
+        54.885,
+        147.6393,
+        55.085
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "east_asia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled east_asia bbox"
+    },
+    {
+      "id": "mystery_242_indonesia_oceania",
+      "bbox": [
+        111.4609,
+        -43.2896,
+        111.6609,
+        -43.0896
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "indonesia_oceania"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled indonesia_oceania bbox"
+    },
+    {
+      "id": "mystery_243_africa_east",
+      "bbox": [
+        25.369,
+        -15.5547,
+        25.569,
+        -15.3547
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "africa_east"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled africa_east bbox"
+    },
+    {
+      "id": "mystery_244_caribbean_central_am",
+      "bbox": [
+        -77.3777,
+        20.4359,
+        -77.1777,
+        20.6359
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "caribbean_central_am"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled caribbean_central_am bbox"
+    },
+    {
+      "id": "mystery_245_indonesia_oceania",
+      "bbox": [
+        129.2381,
+        -40.9941,
+        129.4381,
+        -40.7941
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "indonesia_oceania"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled indonesia_oceania bbox"
+    },
+    {
+      "id": "mystery_246_scandinavia",
+      "bbox": [
+        14.8993,
+        66.2923,
+        15.0993,
+        66.4923
+      ],
+      "dataset": "AW3D30",
+      "tags": [
+        "mystery",
+        "scandinavia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled scandinavia bbox"
+    },
+    {
+      "id": "mystery_247_australia",
+      "bbox": [
+        138.1451,
+        -20.8214,
+        138.3451,
+        -20.6214
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "australia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled australia bbox"
+    },
+    {
+      "id": "mystery_248_med_alps",
+      "bbox": [
+        27.7077,
+        47.1035,
+        27.9077,
+        47.3035
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "med_alps"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled med_alps bbox"
+    },
+    {
+      "id": "mystery_249_himalaya",
+      "bbox": [
+        75.8189,
+        29.6178,
+        76.0189,
+        29.8178
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "himalaya"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled himalaya bbox"
+    },
+    {
+      "id": "mystery_250_scandinavia",
+      "bbox": [
+        34.0055,
+        61.771,
+        34.2055,
+        61.971
+      ],
+      "dataset": "AW3D30",
+      "tags": [
+        "mystery",
+        "scandinavia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled scandinavia bbox"
+    },
+    {
+      "id": "mystery_251_himalaya",
+      "bbox": [
+        94.4842,
+        34.7649,
+        94.6842,
+        34.9649
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "himalaya"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled himalaya bbox"
+    },
+    {
+      "id": "mystery_252_himalaya",
+      "bbox": [
+        74.3637,
+        27.7137,
+        74.5637,
+        27.9137
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "himalaya"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled himalaya bbox"
+    },
+    {
+      "id": "mystery_253_scandinavia",
+      "bbox": [
+        27.5933,
+        65.5319,
+        27.7933,
+        65.7319
+      ],
+      "dataset": "AW3D30",
+      "tags": [
+        "mystery",
+        "scandinavia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled scandinavia bbox"
+    },
+    {
+      "id": "mystery_254_africa_east",
+      "bbox": [
+        20.564,
+        -18.6234,
+        20.764,
+        -18.4234
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "africa_east"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled africa_east bbox"
+    },
+    {
+      "id": "mystery_255_arabian_peninsula",
+      "bbox": [
+        45.8529,
+        16.279,
+        46.0529,
+        16.479
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "arabian_peninsula"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled arabian_peninsula bbox"
+    },
+    {
+      "id": "mystery_256_great_basin",
+      "bbox": [
+        -95.6371,
+        39.0331,
+        -95.4371,
+        39.2331
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "great_basin"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled great_basin bbox"
+    },
+    {
+      "id": "mystery_257_andes",
+      "bbox": [
+        -81.9324,
+        -35.8206,
+        -81.7324,
+        -35.6206
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "andes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled andes bbox"
+    },
+    {
+      "id": "mystery_258_himalaya",
+      "bbox": [
+        63.1623,
+        39.7839,
+        63.3623,
+        39.9839
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "himalaya"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled himalaya bbox"
+    },
+    {
+      "id": "mystery_259_caribbean_central_am",
+      "bbox": [
+        -73.1783,
+        12.0144,
+        -72.9783,
+        12.2144
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "caribbean_central_am"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled caribbean_central_am bbox"
+    },
+    {
+      "id": "mystery_260_north_africa",
+      "bbox": [
+        12.2944,
+        30.649,
+        12.4944,
+        30.849
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "north_africa"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled north_africa bbox"
+    },
+    {
+      "id": "mystery_261_himalaya",
+      "bbox": [
+        69.4699,
+        37.4209,
+        69.6699,
+        37.6209
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "himalaya"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled himalaya bbox"
+    },
+    {
+      "id": "mystery_262_kamchatka_kurils",
+      "bbox": [
+        148.556,
+        53.169,
+        148.756,
+        53.369
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "kamchatka_kurils"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled kamchatka_kurils bbox"
+    },
+    {
+      "id": "mystery_263_iceland_faroes",
+      "bbox": [
+        -15.8813,
+        65.9989,
+        -15.6813,
+        66.1989
+      ],
+      "dataset": "AW3D30",
+      "tags": [
+        "mystery",
+        "iceland_faroes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled iceland_faroes bbox"
+    },
+    {
+      "id": "mystery_264_australia",
+      "bbox": [
+        151.5007,
+        -35.4313,
+        151.7007,
+        -35.2313
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "australia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled australia bbox"
+    },
+    {
+      "id": "mystery_265_africa_south",
+      "bbox": [
+        6.4977,
+        -7.0725,
+        6.6977,
+        -6.8725
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "africa_south"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled africa_south bbox"
+    },
+    {
+      "id": "mystery_266_himalaya",
+      "bbox": [
+        88.6192,
+        29.1426,
+        88.8192,
+        29.3426
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "himalaya"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled himalaya bbox"
+    },
+    {
+      "id": "mystery_267_med_alps",
+      "bbox": [
+        13.3775,
+        49.8835,
+        13.5775,
+        50.0835
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "med_alps"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled med_alps bbox"
+    },
+    {
+      "id": "mystery_268_himalaya",
+      "bbox": [
+        65.1008,
+        32.9787,
+        65.3008,
+        33.1787
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "himalaya"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled himalaya bbox"
+    },
+    {
+      "id": "mystery_269_scandinavia",
+      "bbox": [
+        21.4575,
+        64.1383,
+        21.6575,
+        64.3383
+      ],
+      "dataset": "AW3D30",
+      "tags": [
+        "mystery",
+        "scandinavia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled scandinavia bbox"
+    },
+    {
+      "id": "mystery_270_central_asia_high",
+      "bbox": [
+        39.2066,
+        28.673,
+        39.4066,
+        28.873
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "central_asia_high"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled central_asia_high bbox"
+    },
+    {
+      "id": "mystery_271_new_zealand",
+      "bbox": [
+        173.477,
+        -46.363,
+        173.677,
+        -46.163
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "new_zealand"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled new_zealand bbox"
+    },
+    {
+      "id": "mystery_272_africa_south",
+      "bbox": [
+        -8.3541,
+        -12.7588,
+        -8.1541,
+        -12.5588
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "africa_south"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled africa_south bbox"
+    },
+    {
+      "id": "mystery_273_new_zealand",
+      "bbox": [
+        177.0711,
+        -43.9227,
+        177.2711,
+        -43.7227
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "new_zealand"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled new_zealand bbox"
+    },
+    {
+      "id": "mystery_274_indonesia_oceania",
+      "bbox": [
+        155.5598,
+        -0.9632,
+        155.7598,
+        -0.7632
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "indonesia_oceania"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled indonesia_oceania bbox"
+    },
+    {
+      "id": "mystery_275_himalaya",
+      "bbox": [
+        61.1957,
+        32.4344,
+        61.3957,
+        32.6344
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "himalaya"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled himalaya bbox"
+    },
+    {
+      "id": "mystery_276_east_asia",
+      "bbox": [
+        143.385,
+        50.4967,
+        143.585,
+        50.6967
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "east_asia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled east_asia bbox"
+    },
+    {
+      "id": "mystery_277_central_asia_high",
+      "bbox": [
+        51.4571,
+        34.0386,
+        51.6571,
+        34.2386
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "central_asia_high"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled central_asia_high bbox"
+    },
+    {
+      "id": "mystery_278_africa_east",
+      "bbox": [
+        24.2796,
+        -15.4566,
+        24.4796,
+        -15.2566
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "africa_east"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled africa_east bbox"
+    },
+    {
+      "id": "mystery_279_great_basin",
+      "bbox": [
+        -105.7102,
+        44.4381,
+        -105.5102,
+        44.6381
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "great_basin"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled great_basin bbox"
+    },
+    {
+      "id": "mystery_280_scandinavia",
+      "bbox": [
+        25.6811,
+        65.9472,
+        25.8811,
+        66.1472
+      ],
+      "dataset": "AW3D30",
+      "tags": [
+        "mystery",
+        "scandinavia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled scandinavia bbox"
+    },
+    {
+      "id": "mystery_281_australia",
+      "bbox": [
+        151.2085,
+        -15.023,
+        151.4085,
+        -14.823
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "australia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled australia bbox"
+    },
+    {
+      "id": "mystery_282_iceland_faroes",
+      "bbox": [
+        -21.9334,
+        68.5246,
+        -21.7334,
+        68.7246
+      ],
+      "dataset": "AW3D30",
+      "tags": [
+        "mystery",
+        "iceland_faroes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled iceland_faroes bbox"
+    },
+    {
+      "id": "mystery_283_africa_east",
+      "bbox": [
+        32.6029,
+        -34.023,
+        32.8029,
+        -33.823
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "africa_east"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled africa_east bbox"
+    },
+    {
+      "id": "mystery_284_rockies_cascades",
+      "bbox": [
+        -111.1652,
+        53.3186,
+        -110.9652,
+        53.5186
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "rockies_cascades"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled rockies_cascades bbox"
+    },
+    {
+      "id": "mystery_285_kamchatka_kurils",
+      "bbox": [
+        156.1015,
+        51.4096,
+        156.3015,
+        51.6096
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "kamchatka_kurils"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled kamchatka_kurils bbox"
+    },
+    {
+      "id": "mystery_286_rockies_cascades",
+      "bbox": [
+        -111.0876,
+        52.3516,
+        -110.8876,
+        52.5516
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "rockies_cascades"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled rockies_cascades bbox"
+    },
+    {
+      "id": "mystery_287_central_asia_high",
+      "bbox": [
+        61.5401,
+        42.9685,
+        61.7401,
+        43.1685
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "central_asia_high"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled central_asia_high bbox"
+    },
+    {
+      "id": "mystery_288_rockies_cascades",
+      "bbox": [
+        -106.2157,
+        40.7674,
+        -106.0157,
+        40.9674
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "rockies_cascades"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled rockies_cascades bbox"
+    },
+    {
+      "id": "mystery_289_iceland_faroes",
+      "bbox": [
+        -23.6443,
+        66.274,
+        -23.4443,
+        66.474
+      ],
+      "dataset": "AW3D30",
+      "tags": [
+        "mystery",
+        "iceland_faroes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled iceland_faroes bbox"
+    },
+    {
+      "id": "mystery_290_east_asia",
+      "bbox": [
+        139.526,
+        25.8494,
+        139.726,
+        26.0494
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "east_asia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled east_asia bbox"
+    },
+    {
+      "id": "mystery_291_rockies_cascades",
+      "bbox": [
+        -103.9748,
+        47.2942,
+        -103.7748,
+        47.4942
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "rockies_cascades"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled rockies_cascades bbox"
+    },
+    {
+      "id": "mystery_292_andes",
+      "bbox": [
+        -66.8434,
+        -50.0909,
+        -66.6434,
+        -49.8909
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "andes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled andes bbox"
+    },
+    {
+      "id": "mystery_293_central_asia_high",
+      "bbox": [
+        35.1386,
+        30.0065,
+        35.3386,
+        30.2065
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "central_asia_high"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled central_asia_high bbox"
+    },
+    {
+      "id": "mystery_294_north_america_arctic",
+      "bbox": [
+        -75.4977,
+        76.9363,
+        -75.2977,
+        77.1363
+      ],
+      "dataset": "AW3D30",
+      "tags": [
+        "mystery",
+        "north_america_arctic"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled north_america_arctic bbox"
+    },
+    {
+      "id": "mystery_295_new_zealand",
+      "bbox": [
+        167.2696,
+        -43.0323,
+        167.4696,
+        -42.8323
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "new_zealand"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled new_zealand bbox"
+    },
+    {
+      "id": "mystery_296_scandinavia",
+      "bbox": [
+        22.5272,
+        65.762,
+        22.7272,
+        65.962
+      ],
+      "dataset": "AW3D30",
+      "tags": [
+        "mystery",
+        "scandinavia"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled scandinavia bbox"
+    },
+    {
+      "id": "mystery_297_central_asia_high",
+      "bbox": [
+        34.9059,
+        41.8061,
+        35.1059,
+        42.0061
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "central_asia_high"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled central_asia_high bbox"
+    },
+    {
+      "id": "mystery_298_andes",
+      "bbox": [
+        -77.4061,
+        -38.1877,
+        -77.2061,
+        -37.9877
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "andes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled andes bbox"
+    },
+    {
+      "id": "mystery_299_andes",
+      "bbox": [
+        -73.6615,
+        -34.9816,
+        -73.4615,
+        -34.7816
+      ],
+      "dataset": "COP30",
+      "tags": [
+        "mystery",
+        "andes"
+      ],
+      "fantasy_styles": [
+        "realistic",
+        "exaggerated",
+        "mythic"
+      ],
+      "tagline": "Procedurally-sampled andes bbox"
+    }
+  ]
+}

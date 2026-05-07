@@ -1,0 +1,37 @@
+{
+  "schema": "prop_recipe.v1",
+  "family": "scorch_01",
+  "kit": "mossy_highland_ruins",
+  "generator": "texture_decal_v1",
+  "count": 4,
+  "source_lanes": ["texture_pipeline", "shader_template"],
+  "style": {
+    "prompt": "subtle old scorch marks on wet ruin stone, ancient spell residue",
+    "silhouette": "soft smoky radial stain, broken edge, not a full circle",
+    "avoid": ["fresh bright fire", "perfect black disk", "cartoon explosion mark"]
+  },
+  "budgets": {
+    "texture_px": 512,
+    "alpha_edge_px": 24
+  },
+  "scale_m": {
+    "x": [0.45, 1.30],
+    "y": [0.01, 0.02],
+    "z": [0.45, 1.30]
+  },
+  "materials": [
+    {"slot": "scorch_decal", "color": "#161412", "roughness": 0.92}
+  ],
+  "placement": {
+    "render_class": "decal",
+    "collision": "none",
+    "origin": "center",
+    "footprint_radius_m": [0.25, 0.75],
+    "placement_tags": ["decal", "scorch", "ruin", "magic_residue"]
+  },
+  "outputs": {
+    "texture": true,
+    "thumbnail": true,
+    "godot_scene": true
+  }
+}

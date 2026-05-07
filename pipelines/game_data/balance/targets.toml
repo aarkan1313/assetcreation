@@ -1,0 +1,90 @@
+schema_version = "1.0.0"
+description = "Authoritative balance targets for the v1.5 fantasy ARPG content set."
+
+[rarity_histogram]
+common = 0.50
+uncommon = 0.30
+rare = 0.15
+epic = 0.04
+legendary = 0.01
+
+[ability_school_floor]
+elemental = 3
+arcane = 3
+nature = 2
+shadow = 2
+holy = 2
+physical = 3
+
+[[item.weapon]]
+rarity = "common"
+damage = { min = 10, max = 20 }
+weight = { min = 0.5, max = 6.0 }
+value_gold = { min = 10, max = 90 }
+durability = { min = 80, max = 220 }
+
+[[item.weapon]]
+rarity = "uncommon"
+damage = { min = 18, max = 34 }
+weight = { min = 0.5, max = 6.0 }
+value_gold = { min = 80, max = 280 }
+durability = { min = 120, max = 320 }
+
+[[item.weapon]]
+rarity = "rare"
+damage = { min = 30, max = 58 }
+weight = { min = 0.5, max = 7.0 }
+value_gold = { min = 240, max = 900 }
+durability = { min = 180, max = 480 }
+
+[[item.weapon]]
+rarity = "epic"
+damage = { min = 52, max = 96 }
+weight = { min = 0.5, max = 8.0 }
+value_gold = { min = 800, max = 3200 }
+durability = { min = 280, max = 700 }
+
+[[item.weapon]]
+rarity = "legendary"
+damage = { min = 88, max = 150 }
+weight = { min = 0.5, max = 9.0 }
+value_gold = { min = 2800, max = 12000 }
+durability = { min = 500, max = 1200 }
+
+[[ability]]
+tier = 1
+mana = { min = 5, max = 22 }
+cooldown_sec = { min = 0.5, max = 3.0 }
+damage = { min = 8, max = 20 }
+
+[[ability]]
+tier = 2
+mana = { min = 12, max = 38 }
+cooldown_sec = { min = 1.0, max = 5.0 }
+damage = { min = 16, max = 38 }
+
+[[ability]]
+tier = 3
+mana = { min = 25, max = 70 }
+cooldown_sec = { min = 2.0, max = 8.0 }
+damage = { min = 30, max = 70 }
+
+[[ability]]
+tier = 4
+mana = { min = 42, max = 100 }
+cooldown_sec = { min = 4.0, max = 12.0 }
+damage = { min = 56, max = 110 }
+
+[[ability]]
+tier = 5
+mana = { min = 60, max = 130 }
+cooldown_sec = { min = 6.0, max = 16.0 }
+damage = { min = 90, max = 160 }
+
+[sim.gates]
+ttk_min_s = 0.5
+ttk_max_s_by_rarity = { common = 30.0, uncommon = 22.0, rare = 16.0, epic = 12.0, legendary = 9.0 }
+dps_z_max = 3.0
+dps_z_min = -2.0
+dominance_max = 1
+

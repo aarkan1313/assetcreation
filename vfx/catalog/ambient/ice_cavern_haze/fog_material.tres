@@ -1,0 +1,16 @@
+[gd_resource type="FogMaterial" load_steps=3 format=3]
+
+[ext_resource type="Shader" path="res://vfx/ambient/ice_cavern_haze/fog.gdshader" id="1_sh"]
+[ext_resource type="Texture2D" path="res://vfx/ambient/ice_cavern_haze/density.png" id="2_atlas"]
+
+[resource]
+# FogMaterial.shader is set so volumetric_fog samples our shader.
+shader = ExtResource("1_sh")
+shader_parameter/density_atlas = ExtResource("2_atlas")
+shader_parameter/atlas_meta = Vector3(64, 64, 32)
+shader_parameter/density_scale = 0.9
+shader_parameter/color_top = Color(0.8117647058823529, 0.9019607843137255, 0.9607843137254902, 1)
+shader_parameter/color_bottom = Color(0.35294117647058826, 0.47843137254901963, 0.5725490196078431, 1)
+shader_parameter/emission_strength = 0.0
+shader_parameter/anim_speed = 0.05
+shader_parameter/anim_amp = 0.05

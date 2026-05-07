@@ -1,0 +1,28 @@
+# lucide curated UI-primitive picks (auto-generated)
+# license: ISC
+# Used by: freelib_ingest.py --source mit-iso-libs --library lucide --slugs-file <this>
+
+chevron-left
+chevron-right
+chevron-up
+chevron-down
+arrow-left
+arrow-right
+arrow-up
+arrow-down
+settings
+menu
+x
+plus
+minus
+search
+info
+alert-triangle
+check
+circle
+filter
+list
+trash-2
+save
+user
+users

@@ -1,0 +1,30 @@
+{
+  "effect_id": "debris_chitin",
+  "backend": "fracture2d",
+  "n_frames": 17,
+  "fps": 24,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "flipbook": "D:\\assets\\vfx\\catalog\\destruction\\debris_chitin\\flipbook.png",
+  "frames_dir": "D:\\assets\\vfx\\catalog\\destruction\\debris_chitin\\frames",
+  "extras": {
+    "fragments_json": "D:\\assets\\vfx\\catalog\\destruction\\debris_chitin\\fragments.json",
+    "bodies_json": "D:\\assets\\vfx\\catalog\\destruction\\debris_chitin\\bodies.json",
+    "audio_cues": [
+      {
+        "t": 0.0,
+        "name": "crunch"
+      },
+      {
+        "t": 0.3,
+        "name": "shower"
+      }
+    ]
+  },
+  "metrics": {
+    "shard_count": 14
+  },
+  "timestamp": "2026-05-06T20:50:46+00:00"
+}

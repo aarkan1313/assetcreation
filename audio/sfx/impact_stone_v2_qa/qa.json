@@ -1,0 +1,12 @@
+{
+  "duration_s": 0.15541950113378686,
+  "samplerate": 44100,
+  "rms_dbfs": -16.00074413680955,
+  "peak_dbfs": -2.11337851653032,
+  "clipped_samples": 0,
+  "dc_offset": 0.0020401093643158674,
+  "click_count_estimate": 0,
+  "source": "D:\\assets\\audio\\sfx\\impact_stone_v2.wav",
+  "waveform": "D:\\assets\\audio\\sfx\\impact_stone_v2_qa\\waveform.png",
+  "spectrogram": "D:\\assets\\audio\\sfx\\impact_stone_v2_qa\\spectrogram.png"
+}

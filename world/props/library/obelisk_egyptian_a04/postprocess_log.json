@@ -1,0 +1,72 @@
+{
+  "prop_id": "obelisk_egyptian_a04",
+  "render_class": "hero_prop",
+  "source_glb": "D:\\assets\\world\\props\\ai_routes\\trellis2\\ruined_obelisk_a_gate\\model_lod0.glb",
+  "started_at_utc": "2026-05-07T02:07:31+00:00",
+  "stages": [
+    {
+      "stage": "stage_into_library",
+      "ok": true,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "preprocess",
+      "ok": true,
+      "elapsed_s": 4.2577831745147705,
+      "target_tris": 100000,
+      "err": ""
+    },
+    {
+      "stage": "lod",
+      "ok": true,
+      "elapsed_s": 2.965256690979004,
+      "ratios": [
+        1.0,
+        0.65,
+        0.35,
+        0.15
+      ],
+      "distances_m": [
+        25,
+        60,
+        120,
+        200
+      ],
+      "err": ""
+    },
+    {
+      "stage": "collision",
+      "ok": true,
+      "elapsed_s": 28.63186526298523,
+      "err": ""
+    },
+    {
+      "stage": "billboard",
+      "ok": true,
+      "elapsed_s": 0.0,
+      "skipped": "hero_prop doesn't use billboards"
+    },
+    {
+      "stage": "pbr_bind",
+      "ok": true,
+      "elapsed_s": 0.05616879463195801,
+      "texture_set": "biome_grassland",
+      "err": ""
+    },
+    {
+      "stage": "validate",
+      "ok": true,
+      "elapsed_s": 0.06313252449035645,
+      "err": ""
+    },
+    {
+      "stage": "export",
+      "ok": true,
+      "elapsed_s": 0.08429074287414551,
+      "err": ""
+    }
+  ],
+  "ok": true,
+  "prop_dir": "D:\\assets\\world\\props\\library\\obelisk_egyptian_a04",
+  "finished_at_utc": "2026-05-07T02:08:08+00:00"
+}

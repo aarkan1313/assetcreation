@@ -1,0 +1,65 @@
+{
+  "schema": "local_llm_backend_dryrun.v1",
+  "record_type": "item",
+  "count": 1,
+  "model": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+  "device": "cpu",
+  "model_loaded": false,
+  "prompt": "Generate exactly 1 item record(s) for TLTE. Return JSON only, shaped as {\"records\": [...]}. Required schema fields include: id, display_name, schema_version, tags, localization_key, provenance, notes, category, rarity, damage_type, stats, icon_id, description, stack_max. Use lowercase snake_case IDs, coherent fantasy ARPG naming, and no duplicate display names.",
+  "json_schema_keys": [
+    "category",
+    "damage_type",
+    "description",
+    "display_name",
+    "icon_id",
+    "id",
+    "localization_key",
+    "notes",
+    "provenance",
+    "rarity",
+    "schema_version",
+    "stack_max",
+    "stats",
+    "tags"
+  ],
+  "parser_ok": true,
+  "sample_records": [
+    {
+      "id": "mana_draught_0",
+      "display_name": "Mana Draught",
+      "schema_version": "1.0.0",
+      "tags": [
+        "draught",
+        "mana"
+      ],
+      "localization_key": "ITEM_MANA_DRAUGHT_0",
+      "provenance": {
+        "source": "synthetic",
+        "model": null,
+        "seed": 77,
+        "prompt_id": null,
+        "timestamp": "2026-05-06T20:37:15+00:00",
+        "target_file_sha256": null,
+        "constraint_technique": null,
+        "constraint_pass": null,
+        "sim_digest": null,
+        "parent_id": null
+      },
+      "notes": "",
+      "category": "consumable",
+      "rarity": "common",
+      "damage_type": null,
+      "stats": {
+        "damage": 0,
+        "armor": 0,
+        "weight": 0.2,
+        "durability": 1,
+        "value_gold": 17
+      },
+      "icon_id": "ico_draught_mana",
+      "description": "A draught of mana. Single use.",
+      "stack_max": 10
+    }
+  ],
+  "timestamp": "2026-05-06T20:37:15+00:00"
+}

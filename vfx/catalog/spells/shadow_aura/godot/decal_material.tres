@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3]
+
+[ext_resource type="Shader" path="res://vfx/ambient/shadow_aura/godot/decal_flipbook.gdshader" id="1_sh"]
+[ext_resource type="Texture2D" path="res://vfx/ambient/shadow_aura/flipbook.png" id="2_tex"]
+
+[resource]
+shader = ExtResource("1_sh")
+shader_parameter/atlas = ExtResource("2_tex")
+shader_parameter/h_frames = 6
+shader_parameter/v_frames = 5
+shader_parameter/n_frames = 29
+shader_parameter/fps = 18.0
+shader_parameter/loop = true
+shader_parameter/fade_in_s = 0.0
+shader_parameter/fade_out_s = 0.0
+shader_parameter/duration_s = 1.6
+shader_parameter/modulate = Color(0.6078431372549019, 0.2901960784313726, 0.8156862745098039, 1.0)

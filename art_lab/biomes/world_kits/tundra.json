@@ -1,0 +1,39 @@
+{
+  "id": "tundra",
+  "display_name": "Hoarfrost Steppe",
+  "category": "polar",
+  "identity": {
+    "world_color": [180, 200, 200],
+    "regional_palette": [
+      [120, 130, 130],
+      [180, 200, 200],
+      [210, 225, 225],
+      [235, 245, 245]
+    ],
+    "icon_glyph": "frost",
+    "ambient_hex": "#0c1414"
+  },
+  "terrain": {
+    "height_bias": "mid_flat",
+    "slope_tendency": "rolling",
+    "water_behaviour": "frozen",
+    "carve_features": ["frost_cracks", "permafrost_polygons"],
+    "altitude_range": [0.30, 0.80],
+    "preferred_slope_range": [0.0, 0.35]
+  },
+  "transitions": {
+    "anchor_to": ["altitude_band"],
+    "blend_neighbours": {
+      "default": {"width_px": 24, "noise_strength": 0.30, "feature_priority": "altitude_band"},
+      "ice_cavern": {"width_px": 28, "noise_strength": 0.30, "feature_priority": "altitude_band"},
+      "grassland": {"width_px": 22, "noise_strength": 0.35, "feature_priority": "altitude_band"},
+      "forest": {"width_px": 22, "noise_strength": 0.30, "feature_priority": "altitude_band"},
+      "swamp": {"width_px": 14, "noise_strength": 0.20, "feature_priority": "rivers"}
+    },
+    "exclusion": ["lava_field", "charred_wasteland", "desert", "underwater"]
+  },
+  "texture_kit": "tundra",
+  "decoration_kit": "tundra",
+  "world_map_priority": 4,
+  "regional_glyph_density": 0.30
+}

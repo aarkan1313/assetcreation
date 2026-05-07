@@ -1,0 +1,30 @@
+{
+  "effect_id": "lightning_projectile",
+  "backend": "particle_cpu",
+  "n_frames": 14,
+  "fps": 24,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "flipbook": "D:\\assets\\vfx\\catalog\\projectiles\\lightning_projectile\\flipbook.png",
+  "frames_dir": "D:\\assets\\vfx\\catalog\\projectiles\\lightning_projectile\\frames",
+  "extras": {
+    "particles_json": "D:\\assets\\vfx\\catalog\\projectiles\\lightning_projectile\\particles.json",
+    "audio_cues": [
+      {
+        "t": 0.0,
+        "name": "spawn"
+      },
+      {
+        "t": 0.35,
+        "name": "tail"
+      }
+    ]
+  },
+  "metrics": {
+    "max_alive": 110,
+    "total_energy": 616.7643243670464
+  },
+  "timestamp": "2026-05-06T20:50:48+00:00"
+}

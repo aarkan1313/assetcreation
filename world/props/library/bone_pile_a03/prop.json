@@ -1,0 +1,119 @@
+{
+  "schema": "prop_asset.v1",
+  "id": "bone_pile_a03",
+  "family": "bone_pile",
+  "kit": "first_party_proc",
+  "source_method": "blender_procedural",
+  "source_recipe": "pipelines/props/blender_scripts/proc_props.py:bone_pile",
+  "license": "project_generated",
+  "render_class": "scatter_multimesh",
+  "collision": "none",
+  "origin": "bottom_center",
+  "scale_m": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "footprint_radius_m": 0.35,
+  "lods": [
+    {
+      "file": "model_lod0.glb",
+      "max_distance_m": 25.0,
+      "triangles": 1500,
+      "ratio_of_lod0": 1.0
+    },
+    {
+      "file": "model_lod1.glb",
+      "max_distance_m": 60.0,
+      "triangles": 750,
+      "ratio_of_lod0": 0.5
+    },
+    {
+      "file": "model_lod2.glb",
+      "max_distance_m": 120.0,
+      "triangles": 300,
+      "ratio_of_lod0": 0.2
+    },
+    {
+      "file": "model_lod3.glb",
+      "max_distance_m": 200.0,
+      "triangles": 120,
+      "ratio_of_lod0": 0.08
+    }
+  ],
+  "thumbnail": "thumbnail.png",
+  "placement_tags": [
+    "bone",
+    "ground",
+    "decoration"
+  ],
+  "material_slots": [
+    "bone"
+  ],
+  "qa": "qa.json",
+  "provenance": {
+    "seed": 702,
+    "params": {
+      "count": 7,
+      "color_variant": "bone_aged"
+    },
+    "target_tris_hint": 1500
+  },
+  "lod_ladder_ratios": [
+    1.0,
+    0.5,
+    0.2,
+    0.08
+  ],
+  "lod_render_class": "scatter_multimesh",
+  "sweep_spec": "bone_pile_a",
+  "sweep_seed": 702,
+  "sweep_params": {
+    "count": 7,
+    "color_variant": "bone_aged"
+  },
+  "material_lod": {
+    "kit_atlas": "world/props/kits/first_party_proc/kit_atlas_lod_far.png",
+    "kit_atlas_manifest": "world/props/kits/first_party_proc/kit_atlas_manifest.json",
+    "slots": [
+      {
+        "material_index": 0,
+        "tile_xy": [
+          6,
+          0
+        ],
+        "uv_center": [
+          0.8125,
+          0.0625
+        ],
+        "rgb": [
+          0.7,
+          0.65,
+          0.55
+        ]
+      }
+    ]
+  },
+  "pbr_material_bindings": {
+    "schema": "prop_pbr_bindings.v1",
+    "bound_at": "2026-05-06T20:37:04+00:00",
+    "texture_library": "world/textures/library",
+    "slots": [
+      {
+        "material_index": 0,
+        "slot": "bone",
+        "texture_set": "biome_tundra",
+        "maps": {
+          "albedo": "world/textures/library/biome_tundra/biome_tundra_albedo.png",
+          "normal": "world/textures/library/biome_tundra/biome_tundra_normal.png",
+          "roughness": "world/textures/library/biome_tundra/biome_tundra_roughness.png",
+          "metallic": "world/textures/library/biome_tundra/biome_tundra_metallic.png",
+          "ao": "world/textures/library/biome_tundra/biome_tundra_ao.png",
+          "height": "world/textures/library/biome_tundra/biome_tundra_height.png"
+        },
+        "tiling": 1.0,
+        "source": "existing_aaa_texture"
+      }
+    ]
+  }
+}

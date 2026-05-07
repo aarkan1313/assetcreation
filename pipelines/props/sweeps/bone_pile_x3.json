@@ -1,0 +1,17 @@
+{
+  "schema": "prop_sweep.v1",
+  "family": "bone_pile",
+  "kit": "first_party_proc",
+  "count": 3,
+  "id_prefix": "bone_pile_a",
+  "id_start_index": 1,
+  "base_seed": 700,
+  "render_class": "scatter_multimesh",
+  "collision": "none",
+  "params": {
+    "count": {"type": "int_range", "min": 4, "max": 8},
+    "color_variant": {"type": "categorical", "values": ["bone_pale", "bone_aged"]}
+  },
+  "target_tris": 1500,
+  "lod_ladder": [1.00, 0.50, 0.20, 0.08]
+}

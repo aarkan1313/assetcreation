@@ -1,0 +1,303 @@
+[gd_resource type="Theme" load_steps=160 format=3]
+
+[ext_resource type="Resource" path="res://ui/button_ashen_pact_stylebox.tres" id="1"]
+[ext_resource type="Resource" path="res://ui/button_ember_legion_stylebox.tres" id="2"]
+[ext_resource type="Resource" path="res://ui/button_stylebox.tres" id="3"]
+[ext_resource type="Resource" path="res://ui/button_tide_bound_stylebox.tres" id="4"]
+[ext_resource type="Resource" path="res://ui/button_verdant_court_stylebox.tres" id="5"]
+[ext_resource type="Resource" path="res://ui/frame_ashen_pact_stylebox.tres" id="6"]
+[ext_resource type="Resource" path="res://ui/frame_ember_legion_stylebox.tres" id="7"]
+[ext_resource type="Resource" path="res://ui/frame_stylebox.tres" id="8"]
+[ext_resource type="Resource" path="res://ui/frame_tide_bound_stylebox.tres" id="9"]
+[ext_resource type="Resource" path="res://ui/frame_verdant_court_stylebox.tres" id="10"]
+[ext_resource type="Resource" path="res://ui/healthbar_ashen_pact_stylebox.tres" id="11"]
+[ext_resource type="Resource" path="res://ui/healthbar_ember_legion_stylebox.tres" id="12"]
+[ext_resource type="Resource" path="res://ui/healthbar_stylebox.tres" id="13"]
+[ext_resource type="Resource" path="res://ui/healthbar_tide_bound_stylebox.tres" id="14"]
+[ext_resource type="Resource" path="res://ui/healthbar_verdant_court_stylebox.tres" id="15"]
+[ext_resource type="Resource" path="res://ui/ico_arcane_orb_atlas.tres" id="16"]
+[ext_resource type="Resource" path="res://ui/ico_axe_atlas.tres" id="17"]
+[ext_resource type="Resource" path="res://ui/ico_barrier_atlas.tres" id="18"]
+[ext_resource type="Resource" path="res://ui/ico_bow_atlas.tres" id="19"]
+[ext_resource type="Resource" path="res://ui/ico_coin_atlas.tres" id="20"]
+[ext_resource type="Resource" path="res://ui/ico_dagger_atlas.tres" id="21"]
+[ext_resource type="Resource" path="res://ui/ico_elixir_atlas.tres" id="22"]
+[ext_resource type="Resource" path="res://ui/ico_eye_atlas.tres" id="23"]
+[ext_resource type="Resource" path="res://ui/ico_fireball_atlas.tres" id="24"]
+[ext_resource type="Resource" path="res://ui/ico_flame_rune_atlas.tres" id="25"]
+[ext_resource type="Resource" path="res://ui/ico_footprint_atlas.tres" id="26"]
+[ext_resource type="Resource" path="res://ui/ico_frostbolt_atlas.tres" id="27"]
+[ext_resource type="Resource" path="res://ui/ico_gem_blue_atlas.tres" id="28"]
+[ext_resource type="Resource" path="res://ui/ico_gem_green_atlas.tres" id="29"]
+[ext_resource type="Resource" path="res://ui/ico_gem_red_atlas.tres" id="30"]
+[ext_resource type="Resource" path="res://ui/ico_gi_abdominal_armor_atlas.tres" id="31"]
+[ext_resource type="Resource" path="res://ui/ico_gi_ankh_atlas.tres" id="32"]
+[ext_resource type="Resource" path="res://ui/ico_gi_apple_core_atlas.tres" id="33"]
+[ext_resource type="Resource" path="res://ui/ico_gi_battered_axe_atlas.tres" id="34"]
+[ext_resource type="Resource" path="res://ui/ico_gi_boss_key_atlas.tres" id="35"]
+[ext_resource type="Resource" path="res://ui/ico_gi_bread_atlas.tres" id="36"]
+[ext_resource type="Resource" path="res://ui/ico_gi_broadhead_arrow_atlas.tres" id="37"]
+[ext_resource type="Resource" path="res://ui/ico_gi_broken_heart_atlas.tres" id="38"]
+[ext_resource type="Resource" path="res://ui/ico_gi_campfire_atlas.tres" id="39"]
+[ext_resource type="Resource" path="res://ui/ico_gi_castle_atlas.tres" id="40"]
+[ext_resource type="Resource" path="res://ui/ico_gi_chest_armor_atlas.tres" id="41"]
+[ext_resource type="Resource" path="res://ui/ico_gi_crossbow_atlas.tres" id="42"]
+[ext_resource type="Resource" path="res://ui/ico_gi_crowned_skull_atlas.tres" id="43"]
+[ext_resource type="Resource" path="res://ui/ico_gi_crystal_cluster_atlas.tres" id="44"]
+[ext_resource type="Resource" path="res://ui/ico_gi_death_skull_atlas.tres" id="45"]
+[ext_resource type="Resource" path="res://ui/ico_gi_diamonds_atlas.tres" id="46"]
+[ext_resource type="Resource" path="res://ui/ico_gi_drink_me_atlas.tres" id="47"]
+[ext_resource type="Resource" path="res://ui/ico_gi_edged_shield_atlas.tres" id="48"]
+[ext_resource type="Resource" path="res://ui/ico_gi_evil_eyes_atlas.tres" id="49"]
+[ext_resource type="Resource" path="res://ui/ico_gi_fire_atlas.tres" id="50"]
+[ext_resource type="Resource" path="res://ui/ico_gi_fireball_atlas.tres" id="51"]
+[ext_resource type="Resource" path="res://ui/ico_gi_footprint_atlas.tres" id="52"]
+[ext_resource type="Resource" path="res://ui/ico_gi_gem_pendant_atlas.tres" id="53"]
+[ext_resource type="Resource" path="res://ui/ico_gi_holy_grail_atlas.tres" id="54"]
+[ext_resource type="Resource" path="res://ui/ico_gi_key_atlas.tres" id="55"]
+[ext_resource type="Resource" path="res://ui/ico_gi_leather_vest_atlas.tres" id="56"]
+[ext_resource type="Resource" path="res://ui/ico_gi_leg_armor_atlas.tres" id="57"]
+[ext_resource type="Resource" path="res://ui/ico_gi_lightning_arc_atlas.tres" id="58"]
+[ext_resource type="Resource" path="res://ui/ico_gi_magic_shield_atlas.tres" id="59"]
+[ext_resource type="Resource" path="res://ui/ico_gi_magic_swirl_atlas.tres" id="60"]
+[ext_resource type="Resource" path="res://ui/ico_gi_money_stack_atlas.tres" id="61"]
+[ext_resource type="Resource" path="res://ui/ico_gi_poison_bottle_atlas.tres" id="62"]
+[ext_resource type="Resource" path="res://ui/ico_gi_poison_cloud_atlas.tres" id="63"]
+[ext_resource type="Resource" path="res://ui/ico_gi_potion_ball_atlas.tres" id="64"]
+[ext_resource type="Resource" path="res://ui/ico_gi_rune_stone_atlas.tres" id="65"]
+[ext_resource type="Resource" path="res://ui/ico_gi_running_shoe_atlas.tres" id="66"]
+[ext_resource type="Resource" path="res://ui/ico_gi_scroll_quill_atlas.tres" id="67"]
+[ext_resource type="Resource" path="res://ui/ico_gi_scroll_unfurled_atlas.tres" id="68"]
+[ext_resource type="Resource" path="res://ui/ico_gi_shadow_grasp_atlas.tres" id="69"]
+[ext_resource type="Resource" path="res://ui/ico_gi_shield_atlas.tres" id="70"]
+[ext_resource type="Resource" path="res://ui/ico_gi_shield_bounces_atlas.tres" id="71"]
+[ext_resource type="Resource" path="res://ui/ico_gi_shoulder_armor_atlas.tres" id="72"]
+[ext_resource type="Resource" path="res://ui/ico_gi_skeleton_key_atlas.tres" id="73"]
+[ext_resource type="Resource" path="res://ui/ico_gi_spell_book_atlas.tres" id="74"]
+[ext_resource type="Resource" path="res://ui/ico_gi_spiked_mace_atlas.tres" id="75"]
+[ext_resource type="Resource" path="res://ui/ico_gi_sun_atlas.tres" id="76"]
+[ext_resource type="Resource" path="res://ui/ico_gi_sword_wound_atlas.tres" id="77"]
+[ext_resource type="Resource" path="res://ui/ico_gi_thrown_spear_atlas.tres" id="78"]
+[ext_resource type="Resource" path="res://ui/ico_gi_trefoil_lily_atlas.tres" id="79"]
+[ext_resource type="Resource" path="res://ui/ico_gi_two_coins_atlas.tres" id="80"]
+[ext_resource type="Resource" path="res://ui/ico_gi_vortex_atlas.tres" id="81"]
+[ext_resource type="Resource" path="res://ui/ico_gi_warhammer_atlas.tres" id="82"]
+[ext_resource type="Resource" path="res://ui/ico_gi_wing_cloak_atlas.tres" id="83"]
+[ext_resource type="Resource" path="res://ui/ico_gi_winged_sword_atlas.tres" id="84"]
+[ext_resource type="Resource" path="res://ui/ico_gi_wooden_sign_atlas.tres" id="85"]
+[ext_resource type="Resource" path="res://ui/ico_hammer_atlas.tres" id="86"]
+[ext_resource type="Resource" path="res://ui/ico_haste_wing_atlas.tres" id="87"]
+[ext_resource type="Resource" path="res://ui/ico_heart_empty_atlas.tres" id="88"]
+[ext_resource type="Resource" path="res://ui/ico_heart_full_atlas.tres" id="89"]
+[ext_resource type="Resource" path="res://ui/ico_holy_light_atlas.tres" id="90"]
+[ext_resource type="Resource" path="res://ui/ico_key_atlas.tres" id="91"]
+[ext_resource type="Resource" path="res://ui/ico_lightning_atlas.tres" id="92"]
+[ext_resource type="Resource" path="res://ui/ico_lucide_arrow_down_atlas.tres" id="93"]
+[ext_resource type="Resource" path="res://ui/ico_lucide_arrow_left_atlas.tres" id="94"]
+[ext_resource type="Resource" path="res://ui/ico_lucide_arrow_right_atlas.tres" id="95"]
+[ext_resource type="Resource" path="res://ui/ico_lucide_arrow_up_atlas.tres" id="96"]
+[ext_resource type="Resource" path="res://ui/ico_lucide_check_atlas.tres" id="97"]
+[ext_resource type="Resource" path="res://ui/ico_lucide_chevron_down_atlas.tres" id="98"]
+[ext_resource type="Resource" path="res://ui/ico_lucide_chevron_left_atlas.tres" id="99"]
+[ext_resource type="Resource" path="res://ui/ico_lucide_chevron_right_atlas.tres" id="100"]
+[ext_resource type="Resource" path="res://ui/ico_lucide_chevron_up_atlas.tres" id="101"]
+[ext_resource type="Resource" path="res://ui/ico_lucide_circle_atlas.tres" id="102"]
+[ext_resource type="Resource" path="res://ui/ico_lucide_info_atlas.tres" id="103"]
+[ext_resource type="Resource" path="res://ui/ico_lucide_list_atlas.tres" id="104"]
+[ext_resource type="Resource" path="res://ui/ico_lucide_menu_atlas.tres" id="105"]
+[ext_resource type="Resource" path="res://ui/ico_lucide_minus_atlas.tres" id="106"]
+[ext_resource type="Resource" path="res://ui/ico_lucide_plus_atlas.tres" id="107"]
+[ext_resource type="Resource" path="res://ui/ico_lucide_save_atlas.tres" id="108"]
+[ext_resource type="Resource" path="res://ui/ico_lucide_search_atlas.tres" id="109"]
+[ext_resource type="Resource" path="res://ui/ico_lucide_settings_atlas.tres" id="110"]
+[ext_resource type="Resource" path="res://ui/ico_lucide_trash_2_atlas.tres" id="111"]
+[ext_resource type="Resource" path="res://ui/ico_lucide_user_atlas.tres" id="112"]
+[ext_resource type="Resource" path="res://ui/ico_lucide_users_atlas.tres" id="113"]
+[ext_resource type="Resource" path="res://ui/ico_lucide_x_atlas.tres" id="114"]
+[ext_resource type="Resource" path="res://ui/ico_mace_atlas.tres" id="115"]
+[ext_resource type="Resource" path="res://ui/ico_mana_drop_atlas.tres" id="116"]
+[ext_resource type="Resource" path="res://ui/ico_nature_thorn_atlas.tres" id="117"]
+[ext_resource type="Resource" path="res://ui/ico_phosphor_arrow_down_atlas.tres" id="118"]
+[ext_resource type="Resource" path="res://ui/ico_phosphor_arrow_left_atlas.tres" id="119"]
+[ext_resource type="Resource" path="res://ui/ico_phosphor_arrow_right_atlas.tres" id="120"]
+[ext_resource type="Resource" path="res://ui/ico_phosphor_arrow_up_atlas.tres" id="121"]
+[ext_resource type="Resource" path="res://ui/ico_phosphor_caret_down_atlas.tres" id="122"]
+[ext_resource type="Resource" path="res://ui/ico_phosphor_caret_left_atlas.tres" id="123"]
+[ext_resource type="Resource" path="res://ui/ico_phosphor_caret_right_atlas.tres" id="124"]
+[ext_resource type="Resource" path="res://ui/ico_phosphor_caret_up_atlas.tres" id="125"]
+[ext_resource type="Resource" path="res://ui/ico_phosphor_check_atlas.tres" id="126"]
+[ext_resource type="Resource" path="res://ui/ico_phosphor_circle_atlas.tres" id="127"]
+[ext_resource type="Resource" path="res://ui/ico_phosphor_gear_atlas.tres" id="128"]
+[ext_resource type="Resource" path="res://ui/ico_phosphor_info_atlas.tres" id="129"]
+[ext_resource type="Resource" path="res://ui/ico_phosphor_list_atlas.tres" id="130"]
+[ext_resource type="Resource" path="res://ui/ico_phosphor_magnifying_glass_atlas.tres" id="131"]
+[ext_resource type="Resource" path="res://ui/ico_phosphor_minus_atlas.tres" id="132"]
+[ext_resource type="Resource" path="res://ui/ico_phosphor_plus_atlas.tres" id="133"]
+[ext_resource type="Resource" path="res://ui/ico_phosphor_warning_atlas.tres" id="134"]
+[ext_resource type="Resource" path="res://ui/ico_phosphor_x_atlas.tres" id="135"]
+[ext_resource type="Resource" path="res://ui/ico_poison_drop_atlas.tres" id="136"]
+[ext_resource type="Resource" path="res://ui/ico_potion_blue_atlas.tres" id="137"]
+[ext_resource type="Resource" path="res://ui/ico_potion_green_atlas.tres" id="138"]
+[ext_resource type="Resource" path="res://ui/ico_potion_red_atlas.tres" id="139"]
+[ext_resource type="Resource" path="res://ui/ico_rune_atlas.tres" id="140"]
+[ext_resource type="Resource" path="res://ui/ico_scroll_atlas.tres" id="141"]
+[ext_resource type="Resource" path="res://ui/ico_shadow_bolt_atlas.tres" id="142"]
+[ext_resource type="Resource" path="res://ui/ico_shield_atlas.tres" id="143"]
+[ext_resource type="Resource" path="res://ui/ico_skull_atlas.tres" id="144"]
+[ext_resource type="Resource" path="res://ui/ico_spear_atlas.tres" id="145"]
+[ext_resource type="Resource" path="res://ui/ico_spike_trap_atlas.tres" id="146"]
+[ext_resource type="Resource" path="res://ui/ico_square_frame_atlas.tres" id="147"]
+[ext_resource type="Resource" path="res://ui/ico_staff_atlas.tres" id="148"]
+[ext_resource type="Resource" path="res://ui/ico_sword_atlas.tres" id="149"]
+[ext_resource type="Resource" path="res://ui/ico_warhorn_atlas.tres" id="150"]
+[ext_resource type="Resource" path="res://ui/panel_ashen_pact_signature_stylebox.tres" id="151"]
+[ext_resource type="Resource" path="res://ui/panel_ashen_pact_stylebox.tres" id="152"]
+[ext_resource type="Resource" path="res://ui/panel_ember_legion_signature_stylebox.tres" id="153"]
+[ext_resource type="Resource" path="res://ui/panel_ember_legion_stylebox.tres" id="154"]
+[ext_resource type="Resource" path="res://ui/panel_stylebox.tres" id="155"]
+[ext_resource type="Resource" path="res://ui/panel_tide_bound_signature_stylebox.tres" id="156"]
+[ext_resource type="Resource" path="res://ui/panel_tide_bound_stylebox.tres" id="157"]
+[ext_resource type="Resource" path="res://ui/panel_verdant_court_signature_stylebox.tres" id="158"]
+[ext_resource type="Resource" path="res://ui/panel_verdant_court_stylebox.tres" id="159"]
+
+[resource]
+Button/styles/normal = ExtResource("3")
+Button/styles/hover = ExtResource("3")
+Button/styles/pressed = ExtResource("3")
+Panel/styles/panel = ExtResource("155")
+PanelContainer/styles/panel = ExtResource("155")
+IconSet/icons/ico_arcane_orb = ExtResource("16")
+IconSet/icons/ico_axe = ExtResource("17")
+IconSet/icons/ico_barrier = ExtResource("18")
+IconSet/icons/ico_bow = ExtResource("19")
+IconSet/icons/ico_coin = ExtResource("20")
+IconSet/icons/ico_dagger = ExtResource("21")
+IconSet/icons/ico_elixir = ExtResource("22")
+IconSet/icons/ico_eye = ExtResource("23")
+IconSet/icons/ico_fireball = ExtResource("24")
+IconSet/icons/ico_flame_rune = ExtResource("25")
+IconSet/icons/ico_footprint = ExtResource("26")
+IconSet/icons/ico_frostbolt = ExtResource("27")
+IconSet/icons/ico_gem_blue = ExtResource("28")
+IconSet/icons/ico_gem_green = ExtResource("29")
+IconSet/icons/ico_gem_red = ExtResource("30")
+IconSet/icons/ico_gi_abdominal_armor = ExtResource("31")
+IconSet/icons/ico_gi_ankh = ExtResource("32")
+IconSet/icons/ico_gi_apple_core = ExtResource("33")
+IconSet/icons/ico_gi_battered_axe = ExtResource("34")
+IconSet/icons/ico_gi_boss_key = ExtResource("35")
+IconSet/icons/ico_gi_bread = ExtResource("36")
+IconSet/icons/ico_gi_broadhead_arrow = ExtResource("37")
+IconSet/icons/ico_gi_broken_heart = ExtResource("38")
+IconSet/icons/ico_gi_campfire = ExtResource("39")
+IconSet/icons/ico_gi_castle = ExtResource("40")
+IconSet/icons/ico_gi_chest_armor = ExtResource("41")
+IconSet/icons/ico_gi_crossbow = ExtResource("42")
+IconSet/icons/ico_gi_crowned_skull = ExtResource("43")
+IconSet/icons/ico_gi_crystal_cluster = ExtResource("44")
+IconSet/icons/ico_gi_death_skull = ExtResource("45")
+IconSet/icons/ico_gi_diamonds = ExtResource("46")
+IconSet/icons/ico_gi_drink_me = ExtResource("47")
+IconSet/icons/ico_gi_edged_shield = ExtResource("48")
+IconSet/icons/ico_gi_evil_eyes = ExtResource("49")
+IconSet/icons/ico_gi_fire = ExtResource("50")
+IconSet/icons/ico_gi_fireball = ExtResource("51")
+IconSet/icons/ico_gi_footprint = ExtResource("52")
+IconSet/icons/ico_gi_gem_pendant = ExtResource("53")
+IconSet/icons/ico_gi_holy_grail = ExtResource("54")
+IconSet/icons/ico_gi_key = ExtResource("55")
+IconSet/icons/ico_gi_leather_vest = ExtResource("56")
+IconSet/icons/ico_gi_leg_armor = ExtResource("57")
+IconSet/icons/ico_gi_lightning_arc = ExtResource("58")
+IconSet/icons/ico_gi_magic_shield = ExtResource("59")
+IconSet/icons/ico_gi_magic_swirl = ExtResource("60")
+IconSet/icons/ico_gi_money_stack = ExtResource("61")
+IconSet/icons/ico_gi_poison_bottle = ExtResource("62")
+IconSet/icons/ico_gi_poison_cloud = ExtResource("63")
+IconSet/icons/ico_gi_potion_ball = ExtResource("64")
+IconSet/icons/ico_gi_rune_stone = ExtResource("65")
+IconSet/icons/ico_gi_running_shoe = ExtResource("66")
+IconSet/icons/ico_gi_scroll_quill = ExtResource("67")
+IconSet/icons/ico_gi_scroll_unfurled = ExtResource("68")
+IconSet/icons/ico_gi_shadow_grasp = ExtResource("69")
+IconSet/icons/ico_gi_shield = ExtResource("70")
+IconSet/icons/ico_gi_shield_bounces = ExtResource("71")
+IconSet/icons/ico_gi_shoulder_armor = ExtResource("72")
+IconSet/icons/ico_gi_skeleton_key = ExtResource("73")
+IconSet/icons/ico_gi_spell_book = ExtResource("74")
+IconSet/icons/ico_gi_spiked_mace = ExtResource("75")
+IconSet/icons/ico_gi_sun = ExtResource("76")
+IconSet/icons/ico_gi_sword_wound = ExtResource("77")
+IconSet/icons/ico_gi_thrown_spear = ExtResource("78")
+IconSet/icons/ico_gi_trefoil_lily = ExtResource("79")
+IconSet/icons/ico_gi_two_coins = ExtResource("80")
+IconSet/icons/ico_gi_vortex = ExtResource("81")
+IconSet/icons/ico_gi_warhammer = ExtResource("82")
+IconSet/icons/ico_gi_wing_cloak = ExtResource("83")
+IconSet/icons/ico_gi_winged_sword = ExtResource("84")
+IconSet/icons/ico_gi_wooden_sign = ExtResource("85")
+IconSet/icons/ico_hammer = ExtResource("86")
+IconSet/icons/ico_haste_wing = ExtResource("87")
+IconSet/icons/ico_heart_empty = ExtResource("88")
+IconSet/icons/ico_heart_full = ExtResource("89")
+IconSet/icons/ico_holy_light = ExtResource("90")
+IconSet/icons/ico_key = ExtResource("91")
+IconSet/icons/ico_lightning = ExtResource("92")
+IconSet/icons/ico_lucide_arrow_down = ExtResource("93")
+IconSet/icons/ico_lucide_arrow_left = ExtResource("94")
+IconSet/icons/ico_lucide_arrow_right = ExtResource("95")
+IconSet/icons/ico_lucide_arrow_up = ExtResource("96")
+IconSet/icons/ico_lucide_check = ExtResource("97")
+IconSet/icons/ico_lucide_chevron_down = ExtResource("98")
+IconSet/icons/ico_lucide_chevron_left = ExtResource("99")
+IconSet/icons/ico_lucide_chevron_right = ExtResource("100")
+IconSet/icons/ico_lucide_chevron_up = ExtResource("101")
+IconSet/icons/ico_lucide_circle = ExtResource("102")
+IconSet/icons/ico_lucide_info = ExtResource("103")
+IconSet/icons/ico_lucide_list = ExtResource("104")
+IconSet/icons/ico_lucide_menu = ExtResource("105")
+IconSet/icons/ico_lucide_minus = ExtResource("106")
+IconSet/icons/ico_lucide_plus = ExtResource("107")
+IconSet/icons/ico_lucide_save = ExtResource("108")
+IconSet/icons/ico_lucide_search = ExtResource("109")
+IconSet/icons/ico_lucide_settings = ExtResource("110")
+IconSet/icons/ico_lucide_trash_2 = ExtResource("111")
+IconSet/icons/ico_lucide_user = ExtResource("112")
+IconSet/icons/ico_lucide_users = ExtResource("113")
+IconSet/icons/ico_lucide_x = ExtResource("114")
+IconSet/icons/ico_mace = ExtResource("115")
+IconSet/icons/ico_mana_drop = ExtResource("116")
+IconSet/icons/ico_nature_thorn = ExtResource("117")
+IconSet/icons/ico_phosphor_arrow_down = ExtResource("118")
+IconSet/icons/ico_phosphor_arrow_left = ExtResource("119")
+IconSet/icons/ico_phosphor_arrow_right = ExtResource("120")
+IconSet/icons/ico_phosphor_arrow_up = ExtResource("121")
+IconSet/icons/ico_phosphor_caret_down = ExtResource("122")
+IconSet/icons/ico_phosphor_caret_left = ExtResource("123")
+IconSet/icons/ico_phosphor_caret_right = ExtResource("124")
+IconSet/icons/ico_phosphor_caret_up = ExtResource("125")
+IconSet/icons/ico_phosphor_check = ExtResource("126")
+IconSet/icons/ico_phosphor_circle = ExtResource("127")
+IconSet/icons/ico_phosphor_gear = ExtResource("128")
+IconSet/icons/ico_phosphor_info = ExtResource("129")
+IconSet/icons/ico_phosphor_list = ExtResource("130")
+IconSet/icons/ico_phosphor_magnifying_glass = ExtResource("131")
+IconSet/icons/ico_phosphor_minus = ExtResource("132")
+IconSet/icons/ico_phosphor_plus = ExtResource("133")
+IconSet/icons/ico_phosphor_warning = ExtResource("134")
+IconSet/icons/ico_phosphor_x = ExtResource("135")
+IconSet/icons/ico_poison_drop = ExtResource("136")
+IconSet/icons/ico_potion_blue = ExtResource("137")
+IconSet/icons/ico_potion_green = ExtResource("138")
+IconSet/icons/ico_potion_red = ExtResource("139")
+IconSet/icons/ico_rune = ExtResource("140")
+IconSet/icons/ico_scroll = ExtResource("141")
+IconSet/icons/ico_shadow_bolt = ExtResource("142")
+IconSet/icons/ico_shield = ExtResource("143")
+IconSet/icons/ico_skull = ExtResource("144")
+IconSet/icons/ico_spear = ExtResource("145")
+IconSet/icons/ico_spike_trap = ExtResource("146")
+IconSet/icons/ico_square_frame = ExtResource("147")
+IconSet/icons/ico_staff = ExtResource("148")
+IconSet/icons/ico_sword = ExtResource("149")
+IconSet/icons/ico_warhorn = ExtResource("150")

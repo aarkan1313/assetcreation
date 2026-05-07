@@ -1,0 +1,88 @@
+{
+  "batch": "shader_review_upgrade_smoke_001",
+  "reference_set": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref",
+  "reference_count": 1,
+  "created": "2026-05-06T10:38:38.778900+00:00",
+  "rows": [
+    {
+      "id": "shader_review_upgrade_smoke_001_portal_swirl_2d_005",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "base_score": 80.22,
+      "reference_score": 100.0,
+      "nearest_reference": "ref_001.png",
+      "reference_distance": 0.0,
+      "preview": "shader_review_upgrade_smoke_001_portal_swirl_2d_005\\preview.png"
+    },
+    {
+      "id": "shader_review_upgrade_smoke_001_dissolve_fire_2d_008",
+      "template": "dissolve_fire_2d",
+      "role": "dissolve",
+      "base_score": 72.39,
+      "reference_score": 88.24,
+      "nearest_reference": "ref_001.png",
+      "reference_distance": 0.05685,
+      "preview": "shader_review_upgrade_smoke_001_dissolve_fire_2d_008\\preview.png"
+    },
+    {
+      "id": "shader_review_upgrade_smoke_001_beam_lightning_2d_007",
+      "template": "beam_lightning_2d",
+      "role": "beam",
+      "base_score": 81.49,
+      "reference_score": 28.15,
+      "nearest_reference": "ref_001.png",
+      "reference_distance": 0.57619,
+      "preview": "shader_review_upgrade_smoke_001_beam_lightning_2d_007\\preview.png"
+    },
+    {
+      "id": "shader_review_upgrade_smoke_001_ring_field_2d_006",
+      "template": "ring_field_2d",
+      "role": "aura",
+      "base_score": 77.66,
+      "reference_score": 21.37,
+      "nearest_reference": "ref_001.png",
+      "reference_distance": 0.70152,
+      "preview": "shader_review_upgrade_smoke_001_ring_field_2d_006\\preview.png"
+    },
+    {
+      "id": "shader_review_upgrade_smoke_001_beam_lightning_2d_002",
+      "template": "beam_lightning_2d",
+      "role": "beam",
+      "base_score": 71.4,
+      "reference_score": 19.77,
+      "nearest_reference": "ref_001.png",
+      "reference_distance": 0.73681,
+      "preview": "shader_review_upgrade_smoke_001_beam_lightning_2d_002\\preview.png"
+    },
+    {
+      "id": "shader_review_upgrade_smoke_001_shield_ripple_2d_004",
+      "template": "shield_ripple_2d",
+      "role": "shield",
+      "base_score": 87.76,
+      "reference_score": 17.8,
+      "nearest_reference": "ref_001.png",
+      "reference_distance": 0.78444,
+      "preview": "shader_review_upgrade_smoke_001_shield_ripple_2d_004\\preview.png"
+    },
+    {
+      "id": "shader_review_upgrade_smoke_001_dissolve_fire_2d_003",
+      "template": "dissolve_fire_2d",
+      "role": "dissolve",
+      "base_score": 87.7,
+      "reference_score": 16.98,
+      "nearest_reference": "ref_001.png",
+      "reference_distance": 0.80599,
+      "preview": "shader_review_upgrade_smoke_001_dissolve_fire_2d_003\\preview.png"
+    },
+    {
+      "id": "shader_review_upgrade_smoke_001_ring_field_2d_001",
+      "template": "ring_field_2d",
+      "role": "aura",
+      "base_score": 55.36,
+      "reference_score": 7.25,
+      "nearest_reference": "ref_001.png",
+      "reference_distance": 1.19296,
+      "preview": "shader_review_upgrade_smoke_001_ring_field_2d_001\\preview.png"
+    }
+  ]
+}

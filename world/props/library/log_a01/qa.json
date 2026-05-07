@@ -1,0 +1,14 @@
+{
+  "id": "log_a01",
+  "kind": "log",
+  "seed": 300,
+  "target_tris": 1200,
+  "params": {
+    "length": 1.8577,
+    "radius": 0.1703,
+    "color_variant": "ash"
+  },
+  "blender_version": "5.1",
+  "timestamp": "2026-05-06T18:53:17+00:00",
+  "ok": true
+}

@@ -1,0 +1,34 @@
+{
+  "effect_id": "dust_puff_large",
+  "backend": "particle_cpu",
+  "n_frames": 30,
+  "fps": 30,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "flipbook": "D:\\assets\\vfx\\catalog\\spells\\dust_puff_large\\flipbook.png",
+  "frames_dir": "D:\\assets\\vfx\\catalog\\spells\\dust_puff_large\\frames",
+  "extras": {
+    "particles_json": "D:\\assets\\vfx\\catalog\\spells\\dust_puff_large\\particles.json",
+    "audio_cues": [
+      {
+        "t": 0.0,
+        "name": "thud"
+      },
+      {
+        "t": 0.4,
+        "name": "billow"
+      },
+      {
+        "t": 0.85,
+        "name": "settle"
+      }
+    ]
+  },
+  "metrics": {
+    "max_alive": 85,
+    "total_energy": 1017.2226516604424
+  },
+  "timestamp": "2026-05-06T20:50:50+00:00"
+}

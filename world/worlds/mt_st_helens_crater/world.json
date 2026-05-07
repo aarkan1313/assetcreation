@@ -1,0 +1,47 @@
+{
+  "id": "mt_st_helens_crater",
+  "created": "2026-05-06T21:29:11.623095+00:00",
+  "source": "world_biome_engine",
+  "base_heightmap": "D:\\assets\\pipelines\\terrain\\output\\mt_st_helens_crater\\height_16.png",
+  "biomes": [
+    "lava_field",
+    "grassland",
+    "lava_field",
+    "mana_crystal"
+  ],
+  "biome_display_names": [
+    "Cinder Plains",
+    "Verdant Steppe",
+    "Cinder Plains",
+    "Aetherspire Wastes"
+  ],
+  "size": 1024,
+  "seed": 7,
+  "erosion": 30,
+  "n_seeds": 20,
+  "biome_seed_counts": {
+    "lava_field": 11,
+    "grassland": 3,
+    "mana_crystal": 6
+  },
+  "biome_pixel_counts": {
+    "lava_field": 214865,
+    "grassland": 31287,
+    "mana_crystal": 174107
+  },
+  "views": {
+    "world": "world_view.png",
+    "regional": "regional_view.png",
+    "local": "local_view.png"
+  },
+  "layers": {
+    "height": "height_16.png",
+    "normal": "normal.png",
+    "splat": "splat_rgba.png",
+    "biome_rgb": "biome.png",
+    "biome_labels": "biome_labels.png",
+    "vegetation_density": "vegetation_density.png",
+    "water_mask": "water_mask.png",
+    "flow": "flow.png"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "id": "ice_cavern_haze",
+  "kind": "ambient",
+  "phenomenon": "smoke",
+  "backend": "volumetric_fog",
+  "duration_s": 1.0,
+  "fps": 8,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "visual": {
+    "palette": [
+      "#cfe6f5",
+      "#5a7a92"
+    ],
+    "blend": "alpha",
+    "background": "#00000000",
+    "bloom": false
+  },
+  "visual3d": {
+    "billboard_mode": "off",
+    "world_size_m": 24.0
+  },
+  "backend_params": {
+    "volume_resolution": [
+      64,
+      64,
+      32
+    ],
+    "noise_type": "value",
+    "noise_scale": 5.0,
+    "noise_octaves": 3,
+    "density_curve": "exp_falloff",
+    "density_max": 0.45,
+    "density_scale": 0.9,
+    "color_top": "#cfe6f5",
+    "color_bottom": "#5a7a92",
+    "emission_strength": 0.0,
+    "extents_m": [
+      24.0,
+      8.0,
+      24.0
+    ],
+    "fog_shape": "box",
+    "biome_id": "ice_cavern",
+    "seed": 43031
+  },
+  "gameplay": {
+    "shape": "self",
+    "damage_tags": [],
+    "collision": "none"
+  },
+  "element": "neutral",
+  "archetype": "ambient",
+  "tags": [
+    "biome",
+    "ice_cavern",
+    "fog"
+  ],
+  "export_target": "fog_volume",
+  "notes": "Per-biome volumetric haze for ice_cavern. Place a FogVolume node in scenes that contain this biome zone."
+}

@@ -1,0 +1,67 @@
+{
+  "model_id": "black-forest-labs/FLUX.1-schnell",
+  "license": "Apache-2.0",
+  "size_px": 1024,
+  "steps": 4,
+  "guidance_scale": 0.0,
+  "lora": null,
+  "lora_weight": 1.0,
+  "style_brief": "centered single subject, flat-shaded fantasy game icon, dark thin outline, muted earthy palette with one accent color, transparent background or single-color flat background, no text, no watermark, the icon should read clearly at 64x64 px",
+  "seed_base": 1000,
+  "icons": [
+    {
+      "id": "ico_dragon_head",
+      "prompt": "fantasy game icon: a roaring red dragon head, side profile. centered single subject, flat-shaded fantasy game icon, dark thin outline, muted earthy palette with one accent color, transparent background or single-color flat background, no text, no watermark, the icon should read clearly at 64x64 px",
+      "seed": 1000,
+      "negative_prompt": null,
+      "size_px": 1024,
+      "steps": 4,
+      "guidance_scale": 0.0
+    },
+    {
+      "id": "ico_amulet_lunar",
+      "prompt": "fantasy game icon: a silver amulet shaped like a crescent moon. centered single subject, flat-shaded fantasy game icon, dark thin outline, muted earthy palette with one accent color, transparent background or single-color flat background, no text, no watermark, the icon should read clearly at 64x64 px",
+      "seed": 1001,
+      "negative_prompt": null,
+      "size_px": 1024,
+      "steps": 4,
+      "guidance_scale": 0.0
+    },
+    {
+      "id": "ico_spell_fireball",
+      "prompt": "fantasy game icon: a roiling fireball, orange and yellow flame. centered single subject, flat-shaded fantasy game icon, dark thin outline, muted earthy palette with one accent color, transparent background or single-color flat background, no text, no watermark, the icon should read clearly at 64x64 px",
+      "seed": 1002,
+      "negative_prompt": null,
+      "size_px": 1024,
+      "steps": 4,
+      "guidance_scale": 0.0
+    },
+    {
+      "id": "ico_spell_frostbolt",
+      "prompt": "fantasy game icon: a sharp icicle dart, pale blue with frost. centered single subject, flat-shaded fantasy game icon, dark thin outline, muted earthy palette with one accent color, transparent background or single-color flat background, no text, no watermark, the icon should read clearly at 64x64 px",
+      "seed": 1003,
+      "negative_prompt": null,
+      "size_px": 1024,
+      "steps": 4,
+      "guidance_scale": 0.0
+    },
+    {
+      "id": "ico_buff_haste",
+      "prompt": "fantasy game icon: a winged sandal, gold and white feathers. centered single subject, flat-shaded fantasy game icon, dark thin outline, muted earthy palette with one accent color, transparent background or single-color flat background, no text, no watermark, the icon should read clearly at 64x64 px",
+      "seed": 1004,
+      "negative_prompt": null,
+      "size_px": 1024,
+      "steps": 4,
+      "guidance_scale": 0.0
+    },
+    {
+      "id": "ico_buff_shield",
+      "prompt": "fantasy game icon: a glowing arcane barrier, blue runic ring. centered single subject, flat-shaded fantasy game icon, dark thin outline, muted earthy palette with one accent color, transparent background or single-color flat background, no text, no watermark, the icon should read clearly at 64x64 px",
+      "seed": 1005,
+      "negative_prompt": null,
+      "size_px": 1024,
+      "steps": 4,
+      "guidance_scale": 0.0
+    }
+  ]
+}

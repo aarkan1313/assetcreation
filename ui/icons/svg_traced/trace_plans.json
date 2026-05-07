@@ -1,0 +1,34 @@
+[
+  {
+    "icon_id": "ico_shield",
+    "src_png": "D:\\assets\\ui\\icons\\ico_shield.png",
+    "out_svg": "D:\\assets\\ui\\icons\\svg_traced\\ico_shield.svg",
+    "out_round_trip_png": "D:\\assets\\ui\\icons\\svg_traced\\ico_shield_round_trip.png",
+    "color_mode": "binary",
+    "hierarchical": "stacked",
+    "filter_speckle": 4,
+    "color_precision": 8,
+    "layer_difference": 16,
+    "corner_threshold": 60,
+    "length_threshold": 4.0,
+    "max_iterations": 10,
+    "splice_threshold": 45,
+    "path_precision": 5
+  },
+  {
+    "icon_id": "ico_sword",
+    "src_png": "D:\\assets\\ui\\icons\\ico_sword.png",
+    "out_svg": "D:\\assets\\ui\\icons\\svg_traced\\ico_sword.svg",
+    "out_round_trip_png": "D:\\assets\\ui\\icons\\svg_traced\\ico_sword_round_trip.png",
+    "color_mode": "binary",
+    "hierarchical": "stacked",
+    "filter_speckle": 4,
+    "color_precision": 8,
+    "layer_difference": 16,
+    "corner_threshold": 60,
+    "length_threshold": 4.0,
+    "max_iterations": 10,
+    "splice_threshold": 45,
+    "path_precision": 5
+  }
+]

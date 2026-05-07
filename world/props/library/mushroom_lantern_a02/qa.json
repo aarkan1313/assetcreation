@@ -1,0 +1,14 @@
+{
+  "id": "mushroom_lantern_a02",
+  "kind": "mushroom_lantern",
+  "seed": 201,
+  "target_tris": 1500,
+  "params": {
+    "cap_color": "amanita_red",
+    "cap_squash": 0.6154,
+    "emission_strength": 0.1424
+  },
+  "blender_version": "5.1",
+  "timestamp": "2026-05-06T18:46:39+00:00",
+  "ok": true
+}

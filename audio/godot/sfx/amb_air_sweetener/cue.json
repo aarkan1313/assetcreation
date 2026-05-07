@@ -1,0 +1,44 @@
+{
+  "id": "amb_air_sweetener",
+  "category": "sfx",
+  "variants": [
+    "audio/sfx/amb_air_sweetener/amb_air_sweetener_v0.wav",
+    "audio/sfx/amb_air_sweetener/amb_air_sweetener_v1.wav"
+  ],
+  "preset": "amb_air_sweetener",
+  "target_rms_db": -28.0,
+  "tags": [
+    "ambience",
+    "air"
+  ],
+  "notes": "placeholder",
+  "backend": "synth_sfx_extended",
+  "processing": [
+    {
+      "variant": 0,
+      "duration_s": 1.5518367346938775,
+      "rms_dbfs_in": -24.769061365654174,
+      "rms_dbfs_out": -27.99999974312054,
+      "peak_dbfs_out": -14.986791610717773,
+      "trim_ms": 47,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    },
+    {
+      "variant": 1,
+      "duration_s": 1.554126984126984,
+      "rms_dbfs_in": -24.673460600101905,
+      "rms_dbfs_out": -28.0000002735351,
+      "peak_dbfs_out": -14.753565788269043,
+      "trim_ms": 45,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    }
+  ]
+}

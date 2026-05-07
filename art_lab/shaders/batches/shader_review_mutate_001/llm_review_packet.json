@@ -1,0 +1,387 @@
+{
+  "batch": "shader_review_mutate_001",
+  "created": "2026-05-06T10:15:19.535830+00:00",
+  "candidate_count": 6,
+  "recommended_for_user_review": [
+    {
+      "id": "shader_review_mutate_001_portal_swirl_2d_001",
+      "score": 100.0,
+      "grade": "keep",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "preview": "shader_review_mutate_001_portal_swirl_2d_001\\flipbook.png",
+      "metrics": {
+        "coverage": 0.16187,
+        "mean_alpha": 0.14528,
+        "luma_mean": 0.5586,
+        "contrast": 0.15575,
+        "colorfulness": 0.25411,
+        "edge_energy": 0.01863,
+        "center_distance": 0.0,
+        "clip_high": 0.00732,
+        "clip_low": 0.0,
+        "aspect": 1.0,
+        "motion": 0.01829,
+        "flicker": 0.0,
+        "frames": 4.0
+      },
+      "hints": [
+        "good candidate: mutate locally around these params with smaller jitter"
+      ],
+      "params": {
+        "color_outer": [
+          0.3897349613267358,
+          0.6451786717412092,
+          0.9978769975980344
+        ],
+        "color_mid": [
+          0.3648028078533117,
+          0.5961917059557591,
+          0.9627045024588344
+        ],
+        "color_inner": [
+          0.7930894985902556,
+          0.8580183737493984,
+          0.9728098745386025
+        ],
+        "color_void": [
+          0.07358068012033156,
+          0.03876783850190203,
+          0.01805432590010128
+        ],
+        "radius": 0.4101,
+        "swirl": 8.8423,
+        "spin_speed": -1.539,
+        "depth_pulse": 0.0,
+        "arms": 10,
+        "arm_strength": 1.0775,
+        "opacity": 0.9766
+      }
+    },
+    {
+      "id": "shader_review_mutate_001_portal_swirl_2d_005",
+      "score": 100.0,
+      "grade": "keep",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "preview": "shader_review_mutate_001_portal_swirl_2d_005\\flipbook.png",
+      "metrics": {
+        "coverage": 0.17297,
+        "mean_alpha": 0.1597,
+        "luma_mean": 0.60258,
+        "contrast": 0.1667,
+        "colorfulness": 0.24259,
+        "edge_energy": 0.02234,
+        "center_distance": 0.0,
+        "clip_high": 0.00637,
+        "clip_low": 0.0,
+        "aspect": 1.0,
+        "motion": 0.01652,
+        "flicker": 0.0,
+        "frames": 4.0
+      },
+      "hints": [
+        "good candidate: mutate locally around these params with smaller jitter"
+      ],
+      "params": {
+        "color_outer": [
+          0.37150787574026733,
+          0.6437315719754391,
+          0.9833196661285066
+        ],
+        "color_mid": [
+          0.41876858887827134,
+          0.6558994131019837,
+          0.9652140242913843
+        ],
+        "color_inner": [
+          0.8221158590235474,
+          0.9347853142064804,
+          1.0
+        ],
+        "color_void": [
+          0.11182363803729524,
+          0.019884876117879736,
+          0.02556792079929375
+        ],
+        "radius": 0.4258,
+        "swirl": 8.1211,
+        "spin_speed": -0.6693,
+        "depth_pulse": 0.0357,
+        "arms": 6.1471,
+        "arm_strength": 1.0539,
+        "opacity": 1.0
+      }
+    },
+    {
+      "id": "shader_review_mutate_001_portal_swirl_2d_006",
+      "score": 99.99,
+      "grade": "keep",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "preview": "shader_review_mutate_001_portal_swirl_2d_006\\flipbook.png",
+      "metrics": {
+        "coverage": 0.16844,
+        "mean_alpha": 0.15023,
+        "luma_mean": 0.553,
+        "contrast": 0.15843,
+        "colorfulness": 0.2576,
+        "edge_energy": 0.0204,
+        "center_distance": 0.0,
+        "clip_high": 0.01785,
+        "clip_low": 1e-05,
+        "aspect": 1.0,
+        "motion": 0.00992,
+        "flicker": 0.0,
+        "frames": 4.0
+      },
+      "hints": [
+        "motion low: increase speed/pulse/spin/scroll parameters"
+      ],
+      "params": {
+        "color_outer": [
+          0.39300177915111456,
+          0.6273923280921961,
+          0.9400351649713119
+        ],
+        "color_mid": [
+          0.36129119452900116,
+          0.5888460718034325,
+          1.0
+        ],
+        "color_inner": [
+          0.8152098536250151,
+          0.8846608283638381,
+          0.9955228288670689
+        ],
+        "color_void": [
+          0.054598839772885925,
+          0.006031220902793781,
+          0.0
+        ],
+        "radius": 0.4192,
+        "swirl": 7.9727,
+        "spin_speed": -1.4706,
+        "depth_pulse": 0.0108,
+        "arms": 6,
+        "arm_strength": 1.1135,
+        "opacity": 0.9702
+      }
+    },
+    {
+      "id": "shader_review_mutate_001_portal_swirl_2d_004",
+      "score": 99.97,
+      "grade": "keep",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "preview": "shader_review_mutate_001_portal_swirl_2d_004\\flipbook.png",
+      "metrics": {
+        "coverage": 0.18234,
+        "mean_alpha": 0.16675,
+        "luma_mean": 0.58707,
+        "contrast": 0.16176,
+        "colorfulness": 0.24925,
+        "edge_energy": 0.02181,
+        "center_distance": 0.0,
+        "clip_high": 0.00576,
+        "clip_low": 1e-05,
+        "aspect": 1.0,
+        "motion": 0.0096,
+        "flicker": 0.0,
+        "frames": 4.0
+      },
+      "hints": [
+        "motion low: increase speed/pulse/spin/scroll parameters"
+      ],
+      "params": {
+        "color_outer": [
+          0.37969256500776283,
+          0.6770508093166645,
+          0.9742311818807947
+        ],
+        "color_mid": [
+          0.3828497560624966,
+          0.6069457651632324,
+          0.9692973842201685
+        ],
+        "color_inner": [
+          0.8015753439818016,
+          0.9140838875268341,
+          1.0
+        ],
+        "color_void": [
+          0.09314314417013018,
+          0.013928673158202731,
+          0.0006647825834933049
+        ],
+        "radius": 0.4384,
+        "swirl": 9.3533,
+        "spin_speed": -1.3959,
+        "depth_pulse": 0.002,
+        "arms": 6.1006,
+        "arm_strength": 1.0753,
+        "opacity": 0.9875
+      }
+    },
+    {
+      "id": "shader_review_mutate_001_portal_swirl_2d_002",
+      "score": 99.77,
+      "grade": "keep",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "preview": "shader_review_mutate_001_portal_swirl_2d_002\\flipbook.png",
+      "metrics": {
+        "coverage": 0.16844,
+        "mean_alpha": 0.14596,
+        "luma_mean": 0.55679,
+        "contrast": 0.15122,
+        "colorfulness": 0.25366,
+        "edge_energy": 0.01726,
+        "center_distance": 0.0,
+        "clip_high": 0.01304,
+        "clip_low": 2e-05,
+        "aspect": 1.0,
+        "motion": 0.00674,
+        "flicker": 0.0,
+        "frames": 4.0
+      },
+      "hints": [
+        "motion low: increase speed/pulse/spin/scroll parameters"
+      ],
+      "params": {
+        "color_outer": [
+          0.397851233808741,
+          0.6488730958691952,
+          0.9509878199560735
+        ],
+        "color_mid": [
+          0.3757928233724935,
+          0.6530540101082427,
+          1.0
+        ],
+        "color_inner": [
+          0.8067955770609928,
+          0.8846094120914223,
+          0.9679883844688584
+        ],
+        "color_void": [
+          0.07060222715518488,
+          0.0,
+          0.0
+        ],
+        "radius": 0.4192,
+        "swirl": 7.7199,
+        "spin_speed": -0.263,
+        "depth_pulse": 0.0247,
+        "arms": 5.8705,
+        "arm_strength": 1.0142,
+        "opacity": 0.9411
+      }
+    },
+    {
+      "id": "shader_review_mutate_001_portal_swirl_2d_003",
+      "score": 99.37,
+      "grade": "keep",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "preview": "shader_review_mutate_001_portal_swirl_2d_003\\flipbook.png",
+      "metrics": {
+        "coverage": 0.15203,
+        "mean_alpha": 0.13062,
+        "luma_mean": 0.55532,
+        "contrast": 0.15889,
+        "colorfulness": 0.24015,
+        "edge_energy": 0.01809,
+        "center_distance": 0.0,
+        "clip_high": 0.00417,
+        "clip_low": 0.0,
+        "aspect": 1.0,
+        "motion": 0.00104,
+        "flicker": 0.0,
+        "frames": 4.0
+      },
+      "hints": [
+        "motion low: increase speed/pulse/spin/scroll parameters"
+      ],
+      "params": {
+        "color_outer": [
+          0.4216495657107683,
+          0.6315200058502645,
+          0.9668972483349646
+        ],
+        "color_mid": [
+          0.386738355704815,
+          0.6418744894452556,
+          0.9723264799123579
+        ],
+        "color_inner": [
+          0.8221400752640102,
+          0.9360069890041228,
+          1.0
+        ],
+        "color_void": [
+          0.11170018546050067,
+          0.009207181710849888,
+          0.04021740618311635
+        ],
+        "radius": 0.3961,
+        "swirl": 8.4886,
+        "spin_speed": -1.7622,
+        "depth_pulse": 0.0646,
+        "arms": 6.0383,
+        "arm_strength": 1.039,
+        "opacity": 0.9377
+      }
+    }
+  ],
+  "low_score_summary": [
+    {
+      "id": "shader_review_mutate_001_portal_swirl_2d_001",
+      "score": 100.0,
+      "hints": [
+        "good candidate: mutate locally around these params with smaller jitter"
+      ]
+    },
+    {
+      "id": "shader_review_mutate_001_portal_swirl_2d_005",
+      "score": 100.0,
+      "hints": [
+        "good candidate: mutate locally around these params with smaller jitter"
+      ]
+    },
+    {
+      "id": "shader_review_mutate_001_portal_swirl_2d_006",
+      "score": 99.99,
+      "hints": [
+        "motion low: increase speed/pulse/spin/scroll parameters"
+      ]
+    },
+    {
+      "id": "shader_review_mutate_001_portal_swirl_2d_004",
+      "score": 99.97,
+      "hints": [
+        "motion low: increase speed/pulse/spin/scroll parameters"
+      ]
+    },
+    {
+      "id": "shader_review_mutate_001_portal_swirl_2d_002",
+      "score": 99.77,
+      "hints": [
+        "motion low: increase speed/pulse/spin/scroll parameters"
+      ]
+    },
+    {
+      "id": "shader_review_mutate_001_portal_swirl_2d_003",
+      "score": 99.37,
+      "hints": [
+        "motion low: increase speed/pulse/spin/scroll parameters"
+      ]
+    }
+  ],
+  "next_iteration_policy": [
+    "Preserve top candidate params and make local mutations around them.",
+    "Do not ask the LLM to OCR the image; use metrics plus gallery thumbnails.",
+    "Use Godot-rendered previews for final acceptance when the Godot binary is available.",
+    "Escalate only keep/review candidates to human review."
+  ]
+}

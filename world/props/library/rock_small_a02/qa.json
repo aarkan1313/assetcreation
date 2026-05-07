@@ -1,0 +1,15 @@
+{
+  "id": "rock_small_a02",
+  "kind": "rock_small",
+  "seed": 101,
+  "target_tris": 1500,
+  "params": {
+    "displacement_magnitude": 0.1711,
+    "z_squash": 0.6197,
+    "subdivisions": 4,
+    "color_variant": "basalt_dark"
+  },
+  "blender_version": "5.1",
+  "timestamp": "2026-05-06T18:44:05+00:00",
+  "ok": true
+}

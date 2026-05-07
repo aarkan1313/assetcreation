@@ -1,0 +1,20 @@
+{
+  "biome": "charred_wasteland",
+  "stem": "bed_air",
+  "backend_requested": "local_audio_open",
+  "backend_actual": "stable_audio_open",
+  "out_path": "D:\\assets\\audio\\ambience\\charred_wasteland\\bed_air.wav",
+  "duration_s": 26.83809523809524,
+  "samplerate": 44100,
+  "rms_dbfs": -30.000001907348633,
+  "peak_dbfs": -2.384760856628418,
+  "lufs_target": -30.0,
+  "seed": 9002,
+  "prompt": "ash-laden hot wind across charred ruins, dry crackle dust, no music, no rhythm, 30 second seamless loop",
+  "dry_run": false,
+  "loop": true,
+  "seam_rms": 0.012400836683809757,
+  "fitness": 0.9049764077663514,
+  "model": "large",
+  "steps": 100
+}

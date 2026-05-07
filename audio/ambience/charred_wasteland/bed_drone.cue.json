@@ -1,0 +1,20 @@
+{
+  "biome": "charred_wasteland",
+  "stem": "bed_drone",
+  "backend_requested": "local_audio_open",
+  "backend_actual": "stable_audio_open",
+  "out_path": "D:\\assets\\audio\\ambience\\charred_wasteland\\bed_drone.wav",
+  "duration_s": 28.53922902494331,
+  "samplerate": 44100,
+  "rms_dbfs": -28.0,
+  "peak_dbfs": -14.269535064697266,
+  "lufs_target": -28.0,
+  "seed": 9001,
+  "prompt": "smoldering scorched earth ambience, low ember crackle hum, distant wind moan, no melody, no music, 30 second seamless loop",
+  "dry_run": false,
+  "loop": true,
+  "seam_rms": 0.027121122926473618,
+  "fitness": 0.11585759821316671,
+  "model": "large",
+  "steps": 100
+}

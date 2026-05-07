@@ -1,0 +1,29 @@
+{
+  "effect_id": "shadow_aura",
+  "backend": "smoke_field",
+  "n_frames": 29,
+  "fps": 18,
+  "bounds_px": [
+    192,
+    192
+  ],
+  "flipbook": "D:\\assets\\vfx\\catalog\\spells\\shadow_aura\\flipbook.png",
+  "frames_dir": "D:\\assets\\vfx\\catalog\\spells\\shadow_aura\\frames",
+  "extras": {
+    "field_json": "D:\\assets\\vfx\\catalog\\spells\\shadow_aura\\field.json",
+    "audio_cues": [
+      {
+        "t": 0.0,
+        "name": "loop_in"
+      },
+      {
+        "t": 1.2,
+        "name": "loop_out"
+      }
+    ]
+  },
+  "metrics": {
+    "max_density_global": 1.8444615602493286
+  },
+  "timestamp": "2026-05-06T20:50:53+00:00"
+}

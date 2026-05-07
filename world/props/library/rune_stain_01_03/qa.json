@@ -1,0 +1,12 @@
+{
+  "schema": "prop_qa.v1",
+  "id": "rune_stain_01_03",
+  "passed": false,
+  "metrics": {
+    "alpha_coverage": 0.0068,
+    "size_px": 512
+  },
+  "warnings": [
+    "alpha coverage outside preferred range"
+  ]
+}

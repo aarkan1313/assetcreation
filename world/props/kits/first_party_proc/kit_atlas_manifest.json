@@ -1,0 +1,585 @@
+{
+  "schema": "kit_atlas.v1",
+  "kit": "first_party_proc",
+  "tile_px": 32,
+  "grid": 8,
+  "atlas_px": 256,
+  "props": {
+    "barrel_smoke": {
+      "slots": [
+        {
+          "material_index": 0,
+          "tile_xy": [
+            0,
+            0
+          ],
+          "uv_center": [
+            0.0625,
+            0.0625
+          ],
+          "rgb": [
+            0.1,
+            0.1,
+            0.11
+          ]
+        },
+        {
+          "material_index": 1,
+          "tile_xy": [
+            1,
+            0
+          ],
+          "uv_center": [
+            0.1875,
+            0.0625
+          ],
+          "rgb": [
+            0.45,
+            0.3,
+            0.18
+          ]
+        },
+        {
+          "material_index": 2,
+          "tile_xy": [
+            2,
+            0
+          ],
+          "uv_center": [
+            0.3125,
+            0.0625
+          ],
+          "rgb": [
+            0.1,
+            0.1,
+            0.11
+          ]
+        },
+        {
+          "material_index": 3,
+          "tile_xy": [
+            3,
+            0
+          ],
+          "uv_center": [
+            0.4375,
+            0.0625
+          ],
+          "rgb": [
+            0.1,
+            0.1,
+            0.11
+          ]
+        }
+      ]
+    },
+    "bone_pile_a01": {
+      "slots": [
+        {
+          "material_index": 0,
+          "tile_xy": [
+            4,
+            0
+          ],
+          "uv_center": [
+            0.5625,
+            0.0625
+          ],
+          "rgb": [
+            0.86,
+            0.82,
+            0.74
+          ]
+        }
+      ]
+    },
+    "bone_pile_a02": {
+      "slots": [
+        {
+          "material_index": 0,
+          "tile_xy": [
+            5,
+            0
+          ],
+          "uv_center": [
+            0.6875,
+            0.0625
+          ],
+          "rgb": [
+            0.86,
+            0.82,
+            0.74
+          ]
+        }
+      ]
+    },
+    "bone_pile_a03": {
+      "slots": [
+        {
+          "material_index": 0,
+          "tile_xy": [
+            6,
+            0
+          ],
+          "uv_center": [
+            0.8125,
+            0.0625
+          ],
+          "rgb": [
+            0.7,
+            0.65,
+            0.55
+          ]
+        }
+      ]
+    },
+    "fence_a01": {
+      "slots": [
+        {
+          "material_index": 0,
+          "tile_xy": [
+            7,
+            0
+          ],
+          "uv_center": [
+            0.9375,
+            0.0625
+          ],
+          "rgb": [
+            0.4,
+            0.38,
+            0.34
+          ]
+        }
+      ]
+    },
+    "log_a01": {
+      "slots": [
+        {
+          "material_index": 0,
+          "tile_xy": [
+            0,
+            1
+          ],
+          "uv_center": [
+            0.0625,
+            0.1875
+          ],
+          "rgb": [
+            0.5,
+            0.42,
+            0.3
+          ]
+        }
+      ]
+    },
+    "log_a02": {
+      "slots": [
+        {
+          "material_index": 0,
+          "tile_xy": [
+            1,
+            1
+          ],
+          "uv_center": [
+            0.1875,
+            0.1875
+          ],
+          "rgb": [
+            0.5,
+            0.42,
+            0.3
+          ]
+        }
+      ]
+    },
+    "mushroom_lantern_a01": {
+      "slots": [
+        {
+          "material_index": 0,
+          "tile_xy": [
+            2,
+            1
+          ],
+          "uv_center": [
+            0.3125,
+            0.1875
+          ],
+          "rgb": [
+            0.4,
+            0.2,
+            0.55
+          ]
+        },
+        {
+          "material_index": 1,
+          "tile_xy": [
+            3,
+            1
+          ],
+          "uv_center": [
+            0.4375,
+            0.1875
+          ],
+          "rgb": [
+            0.92,
+            0.86,
+            0.74
+          ]
+        }
+      ]
+    },
+    "mushroom_lantern_a02": {
+      "slots": [
+        {
+          "material_index": 0,
+          "tile_xy": [
+            4,
+            1
+          ],
+          "uv_center": [
+            0.5625,
+            0.1875
+          ],
+          "rgb": [
+            0.78,
+            0.2,
+            0.22
+          ]
+        },
+        {
+          "material_index": 1,
+          "tile_xy": [
+            5,
+            1
+          ],
+          "uv_center": [
+            0.6875,
+            0.1875
+          ],
+          "rgb": [
+            0.92,
+            0.86,
+            0.74
+          ]
+        }
+      ]
+    },
+    "mushroom_lantern_demo": {
+      "slots": [
+        {
+          "material_index": 0,
+          "tile_xy": [
+            6,
+            1
+          ],
+          "uv_center": [
+            0.8125,
+            0.1875
+          ],
+          "rgb": [
+            0.78,
+            0.2,
+            0.22
+          ]
+        },
+        {
+          "material_index": 1,
+          "tile_xy": [
+            7,
+            1
+          ],
+          "uv_center": [
+            0.9375,
+            0.1875
+          ],
+          "rgb": [
+            0.92,
+            0.86,
+            0.74
+          ]
+        }
+      ]
+    },
+    "rock_small_a01": {
+      "slots": [
+        {
+          "material_index": 0,
+          "tile_xy": [
+            0,
+            2
+          ],
+          "uv_center": [
+            0.0625,
+            0.3125
+          ],
+          "rgb": [
+            0.72,
+            0.58,
+            0.4
+          ]
+        }
+      ]
+    },
+    "rock_small_a02": {
+      "slots": [
+        {
+          "material_index": 0,
+          "tile_xy": [
+            1,
+            2
+          ],
+          "uv_center": [
+            0.1875,
+            0.3125
+          ],
+          "rgb": [
+            0.18,
+            0.18,
+            0.2
+          ]
+        }
+      ]
+    },
+    "rock_small_a03": {
+      "slots": [
+        {
+          "material_index": 0,
+          "tile_xy": [
+            2,
+            2
+          ],
+          "uv_center": [
+            0.3125,
+            0.3125
+          ],
+          "rgb": [
+            0.72,
+            0.58,
+            0.4
+          ]
+        }
+      ]
+    },
+    "rock_small_a04": {
+      "slots": [
+        {
+          "material_index": 0,
+          "tile_xy": [
+            3,
+            2
+          ],
+          "uv_center": [
+            0.4375,
+            0.3125
+          ],
+          "rgb": [
+            0.45,
+            0.44,
+            0.42
+          ]
+        }
+      ]
+    },
+    "rock_small_demo": {
+      "slots": [
+        {
+          "material_index": 0,
+          "tile_xy": [
+            4,
+            2
+          ],
+          "uv_center": [
+            0.5625,
+            0.3125
+          ],
+          "rgb": [
+            0.4,
+            0.39,
+            0.38
+          ]
+        }
+      ]
+    },
+    "ruin_block_a01": {
+      "slots": [
+        {
+          "material_index": 0,
+          "tile_xy": [
+            5,
+            2
+          ],
+          "uv_center": [
+            0.6875,
+            0.3125
+          ],
+          "rgb": [
+            0.45,
+            0.44,
+            0.42
+          ]
+        }
+      ]
+    },
+    "ruin_block_a02": {
+      "slots": [
+        {
+          "material_index": 0,
+          "tile_xy": [
+            6,
+            2
+          ],
+          "uv_center": [
+            0.8125,
+            0.3125
+          ],
+          "rgb": [
+            0.72,
+            0.58,
+            0.4
+          ]
+        }
+      ]
+    },
+    "ruin_block_a03": {
+      "slots": [
+        {
+          "material_index": 0,
+          "tile_xy": [
+            7,
+            2
+          ],
+          "uv_center": [
+            0.9375,
+            0.3125
+          ],
+          "rgb": [
+            0.45,
+            0.44,
+            0.42
+          ]
+        }
+      ]
+    },
+    "ruin_block_a04": {
+      "slots": [
+        {
+          "material_index": 0,
+          "tile_xy": [
+            0,
+            3
+          ],
+          "uv_center": [
+            0.0625,
+            0.4375
+          ],
+          "rgb": [
+            0.72,
+            0.58,
+            0.4
+          ]
+        }
+      ]
+    },
+    "stump_a01": {
+      "slots": [
+        {
+          "material_index": 0,
+          "tile_xy": [
+            1,
+            3
+          ],
+          "uv_center": [
+            0.1875,
+            0.4375
+          ],
+          "rgb": [
+            0.4,
+            0.38,
+            0.34
+          ]
+        }
+      ]
+    },
+    "stump_a02": {
+      "slots": [
+        {
+          "material_index": 0,
+          "tile_xy": [
+            2,
+            3
+          ],
+          "uv_center": [
+            0.3125,
+            0.4375
+          ],
+          "rgb": [
+            0.45,
+            0.3,
+            0.18
+          ]
+        }
+      ]
+    },
+    "tombstone_a01": {
+      "slots": [
+        {
+          "material_index": 0,
+          "tile_xy": [
+            3,
+            3
+          ],
+          "uv_center": [
+            0.4375,
+            0.4375
+          ],
+          "rgb": [
+            0.4,
+            0.38,
+            0.34
+          ]
+        }
+      ]
+    },
+    "tombstone_a02": {
+      "slots": [
+        {
+          "material_index": 0,
+          "tile_xy": [
+            4,
+            3
+          ],
+          "uv_center": [
+            0.5625,
+            0.4375
+          ],
+          "rgb": [
+            0.4,
+            0.38,
+            0.34
+          ]
+        }
+      ]
+    },
+    "wooden_crate_demo": {
+      "slots": [
+        {
+          "material_index": 0,
+          "tile_xy": [
+            5,
+            3
+          ],
+          "uv_center": [
+            0.6875,
+            0.4375
+          ],
+          "rgb": [
+            0.45,
+            0.3,
+            0.18
+          ]
+        }
+      ]
+    }
+  }
+}

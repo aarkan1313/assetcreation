@@ -1,0 +1,31 @@
+{
+  "id": "amb_drone_mana",
+  "category": "sfx",
+  "variants": [
+    "audio/sfx/amb_drone_mana/amb_drone_mana_v0.wav"
+  ],
+  "preset": "amb_drone_mana",
+  "target_rms_db": -26.0,
+  "tags": [
+    "ambience",
+    "drone",
+    "mana_crystal"
+  ],
+  "notes": "placeholder; replace via biome_ambience.py",
+  "backend": "synth_sfx_extended",
+  "processing": [
+    {
+      "variant": 0,
+      "duration_s": 4.0,
+      "rms_dbfs_in": -15.602157158687143,
+      "rms_dbfs_out": -25.999999918107147,
+      "peak_dbfs_out": -17.574665069580078,
+      "trim_ms": 0,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    }
+  ]
+}

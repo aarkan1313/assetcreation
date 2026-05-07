@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="PackedScene" path="res://props/fence_a01/model_lod0.glb" id="1"]
+[ext_resource type="Script" path="res://props/_shared/PropMaterialBinder.gd" id="2"]
+[ext_resource type="Material" path="res://props/_materials/forest_floor_oak_bark/forest_floor_oak_bark.tres" id="3"]
+
+[sub_resource type="ConvexPolygonShape3D" id="hull_0"]
+points = PackedVector3Array(-0.420625, 0.790175, 0.02, -0.420625, 0.790175, -0.02, 0.420625, 0.790175, 0.02, 0.420625, 0.790175, -0.02, -0.81125, 0.256725, 0.03, -0.81125, 0.770175, 0.03, -0.81125, 0.256725, -0.03, -0.81125, 0.770175, -0.03, 0.81125, 0.256725, 0.03, 0.81125, 0.770175, 0.03, 0.81125, 0.256725, -0.03, 0.81125, 0.770175, -0.03)
+
+[node name="fence_a01" type="Node3D"]
+script = ExtResource("2")
+material_overrides = [ExtResource("3")]
+
+[node name="LOD0" parent="." instance=ExtResource("1")]
+visibility_range_end = 25.00
+visibility_range_end_margin = 3.00
+visibility_range_fade_mode = 1
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D_0" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("hull_0")
+

@@ -1,0 +1,73 @@
+{
+  "id": "step_stone",
+  "category": "sfx",
+  "variants": [
+    "audio/sfx/step_stone/step_stone_v0.wav",
+    "audio/sfx/step_stone/step_stone_v1.wav",
+    "audio/sfx/step_stone/step_stone_v2.wav",
+    "audio/sfx/step_stone/step_stone_v3.wav"
+  ],
+  "preset": "step_stone",
+  "target_rms_db": -18.0,
+  "tags": [
+    "step",
+    "stone",
+    "indoor"
+  ],
+  "notes": "",
+  "backend": "synth_sfx_extended",
+  "processing": [
+    {
+      "variant": 0,
+      "duration_s": 0.05160997732426304,
+      "rms_dbfs_in": -24.796724319458008,
+      "rms_dbfs_out": -18.0,
+      "peak_dbfs_out": -3.395077705383301,
+      "trim_ms": 88,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 3
+      }
+    },
+    {
+      "variant": 1,
+      "duration_s": 0.05038548752834467,
+      "rms_dbfs_in": -24.654037475585938,
+      "rms_dbfs_out": -18.0,
+      "peak_dbfs_out": -3.7329540252685547,
+      "trim_ms": 89,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 2
+      }
+    },
+    {
+      "variant": 2,
+      "duration_s": 0.05197278911564626,
+      "rms_dbfs_in": -24.73923683166504,
+      "rms_dbfs_out": -18.000001907348633,
+      "peak_dbfs_out": -3.1850101947784424,
+      "trim_ms": 88,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 1
+      }
+    },
+    {
+      "variant": 3,
+      "duration_s": 0.05090702947845805,
+      "rms_dbfs_in": -24.886642456054688,
+      "rms_dbfs_out": -18.0,
+      "peak_dbfs_out": -3.847925901412964,
+      "trim_ms": 89,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 2
+      }
+    }
+  ]
+}

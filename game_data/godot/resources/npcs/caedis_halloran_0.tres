@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="NpcRecord" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://game_data/scripts/npc_record.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "caedis_halloran_0"
+display_name = "Caedis Halloran"
+schema_version = "1.0.0"
+tags = ["vendor"]
+localization_key = "NPC_CAEDIS_HALLORAN_0"
+provenance = { "source": "synthetic", "model": null, "seed": 42, "prompt_id": null, "timestamp": "2026-05-06T18:46:50+00:00", "target_file_sha256": null, "constraint_technique": null, "constraint_pass": null, "sim_digest": null, "parent_id": null }
+notes = ""
+role = "vendor"
+faction_id = "verdant_guild_0"
+biome = "alpine"
+level = 9
+health = 315
+abilities = ["shadow_aura_t1_42", "nature_self_t3_44"]
+dialogue_start = null
+description = "A level-9 vendor found in the ruin."

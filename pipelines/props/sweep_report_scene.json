@@ -1,0 +1,79 @@
+[
+  {
+    "spec": "log_x2.json",
+    "family": "log",
+    "count_requested": 2,
+    "count_ok": 2,
+    "rows": [
+      {
+        "id": "log_a01",
+        "ok": true,
+        "seed": 300,
+        "params": {
+          "length": 1.8577,
+          "radius": 0.1703,
+          "color_variant": "ash"
+        }
+      },
+      {
+        "id": "log_a02",
+        "ok": true,
+        "seed": 301,
+        "params": {
+          "length": 1.4003,
+          "radius": 0.1683,
+          "color_variant": "ash"
+        }
+      }
+    ],
+    "completed_at": "2026-05-06T18:53:58+00:00"
+  },
+  {
+    "spec": "tombstone_x2.json",
+    "family": "tombstone",
+    "count_requested": 2,
+    "count_ok": 2,
+    "rows": [
+      {
+        "id": "tombstone_a01",
+        "ok": true,
+        "seed": 500,
+        "params": {
+          "width": 0.4961,
+          "height": 0.8312,
+          "color_variant": "weathered_grey"
+        }
+      },
+      {
+        "id": "tombstone_a02",
+        "ok": true,
+        "seed": 501,
+        "params": {
+          "width": 0.4183,
+          "height": 0.8942,
+          "color_variant": "weathered_grey"
+        }
+      }
+    ],
+    "completed_at": "2026-05-06T18:55:26+00:00"
+  },
+  {
+    "spec": "fence_x1.json",
+    "family": "fence",
+    "count_requested": 1,
+    "count_ok": 1,
+    "rows": [
+      {
+        "id": "fence_a01",
+        "ok": true,
+        "seed": 800,
+        "params": {
+          "span": 1.5625,
+          "post_height": 1.0269,
+          "color_variant": "weathered_grey"
+        }
+      }
+    ],
+    "completed_at": "2026-05-06T18:56:14+00:00"
+  }
+]

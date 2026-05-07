@@ -1,0 +1,73 @@
+{
+  "id": "debris_chitin",
+  "kind": "destruction",
+  "phenomenon": "shatter",
+  "backend": "fracture2d",
+  "duration_s": 0.7,
+  "fps": 24,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "visual": {
+    "palette": [
+      "#5a3820",
+      "#2a1808",
+      "#10080a"
+    ],
+    "blend": "alpha",
+    "background": "#00000000",
+    "bloom": false
+  },
+  "visual3d": {
+    "billboard_mode": "y_axis",
+    "world_size_m": 1.1
+  },
+  "backend_params": {
+    "source_shape": "ngon",
+    "source_radius_px": 50.0,
+    "source_n_sides": 12,
+    "shard_count": 14,
+    "impact_center": [
+      128,
+      128
+    ],
+    "gravity": [
+      0.0,
+      180.0
+    ],
+    "drag": 0.7,
+    "burst_speed": 110.0,
+    "burst_jitter": 40.0,
+    "spin_max": 12.0,
+    "base_color": "#3a2010",
+    "outline_color": "#080404",
+    "seed": 17,
+    "_audio_cues": [
+      {
+        "t": 0.0,
+        "name": "crunch"
+      },
+      {
+        "t": 0.3,
+        "name": "shower"
+      }
+    ]
+  },
+  "gameplay": {
+    "shape": "point",
+    "damage_tags": [],
+    "collision": "first_hit"
+  },
+  "element": "physical",
+  "archetype": "impact",
+  "tags": [
+    "debris",
+    "physical",
+    "chitin",
+    "creature",
+    "destruction"
+  ],
+  "export_target": "3d_billboard",
+  "notes": "Chitin/shell shard burst from a creature kill."
+}

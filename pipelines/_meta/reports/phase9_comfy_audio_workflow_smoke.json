@@ -1,0 +1,14 @@
+{
+  "schema": "comfy_runner.result.v1",
+  "workflow_path": "pipelines\\_meta\\comfy_workflows\\simple_audio_gen.json",
+  "host": "http://127.0.0.1:8188",
+  "dry_run": true,
+  "node_count": 2,
+  "output_node_ids": [
+    "2"
+  ],
+  "prompt_id": null,
+  "missing_node_types": [],
+  "downloaded": [],
+  "elapsed_s": 0.0
+}

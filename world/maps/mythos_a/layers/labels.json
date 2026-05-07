@@ -1,0 +1,128 @@
+[
+  {
+    "text": "Lainfall",
+    "x": 188,
+    "y": 192,
+    "priority": 10,
+    "kind": "city"
+  },
+  {
+    "text": "Navawick",
+    "x": 78,
+    "y": 255,
+    "priority": 10,
+    "kind": "city"
+  },
+  {
+    "text": "Caerglen",
+    "x": 190,
+    "y": 76,
+    "priority": 10,
+    "kind": "city"
+  },
+  {
+    "text": "Dorndale",
+    "x": 150,
+    "y": 281,
+    "priority": 10,
+    "kind": "city"
+  },
+  {
+    "text": "Talwick",
+    "x": 385,
+    "y": 476,
+    "priority": 10,
+    "kind": "city"
+  },
+  {
+    "text": "Raststead",
+    "x": 226,
+    "y": 276,
+    "priority": 10,
+    "kind": "city"
+  },
+  {
+    "text": "Brenmoor",
+    "x": 423,
+    "y": 498,
+    "priority": 10,
+    "kind": "city"
+  },
+  {
+    "text": "Orenvale",
+    "x": 99,
+    "y": 212,
+    "priority": 10,
+    "kind": "city"
+  },
+  {
+    "text": "Caerford",
+    "x": 483,
+    "y": 222,
+    "priority": 10,
+    "kind": "city"
+  },
+  {
+    "text": "Caerglen",
+    "x": 77,
+    "y": 209,
+    "priority": 10,
+    "kind": "city"
+  },
+  {
+    "text": "Orenwick",
+    "x": 291,
+    "y": 238,
+    "priority": 10,
+    "kind": "city"
+  },
+  {
+    "text": "Talhold",
+    "x": 458,
+    "y": 489,
+    "priority": 9,
+    "kind": "city"
+  },
+  {
+    "text": "Whispering Cairns",
+    "x": 130,
+    "y": 348,
+    "priority": 5,
+    "kind": "spire"
+  },
+  {
+    "text": "Tide-Worn Spire",
+    "x": 362,
+    "y": 38,
+    "priority": 5,
+    "kind": "cave"
+  },
+  {
+    "text": "The Sundered Pass",
+    "x": 1,
+    "y": 170,
+    "priority": 5,
+    "kind": "cave"
+  },
+  {
+    "text": "The Ember Caves",
+    "x": 255,
+    "y": 36,
+    "priority": 5,
+    "kind": "shrine"
+  },
+  {
+    "text": "The Sundered Pass",
+    "x": 82,
+    "y": 25,
+    "priority": 5,
+    "kind": "cairn"
+  },
+  {
+    "text": "The Sundered Pass",
+    "x": 52,
+    "y": 111,
+    "priority": 5,
+    "kind": "cave"
+  }
+]

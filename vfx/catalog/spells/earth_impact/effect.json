@@ -1,0 +1,78 @@
+{
+  "kind": "destruction",
+  "phenomenon": "rubble",
+  "backend": "particle_cpu",
+  "duration_s": 0.4,
+  "fps": 30,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "visual": {
+    "palette": [
+      "#d8c79a",
+      "#a07a4a",
+      "#553820",
+      "#1a120a"
+    ],
+    "blend": "alpha",
+    "background": "#00000000",
+    "bloom": false
+  },
+  "visual3d": {
+    "billboard_mode": "y_axis",
+    "world_size_m": 1.8
+  },
+  "backend_params": {
+    "emitter": "burst",
+    "count": 95,
+    "seed": 49123,
+    "initial_speed": 49.0,
+    "speed_jitter": 35.0,
+    "direction_deg": 90.0,
+    "spread_deg": 90.0,
+    "gravity": [
+      0.0,
+      110.0
+    ],
+    "drag": 1.0,
+    "size_px": 7.8,
+    "size_jitter": 2.5,
+    "fade": 1.0,
+    "emission_pos": [
+      128,
+      200
+    ],
+    "_audio_cues": [
+      {
+        "t": 0.0,
+        "name": "impact"
+      },
+      {
+        "t": 0.18,
+        "name": "shower"
+      },
+      {
+        "t": 0.32,
+        "name": "settle"
+      }
+    ]
+  },
+  "gameplay": {
+    "shape": "point",
+    "damage_tags": [
+      "physical"
+    ],
+    "collision": "first_hit"
+  },
+  "element": "earth",
+  "archetype": "impact",
+  "tags": [
+    "earth",
+    "impact",
+    "physical"
+  ],
+  "export_target": "decal",
+  "id": "earth_impact",
+  "notes": "Auto-authored earth impact from element-archetype grid."
+}

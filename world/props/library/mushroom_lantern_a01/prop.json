@@ -1,0 +1,152 @@
+{
+  "schema": "prop_asset.v1",
+  "id": "mushroom_lantern_a01",
+  "family": "mushroom_lantern",
+  "kit": "first_party_proc",
+  "source_method": "blender_procedural",
+  "source_recipe": "pipelines/props/blender_scripts/proc_props.py:mushroom_lantern",
+  "license": "project_generated",
+  "render_class": "scatter_multimesh",
+  "collision": "none",
+  "origin": "bottom_center",
+  "scale_m": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "footprint_radius_m": 0.4,
+  "lods": [
+    {
+      "file": "model_lod0.glb",
+      "max_distance_m": 25.0,
+      "triangles": 1500,
+      "ratio_of_lod0": 1.0
+    },
+    {
+      "file": "model_lod1.glb",
+      "max_distance_m": 60.0,
+      "triangles": 750,
+      "ratio_of_lod0": 0.5
+    },
+    {
+      "file": "model_lod2.glb",
+      "max_distance_m": 120.0,
+      "triangles": 300,
+      "ratio_of_lod0": 0.2
+    }
+  ],
+  "thumbnail": "thumbnail.png",
+  "placement_tags": [
+    "mushroom",
+    "ground",
+    "shaded"
+  ],
+  "material_slots": [
+    "mushroom_cap",
+    "mushroom_stem"
+  ],
+  "qa": "qa.json",
+  "provenance": {
+    "seed": 200,
+    "params": {
+      "cap_color": "death_purple",
+      "cap_squash": 0.6957,
+      "emission_strength": 0.0497
+    },
+    "target_tris_hint": 1500
+  },
+  "lod_ladder_ratios": [
+    1.0,
+    0.5,
+    0.2
+  ],
+  "lod_render_class": "scatter_multimesh",
+  "sweep_spec": "mushroom_lantern_a",
+  "sweep_seed": 200,
+  "sweep_params": {
+    "cap_color": "death_purple",
+    "cap_squash": 0.6957,
+    "emission_strength": 0.0497
+  },
+  "material_lod": {
+    "kit_atlas": "world/props/kits/first_party_proc/kit_atlas_lod_far.png",
+    "kit_atlas_manifest": "world/props/kits/first_party_proc/kit_atlas_manifest.json",
+    "slots": [
+      {
+        "material_index": 0,
+        "tile_xy": [
+          2,
+          1
+        ],
+        "uv_center": [
+          0.3125,
+          0.1875
+        ],
+        "rgb": [
+          0.4,
+          0.2,
+          0.55
+        ]
+      },
+      {
+        "material_index": 1,
+        "tile_xy": [
+          3,
+          1
+        ],
+        "uv_center": [
+          0.4375,
+          0.1875
+        ],
+        "rgb": [
+          0.92,
+          0.86,
+          0.74
+        ]
+      }
+    ]
+  },
+  "billboard": {
+    "file": "billboard.png",
+    "angles": 1,
+    "tile_px": 256,
+    "atlas_layout": "single"
+  },
+  "pbr_material_bindings": {
+    "schema": "prop_pbr_bindings.v1",
+    "bound_at": "2026-05-06T20:37:04+00:00",
+    "texture_library": "world/textures/library",
+    "slots": [
+      {
+        "material_index": 0,
+        "slot": "mushroom_cap",
+        "texture_set": "biome_swamp",
+        "maps": {
+          "albedo": "world/textures/library/biome_swamp/biome_swamp_albedo.png",
+          "normal": "world/textures/library/biome_swamp/biome_swamp_normal.png",
+          "roughness": "world/textures/library/biome_swamp/biome_swamp_roughness.png",
+          "metallic": "world/textures/library/biome_swamp/biome_swamp_metallic.png",
+          "ao": "world/textures/library/biome_swamp/biome_swamp_ao.png",
+          "height": "world/textures/library/biome_swamp/biome_swamp_height.png"
+        },
+        "tiling": 1.0,
+        "source": "existing_aaa_texture"
+      },
+      {
+        "material_index": 1,
+        "slot": "mushroom_stem",
+        "texture_set": "biome_grassland",
+        "maps": {
+          "albedo": "world/textures/library/biome_grassland/biome_grassland_albedo.png",
+          "normal": "world/textures/library/biome_grassland/biome_grassland_normal.png",
+          "roughness": "world/textures/library/biome_grassland/biome_grassland_roughness.png",
+          "metallic": "world/textures/library/biome_grassland/biome_grassland_metallic.png",
+          "ao": "world/textures/library/biome_grassland/biome_grassland_ao.png",
+          "height": "world/textures/library/biome_grassland/biome_grassland_height.png"
+        },
+        "tiling": 1.0,
+        "source": "existing_aaa_texture"
+      }
+    ]
+  }
+}

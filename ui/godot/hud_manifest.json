@@ -1,0 +1,412 @@
+{
+  "huds": [
+    {
+      "faction": "ashen_pact",
+      "scenario": "default",
+      "tscn": "ui/godot/hud_ashen_pact.tscn",
+      "preview": "ui/hud_preview_ashen_pact.png",
+      "action_icons": [
+        "ico_sword",
+        "ico_shield",
+        "ico_potion_red",
+        "ico_potion_blue",
+        "ico_gem_blue",
+        "ico_scroll",
+        "ico_key",
+        "ico_coin"
+      ],
+      "layout": {
+        "design_size": [
+          1920,
+          1080
+        ],
+        "faction": "ashen_pact",
+        "scenario": "default",
+        "quest_panel": {
+          "rect": [
+            60,
+            24,
+            1100,
+            80
+          ],
+          "label": "QUEST: Recover the Sundered Crown"
+        },
+        "action_bar": {
+          "rect": [
+            60,
+            920,
+            712,
+            100
+          ],
+          "slot_size": 80,
+          "slot_padding": 8,
+          "icons": [
+            "ico_sword",
+            "ico_shield",
+            "ico_potion_red",
+            "ico_potion_blue",
+            "ico_gem_blue",
+            "ico_scroll",
+            "ico_key",
+            "ico_coin"
+          ]
+        },
+        "minimap": {
+          "rect": [
+            1610,
+            30,
+            280,
+            280
+          ],
+          "label": "MAP"
+        },
+        "hp_bar": {
+          "rect": [
+            60,
+            880,
+            360,
+            28
+          ],
+          "label": "HP",
+          "fill": 0.72
+        },
+        "mana_bar": {
+          "rect": [
+            60,
+            856,
+            360,
+            22
+          ],
+          "label": "MP",
+          "fill": 0.45
+        },
+        "tooltip": {
+          "rect": [
+            740,
+            460,
+            440,
+            160
+          ],
+          "title": "Frostbrand Strike",
+          "body": "+18 cold damage. Applies CHILLED for 4s.",
+          "visible": true
+        },
+        "inventory_btn": {
+          "rect": [
+            1690,
+            990,
+            200,
+            60
+          ],
+          "label": "INVENTORY"
+        }
+      }
+    },
+    {
+      "faction": "ember_legion",
+      "scenario": "default",
+      "tscn": "ui/godot/hud_ember_legion.tscn",
+      "preview": "ui/hud_preview_ember_legion.png",
+      "action_icons": [
+        "ico_sword",
+        "ico_shield",
+        "ico_potion_red",
+        "ico_potion_blue",
+        "ico_gem_blue",
+        "ico_scroll",
+        "ico_key",
+        "ico_coin"
+      ],
+      "layout": {
+        "design_size": [
+          1920,
+          1080
+        ],
+        "faction": "ember_legion",
+        "scenario": "default",
+        "quest_panel": {
+          "rect": [
+            60,
+            24,
+            1100,
+            80
+          ],
+          "label": "QUEST: Recover the Sundered Crown"
+        },
+        "action_bar": {
+          "rect": [
+            60,
+            920,
+            712,
+            100
+          ],
+          "slot_size": 80,
+          "slot_padding": 8,
+          "icons": [
+            "ico_sword",
+            "ico_shield",
+            "ico_potion_red",
+            "ico_potion_blue",
+            "ico_gem_blue",
+            "ico_scroll",
+            "ico_key",
+            "ico_coin"
+          ]
+        },
+        "minimap": {
+          "rect": [
+            1610,
+            30,
+            280,
+            280
+          ],
+          "label": "MAP"
+        },
+        "hp_bar": {
+          "rect": [
+            60,
+            880,
+            360,
+            28
+          ],
+          "label": "HP",
+          "fill": 0.72
+        },
+        "mana_bar": {
+          "rect": [
+            60,
+            856,
+            360,
+            22
+          ],
+          "label": "MP",
+          "fill": 0.45
+        },
+        "tooltip": {
+          "rect": [
+            740,
+            460,
+            440,
+            160
+          ],
+          "title": "Frostbrand Strike",
+          "body": "+18 cold damage. Applies CHILLED for 4s.",
+          "visible": true
+        },
+        "inventory_btn": {
+          "rect": [
+            1690,
+            990,
+            200,
+            60
+          ],
+          "label": "INVENTORY"
+        }
+      }
+    },
+    {
+      "faction": "tide_bound",
+      "scenario": "default",
+      "tscn": "ui/godot/hud_tide_bound.tscn",
+      "preview": "ui/hud_preview_tide_bound.png",
+      "action_icons": [
+        "ico_sword",
+        "ico_shield",
+        "ico_potion_red",
+        "ico_potion_blue",
+        "ico_gem_blue",
+        "ico_scroll",
+        "ico_key",
+        "ico_coin"
+      ],
+      "layout": {
+        "design_size": [
+          1920,
+          1080
+        ],
+        "faction": "tide_bound",
+        "scenario": "default",
+        "quest_panel": {
+          "rect": [
+            60,
+            24,
+            1100,
+            80
+          ],
+          "label": "QUEST: Recover the Sundered Crown"
+        },
+        "action_bar": {
+          "rect": [
+            60,
+            920,
+            712,
+            100
+          ],
+          "slot_size": 80,
+          "slot_padding": 8,
+          "icons": [
+            "ico_sword",
+            "ico_shield",
+            "ico_potion_red",
+            "ico_potion_blue",
+            "ico_gem_blue",
+            "ico_scroll",
+            "ico_key",
+            "ico_coin"
+          ]
+        },
+        "minimap": {
+          "rect": [
+            1610,
+            30,
+            280,
+            280
+          ],
+          "label": "MAP"
+        },
+        "hp_bar": {
+          "rect": [
+            60,
+            880,
+            360,
+            28
+          ],
+          "label": "HP",
+          "fill": 0.72
+        },
+        "mana_bar": {
+          "rect": [
+            60,
+            856,
+            360,
+            22
+          ],
+          "label": "MP",
+          "fill": 0.45
+        },
+        "tooltip": {
+          "rect": [
+            740,
+            460,
+            440,
+            160
+          ],
+          "title": "Frostbrand Strike",
+          "body": "+18 cold damage. Applies CHILLED for 4s.",
+          "visible": true
+        },
+        "inventory_btn": {
+          "rect": [
+            1690,
+            990,
+            200,
+            60
+          ],
+          "label": "INVENTORY"
+        }
+      }
+    },
+    {
+      "faction": "verdant_court",
+      "scenario": "default",
+      "tscn": "ui/godot/hud_verdant_court.tscn",
+      "preview": "ui/hud_preview_verdant_court.png",
+      "action_icons": [
+        "ico_sword",
+        "ico_shield",
+        "ico_potion_red",
+        "ico_potion_blue",
+        "ico_gem_blue",
+        "ico_scroll",
+        "ico_key",
+        "ico_coin"
+      ],
+      "layout": {
+        "design_size": [
+          1920,
+          1080
+        ],
+        "faction": "verdant_court",
+        "scenario": "default",
+        "quest_panel": {
+          "rect": [
+            60,
+            24,
+            1100,
+            80
+          ],
+          "label": "QUEST: Recover the Sundered Crown"
+        },
+        "action_bar": {
+          "rect": [
+            60,
+            920,
+            712,
+            100
+          ],
+          "slot_size": 80,
+          "slot_padding": 8,
+          "icons": [
+            "ico_sword",
+            "ico_shield",
+            "ico_potion_red",
+            "ico_potion_blue",
+            "ico_gem_blue",
+            "ico_scroll",
+            "ico_key",
+            "ico_coin"
+          ]
+        },
+        "minimap": {
+          "rect": [
+            1610,
+            30,
+            280,
+            280
+          ],
+          "label": "MAP"
+        },
+        "hp_bar": {
+          "rect": [
+            60,
+            880,
+            360,
+            28
+          ],
+          "label": "HP",
+          "fill": 0.72
+        },
+        "mana_bar": {
+          "rect": [
+            60,
+            856,
+            360,
+            22
+          ],
+          "label": "MP",
+          "fill": 0.45
+        },
+        "tooltip": {
+          "rect": [
+            740,
+            460,
+            440,
+            160
+          ],
+          "title": "Frostbrand Strike",
+          "body": "+18 cold damage. Applies CHILLED for 4s.",
+          "visible": true
+        },
+        "inventory_btn": {
+          "rect": [
+            1690,
+            990,
+            200,
+            60
+          ],
+          "label": "INVENTORY"
+        }
+      }
+    }
+  ]
+}

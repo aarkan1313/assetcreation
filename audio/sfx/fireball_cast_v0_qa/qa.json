@@ -1,0 +1,12 @@
+{
+  "duration_s": 0.6989115646258504,
+  "samplerate": 44100,
+  "rms_dbfs": -18.101635228031448,
+  "peak_dbfs": -6.517508188449367,
+  "clipped_samples": 0,
+  "dc_offset": -0.0010735272662714124,
+  "click_count_estimate": 0,
+  "source": "D:\\assets\\audio\\sfx\\fireball_cast_v0.wav",
+  "waveform": "D:\\assets\\audio\\sfx\\fireball_cast_v0_qa\\waveform.png",
+  "spectrogram": "D:\\assets\\audio\\sfx\\fireball_cast_v0_qa\\spectrogram.png"
+}

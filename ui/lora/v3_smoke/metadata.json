@@ -1,0 +1,141 @@
+{
+  "run_id": "v3_smoke",
+  "created_at": "2026-05-06T20:47:27+00:00",
+  "base_model": "black-forest-labs/FLUX.1-schnell",
+  "base_resolution": 1024,
+  "trigger_token": "tlteic0n",
+  "style_brief": "fantasy game icon, flat-shaded silhouette, centered subject, transparent background",
+  "network_dim": 16,
+  "network_alpha": 8,
+  "learning_rate": 0.0001,
+  "batch_size": 2,
+  "max_train_steps": 2000,
+  "save_every_n_steps": 500,
+  "n_repeats": 10,
+  "references": [
+    {
+      "id": "ico_gi_magic_shield",
+      "path": "ui/icons/ico_gi_magic_shield.png",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "semantic_tags": [
+        "buff",
+        "defense",
+        "arcane",
+        "shield"
+      ],
+      "display_name": "Magic Shield"
+    },
+    {
+      "id": "ico_flame_rune",
+      "path": "ui/icons/ico_flame_rune.png",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "semantic_tags": [
+        "fire",
+        "magic",
+        "rune"
+      ],
+      "display_name": "Flame Rune"
+    },
+    {
+      "id": "ico_gi_boss_key",
+      "path": "ui/icons/ico_gi_boss_key.png",
+      "license": "CC-BY 3.0",
+      "attribution": "delapouite / game-icons.net / CC-BY 3.0",
+      "semantic_tags": [
+        "loot",
+        "key",
+        "quest"
+      ],
+      "display_name": "Boss Key"
+    },
+    {
+      "id": "ico_gi_broadhead_arrow",
+      "path": "ui/icons/ico_gi_broadhead_arrow.png",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "semantic_tags": [
+        "weapon",
+        "ranged",
+        "arrow"
+      ],
+      "display_name": "Broadhead Arrow"
+    },
+    {
+      "id": "ico_gi_broken_heart",
+      "path": "ui/icons/ico_gi_broken_heart.png",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "semantic_tags": [
+        "debuff",
+        "damage",
+        "heart"
+      ],
+      "display_name": "Broken Heart"
+    },
+    {
+      "id": "ico_gi_campfire",
+      "path": "ui/icons/ico_gi_campfire.png",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "semantic_tags": [
+        "world",
+        "fire",
+        "camp"
+      ],
+      "display_name": "Campfire"
+    },
+    {
+      "id": "ico_gi_castle",
+      "path": "ui/icons/ico_gi_castle.png",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "semantic_tags": [
+        "faction",
+        "building",
+        "castle"
+      ],
+      "display_name": "Castle"
+    },
+    {
+      "id": "ico_gi_crowned_skull",
+      "path": "ui/icons/ico_gi_crowned_skull.png",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "semantic_tags": [
+        "debuff",
+        "death",
+        "boss"
+      ],
+      "display_name": "Crowned Skull"
+    },
+    {
+      "id": "ico_gi_crystal_cluster",
+      "path": "ui/icons/ico_gi_crystal_cluster.png",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "semantic_tags": [
+        "world",
+        "crystal",
+        "mana"
+      ],
+      "display_name": "Crystal Cluster"
+    },
+    {
+      "id": "ico_gi_death_skull",
+      "path": "ui/icons/ico_gi_death_skull.png",
+      "license": "CC-BY 3.0",
+      "attribution": "sbed / game-icons.net / CC-BY 3.0",
+      "semantic_tags": [
+        "debuff",
+        "death",
+        "skull"
+      ],
+      "display_name": "Death Skull"
+    }
+  ],
+  "excluded_for_license": [],
+  "dataset_root": "ui/lora/v3_smoke/dataset",
+  "train_command": "bash ui/lora/v3_smoke/train_command.sh"
+}

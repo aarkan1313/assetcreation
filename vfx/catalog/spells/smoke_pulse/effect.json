@@ -1,0 +1,30 @@
+{
+  "id": "smoke_pulse",
+  "kind": "spell",
+  "phenomenon": "smoke",
+  "backend": "smoke_field",
+  "duration_s": 1.5,
+  "fps": 24,
+  "bounds_px": [256, 256],
+  "visual": {
+    "palette": ["#1a1a22", "#65607a", "#cfc8e0"],
+    "blend": "alpha",
+    "background": "#00000000"
+  },
+  "backend_params": {
+    "seed": 3,
+    "grid_size": 64,
+    "emit_pos": [0.5, 0.85],
+    "emit_radius": 4.0,
+    "emit_density": 6.0,
+    "buoyancy": -7.0,
+    "dissipation": 0.55,
+    "viscosity": 0.55
+  },
+  "gameplay": {
+    "shape": "aura",
+    "damage_tags": [],
+    "collision": "none"
+  },
+  "notes": "Rising smoke plume from a bottom-mid emitter. Semi-Lagrangian advection, density-driven buoyancy."
+}

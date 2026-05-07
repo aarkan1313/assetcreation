@@ -1,0 +1,109 @@
+{
+  "schema": "prop_asset.v1",
+  "id": "tombstone_a01",
+  "family": "tombstone",
+  "kit": "first_party_proc",
+  "source_method": "blender_procedural",
+  "source_recipe": "pipelines/props/blender_scripts/proc_props.py:tombstone",
+  "license": "project_generated",
+  "render_class": "scene_prop",
+  "collision": "convex",
+  "origin": "bottom_center",
+  "scale_m": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "footprint_radius_m": 0.3,
+  "lods": [
+    {
+      "file": "model_lod0.glb",
+      "max_distance_m": 25.0,
+      "triangles": 1200,
+      "ratio_of_lod0": 1.0
+    },
+    {
+      "file": "model_lod1.glb",
+      "max_distance_m": 60.0,
+      "triangles": 600,
+      "ratio_of_lod0": 0.5
+    }
+  ],
+  "thumbnail": "thumbnail.png",
+  "placement_tags": [
+    "stone",
+    "ground",
+    "marker"
+  ],
+  "material_slots": [
+    "stone"
+  ],
+  "qa": "qa.json",
+  "provenance": {
+    "seed": 500,
+    "params": {
+      "width": 0.4961,
+      "height": 0.8312,
+      "color_variant": "weathered_grey"
+    },
+    "target_tris_hint": 1200
+  },
+  "lod_ladder_ratios": [
+    1.0,
+    0.5
+  ],
+  "lod_render_class": "scene_prop",
+  "collision_file": "collision.json",
+  "collision_hull_count": 1,
+  "sweep_spec": "tombstone_a",
+  "sweep_seed": 500,
+  "sweep_params": {
+    "width": 0.4961,
+    "height": 0.8312,
+    "color_variant": "weathered_grey"
+  },
+  "material_lod": {
+    "kit_atlas": "world/props/kits/first_party_proc/kit_atlas_lod_far.png",
+    "kit_atlas_manifest": "world/props/kits/first_party_proc/kit_atlas_manifest.json",
+    "slots": [
+      {
+        "material_index": 0,
+        "tile_xy": [
+          3,
+          3
+        ],
+        "uv_center": [
+          0.4375,
+          0.4375
+        ],
+        "rgb": [
+          0.4,
+          0.38,
+          0.34
+        ]
+      }
+    ]
+  },
+  "pbr_material_bindings": {
+    "schema": "prop_pbr_bindings.v1",
+    "bound_at": "2026-05-06T20:37:04+00:00",
+    "texture_library": "world/textures/library",
+    "slots": [
+      {
+        "material_index": 0,
+        "slot": "stone",
+        "texture_set": "biome_lava_field",
+        "maps": {
+          "albedo": "world/textures/library/biome_lava_field/biome_lava_field_albedo.png",
+          "normal": "world/textures/library/biome_lava_field/biome_lava_field_normal.png",
+          "roughness": "world/textures/library/biome_lava_field/biome_lava_field_roughness.png",
+          "metallic": "world/textures/library/biome_lava_field/biome_lava_field_metallic.png",
+          "ao": "world/textures/library/biome_lava_field/biome_lava_field_ao.png",
+          "height": "world/textures/library/biome_lava_field/biome_lava_field_height.png"
+        },
+        "tiling": 1.0,
+        "source": "existing_aaa_texture"
+      }
+    ]
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "id": "spark_stone",
+  "kind": "spell",
+  "phenomenon": "particle",
+  "backend": "particle_cpu",
+  "duration_s": 0.4,
+  "fps": 30,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "visual": {
+    "palette": [
+      "#e6d6b8",
+      "#b89870",
+      "#604530",
+      "#1a1208"
+    ],
+    "blend": "additive",
+    "background": "#00000000",
+    "bloom": false
+  },
+  "visual3d": {
+    "billboard_mode": "y_axis",
+    "world_size_m": 1.4
+  },
+  "backend_params": {
+    "emitter": "burst",
+    "count": 30,
+    "seed": 46685,
+    "initial_speed": 140.0,
+    "speed_jitter": 70.0,
+    "direction_deg": 90.0,
+    "spread_deg": 150.0,
+    "gravity": [
+      0.0,
+      120.0
+    ],
+    "drag": 1.4,
+    "size_px": 2.8,
+    "size_jitter": 1.1199999999999999,
+    "fade": 1.0,
+    "emission_pos": [
+      128,
+      160
+    ],
+    "_audio_cues": [
+      {
+        "t": 0.0,
+        "name": "thud"
+      },
+      {
+        "t": 0.18,
+        "name": "shower"
+      }
+    ]
+  },
+  "gameplay": {
+    "shape": "point",
+    "damage_tags": [],
+    "collision": "first_hit"
+  },
+  "element": "physical",
+  "archetype": "impact",
+  "tags": [
+    "sparks",
+    "physical",
+    "stone"
+  ],
+  "export_target": "decal",
+  "notes": "Damage/impact: spark_stone"
+}

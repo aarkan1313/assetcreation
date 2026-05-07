@@ -1,0 +1,32 @@
+{
+  "id": "exploration_a",
+  "display_name": "Exploration \u2014 Track A",
+  "bpm": 90,
+  "bars": 32,
+  "loop": true,
+  "stems": [
+    {
+      "id": "pad",
+      "intensity_min": 0.0,
+      "intensity_max": 1.0
+    },
+    {
+      "id": "harp",
+      "intensity_min": 0.2,
+      "intensity_max": 1.0
+    },
+    {
+      "id": "low_strings",
+      "intensity_min": 0.5,
+      "intensity_max": 1.0
+    }
+  ],
+  "states": {
+    "open": {
+      "intensity": 0.4
+    },
+    "discovery": {
+      "intensity": 0.8
+    }
+  }
+}

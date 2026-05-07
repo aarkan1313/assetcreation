@@ -1,0 +1,19 @@
+{
+  "biome": "tundra",
+  "stem": "wildlife_sparse/tundra_lib_raven_v1",
+  "backend_requested": "library",
+  "backend_actual": "library_placeholder",
+  "out_path": "D:\\assets\\audio\\ambience\\tundra\\wildlife_sparse\\tundra_lib_raven_v1.wav",
+  "duration_s": 1.5,
+  "samplerate": 44100,
+  "rms_dbfs": -34.76579284667969,
+  "peak_dbfs": -22.0,
+  "lufs_target": -22.0,
+  "seed": 1,
+  "prompt": "raven crow caw cold",
+  "dry_run": true,
+  "loop": false,
+  "seam_rms": null,
+  "fitness": null,
+  "library_query": "raven crow caw cold"
+}

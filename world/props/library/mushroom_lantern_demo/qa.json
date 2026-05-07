@@ -1,0 +1,9 @@
+{
+  "id": "mushroom_lantern_demo",
+  "kind": "mushroom_lantern",
+  "seed": 11,
+  "target_tris": 800,
+  "blender_version": "5.1",
+  "timestamp": "2026-05-06T17:24:32+00:00",
+  "ok": true
+}

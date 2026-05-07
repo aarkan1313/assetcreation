@@ -1,0 +1,19 @@
+{
+  "schema": "prop_sweep.v1",
+  "family": "tombstone",
+  "kit": "first_party_proc",
+  "count": 2,
+  "id_prefix": "tombstone_a",
+  "id_start_index": 1,
+  "base_seed": 500,
+  "render_class": "scene_prop",
+  "collision": "convex",
+  "params": {
+    "width":  {"type": "float_range", "min": 0.40, "max": 0.55},
+    "height": {"type": "float_range", "min": 0.70, "max": 1.00},
+    "color_variant": {"type": "categorical",
+                      "values": ["weathered_grey", "granite_grey"], "weights": [0.6, 0.4]}
+  },
+  "target_tris": 1200,
+  "lod_ladder": [1.00, 0.50, 0.20]
+}

@@ -1,0 +1,19 @@
+{
+  "kit": "mossy_highland_ruins",
+  "kit_path": "art_lab\\props\\kits\\mossy_highland_ruins.props.json",
+  "recipes_loaded": 13,
+  "validation_issues": [],
+  "asset_issues": [],
+  "summary": {
+    "families": 13,
+    "variants": 76,
+    "ready": 26,
+    "partial": 0,
+    "missing": 50,
+    "blender_tasks": 50,
+    "local_ai_tasks": 0,
+    "decal_tasks": 0,
+    "godot_export_tasks": 26,
+    "validation_issues": 0
+  }
+}

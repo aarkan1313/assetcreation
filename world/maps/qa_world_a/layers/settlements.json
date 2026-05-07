@@ -1,0 +1,146 @@
+[
+  {
+    "id": "s000",
+    "name": "Navacrag",
+    "kind": "city",
+    "x": 92,
+    "y": 243,
+    "importance": 0.9977590441703796
+  },
+  {
+    "id": "s001",
+    "name": "Gildreach",
+    "kind": "city",
+    "x": 202,
+    "y": 264,
+    "importance": 0.9948280453681946
+  },
+  {
+    "id": "s002",
+    "name": "Heimford",
+    "kind": "city",
+    "x": 475,
+    "y": 173,
+    "importance": 0.9917545914649963
+  },
+  {
+    "id": "s003",
+    "name": "Eldmoor",
+    "kind": "city",
+    "x": 181,
+    "y": 43,
+    "importance": 0.9908117651939392
+  },
+  {
+    "id": "s004",
+    "name": "Ithcrag",
+    "kind": "city",
+    "x": 156,
+    "y": 946,
+    "importance": 0.9893467426300049
+  },
+  {
+    "id": "s005",
+    "name": "Rastglen",
+    "kind": "city",
+    "x": 145,
+    "y": 865,
+    "importance": 0.9889134764671326
+  },
+  {
+    "id": "s006",
+    "name": "Caerspire",
+    "kind": "city",
+    "x": 201,
+    "y": 948,
+    "importance": 0.9886313080787659
+  },
+  {
+    "id": "s007",
+    "name": "Gildvale",
+    "kind": "city",
+    "x": 412,
+    "y": 109,
+    "importance": 0.9876880049705505
+  },
+  {
+    "id": "s008",
+    "name": "Zalstead",
+    "kind": "city",
+    "x": 908,
+    "y": 734,
+    "importance": 0.9876152873039246
+  },
+  {
+    "id": "s009",
+    "name": "Morcrag",
+    "kind": "city",
+    "x": 905,
+    "y": 881,
+    "importance": 0.986899733543396
+  },
+  {
+    "id": "s010",
+    "name": "Wynstead",
+    "kind": "city",
+    "x": 574,
+    "y": 654,
+    "importance": 0.9864189624786377
+  },
+  {
+    "id": "s011",
+    "name": "Eldridge",
+    "kind": "city",
+    "x": 514,
+    "y": 128,
+    "importance": 0.985657811164856
+  },
+  {
+    "id": "s012",
+    "name": "Wynreach",
+    "kind": "city",
+    "x": 108,
+    "y": 405,
+    "importance": 0.9849182963371277
+  },
+  {
+    "id": "s013",
+    "name": "Talburg",
+    "kind": "city",
+    "x": 552,
+    "y": 933,
+    "importance": 0.9847874641418457
+  },
+  {
+    "id": "s014",
+    "name": "Caerwatch",
+    "kind": "city",
+    "x": 960,
+    "y": 272,
+    "importance": 0.9839544892311096
+  },
+  {
+    "id": "s015",
+    "name": "Wynmoor",
+    "kind": "city",
+    "x": 247,
+    "y": 274,
+    "importance": 0.9836089611053467
+  },
+  {
+    "id": "s016",
+    "name": "Quenburg",
+    "kind": "city",
+    "x": 405,
+    "y": 215,
+    "importance": 0.9835880398750305
+  },
+  {
+    "id": "s017",
+    "name": "Navawick",
+    "kind": "city",
+    "x": 609,
+    "y": 117,
+    "importance": 0.9829373955726624
+  }
+]

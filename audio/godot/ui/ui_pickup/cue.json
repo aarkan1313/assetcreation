@@ -1,0 +1,59 @@
+{
+  "id": "ui_pickup",
+  "category": "ui",
+  "variants": [
+    "audio/ui/ui_pickup/ui_pickup_v0.wav",
+    "audio/ui/ui_pickup/ui_pickup_v1.wav",
+    "audio/ui/ui_pickup/ui_pickup_v2.wav"
+  ],
+  "preset": "ui_pickup",
+  "target_rms_db": -22.0,
+  "tags": [
+    "ui",
+    "pickup",
+    "loot"
+  ],
+  "notes": "",
+  "backend": "synth_sfx_extended",
+  "processing": [
+    {
+      "variant": 0,
+      "duration_s": 0.22,
+      "rms_dbfs_in": -12.211067199707031,
+      "rms_dbfs_out": -22.0,
+      "peak_dbfs_out": -14.894970893859863,
+      "trim_ms": 0,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    },
+    {
+      "variant": 1,
+      "duration_s": 0.22,
+      "rms_dbfs_in": -12.211227416992188,
+      "rms_dbfs_out": -22.0,
+      "peak_dbfs_out": -14.900045394897461,
+      "trim_ms": 0,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    },
+    {
+      "variant": 2,
+      "duration_s": 0.22,
+      "rms_dbfs_in": -12.211064338684082,
+      "rms_dbfs_out": -21.999998092651367,
+      "peak_dbfs_out": -14.891219139099121,
+      "trim_ms": 0,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    }
+  ]
+}

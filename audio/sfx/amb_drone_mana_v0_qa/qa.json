@@ -1,0 +1,12 @@
+{
+  "duration_s": 4.0,
+  "samplerate": 44100,
+  "rms_dbfs": -24.551180920826155,
+  "peak_dbfs": -17.575229740128705,
+  "clipped_samples": 0,
+  "dc_offset": -3.927702346118167e-05,
+  "click_count_estimate": 0,
+  "source": "D:\\assets\\audio\\sfx\\amb_drone_mana_v0.wav",
+  "waveform": "D:\\assets\\audio\\sfx\\amb_drone_mana_v0_qa\\waveform.png",
+  "spectrogram": "D:\\assets\\audio\\sfx\\amb_drone_mana_v0_qa\\spectrogram.png"
+}

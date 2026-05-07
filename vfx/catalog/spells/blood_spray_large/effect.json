@@ -1,0 +1,76 @@
+{
+  "id": "blood_spray_large",
+  "kind": "spell",
+  "phenomenon": "particle",
+  "backend": "particle_cpu",
+  "duration_s": 0.6,
+  "fps": 30,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "visual": {
+    "palette": [
+      "#e84a3a",
+      "#9a1f15",
+      "#2a0805"
+    ],
+    "blend": "alpha",
+    "background": "#00000000",
+    "bloom": false
+  },
+  "visual3d": {
+    "billboard_mode": "y_axis",
+    "world_size_m": 1.4
+  },
+  "backend_params": {
+    "emitter": "burst",
+    "count": 140,
+    "seed": 23681,
+    "initial_speed": 160.0,
+    "speed_jitter": 80.0,
+    "direction_deg": 90.0,
+    "spread_deg": 140.0,
+    "gravity": [
+      0.0,
+      240.0
+    ],
+    "drag": 0.7,
+    "size_px": 6.0,
+    "size_jitter": 2.4000000000000004,
+    "fade": 1.0,
+    "emission_pos": [
+      128,
+      160
+    ],
+    "_audio_cues": [
+      {
+        "t": 0.0,
+        "name": "hit"
+      },
+      {
+        "t": 0.2,
+        "name": "spray"
+      },
+      {
+        "t": 0.45,
+        "name": "settle"
+      }
+    ]
+  },
+  "gameplay": {
+    "shape": "point",
+    "damage_tags": [],
+    "collision": "first_hit"
+  },
+  "element": "physical",
+  "archetype": "impact",
+  "tags": [
+    "blood",
+    "physical",
+    "hit_reaction",
+    "critical"
+  ],
+  "export_target": "decal",
+  "notes": "Damage/impact: blood_spray_large"
+}

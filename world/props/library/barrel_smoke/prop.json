@@ -1,0 +1,175 @@
+{
+  "schema": "prop_asset.v1",
+  "id": "barrel_smoke",
+  "family": "barrel",
+  "kit": "first_party_proc",
+  "source_method": "blender_procedural",
+  "source_recipe": "pipelines/props/blender_scripts/proc_props.py:barrel",
+  "license": "project_generated",
+  "render_class": "scene_prop",
+  "collision": "convex",
+  "origin": "bottom_center",
+  "scale_m": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "footprint_radius_m": 0.4,
+  "lods": [
+    {
+      "file": "model_lod0.glb",
+      "max_distance_m": 25.0,
+      "triangles": 1200,
+      "ratio_of_lod0": 1.0
+    },
+    {
+      "file": "model_lod1.glb",
+      "max_distance_m": 60.0,
+      "triangles": 600,
+      "ratio_of_lod0": 0.5
+    },
+    {
+      "file": "model_lod2.glb",
+      "max_distance_m": 120.0,
+      "triangles": 240,
+      "ratio_of_lod0": 0.2
+    }
+  ],
+  "thumbnail": "thumbnail.png",
+  "placement_tags": [
+    "wood",
+    "ground",
+    "interactable"
+  ],
+  "material_slots": [
+    "wood",
+    "iron"
+  ],
+  "qa": "qa.json",
+  "provenance": {
+    "seed": 1,
+    "params": {},
+    "target_tris_hint": 1200
+  },
+  "lod_ladder_ratios": [
+    1.0,
+    0.5,
+    0.2
+  ],
+  "lod_render_class": "scene_prop",
+  "collision_file": "collision.json",
+  "collision_hull_count": 7,
+  "billboard": {
+    "file": "billboard.png",
+    "angles": 1,
+    "tile_px": 256,
+    "atlas_layout": "single"
+  },
+  "material_lod": {
+    "kit_atlas": "world/props/kits/first_party_proc/kit_atlas_lod_far.png",
+    "kit_atlas_manifest": "world/props/kits/first_party_proc/kit_atlas_manifest.json",
+    "slots": [
+      {
+        "material_index": 0,
+        "tile_xy": [
+          0,
+          0
+        ],
+        "uv_center": [
+          0.0625,
+          0.0625
+        ],
+        "rgb": [
+          0.1,
+          0.1,
+          0.11
+        ]
+      },
+      {
+        "material_index": 1,
+        "tile_xy": [
+          1,
+          0
+        ],
+        "uv_center": [
+          0.1875,
+          0.0625
+        ],
+        "rgb": [
+          0.45,
+          0.3,
+          0.18
+        ]
+      },
+      {
+        "material_index": 2,
+        "tile_xy": [
+          2,
+          0
+        ],
+        "uv_center": [
+          0.3125,
+          0.0625
+        ],
+        "rgb": [
+          0.1,
+          0.1,
+          0.11
+        ]
+      },
+      {
+        "material_index": 3,
+        "tile_xy": [
+          3,
+          0
+        ],
+        "uv_center": [
+          0.4375,
+          0.0625
+        ],
+        "rgb": [
+          0.1,
+          0.1,
+          0.11
+        ]
+      }
+    ]
+  },
+  "pbr_material_bindings": {
+    "schema": "prop_pbr_bindings.v1",
+    "bound_at": "2026-05-06T20:37:04+00:00",
+    "texture_library": "world/textures/library",
+    "slots": [
+      {
+        "material_index": 0,
+        "slot": "wood",
+        "texture_set": "forest_floor_oak_bark",
+        "maps": {
+          "albedo": "world/textures/library/forest_floor_oak_bark/forest_floor_oak_bark_albedo.png",
+          "normal": "world/textures/library/forest_floor_oak_bark/forest_floor_oak_bark_normal.png",
+          "roughness": "world/textures/library/forest_floor_oak_bark/forest_floor_oak_bark_roughness.png",
+          "metallic": "world/textures/library/forest_floor_oak_bark/forest_floor_oak_bark_metallic.png",
+          "ao": "world/textures/library/forest_floor_oak_bark/forest_floor_oak_bark_ao.png",
+          "height": "world/textures/library/forest_floor_oak_bark/forest_floor_oak_bark_height.png"
+        },
+        "tiling": 1.0,
+        "source": "existing_aaa_texture"
+      },
+      {
+        "material_index": 1,
+        "slot": "iron",
+        "texture_set": "biome_charred_wasteland",
+        "maps": {
+          "albedo": "world/textures/library/biome_charred_wasteland/biome_charred_wasteland_albedo.png",
+          "normal": "world/textures/library/biome_charred_wasteland/biome_charred_wasteland_normal.png",
+          "roughness": "world/textures/library/biome_charred_wasteland/biome_charred_wasteland_roughness.png",
+          "metallic": "world/textures/library/biome_charred_wasteland/biome_charred_wasteland_metallic.png",
+          "ao": "world/textures/library/biome_charred_wasteland/biome_charred_wasteland_ao.png",
+          "height": "world/textures/library/biome_charred_wasteland/biome_charred_wasteland_height.png"
+        },
+        "tiling": 1.0,
+        "source": "existing_aaa_texture"
+      }
+    ]
+  }
+}

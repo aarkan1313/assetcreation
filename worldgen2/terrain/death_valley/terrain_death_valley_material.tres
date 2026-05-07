@@ -1,0 +1,23 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=3]
+
+[ext_resource type="Shader" path="res://shaders/biome_terrain_topdown.gdshader" id="1"]
+[ext_resource type="Texture2D" path="res://terrain/death_valley/height_16.png" id="2"]
+[ext_resource type="Texture2D" path="res://terrain/death_valley/biome_splat_rgba.png" id="3"]
+[ext_resource type="Texture2D" path="res://terrain/death_valley/albedo_0_desert.png" id="4"]
+[ext_resource type="Texture2D" path="res://terrain/death_valley/albedo_1_salt_flat.png" id="5"]
+[ext_resource type="Texture2D" path="res://terrain/death_valley/albedo_2_rocky_highland.png" id="6"]
+[ext_resource type="Texture2D" path="res://terrain/death_valley/albedo_3_sparse_pine.png" id="7"]
+
+[resource]
+shader = ExtResource("1")
+shader_parameter/terrain_size_m = 512.0
+shader_parameter/terrain_size_z_m = 512.0
+shader_parameter/terrain_height_m = 64.0
+shader_parameter/tile_meters = Vector4(4.0, 4.0, 4.0, 3.0)
+shader_parameter/roughness_value = 0.92
+shader_parameter/heightmap = ExtResource("2")
+shader_parameter/splat = ExtResource("3")
+shader_parameter/albedo_0 = ExtResource("4")
+shader_parameter/albedo_1 = ExtResource("5")
+shader_parameter/albedo_2 = ExtResource("6")
+shader_parameter/albedo_3 = ExtResource("7")

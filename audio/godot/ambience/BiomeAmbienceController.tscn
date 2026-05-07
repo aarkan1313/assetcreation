@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://biomeambctrl1"]
+
+[ext_resource type="Script" path="res://audio/ambience/BiomeAmbienceController.gd" id="1_ctrl"]
+
+[node name="BiomeAmbienceController" type="Node"]
+script = ExtResource("1_ctrl")
+
+[node name="BedDrone" type="AudioStreamPlayer" parent="."]
+bus = &"Ambience"
+autoplay = false
+
+[node name="BedAir" type="AudioStreamPlayer" parent="."]
+bus = &"Ambience"
+autoplay = false
+
+[node name="WildlifeTimer" type="Timer" parent="."]
+one_shot = true
+autostart = false
+
+[node name="DistantTimer" type="Timer" parent="."]
+one_shot = true
+autostart = false

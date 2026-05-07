@@ -1,0 +1,47 @@
+{
+  "id": "rocky_mtn_park_ridge",
+  "created": "2026-05-06T21:29:38.944633+00:00",
+  "source": "world_biome_engine",
+  "base_heightmap": "D:\\assets\\pipelines\\terrain\\output\\rocky_mtn_park_ridge\\height_16_fantasy_mythic.png",
+  "biomes": [
+    "ice_cavern",
+    "grassland",
+    "ice_cavern",
+    "mana_crystal"
+  ],
+  "biome_display_names": [
+    "Frostmaw Caverns",
+    "Verdant Steppe",
+    "Frostmaw Caverns",
+    "Aetherspire Wastes"
+  ],
+  "size": 1024,
+  "seed": 7,
+  "erosion": 30,
+  "n_seeds": 20,
+  "biome_seed_counts": {
+    "ice_cavern": 10,
+    "grassland": 4,
+    "mana_crystal": 6
+  },
+  "biome_pixel_counts": {
+    "ice_cavern": 84354,
+    "grassland": 159988,
+    "mana_crystal": 234616
+  },
+  "views": {
+    "world": "world_view.png",
+    "regional": "regional_view.png",
+    "local": "local_view.png"
+  },
+  "layers": {
+    "height": "height_16.png",
+    "normal": "normal.png",
+    "splat": "splat_rgba.png",
+    "biome_rgb": "biome.png",
+    "biome_labels": "biome_labels.png",
+    "vegetation_density": "vegetation_density.png",
+    "water_mask": "water_mask.png",
+    "flow": "flow.png"
+  }
+}

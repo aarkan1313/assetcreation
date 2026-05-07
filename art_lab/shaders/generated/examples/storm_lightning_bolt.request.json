@@ -1,0 +1,23 @@
+{
+  "id": "storm_lightning_bolt",
+  "template": "beam_lightning_2d",
+  "params": {
+    "color_core": [1.0, 1.0, 1.0],
+    "color_edge": [0.55, 0.78, 1.0],
+    "color_glow": [0.30, 0.55, 1.0],
+    "thickness": 0.05,
+    "core_thickness": 0.35,
+    "jaggedness": 0.55,
+    "frequency": 14.0,
+    "speed": 4.0,
+    "arc": 0.0,
+    "fork_strength": 0.4,
+    "opacity": 1.0
+  },
+  "preview": {
+    "size": [768, 256],
+    "frames": 32,
+    "duration_s": 1.5,
+    "background": [0.02, 0.02, 0.05, 1.0]
+  }
+}

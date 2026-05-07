@@ -1,0 +1,26 @@
+{
+  "effect_id": "dust_drift",
+  "backend": "particle_cpu",
+  "n_frames": 60,
+  "fps": 30,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "flipbook": "D:\\assets\\vfx\\catalog\\environment\\dust_drift\\flipbook.png",
+  "frames_dir": "D:\\assets\\vfx\\catalog\\environment\\dust_drift\\frames",
+  "extras": {
+    "particles_json": "D:\\assets\\vfx\\catalog\\environment\\dust_drift\\particles.json",
+    "audio_cues": [
+      {
+        "t": 0.0,
+        "name": "drift_in"
+      }
+    ]
+  },
+  "metrics": {
+    "max_alive": 25,
+    "total_energy": 632.7599110603333
+  },
+  "timestamp": "2026-05-06T20:50:47+00:00"
+}

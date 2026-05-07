@@ -1,0 +1,10 @@
+{
+  "schema": "prop_qa.v1",
+  "id": "mud_splash_02_06",
+  "passed": true,
+  "metrics": {
+    "alpha_coverage": 0.5536,
+    "size_px": 512
+  },
+  "warnings": []
+}

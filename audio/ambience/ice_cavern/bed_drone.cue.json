@@ -1,0 +1,20 @@
+{
+  "biome": "ice_cavern",
+  "stem": "bed_drone",
+  "backend_requested": "local_audio_open",
+  "backend_actual": "stable_audio_open",
+  "out_path": "D:\\assets\\audio\\ambience\\ice_cavern\\bed_drone.wav",
+  "duration_s": 24.97732426303855,
+  "samplerate": 44100,
+  "rms_dbfs": -28.0,
+  "peak_dbfs": -16.594770431518555,
+  "lufs_target": -28.0,
+  "seed": 2001,
+  "prompt": "deep cavern drone, sub-low cave hum, distant water drip, no melody, no music, 30 second seamless loop",
+  "dry_run": false,
+  "loop": true,
+  "seam_rms": 0.0226236954331398,
+  "fitness": 0.07798284205310729,
+  "model": "large",
+  "steps": 100
+}

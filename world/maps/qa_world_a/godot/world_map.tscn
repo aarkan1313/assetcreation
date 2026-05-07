@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://qa_world_a_map"]
+
+[ext_resource type="Texture2D" path="res://map_full.png" id="1"]
+
+[node name="WorldMap" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1")
+centered = false

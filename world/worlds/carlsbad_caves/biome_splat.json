@@ -1,0 +1,13 @@
+{
+  "channel_to_biome": {
+    "R": "grassland",
+    "G": "mana_crystal",
+    "B": "lava_field",
+    "A": "grassland"
+  },
+  "blur_px": 1.6,
+  "size": [
+    1024,
+    1024
+  ]
+}

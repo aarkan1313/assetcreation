@@ -1,0 +1,67 @@
+{
+  "id": "dust_drift",
+  "kind": "ambient",
+  "phenomenon": "particle",
+  "backend": "particle_cpu",
+  "duration_s": 2.0,
+  "fps": 30,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "visual": {
+    "palette": [
+      "#e8d8b8",
+      "#a89070",
+      "#382a18"
+    ],
+    "blend": "alpha",
+    "background": "#00000000",
+    "bloom": false
+  },
+  "visual3d": {
+    "billboard_mode": "y_axis",
+    "world_size_m": 1.4
+  },
+  "backend_params": {
+    "emitter": "burst",
+    "count": 25,
+    "seed": 60157,
+    "initial_speed": 8.0,
+    "speed_jitter": 4.0,
+    "direction_deg": 90.0,
+    "spread_deg": 40.0,
+    "gravity": [
+      0.0,
+      -3.0
+    ],
+    "drag": 1.5,
+    "size_px": 14.0,
+    "size_jitter": 5.6000000000000005,
+    "fade": 1.0,
+    "emission_pos": [
+      128,
+      160
+    ],
+    "_audio_cues": [
+      {
+        "t": 0.0,
+        "name": "drift_in"
+      }
+    ]
+  },
+  "gameplay": {
+    "shape": "point",
+    "damage_tags": [],
+    "collision": "first_hit"
+  },
+  "element": "physical",
+  "archetype": "ambient",
+  "tags": [
+    "dust",
+    "physical",
+    "ambient"
+  ],
+  "export_target": "3d_billboard",
+  "notes": "Damage/impact: dust_drift"
+}

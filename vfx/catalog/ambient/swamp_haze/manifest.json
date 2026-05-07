@@ -1,0 +1,38 @@
+{
+  "effect_id": "swamp_haze",
+  "backend": "volumetric_fog",
+  "n_frames": 0,
+  "fps": 0,
+  "bounds_px": [
+    2048,
+    64
+  ],
+  "flipbook": "",
+  "frames_dir": "",
+  "extras": {
+    "density_volume": "D:\\assets\\vfx\\catalog\\ambient\\swamp_haze\\density.png",
+    "fog_shader": "D:\\assets\\vfx\\catalog\\ambient\\swamp_haze\\fog.gdshader",
+    "fog_material": "D:\\assets\\vfx\\catalog\\ambient\\swamp_haze\\fog_material.tres",
+    "volume_resolution": [
+      64,
+      64,
+      32
+    ],
+    "color_top": [
+      0.6078431372549019,
+      0.7019607843137254,
+      0.5019607843137255
+    ],
+    "color_bottom": [
+      0.12156862745098039,
+      0.16470588235294117,
+      0.09411764705882353
+    ]
+  },
+  "metrics": {
+    "voxels": 131072,
+    "density_max": 0.5,
+    "density_mean": 0.1849423348903656
+  },
+  "timestamp": "2026-05-06T20:50:46+00:00"
+}

@@ -1,0 +1,198 @@
+[
+  {
+    "text": "Navacrag",
+    "x": 92,
+    "y": 243,
+    "priority": 9,
+    "kind": "city"
+  },
+  {
+    "text": "Gildreach",
+    "x": 202,
+    "y": 264,
+    "priority": 9,
+    "kind": "city"
+  },
+  {
+    "text": "Heimford",
+    "x": 475,
+    "y": 173,
+    "priority": 9,
+    "kind": "city"
+  },
+  {
+    "text": "Eldmoor",
+    "x": 181,
+    "y": 43,
+    "priority": 9,
+    "kind": "city"
+  },
+  {
+    "text": "Ithcrag",
+    "x": 156,
+    "y": 946,
+    "priority": 9,
+    "kind": "city"
+  },
+  {
+    "text": "Rastglen",
+    "x": 145,
+    "y": 865,
+    "priority": 9,
+    "kind": "city"
+  },
+  {
+    "text": "Caerspire",
+    "x": 201,
+    "y": 948,
+    "priority": 9,
+    "kind": "city"
+  },
+  {
+    "text": "Gildvale",
+    "x": 412,
+    "y": 109,
+    "priority": 9,
+    "kind": "city"
+  },
+  {
+    "text": "Zalstead",
+    "x": 908,
+    "y": 734,
+    "priority": 9,
+    "kind": "city"
+  },
+  {
+    "text": "Morcrag",
+    "x": 905,
+    "y": 881,
+    "priority": 9,
+    "kind": "city"
+  },
+  {
+    "text": "Wynstead",
+    "x": 574,
+    "y": 654,
+    "priority": 9,
+    "kind": "city"
+  },
+  {
+    "text": "Eldridge",
+    "x": 514,
+    "y": 128,
+    "priority": 9,
+    "kind": "city"
+  },
+  {
+    "text": "Wynreach",
+    "x": 108,
+    "y": 405,
+    "priority": 9,
+    "kind": "city"
+  },
+  {
+    "text": "Talburg",
+    "x": 552,
+    "y": 933,
+    "priority": 9,
+    "kind": "city"
+  },
+  {
+    "text": "Caerwatch",
+    "x": 960,
+    "y": 272,
+    "priority": 9,
+    "kind": "city"
+  },
+  {
+    "text": "Wynmoor",
+    "x": 247,
+    "y": 274,
+    "priority": 9,
+    "kind": "city"
+  },
+  {
+    "text": "Quenburg",
+    "x": 405,
+    "y": 215,
+    "priority": 9,
+    "kind": "city"
+  },
+  {
+    "text": "Navawick",
+    "x": 609,
+    "y": 117,
+    "priority": 9,
+    "kind": "city"
+  },
+  {
+    "text": "The Iron Mire",
+    "x": 170,
+    "y": 185,
+    "priority": 5,
+    "kind": "cave"
+  },
+  {
+    "text": "The Sundered Pass",
+    "x": 745,
+    "y": 813,
+    "priority": 5,
+    "kind": "shrine"
+  },
+  {
+    "text": "Whispering Cairns",
+    "x": 818,
+    "y": 923,
+    "priority": 5,
+    "kind": "tomb"
+  },
+  {
+    "text": "Bonewood Crossing",
+    "x": 584,
+    "y": 853,
+    "priority": 5,
+    "kind": "ruin"
+  },
+  {
+    "text": "Star-Lit Mere",
+    "x": 215,
+    "y": 719,
+    "priority": 5,
+    "kind": "cave"
+  },
+  {
+    "text": "Whispering Cairns",
+    "x": 894,
+    "y": 989,
+    "priority": 5,
+    "kind": "cave"
+  },
+  {
+    "text": "Star-Lit Mere",
+    "x": 762,
+    "y": 678,
+    "priority": 5,
+    "kind": "ruin"
+  },
+  {
+    "text": "Frozen Sentinel",
+    "x": 821,
+    "y": 511,
+    "priority": 5,
+    "kind": "cairn"
+  },
+  {
+    "text": "Whispering Cairns",
+    "x": 661,
+    "y": 743,
+    "priority": 5,
+    "kind": "spire"
+  },
+  {
+    "text": "Sunken Tor",
+    "x": 669,
+    "y": 77,
+    "priority": 5,
+    "kind": "spire"
+  }
+]

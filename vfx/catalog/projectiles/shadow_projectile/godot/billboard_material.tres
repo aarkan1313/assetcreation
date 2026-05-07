@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3]
+
+[ext_resource type="Shader" path="res://vfx/projectile/shadow_projectile/godot/billboard.gdshader" id="1_sh"]
+[ext_resource type="Texture2D" path="res://vfx/projectile/shadow_projectile/flipbook.png" id="2_tex"]
+
+[resource]
+shader = ExtResource("1_sh")
+shader_parameter/albedo_tex = ExtResource("2_tex")
+shader_parameter/h_frames = 4
+shader_parameter/v_frames = 4
+shader_parameter/n_frames = 14
+shader_parameter/fps = 24.0
+shader_parameter/loop = true
+shader_parameter/modulate = Color(0.6078431372549019, 0.2901960784313726, 0.8156862745098039, 1.0)
+shader_parameter/emission_strength = 1.5

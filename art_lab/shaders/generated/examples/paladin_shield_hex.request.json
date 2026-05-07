@@ -1,0 +1,23 @@
+{
+  "id": "paladin_shield_hex",
+  "template": "shield_ripple_2d",
+  "params": {
+    "color_shield": [0.40, 0.78, 1.0],
+    "color_hit": [1.0, 0.95, 0.55],
+    "hex_scale": 18.0,
+    "hex_strength": 0.45,
+    "fresnel_power": 2.5,
+    "ripple_speed": 3.0,
+    "ripple_strength": 0.7,
+    "ripple_freq": 18.0,
+    "hit_position": [0.5, 0.5],
+    "hit_age": 0.0,
+    "opacity": 1.0
+  },
+  "preview": {
+    "size": [512, 512],
+    "frames": 1,
+    "duration_s": 2.0,
+    "background": [0.02, 0.05, 0.10, 1.0]
+  }
+}

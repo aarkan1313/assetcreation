@@ -1,0 +1,27 @@
+{
+  "_doc": "Allowlist of assets intentionally NOT record-bound. Subtracted from link_validator UNUSED so the remaining UNUSED count is a real signal. Schema: {\"<kind>\": [exact ids], \"<kind>_prefixes\": [id prefixes]} where <kind> is icon|vfx|sfx|prop. Append entries when the team confirms an asset is library-only (e.g. UI chrome primitives, scene-driven ambient effects, runtime-selected ambience stems).",
+  "_updated": "2026-05-06",
+  "icon_prefixes": [
+    "ico_lucide_",
+    "ico_phosphor_",
+    "ico_tabler_"
+  ],
+  "icon": [],
+  "vfx_prefixes": [],
+  "vfx": [
+    "ash_waste_haze",
+    "grassland_haze",
+    "ice_cavern_haze",
+    "lava_field_haze",
+    "mana_crystal_haze",
+    "ruins_haze",
+    "swamp_haze",
+    "dust_drift"
+  ],
+  "sfx_prefixes": [
+    "amb_"
+  ],
+  "sfx": [],
+  "prop_prefixes": [],
+  "prop": []
+}

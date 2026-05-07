@@ -1,0 +1,79 @@
+{
+  "schema": "local_llm_backend_dryrun.v1",
+  "record_type": "ability",
+  "count": 1,
+  "model": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+  "device": "cpu",
+  "model_loaded": false,
+  "prompt": "Generate exactly 1 ability record(s) for TLTE. Return JSON only, shaped as {\"records\": [...]}. Required schema fields include: id, display_name, schema_version, tags, localization_key, provenance, notes, kind, school, tier, shape, cost, effect, icon_id, vfx_id, sfx_id, description. Use lowercase snake_case IDs, coherent fantasy ARPG naming, and no duplicate display names.",
+  "json_schema_keys": [
+    "cost",
+    "description",
+    "display_name",
+    "effect",
+    "icon_id",
+    "id",
+    "kind",
+    "localization_key",
+    "notes",
+    "provenance",
+    "schema_version",
+    "school",
+    "sfx_id",
+    "shape",
+    "tags",
+    "tier",
+    "vfx_id"
+  ],
+  "parser_ok": true,
+  "sample_records": [
+    {
+      "id": "fire_ward_0",
+      "display_name": "Fire Ward",
+      "schema_version": "1.0.0",
+      "tags": [
+        "fire",
+        "elemental",
+        "aura"
+      ],
+      "localization_key": "ABILITY_FIRE_WARD_0",
+      "provenance": {
+        "source": "synthetic",
+        "model": null,
+        "seed": 78,
+        "prompt_id": null,
+        "timestamp": "2026-05-06T20:37:15+00:00",
+        "target_file_sha256": null,
+        "constraint_technique": null,
+        "constraint_pass": null,
+        "sim_digest": null,
+        "parent_id": null
+      },
+      "notes": "",
+      "kind": "passive",
+      "school": "elemental",
+      "tier": 3,
+      "shape": "aura",
+      "cost": {
+        "mana": 57,
+        "stamina": 0,
+        "cooldown_sec": 11.1
+      },
+      "effect": {
+        "damage": 15,
+        "damage_type": "fire",
+        "healing": 0,
+        "radius_m": 3.9,
+        "duration_sec": 5.3,
+        "status_tags": [
+          "fire_touched"
+        ]
+      },
+      "icon_id": "ico_abil_fire_ward",
+      "vfx_id": "vfx_fire_aura",
+      "sfx_id": "sfx_fire_ward",
+      "description": "Channels fire power as a aura. Tier 3 elemental ability."
+    }
+  ],
+  "timestamp": "2026-05-06T20:37:15+00:00"
+}

@@ -1,0 +1,75 @@
+{
+  "kind": "spell",
+  "phenomenon": "shatter",
+  "backend": "particle_cpu",
+  "duration_s": 0.5,
+  "fps": 30,
+  "bounds_px": [
+    320,
+    320
+  ],
+  "visual": {
+    "palette": [
+      "#e8faff",
+      "#9ad6ff",
+      "#3a8fcd",
+      "#0d2a4a"
+    ],
+    "blend": "additive",
+    "background": "#00000000",
+    "bloom": true
+  },
+  "visual3d": {
+    "billboard_mode": "enabled",
+    "world_size_m": 2.5
+  },
+  "backend_params": {
+    "emitter": "burst",
+    "count": 180,
+    "seed": 47381,
+    "initial_speed": 88.0,
+    "speed_jitter": 88.0,
+    "direction_deg": 90.0,
+    "spread_deg": 360.0,
+    "gravity": [
+      0.0,
+      0.0
+    ],
+    "drag": 1.6,
+    "size_px": 5.95,
+    "size_jitter": 4.0,
+    "fade": 1.0,
+    "emission_pos": [
+      160,
+      160
+    ],
+    "_audio_cues": [
+      {
+        "t": 0.0,
+        "name": "burst"
+      },
+      {
+        "t": 0.3,
+        "name": "settle"
+      }
+    ]
+  },
+  "gameplay": {
+    "shape": "aura",
+    "damage_tags": [
+      "frost"
+    ],
+    "collision": "pierce"
+  },
+  "element": "ice",
+  "archetype": "burst",
+  "tags": [
+    "ice",
+    "burst",
+    "aoe",
+    "frost"
+  ],
+  "export_target": "3d_billboard",
+  "id": "ice_burst",
+  "notes": "Auto-authored ice burst from element-archetype grid."
+}

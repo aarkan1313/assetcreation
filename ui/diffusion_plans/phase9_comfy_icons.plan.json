@@ -1,0 +1,127 @@
+{
+  "backend": "comfy_flux_schnell_ipadapter",
+  "model_id": "black-forest-labs/FLUX.1-schnell",
+  "license": "Apache-2.0",
+  "workflow": "D:\\assets\\pipelines\\_meta\\comfy_workflows\\flux_schnell_ipadapter_iconset.json",
+  "host": "http://127.0.0.1:8188",
+  "output_node": "9",
+  "style_image": "images\\archived\\witch.png",
+  "style_weight": 0.65,
+  "size_px": 1024,
+  "steps": 4,
+  "guidance_scale": 1.0,
+  "seed_base": 1000,
+  "required_custom_nodes": [
+    "ComfyUI_IPAdapter_plus or compatible IP-Adapter/InstantStyle nodes"
+  ],
+  "icons": [
+    {
+      "id": "ico_dragon_head",
+      "prompt": "fantasy game icon: a roaring red dragon head, side profile. centered single subject, flat-shaded fantasy game icon, dark thin outline, muted earthy palette with one accent color, transparent background or single-color flat background, no text, no watermark, the icon should read clearly at 64x64 px",
+      "negative_prompt": "text, watermark, blurry, cropped, low contrast",
+      "seed": 1000,
+      "overrides": {
+        "2.inputs.image": "witch.png",
+        "3.inputs.weight": 0.65,
+        "4.inputs.text": "fantasy game icon: a roaring red dragon head, side profile. centered single subject, flat-shaded fantasy game icon, dark thin outline, muted earthy palette with one accent color, transparent background or single-color flat background, no text, no watermark, the icon should read clearly at 64x64 px",
+        "5.inputs.text": "text, watermark, blurry, cropped, low contrast",
+        "6.inputs.width": 1024,
+        "6.inputs.height": 1024,
+        "7.inputs.seed": 1000,
+        "7.inputs.steps": 4,
+        "7.inputs.cfg": 1.0,
+        "9.inputs.filename_prefix": "phase9_icon_ico_dragon_head"
+      }
+    },
+    {
+      "id": "ico_amulet_lunar",
+      "prompt": "fantasy game icon: a silver amulet shaped like a crescent moon. centered single subject, flat-shaded fantasy game icon, dark thin outline, muted earthy palette with one accent color, transparent background or single-color flat background, no text, no watermark, the icon should read clearly at 64x64 px",
+      "negative_prompt": "text, watermark, blurry, cropped, low contrast",
+      "seed": 1001,
+      "overrides": {
+        "2.inputs.image": "witch.png",
+        "3.inputs.weight": 0.65,
+        "4.inputs.text": "fantasy game icon: a silver amulet shaped like a crescent moon. centered single subject, flat-shaded fantasy game icon, dark thin outline, muted earthy palette with one accent color, transparent background or single-color flat background, no text, no watermark, the icon should read clearly at 64x64 px",
+        "5.inputs.text": "text, watermark, blurry, cropped, low contrast",
+        "6.inputs.width": 1024,
+        "6.inputs.height": 1024,
+        "7.inputs.seed": 1001,
+        "7.inputs.steps": 4,
+        "7.inputs.cfg": 1.0,
+        "9.inputs.filename_prefix": "phase9_icon_ico_amulet_lunar"
+      }
+    },
+    {
+      "id": "ico_spell_fireball",
+      "prompt": "fantasy game icon: a roiling fireball, orange and yellow flame. centered single subject, flat-shaded fantasy game icon, dark thin outline, muted earthy palette with one accent color, transparent background or single-color flat background, no text, no watermark, the icon should read clearly at 64x64 px",
+      "negative_prompt": "text, watermark, blurry, cropped, low contrast",
+      "seed": 1002,
+      "overrides": {
+        "2.inputs.image": "witch.png",
+        "3.inputs.weight": 0.65,
+        "4.inputs.text": "fantasy game icon: a roiling fireball, orange and yellow flame. centered single subject, flat-shaded fantasy game icon, dark thin outline, muted earthy palette with one accent color, transparent background or single-color flat background, no text, no watermark, the icon should read clearly at 64x64 px",
+        "5.inputs.text": "text, watermark, blurry, cropped, low contrast",
+        "6.inputs.width": 1024,
+        "6.inputs.height": 1024,
+        "7.inputs.seed": 1002,
+        "7.inputs.steps": 4,
+        "7.inputs.cfg": 1.0,
+        "9.inputs.filename_prefix": "phase9_icon_ico_spell_fireball"
+      }
+    },
+    {
+      "id": "ico_spell_frostbolt",
+      "prompt": "fantasy game icon: a sharp icicle dart, pale blue with frost. centered single subject, flat-shaded fantasy game icon, dark thin outline, muted earthy palette with one accent color, transparent background or single-color flat background, no text, no watermark, the icon should read clearly at 64x64 px",
+      "negative_prompt": "text, watermark, blurry, cropped, low contrast",
+      "seed": 1003,
+      "overrides": {
+        "2.inputs.image": "witch.png",
+        "3.inputs.weight": 0.65,
+        "4.inputs.text": "fantasy game icon: a sharp icicle dart, pale blue with frost. centered single subject, flat-shaded fantasy game icon, dark thin outline, muted earthy palette with one accent color, transparent background or single-color flat background, no text, no watermark, the icon should read clearly at 64x64 px",
+        "5.inputs.text": "text, watermark, blurry, cropped, low contrast",
+        "6.inputs.width": 1024,
+        "6.inputs.height": 1024,
+        "7.inputs.seed": 1003,
+        "7.inputs.steps": 4,
+        "7.inputs.cfg": 1.0,
+        "9.inputs.filename_prefix": "phase9_icon_ico_spell_frostbolt"
+      }
+    },
+    {
+      "id": "ico_buff_haste",
+      "prompt": "fantasy game icon: a winged sandal, gold and white feathers. centered single subject, flat-shaded fantasy game icon, dark thin outline, muted earthy palette with one accent color, transparent background or single-color flat background, no text, no watermark, the icon should read clearly at 64x64 px",
+      "negative_prompt": "text, watermark, blurry, cropped, low contrast",
+      "seed": 1004,
+      "overrides": {
+        "2.inputs.image": "witch.png",
+        "3.inputs.weight": 0.65,
+        "4.inputs.text": "fantasy game icon: a winged sandal, gold and white feathers. centered single subject, flat-shaded fantasy game icon, dark thin outline, muted earthy palette with one accent color, transparent background or single-color flat background, no text, no watermark, the icon should read clearly at 64x64 px",
+        "5.inputs.text": "text, watermark, blurry, cropped, low contrast",
+        "6.inputs.width": 1024,
+        "6.inputs.height": 1024,
+        "7.inputs.seed": 1004,
+        "7.inputs.steps": 4,
+        "7.inputs.cfg": 1.0,
+        "9.inputs.filename_prefix": "phase9_icon_ico_buff_haste"
+      }
+    },
+    {
+      "id": "ico_buff_shield",
+      "prompt": "fantasy game icon: a glowing arcane barrier, blue runic ring. centered single subject, flat-shaded fantasy game icon, dark thin outline, muted earthy palette with one accent color, transparent background or single-color flat background, no text, no watermark, the icon should read clearly at 64x64 px",
+      "negative_prompt": "text, watermark, blurry, cropped, low contrast",
+      "seed": 1005,
+      "overrides": {
+        "2.inputs.image": "witch.png",
+        "3.inputs.weight": 0.65,
+        "4.inputs.text": "fantasy game icon: a glowing arcane barrier, blue runic ring. centered single subject, flat-shaded fantasy game icon, dark thin outline, muted earthy palette with one accent color, transparent background or single-color flat background, no text, no watermark, the icon should read clearly at 64x64 px",
+        "5.inputs.text": "text, watermark, blurry, cropped, low contrast",
+        "6.inputs.width": 1024,
+        "6.inputs.height": 1024,
+        "7.inputs.seed": 1005,
+        "7.inputs.steps": 4,
+        "7.inputs.cfg": 1.0,
+        "9.inputs.filename_prefix": "phase9_icon_ico_buff_shield"
+      }
+    }
+  ]
+}

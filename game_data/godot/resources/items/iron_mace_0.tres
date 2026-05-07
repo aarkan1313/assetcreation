@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemRecord" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://game_data/scripts/item_record.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "iron_mace_0"
+display_name = "Iron Mace"
+schema_version = "1.0.0"
+tags = ["cold", "iron", "mace", "weapon"]
+localization_key = "ITEM_IRON_MACE_0"
+provenance = { "source": "synthetic", "model": null, "seed": 42, "prompt_id": null, "timestamp": "2026-05-06T18:46:36+00:00", "target_file_sha256": "da75a24b3a8b20b42063c45bf98edbc691e0807070ed813871afc1be1155c987", "constraint_technique": "synthetic_schema_bounds", "constraint_pass": "first_pass", "sim_digest": "83b5e9cb4c0116d0", "parent_id": null }
+notes = ""
+category = "weapon"
+rarity = "common"
+damage_type = "cold"
+stats = { "damage": 19, "armor": 0, "weight": 1.5, "durability": 132, "value_gold": 90 }
+icon_id = "ico_sword"
+description = "A iron mace. Forged for pilgrim guards."
+stack_max = 1

@@ -1,0 +1,828 @@
+{
+  "batch": "shader_review_smoke_002",
+  "intent": "high quality arcane, storm, shield, portal, dissolve, projectile spell shaders for Godot",
+  "seed": 43,
+  "count": 10,
+  "created": "2026-05-06T10:13:04.286812+00:00",
+  "rows": [
+    {
+      "id": "shader_review_smoke_002_portal_swirl_2d_005",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "params": {
+        "color_outer": [
+          0.3969789196897799,
+          0.6418544886201252,
+          0.9692036975728759
+        ],
+        "color_mid": [
+          0.39041088883303254,
+          0.6179590719259699,
+          1.0
+        ],
+        "color_inner": [
+          0.8234507763415807,
+          0.8969209681791427,
+          1.0
+        ],
+        "color_void": [
+          0.07249459400691965,
+          0.0,
+          0.00272831319473138
+        ],
+        "radius": 0.4196,
+        "swirl": 8.5175,
+        "spin_speed": -1.3914,
+        "depth_pulse": 0.005,
+        "arms": 6,
+        "arm_strength": 1.0827,
+        "opacity": 0.96
+      },
+      "preview": {
+        "size": [
+          160,
+          160
+        ],
+        "frames": 4,
+        "duration_s": 1.8,
+        "background": [
+          0.035,
+          0.035,
+          0.055,
+          1.0
+        ]
+      },
+      "frames": [
+        "frames\\frame_000.png",
+        "frames\\frame_001.png",
+        "frames\\frame_002.png",
+        "frames\\frame_003.png"
+      ],
+      "review": {
+        "score": 99.9,
+        "grade": "keep",
+        "components": {
+          "coverage": 1.0,
+          "motion": 0.995,
+          "center": 1.0,
+          "color": 1.0,
+          "edge": 1.0,
+          "contrast": 1.0
+        },
+        "metrics": {
+          "coverage": 0.16906,
+          "mean_alpha": 0.14925,
+          "luma_mean": 0.56286,
+          "contrast": 0.15945,
+          "colorfulness": 0.25218,
+          "edge_energy": 0.01949,
+          "center_distance": 0.0,
+          "clip_high": 0.02781,
+          "clip_low": 1e-05,
+          "aspect": 1.0,
+          "motion": 0.00862,
+          "flicker": 0.0,
+          "frames": 4.0
+        },
+        "hints": [
+          "motion low: increase speed/pulse/spin/scroll parameters"
+        ],
+        "render_source": "cpu_proxy"
+      }
+    },
+    {
+      "id": "shader_review_smoke_002_beam_lightning_2d_007",
+      "template": "beam_lightning_2d",
+      "role": "beam",
+      "params": {
+        "color_core": [
+          0.9180250608503795,
+          0.8881755836840299,
+          0.9573480748639344
+        ],
+        "color_edge": [
+          0.3279864182733717,
+          0.6052639951560314,
+          1.0
+        ],
+        "color_glow": [
+          0.23682017014476953,
+          0.3316375207776911,
+          0.8422641303835677
+        ],
+        "thickness": 0.0179,
+        "core_thickness": 0.3806,
+        "jaggedness": 0.1239,
+        "frequency": 8.0,
+        "speed": 4.7351,
+        "arc": 0.1526,
+        "fork_strength": 0.9081,
+        "opacity": 0.861
+      },
+      "preview": {
+        "size": [
+          320,
+          160
+        ],
+        "frames": 4,
+        "duration_s": 1.5,
+        "background": [
+          0.015,
+          0.015,
+          0.035,
+          1.0
+        ]
+      },
+      "frames": [
+        "frames\\frame_000.png",
+        "frames\\frame_001.png",
+        "frames\\frame_002.png",
+        "frames\\frame_003.png"
+      ],
+      "review": {
+        "score": 99.62,
+        "grade": "keep",
+        "components": {
+          "coverage": 1.0,
+          "motion": 1.0,
+          "center": 1.0,
+          "color": 1.0,
+          "edge": 0.976,
+          "contrast": 1.0,
+          "aspect": 1.0
+        },
+        "metrics": {
+          "coverage": 0.1162,
+          "mean_alpha": 0.04195,
+          "luma_mean": 0.18142,
+          "contrast": 0.18421,
+          "colorfulness": 0.27044,
+          "edge_energy": 0.00871,
+          "center_distance": 0.09584,
+          "clip_high": 2e-05,
+          "clip_low": 0.0,
+          "aspect": 6.65537,
+          "motion": 0.00714,
+          "flicker": 0.00028,
+          "frames": 4.0
+        },
+        "hints": [
+          "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width"
+        ],
+        "render_source": "cpu_proxy"
+      }
+    },
+    {
+      "id": "shader_review_smoke_002_beam_lightning_2d_002",
+      "template": "beam_lightning_2d",
+      "role": "beam",
+      "params": {
+        "color_core": [
+          0.8171686969044447,
+          0.8999282877157428,
+          0.9445548654743947
+        ],
+        "color_edge": [
+          0.3056984967141513,
+          0.683521385784122,
+          0.9405926844743502
+        ],
+        "color_glow": [
+          0.14189628910686602,
+          0.3565120822270823,
+          0.8235097605885969
+        ],
+        "thickness": 0.0298,
+        "core_thickness": 0.2054,
+        "jaggedness": 0.496,
+        "frequency": 10.7852,
+        "speed": 0.3377,
+        "arc": -0.1471,
+        "fork_strength": 0.4057,
+        "opacity": 0.7416
+      },
+      "preview": {
+        "size": [
+          320,
+          160
+        ],
+        "frames": 4,
+        "duration_s": 1.5,
+        "background": [
+          0.015,
+          0.015,
+          0.035,
+          1.0
+        ]
+      },
+      "frames": [
+        "frames\\frame_000.png",
+        "frames\\frame_001.png",
+        "frames\\frame_002.png",
+        "frames\\frame_003.png"
+      ],
+      "review": {
+        "score": 99.5,
+        "grade": "keep",
+        "components": {
+          "coverage": 1.0,
+          "motion": 0.996,
+          "center": 1.0,
+          "color": 1.0,
+          "edge": 0.972,
+          "contrast": 1.0,
+          "aspect": 1.0
+        },
+        "metrics": {
+          "coverage": 0.191,
+          "mean_alpha": 0.06,
+          "luma_mean": 0.15597,
+          "contrast": 0.14614,
+          "colorfulness": 0.27063,
+          "edge_energy": 0.00761,
+          "center_distance": 0.10824,
+          "clip_high": 0.0,
+          "clip_low": 0.0,
+          "aspect": 4.57285,
+          "motion": 0.00496,
+          "flicker": 0.00022,
+          "frames": 4.0
+        },
+        "hints": [
+          "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width",
+          "motion low: increase speed/pulse/spin/scroll parameters"
+        ],
+        "render_source": "cpu_proxy"
+      }
+    },
+    {
+      "id": "shader_review_smoke_002_portal_swirl_2d_010",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "params": {
+        "color_outer": [
+          0.3711186571937246,
+          0.621088023542198,
+          1.0
+        ],
+        "color_mid": [
+          0.4363417392302231,
+          0.5992833458330981,
+          1.0
+        ],
+        "color_inner": [
+          0.9194631189686184,
+          0.9578933094088696,
+          1.0
+        ],
+        "color_void": [
+          0.008443826107742785,
+          0.009381840846584218,
+          0.13043735691916886
+        ],
+        "radius": 0.2019,
+        "swirl": 1.8811,
+        "spin_speed": -2.3672,
+        "depth_pulse": 0.1261,
+        "arms": 8,
+        "arm_strength": 0.2957,
+        "opacity": 0.9669
+      },
+      "preview": {
+        "size": [
+          160,
+          160
+        ],
+        "frames": 4,
+        "duration_s": 1.8,
+        "background": [
+          0.035,
+          0.035,
+          0.055,
+          1.0
+        ]
+      },
+      "frames": [
+        "frames\\frame_000.png",
+        "frames\\frame_001.png",
+        "frames\\frame_002.png",
+        "frames\\frame_003.png"
+      ],
+      "review": {
+        "score": 97.29,
+        "grade": "keep",
+        "components": {
+          "coverage": 0.899,
+          "motion": 0.974,
+          "center": 1.0,
+          "color": 1.0,
+          "edge": 0.977,
+          "contrast": 1.0
+        },
+        "metrics": {
+          "coverage": 0.0475,
+          "mean_alpha": 0.03925,
+          "luma_mean": 0.4902,
+          "contrast": 0.16339,
+          "colorfulness": 0.21587,
+          "edge_energy": 0.00357,
+          "center_distance": 0.0,
+          "clip_high": 0.01385,
+          "clip_low": 0.0,
+          "aspect": 1.0,
+          "motion": 0.00302,
+          "flicker": 0.0,
+          "frames": 4.0
+        },
+        "hints": [
+          "coverage low: increase radius/thickness/edge_width/opacity, or reduce dissolve threshold",
+          "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width",
+          "motion low: increase speed/pulse/spin/scroll parameters"
+        ],
+        "render_source": "cpu_proxy"
+      }
+    },
+    {
+      "id": "shader_review_smoke_002_dissolve_fire_2d_003",
+      "template": "dissolve_fire_2d",
+      "role": "dissolve",
+      "params": {
+        "color_burn": [
+          0.8997635282314309,
+          1.0,
+          1.0
+        ],
+        "color_ash": [
+          0.04463800303076179,
+          0.0439602275839468,
+          0.00976627837908113
+        ],
+        "color_ember": [
+          0.2151672477993341,
+          0.27318737243042723,
+          0.8835431121574798
+        ],
+        "threshold": 0.5755,
+        "edge_width": 0.0444,
+        "noise_scale": 25.5874,
+        "scroll_speed": 1.7552,
+        "warp_strength": 0.2836,
+        "opacity": 0.7424
+      },
+      "preview": {
+        "size": [
+          160,
+          160
+        ],
+        "frames": 4,
+        "duration_s": 1.8,
+        "background": [
+          0.035,
+          0.035,
+          0.055,
+          1.0
+        ]
+      },
+      "frames": [
+        "frames\\frame_000.png",
+        "frames\\frame_001.png",
+        "frames\\frame_002.png",
+        "frames\\frame_003.png"
+      ],
+      "review": {
+        "score": 88.06,
+        "grade": "keep",
+        "components": {
+          "coverage": 1.0,
+          "motion": 1.0,
+          "center": 1.0,
+          "color": 0.139,
+          "edge": 1.0,
+          "contrast": 0.996
+        },
+        "metrics": {
+          "coverage": 0.58439,
+          "mean_alpha": 0.3228,
+          "luma_mean": 0.20937,
+          "contrast": 0.11959,
+          "colorfulness": 0.04446,
+          "edge_energy": 0.0536,
+          "center_distance": 0.06091,
+          "clip_high": 0.0,
+          "clip_low": 0.02987,
+          "aspect": 1.0034,
+          "motion": 0.08501,
+          "flicker": 0.00608,
+          "frames": 4.0
+        },
+        "hints": [
+          "color weak: switch palette or push core/edge/glow colors farther apart"
+        ],
+        "render_source": "cpu_proxy"
+      }
+    },
+    {
+      "id": "shader_review_smoke_002_dissolve_fire_2d_008",
+      "template": "dissolve_fire_2d",
+      "role": "dissolve",
+      "params": {
+        "color_burn": [
+          0.8808784841908456,
+          0.8978458769070372,
+          0.9752888098519951
+        ],
+        "color_ash": [
+          0.0,
+          0.011819514947197293,
+          0.06257594961477494
+        ],
+        "color_ember": [
+          0.11987158776058635,
+          0.21734448039442272,
+          0.8151254774624312
+        ],
+        "threshold": 0.5048,
+        "edge_width": 0.0527,
+        "noise_scale": 16.6787,
+        "scroll_speed": 0.422,
+        "warp_strength": 0.3332,
+        "opacity": 0.7526
+      },
+      "preview": {
+        "size": [
+          160,
+          160
+        ],
+        "frames": 4,
+        "duration_s": 1.8,
+        "background": [
+          0.035,
+          0.035,
+          0.055,
+          1.0
+        ]
+      },
+      "frames": [
+        "frames\\frame_000.png",
+        "frames\\frame_001.png",
+        "frames\\frame_002.png",
+        "frames\\frame_003.png"
+      ],
+      "review": {
+        "score": 87.85,
+        "grade": "keep",
+        "components": {
+          "coverage": 1.0,
+          "motion": 1.0,
+          "center": 1.0,
+          "color": 0.119,
+          "edge": 1.0,
+          "contrast": 1.0
+        },
+        "metrics": {
+          "coverage": 0.47953,
+          "mean_alpha": 0.23997,
+          "luma_mean": 0.15413,
+          "contrast": 0.13474,
+          "colorfulness": 0.04125,
+          "edge_energy": 0.04103,
+          "center_distance": 0.10182,
+          "clip_high": 0.0,
+          "clip_low": 0.04723,
+          "aspect": 1.00855,
+          "motion": 0.06975,
+          "flicker": 0.00755,
+          "frames": 4.0
+        },
+        "hints": [
+          "color weak: switch palette or push core/edge/glow colors farther apart"
+        ],
+        "render_source": "cpu_proxy"
+      }
+    },
+    {
+      "id": "shader_review_smoke_002_shield_ripple_2d_009",
+      "template": "shield_ripple_2d",
+      "role": "shield",
+      "params": {
+        "color_shield": [
+          0.8500176635517341,
+          0.9661136593030245,
+          1.0
+        ],
+        "color_hit": [
+          0.10422455870219192,
+          0.2388062229152827,
+          0.8178397810981864
+        ],
+        "hex_scale": 31.11,
+        "hex_strength": 0.8665,
+        "fresnel_power": 3.5168,
+        "ripple_speed": 2.6496,
+        "ripple_strength": 0.4585,
+        "ripple_freq": 14.9199,
+        "hit_position": [
+          0.3432,
+          0.4064
+        ],
+        "hit_age": 2.7245,
+        "opacity": 0.7621
+      },
+      "preview": {
+        "size": [
+          160,
+          160
+        ],
+        "frames": 4,
+        "duration_s": 1.8,
+        "background": [
+          0.035,
+          0.035,
+          0.055,
+          1.0
+        ]
+      },
+      "frames": [
+        "frames\\frame_000.png",
+        "frames\\frame_001.png",
+        "frames\\frame_002.png",
+        "frames\\frame_003.png"
+      ],
+      "review": {
+        "score": 74.6,
+        "grade": "review",
+        "components": {
+          "coverage": 0.815,
+          "motion": 1.0,
+          "center": 1.0,
+          "color": 0.4,
+          "edge": 1.0,
+          "contrast": 1.0
+        },
+        "metrics": {
+          "coverage": 0.7518,
+          "mean_alpha": 0.26372,
+          "luma_mean": 0.33342,
+          "contrast": 0.25669,
+          "colorfulness": 0.07593,
+          "edge_energy": 0.20449,
+          "center_distance": 0.0,
+          "clip_high": 0.2472,
+          "clip_low": 0.0,
+          "aspect": 1.0,
+          "motion": 0.08443,
+          "flicker": 0.01425,
+          "frames": 4.0
+        },
+        "hints": [
+          "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold",
+          "color weak: switch palette or push core/edge/glow colors farther apart"
+        ],
+        "render_source": "cpu_proxy"
+      }
+    },
+    {
+      "id": "shader_review_smoke_002_shield_ripple_2d_004",
+      "template": "shield_ripple_2d",
+      "role": "shield",
+      "params": {
+        "color_shield": [
+          0.8511267316938605,
+          1.0,
+          0.962900326690736
+        ],
+        "color_hit": [
+          0.19652612708331108,
+          0.30750109506187484,
+          0.7912561785807305
+        ],
+        "hex_scale": 57.7607,
+        "hex_strength": 0.7774,
+        "fresnel_power": 2.3984,
+        "ripple_speed": 2.387,
+        "ripple_strength": 0.5679,
+        "ripple_freq": 17.8627,
+        "hit_position": [
+          0.5876,
+          0.4546
+        ],
+        "hit_age": 1.8947,
+        "opacity": 0.9646
+      },
+      "preview": {
+        "size": [
+          160,
+          160
+        ],
+        "frames": 4,
+        "duration_s": 1.8,
+        "background": [
+          0.035,
+          0.035,
+          0.055,
+          1.0
+        ]
+      },
+      "frames": [
+        "frames\\frame_000.png",
+        "frames\\frame_001.png",
+        "frames\\frame_002.png",
+        "frames\\frame_003.png"
+      ],
+      "review": {
+        "score": 72.23,
+        "grade": "review",
+        "components": {
+          "coverage": 0.696,
+          "motion": 1.0,
+          "center": 1.0,
+          "color": 0.424,
+          "edge": 1.0,
+          "contrast": 1.0
+        },
+        "metrics": {
+          "coverage": 0.81734,
+          "mean_alpha": 0.33452,
+          "luma_mean": 0.37703,
+          "contrast": 0.25561,
+          "colorfulness": 0.07943,
+          "edge_energy": 0.1724,
+          "center_distance": 0.0,
+          "clip_high": 0.26742,
+          "clip_low": 0.0,
+          "aspect": 1.0,
+          "motion": 0.09288,
+          "flicker": 0.01023,
+          "frames": 4.0
+        },
+        "hints": [
+          "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold",
+          "color weak: switch palette or push core/edge/glow colors farther apart"
+        ],
+        "render_source": "cpu_proxy"
+      }
+    },
+    {
+      "id": "shader_review_smoke_002_ring_field_2d_001",
+      "template": "ring_field_2d",
+      "role": "aura",
+      "params": {
+        "color_inner": [
+          0.8061682942939808,
+          0.9913958916219284,
+          0.9430293154232577
+        ],
+        "color_outer": [
+          0.354005160772654,
+          0.6574634822588428,
+          1.0
+        ],
+        "color_glow": [
+          0.15251027655459398,
+          0.27972355676768823,
+          0.7830651372838956
+        ],
+        "radius": 0.314,
+        "edge_width": 0.0448,
+        "noise_scale": 31.4209,
+        "pulse_speed": 3.0084,
+        "distortion": 0.3899,
+        "rune_count": 18,
+        "rune_strength": 0.6015,
+        "opacity": 0.7362
+      },
+      "preview": {
+        "size": [
+          160,
+          160
+        ],
+        "frames": 4,
+        "duration_s": 1.8,
+        "background": [
+          0.035,
+          0.035,
+          0.055,
+          1.0
+        ]
+      },
+      "frames": [
+        "frames\\frame_000.png",
+        "frames\\frame_001.png",
+        "frames\\frame_002.png",
+        "frames\\frame_003.png"
+      ],
+      "review": {
+        "score": 71.92,
+        "grade": "maybe",
+        "components": {
+          "coverage": 0.35,
+          "motion": 1.0,
+          "center": 1.0,
+          "color": 1.0,
+          "edge": 1.0,
+          "contrast": 1.0
+        },
+        "metrics": {
+          "coverage": 0.90497,
+          "mean_alpha": 0.3076,
+          "luma_mean": 0.28021,
+          "contrast": 0.20001,
+          "colorfulness": 0.26928,
+          "edge_energy": 0.10983,
+          "center_distance": 0.0161,
+          "clip_high": 0.28551,
+          "clip_low": 0.0,
+          "aspect": 1.0,
+          "motion": 0.04593,
+          "flicker": 0.00142,
+          "frames": 4.0
+        },
+        "hints": [
+          "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold"
+        ],
+        "render_source": "cpu_proxy"
+      }
+    },
+    {
+      "id": "shader_review_smoke_002_ring_field_2d_006",
+      "template": "ring_field_2d",
+      "role": "aura",
+      "params": {
+        "color_inner": [
+          0.8616951871957143,
+          0.9939782822530377,
+          0.9348724755260177
+        ],
+        "color_outer": [
+          0.31297500711376497,
+          0.6998514576820183,
+          0.9847456433701376
+        ],
+        "color_glow": [
+          0.18960753433132915,
+          0.29210094023163613,
+          0.8216513199737688
+        ],
+        "radius": 0.3618,
+        "edge_width": 0.075,
+        "noise_scale": 15.1478,
+        "pulse_speed": 1.9085,
+        "distortion": 0.1336,
+        "rune_count": 8,
+        "rune_strength": 1.0181,
+        "opacity": 0.7726
+      },
+      "preview": {
+        "size": [
+          160,
+          160
+        ],
+        "frames": 4,
+        "duration_s": 1.8,
+        "background": [
+          0.035,
+          0.035,
+          0.055,
+          1.0
+        ]
+      },
+      "frames": [
+        "frames\\frame_000.png",
+        "frames\\frame_001.png",
+        "frames\\frame_002.png",
+        "frames\\frame_003.png"
+      ],
+      "review": {
+        "score": 43.8,
+        "grade": "reject",
+        "components": {
+          "coverage": 0.16,
+          "motion": 1.0,
+          "center": 1.0,
+          "color": 1.0,
+          "edge": 1.0,
+          "contrast": 1.0
+        },
+        "metrics": {
+          "coverage": 1.0,
+          "mean_alpha": 0.50483,
+          "luma_mean": 0.43938,
+          "contrast": 0.25025,
+          "colorfulness": 0.33974,
+          "edge_energy": 0.03116,
+          "center_distance": 0.00255,
+          "clip_high": 0.43568,
+          "clip_low": 0.0,
+          "aspect": 1.0,
+          "motion": 0.02517,
+          "flicker": 0.0,
+          "frames": 4.0
+        },
+        "hints": [
+          "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold"
+        ],
+        "render_source": "cpu_proxy"
+      }
+    }
+  ]
+}

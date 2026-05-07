@@ -1,0 +1,12 @@
+{
+  "duration_s": 0.06725623582766439,
+  "samplerate": 44100,
+  "rms_dbfs": -18.00083632030803,
+  "peak_dbfs": -1.6756132729194515,
+  "clipped_samples": 0,
+  "dc_offset": 0.001556149567477405,
+  "click_count_estimate": 10,
+  "source": "D:\\assets\\audio\\sfx\\step_metal_v3.wav",
+  "waveform": "D:\\assets\\audio\\sfx\\step_metal_v3_qa\\waveform.png",
+  "spectrogram": "D:\\assets\\audio\\sfx\\step_metal_v3_qa\\spectrogram.png"
+}

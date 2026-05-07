@@ -1,0 +1,18 @@
+{
+  "schema": "prop_sweep.v1",
+  "family": "stump",
+  "kit": "first_party_proc",
+  "count": 2,
+  "id_prefix": "stump_a",
+  "id_start_index": 1,
+  "base_seed": 600,
+  "render_class": "scatter_multimesh",
+  "collision": "none",
+  "params": {
+    "height": {"type": "float_range", "min": 0.30, "max": 0.50},
+    "radius": {"type": "float_range", "min": 0.25, "max": 0.40},
+    "color_variant": {"type": "categorical", "values": ["oak", "ash", "weathered_grey"]}
+  },
+  "target_tris": 1100,
+  "lod_ladder": [1.00, 0.50, 0.20, 0.08]
+}

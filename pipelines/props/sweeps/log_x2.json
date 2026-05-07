@@ -1,0 +1,18 @@
+{
+  "schema": "prop_sweep.v1",
+  "family": "log",
+  "kit": "first_party_proc",
+  "count": 2,
+  "id_prefix": "log_a",
+  "id_start_index": 1,
+  "base_seed": 300,
+  "render_class": "scene_prop",
+  "collision": "convex",
+  "params": {
+    "length": {"type": "float_range", "min": 1.2, "max": 2.0},
+    "radius": {"type": "float_range", "min": 0.14, "max": 0.22},
+    "color_variant": {"type": "categorical", "values": ["oak", "ash", "weathered_grey"]}
+  },
+  "target_tris": 1200,
+  "lod_ladder": [1.00, 0.50, 0.20]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "qa_region_lava_coast",
+  "created": "2026-05-06T11:04:29.953008+00:00",
+  "source": "region_zoom",
+  "source_world": "qa_4biome_world_v4",
+  "source_bbox": [
+    100,
+    200,
+    500,
+    600
+  ],
+  "size": 1024,
+  "seed": 100,
+  "erosion": 20,
+  "biome_pixel_counts": {
+    "lava_field": 53196,
+    "ice_cavern": 548853,
+    "mana_crystal": 3153,
+    "grassland": 86808
+  },
+  "ocean_pixel_count": 356566
+}

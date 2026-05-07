@@ -1,0 +1,108 @@
+{
+  "schema": "prop_kit.v1",
+  "id": "mossy_highland_ruins",
+  "display_name": "Mossy Highland Ruins Prop Kit",
+  "source_biome_kit": "art_lab/biomes/kits/mossy_highland_ruins.json",
+  "style": {
+    "summary": "wet stone hills, overgrown basalt ruins, moss, lichen, shade-loving plants",
+    "palette": ["dark basalt", "wet soil", "moss green", "lichen pale green", "muted rune blue"],
+    "camera_assumption": "gameplay third-person/isometric, mid-distance readability"
+  },
+  "families": [
+    {
+      "family": "rock_cluster_small",
+      "recipe": "../recipes/rock_cluster_small.recipe.json",
+      "variants_required": 8,
+      "priority": 1
+    },
+    {
+      "family": "rock_cluster_medium",
+      "recipe": "../recipes/rock_cluster_medium.recipe.json",
+      "variants_required": 6,
+      "priority": 1
+    },
+    {
+      "family": "fern_clump",
+      "recipe": "../recipes/fern_clump.recipe.json",
+      "variants_required": 6,
+      "priority": 1
+    },
+    {
+      "family": "moss_tuft",
+      "recipe": "../recipes/moss_tuft.recipe.json",
+      "variants_required": 8,
+      "priority": 1
+    },
+    {
+      "family": "mushroom_cluster",
+      "recipe": "../recipes/mushroom_cluster.recipe.json",
+      "variants_required": 5,
+      "priority": 2
+    },
+    {
+      "family": "fallen_log",
+      "recipe": "../recipes/fallen_log.recipe.json",
+      "variants_required": 4,
+      "priority": 2
+    },
+    {
+      "family": "ruin_block",
+      "recipe": "../recipes/ruin_block.recipe.json",
+      "variants_required": 8,
+      "priority": 1
+    },
+    {
+      "family": "ruin_pillar",
+      "recipe": "../recipes/ruin_pillar.recipe.json",
+      "variants_required": 5,
+      "priority": 2
+    }
+  ],
+  "decal_families": [
+    {
+      "family": "moss_patch_01",
+      "recipe": "../recipes/moss_patch_01.recipe.json",
+      "variants_required": 6,
+      "priority": 1
+    },
+    {
+      "family": "mud_splash_02",
+      "recipe": "../recipes/mud_splash_02.recipe.json",
+      "variants_required": 6,
+      "priority": 2
+    },
+    {
+      "family": "cracked_stone_03",
+      "recipe": "../recipes/cracked_stone_03.recipe.json",
+      "variants_required": 6,
+      "priority": 2
+    },
+    {
+      "family": "rune_stain_01",
+      "recipe": "../recipes/rune_stain_01.recipe.json",
+      "variants_required": 4,
+      "priority": 2
+    },
+    {
+      "family": "scorch_01",
+      "recipe": "../recipes/scorch_01.recipe.json",
+      "variants_required": 4,
+      "priority": 3
+    }
+  ],
+  "review": {
+    "keep_best_per_family": 3,
+    "reject_if": [
+      "unreadable silhouette",
+      "scale mismatch",
+      "too noisy for repeated scatter",
+      "material style does not match mossy basalt kit",
+      "missing thumbnail or manifest"
+    ]
+  },
+  "godot": {
+    "scatter_target": "MultiMeshInstance3D",
+    "chunk_size_m": 32,
+    "terrain3d": "optional_after_compatibility_test"
+  }
+}

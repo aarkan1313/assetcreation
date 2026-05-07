@@ -1,0 +1,61 @@
+{
+  "id": "mossy_x_smoketest",
+  "created": "2026-05-06T04:24:21.105724+00:00",
+  "kit": "mossy_highland_ruins",
+  "terrain": "smoketest_a",
+  "map": null,
+  "size": [
+    256,
+    256
+  ],
+  "m_per_pixel": 0.5,
+  "totals": {
+    "scatter": 9818,
+    "decals": 603
+  },
+  "scatter_summary": {
+    "rock_cluster_small": 6087,
+    "rock_cluster_medium": 2457,
+    "fern_clump": 196,
+    "moss_tuft": 731,
+    "mushroom_cluster": 20,
+    "fallen_log": 327,
+    "ruin_block": 0,
+    "ruin_pillar": 0
+  },
+  "decal_summary": {
+    "moss_patch_01": 236,
+    "mud_splash_02": 191,
+    "cracked_stone_03": 176,
+    "rune_stain_01": 0,
+    "scorch_01": 0
+  },
+  "shader_rules": {
+    "wind_sway": {
+      "applies_to": [
+        "fern_clump",
+        "moss_tuft"
+      ],
+      "amplitude": 0.06,
+      "freq": 1.4
+    },
+    "wetness_darkening": {
+      "applies_to": "all_materials",
+      "factor": 0.18
+    },
+    "moss_overlay": {
+      "applies_to": [
+        "rock_cluster_small",
+        "rock_cluster_medium",
+        "ruin_block",
+        "ruin_pillar"
+      ],
+      "strength": 0.55
+    },
+    "distance_fade": {
+      "applies_to": "all_scatter",
+      "start_m": 60,
+      "end_m": 120
+    }
+  }
+}

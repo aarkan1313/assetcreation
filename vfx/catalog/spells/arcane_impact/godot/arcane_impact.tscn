@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="SpriteFrames" path="res://vfx/spell/arcane_impact/godot/sprite_frames.tres" id="1_sf"]
+
+[node name="arcane_impact" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_sf")
+animation = &"arcane_impact"
+autoplay = "default"

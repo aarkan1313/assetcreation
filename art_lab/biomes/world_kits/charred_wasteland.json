@@ -1,0 +1,39 @@
+{
+  "id": "charred_wasteland",
+  "display_name": "Ashen Scour",
+  "category": "elemental_fire",
+  "identity": {
+    "world_color": [55, 35, 30],
+    "regional_palette": [
+      [25, 18, 15],
+      [55, 35, 30],
+      [95, 65, 50],
+      [140, 95, 70]
+    ],
+    "icon_glyph": "ash",
+    "ambient_hex": "#160806"
+  },
+  "terrain": {
+    "height_bias": "low_with_local_peaks",
+    "slope_tendency": "broken",
+    "water_behaviour": "dry",
+    "carve_features": ["ash_drifts", "burn_scars"],
+    "altitude_range": [0.10, 0.55],
+    "preferred_slope_range": [0.0, 0.40]
+  },
+  "transitions": {
+    "anchor_to": ["altitude_band"],
+    "blend_neighbours": {
+      "default": {"width_px": 22, "noise_strength": 0.35, "feature_priority": "ridges"},
+      "lava_field": {"width_px": 20, "noise_strength": 0.30, "feature_priority": "ridges"},
+      "desert": {"width_px": 18, "noise_strength": 0.25, "feature_priority": "ridges"},
+      "grassland": {"width_px": 32, "noise_strength": 0.45, "feature_priority": "rivers"},
+      "mana_crystal": {"width_px": 16, "noise_strength": 0.20, "feature_priority": "ridges"}
+    },
+    "exclusion": ["ice_cavern", "tundra", "swamp", "forest", "underwater"]
+  },
+  "texture_kit": "charred_wasteland",
+  "decoration_kit": "charred_wasteland",
+  "world_map_priority": 6,
+  "regional_glyph_density": 0.50
+}

@@ -1,0 +1,30 @@
+{
+  "effect_id": "spark_stone",
+  "backend": "particle_cpu",
+  "n_frames": 12,
+  "fps": 30,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "flipbook": "D:\\assets\\vfx\\catalog\\spells\\spark_stone\\flipbook.png",
+  "frames_dir": "D:\\assets\\vfx\\catalog\\spells\\spark_stone\\frames",
+  "extras": {
+    "particles_json": "D:\\assets\\vfx\\catalog\\spells\\spark_stone\\particles.json",
+    "audio_cues": [
+      {
+        "t": 0.0,
+        "name": "thud"
+      },
+      {
+        "t": 0.18,
+        "name": "shower"
+      }
+    ]
+  },
+  "metrics": {
+    "max_alive": 30,
+    "total_energy": 135.33812260627747
+  },
+  "timestamp": "2026-05-06T20:50:54+00:00"
+}

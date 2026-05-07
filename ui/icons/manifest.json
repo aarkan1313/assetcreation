@@ -1,0 +1,2109 @@
+{
+  "set": "rpg",
+  "size": 256,
+  "icons": [
+    {
+      "id": "ico_arcane_orb",
+      "path": "ui/icons/ico_arcane_orb.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_axe",
+      "path": "ui/icons/ico_axe.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_barrier",
+      "path": "ui/icons/ico_barrier.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_bow",
+      "path": "ui/icons/ico_bow.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_coin",
+      "path": "ui/icons/ico_coin.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_dagger",
+      "path": "ui/icons/ico_dagger.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_elixir",
+      "path": "ui/icons/ico_elixir.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_eye",
+      "path": "ui/icons/ico_eye.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_fireball",
+      "path": "ui/icons/ico_fireball.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_flame_rune",
+      "path": "ui/icons/ico_flame_rune.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "flame-rune",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/flame-rune.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Flame Rune",
+      "semantic_tags": [
+        "fire",
+        "magic",
+        "rune"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_footprint",
+      "path": "ui/icons/ico_footprint.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_frostbolt",
+      "path": "ui/icons/ico_frostbolt.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_gem_blue",
+      "path": "ui/icons/ico_gem_blue.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_gem_green",
+      "path": "ui/icons/ico_gem_green.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_gem_red",
+      "path": "ui/icons/ico_gem_red.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_gi_abdominal_armor",
+      "path": "ui/icons/ico_gi_abdominal_armor.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "abdominal-armor",
+      "source_author": "delapouite",
+      "source_url": "https://game-icons.net/1x1/delapouite/abdominal-armor.html",
+      "license": "CC-BY 3.0",
+      "attribution": "delapouite / game-icons.net / CC-BY 3.0",
+      "display_name": "Abdominal Armor",
+      "semantic_tags": [
+        "armor",
+        "torso"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_ankh",
+      "path": "ui/icons/ico_gi_ankh.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "ankh",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/ankh.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Ankh",
+      "semantic_tags": [
+        "holy",
+        "amulet"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_apple_core",
+      "path": "ui/icons/ico_gi_apple_core.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "apple-core",
+      "source_author": "delapouite",
+      "source_url": "https://game-icons.net/1x1/delapouite/apple-core.html",
+      "license": "CC-BY 3.0",
+      "attribution": "delapouite / game-icons.net / CC-BY 3.0",
+      "display_name": "Apple Core",
+      "semantic_tags": [
+        "consumable",
+        "food"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_battered_axe",
+      "path": "ui/icons/ico_gi_battered_axe.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "battered-axe",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/battered-axe.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Battered Axe",
+      "semantic_tags": [
+        "weapon",
+        "axe"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_boss_key",
+      "path": "ui/icons/ico_gi_boss_key.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "boss-key",
+      "source_author": "delapouite",
+      "source_url": "https://game-icons.net/1x1/delapouite/boss-key.html",
+      "license": "CC-BY 3.0",
+      "attribution": "delapouite / game-icons.net / CC-BY 3.0",
+      "display_name": "Boss Key",
+      "semantic_tags": [
+        "loot",
+        "key",
+        "quest"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_bread",
+      "path": "ui/icons/ico_gi_bread.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "bread",
+      "source_author": "delapouite",
+      "source_url": "https://game-icons.net/1x1/delapouite/bread.html",
+      "license": "CC-BY 3.0",
+      "attribution": "delapouite / game-icons.net / CC-BY 3.0",
+      "display_name": "Bread",
+      "semantic_tags": [
+        "consumable",
+        "food"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_broadhead_arrow",
+      "path": "ui/icons/ico_gi_broadhead_arrow.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "broadhead-arrow",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/broadhead-arrow.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Broadhead Arrow",
+      "semantic_tags": [
+        "weapon",
+        "ranged",
+        "arrow"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_broken_heart",
+      "path": "ui/icons/ico_gi_broken_heart.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "broken-heart",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/broken-heart.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Broken Heart",
+      "semantic_tags": [
+        "debuff",
+        "damage",
+        "heart"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_campfire",
+      "path": "ui/icons/ico_gi_campfire.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "campfire",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/campfire.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Campfire",
+      "semantic_tags": [
+        "world",
+        "fire",
+        "camp"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_castle",
+      "path": "ui/icons/ico_gi_castle.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "castle",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/castle.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Castle",
+      "semantic_tags": [
+        "faction",
+        "building",
+        "castle"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_chest_armor",
+      "path": "ui/icons/ico_gi_chest_armor.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "chest-armor",
+      "source_author": "delapouite",
+      "source_url": "https://game-icons.net/1x1/delapouite/chest-armor.html",
+      "license": "CC-BY 3.0",
+      "attribution": "delapouite / game-icons.net / CC-BY 3.0",
+      "display_name": "Chest Armor",
+      "semantic_tags": [
+        "armor",
+        "torso"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_crossbow",
+      "path": "ui/icons/ico_gi_crossbow.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "crossbow",
+      "source_author": "carl-olsen",
+      "source_url": "https://game-icons.net/1x1/carl-olsen/crossbow.html",
+      "license": "CC-BY 3.0",
+      "attribution": "carl-olsen / game-icons.net / CC-BY 3.0",
+      "display_name": "Crossbow",
+      "semantic_tags": [
+        "weapon",
+        "ranged"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_crowned_skull",
+      "path": "ui/icons/ico_gi_crowned_skull.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "crowned-skull",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/crowned-skull.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Crowned Skull",
+      "semantic_tags": [
+        "debuff",
+        "death",
+        "boss"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_crystal_cluster",
+      "path": "ui/icons/ico_gi_crystal_cluster.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "crystal-cluster",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/crystal-cluster.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Crystal Cluster",
+      "semantic_tags": [
+        "world",
+        "crystal",
+        "mana"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_death_skull",
+      "path": "ui/icons/ico_gi_death_skull.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "death-skull",
+      "source_author": "sbed",
+      "source_url": "https://game-icons.net/1x1/sbed/death-skull.html",
+      "license": "CC-BY 3.0",
+      "attribution": "sbed / game-icons.net / CC-BY 3.0",
+      "display_name": "Death Skull",
+      "semantic_tags": [
+        "debuff",
+        "death",
+        "skull"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_diamonds",
+      "path": "ui/icons/ico_gi_diamonds.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "diamonds",
+      "source_author": "skoll",
+      "source_url": "https://game-icons.net/1x1/skoll/diamonds.html",
+      "license": "CC-BY 3.0",
+      "attribution": "skoll / game-icons.net / CC-BY 3.0",
+      "display_name": "Diamonds",
+      "semantic_tags": [
+        "currency",
+        "gem"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_drink_me",
+      "path": "ui/icons/ico_gi_drink_me.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "drink-me",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/drink-me.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Drink Me",
+      "semantic_tags": [
+        "consumable",
+        "potion"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_edged_shield",
+      "path": "ui/icons/ico_gi_edged_shield.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "edged-shield",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/edged-shield.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Edged Shield",
+      "semantic_tags": [
+        "defense",
+        "shield",
+        "heavy"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_evil_eyes",
+      "path": "ui/icons/ico_gi_evil_eyes.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "evil-eyes",
+      "source_author": "skoll",
+      "source_url": "https://game-icons.net/1x1/skoll/evil-eyes.html",
+      "license": "CC-BY 3.0",
+      "attribution": "skoll / game-icons.net / CC-BY 3.0",
+      "display_name": "Evil Eyes",
+      "semantic_tags": [
+        "debuff",
+        "fear",
+        "eye"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_fire",
+      "path": "ui/icons/ico_gi_fire.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "fire",
+      "source_author": "sbed",
+      "source_url": "https://game-icons.net/1x1/sbed/fire.html",
+      "license": "CC-BY 3.0",
+      "attribution": "sbed / game-icons.net / CC-BY 3.0",
+      "display_name": "Fire",
+      "semantic_tags": [
+        "spell",
+        "fire",
+        "element"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_fireball",
+      "path": "ui/icons/ico_gi_fireball.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "fireball",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/fireball.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Fireball",
+      "semantic_tags": [
+        "spell",
+        "fire",
+        "projectile"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_footprint",
+      "path": "ui/icons/ico_gi_footprint.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "footprint",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/footprint.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Footprint",
+      "semantic_tags": [
+        "state",
+        "tracking"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_gem_pendant",
+      "path": "ui/icons/ico_gi_gem_pendant.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "gem-pendant",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/gem-pendant.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Gem Pendant",
+      "semantic_tags": [
+        "loot",
+        "gem",
+        "jewelry"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_holy_grail",
+      "path": "ui/icons/ico_gi_holy_grail.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "holy-grail",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/holy-grail.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Holy Grail",
+      "semantic_tags": [
+        "spell",
+        "holy",
+        "item"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_key",
+      "path": "ui/icons/ico_gi_key.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "key",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/key.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Key",
+      "semantic_tags": [
+        "loot",
+        "key"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_leather_vest",
+      "path": "ui/icons/ico_gi_leather_vest.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "leather-vest",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/leather-vest.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Leather Vest",
+      "semantic_tags": [
+        "armor",
+        "light",
+        "torso"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_leg_armor",
+      "path": "ui/icons/ico_gi_leg_armor.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "leg-armor",
+      "source_author": "delapouite",
+      "source_url": "https://game-icons.net/1x1/delapouite/leg-armor.html",
+      "license": "CC-BY 3.0",
+      "attribution": "delapouite / game-icons.net / CC-BY 3.0",
+      "display_name": "Leg Armor",
+      "semantic_tags": [
+        "armor",
+        "legs"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_lightning_arc",
+      "path": "ui/icons/ico_gi_lightning_arc.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "lightning-arc",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/lightning-arc.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Lightning Arc",
+      "semantic_tags": [
+        "spell",
+        "lightning",
+        "element"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_magic_shield",
+      "path": "ui/icons/ico_gi_magic_shield.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "magic-shield",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/magic-shield.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Magic Shield",
+      "semantic_tags": [
+        "buff",
+        "defense",
+        "arcane",
+        "shield"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_magic_swirl",
+      "path": "ui/icons/ico_gi_magic_swirl.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "magic-swirl",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/magic-swirl.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Magic Swirl",
+      "semantic_tags": [
+        "spell",
+        "arcane"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_money_stack",
+      "path": "ui/icons/ico_gi_money_stack.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "money-stack",
+      "source_author": "delapouite",
+      "source_url": "https://game-icons.net/1x1/delapouite/money-stack.html",
+      "license": "CC-BY 3.0",
+      "attribution": "delapouite / game-icons.net / CC-BY 3.0",
+      "display_name": "Money Stack",
+      "semantic_tags": [
+        "currency",
+        "gold"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_poison_bottle",
+      "path": "ui/icons/ico_gi_poison_bottle.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "poison-bottle",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/poison-bottle.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Poison Bottle",
+      "semantic_tags": [
+        "consumable",
+        "poison"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_poison_cloud",
+      "path": "ui/icons/ico_gi_poison_cloud.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "poison-cloud",
+      "source_author": "sbed",
+      "source_url": "https://game-icons.net/1x1/sbed/poison-cloud.html",
+      "license": "CC-BY 3.0",
+      "attribution": "sbed / game-icons.net / CC-BY 3.0",
+      "display_name": "Poison Cloud",
+      "semantic_tags": [
+        "spell",
+        "poison",
+        "aoe"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_potion_ball",
+      "path": "ui/icons/ico_gi_potion_ball.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "potion-ball",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/potion-ball.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Potion Ball",
+      "semantic_tags": [
+        "consumable",
+        "potion"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_rune_stone",
+      "path": "ui/icons/ico_gi_rune_stone.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "rune-stone",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/rune-stone.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Rune Stone",
+      "semantic_tags": [
+        "consumable",
+        "rune",
+        "arcane"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_running_shoe",
+      "path": "ui/icons/ico_gi_running_shoe.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "running-shoe",
+      "source_author": "delapouite",
+      "source_url": "https://game-icons.net/1x1/delapouite/running-shoe.html",
+      "license": "CC-BY 3.0",
+      "attribution": "delapouite / game-icons.net / CC-BY 3.0",
+      "display_name": "Running Shoe",
+      "semantic_tags": [
+        "buff",
+        "speed"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_scroll_quill",
+      "path": "ui/icons/ico_gi_scroll_quill.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "scroll-quill",
+      "source_author": "delapouite",
+      "source_url": "https://game-icons.net/1x1/delapouite/scroll-quill.html",
+      "license": "CC-BY 3.0",
+      "attribution": "delapouite / game-icons.net / CC-BY 3.0",
+      "display_name": "Scroll Quill",
+      "semantic_tags": [
+        "consumable",
+        "scroll",
+        "writing"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_scroll_unfurled",
+      "path": "ui/icons/ico_gi_scroll_unfurled.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "scroll-unfurled",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/scroll-unfurled.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Scroll Unfurled",
+      "semantic_tags": [
+        "consumable",
+        "scroll"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_shadow_grasp",
+      "path": "ui/icons/ico_gi_shadow_grasp.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "shadow-grasp",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/shadow-grasp.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Shadow Grasp",
+      "semantic_tags": [
+        "spell",
+        "shadow",
+        "grasp"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_shield",
+      "path": "ui/icons/ico_gi_shield.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "shield",
+      "source_author": "sbed",
+      "source_url": "https://game-icons.net/1x1/sbed/shield.html",
+      "license": "CC-BY 3.0",
+      "attribution": "sbed / game-icons.net / CC-BY 3.0",
+      "display_name": "Shield",
+      "semantic_tags": [
+        "defense",
+        "shield"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_shield_bounces",
+      "path": "ui/icons/ico_gi_shield_bounces.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "shield-bounces",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/shield-bounces.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Shield Bounces",
+      "semantic_tags": [
+        "buff",
+        "defense",
+        "shield"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_shoulder_armor",
+      "path": "ui/icons/ico_gi_shoulder_armor.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "shoulder-armor",
+      "source_author": "delapouite",
+      "source_url": "https://game-icons.net/1x1/delapouite/shoulder-armor.html",
+      "license": "CC-BY 3.0",
+      "attribution": "delapouite / game-icons.net / CC-BY 3.0",
+      "display_name": "Shoulder Armor",
+      "semantic_tags": [
+        "armor",
+        "heavy"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_skeleton_key",
+      "path": "ui/icons/ico_gi_skeleton_key.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "skeleton-key",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/skeleton-key.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Skeleton Key",
+      "semantic_tags": [
+        "loot",
+        "key",
+        "rare"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_spell_book",
+      "path": "ui/icons/ico_gi_spell_book.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "spell-book",
+      "source_author": "delapouite",
+      "source_url": "https://game-icons.net/1x1/delapouite/spell-book.html",
+      "license": "CC-BY 3.0",
+      "attribution": "delapouite / game-icons.net / CC-BY 3.0",
+      "display_name": "Spell Book",
+      "semantic_tags": [
+        "consumable",
+        "book",
+        "arcane"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_spiked_mace",
+      "path": "ui/icons/ico_gi_spiked_mace.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "spiked-mace",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/spiked-mace.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Spiked Mace",
+      "semantic_tags": [
+        "weapon",
+        "blunt",
+        "mace"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_sun",
+      "path": "ui/icons/ico_gi_sun.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "sun",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/sun.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Sun",
+      "semantic_tags": [
+        "spell",
+        "holy",
+        "light"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_sword_wound",
+      "path": "ui/icons/ico_gi_sword_wound.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "sword-wound",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/sword-wound.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Sword Wound",
+      "semantic_tags": [
+        "weapon",
+        "sword",
+        "damage"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_thrown_spear",
+      "path": "ui/icons/ico_gi_thrown_spear.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "thrown-spear",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/thrown-spear.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Thrown Spear",
+      "semantic_tags": [
+        "weapon",
+        "ranged",
+        "spear"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_trefoil_lily",
+      "path": "ui/icons/ico_gi_trefoil_lily.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "trefoil-lily",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/trefoil-lily.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Trefoil Lily",
+      "semantic_tags": [
+        "faction",
+        "crest",
+        "lily"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_two_coins",
+      "path": "ui/icons/ico_gi_two_coins.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "two-coins",
+      "source_author": "delapouite",
+      "source_url": "https://game-icons.net/1x1/delapouite/two-coins.html",
+      "license": "CC-BY 3.0",
+      "attribution": "delapouite / game-icons.net / CC-BY 3.0",
+      "display_name": "Two Coins",
+      "semantic_tags": [
+        "currency",
+        "gold",
+        "coin"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_vortex",
+      "path": "ui/icons/ico_gi_vortex.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "vortex",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/vortex.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Vortex",
+      "semantic_tags": [
+        "spell",
+        "arcane",
+        "aoe"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_warhammer",
+      "path": "ui/icons/ico_gi_warhammer.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "warhammer",
+      "source_author": "delapouite",
+      "source_url": "https://game-icons.net/1x1/delapouite/warhammer.html",
+      "license": "CC-BY 3.0",
+      "attribution": "delapouite / game-icons.net / CC-BY 3.0",
+      "display_name": "Warhammer",
+      "semantic_tags": [
+        "weapon",
+        "blunt",
+        "hammer"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_wing_cloak",
+      "path": "ui/icons/ico_gi_wing_cloak.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "wing-cloak",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/wing-cloak.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Wing Cloak",
+      "semantic_tags": [
+        "buff",
+        "speed",
+        "wing"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_winged_sword",
+      "path": "ui/icons/ico_gi_winged_sword.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "winged-sword",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/winged-sword.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Winged Sword",
+      "semantic_tags": [
+        "weapon",
+        "sword",
+        "blessed"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_gi_wooden_sign",
+      "path": "ui/icons/ico_gi_wooden_sign.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "wooden-sign",
+      "source_author": "lorc",
+      "source_url": "https://game-icons.net/1x1/lorc/wooden-sign.html",
+      "license": "CC-BY 3.0",
+      "attribution": "lorc / game-icons.net / CC-BY 3.0",
+      "display_name": "Wooden Sign",
+      "semantic_tags": [
+        "world",
+        "sign",
+        "wood"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_hammer",
+      "path": "ui/icons/ico_hammer.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_haste_wing",
+      "path": "ui/icons/ico_haste_wing.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_heart_empty",
+      "path": "ui/icons/ico_heart_empty.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_heart_full",
+      "path": "ui/icons/ico_heart_full.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_holy_light",
+      "path": "ui/icons/ico_holy_light.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_key",
+      "path": "ui/icons/ico_key.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_lightning",
+      "path": "ui/icons/ico_lightning.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_lucide_arrow_down",
+      "path": "ui/icons/ico_lucide_arrow_down.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "lucide",
+      "source_slug": "arrow-down",
+      "source_url": "https://lucide.dev/icons/arrow-down",
+      "license": "ISC",
+      "attribution": "Lucide contributors / ISC (no attribution required)",
+      "display_name": "Arrow Down",
+      "semantic_tags": [
+        "nav",
+        "direction"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_lucide_arrow_left",
+      "path": "ui/icons/ico_lucide_arrow_left.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "lucide",
+      "source_slug": "arrow-left",
+      "source_url": "https://lucide.dev/icons/arrow-left",
+      "license": "ISC",
+      "attribution": "Lucide contributors / ISC (no attribution required)",
+      "display_name": "Arrow Left",
+      "semantic_tags": [
+        "nav",
+        "direction"
+      ],
+      "rtl_mirror": true,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_lucide_arrow_right",
+      "path": "ui/icons/ico_lucide_arrow_right.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "lucide",
+      "source_slug": "arrow-right",
+      "source_url": "https://lucide.dev/icons/arrow-right",
+      "license": "ISC",
+      "attribution": "Lucide contributors / ISC (no attribution required)",
+      "display_name": "Arrow Right",
+      "semantic_tags": [
+        "nav",
+        "direction"
+      ],
+      "rtl_mirror": true,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_lucide_arrow_up",
+      "path": "ui/icons/ico_lucide_arrow_up.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "lucide",
+      "source_slug": "arrow-up",
+      "source_url": "https://lucide.dev/icons/arrow-up",
+      "license": "ISC",
+      "attribution": "Lucide contributors / ISC (no attribution required)",
+      "display_name": "Arrow Up",
+      "semantic_tags": [
+        "nav",
+        "direction"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_lucide_check",
+      "path": "ui/icons/ico_lucide_check.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "lucide",
+      "source_slug": "check",
+      "source_url": "https://lucide.dev/icons/check",
+      "license": "ISC",
+      "attribution": "Lucide contributors / ISC (no attribution required)",
+      "display_name": "Check",
+      "semantic_tags": [
+        "ui",
+        "status",
+        "ok"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_lucide_chevron_down",
+      "path": "ui/icons/ico_lucide_chevron_down.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "lucide",
+      "source_slug": "chevron-down",
+      "source_url": "https://lucide.dev/icons/chevron-down",
+      "license": "ISC",
+      "attribution": "Lucide contributors / ISC (no attribution required)",
+      "display_name": "Chevron Down",
+      "semantic_tags": [
+        "nav",
+        "arrow",
+        "compact"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_lucide_chevron_left",
+      "path": "ui/icons/ico_lucide_chevron_left.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "lucide",
+      "source_slug": "chevron-left",
+      "source_url": "https://lucide.dev/icons/chevron-left",
+      "license": "ISC",
+      "attribution": "Lucide contributors / ISC (no attribution required)",
+      "display_name": "Chevron Left",
+      "semantic_tags": [
+        "nav",
+        "arrow",
+        "compact"
+      ],
+      "rtl_mirror": true,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_lucide_chevron_right",
+      "path": "ui/icons/ico_lucide_chevron_right.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "lucide",
+      "source_slug": "chevron-right",
+      "source_url": "https://lucide.dev/icons/chevron-right",
+      "license": "ISC",
+      "attribution": "Lucide contributors / ISC (no attribution required)",
+      "display_name": "Chevron Right",
+      "semantic_tags": [
+        "nav",
+        "arrow",
+        "compact"
+      ],
+      "rtl_mirror": true,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_lucide_chevron_up",
+      "path": "ui/icons/ico_lucide_chevron_up.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "lucide",
+      "source_slug": "chevron-up",
+      "source_url": "https://lucide.dev/icons/chevron-up",
+      "license": "ISC",
+      "attribution": "Lucide contributors / ISC (no attribution required)",
+      "display_name": "Chevron Up",
+      "semantic_tags": [
+        "nav",
+        "arrow",
+        "compact"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_lucide_circle",
+      "path": "ui/icons/ico_lucide_circle.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "lucide",
+      "source_slug": "circle",
+      "source_url": "https://lucide.dev/icons/circle",
+      "license": "ISC",
+      "attribution": "Lucide contributors / ISC (no attribution required)",
+      "display_name": "Circle",
+      "semantic_tags": [
+        "ui",
+        "neutral"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_lucide_info",
+      "path": "ui/icons/ico_lucide_info.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "lucide",
+      "source_slug": "info",
+      "source_url": "https://lucide.dev/icons/info",
+      "license": "ISC",
+      "attribution": "Lucide contributors / ISC (no attribution required)",
+      "display_name": "Info",
+      "semantic_tags": [
+        "ui",
+        "status",
+        "info"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_lucide_list",
+      "path": "ui/icons/ico_lucide_list.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "lucide",
+      "source_slug": "list",
+      "source_url": "https://lucide.dev/icons/list",
+      "license": "ISC",
+      "attribution": "Lucide contributors / ISC (no attribution required)",
+      "display_name": "List",
+      "semantic_tags": [
+        "ui",
+        "view"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_lucide_menu",
+      "path": "ui/icons/ico_lucide_menu.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "lucide",
+      "source_slug": "menu",
+      "source_url": "https://lucide.dev/icons/menu",
+      "license": "ISC",
+      "attribution": "Lucide contributors / ISC (no attribution required)",
+      "display_name": "Menu",
+      "semantic_tags": [
+        "ui",
+        "open"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_lucide_minus",
+      "path": "ui/icons/ico_lucide_minus.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "lucide",
+      "source_slug": "minus",
+      "source_url": "https://lucide.dev/icons/minus",
+      "license": "ISC",
+      "attribution": "Lucide contributors / ISC (no attribution required)",
+      "display_name": "Minus",
+      "semantic_tags": [
+        "ui",
+        "remove",
+        "subtract"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_lucide_plus",
+      "path": "ui/icons/ico_lucide_plus.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "lucide",
+      "source_slug": "plus",
+      "source_url": "https://lucide.dev/icons/plus",
+      "license": "ISC",
+      "attribution": "Lucide contributors / ISC (no attribution required)",
+      "display_name": "Plus",
+      "semantic_tags": [
+        "ui",
+        "add",
+        "create"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_lucide_save",
+      "path": "ui/icons/ico_lucide_save.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "lucide",
+      "source_slug": "save",
+      "source_url": "https://lucide.dev/icons/save",
+      "license": "ISC",
+      "attribution": "Lucide contributors / ISC (no attribution required)",
+      "display_name": "Save",
+      "semantic_tags": [
+        "ui",
+        "persist"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_lucide_search",
+      "path": "ui/icons/ico_lucide_search.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "lucide",
+      "source_slug": "search",
+      "source_url": "https://lucide.dev/icons/search",
+      "license": "ISC",
+      "attribution": "Lucide contributors / ISC (no attribution required)",
+      "display_name": "Search",
+      "semantic_tags": [
+        "ui",
+        "find"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_lucide_settings",
+      "path": "ui/icons/ico_lucide_settings.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "lucide",
+      "source_slug": "settings",
+      "source_url": "https://lucide.dev/icons/settings",
+      "license": "ISC",
+      "attribution": "Lucide contributors / ISC (no attribution required)",
+      "display_name": "Settings",
+      "semantic_tags": [
+        "ui",
+        "menu",
+        "config"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_lucide_trash_2",
+      "path": "ui/icons/ico_lucide_trash_2.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "lucide",
+      "source_slug": "trash-2",
+      "source_url": "https://lucide.dev/icons/trash-2",
+      "license": "ISC",
+      "attribution": "Lucide contributors / ISC (no attribution required)",
+      "display_name": "Trash 2",
+      "semantic_tags": [
+        "ui",
+        "destructive"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_lucide_user",
+      "path": "ui/icons/ico_lucide_user.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "lucide",
+      "source_slug": "user",
+      "source_url": "https://lucide.dev/icons/user",
+      "license": "ISC",
+      "attribution": "Lucide contributors / ISC (no attribution required)",
+      "display_name": "User",
+      "semantic_tags": [
+        "ui",
+        "identity"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_lucide_users",
+      "path": "ui/icons/ico_lucide_users.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "lucide",
+      "source_slug": "users",
+      "source_url": "https://lucide.dev/icons/users",
+      "license": "ISC",
+      "attribution": "Lucide contributors / ISC (no attribution required)",
+      "display_name": "Users",
+      "semantic_tags": [
+        "ui",
+        "identity"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_lucide_x",
+      "path": "ui/icons/ico_lucide_x.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "lucide",
+      "source_slug": "x",
+      "source_url": "https://lucide.dev/icons/x",
+      "license": "ISC",
+      "attribution": "Lucide contributors / ISC (no attribution required)",
+      "display_name": "X",
+      "semantic_tags": [
+        "ui",
+        "close",
+        "cancel"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_mace",
+      "path": "ui/icons/ico_mace.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_mana_drop",
+      "path": "ui/icons/ico_mana_drop.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_nature_thorn",
+      "path": "ui/icons/ico_nature_thorn.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_phosphor_arrow_down",
+      "path": "ui/icons/ico_phosphor_arrow_down.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "phosphor",
+      "source_slug": "arrow-down",
+      "source_url": "https://phosphoricons.com/?q=arrow-down",
+      "license": "MIT",
+      "attribution": "Phosphor Icons / MIT (no attribution required)",
+      "display_name": "Arrow Down",
+      "semantic_tags": [
+        "nav",
+        "direction"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_phosphor_arrow_left",
+      "path": "ui/icons/ico_phosphor_arrow_left.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "phosphor",
+      "source_slug": "arrow-left",
+      "source_url": "https://phosphoricons.com/?q=arrow-left",
+      "license": "MIT",
+      "attribution": "Phosphor Icons / MIT (no attribution required)",
+      "display_name": "Arrow Left",
+      "semantic_tags": [
+        "nav",
+        "direction"
+      ],
+      "rtl_mirror": true,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_phosphor_arrow_right",
+      "path": "ui/icons/ico_phosphor_arrow_right.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "phosphor",
+      "source_slug": "arrow-right",
+      "source_url": "https://phosphoricons.com/?q=arrow-right",
+      "license": "MIT",
+      "attribution": "Phosphor Icons / MIT (no attribution required)",
+      "display_name": "Arrow Right",
+      "semantic_tags": [
+        "nav",
+        "direction"
+      ],
+      "rtl_mirror": true,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_phosphor_arrow_up",
+      "path": "ui/icons/ico_phosphor_arrow_up.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "phosphor",
+      "source_slug": "arrow-up",
+      "source_url": "https://phosphoricons.com/?q=arrow-up",
+      "license": "MIT",
+      "attribution": "Phosphor Icons / MIT (no attribution required)",
+      "display_name": "Arrow Up",
+      "semantic_tags": [
+        "nav",
+        "direction"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_phosphor_caret_down",
+      "path": "ui/icons/ico_phosphor_caret_down.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "phosphor",
+      "source_slug": "caret-down",
+      "source_url": "https://phosphoricons.com/?q=caret-down",
+      "license": "MIT",
+      "attribution": "Phosphor Icons / MIT (no attribution required)",
+      "display_name": "Caret Down",
+      "semantic_tags": [
+        "nav",
+        "arrow",
+        "compact"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_phosphor_caret_left",
+      "path": "ui/icons/ico_phosphor_caret_left.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "phosphor",
+      "source_slug": "caret-left",
+      "source_url": "https://phosphoricons.com/?q=caret-left",
+      "license": "MIT",
+      "attribution": "Phosphor Icons / MIT (no attribution required)",
+      "display_name": "Caret Left",
+      "semantic_tags": [
+        "nav",
+        "arrow",
+        "compact"
+      ],
+      "rtl_mirror": true,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_phosphor_caret_right",
+      "path": "ui/icons/ico_phosphor_caret_right.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "phosphor",
+      "source_slug": "caret-right",
+      "source_url": "https://phosphoricons.com/?q=caret-right",
+      "license": "MIT",
+      "attribution": "Phosphor Icons / MIT (no attribution required)",
+      "display_name": "Caret Right",
+      "semantic_tags": [
+        "nav",
+        "arrow",
+        "compact"
+      ],
+      "rtl_mirror": true,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_phosphor_caret_up",
+      "path": "ui/icons/ico_phosphor_caret_up.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "phosphor",
+      "source_slug": "caret-up",
+      "source_url": "https://phosphoricons.com/?q=caret-up",
+      "license": "MIT",
+      "attribution": "Phosphor Icons / MIT (no attribution required)",
+      "display_name": "Caret Up",
+      "semantic_tags": [
+        "nav",
+        "arrow",
+        "compact"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_phosphor_check",
+      "path": "ui/icons/ico_phosphor_check.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "phosphor",
+      "source_slug": "check",
+      "source_url": "https://phosphoricons.com/?q=check",
+      "license": "MIT",
+      "attribution": "Phosphor Icons / MIT (no attribution required)",
+      "display_name": "Check",
+      "semantic_tags": [
+        "ui",
+        "status",
+        "ok"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_phosphor_circle",
+      "path": "ui/icons/ico_phosphor_circle.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "phosphor",
+      "source_slug": "circle",
+      "source_url": "https://phosphoricons.com/?q=circle",
+      "license": "MIT",
+      "attribution": "Phosphor Icons / MIT (no attribution required)",
+      "display_name": "Circle",
+      "semantic_tags": [
+        "ui",
+        "neutral"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_phosphor_gear",
+      "path": "ui/icons/ico_phosphor_gear.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "phosphor",
+      "source_slug": "gear",
+      "source_url": "https://phosphoricons.com/?q=gear",
+      "license": "MIT",
+      "attribution": "Phosphor Icons / MIT (no attribution required)",
+      "display_name": "Gear",
+      "semantic_tags": [
+        "ui",
+        "menu",
+        "config"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_phosphor_info",
+      "path": "ui/icons/ico_phosphor_info.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "phosphor",
+      "source_slug": "info",
+      "source_url": "https://phosphoricons.com/?q=info",
+      "license": "MIT",
+      "attribution": "Phosphor Icons / MIT (no attribution required)",
+      "display_name": "Info",
+      "semantic_tags": [
+        "ui",
+        "status",
+        "info"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_phosphor_list",
+      "path": "ui/icons/ico_phosphor_list.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "phosphor",
+      "source_slug": "list",
+      "source_url": "https://phosphoricons.com/?q=list",
+      "license": "MIT",
+      "attribution": "Phosphor Icons / MIT (no attribution required)",
+      "display_name": "List",
+      "semantic_tags": [
+        "ui",
+        "view"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_phosphor_magnifying_glass",
+      "path": "ui/icons/ico_phosphor_magnifying_glass.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "phosphor",
+      "source_slug": "magnifying-glass",
+      "source_url": "https://phosphoricons.com/?q=magnifying-glass",
+      "license": "MIT",
+      "attribution": "Phosphor Icons / MIT (no attribution required)",
+      "display_name": "Magnifying Glass",
+      "semantic_tags": [
+        "ui",
+        "find"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_phosphor_minus",
+      "path": "ui/icons/ico_phosphor_minus.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "phosphor",
+      "source_slug": "minus",
+      "source_url": "https://phosphoricons.com/?q=minus",
+      "license": "MIT",
+      "attribution": "Phosphor Icons / MIT (no attribution required)",
+      "display_name": "Minus",
+      "semantic_tags": [
+        "ui",
+        "remove",
+        "subtract"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_phosphor_plus",
+      "path": "ui/icons/ico_phosphor_plus.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "phosphor",
+      "source_slug": "plus",
+      "source_url": "https://phosphoricons.com/?q=plus",
+      "license": "MIT",
+      "attribution": "Phosphor Icons / MIT (no attribution required)",
+      "display_name": "Plus",
+      "semantic_tags": [
+        "ui",
+        "add",
+        "create"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_phosphor_warning",
+      "path": "ui/icons/ico_phosphor_warning.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "phosphor",
+      "source_slug": "warning",
+      "source_url": "https://phosphoricons.com/?q=warning",
+      "license": "MIT",
+      "attribution": "Phosphor Icons / MIT (no attribution required)",
+      "display_name": "Warning",
+      "semantic_tags": [
+        "ui",
+        "status",
+        "warning"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_phosphor_x",
+      "path": "ui/icons/ico_phosphor_x.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "phosphor",
+      "source_slug": "x",
+      "source_url": "https://phosphoricons.com/?q=x",
+      "license": "MIT",
+      "attribution": "Phosphor Icons / MIT (no attribution required)",
+      "display_name": "X",
+      "semantic_tags": [
+        "ui",
+        "close",
+        "cancel"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 16
+    },
+    {
+      "id": "ico_poison_drop",
+      "path": "ui/icons/ico_poison_drop.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_potion_blue",
+      "path": "ui/icons/ico_potion_blue.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_potion_green",
+      "path": "ui/icons/ico_potion_green.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_potion_red",
+      "path": "ui/icons/ico_potion_red.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_rune",
+      "path": "ui/icons/ico_rune.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_scroll",
+      "path": "ui/icons/ico_scroll.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_shadow_bolt",
+      "path": "ui/icons/ico_shadow_bolt.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_shield",
+      "path": "ui/icons/ico_shield.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_skull",
+      "path": "ui/icons/ico_skull.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_spear",
+      "path": "ui/icons/ico_spear.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_spike_trap",
+      "path": "ui/icons/ico_spike_trap.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "spike-trap",
+      "source_author": "delapouite",
+      "source_url": "https://game-icons.net/1x1/delapouite/spike-trap.html",
+      "license": "CC-BY 3.0",
+      "attribution": "delapouite / game-icons.net / CC-BY 3.0",
+      "display_name": "Spike Trap",
+      "semantic_tags": [
+        "trap",
+        "hazard",
+        "fantasy"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_square_frame",
+      "path": "ui/icons/ico_square_frame.png",
+      "size_px": 256,
+      "backend": "freelib",
+      "source": "game-icons.net",
+      "source_slug": "square-frame",
+      "source_author": "skoll",
+      "source_url": "https://game-icons.net/1x1/skoll/square-frame.html",
+      "license": "CC-BY 4.0",
+      "attribution": "skoll / game-icons.net / CC-BY 4.0",
+      "display_name": "Square Frame",
+      "semantic_tags": [
+        "frame",
+        "ui"
+      ],
+      "rtl_mirror": false,
+      "min_display_px": 32
+    },
+    {
+      "id": "ico_staff",
+      "path": "ui/icons/ico_staff.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_sword",
+      "path": "ui/icons/ico_sword.png",
+      "size_px": 256,
+      "backend": "synth"
+    },
+    {
+      "id": "ico_warhorn",
+      "path": "ui/icons/ico_warhorn.png",
+      "size_px": 256,
+      "backend": "synth"
+    }
+  ]
+}

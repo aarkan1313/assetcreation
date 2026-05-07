@@ -1,0 +1,59 @@
+{
+  "id": "spell_arcane_cast",
+  "category": "sfx",
+  "variants": [
+    "audio/sfx/spell_arcane_cast/spell_arcane_cast_v0.wav",
+    "audio/sfx/spell_arcane_cast/spell_arcane_cast_v1.wav",
+    "audio/sfx/spell_arcane_cast/spell_arcane_cast_v2.wav"
+  ],
+  "preset": "spell_arcane_cast",
+  "target_rms_db": -16.0,
+  "tags": [
+    "spell",
+    "arcane",
+    "cast"
+  ],
+  "notes": "",
+  "backend": "synth_sfx_extended",
+  "processing": [
+    {
+      "variant": 0,
+      "duration_s": 0.7,
+      "rms_dbfs_in": -13.631544544754474,
+      "rms_dbfs_out": -15.999999994148105,
+      "peak_dbfs_out": -6.670396327972412,
+      "trim_ms": 0,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    },
+    {
+      "variant": 1,
+      "duration_s": 0.7,
+      "rms_dbfs_in": -13.629705598057505,
+      "rms_dbfs_out": -16.000000032576278,
+      "peak_dbfs_out": -6.637888431549072,
+      "trim_ms": 0,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    },
+    {
+      "variant": 2,
+      "duration_s": 0.7,
+      "rms_dbfs_in": -13.630885057162223,
+      "rms_dbfs_out": -16.000000000011422,
+      "peak_dbfs_out": -6.344717025756836,
+      "trim_ms": 0,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    }
+  ]
+}

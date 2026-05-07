@@ -1,0 +1,12 @@
+{
+  "duration_s": 4.0,
+  "samplerate": 44100,
+  "rms_dbfs": -22.673349904866917,
+  "peak_dbfs": -15.399695325779817,
+  "clipped_samples": 0,
+  "dc_offset": 3.3866897865664214e-05,
+  "click_count_estimate": 0,
+  "source": "D:\\assets\\audio\\sfx\\amb_drone_lava_v0.wav",
+  "waveform": "D:\\assets\\audio\\sfx\\amb_drone_lava_v0_qa\\waveform.png",
+  "spectrogram": "D:\\assets\\audio\\sfx\\amb_drone_lava_v0_qa\\spectrogram.png"
+}

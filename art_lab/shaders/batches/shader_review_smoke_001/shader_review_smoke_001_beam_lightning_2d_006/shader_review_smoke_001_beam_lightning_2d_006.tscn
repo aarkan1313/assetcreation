@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://shader_review_smoke_001_beam_lightning_2d_006_preview"]
+
+[ext_resource type="Shader" path="res://shader_review_smoke_001_beam_lightning_2d_006.gdshader" id="1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1"]
+shader = ExtResource("1")
+shader_parameter/color_core = Color(0.9595721244782658, 0.9021330791825369, 0.998962533582341, 1.0)
+shader_parameter/color_edge = Color(0.400925145205398, 0.6877764655466665, 0.9444546110957218, 1.0)
+shader_parameter/color_glow = Color(0.10559712027559204, 0.3088769941594124, 0.8754254449171158, 1.0)
+shader_parameter/thickness = 0.0497
+shader_parameter/core_thickness = 0.4184
+shader_parameter/jaggedness = 0.4104
+shader_parameter/frequency = 12.7938
+shader_parameter/speed = 3.0427
+shader_parameter/arc = 0.1947
+shader_parameter/fork_strength = 0.7378
+shader_parameter/opacity = 0.7521
+
+[sub_resource type="GDScript" id="GDScript_1"]
+script/source = "extends Node
+func _ready():
+	get_window().size = Vector2i(384, 192)
+	get_window().borderless = true
+	await get_tree().create_timer(0.5).timeout
+	var img = get_viewport().get_texture().get_image()
+	img.save_png(\"user://preview.png\")
+	get_tree().quit()
+"
+
+[node name="Root" type="Node"]
+script = SubResource("GDScript_1")
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.0150, 0.0150, 0.0350, 1.0000)
+
+[node name="Quad" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+material = SubResource("ShaderMaterial_1")

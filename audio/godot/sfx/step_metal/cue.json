@@ -1,0 +1,72 @@
+{
+  "id": "step_metal",
+  "category": "sfx",
+  "variants": [
+    "audio/sfx/step_metal/step_metal_v0.wav",
+    "audio/sfx/step_metal/step_metal_v1.wav",
+    "audio/sfx/step_metal/step_metal_v2.wav",
+    "audio/sfx/step_metal/step_metal_v3.wav"
+  ],
+  "preset": "step_metal",
+  "target_rms_db": -18.0,
+  "tags": [
+    "step",
+    "metal"
+  ],
+  "notes": "",
+  "backend": "synth_sfx_extended",
+  "processing": [
+    {
+      "variant": 0,
+      "duration_s": 0.06798185941043083,
+      "rms_dbfs_in": -23.521705627441406,
+      "rms_dbfs_out": -18.0,
+      "peak_dbfs_out": -2.3154757022857666,
+      "trim_ms": 112,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 9
+      }
+    },
+    {
+      "variant": 1,
+      "duration_s": 0.06625850340136054,
+      "rms_dbfs_in": -23.66948127746582,
+      "rms_dbfs_out": -17.999998092651367,
+      "peak_dbfs_out": -2.39689040184021,
+      "trim_ms": 113,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 6
+      }
+    },
+    {
+      "variant": 2,
+      "duration_s": 0.0670294784580499,
+      "rms_dbfs_in": -23.3321533203125,
+      "rms_dbfs_out": -18.0,
+      "peak_dbfs_out": -1.9356681108474731,
+      "trim_ms": 112,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 9
+      }
+    },
+    {
+      "variant": 3,
+      "duration_s": 0.06725623582766439,
+      "rms_dbfs_in": -23.5819091796875,
+      "rms_dbfs_out": -18.000001907348633,
+      "peak_dbfs_out": -1.675190806388855,
+      "trim_ms": 112,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 10
+      }
+    }
+  ]
+}

@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shader Batch Review</title>
+  <style>
+    :root { color-scheme: dark; font-family: Segoe UI, system-ui, sans-serif; background:#0b0d12; color:#e6edf7; }
+    body { margin:0; padding:24px; }
+    header { display:flex; align-items:end; justify-content:space-between; gap:20px; margin-bottom:18px; }
+    h1 { margin:0; font-size:24px; }
+    .sub { color:#94a3b8; font-size:13px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(330px, 1fr)); gap:14px; }
+    .card { background:#111722; border:1px solid #263246; border-radius:8px; overflow:hidden; }
+    .card.keep { border-color:#63e6be; }
+    .card.review { border-color:#ffd166; }
+    .card.maybe { border-color:#748ffc; }
+    .card.reject { opacity:.72; }
+    .thumb { background:#05070a; min-height:180px; display:flex; align-items:center; justify-content:center; }
+    img { max-width:100%; display:block; image-rendering:auto; }
+    .body { padding:12px; }
+    h2 { margin:0 0 8px; font-size:16px; }
+    .meta { display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
+    .meta span, .meta strong { background:#1c2635; border-radius:999px; padding:3px 8px; font-size:12px; }
+    .meta strong { color:#111722; background:#e6edf7; }
+    .metrics { color:#b6c2d2; font-size:12px; margin-top:8px; line-height:1.5; }
+    .gates { color:#ffd166; font-size:12px; margin-top:8px; }
+    .gates strong { text-transform:uppercase; letter-spacing:.08em; font-size:10px; }
+    .gates ul { margin-top:4px; }
+    ul { color:#cbd5e1; font-size:12px; padding-left:18px; }
+    details { margin-top:8px; }
+    summary { cursor:pointer; color:#9ab7ff; }
+    pre { overflow:auto; white-space:pre-wrap; font-size:11px; color:#d8dee9; background:#080b10; padding:8px; border-radius:6px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Shader Batch Review</h1>
+      <div class="sub">Sorted by non-OCR review score. Keep/review candidates are the ones to inspect visually.</div>
+    </div>
+    <div class="sub">shader_review_upgrade_smoke_001 | 8 candidates</div>
+  </header>
+  <section class="grid">
+    
+        <article class="card review">
+          <div class="thumb"><img src="shader_review_upgrade_smoke_001_shield_ripple_2d_004/flipbook.png" loading="lazy" alt="shader_review_upgrade_smoke_001_shield_ripple_2d_004"></div>
+          <div class="body">
+            <h2>shader_review_upgrade_smoke_001_shield_ripple_2d_004</h2>
+            <div class="meta">
+              <span>shield_ripple_2d</span>
+              <span>shield</span>
+              <strong>87.76</strong>
+              <span>review</span>
+            </div>
+            <div class="metrics">
+              cov 0.759 | motion 0.006 | contrast 0.050 |
+              color 0.150 | edge 0.035 | center 0.006
+            </div>
+            
+            <ul><li>coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_shield&quot;: [
+    0.1839030990811862,
+    0.06521173464158517,
+    0.3326177325896124
+  ],
+  &quot;color_hit&quot;: [
+    0.6289702615929136,
+    0.3921451469645996,
+    0.9617049316146979
+  ],
+  &quot;hex_scale&quot;: 15.2306,
+  &quot;hex_strength&quot;: 0.8281,
+  &quot;fresnel_power&quot;: 3.2861,
+  &quot;ripple_speed&quot;: 0.3772,
+  &quot;ripple_strength&quot;: 0.395,
+  &quot;ripple_freq&quot;: 16.0145,
+  &quot;hit_position&quot;: [
+    0.43,
+    0.4655
+  ],
+  &quot;hit_age&quot;: 1.3289,
+  &quot;opacity&quot;: 0.8853
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card review">
+          <div class="thumb"><img src="shader_review_upgrade_smoke_001_dissolve_fire_2d_003/flipbook.png" loading="lazy" alt="shader_review_upgrade_smoke_001_dissolve_fire_2d_003"></div>
+          <div class="body">
+            <h2>shader_review_upgrade_smoke_001_dissolve_fire_2d_003</h2>
+            <div class="meta">
+              <span>dissolve_fire_2d</span>
+              <span>dissolve</span>
+              <strong>87.70</strong>
+              <span>review</span>
+            </div>
+            <div class="metrics">
+              cov 0.595 | motion 0.109 | contrast 0.165 |
+              color 0.040 | edge 0.096 | center 0.064
+            </div>
+            
+            <ul><li>color weak: switch palette or push core/edge/glow colors farther apart</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_burn&quot;: [
+    0.18562615312400405,
+    0.011964621975771514,
+    0.4190516283548802
+  ],
+  &quot;color_ash&quot;: [
+    0.0,
+    0.0,
+    0.0
+  ],
+  &quot;color_ember&quot;: [
+    0.6694517309117607,
+    0.3059284644606398,
+    0.9534974507114161
+  ],
+  &quot;threshold&quot;: 0.5363,
+  &quot;edge_width&quot;: 0.0931,
+  &quot;noise_scale&quot;: 27.2715,
+  &quot;scroll_speed&quot;: 3.3028,
+  &quot;warp_strength&quot;: 0.6604,
+  &quot;opacity&quot;: 0.9275
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card review">
+          <div class="thumb"><img src="shader_review_upgrade_smoke_001_beam_lightning_2d_007/flipbook.png" loading="lazy" alt="shader_review_upgrade_smoke_001_beam_lightning_2d_007"></div>
+          <div class="body">
+            <h2>shader_review_upgrade_smoke_001_beam_lightning_2d_007</h2>
+            <div class="meta">
+              <span>beam_lightning_2d</span>
+              <span>beam</span>
+              <strong>81.49</strong>
+              <span>review</span>
+            </div>
+            <div class="metrics">
+              cov 0.361 | motion 0.027 | contrast 0.057 |
+              color 0.242 | edge 0.006 | center 0.091
+            </div>
+            <div class="gates"><strong>gates</strong><ul><li>role coverage far above target</li></ul></div>
+            <ul><li>coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold</li><li>contrast low: widen color separation, add hotter core/edge, or reduce background-like colors</li><li>too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_core&quot;: [
+    0.24704945744781587,
+    0.0,
+    0.4200391617074654
+  ],
+  &quot;color_edge&quot;: [
+    0.01518998957605144,
+    0.010576047272516625,
+    0.0681253110731522
+  ],
+  &quot;color_glow&quot;: [
+    0.7431838717518019,
+    0.4054347710911567,
+    0.9241763655693019
+  ],
+  &quot;thickness&quot;: 0.055,
+  &quot;core_thickness&quot;: 0.2173,
+  &quot;jaggedness&quot;: 0.323,
+  &quot;frequency&quot;: 22.023,
+  &quot;speed&quot;: 5.4642,
+  &quot;arc&quot;: 0.1432,
+  &quot;fork_strength&quot;: 0.2426,
+  &quot;opacity&quot;: 0.9546
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card review">
+          <div class="thumb"><img src="shader_review_upgrade_smoke_001_portal_swirl_2d_005/flipbook.png" loading="lazy" alt="shader_review_upgrade_smoke_001_portal_swirl_2d_005"></div>
+          <div class="body">
+            <h2>shader_review_upgrade_smoke_001_portal_swirl_2d_005</h2>
+            <div class="meta">
+              <span>portal_swirl_2d</span>
+              <span>portal</span>
+              <strong>80.22</strong>
+              <span>review</span>
+            </div>
+            <div class="metrics">
+              cov 0.110 | motion 0.002 | contrast 0.018 |
+              color 0.139 | edge 0.004 | center 0.000
+            </div>
+            <div class="gates"><strong>gates</strong><ul><li>weak contrast</li><li>motion below role target</li></ul></div>
+            <ul><li>contrast low: widen color separation, add hotter core/edge, or reduce background-like colors</li><li>too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width</li><li>motion low: increase speed/pulse/spin/scroll parameters</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_outer&quot;: [
+    0.04169518622969584,
+    0.0,
+    0.008105720042006888
+  ],
+  &quot;color_mid&quot;: [
+    0.04190264311662263,
+    0.0793464164200852,
+    0.10334026744198369
+  ],
+  &quot;color_inner&quot;: [
+    0.17167288268197448,
+    0.016525573208089867,
+    0.4642694135194714
+  ],
+  &quot;color_void&quot;: [
+    0.0,
+    0.0,
+    0.0
+  ],
+  &quot;radius&quot;: 0.3316,
+  &quot;swirl&quot;: 3.134,
+  &quot;spin_speed&quot;: -1.3104,
+  &quot;depth_pulse&quot;: 0.3856,
+  &quot;arms&quot;: 8,
+  &quot;arm_strength&quot;: 1.1853,
+  &quot;opacity&quot;: 0.7894
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card review">
+          <div class="thumb"><img src="shader_review_upgrade_smoke_001_ring_field_2d_006/flipbook.png" loading="lazy" alt="shader_review_upgrade_smoke_001_ring_field_2d_006"></div>
+          <div class="body">
+            <h2>shader_review_upgrade_smoke_001_ring_field_2d_006</h2>
+            <div class="meta">
+              <span>ring_field_2d</span>
+              <span>aura</span>
+              <strong>77.66</strong>
+              <span>review</span>
+            </div>
+            <div class="metrics">
+              cov 0.950 | motion 0.080 | contrast 0.072 |
+              color 0.165 | edge 0.010 | center 0.007
+            </div>
+            <div class="gates"><strong>gates</strong><ul><li>role coverage far above target</li></ul></div>
+            <ul><li>coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold</li><li>too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_inner&quot;: [
+    0.20653538967217405,
+    0.06891830443346328,
+    0.43185306113490435
+  ],
+  &quot;color_outer&quot;: [
+    0.011271076894864434,
+    0.023538219319196738,
+    0.0
+  ],
+  &quot;color_glow&quot;: [
+    0.7776370859720074,
+    0.36933627497968186,
+    1.0
+  ],
+  &quot;radius&quot;: 0.2589,
+  &quot;edge_width&quot;: 0.0542,
+  &quot;noise_scale&quot;: 24.9175,
+  &quot;pulse_speed&quot;: 2.2685,
+  &quot;distortion&quot;: 0.1047,
+  &quot;rune_count&quot;: 10,
+  &quot;rune_strength&quot;: 0.4816,
+  &quot;opacity&quot;: 0.9619
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card maybe">
+          <div class="thumb"><img src="shader_review_upgrade_smoke_001_dissolve_fire_2d_008/flipbook.png" loading="lazy" alt="shader_review_upgrade_smoke_001_dissolve_fire_2d_008"></div>
+          <div class="body">
+            <h2>shader_review_upgrade_smoke_001_dissolve_fire_2d_008</h2>
+            <div class="meta">
+              <span>dissolve_fire_2d</span>
+              <span>dissolve</span>
+              <strong>72.39</strong>
+              <span>maybe</span>
+            </div>
+            <div class="metrics">
+              cov 0.098 | motion 0.023 | contrast 0.038 |
+              color 0.032 | edge 0.006 | center 0.239
+            </div>
+            <div class="gates"><strong>gates</strong><ul><li>weak contrast</li></ul></div>
+            <ul><li>contrast low: widen color separation, add hotter core/edge, or reduce background-like colors</li><li>color weak: switch palette or push core/edge/glow colors farther apart</li><li>too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_burn&quot;: [
+    0.14181972317046576,
+    0.0,
+    0.33449603170708864
+  ],
+  &quot;color_ash&quot;: [
+    0.005735613973115672,
+    0.0,
+    0.046551731609990585
+  ],
+  &quot;color_ember&quot;: [
+    0.7341989699239437,
+    0.39875337104851577,
+    1.0
+  ],
+  &quot;threshold&quot;: 0.272,
+  &quot;edge_width&quot;: 0.0753,
+  &quot;noise_scale&quot;: 24.7413,
+  &quot;scroll_speed&quot;: 0.278,
+  &quot;warp_strength&quot;: 0.6231,
+  &quot;opacity&quot;: 0.7878
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card maybe">
+          <div class="thumb"><img src="shader_review_upgrade_smoke_001_beam_lightning_2d_002/flipbook.png" loading="lazy" alt="shader_review_upgrade_smoke_001_beam_lightning_2d_002"></div>
+          <div class="body">
+            <h2>shader_review_upgrade_smoke_001_beam_lightning_2d_002</h2>
+            <div class="meta">
+              <span>beam_lightning_2d</span>
+              <span>beam</span>
+              <strong>71.40</strong>
+              <span>maybe</span>
+            </div>
+            <div class="metrics">
+              cov 0.492 | motion 0.010 | contrast 0.050 |
+              color 0.256 | edge 0.004 | center 0.056
+            </div>
+            <div class="gates"><strong>gates</strong><ul><li>role coverage far above target</li></ul></div>
+            <ul><li>coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold</li><li>contrast low: widen color separation, add hotter core/edge, or reduce background-like colors</li><li>too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_core&quot;: [
+    0.1264907629877551,
+    0.0011594236386129886,
+    0.47310878900362446
+  ],
+  &quot;color_edge&quot;: [
+    0.02207344258518137,
+    0.0,
+    0.04432327012766191
+  ],
+  &quot;color_glow&quot;: [
+    0.6557978213459089,
+    0.3405836024662612,
+    0.9341731518530495
+  ],
+  &quot;thickness&quot;: 0.0751,
+  &quot;core_thickness&quot;: 0.3513,
+  &quot;jaggedness&quot;: 0.2245,
+  &quot;frequency&quot;: 11.363,
+  &quot;speed&quot;: 0.9355,
+  &quot;arc&quot;: -0.0747,
+  &quot;fork_strength&quot;: 0.1868,
+  &quot;opacity&quot;: 0.9513
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card reject">
+          <div class="thumb"><img src="shader_review_upgrade_smoke_001_ring_field_2d_001/flipbook.png" loading="lazy" alt="shader_review_upgrade_smoke_001_ring_field_2d_001"></div>
+          <div class="body">
+            <h2>shader_review_upgrade_smoke_001_ring_field_2d_001</h2>
+            <div class="meta">
+              <span>ring_field_2d</span>
+              <span>aura</span>
+              <strong>55.36</strong>
+              <span>reject</span>
+            </div>
+            <div class="metrics">
+              cov 0.995 | motion 0.091 | contrast 0.089 |
+              color 0.173 | edge 0.016 | center 0.005
+            </div>
+            <div class="gates"><strong>gates</strong><ul><li>nearly full-screen alpha coverage</li></ul></div>
+            <ul><li>coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_inner&quot;: [
+    0.13445437668309596,
+    0.11210137033015105,
+    0.3439953684793577
+  ],
+  &quot;color_outer&quot;: [
+    0.05829925930820473,
+    0.05459878334958983,
+    0.0895419122979275
+  ],
+  &quot;color_glow&quot;: [
+    0.6683100153070798,
+    0.33625982989785913,
+    1.0
+  ],
+  &quot;radius&quot;: 0.4794,
+  &quot;edge_width&quot;: 0.0703,
+  &quot;noise_scale&quot;: 21.758,
+  &quot;pulse_speed&quot;: 2.1335,
+  &quot;distortion&quot;: 0.2326,
+  &quot;rune_count&quot;: 18,
+  &quot;rune_strength&quot;: 1.2388,
+  &quot;opacity&quot;: 0.9364
+}</pre></details>
+          </div>
+        </article>
+        
+  </section>
+</body>
+</html>

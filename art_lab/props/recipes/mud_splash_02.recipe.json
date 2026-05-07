@@ -1,0 +1,38 @@
+{
+  "schema": "prop_recipe.v1",
+  "family": "mud_splash_02",
+  "kit": "mossy_highland_ruins",
+  "generator": "texture_decal_v1",
+  "count": 6,
+  "source_lanes": ["texture_pipeline"],
+  "style": {
+    "prompt": "wet mud splash and soil stain decals for mossy highland paths",
+    "silhouette": "irregular splatter, soft muddy edge, low contrast",
+    "avoid": ["cartoon paint splat", "perfect circle", "opaque black patch"]
+  },
+  "budgets": {
+    "texture_px": 512,
+    "alpha_edge_px": 18
+  },
+  "scale_m": {
+    "x": [0.35, 1.20],
+    "y": [0.01, 0.02],
+    "z": [0.35, 1.20]
+  },
+  "materials": [
+    {"slot": "mud_decal", "color": "#3b3428", "roughness": 0.98}
+  ],
+  "placement": {
+    "render_class": "decal",
+    "collision": "none",
+    "origin": "center",
+    "footprint_radius_m": [0.20, 0.70],
+    "placement_tags": ["decal", "mud", "wet", "path_edge"]
+  },
+  "outputs": {
+    "texture": true,
+    "thumbnail": true,
+    "godot_scene": true
+  }
+}
+

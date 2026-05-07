@@ -1,0 +1,4 @@
+id,school,tier,mana,cooldown_sec,damage,damage_type,damage_per_mana,damage_per_cooldown
+shadow_aura_t1_42,shadow,1,5.0,0.5,14.0,shadow,2.8,28.0
+arcane_self_t2_43,arcane,2,12.0,1.0,27.0,arcane,2.25,27.0
+nature_self_t3_44,nature,3,25.0,2.0,50.0,poison,2.0,25.0

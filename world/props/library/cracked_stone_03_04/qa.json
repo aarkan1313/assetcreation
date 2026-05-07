@@ -1,0 +1,10 @@
+{
+  "schema": "prop_qa.v1",
+  "id": "cracked_stone_03_04",
+  "passed": true,
+  "metrics": {
+    "alpha_coverage": 0.032,
+    "size_px": 512
+  },
+  "warnings": []
+}

@@ -1,0 +1,34 @@
+{
+  "effect_id": "lightning_impact",
+  "backend": "particle_cpu",
+  "n_frames": 12,
+  "fps": 30,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "flipbook": "D:\\assets\\vfx\\catalog\\spells\\lightning_impact\\flipbook.png",
+  "frames_dir": "D:\\assets\\vfx\\catalog\\spells\\lightning_impact\\frames",
+  "extras": {
+    "particles_json": "D:\\assets\\vfx\\catalog\\spells\\lightning_impact\\particles.json",
+    "audio_cues": [
+      {
+        "t": 0.0,
+        "name": "impact"
+      },
+      {
+        "t": 0.18,
+        "name": "shower"
+      },
+      {
+        "t": 0.32,
+        "name": "settle"
+      }
+    ]
+  },
+  "metrics": {
+    "max_alive": 95,
+    "total_energy": 443.3343765735626
+  },
+  "timestamp": "2026-05-06T20:50:52+00:00"
+}

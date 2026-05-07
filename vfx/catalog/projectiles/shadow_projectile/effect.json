@@ -1,0 +1,74 @@
+{
+  "kind": "projectile",
+  "phenomenon": "smoke",
+  "backend": "particle_cpu",
+  "duration_s": 0.6,
+  "fps": 24,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "visual": {
+    "palette": [
+      "#9b4ad0",
+      "#5a2a90",
+      "#2a0a40",
+      "#0a0010"
+    ],
+    "blend": "alpha",
+    "background": "#00000000",
+    "bloom": true
+  },
+  "visual3d": {
+    "billboard_mode": "y_axis",
+    "world_size_m": 1.5
+  },
+  "backend_params": {
+    "emitter": "burst",
+    "count": 110,
+    "seed": 42530,
+    "initial_speed": 21.25,
+    "speed_jitter": 46.75,
+    "direction_deg": 90.0,
+    "spread_deg": 360.0,
+    "gravity": [
+      0.0,
+      -8.0
+    ],
+    "drag": 1.4,
+    "size_px": 8.8,
+    "size_jitter": 3.5,
+    "fade": 1.0,
+    "emission_pos": [
+      128,
+      128
+    ],
+    "_audio_cues": [
+      {
+        "t": 0.0,
+        "name": "spawn"
+      },
+      {
+        "t": 0.35,
+        "name": "tail"
+      }
+    ]
+  },
+  "gameplay": {
+    "shape": "projectile",
+    "damage_tags": [
+      "necrotic"
+    ],
+    "collision": "first_hit"
+  },
+  "element": "shadow",
+  "archetype": "projectile",
+  "tags": [
+    "shadow",
+    "projectile",
+    "necrotic"
+  ],
+  "export_target": "3d_billboard",
+  "id": "shadow_projectile",
+  "notes": "Auto-authored shadow projectile from element-archetype grid."
+}

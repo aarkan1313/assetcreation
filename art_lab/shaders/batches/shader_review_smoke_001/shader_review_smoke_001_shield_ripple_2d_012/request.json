@@ -1,0 +1,76 @@
+{
+  "id": "shader_review_smoke_001_shield_ripple_2d_012",
+  "intent": "high quality arcane, storm, shield, portal, dissolve, projectile spell shaders for Godot",
+  "role": "shield",
+  "template": "shield_ripple_2d",
+  "params": {
+    "color_shield": [
+      0.9165141741505892,
+      1.0,
+      0.9374830451591687
+    ],
+    "color_hit": [
+      0.11065441154266464,
+      0.2858057206256551,
+      0.8024291675351639
+    ],
+    "hex_scale": 24.1697,
+    "hex_strength": 0.2418,
+    "fresnel_power": 4.1807,
+    "ripple_speed": 4.7078,
+    "ripple_strength": 0.2603,
+    "ripple_freq": 25.2165,
+    "hit_position": [
+      0.513,
+      0.3447
+    ],
+    "hit_age": 0.4878,
+    "opacity": 0.931
+  },
+  "preview": {
+    "size": [
+      192,
+      192
+    ],
+    "frames": 6,
+    "duration_s": 1.8,
+    "background": [
+      0.035,
+      0.035,
+      0.055,
+      1.0
+    ]
+  },
+  "created": "2026-05-06T10:12:02.031938+00:00",
+  "review": {
+    "score": 91.71,
+    "grade": "keep",
+    "components": {
+      "coverage": 0.63,
+      "motion": 1.0,
+      "center": 1.0,
+      "color": 1.0,
+      "edge": 1.0,
+      "contrast": 1.0
+    },
+    "metrics": {
+      "coverage": 0.85345,
+      "mean_alpha": 0.57696,
+      "luma_mean": 0.31475,
+      "contrast": 0.12595,
+      "colorfulness": 0.30836,
+      "edge_energy": 0.04951,
+      "center_distance": 0.04601,
+      "clip_high": 0.04061,
+      "clip_low": 0.0,
+      "aspect": 1.0,
+      "motion": 0.0371,
+      "flicker": 0.00052,
+      "frames": 6.0
+    },
+    "hints": [
+      "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold"
+    ],
+    "render_source": "cpu_proxy"
+  }
+}

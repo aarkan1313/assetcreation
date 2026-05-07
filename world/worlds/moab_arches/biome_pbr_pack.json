@@ -1,0 +1,40 @@
+{
+  "world_id": "moab_arches",
+  "size": 1024,
+  "library_root": "D:/assets/world/textures/library",
+  "splat": "biome_splat_rgba.png",
+  "channel_order": [
+    "R",
+    "G",
+    "B",
+    "A"
+  ],
+  "biomes": {
+    "mana_crystal": {
+      "set_id": "biome_mana_crystal",
+      "splat_channel": "A",
+      "tiling_meters": 8.0,
+      "maps": {
+        "albedo": "D:/assets/world/textures/library/biome_mana_crystal/biome_mana_crystal_albedo.png",
+        "normal": "D:/assets/world/textures/library/biome_mana_crystal/biome_mana_crystal_normal.png",
+        "roughness": "D:/assets/world/textures/library/biome_mana_crystal/biome_mana_crystal_roughness.png",
+        "height": "D:/assets/world/textures/library/biome_mana_crystal/biome_mana_crystal_height.png",
+        "ao": "D:/assets/world/textures/library/biome_mana_crystal/biome_mana_crystal_ao.png",
+        "metallic": "D:/assets/world/textures/library/biome_mana_crystal/biome_mana_crystal_metallic.png"
+      }
+    },
+    "grassland": {
+      "set_id": "biome_grassland",
+      "splat_channel": "B",
+      "tiling_meters": 6.0,
+      "maps": {
+        "albedo": "D:/assets/world/textures/library/biome_grassland/biome_grassland_albedo.png",
+        "normal": "D:/assets/world/textures/library/biome_grassland/biome_grassland_normal.png",
+        "roughness": "D:/assets/world/textures/library/biome_grassland/biome_grassland_roughness.png",
+        "height": "D:/assets/world/textures/library/biome_grassland/biome_grassland_height.png",
+        "ao": "D:/assets/world/textures/library/biome_grassland/biome_grassland_ao.png",
+        "metallic": "D:/assets/world/textures/library/biome_grassland/biome_grassland_metallic.png"
+      }
+    }
+  }
+}

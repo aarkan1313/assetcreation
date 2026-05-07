@@ -1,0 +1,35 @@
+{
+  "1": {
+    "class_type": "WanVideoTextEncode",
+    "inputs": {
+      "prompt": "slow cinematic pan across a glowing fantasy portal, game trailer style",
+      "negative_prompt": "text, watermark, logo, harsh flicker, broken anatomy"
+    }
+  },
+  "2": {
+    "class_type": "WanVideoSampler",
+    "inputs": {
+      "conditioning": [
+        "1",
+        0
+      ],
+      "model": "Wan-AI/Wan2.5-T2V",
+      "seed": 42,
+      "steps": 24,
+      "width": 1280,
+      "height": 720,
+      "fps": 24,
+      "frames": 120
+    }
+  },
+  "3": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "filename_prefix": "phase9_wan_t2v",
+      "video": [
+        "2",
+        0
+      ]
+    }
+  }
+}

@@ -1,0 +1,372 @@
+{
+  "$defs": {
+    "AbilityCost": {
+      "additionalProperties": false,
+      "properties": {
+        "mana": {
+          "default": 0,
+          "maximum": 9999,
+          "minimum": 0,
+          "title": "Mana",
+          "type": "integer"
+        },
+        "stamina": {
+          "default": 0,
+          "maximum": 9999,
+          "minimum": 0,
+          "title": "Stamina",
+          "type": "integer"
+        },
+        "cooldown_sec": {
+          "default": 0.0,
+          "maximum": 600.0,
+          "minimum": 0.0,
+          "title": "Cooldown Sec",
+          "type": "number"
+        }
+      },
+      "title": "AbilityCost",
+      "type": "object"
+    },
+    "AbilityEffect": {
+      "additionalProperties": false,
+      "properties": {
+        "damage": {
+          "default": 0,
+          "maximum": 9999,
+          "minimum": 0,
+          "title": "Damage",
+          "type": "integer"
+        },
+        "damage_type": {
+          "anyOf": [
+            {
+              "enum": [
+                "physical",
+                "fire",
+                "cold",
+                "lightning",
+                "poison",
+                "arcane",
+                "holy",
+                "shadow"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Damage Type"
+        },
+        "healing": {
+          "default": 0,
+          "maximum": 9999,
+          "minimum": 0,
+          "title": "Healing",
+          "type": "integer"
+        },
+        "radius_m": {
+          "default": 0.0,
+          "maximum": 100.0,
+          "minimum": 0.0,
+          "title": "Radius M",
+          "type": "number"
+        },
+        "duration_sec": {
+          "default": 0.0,
+          "maximum": 600.0,
+          "minimum": 0.0,
+          "title": "Duration Sec",
+          "type": "number"
+        },
+        "status_tags": {
+          "items": {
+            "pattern": "^[a-z][a-z0-9_]{0,31}$",
+            "type": "string"
+          },
+          "maxItems": 4,
+          "title": "Status Tags",
+          "type": "array"
+        }
+      },
+      "title": "AbilityEffect",
+      "type": "object"
+    },
+    "Provenance": {
+      "additionalProperties": false,
+      "description": "Where did this record come from? Generation audit trail.",
+      "properties": {
+        "source": {
+          "default": "synthetic",
+          "enum": [
+            "llm",
+            "human",
+            "seed",
+            "import",
+            "synthetic"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "model": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Model"
+        },
+        "seed": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Seed"
+        },
+        "prompt_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Prompt Id"
+        },
+        "timestamp": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Timestamp"
+        },
+        "target_file_sha256": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Target File Sha256"
+        },
+        "constraint_technique": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Constraint Technique"
+        },
+        "constraint_pass": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Constraint Pass"
+        },
+        "sim_digest": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sim Digest"
+        },
+        "parent_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Parent Id"
+        }
+      },
+      "title": "Provenance",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "pattern": "^[a-z][a-z0-9_]{1,39}$",
+      "title": "Id",
+      "type": "string"
+    },
+    "display_name": {
+      "maxLength": 64,
+      "minLength": 2,
+      "title": "Display Name",
+      "type": "string"
+    },
+    "schema_version": {
+      "default": "1.0.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "tags": {
+      "items": {
+        "pattern": "^[a-z][a-z0-9_]{0,31}$",
+        "type": "string"
+      },
+      "maxItems": 12,
+      "title": "Tags",
+      "type": "array"
+    },
+    "localization_key": {
+      "pattern": "^[A-Z][A-Z0-9_]{1,63}$",
+      "title": "Localization Key",
+      "type": "string"
+    },
+    "provenance": {
+      "$ref": "#/$defs/Provenance"
+    },
+    "notes": {
+      "default": "",
+      "maxLength": 512,
+      "title": "Notes",
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "active",
+        "passive",
+        "channel",
+        "toggle"
+      ],
+      "title": "Kind",
+      "type": "string"
+    },
+    "school": {
+      "enum": [
+        "physical",
+        "elemental",
+        "arcane",
+        "nature",
+        "shadow",
+        "holy"
+      ],
+      "title": "School",
+      "type": "string"
+    },
+    "tier": {
+      "default": 1,
+      "maximum": 10,
+      "minimum": 1,
+      "title": "Tier",
+      "type": "integer"
+    },
+    "shape": {
+      "enum": [
+        "projectile",
+        "self",
+        "aura",
+        "cone",
+        "line",
+        "point",
+        "touch"
+      ],
+      "title": "Shape",
+      "type": "string"
+    },
+    "cost": {
+      "$ref": "#/$defs/AbilityCost"
+    },
+    "effect": {
+      "$ref": "#/$defs/AbilityEffect"
+    },
+    "icon_id": {
+      "anyOf": [
+        {
+          "pattern": "^[a-z][a-z0-9_]{1,39}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Icon Id"
+    },
+    "vfx_id": {
+      "anyOf": [
+        {
+          "pattern": "^[a-z][a-z0-9_]{1,39}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Vfx Id"
+    },
+    "sfx_id": {
+      "anyOf": [
+        {
+          "pattern": "^[a-z][a-z0-9_]{1,39}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Sfx Id"
+    },
+    "description": {
+      "maxLength": 400,
+      "minLength": 8,
+      "title": "Description",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "display_name",
+    "localization_key",
+    "kind",
+    "school",
+    "shape",
+    "description"
+  ],
+  "title": "Ability",
+  "type": "object"
+}

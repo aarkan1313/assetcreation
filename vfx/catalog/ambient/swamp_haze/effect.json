@@ -1,0 +1,63 @@
+{
+  "id": "swamp_haze",
+  "kind": "ambient",
+  "phenomenon": "smoke",
+  "backend": "volumetric_fog",
+  "duration_s": 1.0,
+  "fps": 8,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "visual": {
+    "palette": [
+      "#9bb380",
+      "#1f2a18"
+    ],
+    "blend": "alpha",
+    "background": "#00000000",
+    "bloom": false
+  },
+  "visual3d": {
+    "billboard_mode": "off",
+    "world_size_m": 28.0
+  },
+  "backend_params": {
+    "volume_resolution": [
+      64,
+      64,
+      32
+    ],
+    "noise_type": "worley",
+    "noise_scale": 5.5,
+    "noise_octaves": 3,
+    "density_curve": "exp_falloff",
+    "density_max": 0.5,
+    "density_scale": 1.0,
+    "color_top": "#9bb380",
+    "color_bottom": "#1f2a18",
+    "emission_strength": 0.0,
+    "extents_m": [
+      28.0,
+      5.0,
+      28.0
+    ],
+    "fog_shape": "box",
+    "biome_id": "swamp",
+    "seed": 44869
+  },
+  "gameplay": {
+    "shape": "self",
+    "damage_tags": [],
+    "collision": "none"
+  },
+  "element": "neutral",
+  "archetype": "ambient",
+  "tags": [
+    "biome",
+    "swamp",
+    "fog"
+  ],
+  "export_target": "fog_volume",
+  "notes": "Per-biome volumetric haze for swamp. Place a FogVolume node in scenes that contain this biome zone."
+}

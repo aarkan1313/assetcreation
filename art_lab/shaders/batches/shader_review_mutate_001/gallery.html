@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shader Batch Review</title>
+  <style>
+    :root { color-scheme: dark; font-family: Segoe UI, system-ui, sans-serif; background:#0b0d12; color:#e6edf7; }
+    body { margin:0; padding:24px; }
+    header { display:flex; align-items:end; justify-content:space-between; gap:20px; margin-bottom:18px; }
+    h1 { margin:0; font-size:24px; }
+    .sub { color:#94a3b8; font-size:13px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(330px, 1fr)); gap:14px; }
+    .card { background:#111722; border:1px solid #263246; border-radius:8px; overflow:hidden; }
+    .card.keep { border-color:#63e6be; }
+    .card.review { border-color:#ffd166; }
+    .card.maybe { border-color:#748ffc; }
+    .card.reject { opacity:.72; }
+    .thumb { background:#05070a; min-height:180px; display:flex; align-items:center; justify-content:center; }
+    img { max-width:100%; display:block; image-rendering:auto; }
+    .body { padding:12px; }
+    h2 { margin:0 0 8px; font-size:16px; }
+    .meta { display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
+    .meta span, .meta strong { background:#1c2635; border-radius:999px; padding:3px 8px; font-size:12px; }
+    .meta strong { color:#111722; background:#e6edf7; }
+    .metrics { color:#b6c2d2; font-size:12px; margin-top:8px; line-height:1.5; }
+    ul { color:#cbd5e1; font-size:12px; padding-left:18px; }
+    details { margin-top:8px; }
+    summary { cursor:pointer; color:#9ab7ff; }
+    pre { overflow:auto; white-space:pre-wrap; font-size:11px; color:#d8dee9; background:#080b10; padding:8px; border-radius:6px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Shader Batch Review</h1>
+      <div class="sub">Sorted by non-OCR review score. Keep/review candidates are the ones to inspect visually.</div>
+    </div>
+    <div class="sub">shader_review_mutate_001 | 6 candidates</div>
+  </header>
+  <section class="grid">
+    
+        <article class="card keep">
+          <div class="thumb"><img src="shader_review_mutate_001_portal_swirl_2d_001/flipbook.png" loading="lazy" alt="shader_review_mutate_001_portal_swirl_2d_001"></div>
+          <div class="body">
+            <h2>shader_review_mutate_001_portal_swirl_2d_001</h2>
+            <div class="meta">
+              <span>portal_swirl_2d</span>
+              <span>portal</span>
+              <strong>100.00</strong>
+              <span>keep</span>
+            </div>
+            <div class="metrics">
+              cov 0.162 | motion 0.018 | contrast 0.156 |
+              color 0.254 | edge 0.019 | center 0.000
+            </div>
+            <ul><li>good candidate: mutate locally around these params with smaller jitter</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_outer&quot;: [
+    0.3897349613267358,
+    0.6451786717412092,
+    0.9978769975980344
+  ],
+  &quot;color_mid&quot;: [
+    0.3648028078533117,
+    0.5961917059557591,
+    0.9627045024588344
+  ],
+  &quot;color_inner&quot;: [
+    0.7930894985902556,
+    0.8580183737493984,
+    0.9728098745386025
+  ],
+  &quot;color_void&quot;: [
+    0.07358068012033156,
+    0.03876783850190203,
+    0.01805432590010128
+  ],
+  &quot;radius&quot;: 0.4101,
+  &quot;swirl&quot;: 8.8423,
+  &quot;spin_speed&quot;: -1.539,
+  &quot;depth_pulse&quot;: 0.0,
+  &quot;arms&quot;: 10,
+  &quot;arm_strength&quot;: 1.0775,
+  &quot;opacity&quot;: 0.9766
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card keep">
+          <div class="thumb"><img src="shader_review_mutate_001_portal_swirl_2d_005/flipbook.png" loading="lazy" alt="shader_review_mutate_001_portal_swirl_2d_005"></div>
+          <div class="body">
+            <h2>shader_review_mutate_001_portal_swirl_2d_005</h2>
+            <div class="meta">
+              <span>portal_swirl_2d</span>
+              <span>portal</span>
+              <strong>100.00</strong>
+              <span>keep</span>
+            </div>
+            <div class="metrics">
+              cov 0.173 | motion 0.017 | contrast 0.167 |
+              color 0.243 | edge 0.022 | center 0.000
+            </div>
+            <ul><li>good candidate: mutate locally around these params with smaller jitter</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_outer&quot;: [
+    0.37150787574026733,
+    0.6437315719754391,
+    0.9833196661285066
+  ],
+  &quot;color_mid&quot;: [
+    0.41876858887827134,
+    0.6558994131019837,
+    0.9652140242913843
+  ],
+  &quot;color_inner&quot;: [
+    0.8221158590235474,
+    0.9347853142064804,
+    1.0
+  ],
+  &quot;color_void&quot;: [
+    0.11182363803729524,
+    0.019884876117879736,
+    0.02556792079929375
+  ],
+  &quot;radius&quot;: 0.4258,
+  &quot;swirl&quot;: 8.1211,
+  &quot;spin_speed&quot;: -0.6693,
+  &quot;depth_pulse&quot;: 0.0357,
+  &quot;arms&quot;: 6.1471,
+  &quot;arm_strength&quot;: 1.0539,
+  &quot;opacity&quot;: 1.0
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card keep">
+          <div class="thumb"><img src="shader_review_mutate_001_portal_swirl_2d_006/flipbook.png" loading="lazy" alt="shader_review_mutate_001_portal_swirl_2d_006"></div>
+          <div class="body">
+            <h2>shader_review_mutate_001_portal_swirl_2d_006</h2>
+            <div class="meta">
+              <span>portal_swirl_2d</span>
+              <span>portal</span>
+              <strong>99.99</strong>
+              <span>keep</span>
+            </div>
+            <div class="metrics">
+              cov 0.168 | motion 0.010 | contrast 0.158 |
+              color 0.258 | edge 0.020 | center 0.000
+            </div>
+            <ul><li>motion low: increase speed/pulse/spin/scroll parameters</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_outer&quot;: [
+    0.39300177915111456,
+    0.6273923280921961,
+    0.9400351649713119
+  ],
+  &quot;color_mid&quot;: [
+    0.36129119452900116,
+    0.5888460718034325,
+    1.0
+  ],
+  &quot;color_inner&quot;: [
+    0.8152098536250151,
+    0.8846608283638381,
+    0.9955228288670689
+  ],
+  &quot;color_void&quot;: [
+    0.054598839772885925,
+    0.006031220902793781,
+    0.0
+  ],
+  &quot;radius&quot;: 0.4192,
+  &quot;swirl&quot;: 7.9727,
+  &quot;spin_speed&quot;: -1.4706,
+  &quot;depth_pulse&quot;: 0.0108,
+  &quot;arms&quot;: 6,
+  &quot;arm_strength&quot;: 1.1135,
+  &quot;opacity&quot;: 0.9702
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card keep">
+          <div class="thumb"><img src="shader_review_mutate_001_portal_swirl_2d_004/flipbook.png" loading="lazy" alt="shader_review_mutate_001_portal_swirl_2d_004"></div>
+          <div class="body">
+            <h2>shader_review_mutate_001_portal_swirl_2d_004</h2>
+            <div class="meta">
+              <span>portal_swirl_2d</span>
+              <span>portal</span>
+              <strong>99.97</strong>
+              <span>keep</span>
+            </div>
+            <div class="metrics">
+              cov 0.182 | motion 0.010 | contrast 0.162 |
+              color 0.249 | edge 0.022 | center 0.000
+            </div>
+            <ul><li>motion low: increase speed/pulse/spin/scroll parameters</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_outer&quot;: [
+    0.37969256500776283,
+    0.6770508093166645,
+    0.9742311818807947
+  ],
+  &quot;color_mid&quot;: [
+    0.3828497560624966,
+    0.6069457651632324,
+    0.9692973842201685
+  ],
+  &quot;color_inner&quot;: [
+    0.8015753439818016,
+    0.9140838875268341,
+    1.0
+  ],
+  &quot;color_void&quot;: [
+    0.09314314417013018,
+    0.013928673158202731,
+    0.0006647825834933049
+  ],
+  &quot;radius&quot;: 0.4384,
+  &quot;swirl&quot;: 9.3533,
+  &quot;spin_speed&quot;: -1.3959,
+  &quot;depth_pulse&quot;: 0.002,
+  &quot;arms&quot;: 6.1006,
+  &quot;arm_strength&quot;: 1.0753,
+  &quot;opacity&quot;: 0.9875
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card keep">
+          <div class="thumb"><img src="shader_review_mutate_001_portal_swirl_2d_002/flipbook.png" loading="lazy" alt="shader_review_mutate_001_portal_swirl_2d_002"></div>
+          <div class="body">
+            <h2>shader_review_mutate_001_portal_swirl_2d_002</h2>
+            <div class="meta">
+              <span>portal_swirl_2d</span>
+              <span>portal</span>
+              <strong>99.77</strong>
+              <span>keep</span>
+            </div>
+            <div class="metrics">
+              cov 0.168 | motion 0.007 | contrast 0.151 |
+              color 0.254 | edge 0.017 | center 0.000
+            </div>
+            <ul><li>motion low: increase speed/pulse/spin/scroll parameters</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_outer&quot;: [
+    0.397851233808741,
+    0.6488730958691952,
+    0.9509878199560735
+  ],
+  &quot;color_mid&quot;: [
+    0.3757928233724935,
+    0.6530540101082427,
+    1.0
+  ],
+  &quot;color_inner&quot;: [
+    0.8067955770609928,
+    0.8846094120914223,
+    0.9679883844688584
+  ],
+  &quot;color_void&quot;: [
+    0.07060222715518488,
+    0.0,
+    0.0
+  ],
+  &quot;radius&quot;: 0.4192,
+  &quot;swirl&quot;: 7.7199,
+  &quot;spin_speed&quot;: -0.263,
+  &quot;depth_pulse&quot;: 0.0247,
+  &quot;arms&quot;: 5.8705,
+  &quot;arm_strength&quot;: 1.0142,
+  &quot;opacity&quot;: 0.9411
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card keep">
+          <div class="thumb"><img src="shader_review_mutate_001_portal_swirl_2d_003/flipbook.png" loading="lazy" alt="shader_review_mutate_001_portal_swirl_2d_003"></div>
+          <div class="body">
+            <h2>shader_review_mutate_001_portal_swirl_2d_003</h2>
+            <div class="meta">
+              <span>portal_swirl_2d</span>
+              <span>portal</span>
+              <strong>99.37</strong>
+              <span>keep</span>
+            </div>
+            <div class="metrics">
+              cov 0.152 | motion 0.001 | contrast 0.159 |
+              color 0.240 | edge 0.018 | center 0.000
+            </div>
+            <ul><li>motion low: increase speed/pulse/spin/scroll parameters</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_outer&quot;: [
+    0.4216495657107683,
+    0.6315200058502645,
+    0.9668972483349646
+  ],
+  &quot;color_mid&quot;: [
+    0.386738355704815,
+    0.6418744894452556,
+    0.9723264799123579
+  ],
+  &quot;color_inner&quot;: [
+    0.8221400752640102,
+    0.9360069890041228,
+    1.0
+  ],
+  &quot;color_void&quot;: [
+    0.11170018546050067,
+    0.009207181710849888,
+    0.04021740618311635
+  ],
+  &quot;radius&quot;: 0.3961,
+  &quot;swirl&quot;: 8.4886,
+  &quot;spin_speed&quot;: -1.7622,
+  &quot;depth_pulse&quot;: 0.0646,
+  &quot;arms&quot;: 6.0383,
+  &quot;arm_strength&quot;: 1.039,
+  &quot;opacity&quot;: 0.9377
+}</pre></details>
+          </div>
+        </article>
+        
+  </section>
+</body>
+</html>

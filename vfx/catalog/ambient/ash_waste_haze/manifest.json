@@ -1,0 +1,38 @@
+{
+  "effect_id": "ash_waste_haze",
+  "backend": "volumetric_fog",
+  "n_frames": 0,
+  "fps": 0,
+  "bounds_px": [
+    2048,
+    64
+  ],
+  "flipbook": "",
+  "frames_dir": "",
+  "extras": {
+    "density_volume": "D:\\assets\\vfx\\catalog\\ambient\\ash_waste_haze\\density.png",
+    "fog_shader": "D:\\assets\\vfx\\catalog\\ambient\\ash_waste_haze\\fog.gdshader",
+    "fog_material": "D:\\assets\\vfx\\catalog\\ambient\\ash_waste_haze\\fog_material.tres",
+    "volume_resolution": [
+      64,
+      64,
+      32
+    ],
+    "color_top": [
+      0.47843137254901963,
+      0.41568627450980394,
+      0.35294117647058826
+    ],
+    "color_bottom": [
+      0.10196078431372549,
+      0.08627450980392157,
+      0.07058823529411765
+    ]
+  },
+  "metrics": {
+    "voxels": 131072,
+    "density_max": 0.44999998807907104,
+    "density_mean": 0.15784358978271484
+  },
+  "timestamp": "2026-05-06T20:50:45+00:00"
+}

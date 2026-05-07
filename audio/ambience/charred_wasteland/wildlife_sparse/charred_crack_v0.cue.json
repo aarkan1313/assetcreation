@@ -1,0 +1,20 @@
+{
+  "biome": "charred_wasteland",
+  "stem": "wildlife_sparse/charred_crack_v0",
+  "backend_requested": "local_audio_open",
+  "backend_actual": "stable_audio_open",
+  "out_path": "D:\\assets\\audio\\ambience\\charred_wasteland\\wildlife_sparse\\charred_crack_v0.wav",
+  "duration_s": 0.3744671201814059,
+  "samplerate": 44100,
+  "rms_dbfs": -50.8492317199707,
+  "peak_dbfs": -22.0,
+  "lufs_target": -22.0,
+  "seed": 9019,
+  "prompt": "small charred wood crack, short, dry",
+  "dry_run": false,
+  "loop": false,
+  "seam_rms": null,
+  "fitness": null,
+  "model": "large",
+  "steps": 50
+}

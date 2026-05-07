@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://shader_review_upgrade_smoke_001_ring_field_2d_006_preview"]
+
+[ext_resource type="Shader" path="res://shader_review_upgrade_smoke_001_ring_field_2d_006.gdshader" id="1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1"]
+shader = ExtResource("1")
+shader_parameter/color_inner = Color(0.20653538967217405, 0.06891830443346328, 0.43185306113490435, 1.0)
+shader_parameter/color_outer = Color(0.011271076894864434, 0.023538219319196738, 0.0, 1.0)
+shader_parameter/color_glow = Color(0.7776370859720074, 0.36933627497968186, 1.0, 1.0)
+shader_parameter/radius = 0.2589
+shader_parameter/edge_width = 0.0542
+shader_parameter/noise_scale = 24.9175
+shader_parameter/pulse_speed = 2.2685
+shader_parameter/distortion = 0.1047
+shader_parameter/rune_count = 10.0
+shader_parameter/rune_strength = 0.4816
+shader_parameter/opacity = 0.9619
+
+[sub_resource type="GDScript" id="GDScript_1"]
+script/source = "extends Node
+func _ready():
+	get_window().size = Vector2i(160, 160)
+	get_window().borderless = true
+	await get_tree().create_timer(0.5).timeout
+	var img = get_viewport().get_texture().get_image()
+	img.save_png(\"user://preview.png\")
+	get_tree().quit()
+"
+
+[node name="Root" type="Node"]
+script = SubResource("GDScript_1")
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.0350, 0.0350, 0.0550, 1.0000)
+
+[node name="Quad" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+material = SubResource("ShaderMaterial_1")

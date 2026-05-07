@@ -1,0 +1,82 @@
+{
+  "queue_id": "evolve_smoke_review_001",
+  "created": "2026-05-06T10:46:55.791183+00:00",
+  "source_batches": [
+    "D:\\assets\\art_lab\\shaders\\batches\\shader_evolve_smoke_001"
+  ],
+  "min_score": 80.0,
+  "grades": [
+    "keep",
+    "review"
+  ],
+  "diversity_distance": 0.08,
+  "selected": [
+    {
+      "id": "shader_evolve_smoke_001_g01_portal_swirl_2d_001",
+      "source_batch": "shader_evolve_smoke_001",
+      "score": 90.26,
+      "grade": "keep",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "relative_dir": "shader_evolve_smoke_001_g01_portal_swirl_2d_001",
+      "preview": "shader_evolve_smoke_001_g01_portal_swirl_2d_001\\flipbook.png",
+      "request": "shader_evolve_smoke_001_g01_portal_swirl_2d_001\\request.json",
+      "mutation_command": "python \"D:\\assets\\art_lab\\tools\\shader_batch_review.py\" --batch-id mutate_shader_evolve_smoke_001_g01_portal_swirl_2d_001 --count 24 --frames 8 --size 256 --parent-request \"D:\\assets\\art_lab\\shaders\\review_queues\\evolve_smoke_review_001\\shader_evolve_smoke_001_g01_portal_swirl_2d_001\\request.json\" --mutation-strength 0.12",
+      "metrics": {
+        "coverage": 0.09326,
+        "mean_alpha": 0.07377,
+        "luma_mean": 0.04042,
+        "contrast": 0.02153,
+        "colorfulness": 0.12271,
+        "edge_energy": 0.00584,
+        "center_distance": 0.0,
+        "clip_high": 0.0,
+        "clip_low": 0.023,
+        "aspect": 1.0,
+        "motion": 0.01257,
+        "flicker": 0.0,
+        "frames": 3.0
+      },
+      "hints": [
+        "coverage low: increase radius/thickness/edge_width/opacity, or reduce dissolve threshold",
+        "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors",
+        "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width"
+      ],
+      "diversity_distance": null
+    },
+    {
+      "id": "shader_evolve_smoke_001_g00_portal_swirl_2d_001",
+      "source_batch": "shader_evolve_smoke_001",
+      "score": 89.95,
+      "grade": "keep",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "relative_dir": "shader_evolve_smoke_001_g00_portal_swirl_2d_001",
+      "preview": "shader_evolve_smoke_001_g00_portal_swirl_2d_001\\flipbook.png",
+      "request": "shader_evolve_smoke_001_g00_portal_swirl_2d_001\\request.json",
+      "mutation_command": "python \"D:\\assets\\art_lab\\tools\\shader_batch_review.py\" --batch-id mutate_shader_evolve_smoke_001_g00_portal_swirl_2d_001 --count 24 --frames 8 --size 256 --parent-request \"D:\\assets\\art_lab\\shaders\\review_queues\\evolve_smoke_review_001\\shader_evolve_smoke_001_g00_portal_swirl_2d_001\\request.json\" --mutation-strength 0.12",
+      "metrics": {
+        "coverage": 0.1106,
+        "mean_alpha": 0.09035,
+        "luma_mean": 0.03646,
+        "contrast": 0.02245,
+        "colorfulness": 0.1198,
+        "edge_energy": 0.00574,
+        "center_distance": 0.0,
+        "clip_high": 0.0,
+        "clip_low": 0.0265,
+        "aspect": 1.0,
+        "motion": 0.00554,
+        "flicker": 0.0,
+        "frames": 3.0
+      },
+      "hints": [
+        "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors",
+        "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width",
+        "motion low: increase speed/pulse/spin/scroll parameters"
+      ],
+      "diversity_distance": 0.0346
+    }
+  ],
+  "omitted_after_filter": 5
+}

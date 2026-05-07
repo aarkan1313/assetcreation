@@ -1,0 +1,66 @@
+{
+  "kind": "ambient",
+  "phenomenon": "smoke",
+  "backend": "smoke_field",
+  "duration_s": 1.6,
+  "fps": 18,
+  "bounds_px": [
+    192,
+    192
+  ],
+  "visual": {
+    "palette": [
+      "#9b4ad0",
+      "#5a2a90",
+      "#2a0a40"
+    ],
+    "blend": "alpha",
+    "background": "#00000000",
+    "bloom": true
+  },
+  "visual3d": {
+    "billboard_mode": "y_axis",
+    "world_size_m": 3.0
+  },
+  "backend_params": {
+    "grid_size": 64,
+    "seed": 10940,
+    "emit_pos": [
+      0.5,
+      0.85
+    ],
+    "emit_radius": 4.0,
+    "emit_density": 4.5,
+    "buoyancy": 4.0,
+    "dissipation": 0.5,
+    "viscosity": 0.45,
+    "_audio_cues": [
+      {
+        "t": 0.0,
+        "name": "loop_in"
+      },
+      {
+        "t": 1.2,
+        "name": "loop_out"
+      }
+    ]
+  },
+  "gameplay": {
+    "shape": "aura",
+    "damage_tags": [
+      "necrotic"
+    ],
+    "collision": "none"
+  },
+  "element": "shadow",
+  "archetype": "aura",
+  "tags": [
+    "shadow",
+    "aura",
+    "buff",
+    "necrotic"
+  ],
+  "export_target": "decal",
+  "id": "shadow_aura",
+  "notes": "Auto-authored shadow aura from element-archetype grid."
+}

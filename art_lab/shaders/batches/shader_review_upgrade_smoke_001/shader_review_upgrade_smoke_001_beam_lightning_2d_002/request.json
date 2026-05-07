@@ -1,0 +1,91 @@
+{
+  "id": "shader_review_upgrade_smoke_001_beam_lightning_2d_002",
+  "intent": "high quality portal shield beam aura dissolve Godot shaders",
+  "role": "beam",
+  "template": "beam_lightning_2d",
+  "params": {
+    "color_core": [
+      0.1264907629877551,
+      0.0011594236386129886,
+      0.47310878900362446
+    ],
+    "color_edge": [
+      0.02207344258518137,
+      0.0,
+      0.04432327012766191
+    ],
+    "color_glow": [
+      0.6557978213459089,
+      0.3405836024662612,
+      0.9341731518530495
+    ],
+    "thickness": 0.0751,
+    "core_thickness": 0.3513,
+    "jaggedness": 0.2245,
+    "frequency": 11.363,
+    "speed": 0.9355,
+    "arc": -0.0747,
+    "fork_strength": 0.1868,
+    "opacity": 0.9513
+  },
+  "preview": {
+    "size": [
+      320,
+      160
+    ],
+    "frames": 4,
+    "duration_s": 1.5,
+    "background": [
+      0.015,
+      0.015,
+      0.035,
+      1.0
+    ]
+  },
+  "created": "2026-05-06T10:38:22.699898+00:00",
+  "review": {
+    "score": 71.4,
+    "grade": "maybe",
+    "components": {
+      "coverage": 0.0,
+      "motion": 1.0,
+      "center": 1.0,
+      "color": 1.0,
+      "edge": 0.96,
+      "contrast": 0.333,
+      "aspect": 1.0
+    },
+    "gate_issues": [],
+    "gate_warnings": [
+      "role coverage far above target"
+    ],
+    "metrics": {
+      "coverage": 0.49203,
+      "mean_alpha": 0.19433,
+      "luma_mean": 0.12833,
+      "contrast": 0.04993,
+      "colorfulness": 0.25575,
+      "edge_energy": 0.00429,
+      "center_distance": 0.05607,
+      "clip_high": 0.0,
+      "clip_low": 0.00776,
+      "aspect": 3.31615,
+      "motion": 0.00961,
+      "flicker": 0.0002,
+      "frames": 4.0
+    },
+    "hints": [
+      "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold",
+      "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors",
+      "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width"
+    ],
+    "render_source": "cpu_proxy"
+  },
+  "reference_review": {
+    "reference_set": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref",
+    "reference_score": 19.77,
+    "nearest_reference": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+    "reference_distance": 0.73681,
+    "created": "2026-05-06T10:38:38.761903+00:00"
+  }
+}

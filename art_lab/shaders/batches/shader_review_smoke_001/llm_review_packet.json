@@ -1,0 +1,478 @@
+{
+  "batch": "shader_review_smoke_001",
+  "created": "2026-05-06T10:12:02.230878+00:00",
+  "candidate_count": 12,
+  "recommended_for_user_review": [
+    {
+      "id": "shader_review_smoke_001_ring_field_2d_001",
+      "score": 100.0,
+      "grade": "keep",
+      "template": "ring_field_2d",
+      "role": "aura",
+      "preview": "shader_review_smoke_001_ring_field_2d_001\\flipbook.png",
+      "metrics": {
+        "coverage": 0.46027,
+        "mean_alpha": 0.16501,
+        "luma_mean": 0.28539,
+        "contrast": 0.21571,
+        "colorfulness": 0.29786,
+        "edge_energy": 0.02255,
+        "center_distance": 0.00702,
+        "clip_high": 0.13058,
+        "clip_low": 0.0,
+        "aspect": 1.01305,
+        "motion": 0.0071,
+        "flicker": 0.00099,
+        "frames": 6.0
+      },
+      "hints": [
+        "good candidate: mutate locally around these params with smaller jitter"
+      ],
+      "params": {
+        "color_inner": [
+          0.9023082877532614,
+          0.8840017208356267,
+          0.964004690939059
+        ],
+        "color_outer": [
+          0.3157137181038116,
+          0.6678353942662419,
+          1.0
+        ],
+        "color_glow": [
+          0.22274873083277524,
+          0.2139102132207066,
+          0.8475074911496433
+        ],
+        "radius": 0.1892,
+        "edge_width": 0.0312,
+        "noise_scale": 20.666,
+        "pulse_speed": 0.1459,
+        "distortion": 0.1395,
+        "rune_count": 18,
+        "rune_strength": 0.4159,
+        "opacity": 0.885
+      }
+    },
+    {
+      "id": "shader_review_smoke_001_beam_lightning_2d_005",
+      "score": 99.64,
+      "grade": "keep",
+      "template": "beam_lightning_2d",
+      "role": "beam",
+      "preview": "shader_review_smoke_001_beam_lightning_2d_005\\flipbook.png",
+      "metrics": {
+        "coverage": 0.16836,
+        "mean_alpha": 0.05809,
+        "luma_mean": 0.17036,
+        "contrast": 0.16673,
+        "colorfulness": 0.29025,
+        "edge_energy": 0.00917,
+        "center_distance": 0.02593,
+        "clip_high": 0.00146,
+        "clip_low": 0.0,
+        "aspect": 6.0043,
+        "motion": 0.02166,
+        "flicker": 0.00066,
+        "frames": 6.0
+      },
+      "hints": [
+        "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width"
+      ],
+      "params": {
+        "color_core": [
+          0.8641863659235727,
+          0.8905901768338476,
+          1.0
+        ],
+        "color_edge": [
+          0.37074880823656037,
+          0.6648662833150362,
+          0.9540202470486625
+        ],
+        "color_glow": [
+          0.15987700151876438,
+          0.34154930462187244,
+          0.8828562992320679
+        ],
+        "thickness": 0.026,
+        "core_thickness": 0.2359,
+        "jaggedness": 0.6236,
+        "frequency": 21.7083,
+        "speed": 4.1086,
+        "arc": -0.0315,
+        "fork_strength": 0.6585,
+        "opacity": 0.8214
+      }
+    },
+    {
+      "id": "shader_review_smoke_001_beam_lightning_2d_006",
+      "score": 93.19,
+      "grade": "keep",
+      "template": "beam_lightning_2d",
+      "role": "beam",
+      "preview": "shader_review_smoke_001_beam_lightning_2d_006\\flipbook.png",
+      "metrics": {
+        "coverage": 0.31647,
+        "mean_alpha": 0.10261,
+        "luma_mean": 0.16308,
+        "contrast": 0.17531,
+        "colorfulness": 0.34495,
+        "edge_energy": 0.00763,
+        "center_distance": 0.12012,
+        "clip_high": 0.00419,
+        "clip_low": 0.0,
+        "aspect": 3.50069,
+        "motion": 0.02291,
+        "flicker": 0.00055,
+        "frames": 6.0
+      },
+      "hints": [
+        "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold",
+        "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width"
+      ],
+      "params": {
+        "color_core": [
+          0.9595721244782658,
+          0.9021330791825369,
+          0.998962533582341
+        ],
+        "color_edge": [
+          0.400925145205398,
+          0.6877764655466665,
+          0.9444546110957218
+        ],
+        "color_glow": [
+          0.10559712027559204,
+          0.3088769941594124,
+          0.8754254449171158
+        ],
+        "thickness": 0.0497,
+        "core_thickness": 0.4184,
+        "jaggedness": 0.4104,
+        "frequency": 12.7938,
+        "speed": 3.0427,
+        "arc": 0.1947,
+        "fork_strength": 0.7378,
+        "opacity": 0.7521
+      }
+    },
+    {
+      "id": "shader_review_smoke_001_shield_ripple_2d_012",
+      "score": 91.71,
+      "grade": "keep",
+      "template": "shield_ripple_2d",
+      "role": "shield",
+      "preview": "shader_review_smoke_001_shield_ripple_2d_012\\flipbook.png",
+      "metrics": {
+        "coverage": 0.85345,
+        "mean_alpha": 0.57696,
+        "luma_mean": 0.31475,
+        "contrast": 0.12595,
+        "colorfulness": 0.30836,
+        "edge_energy": 0.04951,
+        "center_distance": 0.04601,
+        "clip_high": 0.04061,
+        "clip_low": 0.0,
+        "aspect": 1.0,
+        "motion": 0.0371,
+        "flicker": 0.00052,
+        "frames": 6.0
+      },
+      "hints": [
+        "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold"
+      ],
+      "params": {
+        "color_shield": [
+          0.9165141741505892,
+          1.0,
+          0.9374830451591687
+        ],
+        "color_hit": [
+          0.11065441154266464,
+          0.2858057206256551,
+          0.8024291675351639
+        ],
+        "hex_scale": 24.1697,
+        "hex_strength": 0.2418,
+        "fresnel_power": 4.1807,
+        "ripple_speed": 4.7078,
+        "ripple_strength": 0.2603,
+        "ripple_freq": 25.2165,
+        "hit_position": [
+          0.513,
+          0.3447
+        ],
+        "hit_age": 0.4878,
+        "opacity": 0.931
+      }
+    },
+    {
+      "id": "shader_review_smoke_001_ring_field_2d_003",
+      "score": 89.85,
+      "grade": "keep",
+      "template": "ring_field_2d",
+      "role": "aura",
+      "preview": "shader_review_smoke_001_ring_field_2d_003\\flipbook.png",
+      "metrics": {
+        "coverage": 0.48241,
+        "mean_alpha": 0.16167,
+        "luma_mean": 0.27705,
+        "contrast": 0.20752,
+        "colorfulness": 0.25228,
+        "edge_energy": 0.02033,
+        "center_distance": 0.02795,
+        "clip_high": 0.14494,
+        "clip_low": 0.0,
+        "aspect": 1.05888,
+        "motion": 0.01451,
+        "flicker": 0.00192,
+        "frames": 6.0
+      },
+      "hints": [
+        "good candidate: mutate locally around these params with smaller jitter"
+      ],
+      "params": {
+        "color_inner": [
+          0.8883265010037164,
+          1.0,
+          1.0
+        ],
+        "color_outer": [
+          0.41787310404972433,
+          0.642376343241082,
+          1.0
+        ],
+        "color_glow": [
+          0.08733190138490596,
+          0.2364637241042475,
+          0.8263020741763372
+        ],
+        "radius": 0.2047,
+        "edge_width": 0.0325,
+        "noise_scale": 8.131,
+        "pulse_speed": 1.5289,
+        "distortion": 0.3361,
+        "rune_count": 16,
+        "rune_strength": 0.354,
+        "opacity": 0.8195
+      }
+    },
+    {
+      "id": "shader_review_smoke_001_dissolve_fire_2d_007",
+      "score": 87.54,
+      "grade": "keep",
+      "template": "dissolve_fire_2d",
+      "role": "dissolve",
+      "preview": "shader_review_smoke_001_dissolve_fire_2d_007\\flipbook.png",
+      "metrics": {
+        "coverage": 0.66905,
+        "mean_alpha": 0.49121,
+        "luma_mean": 0.29829,
+        "contrast": 0.13884,
+        "colorfulness": 0.03767,
+        "edge_energy": 0.05705,
+        "center_distance": 0.02519,
+        "clip_high": 0.0,
+        "clip_low": 0.01978,
+        "aspect": 1.0,
+        "motion": 0.05921,
+        "flicker": 0.00141,
+        "frames": 6.0
+      },
+      "hints": [
+        "color weak: switch palette or push core/edge/glow colors farther apart"
+      ],
+      "params": {
+        "color_burn": [
+          0.9415661520206574,
+          1.0,
+          1.0
+        ],
+        "color_ash": [
+          0.0,
+          0.0,
+          0.025305240695147155
+        ],
+        "color_ember": [
+          0.0805192505762767,
+          0.31553472980958575,
+          0.8951489070217479
+        ],
+        "threshold": 0.6873,
+        "edge_width": 0.0867,
+        "noise_scale": 20.7381,
+        "scroll_speed": 0.4256,
+        "warp_strength": 0.6927,
+        "opacity": 0.9557
+      }
+    },
+    {
+      "id": "shader_review_smoke_001_dissolve_fire_2d_008",
+      "score": 86.18,
+      "grade": "keep",
+      "template": "dissolve_fire_2d",
+      "role": "dissolve",
+      "preview": "shader_review_smoke_001_dissolve_fire_2d_008\\flipbook.png",
+      "metrics": {
+        "coverage": 0.09742,
+        "mean_alpha": 0.03945,
+        "luma_mean": 0.07164,
+        "contrast": 0.08497,
+        "colorfulness": 0.08808,
+        "edge_energy": 0.01782,
+        "center_distance": 0.24313,
+        "clip_high": 0.0,
+        "clip_low": 0.02069,
+        "aspect": 1.41323,
+        "motion": 0.03596,
+        "flicker": 0.00405,
+        "frames": 6.0
+      },
+      "hints": [
+        "color weak: switch palette or push core/edge/glow colors farther apart",
+        "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width"
+      ],
+      "params": {
+        "color_burn": [
+          0.8812260611164214,
+          0.9118257762823573,
+          0.9798262164145837
+        ],
+        "color_ash": [
+          0.0,
+          0.09255995962456046,
+          0.14758945289892395
+        ],
+        "color_ember": [
+          0.22695895910331237,
+          0.29583113351363666,
+          0.8581769132846316
+        ],
+        "threshold": 0.3003,
+        "edge_width": 0.0476,
+        "noise_scale": 35.545,
+        "scroll_speed": 3.2271,
+        "warp_strength": 0.3764,
+        "opacity": 0.7874
+      }
+    },
+    {
+      "id": "shader_review_smoke_001_dissolve_fire_2d_009",
+      "score": 82.75,
+      "grade": "review",
+      "template": "dissolve_fire_2d",
+      "role": "dissolve",
+      "preview": "shader_review_smoke_001_dissolve_fire_2d_009\\flipbook.png",
+      "metrics": {
+        "coverage": 0.1596,
+        "mean_alpha": 0.07656,
+        "luma_mean": 0.0799,
+        "contrast": 0.08864,
+        "colorfulness": 0.04187,
+        "edge_energy": 0.02821,
+        "center_distance": 0.20745,
+        "clip_high": 0.0,
+        "clip_low": 0.0,
+        "aspect": 1.19373,
+        "motion": 0.05186,
+        "flicker": 0.00455,
+        "frames": 6.0
+      },
+      "hints": [
+        "color weak: switch palette or push core/edge/glow colors farther apart"
+      ],
+      "params": {
+        "color_burn": [
+          0.8907771109902256,
+          0.8926011277266186,
+          1.0
+        ],
+        "color_ash": [
+          0.07056372054721416,
+          0.09647751898837348,
+          0.0852329871247225
+        ],
+        "color_ember": [
+          0.10012168184327061,
+          0.3055601316395788,
+          0.9314957887527985
+        ],
+        "threshold": 0.3243,
+        "edge_width": 0.0637,
+        "noise_scale": 23.8044,
+        "scroll_speed": 3.8575,
+        "warp_strength": 0.9417,
+        "opacity": 0.9315
+      }
+    }
+  ],
+  "reject_summary": [
+    {
+      "id": "shader_review_smoke_001_ring_field_2d_003",
+      "score": 89.85,
+      "hints": [
+        "good candidate: mutate locally around these params with smaller jitter"
+      ]
+    },
+    {
+      "id": "shader_review_smoke_001_dissolve_fire_2d_007",
+      "score": 87.54,
+      "hints": [
+        "color weak: switch palette or push core/edge/glow colors farther apart"
+      ]
+    },
+    {
+      "id": "shader_review_smoke_001_dissolve_fire_2d_008",
+      "score": 86.18,
+      "hints": [
+        "color weak: switch palette or push core/edge/glow colors farther apart",
+        "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width"
+      ]
+    },
+    {
+      "id": "shader_review_smoke_001_dissolve_fire_2d_009",
+      "score": 82.75,
+      "hints": [
+        "color weak: switch palette or push core/edge/glow colors farther apart"
+      ]
+    },
+    {
+      "id": "shader_review_smoke_001_shield_ripple_2d_010",
+      "score": 78.98,
+      "hints": [
+        "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold",
+        "motion low: increase speed/pulse/spin/scroll parameters"
+      ]
+    },
+    {
+      "id": "shader_review_smoke_001_shield_ripple_2d_011",
+      "score": 78.93,
+      "hints": [
+        "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold",
+        "color weak: switch palette or push core/edge/glow colors farther apart"
+      ]
+    },
+    {
+      "id": "shader_review_smoke_001_beam_lightning_2d_004",
+      "score": 77.18,
+      "hints": [
+        "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold",
+        "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width"
+      ]
+    },
+    {
+      "id": "shader_review_smoke_001_ring_field_2d_002",
+      "score": 44.53,
+      "hints": [
+        "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold"
+      ]
+    }
+  ],
+  "next_iteration_policy": [
+    "Preserve top candidate params and make local mutations around them.",
+    "Do not ask the LLM to OCR the image; use metrics plus gallery thumbnails.",
+    "Use Godot-rendered previews for final acceptance when the Godot binary is available.",
+    "Escalate only keep/review candidates to human review."
+  ]
+}

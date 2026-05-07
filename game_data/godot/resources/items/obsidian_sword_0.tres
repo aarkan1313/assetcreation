@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemRecord" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://game_data/scripts/item_record.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "obsidian_sword_0"
+display_name = "Obsidian Sword"
+schema_version = "1.0.0"
+tags = ["cold", "obsidian", "sword", "weapon"]
+localization_key = "ITEM_OBSIDIAN_SWORD_0"
+provenance = { "source": "synthetic", "model": null, "seed": 46, "prompt_id": null, "timestamp": "2026-05-06T18:46:36+00:00", "target_file_sha256": "da75a24b3a8b20b42063c45bf98edbc691e0807070ed813871afc1be1155c987", "constraint_technique": "synthetic_schema_bounds", "constraint_pass": "first_pass", "sim_digest": "dedf8415a56ce60f", "parent_id": null }
+notes = ""
+category = "weapon"
+rarity = "rare"
+damage_type = "cold"
+stats = { "damage": 45, "armor": 0, "weight": 4.4, "durability": 378, "value_gold": 560 }
+icon_id = "ico_sword"
+description = "A obsidian sword. Forged for siege."
+stack_max = 1

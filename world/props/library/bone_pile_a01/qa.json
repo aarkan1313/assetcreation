@@ -1,0 +1,13 @@
+{
+  "id": "bone_pile_a01",
+  "kind": "bone_pile",
+  "seed": 700,
+  "target_tris": 1500,
+  "params": {
+    "count": 7,
+    "color_variant": "bone_pale"
+  },
+  "blender_version": "5.1",
+  "timestamp": "2026-05-06T18:51:12+00:00",
+  "ok": true
+}

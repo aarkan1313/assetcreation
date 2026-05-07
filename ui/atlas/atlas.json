@@ -1,0 +1,821 @@
+{
+  "atlas": "atlas.png",
+  "size": [
+    4096,
+    4096
+  ],
+  "padding": 2,
+  "regions": {
+    "ico_arcane_orb": {
+      "x": 2,
+      "y": 2,
+      "w": 256,
+      "h": 256
+    },
+    "ico_axe": {
+      "x": 260,
+      "y": 2,
+      "w": 256,
+      "h": 256
+    },
+    "ico_barrier": {
+      "x": 518,
+      "y": 2,
+      "w": 256,
+      "h": 256
+    },
+    "ico_bow": {
+      "x": 776,
+      "y": 2,
+      "w": 256,
+      "h": 256
+    },
+    "ico_coin": {
+      "x": 1034,
+      "y": 2,
+      "w": 256,
+      "h": 256
+    },
+    "ico_dagger": {
+      "x": 1292,
+      "y": 2,
+      "w": 256,
+      "h": 256
+    },
+    "ico_elixir": {
+      "x": 1550,
+      "y": 2,
+      "w": 256,
+      "h": 256
+    },
+    "ico_eye": {
+      "x": 1808,
+      "y": 2,
+      "w": 256,
+      "h": 256
+    },
+    "ico_fireball": {
+      "x": 2066,
+      "y": 2,
+      "w": 256,
+      "h": 256
+    },
+    "ico_flame_rune": {
+      "x": 2324,
+      "y": 2,
+      "w": 256,
+      "h": 256
+    },
+    "ico_footprint": {
+      "x": 2582,
+      "y": 2,
+      "w": 256,
+      "h": 256
+    },
+    "ico_frostbolt": {
+      "x": 2840,
+      "y": 2,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gem_blue": {
+      "x": 3098,
+      "y": 2,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gem_green": {
+      "x": 3356,
+      "y": 2,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gem_red": {
+      "x": 3614,
+      "y": 2,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_abdominal_armor": {
+      "x": 2,
+      "y": 260,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_ankh": {
+      "x": 260,
+      "y": 260,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_apple_core": {
+      "x": 518,
+      "y": 260,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_battered_axe": {
+      "x": 776,
+      "y": 260,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_boss_key": {
+      "x": 1034,
+      "y": 260,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_bread": {
+      "x": 1292,
+      "y": 260,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_broadhead_arrow": {
+      "x": 1550,
+      "y": 260,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_broken_heart": {
+      "x": 1808,
+      "y": 260,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_campfire": {
+      "x": 2066,
+      "y": 260,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_castle": {
+      "x": 2324,
+      "y": 260,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_chest_armor": {
+      "x": 2582,
+      "y": 260,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_crossbow": {
+      "x": 2840,
+      "y": 260,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_crowned_skull": {
+      "x": 3098,
+      "y": 260,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_crystal_cluster": {
+      "x": 3356,
+      "y": 260,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_death_skull": {
+      "x": 3614,
+      "y": 260,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_diamonds": {
+      "x": 2,
+      "y": 518,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_drink_me": {
+      "x": 260,
+      "y": 518,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_edged_shield": {
+      "x": 518,
+      "y": 518,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_evil_eyes": {
+      "x": 776,
+      "y": 518,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_fire": {
+      "x": 1034,
+      "y": 518,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_fireball": {
+      "x": 1292,
+      "y": 518,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_footprint": {
+      "x": 1550,
+      "y": 518,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_gem_pendant": {
+      "x": 1808,
+      "y": 518,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_holy_grail": {
+      "x": 2066,
+      "y": 518,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_key": {
+      "x": 2324,
+      "y": 518,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_leather_vest": {
+      "x": 2582,
+      "y": 518,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_leg_armor": {
+      "x": 2840,
+      "y": 518,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_lightning_arc": {
+      "x": 3098,
+      "y": 518,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_magic_shield": {
+      "x": 3356,
+      "y": 518,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_magic_swirl": {
+      "x": 3614,
+      "y": 518,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_money_stack": {
+      "x": 2,
+      "y": 776,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_poison_bottle": {
+      "x": 260,
+      "y": 776,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_poison_cloud": {
+      "x": 518,
+      "y": 776,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_potion_ball": {
+      "x": 776,
+      "y": 776,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_rune_stone": {
+      "x": 1034,
+      "y": 776,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_running_shoe": {
+      "x": 1292,
+      "y": 776,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_scroll_quill": {
+      "x": 1550,
+      "y": 776,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_scroll_unfurled": {
+      "x": 1808,
+      "y": 776,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_shadow_grasp": {
+      "x": 2066,
+      "y": 776,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_shield": {
+      "x": 2324,
+      "y": 776,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_shield_bounces": {
+      "x": 2582,
+      "y": 776,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_shoulder_armor": {
+      "x": 2840,
+      "y": 776,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_skeleton_key": {
+      "x": 3098,
+      "y": 776,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_spell_book": {
+      "x": 3356,
+      "y": 776,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_spiked_mace": {
+      "x": 3614,
+      "y": 776,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_sun": {
+      "x": 2,
+      "y": 1034,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_sword_wound": {
+      "x": 260,
+      "y": 1034,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_thrown_spear": {
+      "x": 518,
+      "y": 1034,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_trefoil_lily": {
+      "x": 776,
+      "y": 1034,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_two_coins": {
+      "x": 1034,
+      "y": 1034,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_vortex": {
+      "x": 1292,
+      "y": 1034,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_warhammer": {
+      "x": 1550,
+      "y": 1034,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_wing_cloak": {
+      "x": 1808,
+      "y": 1034,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_winged_sword": {
+      "x": 2066,
+      "y": 1034,
+      "w": 256,
+      "h": 256
+    },
+    "ico_gi_wooden_sign": {
+      "x": 2324,
+      "y": 1034,
+      "w": 256,
+      "h": 256
+    },
+    "ico_hammer": {
+      "x": 2582,
+      "y": 1034,
+      "w": 256,
+      "h": 256
+    },
+    "ico_haste_wing": {
+      "x": 2840,
+      "y": 1034,
+      "w": 256,
+      "h": 256
+    },
+    "ico_heart_empty": {
+      "x": 3098,
+      "y": 1034,
+      "w": 256,
+      "h": 256
+    },
+    "ico_heart_full": {
+      "x": 3356,
+      "y": 1034,
+      "w": 256,
+      "h": 256
+    },
+    "ico_holy_light": {
+      "x": 3614,
+      "y": 1034,
+      "w": 256,
+      "h": 256
+    },
+    "ico_key": {
+      "x": 2,
+      "y": 1292,
+      "w": 256,
+      "h": 256
+    },
+    "ico_lightning": {
+      "x": 260,
+      "y": 1292,
+      "w": 256,
+      "h": 256
+    },
+    "ico_lucide_arrow_down": {
+      "x": 518,
+      "y": 1292,
+      "w": 256,
+      "h": 256
+    },
+    "ico_lucide_arrow_left": {
+      "x": 776,
+      "y": 1292,
+      "w": 256,
+      "h": 256
+    },
+    "ico_lucide_arrow_right": {
+      "x": 1034,
+      "y": 1292,
+      "w": 256,
+      "h": 256
+    },
+    "ico_lucide_arrow_up": {
+      "x": 1292,
+      "y": 1292,
+      "w": 256,
+      "h": 256
+    },
+    "ico_lucide_check": {
+      "x": 1550,
+      "y": 1292,
+      "w": 256,
+      "h": 256
+    },
+    "ico_lucide_chevron_down": {
+      "x": 1808,
+      "y": 1292,
+      "w": 256,
+      "h": 256
+    },
+    "ico_lucide_chevron_left": {
+      "x": 2066,
+      "y": 1292,
+      "w": 256,
+      "h": 256
+    },
+    "ico_lucide_chevron_right": {
+      "x": 2324,
+      "y": 1292,
+      "w": 256,
+      "h": 256
+    },
+    "ico_lucide_chevron_up": {
+      "x": 2582,
+      "y": 1292,
+      "w": 256,
+      "h": 256
+    },
+    "ico_lucide_circle": {
+      "x": 2840,
+      "y": 1292,
+      "w": 256,
+      "h": 256
+    },
+    "ico_lucide_info": {
+      "x": 3098,
+      "y": 1292,
+      "w": 256,
+      "h": 256
+    },
+    "ico_lucide_list": {
+      "x": 3356,
+      "y": 1292,
+      "w": 256,
+      "h": 256
+    },
+    "ico_lucide_menu": {
+      "x": 3614,
+      "y": 1292,
+      "w": 256,
+      "h": 256
+    },
+    "ico_lucide_minus": {
+      "x": 2,
+      "y": 1550,
+      "w": 256,
+      "h": 256
+    },
+    "ico_lucide_plus": {
+      "x": 260,
+      "y": 1550,
+      "w": 256,
+      "h": 256
+    },
+    "ico_lucide_save": {
+      "x": 518,
+      "y": 1550,
+      "w": 256,
+      "h": 256
+    },
+    "ico_lucide_search": {
+      "x": 776,
+      "y": 1550,
+      "w": 256,
+      "h": 256
+    },
+    "ico_lucide_settings": {
+      "x": 1034,
+      "y": 1550,
+      "w": 256,
+      "h": 256
+    },
+    "ico_lucide_trash_2": {
+      "x": 1292,
+      "y": 1550,
+      "w": 256,
+      "h": 256
+    },
+    "ico_lucide_user": {
+      "x": 1550,
+      "y": 1550,
+      "w": 256,
+      "h": 256
+    },
+    "ico_lucide_users": {
+      "x": 1808,
+      "y": 1550,
+      "w": 256,
+      "h": 256
+    },
+    "ico_lucide_x": {
+      "x": 2066,
+      "y": 1550,
+      "w": 256,
+      "h": 256
+    },
+    "ico_mace": {
+      "x": 2324,
+      "y": 1550,
+      "w": 256,
+      "h": 256
+    },
+    "ico_mana_drop": {
+      "x": 2582,
+      "y": 1550,
+      "w": 256,
+      "h": 256
+    },
+    "ico_nature_thorn": {
+      "x": 2840,
+      "y": 1550,
+      "w": 256,
+      "h": 256
+    },
+    "ico_phosphor_arrow_down": {
+      "x": 3098,
+      "y": 1550,
+      "w": 256,
+      "h": 256
+    },
+    "ico_phosphor_arrow_left": {
+      "x": 3356,
+      "y": 1550,
+      "w": 256,
+      "h": 256
+    },
+    "ico_phosphor_arrow_right": {
+      "x": 3614,
+      "y": 1550,
+      "w": 256,
+      "h": 256
+    },
+    "ico_phosphor_arrow_up": {
+      "x": 2,
+      "y": 1808,
+      "w": 256,
+      "h": 256
+    },
+    "ico_phosphor_caret_down": {
+      "x": 260,
+      "y": 1808,
+      "w": 256,
+      "h": 256
+    },
+    "ico_phosphor_caret_left": {
+      "x": 518,
+      "y": 1808,
+      "w": 256,
+      "h": 256
+    },
+    "ico_phosphor_caret_right": {
+      "x": 776,
+      "y": 1808,
+      "w": 256,
+      "h": 256
+    },
+    "ico_phosphor_caret_up": {
+      "x": 1034,
+      "y": 1808,
+      "w": 256,
+      "h": 256
+    },
+    "ico_phosphor_check": {
+      "x": 1292,
+      "y": 1808,
+      "w": 256,
+      "h": 256
+    },
+    "ico_phosphor_circle": {
+      "x": 1550,
+      "y": 1808,
+      "w": 256,
+      "h": 256
+    },
+    "ico_phosphor_gear": {
+      "x": 1808,
+      "y": 1808,
+      "w": 256,
+      "h": 256
+    },
+    "ico_phosphor_info": {
+      "x": 2066,
+      "y": 1808,
+      "w": 256,
+      "h": 256
+    },
+    "ico_phosphor_list": {
+      "x": 2324,
+      "y": 1808,
+      "w": 256,
+      "h": 256
+    },
+    "ico_phosphor_magnifying_glass": {
+      "x": 2582,
+      "y": 1808,
+      "w": 256,
+      "h": 256
+    },
+    "ico_phosphor_minus": {
+      "x": 2840,
+      "y": 1808,
+      "w": 256,
+      "h": 256
+    },
+    "ico_phosphor_plus": {
+      "x": 3098,
+      "y": 1808,
+      "w": 256,
+      "h": 256
+    },
+    "ico_phosphor_warning": {
+      "x": 3356,
+      "y": 1808,
+      "w": 256,
+      "h": 256
+    },
+    "ico_phosphor_x": {
+      "x": 3614,
+      "y": 1808,
+      "w": 256,
+      "h": 256
+    },
+    "ico_poison_drop": {
+      "x": 2,
+      "y": 2066,
+      "w": 256,
+      "h": 256
+    },
+    "ico_potion_blue": {
+      "x": 260,
+      "y": 2066,
+      "w": 256,
+      "h": 256
+    },
+    "ico_potion_green": {
+      "x": 518,
+      "y": 2066,
+      "w": 256,
+      "h": 256
+    },
+    "ico_potion_red": {
+      "x": 776,
+      "y": 2066,
+      "w": 256,
+      "h": 256
+    },
+    "ico_rune": {
+      "x": 1034,
+      "y": 2066,
+      "w": 256,
+      "h": 256
+    },
+    "ico_scroll": {
+      "x": 1292,
+      "y": 2066,
+      "w": 256,
+      "h": 256
+    },
+    "ico_shadow_bolt": {
+      "x": 1550,
+      "y": 2066,
+      "w": 256,
+      "h": 256
+    },
+    "ico_shield": {
+      "x": 1808,
+      "y": 2066,
+      "w": 256,
+      "h": 256
+    },
+    "ico_skull": {
+      "x": 2066,
+      "y": 2066,
+      "w": 256,
+      "h": 256
+    },
+    "ico_spear": {
+      "x": 2324,
+      "y": 2066,
+      "w": 256,
+      "h": 256
+    },
+    "ico_spike_trap": {
+      "x": 2582,
+      "y": 2066,
+      "w": 256,
+      "h": 256
+    },
+    "ico_square_frame": {
+      "x": 2840,
+      "y": 2066,
+      "w": 256,
+      "h": 256
+    },
+    "ico_staff": {
+      "x": 3098,
+      "y": 2066,
+      "w": 256,
+      "h": 256
+    },
+    "ico_sword": {
+      "x": 3356,
+      "y": 2066,
+      "w": 256,
+      "h": 256
+    },
+    "ico_warhorn": {
+      "x": 3614,
+      "y": 2066,
+      "w": 256,
+      "h": 256
+    }
+  },
+  "source_manifest": "D:\\assets\\ui\\icons\\manifest.json"
+}

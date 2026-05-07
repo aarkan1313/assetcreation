@@ -1,0 +1,247 @@
+[gd_scene load_steps=14 format=3]
+
+[ext_resource type="Theme" path="res://ui/theme.tres" id="1"]
+[ext_resource type="StyleBoxTexture" path="res://ui/panel_ashen_pact_stylebox.tres" id="2"]
+[ext_resource type="StyleBoxTexture" path="res://ui/frame_ashen_pact_stylebox.tres" id="3"]
+[ext_resource type="StyleBoxTexture" path="res://ui/button_ashen_pact_stylebox.tres" id="4"]
+[ext_resource type="StyleBoxTexture" path="res://ui/healthbar_ashen_pact_stylebox.tres" id="5"]
+[ext_resource type="Texture2D" path="res://ui/ico_sword_atlas.tres" id="6"]
+[ext_resource type="Texture2D" path="res://ui/ico_shield_atlas.tres" id="7"]
+[ext_resource type="Texture2D" path="res://ui/ico_potion_red_atlas.tres" id="8"]
+[ext_resource type="Texture2D" path="res://ui/ico_potion_blue_atlas.tres" id="9"]
+[ext_resource type="Texture2D" path="res://ui/ico_gem_blue_atlas.tres" id="10"]
+[ext_resource type="Texture2D" path="res://ui/ico_scroll_atlas.tres" id="11"]
+[ext_resource type="Texture2D" path="res://ui/ico_key_atlas.tres" id="12"]
+[ext_resource type="Texture2D" path="res://ui/ico_coin_atlas.tres" id="13"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource("1")
+mouse_filter = 2
+
+[node name="QuestPanel" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 24.0
+offset_right = 1160.0
+offset_bottom = 104.0
+theme_override_styles/panel = ExtResource("2")
+
+[node name="Title" type="Label" parent="QuestPanel"]
+layout_mode = 2
+text = "QUEST: Recover the Sundered Crown"
+
+[node name="Minimap" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 1610.0
+offset_top = 30.0
+offset_right = 1890.0
+offset_bottom = 310.0
+theme_override_styles/panel = ExtResource("2")
+
+[node name="MapLabel" type="Label" parent="Minimap"]
+layout_mode = 2
+text = "MAP"
+
+[node name="ActionBar" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 920.0
+offset_right = 772.0
+offset_bottom = 1020.0
+theme_override_styles/panel = ExtResource("2")
+
+[node name="Slot0" type="PanelContainer" parent="ActionBar"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 88.0
+offset_bottom = 88.0
+theme_override_styles/panel = ExtResource("3")
+
+[node name="Icon" type="TextureRect" parent="ActionBar/Slot0"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 72.0
+texture = ExtResource("6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot1" type="PanelContainer" parent="ActionBar"]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 8.0
+offset_right = 176.0
+offset_bottom = 88.0
+theme_override_styles/panel = ExtResource("3")
+
+[node name="Icon" type="TextureRect" parent="ActionBar/Slot1"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 72.0
+texture = ExtResource("7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot2" type="PanelContainer" parent="ActionBar"]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 8.0
+offset_right = 264.0
+offset_bottom = 88.0
+theme_override_styles/panel = ExtResource("3")
+
+[node name="Icon" type="TextureRect" parent="ActionBar/Slot2"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 72.0
+texture = ExtResource("8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot3" type="PanelContainer" parent="ActionBar"]
+layout_mode = 0
+offset_left = 272.0
+offset_top = 8.0
+offset_right = 352.0
+offset_bottom = 88.0
+theme_override_styles/panel = ExtResource("3")
+
+[node name="Icon" type="TextureRect" parent="ActionBar/Slot3"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 72.0
+texture = ExtResource("9")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot4" type="PanelContainer" parent="ActionBar"]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 8.0
+offset_right = 440.0
+offset_bottom = 88.0
+theme_override_styles/panel = ExtResource("3")
+
+[node name="Icon" type="TextureRect" parent="ActionBar/Slot4"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 72.0
+texture = ExtResource("10")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot5" type="PanelContainer" parent="ActionBar"]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 8.0
+offset_right = 528.0
+offset_bottom = 88.0
+theme_override_styles/panel = ExtResource("3")
+
+[node name="Icon" type="TextureRect" parent="ActionBar/Slot5"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 72.0
+texture = ExtResource("11")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot6" type="PanelContainer" parent="ActionBar"]
+layout_mode = 0
+offset_left = 536.0
+offset_top = 8.0
+offset_right = 616.0
+offset_bottom = 88.0
+theme_override_styles/panel = ExtResource("3")
+
+[node name="Icon" type="TextureRect" parent="ActionBar/Slot6"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 72.0
+texture = ExtResource("12")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot7" type="PanelContainer" parent="ActionBar"]
+layout_mode = 0
+offset_left = 624.0
+offset_top = 8.0
+offset_right = 704.0
+offset_bottom = 88.0
+theme_override_styles/panel = ExtResource("3")
+
+[node name="Icon" type="TextureRect" parent="ActionBar/Slot7"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 72.0
+texture = ExtResource("13")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HpBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 880.0
+offset_right = 420.0
+offset_bottom = 908.0
+value = 72.0
+show_percentage = false
+theme_override_styles/background = ExtResource("5")
+
+[node name="ManaBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 856.0
+offset_right = 420.0
+offset_bottom = 878.0
+value = 45.0
+show_percentage = false
+theme_override_styles/background = ExtResource("5")
+
+[node name="Tooltip" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 740.0
+offset_top = 460.0
+offset_right = 1180.0
+offset_bottom = 620.0
+theme_override_styles/panel = ExtResource("3")
+
+[node name="TipTitle" type="Label" parent="Tooltip"]
+layout_mode = 2
+text = "Frostbrand Strike"
+
+[node name="TipBody" type="Label" parent="Tooltip"]
+layout_mode = 2
+text = "+18 cold damage. Applies CHILLED for 4s."
+
+[node name="InventoryButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1690.0
+offset_top = 990.0
+offset_right = 1890.0
+offset_bottom = 1050.0
+text = "INVENTORY"
+theme_override_styles/normal = ExtResource("4")
+theme_override_styles/hover = ExtResource("4")
+theme_override_styles/pressed = ExtResource("4")
+

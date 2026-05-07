@@ -1,0 +1,4 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[resource]
+note = "MultiMesh data — generate from scatter.csv in a Godot importer plugin."

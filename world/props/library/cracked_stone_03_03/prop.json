@@ -1,0 +1,30 @@
+{
+  "schema": "prop_asset.v1",
+  "id": "cracked_stone_03_03",
+  "family": "cracked_stone_03",
+  "kit": "mossy_highland_ruins",
+  "source_method": "cpu_texture_decal",
+  "source_recipe": "art_lab/props/recipes/cracked_stone_03.recipe.json",
+  "license": "project_generated",
+  "render_class": "decal",
+  "collision": "none",
+  "origin": "center",
+  "scale_m": [
+    1.4,
+    0.015,
+    1.4
+  ],
+  "footprint_radius_m": 0.825,
+  "decal": "decal.png",
+  "thumbnail": "thumbnail.png",
+  "placement_tags": [
+    "decal",
+    "stone",
+    "crack",
+    "slope_detail"
+  ],
+  "material_slots": [
+    "crack_decal"
+  ],
+  "qa": "qa.json"
+}

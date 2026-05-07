@@ -1,0 +1,75 @@
+{
+  "kind": "spell",
+  "phenomenon": "smoke",
+  "backend": "particle_cpu",
+  "duration_s": 0.5,
+  "fps": 30,
+  "bounds_px": [
+    320,
+    320
+  ],
+  "visual": {
+    "palette": [
+      "#9b4ad0",
+      "#5a2a90",
+      "#2a0a40",
+      "#0a0010"
+    ],
+    "blend": "alpha",
+    "background": "#00000000",
+    "bloom": true
+  },
+  "visual3d": {
+    "billboard_mode": "enabled",
+    "world_size_m": 2.5
+  },
+  "backend_params": {
+    "emitter": "burst",
+    "count": 180,
+    "seed": 54996,
+    "initial_speed": 68.0,
+    "speed_jitter": 68.0,
+    "direction_deg": 90.0,
+    "spread_deg": 360.0,
+    "gravity": [
+      0.0,
+      0.0
+    ],
+    "drag": 1.6,
+    "size_px": 7.700000000000001,
+    "size_jitter": 4.0,
+    "fade": 1.0,
+    "emission_pos": [
+      160,
+      160
+    ],
+    "_audio_cues": [
+      {
+        "t": 0.0,
+        "name": "burst"
+      },
+      {
+        "t": 0.3,
+        "name": "settle"
+      }
+    ]
+  },
+  "gameplay": {
+    "shape": "aura",
+    "damage_tags": [
+      "necrotic"
+    ],
+    "collision": "pierce"
+  },
+  "element": "shadow",
+  "archetype": "burst",
+  "tags": [
+    "shadow",
+    "burst",
+    "aoe",
+    "necrotic"
+  ],
+  "export_target": "3d_billboard",
+  "id": "shadow_burst",
+  "notes": "Auto-authored shadow burst from element-archetype grid."
+}

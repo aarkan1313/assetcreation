@@ -1,0 +1,23 @@
+{
+  "1": {
+    "class_type": "StableAudioOpenGenerate",
+    "inputs": {
+      "model": "stabilityai/stable-audio-open-small",
+      "prompt": "short bright magical UI chime, no melody, no vocals",
+      "negative_prompt": "vocals, lyrics, long music phrase, harsh clipping",
+      "duration_seconds": 3.0,
+      "steps": 50,
+      "seed": 42
+    }
+  },
+  "2": {
+    "class_type": "SaveAudio",
+    "inputs": {
+      "filename_prefix": "phase9_stable_audio_open",
+      "audio": [
+        "1",
+        0
+      ]
+    }
+  }
+}

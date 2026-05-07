@@ -1,0 +1,72 @@
+{
+  "id": "debris_stone",
+  "kind": "destruction",
+  "phenomenon": "shatter",
+  "backend": "fracture2d",
+  "duration_s": 1.0,
+  "fps": 24,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "visual": {
+    "palette": [
+      "#aaa090",
+      "#605040",
+      "#202018"
+    ],
+    "blend": "alpha",
+    "background": "#00000000",
+    "bloom": false
+  },
+  "visual3d": {
+    "billboard_mode": "y_axis",
+    "world_size_m": 1.6
+  },
+  "backend_params": {
+    "source_shape": "ngon",
+    "source_radius_px": 80.0,
+    "source_n_sides": 8,
+    "shard_count": 10,
+    "impact_center": [
+      128,
+      128
+    ],
+    "gravity": [
+      0.0,
+      260.0
+    ],
+    "drag": 0.45,
+    "burst_speed": 70.0,
+    "burst_jitter": 25.0,
+    "spin_max": 6.0,
+    "base_color": "#857560",
+    "outline_color": "#100806",
+    "seed": 13,
+    "_audio_cues": [
+      {
+        "t": 0.0,
+        "name": "smash"
+      },
+      {
+        "t": 0.5,
+        "name": "tumble"
+      }
+    ]
+  },
+  "gameplay": {
+    "shape": "point",
+    "damage_tags": [],
+    "collision": "first_hit"
+  },
+  "element": "physical",
+  "archetype": "impact",
+  "tags": [
+    "debris",
+    "physical",
+    "stone",
+    "destruction"
+  ],
+  "export_target": "3d_billboard",
+  "notes": "Stone chunk burst from a wall/statue/rock hit."
+}

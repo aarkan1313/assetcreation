@@ -1,0 +1,30 @@
+{
+  "effect_id": "spark_metal",
+  "backend": "particle_cpu",
+  "n_frames": 10,
+  "fps": 30,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "flipbook": "D:\\assets\\vfx\\catalog\\spells\\spark_metal\\flipbook.png",
+  "frames_dir": "D:\\assets\\vfx\\catalog\\spells\\spark_metal\\frames",
+  "extras": {
+    "particles_json": "D:\\assets\\vfx\\catalog\\spells\\spark_metal\\particles.json",
+    "audio_cues": [
+      {
+        "t": 0.0,
+        "name": "clang"
+      },
+      {
+        "t": 0.1,
+        "name": "shower"
+      }
+    ]
+  },
+  "metrics": {
+    "max_alive": 40,
+    "total_energy": 161.58294415473938
+  },
+  "timestamp": "2026-05-06T20:50:54+00:00"
+}

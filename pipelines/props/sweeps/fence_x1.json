@@ -1,0 +1,18 @@
+{
+  "schema": "prop_sweep.v1",
+  "family": "fence",
+  "kit": "first_party_proc",
+  "count": 1,
+  "id_prefix": "fence_a",
+  "id_start_index": 1,
+  "base_seed": 800,
+  "render_class": "scene_prop",
+  "collision": "convex",
+  "params": {
+    "span": {"type": "float_range", "min": 1.4, "max": 1.8},
+    "post_height": {"type": "float_range", "min": 0.95, "max": 1.10},
+    "color_variant": {"type": "constant", "value": "weathered_grey"}
+  },
+  "target_tris": 1000,
+  "lod_ladder": [1.00, 0.50, 0.20]
+}

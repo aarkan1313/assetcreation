@@ -1,0 +1,396 @@
+{
+  "schema": "local_llm_backend_dryrun.v1",
+  "record_type": "item",
+  "count": 1,
+  "model": "Qwen/Qwen2.5-Coder-32B-Instruct-AWQ",
+  "device": "cpu",
+  "model_loaded": false,
+  "prompt": "Generate exactly 1 item record(s) for TLTE. Return JSON only, shaped as {\"records\": [...]}. Required schema fields include: id, display_name, schema_version, tags, localization_key, provenance, notes, category, rarity, damage_type, stats, icon_id, description, stack_max. Use lowercase snake_case IDs, coherent fantasy ARPG naming, and no duplicate display names.",
+  "json_schema_keys": [
+    "category",
+    "damage_type",
+    "description",
+    "display_name",
+    "icon_id",
+    "id",
+    "localization_key",
+    "notes",
+    "provenance",
+    "rarity",
+    "schema_version",
+    "stack_max",
+    "stats",
+    "tags"
+  ],
+  "vllm_request_preview": {
+    "model": "Qwen/Qwen2.5-Coder-32B-Instruct-AWQ",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You generate strictly valid JSON game-data records for TLTE."
+      },
+      {
+        "role": "user",
+        "content": "Generate exactly 1 item record(s) for TLTE. Return JSON only, shaped as {\"records\": [...]}. Required schema fields include: id, display_name, schema_version, tags, localization_key, provenance, notes, category, rarity, damage_type, stats, icon_id, description, stack_max. Use lowercase snake_case IDs, coherent fantasy ARPG naming, and no duplicate display names.\nSeed hint: 91.\nReturn exactly one JSON object and no markdown."
+      }
+    ],
+    "temperature": 0.2,
+    "max_tokens": 2048,
+    "guided_json": {
+      "type": "object",
+      "properties": {
+        "records": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": {
+            "$defs": {
+              "ItemStats": {
+                "additionalProperties": false,
+                "properties": {
+                  "damage": {
+                    "default": 0,
+                    "maximum": 999,
+                    "minimum": 0,
+                    "title": "Damage",
+                    "type": "integer"
+                  },
+                  "armor": {
+                    "default": 0,
+                    "maximum": 999,
+                    "minimum": 0,
+                    "title": "Armor",
+                    "type": "integer"
+                  },
+                  "weight": {
+                    "default": 0.0,
+                    "maximum": 999.0,
+                    "minimum": 0.0,
+                    "title": "Weight",
+                    "type": "number"
+                  },
+                  "durability": {
+                    "default": 100,
+                    "maximum": 9999,
+                    "minimum": 0,
+                    "title": "Durability",
+                    "type": "integer"
+                  },
+                  "value_gold": {
+                    "default": 0,
+                    "maximum": 999999,
+                    "minimum": 0,
+                    "title": "Value Gold",
+                    "type": "integer"
+                  }
+                },
+                "title": "ItemStats",
+                "type": "object"
+              },
+              "Provenance": {
+                "additionalProperties": false,
+                "description": "Where did this record come from? Generation audit trail.",
+                "properties": {
+                  "source": {
+                    "default": "synthetic",
+                    "enum": [
+                      "llm",
+                      "human",
+                      "seed",
+                      "import",
+                      "synthetic"
+                    ],
+                    "title": "Source",
+                    "type": "string"
+                  },
+                  "model": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Model"
+                  },
+                  "seed": {
+                    "anyOf": [
+                      {
+                        "type": "integer"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Seed"
+                  },
+                  "prompt_id": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Prompt Id"
+                  },
+                  "timestamp": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Timestamp"
+                  },
+                  "target_file_sha256": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Target File Sha256"
+                  },
+                  "constraint_technique": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Constraint Technique"
+                  },
+                  "constraint_pass": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Constraint Pass"
+                  },
+                  "sim_digest": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Sim Digest"
+                  },
+                  "parent_id": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Parent Id"
+                  }
+                },
+                "title": "Provenance",
+                "type": "object"
+              }
+            },
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "pattern": "^[a-z][a-z0-9_]{1,39}$",
+                "title": "Id",
+                "type": "string"
+              },
+              "display_name": {
+                "maxLength": 64,
+                "minLength": 2,
+                "title": "Display Name",
+                "type": "string"
+              },
+              "schema_version": {
+                "default": "1.0.0",
+                "title": "Schema Version",
+                "type": "string"
+              },
+              "tags": {
+                "items": {
+                  "pattern": "^[a-z][a-z0-9_]{0,31}$",
+                  "type": "string"
+                },
+                "maxItems": 12,
+                "title": "Tags",
+                "type": "array"
+              },
+              "localization_key": {
+                "pattern": "^[A-Z][A-Z0-9_]{1,63}$",
+                "title": "Localization Key",
+                "type": "string"
+              },
+              "provenance": {
+                "$ref": "#/$defs/Provenance"
+              },
+              "notes": {
+                "default": "",
+                "maxLength": 512,
+                "title": "Notes",
+                "type": "string"
+              },
+              "category": {
+                "enum": [
+                  "weapon",
+                  "armor",
+                  "consumable",
+                  "material",
+                  "quest",
+                  "tool"
+                ],
+                "title": "Category",
+                "type": "string"
+              },
+              "rarity": {
+                "default": "common",
+                "enum": [
+                  "common",
+                  "uncommon",
+                  "rare",
+                  "epic",
+                  "legendary"
+                ],
+                "title": "Rarity",
+                "type": "string"
+              },
+              "damage_type": {
+                "anyOf": [
+                  {
+                    "enum": [
+                      "physical",
+                      "fire",
+                      "cold",
+                      "lightning",
+                      "poison",
+                      "arcane",
+                      "holy",
+                      "shadow"
+                    ],
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Damage Type"
+              },
+              "stats": {
+                "$ref": "#/$defs/ItemStats"
+              },
+              "icon_id": {
+                "anyOf": [
+                  {
+                    "pattern": "^[a-z][a-z0-9_]{1,39}$",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Icon Id"
+              },
+              "description": {
+                "maxLength": 400,
+                "minLength": 8,
+                "title": "Description",
+                "type": "string"
+              },
+              "stack_max": {
+                "default": 1,
+                "maximum": 9999,
+                "minimum": 1,
+                "title": "Stack Max",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "id",
+              "display_name",
+              "localization_key",
+              "category",
+              "description"
+            ],
+            "title": "Item",
+            "type": "object"
+          }
+        }
+      },
+      "required": [
+        "records"
+      ],
+      "additionalProperties": false
+    },
+    "guided_decoding_backend": "xgrammar"
+  },
+  "parser_ok": true,
+  "sample_records": [
+    {
+      "id": "stormcast_spear_0",
+      "display_name": "Stormcast Spear",
+      "schema_version": "1.0.0",
+      "tags": [
+        "stormcast",
+        "spear",
+        "weapon"
+      ],
+      "localization_key": "ITEM_STORMCAST_SPEAR_0",
+      "provenance": {
+        "source": "synthetic",
+        "model": null,
+        "seed": 91,
+        "prompt_id": null,
+        "timestamp": "2026-05-06T21:19:45+00:00",
+        "target_file_sha256": null,
+        "constraint_technique": null,
+        "constraint_pass": null,
+        "sim_digest": null,
+        "parent_id": null
+      },
+      "notes": "",
+      "category": "weapon",
+      "rarity": "rare",
+      "damage_type": "fire",
+      "stats": {
+        "damage": 30,
+        "armor": 0,
+        "weight": 7.6,
+        "durability": 305,
+        "value_gold": 486
+      },
+      "icon_id": "ico_spear_stormcast",
+      "description": "A stormcast spear. Forged for hunting.",
+      "stack_max": 1
+    }
+  ],
+  "timestamp": "2026-05-06T21:19:45+00:00"
+}

@@ -1,0 +1,57 @@
+{
+  "id": "ui_click",
+  "category": "ui",
+  "variants": [
+    "audio/ui/ui_click/ui_click_v0.wav",
+    "audio/ui/ui_click/ui_click_v1.wav",
+    "audio/ui/ui_click/ui_click_v2.wav"
+  ],
+  "preset": "ui_click",
+  "target_rms_db": -22.0,
+  "tags": [
+    "ui"
+  ],
+  "notes": "from synth_sfx.py base presets",
+  "backend": "synth_sfx_extended",
+  "processing": [
+    {
+      "variant": 0,
+      "duration_s": 0.025351473922902493,
+      "rms_dbfs_in": -21.218698501586914,
+      "rms_dbfs_out": -21.999998092651367,
+      "peak_dbfs_out": -10.570001602172852,
+      "trim_ms": 54,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    },
+    {
+      "variant": 1,
+      "duration_s": 0.025351473922902493,
+      "rms_dbfs_in": -21.152523040771484,
+      "rms_dbfs_out": -22.0,
+      "peak_dbfs_out": -11.448013305664062,
+      "trim_ms": 54,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    },
+    {
+      "variant": 2,
+      "duration_s": 0.025328798185941043,
+      "rms_dbfs_in": -21.34630012512207,
+      "rms_dbfs_out": -22.0,
+      "peak_dbfs_out": -11.03782844543457,
+      "trim_ms": 54,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    }
+  ]
+}

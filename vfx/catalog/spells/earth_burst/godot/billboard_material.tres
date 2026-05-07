@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3]
+
+[ext_resource type="Shader" path="res://vfx/spell/earth_burst/godot/billboard.gdshader" id="1_sh"]
+[ext_resource type="Texture2D" path="res://vfx/spell/earth_burst/flipbook.png" id="2_tex"]
+
+[resource]
+shader = ExtResource("1_sh")
+shader_parameter/albedo_tex = ExtResource("2_tex")
+shader_parameter/h_frames = 4
+shader_parameter/v_frames = 4
+shader_parameter/n_frames = 15
+shader_parameter/fps = 30.0
+shader_parameter/loop = true
+shader_parameter/modulate = Color(0.8470588235294118, 0.7803921568627451, 0.6039215686274509, 1.0)
+shader_parameter/emission_strength = 0.0

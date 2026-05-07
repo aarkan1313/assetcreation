@@ -1,0 +1,84 @@
+{
+  "id": "shader_review_upgrade_smoke_001_beam_lightning_2d_007",
+  "intent": "high quality portal shield beam aura dissolve Godot shaders",
+  "role": "beam",
+  "template": "beam_lightning_2d",
+  "params": {
+    "color_core": [
+      0.24704945744781587,
+      0.0,
+      0.4200391617074654
+    ],
+    "color_edge": [
+      0.01518998957605144,
+      0.010576047272516625,
+      0.0681253110731522
+    ],
+    "color_glow": [
+      0.7431838717518019,
+      0.4054347710911567,
+      0.9241763655693019
+    ],
+    "thickness": 0.055,
+    "core_thickness": 0.2173,
+    "jaggedness": 0.323,
+    "frequency": 22.023,
+    "speed": 5.4642,
+    "arc": 0.1432,
+    "fork_strength": 0.2426,
+    "opacity": 0.9546
+  },
+  "preview": {
+    "size": [
+      320,
+      160
+    ],
+    "frames": 4,
+    "duration_s": 1.5,
+    "background": [
+      0.015,
+      0.015,
+      0.035,
+      1.0
+    ]
+  },
+  "created": "2026-05-06T10:38:23.309079+00:00",
+  "review": {
+    "score": 81.49,
+    "grade": "review",
+    "components": {
+      "coverage": 0.474,
+      "motion": 1.0,
+      "center": 1.0,
+      "color": 1.0,
+      "edge": 0.965,
+      "contrast": 0.404,
+      "aspect": 1.0
+    },
+    "gate_issues": [],
+    "gate_warnings": [
+      "role coverage far above target"
+    ],
+    "metrics": {
+      "coverage": 0.36109,
+      "mean_alpha": 0.14229,
+      "luma_mean": 0.14672,
+      "contrast": 0.05745,
+      "colorfulness": 0.24185,
+      "edge_energy": 0.00578,
+      "center_distance": 0.09068,
+      "clip_high": 0.0,
+      "clip_low": 0.00386,
+      "aspect": 3.59481,
+      "motion": 0.02721,
+      "flicker": 0.00067,
+      "frames": 4.0
+    },
+    "hints": [
+      "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold",
+      "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors",
+      "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width"
+    ],
+    "render_source": "cpu_proxy"
+  }
+}

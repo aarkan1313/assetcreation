@@ -1,0 +1,12 @@
+{
+  "duration_s": 0.05038548752834467,
+  "samplerate": 44100,
+  "rms_dbfs": -18.00085071507475,
+  "peak_dbfs": -3.733254692103665,
+  "clipped_samples": 0,
+  "dc_offset": 0.0056991782039403915,
+  "click_count_estimate": 2,
+  "source": "D:\\assets\\audio\\sfx\\step_stone_v1.wav",
+  "waveform": "D:\\assets\\audio\\sfx\\step_stone_v1_qa\\waveform.png",
+  "spectrogram": "D:\\assets\\audio\\sfx\\step_stone_v1_qa\\spectrogram.png"
+}

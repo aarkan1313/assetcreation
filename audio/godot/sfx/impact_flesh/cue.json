@@ -1,0 +1,59 @@
+{
+  "id": "impact_flesh",
+  "category": "sfx",
+  "variants": [
+    "audio/sfx/impact_flesh/impact_flesh_v0.wav",
+    "audio/sfx/impact_flesh/impact_flesh_v1.wav",
+    "audio/sfx/impact_flesh/impact_flesh_v2.wav"
+  ],
+  "preset": "impact_flesh",
+  "target_rms_db": -16.0,
+  "tags": [
+    "impact",
+    "hit",
+    "flesh"
+  ],
+  "notes": "",
+  "backend": "synth_sfx_extended",
+  "processing": [
+    {
+      "variant": 0,
+      "duration_s": 0.19913832199546486,
+      "rms_dbfs_in": -17.769168853759766,
+      "rms_dbfs_out": -16.000001907348633,
+      "peak_dbfs_out": -3.746117353439331,
+      "trim_ms": 100,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    },
+    {
+      "variant": 1,
+      "duration_s": 0.19882086167800453,
+      "rms_dbfs_in": -17.84193992614746,
+      "rms_dbfs_out": -16.0,
+      "peak_dbfs_out": -3.8340091705322266,
+      "trim_ms": 101,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    },
+    {
+      "variant": 2,
+      "duration_s": 0.19956916099773242,
+      "rms_dbfs_in": -17.824460983276367,
+      "rms_dbfs_out": -15.999999046325684,
+      "peak_dbfs_out": -3.8168749809265137,
+      "trim_ms": 100,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    }
+  ]
+}

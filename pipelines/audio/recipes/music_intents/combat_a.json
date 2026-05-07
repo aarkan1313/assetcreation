@@ -1,0 +1,44 @@
+{
+  "id": "combat_a",
+  "display_name": "Combat \u2014 Track A",
+  "bpm": 120,
+  "bars": 16,
+  "loop": true,
+  "stems": [
+    {
+      "id": "drums",
+      "intensity_min": 0.0,
+      "intensity_max": 1.0
+    },
+    {
+      "id": "bass",
+      "intensity_min": 0.0,
+      "intensity_max": 1.0
+    },
+    {
+      "id": "lead",
+      "intensity_min": 0.4,
+      "intensity_max": 1.0
+    },
+    {
+      "id": "perc_hi",
+      "intensity_min": 0.7,
+      "intensity_max": 1.0
+    }
+  ],
+  "states": {
+    "calm": {
+      "intensity": 0.2
+    },
+    "tense": {
+      "intensity": 0.6
+    },
+    "combat": {
+      "intensity": 0.9
+    },
+    "victory": {
+      "intensity": 1.0,
+      "next_track": "victory_a"
+    }
+  }
+}

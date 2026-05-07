@@ -1,0 +1,26 @@
+{
+  "effect_id": "blood_drip",
+  "backend": "particle_cpu",
+  "n_frames": 36,
+  "fps": 30,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "flipbook": "D:\\assets\\vfx\\catalog\\spells\\blood_drip\\flipbook.png",
+  "frames_dir": "D:\\assets\\vfx\\catalog\\spells\\blood_drip\\frames",
+  "extras": {
+    "particles_json": "D:\\assets\\vfx\\catalog\\spells\\blood_drip\\particles.json",
+    "audio_cues": [
+      {
+        "t": 0.0,
+        "name": "drip_start"
+      }
+    ]
+  },
+  "metrics": {
+    "max_alive": 20,
+    "total_energy": 295.21391344070435
+  },
+  "timestamp": "2026-05-06T20:50:49+00:00"
+}

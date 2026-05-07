@@ -1,0 +1,83 @@
+{
+  "id": "shader_evolve_smoke_001_g00_shield_ripple_2d_006",
+  "intent": "evolve luminous portal shield effects toward reference",
+  "role": "shield",
+  "template": "shield_ripple_2d",
+  "params": {
+    "color_shield": [
+      0.17050080283739044,
+      0.033884348427405404,
+      0.3727014559308419
+    ],
+    "color_hit": [
+      0.7753181714123831,
+      0.3477975132563857,
+      1.0
+    ],
+    "hex_scale": 45.4546,
+    "hex_strength": 0.7494,
+    "fresnel_power": 0.8572,
+    "ripple_speed": 2.1685,
+    "ripple_strength": 0.7472,
+    "ripple_freq": 32.4153,
+    "hit_position": [
+      0.4041,
+      0.4747
+    ],
+    "hit_age": 1.1371,
+    "opacity": 0.8103
+  },
+  "preview": {
+    "size": [
+      128,
+      128
+    ],
+    "frames": 3,
+    "duration_s": 1.8,
+    "background": [
+      0.035,
+      0.035,
+      0.055,
+      1.0
+    ]
+  },
+  "created": "2026-05-06T10:44:53.830629+00:00",
+  "review": {
+    "score": 36.38,
+    "grade": "reject",
+    "components": {
+      "coverage": 0.63,
+      "motion": 1.0,
+      "center": 1.0,
+      "color": 1.0,
+      "edge": 1.0,
+      "contrast": 0.735
+    },
+    "gate_issues": [],
+    "gate_warnings": [],
+    "metrics": {
+      "coverage": 0.85335,
+      "mean_alpha": 0.47279,
+      "luma_mean": 0.08641,
+      "contrast": 0.06879,
+      "colorfulness": 0.22889,
+      "edge_energy": 0.03726,
+      "center_distance": 0.02383,
+      "clip_high": 0.0,
+      "clip_low": 0.0,
+      "aspect": 1.0,
+      "motion": 0.05626,
+      "flicker": 0.00068,
+      "frames": 3.0
+    },
+    "hints": [
+      "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold"
+    ],
+    "base_score": 88.06,
+    "reference_score": 8.56,
+    "reference_distance": 1.11714,
+    "nearest_reference": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+    "render_source": "cpu_proxy",
+    "selection_score": 36.38
+  }
+}

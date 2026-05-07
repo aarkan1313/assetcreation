@@ -1,0 +1,78 @@
+{
+  "kind": "spell",
+  "phenomenon": "smoke",
+  "backend": "particle_cpu",
+  "duration_s": 0.4,
+  "fps": 30,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "visual": {
+    "palette": [
+      "#9b4ad0",
+      "#5a2a90",
+      "#2a0a40",
+      "#0a0010"
+    ],
+    "blend": "alpha",
+    "background": "#00000000",
+    "bloom": true
+  },
+  "visual3d": {
+    "billboard_mode": "y_axis",
+    "world_size_m": 1.8
+  },
+  "backend_params": {
+    "emitter": "burst",
+    "count": 95,
+    "seed": 41610,
+    "initial_speed": 59.5,
+    "speed_jitter": 35.0,
+    "direction_deg": 90.0,
+    "spread_deg": 90.0,
+    "gravity": [
+      0.0,
+      110.0
+    ],
+    "drag": 1.0,
+    "size_px": 7.15,
+    "size_jitter": 2.5,
+    "fade": 1.0,
+    "emission_pos": [
+      128,
+      200
+    ],
+    "_audio_cues": [
+      {
+        "t": 0.0,
+        "name": "impact"
+      },
+      {
+        "t": 0.18,
+        "name": "shower"
+      },
+      {
+        "t": 0.32,
+        "name": "settle"
+      }
+    ]
+  },
+  "gameplay": {
+    "shape": "point",
+    "damage_tags": [
+      "necrotic"
+    ],
+    "collision": "first_hit"
+  },
+  "element": "shadow",
+  "archetype": "impact",
+  "tags": [
+    "shadow",
+    "impact",
+    "necrotic"
+  ],
+  "export_target": "decal",
+  "id": "shadow_impact",
+  "notes": "Auto-authored shadow impact from element-archetype grid."
+}

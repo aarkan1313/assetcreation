@@ -1,0 +1,58 @@
+{
+  "id": "impact_stone",
+  "category": "sfx",
+  "variants": [
+    "audio/sfx/impact_stone/impact_stone_v0.wav",
+    "audio/sfx/impact_stone/impact_stone_v1.wav",
+    "audio/sfx/impact_stone/impact_stone_v2.wav"
+  ],
+  "preset": "impact_stone",
+  "target_rms_db": -16.0,
+  "tags": [
+    "impact",
+    "stone"
+  ],
+  "notes": "",
+  "backend": "synth_sfx_extended",
+  "processing": [
+    {
+      "variant": 0,
+      "duration_s": 0.15643990929705215,
+      "rms_dbfs_in": -19.599000930786133,
+      "rms_dbfs_out": -15.999999046325684,
+      "peak_dbfs_out": -1.8442087173461914,
+      "trim_ms": 143,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    },
+    {
+      "variant": 1,
+      "duration_s": 0.15634920634920635,
+      "rms_dbfs_in": -19.71564483642578,
+      "rms_dbfs_out": -16.0,
+      "peak_dbfs_out": -2.1219677925109863,
+      "trim_ms": 143,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    },
+    {
+      "variant": 2,
+      "duration_s": 0.15541950113378686,
+      "rms_dbfs_in": -19.794450759887695,
+      "rms_dbfs_out": -16.0,
+      "peak_dbfs_out": -2.1128852367401123,
+      "trim_ms": 144,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "effect_id": "fireball_projectile",
+  "backend": "particle_cpu",
+  "n_frames": 19,
+  "fps": 24,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "flipbook": "D:\\assets\\vfx\\catalog\\spells\\fireball_projectile\\flipbook.png",
+  "frames_dir": "D:\\assets\\vfx\\catalog\\spells\\fireball_projectile\\frames",
+  "extras": {
+    "particles_json": "D:\\assets\\vfx\\catalog\\spells\\fireball_projectile\\particles.json"
+  },
+  "metrics": {
+    "max_alive": 120,
+    "total_energy": 933.0239551663399
+  },
+  "timestamp": "2026-05-06T20:50:51+00:00"
+}

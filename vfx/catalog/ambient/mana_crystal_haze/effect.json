@@ -1,0 +1,63 @@
+{
+  "id": "mana_crystal_haze",
+  "kind": "ambient",
+  "phenomenon": "smoke",
+  "backend": "volumetric_fog",
+  "duration_s": 1.0,
+  "fps": 8,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "visual": {
+    "palette": [
+      "#d8a8ff",
+      "#3a1a55"
+    ],
+    "blend": "alpha",
+    "background": "#00000000",
+    "bloom": true
+  },
+  "visual3d": {
+    "billboard_mode": "off",
+    "world_size_m": 22.0
+  },
+  "backend_params": {
+    "volume_resolution": [
+      64,
+      64,
+      32
+    ],
+    "noise_type": "worley",
+    "noise_scale": 4.0,
+    "noise_octaves": 3,
+    "density_curve": "exp_falloff",
+    "density_max": 0.4,
+    "density_scale": 0.8,
+    "color_top": "#d8a8ff",
+    "color_bottom": "#3a1a55",
+    "emission_strength": 1.0,
+    "extents_m": [
+      22.0,
+      7.0,
+      22.0
+    ],
+    "fog_shape": "ellipsoid",
+    "biome_id": "mana_crystal",
+    "seed": 2025
+  },
+  "gameplay": {
+    "shape": "self",
+    "damage_tags": [],
+    "collision": "none"
+  },
+  "element": "neutral",
+  "archetype": "ambient",
+  "tags": [
+    "biome",
+    "mana_crystal",
+    "fog"
+  ],
+  "export_target": "fog_volume",
+  "notes": "Per-biome volumetric haze for mana_crystal. Place a FogVolume node in scenes that contain this biome zone."
+}

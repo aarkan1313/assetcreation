@@ -1,0 +1,22 @@
+# phosphor curated UI-primitive picks (auto-generated)
+# license: MIT
+# Used by: freelib_ingest.py --source mit-iso-libs --library phosphor --slugs-file <this>
+
+caret-left
+caret-right
+caret-up
+caret-down
+arrow-left
+arrow-right
+arrow-up
+arrow-down
+gear
+list
+x
+plus
+minus
+magnifying-glass
+info
+warning
+check
+circle

@@ -1,0 +1,30 @@
+{
+  "effect_id": "debris_stone",
+  "backend": "fracture2d",
+  "n_frames": 24,
+  "fps": 24,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "flipbook": "D:\\assets\\vfx\\catalog\\destruction\\debris_stone\\flipbook.png",
+  "frames_dir": "D:\\assets\\vfx\\catalog\\destruction\\debris_stone\\frames",
+  "extras": {
+    "fragments_json": "D:\\assets\\vfx\\catalog\\destruction\\debris_stone\\fragments.json",
+    "bodies_json": "D:\\assets\\vfx\\catalog\\destruction\\debris_stone\\bodies.json",
+    "audio_cues": [
+      {
+        "t": 0.0,
+        "name": "smash"
+      },
+      {
+        "t": 0.5,
+        "name": "tumble"
+      }
+    ]
+  },
+  "metrics": {
+    "shard_count": 10
+  },
+  "timestamp": "2026-05-06T20:50:46+00:00"
+}

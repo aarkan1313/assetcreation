@@ -1,0 +1,77 @@
+{
+  "id": "shader_review_smoke_002_ring_field_2d_006",
+  "intent": "high quality arcane, storm, shield, portal, dissolve, projectile spell shaders for Godot",
+  "role": "aura",
+  "template": "ring_field_2d",
+  "params": {
+    "color_inner": [
+      0.8616951871957143,
+      0.9939782822530377,
+      0.9348724755260177
+    ],
+    "color_outer": [
+      0.31297500711376497,
+      0.6998514576820183,
+      0.9847456433701376
+    ],
+    "color_glow": [
+      0.18960753433132915,
+      0.29210094023163613,
+      0.8216513199737688
+    ],
+    "radius": 0.3618,
+    "edge_width": 0.075,
+    "noise_scale": 15.1478,
+    "pulse_speed": 1.9085,
+    "distortion": 0.1336,
+    "rune_count": 8,
+    "rune_strength": 1.0181,
+    "opacity": 0.7726
+  },
+  "preview": {
+    "size": [
+      160,
+      160
+    ],
+    "frames": 4,
+    "duration_s": 1.8,
+    "background": [
+      0.035,
+      0.035,
+      0.055,
+      1.0
+    ]
+  },
+  "created": "2026-05-06T10:13:03.752014+00:00",
+  "review": {
+    "score": 43.8,
+    "grade": "reject",
+    "components": {
+      "coverage": 0.16,
+      "motion": 1.0,
+      "center": 1.0,
+      "color": 1.0,
+      "edge": 1.0,
+      "contrast": 1.0
+    },
+    "metrics": {
+      "coverage": 1.0,
+      "mean_alpha": 0.50483,
+      "luma_mean": 0.43938,
+      "contrast": 0.25025,
+      "colorfulness": 0.33974,
+      "edge_energy": 0.03116,
+      "center_distance": 0.00255,
+      "clip_high": 0.43568,
+      "clip_low": 0.0,
+      "aspect": 1.0,
+      "motion": 0.02517,
+      "flicker": 0.0,
+      "frames": 4.0
+    },
+    "hints": [
+      "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold"
+    ],
+    "render_source": "cpu_proxy"
+  }
+}

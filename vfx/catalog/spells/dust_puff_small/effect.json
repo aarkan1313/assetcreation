@@ -1,0 +1,71 @@
+{
+  "id": "dust_puff_small",
+  "kind": "spell",
+  "phenomenon": "particle",
+  "backend": "particle_cpu",
+  "duration_s": 0.7,
+  "fps": 30,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "visual": {
+    "palette": [
+      "#d8c89a",
+      "#8a7250",
+      "#3a2e1a"
+    ],
+    "blend": "alpha",
+    "background": "#00000000",
+    "bloom": false
+  },
+  "visual3d": {
+    "billboard_mode": "y_axis",
+    "world_size_m": 1.4
+  },
+  "backend_params": {
+    "emitter": "burst",
+    "count": 45,
+    "seed": 54912,
+    "initial_speed": 40.0,
+    "speed_jitter": 20.0,
+    "direction_deg": 90.0,
+    "spread_deg": 160.0,
+    "gravity": [
+      0.0,
+      -15.0
+    ],
+    "drag": 2.4,
+    "size_px": 12.0,
+    "size_jitter": 4.800000000000001,
+    "fade": 1.0,
+    "emission_pos": [
+      128,
+      160
+    ],
+    "_audio_cues": [
+      {
+        "t": 0.0,
+        "name": "step"
+      },
+      {
+        "t": 0.5,
+        "name": "settle"
+      }
+    ]
+  },
+  "gameplay": {
+    "shape": "point",
+    "damage_tags": [],
+    "collision": "first_hit"
+  },
+  "element": "physical",
+  "archetype": "impact",
+  "tags": [
+    "dust",
+    "physical",
+    "footstep"
+  ],
+  "export_target": "decal",
+  "notes": "Damage/impact: dust_puff_small"
+}

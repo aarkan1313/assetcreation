@@ -1,0 +1,31 @@
+{
+  "id": "amb_drone_lava",
+  "category": "sfx",
+  "variants": [
+    "audio/sfx/amb_drone_lava/amb_drone_lava_v0.wav"
+  ],
+  "preset": "amb_drone_lava",
+  "target_rms_db": -26.0,
+  "tags": [
+    "ambience",
+    "drone",
+    "lava_field"
+  ],
+  "notes": "placeholder; replace via biome_ambience.py",
+  "backend": "synth_sfx_extended",
+  "processing": [
+    {
+      "variant": 0,
+      "duration_s": 4.0,
+      "rms_dbfs_in": -17.474564235607104,
+      "rms_dbfs_out": -26.000000060401376,
+      "peak_dbfs_out": -15.398313522338867,
+      "trim_ms": 0,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    }
+  ]
+}

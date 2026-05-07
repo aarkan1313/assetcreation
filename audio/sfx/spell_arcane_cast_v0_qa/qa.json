@@ -1,0 +1,12 @@
+{
+  "duration_s": 0.7,
+  "samplerate": 44100,
+  "rms_dbfs": -15.744775804396987,
+  "peak_dbfs": -6.6709841352662655,
+  "clipped_samples": 0,
+  "dc_offset": 3.1357874377135886e-06,
+  "click_count_estimate": 0,
+  "source": "D:\\assets\\audio\\sfx\\spell_arcane_cast_v0.wav",
+  "waveform": "D:\\assets\\audio\\sfx\\spell_arcane_cast_v0_qa\\waveform.png",
+  "spectrogram": "D:\\assets\\audio\\sfx\\spell_arcane_cast_v0_qa\\spectrogram.png"
+}

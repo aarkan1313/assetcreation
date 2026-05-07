@@ -1,0 +1,75 @@
+{
+  "kind": "spell",
+  "phenomenon": "particle",
+  "backend": "particle_cpu",
+  "duration_s": 0.5,
+  "fps": 30,
+  "bounds_px": [
+    320,
+    320
+  ],
+  "visual": {
+    "palette": [
+      "#d8c79a",
+      "#a07a4a",
+      "#553820",
+      "#1a120a"
+    ],
+    "blend": "alpha",
+    "background": "#00000000",
+    "bloom": false
+  },
+  "visual3d": {
+    "billboard_mode": "enabled",
+    "world_size_m": 2.5
+  },
+  "backend_params": {
+    "emitter": "burst",
+    "count": 180,
+    "seed": 24978,
+    "initial_speed": 56.0,
+    "speed_jitter": 56.0,
+    "direction_deg": 90.0,
+    "spread_deg": 360.0,
+    "gravity": [
+      0.0,
+      0.0
+    ],
+    "drag": 1.6,
+    "size_px": 8.4,
+    "size_jitter": 4.0,
+    "fade": 1.0,
+    "emission_pos": [
+      160,
+      160
+    ],
+    "_audio_cues": [
+      {
+        "t": 0.0,
+        "name": "burst"
+      },
+      {
+        "t": 0.3,
+        "name": "settle"
+      }
+    ]
+  },
+  "gameplay": {
+    "shape": "aura",
+    "damage_tags": [
+      "physical"
+    ],
+    "collision": "pierce"
+  },
+  "element": "earth",
+  "archetype": "burst",
+  "tags": [
+    "earth",
+    "burst",
+    "aoe",
+    "physical"
+  ],
+  "export_target": "3d_billboard",
+  "id": "earth_burst",
+  "notes": "Auto-authored earth burst from element-archetype grid."
+}

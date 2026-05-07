@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="PackedScene" path="res://props/bone_pile_a03/model_lod0.glb" id="1"]
+[ext_resource type="PackedScene" path="res://props/bone_pile_a03/model_lod1.glb" id="2"]
+[ext_resource type="PackedScene" path="res://props/bone_pile_a03/model_lod2.glb" id="3"]
+[ext_resource type="PackedScene" path="res://props/bone_pile_a03/model_lod3.glb" id="4"]
+[ext_resource type="Script" path="res://props/_shared/PropMaterialBinder.gd" id="5"]
+[ext_resource type="Material" path="res://props/_materials/biome_tundra/biome_tundra.tres" id="6"]
+
+[node name="bone_pile_a03" type="Node3D"]
+script = ExtResource("5")
+material_overrides = [ExtResource("6")]
+
+[node name="LOD0" parent="." instance=ExtResource("1")]
+visibility_range_end = 25.00
+visibility_range_end_margin = 3.00
+visibility_range_fade_mode = 1
+
+[node name="LOD1" parent="." instance=ExtResource("2")]
+visibility_range_begin = 25.00
+visibility_range_begin_margin = 3.00
+visibility_range_end = 60.00
+visibility_range_end_margin = 3.00
+visibility_range_fade_mode = 1
+
+[node name="LOD2" parent="." instance=ExtResource("3")]
+visibility_range_begin = 60.00
+visibility_range_begin_margin = 3.00
+visibility_range_end = 120.00
+visibility_range_end_margin = 3.00
+visibility_range_fade_mode = 1
+
+[node name="LOD3" parent="." instance=ExtResource("4")]
+visibility_range_begin = 120.00
+visibility_range_begin_margin = 3.00
+visibility_range_end = 200.00
+visibility_range_end_margin = 3.00
+visibility_range_fade_mode = 1
+

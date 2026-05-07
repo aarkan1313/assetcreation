@@ -1,0 +1,59 @@
+{
+  "id": "ui_quest_complete",
+  "category": "ui",
+  "variants": [
+    "audio/ui/ui_quest_complete/ui_quest_complete_v0.wav",
+    "audio/ui/ui_quest_complete/ui_quest_complete_v1.wav",
+    "audio/ui/ui_quest_complete/ui_quest_complete_v2.wav"
+  ],
+  "preset": "ui_quest_complete",
+  "target_rms_db": -22.0,
+  "tags": [
+    "ui",
+    "quest",
+    "fanfare"
+  ],
+  "notes": "",
+  "backend": "synth_sfx_extended",
+  "processing": [
+    {
+      "variant": 0,
+      "duration_s": 0.72,
+      "rms_dbfs_in": -17.36656463595654,
+      "rms_dbfs_out": -22.00000023630625,
+      "peak_dbfs_out": -14.176026344299316,
+      "trim_ms": 0,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    },
+    {
+      "variant": 1,
+      "duration_s": 0.72,
+      "rms_dbfs_in": -17.36337064574516,
+      "rms_dbfs_out": -22.000000355989233,
+      "peak_dbfs_out": -14.178257942199707,
+      "trim_ms": 0,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    },
+    {
+      "variant": 2,
+      "duration_s": 0.72,
+      "rms_dbfs_in": -17.364340195228568,
+      "rms_dbfs_out": -21.999999794395904,
+      "peak_dbfs_out": -14.173083305358887,
+      "trim_ms": 0,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    }
+  ]
+}

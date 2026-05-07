@@ -1,0 +1,28 @@
+{
+  "schema": "matting.plan.v1",
+  "backend": "comfy_birefnet",
+  "model": "ZhengPeng7/BiRefNet",
+  "license": "review model card before shipping batch outputs",
+  "input": "images\\archived\\witch.png",
+  "out": "pipelines\\_meta\\reports\\phase9_witch_matte.png",
+  "workflow": "D:\\assets\\pipelines\\_meta\\comfy_workflows\\birefnet_remove_bg.json",
+  "output_node": "3",
+  "required_custom_nodes": [
+    "BiRefNet/RMBG ComfyUI matting node pack"
+  ],
+  "timestamp": "2026-05-06T21:19:55+00:00",
+  "comfy_runner_plan": {
+    "schema": "comfy_runner.result.v1",
+    "workflow_path": "D:\\assets\\pipelines\\_meta\\comfy_workflows\\birefnet_remove_bg.json",
+    "host": "http://127.0.0.1:8188",
+    "dry_run": true,
+    "node_count": 3,
+    "output_node_ids": [
+      "3"
+    ],
+    "prompt_id": null,
+    "missing_node_types": [],
+    "downloaded": [],
+    "elapsed_s": 0.0
+  }
+}

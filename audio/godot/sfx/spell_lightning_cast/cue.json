@@ -1,0 +1,59 @@
+{
+  "id": "spell_lightning_cast",
+  "category": "sfx",
+  "variants": [
+    "audio/sfx/spell_lightning_cast/spell_lightning_cast_v0.wav",
+    "audio/sfx/spell_lightning_cast/spell_lightning_cast_v1.wav",
+    "audio/sfx/spell_lightning_cast/spell_lightning_cast_v2.wav"
+  ],
+  "preset": "spell_lightning_cast",
+  "target_rms_db": -16.0,
+  "tags": [
+    "spell",
+    "lightning",
+    "cast"
+  ],
+  "notes": "",
+  "backend": "synth_sfx_extended",
+  "processing": [
+    {
+      "variant": 0,
+      "duration_s": 0.45,
+      "rms_dbfs_in": -11.67261190832958,
+      "rms_dbfs_out": -15.999999853871406,
+      "peak_dbfs_out": -7.903146743774414,
+      "trim_ms": 0,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 2
+      }
+    },
+    {
+      "variant": 1,
+      "duration_s": 0.45,
+      "rms_dbfs_in": -11.627798026225543,
+      "rms_dbfs_out": -15.999999807648203,
+      "peak_dbfs_out": -7.131871700286865,
+      "trim_ms": 0,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 4
+      }
+    },
+    {
+      "variant": 2,
+      "duration_s": 0.45,
+      "rms_dbfs_in": -11.619773588093404,
+      "rms_dbfs_out": -15.999999758166531,
+      "peak_dbfs_out": -7.181807518005371,
+      "trim_ms": 0,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 1
+      }
+    }
+  ]
+}

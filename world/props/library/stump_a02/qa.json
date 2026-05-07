@@ -1,0 +1,14 @@
+{
+  "id": "stump_a02",
+  "kind": "stump",
+  "seed": 601,
+  "target_tris": 1100,
+  "params": {
+    "height": 0.4325,
+    "radius": 0.3648,
+    "color_variant": "oak"
+  },
+  "blender_version": "5.1",
+  "timestamp": "2026-05-06T18:50:42+00:00",
+  "ok": true
+}

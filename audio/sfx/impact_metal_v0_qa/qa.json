@@ -1,0 +1,12 @@
+{
+  "duration_s": 0.46095238095238095,
+  "samplerate": 44100,
+  "rms_dbfs": -17.61035187873971,
+  "peak_dbfs": -1.0004493301428767,
+  "clipped_samples": 0,
+  "dc_offset": 2.787836592688109e-06,
+  "click_count_estimate": 0,
+  "source": "D:\\assets\\audio\\sfx\\impact_metal_v0.wav",
+  "waveform": "D:\\assets\\audio\\sfx\\impact_metal_v0_qa\\waveform.png",
+  "spectrogram": "D:\\assets\\audio\\sfx\\impact_metal_v0_qa\\spectrogram.png"
+}

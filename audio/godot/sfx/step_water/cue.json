@@ -1,0 +1,73 @@
+{
+  "id": "step_water",
+  "category": "sfx",
+  "variants": [
+    "audio/sfx/step_water/step_water_v0.wav",
+    "audio/sfx/step_water/step_water_v1.wav",
+    "audio/sfx/step_water/step_water_v2.wav",
+    "audio/sfx/step_water/step_water_v3.wav"
+  ],
+  "preset": "step_water",
+  "target_rms_db": -18.0,
+  "tags": [
+    "step",
+    "water",
+    "wet"
+  ],
+  "notes": "",
+  "backend": "synth_sfx_extended",
+  "processing": [
+    {
+      "variant": 0,
+      "duration_s": 0.09319727891156462,
+      "rms_dbfs_in": -30.41716766357422,
+      "rms_dbfs_out": -18.83547592163086,
+      "peak_dbfs_out": -1.0000003576278687,
+      "trim_ms": 106,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 55
+      }
+    },
+    {
+      "variant": 1,
+      "duration_s": 0.09451247165532879,
+      "rms_dbfs_in": -29.961721420288086,
+      "rms_dbfs_out": -18.47773551940918,
+      "peak_dbfs_out": -1.0000003576278687,
+      "trim_ms": 105,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 70
+      }
+    },
+    {
+      "variant": 2,
+      "duration_s": 0.08897959183673469,
+      "rms_dbfs_in": -30.36807632446289,
+      "rms_dbfs_out": -18.000001907348633,
+      "peak_dbfs_out": -2.1973702907562256,
+      "trim_ms": 111,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 91
+      }
+    },
+    {
+      "variant": 3,
+      "duration_s": 0.09503401360544218,
+      "rms_dbfs_in": -30.56931495666504,
+      "rms_dbfs_out": -17.999998092651367,
+      "peak_dbfs_out": -1.3550455570220947,
+      "trim_ms": 104,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 90
+      }
+    }
+  ]
+}

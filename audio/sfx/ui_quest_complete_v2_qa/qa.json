@@ -1,0 +1,12 @@
+{
+  "duration_s": 0.72,
+  "samplerate": 44100,
+  "rms_dbfs": -22.125286380401803,
+  "peak_dbfs": -14.174548637670734,
+  "clipped_samples": 0,
+  "dc_offset": -6.428952019632561e-06,
+  "click_count_estimate": 0,
+  "source": "D:\\assets\\audio\\sfx\\ui_quest_complete_v2.wav",
+  "waveform": "D:\\assets\\audio\\sfx\\ui_quest_complete_v2_qa\\waveform.png",
+  "spectrogram": "D:\\assets\\audio\\sfx\\ui_quest_complete_v2_qa\\spectrogram.png"
+}

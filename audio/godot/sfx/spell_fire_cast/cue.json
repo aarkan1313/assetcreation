@@ -1,0 +1,59 @@
+{
+  "id": "spell_fire_cast",
+  "category": "sfx",
+  "variants": [
+    "audio/sfx/spell_fire_cast/spell_fire_cast_v0.wav",
+    "audio/sfx/spell_fire_cast/spell_fire_cast_v1.wav",
+    "audio/sfx/spell_fire_cast/spell_fire_cast_v2.wav"
+  ],
+  "preset": "spell_fire_cast",
+  "target_rms_db": -16.0,
+  "tags": [
+    "spell",
+    "fire",
+    "cast"
+  ],
+  "notes": "",
+  "backend": "synth_sfx_extended",
+  "processing": [
+    {
+      "variant": 0,
+      "duration_s": 0.6496598639455783,
+      "rms_dbfs_in": -16.744906954414304,
+      "rms_dbfs_out": -16.000000106518947,
+      "peak_dbfs_out": -6.6506242752075195,
+      "trim_ms": 0,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    },
+    {
+      "variant": 1,
+      "duration_s": 0.6485260770975056,
+      "rms_dbfs_in": -16.741842003041484,
+      "rms_dbfs_out": -15.99999958914856,
+      "peak_dbfs_out": -6.489686489105225,
+      "trim_ms": 1,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    },
+    {
+      "variant": 2,
+      "duration_s": 0.6487301587301587,
+      "rms_dbfs_in": -16.666357544607834,
+      "rms_dbfs_out": -16.000000300655227,
+      "peak_dbfs_out": -5.864760398864746,
+      "trim_ms": 1,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 0
+      }
+    }
+  ]
+}

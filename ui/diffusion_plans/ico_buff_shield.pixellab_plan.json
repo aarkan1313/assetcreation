@@ -1,0 +1,16 @@
+{
+  "icon_id": "ico_buff_shield",
+  "prompt_user": "fantasy game icon: a glowing arcane barrier, blue runic ring",
+  "prompt_full": "fantasy game icon: a glowing arcane barrier, blue runic ring. native pixel art, hard outline, limited palette, transparent background, centered single subject, no anti-aliasing, reads clearly at native pixel resolution, no text, no signature. single color black outline. flat shading. side view.",
+  "pixel_size": 64,
+  "outline": "single color black outline",
+  "shading": "flat shading",
+  "view": "side",
+  "palette_id": null,
+  "seed": null,
+  "style_id": null,
+  "transparent": true,
+  "model": "pixflux",
+  "endpoint": "https://api.pixellab.ai/v1/generate-image-pixflux",
+  "backend": "pixellab"
+}

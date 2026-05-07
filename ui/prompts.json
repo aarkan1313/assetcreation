@@ -1,0 +1,8 @@
+[
+  {"id": "ico_dragon_head",     "prompt": "fantasy game icon: a roaring red dragon head, side profile"},
+  {"id": "ico_amulet_lunar",    "prompt": "fantasy game icon: a silver amulet shaped like a crescent moon"},
+  {"id": "ico_spell_fireball",  "prompt": "fantasy game icon: a roiling fireball, orange and yellow flame"},
+  {"id": "ico_spell_frostbolt", "prompt": "fantasy game icon: a sharp icicle dart, pale blue with frost"},
+  {"id": "ico_buff_haste",      "prompt": "fantasy game icon: a winged sandal, gold and white feathers"},
+  {"id": "ico_buff_shield",     "prompt": "fantasy game icon: a glowing arcane barrier, blue runic ring"}
+]

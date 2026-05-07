@@ -1,0 +1,466 @@
+{
+  "batch": "shader_review_upgrade_smoke_001",
+  "created": "2026-05-06T10:38:23.570841+00:00",
+  "candidate_count": 8,
+  "recommended_for_user_review": [
+    {
+      "id": "shader_review_upgrade_smoke_001_shield_ripple_2d_004",
+      "score": 87.76,
+      "grade": "review",
+      "template": "shield_ripple_2d",
+      "role": "shield",
+      "preview": "shader_review_upgrade_smoke_001_shield_ripple_2d_004\\flipbook.png",
+      "metrics": {
+        "coverage": 0.75914,
+        "mean_alpha": 0.30594,
+        "luma_mean": 0.05414,
+        "contrast": 0.04969,
+        "colorfulness": 0.15021,
+        "edge_energy": 0.03537,
+        "center_distance": 0.00561,
+        "clip_high": 0.0,
+        "clip_low": 0.0,
+        "aspect": 1.0,
+        "motion": 0.00563,
+        "flicker": 0.00203,
+        "frames": 4.0
+      },
+      "hints": [
+        "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold"
+      ],
+      "gate_issues": [],
+      "gate_warnings": [],
+      "params": {
+        "color_shield": [
+          0.1839030990811862,
+          0.06521173464158517,
+          0.3326177325896124
+        ],
+        "color_hit": [
+          0.6289702615929136,
+          0.3921451469645996,
+          0.9617049316146979
+        ],
+        "hex_scale": 15.2306,
+        "hex_strength": 0.8281,
+        "fresnel_power": 3.2861,
+        "ripple_speed": 0.3772,
+        "ripple_strength": 0.395,
+        "ripple_freq": 16.0145,
+        "hit_position": [
+          0.43,
+          0.4655
+        ],
+        "hit_age": 1.3289,
+        "opacity": 0.8853
+      }
+    },
+    {
+      "id": "shader_review_upgrade_smoke_001_dissolve_fire_2d_003",
+      "score": 87.7,
+      "grade": "review",
+      "template": "dissolve_fire_2d",
+      "role": "dissolve",
+      "preview": "shader_review_upgrade_smoke_001_dissolve_fire_2d_003\\flipbook.png",
+      "metrics": {
+        "coverage": 0.59504,
+        "mean_alpha": 0.34412,
+        "luma_mean": 0.16481,
+        "contrast": 0.1646,
+        "colorfulness": 0.03954,
+        "edge_energy": 0.09645,
+        "center_distance": 0.06412,
+        "clip_high": 0.0,
+        "clip_low": 0.20628,
+        "aspect": 1.0034,
+        "motion": 0.10932,
+        "flicker": 0.00175,
+        "frames": 4.0
+      },
+      "hints": [
+        "color weak: switch palette or push core/edge/glow colors farther apart"
+      ],
+      "gate_issues": [],
+      "gate_warnings": [],
+      "params": {
+        "color_burn": [
+          0.18562615312400405,
+          0.011964621975771514,
+          0.4190516283548802
+        ],
+        "color_ash": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "color_ember": [
+          0.6694517309117607,
+          0.3059284644606398,
+          0.9534974507114161
+        ],
+        "threshold": 0.5363,
+        "edge_width": 0.0931,
+        "noise_scale": 27.2715,
+        "scroll_speed": 3.3028,
+        "warp_strength": 0.6604,
+        "opacity": 0.9275
+      }
+    },
+    {
+      "id": "shader_review_upgrade_smoke_001_beam_lightning_2d_007",
+      "score": 81.49,
+      "grade": "review",
+      "template": "beam_lightning_2d",
+      "role": "beam",
+      "preview": "shader_review_upgrade_smoke_001_beam_lightning_2d_007\\flipbook.png",
+      "metrics": {
+        "coverage": 0.36109,
+        "mean_alpha": 0.14229,
+        "luma_mean": 0.14672,
+        "contrast": 0.05745,
+        "colorfulness": 0.24185,
+        "edge_energy": 0.00578,
+        "center_distance": 0.09068,
+        "clip_high": 0.0,
+        "clip_low": 0.00386,
+        "aspect": 3.59481,
+        "motion": 0.02721,
+        "flicker": 0.00067,
+        "frames": 4.0
+      },
+      "hints": [
+        "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold",
+        "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors",
+        "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width"
+      ],
+      "gate_issues": [],
+      "gate_warnings": [
+        "role coverage far above target"
+      ],
+      "params": {
+        "color_core": [
+          0.24704945744781587,
+          0.0,
+          0.4200391617074654
+        ],
+        "color_edge": [
+          0.01518998957605144,
+          0.010576047272516625,
+          0.0681253110731522
+        ],
+        "color_glow": [
+          0.7431838717518019,
+          0.4054347710911567,
+          0.9241763655693019
+        ],
+        "thickness": 0.055,
+        "core_thickness": 0.2173,
+        "jaggedness": 0.323,
+        "frequency": 22.023,
+        "speed": 5.4642,
+        "arc": 0.1432,
+        "fork_strength": 0.2426,
+        "opacity": 0.9546
+      }
+    },
+    {
+      "id": "shader_review_upgrade_smoke_001_portal_swirl_2d_005",
+      "score": 80.22,
+      "grade": "review",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "preview": "shader_review_upgrade_smoke_001_portal_swirl_2d_005\\flipbook.png",
+      "metrics": {
+        "coverage": 0.11047,
+        "mean_alpha": 0.07882,
+        "luma_mean": 0.03633,
+        "contrast": 0.01781,
+        "colorfulness": 0.13925,
+        "edge_energy": 0.00402,
+        "center_distance": 0.0,
+        "clip_high": 0.0,
+        "clip_low": 0.0067,
+        "aspect": 1.0,
+        "motion": 0.00168,
+        "flicker": 0.0,
+        "frames": 4.0
+      },
+      "hints": [
+        "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors",
+        "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width",
+        "motion low: increase speed/pulse/spin/scroll parameters"
+      ],
+      "gate_issues": [],
+      "gate_warnings": [
+        "weak contrast",
+        "motion below role target"
+      ],
+      "params": {
+        "color_outer": [
+          0.04169518622969584,
+          0.0,
+          0.008105720042006888
+        ],
+        "color_mid": [
+          0.04190264311662263,
+          0.0793464164200852,
+          0.10334026744198369
+        ],
+        "color_inner": [
+          0.17167288268197448,
+          0.016525573208089867,
+          0.4642694135194714
+        ],
+        "color_void": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "radius": 0.3316,
+        "swirl": 3.134,
+        "spin_speed": -1.3104,
+        "depth_pulse": 0.3856,
+        "arms": 8,
+        "arm_strength": 1.1853,
+        "opacity": 0.7894
+      }
+    },
+    {
+      "id": "shader_review_upgrade_smoke_001_ring_field_2d_006",
+      "score": 77.66,
+      "grade": "review",
+      "template": "ring_field_2d",
+      "role": "aura",
+      "preview": "shader_review_upgrade_smoke_001_ring_field_2d_006\\flipbook.png",
+      "metrics": {
+        "coverage": 0.94964,
+        "mean_alpha": 0.40332,
+        "luma_mean": 0.07059,
+        "contrast": 0.07226,
+        "colorfulness": 0.16469,
+        "edge_energy": 0.00993,
+        "center_distance": 0.00665,
+        "clip_high": 0.0,
+        "clip_low": 0.00272,
+        "aspect": 1.0,
+        "motion": 0.07961,
+        "flicker": 0.00064,
+        "frames": 4.0
+      },
+      "hints": [
+        "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold",
+        "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width"
+      ],
+      "gate_issues": [],
+      "gate_warnings": [
+        "role coverage far above target"
+      ],
+      "params": {
+        "color_inner": [
+          0.20653538967217405,
+          0.06891830443346328,
+          0.43185306113490435
+        ],
+        "color_outer": [
+          0.011271076894864434,
+          0.023538219319196738,
+          0.0
+        ],
+        "color_glow": [
+          0.7776370859720074,
+          0.36933627497968186,
+          1.0
+        ],
+        "radius": 0.2589,
+        "edge_width": 0.0542,
+        "noise_scale": 24.9175,
+        "pulse_speed": 2.2685,
+        "distortion": 0.1047,
+        "rune_count": 10,
+        "rune_strength": 0.4816,
+        "opacity": 0.9619
+      }
+    },
+    {
+      "id": "shader_review_upgrade_smoke_001_dissolve_fire_2d_008",
+      "score": 72.39,
+      "grade": "maybe",
+      "template": "dissolve_fire_2d",
+      "role": "dissolve",
+      "preview": "shader_review_upgrade_smoke_001_dissolve_fire_2d_008\\flipbook.png",
+      "metrics": {
+        "coverage": 0.09771,
+        "mean_alpha": 0.03888,
+        "luma_mean": 0.01084,
+        "contrast": 0.03755,
+        "colorfulness": 0.03218,
+        "edge_energy": 0.00568,
+        "center_distance": 0.23893,
+        "clip_high": 0.0,
+        "clip_low": 0.05485,
+        "aspect": 1.29625,
+        "motion": 0.02265,
+        "flicker": 0.00166,
+        "frames": 4.0
+      },
+      "hints": [
+        "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors",
+        "color weak: switch palette or push core/edge/glow colors farther apart",
+        "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width"
+      ],
+      "gate_issues": [],
+      "gate_warnings": [
+        "weak contrast"
+      ],
+      "params": {
+        "color_burn": [
+          0.14181972317046576,
+          0.0,
+          0.33449603170708864
+        ],
+        "color_ash": [
+          0.005735613973115672,
+          0.0,
+          0.046551731609990585
+        ],
+        "color_ember": [
+          0.7341989699239437,
+          0.39875337104851577,
+          1.0
+        ],
+        "threshold": 0.272,
+        "edge_width": 0.0753,
+        "noise_scale": 24.7413,
+        "scroll_speed": 0.278,
+        "warp_strength": 0.6231,
+        "opacity": 0.7878
+      }
+    },
+    {
+      "id": "shader_review_upgrade_smoke_001_beam_lightning_2d_002",
+      "score": 71.4,
+      "grade": "maybe",
+      "template": "beam_lightning_2d",
+      "role": "beam",
+      "preview": "shader_review_upgrade_smoke_001_beam_lightning_2d_002\\flipbook.png",
+      "metrics": {
+        "coverage": 0.49203,
+        "mean_alpha": 0.19433,
+        "luma_mean": 0.12833,
+        "contrast": 0.04993,
+        "colorfulness": 0.25575,
+        "edge_energy": 0.00429,
+        "center_distance": 0.05607,
+        "clip_high": 0.0,
+        "clip_low": 0.00776,
+        "aspect": 3.31615,
+        "motion": 0.00961,
+        "flicker": 0.0002,
+        "frames": 4.0
+      },
+      "hints": [
+        "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold",
+        "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors",
+        "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width"
+      ],
+      "gate_issues": [],
+      "gate_warnings": [
+        "role coverage far above target"
+      ],
+      "params": {
+        "color_core": [
+          0.1264907629877551,
+          0.0011594236386129886,
+          0.47310878900362446
+        ],
+        "color_edge": [
+          0.02207344258518137,
+          0.0,
+          0.04432327012766191
+        ],
+        "color_glow": [
+          0.6557978213459089,
+          0.3405836024662612,
+          0.9341731518530495
+        ],
+        "thickness": 0.0751,
+        "core_thickness": 0.3513,
+        "jaggedness": 0.2245,
+        "frequency": 11.363,
+        "speed": 0.9355,
+        "arc": -0.0747,
+        "fork_strength": 0.1868,
+        "opacity": 0.9513
+      }
+    }
+  ],
+  "low_score_summary": [
+    {
+      "id": "shader_review_upgrade_smoke_001_shield_ripple_2d_004",
+      "score": 87.76,
+      "hints": [
+        "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold"
+      ]
+    },
+    {
+      "id": "shader_review_upgrade_smoke_001_dissolve_fire_2d_003",
+      "score": 87.7,
+      "hints": [
+        "color weak: switch palette or push core/edge/glow colors farther apart"
+      ]
+    },
+    {
+      "id": "shader_review_upgrade_smoke_001_beam_lightning_2d_007",
+      "score": 81.49,
+      "hints": [
+        "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold",
+        "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors"
+      ]
+    },
+    {
+      "id": "shader_review_upgrade_smoke_001_portal_swirl_2d_005",
+      "score": 80.22,
+      "hints": [
+        "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors",
+        "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width"
+      ]
+    },
+    {
+      "id": "shader_review_upgrade_smoke_001_ring_field_2d_006",
+      "score": 77.66,
+      "hints": [
+        "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold",
+        "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width"
+      ]
+    },
+    {
+      "id": "shader_review_upgrade_smoke_001_dissolve_fire_2d_008",
+      "score": 72.39,
+      "hints": [
+        "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors",
+        "color weak: switch palette or push core/edge/glow colors farther apart"
+      ]
+    },
+    {
+      "id": "shader_review_upgrade_smoke_001_beam_lightning_2d_002",
+      "score": 71.4,
+      "hints": [
+        "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold",
+        "contrast low: widen color separation, add hotter core/edge, or reduce background-like colors"
+      ]
+    },
+    {
+      "id": "shader_review_upgrade_smoke_001_ring_field_2d_001",
+      "score": 55.36,
+      "hints": [
+        "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold"
+      ]
+    }
+  ],
+  "next_iteration_policy": [
+    "Preserve top candidate params and make local mutations around them.",
+    "Do not ask the LLM to OCR the image; use metrics plus gallery thumbnails.",
+    "Use Godot-rendered previews for final acceptance when the Godot binary is available.",
+    "Escalate only keep/review candidates to human review."
+  ]
+}

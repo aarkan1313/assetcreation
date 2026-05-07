@@ -1,0 +1,12 @@
+{
+  "duration_s": 0.3675283446712018,
+  "samplerate": 44100,
+  "rms_dbfs": -16.000808657696794,
+  "peak_dbfs": -1.3525092595552033,
+  "clipped_samples": 0,
+  "dc_offset": -0.000608289847150445,
+  "click_count_estimate": 120,
+  "source": "D:\\assets\\audio\\sfx\\sword_swing_v1.wav",
+  "waveform": "D:\\assets\\audio\\sfx\\sword_swing_v1_qa\\waveform.png",
+  "spectrogram": "D:\\assets\\audio\\sfx\\sword_swing_v1_qa\\spectrogram.png"
+}

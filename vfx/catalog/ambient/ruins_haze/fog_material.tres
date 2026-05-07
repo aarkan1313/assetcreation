@@ -1,0 +1,16 @@
+[gd_resource type="FogMaterial" load_steps=3 format=3]
+
+[ext_resource type="Shader" path="res://vfx/ambient/ruins_haze/fog.gdshader" id="1_sh"]
+[ext_resource type="Texture2D" path="res://vfx/ambient/ruins_haze/density.png" id="2_atlas"]
+
+[resource]
+# FogMaterial.shader is set so volumetric_fog samples our shader.
+shader = ExtResource("1_sh")
+shader_parameter/density_atlas = ExtResource("2_atlas")
+shader_parameter/atlas_meta = Vector3(64, 64, 32)
+shader_parameter/density_scale = 1.0
+shader_parameter/color_top = Color(0.6588235294117647, 0.611764705882353, 0.5019607843137255, 1)
+shader_parameter/color_bottom = Color(0.2, 0.16862745098039217, 0.12156862745098039, 1)
+shader_parameter/emission_strength = 0.0
+shader_parameter/anim_speed = 0.05
+shader_parameter/anim_amp = 0.05

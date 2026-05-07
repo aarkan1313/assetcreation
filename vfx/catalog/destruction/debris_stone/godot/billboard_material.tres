@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3]
+
+[ext_resource type="Shader" path="res://vfx/destruction/debris_stone/godot/billboard.gdshader" id="1_sh"]
+[ext_resource type="Texture2D" path="res://vfx/destruction/debris_stone/flipbook.png" id="2_tex"]
+
+[resource]
+shader = ExtResource("1_sh")
+shader_parameter/albedo_tex = ExtResource("2_tex")
+shader_parameter/h_frames = 5
+shader_parameter/v_frames = 5
+shader_parameter/n_frames = 24
+shader_parameter/fps = 24.0
+shader_parameter/loop = true
+shader_parameter/modulate = Color(0.6666666666666666, 0.6274509803921569, 0.5647058823529412, 1.0)
+shader_parameter/emission_strength = 0.0

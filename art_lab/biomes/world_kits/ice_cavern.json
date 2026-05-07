@@ -1,0 +1,38 @@
+{
+  "id": "ice_cavern",
+  "display_name": "Frostmaw Caverns",
+  "category": "elemental_ice",
+  "identity": {
+    "world_color": [180, 215, 240],
+    "regional_palette": [
+      [220, 235, 250],
+      [150, 195, 230],
+      [80, 130, 180],
+      [30, 60, 95]
+    ],
+    "icon_glyph": "snowflake",
+    "ambient_hex": "#0a1828"
+  },
+  "terrain": {
+    "height_bias": "high_broken",
+    "slope_tendency": "sharp",
+    "water_behaviour": "ice",
+    "carve_features": ["ice_spires", "ice_caverns", "glassy_smooth"],
+    "altitude_range": [0.55, 0.95],
+    "preferred_slope_range": [0.10, 0.85]
+  },
+  "transitions": {
+    "anchor_to": ["altitude_band", "ridge"],
+    "blend_neighbours": {
+      "default": {"width_px": 14, "noise_strength": 0.20, "feature_priority": "ridges"},
+      "lava_field": {"width_px": 4, "noise_strength": 0.05, "feature_priority": "ridges", "intermediate_label": "scoured_basalt"},
+      "grassland": {"width_px": 22, "noise_strength": 0.30, "feature_priority": "altitude_band"},
+      "mana_crystal": {"width_px": 18, "noise_strength": 0.10, "feature_priority": "ridges"}
+    },
+    "exclusion": ["lava_field"]
+  },
+  "texture_kit": "ice_cavern",
+  "decoration_kit": "ice_cavern",
+  "world_map_priority": 7,
+  "regional_glyph_density": 0.45
+}

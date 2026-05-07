@@ -1,0 +1,14 @@
+{
+  "id": "tombstone_a01",
+  "kind": "tombstone",
+  "seed": 500,
+  "target_tris": 1200,
+  "params": {
+    "width": 0.4961,
+    "height": 0.8312,
+    "color_variant": "weathered_grey"
+  },
+  "blender_version": "5.1",
+  "timestamp": "2026-05-06T18:54:37+00:00",
+  "ok": true
+}

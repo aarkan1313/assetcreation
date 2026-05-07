@@ -1,0 +1,32 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "source.png"
+    }
+  },
+  "2": {
+    "class_type": "Hunyuan3D25ImageToMesh",
+    "inputs": {
+      "image": [
+        "1",
+        0
+      ],
+      "model": "tencent/Hunyuan3D-2.5",
+      "seed": 42,
+      "target_faces": 8000,
+      "texture": true,
+      "pbr": true
+    }
+  },
+  "3": {
+    "class_type": "Hunyuan3D25ExportGLB",
+    "inputs": {
+      "mesh": [
+        "2",
+        0
+      ],
+      "filename_prefix": "phase9_hunyuan3d"
+    }
+  }
+}

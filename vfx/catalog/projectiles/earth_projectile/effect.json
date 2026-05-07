@@ -1,0 +1,74 @@
+{
+  "kind": "projectile",
+  "phenomenon": "particle",
+  "backend": "particle_cpu",
+  "duration_s": 0.6,
+  "fps": 24,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "visual": {
+    "palette": [
+      "#d8c79a",
+      "#a07a4a",
+      "#553820",
+      "#1a120a"
+    ],
+    "blend": "alpha",
+    "background": "#00000000",
+    "bloom": false
+  },
+  "visual3d": {
+    "billboard_mode": "y_axis",
+    "world_size_m": 1.5
+  },
+  "backend_params": {
+    "emitter": "burst",
+    "count": 110,
+    "seed": 8424,
+    "initial_speed": 17.5,
+    "speed_jitter": 38.5,
+    "direction_deg": 90.0,
+    "spread_deg": 360.0,
+    "gravity": [
+      0.0,
+      -8.0
+    ],
+    "drag": 1.4,
+    "size_px": 9.6,
+    "size_jitter": 3.5,
+    "fade": 1.0,
+    "emission_pos": [
+      128,
+      128
+    ],
+    "_audio_cues": [
+      {
+        "t": 0.0,
+        "name": "spawn"
+      },
+      {
+        "t": 0.35,
+        "name": "tail"
+      }
+    ]
+  },
+  "gameplay": {
+    "shape": "projectile",
+    "damage_tags": [
+      "physical"
+    ],
+    "collision": "first_hit"
+  },
+  "element": "earth",
+  "archetype": "projectile",
+  "tags": [
+    "earth",
+    "projectile",
+    "physical"
+  ],
+  "export_target": "3d_billboard",
+  "id": "earth_projectile",
+  "notes": "Auto-authored earth projectile from element-archetype grid."
+}

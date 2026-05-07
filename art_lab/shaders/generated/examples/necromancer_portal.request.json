@@ -1,0 +1,23 @@
+{
+  "id": "necromancer_portal",
+  "template": "portal_swirl_2d",
+  "params": {
+    "color_outer": [0.30, 0.10, 0.50],
+    "color_mid": [0.70, 0.45, 0.95],
+    "color_inner": [1.0, 1.0, 1.0],
+    "color_void": [0.05, 0.0, 0.10],
+    "radius": 0.42,
+    "swirl": 6.0,
+    "spin_speed": 1.4,
+    "depth_pulse": 0.35,
+    "arms": 5.0,
+    "arm_strength": 0.6,
+    "opacity": 1.0
+  },
+  "preview": {
+    "size": [512, 512],
+    "frames": 60,
+    "duration_s": 3.0,
+    "background": [0.0, 0.0, 0.05, 1.0]
+  }
+}

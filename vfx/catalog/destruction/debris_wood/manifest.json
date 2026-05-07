@@ -1,0 +1,30 @@
+{
+  "effect_id": "debris_wood",
+  "backend": "fracture2d",
+  "n_frames": 22,
+  "fps": 24,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "flipbook": "D:\\assets\\vfx\\catalog\\destruction\\debris_wood\\flipbook.png",
+  "frames_dir": "D:\\assets\\vfx\\catalog\\destruction\\debris_wood\\frames",
+  "extras": {
+    "fragments_json": "D:\\assets\\vfx\\catalog\\destruction\\debris_wood\\fragments.json",
+    "bodies_json": "D:\\assets\\vfx\\catalog\\destruction\\debris_wood\\bodies.json",
+    "audio_cues": [
+      {
+        "t": 0.0,
+        "name": "crack"
+      },
+      {
+        "t": 0.45,
+        "name": "tumble"
+      }
+    ]
+  },
+  "metrics": {
+    "shard_count": 12
+  },
+  "timestamp": "2026-05-06T20:50:46+00:00"
+}

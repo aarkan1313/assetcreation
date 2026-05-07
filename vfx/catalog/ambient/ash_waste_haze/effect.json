@@ -1,0 +1,63 @@
+{
+  "id": "ash_waste_haze",
+  "kind": "ambient",
+  "phenomenon": "smoke",
+  "backend": "volumetric_fog",
+  "duration_s": 1.0,
+  "fps": 8,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "visual": {
+    "palette": [
+      "#7a6a5a",
+      "#1a1612"
+    ],
+    "blend": "alpha",
+    "background": "#00000000",
+    "bloom": false
+  },
+  "visual3d": {
+    "billboard_mode": "off",
+    "world_size_m": 28.0
+  },
+  "backend_params": {
+    "volume_resolution": [
+      64,
+      64,
+      32
+    ],
+    "noise_type": "value",
+    "noise_scale": 4.0,
+    "noise_octaves": 3,
+    "density_curve": "exp_falloff",
+    "density_max": 0.45,
+    "density_scale": 0.9,
+    "color_top": "#7a6a5a",
+    "color_bottom": "#1a1612",
+    "emission_strength": 0.05,
+    "extents_m": [
+      28.0,
+      5.0,
+      28.0
+    ],
+    "fog_shape": "box",
+    "biome_id": "ash_waste",
+    "seed": 3273
+  },
+  "gameplay": {
+    "shape": "self",
+    "damage_tags": [],
+    "collision": "none"
+  },
+  "element": "neutral",
+  "archetype": "ambient",
+  "tags": [
+    "biome",
+    "ash_waste",
+    "fog"
+  ],
+  "export_target": "fog_volume",
+  "notes": "Per-biome volumetric haze for ash_waste. Place a FogVolume node in scenes that contain this biome zone."
+}

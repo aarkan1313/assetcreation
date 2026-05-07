@@ -1,0 +1,30 @@
+{
+  "effect_id": "ice_projectile",
+  "backend": "particle_cpu",
+  "n_frames": 14,
+  "fps": 24,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "flipbook": "D:\\assets\\vfx\\catalog\\projectiles\\ice_projectile\\flipbook.png",
+  "frames_dir": "D:\\assets\\vfx\\catalog\\projectiles\\ice_projectile\\frames",
+  "extras": {
+    "particles_json": "D:\\assets\\vfx\\catalog\\projectiles\\ice_projectile\\particles.json",
+    "audio_cues": [
+      {
+        "t": 0.0,
+        "name": "spawn"
+      },
+      {
+        "t": 0.35,
+        "name": "tail"
+      }
+    ]
+  },
+  "metrics": {
+    "max_alive": 110,
+    "total_energy": 620.0287886857986
+  },
+  "timestamp": "2026-05-06T20:50:48+00:00"
+}

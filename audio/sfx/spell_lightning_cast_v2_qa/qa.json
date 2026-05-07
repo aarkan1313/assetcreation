@@ -1,0 +1,12 @@
+{
+  "duration_s": 0.45,
+  "samplerate": 44100,
+  "rms_dbfs": -19.510914625118986,
+  "peak_dbfs": -7.182256681778164,
+  "clipped_samples": 0,
+  "dc_offset": 0.0021243616938591003,
+  "click_count_estimate": 1,
+  "source": "D:\\assets\\audio\\sfx\\spell_lightning_cast_v2.wav",
+  "waveform": "D:\\assets\\audio\\sfx\\spell_lightning_cast_v2_qa\\waveform.png",
+  "spectrogram": "D:\\assets\\audio\\sfx\\spell_lightning_cast_v2_qa\\spectrogram.png"
+}

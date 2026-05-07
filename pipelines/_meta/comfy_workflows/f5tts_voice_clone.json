@@ -1,0 +1,32 @@
+{
+  "1": {
+    "class_type": "LoadAudio",
+    "inputs": {
+      "audio": "voice_ref.wav"
+    }
+  },
+  "2": {
+    "class_type": "F5TTSVoiceClone",
+    "inputs": {
+      "reference_audio": [
+        "1",
+        0
+      ],
+      "reference_text": "Reference speaker text.",
+      "text": "The caravan reaches the old gate at dusk.",
+      "seed": 42,
+      "speed": 1.0,
+      "model": "SWivid/F5-TTS"
+    }
+  },
+  "3": {
+    "class_type": "SaveAudio",
+    "inputs": {
+      "filename_prefix": "phase9_f5tts",
+      "audio": [
+        "2",
+        0
+      ]
+    }
+  }
+}

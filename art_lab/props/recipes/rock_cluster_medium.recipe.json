@@ -1,0 +1,42 @@
+{
+  "schema": "prop_recipe.v1",
+  "family": "rock_cluster_medium",
+  "kit": "mossy_highland_ruins",
+  "generator": "blender_rock_cluster_v1",
+  "count": 6,
+  "source_lanes": ["blender_procedural"],
+  "style": {
+    "prompt": "medium mossy basalt outcrop clusters, wet highland stones",
+    "silhouette": "chunky broken outcrop, varied height, broad footprint",
+    "avoid": ["towering cliffs", "smooth boulders", "hero statue shapes"]
+  },
+  "budgets": {
+    "lod0_tris_max": 2200,
+    "lod1_tris_max": 800,
+    "lod2_tris_max": 220
+  },
+  "scale_m": {
+    "x": [0.90, 2.20],
+    "y": [0.45, 1.35],
+    "z": [0.80, 2.00]
+  },
+  "materials": [
+    {"slot": "basalt", "color": "#2a312f", "roughness": 0.84},
+    {"slot": "moss", "color": "#536f3d", "roughness": 0.95},
+    {"slot": "lichen", "color": "#a6b98c", "roughness": 0.90}
+  ],
+  "placement": {
+    "render_class": "scatter_multimesh",
+    "collision": "simple",
+    "origin": "bottom_center",
+    "footprint_radius_m": [0.75, 1.50],
+    "placement_tags": ["rock", "mossy", "landmark_edge", "slope_ok"]
+  },
+  "outputs": {
+    "lods": true,
+    "thumbnail": true,
+    "billboard": true,
+    "godot_scene": true
+  }
+}
+

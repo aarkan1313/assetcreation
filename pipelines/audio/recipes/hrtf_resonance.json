@@ -1,0 +1,38 @@
+{
+  "_doc": "Spatial audio recipe for Godot 4.5. Per research/E2_audio_local_ambience.md §3.2: Godot 4.5 has no built-in HRTF; the community godot-resonance-audio GDExtension is the cleanest path but ships native binaries (Windows/Linux/macOS). This recipe documents the install + verify command but does NOT install the extension (out of scope for the audio pipeline; the operator decides when to add a native binary dep).",
+  "version": 1,
+  "schema_version": 1,
+  "extension": {
+    "id": "godot-resonance-audio",
+    "license": "Apache-2.0",
+    "upstream": "https://github.com/jjbinks/godot-resonance-audio",
+    "alternative": "https://github.com/godotengine/godot-proposals/issues/3942",
+    "platforms": ["windows-x64", "linux-x64", "macos-arm64"],
+    "binary_form": "GDExtension .dll/.so/.dylib + .gdextension manifest",
+    "gdextension_path": "addons/godot-resonance-audio/godot-resonance-audio.gdextension"
+  },
+  "install_steps": [
+    "1. Download the latest release from the upstream GitHub releases page",
+    "2. Unzip into res://addons/godot-resonance-audio/ (creates the .gdextension manifest + per-platform .dll/.so)",
+    "3. Restart Godot; check Project Settings -> Plugins shows godot-resonance-audio enabled",
+    "4. Add a single ResonanceAudioListener node as child of the camera/player (acts as the HRTF listener)",
+    "5. Replace AudioStreamPlayer3D with ResonanceAudioSource for sounds you want HRTF-spatialized",
+    "6. The ambience pack's bed_drone / bed_air STAY on AudioStreamPlayer (non-spatial). Only sweeteners (wildlife_sparse / distant_event one-shots) benefit from HRTF. Update BiomeAmbienceController.gd to instantiate ResonanceAudioSource on supported platforms, with AudioStreamPlayer3D as fallback."
+  ],
+  "verify_command": "godot --headless --quit-after 1 --script res://audio/godot/spatial/HRTFVerify.gd",
+  "use_cases": {
+    "first_person": "Highest payoff. HRTF gives convincing front/back/up/down localization in headphones.",
+    "third_person_iso": "Marginal. Iso/top-down camera disconnects listener from audio anyway. Skip.",
+    "third_person_over_shoulder": "Moderate. Useful for stealth audio cues. Worth enabling per-platform-toggle."
+  },
+  "fallback": {
+    "platform": "any platform without resonance binary",
+    "behavior": "BiomeAmbienceController falls back to AudioStreamPlayer3D with attenuation_model=AudioServer.ATTENUATION_INVERSE_DISTANCE. Spatial cues still work, just not HRTF-quality.",
+    "code_path": "res://audio/godot/spatial/SpatialEmitter.gd::create_emitter()"
+  },
+  "non_options_considered": {
+    "Steam_Audio": "Apache-2.0 license, but no Godot 4.5 binding maintained as of 2026-05. Watch upstream.",
+    "Wwise_Spatial_Audio": "Free under $250K revenue; integrates via the Wwise Godot 4 plugin. Heavier dependency. Park for shipping milestone.",
+    "FMOD_Studio_Resonance": "Free under $200K revenue; requires FMOD Studio license + Godot FMOD integration. Same heavyweight tradeoff as Wwise."
+  }
+}

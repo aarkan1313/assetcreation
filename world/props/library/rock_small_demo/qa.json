@@ -1,0 +1,9 @@
+{
+  "id": "rock_small_demo",
+  "kind": "rock_small",
+  "seed": 7,
+  "target_tris": 600,
+  "blender_version": "5.1",
+  "timestamp": "2026-05-06T17:23:46+00:00",
+  "ok": true
+}

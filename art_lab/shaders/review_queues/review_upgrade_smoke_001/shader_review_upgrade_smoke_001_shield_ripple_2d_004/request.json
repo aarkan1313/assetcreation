@@ -1,0 +1,78 @@
+{
+  "id": "shader_review_upgrade_smoke_001_shield_ripple_2d_004",
+  "intent": "high quality portal shield beam aura dissolve Godot shaders",
+  "role": "shield",
+  "template": "shield_ripple_2d",
+  "params": {
+    "color_shield": [
+      0.1839030990811862,
+      0.06521173464158517,
+      0.3326177325896124
+    ],
+    "color_hit": [
+      0.6289702615929136,
+      0.3921451469645996,
+      0.9617049316146979
+    ],
+    "hex_scale": 15.2306,
+    "hex_strength": 0.8281,
+    "fresnel_power": 3.2861,
+    "ripple_speed": 0.3772,
+    "ripple_strength": 0.395,
+    "ripple_freq": 16.0145,
+    "hit_position": [
+      0.43,
+      0.4655
+    ],
+    "hit_age": 1.3289,
+    "opacity": 0.8853
+  },
+  "preview": {
+    "size": [
+      160,
+      160
+    ],
+    "frames": 4,
+    "duration_s": 1.8,
+    "background": [
+      0.035,
+      0.035,
+      0.055,
+      1.0
+    ]
+  },
+  "created": "2026-05-06T10:38:22.995659+00:00",
+  "review": {
+    "score": 87.76,
+    "grade": "review",
+    "components": {
+      "coverage": 0.802,
+      "motion": 1.0,
+      "center": 1.0,
+      "color": 0.93,
+      "edge": 1.0,
+      "contrast": 0.496
+    },
+    "gate_issues": [],
+    "gate_warnings": [],
+    "metrics": {
+      "coverage": 0.75914,
+      "mean_alpha": 0.30594,
+      "luma_mean": 0.05414,
+      "contrast": 0.04969,
+      "colorfulness": 0.15021,
+      "edge_energy": 0.03537,
+      "center_distance": 0.00561,
+      "clip_high": 0.0,
+      "clip_low": 0.0,
+      "aspect": 1.0,
+      "motion": 0.00563,
+      "flicker": 0.00203,
+      "frames": 4.0
+    },
+    "hints": [
+      "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold"
+    ],
+    "render_source": "cpu_proxy"
+  }
+}

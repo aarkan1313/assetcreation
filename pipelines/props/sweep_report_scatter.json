@@ -1,0 +1,206 @@
+[
+  {
+    "spec": "rock_small_x4.json",
+    "family": "rock_small",
+    "count_requested": 4,
+    "count_ok": 4,
+    "rows": [
+      {
+        "id": "rock_small_a01",
+        "ok": true,
+        "seed": 100,
+        "params": {
+          "displacement_magnitude": 0.1023,
+          "z_squash": 0.5269,
+          "subdivisions": 4,
+          "color_variant": "sandstone_warm"
+        }
+      },
+      {
+        "id": "rock_small_a02",
+        "ok": true,
+        "seed": 101,
+        "params": {
+          "displacement_magnitude": 0.1711,
+          "z_squash": 0.6197,
+          "subdivisions": 4,
+          "color_variant": "basalt_dark"
+        }
+      },
+      {
+        "id": "rock_small_a03",
+        "ok": true,
+        "seed": 102,
+        "params": {
+          "displacement_magnitude": 0.1066,
+          "z_squash": 0.6936,
+          "subdivisions": 5,
+          "color_variant": "sandstone_warm"
+        }
+      },
+      {
+        "id": "rock_small_a04",
+        "ok": true,
+        "seed": 103,
+        "params": {
+          "displacement_magnitude": 0.2755,
+          "z_squash": 0.6658,
+          "subdivisions": 4,
+          "color_variant": "granite_grey"
+        }
+      }
+    ],
+    "completed_at": "2026-05-06T18:45:25+00:00"
+  },
+  {
+    "spec": "mushroom_lantern_x2.json",
+    "family": "mushroom_lantern",
+    "count_requested": 2,
+    "count_ok": 2,
+    "rows": [
+      {
+        "id": "mushroom_lantern_a01",
+        "ok": true,
+        "seed": 200,
+        "params": {
+          "cap_color": "death_purple",
+          "cap_squash": 0.6957,
+          "emission_strength": 0.0497
+        }
+      },
+      {
+        "id": "mushroom_lantern_a02",
+        "ok": true,
+        "seed": 201,
+        "params": {
+          "cap_color": "amanita_red",
+          "cap_squash": 0.6154,
+          "emission_strength": 0.1424
+        }
+      }
+    ],
+    "completed_at": "2026-05-06T18:46:41+00:00"
+  },
+  {
+    "spec": "ruin_block_x4.json",
+    "family": "ruin_block",
+    "count_requested": 4,
+    "count_ok": 4,
+    "rows": [
+      {
+        "id": "ruin_block_a01",
+        "ok": true,
+        "seed": 400,
+        "params": {
+          "size_x": 0.7232,
+          "size_y": 0.8392,
+          "size_z": 0.3785,
+          "chip_magnitude": 0.0359,
+          "color_variant": "granite_grey"
+        }
+      },
+      {
+        "id": "ruin_block_a02",
+        "ok": true,
+        "seed": 401,
+        "params": {
+          "size_x": 0.6299,
+          "size_y": 0.8149,
+          "size_z": 0.5168,
+          "chip_magnitude": 0.0423,
+          "color_variant": "sandstone_warm"
+        }
+      },
+      {
+        "id": "ruin_block_a03",
+        "ok": true,
+        "seed": 402,
+        "params": {
+          "size_x": 0.55,
+          "size_y": 0.7112,
+          "size_z": 0.4858,
+          "chip_magnitude": 0.0309,
+          "color_variant": "granite_grey"
+        }
+      },
+      {
+        "id": "ruin_block_a04",
+        "ok": true,
+        "seed": 403,
+        "params": {
+          "size_x": 0.8273,
+          "size_y": 0.5729,
+          "size_z": 0.3168,
+          "chip_magnitude": 0.0305,
+          "color_variant": "sandstone_warm"
+        }
+      }
+    ],
+    "completed_at": "2026-05-06T18:49:29+00:00"
+  },
+  {
+    "spec": "stump_x2.json",
+    "family": "stump",
+    "count_requested": 2,
+    "count_ok": 2,
+    "rows": [
+      {
+        "id": "stump_a01",
+        "ok": true,
+        "seed": 600,
+        "params": {
+          "height": 0.3403,
+          "radius": 0.2803,
+          "color_variant": "weathered_grey"
+        }
+      },
+      {
+        "id": "stump_a02",
+        "ok": true,
+        "seed": 601,
+        "params": {
+          "height": 0.4325,
+          "radius": 0.3648,
+          "color_variant": "oak"
+        }
+      }
+    ],
+    "completed_at": "2026-05-06T18:50:43+00:00"
+  },
+  {
+    "spec": "bone_pile_x3.json",
+    "family": "bone_pile",
+    "count_requested": 3,
+    "count_ok": 3,
+    "rows": [
+      {
+        "id": "bone_pile_a01",
+        "ok": true,
+        "seed": 700,
+        "params": {
+          "count": 7,
+          "color_variant": "bone_pale"
+        }
+      },
+      {
+        "id": "bone_pile_a02",
+        "ok": true,
+        "seed": 701,
+        "params": {
+          "count": 7,
+          "color_variant": "bone_pale"
+        }
+      },
+      {
+        "id": "bone_pile_a03",
+        "ok": true,
+        "seed": 702,
+        "params": {
+          "count": 7,
+          "color_variant": "bone_aged"
+        }
+      }
+    ],
+    "completed_at": "2026-05-06T18:52:31+00:00"
+  }
+]

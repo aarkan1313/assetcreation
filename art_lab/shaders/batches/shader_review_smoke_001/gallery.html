@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shader Batch Review</title>
+  <style>
+    :root { color-scheme: dark; font-family: Segoe UI, system-ui, sans-serif; background:#0b0d12; color:#e6edf7; }
+    body { margin:0; padding:24px; }
+    header { display:flex; align-items:end; justify-content:space-between; gap:20px; margin-bottom:18px; }
+    h1 { margin:0; font-size:24px; }
+    .sub { color:#94a3b8; font-size:13px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(330px, 1fr)); gap:14px; }
+    .card { background:#111722; border:1px solid #263246; border-radius:8px; overflow:hidden; }
+    .card.keep { border-color:#63e6be; }
+    .card.review { border-color:#ffd166; }
+    .card.maybe { border-color:#748ffc; }
+    .card.reject { opacity:.72; }
+    .thumb { background:#05070a; min-height:180px; display:flex; align-items:center; justify-content:center; }
+    img { max-width:100%; display:block; image-rendering:auto; }
+    .body { padding:12px; }
+    h2 { margin:0 0 8px; font-size:16px; }
+    .meta { display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
+    .meta span, .meta strong { background:#1c2635; border-radius:999px; padding:3px 8px; font-size:12px; }
+    .meta strong { color:#111722; background:#e6edf7; }
+    .metrics { color:#b6c2d2; font-size:12px; margin-top:8px; line-height:1.5; }
+    ul { color:#cbd5e1; font-size:12px; padding-left:18px; }
+    details { margin-top:8px; }
+    summary { cursor:pointer; color:#9ab7ff; }
+    pre { overflow:auto; white-space:pre-wrap; font-size:11px; color:#d8dee9; background:#080b10; padding:8px; border-radius:6px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Shader Batch Review</h1>
+      <div class="sub">Sorted by non-OCR review score. Keep/review candidates are the ones to inspect visually.</div>
+    </div>
+    <div class="sub">shader_review_smoke_001 | 12 candidates</div>
+  </header>
+  <section class="grid">
+    
+        <article class="card keep">
+          <div class="thumb"><img src="shader_review_smoke_001_ring_field_2d_001/flipbook.png" loading="lazy" alt="shader_review_smoke_001_ring_field_2d_001"></div>
+          <div class="body">
+            <h2>shader_review_smoke_001_ring_field_2d_001</h2>
+            <div class="meta">
+              <span>ring_field_2d</span>
+              <span>aura</span>
+              <strong>100.00</strong>
+              <span>keep</span>
+            </div>
+            <div class="metrics">
+              cov 0.460 | motion 0.007 | contrast 0.216 |
+              color 0.298 | edge 0.023 | center 0.007
+            </div>
+            <ul><li>good candidate: mutate locally around these params with smaller jitter</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_inner&quot;: [
+    0.9023082877532614,
+    0.8840017208356267,
+    0.964004690939059
+  ],
+  &quot;color_outer&quot;: [
+    0.3157137181038116,
+    0.6678353942662419,
+    1.0
+  ],
+  &quot;color_glow&quot;: [
+    0.22274873083277524,
+    0.2139102132207066,
+    0.8475074911496433
+  ],
+  &quot;radius&quot;: 0.1892,
+  &quot;edge_width&quot;: 0.0312,
+  &quot;noise_scale&quot;: 20.666,
+  &quot;pulse_speed&quot;: 0.1459,
+  &quot;distortion&quot;: 0.1395,
+  &quot;rune_count&quot;: 18,
+  &quot;rune_strength&quot;: 0.4159,
+  &quot;opacity&quot;: 0.885
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card keep">
+          <div class="thumb"><img src="shader_review_smoke_001_beam_lightning_2d_005/flipbook.png" loading="lazy" alt="shader_review_smoke_001_beam_lightning_2d_005"></div>
+          <div class="body">
+            <h2>shader_review_smoke_001_beam_lightning_2d_005</h2>
+            <div class="meta">
+              <span>beam_lightning_2d</span>
+              <span>beam</span>
+              <strong>99.64</strong>
+              <span>keep</span>
+            </div>
+            <div class="metrics">
+              cov 0.168 | motion 0.022 | contrast 0.167 |
+              color 0.290 | edge 0.009 | center 0.026
+            </div>
+            <ul><li>too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_core&quot;: [
+    0.8641863659235727,
+    0.8905901768338476,
+    1.0
+  ],
+  &quot;color_edge&quot;: [
+    0.37074880823656037,
+    0.6648662833150362,
+    0.9540202470486625
+  ],
+  &quot;color_glow&quot;: [
+    0.15987700151876438,
+    0.34154930462187244,
+    0.8828562992320679
+  ],
+  &quot;thickness&quot;: 0.026,
+  &quot;core_thickness&quot;: 0.2359,
+  &quot;jaggedness&quot;: 0.6236,
+  &quot;frequency&quot;: 21.7083,
+  &quot;speed&quot;: 4.1086,
+  &quot;arc&quot;: -0.0315,
+  &quot;fork_strength&quot;: 0.6585,
+  &quot;opacity&quot;: 0.8214
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card keep">
+          <div class="thumb"><img src="shader_review_smoke_001_beam_lightning_2d_006/flipbook.png" loading="lazy" alt="shader_review_smoke_001_beam_lightning_2d_006"></div>
+          <div class="body">
+            <h2>shader_review_smoke_001_beam_lightning_2d_006</h2>
+            <div class="meta">
+              <span>beam_lightning_2d</span>
+              <span>beam</span>
+              <strong>93.19</strong>
+              <span>keep</span>
+            </div>
+            <div class="metrics">
+              cov 0.316 | motion 0.023 | contrast 0.175 |
+              color 0.345 | edge 0.008 | center 0.120
+            </div>
+            <ul><li>coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold</li><li>too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_core&quot;: [
+    0.9595721244782658,
+    0.9021330791825369,
+    0.998962533582341
+  ],
+  &quot;color_edge&quot;: [
+    0.400925145205398,
+    0.6877764655466665,
+    0.9444546110957218
+  ],
+  &quot;color_glow&quot;: [
+    0.10559712027559204,
+    0.3088769941594124,
+    0.8754254449171158
+  ],
+  &quot;thickness&quot;: 0.0497,
+  &quot;core_thickness&quot;: 0.4184,
+  &quot;jaggedness&quot;: 0.4104,
+  &quot;frequency&quot;: 12.7938,
+  &quot;speed&quot;: 3.0427,
+  &quot;arc&quot;: 0.1947,
+  &quot;fork_strength&quot;: 0.7378,
+  &quot;opacity&quot;: 0.7521
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card keep">
+          <div class="thumb"><img src="shader_review_smoke_001_shield_ripple_2d_012/flipbook.png" loading="lazy" alt="shader_review_smoke_001_shield_ripple_2d_012"></div>
+          <div class="body">
+            <h2>shader_review_smoke_001_shield_ripple_2d_012</h2>
+            <div class="meta">
+              <span>shield_ripple_2d</span>
+              <span>shield</span>
+              <strong>91.71</strong>
+              <span>keep</span>
+            </div>
+            <div class="metrics">
+              cov 0.853 | motion 0.037 | contrast 0.126 |
+              color 0.308 | edge 0.050 | center 0.046
+            </div>
+            <ul><li>coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_shield&quot;: [
+    0.9165141741505892,
+    1.0,
+    0.9374830451591687
+  ],
+  &quot;color_hit&quot;: [
+    0.11065441154266464,
+    0.2858057206256551,
+    0.8024291675351639
+  ],
+  &quot;hex_scale&quot;: 24.1697,
+  &quot;hex_strength&quot;: 0.2418,
+  &quot;fresnel_power&quot;: 4.1807,
+  &quot;ripple_speed&quot;: 4.7078,
+  &quot;ripple_strength&quot;: 0.2603,
+  &quot;ripple_freq&quot;: 25.2165,
+  &quot;hit_position&quot;: [
+    0.513,
+    0.3447
+  ],
+  &quot;hit_age&quot;: 0.4878,
+  &quot;opacity&quot;: 0.931
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card keep">
+          <div class="thumb"><img src="shader_review_smoke_001_ring_field_2d_003/flipbook.png" loading="lazy" alt="shader_review_smoke_001_ring_field_2d_003"></div>
+          <div class="body">
+            <h2>shader_review_smoke_001_ring_field_2d_003</h2>
+            <div class="meta">
+              <span>ring_field_2d</span>
+              <span>aura</span>
+              <strong>89.85</strong>
+              <span>keep</span>
+            </div>
+            <div class="metrics">
+              cov 0.482 | motion 0.015 | contrast 0.208 |
+              color 0.252 | edge 0.020 | center 0.028
+            </div>
+            <ul><li>good candidate: mutate locally around these params with smaller jitter</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_inner&quot;: [
+    0.8883265010037164,
+    1.0,
+    1.0
+  ],
+  &quot;color_outer&quot;: [
+    0.41787310404972433,
+    0.642376343241082,
+    1.0
+  ],
+  &quot;color_glow&quot;: [
+    0.08733190138490596,
+    0.2364637241042475,
+    0.8263020741763372
+  ],
+  &quot;radius&quot;: 0.2047,
+  &quot;edge_width&quot;: 0.0325,
+  &quot;noise_scale&quot;: 8.131,
+  &quot;pulse_speed&quot;: 1.5289,
+  &quot;distortion&quot;: 0.3361,
+  &quot;rune_count&quot;: 16,
+  &quot;rune_strength&quot;: 0.354,
+  &quot;opacity&quot;: 0.8195
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card keep">
+          <div class="thumb"><img src="shader_review_smoke_001_dissolve_fire_2d_007/flipbook.png" loading="lazy" alt="shader_review_smoke_001_dissolve_fire_2d_007"></div>
+          <div class="body">
+            <h2>shader_review_smoke_001_dissolve_fire_2d_007</h2>
+            <div class="meta">
+              <span>dissolve_fire_2d</span>
+              <span>dissolve</span>
+              <strong>87.54</strong>
+              <span>keep</span>
+            </div>
+            <div class="metrics">
+              cov 0.669 | motion 0.059 | contrast 0.139 |
+              color 0.038 | edge 0.057 | center 0.025
+            </div>
+            <ul><li>color weak: switch palette or push core/edge/glow colors farther apart</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_burn&quot;: [
+    0.9415661520206574,
+    1.0,
+    1.0
+  ],
+  &quot;color_ash&quot;: [
+    0.0,
+    0.0,
+    0.025305240695147155
+  ],
+  &quot;color_ember&quot;: [
+    0.0805192505762767,
+    0.31553472980958575,
+    0.8951489070217479
+  ],
+  &quot;threshold&quot;: 0.6873,
+  &quot;edge_width&quot;: 0.0867,
+  &quot;noise_scale&quot;: 20.7381,
+  &quot;scroll_speed&quot;: 0.4256,
+  &quot;warp_strength&quot;: 0.6927,
+  &quot;opacity&quot;: 0.9557
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card keep">
+          <div class="thumb"><img src="shader_review_smoke_001_dissolve_fire_2d_008/flipbook.png" loading="lazy" alt="shader_review_smoke_001_dissolve_fire_2d_008"></div>
+          <div class="body">
+            <h2>shader_review_smoke_001_dissolve_fire_2d_008</h2>
+            <div class="meta">
+              <span>dissolve_fire_2d</span>
+              <span>dissolve</span>
+              <strong>86.18</strong>
+              <span>keep</span>
+            </div>
+            <div class="metrics">
+              cov 0.097 | motion 0.036 | contrast 0.085 |
+              color 0.088 | edge 0.018 | center 0.243
+            </div>
+            <ul><li>color weak: switch palette or push core/edge/glow colors farther apart</li><li>too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_burn&quot;: [
+    0.8812260611164214,
+    0.9118257762823573,
+    0.9798262164145837
+  ],
+  &quot;color_ash&quot;: [
+    0.0,
+    0.09255995962456046,
+    0.14758945289892395
+  ],
+  &quot;color_ember&quot;: [
+    0.22695895910331237,
+    0.29583113351363666,
+    0.8581769132846316
+  ],
+  &quot;threshold&quot;: 0.3003,
+  &quot;edge_width&quot;: 0.0476,
+  &quot;noise_scale&quot;: 35.545,
+  &quot;scroll_speed&quot;: 3.2271,
+  &quot;warp_strength&quot;: 0.3764,
+  &quot;opacity&quot;: 0.7874
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card review">
+          <div class="thumb"><img src="shader_review_smoke_001_dissolve_fire_2d_009/flipbook.png" loading="lazy" alt="shader_review_smoke_001_dissolve_fire_2d_009"></div>
+          <div class="body">
+            <h2>shader_review_smoke_001_dissolve_fire_2d_009</h2>
+            <div class="meta">
+              <span>dissolve_fire_2d</span>
+              <span>dissolve</span>
+              <strong>82.75</strong>
+              <span>review</span>
+            </div>
+            <div class="metrics">
+              cov 0.160 | motion 0.052 | contrast 0.089 |
+              color 0.042 | edge 0.028 | center 0.207
+            </div>
+            <ul><li>color weak: switch palette or push core/edge/glow colors farther apart</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_burn&quot;: [
+    0.8907771109902256,
+    0.8926011277266186,
+    1.0
+  ],
+  &quot;color_ash&quot;: [
+    0.07056372054721416,
+    0.09647751898837348,
+    0.0852329871247225
+  ],
+  &quot;color_ember&quot;: [
+    0.10012168184327061,
+    0.3055601316395788,
+    0.9314957887527985
+  ],
+  &quot;threshold&quot;: 0.3243,
+  &quot;edge_width&quot;: 0.0637,
+  &quot;noise_scale&quot;: 23.8044,
+  &quot;scroll_speed&quot;: 3.8575,
+  &quot;warp_strength&quot;: 0.9417,
+  &quot;opacity&quot;: 0.9315
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card review">
+          <div class="thumb"><img src="shader_review_smoke_001_shield_ripple_2d_010/flipbook.png" loading="lazy" alt="shader_review_smoke_001_shield_ripple_2d_010"></div>
+          <div class="body">
+            <h2>shader_review_smoke_001_shield_ripple_2d_010</h2>
+            <div class="meta">
+              <span>shield_ripple_2d</span>
+              <span>shield</span>
+              <strong>78.98</strong>
+              <span>review</span>
+            </div>
+            <div class="metrics">
+              cov 0.856 | motion 0.001 | contrast 0.209 |
+              color 0.247 | edge 0.056 | center 0.076
+            </div>
+            <ul><li>coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold</li><li>motion low: increase speed/pulse/spin/scroll parameters</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_shield&quot;: [
+    0.9103788211359394,
+    0.9940718356510595,
+    0.9838387679995887
+  ],
+  &quot;color_hit&quot;: [
+    0.18746991354212528,
+    0.25974728040468703,
+    0.9239382535428713
+  ],
+  &quot;hex_scale&quot;: 3.3041,
+  &quot;hex_strength&quot;: 0.6342,
+  &quot;fresnel_power&quot;: 2.8738,
+  &quot;ripple_speed&quot;: 0.0395,
+  &quot;ripple_strength&quot;: 0.7604,
+  &quot;ripple_freq&quot;: 6.8251,
+  &quot;hit_position&quot;: [
+    0.3616,
+    0.3501
+  ],
+  &quot;hit_age&quot;: 1.0926,
+  &quot;opacity&quot;: 0.864
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card review">
+          <div class="thumb"><img src="shader_review_smoke_001_shield_ripple_2d_011/flipbook.png" loading="lazy" alt="shader_review_smoke_001_shield_ripple_2d_011"></div>
+          <div class="body">
+            <h2>shader_review_smoke_001_shield_ripple_2d_011</h2>
+            <div class="meta">
+              <span>shield_ripple_2d</span>
+              <span>shield</span>
+              <strong>78.93</strong>
+              <span>review</span>
+            </div>
+            <div class="metrics">
+              cov 0.732 | motion 0.055 | contrast 0.119 |
+              color 0.073 | edge 0.048 | center 0.000
+            </div>
+            <ul><li>coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold</li><li>color weak: switch palette or push core/edge/glow colors farther apart</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_shield&quot;: [
+    0.8445563622343275,
+    0.9576663198640785,
+    1.0
+  ],
+  &quot;color_hit&quot;: [
+    0.19573641054095534,
+    0.34118129202251807,
+    0.8721938639553439
+  ],
+  &quot;hex_scale&quot;: 18.679,
+  &quot;hex_strength&quot;: 0.2573,
+  &quot;fresnel_power&quot;: 4.3657,
+  &quot;ripple_speed&quot;: 1.9486,
+  &quot;ripple_strength&quot;: 0.5171,
+  &quot;ripple_freq&quot;: 31.7789,
+  &quot;hit_position&quot;: [
+    0.3573,
+    0.5491
+  ],
+  &quot;hit_age&quot;: 1.8978,
+  &quot;opacity&quot;: 0.737
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card review">
+          <div class="thumb"><img src="shader_review_smoke_001_beam_lightning_2d_004/flipbook.png" loading="lazy" alt="shader_review_smoke_001_beam_lightning_2d_004"></div>
+          <div class="body">
+            <h2>shader_review_smoke_001_beam_lightning_2d_004</h2>
+            <div class="meta">
+              <span>beam_lightning_2d</span>
+              <span>beam</span>
+              <strong>77.18</strong>
+              <span>review</span>
+            </div>
+            <div class="metrics">
+              cov 0.556 | motion 0.022 | contrast 0.233 |
+              color 0.317 | edge 0.010 | center 0.130
+            </div>
+            <ul><li>coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold</li><li>too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_core&quot;: [
+    0.907228027900431,
+    0.9922912501533682,
+    1.0
+  ],
+  &quot;color_edge&quot;: [
+    0.2914244015325677,
+    0.6515965261115296,
+    1.0
+  ],
+  &quot;color_glow&quot;: [
+    0.1191697480242282,
+    0.27396163389617856,
+    0.8231916522854845
+  ],
+  &quot;thickness&quot;: 0.085,
+  &quot;core_thickness&quot;: 0.4553,
+  &quot;jaggedness&quot;: 0.2191,
+  &quot;frequency&quot;: 15.0528,
+  &quot;speed&quot;: 4.2257,
+  &quot;arc&quot;: -0.1954,
+  &quot;fork_strength&quot;: 0.8539,
+  &quot;opacity&quot;: 0.9454
+}</pre></details>
+          </div>
+        </article>
+        
+        <article class="card reject">
+          <div class="thumb"><img src="shader_review_smoke_001_ring_field_2d_002/flipbook.png" loading="lazy" alt="shader_review_smoke_001_ring_field_2d_002"></div>
+          <div class="body">
+            <h2>shader_review_smoke_001_ring_field_2d_002</h2>
+            <div class="meta">
+              <span>ring_field_2d</span>
+              <span>aura</span>
+              <strong>44.53</strong>
+              <span>reject</span>
+            </div>
+            <div class="metrics">
+              cov 0.983 | motion 0.042 | contrast 0.275 |
+              color 0.302 | edge 0.076 | center 0.013
+            </div>
+            <ul><li>coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold</li></ul>
+            <details><summary>params</summary><pre>{
+  &quot;color_inner&quot;: [
+    0.9295088730684523,
+    0.8810398015484897,
+    1.0
+  ],
+  &quot;color_outer&quot;: [
+    0.3917023031981163,
+    0.6044400826428787,
+    0.9448767199698851
+  ],
+  &quot;color_glow&quot;: [
+    0.23315409155308497,
+    0.2538551272180203,
+    0.7948393349408236
+  ],
+  &quot;radius&quot;: 0.21,
+  &quot;edge_width&quot;: 0.075,
+  &quot;noise_scale&quot;: 23.7155,
+  &quot;pulse_speed&quot;: 4.4392,
+  &quot;distortion&quot;: 0.3784,
+  &quot;rune_count&quot;: 6,
+  &quot;rune_strength&quot;: 1.2212,
+  &quot;opacity&quot;: 0.826
+}</pre></details>
+          </div>
+        </article>
+        
+  </section>
+</body>
+</html>

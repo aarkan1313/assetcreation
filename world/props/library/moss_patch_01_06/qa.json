@@ -1,0 +1,10 @@
+{
+  "schema": "prop_qa.v1",
+  "id": "moss_patch_01_06",
+  "passed": true,
+  "metrics": {
+    "alpha_coverage": 0.3709,
+    "size_px": 512
+  },
+  "warnings": []
+}

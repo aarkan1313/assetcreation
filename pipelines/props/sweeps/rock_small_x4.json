@@ -1,0 +1,22 @@
+{
+  "schema": "prop_sweep.v1",
+  "family": "rock_small",
+  "kit": "first_party_proc",
+  "count": 4,
+  "id_prefix": "rock_small_a",
+  "id_start_index": 1,
+  "base_seed": 100,
+  "render_class": "scatter_multimesh",
+  "collision": "none",
+  "params": {
+    "displacement_magnitude": {"type": "float_range", "min": 0.10, "max": 0.30},
+    "z_squash":               {"type": "float_range", "min": 0.45, "max": 0.70},
+    "subdivisions":           {"type": "int_choice", "values": [3, 4, 4, 5]},
+    "color_variant":          {"type": "categorical",
+                                "values": ["basalt_dark", "granite_grey", "sandstone_warm"],
+                                "weights": [0.45, 0.35, 0.20]}
+  },
+  "target_tris": 1500,
+  "lod_ladder": [1.00, 0.50, 0.20, 0.08],
+  "lod_distances_m": [25, 60, 120, 200]
+}

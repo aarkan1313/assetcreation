@@ -1,0 +1,57 @@
+{
+  "id": "sword_swing",
+  "category": "sfx",
+  "variants": [
+    "audio/sfx/sword_swing/sword_swing_v0.wav",
+    "audio/sfx/sword_swing/sword_swing_v1.wav",
+    "audio/sfx/sword_swing/sword_swing_v2.wav"
+  ],
+  "preset": "sword_swing",
+  "target_rms_db": -16.0,
+  "tags": [
+    "sword"
+  ],
+  "notes": "from synth_sfx.py base presets",
+  "backend": "synth_sfx_extended",
+  "processing": [
+    {
+      "variant": 0,
+      "duration_s": 0.36698412698412697,
+      "rms_dbfs_in": -19.58003044128418,
+      "rms_dbfs_out": -16.0,
+      "peak_dbfs_out": -1.5454387664794922,
+      "trim_ms": 13,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 118
+      }
+    },
+    {
+      "variant": 1,
+      "duration_s": 0.3675283446712018,
+      "rms_dbfs_in": -19.38156509399414,
+      "rms_dbfs_out": -15.999999046325684,
+      "peak_dbfs_out": -1.3521003723144531,
+      "trim_ms": 12,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 120
+      }
+    },
+    {
+      "variant": 2,
+      "duration_s": 0.3660544217687075,
+      "rms_dbfs_in": -19.655593872070312,
+      "rms_dbfs_out": -16.0,
+      "peak_dbfs_out": -1.6011388301849365,
+      "trim_ms": 13,
+      "fade_ms": 17,
+      "qa": {
+        "clipped": 0,
+        "click_count_estimate": 133
+      }
+    }
+  ]
+}

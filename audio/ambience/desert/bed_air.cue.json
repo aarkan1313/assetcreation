@@ -1,0 +1,20 @@
+{
+  "biome": "desert",
+  "stem": "bed_air",
+  "backend_requested": "local_audio_open",
+  "backend_actual": "stable_audio_open",
+  "out_path": "D:\\assets\\audio\\ambience\\desert\\bed_air.wav",
+  "duration_s": 25.216780045351474,
+  "samplerate": 44100,
+  "rms_dbfs": -29.999998092651367,
+  "peak_dbfs": -14.588399887084961,
+  "lufs_target": -30.0,
+  "seed": 6002,
+  "prompt": "constant dry desert wind across dunes, hint of sand grain hiss, no music, no rhythm, 30 second seamless loop",
+  "dry_run": false,
+  "loop": true,
+  "seam_rms": 0.005187729373574257,
+  "fitness": 0.712503110198767,
+  "model": "large",
+  "steps": 100
+}

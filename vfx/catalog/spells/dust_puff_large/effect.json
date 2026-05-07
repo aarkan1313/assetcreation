@@ -1,0 +1,76 @@
+{
+  "id": "dust_puff_large",
+  "kind": "spell",
+  "phenomenon": "particle",
+  "backend": "particle_cpu",
+  "duration_s": 1.0,
+  "fps": 30,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "visual": {
+    "palette": [
+      "#c8b890",
+      "#7a6448",
+      "#2a2010"
+    ],
+    "blend": "alpha",
+    "background": "#00000000",
+    "bloom": false
+  },
+  "visual3d": {
+    "billboard_mode": "y_axis",
+    "world_size_m": 1.4
+  },
+  "backend_params": {
+    "emitter": "burst",
+    "count": 85,
+    "seed": 39144,
+    "initial_speed": 80.0,
+    "speed_jitter": 40.0,
+    "direction_deg": 90.0,
+    "spread_deg": 180.0,
+    "gravity": [
+      0.0,
+      -25.0
+    ],
+    "drag": 2.0,
+    "size_px": 18.0,
+    "size_jitter": 7.2,
+    "fade": 1.0,
+    "emission_pos": [
+      128,
+      160
+    ],
+    "_audio_cues": [
+      {
+        "t": 0.0,
+        "name": "thud"
+      },
+      {
+        "t": 0.4,
+        "name": "billow"
+      },
+      {
+        "t": 0.85,
+        "name": "settle"
+      }
+    ]
+  },
+  "gameplay": {
+    "shape": "point",
+    "damage_tags": [],
+    "collision": "first_hit"
+  },
+  "element": "physical",
+  "archetype": "impact",
+  "tags": [
+    "dust",
+    "physical",
+    "impact",
+    "landing"
+  ],
+  "export_target": "decal",
+  "notes": "Damage/impact: dust_puff_large"
+}

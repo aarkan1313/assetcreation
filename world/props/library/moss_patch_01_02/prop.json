@@ -1,0 +1,30 @@
+{
+  "schema": "prop_asset.v1",
+  "id": "moss_patch_01_02",
+  "family": "moss_patch_01",
+  "kit": "mossy_highland_ruins",
+  "source_method": "cpu_texture_decal",
+  "source_recipe": "art_lab/props/recipes/moss_patch_01.recipe.json",
+  "license": "project_generated",
+  "render_class": "decal",
+  "collision": "none",
+  "origin": "center",
+  "scale_m": [
+    1.05,
+    0.015,
+    1.05
+  ],
+  "footprint_radius_m": 0.6,
+  "decal": "decal.png",
+  "thumbnail": "thumbnail.png",
+  "placement_tags": [
+    "decal",
+    "moss",
+    "wet",
+    "stone_overlay"
+  ],
+  "material_slots": [
+    "moss_decal"
+  ],
+  "qa": "qa.json"
+}

@@ -1,0 +1,61 @@
+{
+  "id": "death_valley_basin",
+  "created": "2026-05-07T01:09:41.101873+00:00",
+  "source": "world_biome_engine",
+  "base_heightmap": "D:\\assets\\pipelines\\terrain\\output\\death_valley_basin\\height_16.png",
+  "biomes": [
+    "desert",
+    "charred_wasteland",
+    "desert",
+    "grassland"
+  ],
+  "biome_display_names": [
+    "Sunblasted Reach",
+    "Ashen Scour",
+    "Sunblasted Reach",
+    "Verdant Steppe"
+  ],
+  "size": 1024,
+  "seed": 7,
+  "erosion": 30,
+  "n_seeds": 20,
+  "biome_seed_counts": {
+    "desert": 9,
+    "charred_wasteland": 6,
+    "grassland": 5
+  },
+  "biome_pixel_counts": {
+    "desert": 133726,
+    "charred_wasteland": 414266,
+    "grassland": 167746
+  },
+  "dem_meta": {
+    "source_file": "tile_grid.json",
+    "bbox": [
+      -117.0,
+      36.1,
+      -116.6,
+      36.5
+    ],
+    "span_x_m": 35886.37455196242,
+    "span_z_m": 44215.99999999984,
+    "elev_min_m": -84.76744079589844,
+    "elev_max_m": 1872.326171875,
+    "elev_range_m": 1957.0936126708984
+  },
+  "views": {
+    "world": "world_view.png",
+    "regional": "regional_view.png",
+    "local": "local_view.png"
+  },
+  "layers": {
+    "height": "height_16.png",
+    "normal": "normal.png",
+    "splat": "splat_rgba.png",
+    "biome_rgb": "biome.png",
+    "biome_labels": "biome_labels.png",
+    "vegetation_density": "vegetation_density.png",
+    "water_mask": "water_mask.png",
+    "flow": "flow.png"
+  }
+}

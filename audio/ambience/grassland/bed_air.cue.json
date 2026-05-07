@@ -1,0 +1,20 @@
+{
+  "biome": "grassland",
+  "stem": "bed_air",
+  "backend_requested": "library",
+  "backend_actual": "fallback->stable_audio_open",
+  "out_path": "D:\\assets\\audio\\ambience\\grassland\\bed_air.wav",
+  "duration_s": 16.29206349206349,
+  "samplerate": 44100,
+  "rms_dbfs": -30.0,
+  "peak_dbfs": -16.77962303161621,
+  "lufs_target": -30.0,
+  "seed": 4002,
+  "prompt": "gentle breeze grass field",
+  "dry_run": false,
+  "loop": true,
+  "seam_rms": 0.030819833278656006,
+  "fitness": 0.6084804225253976,
+  "library_query": "gentle breeze grass field",
+  "fallback_prompt": "gentle breeze through grass, no music, 30 second seamless loop"
+}

@@ -1,0 +1,20 @@
+{
+  "biome": "desert",
+  "stem": "distant_event/desert_far_storm_v0",
+  "backend_requested": "local_audio_open",
+  "backend_actual": "stable_audio_open",
+  "out_path": "D:\\assets\\audio\\ambience\\desert\\distant_event\\desert_far_storm_v0.wav",
+  "duration_s": 5.314353741496599,
+  "samplerate": 44100,
+  "rms_dbfs": -31.954574584960938,
+  "peak_dbfs": -20.0,
+  "lufs_target": -20.0,
+  "seed": 6031,
+  "prompt": "distant sandstorm gust roll, deep low rumble, no music",
+  "dry_run": false,
+  "loop": false,
+  "seam_rms": null,
+  "fitness": null,
+  "model": "large",
+  "steps": 100
+}

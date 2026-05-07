@@ -1,0 +1,35 @@
+[gd_resource type="SpriteFrames" load_steps=13 format=3]
+
+[ext_resource type="Texture2D" path="res://vfx/spell/fire_impact/frames/frame_0000.png" id="1_f0"]
+[ext_resource type="Texture2D" path="res://vfx/spell/fire_impact/frames/frame_0001.png" id="2_f1"]
+[ext_resource type="Texture2D" path="res://vfx/spell/fire_impact/frames/frame_0002.png" id="3_f2"]
+[ext_resource type="Texture2D" path="res://vfx/spell/fire_impact/frames/frame_0003.png" id="4_f3"]
+[ext_resource type="Texture2D" path="res://vfx/spell/fire_impact/frames/frame_0004.png" id="5_f4"]
+[ext_resource type="Texture2D" path="res://vfx/spell/fire_impact/frames/frame_0005.png" id="6_f5"]
+[ext_resource type="Texture2D" path="res://vfx/spell/fire_impact/frames/frame_0006.png" id="7_f6"]
+[ext_resource type="Texture2D" path="res://vfx/spell/fire_impact/frames/frame_0007.png" id="8_f7"]
+[ext_resource type="Texture2D" path="res://vfx/spell/fire_impact/frames/frame_0008.png" id="9_f8"]
+[ext_resource type="Texture2D" path="res://vfx/spell/fire_impact/frames/frame_0009.png" id="10_f9"]
+[ext_resource type="Texture2D" path="res://vfx/spell/fire_impact/frames/frame_0010.png" id="11_f10"]
+[ext_resource type="Texture2D" path="res://vfx/spell/fire_impact/frames/frame_0011.png" id="12_f11"]
+
+[resource]
+animations = [{
+"frames": [
+{ "duration": 1.0, "texture": ExtResource("1_f0") },
+{ "duration": 1.0, "texture": ExtResource("2_f1") },
+{ "duration": 1.0, "texture": ExtResource("3_f2") },
+{ "duration": 1.0, "texture": ExtResource("4_f3") },
+{ "duration": 1.0, "texture": ExtResource("5_f4") },
+{ "duration": 1.0, "texture": ExtResource("6_f5") },
+{ "duration": 1.0, "texture": ExtResource("7_f6") },
+{ "duration": 1.0, "texture": ExtResource("8_f7") },
+{ "duration": 1.0, "texture": ExtResource("9_f8") },
+{ "duration": 1.0, "texture": ExtResource("10_f9") },
+{ "duration": 1.0, "texture": ExtResource("11_f10") },
+{ "duration": 1.0, "texture": ExtResource("12_f11") },
+],
+"loop": false,
+"name": &"fire_impact",
+"speed": 30.0
+}]

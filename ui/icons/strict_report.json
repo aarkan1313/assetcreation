@@ -1,0 +1,151 @@
+{
+  "strict": false,
+  "base_ok": true,
+  "strict_ok": false,
+  "summary": {
+    "total_icons": 135,
+    "base_missing": {},
+    "base_unused_icon": 131,
+    "manifest_total": 135,
+    "suggestions_loaded": true
+  },
+  "checks": [
+    {
+      "name": "unused_icons",
+      "unused_count": 131,
+      "total_icons": 135,
+      "unused_fraction": 0.9704,
+      "threshold": 0.95,
+      "passes": false,
+      "unused_ids_sample": [
+        "ico_arcane_orb",
+        "ico_axe",
+        "ico_barrier",
+        "ico_bow",
+        "ico_coin",
+        "ico_dagger",
+        "ico_elixir",
+        "ico_eye",
+        "ico_fireball",
+        "ico_flame_rune",
+        "ico_footprint",
+        "ico_frostbolt",
+        "ico_gem_green",
+        "ico_gem_red",
+        "ico_gi_abdominal_armor",
+        "ico_gi_ankh",
+        "ico_gi_apple_core",
+        "ico_gi_battered_axe",
+        "ico_gi_boss_key",
+        "ico_gi_bread"
+      ]
+    },
+    {
+      "name": "mismatched_icons",
+      "min_score": 0.4,
+      "margin": 0.2,
+      "mismatches": [
+        {
+          "kind": "items",
+          "record_id": "iron_mace_0",
+          "display_name": "Iron Mace",
+          "current_icon_id": "ico_sword",
+          "current_score": 0.0,
+          "suggested_icon_id": "ico_mace",
+          "suggested_score": 0.5,
+          "delta": 0.5
+        },
+        {
+          "kind": "items",
+          "record_id": "frost_spear_0",
+          "display_name": "Frost Spear",
+          "current_icon_id": "ico_sword",
+          "current_score": 0.0,
+          "suggested_icon_id": "ico_arcane_orb",
+          "suggested_score": 0.8536,
+          "delta": 0.8536
+        },
+        {
+          "kind": "items",
+          "record_id": "uncommon_fire_blade_45",
+          "display_name": "Uncommon Training Blade",
+          "current_icon_id": "ico_sword",
+          "current_score": 0.0,
+          "suggested_icon_id": "ico_gi_fire",
+          "suggested_score": 0.7041,
+          "delta": 0.7041
+        },
+        {
+          "kind": "abilities",
+          "record_id": "shadow_aura_t1_42",
+          "display_name": "Shadow Aura T1",
+          "current_icon_id": "ico_scroll",
+          "current_score": 0.0,
+          "suggested_icon_id": "ico_shadow_bolt",
+          "suggested_score": 0.8162,
+          "delta": 0.8162
+        },
+        {
+          "kind": "abilities",
+          "record_id": "arcane_self_t2_43",
+          "display_name": "Arcane Self T2",
+          "current_icon_id": "ico_gem_blue",
+          "current_score": 0.0,
+          "suggested_icon_id": "ico_arcane_orb",
+          "suggested_score": 0.8162,
+          "delta": 0.8162
+        },
+        {
+          "kind": "abilities",
+          "record_id": "nature_self_t3_44",
+          "display_name": "Nature Self T3",
+          "current_icon_id": "ico_potion_blue",
+          "current_score": 0.0,
+          "suggested_icon_id": "ico_nature_thorn",
+          "suggested_score": 0.7887,
+          "delta": 0.7887
+        }
+      ],
+      "passes": false
+    },
+    {
+      "name": "missing_tags",
+      "missing_count": 37,
+      "total": 135,
+      "missing_ids_sample": [
+        "ico_arcane_orb",
+        "ico_axe",
+        "ico_barrier",
+        "ico_bow",
+        "ico_coin",
+        "ico_dagger",
+        "ico_elixir",
+        "ico_eye",
+        "ico_fireball",
+        "ico_footprint",
+        "ico_frostbolt",
+        "ico_gem_blue",
+        "ico_gem_green",
+        "ico_gem_red",
+        "ico_hammer",
+        "ico_haste_wing",
+        "ico_heart_empty",
+        "ico_heart_full",
+        "ico_holy_light",
+        "ico_key",
+        "ico_lightning",
+        "ico_mace",
+        "ico_mana_drop",
+        "ico_nature_thorn",
+        "ico_poison_drop",
+        "ico_potion_blue",
+        "ico_potion_green",
+        "ico_potion_red",
+        "ico_rune",
+        "ico_scroll"
+      ],
+      "passes": true,
+      "informational": true
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3]
+
+[ext_resource type="Texture2D" path="res://props/_materials/biome_charred_wasteland/biome_charred_wasteland_albedo.png" id="1"]
+[ext_resource type="Texture2D" path="res://props/_materials/biome_charred_wasteland/biome_charred_wasteland_normal.png" id="2"]
+[ext_resource type="Texture2D" path="res://props/_materials/biome_charred_wasteland/biome_charred_wasteland_roughness.png" id="3"]
+[ext_resource type="Texture2D" path="res://props/_materials/biome_charred_wasteland/biome_charred_wasteland_metallic.png" id="4"]
+[ext_resource type="Texture2D" path="res://props/_materials/biome_charred_wasteland/biome_charred_wasteland_ao.png" id="5"]
+
+[resource]
+resource_name = "biome_charred_wasteland"
+albedo_texture = ExtResource("1")
+normal_enabled = true
+normal_texture = ExtResource("2")
+roughness_texture = ExtResource("3")
+metallic_texture = ExtResource("4")
+ao_enabled = true
+ao_texture = ExtResource("5")
+roughness = 0.85

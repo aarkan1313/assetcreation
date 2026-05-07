@@ -1,0 +1,14 @@
+{
+  "_doc": "10-prop demo set covering all 13 procedural recipes (one variant each, fast). Use sweeps/*_x*.json for the bigger variation sweeps.",
+  "schema": "prop_sweep.v1.batch",
+  "specs": [
+    "rock_small_x4.json",
+    "mushroom_lantern_x2.json",
+    "log_x2.json",
+    "ruin_block_x4.json",
+    "tombstone_x2.json",
+    "stump_x2.json",
+    "bone_pile_x3.json",
+    "fence_x1.json"
+  ]
+}

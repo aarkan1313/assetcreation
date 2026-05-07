@@ -1,0 +1,49 @@
+{
+  "_schema": "region.config.v1",
+  "id": "death_valley_basin",
+  "source": {
+    "kind": "stitch",
+    "bbox": [
+      -117.0,
+      36.1,
+      -116.6,
+      36.5
+    ],
+    "dataset": "USGS10m",
+    "bathymetry": false,
+    "skip_dem": true
+  },
+  "style": {
+    "name": "mythic",
+    "strength": 1.3
+  },
+  "biomes": [
+    "forest",
+    "grassland",
+    "mana_crystal",
+    "grassland"
+  ],
+  "splat": {
+    "mode": "gaussian"
+  },
+  "shader": {
+    "preset": "topdown",
+    "triplanar": null
+  },
+  "terrain": {
+    "size_m": null,
+    "height_m": null,
+    "mesh_subdiv": 256
+  },
+  "scatter": {
+    "max_instances": 800
+  },
+  "stage": {
+    "cam": "character",
+    "walkable": true
+  },
+  "size": 1024,
+  "seed": 7,
+  "project": "C:\\Users\\josep\\test\\new-game-project",
+  "quality": "default"
+}

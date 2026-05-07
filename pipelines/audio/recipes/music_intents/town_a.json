@@ -1,0 +1,35 @@
+{
+  "id": "town_a",
+  "display_name": "Town \u2014 Track A",
+  "bpm": 100,
+  "bars": 24,
+  "loop": true,
+  "stems": [
+    {
+      "id": "guitar",
+      "intensity_min": 0.0,
+      "intensity_max": 1.0
+    },
+    {
+      "id": "flute",
+      "intensity_min": 0.3,
+      "intensity_max": 1.0
+    },
+    {
+      "id": "tambourine",
+      "intensity_min": 0.6,
+      "intensity_max": 1.0
+    }
+  ],
+  "states": {
+    "morning": {
+      "intensity": 0.5
+    },
+    "evening": {
+      "intensity": 0.8
+    },
+    "festival": {
+      "intensity": 1.0
+    }
+  }
+}

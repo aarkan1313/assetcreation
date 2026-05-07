@@ -1,0 +1,12 @@
+{
+  "channel_to_biome": {
+    "G": "ice_cavern",
+    "A": "grassland",
+    "B": "mana_crystal"
+  },
+  "blur_px": 1.6,
+  "size": [
+    2048,
+    2048
+  ]
+}

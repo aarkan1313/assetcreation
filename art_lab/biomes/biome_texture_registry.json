@@ -1,0 +1,79 @@
+{
+  "_doc": "Source of truth: biome_id -> AAA texture set (under D:/assets/world/textures/library/<set_id>/). prompt_seed and category drive automatic regeneration via aaa_texture.py if a set is missing or stale. As of 2026-05-06 v2, RGBA channels are assigned per-scene by biome_splat.py based on world.json's biomes list order — the per-biome splat_channel field below is now a legacy hint and is ignored at scene-bake time. This means any 4 biomes can coexist in a scene without channel collisions.",
+  "version": 2,
+  "biomes": {
+    "lava_field": {
+      "set_id": "biome_lava_field",
+      "splat_channel": "R",
+      "category": "Ground",
+      "prompt_seed": "cracked volcanic basalt with glowing molten lava in fissures, dark obsidian rocks, warm orange embers, charred surface, photoreal seamless tileable",
+      "tiling_meters": 8.0
+    },
+    "ice_cavern": {
+      "set_id": "biome_ice_cavern",
+      "splat_channel": "G",
+      "category": "Ground",
+      "prompt_seed": "fractured glacial blue ice slab with embedded snow, jagged frost crystals, subsurface translucency, pale cyan highlights, photoreal seamless tileable",
+      "tiling_meters": 8.0
+    },
+    "mana_crystal": {
+      "set_id": "biome_mana_crystal",
+      "splat_channel": "B",
+      "category": "Ground",
+      "prompt_seed": "violet arcane crystal shards embedded in dark amethyst rock, faint inner glow, glassy facets, fine purple sparkle dust, photoreal seamless tileable",
+      "tiling_meters": 8.0
+    },
+    "grassland": {
+      "set_id": "biome_grassland",
+      "splat_channel": "A",
+      "category": "Ground",
+      "prompt_seed": "lush short meadow grass with scattered clover and tiny wildflowers over dark loam, soft variation, top-down view, photoreal seamless tileable",
+      "tiling_meters": 6.0
+    },
+    "forest": {
+      "set_id": "forest_floor_moss_carpet",
+      "splat_channel": "A",
+      "category": "Ground",
+      "prompt_seed": "dense forest floor moss carpet over rich dark loam with scattered fern fronds, fallen leaves, tiny twigs, deep humid greens, photoreal seamless tileable",
+      "tiling_meters": 6.0
+    },
+    "desert": {
+      "set_id": "biome_desert",
+      "splat_channel": "R",
+      "category": "Ground",
+      "prompt_seed": "fine pale sand dune surface with wind-shaped ripple patterns, scattered tiny pebbles and dried twigs, warm tan color with soft gradient, top-down view, photoreal seamless tileable",
+      "tiling_meters": 6.0
+    },
+    "tundra": {
+      "set_id": "biome_tundra",
+      "splat_channel": "G",
+      "category": "Ground",
+      "prompt_seed": "frost-cracked tundra ground with patches of pale lichen and dark mosses over frozen peat, scattered tiny rocks, hint of crystallised frost, cold desaturated palette, photoreal seamless tileable",
+      "tiling_meters": 7.0
+    },
+    "swamp": {
+      "set_id": "biome_swamp",
+      "splat_channel": "B",
+      "category": "Ground",
+      "prompt_seed": "boggy wet mud surface with scattered green algae, half-submerged twigs, peat patches, slick muddy puddles reflecting overcast sky, deep brown-green palette, photoreal seamless tileable",
+      "tiling_meters": 6.0
+    },
+    "charred_wasteland": {
+      "set_id": "biome_charred_wasteland",
+      "splat_channel": "R",
+      "category": "Ground",
+      "prompt_seed": "burnt scorched earth with charcoal cracks, smoldering ash patches, blackened soil, sparse warm ember glow in fissures, dry cracked desolation, photoreal seamless tileable",
+      "tiling_meters": 8.0
+    },
+    "underwater": {
+      "set_id": "biome_underwater",
+      "splat_channel": "B",
+      "category": "Ground",
+      "prompt_seed": "shallow seabed with rippled sand and scattered seashells, soft caustic light dapples, hint of green algae and small pebbles, blue-tinted muted palette, top-down view, photoreal seamless tileable",
+      "tiling_meters": 8.0
+    }
+  },
+  "channel_order": ["R", "G", "B", "A"],
+  "default_quality": "default",
+  "library_root": "D:/assets/world/textures/library"
+}

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="AbilityRecord" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://game_data/scripts/ability_record.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "shadow_aura_t1_42"
+display_name = "Shadow Aura T1"
+schema_version = "1.0.0"
+tags = ["shadow", "aura"]
+localization_key = "ABILITY_SHADOW_AURA_T1_42"
+provenance = { "source": "synthetic", "model": null, "seed": 42, "prompt_id": null, "timestamp": "2026-05-06T18:46:42+00:00", "target_file_sha256": "da75a24b3a8b20b42063c45bf98edbc691e0807070ed813871afc1be1155c987", "constraint_technique": "synthetic_schema_bounds", "constraint_pass": "first_pass", "sim_digest": "fb867eff1b487988", "parent_id": null }
+notes = ""
+kind = "active"
+school = "shadow"
+tier = 1
+shape = "aura"
+cost = { "mana": 5, "stamina": 0, "cooldown_sec": 0.5 }
+effect = { "damage": 14, "damage_type": "shadow", "healing": 0, "radius_m": 4.1, "duration_sec": 5.4, "status_tags": ["shadow_touched"] }
+icon_id = "ico_scroll"
+vfx_id = "smoke_pulse"
+sfx_id = "fireball_cast"
+description = "A tier 1 shadow ability tuned by the balance target."

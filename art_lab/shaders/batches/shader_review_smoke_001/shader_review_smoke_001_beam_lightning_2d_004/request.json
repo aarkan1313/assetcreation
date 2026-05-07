@@ -1,0 +1,79 @@
+{
+  "id": "shader_review_smoke_001_beam_lightning_2d_004",
+  "intent": "high quality arcane, storm, shield, portal, dissolve, projectile spell shaders for Godot",
+  "role": "beam",
+  "template": "beam_lightning_2d",
+  "params": {
+    "color_core": [
+      0.907228027900431,
+      0.9922912501533682,
+      1.0
+    ],
+    "color_edge": [
+      0.2914244015325677,
+      0.6515965261115296,
+      1.0
+    ],
+    "color_glow": [
+      0.1191697480242282,
+      0.27396163389617856,
+      0.8231916522854845
+    ],
+    "thickness": 0.085,
+    "core_thickness": 0.4553,
+    "jaggedness": 0.2191,
+    "frequency": 15.0528,
+    "speed": 4.2257,
+    "arc": -0.1954,
+    "fork_strength": 0.8539,
+    "opacity": 0.9454
+  },
+  "preview": {
+    "size": [
+      384,
+      192
+    ],
+    "frames": 6,
+    "duration_s": 1.5,
+    "background": [
+      0.015,
+      0.015,
+      0.035,
+      1.0
+    ]
+  },
+  "created": "2026-05-06T10:12:00.114057+00:00",
+  "review": {
+    "score": 77.18,
+    "grade": "review",
+    "components": {
+      "coverage": 0.0,
+      "motion": 1.0,
+      "center": 1.0,
+      "color": 1.0,
+      "edge": 0.983,
+      "contrast": 1.0,
+      "aspect": 0.845
+    },
+    "metrics": {
+      "coverage": 0.5564,
+      "mean_alpha": 0.22313,
+      "luma_mean": 0.19427,
+      "contrast": 0.2326,
+      "colorfulness": 0.31686,
+      "edge_energy": 0.01037,
+      "center_distance": 0.12952,
+      "clip_high": 0.01673,
+      "clip_low": 0.0,
+      "aspect": 2.61257,
+      "motion": 0.02238,
+      "flicker": 4e-05,
+      "frames": 6.0
+    },
+    "hints": [
+      "coverage high: reduce radius/thickness/glow/opacity, or increase dissolve threshold",
+      "too smooth: increase frequency/noise/rune/hex/jaggedness or sharpen edge_width"
+    ],
+    "render_source": "cpu_proxy"
+  }
+}

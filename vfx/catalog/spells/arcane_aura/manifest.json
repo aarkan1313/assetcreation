@@ -1,0 +1,29 @@
+{
+  "effect_id": "arcane_aura",
+  "backend": "smoke_field",
+  "n_frames": 29,
+  "fps": 18,
+  "bounds_px": [
+    192,
+    192
+  ],
+  "flipbook": "D:\\assets\\vfx\\catalog\\spells\\arcane_aura\\flipbook.png",
+  "frames_dir": "D:\\assets\\vfx\\catalog\\spells\\arcane_aura\\frames",
+  "extras": {
+    "field_json": "D:\\assets\\vfx\\catalog\\spells\\arcane_aura\\field.json",
+    "audio_cues": [
+      {
+        "t": 0.0,
+        "name": "loop_in"
+      },
+      {
+        "t": 1.2,
+        "name": "loop_out"
+      }
+    ]
+  },
+  "metrics": {
+    "max_density_global": 1.7260569334030151
+  },
+  "timestamp": "2026-05-06T20:50:48+00:00"
+}

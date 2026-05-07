@@ -1,0 +1,19 @@
+{
+  "effect_id": "smoke_pulse",
+  "backend": "smoke_field",
+  "n_frames": 36,
+  "fps": 24,
+  "bounds_px": [
+    256,
+    256
+  ],
+  "flipbook": "D:\\assets\\vfx\\catalog\\spells\\smoke_pulse\\flipbook.png",
+  "frames_dir": "D:\\assets\\vfx\\catalog\\spells\\smoke_pulse\\frames",
+  "extras": {
+    "field_json": "D:\\assets\\vfx\\catalog\\spells\\smoke_pulse\\field.json"
+  },
+  "metrics": {
+    "max_density_global": 2.1296095848083496
+  },
+  "timestamp": "2026-05-06T20:50:53+00:00"
+}

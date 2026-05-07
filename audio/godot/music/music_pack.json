@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "generated_at": "2026-05-06T21:29:57+00:00",
+  "tracks": [
+    {
+      "id": "bossfight_a",
+      "manifest": "audio/music/bossfight_a/manifest.json",
+      "tscn": "audio/godot/music/bossfight_a/track.tscn",
+      "controller": "audio/godot/music/bossfight_a/AdaptiveMusicTrack.gd",
+      "stem_count": 5
+    },
+    {
+      "id": "combat_a",
+      "manifest": "audio/music/combat_a/manifest.json",
+      "tscn": "audio/godot/music/combat_a/track.tscn",
+      "controller": "audio/godot/music/combat_a/AdaptiveMusicTrack.gd",
+      "stem_count": 4
+    },
+    {
+      "id": "exploration_a",
+      "manifest": "audio/music/exploration_a/manifest.json",
+      "tscn": "audio/godot/music/exploration_a/track.tscn",
+      "controller": "audio/godot/music/exploration_a/AdaptiveMusicTrack.gd",
+      "stem_count": 3
+    },
+    {
+      "id": "town_a",
+      "manifest": "audio/music/town_a/manifest.json",
+      "tscn": "audio/godot/music/town_a/track.tscn",
+      "controller": "audio/godot/music/town_a/AdaptiveMusicTrack.gd",
+      "stem_count": 3
+    }
+  ]
+}

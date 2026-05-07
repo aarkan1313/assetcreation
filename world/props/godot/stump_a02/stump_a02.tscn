@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://props/stump_a02/model_lod0.glb" id="1"]
+[ext_resource type="Script" path="res://props/_shared/PropMaterialBinder.gd" id="2"]
+[ext_resource type="Material" path="res://props/_materials/forest_floor_oak_bark/forest_floor_oak_bark.tres" id="3"]
+
+[node name="stump_a02" type="Node3D"]
+script = ExtResource("2")
+material_overrides = [ExtResource("3")]
+
+[node name="LOD0" parent="." instance=ExtResource("1")]
+visibility_range_end = 25.00
+visibility_range_end_margin = 3.00
+visibility_range_fade_mode = 1
+

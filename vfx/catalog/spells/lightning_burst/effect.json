@@ -1,0 +1,75 @@
+{
+  "kind": "spell",
+  "phenomenon": "lightning",
+  "backend": "particle_cpu",
+  "duration_s": 0.5,
+  "fps": 30,
+  "bounds_px": [
+    320,
+    320
+  ],
+  "visual": {
+    "palette": [
+      "#fcfcff",
+      "#bce8ff",
+      "#7a4fdb",
+      "#1a0a3a"
+    ],
+    "blend": "additive",
+    "background": "#00000000",
+    "bloom": true
+  },
+  "visual3d": {
+    "billboard_mode": "enabled",
+    "world_size_m": 2.5
+  },
+  "backend_params": {
+    "emitter": "burst",
+    "count": 180,
+    "seed": 34968,
+    "initial_speed": 128.0,
+    "speed_jitter": 128.0,
+    "direction_deg": 90.0,
+    "spread_deg": 360.0,
+    "gravity": [
+      0.0,
+      0.0
+    ],
+    "drag": 1.6,
+    "size_px": 4.8999999999999995,
+    "size_jitter": 4.0,
+    "fade": 1.0,
+    "emission_pos": [
+      160,
+      160
+    ],
+    "_audio_cues": [
+      {
+        "t": 0.0,
+        "name": "burst"
+      },
+      {
+        "t": 0.3,
+        "name": "settle"
+      }
+    ]
+  },
+  "gameplay": {
+    "shape": "aura",
+    "damage_tags": [
+      "shock"
+    ],
+    "collision": "pierce"
+  },
+  "element": "lightning",
+  "archetype": "burst",
+  "tags": [
+    "lightning",
+    "burst",
+    "aoe",
+    "shock"
+  ],
+  "export_target": "3d_billboard",
+  "id": "lightning_burst",
+  "notes": "Auto-authored lightning burst from element-archetype grid."
+}
