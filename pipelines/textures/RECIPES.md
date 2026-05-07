@@ -306,6 +306,48 @@ produce correctly-named outputs that match the library convention.
 
 ---
 
+## Building the mip ladder (after bake)
+
+### Write 2K/1K/512 tiers from a baked master
+
+```powershell
+# Full 3-step SR + bake + mip pipeline
+$id = "wgv3_rock_dark"
+New-Item -ItemType Directory -Force -Path "D:/tmp/${id}_sr" | Out-Null
+
+# Step 1: SR all maps into staging dir (library-style names)
+foreach ($map in @("albedo","normal","roughness","ao","metallic","height")) {
+    python pipelines/textures/sr_upscale.py `
+      --in "world/textures/library/$id/${id}_$map.png" `
+      --out "D:/tmp/${id}_sr/${id}_$map.png"
+}
+
+# Step 2: Bake (promotes baked -> canonical in staging dir)
+python pipelines/textures/bake_pbr.py `
+  --material-dir "D:/tmp/${id}_sr" `
+  --category Rock --backend chord_sm_rough --apply
+
+# Step 3: Write ladder from baked master
+python pipelines/textures/mip_ladder.py `
+  --in "D:/tmp/${id}_sr" `
+  --tiers "2k,1k,512"
+
+# Output: D:/tmp/<id>_sr/ladder/2k/  1k/  512/
+#   Each tier: 6 PBR maps at that resolution
+```
+
+Ladder output is at `<src>/ladder/<tier>/`. Each tier contains 6 PBR maps
+with per-map correct filtering: normal (vector-field, no fading at lower tiers),
+albedo (gamma-aware, no dark bias), others (linear Lanczos).
+
+**Use when:** you want to ship a material at multiple resolution tiers
+(e.g. 2K for hero views, 1K for standard terrain, 512 for distance).
+This is the standard full multi-resolution pipeline.
+
+**After B.5**, `aaa_texture.py --ladder` will run all three steps in one command.
+
+---
+
 ## Quality gating + QA
 
 ### Re-grade an existing texture

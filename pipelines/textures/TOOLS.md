@@ -137,6 +137,27 @@ from height is geometrically correct and strictly better than SR'd normal.
 **See also:** `sr_upscale.py` (prerequisite), `mip_ladder.py` (next step, B.3).
 `DECISIONS.md` for bake-at-SR-resolution rationale.
 
+### `mip_ladder.py` — multi-tier PBR mip ladder writer *(Phase B.3)*
+
+**What:** Given a directory of baked PBR maps (from `bake_pbr.py`), writes
+N downsampled tiers with per-map physically-correct filtering. Normal maps
+are filtered as XYZ vector fields (renormalized at each tier — prevents normal
+fading at lower mips). Albedo is gamma-aware (linearize → Lanczos → re-encode
+sRGB). All other maps (roughness, AO, metallic, height) are linear Lanczos.
+
+**Reach for it when:** You have a baked 2K/4K master and want to write the full
+mip ladder. This is the third step of the multi-resolution pipeline (SR → bake → mip).
+
+**Don't reach for it when:**
+- You haven't baked yet — run `bake_pbr.py` first (mipping SR'd normals bakes
+  in ESRGAN's color corruption at every tier).
+- You want a single upscaled map — use `sr_upscale.py`.
+
+**Output layout:** `<src>/ladder/<tier>/<id>_<map>.png` (default) or `--out <dir>`.
+**Default tiers:** `2k,1k,512` (matching a 2K master from B.2).
+
+**See also:** `bake_pbr.py` (prerequisite), `texture_qa.py --ladder` (B.4, per-tier QA).
+
 ### `flux_upscale.py` — FLUX img2img heal-pass tool *(repositioned Phase B.1)*
 
 **Phase B.1 update (2026-05-07):** Repositioned as a heal-pass tool.
