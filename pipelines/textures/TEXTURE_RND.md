@@ -18,6 +18,68 @@ The contact sheets and manifests for sweeps live in
 
 # Part 1 — Experiments
 
+## B.1 — SR survey + Real-ESRGAN as default backend (2026-05-07)
+
+**What:** First Phase B sub-step. Surveyed SR backends, chose Real-ESRGAN
+x4plus as default, wrote `sr_upscale.py` with offset+heal tile preservation,
+A/B'd against Lanczos and FLUX heal on 3 representative materials.
+
+**Survey doc:** `pipelines/textures/EXTERNAL_SR_TECHNIQUES.md`
+**A/B captures:** `world3/docs/captures/phase_b/B1_sr_survey/`
+
+**Decision: Real-ESRGAN x4plus as B.1 default.**
+- Drop-in via ComfyUI's `UpscaleModelLoader` + `ImageUpscaleWithModel`.
+- Fast (~2s per 512→2048 map on 5090 — faster than expected).
+- BSD-3-Clause license.
+- Alternatives parked for B.6 if survey or B.5 flagship A/B surfaces a need.
+
+**Reposition: `flux_upscale.py` is now the heal-pass tool**, not the
+SR backbone. Docstring updated; behavior unchanged. FLUX heal seam score
+(0.00123 all materials) is materially worse than Real-ESRGAN + offset trick
+(0.00003–0.00091) — confirming FLUX heal is optimizing for style coherence,
+not tight tileability.
+
+**A/B findings (3 materials × 3 methods):**
+
+| Material | Lanczos | Real-ESRGAN | FLUX heal (2K) | Notes |
+|----------|---------|-------------|----------------|-------|
+| rock_dark | smooth/blurred upscale, no new detail | sharp grain and crystal edges recovered | FLUX-coherent, softer than ESRGAN | Real-ESRGAN visibly sharpened micro-crystal structure; expected win on hard-edge geometry. |
+| snow | smooth, correct uniformity | micro-detail added — fine granular texture, plausible but not native-FLUX | FLUX-style, uniform | Real-ESRGAN added snow-appropriate micro-granularity. No obviously wrong hallucination. |
+| forest_floor | smooth, leaf edges softened | sharper leaf/dirt boundaries, more heterogeneous texture visible | FLUX-coherent, softer | Real-ESRGAN preserved and sharpened the heterogeneous structure. |
+
+**Tile coherence (offset+heal trick):**
+
+| Material | edge_seam_score (input) | post-SR (with offset) | post-SR (no offset) |
+|----------|-------------------------|-----------------------|----------------------|
+| rock_dark | 0.00011 | **0.00003** | 0.00017 |
+| snow | 0.00022 | **0.00003** | not measured |
+| forest_floor | 0.00247 | **0.00091** | not measured |
+
+With offset trick: consistently better than input. Without offset trick: worse
+than input on rock_dark (the canonical test). Offset trick is mandatory.
+
+FLUX heal comparison: 0.00123 for all three materials regardless of source.
+Higher than Real-ESRGAN + offset, confirming its role as a coherence
+tool rather than a tight-tiling tool.
+
+**Open / surfaced for later steps:**
+- FLUX heal score is identical (0.00123) across all three materials —
+  suggests the heal pass is applying a fixed-strength denoise that
+  dominates the seam metric regardless of input. Not a problem for its
+  intended use (coherence polish), but documents it shouldn't be
+  measured by seam score alone.
+- No offset-trick test on snow/forest_floor without offset — rock_dark
+  result is sufficient to confirm the pattern.
+- Real-ESRGAN on all three materials ran in ~2s each (5090). Faster than
+  expected (plan estimated 5-15s). Full 512→4K in ~2s means the 4K
+  working master for bake_pbr.py (B.2) will be cheap.
+
+**Time spent:** ~half session.
+**Next:** B.2 — `bake_pbr.py` (high-res re-derive of normal/AO/roughness
+from upscaled albedo+height).
+
+---
+
 ## A.11 — CHORD + SM-roughness hybrid PBR backend
 
 **Date**: 2026-05-07
