@@ -1,6 +1,6 @@
 # Docs Guide — for Future-Us
 
-We have 18 markdown files. That's a lot. This page explains *why* —
+We have ~24 markdown files. That's a lot. This page explains *why* —
 each doc has a distinct role, write-rule, and lifetime — so we can
 tell at a glance "where does this new finding go?" without losing
 track or duplicating.
@@ -63,6 +63,8 @@ should still make sense.
 | [ROADMAP_v1_archived.md](ROADMAP_v1_archived.md) | Original roadmap before the v2 reframe                            |
 | [OPENTOPO_PILOT1_*_AUDIT.md](OPENTOPO_PILOT1_GRAND_CANYON_USGS10M_AUDIT.md) | Pilot 1 audit                                |
 | [OPENTOPO_PILOT2_*_AUDIT.md](OPENTOPO_PILOT2_GUADALUPE_CYPRESS_FUSION_AUDIT.md) | Pilot 2 audit                            |
+| [OPENTOPO_PHASE2_HD_REVIEW.md](OPENTOPO_PHASE2_HD_REVIEW.md) | Phase 2 HD-tile review pass (4096/8192/16K stress test)        |
+| [OPENTOPO_PHASE2_MAX_REVIEW.md](OPENTOPO_PHASE2_MAX_REVIEW.md) | Phase 2 max-resolution review pass                          |
 | [pipelines/textures/EXTERNAL_TECHNIQUES.md](../../pipelines/textures/EXTERNAL_TECHNIQUES.md) | Survey of external tileable-PBR techniques (2026-05-07 snapshot) |
 
 **Write-rule**: don't edit unless fixing typos. New audits = new
@@ -78,10 +80,29 @@ Current scope. Replaced when we move to the next iteration.
 |----------------------------------------------|----------------------------------------------------------------------|
 | [ROADMAP.md](ROADMAP.md)                     | Phased plan toward the long-term vision (rewrite when reframing)     |
 | [PLAN.md](PLAN.md)                           | Current iteration scope (rewrite each iteration)                     |
+| [OPENTOPO_LARGE_4CALL_PLAN.md](OPENTOPO_LARGE_4CALL_PLAN.md) | Active scoped plan for the next 4-call OpenTopo USGS1m fetch (the OpenTopo branch's PLAN.md analogue) |
+| [OPENTOPO_TEXTURE_SCENE_ROADMAP.md](OPENTOPO_TEXTURE_SCENE_ROADMAP.md) | Active scoped roadmap for the OpenTopo texture+scene+HD branch (the OpenTopo branch's ROADMAP.md analogue) |
 
 **Write-rule**: the *current* version is the source of truth. When
 you replace it, archive the old as `<NAME>_v<N>_archived.md` so
-history is preserved.
+history is preserved. The OpenTopo branch follows the same rule for
+its own pair of plan/roadmap docs.
+
+### 5. Session handoff — *fully replaced each session*
+
+A copy/paste opener for a fresh chat session. Writes the minimum
+context needed to pick up where the last session left off, without
+re-reading the whole doc set. Replaced wholesale at the end of each
+session.
+
+| Doc                                          | Topic                                                                |
+|----------------------------------------------|----------------------------------------------------------------------|
+| [NEXT_SESSION_PROMPT.md](NEXT_SESSION_PROMPT.md) | The opener for the next session — points at the right docs and current state. |
+
+**Write-rule**: rewrite the whole file at the end of each session.
+This file is *for future-you's first 30 seconds of context-loading*,
+not for posterity. If you want the past version, look in git history.
+Don't append.
 
 ## Index docs
 
@@ -137,8 +158,8 @@ to trust.
 - Defense: distinct role per doc + write-rule per doc + an index
   (README) + this guide.
 
-The 18-file count is fine because each doc has a clear role. The
-problem would be **overlap**, not count. Watch for:
+The current ~24-file count is fine because each doc has a clear
+role. The problem would be **overlap**, not count. Watch for:
 - Two docs explaining the same thing → consolidate or cross-link
 - A doc whose role is unclear after 2 weeks → rename or merge into
   the closest existing doc

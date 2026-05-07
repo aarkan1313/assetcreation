@@ -589,3 +589,45 @@ separate workflows:
 valuable, but the current 1024 single-texture viewer fails close up. We need to
 separate source-layer alignment from rendering delivery and from reusable
 material baking, then measure each path independently.
+
+---
+
+## 2026-05-07 — Repo policy: track source, ignore generated content + caches
+
+**Decision**: Git tracks source code, configs, schemas, docs, and the
+*current* iteration's evidence captures. Generated content (PBR
+texture binaries, heightmap PNGs, OpenTopo raw/processed DEMs, Godot
+import caches, blender previews, historical iteration screenshots) is
+gitignored. Reproducibility comes from the cookbook prompts +
+seed-base + tool config, not from binary snapshots.
+
+**Alternatives considered**:
+- **Track all texture binaries in git**: rejected. Currently ~25
+  materials × 6 maps × ~500KB = ~150MB just for `world3/textures/wgv3/`,
+  plus parallel sets in `world/textures/library/`. Repo bloat would
+  compound across iterations.
+- **Use Git LFS for binaries**: deferred. Adds tooling overhead and a
+  separate retention story; postpone until binaries become a real
+  problem (e.g. for cross-machine sync).
+- **Leave half-tracked / inconsistent**: rejected. The state inherited
+  before this session — most of `world3/` and several
+  `pipelines/textures/` files untracked despite being referenced by
+  committed docs — was the failure mode driving this decision.
+- **Track historical iteration captures (~96MB)**: rejected. They're
+  evidence for past dev iterations; the docs that reference them stay
+  readable, but the binaries themselves are gitignored. Current-
+  iteration captures (`captures/phase_a/`) ARE tracked because they
+  document active work.
+
+**Why**: The failure mode we're guarding against is "doc says X but
+git doesn't have X" — exactly what we found when this session
+started. Now the rule is clear: if a committed doc references a file,
+that file is either tracked or it's a generated artifact whose
+prompt/seed/config IS tracked. The texture pipeline's reproducibility
+contract (prompt + seed-base + ComfyUI version + FLUX 2 klein
+weights) is the source-of-truth for textures, not the binaries.
+
+**Implementation**: see `.gitignore`. The key new patterns are
+`world3/.godot/`, `world3/textures/`, `world3/heightmap/`,
+`world3/opentopo/{raw,processed}/`, `world3/toporeview/phase*_*/`,
+`world3/docs/captures/iter*/`, `world3/**/*.import`.

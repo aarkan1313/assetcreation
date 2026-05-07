@@ -1,183 +1,104 @@
-# world3 — Current Iteration Plan (Phase A)
+# world3 — Current Iteration Plan
 
-Roadmap v2 starts here. Phase A is **texture quality + prompt R&D** —
-mostly experiments and observations rather than new features. Goal is
-to measurably improve texture-pipeline first-pass success rate from
-~70% to ~80%+ through better prompts, better settings, and at least
-one new technique adopted from external research.
+**Phase A is done.** See [PLAN_phaseA_archived.md](PLAN_phaseA_archived.md)
+for the closed-out checklist; ROADMAP.md "Phase A — DONE" for the
+outcome summary.
 
-This phase isn't about new code (much). It's about *understanding* the
-tools we have. Outputs are documents and revised prompts more than
-shippable features.
+> **Status: 2026-05-07 — between iterations.** This PLAN is
+> intentionally short until we pick the next iteration. The candidates
+> below are real options to choose from; the user picks one and this
+> file gets rewritten with the actual scope.
 
-## Operating tempo for this phase
+## Candidate next iterations
 
-Each "experiment" is a constrained sweep:
-- Variable: one thing (prompt phrasing OR seed OR variants count OR
-  heal_strength OR delight strength)
-- Fixed: everything else
-- Output: a contact sheet (10 thumbnails laid out in a grid) + grade
-  table + one-line subjective ranking
+Ranked by "smallest scope first" so each can land cleanly without
+compounding risk.
 
-We run sweeps, look at outputs, write down observations, repeat. No
-"big-bang" rebuild of the pipeline.
+### Option 1 — Phase A.7 polish: build the "richness" QA metric (small)
 
-## Tasks (in order)
+**Why it might be next**: Phase A surfaced 3 confirmed "smooth-A"
+cases (sand seed 200, powder snow seed 100, canyon_rock
+ground_level_lead). LESSONS L16 has flagged this since A.2; the
+empirical case for adding a minimum-energy QA check is now strong.
 
-### A.1 — Build the experiment harness
+**Scope**: Add a Laplacian-energy / local-variance threshold to
+`texture_qa.py`. Calibrate on existing graded textures (look at
+edge_mse vs Laplacian energy across our library). Add per-category
+thresholds since uniform-roughness materials (snow) legitimately have
+low spatial energy too.
 
-Need: a reproducible way to run "same prompt × N seeds" and end up
-with one PNG showing the result grid + a manifest of grades. The
-texture pipeline can run an --id with --seed-base N, but we don't
-have a "sweep" wrapper.
+**Estimate**: half a session. Mostly local code change; would
+strengthen the gate against the failure mode we know exists.
 
-**Deliverable**: `pipelines/textures/experiment.py` that:
-- Takes a name, a prompt, a list of seeds, and any aaa_texture
-  arg overrides
-- Runs aaa_texture for each seed (skipping --no-gate so we see real
-  grades)
-- Collects each result's albedo + tile_2x2 + grade from the manifest
-- Composes a contact sheet PNG: NxM grid of (tile_2x2, grade caption)
-- Writes a JSONL manifest: one row per run with prompt, seed, grade,
-  metric numbers
-- Target output: `D:/tmp/world3_experiments/<name>/` with
-  `contact_sheet.png` + `manifest.jsonl`
+**Deliverable**: a 4th gate axis (`richness`), updated
+`PIPELINE.md`, calibration evidence in TEXTURE_RND Part 1.
 
-**Estimate**: 30-60 min. Single Python script + one wrapper around
-subprocess.
+### Option 2 — Phase B: upscaling research (medium)
 
-### A.2 — Same-prompt sweep × 5 materials
+**Why it might be next**: This is what ROADMAP.md calls "next." Many
+of A.5's external-techniques pointers (CHORD, controlnet-inpaint
+variants, Real-ESRGAN tile-aware) are upscaling-adjacent — we already
+have context. Currently 512 throughout; close-walk and hero-material
+use cases would benefit from 1K/2K.
 
-Pick 5 representative material types: sand, smooth-rock, grass,
-fresh-snow, leaf-litter. For each, our current best prompt + 10 seeds
-+ 4 variants each.
+**Scope**: Audit `flux_upscale.py`. Research alternatives (Real-ESRGAN,
+SwinIR, BSRGAN, ComfyUI's upscaler ecosystem, tileable-aware SR).
+Pick a 512→1K and a 512→2K path. Build/extend an upscaler that
+handles all 5 PBR maps (normals need special handling). Per-tier QA.
+Pick a flagship texture and produce the full ladder.
 
-**Deliverable**: 5 contact sheets in
-`world3/docs/captures/phase_a/same_prompt_sweep/<material>/`. Plus a
-short writeup: "sand is grade A 8/10 times; rock is 3/10; grass is..."
+**Estimate**: 1-2 sessions. Research is the bulk; implementation is
+constrained.
 
-**Estimate**: ~30 min generation + 30 min review. (Each sweep is
-4 variants × 10 seeds × ~30s SM = 20 min generation per material. We
-parallelize where possible.)
+**Deliverable**: pipeline command that takes a 512 set → 1K or 2K
+with all maps preserved and tiling intact. Documented policy: which
+textures get which tier.
 
-Wait — that's actually 10 *full pipeline runs* per material × 5
-materials = 50 textures × 4-5 min each = 4 hours of compute. Too
-much. Smaller version:
+### Option 3 — OpenTopo branch work (medium-large)
 
-**Revised**: 5 seeds per material instead of 10. 25 textures total. 
-~2 hours of compute, can run in background.
+**Why it might be next**: There's an active OpenTopo addendum in the
+archived PLAN; planning docs exist for HD-review and 4-call USGS1m
+plans. This is the orthogonal work-stream that ran alongside texture
+R&D this phase.
 
-### A.3 — Prompt-permutation sweep on one hard case
+**Scope**: per [OPENTOPO_TEXTURE_SCENE_ROADMAP.md](OPENTOPO_TEXTURE_SCENE_ROADMAP.md)
+and [OPENTOPO_LARGE_4CALL_PLAN.md](OPENTOPO_LARGE_4CALL_PLAN.md).
+Review HD/MAX single-tile scenes; identify close-up failure modes;
+prototype baked ground textures from orthophoto/fused layers; run
+the planned 4-call USGS1m test.
 
-Pick one consistently-difficult material (probably "sand" given the
-recent failures). Hand-write 4 prompt variants:
-1. Current cookbook winner
-2. More minimal ("close-up sand, top-down photo")
-3. More elaborate (extra material adjectives)
-4. Different lead phrase ("aerial photograph of" vs "close-up of")
+**Estimate**: 2-3 sessions. Large scope; mostly OpenTopo-side work
+not texture-pipeline.
 
-Run each variant × 4 seeds = 16 textures.
+**Deliverable**: stitched USGS1m mosaic; baked PBR set from real
+orthophoto data; documented decision about chunked-delivery vs.
+single-texture for near-camera fidelity.
 
-**Deliverable**: Prompt-comparison contact sheet + ranking. Update
-PROMPT_COOKBOOK with the winning patterns.
+### Option 4 — Variation-and-stitch tool (small-medium)
 
-**Estimate**: ~1 hour compute + 30 min writeup.
+**Why it might be next**: EXTERNAL_TECHNIQUES technique #5 — generate
+N variants, *blend* them into one tile (instead of *picking* one).
+Could rescue lattice-prone categories more cleanly than prompt
+rewrites alone, and we have a working harness to test it.
 
-### A.4 — Settings sweep
+**Scope**: New tool `variant_blend.py`. Takes N albedo PNGs sharing a
+prompt, blends them with edge-aware boundaries (Voronoi-region or
+feathered quadrant tiling). A/B against `variant_select.py` on the
+A.2 lattice-prone seeds.
 
-Pick one stable prompt (a known-good one like wgv3_dirt's). Vary:
-- variants: 4, 6, 8
-- heal_strength: 0.25, 0.35, 0.45
-- delight: 0.3, 0.4, 0.5
+**Estimate**: half-to-full session. Self-contained tool work.
 
-Full grid is 27 combinations × 1 prompt × 1 seed = 27 textures. Too
-many. Pick **3 axes × 2 values each = 8 combinations** (a 2³ partial
-design).
+**Deliverable**: working tool, A/B comparison vs variant_select on
+representative cases, decision about whether it's worth standardizing
+into the default pipeline.
 
-**Deliverable**: 8-cell contact sheet. Identify which axis matters
-most. Update PIPELINE.md preset defaults if anything wins big.
+## How to commit to one
 
-**Estimate**: ~1 hour compute + 30 min review.
+Pick one of the above (or propose a different scope). This file gets
+rewritten with the chosen iteration's full task list, deliverables,
+and exit criteria — same shape as the archived Phase A plan.
 
-### A.5 — External research
-
-**Not generation**, just reading. Spend ~2 sessions on:
-- Reddit (r/StableDiffusion, r/comfyui, r/proceduralgeneration)
-  searching for "tileable PBR", "seamless texture", "FLUX texture
-  workflow"
-- ComfyUI workflow shares (civitai, openart.ai) — find at least 2
-  saved workflows that target tileable PBR and try them out
-- GitHub: search "tileable diffusion" / "PBR generation"
-- Hugging Face: any PBR-specific models beyond StableMaterials
-
-**Deliverable**: `pipelines/textures/EXTERNAL_TECHNIQUES.md`
-documenting what we found, with links and one-line summaries. At
-least one technique adopted into our pipeline as a try-it-out.
-
-**Estimate**: ~3-4 hours of reading + light experiments. The agent's
-ability to search Reddit is iffy; mostly WebSearch + WebFetch on
-known good URLs.
-
-### A.6 — Apply learnings
-
-Regenerate the 2-3 currently-weakest textures (likely tundra_ice,
-desert_canyon_rock, anything else flagged) with the best patterns
-from A.2-A.5. Measure: did first-pass quality improve?
-
-**Deliverable**: regenerated textures, updated DECISIONS entry, and a
-"before/after" comparison capture in
-`world3/docs/captures/phase_a/before_after/`.
-
-**Estimate**: 30-60 min.
-
-## Out of scope this phase
-
-- New shader features
-- New biome kits beyond what we have (wait until Phase D)
-- Multi-tile streaming
-- Iso/topdown camera changes
-- LOD
-
-## Exit criteria
-
-- `experiment.py` runs and produces useful contact sheets
-- 5 same-prompt sweeps + 1 prompt-permutation sweep + 1 settings
-  sweep, all archived
-- `EXTERNAL_TECHNIQUES.md` exists with at least 5 documented
-  approaches and one tried in our pipeline
-- `PROMPT_COOKBOOK.md` doubled in length (more known-good patterns,
-  more known-bad anti-patterns)
-- 2-3 weakest textures regenerated and visibly improved
-
-## After this iteration
-
-Phase B (upscaling research) is the natural follow-on — many of the
-external techniques in A.5 will involve upscaling, so we'll already
-have context.
-
-## OpenTopo Branch Addendum - 2026-05-07
-
-The OpenTopo work is now a live exploratory branch alongside texture-pipeline
-R&D. Current direction:
-
-1. Review the generated Phase 2 HD/MAX single-tile scenes from Guadalupe
-   Cypress at 4096, 8192, and 16K RGB-only stress scale.
-2. Use that scene to find the close-up failure point: texture resolution, mesh
-   spacing, missing material detail, or all three.
-3. Prototype baked ground textures from the same orthophoto/fused layers.
-4. If the HD single-tile test is promising, move to chunked delivery instead of
-   trying to make one giant texture carry a whole map.
-5. Run the planned 4-call `USGS1m` scale test after preflight validation, then
-   layer point-cloud/color/canopy sources over the stitched height mosaic.
-
-Planning doc:
-
-```text
-docs/OPENTOPO_TEXTURE_SCENE_ROADMAP.md
-docs/OPENTOPO_PHASE2_HD_REVIEW.md
-docs/OPENTOPO_PHASE2_MAX_REVIEW.md
-docs/OPENTOPO_LARGE_4CALL_PLAN.md
-```
-
-This branch should keep following the OpenTopo documentation rule: every new
-tool, workflow, scene, or generated stack gets a runbook/status update.
+If a phase is *meaningfully* smaller than the others (option 1 is
+maybe a half-session vs option 3's 2-3 sessions), it can be done as
+"Phase A.7 polish" and folded back into Phase A's archive rather than
+becoming its own iteration.

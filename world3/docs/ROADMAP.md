@@ -27,43 +27,59 @@ extension. v2 just changes what we work on *first* to get there.
 - **Document as we go.** New decisions land in DECISIONS.md, new
   surprises in LESSONS.md, runbooks updated.
 
-## Phase A — Texture quality + prompt R&D (NEXT)
+## Phase A — Texture quality + prompt R&D (DONE 2026-05-07)
 
 The texture pipeline is mature, but FLUX still misses prompts ~30% of
 the time and we don't have a systematic understanding of what works.
 This phase is mostly *experiments and observations*, not new code.
 
 Checklist:
-- [ ] Reproducible experiment harness: same prompt × N variants ×
-      different seeds, output a contact sheet for visual review
-- [ ] Same-prompt 10-variant sweep on 5 representative material types
-      (sand, rock, grass, snow, dirt). Identify which prompts produce
-      consistently good results vs. which are seed-dependent.
-- [ ] Prompt-permutation sweep: same target material, vary phrasing
-      (4-5 prompt variants), N seeds each. Identify wording patterns
-      that improve output.
-- [ ] Setting sweeps: variants count (4 vs 6 vs 8), heal_strength
-      (0.25 / 0.35 / 0.45), delight strength (0.3 / 0.4 / 0.5).
-- [ ] Research external pipelines: Reddit, ComfyUI workflow shares,
-      Hugging Face spaces, GitHub repos. Catalog what others do for
-      tileable PBR generation. Look for:
-      - workflows that beat FLUX 2 klein for tileable output
-      - alternative seamless techniques (Stable Diffusion, dedicated
-        tileable models, Substance-style approaches)
-      - PBR-from-image tools beyond StableMaterials
-- [ ] Document findings: `pipelines/textures/EXPERIMENTS.md` (sweeps
-      + observations), update `PROMPT_COOKBOOK.md` with new wins,
-      `LESSONS.md` with new surprises.
-- [ ] Apply learnings: regenerate any current texture that's flagged
-      as "could be better" using the new patterns.
+- [x] Reproducible experiment harness: `pipelines/textures/experiment.py`
+      — supports `seeds`/`prompts`/`settings` modes; outputs contact
+      sheets + JSONL manifests.
+- [x] Same-prompt sweep on 5 representative materials (A.2): volcanic,
+      snow, sand, grass, leaf_litter × 3 seeds. Surfaced two clear weak
+      cases (snow stylization, leaf_litter lattice). Findings in
+      TEXTURE_RND Part 1.
+- [x] Prompt-permutation sweep on weak cases (A.3): snow + leaf_litter,
+      4 variants × 3 seeds each. Both rewritten with decisive winners.
+      Three new anti-patterns added to cookbook (aerial-photograph-of-
+      field, rare-jargon names, mismatched-substrate descriptors).
+- [x] Settings sweep (A.4): variants count 4/6/8 on sand + leaf_litter.
+      Found 4 stays as default; 6 helps variance-sensitive materials;
+      8 never wins. heal_strength sweep deferred — A.3 prompt fixes
+      reached threshold without needing it.
+- [x] External research (A.5): `pipelines/textures/EXTERNAL_TECHNIQUES.md`
+      survey of state-of-the-art. Confirmed our offset+heal algorithm
+      matches the open-source canon. Documented dead ends. Identified
+      future candidates (variation-and-stitch, CHORD model).
+- [x] Apply learnings to weak materials (A.6): tundra_ice +
+      desert_canyon_rock prompt rewrites — both had directional cues
+      flagged in Part 2. Same fix as A.3 snow worked. The directional-
+      cue rule is now confirmed across 3 materials, promoted to a
+      general anatomy rule in the cookbook.
+- [x] Regenerate shipping textures: wgv3_snow, wgv3_forest_floor,
+      wgv3_tundra_ice, wgv3_desert_canyon_rock all regenerated at
+      grade A. Before/after captures archived.
 
-Exit criteria:
-- Prompt-accuracy is qualitatively higher (~80%+ of first-pass
-  generations land usable material).
-- At least one new technique adopted from external research.
-- Cookbook doubles in size with concrete patterns.
+Exit criteria — all met:
+- ✅ Prompt-accuracy qualitatively higher (4 weak materials lifted to
+  A grade; cookbook doubled in size).
+- ✅ At least one new technique adopted (variants-count tuning rule
+  from the EXTERNAL_TECHNIQUES survey).
+- ✅ Cookbook doubled in size with concrete patterns + 3 new anti-
+  pattern entries + the directional-cue anatomy rule.
 
-## Phase B — Upscaling + multi-resolution pipeline
+Open / deferred items (candidates for a later phase):
+- "Richness" minimum-energy QA metric — 3 confirmed "smooth-A"
+  failure cases now (LESSONS L16 strengthened). Small enough for a
+  single-session add.
+- Flux Fill / controlnet-inpaint model swap for the heal step
+  (EXTERNAL_TECHNIQUES technique #12) — speculative; defer.
+- Variation-and-stitch tool (cprimozic-inspired) — could rescue
+  lattice-prone materials more cleanly than prompt rewrites alone.
+
+## Phase B — Upscaling + multi-resolution pipeline (NEXT)
 
 Currently 512 throughout. Some uses (close-walk, hero materials, large
 iso-camera footprint) need more. Some uses (mid-range topdown, far

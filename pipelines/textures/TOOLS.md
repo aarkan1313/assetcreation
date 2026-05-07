@@ -113,6 +113,38 @@ Generates a synthetic test texture (checkerboard, noise, etc.) for
 shader development. Use when iterating on a shader and you want
 predictable input.
 
+### `experiment.py` — sweep harness for R&D
+Reproducible way to run a controlled sweep and collect a contact
+sheet + JSONL manifest of grades. Three modes:
+- **`seeds`** — same prompt × N seeds. "How seed-stable is this
+  prompt?"
+- **`prompts`** — prompt list × seed list. "Which phrasing wins?"
+  Reads a JSON list of `{label, prompt}` entries.
+- **`settings`** — single prompt + seed, sweep `--variants-list` and
+  `--heal-list`. "Does bumping variants/heal help here?"
+
+Output goes to `D:/tmp/world3_experiments/<name>/` with
+`contact_sheet.png` (NxM grid of tile_2x2 thumbs with grade captions)
+and `manifest.jsonl` (one row per run).
+
+```powershell
+# Same prompt × 3 seeds on snow
+python experiment.py --name snow_seeds --mode seeds --category Snow `
+  --prompt "fresh white snow with small dimples, top-down photo, ..." `
+  --seeds 100 200 400
+
+# Prompt comparison sweep
+python experiment.py --name leaf_prompts --mode prompts --category Ground `
+  --prompts-file prompts_a3/leaf_litter.json --seeds 100 200 400
+
+# Settings: variants count
+python experiment.py --name sand_variants --mode settings --category Ground `
+  --prompt "<canonical sand prompt>" --seeds 100 --variants-list 4 6 8
+```
+
+Used heavily in Phase A.2 / A.3 / A.4 / A.6 sweeps — see TEXTURE_RND
+Part 1 entries.
+
 ## Lower-level / specialty
 
 ### `derive_pbr_v2.py` — heuristic PBR (no model)
