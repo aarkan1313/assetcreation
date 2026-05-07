@@ -48,13 +48,13 @@ def repack_albedo(
     glb = pygltflib.GLTF2().load(str(src_glb))
 
     # --- locate target mesh primitive ------------------------------------------
-    if mesh_idx >= len(glb.meshes):
+    if mesh_idx < 0 or mesh_idx >= len(glb.meshes):
         raise IndexError(
             f"mesh_idx {mesh_idx} out of range (GLB has {len(glb.meshes)} mesh(es))"
         )
     mesh = glb.meshes[mesh_idx]
 
-    if prim_idx >= len(mesh.primitives):
+    if prim_idx < 0 or prim_idx >= len(mesh.primitives):
         raise IndexError(
             f"prim_idx {prim_idx} out of range (mesh[{mesh_idx}] has "
             f"{len(mesh.primitives)} primitive(s))"
@@ -111,7 +111,13 @@ def repack_albedo(
             data = new_bytes
         else:
             orig_offset = bv.byteOffset or 0
-            data = orig_blob[orig_offset : orig_offset + bv.byteLength]
+            end = orig_offset + bv.byteLength
+            if end > len(orig_blob):
+                raise ValueError(
+                    f"bufferView[{i}] claims offset={orig_offset}+length={bv.byteLength}"
+                    f"={end} which exceeds blob size {len(orig_blob)} — malformed GLB"
+                )
+            data = orig_blob[orig_offset:end]
 
         # Update bufferView metadata in-place
         bv.byteOffset = cursor
@@ -123,6 +129,8 @@ def repack_albedo(
     new_blob = b"".join(new_blob_parts)
 
     # Update buffer 0 total length
+    if not glb.buffers:
+        raise ValueError(f"GLB has no buffers (binary chunk missing): {src_glb}")
     glb.buffers[0].byteLength = len(new_blob)
 
     # Push new binary chunk into the GLB
