@@ -61,6 +61,32 @@ Lower-level than `aaa_texture.py`. Just an albedo, no PBR derivation.
 Used internally by `variant_select.py` and exposed standalone for
 experiments.
 
+**A.10 reference-anchor mode (opt-in, klein-native):** pass
+`--reference-image <path> --reference-mode anchor
+--reference-denoise 0.70-0.95` to anchor the FLUX generation on a
+reference photo. The reference is auto-resized to `--size`,
+VAE-encoded, fed as the sampler's starting latent at the specified
+denoise strength. Lower denoise = stronger reference, less prompt
+fidelity. Sweet spots:
+
+- `0.88` — subtle tint; mostly text-driven
+- `0.78` — moderate hybrid; reference structure visible
+- `0.70` — strong anchor; reference structure embedded (e.g. snow
+  prompt + forest_floor reference produces "fresh snow over leaf
+  bed" composite)
+- `<0.65` — reference dominates, prompt ~ignored
+
+Anchor mode also opts the heal pass into `BasicScheduler` so the
+pass-1 anchor signal isn't erased by the pass-3 repaint. Default
+behavior (no reference) is unchanged. **Not yet exposed via
+`aaa_texture.py`**; call `flux_seamless.py` directly for anchor mode.
+
+`--reference-mode conditioning` (klein's native `ReferenceLatent`
+node into the conditioning chain) was Attempt 1 in A.10 — produces
+microscopic influence (klein-4B has too few denoising steps for
+in-context tokens to materially shift output). Code path stays for
+future iteration but advisory-only.
+
 ### `flux_upscale.py` — 2K/4K upscale preserving tiling
 Two-stage bilinear → low-denoise FLUX img2img → reverse-offset.
 Albedo-only. For hero materials only; standard pipeline ships at 512.

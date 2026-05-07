@@ -121,12 +121,19 @@ Checklist:
       edges. Manual rescue; not folded into orchestrator default.
       Commit: `530db77`. Details: TEXTURE_RND.md "A.9" entry.
 
-- [ ] **A.10 — IP-Adapter / FLUX Redux on flux_seamless.py**.
-      Per the research handoff. Reference-photo conditioning on the
-      FLUX stage; would let us condition on real-world material
-      photos for accuracy. Needs research pass on which IP-Adapter
-      flavor works with FLUX 2 klein (different from FLUX.1 D).
-      Estimate: 1-2 sessions.
+- [x] **A.10 — Reference-image anchor mode on flux_seamless.py**.
+      Took 3 attempts to land — handoff's "IP-Adapter drop-in" framing
+      was based on FLUX.1 D, not klein-4B. Working design uses klein-
+      native img2img with `BasicScheduler` (Flux2Scheduler silently
+      ignores `denoise`). `--reference-image` + `--reference-mode
+      anchor` + `--reference-denoise 0.70-0.88` works; final output
+      shows clean reference influence (snow + brown forest_floor
+      reference at 0.70 = "fresh snow over leaf bed" composite look).
+      Heal pass surgically opts into BasicScheduler in anchor mode;
+      default behavior unchanged for non-reference runs. Commit:
+      next. Details: TEXTURE_RND "A.10" entry. **Surfaced unrelated
+      issue:** Flux2Scheduler drops `denoise` project-wide; logged
+      as a future audit task below.
 
 - [ ] **A.11 — CHORD + SM-roughness hybrid**. Surfaced by A.8's
       roughness regression. Run CHORD for albedo/normal/height/
@@ -152,6 +159,26 @@ Open / parked candidates (not in this phase):
   consistently.
 - Hero-mesh lane via Hunyuan3D-Paint 2.1 (handoff decision #3) —
   user "we'll see"; deferred.
+- **klein-9B Edit** (vs the klein-4B we use now) — purpose-built
+  image-edit variant of FLUX 2. Stronger native reference handling
+  than what we got out of klein-4B + img2img anchor in A.10. Larger
+  model (~9B vs 4B), separate gated download, slower inference. Not
+  needed if A.10's working anchor mode covers our use cases; revisit
+  if/when we need stronger material accuracy from references than the
+  anchor approach delivers.
+- **Honest partial-denoise heal pass audit** (surfaced by A.10c) —
+  `Flux2Scheduler` silently drops `denoise`, so our heal pass has
+  been running at full denoise=1.0 the whole project. Empirically
+  fine, but switching all heal runs to `BasicScheduler` at honest
+  `denoise=0.5` could improve content preservation. Requires A/B
+  against the entire wgv3_* shipping set to confirm no regression.
+  Half-session of work + careful evaluation. Lower priority than
+  A.11/Phase B; pick up if/when seam quality starts mattering.
+- **Curated reference photo set** for A.10 anchor mode — small
+  library under `world/textures/references/` with 5-10 high-quality
+  real-world material photos (dirt, rock, snow on leaves, etc.)
+  that Phase B + future kits can use as anchors for material
+  accuracy. ~half session to source + organize.
 
 ## Phase B — Upscaling + multi-resolution pipeline (NEXT after polish)
 

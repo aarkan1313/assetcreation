@@ -18,6 +18,142 @@ The contact sheets and manifests for sweeps live in
 
 # Part 1 — Experiments
 
+## A.10 — Reference-image anchor mode for flux_seamless
+
+**Date**: 2026-05-07
+**Question**: Per the 2026-05-07 research handoff, can we add reference-
+photo conditioning to `flux_seamless.py`'s FLUX stage to anchor
+generated materials on real-world (or other texture) photos? Handoff
+suggested "IP-Adapter / FLUX Redux drop-in" — but that framing was
+based on FLUX.1 D, not our FLUX 2 klein-4B.
+
+### Three attempts before it worked
+
+**Attempt 1: `ReferenceLatent` chained into conditioning** — klein's
+native multi-reference path. Wired cleanly. **Microscopic influence**:
+0.118/255 mean pixel diff between with-ref and no-ref runs of the same
+prompt+seed. Different bytes (different MD5), same content visually.
+The `ReferenceLatent` node has no strength parameter; klein-4B at 4
+steps doesn't have enough denoising room for in-context tokens to
+materially shift the output.
+
+**Attempt 2: img2img with `Flux2Scheduler` + `denoise=0.5..0.88`** —
+encode reference, feed as `latent_image` to sampler with partial
+denoise. Wiring looked correct in the queued workflow JSON. **Output
+was unchanged across denoise values** — pure white snow regardless of
+denoise. Diagnosis: **`Flux2Scheduler` silently ignores its `denoise`
+input**. The schedule it produces is full-denoise regardless. Confirmed
+by sweeping denoise 0.95→0.50 and getting identical mean RGB.
+
+**Attempt 3: img2img with `BasicScheduler` + `denoise`** — swap to
+`BasicScheduler` (which DOES honor `denoise`). **Pass-1 output
+shows clean denoise gradient on snow-prompt + brown-reference**:
+
+| denoise | pass1 mean RGB | character |
+|--------:|---------------:|-----------|
+| 0.95    | (232, 232, 235)| pure white snow |
+| 0.85    | (223, 223, 227)| slight cream tint |
+| 0.78    | (211, 212, 217)| visibly tinted |
+| 0.65    | (174, 176, 182)| strong tint |
+| 0.50    | (125, 110, 101)| reference dominates |
+
+*But*: pass-3 (the seam-heal pass) also uses `Flux2Scheduler` and was
+**erasing the reference influence in the final output**. Final RGB on
+all three reference-anchored variants converged toward the no-ref
+result. Heal pass was effectively repainting from scratch.
+
+### Final working design
+
+**Pass 1 (text2img with anchor)**: when `--reference-image` is given
+in `--reference-mode anchor`, `workflow_text2img_klein` uses
+`BasicScheduler` so `--reference-denoise` actually controls partial
+denoise. Sampler starts from the reference latent. Default denoise
+0.88 — light tint; 0.70 for stronger embedded-reference effects.
+
+**Pass 3 (heal) — surgical fix**: `workflow_img2img_klein` got a
+`honor_denoise=True` opt-in. When anchor mode is active, the heal
+pass switches to `BasicScheduler` at `denoise=0.25` so it gently
+smooths seams *without* erasing the pass-1 anchor signal. **Default
+heal behavior unchanged** for non-reference runs (still uses
+`Flux2Scheduler`, denoise silently ignored = effectively 1.0
+repaint, which is what we've been doing all along).
+
+### Final A/B (snow prompt + forest_floor reference)
+
+| Variant            | Final mean RGB     | Visual                               |
+|--------------------|--------------------|--------------------------------------|
+| no reference       | (230, 231, 235)    | clean white snow                     |
+| anchor d=0.85      | (221, 221, 224)    | snow with subtle cream tint         |
+| anchor d=0.70      | (189, 191, 197)    | **snow with embedded leaf shapes** — fresh snow on forest floor look |
+
+Contact sheet: `world3/docs/captures/phase_a/A10_reference_anchor/A10_AB_contact_sheet.png`.
+
+The d=0.70 result is the most interesting — clearly snow but with
+forest-floor structure embedded. Looks like fresh snow over a
+just-fallen-leaves bed. Useful for biome transitions, weathered
+surfaces, "X over Y" composite materials.
+
+### Decisions
+
+- **`--reference-image --reference-mode anchor` is the working path.**
+  Default `--reference-denoise 0.88` for subtle tint; lower for
+  stronger reference influence.
+- **`--reference-mode conditioning` (Attempt 1) stays as code** but
+  is documented advisory-only. Negligible influence; useful as a
+  hook for future iteration if klein gets better in-context tokens.
+- **Default behavior (no reference) unchanged.** Regression-tested:
+  same wgv3_dirt prompt produces same grade A metrics as before.
+- **Vanilla heal pass behavior unchanged.** `Flux2Scheduler` keeps
+  silently dropping `denoise` for non-reference runs — that's the
+  status quo since project start. Don't change without re-validating
+  every shipping texture.
+
+### Surfaced issue: Flux2Scheduler silently drops `denoise`
+
+The pre-existing heal-pass behavior is "documented as `denoise=0.35`
+but actually runs at 1.0 because Flux2Scheduler ignores the
+parameter." Empirically the pass works (klein's distilled 8-step
+schedule converges quickly even from full noise), but our docs were
+wrong about what was happening.
+
+**Open question (parked, not part of A.10)**: should we audit the
+heal pass and switch *all* heal runs to `BasicScheduler` with a
+calibrated `denoise` (probably ~0.5 — half-denoise smooths seams
+while keeping more pass-1 content)? Would require A/B against
+the entire wgv3_* shipping set to confirm no regression. Filed as
+ROADMAP "future audit: honest partial-denoise heal pass."
+
+### What it doesn't fix
+
+- **klein-9B Edit** is the proper image-edit model in the family;
+  trained for stronger reference handling than klein-4B. Different
+  weights (~9B vs 4B), separate download, different speed profile.
+  Not adopted: A.10's working anchor mode is good enough for
+  reference-style anchoring at our use cases. Parked as a future
+  option in ROADMAP.
+- The handoff's "IP-Adapter drop-in" framing **was based on FLUX.1
+  D**; it doesn't apply to klein. Don't re-evaluate IP-Adapter
+  unless we ever migrate off klein.
+
+### When to use this
+
+- Biome transitions / "snow on top of X" / "wet on top of Y" composite
+  materials.
+- Anchoring FLUX outputs on real-world photos when material accuracy
+  matters more than free-form generation. (Future: build a small
+  curated set of real-world reference photos under
+  `world/textures/references/`.)
+- Style-matching across a kit: use one anchor texture as reference
+  for several others to enforce palette/character consistency.
+
+Good defaults:
+- `--reference-denoise 0.88`: faint anchor, mostly text-driven
+- `--reference-denoise 0.78`: moderate anchor, hybrid character
+- `--reference-denoise 0.70`: strong anchor, reference structure visible
+- below 0.65: reference dominates, prompt mostly lost (use with care)
+
+---
+
 ## A.9 — Variant-blend tool: combine N variants into one tile
 
 **Date**: 2026-05-07

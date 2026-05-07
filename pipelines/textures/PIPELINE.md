@@ -212,6 +212,30 @@ so that material.tres bindings are name-agnostic. See
 `world3/pipeline/build_kit_materials.py` for the per-kit
 terrain_blend.tres generator.
 
+## Reference-anchor mode (A.10, opt-in)
+
+`flux_seamless.py --reference-image <path> --reference-mode anchor
+--reference-denoise <0.65-0.95>` uses an image as a starting-latent
+anchor for klein, blending its style/color/structure into the
+generated output while text drives the prompt. See TEXTURE_RND
+"A.10" entry for details. Default denoise 0.88 = subtle tint; 0.70
+= strong reference structure visible. Anchor mode opts pass-3 into
+`BasicScheduler` so the heal pass doesn't erase the anchor signal.
+**Not currently exposed via `aaa_texture.py`** — call
+`flux_seamless.py` directly when you want anchor mode.
+
+## Known issues
+
+- **`Flux2Scheduler` silently ignores `denoise`** (diagnosed A.10c,
+  2026-05-07). The default heal pass passes `denoise=0.35` but the
+  scheduler runs at full denoise=1.0 regardless. Empirically harmless
+  (klein's distilled schedule converges quickly even from full
+  noise), but the stage is "fully repainting from noise" rather
+  than "partially smoothing seams." Open question whether switching
+  to `BasicScheduler` at honest `denoise=0.5` would improve content
+  preservation through heal — would require A/B against the entire
+  shipping set. Parked in ROADMAP as a future audit task.
+
 ## Common failure modes
 
 | Symptom                          | Likely cause                                   | Fix                                     |
