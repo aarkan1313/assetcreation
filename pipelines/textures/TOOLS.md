@@ -87,9 +87,38 @@ microscopic influence (klein-4B has too few denoising steps for
 in-context tokens to materially shift output). Code path stays for
 future iteration but advisory-only.
 
-### `flux_upscale.py` — 2K/4K upscale preserving tiling
+### `sr_upscale.py` — Real-ESRGAN single-map super-resolution *(Phase B.1)*
+
+**What:** Drop-in 4× SR for any single tileable PNG (albedo, height,
+normal, roughness, etc.) via ComfyUI's `UpscaleModelLoader` +
+`ImageUpscaleWithModel` nodes with the Real-ESRGAN x4plus model.
+Tile preservation via offset+heal trick. ~2s per 512→2048 on 5090.
+
+**Reach for it when:** You need to upscale one map by 4×. Default SR
+tool for the multi-resolution pipeline (Phase B.1+). For multi-map
+PBR sets, use the orchestrator (`aaa_texture.py --ladder`, lands in B.5)
+which composes this with `bake_pbr.py` and `mip_ladder.py`.
+
+**Don't reach for it when:**
+- You want FLUX-style coherence recovery — use `flux_upscale.py`
+  (the heal-pass tool, not SR proper).
+- ComfyUI isn't available — use `upscale_biome_set.py` (Lanczos
+  baseline, no-install fallback).
+
+**Output:** Single PNG at the upscaled resolution.
+
+**See also:** `EXTERNAL_SR_TECHNIQUES.md` for the survey; B.2's
+`bake_pbr.py` for what to do with the SR'd output.
+
+### `flux_upscale.py` — FLUX img2img heal-pass tool *(repositioned Phase B.1)*
+
+**Phase B.1 update (2026-05-07):** Repositioned as a heal-pass tool.
+For SR proper, use `sr_upscale.py`. This tool recovers FLUX-style
+coherence after generation or after Real-ESRGAN SR. Albedo-only.
+
 Two-stage bilinear → low-denoise FLUX img2img → reverse-offset.
-Albedo-only. For hero materials only; standard pipeline ships at 512.
+For hero materials. Seam score ~0.00123 (coherence-focused, not
+tight-tiling focused — use Real-ESRGAN for tight tileability).
 
 ## Inputs from external sources
 

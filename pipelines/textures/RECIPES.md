@@ -207,6 +207,58 @@ muted. Cheap to undo (originals get backed up).
 
 ---
 
+## Upscaling
+
+### Upscale a single map (Real-ESRGAN, default)
+
+```powershell
+python pipelines/textures/sr_upscale.py `
+  --in <path/to/map.png> `
+  --out <path/to/map_4x.png>
+```
+
+4× super-resolution via ComfyUI's UpscaleModelLoader + Real-ESRGAN
+x4plus. ~2s per 512→2048 map on 5090. Tile-preserving via
+offset+heal trick.
+
+**Use when:** you need any single tileable PNG (albedo, height, etc.)
+upscaled to 4×. This is the default SR tool for the Phase B
+multi-resolution pipeline.
+
+### Upscale + heal pass (FLUX, for FLUX-style coherence)
+
+```powershell
+python pipelines/textures/flux_upscale.py `
+  --input <path/to/albedo.png> `
+  --output <path/to/albedo_2k.png> `
+  --target 2048
+```
+
+Bilinear upscale + FLUX img2img low-denoise heal pass. Slower (~60-90s)
+than Real-ESRGAN; produces "more FLUX-coherent" output that matches
+generation style. Albedo only. Seam score ~0.00123 (coherence-focused).
+
+**Use when:** you need a near-shipping albedo polished to recover FLUX
+style after some other transformation. For multi-map SR, use
+`sr_upscale.py` instead.
+
+### Lanczos baseline (no-ComfyUI fallback)
+
+```powershell
+python pipelines/textures/upscale_biome_set.py `
+  --set <set_id> --factor 4
+```
+
+Pure PIL Lanczos upscale of every PBR map in a biome set. No model
+required, no ComfyUI required. Quality is meaningfully worse than
+Real-ESRGAN but works with no install. Backs up originals to
+`_original_<map>.png`.
+
+**Use when:** ComfyUI isn't available or you want a deterministic
+quick-and-dirty upscale.
+
+---
+
 ## Quality gating + QA
 
 ### Re-grade an existing texture
