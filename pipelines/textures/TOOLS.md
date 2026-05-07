@@ -156,6 +156,53 @@ visually flatter. Standalone use: testing PBR pipeline without GPU.
 The `default`/`strict` PBR backend. Runs in `mesa-env`. Don't invoke
 directly; use `aaa_texture.py --quality default`.
 
+### `chord_image2pbr.py` — alternative PBR backend (CHORD, Ubisoft, opt-in)
+ComfyUI HTTP-API wrapper for the CHORD ComfyUI nodes (Ubisoft La
+Forge, SIGGRAPH Asia 2025). Outputs 5 PBR maps + AO from a single
+input albedo at 1024 native. **Beats StableMaterials on hard-edge
+geometry** (sharper normals, cleaner heights, no center bias);
+**loses on rock roughness** (near-flat output fails sanity).
+
+**Setup**:
+1. `git clone https://github.com/ubisoft/ComfyUI-Chord` into
+   `D:/assets/animators/ComfyUI/custom_nodes/`
+2. `pip install diffusers omegaconf imageio` in ComfyUI venv
+3. Download `chord_v1.safetensors` from gated HF repo
+   `Ubisoft/ubisoft-laforge-chord` (need HF account + access request),
+   place in `D:/assets/animators/ComfyUI/models/checkpoints/`
+4. Apply transformers 5.x compat patch to ComfyUI-Chord/nodes.py
+   (strip `text_encoder.text_model.` → `text_encoder.` from state
+   dict before `load_state_dict`). See TEXTURE_RND.md "A.8" entry
+   for the diff.
+5. Restart ComfyUI; verify nodes show up via
+   `curl http://127.0.0.1:8188/object_info | grep Chord`
+
+**Usage**:
+```powershell
+# Standalone
+python chord_image2pbr.py --input <albedo>.png --out <dir> --id <name>
+
+# Via orchestrator (recommended)
+python aaa_texture.py --prompt "..." --id wgv3_X --pbr-backend chord
+```
+
+**License**: Ubisoft Machine Learning License (Research-Only Copyleft).
+Fine for research/internal; flag for commercial.
+
+**When to use**:
+- Materials with strong hard-edge geometry (cracks, ridges, brick)
+  where CHORD's sharper normals/heights matter
+- Future hero-mesh terrain (handoff decision 3)
+- Future texture upscaling research (Phase B) — CHORD's tile-aware
+  inference at 1024 native may pair well with SR strategies
+
+**When NOT to use**:
+- Rock-category materials where roughness variation matters (use SM
+  default)
+- Anywhere the existing shipping textures already pass — don't
+  regenerate just because CHORD exists; SM is fine for our current
+  shipping set
+
 ### `variant_select.py`
 Generates N candidates and picks the best by edge-MSE seam score.
 Internal to `aaa_texture.py`'s variant stage.

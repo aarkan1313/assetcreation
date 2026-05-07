@@ -70,13 +70,25 @@ The orchestrator (`aaa_texture.py`) runs 7 stages:
    `<id>_albedo.pre_delight.png` as backup; updates the main albedo
    in-place.
 
-3. **PBR estimation** — one of:
-   - `stablematerials_image2pbr.py` (default/strict): diffusion model
-     trained for tileable PBR; outputs aligned albedo/normal/
-     roughness/metallic/height at 512 native. Fast (~30s on 5090).
-   - `derive_pbr_v2.py` (fast): heuristic from albedo only — height
-     from frequency split, normal from height sobel, AO from blurred
-     curvature, roughness from category preset.
+3. **PBR estimation** — one of (override with `--pbr-backend`):
+   - `stablematerials_image2pbr.py` (default/strict; `--pbr-backend sm`):
+     diffusion model trained for tileable PBR; outputs aligned albedo/
+     normal/roughness/metallic/height at 512 native. ~25s on 5090.
+     **License: OpenRAIL (commercial OK).**
+   - `chord_image2pbr.py` (`--pbr-backend chord`, opt-in): Ubisoft La
+     Forge's CHORD model (SIGGRAPH Asia 2025). Outputs basecolor/
+     normal/roughness/metalness at 1024 native, plus Poisson-derived
+     height. ~30s on 5090. Beats SM on hard-edge geometry (rock,
+     stone — sharper normals, cleaner heights, no center-bias bloom).
+     **Loses on rock roughness** (CHORD's roughness is near-flat,
+     fails existing sanity check on Rock category).
+     **License: Ubisoft Machine Learning License (Research-Only
+     Copyleft).** Requires `chord_v1.safetensors` (gated on HF) and
+     a transformers 5.x compat patch in custom_nodes/ComfyUI-Chord/
+     nodes.py — see TEXTURE_RND.md "A.8" entry.
+   - `derive_pbr_v2.py` (fast; `--pbr-backend derive`): heuristic from
+     albedo only — height from frequency split, normal from height
+     sobel, AO from blurred curvature, roughness from category preset.
 
 4. **Seam repair** (`seam_repair.py`)
    Self-contained (discovers maps by filename, no catalog

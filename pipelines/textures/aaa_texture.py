@@ -107,12 +107,20 @@ def main():
     ap.add_argument("--host", default="http://127.0.0.1:8188")
     ap.add_argument("--no-gate", action="store_true",
                     help="ship even if seam score fails the gate")
+    ap.add_argument("--pbr-backend", choices=["derive", "sm", "chord"],
+                    default=None,
+                    help="override preset PBR backend. 'derive' = "
+                         "derive_pbr_v2 (heuristic, no model), 'sm' = "
+                         "StableMaterials (default for default/strict "
+                         "presets), 'chord' = CHORD (Ubisoft, opt-in; "
+                         "requires ComfyUI-Chord nodes + chord_v1.safetensors)")
     args = ap.parse_args()
 
     preset = PRESETS[args.quality]
     n_variants = args.variants or preset["variants"]
     seam_max = preset["seam_max"]
-    pbr_backend = preset.get("pbr", "derive")  # "derive" | "sm"
+    # Backend resolution order: explicit --pbr-backend flag > preset default
+    pbr_backend = args.pbr_backend or preset.get("pbr", "derive")  # "derive" | "sm" | "chord"
     use_repair = preset["use_repair"]
     delight_strength = preset["delight"]
     flux_size = args.size if args.size is not None else preset["flux_size"]
@@ -156,7 +164,32 @@ def main():
     log["stages"].append({"stage": "delight", "strength": delight_strength})
 
     # ---- STAGE 3: PBR estimation ----
-    if pbr_backend == "sm":
+    if pbr_backend == "chord":
+        # CHORD (Ubisoft La Forge) — talks to ComfyUI HTTP API, runs the
+        # ChordMaterialEstimation node graph there. Requires ComfyUI-Chord
+        # custom nodes + chord_v1.safetensors checkpoint installed (see
+        # PIPELINE.md "PBR backends" section).
+        chord_script = str(PIPELINE_DIR / "chord_image2pbr.py")
+        result = subprocess.run([
+            sys.executable, chord_script,
+            "--input", str(albedo_path),
+            "--out", str(out_dir),
+            "--id", args.id,
+            "--host", args.host,
+        ])
+        if result.returncode != 0:
+            print(f"  CHORD failed; falling back to derive_pbr_v2")
+            python_subprocess([
+                str(PIPELINE_DIR / "derive_pbr_v2.py"),
+                "--albedo", str(albedo_path),
+                "--id", args.id,
+                "--category", args.category,
+                "--out", str(out_dir),
+            ], "STAGE 3: PBR fallback (deterministic v2)")
+            log["stages"].append({"stage": "pbr", "method": "derive_pbr_v2_fallback"})
+        else:
+            log["stages"].append({"stage": "pbr", "method": "chord_v1"})
+    elif pbr_backend == "sm":
         # StableMaterials runs in mesa-env (which has diffusers+cu130 ready).
         # We pass --size matching the model's native resolution (512). Larger
         # values just LANCZOS-stretch the output; not worth the lie.

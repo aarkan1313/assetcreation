@@ -18,6 +18,122 @@ The contact sheets and manifests for sweeps live in
 
 # Part 1 — Experiments
 
+## A.8 — CHORD swap-in for PBR estimation
+
+**Date**: 2026-05-07
+**Question**: 2026-05-07 research handoff
+(`docs/handoffs/HANDOFF_textures_research_2026_05_07.md`) called CHORD
+(Ubisoft La Forge, SIGGRAPH Asia 2025) the "highest-leverage swap"
+available for our PBR pipeline. Does it actually beat StableMaterials
+on our typical inputs? What's the install/integration cost?
+
+### Setup
+
+**Install**:
+- Cloned `github.com/ubisoft/ComfyUI-Chord` into ComfyUI's custom_nodes/
+- Pip-installed deps in ComfyUI venv: `diffusers`, `omegaconf`, `imageio`
+- Downloaded `chord_v1.safetensors` (2.76 GB) from gated HF repo
+  `Ubisoft/ubisoft-laforge-chord` — required HF account + access request
+- **Local patch required**: `nodes.py` had a transformers 4.x → 5.x
+  compatibility bug. Saved checkpoint had `text_encoder.text_model.*`
+  keys; transformers 5.x's `CLIPTextModel` flattens to `text_encoder.*`.
+  Stripping the prefix at load time → 372/372 keys remap cleanly,
+  0 missing/0 extra. Patch lives in
+  `D:/assets/animators/ComfyUI/custom_nodes/ComfyUI-Chord/nodes.py`
+  at the `ChordLoadModel.execute()` site; small rename pass before
+  `model.load_state_dict(sd)`.
+
+**Wiring**:
+- New `pipelines/textures/chord_image2pbr.py` — wrapper that talks
+  to ComfyUI HTTP API (same shape as `flux_seamless.py`); uploads
+  input albedo, queues a 9-node CHORD workflow, downloads 5 PBR
+  maps (basecolor + normal + roughness + metalness + Poisson-derived
+  height), derives AO from height.
+- `aaa_texture.py` got a `--pbr-backend {derive,sm,chord}` flag that
+  overrides the preset's backend. **Default behavior unchanged**;
+  CHORD is opt-in.
+
+### Smoke test
+Ran end-to-end pipeline at `--quality default --pbr-backend chord` on
+the wgv3_rock_dark prompt. **Grade A** on seam metrics
+(edge=0.0007, junc=1.03, period=15.5). All 6 maps produced. Sanity
+check failed on roughness (std=0.011 < 0.02 threshold for Rock) —
+CHORD's rock roughness is too uniform.
+
+### Side-by-side A/B (same input → both backends)
+
+To control for FLUX upstream variance, ran CHORD and SM on the
+*same* input albedos (post-FLUX, pre-delight). Material 1: A.8's
+fresh wgv3_rock_dark generation (cracked slate). Material 2:
+existing wgv3_forest_floor's pre-delight albedo.
+
+| Aspect              | CHORD                                        | StableMaterials                              | Winner |
+|---------------------|----------------------------------------------|----------------------------------------------|--------|
+| Normal (rock)       | High contrast, sharp crack definition, clear cyan/magenta channel separation | Soft, low-contrast, cracks read subtle | CHORD |
+| Height (rock)       | Crisp crack delineation, uniform slabs, no center bias | Center-bloom artifact (low-freq lighting visible in heightmap) | CHORD |
+| Roughness (rock)    | Near-flat (std 0.011, fails sanity check)    | Visible local variation, looks like real rock | SM   |
+| Normal (forest)     | Slightly cleaner, less noisy                 | More noisy texture                            | CHORD (small) |
+| Height (forest)     | Very high detail, individual leaves visible  | Smooth low-frequency, more landscape-like     | depends |
+| Albedo (basecolor)  | ~Same as input (passes through faithfully)   | ~Same (light SDXL touch-up)                  | tie    |
+| Metallic            | ~0 (correct for non-metal)                   | ~0 (correct)                                  | tie    |
+| Tile-aware          | Yes (native circular padding)                | Yes (built-in `tileable=True`)                | tie    |
+| Speed               | ~30s on 5090 (single GPU pass via ComfyUI)   | ~5s LCM / ~25s standard via diffusers         | tie    |
+
+Contact sheet: `D:/tmp/world3_experiments/A8_chord_test/A8_AB_contact_sheet.png`
+
+### Findings
+
+1. **CHORD is qualitatively better on hard-edge geometry** (rock,
+   stone, brick — anything with sharp gradients). Normal maps are
+   sharper, height maps are cleaner with no center-bias bloom. This
+   matches the handoff's claim about CHORD being the "single highest-
+   leverage swap" for materials with strong specular variance.
+
+2. **CHORD is worse on roughness for rock.** It outputs near-flat
+   roughness that fails our existing sanity check (`std<0.02`).
+   StableMaterials produces visibly varied roughness. This is a real
+   regression on a category where roughness variation matters
+   (lighting-sensitive in-game).
+
+3. **For organic textures (forest_floor) the two are closer.**
+   Normal maps are similar; CHORD's height is more detailed but might
+   over-tessellate. No clean winner; depends on use case.
+
+4. **Install cost was non-trivial** (transformers 5.x compat bug,
+   gated HF model). The handoff said "Low install effort" — that's
+   only true if you're on transformers 4.x. We are not. Logged the
+   patch location so it survives a CHORD update.
+
+### Decision: keep both backends; SM stays default; CHORD opt-in
+
+- **Default unchanged**: `--quality default` and `--quality strict`
+  still use SM. Existing shipping textures stay on the SM path.
+- **CHORD opt-in via `--pbr-backend chord`**: use it on materials
+  where rock-class hard-edge geometry dominates and roughness
+  uniformity is acceptable (or where we'll regenerate roughness
+  separately). Good candidates: any future hero-mesh materials, the
+  "rock at close-camera" cases mentioned in the handoff.
+- **Don't migrate the existing wgv3_* shipping set to CHORD** —
+  the roughness regression on rock is a real downgrade. Revisit if
+  Ubisoft ships a v2 with better roughness, or if we add a roughness
+  refinement step downstream of CHORD.
+- **Hero-mesh lane (handoff decision 3) deferred** — user's call.
+  Still on the table; not opening it this session.
+
+### Implications + open items
+
+- **Roughness refinement post-CHORD** is a candidate Phase B sub-task:
+  if CHORD's other maps win, we could borrow SM's roughness OR run a
+  small heuristic refinement (Laplacian-of-luminance + gain) when
+  using CHORD on rock-class materials.
+- **The richness metric (A.7) flagged the CHORD-generated rock_dark
+  test at 0.79 (Rock threshold 0.83)** — first time it's flagged a
+  pipeline output rather than a known smooth-A case. Worth watching
+  whether CHORD outputs systematically score lower on richness than
+  SM outputs.
+
+---
+
 ## A.7 — "Richness" QA metric: catching the smooth-A failure mode
 
 **Date**: 2026-05-07

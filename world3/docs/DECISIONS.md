@@ -631,3 +631,54 @@ weights) is the source-of-truth for textures, not the binaries.
 `world3/.godot/`, `world3/textures/`, `world3/heightmap/`,
 `world3/opentopo/{raw,processed}/`, `world3/toporeview/phase*_*/`,
 `world3/docs/captures/iter*/`, `world3/**/*.import`.
+
+---
+
+## 2026-05-07 — CHORD as opt-in PBR backend (don't migrate)
+
+**Decision**: Add CHORD (Ubisoft La Forge, SIGGRAPH Asia 2025) as a
+third PBR estimation backend in `aaa_texture.py`, selectable via
+`--pbr-backend chord`. **Default behavior unchanged** —
+StableMaterials remains the default for `default`/`strict` quality
+presets; `derive_pbr_v2` remains the `fast` preset's backend. Don't
+migrate the existing `wgv3_*` shipping set to CHORD.
+
+**Alternatives considered**:
+- **Replace StableMaterials with CHORD as the default**: rejected.
+  A/B testing (TEXTURE_RND "A.8") showed CHORD wins on hard-edge
+  geometry but produces near-flat roughness on rock-class materials,
+  fails our existing sanity check, and would visibly degrade
+  in-engine lighting on those textures. The handoff brief recommended
+  this swap; the swap is justified for materials where CHORD's
+  strengths apply (sharper normals/heights), not as a blanket
+  replacement.
+- **Keep CHORD only as a separate hero-mesh lane (handoff #3)**:
+  partial — but the wrapper is small and useful even for biome-tile
+  materials with hard geometry. Better to expose it generically and
+  gate use via the `--pbr-backend` flag than to silo it into a
+  parallel lane that doesn't exist yet.
+- **Use CHORD for everything except roughness** (post-process the
+  roughness from a different source): plausible but adds complexity.
+  Filed as a Phase B candidate ("CHORD + SM-roughness hybrid") rather
+  than building it now.
+
+**Why**: The handoff called CHORD the "single highest-leverage swap."
+That overstated it — CHORD is a *high-leverage option for the right
+materials*, not a universal upgrade. Our test runs show genuine
+quality wins (rock normals, height tileability) and genuine
+regressions (rock roughness flatness). Keeping it opt-in lets us
+exploit the wins without paying the regressions.
+
+**Implementation**:
+- `pipelines/textures/chord_image2pbr.py` — HTTP-API wrapper to
+  ComfyUI's CHORD nodes
+- `pipelines/textures/aaa_texture.py` — `--pbr-backend {derive,sm,chord}`
+  flag added; default = preset's existing backend (sm for default/strict)
+- `D:/assets/animators/ComfyUI/custom_nodes/ComfyUI-Chord/nodes.py`
+  — local patch for transformers 5.x compat (strip
+  `text_encoder.text_model.` → `text_encoder.` from state dict
+  before `load_state_dict`). Filed in TEXTURE_RND "A.8" so future-us
+  can re-apply on a CHORD update.
+- License: Ubisoft Machine Learning License (Research-Only Copyleft)
+  — flagged in PIPELINE.md and TOOLS.md. Need to revisit before any
+  commercial release.
