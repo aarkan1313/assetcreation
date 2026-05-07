@@ -129,6 +129,11 @@ def run_variant(
         elevation_deg=elevation_deg,
         blender_exe=blender_exe,
     )
+    if len(view_paths) != n_views:
+        raise RuntimeError(
+            f"render_views returned {len(view_paths)} paths, expected {n_views}. "
+            f"Stale files in {views_dir}? Clear work-dir and retry."
+        )
     print(f"[inpaint_variants]   -> {len(view_paths)} views in {views_dir}")
 
     # =========================================================================
@@ -158,12 +163,15 @@ def run_variant(
     # =========================================================================
     print(f"[inpaint_variants] Step 3/5: Inpainting {n_views} views "
           f"(backend={inpaint_backend!r})...")
-    reference_pil = Image.open(str(reference_img)).convert("RGBA")
+    with Image.open(str(reference_img)) as _ref:
+        reference_pil = _ref.convert("RGBA")
     inpainted_paths: list[Path] = []
 
     for i, view_path in enumerate(view_paths):
-        source_pil = Image.open(str(view_path)).convert("RGBA")
-        mask_pil = Image.open(str(mask_paths[i]))
+        with Image.open(str(view_path)) as _src:
+            source_pil = _src.convert("RGBA")
+        with Image.open(str(mask_paths[i])) as _m:
+            mask_pil = _m.convert("L")
 
         inpainted = inpaint_view(
             source=source_pil,
