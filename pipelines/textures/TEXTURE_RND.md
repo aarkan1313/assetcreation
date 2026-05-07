@@ -18,6 +18,108 @@ The contact sheets and manifests for sweeps live in
 
 # Part 1 — Experiments
 
+## A.9 — Variant-blend tool: combine N variants into one tile
+
+**Date**: 2026-05-07
+**Question**: EXTERNAL_TECHNIQUES technique #5 (cprimozic-inspired):
+generate N tileable variants, *blend* them into one tile instead of
+*picking* the best. Does this rescue lattice-prone categories more
+cleanly than prompt rewrites alone?
+
+### Setup
+
+New tool `pipelines/textures/variant_blend.py`. Takes N tileable
+albedos, blends them through tileable low-frequency noise fields
+(softmax-weighted sum of N independent fields). Each input is itself
+tileable; the blend masks tile; the output tiles. The `--sharpness`
+parameter trades hard-region-boundaries (high) vs feathered-blends
+(low).
+
+A/B target: **leaf_litter, cookbook prompt, seed-base 300** —
+flagged in A.2 as the hardest case (gold-streak lattice). Generated
+4 fresh variants with `variant_select.py --keep-all`. Compared:
+- `variant_select` winner (lowest edge-MSE pick)
+- `variant_blend --sharpness 4` (default; smooth feathering)
+- `variant_blend --sharpness 12` (sharp regions, hard transitions)
+
+All three QA-graded with category=Ground.
+
+### Results
+
+| Output                         | Grade | edge_mse | junction | periodic | richness |
+|--------------------------------|-------|---------:|---------:|---------:|---------:|
+| variant_select winner          | B     | 0.0274 (F) | 0.95 (P) | 19.5 (P) | 6.49 (P) |
+| variant_blend sharp=4 (default)| B     | **0.0146** (F, halved) | 0.95 (P) | 17.5 (P) | 3.81 (P) |
+| variant_blend sharp=12         | B     | 0.0296 (F) | 0.98 (P) | **8.5** (P, half of select) | 5.14 (P) |
+
+Visual contact sheet:
+`world3/docs/captures/phase_a/A9_variant_blend_ab/A9_AB_contact_sheet.png`
+
+### Findings
+
+1. **Variant-blend is a real trade-space, not a free lunch.** Lower
+   sharpness → softer content but better edge_mse. Higher sharpness →
+   sharper content but harder seams. There is no setting that beats
+   variant_select on every axis.
+
+2. **The trade-space favors blend on lattice-prone categories.**
+   At sharpness=12, periodic dropped from 19.5 → 8.5 (less than half).
+   Visually: the variant_select winner shows obvious tile repetition;
+   the sharp blend doesn't. This is exactly the rescue case.
+
+3. **Edge_mse improvement at sharp=4 is real but soft-content costs.**
+   The default sharpness=4 halves edge_mse but visibly blurs leaves.
+   On a content-heavy material like leaf_litter that's a noticeable
+   regression. Sharp=12 looks better in-eye despite higher edge_mse.
+
+4. **None of the three reached grade A.** seed=300 leaf_litter is
+   genuinely hard; A.3 found prompt rewrites couldn't get there
+   either (cookbook on s100/200/400 was 1A/1A/1B, but s300 had been
+   ruled out as a globally-bad seed). variant_blend reduces failure
+   *severity* (lower edge or lower periodic) but doesn't lift to A
+   on this case. **More useful for "make a B-grade tile less obviously
+   tiled" than "make a C-grade tile pass."**
+
+5. **Richness drops with blending**, as expected: the noise-mask blend
+   spreads content uniformly, lowering luminance entropy. Worth
+   watching — blend output is more vulnerable to the smooth-A failure
+   mode than variant_select output.
+
+### Decision: ship as opt-in rescue tool, NOT pipeline default
+
+- **Default unchanged**: `aaa_texture.py` uses `variant_select` to pick
+  the best variant. variant_select is the right call when one of the
+  N candidates is a clear winner.
+- **variant_blend is the rescue path**: when all N candidates have
+  similar lattice/periodic artifacts at similar phase. Useful for the
+  small minority of materials where variant_select can't escape the
+  underlying lattice (this seed-300 leaf_litter is the textbook case).
+- **Recommended invocation for rescue**: `--sharpness 12` — the
+  visual quality is closer to the original variant content, and the
+  periodic gain matters more than the edge regression for the rescue
+  use case (we'd run seam_repair downstream anyway).
+- **Don't fold into the orchestrator yet**: the trade-space is real
+  and depends on category + content type. Keeping it as a manual
+  tool lets us learn when to reach for it before automating.
+
+### Implications + open items
+
+- **Future automation candidate**: an "auto-rescue" mode in
+  `aaa_texture.py` that detects "all N variant scores cluster
+  together with high-periodic" and falls through to variant_blend
+  instead of variant_select. Out of scope for A.9; revisit if we hit
+  more of these stuck-lattice cases.
+- **Tile-aware rescue chains** (Phase B candidate): blend N variants
+  → seam_repair → maybe heal again. Each step in the chain has a
+  trade-off; the blend introduces softness, but seam_repair can
+  sharpen edges back. Worth A/B-ing.
+- **The richness drop on blends is real** — with the A.7 metric in
+  advisory mode, this hasn't bitten anything yet. If we promote
+  richness to a hard gate later, blend outputs may need a separate
+  threshold (or a "this is a blend" flag in the manifest).
+
+---
+
 ## A.8 — CHORD swap-in for PBR estimation
 
 **Date**: 2026-05-07

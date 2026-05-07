@@ -207,6 +207,45 @@ Fine for research/internal; flag for commercial.
 Generates N candidates and picks the best by edge-MSE seam score.
 Internal to `aaa_texture.py`'s variant stage.
 
+### `variant_blend.py` — combine N variants into one tile (rescue tool)
+Sister to `variant_select.py`. Where select *picks* the best variant,
+blend *combines* them through tileable noise-mask softmax weighting.
+Output is itself tileable (each input is tileable; the masks tile;
+the weighted sum tiles).
+
+**When to use**: lattice-prone materials where all N candidates have
+similar periodic artifacts at similar phase. Common case: seed-300
+on dense organic materials (grass, leaf_litter) where prompt
+rewrites alone can't escape the underlying lattice. variant_blend
+shifts the dominant frequency by mixing inputs from different seeds.
+
+**Knob: `--sharpness`** trades content-sharpness vs edge_mse.
+- `sharpness=4` (default): smoother feathered transitions, lower
+  edge_mse, but visibly softens content (regression on content-rich
+  materials).
+- `sharpness=12` (recommended for rescue): hard region boundaries,
+  preserves variant content sharpness, much better periodic_locality,
+  slightly worse edge_mse.
+
+**A.9 A/B finding**: on leaf_litter seed-300 (textbook lattice case),
+sharp=12 dropped periodic_locality from 19.5 → 8.5. Visually escapes
+the obvious tile repetition that variant_select couldn't.
+
+**Usage**:
+```powershell
+# After variant_select.py --keep-all has produced <id>_v0..<id>_v(N-1):
+python variant_blend.py --id <id> --variants 4 \
+  --out world/textures/library/<id>_blend --sharpness 12
+
+# Or directly with explicit input list:
+python variant_blend.py --inputs A.png B.png C.png D.png \
+  --out blended.png --sharpness 12
+```
+
+**NOT in the orchestrator pipeline by default.** Manual rescue tool.
+Reach for it when a material is stuck at grade B/C with periodic
+failures and prompt rewrites haven't worked.
+
 ### `blender_preview.py` — CYCLES PBR preview render
 Optional final stage. Renders the texture on a sphere and a tilted
 plane under HDRI lighting. Best-effort; fails silently if Blender
