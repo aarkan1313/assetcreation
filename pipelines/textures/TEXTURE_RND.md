@@ -18,6 +18,36 @@ The contact sheets and manifests for sweeps live in
 
 # Part 1 — Experiments
 
+## B.3 — mip_ladder.py: multi-tier physically-correct downsample (2026-05-07)
+
+**What:** Built `mip_ladder.py`. Input: 2K baked master (from B.2).
+Output: 2K/1K/512 tiers with per-map correct filtering.
+
+**Captures:** `world3/docs/captures/phase_b/B3_ladder_ab/`
+
+**Key findings:**
+
+- **Normal vector-field filtering**: `downsample_normal()` decodes XYZ,
+  filters each channel as floats, renormalizes. Visual result: normal
+  maps remain fully blue-dominant at 512 tier with preserved geometry
+  directions — no fading to gray. Naive RGB filter would produce grayed-out
+  normals at lower mips (shorter vectors = flatter appearance).
+
+- **Albedo gamma-aware filtering**: linearize -> Lanczos -> re-encode sRGB.
+  Prevents dark-bias at 512 that would occur with naive sRGB filtering.
+  Visually: color character and tonal balance preserved across all 3 tiers.
+
+- **Linear maps (roughness/AO/metallic/height)**: standard Lanczos, no
+  surprises. AO at 512 retains smooth concavity gradients. Height dynamic
+  range preserved. Roughness variation intact.
+
+**Performance:** ~3-4s for 2K→2K/1K/512 (6 maps, 3 tiers). Trivial vs SR/bake.
+
+**Decision:** Separate `<id>/ladder/<tier>/` output layout confirmed.
+Flat naming within each tier (`<id>_<map>.png`) matches library convention.
+
+**Next:** B.4 — per-tier QA wiring (`texture_qa.py --ladder` mode + cross-tier contact sheets).
+
 ## B.2 — bake_pbr.py: high-res re-derive of normal/AO/roughness (2026-05-07)
 
 **What:** Built `bake_pbr.py`. SR'd all 6 maps for rock_dark/snow/forest_floor
