@@ -333,9 +333,12 @@ then palette-matches to the parent. Tags the manifest with
 
 - **Material Anything image-to-PBR.** Broken for 2D textures (model
   needs multi-view 3D consolidation). Adapter exists but is unused.
-- **Beyond 512.** StableMaterials trains at 512; LANCZOS-upscaling its
-  output to 1024 doesn't add detail, just stretches. For terrain via
-  triplanar, 512 is plenty.
+- **Beyond 512 (in `aaa_texture.py` itself).** StableMaterials trains
+  at 512; LANCZOS-upscaling its output to 1024 doesn't add detail,
+  just stretches. For terrain via triplanar, 512 is fine as a
+  *generation* resolution. For shipping at higher resolutions, use
+  the Phase B multi-resolution pipeline (SR → bake → mip ladder) —
+  see the "Super-resolution stage" section below.
 - **Hex-tile or stochastic sampling.** That belongs in the renderer's
   shader, not the texture itself. See world3 Phase 1b.
 - **patina_adapter.** Exists; not wired in. Useful when we want
@@ -355,3 +358,16 @@ python pipelines/textures/seam_repair.py --material world/textures/library/wgv3_
 # Just delight (output replaces albedo, with pre_delight backup)
 python pipelines/textures/delight.py --material world/textures/library/wgv3_dirt --strength 0.5
 ```
+
+## Super-resolution stage (Phase B.1+)
+
+As of Phase B.1 (2026-05-07), the pipeline has a standalone SR tool:
+`sr_upscale.py` (Real-ESRGAN via ComfyUI). It's not yet wired into
+`aaa_texture.py` — that integration lands in B.5 along with
+`bake_pbr.py` (B.2) and `mip_ladder.py` (B.3) to form the full
+multi-resolution ladder.
+
+For now, SR is invoked manually per the recipes in
+[RECIPES.md](RECIPES.md) "Upscaling" section. The
+[Phase B design doc](../../docs/superpowers/specs/2026-05-07-phase-b-multi-resolution-pipeline-design.md)
+describes the full target pipeline.
