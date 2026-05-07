@@ -1,4 +1,10 @@
-"""4K upscaling for tileable FLUX textures.
+"""FLUX img2img heal-pass tool for tileable textures.
+
+REPOSITIONED IN PHASE B.1 (2026-05-07): no longer the primary
+super-resolution tool. Real-ESRGAN via sr_upscale.py is now the
+default SR backend; this tool is the "heal pass" that polishes a
+near-shipping image at the same (or higher) resolution to recover
+FLUX-style coherence after generation or after Real-ESRGAN SR.
 
 Two-stage approach (preserves tiling):
   1. Bilinear upscale to 2x (1024 -> 2048)
@@ -8,11 +14,18 @@ Two-stage approach (preserves tiling):
 We use the same offset trick to keep tiling intact through the upscale: shift
 the 2x'd image, denoise, shift back.
 
+Albedo-only. Other PBR maps are handled by the bake step in B.2
+(re-derived from upscaled height + albedo).
+
 For most game uses 2K is plenty. 4K is for hero materials.
 
 Usage:
   python flux_upscale.py --material world/textures/library/cobblestone_aaa --target 2048
   python flux_upscale.py --input some_albedo.png --output upscaled.png --target 4096
+
+See also:
+  pipelines/textures/sr_upscale.py — primary SR (Real-ESRGAN)
+  pipelines/textures/EXTERNAL_SR_TECHNIQUES.md — survey + decision rationale
 """
 from __future__ import annotations
 
