@@ -113,7 +113,7 @@ def _run_ladder_stage(out_dir: Path, sr_dir: Path, mat_id: str, category: str,
             str(PIPELINE_DIR / "sr_upscale.py"),
             "--in", str(src),
             "--out", str(dst),
-        ], f"  8a SR: {map_name}")
+        ], f"8a SR: {map_name}")
 
     # Sub-step 8b: bake at working resolution
     python_subprocess([
@@ -121,12 +121,12 @@ def _run_ladder_stage(out_dir: Path, sr_dir: Path, mat_id: str, category: str,
         "--material-dir", str(sr_dir),
         "--category", category,
         "--backend", pbr_backend if pbr_backend in ("sm", "chord", "chord_sm_rough", "derive") else "sm",
-    ], "  8b bake")
+    ], "8b bake")
     python_subprocess([
         str(PIPELINE_DIR / "bake_pbr.py"),
         "--material-dir", str(sr_dir),
         "--apply",
-    ], "  8b bake --apply")
+    ], "8b bake --apply")
 
     # Sub-step 8c: mip ladder
     ladder_out = out_dir / "ladder"
@@ -135,24 +135,27 @@ def _run_ladder_stage(out_dir: Path, sr_dir: Path, mat_id: str, category: str,
         "--in", str(sr_dir),
         "--tiers", ladder_tiers,
         "--out", str(ladder_out),
-    ], "  8c mip_ladder")
+    ], "8c mip_ladder")
 
     # Sub-step 8d: per-tier QA
     python_subprocess([
         str(PIPELINE_DIR / "texture_qa.py"),
         "--ladder-dir", str(ladder_out),
         "--category", category,
-    ], "  8d per-tier QA")
+    ], "8d per-tier QA")
 
     # Read back grades for log
     tier_grades = {}
-    for tier_dir in ladder_out.iterdir():
-        if not tier_dir.is_dir():
-            continue
-        ss_path = tier_dir / "qa" / "seam_score.json"
-        if ss_path.exists():
-            ss = json.loads(ss_path.read_text(encoding="utf-8"))
-            tier_grades[tier_dir.name] = ss.get("grade", "?")
+    if ladder_out.is_dir():
+        for tier_dir in ladder_out.iterdir():
+            if not tier_dir.is_dir():
+                continue
+            ss_path = tier_dir / "qa" / "seam_score.json"
+            if ss_path.exists():
+                ss = json.loads(ss_path.read_text(encoding="utf-8"))
+                tier_grades[tier_dir.name] = ss.get("grade", "?")
+    else:
+        print(f"  WARNING: ladder output dir not found: {ladder_out}")
 
     log["ladder"] = {
         "working_res": working_res,
@@ -547,6 +550,10 @@ def main():
                 ladder_tiers=args.ladder_tiers,
                 log=log,
             )
+        except Exception as _ladder_exc:
+            if "ladder" not in log:
+                log["ladder"] = {"error": str(_ladder_exc), "completed": False}
+            raise
         finally:
             shutil.rmtree(sr_dir, ignore_errors=True)
 
