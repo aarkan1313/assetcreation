@@ -281,6 +281,73 @@ Optional final stage. Renders the texture on a sphere and a tilted
 plane under HDRI lighting. Best-effort; fails silently if Blender
 isn't available.
 
+### `patina_adapter.py` — PATINA fal.ai PBR adapter (alternative backend)
+fal.ai-hosted PATINA model — image-to-PBR + text-to-material. Returns
+basecolor/normal/roughness/metalness/height like StableMaterials but
+via a remote API instead of local diffusers. Set `FAL_KEY` env var
+to use. **Not currently wired into `aaa_texture.py`'s `--pbr-backend`
+flag.** Reference implementation in case CHORD or SM ever go down or
+we want a fast cloud fallback.
+
+### `comfy_generate.py` — direct FLUX 2 klein text-to-image
+Lower-level than `flux_seamless.py` (no offset+heal seamless trick);
+just calls ComfyUI's standard FLUX 2 klein 4B distilled text2img
+workflow. Optionally pipes through `derive_pbr_v2`. Useful for
+non-tileable use cases or for debugging FLUX behavior independent of
+the seamless logic.
+
+## Workflow / kit tools
+
+### `kit_generator.py` — auto-generate a biome texture kit from a name
+Higher-order tool: takes a biome name (e.g. `frozen_volcanic`) and
+either an LLM-generated brief or a JSON recipe, then orchestrates
+`palette_lock.py` to produce a complete cohesive PBR set. Canonical
+"start a new biome from scratch" tool.
+
+### `detail_pyramid.py` — macro + detail layer pair
+Generates a paired (macro, detail) texture set for use with the
+macro-detail shader stack (terrain_hex_detail). Macro is the material
+identity at coarse UV; detail adds surface micro-variation at fine UV.
+
+### `process_texture.py` — single-input image-to-Godot-PBR
+Takes a source image (could be a real-world photo, a hand-painted
+albedo, or any RGB) and produces a tileable Godot-ready PBR set. Less
+configurable than `aaa_texture.py`; useful when you already have an
+albedo and just want to derive maps + tile-fix it.
+
+## world3-specific staging
+
+### `biome_texture_bind.py` — wire biomes to library textures
+For a world3 output: reads `art_lab/biomes/biome_texture_registry.json`
+and ensures the AAA texture set for each biome present in the world
+exists in `world/textures/library/`. Generation-on-demand for
+worldgen runs.
+
+### `pack_terrain3d.py` — Terrain3D channel-pack format
+Re-packs a standard PBR set into Terrain3D's two-PNG layout:
+`albedo_height.png` (RGB=albedo, A=height) and `normal_roughness.png`
+(RGB=normal OpenGL+Y, A=roughness). Use when the consumer is the
+Terrain3D Godot plugin rather than world3's own shader.
+
+### `upscale_biome_set.py` — Lanczos upscale a biome
+Quick quality lever 'B' for the worldgen workflow. PIL Lanczos —
+not as sharp as Real-ESRGAN/SwinIR but a no-install baseline. **Phase
+B candidate**: this is the placeholder a real upscaling pipeline
+would replace.
+
+## Diagnostics (extended)
+
+### `macro_detail_preview.py` — Blender preview of macro+detail pair
+Renders a macro+detail texture pair in Blender Cycles to validate
+that the RNM-blend logic the Godot `macro_detail_v1.gdshader` does
+produces the expected close-up read.
+
+### `render_ma_mesh.py` — Blender render of a Material Anything mesh
+After `material_anything_adapter.py` produces a textured mesh +
+UV-space PBR maps, this renders it in Blender Cycles for visual
+review. Companion to the broken-for-2D-textures MA path; only used
+when MA is producing a hero mesh.
+
 ## Don't use / known broken
 
 ### `material_anything_adapter.py`, `ma_image2pbr.py`

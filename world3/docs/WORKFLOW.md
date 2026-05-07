@@ -126,16 +126,24 @@ This runs the full 7-stage texture pipeline (variant generation → delight
 preview → quality gate). See `pipelines/textures/PIPELINE.md` for the
 detailed mechanics, presets, failure modes, and how to debug.
 
-The 6 textures we use for world3:
+The world3 shipping textures (post Phase A polish, 2026-05-07):
 
-| ID                  | Prompt                                                                                          | Notes                  |
-|---------------------|-------------------------------------------------------------------------------------------------|------------------------|
-| wgv3_dirt           | "rich brown dirt with small pebbles and fine debris..."                                         | grade A                |
-| wgv3_grass          | "lush green grass with small clovers and dirt patches..."                                       | grade B                |
-| wgv3_forest_floor   | "forest floor with brown leaves, pine needles, twigs, dark soil..."                             | grade A                |
-| wgv3_rock_light     | "weathered tan limestone rock surface with cracks and lichen..."                                | grade B (seed=100, vars=6) |
-| wgv3_rock_dark      | "dark grey volcanic rock surface, weathered, sharp edges and small cracks..."                   | grade A (has lattice; hex-tile masks it) |
-| wgv3_snow           | "fresh white snow with subtle compacted ridges and small dimples..."                            | grade A* (`--no-gate` for sanity false positive on uniform roughness) |
+| ID                       | Current prompt (latest cookbook)                                                                            | Notes                  |
+|--------------------------|-------------------------------------------------------------------------------------------------------------|------------------------|
+| wgv3_dirt                | "rich brown dirt with small pebbles and fine debris..."                                                     | grade A                |
+| wgv3_grass               | "lush green grass with small clovers and dirt patches..."                                                   | grade B                |
+| wgv3_forest_floor        | "ground-level photograph of autumn leaf litter, damp dark soil visible underneath, no plants growing..."   | A.3 rewrite, grade A   |
+| wgv3_rock_light          | "weathered tan limestone rock surface with cracks and lichen..."                                            | grade B (seed=100, vars=6) |
+| wgv3_rock_dark           | "dark grey volcanic rock surface, weathered, sharp edges and small cracks..."                               | grade A                |
+| wgv3_snow                | "fresh white snow with small dimples..."                                                                    | A.3 rewrite, grade A. Old "compacted ridges" cue removed (was producing lace pattern). |
+| wgv3_tundra_ice          | "uneven compacted snow with sparse small ice crystals..."                                                   | A.6 rewrite, grade A. Old "wind ridges" removed. |
+| wgv3_desert_canyon_rock  | "weathered tan canyon sandstone..."                                                                         | A.6 rewrite, grade A. Old "horizontal striations" removed. |
+
+The Phase A polish iteration (2026-05-07) also added pipeline options
+beyond the default `aaa_texture.py` invocation — richness advisory
+gate, CHORD/hybrid PBR backends, variant_blend rescue tool, reference-
+anchor mode. Canonical commands per use case live in
+[`pipelines/textures/RECIPES.md`](../../pipelines/textures/RECIPES.md).
 
 Output of each texture lives at `world/textures/library/<id>/`. Stage
 4 pulls from there.
@@ -288,7 +296,7 @@ $p = Start-Process -FilePath "C:/Godot/Godot_v4.5-stable_win64.exe" -ArgumentLis
 ```
 Main scene is `iso.tscn`. Scenes available from FileSystem dock.
 
-### Headless captures
+### Capture scenes
 Each capture writes a PNG to `D:/tmp/world3_screens/`. Outputs are named
 `iso.png`, `topdown.png`, `walk.png`.
 
@@ -299,6 +307,9 @@ Capture scenes wrap the real scene + `scripts/HeadlessCapture.gd`:
 - `res://scenes/capture_opentopo_samples.tscn` (sample-switching viewer
   for converted OpenTopo heightmaps; smoke-test after script or
   sample-layout changes)
+
+Run capture scenes through normal Godot with the capture scene as the trailing
+argument. This is the validated Windows path for real viewport screenshots.
 
 ```powershell
 & "C:\Godot\Godot_v4.5-stable_win64.exe" --path "D:\assets\world3" "res://scenes/capture_iso.tscn"
@@ -315,6 +326,12 @@ $p = Start-Process -FilePath "C:/Godot/Godot_v4.5-stable_win64.exe" -ArgumentLis
 
 If a capture appears to do nothing, check for an existing Godot editor
 or hung Godot process before rerunning.
+
+For OpenTopo review screenshots, use the same trailing-argument pattern with
+`res://toporeview/capture_phase*.tscn`. Do not use the older waited
+`--headless --scene ... --quit-after ...` path as scene validation; that path
+can fail locally with a Windows access violation even when the real capture
+scene works.
 
 ### Texture grid captures (testing the shader at scale)
 The viewer scenes lay 6 ground planes (200×200 m) in a 2×3 grid, then

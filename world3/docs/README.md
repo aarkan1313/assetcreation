@@ -13,7 +13,8 @@ find something.
 | "What was the original roadmap before reframing?"            | [ROADMAP_v1_archived.md](ROADMAP_v1_archived.md)      |
 | "What's the current iteration's scope?"                      | [PLAN.md](PLAN.md)                                    |
 | "Why did we choose X over Y?"                                | [DECISIONS.md](DECISIONS.md)                          |
-| "How do I generate a new texture?"                           | [../../pipelines/textures/PIPELINE.md](../../pipelines/textures/PIPELINE.md) |
+| "What's the canonical command for [common task]?"            | [../../pipelines/textures/RECIPES.md](../../pipelines/textures/RECIPES.md) |
+| "How does the texture pipeline work internally?"             | [../../pipelines/textures/PIPELINE.md](../../pipelines/textures/PIPELINE.md) |
 | "What every texture-pipeline tool does + when to use it"     | [../../pipelines/textures/TOOLS.md](../../pipelines/textures/TOOLS.md) |
 | "What prompts work, what we learned from sweeps"             | [../../pipelines/textures/TEXTURE_RND.md](../../pipelines/textures/TEXTURE_RND.md) |
 | "What did we learn that surprised us?"                       | [../../pipelines/textures/LESSONS.md](../../pipelines/textures/LESSONS.md)   |
@@ -45,9 +46,13 @@ find something.
   new entries even when they reverse old ones.
 - **TEXTURE_PIPELINE_FIX_PLAN.md** — the audit + fix doc for the
   texture pipeline overhaul on 2026-05-07. Reference / archive value.
-- **pipelines/textures/PIPELINE.md** — runbook for the texture
-  generation pipeline (commands, presets, output layout, failure
-  modes, world3 staging convention).
+- **pipelines/textures/RECIPES.md** — canonical commands per use case.
+  *Operator's guide.* "I want X, here's the invocation." Reach for
+  this first when actually running the pipeline.
+- **pipelines/textures/PIPELINE.md** — runbook explaining how the
+  pipeline works internally (stages, presets, gate logic, output
+  layout, failure modes, world3 staging convention). Reach for this
+  when something fails or you need to understand the mechanics.
 - **pipelines/textures/TOOLS.md** — inventory of every texture-pipeline
   tool script + when to reach for each.
 - **pipelines/textures/TEXTURE_RND.md** — append-only R&D log:

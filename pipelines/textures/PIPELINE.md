@@ -45,15 +45,26 @@ DONE: D:\assets\world\textures\library\wgv3_dirt
 
 ## Quality presets
 
-| Preset  | Variants | PBR backend | Min grade | Use when                   |
-|---------|---------:|-------------|-----------|----------------------------|
-| fast    | 2        | derive_pbr_v2 (heuristic) | C | quick iteration, idea testing |
-| default | 4        | StableMaterials           | B | normal use                    |
-| strict  | 6        | StableMaterials           | A | hero materials                |
+| Preset  | Variants | Default PBR backend | Min grade | Use when                   |
+|---------|---------:|---------------------|-----------|----------------------------|
+| fast    | 2        | derive_pbr_v2       | C         | quick iteration, idea testing |
+| default | 4        | StableMaterials     | B         | normal use                    |
+| strict  | 6        | StableMaterials     | A         | hero materials                |
 
 `fast` skips the diffusion-based PBR (~1 min total). `default` and
 `strict` invoke StableMaterials at its native 512 resolution (~2-3 min
 total per texture).
+
+**Override the PBR backend** with `--pbr-backend {derive,sm,chord,
+chord_sm_rough}`:
+- `derive` → `derive_pbr_v2.py` (heuristic; no model)
+- `sm` → `stablematerials_image2pbr.py` (default for default/strict)
+- `chord` → `chord_image2pbr.py` (sharp geometry; flat roughness;
+  research-only license)
+- `chord_sm_rough` (A.11) → CHORD for albedo/normal/height/metallic +
+  SM for roughness only. Best of both for rock-class. ~25s extra.
+
+Quick reference: see [RECIPES.md "Choosing a PBR backend"](RECIPES.md#choosing-a-pbr-backend).
 
 ## What happens inside
 

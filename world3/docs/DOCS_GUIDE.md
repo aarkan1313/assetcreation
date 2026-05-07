@@ -22,7 +22,8 @@ process changes, update the doc. Older versions don't matter.
 | Doc                                          | Topic                                                                |
 |----------------------------------------------|----------------------------------------------------------------------|
 | [WORKFLOW.md](WORKFLOW.md)                   | End-to-end "how do I run world3 from a fresh checkout" + Godot specifics |
-| [pipelines/textures/PIPELINE.md](../../pipelines/textures/PIPELINE.md) | Texture pipeline runbook (commands, presets, output, world3 staging) |
+| [pipelines/textures/RECIPES.md](../../pipelines/textures/RECIPES.md) | Canonical commands per use case (operator's guide) |
+| [pipelines/textures/PIPELINE.md](../../pipelines/textures/PIPELINE.md) | Texture pipeline mechanics (stages, presets, gate logic, output, world3 staging) |
 | [pipelines/textures/TOOLS.md](../../pipelines/textures/TOOLS.md) | Inventory of every tool script + when to reach for each              |
 | [OPENTOPO_GUIDE.md](OPENTOPO_GUIDE.md)       | OpenTopo data acquisition runbook                                    |
 | [OPENTOPO_DATA_TYPES.md](OPENTOPO_DATA_TYPES.md) | What each OT dataset contains + when to use it                   |
