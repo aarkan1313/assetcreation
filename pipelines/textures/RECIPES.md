@@ -371,6 +371,24 @@ python pipelines/textures/texture_qa.py --all
 Walks every dir under `world/textures/library/` and refreshes the QA
 output.
 
+### QA a full mip ladder
+
+```powershell
+python pipelines/textures/texture_qa.py `
+  --ladder "world/textures/library/<id>" `
+  --category <X>
+```
+
+Runs all 4 checks on each tier (2k/1k/512) and writes:
+- `ladder/<tier>/qa/seam_score.json` + previews per tier
+- `ladder/cross_tier_sheet.png` — all tiers side-by-side with grade verdicts
+
+Use `--ladder-dir <dir>` to point at a bare ladder dir outside the standard
+library layout (e.g. a staging dir from `bake_pbr.py`).
+
+**Use when:** you've built a mip ladder with `mip_ladder.py` and want to
+gate every tier before staging.
+
 ### Verify a texture fits its biome kit
 
 ```powershell

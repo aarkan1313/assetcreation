@@ -18,6 +18,39 @@ The contact sheets and manifests for sweeps live in
 
 # Part 1 — Experiments
 
+## B.4 — per-tier QA: texture_qa.py --ladder (2026-05-07)
+
+**What:** Extended `texture_qa.py` with `--ladder <mat_dir>` flag.
+Runs all 4 QA checks (edge, junction, periodic, richness) on every
+tier in the mip ladder, then writes a cross-tier contact sheet.
+
+**Captures:** `world3/docs/captures/phase_b/B4_ladder_qa/`
+
+**Key findings:**
+
+- Snow grades A across all 3 tiers (2k/1k/512). The ladder filtering
+  (vector-field normals, gamma-aware albedo) correctly preserves
+  tileability across resolution tiers. This validates B.3's approach.
+
+- rock_dark grades A at 2K but B at 1K and 512. The junction ratio
+  increases as resolution drops (1.43 at 1K, 1.97 at 512 vs 0.84 at
+  2K). This is inherent to the material's high-contrast edges — the
+  seam-band contains measurably more edge energy relative to the
+  interior at lower pixel counts. Not a filter defect; the Lanczos
+  downsample is doing its job. At 512, the seam band is ~20px and the
+  interior cells are small enough that any natural edge falls inside it.
+
+- Richness scores are stable or increase across tiers (rock_dark 512
+  scores 1.06 vs 0.66 at 2K — the detail becomes sharper relative to
+  the tile size when viewed at 512 native resolution).
+
+**Decision:** `--ladder` mode confirmed as the standard QA flow for
+multi-resolution materials. The junction-fail at lower tiers for
+high-contrast materials is expected and acceptable (grade B not D).
+Ready to wire into the B.5 orchestrator.
+
+**Next:** B.5 — orchestrator integration (`aaa_texture.py --ladder`).
+
 ## B.3 — mip_ladder.py: multi-tier physically-correct downsample (2026-05-07)
 
 **What:** Built `mip_ladder.py`. Input: 2K baked master (from B.2).

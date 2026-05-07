@@ -34,6 +34,11 @@ python texture_qa.py --material world/textures/library/wgv3_dirt
 python texture_qa.py --all  # re-grade everything
 ```
 
+**Phase B.4 addition:** `--ladder <mat_dir>` walks `<mat_dir>/ladder/` and
+runs QA on every tier, writing per-tier `qa/` dirs and a cross-tier contact
+sheet at `ladder/cross_tier_sheet.png`. Use `--ladder-dir <dir>` for a bare
+ladder dir outside the standard library layout.
+
 ## Generation variants
 
 ### `detail_variant.py` — paired detail-layer texture
