@@ -18,6 +18,49 @@ The contact sheets and manifests for sweeps live in
 
 # Part 1 — Experiments
 
+## B.2 — bake_pbr.py: high-res re-derive of normal/AO/roughness (2026-05-07)
+
+**What:** Built `bake_pbr.py`. SR'd all 6 maps for rock_dark/snow/forest_floor
+at 2048, then re-derived normal/AO/roughness from the 2048 height+albedo.
+A/B'd SR-only vs SR+bake on 3 materials.
+
+**Captures:** `world3/docs/captures/phase_b/B2_bake_ab/`
+
+**Key findings:**
+
+- **Normal**: baked normals are dramatically better than SR-only. ESRGAN
+  misinterprets the RGB channels of normal maps (treats them as photographic
+  content) and produces color interference artifacts — the SR'd normal shows
+  unnatural cyan/green smearing especially on rock edges. Re-baking from the
+  2048 height gives geometrically correct, clean blue-dominant normals with
+  sharp gradient transitions. This is the strongest argument for bake-by-default.
+
+- **AO**: baked AO shows smoother concavity gradients. SR-only AO has blocky
+  concavity shapes and slightly oversaturated dark spots. Baked AO has tighter
+  concavity detection and smoother falloff. Blur radius scaling (8 * h/512 = 32
+  at 2048) looks correct — not over-blurred, not too local.
+
+- **Roughness**: blend (65% SR + 35% derived for sm/chord_sm_rough backends)
+  produces subtle micro-variation vs SR-only. Minimal visible difference at this
+  crop scale, which is expected at 65% SR trust. The roughness blend is more
+  about correctness (replacing ESRGAN's hallucinated roughness micro-detail with
+  albedo-derived luminance variation) than visual drama.
+
+**Decision:** Bake-by-default confirmed. SR'd normals are geometrically wrong
+(ESRGAN color artifacts). Baking from height at full resolution is both faster
+and more correct than using the SR'd normal.
+
+**rock_dark library update:** SR+bake applied to `world/textures/library/wgv3_rock_dark/`
+(all 6 maps at 2048, normal/AO/roughness baked). QA grade: A.
+Note: library dir is gitignored; files live on disk only.
+
+**Resolved open item from B.1:** "Does the bake step wash out SR hallucinations in
+normal/AO?" Yes — it replaces ESRGAN's photographic misinterpretation of normal
+map channels with geometrically-derived normals. This is strictly better.
+
+**Time spent:** ~full session.
+**Next:** B.3 — `mip_ladder.py` (4K master → 2K/1K/512 with proper per-map filtering).
+
 ## B.1 — SR survey + Real-ESRGAN as default backend (2026-05-07)
 
 **What:** First Phase B sub-step. Surveyed SR backends, chose Real-ESRGAN
