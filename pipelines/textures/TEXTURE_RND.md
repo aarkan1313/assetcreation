@@ -18,6 +18,93 @@ The contact sheets and manifests for sweeps live in
 
 # Part 1 — Experiments
 
+## A.7 — "Richness" QA metric: catching the smooth-A failure mode
+
+**Date**: 2026-05-07
+**Question**: LESSONS L16 documented the "smooth-A" failure: a texture
+that grades A on edge/junction/periodic but is visually featureless.
+3 confirmed cases by end of Phase A (sand seed 200, powder snow seed
+100, canyon_rock ground_level_lead). Can we add a content-presence
+metric that catches these without false-positive on legitimately-low-
+detail materials (snow, polished metal)?
+
+**Setup**: Calibration script
+(`D:/tmp/world3_experiments/A7_richness_calibration.py`) computed 6
+candidate metrics across 122 albedos in the library. Compared known
+smooth-A cases against shipping textures to find a clean separator.
+
+### Findings
+
+1. **No single scalar separates cleanly.** Local variance (lvar),
+   Laplacian energy (lap), high-frequency ratio — each has overlap
+   between smooth-A and shipping. E.g. `wgv3_rock_dark` (shipping,
+   lvar=0.000150) sits *below* `sweep_sand__seed200` (smooth-A,
+   lvar=0.000188) because rock_dark is dark and low-contrast despite
+   having genuine cracks.
+
+2. **The combination `0.5 * (entropy/5 + p99_normalized/0.4)`
+   separates well.** Reading: a texture is "rich" if it either uses
+   its full luminance range (high entropy) OR has occasional very
+   strong gradients relative to its mean brightness (p99 normalized
+   by mean luminance). Each catches a different content pattern; OR
+   gives full coverage.
+
+3. **Per-category thresholds are necessary.** Snow, water, ice
+   legitimately have low spatial energy. wgv3_snow scores 0.68;
+   wgv3_tundra_ice 0.67. A single global threshold of 0.83 would
+   false-positive these. With Snow/Water/Liquid threshold 0.45, all
+   shipping textures pass and known smooth-A cases fail.
+
+### Validation table
+
+| Material                                         | Category | Expected | Score | Threshold | Verdict |
+|--------------------------------------------------|----------|----------|------:|----------:|---------|
+| wgv3_snow                                        | Snow     | PASS     | 0.68  | 0.45      | ✓ pass  |
+| wgv3_tundra_ice                                  | Snow     | PASS     | 0.67  | 0.45      | ✓ pass  |
+| wgv3_rock_dark                                   | Rock     | PASS     | 0.94  | 0.83      | ✓ pass  |
+| wgv3_desert_canyon_rock                          | Rock     | PASS     | 0.92  | 0.83      | ✓ pass  |
+| wgv3_forest_floor                                | Ground   | PASS     | 1.86  | 0.83      | ✓ pass  |
+| wgv3_grass                                       | Ground   | PASS     | 1.47  | 0.83      | ✓ pass  |
+| wgv3_alpine_moss                                 | Foliage  | PASS     | 1.47  | 0.83      | ✓ pass  |
+| sweep_sand__seed200 (canonical L16 smooth-A)     | Sand     | FAIL     | 0.79  | 0.80      | ✓ fail  |
+| A3_snow_prompts__powder__seed100 (smooth-A)      | Snow     | FAIL     | 0.44  | 0.45      | ✓ fail  |
+| A6_canyon_rock_prompts__ground_level_lead__seed100 (smooth-A) | Rock | FAIL | 0.71 | 0.83 | ✓ fail |
+| ... (all 11 wgv3_* shipping textures pass; all 5 known smooth-A fail) |
+
+### Implications + landing notes
+
+- **Implemented** as a 4th check in `texture_qa.py` (`richness`).
+  Output: `score`, `passed`, plus the underlying numbers (entropy,
+  p99, p99_normalized, mean_luminance) so future-us can re-tune.
+- **Advisory mode for now**: the score is computed and printed on
+  every QA run, but `grade_from_checks()` does NOT count it in the
+  A/B/C/D grade. Reason: changing the grade silently across the
+  whole library would shift ground truth in ways we'd have to chase.
+  Cookbook entries can read it; the gate doesn't enforce it.
+- **Promotion path**: after a few sessions of watching the metric
+  produce sensible results on new generations, fold into the grade
+  (4 axes → A=4/4, B=3/4, etc) and tighten LESSONS L16 to say "the
+  metric catches this." Until then, L16 still applies as a
+  visual-review reminder.
+- **Calibration data preserved** at
+  `D:/tmp/world3_experiments/A7_richness_calibration.json`. If we
+  re-tune thresholds later, run the same calibration script, expect
+  same numbers (deterministic).
+
+### What this doesn't fix
+
+- The metric measures *whether content exists*, not *what kind*. A
+  textured-but-wrong-material output (e.g. our A.3 "aerial" snow
+  variant that produced black blobs on white) would score high on
+  richness but is still bad. That failure mode needs prompt fixing,
+  not richness.
+- The metric is a 1D score; it can be gamed by adding noise without
+  meaningful content. Not a concern for FLUX outputs (FLUX doesn't
+  produce "noise that scores high"), but worth knowing if we ever
+  evaluate other generation backends.
+
+---
+
 ## A.6 (desert_canyon_rock) — Apply A.3 directional-cue learning to rock
 
 **Date**: 2026-05-07

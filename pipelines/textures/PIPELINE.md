@@ -85,8 +85,10 @@ The orchestrator (`aaa_texture.py`) runs 7 stages:
    spatially aligned. Backups originals as `<id>_<map>.pre_repair.png`.
 
 5. **Texture QA** (`texture_qa.py`)
-   Three orthogonal checks. Each must pass for grade A; 2 of 3 = B,
-   1 of 3 = C, 0 of 3 = D.
+   Three orthogonal *defect* checks (count toward A/B/C/D grade) plus
+   one *content-presence* check (advisory; printed but not graded).
+   Each defect check must pass for grade A; 2 of 3 = B, 1 of 3 = C,
+   0 of 3 = D.
    - **edge_continuity** — 1-pixel border MSE between opposite edges.
      Catches gross discontinuities. Pass: <0.005.
    - **junction_visibility** — Laplacian energy in the 2×2-tile seam
@@ -97,6 +99,15 @@ The orchestrator (`aaa_texture.py`) runs 7 stages:
      neighborhood. Catches lattices, FLUX center bias, and structured
      repetition. Pass: locality ratio < per-category threshold (table
      below; defaults to 18).
+   - **richness** *(advisory; landed A.7 / 2026-05-07)* — content-
+     presence check. Defends against the "smooth A" failure mode
+     (LESSONS L16 — visually featureless texture that grades A on
+     defects). Score: `0.5 * (luminance_entropy/5 +
+     gradient_p99_normalized/0.4)`. Pass: score >= per-category
+     threshold (Snow/Water/Liquid 0.45, Sand 0.80, others 0.83).
+     **Currently advisory**: computed and logged on every QA run but
+     NOT folded into the A/B/C/D grade. Promote to gate after a few
+     sessions of watching it produce sensible scores.
    Writes `qa/seam_score.json`, `qa/summary.json`, `qa/tile_2x2.png`,
    `qa/sphere_preview.png`, `qa/plane_preview.png`, `qa/sanity.json`.
 
@@ -106,19 +117,20 @@ The orchestrator (`aaa_texture.py`) runs 7 stages:
    periodic; rocks have natural micro-repetition; snow/water/sand are
    genuinely uniform.
 
-   | Category   | Periodic threshold |
-   |------------|-------------------:|
-   | Brick      | 80                 |
-   | Cobble     | 80                 |
-   | Tile       | 80                 |
-   | Wood       | 50                 |
-   | Metal      | 30                 |
-   | Concrete   | 25                 |
-   | Foliage    | 25                 |
-   | Rock       | 25                 |
-   | Ground     | 22                 |
-   | Snow/Sand/Water/Liquid | 18      |
-   | (default)  | 18                 |
+   | Category   | Periodic threshold | Richness threshold (advisory) |
+   |------------|-------------------:|------------------------------:|
+   | Brick      | 80                 | (uses default)                |
+   | Cobble     | 80                 | (uses default)                |
+   | Tile       | 80                 | (uses default)                |
+   | Wood       | 50                 | (uses default)                |
+   | Metal      | 30                 | 0.60 — polished narrow lum range |
+   | Concrete   | 25                 | 0.83                          |
+   | Foliage    | 25                 | 0.83                          |
+   | Rock       | 25                 | 0.83                          |
+   | Ground     | 22                 | 0.83                          |
+   | Sand       | 18                 | 0.80                          |
+   | Snow/Water/Liquid      | 18      | 0.45 — legit low spatial energy |
+   | (default)  | 18                 | 0.83                          |
 
    **Sanity-check exceptions**: categories in
    `UNIFORM_ROUGHNESS_OK_CATEGORIES` (Snow, Water, Sand, Liquid) skip

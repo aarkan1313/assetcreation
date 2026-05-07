@@ -306,8 +306,24 @@ local variance of the albedo, with a *minimum* threshold. Below some
 energy threshold = "too smooth, probably featureless." Easy to
 calibrate, easy to add. Logged as a candidate for Phase A.6 or B.
 
+**UPDATE 2026-05-07 (A.7)**: landed as the `richness` check in
+`texture_qa.py`. **Not** simple Laplacian energy — that fails to
+separate the smooth-A cases from intentionally-dark-but-rich
+materials (e.g. wgv3_rock_dark with cracks). What works:
+`0.5 * (luminance_entropy/5 + gradient_p99/mean_lum/0.4)`, with
+per-category thresholds (Snow/Water/Liquid 0.45, Sand 0.80, others
+0.83). Validated: all 11 shipping wgv3_* textures pass; all 3
+known smooth-A cases (this entry's sand_s200, powder snow s100,
+canyon_lead) fail. **Currently advisory** — computed and printed
+on every QA run but NOT folded into the A/B/C/D grade. Promote to
+a hard gate after a few sessions of watching it produce sensible
+scores on new generations. Calibration data + writeup in
+TEXTURE_RND Part 1 "A.7" entry.
+
 **Workaround for now**: visual review of the contact sheet in
 EXPERIMENTS sweeps. The eye catches "this is too smooth" instantly.
+Plus the new richness score on every QA run flags the case
+explicitly even if grade is A.
 
 ## L17 — Our offset+heal seam algorithm matches the open-source canon
 

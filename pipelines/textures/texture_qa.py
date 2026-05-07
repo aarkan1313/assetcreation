@@ -64,6 +64,23 @@ PERIODIC_LOCALITY_PASS = 18.0     # peak / local-neighborhood median < 18x
                                   # real-photo PolyHaven sets sit at 8-17; AI
                                   # noise-like at 6-20; structured patterns
                                   # (cobble) and lattice artifacts at 25-600.
+RICHNESS_PASS = 0.83              # combined content-presence score; defends
+                                  # against "smooth A" failures (LESSONS L16).
+                                  # Pass = 0.5 * (luminance_entropy/5 +
+                                  # gradient_p99_normalized/0.4). Low = looks
+                                  # like a featureless wash; the existing 3
+                                  # axes pass it but the eye knows it's bad.
+                                  # Calibrated A.7 / 2026-05-07 across 122
+                                  # textures: SHIPPING materials all score
+                                  # >=0.83 in non-uniform categories; known
+                                  # smooth-A cases score 0.44-0.83.
+                                  # Snow / Water / Liquid / Sand legitimately
+                                  # have low spatial energy — see CATEGORY_
+                                  # THRESHOLDS for relaxed values there.
+                                  # **Advisory for now** (computed + reported,
+                                  # NOT folded into A/B/C/D grade) so existing
+                                  # texture grades don't shift under our feet.
+                                  # Promote to gate when we've watched it.
 
 # Per-category threshold overrides. Categories naturally periodic (brick,
 # wood) get a relaxed periodic check; rocky/organic categories have a
@@ -74,15 +91,17 @@ CATEGORY_THRESHOLDS = {
     "Wood":     {"periodic": 50.0},
     "Tile":     {"periodic": 80.0},
     "Cobble":   {"periodic": 80.0},
-    "Rock":     {"periodic": 25.0},
-    "Snow":     {"periodic": 18.0},  # uniform roughness handled separately
-    "Sand":     {"periodic": 18.0},
-    "Water":    {"periodic": 18.0},
-    "Liquid":   {"periodic": 18.0},
-    "Ground":   {"periodic": 22.0},
-    "Foliage":  {"periodic": 25.0},
-    "Metal":    {"periodic": 30.0},
-    "Concrete": {"periodic": 25.0},
+    "Rock":     {"periodic": 25.0,  "richness": 0.83},
+    "Snow":     {"periodic": 18.0,  "richness": 0.45},  # legit low spatial energy
+    "Sand":     {"periodic": 18.0,  "richness": 0.80},
+    "Water":    {"periodic": 18.0,  "richness": 0.45},
+    "Liquid":   {"periodic": 18.0,  "richness": 0.45},
+    "Ground":   {"periodic": 22.0,  "richness": 0.83},
+    "Foliage":  {"periodic": 25.0,  "richness": 0.83},
+    "Metal":    {"periodic": 30.0,  "richness": 0.60},  # polished metal has
+                                                        # narrow lum range,
+                                                        # use a softer pass.
+    "Concrete": {"periodic": 25.0,  "richness": 0.83},
 }
 
 
@@ -92,6 +111,7 @@ def _thresholds_for(category: str | None) -> dict:
         "edge_continuity": EDGE_CONTINUITY_PASS,
         "junction_visibility": JUNCTION_RATIO_PASS,
         "periodic_artifact": PERIODIC_LOCALITY_PASS,
+        "richness": RICHNESS_PASS,
     }
     if not category:
         return base
@@ -102,6 +122,8 @@ def _thresholds_for(category: str | None) -> dict:
         base["junction_visibility"] = overrides["junction"]
     if "periodic" in overrides:
         base["periodic_artifact"] = overrides["periodic"]
+    if "richness" in overrides:
+        base["richness"] = overrides["richness"]
     return base
 
 
@@ -277,7 +299,69 @@ def periodic_artifact(im: np.ndarray,
     }
 
 
+def richness(im: np.ndarray, threshold: float = RICHNESS_PASS) -> dict:
+    """Content-presence check; defends against "smooth A" failures (LESSONS L16).
+
+    The first three checks measure DEFECTS (edges don't match, seams visible,
+    periodic structure). They're silent on whether the image has any content
+    at all. A flat orange wash passes all three trivially. This check asks
+    "does the image have either spread-out detail (high luminance entropy)
+    or occasional strong gradients (high p99-normalized Laplacian)?"
+
+    Combined score:
+        score = 0.5 * (luminance_entropy / 5.0 +
+                       gradient_p99_normalized / 0.4)
+
+    where:
+        luminance_entropy = Shannon entropy of the 256-bin luminance histogram
+            (in bits). High = full dynamic range used (rich); low = compressed
+            into a narrow band (smooth wash).
+        gradient_p99_normalized = (99th percentile of |Laplacian|) / mean_lum.
+            High = at least the strongest 1% of gradients are strong relative
+            to the texture's average brightness (cracks, edges, features).
+            Normalizing by mean luminance keeps dark moody textures with
+            occasional sharp features (e.g. wgv3_rock_dark) on the rich side.
+
+    Calibrated A.7 / 2026-05-07 across 122 textures. Per-category thresholds
+    in CATEGORY_THRESHOLDS — Snow/Water/Liquid get 0.45 (legit low spatial
+    energy), Sand gets 0.80, others 0.83.
+
+    **Advisory for now.** Returned in the seam_score output but `grade_from_
+    checks()` does NOT count this in the A/B/C/D grade. We'll watch the metric
+    for a few sessions before promoting it to a hard gate.
+    """
+    h, w = im.shape[:2]
+    gray = im.mean(axis=-1) if im.ndim == 3 else im
+    # Luminance entropy
+    hist, _ = np.histogram(gray, bins=256, range=(0.0, 1.0), density=False)
+    p = hist.astype(np.float64) / max(hist.sum(), 1)
+    p = p[p > 0]
+    entropy_bits = float(-(p * np.log2(p)).sum()) if p.size else 0.0
+    # Gradient p99 normalized by mean luminance
+    lap = _laplacian_energy(gray)
+    p99 = float(np.percentile(lap, 99))
+    mean_lum = float(gray.mean())
+    p99_norm = p99 / max(mean_lum, 1e-3)
+    # Combined score
+    score = 0.5 * (entropy_bits / 5.0 + p99_norm / 0.4)
+    return {
+        "luminance_entropy": entropy_bits,
+        "gradient_p99": p99,
+        "mean_luminance": mean_lum,
+        "gradient_p99_normalized": p99_norm,
+        "score": score,
+        "passed": score >= threshold,
+        "threshold": threshold,
+    }
+
+
 def grade_from_checks(checks: dict) -> str:
+    """Grade A/B/C/D from the THREE original defect axes.
+
+    `richness` is computed and reported in `checks` but NOT counted here —
+    it's advisory until we've watched it for a few sessions. See RICHNESS_PASS
+    docstring.
+    """
     n_pass = sum(1 for k in ("edge_continuity", "junction_visibility",
                               "periodic_artifact") if checks[k]["passed"])
     return {3: "A", 2: "B", 1: "C", 0: "D"}[n_pass]
@@ -293,14 +377,16 @@ def seam_score(albedo_path: Path, category: str | None = None) -> dict:
         "edge_continuity": edge_continuity(im, threshold=th["edge_continuity"]),
         "junction_visibility": junction_visibility(im, threshold=th["junction_visibility"]),
         "periodic_artifact": periodic_artifact(im, threshold=th["periodic_artifact"]),
+        "richness": richness(im, threshold=th["richness"]),
     }
     overall_grade = grade_from_checks(checks)
     return {
-        "version": 2,
+        "version": 3,  # bumped when richness was added (advisory; A.7 / 2026-05-07)
         "category": category,
         "thresholds_applied": th,
         "checks": checks,
         "grade": overall_grade,
+        "richness_passed": checks["richness"]["passed"],  # advisory; not in grade
         "passed": overall_grade == "A",
     }
 
@@ -454,7 +540,8 @@ def run_qa(material_dir: Path, category: str | None = None):
     print(f"  grade={seam['grade']}  "
           f"edge={cs['edge_continuity']['overall_mse']:.4f}({'P' if cs['edge_continuity']['passed'] else 'F'})  "
           f"junc={cs['junction_visibility']['ratio']:.2f}({'P' if cs['junction_visibility']['passed'] else 'F'})  "
-          f"period={cs['periodic_artifact']['peak_locality_ratio']:.1f}({'P' if cs['periodic_artifact']['passed'] else 'F'})")
+          f"period={cs['periodic_artifact']['peak_locality_ratio']:.1f}({'P' if cs['periodic_artifact']['passed'] else 'F'})  "
+          f"rich={cs['richness']['score']:.2f}({'P' if cs['richness']['passed'] else 'F'},advisory)")
 
     tile_2x2(albedo).save(qa_dir / "tile_2x2.png")
     sphere_preview(albedo).save(qa_dir / "sphere_preview.png")
