@@ -12,10 +12,20 @@ Most workflows use a small subset; this doc is the menu of what exists.
 The main entry point. One command produces a full PBR set.
 ```powershell
 python aaa_texture.py --prompt "..." --id name --category Ground --quality default
+
+# With full mip ladder (B.5+):
+python aaa_texture.py --prompt "..." --id name --category Rock `
+  --quality strict --pbr-backend chord_sm_rough --ladder
 ```
-Stages: variant generation → delight → PBR estimation (StableMaterials)
+Stages: variant generation → delight → PBR estimation (StableMaterials / CHORD)
 → seam repair → 3-check QA → optional Blender preview → multi-rule gate
+→ *(with `--ladder`)* SR 4× → bake → mip 2K/1K/512 → per-tier QA
 → catalog. See [PIPELINE.md](PIPELINE.md) for full mechanics.
+
+**New flags (B.5):**
+- `--ladder` — enable the SR → bake → mip → QA stage after the gate
+- `--working-res N` — SR target resolution (default: 2048; informational at fixed 4× scale)
+- `--ladder-tiers T` — comma-separated tier list (default: `2k,1k,512`)
 
 ### `palette_lock.py` — biome-cohesive kit generation
 Generates several textures with shared color palette pulled from an

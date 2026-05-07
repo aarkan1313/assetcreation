@@ -359,15 +359,34 @@ python pipelines/textures/seam_repair.py --material world/textures/library/wgv3_
 python pipelines/textures/delight.py --material world/textures/library/wgv3_dirt --strength 0.5
 ```
 
-## Super-resolution stage (Phase B.1+)
+## Super-resolution + mip ladder (Phase B.1-B.5)
 
-As of Phase B.1 (2026-05-07), the pipeline has a standalone SR tool:
-`sr_upscale.py` (Real-ESRGAN via ComfyUI). It's not yet wired into
-`aaa_texture.py` — that integration lands in B.5 along with
-`bake_pbr.py` (B.2) and `mip_ladder.py` (B.3) to form the full
-multi-resolution ladder.
+The pipeline has a full multi-resolution stage available via `--ladder`:
 
-For now, SR is invoked manually per the recipes in
-[RECIPES.md](RECIPES.md) "Upscaling" section. The
-[Phase B design doc](../../docs/superpowers/specs/2026-05-07-phase-b-multi-resolution-pipeline-design.md)
-describes the full target pipeline.
+```
+aaa_texture.py --ladder [--working-res 2048] [--ladder-tiers 2k,1k,512]
+```
+
+This runs Stage 8 after the quality gate:
+1. **SR** (`sr_upscale.py`): Real-ESRGAN 4× on all 6 PBR maps → temp staging dir.
+2. **Bake** (`bake_pbr.py`): re-derives normal/AO/roughness at SR resolution from the
+   upscaled height+albedo. Physically correct at working res; corrects SR hallucination
+   in normal/AO. See `DECISIONS.md` "Bake at high res" for rationale.
+3. **Mip** (`mip_ladder.py`): writes 2K/1K/512 tiers with per-map correct filtering
+   (vector-field normals, gamma-aware albedo, linear Lanczos for others).
+4. **Per-tier QA** (`texture_qa.py --ladder-dir`): runs the 4-check QA on every tier,
+   writes `ladder/cross_tier_sheet.png`.
+
+Ladder output lives at `world/textures/library/<id>/ladder/<tier>/`.
+
+Without `--ladder`, `aaa_texture.py` runs the existing 7 stages only (gen-res output).
+`--ladder` is off by default; add it explicitly for hero runs.
+
+For standalone ladder use (without re-generating), run the three tools directly:
+```powershell
+# SR → bake → mip (see RECIPES.md "Building the mip ladder" section)
+python pipelines/textures/sr_upscale.py --in <map> --out <sr_dir>/<map>
+python pipelines/textures/bake_pbr.py --material-dir <sr_dir> --category X --apply
+python pipelines/textures/mip_ladder.py --in <sr_dir> --tiers 2k,1k,512
+python pipelines/textures/texture_qa.py --ladder-dir <sr_dir>/ladder --category X
+```

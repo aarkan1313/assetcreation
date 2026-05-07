@@ -344,7 +344,8 @@ albedo (gamma-aware, no dark bias), others (linear Lanczos).
 (e.g. 2K for hero views, 1K for standard terrain, 512 for distance).
 This is the standard full multi-resolution pipeline.
 
-**After B.5**, `aaa_texture.py --ladder` will run all three steps in one command.
+**As of B.5**, `aaa_texture.py --ladder` runs all steps in one command — see
+"Hero recipe: full ladder in one command" above.
 
 ---
 
@@ -491,6 +492,36 @@ Copy-Item "$SRC/qa/tile_2x2.png" "$DST/_tile_2x2.png" -Force
 
 (See `world3/docs/WORKFLOW.md` Stage 4 for the full project-level
 flow including material binding.)
+
+---
+
+## Hero recipe: full ladder in one command (B.5+)
+
+```powershell
+python pipelines/textures/aaa_texture.py `
+  --prompt "weathered basalt, top-down photo, natural stone" `
+  --id wgv3_rock_dark `
+  --category Rock `
+  --quality strict `
+  --pbr-backend chord_sm_rough `
+  --ladder
+```
+
+Produces:
+- `world/textures/library/wgv3_rock_dark/` — 6 PBR maps at gen resolution (512px)
+- `world/textures/library/wgv3_rock_dark/qa/` — QA output for the gen-res material
+- `world/textures/library/wgv3_rock_dark/ladder/2k/` — 6 maps at 2048px (SR'd + baked)
+- `world/textures/library/wgv3_rock_dark/ladder/1k/` — 6 maps at 1024px
+- `world/textures/library/wgv3_rock_dark/ladder/512/` — 6 maps at 512px
+- `world/textures/library/wgv3_rock_dark/ladder/cross_tier_sheet.png` — QA overview
+
+Pipeline: variant gen → delight → PBR (chord_sm_rough) → seam repair → QA →
+gate → SR 4× → bake at 2K → mip 2K/1K/512 → per-tier QA.
+
+Optional flags:
+- `--working-res 4096` — SR to 4K master (if source is 1024px CHORD output)
+- `--ladder-tiers 4k,2k,1k,512` — include 4K tier
+- `--quality default --pbr-backend sm` — faster, for non-hero materials
 
 ---
 
