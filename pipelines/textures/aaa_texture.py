@@ -107,13 +107,19 @@ def main():
     ap.add_argument("--host", default="http://127.0.0.1:8188")
     ap.add_argument("--no-gate", action="store_true",
                     help="ship even if seam score fails the gate")
-    ap.add_argument("--pbr-backend", choices=["derive", "sm", "chord"],
+    ap.add_argument("--pbr-backend",
+                    choices=["derive", "sm", "chord", "chord_sm_rough"],
                     default=None,
                     help="override preset PBR backend. 'derive' = "
                          "derive_pbr_v2 (heuristic, no model), 'sm' = "
                          "StableMaterials (default for default/strict "
                          "presets), 'chord' = CHORD (Ubisoft, opt-in; "
-                         "requires ComfyUI-Chord nodes + chord_v1.safetensors)")
+                         "requires ComfyUI-Chord nodes + chord_v1.safetensors), "
+                         "'chord_sm_rough' = HYBRID (A.11): CHORD for "
+                         "albedo/normal/height/metallic/ao + SM for "
+                         "roughness only. Best of both for hard-edge "
+                         "rock-class materials where CHORD's roughness "
+                         "is too flat. ~25s extra per material.")
     args = ap.parse_args()
 
     preset = PRESETS[args.quality]
@@ -189,6 +195,73 @@ def main():
             log["stages"].append({"stage": "pbr", "method": "derive_pbr_v2_fallback"})
         else:
             log["stages"].append({"stage": "pbr", "method": "chord_v1"})
+    elif pbr_backend == "chord_sm_rough":
+        # HYBRID (A.11): CHORD for albedo/normal/height/metallic/ao;
+        # SM for roughness only. CHORD's roughness on rock-class
+        # materials is near-flat and fails our existing sanity check;
+        # SM produces visibly varied roughness on the same input. This
+        # backend gets the best of both.
+        chord_script = str(PIPELINE_DIR / "chord_image2pbr.py")
+        chord_result = subprocess.run([
+            sys.executable, chord_script,
+            "--input", str(albedo_path),
+            "--out", str(out_dir),
+            "--id", args.id,
+            "--host", args.host,
+        ])
+        if chord_result.returncode != 0:
+            print(f"  CHORD failed; falling back to derive_pbr_v2")
+            python_subprocess([
+                str(PIPELINE_DIR / "derive_pbr_v2.py"),
+                "--albedo", str(albedo_path),
+                "--id", args.id,
+                "--category", args.category,
+                "--out", str(out_dir),
+            ], "STAGE 3: PBR fallback (deterministic v2)")
+            log["stages"].append({"stage": "pbr", "method": "derive_pbr_v2_fallback"})
+        else:
+            # Now run SM into a temp dir and copy ONLY its roughness over
+            # CHORD's. We don't use --no-overwrite because we want SM's
+            # roughness to win.
+            import tempfile
+            sm_python = r"D:\assets\animators\mesa-env\venv\Scripts\python.exe"
+            sm_script = str(PIPELINE_DIR / "stablematerials_image2pbr.py")
+            sm_tmp = Path(tempfile.mkdtemp(prefix="a11_sm_rough_"))
+            try:
+                sm_result = subprocess.run([
+                    sm_python, sm_script,
+                    "--input", str(albedo_path),
+                    "--out", str(sm_tmp),
+                    "--id", args.id,
+                    "--mode", "standard",
+                    "--size", str(pbr_size),
+                ])
+                if sm_result.returncode != 0:
+                    print(f"  SM (for roughness) failed; keeping CHORD's roughness")
+                    log["stages"].append({"stage": "pbr",
+                                          "method": "chord_v1+sm_roughness_failed"})
+                else:
+                    sm_rough_src = sm_tmp / f"{args.id}_roughness.png"
+                    chord_rough_dst = out_dir / f"{args.id}_roughness.png"
+                    if sm_rough_src.exists():
+                        # Backup CHORD's roughness so we can compare/restore
+                        chord_rough_backup = (
+                            out_dir / f"{args.id}_roughness.pre_sm_swap.png")
+                        if chord_rough_dst.exists():
+                            chord_rough_dst.replace(chord_rough_backup)
+                        shutil.copy2(sm_rough_src, chord_rough_dst)
+                        print(f"  hybrid: replaced CHORD roughness with SM "
+                              f"({chord_rough_dst.name}); "
+                              f"CHORD's saved as .pre_sm_swap.png")
+                        log["stages"].append({"stage": "pbr",
+                                              "method": "chord_v1+sm_roughness"})
+                    else:
+                        print(f"  SM produced no roughness; keeping CHORD's")
+                        log["stages"].append({"stage": "pbr",
+                                              "method": "chord_v1+sm_roughness_missing"})
+            finally:
+                # Clean up the SM temp dir (we copied what we need)
+                shutil.rmtree(sm_tmp, ignore_errors=True)
     elif pbr_backend == "sm":
         # StableMaterials runs in mesa-env (which has diffusers+cu130 ready).
         # We pass --size matching the model's native resolution (512). Larger

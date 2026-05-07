@@ -18,6 +18,119 @@ The contact sheets and manifests for sweeps live in
 
 # Part 1 — Experiments
 
+## A.11 — CHORD + SM-roughness hybrid PBR backend
+
+**Date**: 2026-05-07
+**Question**: A.8 found CHORD wins on hard-edge geometry (sharp
+normals, clean heights, no center-bias bloom) but loses on rock
+roughness (near-flat std=0.011, fails sanity gate). Can we get the
+best of both by running CHORD + SM in sequence and stitching just
+the roughness map?
+
+### Setup
+
+Added `--pbr-backend chord_sm_rough` to `aaa_texture.py`. Dispatch:
+
+1. Run CHORD (writes 6 maps: albedo/normal/roughness/metallic/height/ao)
+2. Run StableMaterials in mesa-env into a temp dir
+3. Copy SM's roughness over CHORD's roughness; CHORD's saved as
+   `<id>_roughness.pre_sm_swap.png` so it's recoverable
+4. Clean temp; pipeline continues with mixed-provenance maps
+
+Wall-time cost: ~25s extra over pure CHORD (one extra SM forward
+pass at standard mode, 50 steps). Total stage 3 time: ~55s vs CHORD
+alone ~30s vs SM alone ~25s.
+
+Pipeline log marks `'method': 'chord_v1+sm_roughness'` so it's
+traceable in `aaa_pipeline.json` for any material that used the
+hybrid.
+
+### Direct A/B (identical prompt + seed across all 3 backends)
+
+Prompt: `dark grey volcanic rock surface, weathered, sharp edges and
+small cracks, top-down photo, even lighting, photoreal` at
+seed-base 42, default quality. Compared:
+- A.8 pure CHORD (`A8_chord_rock_dark`)
+- A.11 hybrid (`A11_hybrid_smoke`) — same input, just roughness swapped
+- Pure SM (PBR maps from existing A.8 SM-only A/B at
+  `D:/tmp/world3_experiments/A8_chord_test/sm_compare/sm_rock_dark_*`)
+
+| Aspect              | Pure SM   | Pure CHORD             | Hybrid                |
+|---------------------|-----------|------------------------|-----------------------|
+| Roughness std       | ~0.04     | 0.011 (FAIL)           | **0.029 (PASS)**      |
+| Roughness range     | ~0.4–0.95 | 0.58–0.71 (narrow)     | **0.44–1.00 (full)**  |
+| Roughness character | varied    | flat                   | **varied (= SM)**     |
+| Normal sharpness    | soft      | sharp                  | **sharp (= CHORD)**   |
+| Height bloom        | center-bias bloom | no bloom       | **no bloom (= CHORD)**|
+| Sanity gate         | PASS      | FAIL                   | **PASS**              |
+| Overall gate        | PASS      | FAIL                   | **PASS**              |
+| Seam grade (edge/junc/period) | A | A                | **A**                 |
+
+Contact sheet:
+`world3/docs/captures/phase_a/A11_chord_sm_hybrid_ab/A11_AB_contact_sheet.png`
+
+### Findings
+
+1. **The hybrid lifts the gate from FAIL → PASS** on rock_dark while
+   preserving CHORD's geometric advantages. Sanity now reports
+   `ok: True` with no notes; the standard gate accepts the texture.
+
+2. **Roughness richness comes back fully.** The swapped SM roughness
+   shows the full 0.44–1.00 dynamic range with bright slabs and
+   dark crack tracks — physically plausible weathered rock. CHORD's
+   pre-swap version is preserved as `_roughness.pre_sm_swap.png` for
+   inspection or reversion.
+
+3. **Other CHORD strengths are preserved.** Normal map is still
+   sharp with strong crack definition; height is still clean with
+   no center-bias bloom. The hybrid only swaps roughness; the rest
+   is pure CHORD.
+
+4. **Cost is ~25s extra wall-time per material.** Acceptable for any
+   case where rock-class roughness matters (i.e. anything we ship
+   at close-camera or hero distance). Skippable for sand/snow/water
+   where roughness uniformity is *correct*.
+
+### Decision: ship as opt-in alongside pure CHORD
+
+- `--pbr-backend chord` and `--pbr-backend chord_sm_rough` both
+  available; user picks per-material based on category.
+- For **Rock-class** materials (where CHORD's flat roughness was
+  the regression), use `chord_sm_rough`. Net win: CHORD's sharper
+  normals + heights with SM's correct roughness.
+- For **Sand/Snow/Water/Liquid**: pure CHORD is fine; the categories
+  legitimately have uniform roughness, the hybrid would just spend
+  25s extra on something the gate would have accepted anyway.
+- For **other categories** (Foliage, Ground, Brick, etc.): no clear
+  winner from the data — A.8 didn't measure these as carefully. Default
+  to pure CHORD for now; A/B per-material if a roughness regression
+  shows up.
+- **Default for `--quality default/strict` remains StableMaterials.**
+  We're not migrating shipping textures. CHORD-family backends
+  (chord, chord_sm_rough) are still opt-in; this just makes the opt-in
+  more useful for hard-edge categories.
+
+### Implications + open items
+
+- **The "best practice" sequence for a rock-class hero material is now
+  pretty clear**: `--quality strict --pbr-backend chord_sm_rough`.
+  Sharp geometry + correct roughness + grade A pass.
+- **`pre_sm_swap.png` debt**: every chord_sm_rough run leaves an extra
+  ~50-200 KB file behind. Library bloat is small but real. Could
+  add a `--no-keep-presm` flag if it ever matters.
+- **"Hybrid for normal too?" question**: A.8 showed CHORD wins normal
+  on rock — so we never want SM's normal on rock. But for organic
+  materials (forest_floor, leaf_litter) where CHORD's sharper normal
+  reads as "too detailed," SM's softer normal might be preferable.
+  Worth a future A.12-ish revisit if specific organic materials feel
+  over-tessellated under the new gate.
+- **Phase B upscaling pairs naturally with chord_sm_rough**. CHORD
+  operates at 1024 native; if Phase B targets 1K/2K outputs,
+  upscaling the CHORD-side maps + SM roughness should be
+  straightforward.
+
+---
+
 ## A.10 — Reference-image anchor mode for flux_seamless
 
 **Date**: 2026-05-07

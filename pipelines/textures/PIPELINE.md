@@ -86,6 +86,15 @@ The orchestrator (`aaa_texture.py`) runs 7 stages:
      Copyleft).** Requires `chord_v1.safetensors` (gated on HF) and
      a transformers 5.x compat patch in custom_nodes/ComfyUI-Chord/
      nodes.py — see TEXTURE_RND.md "A.8" entry.
+   - **HYBRID** (`--pbr-backend chord_sm_rough`, opt-in, A.11):
+     CHORD for albedo/normal/height/metallic/ao + SM for roughness
+     only. ~55s on 5090 (CHORD ~30s + SM ~25s). **Best of both for
+     rock-class materials**: CHORD's sharp geometry + SM's varied
+     roughness. Lifts the sanity gate from FAIL → PASS on rocks
+     where pure CHORD's flat roughness was the regression. CHORD's
+     original roughness is preserved as
+     `<id>_roughness.pre_sm_swap.png` for inspection. Recommended for
+     hero rock materials. See TEXTURE_RND.md "A.11" entry.
    - `derive_pbr_v2.py` (fast; `--pbr-backend derive`): heuristic from
      albedo only — height from frequency split, normal from height
      sobel, AO from blurred curvature, roughness from category preset.

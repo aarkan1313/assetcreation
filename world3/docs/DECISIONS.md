@@ -682,3 +682,53 @@ exploit the wins without paying the regressions.
 - License: Ubisoft Machine Learning License (Research-Only Copyleft)
   — flagged in PIPELINE.md and TOOLS.md. Need to revisit before any
   commercial release.
+
+---
+
+## 2026-05-07 — CHORD + SM-roughness hybrid as a third opt-in backend
+
+**Decision**: Add `--pbr-backend chord_sm_rough` to `aaa_texture.py`.
+Runs CHORD for albedo/normal/height/metallic/ao, then SM separately,
+then overwrites only the roughness map. ~25s extra wall-time over
+pure CHORD. **Default and existing backends unchanged.**
+
+**Alternatives considered**:
+- **Add roughness-only mode to SM**: rejected — would require modifying
+  `stablematerials_image2pbr.py` to skip non-roughness output. Doable
+  but invasive, and the temp-dir approach is just as fast in
+  practice (the model loads the same way regardless).
+- **Use a heuristic roughness on top of CHORD**: rejected for rock —
+  derive_pbr_v2's category-preset roughness is constant per pixel,
+  even worse than CHORD's near-flat output. Heuristic doesn't add
+  variation.
+- **Switch the default to `chord_sm_rough` for default/strict**:
+  rejected. Two reasons: (1) the existing wgv3_* shipping set was
+  generated with pure SM and we're not migrating; (2) `chord_sm_rough`
+  is only a clear win on Rock-class materials where CHORD's flat
+  roughness was the specific regression. For sand/snow/water/liquid
+  CHORD's flat roughness is *correct* (those are uniform surfaces),
+  and the extra 25s is wasted. Per-material opt-in is the right
+  default.
+- **Drop CHORD entirely now that we have SM**: rejected. CHORD's
+  normal + height advantages on hard-edge geometry are real wins
+  that SM doesn't replicate. The hybrid keeps both available; pure
+  CHORD stays for cases where the user wants its 1024-native
+  geometry without the SM roughness pass.
+
+**Why**: A.11 A/B verified the hybrid lifts the gate from FAIL → PASS
+on rock_dark while preserving CHORD's geometric strengths. Roughness
+std jumps 0.011 → 0.029, range expands 0.58–0.71 → 0.44–1.00. This
+is a clean "best of both" outcome for Rock-class materials. Keeping
+all four backends (derive / sm / chord / chord_sm_rough) gives us
+per-material flexibility without a forced migration.
+
+**Implementation**:
+- `pipelines/textures/aaa_texture.py` — new branch in the stage 3
+  PBR dispatch. CHORD writes 6 maps; SM runs into a temp dir; SM's
+  roughness overwrites CHORD's. CHORD's pre-swap roughness saved as
+  `<id>_roughness.pre_sm_swap.png` for inspection/restore.
+- Pipeline log records `'method': 'chord_v1+sm_roughness'` so it's
+  traceable in `aaa_pipeline.json`.
+- Recommended use: hero rock materials at `--quality strict
+  --pbr-backend chord_sm_rough`. Defer for non-rock categories
+  unless A/B shows a roughness regression in some other case.

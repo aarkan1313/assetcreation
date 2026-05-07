@@ -182,6 +182,10 @@ visually flatter. Standalone use: testing PBR pipeline without GPU.
 The `default`/`strict` PBR backend. Runs in `mesa-env`. Don't invoke
 directly; use `aaa_texture.py --quality default`.
 
+Also called by the A.11 hybrid backend (`--pbr-backend chord_sm_rough`)
+to provide just the roughness map; CHORD provides the rest. See
+TEXTURE_RND "A.11" entry for the hybrid rationale.
+
 ### `chord_image2pbr.py` — alternative PBR backend (CHORD, Ubisoft, opt-in)
 ComfyUI HTTP-API wrapper for the CHORD ComfyUI nodes (Ubisoft La
 Forge, SIGGRAPH Asia 2025). Outputs 5 PBR maps + AO from a single

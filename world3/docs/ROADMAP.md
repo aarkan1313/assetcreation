@@ -135,11 +135,14 @@ Checklist:
       issue:** Flux2Scheduler drops `denoise` project-wide; logged
       as a future audit task below.
 
-- [ ] **A.11 — CHORD + SM-roughness hybrid**. Surfaced by A.8's
-      roughness regression. Run CHORD for albedo/normal/height/
-      metallic + SM separately for roughness, stitch. ~25s extra
-      per material; gives best-of-both for rock-class. Half-session
-      of plumbing once we get to it. Estimate: half session.
+- [x] **A.11 — CHORD + SM-roughness hybrid**. New
+      `--pbr-backend chord_sm_rough` runs CHORD for albedo/normal/
+      height/metallic/ao + SM for roughness only. A/B on rock_dark
+      verified: lifts gate from FAIL→PASS (rough std 0.011→0.029,
+      range 0.58–0.71→0.44–1.00) while preserving CHORD's geometry.
+      Default + existing backends unchanged; `chord_sm_rough` is
+      opt-in for Rock-class materials. Commit pending. Details:
+      TEXTURE_RND "A.11" + DECISIONS "CHORD + SM-roughness hybrid".
 
 Exit criteria for this polish phase:
 - IP-Adapter wired into `flux_seamless.py` with at least one A/B
