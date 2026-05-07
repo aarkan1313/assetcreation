@@ -26,6 +26,7 @@ find something.
 | "What happened in the Phase 2 HD review pass?"             | [OPENTOPO_PHASE2_HD_REVIEW.md](OPENTOPO_PHASE2_HD_REVIEW.md) |
 | "What happened in the Phase 2 max review pass?"            | [OPENTOPO_PHASE2_MAX_REVIEW.md](OPENTOPO_PHASE2_MAX_REVIEW.md) |
 | "What is the next huge 4-call OpenTopo plan?"              | [OPENTOPO_LARGE_4CALL_PLAN.md](OPENTOPO_LARGE_4CALL_PLAN.md) |
+| "What happened in the Smokies 4-call `USGS1m` run?"        | [OPENTOPO_PHASE3_SMOKIES_4CALL_AUDIT.md](OPENTOPO_PHASE3_SMOKIES_4CALL_AUDIT.md) |
 | "What happened in the first OpenTopo mosaic pilot?"          | [OPENTOPO_PILOT1_GRAND_CANYON_USGS10M_AUDIT.md](OPENTOPO_PILOT1_GRAND_CANYON_USGS10M_AUDIT.md) |
 | "What happened in the first OpenTopo fusion pilot?"          | [OPENTOPO_PILOT2_GUADALUPE_CYPRESS_FUSION_AUDIT.md](OPENTOPO_PILOT2_GUADALUPE_CYPRESS_FUSION_AUDIT.md) |
 | "What do the current Phase A before/after captures look like?" | [captures/phase_a/](captures/phase_a/) (per-material before/after) |
@@ -59,6 +60,7 @@ find something.
   OPENTOPO_PHASE2_HD_REVIEW.md /
   OPENTOPO_PHASE2_MAX_REVIEW.md /
   OPENTOPO_LARGE_4CALL_PLAN.md /
+  OPENTOPO_PHASE3_SMOKIES_4CALL_AUDIT.md /
   OPENTOPO_PILOT1_GRAND_CANYON_USGS10M_AUDIT.md /
   OPENTOPO_PILOT2_GUADALUPE_CYPRESS_FUSION_AUDIT.md / opentopo/STATUS.md** —
   OpenTopography sourcing, tooling commands, data-type findings, mosaic/fusion
@@ -81,11 +83,13 @@ world3/
 │   ├── OPENTOPO_PILOT1_GRAND_CANYON_USGS10M_AUDIT.md
 │   ├── OPENTOPO_PILOT2_GUADALUPE_CYPRESS_FUSION_AUDIT.md
 │   └── captures/                   # before/after screenshots
-│       ├── phase_a/                 # CURRENT — Phase A texture before/after (tracked)
-│       │   ├── snow_{before,after}/
-│       │   ├── forest_floor_{before,after}/
-│       │   ├── tundra_ice_{before,after}/
-│       │   └── desert_canyon_rock_{before,after}/
+│       ├── phase_a/                 # CURRENT — Phase A texture evidence (tracked)
+│       │   ├── snow_{before,after}/                  # A.3
+│       │   ├── forest_floor_{before,after}/          # A.3
+│       │   ├── tundra_ice_{before,after}/            # A.6
+│       │   ├── desert_canyon_rock_{before,after}/    # A.6
+│       │   ├── A8_chord_ab/                          # A.8 CHORD vs SM A/B
+│       │   └── A9_variant_blend_ab/                  # A.9 select vs blend A/B
 │       └── iter*/, phase2_*/        # historical iteration screenshots (gitignored — local only)
 ├── pipeline/                       # Python: OpenTopo + DEM processing
 │   ├── opentopo_fetch.py

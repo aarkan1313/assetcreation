@@ -79,11 +79,93 @@ Open / deferred items (candidates for a later phase):
 - Variation-and-stitch tool (cprimozic-inspired) — could rescue
   lattice-prone materials more cleanly than prompt rewrites alone.
 
-## Phase B — Upscaling + multi-resolution pipeline (NEXT)
+## Phase A polish — pipeline foundation hardening (IN PROGRESS, 2026-05-07)
+
+Bridge between Phase A's prompt R&D and Phase B's upscaling. The
+deferred items from Phase A's exit notes turned out to have higher
+leverage than expected once we sat with them. This iteration is
+*workflow + tooling* improvements — not new outputs, but stronger
+foundations that every future material benefits from.
+
+Operating principle (per user 2026-05-07): "build tools and workflow
+improvements that future work depends on. Order tasks so each one's
+output feeds the next, not the other way around."
+
+Checklist:
+- [x] **A.7 — Richness QA metric (advisory)**. New `richness` check
+      in `texture_qa.py` that defends against the "smooth-A" failure
+      mode (LESSONS L16). Combined `0.5 * (entropy/5 + p99_norm/0.4)`,
+      per-category thresholds. Calibrated across 122 textures: all
+      11 wgv3_* shipping pass, all 5 known smooth-A cases fail.
+      Currently advisory (computed + printed but not folded into the
+      A/B/C/D grade) so existing texture grades don't shift. Promote
+      to hard gate after a few sessions of watching.
+      Commit: `b551203`. Details: TEXTURE_RND.md "A.7" entry.
+
+- [x] **A.8 — CHORD opt-in PBR backend**. Per the 2026-05-07 research
+      handoff. Added `aaa_texture.py --pbr-backend {derive,sm,chord}`
+      flag. CHORD (Ubisoft La Forge, SIGGRAPH Asia 2025) wins normals
+      + height on hard-edge geometry; loses on rock roughness. Kept
+      opt-in (not default) — the rock-roughness regression is real.
+      Required a transformers 5.x compat patch in the upstream nodes
+      and a gated HF model download. Don't migrate the existing
+      shipping set. Commit: `ee73ccd`. Details: TEXTURE_RND.md "A.8"
+      + DECISIONS.md "CHORD as opt-in PBR backend".
+
+- [x] **A.9 — variant_blend rescue tool**. New
+      `pipelines/textures/variant_blend.py`: combines N tileable
+      variants into one tileable tile via softmax-weighted blending
+      of tileable noise masks. Real trade-space, not a magic bullet:
+      `--sharpness 12` cuts periodic from 19.5 → 8.5 on stuck-lattice
+      cases (leaf_litter seed-300) at the cost of slightly worse
+      edges. Manual rescue; not folded into orchestrator default.
+      Commit: `530db77`. Details: TEXTURE_RND.md "A.9" entry.
+
+- [ ] **A.10 — IP-Adapter / FLUX Redux on flux_seamless.py**.
+      Per the research handoff. Reference-photo conditioning on the
+      FLUX stage; would let us condition on real-world material
+      photos for accuracy. Needs research pass on which IP-Adapter
+      flavor works with FLUX 2 klein (different from FLUX.1 D).
+      Estimate: 1-2 sessions.
+
+- [ ] **A.11 — CHORD + SM-roughness hybrid**. Surfaced by A.8's
+      roughness regression. Run CHORD for albedo/normal/height/
+      metallic + SM separately for roughness, stitch. ~25s extra
+      per material; gives best-of-both for rock-class. Half-session
+      of plumbing once we get to it. Estimate: half session.
+
+Exit criteria for this polish phase:
+- IP-Adapter wired into `flux_seamless.py` with at least one A/B
+  showing reference-conditioning lifts material accuracy on a
+  representative case.
+- CHORD+SM-roughness hybrid available as a backend option, with
+  A/B confirming it's not worse than either alone on rock.
+- All wins documented in TEXTURE_RND Part 1; cookbook updates if
+  any defaults shift.
+
+Open / parked candidates (not in this phase):
+- Auto-rescue mode (orchestrator detects "all variants share lattice"
+  and falls through to `variant_blend`) — depends on more lattice
+  cases to calibrate.
+- Promote `richness` from advisory to hard-gate — wait until A.10/A.11
+  finish so we have more data on whether new generations score
+  consistently.
+- Hero-mesh lane via Hunyuan3D-Paint 2.1 (handoff decision #3) —
+  user "we'll see"; deferred.
+
+## Phase B — Upscaling + multi-resolution pipeline (NEXT after polish)
 
 Currently 512 throughout. Some uses (close-walk, hero materials, large
 iso-camera footprint) need more. Some uses (mid-range topdown, far
 foreground in walk) don't.
+
+Foundation it'll consume from Phase A polish:
+- Richness QA gate (A.7) catches smooth-A failures at every
+  resolution tier.
+- CHORD backend (A.8) provides sharper normals/heights for hard-edge
+  materials at 1024 native — pairs naturally with upscaling.
+- IP-Adapter (A.10, when done) adds reference-photo accuracy to FLUX
+  outputs that get upscaled.
 
 Checklist:
 - [ ] Audit current `flux_upscale.py` — what works, what doesn't,
