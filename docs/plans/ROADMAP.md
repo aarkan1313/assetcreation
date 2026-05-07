@@ -1,8 +1,302 @@
 # Pipeline Roadmap
 
-What's working, what's missing, what to build next. Updated 2026-05-06 PM — A2 + P9 landed, framing reset to "pipelines-first, content-thin."
+What's working, what's missing, what to build next. **Updated 2026-05-07 evening** — all 8 SOTA briefs returned + integrated. **Read [NEXT_STEPS_2026_05_07.md](NEXT_STEPS_2026_05_07.md) for cross-cutting state** + [latest handoff](../handoffs/HANDOFF_2026_05_07_evening_brief_sift_complete.md).
 
-For navigation: [TOOLS_INDEX.md](../../TOOLS_INDEX.md) | [PIPELINE_GUIDE.md](../../PIPELINE_GUIDE.md) | [PIPELINE_DIRECTORY.md](../../PIPELINE_DIRECTORY.md) | [../audits/REVIEW.md](../audits/REVIEW.md) | [RESEARCH_HANDOFF.md](RESEARCH_HANDOFF.md)
+> **🚨 Worldgen nuked 2026-05-07.** v1 + v2 both archived to `_archive/worldgen_2026_05_07/`. The OpenTopography DEM-fetch tooling under `pipelines/terrain/` is **kept** — 222 cached TIFFs / 8.1 GB at top-level `dems/`. **All worldgen-related rows in the legacy table below are stale** until a new worldgen pipeline gets designed. Worldgen worker is rebuilding in `world3/`.
+>
+> **🟢 SOTA brief sift complete 2026-05-07 evening.** All 8 briefs returned, sifted into pipeline reviews, integrated below under "Research-calibrated findings." 4 dedicated venvs stood up (Puppeteer, art_lab, audio, game_data). 8 code wirings added (all additive, A/B-comparable, default behavior preserved). 2 user directions captured: **(1) cloud parked** (Rodin, Stable Audio 2.5, Recraft V4 run, DeepSeek V4-Pro all queued not done); **(2) 33-character fan-out is content authoring not pipeline work, deferred.** Real pipeline gap surfaced: per-instance mesh albedo inpaint for faction insignia / damage states (Path 2) — not covered by any brief, queued for brief #09 or design pass.
+
+For navigation: [TOOLS_INDEX.md](../../TOOLS_INDEX.md) | [PIPELINE_GUIDE.md](../../PIPELINE_GUIDE.md) | [PIPELINE_DIRECTORY.md](../../PIPELINE_DIRECTORY.md) | [../audits/REVIEW.md](../audits/REVIEW.md) | [../pipeline_reviews/README.md](../pipeline_reviews/README.md) | [RESEARCH_HANDOFF.md](RESEARCH_HANDOFF.md) | **[NEXT_STEPS_2026_05_07.md](NEXT_STEPS_2026_05_07.md)** | **[handoff](../handoffs/HANDOFF_2026_05_07_evening_brief_sift_complete.md)**
+
+---
+
+## 🎯 State as of 2026-05-07 PM (the honest picture)
+
+### Canonical reframe (from the review pass)
+
+> "Honestly nothing was hand-authored, all just kind of made without review. We proved it works, we will want to make sure it works well on our next pass. Honestly this is most likely the direction every pipeline and workflow will go. That's fine lol we just started yesterday on this entire project. We are making crazy leaps honestly." — user, after props review
+
+**Across all 7 reviewed pipelines, the pattern is identical:**
+
+- **Pipeline plumbing is real** — schemas, validators, bakers, exporters, QA, provenance, Godot integration. This is the actual deliverable.
+- **First-pass procedural content is throwaway** — generated without authoring intent, curated prompts, or reference content. Ranges from "good placeholders" (UI) to "noise/static" (audio).
+- **Real authoring quality only emerges with focused single-asset push.** The Phase 11 obelisk is the model. Everything else awaits similar focused passes.
+
+### Per-pipeline state snapshot
+
+| Pipeline | Pipeline state | Content state | Reviewed |
+|---|---|---|---|
+| **Characters** | ✅ most-complete in project | 33 GLBs, 5 animations baked, 11 sprite sheets — **animation step uncalibrated** (bad outputs from undocumented config) | [06_characters](../pipeline_reviews/06_characters.md) |
+| **Props** | ✅ Phase 11 mature | 1 hero (obelisk) + 14 procedural-variant families. AI route validated on 1 example only. | [05_props](../pipeline_reviews/05_props.md) |
+| **Game Data** | ✅ best infrastructure in project | 14 toy records (synthetic). Schemas + provenance + DuckDB balance reports + Yarn validator all real. **Balance review = long-term goal.** | [04_game_data](../pipeline_reviews/04_game_data.md) |
+| **VFX (3D bake)** | ✅ working | 46 effect.json claimed, **18 are palette-swap recolors**. Real unique by physics: ~15. Blood/dust/spark cluster has real tuning. | [02_vfx_3d](../pipeline_reviews/02_vfx_3d_bake.md) |
+| **VFX (shaders)** | ✅ best-designed iteration framework | 5 batches, all smoke tests. Templates competent, **never aimed at real target**. | [07_vfx_shaders](../pipeline_reviews/07_vfx_shaders.md) |
+| **UI / Icons** | ✅ working placeholders | 135 icons (mix of synth + game-icons.net + lucide + phosphor). 4 factions are **just color swaps**. | [01_ui_icons](../pipeline_reviews/01_ui_icons.md) |
+| **Audio** | ✅ pipeline kept | **Output archived 2026-05-07** (189 MB, was noise/static). Re-bake when game-design intent specific. | [03_audio](../pipeline_reviews/03_audio.md) |
+| **Textures** | 🟡 worker active | (Deferred review — worker hasn't handed off) | _pending_ |
+| **DEM Fetch** | ✅ working | 220 TIFFs / 8.1 GB. The only non-throwaway terrain-adjacent thing. | (no review needed) |
+| **Worldgen / Scene composition** | ❌ gone (rebuilding) | `world3/` worker in flight. v1+v2 archived. | — |
+
+### Animator tools — 13 of 13 install-validated 2026-05-07
+
+All animator tools have venvs, weights, and end-to-end smoke tests confirming real output:
+
+- ComfyUI, ComfyUI_HY3D (Phase 11), Trellis2 (Phase 11), hy-motion-fbx-exporter (Phase 11), SkinTokens (giraffe rigged 33s)
+- AnimateAnyMesh (flying dragon FBX), Anytop (Bat motion BVH+MP4+NPY, **Windows-ported from Linux conda**), RigAnything (rigged spyro_the_dragon GLB), MagicArticulate (6 example skeletons), MaterialAnything (56MB PBR output, **kaolin install path corrected today**), mesa-repo (text→768²+DEM in 3s)
+- mesh2motion-app (browser app build verified), Anytop ✅
+
+Full recipes per tool: [`animators/INSTALL_MATRIX.md`](../../animators/INSTALL_MATRIX.md).
+
+### Cleanup actions taken 2026-05-07
+
+- Worldgen v1 + v2 → archived to `_archive/worldgen_2026_05_07/`
+- DEMs relocated `pipelines/terrain/source_dems/` → `dems/` (top-level)
+- 6 root cruft files swept (.pytest scratch dirs, stray __init__.py, prompts file, ChatGPT image)
+- Audio output (189 MB) archived after manual audition revealed noise-tier quality
+- Pipeline reviews series created at `docs/pipeline_reviews/01-07_*.md`
+- INSTALL_MATRIX.md created + updated covering all 13 animator tools
+- Multiple stale handoff/research docs archived
+
+---
+
+## 🛣 What comes next
+
+The user's stated next-direction priorities (from session 2026-05-07 PM):
+
+### Now in flight
+
+- **C: SOTA tooling-gap survey** — research-agent dispatch per pipeline ("what 2026 SOTA would close the gaps the review pass surfaced?")
+- **Characters animation deep-dive** — recover run config from `meshy/batch_logs/`, decide canonical animation path, verify rigging quality on humanoid + non-humanoid characters
+
+### Background workers (don't disturb)
+
+- **Worldgen worker** in `world3/` (rebuilding scene-composition pipeline)
+- **Texture worker** in `world/textures/library/` + `pipelines/textures/` (improving tileable texture quality)
+
+### Deferred / gated
+
+- **Multi-prop generalization test** — drop 3-5 diverse concept PNGs through `trellis2_batch.py` to confirm Phase 11 isn't a one-shot
+- **Real shader-evolve batch** — pick one effect (e.g. fire impact ring), build 6-image reference set, run `shader_evolve.py` for real
+- **Game data balance** — flagged as long-term goal; needs N≥100 records to be analytically meaningful
+- **One real audio bake** with curated prompts + reference audio (per-biome focused push, not procedural fill)
+- **TLTE seed records** — game-design intent gated
+- **TTS** — game-data dialogue-authoring gated
+- **Phase 13 GPU VFX bakers** — Taichi/Warp/PhiFlow per `pipelines/vfx/GPU_BACKENDS_PLAN.md`
+
+### Permanently changed framing
+
+- "X effects / Y icons / Z props" headlines are **proof-of-pipeline**, not content claims
+- Procedural fan-out is **the wrong move** for content quality; focused single-asset pushes are the right model
+- Characters lane is the only place this might *not* apply — those 33 GLBs may end up production
+- Pipeline reviews surface what each pipeline still needs; SOTA-survey will surface what it's missing
+
+### Research-calibrated findings (returns from SOTA briefs as they land)
+
+#### Brief #01 — Characters / Animation (returned 2026-05-07)
+
+Full response: [`docs/research_briefs/2026_05_07_sota_survey/01_characters_animation.response.md`](../research_briefs/2026_05_07_sota_survey/01_characters_animation.response.md). Headlines:
+
+- **AnimateAnyMesh demoted.** Not broken — wrong tool for character action. Reclassified to ambient/secondary motion only. Layer additively on top of skeletal animation.
+- **Canonical chain decided:** rig-first → skeletal animation by topology → Blender retarget. **Path A** (humanoid): SkinTokens → Hunyuan-Motion → retarget. **Path B** (non-humanoid): RigAnything/SkinTokens → AniMo (text-conditioned) / AnyTop (OOD) / Puppeteer (video) → retarget.
+- **Puppeteer installed + validated 2026-05-07 PM** — native Windows, py3.11, torch 2.7+cu128 (override path, not the WSL2 fallback the brief recommended). End-to-end rig pipeline working: deer.fbx + spiderman.fbx produced from skeleton + skinning + bpy export. 9 install gotchas overcome and documented; full recipe in [animators/INSTALL_MATRIX.md](../../animators/INSTALL_MATRIX.md). Animation stage (video-guided) deferred — only needed if/when we actually want video-guided animation.
+- **AniMo skipped 2026-05-07** — repo at github.com/WandererXX/AniMo ships **only training scripts** (`train_vq.py`, `train_t2m_transformer.py`, `train_res_transformer.py`). No `inference.py`, no released checkpoints, no Releases page, no tags. Dataset must be self-generated. Research artifact, not a usable tool. The brief's "modest VRAM, ~30 min install, native Windows plausible" estimate was wrong. Documented as ❌ skipped in INSTALL_MATRIX. Use AnyTop (already validated, unconditional) for non-humanoid motion until a SOTA text-conditioned animal-motion tool with shipped checkpoints emerges.
+- **Animation review tooling**: build a 100-line Blender CI linter (static-frame detection + foot-skating + FVMD aggregate). No 2026 turnkey exists. Not started.
+- **Sprite-sheet baking**: stay on Blender headless EEVEE-Next; no 2026 alternative beats it. Parallelize with `-P` for fanout.
+- **Watch list (no usable code yet):** UniMoGen, X-MoGen, OmniZoo, SPRig.
+
+Remaining action items: (1) recover bad-run config from `meshy/batch_logs/` for forensics; (2) ~~install AniMo~~ (skipped); (3) ~~install Puppeteer in WSL2~~ (done, native Win); (4) validate on goblin (Path A) + hellhound or similar (Path B quadruped) + tentacle_horror or sandworm (Path B OOD); (5) build the linter; (6) fan out.
+
+#### Brief #02 — Textures (returned 2026-05-07)
+
+Full response: [`docs/research_briefs/2026_05_07_sota_survey/02_textures.response.md`](../research_briefs/2026_05_07_sota_survey/02_textures.response.md). Pipeline review: [`docs/pipeline_reviews/08_textures.md`](../pipeline_reviews/08_textures.md). Worker handoff: [`docs/handoffs/HANDOFF_textures_research_2026_05_07.md`](../handoffs/HANDOFF_textures_research_2026_05_07.md). Headlines:
+
+- **CHORD (Ubisoft La Forge, SIGGRAPH Asia '25, opened Dec 2025)** is the consequential 2026 drop we missed. Open-weights, ComfyUI-native, FLUX/SDXL-driven, **5-channel tileable PBR**, `requirements.txt` already pinned to **CUDA 12.8** — Blackwell-ready. Research-only copyleft license. Highest-leverage swap: **replaces `derive_pbr_v2.py`** as the PBR estimator in `aaa_texture.py`.
+- **MaterialAnything reclassified.** No longer SOTA for mesh-PBR as of mid-2026 — **Hunyuan3D-Paint 2.1** (Tencent, illumination-invariant + multi-view PBR) and MaterialMVP (ICCV '25) have surpassed it. Our 2026-05-07 MA validation still stands but don't deepen investment before benchmarking.
+- **Workflow B (mesh-driven hero terrain) experiment redirected.** Skip MaterialAnything-on-flat-terrain (architectural mismatch: hemisphere camera + ControlNet-Depth collapses on horizontal mesh). Use **Hunyuan3D-Paint 2.1** instead. Fall back to TEXGen + CHORD if Hunyuan also smudges.
+- **Two specific Workflow A tool changes for the worker:** (1) replace `derive_pbr_v2.py` with CHORD; (2) add IP-Adapter / FLUX Redux reference conditioning to `flux_seamless.py`'s FLUX stage. Optional 3rd lever: per-biome FLUX LoRA on Poliigon/FreePBR ground textures (~24h training/biome).
+- **New sibling lane justified:** `pipelines/textures/hero_mesh/` (planned, not built) alongside the existing biome-tileable lane. Different architecture, different VRAM budget, different failure modes.
+- **AAA pattern in 2026 is NOT end-to-end ML.** Tile-atlas + splatmap + virtual texture is the runtime; ML authors tiles. We're aligned. Don't replace runtime.
+- **Watch list:** DualMat (ACM MM '25, code TBD), MatE (Dec 2025, no public code), Tiled Diffusion (CVPR '25), MaterialMVP, TEXGen.
+- **Open research gap:** no "tileable + mesh-aware hybrid" exists in 2026. UV-space diffusion + circular-padding loss is the obvious next paper.
+
+Action items (worker-owned, not us): (1) install CHORD; (2) wire CHORD into `aaa_texture.py` replacing `derive_pbr_v2.py`; (3) add IP-Adapter hook to `flux_seamless.py` FLUX stage; (4) install Hunyuan3D-Paint 2.1 (Blackwell port, ~1-2 days, similar shape to the Puppeteer port we just did); (5) stand up `pipelines/textures/hero_mesh/` lane; (6) optionally fine-tune biome-specific FLUX LoRAs.
+
+#### Brief #03 — Props / image-to-3D (returned 2026-05-07)
+
+Full response: [`docs/research_briefs/2026_05_07_sota_survey/03_props_image_to_3d.response.md`](../research_briefs/2026_05_07_sota_survey/03_props_image_to_3d.response.md). Headlines:
+
+- **Reassuring, not redirecting.** TRELLIS.2-4B remains the right default for May 2026 — no released open-weights model decisively beats it for our props use case. "Trellis 3" doesn't exist. **Phase 11's Trellis2-as-default decision validated against 2026 SOTA.** Useful negative result.
+- **Three local-only action items:** (1) **meshoptimizer** alongside DECIMATE COLLAPSE in the LOD chain (per user direction 2026-05-07 PM: side-by-side, not replacement, for easier A/B comparison); (2) **multi-image conditioning** on TRELLIS.2 for procedural variation (closest 2026 analog to "ControlNet for 3D"); (3) **Rodin Gen-2 cloud `--hero` route PARKED** per user direction (no cloud right now). Adapter scaffold not built.
+- **No texture-worker overlap.** Brief #03 is entirely props-lane internal.
+- **What NOT to do:** don't pursue full Hunyuan3D-3.0 open weights, don't try image-to-3D for foliage (separate lane: SpeedTree / The Grove 3D), don't expand cloud usage.
+- **Watch list:** Knodt 2026 (quadric convex decomp for collision), Hunyuan3D-3.0 full open release, HY3D-Bench (Feb 2026, 252K watertight + 240K part-decomposed — fine-tune material if we ever want it).
+- **Cloud-vs-local for props is settled in favor of local.** Meshy is no longer competitive with TRELLIS.2 for props. Cloud only earns its keep on hero quads (Rodin) and the existing Meshy character pipeline.
+
+Action items (us, sub-day each): (1) ✅ **meshoptimizer wired alongside DECIMATE COLLAPSE 2026-05-07 PM** — `gltfpack v1.1` at `tools/meshoptimizer/`, `lod_chain.py --method meshopt --suffix _meshopt`, verified A/B on obelisk_egyptian_a04 (4 LODs); **quantitative side complete 2026-05-07 evening** — meshopt is 0.7-2.0% smaller at matched tri counts for LOD1-3, LOD0 identical; tri counts within ±2 across LODs; full table at [`docs/plans/LOD_COMPARISON_OBELISK_2026_05_07.md`](LOD_COMPARISON_OBELISK_2026_05_07.md); visual eyeball pass still pending; (2) extend `trellis2_route.py` / `trellis2_batch.py` for multi-image conditioning input; (3) defer Rodin Gen-2 adapter until cloud is back in scope.
+
+#### Brief #04 — VFX (3D bake) (returned 2026-05-07)
+
+Full response: [`docs/research_briefs/2026_05_07_sota_survey/04_vfx_3d_bake.response.md`](../research_briefs/2026_05_07_sota_survey/04_vfx_3d_bake.response.md). Pipeline review: [`docs/pipeline_reviews/02_vfx_3d_bake.md`](../pipeline_reviews/02_vfx_3d_bake.md). Headlines:
+
+- **Deferred GPU plan in `pipelines/vfx/GPU_BACKENDS_PLAN.md` is half-stale.** Reduces from 4 backends to **Warp-primary, PhiFlow-optional**:
+  - **NVIDIA Warp** ✅ — alive, validated on RTX 5090 sm_120 (CUDA 12.9, native Windows wheels). Promote to primary GPU backend.
+  - **PhiFlow** ✅ — alive (PyPI 3.4.0 Aug 2025), Apache-2.0, healthy. Strength is differentiable PDE for ML training — **overkill for baked flipbooks.** Watch list only.
+  - **Taichi** 🟡 — maintenance mode mid-2024 (per taichi-dev/taichi#8506). Drop.
+  - **LiquidFun** ❌ — dead. Drop.
+- **Skip diffusion VFX.** Sora 2 discontinued April 2026; AnimateDiff produces RGB video, not alpha-matted tileable flipbooks. Wrong tool for the bake-to-flipbook use case.
+- **Real bottleneck = content authoring, not sim throughput.** The "18 of 24 palette-swap recolors" issue from review #02 is an authoring problem. Fix order matters.
+- **Reordered Phase 13 priorities** (per brief, our paraphrase):
+  1. **Build LLM-driven `effect_from_description.py`** — plain-language design intent → seeded `effect.json`. Sub-day scaffold; addresses the palette-swap problem at the right layer. **This comes before any GPU port.**
+  2. **Then install Warp + port `particle_cpu`** — start with vortex/swirl/attraction effects where CPU bakers strain.
+  3. **Mesh fracture: use Blender Cell Fracture headless** — no new install required if Blender is around.
+  4. **Volumetric fog: add Schneider-Vos cloud noise** as in-place upgrade to existing numpy `baker_volumetric_fog.py`. Keep the baker we have.
+  5. **Audio cue extension: `audio_clip` field on `manifest.json`** — don't adopt USD.
+
+Action items (us, in priority order):
+1. ✅ **DONE 2026-05-07 evening** — `pipelines/vfx/effect_from_description.py` built. Mirrors `pipelines/game_data/local_llm_backend.py` shape: `--backend {dry-run,vllm}`, OpenAI-compat HTTP, `guided_json` w/ Effect-schema enforcement, validates LLM output against the canonical Pydantic `Effect` model before write. Dry-run smoke test on `giant_fire_slam_wave` produced schema-valid effect.json. Cloud backends (Claude, DeepSeek) deliberately not wired per cloud-parked direction; sibling backend = 1-file addition when cloud comes back. Real LLM run requires a local vLLM server — a server-up run is queued for the next time vLLM is hot.
+2. **(LATER)** Install NVIDIA Warp (`pip install warp-lang` on a fresh `pipelines/vfx/` venv) + Warp-port `particle_cpu`. Gated on (1) being done — now unblocked.
+3. **(SMALL)** Schneider-Vos noise upgrade in-place on `baker_volumetric_fog.py`. (Free-wins #4 in NEXT_STEPS table — pending.)
+4. **(SMALL)** Add `audio_clip` field to `manifest.json` schema + emitter.
+5. **(DOC)** Mark `pipelines/vfx/GPU_BACKENDS_PLAN.md` as superseded by this brief; the four-backend plan is reduced to Warp + PhiFlow-watch. ✅ **done 2026-05-07 PM.**
+
+#### Brief #05 — VFX shaders (`art_lab/`) (returned 2026-05-07)
+
+Full response: [`docs/research_briefs/2026_05_07_sota_survey/05_vfx_shaders.response.md`](../research_briefs/2026_05_07_sota_survey/05_vfx_shaders.response.md). Pipeline review: [`docs/pipeline_reviews/07_vfx_shaders.md`](../pipeline_reviews/07_vfx_shaders.md). Headlines:
+
+- **Framework validated as 2026 SOTA-shaped.** Two 2025/2026 academic papers (AI Co-Artist Nov 2025, ShadAR Feb 2026 ISMAR) implement essentially the same LLM-mutation loop we already built, with **weaker compile-failure guardrails** than ours. Useful negative result — like brief #03's Trellis2 vindication.
+- **Three operational wins, all additive (no replacements, A/B comparable):**
+  1. **DreamSim + LPIPS scoring backend** alongside edge-MSE in `art_lab/tools/shader_reference_score.py`. Behind a `--scorer {edge_mse,dreamsim,lpips,all}` flag. Edge-MSE stays default. ~20 ms/candidate. Single pip install (`dreamsim` + `lpips`).
+  2. **Import 3 curated template families** with license sidecars: `hit_flash_2d` (Hollow Pixel), `projectile_trail_2d` (gdquest-demos), `ground_glow_2d` (godotshaders.com). Closes 3 of the 8 missing common templates flagged in review #07.
+  3. **Aim the first real (non-smoke) batch at `occult_portal`** using `portal_swirl_2d` + `ring_field_2d`. The only target with a curated reference image already in hand. This is a batch run, not a tooling change.
+- **Confirmed open issues (no action):**
+  - **Video-to-shader has no usable open release in 2026.** Don't pursue.
+  - **Production package convention does not exist as industry standard.** Brief recommends a small custom `art_lab/library/<category>/<name>/manifest.json` tier for promoted shaders. Addresses the "promoted shaders sit in `review_queues/` indefinitely" gap from review #07.
+- **No texture-worker overlap.** `art_lab/` is its own lane.
+
+Action items (us, in priority order, additive only):
+1. ✅ **DONE 2026-05-07 PM** — `--scorer` flag wired into `art_lab/tools/shader_reference_score.py` with backends `edge_mse` (default), `dreamsim`, `lpips`, `all`. Edge-MSE remains default; `--scorer all` computes every metric on the same batch and emits per-row `all_scorers` map for A/B comparison. Dedicated **`art_lab/.venv`** stood up (py3.11 + torch 2.7+cu128 + dreamsim + lpips) to avoid polluting the Puppeteer venv (which is pinned to accelerate==0.28.0 and incompatible with modern peft/dreamsim). Smoke-tested on `shader_evolve_smoke_001` — edge_mse / dreamsim / lpips all produced ranked output, top candidates broadly agree across all three metrics.
+2. **(SMALL)** Import 3 curated templates with license sidecars into `art_lab/shaders/templates/`: `hit_flash_2d` (Hollow Pixel), `projectile_trail_2d` (gdquest-demos), `ground_glow_2d` (godotshaders.com).
+3. **(BATCH)** Run first real `shader_evolve.py` batch on `occult_portal` (no tooling change — just point the existing framework at a real target).
+4. **(DOC/SCAFFOLD)** Stand up `art_lab/library/<category>/<name>/manifest.json` convention + a "promote from review_queue → library" helper script.
+
+#### Brief #06 — Audio (returned 2026-05-07)
+
+Full response: [`docs/research_briefs/2026_05_07_sota_survey/06_audio.response.md`](../research_briefs/2026_05_07_sota_survey/06_audio.response.md). Pipeline review: [`docs/pipeline_reviews/03_audio.md`](../pipeline_reviews/03_audio.md). Headlines:
+
+- **Noise/static archive was a WORKFLOW failure, not a model failure.** Stable Audio Open 1.0 stays — still leading open-weights audio diffusion in 2026 (Stability went closed on 2.x line). Fix is reference clips + CLAP QA + LoRA fine-tune, not a model swap.
+- **Two real model upgrades for the OTHER lanes:**
+  - **TTS:** Chatterbox-Multilingual (Resemble AI, **MIT**, ~63% A/B win vs ElevenLabs, built-in emotion + paralinguistic tags). Near-strict upgrade over F5-TTS for character voicing.
+  - **Music:** ACE-Step v1.5 (Jan 2026, **Apache 2.0**, royalty-free outputs, native multi-stem export). Supersedes YuE on game-tone benchmarks. `adaptive_music.py` runtime layer unchanged.
+- **6 additive upgrades, all alongside existing tools (no replacements):**
+  1. **(SUB-DAY)** CLAP audio-text similarity + PyMusicLooper seam validator added to `audio_qa.py`. Would have caught the noise/static pre-archive (current LUFS/peak/RMS QA can't fail on noise).
+  2. **(1-2 DAYS)** Run `cc0_ingest.py` for real + extend with PANNs auto-tag + CLAP semantic index → per-biome reference clip library.
+  3. **(2 DAYS LOCAL)** LoRA fine-tune Stable Audio Open per biome on curated CC0 references. (**Cloud Stable Audio 2.5 path parked** per user direction.)
+  4. **(1 DAY)** Wire AudioGen / MAGNeT alongside `synth_sfx.py` — self-hosted SFX peer to ElevenLabs cloud.
+  5. **(1-2 DAYS)** Wire ACE-Step v1.5 alongside `local_music_yue.py`. YuE stays as fallback initially, archived later.
+  6. **(1 DAY)** Wire Chatterbox-Multilingual alongside `local_tts_f5.py`. F5 stays as fallback.
+- **License caveats:** AudioGen/MAGNeT weights = CC-BY-NC (non-commercial). MusicGen-Stem = CC-BY-NC. ACE-Step + Chatterbox + Stable Audio Open LoRA = commercial-safe.
+- **No texture-worker overlap.**
+
+Action items (us, in priority order, additive only):
+1. ✅ **DONE 2026-05-07 PM** — `pipelines/audio/.venv` stood up (py3.11 + torch 2.7+cu128 + laion-clap + pymusiclooper + librosa). `audio_qa.py` extended with `--clap-prompt` and `--loop-check` flags; default sanity-only path unchanged. Verified end-to-end on archived `bed_air.wav`: matching biome prompt = +0.407 ("matches"), unrelated prompt ("happy birthday party") = -0.117 ("does_not_match"). The "noise/static" archive WAV actually scores reasonably well against its biome prompt — user's verdict was about artistic quality, not prompt-content correctness.
+2. **(SOON)** Run `cc0_ingest.py` for real with PANNs auto-tagging + CLAP semantic index.
+3. **(MEDIUM)** Wire AudioGen alongside `synth_sfx.py` (uses existing audio venv).
+4. **(MEDIUM)** Wire ACE-Step v1.5 + Chatterbox-Multilingual (each may need separate venv if dep conflicts surface; default to existing audio venv).
+5. **(LATER)** LoRA fine-tune Stable Audio Open on curated CC0 references per biome.
+
+#### Brief #07 — UI / Icons (returned 2026-05-07)
+
+Full response: [`docs/research_briefs/2026_05_07_sota_survey/07_ui_icons.response.md`](../research_briefs/2026_05_07_sota_survey/07_ui_icons.response.md). Pipeline review: [`docs/pipeline_reviews/01_ui_icons.md`](../pipeline_reviews/01_ui_icons.md). Headlines:
+
+- **Brief validates our review.** The "just a color swap" verdict is correct; the unblocking step is running the cloud lane + LoRA training, both already-identified.
+- **Two version bumps unblock the existing cloud lane:**
+  - `recraft_icons.py` → **Recraft V4 Pro Vector** (Feb 2026 rebuild, native SVG output, $0.30/SVG, ~$9 for 30 hero icons)
+  - `local_diffusion_icons.py` FLUX-schnell → **FLUX.2 Klein 4B** (Apache 2.0, ~13 GB, **commercial-safe**, day-0 ComfyUI Blackwell support). FLUX.2 [dev] is non-commercial-licensed; **always use Klein 4B for shipped assets.**
+- **Faction LoRA scaffold = single biggest unlock.** **AI-Toolkit by Ostris** is the 2026 community default trainer with documented Blackwell/PyTorch 2.9.1 path. 15-25 hand-curated images per faction, ~30-60 min train per faction on the 5090. Apply at inference via **rgthree's Power LoRA Loader** (one workflow, faction selector, hot-swap).
+- **NO 2026 AI HUD generator exists for games.** Galileo/Uizard/v0.dev/NightCafe all produce static screenshots that don't respect 9-slice, don't reuse atlas, don't round-trip into Godot. **Viable answer:** AI for the *materials* per faction (frame metal, banner cloth, parchment), then PIL-composite as today.
+- **Style-unification across the 135 mixed-source library:** ComfyUI graph (FLUX.2 Redux multi-reference + Canny ControlNet + img2img). No dedicated "icon-set unifier" exists. Canny preserves silhouettes; Reference-only is largely deprecated for FLUX.
+- **Free-license library expansion:** **Tabler Icons (6128+, MIT)** is biggest *quantity* win; plus **Iconoir (1600, MIT)** + **OGA 700+ RPG (CC0)**. **Don't ingest Flaticon Fantasy RPG** (non-CC0/MIT).
+- **Watch list:** StarVector (CVPR 2025, Apache 2.0) — PNG→SVG vision-language model; 1B feasible on 5090. Side experiment for AI-generated icons that vtracer mangles, not a drop-in.
+- **No texture-worker overlap.**
+
+Action items (us, in priority order, additive only):
+1. **(SUB-DAY)** Add Tabler + Iconoir + OGA 700+ RPG sources to `freelib_ingest.py` (~8000 free-license glyphs added; no run yet).
+2. **(SUB-DAY)** Add **FLUX.2 Klein 4B** as model option in `local_diffusion_icons.py` (FLUX-schnell stays as fallback per additive pattern).
+3. **(SUB-DAY)** Update `recraft_icons.py` to target **Recraft V4 Pro Vector API** endpoints (plumbing only; no run — cloud parked per user direction).
+4. **(1 DAY)** Install **AI-Toolkit by Ostris** + scaffold one faction LoRA training pipeline (curation user-gated).
+5. **(USER-GATED CLOUD)** Run cloud lane for the 6 prompted icons in `prompts.json` (~$2 in Recraft V4 Pro Vector spend). Cloud parked.
+6. **(USER-GATED CURATION)** Train one faction LoRA end-to-end on `v1_smoke` scaffold (needs 20-image curation per faction).
+
+#### Brief #08 — Game Data / Balance (returned 2026-05-07)
+
+Full response: [`docs/research_briefs/2026_05_07_sota_survey/08_game_data_balance.response.md`](../research_briefs/2026_05_07_sota_survey/08_game_data_balance.response.md). Pipeline review: [`docs/pipeline_reviews/04_game_data.md`](../pipeline_reviews/04_game_data.md). Headlines:
+
+- **Infrastructure validated as best-in-project.** Pydantic schemas + OpenAI/Claude/synthetic/vLLM cascade + DuckDB reports + kill-dummy sim + Yarn validator + migrations + .tres export = right architecture for May 2026. **Same shape as brief #03 (Props): the 2026 SOTA story is "run what's plumbed" + a few additive tools, not a rebuild.**
+- **Single highest-leverage move: run the plumbed cascade on real keys.** DeepSeek V4-Pro for bulk records (~$0.18-$0.51 per 1K records, 30-100× cheaper than Opus, OpenAI-API-compatible — drops into existing cascade). Claude Opus 4.7 for creative weight (~10% of records). 250 records at DeepSeek bulk + 25 at Opus ≈ **~$0.50-$2 total**. **Cloud parked** per user direction.
+- **Five additive tools (free, additive, owned by us):**
+  1. **pymoo NSGA-II** Pareto utility (`pareto_dominated_records.py` sibling to `duckdb_reports.py`) — 1 day.
+  2. **fastjsonschema** or **okjson** alongside `jsonschema` (50-100× speedup) — sub-day, additive.
+  3. **DSPy + GEPA** (ICLR 2026 Oral) wired into `generate_records.py` for items/abilities — 1-2 days.
+  4. **`getsentry/json-schema-diff` CI gate** for migrations (BACKWARD/FORWARD/BREAKING) — sub-day.
+  5. **Hash-based incremental linker** (~50 LOC) — sub-day.
+- **XGrammar-2 (2026-05-04)** — 10-80× faster constrained decoding when vLLM ships compat. Watch list.
+- **Sub-pipeline findings (condensed):**
+  - **Combat sim:** keep `kill_dummy_sim.py`. **No RL on combat balance before combat exists.** Scripted-heuristic Monte Carlo in PettingZoo + LLM-as-tester pass (~$5/run) when ready.
+  - **Dialogue:** Yarn migration is lateral. Build ~100-line static analyzer + Claude-based authoring lint instead. **Don't adopt Inworld/Convai** (runtime NPC, not authoring).
+  - **Lore:** Obsidian + Smart Connections + git. **Don't buy World Anvil / LegendKeeper / Kanka / Campfire** (worldbuilding-as-product, wrong shape).
+  - **Localization:** Godot gettext (.po) + Crowdin Free + Claude Haiku/DeepL pre-translate. Pseudo-localization on day one. **Don't buy Lokalise / Phrase / Smartling pre-launch.**
+  - **Cross-ref:** custom linker fine through ~20K records IF lookups use `dict[id → record]` maps. Audit this. Re-evaluate at 50K.
+- **No texture-worker overlap.**
+
+Action items (us, in priority order, additive only):
+1. **(SUB-DAY)** Build dedicated `pipelines/game_data/.venv` (lightweight: pymoo + fastjsonschema + dspy + gepa).
+2. **(1 DAY)** Build `pareto_dominated_records.py` on top of pymoo NSGA-II as sibling to `duckdb_reports.py`.
+3. ✅ **DONE 2026-05-07 evening** — `fastjsonschema` wired as additive option in `validate_records.py`. New `--validator {pydantic,fastjsonschema,both}` flag (pydantic remains default). `both` mode reports per-backend timing + record-level verdict-disagreement diagnostics — useful for confirming the dumped JSON Schemas faithfully encode the Pydantic constraints. Smoke-tested on the 14-record validated set: backends agreed on every record; **fastjsonschema 1.89x faster** even at this tiny scale (brief #08's 5-50x framing applies at the 250-record scale). Pydantic was also installed in `pipelines/game_data/.venv` (which already had fastjsonschema + pymoo + duckdb) so all three modes run from a single interpreter without polluting system Python.
+4. **(SUB-DAY)** Add `getsentry/json-schema-diff` CI gate to migrations.
+5. **(1-2 DAYS)** Wire DSPy + GEPA scaffold into `generate_records.py` for items/abilities (metric: schema valid + Pareto-non-dominated + embedding distance).
+6. **(USER-GATED CLOUD)** Run the LLM cascade on real DeepSeek + Claude keys. ~$0.50-$2 spend.
+7. **(LATER)** XGrammar-2 upgrade in `local_llm_backend.py` when vLLM ships compat.
+
+#### Brief #09 — Per-Instance Mesh Albedo Inpaint (RETURNED 2026-05-07 evening)
+
+Brief: [`docs/research_briefs/2026_05_07_sota_survey/09_mesh_inpaint_per_instance.md`](../research_briefs/2026_05_07_sota_survey/09_mesh_inpaint_per_instance.md). Response: [`docs/research_briefs/2026_05_07_sota_survey/09_mesh_inpaint_per_instance.response.md`](../research_briefs/2026_05_07_sota_survey/09_mesh_inpaint_per_instance.response.md). Design doc (updated post-response): [`docs/plans/PATH_2_INPAINT_DESIGN_2026_05_07.md`](PATH_2_INPAINT_DESIGN_2026_05_07.md).
+
+Headlines:
+
+- **Architecture A (UV-space inpaint) ruled out for this asset class.** UV fragmentation is not a goblin-specific bug — it is the expected output of area-optimization UV packing from Trellis2/Meshy, universal across the entire character roster. Architecture A fails on all of them without a semantic re-unwrap step that no 2026 tool automates.
+- **Architecture B (camera-projection inpaint) confirmed as correct.** Camera-projection is UV-layout-agnostic — render from N views, inpaint in screen-space (where "chest" is always contiguous), back-project to UV. This is the 2026 industry consensus for the exact reason: UV fragmentation is irrelevant in screen space.
+- **No off-the-shelf tool.** 3-step stitched pipeline: Blender headless render → FLUX.1-Fill + IP-Adapter-FLUX inpaint (ComfyUI `/prompt` API) → nvdiffrast UV back-projection → Blender GLB repack.
+- **nvdiffrast** is the lightweight back-projector: `pip install nvdiffrast`, CUDA-native, no torch-version sensitivity. Full Hunyuan3D-Paint 2.1 is a quality upgrade (deferred to Phase 2).
+- **Workflow order confirmed: texture-first, then rig.** Puppeteer preserves UV + albedo through skinning. Smart pattern: generate all N variant albedos → rig base mesh once → swap texture reference per variant. Avoids N rig runs.
+- **Insignia and damage-states share all infrastructure.** Build insignia once; damage states are a different reference image + lower IP-Adapter weight. Not a separate system.
+- **IP-Adapter-FLUX (XLabs-AI x-flux)** is the reference-identity tool. At weight 0.8–1.0, it preserves the insignia's visual identity across instances (not pixel-perfect, but sufficient for faction marking reads at gameplay distance).
+- **Phase 0 skipped.** Brief returned before the PoC ran; Architecture A is already ruled out.
+
+Action items (us, Phase 1 build):
+1. ✅ **(DONE 2026-05-07 evening)** Stand up `pipelines/character_inpaint/.venv` + build 5-module pipeline. All modules shipped: `render_views_runner.py`, `comfy_inpaint.py`, `back_project.py`, `glb_repack.py`, `inpaint_variants.py`. Dry-run smoke test passed end-to-end (goblin_p × ashen_pact_brand, 6 views, 5/5 steps clean). FLUX.1-Fill + nvdiffrast GPU backends are coded — gated on FLUX.1-Fill model download (~16 GB) and GPU validation run.
+2. **(QUALITY GATE)** Download FLUX.1-Fill weights → run with `--inpaint-backend flux-fill --project-backend nvdiffrast` → compare one automated variant visually. Decide if smearing is acceptable.
+3. **(LATER)** Phase 2: replace nvdiffrast back-projection with Hunyuan3D-Paint projection module if smearing is unacceptable.
+4. **(LATER)** Phase 3: Grounded-SAM-2 for text-prompted view-space mask generation ("the chest area" → SAM mask on each render). Removes need for hand-authored per-view masks.
+
+#### Cross-cutting completed work (2026-05-07 evening session)
+
+After brief sift, the following landed in the same session:
+
+- ✅ **`pareto_dominated_records.py`** built on pymoo NSGA-II (sibling to `duckdb_reports.py`). Run from `pipelines/game_data/.venv`. Verified end-to-end on the existing 14 records — output renders correctly even when sample size is too sparse for dominance to surface anything (honest "either everything is on frontier or cohorts have <2 records" messaging). At brief #08's recommended scale (250 records via DeepSeek bulk + 25 via Opus creative), this becomes a real designer-facing balance lens.
+- ✅ **Brief #09 written + dispatched-ready** — per-instance mesh inpaint workflow, the cross-pipeline gap none of #01-#08 covered.
+- ✅ **Path 2 design doc written** — initial architectural shape + open questions; will be refined when #09 returns.
+- ✅ **Persistence layer secured** — fresh canonical handoff at [`docs/handoffs/HANDOFF_2026_05_07_evening_brief_sift_complete.md`](../handoffs/HANDOFF_2026_05_07_evening_brief_sift_complete.md), stale handoff postscripted, 2 new memory notes (isolated-venv-per-lane, faction-inpaint-workflow-gap).
+
+#### Briefs 03-08 (pending)
+
+- **03 Props** — image-to-3D 2026 SOTA beyond Trellis2
+- **04 VFX 3D bake** — GPU plan refresh
+- **05 VFX shaders** — better than LLM-mutation framework?
+- **06 Audio** — re-bake path after archive
+- **07 UI / Icons** — faction LoRA + hero icons
+- **08 Game Data** — ML-driven balance tooling
+
+(03/04/05 responses already returned per file inventory; sift those next.)
 
 ---
 
@@ -47,7 +341,7 @@ Character pipeline became mature because we did this for 5+ rigging tools, 2 ima
 | **Godot 4.5 biome terrain test scene** | ✅ — `stage_biome_terrain.py` + `biome_terrain.gdshader` (4-layer blender + vertex displacement + triplanar); 3 camera modes (walkable/topdown/iso); WorldEnvironment + sky + fog; animated water plane with depth-fade shoreline; ~10k MultiMesh scatter instances | Reached |
 | **One-command region pipeline** | ✅ — `region_pipeline.py` chains import_dem → fantasy_edit → biome_engine → splat → texture_bind → scatter → 3 Godot scenes. Verified end-to-end on Bryce/spired. | Reached |
 | **Fantasy DEM editing** | ✅ — `dem_fantasy_edit.py` with 7 styles (realistic, exaggerated, terraced, sharpened, spired, floating, mythic). Slots between import_dem and biome engine. | Reached |
-| **Bulk DEM ingestion + cache** | ✅ — `bulk_pull.py` walks `data_wishlist.json` (172 named regions), caches raw TIFFs to `../../pipelines/terrain/source_dems/`. Snapshot: 74 TIFFs / ~2.8 GB, premium tier 50/50 cached, showcase 14/20 cached. | Reached |
+| **Bulk DEM ingestion + cache** | ✅ — `bulk_pull.py` walks `data_wishlist.json` (172 named regions), caches raw TIFFs to `../../dems/` (relocated 2026-05-07). Current: 222 TIFFs / ~8.1 GB. | Reached |
 | **Worldwide mystery region sampler** | ✅ — `mystery_sampler.py` generated 300 random bboxes from interesting strips (Andes, Himalayas, Scandinavia, etc). | Reached |
 | **OpenTopography deep coverage** | ✅ — Default bumped COP30 (30m global), added GEBCO bathymetry merge, `--res` for high-res pulls, AW3D30 auto-pick for high-latitude. | Reached |
 | **Magic / Shaders** | 🟢 5 first-party Godot templates + batch review harness | Match characters |
@@ -204,7 +498,7 @@ Refactored the world-gen pipeline to match the character-pipeline's swap-able pa
 3. **Per-world terrain extents** — `--use-real-extents` reads real bbox span + elev range from upstream `terrain.json` / `tile_grid.json` via new `dem_meta` block in world.json. Default stays at legacy 512m × 64m diorama scale (multi-km worlds need scatter density / tile_meters retuning to look right at scale).
 4. **Region config schema** `region.config.v1` at `../../art_lab/biomes/regions/*.region.json`. `region_pipeline_from_config.py` walks one or many configs.
 
-Pattern matches `../../meshy/batch_pipeline.py`. Architecture audit + status table at [../worldgen_v1/WORLDGEN_ARCHITECTURE.md](../worldgen_v1/WORLDGEN_ARCHITECTURE.md) (v1-era). Schema reference at [../../art_lab/biomes/regions/README.md](../../art_lab/biomes/regions/README.md). End-to-end verified on death_valley_basin.
+Pattern matches `../../meshy/batch_pipeline.py`. Architecture audit + status table at [../../_archive/worldgen_2026_05_07/docs/worldgen_v1/WORLDGEN_ARCHITECTURE.md](../../_archive/worldgen_2026_05_07/docs/worldgen_v1/WORLDGEN_ARCHITECTURE.md) (v1-era, archived). Schema reference at [../../art_lab/biomes/regions/README.md](../../art_lab/biomes/regions/README.md). End-to-end verified on death_valley_basin.
 
 **Phase 2 next** (research-driven quality wins): implement hex-tile shader (Mikkelsen 2022), height-blend shader, BC7/BC5 reimport, Real-ESRGAN x4plus offline upscale.
 
