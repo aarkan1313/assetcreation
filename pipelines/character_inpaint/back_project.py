@@ -281,10 +281,10 @@ def _nvdiffrast_backend(
     positions, uv_coords, faces = _load_geometry(glb_path)
     positions = _normalize_geometry(positions)
 
-    # Convert to torch tensors on CUDA
+    # Convert to torch tensors on CUDA — nvdiffrast requires contiguous memory
     device = torch.device("cuda")
-    uv_t_batch = torch.from_numpy(uv_coords).unsqueeze(0).to(device)  # (1, V, 2)
-    faces_t = torch.from_numpy(faces).to(device)                       # (F, 3) int32
+    uv_t_batch = torch.from_numpy(np.ascontiguousarray(uv_coords)).unsqueeze(0).to(device)  # (1, V, 2)
+    faces_t = torch.from_numpy(np.ascontiguousarray(faces)).to(device)                       # (F, 3) int32
 
     # Build nvdiffrast rasterize context once
     glctx = dr.RasterizeCudaContext()
@@ -317,8 +317,9 @@ def _nvdiffrast_backend(
         verts_h = np.concatenate([positions, ones], axis=1)   # (V, 4)
         verts_clip = (MVP @ verts_h.T).T.astype(np.float32)   # (V, 4)
 
-        # nvdiffrast expects verts [1, V, 4], faces [F, 3] int32
-        verts_clip_t = torch.from_numpy(verts_clip).unsqueeze(0).to(device)  # (1, V, 4)
+        # nvdiffrast expects verts [1, V, 4], faces [F, 3] int32 — all must be contiguous
+        verts_clip_c = np.ascontiguousarray(verts_clip)
+        verts_clip_t = torch.from_numpy(verts_clip_c).unsqueeze(0).to(device)  # (1, V, 4)
 
         # --- Rasterize ---
         rast, _ = dr.rasterize(
