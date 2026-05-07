@@ -1,0 +1,18 @@
+[
+  {
+    "label": "no_ridges",
+    "prompt": "fresh white snow with small dimples, top-down photo, even lighting, photoreal"
+  },
+  {
+    "label": "powder",
+    "prompt": "powder snow surface, fine crystalline detail, top-down photo, even lighting, photoreal"
+  },
+  {
+    "label": "aerial",
+    "prompt": "aerial photograph of fresh snow field, even overcast lighting, photoreal"
+  },
+  {
+    "label": "crystal_firn",
+    "prompt": "fresh snow with ice crystal aggregates and firn texture, top-down photo, even diffuse light, photoreal"
+  }
+]

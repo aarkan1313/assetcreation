@@ -350,6 +350,41 @@ model, we *should* revisit the prompt structure to use real negative
 prompts. The cookbook's "no debris" patterns would migrate from the
 positive prompt to a negative one.
 
+## L19 — Two concurrent runs with the same --name silently corrupt each other
+
+Observed 2026-05-07 during the A.3 launch. Two `experiment.py`
+processes were accidentally started against the same `--name
+A3_snow_prompts` (caused by a botched env-var assignment that left
+the first process running while a second was launched). Both wrote
+to the same `world/textures/library/<asset_id>_v0..v3/` directories
+in parallel. `variant_select.py`'s default `--keep-all=False` deletes
+the variant dirs after picking the best one and copying it. So:
+process A finished a variant set, copied best to canonical id,
+**deleted the variant dirs**; process B was still working in those
+same dirs and crashed with `FileNotFoundError` when it tried to copy
+*its* best variant from a directory process A had already removed.
+
+The pipeline has **no locking** at the asset_id or library-path
+level. It's an exclusive-write contract enforced only by convention.
+
+**Implications:**
+- **Never launch two `experiment.py` runs with the same `--name`**
+  in parallel. Different `--name` values are fine (separate library
+  prefixes via the asset_id formula).
+- A failed run leaves stale variant dirs (`<id>_v0`..`_vN`) on disk.
+  If a re-run uses the same id, *clean these up first* — otherwise
+  the next variant_select picks up confused state.
+- If implementing a future "parallelize across assets" feature, add
+  a lock file under `LIBRARY/<id>/.lock` (or similar) and bail out
+  if it exists.
+
+**Workaround / cleanup recipe** when this happens:
+```bash
+rm -rf D:/assets/world/textures/library/<name>__*
+rm -rf D:/tmp/world3_experiments/<name>
+```
+Then re-launch a single `experiment.py` process.
+
 ## What we don't know yet (open questions)
 
 - **Does palette_lock actually produce more cohesive biome sets?** Step
