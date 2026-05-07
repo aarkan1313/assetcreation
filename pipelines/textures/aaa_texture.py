@@ -69,9 +69,21 @@ PRESETS = {
     # PBR backends:
     #   "derive"  = derive_pbr_v2 (heuristic, no model, fastest)
     #   "sm"      = StableMaterials (real diffusion model, ~20s/material on 5090)
-    "fast":    {"variants": 2, "pbr": "derive", "use_repair": True, "seam_max": 0.020, "delight": 0.3},
-    "default": {"variants": 4, "pbr": "sm",     "use_repair": True, "seam_max": 0.010, "delight": 0.4},
-    "strict":  {"variants": 6, "pbr": "sm",     "use_repair": True, "seam_max": 0.005, "delight": 0.5},
+    #
+    # Sizes:
+    #   `flux_size`  — what FLUX generates the source albedo at (1024 = standard).
+    #   `pbr_size`   — what we deliver. 512 matches StableMaterials' native
+    #                  training resolution. We deliberately don't upscale beyond
+    #                  the model's native res; doing so just LANCZOS-stretches
+    #                  the signal without adding detail.
+    # All maps generated at 512 — matches StableMaterials' native training res
+    # and avoids the size-mismatch bug. FLUX 2 klein at 512 still produces
+    # good tileable albedos and runs ~4x faster than 1024. For terrain via
+    # world_triplanar (one tile every 5-20m), 512 supplies plenty of pixel
+    # density at any of our camera ranges.
+    "fast":    {"variants": 2, "pbr": "derive", "flux_size": 512, "pbr_size": 512, "use_repair": True, "seam_max": 0.020, "delight": 0.3, "min_grade": "C"},
+    "default": {"variants": 4, "pbr": "sm",     "flux_size": 512, "pbr_size": 512, "use_repair": True, "seam_max": 0.010, "delight": 0.4, "min_grade": "B"},
+    "strict":  {"variants": 6, "pbr": "sm",     "flux_size": 512, "pbr_size": 512, "use_repair": True, "seam_max": 0.005, "delight": 0.5, "min_grade": "A"},
     # NOTE: Material Anything's standalone image-to-PBR is broken for 2D
     # textures (model requires multi-view 3D consolidation). The mesh-driven
     # path still works — see material_anything_adapter.py.
@@ -86,7 +98,9 @@ def main():
     ap.add_argument("--quality", choices=["fast", "default", "strict"], default="default")
     ap.add_argument("--variants", type=int, default=None,
                     help="override preset variant count")
-    ap.add_argument("--size", type=int, default=1024)
+    ap.add_argument("--size", type=int, default=None,
+                    help="override preset flux_size + pbr_size (uniform). "
+                         "Default: preset-defined (512 for default/strict)")
     ap.add_argument("--steps", type=int, default=4)
     ap.add_argument("--seed-base", type=int, default=42)
     ap.add_argument("--heal-strength", type=float, default=0.35)
@@ -101,6 +115,9 @@ def main():
     pbr_backend = preset.get("pbr", "derive")  # "derive" | "sm"
     use_repair = preset["use_repair"]
     delight_strength = preset["delight"]
+    flux_size = args.size if args.size is not None else preset["flux_size"]
+    pbr_size = args.size if args.size is not None else preset["pbr_size"]
+    min_grade = preset.get("min_grade", "B")
 
     out_dir = LIBRARY / args.id
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -108,7 +125,8 @@ def main():
     log = {
         "id": args.id, "prompt": args.prompt, "category": args.category,
         "quality": args.quality, "preset": preset,
-        "n_variants": n_variants, "size": args.size,
+        "n_variants": n_variants,
+        "flux_size": flux_size, "pbr_size": pbr_size,
         "steps": args.steps, "seed_base": args.seed_base,
         "started_at": datetime.now(timezone.utc).isoformat(),
         "stages": [],
@@ -119,7 +137,7 @@ def main():
         str(PIPELINE_DIR / "variant_select.py"),
         "--prompt", args.prompt, "--id", args.id,
         "--variants", str(n_variants),
-        "--size", str(args.size), "--steps", str(args.steps),
+        "--size", str(flux_size), "--steps", str(args.steps),
         "--seed-base", str(args.seed_base),
         "--heal-strength", str(args.heal_strength),
         "--host", args.host,
@@ -139,7 +157,9 @@ def main():
 
     # ---- STAGE 3: PBR estimation ----
     if pbr_backend == "sm":
-        # StableMaterials runs in mesa-env (which has diffusers+cu130 ready)
+        # StableMaterials runs in mesa-env (which has diffusers+cu130 ready).
+        # We pass --size matching the model's native resolution (512). Larger
+        # values just LANCZOS-stretch the output; not worth the lie.
         sm_python = r"D:\assets\animators\mesa-env\venv\Scripts\python.exe"
         sm_script = str(PIPELINE_DIR / "stablematerials_image2pbr.py")
         result = subprocess.run([
@@ -148,7 +168,7 @@ def main():
             "--out", str(out_dir),
             "--id", args.id,
             "--mode", "standard",
-            "--size", str(args.size),
+            "--size", str(pbr_size),
         ])
         if result.returncode != 0:
             print(f"  StableMaterials failed; falling back to derive_pbr_v2")
@@ -189,15 +209,24 @@ def main():
             print(f"  seam_repair note: {e}")
             log["stages"].append({"stage": "seam_repair", "skipped": True})
 
-    # ---- STAGE 5: texture QA ----
+    # ---- STAGE 5: texture QA (3-check seam metric + sanity) ----
     python_subprocess([
         str(PIPELINE_DIR / "texture_qa.py"),
         "--material", str(out_dir),
-    ], "STAGE 5: QA (seam + sphere/plane synthetic)")
+        "--category", args.category,
+    ], "STAGE 5: QA (3-check seam metric + sphere/plane preview + sanity)")
     qa_summary = json.loads((out_dir / "qa" / "summary.json").read_text(encoding="utf-8"))
-    final_score = qa_summary["seam"]["overall"]
-    grade = qa_summary["seam"]["grade"]
-    log["stages"].append({"stage": "qa", "seam_score": final_score, "grade": grade})
+    seam = qa_summary["seam"]
+    grade = seam["grade"]
+    checks = seam["checks"]
+    log["stages"].append({
+        "stage": "qa",
+        "grade": grade,
+        "edge_mse": checks["edge_continuity"]["overall_mse"],
+        "junction_ratio": checks["junction_visibility"]["ratio"],
+        "periodic_locality": checks["periodic_artifact"]["peak_locality_ratio"],
+        "sanity_ok": qa_summary["sanity_ok"],
+    })
 
     # ---- STAGE 5b: real Blender PBR render (best-effort; non-fatal) ----
     try:
@@ -211,13 +240,66 @@ def main():
         log["stages"].append({"stage": "blender_preview", "ok": False, "note": str(e)})
 
     # ---- STAGE 6: quality gate ----
+    # Multi-check verdict. Pass requires:
+    #   1. seam grade meets preset's min_grade (A=all 3 checks pass, B=>=2,
+    #      C=>=1, D=none)
+    #   2. sanity_ok (map ranges look sensible; all expected maps present)
+    #   3. at least 4 of {albedo, normal, roughness, height} maps exist
     print(f"\n=== STAGE 6: quality gate ===")
-    print(f"  required: seam < {seam_max:.5f} (grade {'A' if seam_max <= 0.003 else 'B' if seam_max <= 0.01 else 'C'})")
-    print(f"  got:      seam = {final_score:.5f} (grade {grade})")
-    passed = final_score <= seam_max
+    grade_rank = {"A": 3, "B": 2, "C": 1, "D": 0}
+    if grade not in grade_rank:
+        # Defensive: don't silently treat an unexpected grade as D and
+        # potentially pass it through with min_grade='D'. Surface the
+        # corruption.
+        raise RuntimeError(
+            f"texture_qa returned unexpected grade {grade!r}; "
+            f"expected one of {sorted(grade_rank)}"
+        )
+    if min_grade not in grade_rank:
+        raise RuntimeError(
+            f"preset min_grade {min_grade!r} not in {sorted(grade_rank)}"
+        )
+    grade_pass = grade_rank[grade] >= grade_rank[min_grade]
+    sanity_pass = bool(qa_summary.get("sanity_ok"))
+    core_maps_present = sum(1 for m in ("albedo", "normal", "roughness", "height")
+                            if (out_dir / f"{args.id}_{m}.png").exists())
+    maps_pass = core_maps_present >= 4
+
+    failures: list[str] = []
+    if not grade_pass:
+        per_check = [
+            ("edge_continuity", checks["edge_continuity"]["passed"]),
+            ("junction_visibility", checks["junction_visibility"]["passed"]),
+            ("periodic_artifact", checks["periodic_artifact"]["passed"]),
+        ]
+        failed_checks = [n for n, ok in per_check if not ok]
+        failures.append(f"grade={grade} below min={min_grade} "
+                        f"(failed: {','.join(failed_checks) or 'none'})")
+    if not sanity_pass:
+        notes = qa_summary.get("notes") or []
+        failures.append(f"sanity: {'; '.join(notes) or 'unspecified'}")
+    if not maps_pass:
+        failures.append(f"only {core_maps_present}/4 core maps present")
+
+    passed = grade_pass and sanity_pass and maps_pass
+    print(f"  required:    grade>={min_grade}, sanity_ok=True, core_maps>=4")
+    print(f"  got:         grade={grade}, sanity_ok={sanity_pass}, core_maps={core_maps_present}/4")
+    if failures:
+        for f in failures:
+            print(f"  FAIL: {f}")
+    else:
+        print(f"  PASS")
+
     log["passed_gate"] = passed
-    log["final_score"] = final_score
     log["grade"] = grade
+    log["gate"] = {
+        "min_grade": min_grade,
+        "grade_pass": grade_pass,
+        "sanity_pass": sanity_pass,
+        "maps_pass": maps_pass,
+        "core_maps_present": core_maps_present,
+        "failures": failures,
+    }
 
     # ---- STAGE 7: catalog ----
     record = {
@@ -245,9 +327,14 @@ def main():
             "height": (out_dir / f"{args.id}_height.png").exists(),
             "ao": (out_dir / f"{args.id}_ao.png").exists(),
         }.items() if v],
-        "seam_score": final_score,
         "seam_grade": grade,
+        "seam_checks": {
+            "edge_continuity_mse": checks["edge_continuity"]["overall_mse"],
+            "junction_ratio": checks["junction_visibility"]["ratio"],
+            "periodic_locality": checks["periodic_artifact"]["peak_locality_ratio"],
+        },
         "passed_gate": passed,
+        "gate_failures": failures,
     }
     record["maps"] = {k: v for k, v in record["maps"].items() if v}
 
@@ -264,7 +351,10 @@ def main():
     print(f"  quality:    {args.quality}")
     print(f"  variants:   {n_variants}")
     print(f"  PBR method: {pbr_backend}")
-    print(f"  seam:       {final_score:.5f} (grade {grade})")
+    print(f"  size:       {pbr_size}x{pbr_size} (flux at {flux_size})")
+    print(f"  grade:      {grade}  edge={checks['edge_continuity']['overall_mse']:.4f} "
+          f"junc={checks['junction_visibility']['ratio']:.2f} "
+          f"period={checks['periodic_artifact']['peak_locality_ratio']:.1f}")
     print(f"  gate:       {'PASS' if passed else 'FAIL (use --no-gate to ship anyway)'}")
 
     if not passed and not args.no_gate:

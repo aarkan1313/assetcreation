@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/texture_viewer.tscn" id="scene"]
+[ext_resource type="Script" path="res://scripts/HeadlessTextureGrid.gd" id="cap_script"]
+
+[node name="CaptureTextureGrid" type="Node"]
+
+[node name="Inner" parent="." instance=ExtResource("scene")]
+
+[node name="Capture" type="Node" parent="."]
+script = ExtResource("cap_script")

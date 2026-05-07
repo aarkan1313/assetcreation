@@ -24,6 +24,8 @@ find something.
 | "How do we stitch tiles or fuse height/color/canopy layers?" | [OPENTOPO_MOSAIC_FUSION_WORKFLOWS.md](OPENTOPO_MOSAIC_FUSION_WORKFLOWS.md) |
 | "How do OpenTopo textures, real-place scenes, and HD zoom fit together?" | [OPENTOPO_TEXTURE_SCENE_ROADMAP.md](OPENTOPO_TEXTURE_SCENE_ROADMAP.md) |
 | "What happened in the Phase 2 HD review pass?"             | [OPENTOPO_PHASE2_HD_REVIEW.md](OPENTOPO_PHASE2_HD_REVIEW.md) |
+| "What happened in the Phase 2 max review pass?"            | [OPENTOPO_PHASE2_MAX_REVIEW.md](OPENTOPO_PHASE2_MAX_REVIEW.md) |
+| "What is the next huge 4-call OpenTopo plan?"              | [OPENTOPO_LARGE_4CALL_PLAN.md](OPENTOPO_LARGE_4CALL_PLAN.md) |
 | "What happened in the first OpenTopo mosaic pilot?"          | [OPENTOPO_PILOT1_GRAND_CANYON_USGS10M_AUDIT.md](OPENTOPO_PILOT1_GRAND_CANYON_USGS10M_AUDIT.md) |
 | "What happened in the first OpenTopo fusion pilot?"          | [OPENTOPO_PILOT2_GUADALUPE_CYPRESS_FUSION_AUDIT.md](OPENTOPO_PILOT2_GUADALUPE_CYPRESS_FUSION_AUDIT.md) |
 | "What do the iteration screenshots look like?"               | [captures/](captures/) (one folder per iteration)     |
@@ -54,6 +56,8 @@ find something.
   OPENTOPO_MOSAIC_FUSION_WORKFLOWS.md /
   OPENTOPO_TEXTURE_SCENE_ROADMAP.md /
   OPENTOPO_PHASE2_HD_REVIEW.md /
+  OPENTOPO_PHASE2_MAX_REVIEW.md /
+  OPENTOPO_LARGE_4CALL_PLAN.md /
   OPENTOPO_PILOT1_GRAND_CANYON_USGS10M_AUDIT.md /
   OPENTOPO_PILOT2_GUADALUPE_CYPRESS_FUSION_AUDIT.md / opentopo/STATUS.md** —
   OpenTopography sourcing, tooling commands, data-type findings, mosaic/fusion

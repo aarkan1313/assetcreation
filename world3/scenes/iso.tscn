@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/Terrain.gd" id="terrain_script"]
+[ext_resource type="Material" path="res://textures/wgv3/terrain_blend_tetons.tres" id="terrain_mat"]
+[ext_resource type="Script" path="res://scripts/IsoCam.gd" id="iso_script"]
+
+[sub_resource type="Environment" id="env"]
+background_mode = 1
+background_color = Color(0.55, 0.7, 0.9, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.55, 0.62, 0.75, 1)
+ambient_light_energy = 0.25
+tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 8.0
+ssao_intensity = 2.0
+
+[node name="Iso" type="Node3D"]
+
+[node name="WorldEnv" type="WorldEnvironment" parent="."]
+environment = SubResource("env")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.7071, -0.5, 0.5, 0, 0.7071, 0.7071, -0.7071, -0.5, 0.5, 0, 8000, 0)
+light_color = Color(1, 0.97, 0.92, 1)
+light_energy = 1.8
+shadow_enabled = true
+directional_shadow_max_distance = 30000.0
+directional_shadow_split_1 = 0.08
+directional_shadow_split_2 = 0.25
+directional_shadow_split_3 = 0.55
+
+[node name="Terrain" type="MeshInstance3D" parent="."]
+script = ExtResource("terrain_script")
+material_override = ExtResource("terrain_mat")
+subdivisions = 256
+
+[node name="IsoCam" type="Camera3D" parent="."]
+script = ExtResource("iso_script")
+projection = 1
+near = 1.0
+far = 80000.0
+current = true

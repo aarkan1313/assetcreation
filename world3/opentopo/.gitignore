@@ -1,0 +1,8 @@
+/config/*.env
+/config/*.ps1
+/*-*-*-*-*/
+/catalog/otcatalog_raw/
+/catalog/site_catalog_summary.json
+/raw/
+/processed/
+/viewer_sets/

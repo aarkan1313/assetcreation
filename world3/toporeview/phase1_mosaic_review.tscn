@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://toporeview/TopoReview.gd" id="review_script"]
+[ext_resource type="Script" path="res://scripts/Terrain.gd" id="terrain_script"]
+[ext_resource type="Script" path="res://scripts/FlyCam.gd" id="flycam_script"]
+[ext_resource type="Material" path="res://textures/rock_light/material.tres" id="terrain_mat"]
+
+[sub_resource type="Environment" id="env"]
+background_mode = 1
+background_color = Color(0.55, 0.68, 0.82, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.62, 0.66, 0.72, 1)
+ambient_light_energy = 0.38
+tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 8.0
+ssao_intensity = 1.8
+
+[node name="Phase1MosaicReview" type="Node3D"]
+script = ExtResource("review_script")
+review_title = "Phase 1 - Grand Canyon USGS10m Mosaic"
+heightmap_path = "res://toporeview/phase1_mosaic/heightmap.png"
+meta_path = "res://toporeview/phase1_mosaic/meta.json"
+layers_dir = "res://toporeview/phase1_mosaic/layers"
+layer_order = PackedStringArray("terrain_texture", "hillshade", "elevation_gray", "coverage_count", "seam_delta", "slope_deg", "roughness")
+start_layer = "terrain_texture"
+terrain_path = NodePath("Terrain")
+camera_path = NodePath("Camera3D")
+label_path = NodePath("CanvasLayer/ReviewLabel")
+
+[node name="WorldEnv" type="WorldEnvironment" parent="."]
+environment = SubResource("env")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.7071, -0.5, 0.5, 0, 0.7071, 0.7071, -0.7071, -0.5, 0.5, 0, 8000, 0)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 1.85
+shadow_enabled = true
+directional_shadow_max_distance = 80000.0
+directional_shadow_split_1 = 0.08
+directional_shadow_split_2 = 0.25
+directional_shadow_split_3 = 0.55
+
+[node name="Terrain" type="MeshInstance3D" parent="."]
+script = ExtResource("terrain_script")
+material_override = ExtResource("terrain_mat")
+subdivisions = 256
+defer_initial_build = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+script = ExtResource("flycam_script")
+near = 1.0
+far = 120000.0
+current = true
+move_speed = 5000.0
+fast_mult = 8.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ReviewLabel" type="Label" parent="CanvasLayer"]
+offset_left = 18.0
+offset_top = 16.0
+offset_right = 980.0
+offset_bottom = 160.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 20
+text = "Phase 1 review"

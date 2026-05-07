@@ -1,0 +1,190 @@
+{
+  "version": 1,
+  "created": "2026-05-07",
+  "default_initial_sample_km": 20,
+  "default_scaleup_sample_km": 80,
+  "notes": [
+    "Priority 1 is the calibration wave: one site per biome.",
+    "Priority 2 completes the 5-sites-per-biome matrix.",
+    "Use globaldem for worldwide raster baselines and otCatalog for high-resolution discovery.",
+    "Point-cloud availability is uneven globally; USGS and NOAA coverage is strongest in the United States, while OT-hosted and community datasets vary by region."
+  ],
+  "biomes": [
+    {
+      "code": "tropical_moist_broadleaf",
+      "name": "Tropical and subtropical moist broadleaf forests",
+      "sites": [
+        {"id": "tmf_amazon_brazil", "priority": 1, "locale": "Central Amazon, Brazil", "lat": -3.4, "lon": -60.0, "elevation_target": "lowland rainforest"},
+        {"id": "tmf_congo_drc", "priority": 2, "locale": "Congo Basin, DRC", "lat": 0.5, "lon": 24.0, "elevation_target": "lowland rainforest"},
+        {"id": "tmf_borneo_sabah", "priority": 2, "locale": "Borneo rainforest, Sabah", "lat": 4.5, "lon": 114.8, "elevation_target": "humid tropical hills"},
+        {"id": "tmf_western_ghats_india", "priority": 2, "locale": "Western Ghats, India", "lat": 10.1, "lon": 76.5, "elevation_target": "wet tropical mountains"},
+        {"id": "tmf_daintree_australia", "priority": 2, "locale": "Daintree, Australia", "lat": -16.2, "lon": 145.4, "elevation_target": "coastal rainforest"}
+      ]
+    },
+    {
+      "code": "tropical_dry_broadleaf",
+      "name": "Tropical and subtropical dry broadleaf forests",
+      "sites": [
+        {"id": "tdf_yucatan_mexico", "priority": 1, "locale": "Yucatan dry forest, Mexico", "lat": 20.0, "lon": -89.0, "elevation_target": "low karst plain"},
+        {"id": "tdf_madagascar_west", "priority": 2, "locale": "Western Madagascar dry forest", "lat": -19.5, "lon": 44.5, "elevation_target": "dry forest lowlands"},
+        {"id": "tdf_gir_india", "priority": 2, "locale": "Gir dry forest, India", "lat": 21.1, "lon": 70.7, "elevation_target": "dry forest hills"},
+        {"id": "tdf_caatinga_brazil", "priority": 2, "locale": "Caatinga, Brazil", "lat": -8.0, "lon": -40.0, "elevation_target": "semiarid uplands"},
+        {"id": "tdf_chaco_paraguay", "priority": 2, "locale": "Dry Chaco, Paraguay", "lat": -21.0, "lon": -61.0, "elevation_target": "flat dry woodland"}
+      ]
+    },
+    {
+      "code": "tropical_conifer",
+      "name": "Tropical and subtropical coniferous forests",
+      "sites": [
+        {"id": "tcf_sierra_madre_mexico", "priority": 1, "locale": "Sierra Madre Occidental, Mexico", "lat": 25.0, "lon": -107.0, "elevation_target": "pine-oak mountains"},
+        {"id": "tcf_honduras_pine", "priority": 2, "locale": "Honduran pine forest", "lat": 14.7, "lon": -86.4, "elevation_target": "tropical pine uplands"},
+        {"id": "tcf_belize_pine_ridge", "priority": 2, "locale": "Mountain Pine Ridge, Belize", "lat": 17.0, "lon": -88.9, "elevation_target": "pine plateau"},
+        {"id": "tcf_hispaniola_pine", "priority": 2, "locale": "Hispaniolan pine forest", "lat": 19.0, "lon": -71.0, "elevation_target": "island mountains"},
+        {"id": "tcf_dalat_vietnam", "priority": 2, "locale": "Da Lat pine forest, Vietnam", "lat": 11.95, "lon": 108.45, "elevation_target": "tropical highland"}
+      ]
+    },
+    {
+      "code": "temperate_broadleaf_mixed",
+      "name": "Temperate broadleaf and mixed forests",
+      "sites": [
+        {"id": "tbm_appalachians_usa", "priority": 1, "locale": "Southern Appalachians, USA", "lat": 35.6, "lon": -83.5, "elevation_target": "humid forest mountains", "high_res_hint": "USGS"},
+        {"id": "tbm_hainich_germany", "priority": 2, "locale": "Hainich, Germany", "lat": 51.1, "lon": 10.5, "elevation_target": "temperate forest hills"},
+        {"id": "tbm_honshu_japan", "priority": 2, "locale": "Central Honshu, Japan", "lat": 36.2, "lon": 138.2, "elevation_target": "mixed forest mountains"},
+        {"id": "tbm_valdivian_chile", "priority": 2, "locale": "Valdivian forest, Chile", "lat": -40.7, "lon": -72.5, "elevation_target": "wet temperate mountains"},
+        {"id": "tbm_new_zealand_beech", "priority": 2, "locale": "South Island beech forest, New Zealand", "lat": -45.0, "lon": 168.0, "elevation_target": "temperate alpine valleys", "high_res_hint": "LINZ"}
+      ]
+    },
+    {
+      "code": "temperate_conifer",
+      "name": "Temperate conifer forests",
+      "sites": [
+        {"id": "tcf_pnw_cascades_usa", "priority": 1, "locale": "Cascade Range, USA", "lat": 46.8, "lon": -121.9, "elevation_target": "volcanic conifer mountains", "high_res_hint": "USGS"},
+        {"id": "tcf_sierra_nevada_usa", "priority": 2, "locale": "Sierra Nevada, USA", "lat": 38.0, "lon": -120.0, "elevation_target": "dry conifer mountains", "high_res_hint": "USGS"},
+        {"id": "tcf_bc_coast_canada", "priority": 2, "locale": "Coast Mountains, Canada", "lat": 50.0, "lon": -123.0, "elevation_target": "wet conifer mountains", "high_res_hint": "Canada DEM"},
+        {"id": "tcf_alps_switzerland", "priority": 2, "locale": "Swiss Alps forest belt", "lat": 46.6, "lon": 8.0, "elevation_target": "alpine conifer slopes"},
+        {"id": "tcf_kiso_japan", "priority": 2, "locale": "Kiso Mountains, Japan", "lat": 35.8, "lon": 137.6, "elevation_target": "temperate conifer mountains"}
+      ]
+    },
+    {
+      "code": "boreal_taiga",
+      "name": "Boreal forests and taiga",
+      "sites": [
+        {"id": "bor_alaska_interior", "priority": 1, "locale": "Interior Alaska, USA", "lat": 64.8, "lon": -147.7, "elevation_target": "boreal low mountains", "high_res_hint": "USGS/Arctic"},
+        {"id": "bor_yukon_canada", "priority": 2, "locale": "Yukon, Canada", "lat": 63.8, "lon": -135.5, "elevation_target": "boreal uplands", "high_res_hint": "Canada DEM"},
+        {"id": "bor_lapland_sweden", "priority": 2, "locale": "Swedish Lapland", "lat": 67.5, "lon": 20.0, "elevation_target": "boreal hills"},
+        {"id": "bor_siberia_russia", "priority": 2, "locale": "Central Siberian taiga", "lat": 61.5, "lon": 101.0, "elevation_target": "taiga plateau"},
+        {"id": "bor_kamchatka_russia", "priority": 2, "locale": "Kamchatka taiga", "lat": 56.0, "lon": 160.0, "elevation_target": "volcanic boreal terrain"}
+      ]
+    },
+    {
+      "code": "tropical_grass_savanna",
+      "name": "Tropical and subtropical grasslands, savannas, and shrublands",
+      "sites": [
+        {"id": "tgs_serengeti_tanzania", "priority": 1, "locale": "Serengeti, Tanzania", "lat": -2.3, "lon": 34.8, "elevation_target": "savanna plains"},
+        {"id": "tgs_cerrado_brazil", "priority": 2, "locale": "Cerrado, Brazil", "lat": -15.5, "lon": -47.5, "elevation_target": "savanna plateau"},
+        {"id": "tgs_llanos_venezuela", "priority": 2, "locale": "Llanos, Venezuela", "lat": 8.0, "lon": -67.0, "elevation_target": "seasonal savanna plain"},
+        {"id": "tgs_north_australia", "priority": 2, "locale": "Northern Australia savanna", "lat": -13.5, "lon": 132.0, "elevation_target": "tropical savanna"},
+        {"id": "tgs_miombo_zambia", "priority": 2, "locale": "Miombo woodland, Zambia", "lat": -14.5, "lon": 27.8, "elevation_target": "wooded savanna uplands"}
+      ]
+    },
+    {
+      "code": "temperate_grass_savanna",
+      "name": "Temperate grasslands, savannas, and shrublands",
+      "sites": [
+        {"id": "tgr_great_plains_usa", "priority": 1, "locale": "Great Plains, USA", "lat": 39.0, "lon": -101.0, "elevation_target": "flat prairie", "high_res_hint": "USGS"},
+        {"id": "tgr_pampas_argentina", "priority": 2, "locale": "Pampas, Argentina", "lat": -35.0, "lon": -61.0, "elevation_target": "temperate grassland plain"},
+        {"id": "tgr_mongolian_steppe", "priority": 2, "locale": "Mongolian steppe", "lat": 47.0, "lon": 103.0, "elevation_target": "steppe plateau"},
+        {"id": "tgr_kazakh_steppe", "priority": 2, "locale": "Kazakh steppe", "lat": 50.0, "lon": 70.0, "elevation_target": "continental grassland"},
+        {"id": "tgr_highveld_south_africa", "priority": 2, "locale": "Highveld, South Africa", "lat": -27.0, "lon": 29.0, "elevation_target": "high grassland plateau"}
+      ]
+    },
+    {
+      "code": "flooded_grass_savanna",
+      "name": "Flooded grasslands and savannas",
+      "sites": [
+        {"id": "fgs_pantanal_brazil", "priority": 1, "locale": "Pantanal, Brazil", "lat": -17.5, "lon": -57.0, "elevation_target": "wetland floodplain"},
+        {"id": "fgs_okavango_botswana", "priority": 2, "locale": "Okavango Delta, Botswana", "lat": -19.3, "lon": 22.8, "elevation_target": "inland delta"},
+        {"id": "fgs_everglades_usa", "priority": 2, "locale": "Everglades, USA", "lat": 25.4, "lon": -80.7, "elevation_target": "low wetland plain", "high_res_hint": "USGS/NOAA"},
+        {"id": "fgs_sudd_south_sudan", "priority": 2, "locale": "Sudd, South Sudan", "lat": 7.8, "lon": 30.5, "elevation_target": "large wetland floodplain"},
+        {"id": "fgs_brahmaputra_india", "priority": 2, "locale": "Brahmaputra floodplain, India", "lat": 26.6, "lon": 93.2, "elevation_target": "monsoon floodplain"}
+      ]
+    },
+    {
+      "code": "montane_grass_shrub",
+      "name": "Montane grasslands and shrublands",
+      "sites": [
+        {"id": "mgs_tibetan_plateau", "priority": 1, "locale": "Tibetan Plateau", "lat": 31.5, "lon": 90.0, "elevation_target": "very high plateau"},
+        {"id": "mgs_andes_puna_peru", "priority": 2, "locale": "Andean puna, Peru", "lat": -13.5, "lon": -71.0, "elevation_target": "high alpine grassland"},
+        {"id": "mgs_ethiopian_highlands", "priority": 2, "locale": "Ethiopian Highlands", "lat": 9.5, "lon": 39.5, "elevation_target": "highland grass/shrub"},
+        {"id": "mgs_drakensberg", "priority": 2, "locale": "Drakensberg, Lesotho/South Africa", "lat": -29.3, "lon": 29.3, "elevation_target": "escarpment grassland"},
+        {"id": "mgs_altai_mongolia", "priority": 2, "locale": "Altai Mountains", "lat": 49.0, "lon": 88.0, "elevation_target": "cold montane steppe"}
+      ]
+    },
+    {
+      "code": "tundra",
+      "name": "Tundra",
+      "sites": [
+        {"id": "tun_arctic_alaska", "priority": 1, "locale": "Arctic Alaska, USA", "lat": 69.3, "lon": -148.5, "elevation_target": "arctic coastal tundra", "high_res_hint": "USGS/Arctic"},
+        {"id": "tun_nunavut_canada", "priority": 2, "locale": "Nunavut, Canada", "lat": 68.0, "lon": -100.0, "elevation_target": "arctic shield tundra"},
+        {"id": "tun_svalbard", "priority": 2, "locale": "Svalbard", "lat": 78.5, "lon": 16.0, "elevation_target": "polar tundra/glacier margins"},
+        {"id": "tun_siberia", "priority": 2, "locale": "Siberian tundra", "lat": 69.0, "lon": 86.0, "elevation_target": "arctic tundra plain"},
+        {"id": "tun_iceland_highlands", "priority": 2, "locale": "Iceland highlands", "lat": 64.8, "lon": -18.5, "elevation_target": "volcanic tundra"}
+      ]
+    },
+    {
+      "code": "mediterranean",
+      "name": "Mediterranean forests, woodlands, and scrub",
+      "sites": [
+        {"id": "med_california_chaparral", "priority": 1, "locale": "California chaparral, USA", "lat": 34.5, "lon": -119.0, "elevation_target": "coastal scrub mountains", "high_res_hint": "USGS/NOAA"},
+        {"id": "med_spain_andalusia", "priority": 2, "locale": "Andalusia, Spain", "lat": 37.5, "lon": -3.0, "elevation_target": "dry Mediterranean mountains"},
+        {"id": "med_crete_greece", "priority": 2, "locale": "Crete, Greece", "lat": 35.2, "lon": 24.8, "elevation_target": "island scrub mountains"},
+        {"id": "med_cape_fynbos", "priority": 2, "locale": "Cape fynbos, South Africa", "lat": -34.2, "lon": 18.9, "elevation_target": "coastal shrub mountains"},
+        {"id": "med_sw_australia_kwongan", "priority": 2, "locale": "Southwest Australia kwongan", "lat": -33.5, "lon": 118.0, "elevation_target": "low scrub uplands"}
+      ]
+    },
+    {
+      "code": "desert_xeric",
+      "name": "Deserts and xeric shrublands",
+      "sites": [
+        {"id": "des_mojave_usa", "priority": 1, "locale": "Mojave Desert, USA", "lat": 36.0, "lon": -116.0, "elevation_target": "desert basin and range", "high_res_hint": "USGS"},
+        {"id": "des_sahara_algeria", "priority": 2, "locale": "Sahara dunes, Algeria", "lat": 27.5, "lon": 2.0, "elevation_target": "sand desert"},
+        {"id": "des_atacama_chile", "priority": 2, "locale": "Atacama, Chile", "lat": -24.5, "lon": -69.3, "elevation_target": "hyperarid desert mountains"},
+        {"id": "des_namib_namibia", "priority": 2, "locale": "Namib Desert, Namibia", "lat": -23.0, "lon": 15.0, "elevation_target": "coastal dunes"},
+        {"id": "des_gobi_mongolia", "priority": 2, "locale": "Gobi, Mongolia", "lat": 43.5, "lon": 104.5, "elevation_target": "cold desert plateau"}
+      ]
+    },
+    {
+      "code": "mangroves",
+      "name": "Mangroves",
+      "sites": [
+        {"id": "man_sundarbans", "priority": 1, "locale": "Sundarbans, Bangladesh/India", "lat": 21.9, "lon": 89.1, "elevation_target": "tidal mangrove delta"},
+        {"id": "man_niger_delta", "priority": 2, "locale": "Niger Delta, Nigeria", "lat": 4.5, "lon": 6.0, "elevation_target": "tidal delta"},
+        {"id": "man_everglades_usa", "priority": 2, "locale": "Florida mangroves, USA", "lat": 25.1, "lon": -81.0, "elevation_target": "low coastal mangroves", "high_res_hint": "NOAA/USGS"},
+        {"id": "man_borneo_brunei", "priority": 2, "locale": "Borneo mangroves, Brunei", "lat": 4.8, "lon": 115.1, "elevation_target": "coastal mangroves"},
+        {"id": "man_madagascar", "priority": 2, "locale": "Madagascar mangroves", "lat": -16.2, "lon": 44.4, "elevation_target": "tidal mangrove coast"}
+      ]
+    }
+  ],
+  "raster_baselines": [
+    {"demtype": "COP30", "role": "global 30m DSM/default visual terrain"},
+    {"demtype": "NASADEM", "role": "global 30m alternate DEM"},
+    {"demtype": "SRTMGL1", "role": "global 30m SRTM comparison"},
+    {"demtype": "AW3D30", "role": "global 30m ALOS comparison"},
+    {"demtype": "SRTM15Plus", "role": "land plus bathymetry/coastal comparison"},
+    {"demtype": "GEBCOIceTopo", "role": "global bathymetry/topography comparison"},
+    {"demtype": "GEDI_L3", "role": "coarse 1km land surface metrics comparison"}
+  ],
+  "usgs_raster_baselines": [
+    {"datasetName": "USGS30m", "role": "US 30m DTM"},
+    {"datasetName": "USGS10m", "role": "US 10m DTM"},
+    {"datasetName": "USGS1m", "role": "US 1m DTM; use only for small AOIs"}
+  ],
+  "viewer_comparisons": [
+    "DEM/DTM terrain mesh",
+    "DSM terrain mesh",
+    "DSM minus DTM height-difference map where both exist",
+    "hillshade/slope texture overlays",
+    "sampled LAZ point cloud over terrain",
+    "classification-colored point cloud where class attributes exist"
+  ]
+}

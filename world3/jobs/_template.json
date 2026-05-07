@@ -1,0 +1,42 @@
+{
+  "_comment": "Schema for a world3 region job. Lives at world3/jobs/<id>.json.",
+  "id": "<short_unique_id>",
+  "name": "<human-readable name>",
+  "landform": "<single-word category: alpine|fjord|mesa|coast|rolling|basin|volcanic|atoll|...>",
+  "description": "<one-line description>",
+
+  "dem": {
+    "_comment": "Where to read elevation from. Currently uses cached DEMs.",
+    "source_tif": "D:/assets/dems/<filename>.tif",
+    "_comment2": "Crop the source DEM to a game-scale region. Use either bbox (lon/lat) or center+extent_km.",
+    "center_lon_lat": [-110.803, 43.741],
+    "extent_km": 4.0
+  },
+
+  "heightmap": {
+    "_comment": "Output resolution and material binding for the heightmap stage.",
+    "size_px": 1024,
+    "material": "wgv3_terrain_blend"
+  },
+
+  "biome": {
+    "_comment": "Five PBR sets used by the slope+height blend shader. Each is a texture id under world3/textures/wgv3/. The blend rules (height bands, slope threshold) live in the material .tres or are set by Terrain.gd from this kit.",
+    "grass": "grass",
+    "dirt": "dirt",
+    "rock_light": "rock_light",
+    "rock_dark": "rock_dark",
+    "snow": "snow",
+    "_comment2": "Optional per-region overrides for the slope/height breakpoints (default in shader if omitted).",
+    "h_grass_dirt": 0.20,
+    "h_dirt_rockdark": 0.55,
+    "h_rockdark_snow": 0.85,
+    "slope_threshold": 0.45
+  },
+
+  "camera": {
+    "_comment": "Optional camera defaults. Auto-framing kicks in if absent.",
+    "iso_pad": 1.15,
+    "walk_spawn_offset_y_m": 200,
+    "walk_spawn_xz": [0, 0]
+  }
+}

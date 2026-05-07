@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "created": "2026-05-07",
+  "goal": "Two representative samples per OpenTopography data type while continuing broad biome coverage.",
+  "notes": [
+    "Use COG sources where possible because the API key is currently returning 401.",
+    "Keep the full 14-biome priority-1 breadth set for global terrain rasters.",
+    "Use smaller bounds for point clouds and USGS1m to avoid huge downloads."
+  ],
+  "types": [
+    {
+      "type": "global_dsm_raster",
+      "meaning": "Digital surface model style raster; includes terrain plus surface features where source captures them.",
+      "sources": ["COP30", "AW3D30"],
+      "representatives": [
+        {"site_id": "tmf_amazon_brazil", "km": 20, "source": "COP30"},
+        {"site_id": "des_mojave_usa", "km": 20, "source": "AW3D30"}
+      ]
+    },
+    {
+      "type": "global_dtm_dem_raster",
+      "meaning": "Bare-earth or terrain-oriented DEM raster baseline.",
+      "sources": ["NASADEM", "SRTMGL1"],
+      "representatives": [
+        {"site_id": "tgs_serengeti_tanzania", "km": 20, "source": "NASADEM"},
+        {"site_id": "tcf_sierra_madre_mexico", "km": 20, "source": "SRTMGL1"}
+      ]
+    },
+    {
+      "type": "bathymetry_topobathy_raster",
+      "meaning": "Land plus underwater/coastal elevation; useful for deltas, islands, coastlines, and sea-floor comparison.",
+      "sources": ["SRTM15Plus", "GEBCOIceTopo"],
+      "representatives": [
+        {"site_id": "man_sundarbans", "km": 80, "source": "SRTM15Plus"},
+        {"site_id": "fgs_pantanal_brazil", "km": 80, "source": "GEBCOIceTopo"}
+      ]
+    },
+    {
+      "type": "paired_dtm_dsm_raster",
+      "meaning": "Matched DTM/DSM rasters over the same area so we can compare terrain vs surface height.",
+      "sources": ["CA_MRDEM_DTM", "CA_MRDEM_DSM"],
+      "representatives": [
+        {"site_id": "bor_yukon_canada", "km": 20, "sources": ["CA_MRDEM_DTM", "CA_MRDEM_DSM"]},
+        {"site_id": "tcf_bc_coast_canada", "km": 20, "sources": ["CA_MRDEM_DTM", "CA_MRDEM_DSM"]}
+      ]
+    },
+    {
+      "type": "vegetation_metric_raster",
+      "meaning": "GEDI land surface / vegetation-height metrics; not a normal terrain heightmap.",
+      "sources": ["GEDI_L3_ELEV", "GEDI_L3_RH100"],
+      "representatives": [
+        {"site_id": "tmf_amazon_brazil", "km": 80, "sources": ["GEDI_L3_ELEV", "GEDI_L3_RH100"]},
+        {"site_id": "tgs_serengeti_tanzania", "km": 80, "sources": ["GEDI_L3_ELEV", "GEDI_L3_RH100"]}
+      ]
+    },
+    {
+      "type": "point_cloud_laz",
+      "meaning": "Raw lidar point cloud tiles in LAZ format; contains XYZ and per-point attributes where present.",
+      "sources": ["pc-bulk"],
+      "representatives": [
+        {"short_name": "CA14_Lowe", "keys": ["CA14_Lowe/CA14_Lowe_TileIndex.zip", "CA14_Lowe/ot_335000_3809000.laz"]},
+        {"short_name": "WA12_Legg", "keys": ["WA12_Legg/WA12_Legg_TileIndex.zip", "WA12_Legg/ot_583000_5176000.laz"]}
+      ]
+    },
+    {
+      "type": "derived_raster",
+      "meaning": "Products generated from rasters locally for comparison: hillshade, slope, roughness, contours later.",
+      "sources": ["local_derivatives"],
+      "representatives": [
+        {"site_id": "tcf_pnw_cascades_usa", "source": "COP30"},
+        {"site_id": "tgr_great_plains_usa", "source": "COP30"}
+      ]
+    }
+  ]
+}
