@@ -90,6 +90,81 @@ PRESETS = {
 }
 
 
+def _run_ladder_stage(out_dir: Path, sr_dir: Path, mat_id: str, category: str,
+                      pbr_backend: str, working_res: int, ladder_tiers: str,
+                      log: dict) -> None:
+    """SR all maps in out_dir -> bake -> mip ladder -> per-tier QA.
+
+    out_dir   : the library material dir (<id>_albedo.png etc live here)
+    sr_dir    : temp dir for SR'd maps (library-style names)
+    mat_id    : the material id string (e.g. 'wgv3_rock_dark')
+    """
+    print(f"\n=== STAGE 8: ladder (SR -> bake -> mip -> QA) ===")
+
+    # Sub-step 8a: SR all 6 maps
+    MAP_NAMES = ["albedo", "normal", "roughness", "ao", "metallic", "height"]
+    for map_name in MAP_NAMES:
+        src = out_dir / f"{mat_id}_{map_name}.png"
+        dst = sr_dir / f"{mat_id}_{map_name}.png"
+        if not src.exists():
+            print(f"  skip SR: {map_name} (not found)")
+            continue
+        python_subprocess([
+            str(PIPELINE_DIR / "sr_upscale.py"),
+            "--in", str(src),
+            "--out", str(dst),
+        ], f"  8a SR: {map_name}")
+
+    # Sub-step 8b: bake at working resolution
+    python_subprocess([
+        str(PIPELINE_DIR / "bake_pbr.py"),
+        "--material-dir", str(sr_dir),
+        "--category", category,
+        "--backend", pbr_backend if pbr_backend in ("sm", "chord", "chord_sm_rough", "derive") else "sm",
+    ], "  8b bake")
+    python_subprocess([
+        str(PIPELINE_DIR / "bake_pbr.py"),
+        "--material-dir", str(sr_dir),
+        "--apply",
+    ], "  8b bake --apply")
+
+    # Sub-step 8c: mip ladder
+    ladder_out = out_dir / "ladder"
+    python_subprocess([
+        str(PIPELINE_DIR / "mip_ladder.py"),
+        "--in", str(sr_dir),
+        "--tiers", ladder_tiers,
+        "--out", str(ladder_out),
+    ], "  8c mip_ladder")
+
+    # Sub-step 8d: per-tier QA
+    python_subprocess([
+        str(PIPELINE_DIR / "texture_qa.py"),
+        "--ladder-dir", str(ladder_out),
+        "--category", category,
+    ], "  8d per-tier QA")
+
+    # Read back grades for log
+    tier_grades = {}
+    for tier_dir in ladder_out.iterdir():
+        if not tier_dir.is_dir():
+            continue
+        ss_path = tier_dir / "qa" / "seam_score.json"
+        if ss_path.exists():
+            ss = json.loads(ss_path.read_text(encoding="utf-8"))
+            tier_grades[tier_dir.name] = ss.get("grade", "?")
+
+    log["ladder"] = {
+        "working_res": working_res,
+        "tiers": ladder_tiers,
+        "tier_grades": tier_grades,
+        "ladder_dir": str(ladder_out),
+        "cross_tier_sheet": str(ladder_out / "cross_tier_sheet.png"),
+    }
+    print(f"  ladder done. tiers: {tier_grades}")
+    print(f"  cross-tier sheet: {ladder_out / 'cross_tier_sheet.png'}")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--prompt", required=True)
@@ -107,6 +182,15 @@ def main():
     ap.add_argument("--host", default="http://127.0.0.1:8188")
     ap.add_argument("--no-gate", action="store_true",
                     help="ship even if seam score fails the gate")
+    ap.add_argument("--ladder", action="store_true",
+                    help="run full SR -> bake -> mip ladder after the gate. "
+                         "Writes <library_dir>/<id>/ladder/<tier>/<id>_<map>.png")
+    ap.add_argument("--working-res", type=int, default=2048, metavar="PX",
+                    help="SR target resolution in pixels (default: 2048). "
+                         "Used only with --ladder.")
+    ap.add_argument("--ladder-tiers", default="2k,1k,512",
+                    help="comma-separated tier list for the mip ladder "
+                         "(default: 2k,1k,512). Used only with --ladder.")
     ap.add_argument("--pbr-backend",
                     choices=["derive", "sm", "chord", "chord_sm_rough"],
                     default=None,
@@ -447,6 +531,24 @@ def main():
     CATALOG.parent.mkdir(parents=True, exist_ok=True)
     with CATALOG.open("a", encoding="utf-8") as f:
         f.write(json.dumps(record) + "\n")
+
+    # ---- STAGE 8: mip ladder (SR -> bake -> mip -> per-tier QA) ----
+    if args.ladder:
+        import tempfile
+        sr_dir = Path(tempfile.mkdtemp(prefix=f"b5_sr_{args.id}_"))
+        try:
+            _run_ladder_stage(
+                out_dir=out_dir,
+                sr_dir=sr_dir,
+                mat_id=args.id,
+                category=args.category,
+                pbr_backend=pbr_backend,
+                working_res=args.working_res,
+                ladder_tiers=args.ladder_tiers,
+                log=log,
+            )
+        finally:
+            shutil.rmtree(sr_dir, ignore_errors=True)
 
     log["completed_at"] = datetime.now(timezone.utc).isoformat()
     (out_dir / "aaa_pipeline.json").write_text(json.dumps(log, indent=2), encoding="utf-8")
