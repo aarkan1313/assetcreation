@@ -49,7 +49,7 @@ import json
 from pathlib import Path
 
 import numpy as np
-from PIL import Image
+from PIL import Image, ImageDraw
 
 
 CATALOG = Path("D:/assets/world/textures/catalog/materials.jsonl")
@@ -567,10 +567,124 @@ def run_qa(material_dir: Path, category: str | None = None):
                                          encoding="utf-8")
 
 
+TIER_SIZES_PX = {"4k": 4096, "2k": 2048, "1k": 1024, "512": 512, "256": 256}
+
+
+def _tier_px(tier_name: str) -> int:
+    """Return pixel size for a tier label like '2k' or '512'."""
+    s = tier_name.strip().lower()
+    if s in TIER_SIZES_PX:
+        return TIER_SIZES_PX[s]
+    try:
+        return int(s)
+    except ValueError:
+        return 0
+
+
+def _make_cross_tier_sheet(tier_results: list[dict], out_path: Path) -> None:
+    """Write a cross-tier contact sheet: one row per tier showing tile_2x2 + metrics."""
+    THUMB = 512
+    TEXT_W = 480
+    ROW_H = THUMB + 16
+    PAD = 8
+    sheet_w = PAD + THUMB + PAD + TEXT_W + PAD
+    sheet_h = PAD + ROW_H * len(tier_results) + PAD * (len(tier_results) - 1)
+    sheet = Image.new("RGB", (sheet_w, max(sheet_h, 64)), (24, 24, 24))
+    draw = ImageDraw.Draw(sheet)
+
+    for i, tr in enumerate(tier_results):
+        y = PAD + i * (ROW_H + PAD)
+        # Thumbnail
+        tile_path = tr.get("tile_2x2_path")
+        if tile_path and Path(tile_path).exists():
+            thumb = Image.open(tile_path).convert("RGB")
+            cx, cy = thumb.width // 2, thumb.height // 2
+            half = THUMB // 2
+            thumb = thumb.crop((cx - half, cy - half, cx + half, cy + half))
+        else:
+            thumb = Image.new("RGB", (THUMB, THUMB), (60, 60, 60))
+        sheet.paste(thumb, (PAD, y + 8))
+
+        # Text panel
+        tx = PAD + THUMB + PAD
+        ty = y + 12
+        tier = tr["tier"]
+        grade = tr["grade"]
+        grade_color = {"A": (80, 220, 80), "B": (220, 220, 80),
+                       "C": (220, 140, 60), "D": (220, 60, 60)}.get(grade, (200, 200, 200))
+        draw.text((tx, ty), f"{tier}  grade={grade}", fill=grade_color)
+        ty += 22
+        cs = tr.get("checks", {})
+        if cs:
+            ec = cs.get("edge_continuity", {})
+            jv = cs.get("junction_visibility", {})
+            pa = cs.get("periodic_artifact", {})
+            ri = cs.get("richness", {})
+            draw.text((tx, ty),
+                      f"edge={ec.get('overall_mse', 0):.4f}({'P' if ec.get('passed') else 'F'})  "
+                      f"junc={jv.get('ratio', 0):.2f}({'P' if jv.get('passed') else 'F'})",
+                      fill=(200, 200, 200))
+            ty += 18
+            draw.text((tx, ty),
+                      f"period={pa.get('peak_locality_ratio', 0):.1f}({'P' if pa.get('passed') else 'F'})  "
+                      f"rich={ri.get('score', 0):.2f}({'P' if ri.get('passed') else 'F'},adv)",
+                      fill=(200, 200, 200))
+            ty += 18
+        richness_ok = tr.get("richness_passed", True)
+        if not richness_ok:
+            draw.text((tx, ty), "  richness advisory: low spatial energy",
+                      fill=(180, 140, 60))
+
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    sheet.save(out_path)
+    print(f"  cross-tier sheet -> {out_path}")
+
+
+def run_ladder_qa(ladder_dir: Path, category: str | None = None) -> list[dict]:
+    """Run QA on every tier subdir in ladder_dir and write a cross-tier sheet.
+
+    Each subdir must contain <id>_albedo.png (standard mip_ladder.py output).
+    Writes per-tier qa/ dirs and ladder_dir/cross_tier_sheet.png.
+    Returns list of per-tier result dicts sorted by resolution descending.
+    """
+    tier_dirs = [d for d in ladder_dir.iterdir() if d.is_dir() and d.name != "qa"]
+    if not tier_dirs:
+        print(f"  no tier subdirs found in {ladder_dir}")
+        return []
+
+    tier_dirs.sort(key=lambda d: _tier_px(d.name), reverse=True)
+    print(f"[QA-ladder] {ladder_dir}  tiers={[d.name for d in tier_dirs]}")
+
+    tier_results = []
+    for tier_dir in tier_dirs:
+        run_qa(tier_dir, category=category)
+        ss_path = tier_dir / "qa" / "seam_score.json"
+        tile_path = tier_dir / "qa" / "tile_2x2.png"
+        if ss_path.exists():
+            ss = json.loads(ss_path.read_text(encoding="utf-8"))
+            tier_results.append({
+                "tier": tier_dir.name,
+                "grade": ss.get("grade", "?"),
+                "checks": ss.get("checks", {}),
+                "richness_passed": ss.get("richness_passed", True),
+                "tile_2x2_path": str(tile_path) if tile_path.exists() else None,
+            })
+        else:
+            tier_results.append({"tier": tier_dir.name, "grade": "?", "checks": {}})
+
+    sheet_path = ladder_dir / "cross_tier_sheet.png"
+    _make_cross_tier_sheet(tier_results, sheet_path)
+    return tier_results
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--material", type=Path)
     ap.add_argument("--all", action="store_true")
+    ap.add_argument("--ladder", type=Path, metavar="MAT_DIR",
+                    help="run QA on every tier in <MAT_DIR>/ladder/")
+    ap.add_argument("--ladder-dir", type=Path, metavar="LADDER_DIR",
+                    help="run QA on every tier in this bare ladder dir (no /ladder suffix)")
     ap.add_argument("--category", default=None,
                     help="material category (Snow/Water/Sand/Liquid relax "
                          "the uniform-roughness sanity check). Falls back to "
@@ -582,8 +696,17 @@ def main():
         for p in LIBRARY.iterdir():
             if p.is_dir():
                 run_qa(p, category=args.category)
+    elif args.ladder:
+        ladder_dir = args.ladder / "ladder"
+        if not ladder_dir.is_dir():
+            raise SystemExit(f"no ladder/ subdir found under {args.ladder}")
+        run_ladder_qa(ladder_dir, category=args.category)
+    elif args.ladder_dir:
+        if not args.ladder_dir.is_dir():
+            raise SystemExit(f"--ladder-dir not found: {args.ladder_dir}")
+        run_ladder_qa(args.ladder_dir, category=args.category)
     else:
-        ap.error("provide --material or --all")
+        ap.error("provide --material, --all, --ladder <mat_dir>, or --ladder-dir <dir>")
 
 
 if __name__ == "__main__":
