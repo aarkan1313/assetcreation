@@ -78,10 +78,20 @@ def _accessor_to_numpy(glb: "pygltflib.GLTF2", accessor_idx: int) -> np.ndarray:
     }
     dim = _DIMS[acc.type]
 
+    bv = glb.bufferViews[acc.bufferView]
     data = _get_buffer_view_bytes(glb, acc.bufferView)
-    # Byte offset within the buffer view (accessor-level offset)
     byte_offset = acc.byteOffset or 0
-    arr = np.frombuffer(data, dtype=dtype, count=acc.count * dim, offset=byte_offset)
+    stride = bv.byteStride  # None means tightly packed
+    element_bytes = int(np.dtype(dtype).itemsize) * dim
+    if stride is None or stride == 0 or stride == element_bytes:
+        arr = np.frombuffer(data, dtype=dtype, count=acc.count * dim, offset=byte_offset)
+    else:
+        # Interleaved buffer: step through data using byteStride
+        arr = np.stack([
+            np.frombuffer(data, dtype=dtype, count=dim,
+                          offset=byte_offset + i * stride)
+            for i in range(acc.count)
+        ])
     if dim > 1:
         arr = arr.reshape(acc.count, dim)
     return arr
@@ -192,6 +202,16 @@ def _load_geometry(glb_path: Path):
     glb = pygltflib.GLTF2().load(str(glb_path))
     prim = glb.meshes[0].primitives[0]
 
+    for attr_name, accessor_idx in [
+        ("POSITION", prim.attributes.POSITION),
+        ("TEXCOORD_0", prim.attributes.TEXCOORD_0),
+        ("indices", prim.indices),
+    ]:
+        if accessor_idx is None:
+            raise ValueError(
+                f"GLB mesh primitive is missing required attribute '{attr_name}': {glb_path}"
+            )
+
     positions = _accessor_to_numpy(glb, prim.attributes.POSITION).astype(np.float32)
     uv_coords = _accessor_to_numpy(glb, prim.attributes.TEXCOORD_0).astype(np.float32)
 
@@ -247,7 +267,7 @@ def _nvdiffrast_backend(
         import nvdiffrast.torch as dr
         import torch
     except ImportError as e:
-        raise RuntimeError("nvdiffrast not available -- use backend='dry-run'") from e
+        raise RuntimeError("nvdiffrast not available — use backend='dry-run'") from e
 
     # --- Load original albedo for compositing base ---
     orig_albedo = extract_albedo_from_glb(glb_path)
@@ -329,9 +349,10 @@ def _nvdiffrast_backend(
         u_vals = uv_np[rows, cols, 0]         # (N,) in [0,1]
         v_vals = uv_np[rows, cols, 1]         # (N,) in [0,1]
 
-        # Map UV -> atlas pixel coords (V flipped: OpenGL v=0 at bottom)
+        # Map UV -> atlas pixel coords. GLTF UV origin is upper-left (V=0=top row),
+        # matching PIL's row-0=top convention — no V-flip needed.
         atlas_x = np.clip((u_vals * uv_size).astype(np.int32), 0, uv_size - 1)
-        atlas_y = np.clip(((1.0 - v_vals) * uv_size).astype(np.int32), 0, uv_size - 1)
+        atlas_y = np.clip((v_vals * uv_size).astype(np.int32), 0, uv_size - 1)
 
         # Accumulate contributions
         np.add.at(atlas_color, (atlas_y, atlas_x), pix_colors)
@@ -422,7 +443,7 @@ def back_project(
         try:
             import nvdiffrast.torch  # noqa: F401
         except ImportError as e:
-            raise RuntimeError("nvdiffrast not available -- use backend='dry-run'") from e
+            raise RuntimeError("nvdiffrast not available — use backend='dry-run'") from e
         return _nvdiffrast_backend(
             glb_path=glb_path,
             inpainted_views=inpainted_views,
