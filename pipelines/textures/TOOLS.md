@@ -110,6 +110,33 @@ which composes this with `bake_pbr.py` and `mip_ladder.py`.
 **See also:** `EXTERNAL_SR_TECHNIQUES.md` for the survey; B.2's
 `bake_pbr.py` for what to do with the SR'd output.
 
+### `bake_pbr.py` — high-res PBR map re-derivation *(Phase B.2)*
+
+**What:** Given a directory of SR'd PBR maps at the working resolution
+(2K/4K), re-derives normal, AO, and roughness from the SR'd height +
+albedo. Writes `*_baked.png` alongside originals for A/B inspection.
+Use `--apply` to promote baked maps to canonical (with backup).
+
+**Reach for it when:** You've SR'd a material's maps with `sr_upscale.py`
+and want physically-correct high-res derivatives (sharper normal gradient,
+smoother AO, micro-variation-aware roughness) before writing the mip ladder.
+In the full B.5 orchestrator, this runs automatically after SR.
+
+**Don't reach for it when:**
+- The material hasn't been SR'd yet — run `sr_upscale.py` first.
+- You only care about albedo quality — bake affects normal/AO/roughness only.
+
+**Key flags:** `--category` (roughness preset), `--backend` (roughness blend
+trust level: `sm`/`chord_sm_rough` → 0.65 SR weight; `chord` → 0.35),
+`--apply` (promote baked → canonical).
+
+**Key finding (B.2):** ESRGAN misinterprets normal map RGB channels as
+photographic content and produces color interference artifacts. Re-baking
+from height is geometrically correct and strictly better than SR'd normal.
+
+**See also:** `sr_upscale.py` (prerequisite), `mip_ladder.py` (next step, B.3).
+`DECISIONS.md` for bake-at-SR-resolution rationale.
+
 ### `flux_upscale.py` — FLUX img2img heal-pass tool *(repositioned Phase B.1)*
 
 **Phase B.1 update (2026-05-07):** Repositioned as a heal-pass tool.

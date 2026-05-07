@@ -259,6 +259,53 @@ quick-and-dirty upscale.
 
 ---
 
+## Baking high-res PBR maps (after SR)
+
+### Re-derive normal/AO/roughness from SR'd output
+
+```powershell
+# Step 1: SR all maps into a staging dir (library-style names — no _2k suffix)
+$id = "wgv3_rock_dark"
+New-Item -ItemType Directory -Force -Path "D:/tmp/${id}_sr" | Out-Null
+foreach ($map in @("albedo","normal","roughness","ao","metallic","height")) {
+    python pipelines/textures/sr_upscale.py `
+      --in "world/textures/library/$id/${id}_$map.png" `
+      --out "D:/tmp/${id}_sr/${id}_$map.png"
+}
+
+# Step 2: Bake (writes *_baked.png alongside originals)
+python pipelines/textures/bake_pbr.py `
+  --material-dir "D:/tmp/${id}_sr" `
+  --category Rock `
+  --backend chord_sm_rough
+
+# Step 3: Inspect baked maps visually (compare *_baked.png to originals)
+
+# Step 4: If satisfied, promote baked -> canonical
+python pipelines/textures/bake_pbr.py `
+  --material-dir "D:/tmp/${id}_sr" `
+  --apply
+```
+
+Baked maps are physically-correct re-derivations from the 2K/4K
+height+albedo. Normal: sub-texel Sobel gradient (replaces ESRGAN's
+color-corrupted SR'd normal). AO: smoother hemisphere integral.
+Roughness: blend of SR'd (65%) + derived (35%) for sm/chord_sm_rough backends.
+
+**Use when:** you've SR'd a material and want physically-correct high-res
+maps before writing the mip ladder (B.3). This is the standard second step
+of the multi-resolution pipeline.
+
+**Backend roughness trust:** `sm`/`chord_sm_rough` → 65% SR + 35% derived
+(SM roughness is physically modeled). `chord` → 35% SR + 65% derived
+(CHORD roughness is near-flat). `derive` → 40% SR + 60% derived.
+
+**Important:** Use library-style output names in the staging dir (no `_2k`
+suffix in the filename) so that `bake_pbr.py`'s `find_map()` and `apply_baked()`
+produce correctly-named outputs that match the library convention.
+
+---
+
 ## Quality gating + QA
 
 ### Re-grade an existing texture
