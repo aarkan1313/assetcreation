@@ -42,7 +42,11 @@ def write(job: Job, godot_project: Path) -> Path:
         f'shader_parameter/terrain_size_m = {terrain_size_m}\n'
         f'shader_parameter/terrain_size_z_m = {terrain_size_z_m}\n'
         f'shader_parameter/terrain_height_m = {terrain_height_m}\n'
-        f'shader_parameter/tile_meters = Vector4(4.0, 4.0, 4.0, 3.0)\n'
+        # tile_meters at diorama scale: 128m per repeat = ~4 tiles across the
+        # 512m terrain. Large tiles ensure screen-space UV derivatives are
+        # small enough that mip selection lands on visible-detail levels.
+        f'shader_parameter/tile_meters = Vector4(128.0, 128.0, 128.0, 128.0)\n'
+        f'shader_parameter/debug_mode = 0\n'
         f'shader_parameter/roughness_value = {roughness}\n'
         f'shader_parameter/heightmap = ExtResource("2")\n'
         f'shader_parameter/splat = ExtResource("3")\n'

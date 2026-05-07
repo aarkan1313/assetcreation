@@ -140,7 +140,26 @@ Vector3.UP)` on `_ready`), and Godot orients it correctly on scene load.
 This affects the `iso`, `topdown`, and `worldview` camera presets. The
 character preset uses `FlyCam.gd` and is unaffected.
 
-### 9. ComfyUI for FLUX runs locally on port 8188
+### 9. tile_meters must be large enough that screen-space UV derivatives don't blow out mip selection
+With `world.xz / tile_meters` UV math and a 1m-per-quad densely-subdivided
+mesh, screen-space derivatives of the tile UV are large. Mip selection picks
+high mip levels that average to the texture's mean color, so FLUX detail
+vanishes. The terrain renders correctly (geometry, lighting, biome blending)
+but the surface looks like flat-shaded clay.
+
+The fix is **tile_meters = ~128m at diorama scale** (512m terrain). That
+brings screen-space UV gradients into a range where mip selection lands on
+detail-bearing levels. v1 used 3-4m tile_meters but v1 also used a different
+shader path; v2 needs the larger tile to actually show FLUX detail.
+
+If you change rendering scale, scale tile_meters proportionally:
+- 512m terrain (diorama): tile_meters ~128
+- 1024m terrain: tile_meters ~256
+- 35km terrain (real km-scale): tile_meters would need to be ~5km, at which
+  point the texture is "global ground tone" not "ground texture" — this
+  is part of why km-scale rendering doesn't work with this shader pattern.
+
+### 10. ComfyUI for FLUX runs locally on port 8188
 - Server: `D:\assets\animators\ComfyUI\venv\Scripts\python.exe` + `main.py`
 - Models in `models/diffusion_models/flux-2-klein-4b.safetensors` (16 GB)
 - Wrapper: `pipelines/textures/flux_seamless.py` (4-pass tile-heal algorithm)

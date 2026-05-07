@@ -75,7 +75,7 @@ void fragment() {
 	float fallback_blend = 1.0 - clamp(wsum_raw * 8.0, 0.0, 1.0);
 	vec4 w = w_raw / max(wsum_raw, 1e-4);
 
-	// Per-biome tiled albedo lookup using world XZ for true real-world tile size.
+	// Per-biome tiled albedo lookup using world XZ for true real-world tiling.
 	vec3 a0 = texture(albedo_0, v_world.xz / max(tile_meters.r, 0.01)).rgb;
 	vec3 a1 = texture(albedo_1, v_world.xz / max(tile_meters.g, 0.01)).rgb;
 	vec3 a2 = texture(albedo_2, v_world.xz / max(tile_meters.b, 0.01)).rgb;
@@ -96,7 +96,11 @@ void fragment() {
 	} else if (debug_mode == 2) {
 		ALBEDO = vec3(wsum_raw);
 	} else if (debug_mode == 3) {
-		ALBEDO = a0;
+		// Sample albedo_0 with UV directly (0..1 across mesh) so we see
+		// exactly ONE tile of the FLUX texture stretched over the terrain.
+		// If THIS shows the FLUX detail, the bug is in tile_uv math.
+		// If THIS is also flat, the bug is in texture loading.
+		ALBEDO = texture(albedo_0, v_uv).rgb;
 	} else if (debug_mode == 4) {
 		ALBEDO = vec3(
 			fract(v_world.x / 1000.0),
