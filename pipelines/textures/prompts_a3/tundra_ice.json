@@ -1,0 +1,18 @@
+[
+  {
+    "label": "cookbook",
+    "prompt": "compacted snow surface with subtle wind ridges and tiny ice crystals, top-down photograph, photoreal"
+  },
+  {
+    "label": "no_ridges",
+    "prompt": "uneven compacted snow with sparse small ice crystals, top-down photograph, photoreal"
+  },
+  {
+    "label": "ground_level_lead",
+    "prompt": "ground-level photograph of compacted arctic snow with sparse ice crystals, top-down view, photoreal"
+  },
+  {
+    "label": "glacial",
+    "prompt": "glacial ice surface with subtle bubbles and crystal patterns, top-down photo, even lighting, photoreal"
+  }
+]

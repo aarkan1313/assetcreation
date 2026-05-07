@@ -18,6 +18,245 @@ The contact sheets and manifests for sweeps live in
 
 # Part 1 — Experiments
 
+## A.6 (desert_canyon_rock) — Apply A.3 directional-cue learning to rock
+
+**Date**: 2026-05-07
+**Question**: Part 2 cookbook flagged desert_canyon_rock as WORKS
+WITH CAVEAT — `horizontal striations` produced periodic 71.9 (just
+above threshold) with strong directional bias. Same pattern as snow's
+"ridges" and tundra_ice's "wind ridges." Does the same fix work for
+rock?
+
+**Setup**: 4 prompt variants × 3 seeds (100/200/400). Category=Rock,
+default quality.
+
+Variants:
+- **`cookbook`** (control): `weathered tan canyon sandstone with
+  horizontal striations, top-down photo, photoreal`.
+- **`no_striations`**: drop the directional cue — `weathered tan
+  canyon sandstone, top-down photo, photoreal`.
+- **`mineral`** (apply A.3 mineral-naming pattern): `weathered red-
+  tan sandstone with iron oxide bands and quartz inclusions, top-down
+  photo, photoreal`.
+- **`ground_level_lead`** (apply A.3 lead-phrase pattern): `ground-
+  level photograph of weathered desert sandstone surface, fine grain
+  detail, top-down view, photoreal`.
+
+### Results
+
+| Variant            | seed100 | seed200 | seed400 | Visual read                                                                |
+|--------------------|--------:|--------:|--------:|----------------------------------------------------------------------------|
+| cookbook           | B (period **1269!**) | B *gate fail* (period 344) | B (period 255) | Confirms failure mode catastrophically. seed100 produced what looks like horizontal wood-grain — periodic 1269 is the worst single score in the project's sweep history. |
+| no_striations      | **A**   | A *gate fail* (period 9.3) | **A** | **Winner.** All grade A, 2/3 passed gate. Solid weathered tan sandstone with subtle pebbly variation. (The seed200 gate fail was on a borderline metric, not a visual problem.) |
+| mineral            | B *gate fail* (period 94) | A | A | Mixed. seed100 produced a brick-lattice pattern; seed200 produced strange parallel-streaks weave. The "iron oxide *bands*" cue re-introduced a directional concept — *the failure pattern is the prompt's word, not its substance.* seed400 finally clean. |
+| ground_level_lead  | A *gate fail* | A *gate fail* | A *gate fail* | Grade A but all 3 fail on roughness sanity ("near-zero variance roughness"). Visually = smooth-A: too uniform a tan surface, almost like flat color. The "fine grain detail" lead pulled the model toward sub-pixel uniform texture. |
+
+Contact sheet: `D:/tmp/world3_experiments/A6_canyon_rock_prompts/contact_sheet.png`.
+
+### Findings
+
+1. **Directional-cue removal generalizes from snow → tundra_ice → rock.**
+   This is now confirmed across **3 materials and 3 directional words**
+   ("ridges", "wind ridges", "horizontal striations"). The pattern is
+   robust enough to promote into a Part-2 anatomy rule, not just an
+   anti-pattern entry.
+
+2. **The cookbook's horizontal-striations failure was severe across
+   all seeds**, not just bad ones. seed100 hit periodic 1269.5 — a
+   ~21× threshold violation, the worst we've ever recorded. Even
+   "passing" seeds (200/400) had 250-345 periodic. The cookbook
+   prompt was reliably producing visually-flawed textures and only
+   the hex-tile shader was masking it.
+
+3. **"Iron oxide *bands*" defeated mineral naming.** The mineral
+   variant still hit lattice on seed 100 (brick pattern) and seed 200
+   (weave pattern). The principle "use specific minerals" works
+   *only* when the descriptor doesn't smuggle a directional concept.
+   "Bands" is directional; "inclusions" is not. seed 400 was clean
+   because the lattice happened to align with neither. **Refinement
+   to A.3 mineral-naming rule: avoid directional substrate
+   descriptors even when the named mineral is fine.**
+
+4. **`ground_level_lead` produced smooth-A failures here.** All
+   three seeds hit the roughness-near-zero sanity check despite
+   grading A on seam metrics. The "fine grain detail" cue pushed FLUX
+   toward sub-pixel-uniform output. This is **the third "smooth-A"
+   case** documented (joining sand seed 200 from A.2 and powder snow
+   seed 100 from A.3). LESSONS L16's argument for a "richness" min-
+   energy metric is gaining empirical weight.
+
+5. **The Rock category isn't in UNIFORM_ROUGHNESS_OK_CATEGORIES.**
+   Snow is exempted (real snow has uniform roughness); rock isn't,
+   correctly — most rock has roughness variation. So the gate-fail
+   on ground_level_lead isn't a false positive; the texture really is
+   too smooth to be a believable rock surface.
+
+### Implications for next steps
+
+- **Update cookbook (Part 2)**: replace desert_canyon_rock entry with
+  `no_striations` variant. Note the "bands"-as-directional gotcha.
+- **Regenerate shipping `wgv3_desert_canyon_rock`** with
+  `no_striations` prompt at seed-base 100 or 400 (avoid 200; it
+  passed grade A but failed the periodic gate at the borderline).
+- **Promote directional-cue rule** in Part 2 anatomy section as a
+  recurring pattern, with the 3 confirmed cases referenced.
+- **LESSONS L16 strengthening**: 3 confirmed "smooth-A" cases now;
+  worth promoting the "richness" metric idea from speculative to
+  on-the-roadmap.
+
+---
+
+## A.6 (tundra_ice) — Apply A.3 directional-cue learning
+
+**Date**: 2026-05-07
+**Question**: Part 2 cookbook flagged tundra_ice as PARTIAL — the
+"subtle wind ridges" cue produces a strong vertical line down one
+edge. Same failure pattern as snow's "subtle compacted ridges"
+(A.3). Does the same fix work?
+
+**Setup**: 4 prompt variants × 3 seeds (100/200/400). Category=Snow,
+default quality.
+
+Variants:
+- **`cookbook`** (control): `compacted snow surface with subtle wind
+  ridges and tiny ice crystals, top-down photograph, photoreal`.
+- **`no_ridges`**: drop the directional cue per A.3 finding —
+  `uneven compacted snow with sparse small ice crystals, top-down
+  photograph, photoreal`.
+- **`ground_level_lead`** (apply A.3 winner pattern here): `ground-
+  level photograph of compacted arctic snow with sparse ice crystals,
+  top-down view, photoreal`.
+- **`glacial`** (category-shift): `glacial ice surface with subtle
+  bubbles and crystal patterns, top-down photo, even lighting,
+  photoreal`.
+
+### Results
+
+| Variant            | seed100 | seed200 | seed400          | Visual read                                                                |
+|--------------------|--------:|--------:|-----------------:|----------------------------------------------------------------------------|
+| cookbook           | A       | B       | **C** *gate fail* (period 477!) | Confirms the failure mode. seed400 produced striking diagonal woven-fabric pattern — "wind ridges" → strong directional. |
+| no_ridges          | **A**   | A       | **A**            | **All grade A.** Cleanest snow surface; seed100 + seed400 are best (seed200 has stray dark debris that reads as rocks). |
+| ground_level_lead  | B       | B       | A                | Borderline. Less reliable than no_ridges. seed100 has fine speckle texture, seed200 has higher periodic.   |
+| glacial            | B       | A       | B                | Different output entirely — produces cracked-ice / crystalline patterns, not snow. Stylistically interesting but doesn't match the tundra_ice slot's role in current biome kits. |
+
+Contact sheet: `D:/tmp/world3_experiments/A6_tundra_ice_prompts/contact_sheet.png`.
+
+### Findings
+
+1. **Directional-cue removal generalizes from snow to tundra_ice.**
+   Same fix as A.3 snow: drop the directional word ("wind ridges").
+   The replacement `no_ridges` variant produces 3/3 grade A — a 3-fold
+   improvement over the cookbook's 1A/1B/1C. Validates the pattern as
+   *general* across snow-class materials, not just snow specifically.
+
+2. **The cookbook's "wind ridges" failure was severe at seed 400.**
+   Periodic locality of 477.6 — far above the 60 threshold — produced
+   a visible diagonal weave pattern. This was the worst single
+   periodic score we've seen in the whole sweep history. Confirms how
+   harshly directional cues can fail on bad seeds.
+
+3. **`glacial` lead phrase produces a different *category* of texture
+   entirely.** Cracked, blue-tinted ice with crystalline patterns
+   instead of compacted snow with crystals. Could be a useful future
+   addition for a *separate* "true ice" material slot, but isn't the
+   right swap for tundra_ice (which sits in tundra biome alongside
+   moss and is meant to read as packed snow).
+
+4. **`ground_level_lead` lead phrase didn't transfer cleanly here.**
+   It worked spectacularly for forest_floor (A.3) where the substrate
+   needed explicit description, and well enough for snow (A.3) as one
+   of several good options. For tundra_ice it produced acceptable but
+   inconsistent output. Suggests the "ground-level photograph of"
+   frame benefits *content-rich* materials more than uniform-surface
+   ones.
+
+### Implications for next steps
+
+- **Update cookbook (Part 2)**: replace tundra_ice entry with
+  `no_ridges` variant. Keep seed-100 or seed-400 as the
+  recommendation; flag seed-200 as producing debris artifacts.
+- **Regenerate shipping `wgv3_tundra_ice`** if it exists, with new
+  prompt at seed-base 100. (Verify whether tundra_ice is in
+  `world3/textures/wgv3/` before regen.)
+- **Promote the directional-cue rule to a Part-2 anatomy item**
+  (next to the existing anti-pattern). It's now confirmed across 2
+  materials and a 3rd known case (desert_canyon_rock's "horizontal
+  striations" — testing in the second half of A.6).
+
+---
+
+## A.4 (variants count) — Settings sweep: how many variants is enough?
+
+**Date**: 2026-05-07
+**Question**: Default `--variants 4` was set early without much
+calibration. Does bumping to 6 or 8 produce meaningfully better best-
+pick results? Per-material answer or universal?
+
+**Setup**: 2 materials (sand, leaf_litter — chosen as variance-
+sensitive cases). Single seed-base (100), fixed prompt per material
+(post-A.3 cookbook winner). Sweep `--variants-list 4 6 8` × heal_strength
+fixed at 0.35. Total: 6 runs.
+
+`variant_select.py` produces N internal candidates and picks the
+lowest-edge-MSE one as the "best." So the question is: how often
+does the best of v4 differ from the best of v8?
+
+### Results
+
+| Material   | v4 best (seed) | v4 score | v6 best (seed) | v6 score | v8 best (seed) | v8 score |
+|------------|---------------:|---------:|---------------:|---------:|---------------:|---------:|
+| sand       | v0 (100)       | 0.00221  | v5 (5100)      | **0.00159** | v5 (5100)   | 0.00159  |
+| leaf_litter| v0 (100)       | 0.01201  | v0 (100)       | 0.01201  | v0 (100)       | 0.01201  |
+
+(Same metric profile = same best-picked image. seam_score is
+deterministic given seed+prompt.)
+
+### Findings
+
+1. **v6 found a better candidate than v4 for sand (28% MSE reduction).**
+   v0 (seed 100) score 0.0022 → v5 (seed 5100) score 0.0016. The 6th
+   variant happened to be the global best in this pool. v8 confirmed
+   no further improvement.
+
+2. **v4 already found the global best for leaf_litter.** All three
+   runs picked the same v0 candidate. v6 and v8 generated 2 and 4 more
+   candidates respectively, none of which beat v0.
+
+3. **The variance-sensitivity is prompt-dependent, not universal.**
+   Sand's variant pool spans seam scores 0.0016–0.0073 (4.5×); leaf
+   spans 0.0120–0.0265 (2.2×). Sand has more candidate-to-candidate
+   variance, so increasing the pool helps. Leaf_litter is more uniform.
+   This makes intuitive sense: sand is a flat low-detail surface where
+   small content changes shift edge-MSE a lot; leaf_litter is dense
+   chaotic content where any individual variant's edge-MSE is roughly
+   determined by overall content density rather than micro-pattern.
+
+4. **v8 was never better than v6 in this sweep.** Hard to rule out
+   that v8 sometimes wins on other prompts, but in our two test cases
+   it wasted compute. **Default of 4 is reasonable; promote to 6 only
+   when first-pass quality is unsatisfactory.**
+
+5. **The current `default` quality preset's variants=4 stays the
+   right answer most of the time.** A `--variants 6` retry path is
+   worth keeping in mind for stubborn materials.
+
+### Implications for next steps
+
+- **No default change.** Keep `variants=4` in PIPELINE.md presets.
+- **Add a manual-retry note**: if a material produces a borderline
+  best-pick (gate fail + visually OK, or grade B with periodic
+  failing), bump `--variants 6` before reaching for prompt rewrites.
+  This goes in the cookbook's "Operating tips" section.
+- **`variants=8` is dropped from consideration.** Two test prompts
+  saw zero improvement over v6. Not worth the compute.
+- **The `Flux Fill` / `controlnet-inpaint` model swap** (the other
+  half of the original A.4 plan, per EXTERNAL_TECHNIQUES technique
+  #12) was deferred — current pipeline lifts both targeted A.3
+  materials above threshold, so the high-effort plumbing isn't
+  currently justified.
+
+---
+
 ## A.3 (snow) — Prompt-permutation sweep on snow
 
 **Date**: 2026-05-07
@@ -306,10 +545,19 @@ tiling.
 - **"Seamless tileable"** — `flux_seamless.py`'s
   `TILE_PROMPT_SUFFIX` adds this for you. Adding it manually doubles
   it up and FLUX starts tiling at obvious cell boundaries.
-- **Words implying directionality**: "horizontal striations",
-  "parallel grooves", "ridges". FLUX makes them line up across copies
-  → visible lattice when tiled. (Hex-tile shader masks this but the
-  underlying texture is still flawed.)
+- **Words implying directionality** (CONFIRMED RECURRING FAILURE,
+  2026-05-07 across snow / tundra_ice / desert_canyon_rock):
+  "horizontal striations", "parallel grooves", "ridges", "wind
+  ridges", "bands" (in mineral context), "stripes". FLUX makes them
+  line up across copies → visible lattice when tiled. The failure
+  pattern is severe: A.6 logged a periodic-locality of **1269** on
+  desert_canyon_rock with "horizontal striations" — 21× the threshold.
+  **Default rule**: if the desired material doesn't *naturally* have a
+  visible directional structure at 1m² scale, don't put a directional
+  word in the prompt. (Sand is the exception — real sand has wind
+  ripples — and even there, "subtle wind ripples" is on the edge.)
+  Hex-tile shader masks the worst of it in-renderer but the
+  underlying texture is still flawed and shows in non-hex sampling.
 - **"Extreme close-up macro"** for materials with no texture at the
   macro scale (e.g. plain sand). FLUX over-interprets and invents
   cracks/objects to satisfy "macro detail."
@@ -421,15 +669,37 @@ top-down photo, even lighting, photoreal
 Periodic just above threshold (lichen blobs). `--variants 6
 --seed-base 100` was the recipe that landed grade B.
 
-#### desert_canyon_rock — WORKS WITH CAVEAT
+#### desert_canyon_rock — WORKS (post A.6 rewrite, 2026-05-07)
 ```
-weathered tan canyon sandstone with horizontal striations,
-top-down photo, photoreal
+weathered tan canyon sandstone, top-down photo, photoreal
 ```
-Grade B (periodic 71.9). The "horizontal striations" cue produced
-real-looking sandstone but with strong directional bias — when tiled
-without hex-tile, the lines align. With hex-tile it's fine. Still
-on the edge of acceptable; consider rewording without "horizontal."
+Grade A 3/3 seeds; 2/3 passed gate (the seed200 gate fail was on
+borderline periodic, visually clean). Just removing "horizontal
+striations" cleaned up the 71.9 periodic to single-digit. **Use
+seed-base 100 or 400; avoid 200.**
+
+#### desert_canyon_rock — DID NOT WORK
+- `"... horizontal striations ..."` (the old cookbook prompt, pre-A.6)
+  → catastrophic lattice. Periodic 1269.5 on seed 100 (worst score in
+  project history), 344 on seed 200, 255 on seed 400. Hex-tile shader
+  was masking the issue but the underlying texture was reliably
+  flawed. Same directional-cue failure as snow's "ridges" and
+  tundra_ice's "wind ridges."
+- `"... iron oxide bands and quartz inclusions ..."` (A.6 mineral
+  variant) → reintroduced lattice on seed 100 (brick pattern) and
+  seed 200 (weave). "Bands" is itself a directional concept. **When
+  using mineral naming, avoid words that imply linear features:
+  "bands", "veins" (when oriented), "stripes". "Inclusions",
+  "patches", "deposits" are safer.**
+- `"ground-level photograph of weathered desert sandstone surface,
+  fine grain detail ..."` (A.6 ground_level_lead variant) → smooth-A
+  failure (LESSONS L16). All 3 seeds grade A on seams but failed the
+  roughness sanity check ("near-zero variance" — texture too uniform
+  to be a believable rock). "Fine grain detail" pushed FLUX toward
+  sub-pixel-uniform output. The ground-level-photograph lead phrase
+  doesn't generalize to rock; it works best on content-rich materials
+  (forest_floor) and is acceptable on uniform-but-dimpled materials
+  (snow).
 
 #### desert_dark_rock — WORKS
 ```
@@ -477,15 +747,29 @@ material — covered by the `Snow` category in
   common substance names (e.g. "snowflakes", "compacted snow"), not
   rare ones.
 
-#### tundra_ice — PARTIAL
+#### tundra_ice — WORKS (post A.6 rewrite, 2026-05-07)
 ```
-compacted snow surface with subtle wind ridges and tiny ice
-crystals, top-down photograph, photoreal
+uneven compacted snow with sparse small ice crystals, top-down
+photograph, photoreal
 ```
-Grade C — "wind ridges" produced a strong vertical line down one
-edge that palette-lock made worse. Likely better:
-- Drop "wind ridges" — too directional.
-- Try "uneven compacted snow with sparse small ice crystals."
+Grade A 3/3 seeds in A.6 sweep — same fix as snow (drop the
+directional cue). **Use seed-base 100 or 400** (seed-200 produces
+stray dark debris that reads as rocks/dirt; would look wrong on
+a clean tundra surface).
+
+#### tundra_ice — DID NOT WORK
+- `"... subtle wind ridges and tiny ice crystals ..."` (the old
+  cookbook prompt, pre-A.6) → "wind ridges" produced strong
+  directional artifacts. seed400 hit periodic 477.6 (the worst score
+  before desert_canyon_rock's 1269), producing a visible diagonal
+  woven-fabric pattern. Same failure as snow's "ridges" and rock's
+  "striations."
+- `"glacial ice surface with subtle bubbles and crystal patterns ..."`
+  (A.6 glacial variant) → produced cracked, blue-tinted *true ice*
+  output instead of compacted snow. Stylistically interesting but
+  doesn't match tundra_ice's role in current biome kits (sits next to
+  moss in tundra kit, should read as snow). Could be useful for a
+  future "true ice" / glacier slot.
 
 ### Foliage
 
@@ -512,10 +796,14 @@ tundra better than warm/golden lighting cues.
 
 ## Operating tips
 
-- **Variants**: 4 is the default; bump to 6 when first-pass results
-  miss. Variant selection picks by edge-MSE which doesn't perceive
-  prompt fidelity, so more variants ≠ better material — just better
-  edges.
+- **Variants**: 4 is the default and is right ~most of the time
+  (validated A.4 sweep, 2026-05-07 — leaf_litter's v0 was already
+  globally best at v4). Bump to **6** when first-pass results miss
+  on a *variance-sensitive* category (low-detail surfaces like sand
+  where micro-pattern shifts move the seam score a lot). v8 was never
+  better than v6 in the A.4 sweep — don't go higher. Variant selection
+  picks by edge-MSE which doesn't perceive prompt fidelity, so more
+  variants ≠ better material — just better edges.
 - **Seed-base**: change when re-rolling. Default 42 is fine for
   first runs. `42 + N*100` for retries works well. **Avoid seed-base
   300** — observed (A.2 sweep) to produce lattice failures on 4 of 5
