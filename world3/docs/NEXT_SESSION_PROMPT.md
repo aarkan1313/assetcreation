@@ -39,7 +39,8 @@ Recent scoped commits:
 - `dfb2bdd` - `world3: checkpoint opentopo worktree`
 - `edc9902` - `world3: tune transition boundary assets`
 - `62c5736` - `world3: add splat shader prototype`
-- `HEAD at handoff` - M4 chunk material contract
+- `2bf0942` - `world3: add chunk splat material contract`
+- `HEAD pending` - M5 walk-scene stream wiring
 
 M1 is done:
 
@@ -97,21 +98,40 @@ M4 prototype pass 2 is done:
   unimported PNG is not loadable from `.tres` as a `Texture2D` in runtime
   Godot.
 
+M5 pass 1 is wired:
+
+- `world3/scenes/walk.tscn` now uses visible 256 m `ChunkLoader.gd` chunks with:
+  - `terrain_material = res://textures/wgv3/terrain_splat_alpine.tres`
+  - `splat_weights_path = res://textures/m4_splat/alpine_height_slope_weights_rgba.png`
+  - `chunk_size_m = 256`
+  - `chunk_resolution_m = 8`
+  - `view_radius_chunks = 1`
+- The legacy single `Terrain.gd` is hidden and retained for collision only.
+- The player spawn was lowered so smoke captures see terrain instead of sky.
+- `ChunkLoader.gd` writes UVs with `_wrapped_fraction(...)`, matching height
+  sampling. This fixed the first M5 smoke-test material split at a chunk edge.
+- Static capture:
+  `world3/docs/captures/m5/walk_chunk_splat_smoke.png`
+- Scripted crossing runner:
+  `world3/scripts/M5WalkStreamRunner.gd`
+- Scripted crossing capture and metrics:
+  - `world3/docs/captures/m5/walk_stream_after_crossing.png`
+  - `world3/docs/captures/m5/walk_stream_smoke_metrics.json`
+- Crossing result: 900 m along +Z, chunk path `[0,5] -> [0,9]`, 9 peak loaded
+  chunks, 12 builds, 12 removals, 20.096 ms worst synchronous update.
+- Evidence doc:
+  `world3/docs/M5_WALK_SPLAT_STREAMING.md`
+
 ## Next best move
 
-Start M5:
+Continue M5 from pass 1:
 
-1. Wire `ChunkLoader.gd` into `walk.tscn` using:
-   - `chunk_size_m = 256`
-   - `chunk_resolution_m = 8`
-   - `view_radius_chunks = 1`
-   - `terrain_material = res://textures/wgv3/terrain_splat_alpine.tres`
-   - `splat_weights_path = res://textures/m4_splat/alpine_height_slope_weights_rgba.png`
-2. Keep M5 fixed at the five-slot prototype contract until the walk scene is
-   stable.
-3. Only after the visual stream is stable, decide whether to formalize weight
-   texture import/cache, material indirection, and transition-strip boundary
-   sampling.
+1. Let the user visually review `walk.tscn` and the M5 captures.
+2. Run or build a longer user-facing walk capture if the pass 1 view is
+   accepted.
+3. Write the concise streaming budget note for the wired `walk.tscn` path.
+4. Choose the next hardening target: export-safe generated image import/cache,
+   streamed collision, or boundary-strip sampling.
 
 ## Operating reminders
 

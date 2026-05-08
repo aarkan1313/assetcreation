@@ -219,7 +219,10 @@ func _build_chunk_mesh(cx: int, cz: int) -> ArrayMesh:
 			var global_z: float = min_z + fz * chunk_size_m
 			var elev: float = _sample_height_global(global_x, global_z)
 			verts[i] = Vector3(fx * chunk_size_m - half_size, elev, fz * chunk_size_m - half_size)
-			uvs[i] = Vector2(global_x / _source_size_x_m, global_z / _source_size_z_m)
+			uvs[i] = Vector2(
+				_wrapped_fraction(global_x, _source_size_x_m),
+				_wrapped_fraction(global_z, _source_size_z_m)
+			)
 			normals[i] = _sample_normal_global(global_x, global_z, mesh_step)
 
 	indices.resize(n * n * 6)

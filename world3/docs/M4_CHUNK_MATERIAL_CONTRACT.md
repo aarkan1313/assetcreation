@@ -97,6 +97,12 @@ For the first `walk.tscn` integration, use:
 That gives M5 a concrete streaming material contract while keeping the known
 prototype limits visible.
 
+M5 pass 1 applied this contract in `walk.tscn`. One contract bug surfaced and
+was fixed: chunk mesh UVs must use the same wrapped source fraction as height
+sampling, not raw `global_x / source_size`, or splat lookup creates artificial
+material breaks at chunk edges. The pass 1 evidence is recorded in
+`world3/docs/M5_WALK_SPLAT_STREAMING.md`.
+
 ## Verification
 
 Rendered with:

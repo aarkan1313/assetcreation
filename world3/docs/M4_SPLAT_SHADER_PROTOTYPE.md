@@ -131,11 +131,18 @@ difference belongs in shader tuning after the M5 runtime path exists.
 
 ## Next
 
-The next step is M5-prep, then M5 proper:
+M5 pass 1 has consumed this prototype:
 
-- keep pass 2 fixed at five slots for the first `walk.tscn` integration;
+- `walk.tscn` now uses `terrain_splat_alpine.tres` through `ChunkLoader.gd`;
+- `ChunkLoader.gd` binds the generated splat PNG through `splat_weights_path`;
+- chunk mesh UVs now use the same wrapped source fraction as height sampling,
+  which fixed the first M5 smoke-test material split at chunk edges.
+
+Next hardening:
+
 - formalize generated weight-map import/cache if dynamic binding becomes
   fragile;
 - add a boundary-weight lane that can later sample M2 transition strips once
   boundary-space UVs exist;
-- wire the splat material into `walk.tscn` through `ChunkLoader.gd`.
+- keep M5 fixed at five slots until the longer walk demo and streaming budget
+  are written.

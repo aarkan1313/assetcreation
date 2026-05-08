@@ -70,15 +70,18 @@ falls outside the current chunk footprint.
 
 That means neighboring chunks compute the same normal at shared border vertices.
 
-## Next
+## Follow-up
 
-M5 should wire `ChunkLoader.gd` into `walk.tscn` with:
+M5 pass 1 has wired `ChunkLoader.gd` into `walk.tscn` with:
 
 - `chunk_size_m = 256`
 - `chunk_resolution_m = 8`
 - `view_radius_chunks = 1` initially
-- collision deferred or built per loaded chunk after the visual stream is stable
+- collision still deferred; the legacy single terrain remains hidden as the
+  collision source while streamed chunks provide the visible terrain
 
 If walk speed or camera horizon pushes the 3x3 256 m neighborhood too small,
 increase radius before increasing base chunk size. Increase chunk size only
 after async build/cache exists.
+
+Pass 1 evidence is in `world3/docs/M5_WALK_SPLAT_STREAMING.md`.

@@ -4,7 +4,12 @@ Real-DEM-driven world generator. OpenTopography heightmap → Godot 4.5 terrain
 mesh → three view modes (iso, topdown, walkable). Fresh rebuild, no inherited
 code from `worldgen_v2` or earlier attempts.
 
-Status: MVP loop complete (1 region, 1 texture, 3 scenes).
+Status: M5 pass 1 is wired. `walk.tscn` now renders visible terrain through
+256 m streamed `ChunkLoader.gd` chunks with the M4 unified splat material;
+the legacy single terrain remains hidden as the collision source. The older
+MVP notes below are still useful for the base pipeline, but the current
+workflow state lives in `docs/WORKFLOW_SNAPSHOT_2026_05_08.md` and
+`docs/M5_WALK_SPLAT_STREAMING.md`.
 
 ## Layout
 
@@ -23,6 +28,8 @@ world3/
 │   └── forest_floor/
 ├── scripts/
 │   ├── Terrain.gd              # builds subdivided mesh + collision from heightmap
+│   ├── ChunkLoader.gd          # streams 256 m visual chunks around a target
+│   ├── M5WalkStreamRunner.gd   # scripted walk-stream smoke test
 │   ├── IsoCam.gd               # auto-frames the terrain AABB in ortho
 │   ├── TopDownCam.gd           # auto-frames from straight above
 │   ├── FlyCam.gd               # free-fly debug camera
@@ -160,11 +167,11 @@ PNGs land in `D:/tmp/world3_screens/{iso,topdown,walk}.png`.
 
 ## What's not done yet
 
-- **Multi-texture blending.** Five PBR sets are staged; only one is in the
-  scene. Next slice: a slope+height shader that uses all five (grass low/flat,
-  forest_floor mid/flat, rock_light steep, rock_dark high, desert highest as
-  a placeholder for snow). This is the change that will make iso/topdown look
-  game-worthy rather than topo-mappy.
+- **M5 hardening.** The walk scene now has visible streamed splat chunks, but
+  collision is still the hidden single terrain. Export-safe generated image
+  loading, streamed collision, and boundary-strip sampling are still open.
+- **Material indirection.** The M4/M5 splat path is fixed to five semantic
+  slots. Arbitrary catalog material tables or texture arrays are not wired yet.
 - **Iso/topdown scale tuning.** Camera framing is correct but the apparent
   scale of detail vs. mountain reads more "topographic survey" than "world
   you'd play in." Likely needs: shorter horizontal world size per tile (e.g.
@@ -173,8 +180,9 @@ PNGs land in `D:/tmp/world3_screens/{iso,topdown,walk}.png`.
 - **Real water / sea level.** No body-of-water handling. Anything below a
   configurable Y just renders as terrain.
 - **Scatter / props / vegetation.** Not in scope for the MVP.
-- **Multi-DEM stitching.** One tile per build. Multi-tile is a larger problem
-  (CRS reprojection, edge alignment, memory).
+- **Multi-source world stitching.** The current stream tiles one source
+  heightmap as a synthetic infinite field. Real adjacent DEM/source transitions
+  still need CRS alignment, edge policy, and memory planning.
 
 ## What's archived/unused
 

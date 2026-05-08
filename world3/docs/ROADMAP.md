@@ -54,8 +54,12 @@ direction; treat the rest as where we've been.
 - M4 unified splat shader prototype pass 2 is done: a fixed five-slot shader
   renders height/slope fallback, RGBA splat weights, and OpenTopo macro/detail
   material compatibility; `ChunkLoader.gd` can now bind the runtime splat
-  weight texture through the chunk material/weight contract. Next move is M5
-  wiring into `walk.tscn`.
+  weight texture through the chunk material/weight contract.
+- M5 pass 1 is wired into `walk.tscn`: visible terrain now streams through
+  256 m `ChunkLoader.gd` chunks using `terrain_splat_alpine.tres`, while the
+  legacy single terrain remains hidden for collision. Smoke evidence lives in
+  `world3/docs/M5_WALK_SPLAT_STREAMING.md`. Remaining M5 exit work is the
+  longer walk capture, explicit budget note, and hardening decisions.
 
 Workflow snapshot: [`WORKFLOW_SNAPSHOT_2026_05_08.md`](WORKFLOW_SNAPSHOT_2026_05_08.md).
 

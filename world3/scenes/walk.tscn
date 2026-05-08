@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="Script" path="res://scripts/Terrain.gd" id="terrain_script"]
 [ext_resource type="Material" path="res://textures/wgv3/terrain_blend_alpine_walk.tres" id="terrain_mat"]
 [ext_resource type="Script" path="res://scripts/Walker.gd" id="walker_script"]
+[ext_resource type="Script" path="res://scripts/ChunkLoader.gd" id="chunk_loader"]
+[ext_resource type="Material" path="res://textures/wgv3/terrain_splat_alpine.tres" id="splat_mat"]
 
 [sub_resource type="Environment" id="env"]
 background_mode = 1
@@ -34,13 +36,23 @@ directional_shadow_max_distance = 20000.0
 [node name="TerrainBody" type="StaticBody3D" parent="."]
 
 [node name="Terrain" type="MeshInstance3D" parent="."]
+visible = false
 script = ExtResource("terrain_script")
 material_override = ExtResource("terrain_mat")
 subdivisions = 256
 collision_target = NodePath("../TerrainBody")
 
+[node name="ChunkLoader" type="Node3D" parent="."]
+script = ExtResource("chunk_loader")
+terrain_material = ExtResource("splat_mat")
+splat_weights_path = "res://textures/m4_splat/alpine_height_slope_weights_rgba.png"
+chunk_size_m = 256.0
+view_radius_chunks = 1
+chunk_resolution_m = 8.0
+target_path = NodePath("../Player")
+
 [node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4500, 1500)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3525, 1500)
 script = ExtResource("walker_script")
 
 [node name="Collider" type="CollisionShape3D" parent="Player"]

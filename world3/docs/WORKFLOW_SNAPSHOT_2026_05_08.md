@@ -1,7 +1,7 @@
 # world3 Workflow Snapshot - 2026-05-08
 
 This is the compact record of the current world3 workflow after M1, M2, M3,
-and M4 prototype pass 2.
+M4 prototype pass 2, and M5 pass 1.
 
 ## Framing
 
@@ -76,6 +76,16 @@ material-generation QA rather than transition logic.
    - Evidence: `world3/docs/M4_SPLAT_SHADER_PROTOTYPE.md` and
      `world3/docs/M4_CHUNK_MATERIAL_CONTRACT.md`
 
+7. **M5 walk-scene stream wiring**
+   - Scene: `world3/scenes/walk.tscn`
+   - Runner: `world3/scripts/M5WalkStreamRunner.gd`
+   - Contract: visible terrain streams through 256 m `ChunkLoader.gd` chunks
+     using `terrain_splat_alpine.tres`; hidden legacy `Terrain.gd` remains as
+     collision source.
+   - Fix landed: chunk UVs now use the same wrapped source fraction as height
+     sampling, removing the first smoke-test material split at a chunk edge.
+   - Evidence: `world3/docs/M5_WALK_SPLAT_STREAMING.md`
+
 7. **Visual QA**
    - Region/gallery captures verify kit-level reads.
    - Transition comparison sheets verify hard cut vs transition strip.
@@ -85,6 +95,8 @@ material-generation QA rather than transition logic.
      `terrain_hex_detail` vs unified shader compatibility.
    - M4 chunk capture verifies the 256 m `ChunkLoader` path can consume the
      unified splat material and runtime weight texture.
+   - M5 walk captures verify the real `walk.tscn` visual stream and a scripted
+     900 m chunk crossing.
    - Godot review scenes are used for in-engine sanity, but some OpenTopo
      review harness files are still in preexisting worker dirt and should not
      be swept into unrelated commits.
@@ -102,13 +114,17 @@ material-generation QA rather than transition logic.
   mean absolute RGB delta is about 5.3 / 255.
 - M4 chunk-stream capture is nonblank through `ChunkLoader.splat_weights_path`;
   visible material-region blocking is accepted as prototype weight-map content.
+- M5 static walk capture is nonblank and seam-clean after the chunk UV fix.
+- M5 scripted crossing holds 9 loaded chunks, builds 12, removes 12, and records
+  a 20.096 ms worst synchronous update over 900 m of movement.
 - Architectural decisions are appended to docs before moving on.
 
 ## Open Work
 
 - Reduce noisy grass/leaves at source texture generation/QA.
-- M5: wire 256 m chunk streaming plus the fixed five-slot splat contract into
-  `walk.tscn`.
+- M5 pass 1 is wired. Remaining M5 exit work: longer user-facing walk capture,
+  explicit streaming budget note, export-safe image import/cache, and the
+  collision/transition-strip hardening decision.
 - Later M4/M5 polish: formalize weight texture import/cache, material
   indirection, and boundary-strip sampling.
 
@@ -124,4 +140,5 @@ material-generation QA rather than transition logic.
 - `dfb2bdd` - `world3: checkpoint opentopo worktree`
 - `edc9902` - `world3: tune transition boundary assets`
 - `62c5736` - `world3: add splat shader prototype`
-- `HEAD at handoff` - M4 chunk material contract
+- `2bf0942` - `world3: add chunk splat material contract`
+- `HEAD pending` - M5 walk-scene stream wiring

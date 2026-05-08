@@ -32,7 +32,7 @@ movement along each axis without forcing changes to the others.
 | **Source** | `real` ⇄ `procedural` ⇄ `fantasy` | Where heightmaps + textures come from. Real = OpenTopo DEM + orthophoto. Procedural = ComfyUI/FLUX/StableMaterials. Fantasy = procedural + handcrafted style overrides. Mixable per-region or per-chunk. |
 | **View** | `2D` ⇄ `iso` ⇄ `walk` | Camera mode. Implemented as the per-mode `terrain_blend_<kit>_<mode>.tres` swap (Phase E). 2D mode not yet wired but is the same knob. |
 | **Style** | `photoreal` ⇄ `stylized-realistic` ⇄ `fantasy` | Visual treatment. Distinct from Source — a real DEM can be rendered photoreal OR stylized. Phase E `macro_value_strength` partially hits this. |
-| **Granularity** | `whole-region kit` ⇄ `within-region kit-mix` ⇄ `per-pixel splat` | How material assignment is decided. Current = whole-region kit. Within-region + per-pixel splat are gaps. |
+| **Granularity** | `whole-region kit` ⇄ `within-region kit-mix` ⇄ `per-pixel splat` | How material assignment is decided. Iso/topdown/gallery remain whole-region kit; walk has a first per-pixel splat prototype through M5. |
 | **Decoration** | `bare-terrain` ⇄ `+scatter` ⇄ `+structures` | Props, vegetation, buildings, POIs. **NOT in scope** for this doc. |
 
 ---
@@ -94,8 +94,9 @@ world3/opentopo/STATUS.md
 
 ### 2C. Shader stack - prototype unified path exists
 
-The production/runtime scenes still use **two old shaders**, but M4 pass 2
-now has a prototype unified path:
+The production/runtime scenes are mid-migration. Iso/topdown and the region
+gallery still use the old whole-kit shader path, while M5 pass 1 has moved
+`walk.tscn` onto the prototype unified splat path:
 
 - `world3/shaders/terrain_blend.gdshader` — height/slope-banded
   multi-slot blend. Bound by all `terrain_blend_<kit>_<mode>.tres`
@@ -114,10 +115,15 @@ now has a prototype unified path:
   material path. Review materials, chunk contract, and captures are documented
   in `world3/docs/M4_SPLAT_SHADER_PROTOTYPE.md` and
   `world3/docs/M4_CHUNK_MATERIAL_CONTRACT.md`.
+- `world3/scenes/walk.tscn` - M5 pass 1 runtime wiring. Visible terrain now
+  comes from `ChunkLoader.gd` with `terrain_splat_alpine.tres` and
+  `splat_weights_path`; the legacy `Terrain.gd` mesh is hidden and retained
+  for collision only. Evidence: `world3/docs/M5_WALK_SPLAT_STREAMING.md`.
 
-The **shared runtime contract is started, not complete**. Existing game scenes
-are not moved yet. Next M4 work is the chunk material/weight contract that M5
-can wire into `ChunkLoader.gd` and eventually `walk.tscn`.
+The **shared runtime contract is started, not complete**. M5 proves the first
+walk-scene stream, but material indirection, export-safe generated image
+loading, streamed collision, and transition-strip boundary sampling are still
+future hardening work.
 
 ---
 
@@ -127,11 +133,11 @@ can wire into `ChunkLoader.gd` and eventually `walk.tscn`.
 |-----|--------|----------|-------|
 | **Aligned material taxonomy** (kit slots vs material classes) | Catalog exists with 25 procedural + 6 OpenTopo entries; material generation, import, and representative renders verified | HIGH — blocks M2/M4 until maintained | Consolidated in this chat |
 | **Transition materials** between kits/classes | M2 generated four reviewed/tuned boundary strips; not sampled in runtime shader yet | HIGH — blocks tile-to-tile blending | Consolidated in this chat; use OpenTopo QA infrastructure |
-| **Per-pixel splat shader** | M4 pass 2 prototype exists and renders: five slots, RGBA weights, height/slope fallback, OpenTopo detail compatibility, and ChunkLoader splat binding | HIGH — ready for first M5 wiring, still not final material indirection | Orchestrator |
-| **Within-chunk material variation** | Prototype splat map generated from height/slope and consumed by a 256 m ChunkLoader review scene | HIGH | Orchestrator (M5 wiring next) |
+| **Per-pixel splat shader** | M4 pass 2 prototype exists; M5 pass 1 wires it into `walk.tscn` through 256 m streamed chunks | HIGH - working prototype, still not final material indirection | Orchestrator |
+| **Within-chunk material variation** | Prototype splat map generated from height/slope and consumed by both review chunks and the walk scene | HIGH | Orchestrator |
 | **Cross-source style bridge** (real ↔ procedural ↔ fantasy adjacent) | Worker flagged it; no fix yet | MEDIUM | Consolidated in this chat |
-| **Chunk size + format decision** | Sweep deferred until streaming harness built | MEDIUM | Orchestrator (Phase F.4-sweep) |
-| **Streaming load/unload** | Static-load only today | MEDIUM | Orchestrator |
+| **Chunk size + format decision** | M3 sweep locks 256 m base chunks at 8 m mesh spacing | MEDIUM | Orchestrator |
+| **Streaming load/unload** | M5 pass 1 stream in `walk.tscn`; scripted 900 m crossing built/removed chunks correctly | MEDIUM | Orchestrator |
 | **Corner textures** (3-way junctions) | Not built; user flagged from past experience | HIGH long-term | Consolidated in this chat once pairwise transitions are validated |
 | **Fantasy biome / fantasy material source** | Acknowledged future; no code yet | LOW (deferred) | TBD |
 | **Provenance metadata** on procedural materials | Draft catalog now carries procedural + real-source provenance | LOW | Consolidated in this chat; keep expanding during M2/M4 |
@@ -255,6 +261,20 @@ sampling stay follow-up work unless M5 proves they are immediately needed.
 Take M3's 256 m chunk-size winner and wire the chunk loader into
 `walk.tscn`. Iso/topdown stay on auto-AABB (Phase C zoom levels fit
 one chunk fine).
+
+**Status 2026-05-08:** PASS 1 WIRED. `walk.tscn` renders visible terrain
+through `ChunkLoader.gd` with `terrain_splat_alpine.tres` and dynamic splat
+weights. The original single `Terrain.gd` remains hidden for collision. The
+first smoke capture exposed and then fixed a material UV mismatch at chunk
+edges. `M5WalkStreamRunner.gd` moved the player 900 m across chunk rows
+`[0,5]` to `[0,9]`, held 9 loaded chunks, built 12, removed 12, and saw a
+20.096 ms worst synchronous update.
+
+Evidence: `world3/docs/M5_WALK_SPLAT_STREAMING.md`.
+
+**Remaining:** longer user-facing walk capture, explicit streaming budget note,
+export-safe generated image loading, and the collision/transition-strip
+hardening decisions.
 
 ---
 
@@ -395,3 +415,9 @@ These start when chunk + biome + tile + transition is ~80% solved
   `chunk_splat_stream_review.tscn` to prove a 256 m streamed chunk set can
   consume the unified splat material. M4 prototype exit is met; M5 wiring is
   next.
+- **2026-05-08 (M5 pass 1)**: Wired `walk.tscn` to visible 256 m
+  `ChunkLoader.gd` chunks using `terrain_splat_alpine.tres` and dynamic splat
+  weights, while retaining hidden legacy terrain for collision. Fixed the
+  first smoke-test chunk-edge material split by aligning chunk UVs with the
+  height sampler's wrapped source fraction. Added `M5WalkStreamRunner.gd` plus
+  static and moving smoke captures under `world3/docs/captures/m5/`.
