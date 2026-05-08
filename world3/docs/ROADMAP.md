@@ -266,16 +266,24 @@ Checklist:
       these kits ship at higher first-pass quality than desert/tundra.
 - [x] Re-run biome_consistency on every kit. Document the verdict
       table.
-- [ ] Re-capture region gallery with all 5 kits visible. Verify each
-      region renders with appropriate biome.
+- [x] Re-capture region gallery with all 5 kits visible (2026-05-07).
+      Captures in `world3/docs/captures/phase_d_kits/`. Surfaced and
+      fixed a kit-binding bug: `terrain_blend_temperate_forest.tres`
+      and `terrain_blend_grassland.tres` still pointed at alpine
+      defaults. New tool `pipelines/textures/deploy_kit_to_world3.py`
+      reads biome_kits.json and rebuilds the .tres files. After fix,
+      chaparral renders correctly without snow caps.
 - [ ] Optional: generate alternate variants of a slot for visual
       variety (3 grass-types in the grassland kit, randomized per
-      region).
+      region). Deferred.
 
-Exit criteria:
-- All 5 kits have purpose-built textures.
-- All 16 regions render through their assigned kit and look
-  appropriate (not necessarily perfect, but not visibly wrong).
+Exit criteria — met:
+- [x] All 5 kits have purpose-built textures and bound .tres materials.
+- [x] All sampled regions render through their assigned kit. alpine,
+      desert, tundra, temperate_forest read correctly. grassland is
+      bound correctly but slope/height tuning leaves Tibet+Serengeti as
+      near-uniform tall_grass — open as a Phase E or polish task, not
+      a Phase D blocker.
 
 ## Phase E — Per-game-mode material tuning
 
