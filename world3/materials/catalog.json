@@ -1,0 +1,1277 @@
+{
+  "version": 1,
+  "updated": "2026-05-08",
+  "catalog_role": "workflow_and_quality_validation",
+  "quality_target": "aaa",
+  "default_asset_status": "pipeline_validation",
+  "notes": [
+    "Canonical ids are the ids runtime, reviews, M2 transitions, and M4 splat weights should use.",
+    "Some procedural source generator ids differ from canonical ids; preserve those in provenance.source_asset_id.",
+    "scale_m_per_repeat is the current terrain_blend iso/base repeat. Per-mode material variants currently use walk=2.5, iso=10, topdown=50 meters per repeat."
+  ],
+  "mode_repeat_m": {
+    "walk": 2.5,
+    "iso": 10.0,
+    "topdown": 50.0
+  },
+  "schema": {
+    "required_fields": [
+      "id",
+      "source",
+      "provenance",
+      "scale_m_per_repeat",
+      "color_family",
+      "pbr_maps",
+      "shader_binding",
+      "validated_views"
+    ],
+    "source_values": [
+      "real",
+      "procedural",
+      "fantasy"
+    ],
+    "shader_binding_values": [
+      "terrain_blend",
+      "terrain_hex_detail"
+    ],
+    "validated_view_values": [
+      "ok",
+      "needs_review",
+      "not_validated"
+    ]
+  },
+  "materials": [
+    {
+      "id": "grass",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "generated_texture",
+        "source_asset_id": "wgv3_grass",
+        "tool": "pipelines/textures/aaa_texture.py",
+        "prompt": "lush green grass with small clovers and dirt patches, top-down photo, even lighting, photoreal",
+        "seed_base": 42,
+        "qa_grade": "B",
+        "passed_gate": true
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "green-organic",
+      "runtime_texture_dir": "world3/textures/wgv3/grass",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3/grass/albedo.png",
+        "normal": "world3/textures/wgv3/grass/normal.png",
+        "roughness": "world3/textures/wgv3/grass/roughness.png",
+        "height": "world3/textures/wgv3/grass/height.png",
+        "ao": "world3/textures/wgv3/grass/ao.png"
+      },
+      "shader_binding": "terrain_blend",
+      "validated_views": {
+        "close": "ok",
+        "mid": "ok",
+        "far": "ok"
+      }
+    },
+    {
+      "id": "dirt",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "generated_texture",
+        "source_asset_id": "wgv3_dirt_test",
+        "tool": "pipelines/textures/aaa_texture.py",
+        "prompt": "rich brown dirt with small pebbles and fine debris, top-down photo, even lighting, photoreal",
+        "seed_base": 42,
+        "qa_grade": "A",
+        "passed_gate": true
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "brown-earth",
+      "runtime_texture_dir": "world3/textures/wgv3/dirt",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3/dirt/albedo.png",
+        "normal": "world3/textures/wgv3/dirt/normal.png",
+        "roughness": "world3/textures/wgv3/dirt/roughness.png",
+        "height": "world3/textures/wgv3/dirt/height.png",
+        "ao": "world3/textures/wgv3/dirt/ao.png"
+      },
+      "shader_binding": "terrain_blend",
+      "validated_views": {
+        "close": "ok",
+        "mid": "ok",
+        "far": "ok"
+      }
+    },
+    {
+      "id": "rock_light",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "generated_texture",
+        "source_asset_id": "wgv3_rock_light",
+        "tool": "pipelines/textures/aaa_texture.py",
+        "prompt": "weathered tan limestone rock surface with cracks and lichen, top-down photo, even lighting, photoreal",
+        "seed_base": 100,
+        "qa_grade": "B",
+        "passed_gate": true
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "tan-rock",
+      "runtime_texture_dir": "world3/textures/wgv3/rock_light",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3/rock_light/albedo.png",
+        "normal": "world3/textures/wgv3/rock_light/normal.png",
+        "roughness": "world3/textures/wgv3/rock_light/roughness.png",
+        "height": "world3/textures/wgv3/rock_light/height.png",
+        "ao": "world3/textures/wgv3/rock_light/ao.png"
+      },
+      "shader_binding": "terrain_blend",
+      "validated_views": {
+        "close": "ok",
+        "mid": "ok",
+        "far": "ok"
+      }
+    },
+    {
+      "id": "rock_dark",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "generated_texture",
+        "source_asset_id": "wgv3_rock_dark",
+        "tool": "pipelines/textures/aaa_texture.py",
+        "prompt": "dark grey volcanic rock surface, weathered, sharp edges and small cracks, top-down photo, even lighting, photoreal",
+        "seed_base": 42,
+        "qa_grade": "A",
+        "passed_gate": true
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "dark-grey-rock",
+      "runtime_texture_dir": "world3/textures/wgv3/rock_dark",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3/rock_dark/albedo.png",
+        "normal": "world3/textures/wgv3/rock_dark/normal.png",
+        "roughness": "world3/textures/wgv3/rock_dark/roughness.png",
+        "height": "world3/textures/wgv3/rock_dark/height.png",
+        "ao": "world3/textures/wgv3/rock_dark/ao.png"
+      },
+      "shader_binding": "terrain_blend",
+      "validated_views": {
+        "close": "ok",
+        "mid": "ok",
+        "far": "ok"
+      }
+    },
+    {
+      "id": "snow",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "generated_texture",
+        "source_asset_id": "wgv3_snow",
+        "tool": "pipelines/textures/aaa_texture.py",
+        "prompt": "fresh white snow with small dimples, top-down photo, even lighting, photoreal",
+        "seed_base": 100,
+        "qa_grade": "A",
+        "passed_gate": true
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "white-snow",
+      "runtime_texture_dir": "world3/textures/wgv3/snow",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3/snow/albedo.png",
+        "normal": "world3/textures/wgv3/snow/normal.png",
+        "roughness": "world3/textures/wgv3/snow/roughness.png",
+        "height": "world3/textures/wgv3/snow/height.png",
+        "ao": "world3/textures/wgv3/snow/ao.png"
+      },
+      "shader_binding": "terrain_blend",
+      "validated_views": {
+        "close": "ok",
+        "mid": "ok",
+        "far": "ok"
+      }
+    },
+    {
+      "id": "desert_dry_brush",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "generated_texture",
+        "source_asset_id": "desert_dry_brush",
+        "tool": "pipelines/textures/aaa_texture.py",
+        "prompt": "extreme close-up macro photograph of cracked dry desert mud surface with subtle scattering of small dead twigs and bits of dry grass, light tan color, ground level top-down view, photoreal",
+        "seed_base": 400,
+        "qa_grade": "A",
+        "passed_gate": true
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "dry-tan-organic",
+      "runtime_texture_dir": "world3/textures/wgv3/desert_dry_brush",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3/desert_dry_brush/albedo.png",
+        "normal": "world3/textures/wgv3/desert_dry_brush/normal.png",
+        "roughness": "world3/textures/wgv3/desert_dry_brush/roughness.png",
+        "height": "world3/textures/wgv3/desert_dry_brush/height.png",
+        "ao": "world3/textures/wgv3/desert_dry_brush/ao.png"
+      },
+      "shader_binding": "terrain_blend",
+      "validated_views": {
+        "close": "not_validated",
+        "mid": "ok",
+        "far": "ok"
+      }
+    },
+    {
+      "id": "desert_sand",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "generated_texture",
+        "source_asset_id": "desert_sand",
+        "tool": "pipelines/textures/aaa_texture.py",
+        "prompt": "close-up photograph of natural desert sand dunes, soft wind ripples, fine sand grains, warm golden tan color, no debris, no objects, top-down view, even daylight, photoreal, sharp focus",
+        "seed_base": 200,
+        "qa_grade": "A",
+        "passed_gate": true
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "warm-sand",
+      "runtime_texture_dir": "world3/textures/wgv3/desert_sand",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3/desert_sand/albedo.png",
+        "normal": "world3/textures/wgv3/desert_sand/normal.png",
+        "roughness": "world3/textures/wgv3/desert_sand/roughness.png",
+        "height": "world3/textures/wgv3/desert_sand/height.png",
+        "ao": "world3/textures/wgv3/desert_sand/ao.png"
+      },
+      "shader_binding": "terrain_blend",
+      "validated_views": {
+        "close": "not_validated",
+        "mid": "ok",
+        "far": "ok"
+      }
+    },
+    {
+      "id": "desert_canyon_rock",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "generated_texture",
+        "source_asset_id": "desert_canyon_rock",
+        "tool": "pipelines/textures/aaa_texture.py",
+        "prompt": "weathered tan canyon sandstone with horizontal striations, top-down photo",
+        "seed_base": 42,
+        "qa_grade": "B",
+        "passed_gate": true,
+        "note": "DECISIONS notes visible directional periodicity from the older prompt; keep as validation asset unless regenerated."
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "tan-sandstone",
+      "runtime_texture_dir": "world3/textures/wgv3/desert_canyon_rock",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3/desert_canyon_rock/albedo.png",
+        "normal": "world3/textures/wgv3/desert_canyon_rock/normal.png",
+        "roughness": "world3/textures/wgv3/desert_canyon_rock/roughness.png",
+        "height": "world3/textures/wgv3/desert_canyon_rock/height.png",
+        "ao": "world3/textures/wgv3/desert_canyon_rock/ao.png"
+      },
+      "shader_binding": "terrain_blend",
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      }
+    },
+    {
+      "id": "desert_dark_rock",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "generated_texture",
+        "source_asset_id": "desert_dark_rock",
+        "tool": "pipelines/textures/aaa_texture.py",
+        "prompt": "dark basalt rock with red-brown patina, weathered, top-down photo",
+        "seed_base": 42,
+        "qa_grade": "A",
+        "passed_gate": true
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "dark-red-brown-rock",
+      "runtime_texture_dir": "world3/textures/wgv3/desert_dark_rock",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3/desert_dark_rock/albedo.png",
+        "normal": "world3/textures/wgv3/desert_dark_rock/normal.png",
+        "roughness": "world3/textures/wgv3/desert_dark_rock/roughness.png",
+        "height": "world3/textures/wgv3/desert_dark_rock/height.png",
+        "ao": "world3/textures/wgv3/desert_dark_rock/ao.png"
+      },
+      "shader_binding": "terrain_blend",
+      "validated_views": {
+        "close": "not_validated",
+        "mid": "ok",
+        "far": "ok"
+      }
+    },
+    {
+      "id": "desert_salt_pan",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "generated_texture",
+        "source_asset_id": "desert_salt_pan",
+        "tool": "pipelines/textures/aaa_texture.py",
+        "prompt": "white salt pan crust with hexagonal cracks, top-down photo",
+        "seed_base": 42,
+        "qa_grade": "B",
+        "passed_gate": true,
+        "note": "DECISIONS notes expected hex-pattern periodicity."
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "white-salt",
+      "runtime_texture_dir": "world3/textures/wgv3/desert_salt_pan",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3/desert_salt_pan/albedo.png",
+        "normal": "world3/textures/wgv3/desert_salt_pan/normal.png",
+        "roughness": "world3/textures/wgv3/desert_salt_pan/roughness.png",
+        "height": "world3/textures/wgv3/desert_salt_pan/height.png",
+        "ao": "world3/textures/wgv3/desert_salt_pan/ao.png"
+      },
+      "shader_binding": "terrain_blend",
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      }
+    },
+    {
+      "id": "tundra_moss",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "generated_texture",
+        "source_asset_id": "tundra_moss",
+        "tool": "pipelines/textures/aaa_texture.py",
+        "prompt": "close-up photograph of arctic tundra moss ground cover, mixed dark green and reddish-brown moss with small lichen patches, damp permafrost soil visible underneath, top-down view, soft overcast daylight, photoreal, sharp focus",
+        "seed_base": 500,
+        "qa_grade": "A",
+        "passed_gate": true
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "olive-moss",
+      "runtime_texture_dir": "world3/textures/wgv3/tundra_moss",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3/tundra_moss/albedo.png",
+        "normal": "world3/textures/wgv3/tundra_moss/normal.png",
+        "roughness": "world3/textures/wgv3/tundra_moss/roughness.png",
+        "height": "world3/textures/wgv3/tundra_moss/height.png",
+        "ao": "world3/textures/wgv3/tundra_moss/ao.png"
+      },
+      "shader_binding": "terrain_blend",
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      }
+    },
+    {
+      "id": "tundra_lichen",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "generated_texture",
+        "source_asset_id": "tundra_lichen",
+        "tool": "pipelines/textures/aaa_texture.py",
+        "prompt": "close-up photograph of pale green and grey rock lichen on bare stone, patchy crustose lichen, top-down view, photoreal",
+        "seed_base": 42,
+        "qa_grade": "A",
+        "passed_gate": true
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "pale-green-lichen",
+      "runtime_texture_dir": "world3/textures/wgv3/tundra_lichen",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3/tundra_lichen/albedo.png",
+        "normal": "world3/textures/wgv3/tundra_lichen/normal.png",
+        "roughness": "world3/textures/wgv3/tundra_lichen/roughness.png",
+        "height": "world3/textures/wgv3/tundra_lichen/height.png",
+        "ao": "world3/textures/wgv3/tundra_lichen/ao.png"
+      },
+      "shader_binding": "terrain_blend",
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      }
+    },
+    {
+      "id": "tundra_frost_rock",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "generated_texture",
+        "source_asset_id": "tundra_frost_rock",
+        "tool": "pipelines/textures/aaa_texture.py",
+        "prompt": "frost-covered weathered grey rock with patchy ice crystals and snow dust, top-down photograph, photoreal",
+        "seed_base": 42,
+        "qa_grade": "B",
+        "passed_gate": true
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "cool-grey-frost-rock",
+      "runtime_texture_dir": "world3/textures/wgv3/tundra_frost_rock",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3/tundra_frost_rock/albedo.png",
+        "normal": "world3/textures/wgv3/tundra_frost_rock/normal.png",
+        "roughness": "world3/textures/wgv3/tundra_frost_rock/roughness.png",
+        "height": "world3/textures/wgv3/tundra_frost_rock/height.png",
+        "ao": "world3/textures/wgv3/tundra_frost_rock/ao.png"
+      },
+      "shader_binding": "terrain_blend",
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      }
+    },
+    {
+      "id": "tundra_dark_rock",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "generated_texture",
+        "source_asset_id": "tundra_dark_rock",
+        "tool": "pipelines/textures/aaa_texture.py",
+        "prompt": "dark wet weathered tundra rock surface with frost patches, top-down photo, photoreal",
+        "seed_base": 42,
+        "qa_grade": "A",
+        "passed_gate": true
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "dark-cool-rock",
+      "runtime_texture_dir": "world3/textures/wgv3/tundra_dark_rock",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3/tundra_dark_rock/albedo.png",
+        "normal": "world3/textures/wgv3/tundra_dark_rock/normal.png",
+        "roughness": "world3/textures/wgv3/tundra_dark_rock/roughness.png",
+        "height": "world3/textures/wgv3/tundra_dark_rock/height.png",
+        "ao": "world3/textures/wgv3/tundra_dark_rock/ao.png"
+      },
+      "shader_binding": "terrain_blend",
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      }
+    },
+    {
+      "id": "tundra_ice",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "generated_texture",
+        "source_asset_id": "tundra_ice",
+        "tool": "pipelines/textures/aaa_texture.py",
+        "prompt": "compacted snow surface with subtle wind ridges and tiny ice crystals, top-down photograph, photoreal",
+        "seed_base": 42,
+        "qa_grade": "B",
+        "passed_gate": true,
+        "note": "TEXTURE_RND notes this older prompt can create directional ridges; candidate for regeneration if promoted beyond validation."
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "blue-white-ice",
+      "runtime_texture_dir": "world3/textures/wgv3/tundra_ice",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3/tundra_ice/albedo.png",
+        "normal": "world3/textures/wgv3/tundra_ice/normal.png",
+        "roughness": "world3/textures/wgv3/tundra_ice/roughness.png",
+        "height": "world3/textures/wgv3/tundra_ice/height.png",
+        "ao": "world3/textures/wgv3/tundra_ice/ao.png"
+      },
+      "shader_binding": "terrain_blend",
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      }
+    },
+    {
+      "id": "temperate_forest_grass",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "generated_texture",
+        "source_asset_id": "wgv3_tf_leaf_litter",
+        "tool": "pipelines/textures/aaa_texture.py",
+        "prompt": "forest floor covered in deciduous leaf litter, brown and orange oak leaves, damp humus soil visible below, top-down photo, even diffuse light, photoreal",
+        "seed_base": 200,
+        "qa_grade": "B",
+        "passed_gate": false,
+        "note": "Phase E gallery accepts current look for validation, but source strict gate failed roughness sanity."
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "brown-leaf-litter",
+      "runtime_texture_dir": "world3/textures/wgv3/temperate_forest_grass",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3/temperate_forest_grass/albedo.png",
+        "normal": "world3/textures/wgv3/temperate_forest_grass/normal.png",
+        "roughness": "world3/textures/wgv3/temperate_forest_grass/roughness.png",
+        "height": null,
+        "ao": null
+      },
+      "shader_binding": "terrain_blend",
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      }
+    },
+    {
+      "id": "temperate_forest_dirt",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "generated_texture",
+        "source_asset_id": "wgv3_tf_loamy_soil",
+        "tool": "pipelines/textures/aaa_texture.py",
+        "prompt": "loamy forest soil, dark brown, slightly moist, small root fragments, no leaves, top-down photo, even diffuse light, photoreal",
+        "seed_base": 42,
+        "qa_grade": "A",
+        "passed_gate": false
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "dark-brown-earth",
+      "runtime_texture_dir": "world3/textures/wgv3/temperate_forest_dirt",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3/temperate_forest_dirt/albedo.png",
+        "normal": "world3/textures/wgv3/temperate_forest_dirt/normal.png",
+        "roughness": "world3/textures/wgv3/temperate_forest_dirt/roughness.png",
+        "height": null,
+        "ao": null
+      },
+      "shader_binding": "terrain_blend",
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      }
+    },
+    {
+      "id": "temperate_forest_rock_light",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "generated_texture",
+        "source_asset_id": "wgv3_tf_mossy_rock",
+        "tool": "pipelines/textures/aaa_texture.py",
+        "prompt": "weathered granite rock surface, green moss patches, rough texture, outdoor forest, top-down photo, even diffuse light, photoreal",
+        "seed_base": 100,
+        "qa_grade": "A",
+        "passed_gate": true
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "mossy-grey-rock",
+      "runtime_texture_dir": "world3/textures/wgv3/temperate_forest_rock_light",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3/temperate_forest_rock_light/albedo.png",
+        "normal": "world3/textures/wgv3/temperate_forest_rock_light/normal.png",
+        "roughness": "world3/textures/wgv3/temperate_forest_rock_light/roughness.png",
+        "height": null,
+        "ao": null
+      },
+      "shader_binding": "terrain_blend",
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      }
+    },
+    {
+      "id": "temperate_forest_rock_dark",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "generated_texture",
+        "source_asset_id": "wgv3_tf_bark_rock",
+        "tool": "pipelines/textures/aaa_texture.py",
+        "prompt": "dark weathered basalt rock, surface cracked and stained, forest environment, no vegetation, top-down photo, even diffuse light, photoreal",
+        "seed_base": 42,
+        "qa_grade": "A",
+        "passed_gate": true
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "dark-forest-rock",
+      "runtime_texture_dir": "world3/textures/wgv3/temperate_forest_rock_dark",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3/temperate_forest_rock_dark/albedo.png",
+        "normal": "world3/textures/wgv3/temperate_forest_rock_dark/normal.png",
+        "roughness": "world3/textures/wgv3/temperate_forest_rock_dark/roughness.png",
+        "height": null,
+        "ao": null
+      },
+      "shader_binding": "terrain_blend",
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      }
+    },
+    {
+      "id": "temperate_forest_snow",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "generated_texture",
+        "source_asset_id": "wgv3_tf_fern_ground",
+        "tool": "pipelines/textures/aaa_texture.py",
+        "prompt": "forest floor with mixed fern undergrowth, varied frond sizes and orientations, irregular leaf cover, damp ground visible between fronds, top-down photo, even diffuse light, photoreal",
+        "seed_base": 100,
+        "qa_grade": "A",
+        "passed_gate": true,
+        "note": "The terrain_blend snow slot is repurposed as a high-elevation fern/understory slot for this kit."
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "green-fern-organic",
+      "runtime_texture_dir": "world3/textures/wgv3/temperate_forest_snow",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3/temperate_forest_snow/albedo.png",
+        "normal": "world3/textures/wgv3/temperate_forest_snow/normal.png",
+        "roughness": "world3/textures/wgv3/temperate_forest_snow/roughness.png",
+        "height": null,
+        "ao": null
+      },
+      "shader_binding": "terrain_blend",
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      }
+    },
+    {
+      "id": "grassland_grass",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "generated_texture",
+        "source_asset_id": "wgv3_gl_tall_grass",
+        "tool": "pipelines/textures/aaa_texture.py",
+        "prompt": "tall savanna grass, golden-yellow, dry season, close-packed stems, top-down photo, even diffuse light, photoreal",
+        "seed_base": 42,
+        "qa_grade": "B",
+        "passed_gate": false,
+        "note": "Grassland uniformity is decision-locked as biome-faithful; strict texture gate failed but gallery read is accepted for validation."
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "yellow-dry-grass",
+      "runtime_texture_dir": "world3/textures/wgv3/grassland_grass",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3/grassland_grass/albedo.png",
+        "normal": "world3/textures/wgv3/grassland_grass/normal.png",
+        "roughness": "world3/textures/wgv3/grassland_grass/roughness.png",
+        "height": null,
+        "ao": null
+      },
+      "shader_binding": "terrain_blend",
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      }
+    },
+    {
+      "id": "grassland_dirt",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "generated_texture",
+        "source_asset_id": "wgv3_gl_dry_thatch",
+        "tool": "pipelines/textures/aaa_texture.py",
+        "prompt": "dry thatch and dead grass mat, tan and beige, slightly compacted, open plains, top-down photo, even diffuse light, photoreal",
+        "seed_base": 42,
+        "qa_grade": "B",
+        "passed_gate": false
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "tan-dry-thatch",
+      "runtime_texture_dir": "world3/textures/wgv3/grassland_dirt",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3/grassland_dirt/albedo.png",
+        "normal": "world3/textures/wgv3/grassland_dirt/normal.png",
+        "roughness": "world3/textures/wgv3/grassland_dirt/roughness.png",
+        "height": null,
+        "ao": null
+      },
+      "shader_binding": "terrain_blend",
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      }
+    },
+    {
+      "id": "grassland_rock_light",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "generated_texture",
+        "source_asset_id": "wgv3_gl_hardpan_soil",
+        "tool": "pipelines/textures/aaa_texture.py",
+        "prompt": "hardpan cracked clay soil, pale tan, shallow surface cracks, semi-arid grassland, no vegetation, top-down photo, even diffuse light, photoreal",
+        "seed_base": 42,
+        "qa_grade": "A",
+        "passed_gate": false
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "pale-hardpan",
+      "runtime_texture_dir": "world3/textures/wgv3/grassland_rock_light",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3/grassland_rock_light/albedo.png",
+        "normal": "world3/textures/wgv3/grassland_rock_light/normal.png",
+        "roughness": "world3/textures/wgv3/grassland_rock_light/roughness.png",
+        "height": null,
+        "ao": null
+      },
+      "shader_binding": "terrain_blend",
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      }
+    },
+    {
+      "id": "grassland_rock_dark",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "generated_texture",
+        "source_asset_id": "wgv3_gl_grass_rock",
+        "tool": "pipelines/textures/aaa_texture.py",
+        "prompt": "dark weathered volcanic rock embedded in dry grass, rough surface, savanna, top-down photo, even diffuse light, photoreal",
+        "seed_base": 42,
+        "qa_grade": "A",
+        "passed_gate": true
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "dark-rock-yellow-grass",
+      "runtime_texture_dir": "world3/textures/wgv3/grassland_rock_dark",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3/grassland_rock_dark/albedo.png",
+        "normal": "world3/textures/wgv3/grassland_rock_dark/normal.png",
+        "roughness": "world3/textures/wgv3/grassland_rock_dark/roughness.png",
+        "height": null,
+        "ao": null
+      },
+      "shader_binding": "terrain_blend",
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      }
+    },
+    {
+      "id": "grassland_snow",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "generated_texture",
+        "source_asset_id": "wgv3_gl_weathered_stone",
+        "tool": "pipelines/textures/aaa_texture.py",
+        "prompt": "pale weathered limestone or sandstone surface, worn smooth, light grey, grassland hilltop, top-down photo, even diffuse light, photoreal",
+        "seed_base": 42,
+        "qa_grade": "B",
+        "passed_gate": false,
+        "note": "The terrain_blend snow slot is repurposed as a rare highland weathered-stone slot for this kit."
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "pale-weathered-stone",
+      "runtime_texture_dir": "world3/textures/wgv3/grassland_snow",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3/grassland_snow/albedo.png",
+        "normal": "world3/textures/wgv3/grassland_snow/normal.png",
+        "roughness": "world3/textures/wgv3/grassland_snow/roughness.png",
+        "height": null,
+        "ao": null
+      },
+      "shader_binding": "terrain_blend",
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      }
+    },
+    {
+      "id": "bare_soil",
+      "source": "real",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "source_real_soft_composite",
+        "source_place": "Guadalupe Cypress",
+        "material_class": "bare_soil",
+        "source_manifest": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_bare_soil/manifest.json",
+        "source_policy": "source_real_soft_composite_with_derived_detail",
+        "source_tileable_soft_policy": "tileable_soft_real_variant_composite",
+        "procedural_color_used": false,
+        "ai_generated_color_used": false,
+        "geography_preserved": false,
+        "operations": [
+          "periodic_low_frequency_albedo_balance",
+          "neutral_detail_albedo_from_source_luminance",
+          "detail_normal_from_source_luminance_and_height",
+          "terrain_hex_detail_shader_binding"
+        ],
+        "settings": {
+          "world_uv_scale": 0.015625,
+          "hex_strength": 1.0,
+          "blend_sharpness": 8.0,
+          "roughness_strength": 1.0,
+          "normal_strength": 0.45,
+          "macro_scale": 180.0,
+          "macro_value_strength": 0.05,
+          "macro_hue_strength": 0.012,
+          "detail_uv_scale_mult": 8.0,
+          "detail_albedo_strength": 0.22,
+          "detail_normal_strength": 0.42,
+          "detail_rough_strength": 0.22,
+          "detail_fade_start_m": 8.0,
+          "detail_fade_end_m": 42.0
+        },
+        "image_settings": {
+          "balance_radius_px": 128.0,
+          "low_frequency_strength": 0.42,
+          "detail_strength": 1.05,
+          "detail_radius_px": 10.0,
+          "detail_contrast": 0.75
+        },
+        "edge_metrics": {
+          "balanced_albedo": {
+            "edge_mse_left_right": 1.9522780348779634e-05,
+            "edge_mse_top_bottom": 1.1752114914997946e-05,
+            "edge_mse_mean": 1.563744763188879e-05
+          },
+          "source_albedo": {
+            "edge_mse_left_right": 1.7710290194372647e-05,
+            "edge_mse_top_bottom": 1.0670478332031053e-05,
+            "edge_mse_mean": 1.419038426320185e-05
+          }
+        }
+      },
+      "scale_m_per_repeat": 64,
+      "color_family": "warm-brown-soil",
+      "runtime_texture_dir": "world3\\opentopo\\processed\\textures\\Guadalupe_Cypress_variants_bare_soil\\bare_soil_064m_soft_composite\\finished_material",
+      "pbr_maps": {
+        "albedo": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_bare_soil/bare_soil_064m_soft_composite/finished_material/albedo_balanced.png",
+        "normal": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_bare_soil/bare_soil_064m_soft_composite/tileable_soft/normal.png",
+        "roughness": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_bare_soil/bare_soil_064m_soft_composite/tileable_soft/roughness.png",
+        "height": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_bare_soil/bare_soil_064m_soft_composite/tileable_soft/height.png",
+        "ao": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_bare_soil/bare_soil_064m_soft_composite/finished_material/ao_white.png",
+        "detail_albedo": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_bare_soil/bare_soil_064m_soft_composite/finished_material/detail_albedo_neutral.png",
+        "detail_height": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_bare_soil/bare_soil_064m_soft_composite/finished_material/detail_height.png",
+        "detail_normal": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_bare_soil/bare_soil_064m_soft_composite/finished_material/detail_normal.png",
+        "detail_roughness": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_bare_soil/bare_soil_064m_soft_composite/finished_material/detail_roughness.png",
+        "tile_2x2": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_bare_soil/bare_soil_064m_soft_composite/finished_material/tile_2x2.png",
+        "material": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_bare_soil/bare_soil_064m_soft_composite/finished_material/material_hex_detail_finished.tres"
+      },
+      "shader_binding": "terrain_hex_detail",
+      "validated_views": {
+        "close": "ok",
+        "mid": "ok",
+        "far": "needs_review"
+      }
+    },
+    {
+      "id": "bright_rock",
+      "source": "real",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "source_real_soft_composite",
+        "source_place": "Guadalupe Cypress",
+        "material_class": "bright_rock",
+        "source_manifest": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_bright_rock/manifest.json",
+        "source_policy": "source_real_soft_composite_with_derived_detail",
+        "source_tileable_soft_policy": "tileable_soft_real_variant_composite",
+        "procedural_color_used": false,
+        "ai_generated_color_used": false,
+        "geography_preserved": false,
+        "operations": [
+          "periodic_low_frequency_albedo_balance",
+          "neutral_detail_albedo_from_source_luminance",
+          "detail_normal_from_source_luminance_and_height",
+          "terrain_hex_detail_shader_binding"
+        ],
+        "settings": {
+          "world_uv_scale": 0.015625,
+          "hex_strength": 1.0,
+          "blend_sharpness": 8.0,
+          "roughness_strength": 1.0,
+          "normal_strength": 0.45,
+          "macro_scale": 180.0,
+          "macro_value_strength": 0.05,
+          "macro_hue_strength": 0.012,
+          "detail_uv_scale_mult": 8.0,
+          "detail_albedo_strength": 0.22,
+          "detail_normal_strength": 0.42,
+          "detail_rough_strength": 0.22,
+          "detail_fade_start_m": 8.0,
+          "detail_fade_end_m": 42.0
+        },
+        "image_settings": {
+          "balance_radius_px": 128.0,
+          "low_frequency_strength": 0.42,
+          "detail_strength": 1.05,
+          "detail_radius_px": 10.0,
+          "detail_contrast": 0.75
+        },
+        "edge_metrics": {
+          "balanced_albedo": {
+            "edge_mse_left_right": 1.7170326827908866e-05,
+            "edge_mse_top_bottom": 1.4754456060472876e-05,
+            "edge_mse_mean": 1.596239144419087e-05
+          },
+          "source_albedo": {
+            "edge_mse_left_right": 1.5500101653742604e-05,
+            "edge_mse_top_bottom": 1.3361251149035525e-05,
+            "edge_mse_mean": 1.4430676401389064e-05
+          }
+        }
+      },
+      "scale_m_per_repeat": 64,
+      "color_family": "pale-tan-rock",
+      "runtime_texture_dir": "world3\\opentopo\\processed\\textures\\Guadalupe_Cypress_variants_bright_rock\\bright_rock_064m_soft_composite\\finished_material",
+      "pbr_maps": {
+        "albedo": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_bright_rock/bright_rock_064m_soft_composite/finished_material/albedo_balanced.png",
+        "normal": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_bright_rock/bright_rock_064m_soft_composite/tileable_soft/normal.png",
+        "roughness": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_bright_rock/bright_rock_064m_soft_composite/tileable_soft/roughness.png",
+        "height": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_bright_rock/bright_rock_064m_soft_composite/tileable_soft/height.png",
+        "ao": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_bright_rock/bright_rock_064m_soft_composite/finished_material/ao_white.png",
+        "detail_albedo": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_bright_rock/bright_rock_064m_soft_composite/finished_material/detail_albedo_neutral.png",
+        "detail_height": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_bright_rock/bright_rock_064m_soft_composite/finished_material/detail_height.png",
+        "detail_normal": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_bright_rock/bright_rock_064m_soft_composite/finished_material/detail_normal.png",
+        "detail_roughness": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_bright_rock/bright_rock_064m_soft_composite/finished_material/detail_roughness.png",
+        "tile_2x2": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_bright_rock/bright_rock_064m_soft_composite/finished_material/tile_2x2.png",
+        "material": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_bright_rock/bright_rock_064m_soft_composite/finished_material/material_hex_detail_finished.tres"
+      },
+      "shader_binding": "terrain_hex_detail",
+      "validated_views": {
+        "close": "ok",
+        "mid": "ok",
+        "far": "needs_review"
+      }
+    },
+    {
+      "id": "dry_wash",
+      "source": "real",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "source_real_soft_composite",
+        "source_place": "Guadalupe Cypress",
+        "material_class": "dry_wash",
+        "source_manifest": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_dry_wash/manifest.json",
+        "source_policy": "source_real_soft_composite_with_derived_detail",
+        "source_tileable_soft_policy": "tileable_soft_real_variant_composite",
+        "procedural_color_used": false,
+        "ai_generated_color_used": false,
+        "geography_preserved": false,
+        "operations": [
+          "periodic_low_frequency_albedo_balance",
+          "neutral_detail_albedo_from_source_luminance",
+          "detail_normal_from_source_luminance_and_height",
+          "terrain_hex_detail_shader_binding"
+        ],
+        "settings": {
+          "world_uv_scale": 0.015625,
+          "hex_strength": 1.0,
+          "blend_sharpness": 8.0,
+          "roughness_strength": 1.0,
+          "normal_strength": 0.45,
+          "macro_scale": 180.0,
+          "macro_value_strength": 0.05,
+          "macro_hue_strength": 0.012,
+          "detail_uv_scale_mult": 8.0,
+          "detail_albedo_strength": 0.22,
+          "detail_normal_strength": 0.42,
+          "detail_rough_strength": 0.22,
+          "detail_fade_start_m": 8.0,
+          "detail_fade_end_m": 42.0
+        },
+        "image_settings": {
+          "balance_radius_px": 128.0,
+          "low_frequency_strength": 0.42,
+          "detail_strength": 1.05,
+          "detail_radius_px": 10.0,
+          "detail_contrast": 0.75
+        },
+        "edge_metrics": {
+          "balanced_albedo": {
+            "edge_mse_left_right": 2.552127443777863e-05,
+            "edge_mse_top_bottom": 1.0378767001384404e-05,
+            "edge_mse_mean": 1.7950020719581516e-05
+          },
+          "source_albedo": {
+            "edge_mse_left_right": 2.3169428459368646e-05,
+            "edge_mse_top_bottom": 9.39267465582816e-06,
+            "edge_mse_mean": 1.6281051557598403e-05
+          }
+        }
+      },
+      "scale_m_per_repeat": 64,
+      "color_family": "tan-dry-wash",
+      "runtime_texture_dir": "world3\\opentopo\\processed\\textures\\Guadalupe_Cypress_variants_dry_wash\\dry_wash_064m_soft_composite\\finished_material",
+      "pbr_maps": {
+        "albedo": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_dry_wash/dry_wash_064m_soft_composite/finished_material/albedo_balanced.png",
+        "normal": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_dry_wash/dry_wash_064m_soft_composite/tileable_soft/normal.png",
+        "roughness": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_dry_wash/dry_wash_064m_soft_composite/tileable_soft/roughness.png",
+        "height": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_dry_wash/dry_wash_064m_soft_composite/tileable_soft/height.png",
+        "ao": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_dry_wash/dry_wash_064m_soft_composite/finished_material/ao_white.png",
+        "detail_albedo": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_dry_wash/dry_wash_064m_soft_composite/finished_material/detail_albedo_neutral.png",
+        "detail_height": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_dry_wash/dry_wash_064m_soft_composite/finished_material/detail_height.png",
+        "detail_normal": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_dry_wash/dry_wash_064m_soft_composite/finished_material/detail_normal.png",
+        "detail_roughness": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_dry_wash/dry_wash_064m_soft_composite/finished_material/detail_roughness.png",
+        "tile_2x2": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_dry_wash/dry_wash_064m_soft_composite/finished_material/tile_2x2.png",
+        "material": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_dry_wash/dry_wash_064m_soft_composite/finished_material/material_hex_detail_finished.tres"
+      },
+      "shader_binding": "terrain_hex_detail",
+      "validated_views": {
+        "close": "ok",
+        "mid": "ok",
+        "far": "needs_review"
+      }
+    },
+    {
+      "id": "rocky_slope",
+      "source": "real",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "source_real_soft_composite",
+        "source_place": "Guadalupe Cypress",
+        "material_class": "rocky_slope",
+        "source_manifest": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_rocky_slope/manifest.json",
+        "source_policy": "source_real_soft_composite_with_derived_detail",
+        "source_tileable_soft_policy": "tileable_soft_real_variant_composite",
+        "procedural_color_used": false,
+        "ai_generated_color_used": false,
+        "geography_preserved": false,
+        "operations": [
+          "periodic_low_frequency_albedo_balance",
+          "neutral_detail_albedo_from_source_luminance",
+          "detail_normal_from_source_luminance_and_height",
+          "terrain_hex_detail_shader_binding"
+        ],
+        "settings": {
+          "world_uv_scale": 0.015625,
+          "hex_strength": 1.0,
+          "blend_sharpness": 8.0,
+          "roughness_strength": 1.0,
+          "normal_strength": 0.45,
+          "macro_scale": 180.0,
+          "macro_value_strength": 0.05,
+          "macro_hue_strength": 0.012,
+          "detail_uv_scale_mult": 8.0,
+          "detail_albedo_strength": 0.22,
+          "detail_normal_strength": 0.42,
+          "detail_rough_strength": 0.22,
+          "detail_fade_start_m": 8.0,
+          "detail_fade_end_m": 42.0
+        },
+        "image_settings": {
+          "balance_radius_px": 128.0,
+          "low_frequency_strength": 0.42,
+          "detail_strength": 1.05,
+          "detail_radius_px": 10.0,
+          "detail_contrast": 0.75
+        },
+        "edge_metrics": {
+          "balanced_albedo": {
+            "edge_mse_left_right": 2.0593448425643146e-05,
+            "edge_mse_top_bottom": 2.320983367098961e-05,
+            "edge_mse_mean": 2.1901641048316378e-05
+          },
+          "source_albedo": {
+            "edge_mse_left_right": 1.8635168089531362e-05,
+            "edge_mse_top_bottom": 2.101055724779144e-05,
+            "edge_mse_mean": 1.98228626686614e-05
+          }
+        }
+      },
+      "scale_m_per_repeat": 64,
+      "color_family": "rocky-tan-grey",
+      "runtime_texture_dir": "world3\\opentopo\\processed\\textures\\Guadalupe_Cypress_variants_rocky_slope\\rocky_slope_064m_soft_composite\\finished_material",
+      "pbr_maps": {
+        "albedo": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_rocky_slope/rocky_slope_064m_soft_composite/finished_material/albedo_balanced.png",
+        "normal": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_rocky_slope/rocky_slope_064m_soft_composite/tileable_soft/normal.png",
+        "roughness": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_rocky_slope/rocky_slope_064m_soft_composite/tileable_soft/roughness.png",
+        "height": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_rocky_slope/rocky_slope_064m_soft_composite/tileable_soft/height.png",
+        "ao": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_rocky_slope/rocky_slope_064m_soft_composite/finished_material/ao_white.png",
+        "detail_albedo": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_rocky_slope/rocky_slope_064m_soft_composite/finished_material/detail_albedo_neutral.png",
+        "detail_height": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_rocky_slope/rocky_slope_064m_soft_composite/finished_material/detail_height.png",
+        "detail_normal": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_rocky_slope/rocky_slope_064m_soft_composite/finished_material/detail_normal.png",
+        "detail_roughness": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_rocky_slope/rocky_slope_064m_soft_composite/finished_material/detail_roughness.png",
+        "tile_2x2": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_rocky_slope/rocky_slope_064m_soft_composite/finished_material/tile_2x2.png",
+        "material": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_rocky_slope/rocky_slope_064m_soft_composite/finished_material/material_hex_detail_finished.tres"
+      },
+      "shader_binding": "terrain_hex_detail",
+      "validated_views": {
+        "close": "ok",
+        "mid": "ok",
+        "far": "needs_review"
+      }
+    },
+    {
+      "id": "scrub_dense",
+      "source": "real",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "source_real_soft_composite",
+        "source_place": "Guadalupe Cypress",
+        "material_class": "scrub_dense",
+        "source_manifest": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_scrub_dense/manifest.json",
+        "source_policy": "source_real_soft_composite_with_derived_detail",
+        "source_tileable_soft_policy": "tileable_soft_real_variant_composite",
+        "procedural_color_used": false,
+        "ai_generated_color_used": false,
+        "geography_preserved": false,
+        "operations": [
+          "periodic_low_frequency_albedo_balance",
+          "neutral_detail_albedo_from_source_luminance",
+          "detail_normal_from_source_luminance_and_height",
+          "terrain_hex_detail_shader_binding"
+        ],
+        "settings": {
+          "world_uv_scale": 0.015625,
+          "hex_strength": 1.0,
+          "blend_sharpness": 8.0,
+          "roughness_strength": 1.0,
+          "normal_strength": 0.45,
+          "macro_scale": 180.0,
+          "macro_value_strength": 0.05,
+          "macro_hue_strength": 0.012,
+          "detail_uv_scale_mult": 8.0,
+          "detail_albedo_strength": 0.22,
+          "detail_normal_strength": 0.42,
+          "detail_rough_strength": 0.22,
+          "detail_fade_start_m": 8.0,
+          "detail_fade_end_m": 42.0
+        },
+        "image_settings": {
+          "balance_radius_px": 128.0,
+          "low_frequency_strength": 0.42,
+          "detail_strength": 1.05,
+          "detail_radius_px": 10.0,
+          "detail_contrast": 0.75
+        },
+        "edge_metrics": {
+          "balanced_albedo": {
+            "edge_mse_left_right": 2.6932206310448237e-05,
+            "edge_mse_top_bottom": 1.949258876265958e-05,
+            "edge_mse_mean": 2.3212397536553908e-05
+          },
+          "source_albedo": {
+            "edge_mse_left_right": 2.4394668798777275e-05,
+            "edge_mse_top_bottom": 1.7663982362137176e-05,
+            "edge_mse_mean": 2.1029325580457225e-05
+          }
+        }
+      },
+      "scale_m_per_repeat": 64,
+      "color_family": "dense-green-scrub",
+      "runtime_texture_dir": "world3\\opentopo\\processed\\textures\\Guadalupe_Cypress_variants_scrub_dense\\scrub_dense_064m_soft_composite\\finished_material",
+      "pbr_maps": {
+        "albedo": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_scrub_dense/scrub_dense_064m_soft_composite/finished_material/albedo_balanced.png",
+        "normal": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_scrub_dense/scrub_dense_064m_soft_composite/tileable_soft/normal.png",
+        "roughness": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_scrub_dense/scrub_dense_064m_soft_composite/tileable_soft/roughness.png",
+        "height": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_scrub_dense/scrub_dense_064m_soft_composite/tileable_soft/height.png",
+        "ao": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_scrub_dense/scrub_dense_064m_soft_composite/finished_material/ao_white.png",
+        "detail_albedo": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_scrub_dense/scrub_dense_064m_soft_composite/finished_material/detail_albedo_neutral.png",
+        "detail_height": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_scrub_dense/scrub_dense_064m_soft_composite/finished_material/detail_height.png",
+        "detail_normal": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_scrub_dense/scrub_dense_064m_soft_composite/finished_material/detail_normal.png",
+        "detail_roughness": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_scrub_dense/scrub_dense_064m_soft_composite/finished_material/detail_roughness.png",
+        "tile_2x2": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_scrub_dense/scrub_dense_064m_soft_composite/finished_material/tile_2x2.png",
+        "material": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_scrub_dense/scrub_dense_064m_soft_composite/finished_material/material_hex_detail_finished.tres"
+      },
+      "shader_binding": "terrain_hex_detail",
+      "validated_views": {
+        "close": "ok",
+        "mid": "ok",
+        "far": "needs_review"
+      }
+    },
+    {
+      "id": "scrub_sparse",
+      "source": "real",
+      "asset_status": "pipeline_validation",
+      "provenance": {
+        "type": "source_real_soft_composite",
+        "source_place": "Guadalupe Cypress",
+        "material_class": "scrub_sparse",
+        "source_manifest": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_scrub_sparse/manifest.json",
+        "source_policy": "source_real_soft_composite_with_derived_detail",
+        "source_tileable_soft_policy": "tileable_soft_real_variant_composite",
+        "procedural_color_used": false,
+        "ai_generated_color_used": false,
+        "geography_preserved": false,
+        "operations": [
+          "periodic_low_frequency_albedo_balance",
+          "neutral_detail_albedo_from_source_luminance",
+          "detail_normal_from_source_luminance_and_height",
+          "terrain_hex_detail_shader_binding"
+        ],
+        "settings": {
+          "world_uv_scale": 0.015625,
+          "hex_strength": 1.0,
+          "blend_sharpness": 8.0,
+          "roughness_strength": 1.0,
+          "normal_strength": 0.45,
+          "macro_scale": 180.0,
+          "macro_value_strength": 0.05,
+          "macro_hue_strength": 0.012,
+          "detail_uv_scale_mult": 8.0,
+          "detail_albedo_strength": 0.22,
+          "detail_normal_strength": 0.42,
+          "detail_rough_strength": 0.22,
+          "detail_fade_start_m": 8.0,
+          "detail_fade_end_m": 42.0
+        },
+        "image_settings": {
+          "balance_radius_px": 128.0,
+          "low_frequency_strength": 0.42,
+          "detail_strength": 1.05,
+          "detail_radius_px": 10.0,
+          "detail_contrast": 0.75
+        },
+        "edge_metrics": {
+          "balanced_albedo": {
+            "edge_mse_left_right": 1.330367103946628e-05,
+            "edge_mse_top_bottom": 9.96102153294487e-06,
+            "edge_mse_mean": 1.1632346286205575e-05
+          },
+          "source_albedo": {
+            "edge_mse_left_right": 1.2054661056026816e-05,
+            "edge_mse_top_bottom": 9.005952961160801e-06,
+            "edge_mse_mean": 1.0530307008593809e-05
+          }
+        }
+      },
+      "scale_m_per_repeat": 64,
+      "color_family": "sparse-olive-scrub",
+      "runtime_texture_dir": "world3\\opentopo\\processed\\textures\\Guadalupe_Cypress_variants_scrub_sparse\\scrub_sparse_064m_soft_composite\\finished_material",
+      "pbr_maps": {
+        "albedo": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_scrub_sparse/scrub_sparse_064m_soft_composite/finished_material/albedo_balanced.png",
+        "normal": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_scrub_sparse/scrub_sparse_064m_soft_composite/tileable_soft/normal.png",
+        "roughness": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_scrub_sparse/scrub_sparse_064m_soft_composite/tileable_soft/roughness.png",
+        "height": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_scrub_sparse/scrub_sparse_064m_soft_composite/tileable_soft/height.png",
+        "ao": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_scrub_sparse/scrub_sparse_064m_soft_composite/finished_material/ao_white.png",
+        "detail_albedo": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_scrub_sparse/scrub_sparse_064m_soft_composite/finished_material/detail_albedo_neutral.png",
+        "detail_height": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_scrub_sparse/scrub_sparse_064m_soft_composite/finished_material/detail_height.png",
+        "detail_normal": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_scrub_sparse/scrub_sparse_064m_soft_composite/finished_material/detail_normal.png",
+        "detail_roughness": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_scrub_sparse/scrub_sparse_064m_soft_composite/finished_material/detail_roughness.png",
+        "tile_2x2": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_scrub_sparse/scrub_sparse_064m_soft_composite/finished_material/tile_2x2.png",
+        "material": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_scrub_sparse/scrub_sparse_064m_soft_composite/finished_material/material_hex_detail_finished.tres"
+      },
+      "shader_binding": "terrain_hex_detail",
+      "validated_views": {
+        "close": "ok",
+        "mid": "ok",
+        "far": "needs_review"
+      }
+    }
+  ],
+  "pending_worker_materials": []
+}

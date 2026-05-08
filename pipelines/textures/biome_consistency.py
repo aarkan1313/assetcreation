@@ -52,6 +52,8 @@ from PIL import Image
 LIBRARY = Path(r"D:\assets\world\textures\library")
 PIPELINE_DIR = Path(__file__).parent
 BIOME_KITS_JSON = Path(r"D:\assets\world3\jobs\biome_kits.json")
+MATERIAL_CATALOG_JSON = Path(r"D:\assets\world3\materials\catalog.json")
+_CATALOG: dict[str, dict] | None = None
 
 
 # Thresholds calibrated against the existing alpine + desert kits.
@@ -62,8 +64,26 @@ HIST_OVERLAP_OK = 0.45   # >0.45 = good color overlap (in_palette)
 HIST_OVERLAP_DRIFT = 0.20   # 0.20-0.45 = drift; <0.20 = way off
 
 
+def _catalog() -> dict[str, dict]:
+    global _CATALOG
+    if _CATALOG is None:
+        if MATERIAL_CATALOG_JSON.exists():
+            data = json.loads(MATERIAL_CATALOG_JSON.read_text(encoding="utf-8"))
+            _CATALOG = {m["id"]: m for m in data.get("materials", [])}
+        else:
+            _CATALOG = {}
+    return _CATALOG
+
+
+def _source_asset_id(material_id: str) -> str:
+    entry = _catalog().get(material_id, {})
+    provenance = entry.get("provenance", {})
+    return provenance.get("source_asset_id") or material_id
+
+
 def _albedo_path(material_id: str) -> Path:
-    p = LIBRARY / material_id / f"{material_id}_albedo.png"
+    source_id = _source_asset_id(material_id)
+    p = LIBRARY / source_id / f"{source_id}_albedo.png"
     if not p.exists():
         raise FileNotFoundError(f"albedo not found: {p}")
     return p

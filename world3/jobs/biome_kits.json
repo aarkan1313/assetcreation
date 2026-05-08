@@ -1,5 +1,6 @@
 {
-  "_comment": "Biome kits = sets of 5 textures bound to the 5 slots in terrain_blend.gdshader, plus per-kit height-band tuning. Each kit's texture IDs reference world3/textures/wgv3/<id>/.",
+  "_comment": "Biome kits = sets of 5 catalog material ids bound to the 5 slots in terrain_blend.gdshader, plus per-kit height-band tuning. Slots reference world3/materials/catalog.json ids; provenance.source_asset_id may differ from the deployed runtime texture dir.",
+  "material_catalog": "world3/materials/catalog.json",
   "kits": {
     "alpine": {
       "description": "High-elevation rocky terrain with snow caps. Default — matches Tetons, Cascades, Sierra.",
@@ -70,13 +71,13 @@
     },
     "temperate_forest": {
       "description": "Lowland forest with bare rock peaks. Forest floor low, grass/dirt mid, rock above tree line.",
-      "anchor": "wgv3_tf_leaf_litter",
+      "anchor": "temperate_forest_grass",
       "slots": {
-        "grass": "wgv3_tf_leaf_litter",
-        "dirt": "wgv3_tf_loamy_soil",
-        "rock_light": "wgv3_tf_mossy_rock",
-        "rock_dark": "wgv3_tf_bark_rock",
-        "snow": "wgv3_tf_fern_ground"
+        "grass": "temperate_forest_grass",
+        "dirt": "temperate_forest_dirt",
+        "rock_light": "temperate_forest_rock_light",
+        "rock_dark": "temperate_forest_rock_dark",
+        "snow": "temperate_forest_snow"
       },
       "height_bands": {
         "_comment": "Tree line (rock takes over) is around 60-70% elevation in temperate latitudes.",
@@ -93,13 +94,13 @@
     },
     "grassland": {
       "description": "Open plains with subtle relief. Mostly grass + dirt; rock only on rare hilltops.",
-      "anchor": "wgv3_gl_tall_grass",
+      "anchor": "grassland_grass",
       "slots": {
-        "grass": "wgv3_gl_tall_grass",
-        "dirt": "wgv3_gl_dry_thatch",
-        "rock_light": "wgv3_gl_hardpan_soil",
-        "rock_dark": "wgv3_gl_grass_rock",
-        "snow": "wgv3_gl_weathered_stone"
+        "grass": "grassland_grass",
+        "dirt": "grassland_dirt",
+        "rock_light": "grassland_rock_light",
+        "rock_dark": "grassland_rock_dark",
+        "snow": "grassland_snow"
       },
       "height_bands": {
         "_comment": "Loose bands by design — grassland regions (Serengeti, Tibet, Great Plains, Pantanal) are biologically near-uniform tall_grass with rare rocky outcrops. Tightening these adds fake variation that doesn't match real savanna/plateau imagery. The visual flatness in renders is faithful to the biome; visible variation comes from the macro_value_strength (Phase E topdown) not from triggering different slots. If a region needs a specific rocky landform (e.g. East African kopjes), it should be modeled in the heightmap or get its own kit, not handled by widening the height bands here.",

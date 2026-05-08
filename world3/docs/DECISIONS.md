@@ -768,3 +768,30 @@ other grassland regions which actually *should* look uniform.
 **Locked in**: `world3/jobs/biome_kits.json` grassland kit's
 `height_bands._comment` field carries the rationale inline so future
 sessions don't fight this decision.
+
+---
+
+## 2026-05-08 - world3/assets content is pipeline-validation material first
+
+**Decision**: Treat `world3` and the broader `assets` work as a pipeline and
+workflow creation set. The content generated during these phases is not
+automatically production content; its first job is to prove that the workflow,
+metadata, QA, transition, shader, and streaming contracts can support AAA
+quality.
+
+**Why**: The near-term work is interlocked infrastructure: material taxonomy,
+real/procedural provenance, transition authoring, splat weights, shader
+unification, and chunk streaming. Locking on "production asset" too early would
+hide weak workflow contracts. Locking on "workflow validation" keeps the bar
+high while allowing a material or stack to be regenerated, reauthored, or
+replaced without invalidating the pipeline.
+
+**Implications**:
+
+- Catalog entries may use `asset_status = pipeline_validation`.
+- AAA quality remains the target bar, but promotion to production candidate is
+  a separate review at the target game camera ranges and source/style mix.
+- Provenance, scale, shader binding, and validation state are part of the
+  asset contract, not optional documentation.
+- Real-source review scenes and procedural kits can be excellent workflow
+  evidence even when they are not final shipped content.

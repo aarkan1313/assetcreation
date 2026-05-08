@@ -27,9 +27,11 @@ REPO = Path(__file__).resolve().parents[2]
 LIBRARY = REPO / "world" / "textures" / "library"
 WGV3 = REPO / "world3" / "textures" / "wgv3"
 KITS_JSON = REPO / "world3" / "jobs" / "biome_kits.json"
+CATALOG_JSON = REPO / "world3" / "materials" / "catalog.json"
 
-# Per-kit slot -> texture-id mapping is read from biome_kits.json. The .tres
-# generator below writes per-kit slot dirs:
+# Per-kit slot -> catalog-material-id mapping is read from biome_kits.json.
+# Source generator ids and runtime dirs resolve through materials/catalog.json.
+# The .tres generator below writes per-kit slot dirs:
 #   world3/textures/wgv3/<kit>_<slot>/{albedo,normal,roughness}.png
 # This avoids clobbering the existing alpine slot dirs that other kits
 # (alpine, desert, tundra) reference at fixed paths.
@@ -44,27 +46,49 @@ def load_kit(kit_name: str) -> dict:
     return data["kits"][kit_name]
 
 
-def deploy_textures(kit_name: str, kit: dict) -> dict[str, Path]:
-    """Copy library/<id>/<id>_<map>.png -> wgv3/<kit>_<slot>/<map>.png.
-    Returns mapping of slot -> kit-prefixed dir name."""
+def load_catalog() -> dict[str, dict]:
+    if not CATALOG_JSON.exists():
+        return {}
+    data = json.loads(CATALOG_JSON.read_text(encoding="utf-8"))
+    return {m["id"]: m for m in data.get("materials", [])}
+
+
+def source_asset_id(material_id: str, catalog: dict[str, dict]) -> str:
+    entry = catalog.get(material_id, {})
+    provenance = entry.get("provenance", {})
+    return provenance.get("source_asset_id") or material_id
+
+
+def runtime_dir_name(material_id: str, kit_name: str, slot: str, catalog: dict[str, dict]) -> str:
+    entry = catalog.get(material_id, {})
+    runtime_texture_dir = entry.get("runtime_texture_dir")
+    if runtime_texture_dir:
+        return Path(runtime_texture_dir).name
+    return f"{kit_name}_{slot}"
+
+
+def deploy_textures(kit_name: str, kit: dict, catalog: dict[str, dict]) -> dict[str, Path]:
+    """Copy library/<source_id>/<source_id>_<map>.png into the catalog
+    runtime dir. Returns mapping of slot -> runtime dir name."""
     out_dirs: dict[str, Path] = {}
-    for slot, tex_id in kit["slots"].items():
-        src_dir = LIBRARY / tex_id
+    for slot, material_id in kit["slots"].items():
+        source_id = source_asset_id(material_id, catalog)
+        src_dir = LIBRARY / source_id
         if not src_dir.exists():
             print(f"  ! missing: {src_dir}", file=sys.stderr)
             continue
-        # Target: kit-prefixed slot dir (e.g. temperate_forest_grass)
-        dst_slot = f"{kit_name}_{slot}"
+        # Target: catalog runtime dir (e.g. temperate_forest_grass)
+        dst_slot = runtime_dir_name(material_id, kit_name, slot, catalog)
         dst_dir = WGV3 / dst_slot
         dst_dir.mkdir(parents=True, exist_ok=True)
         for map_kind in ("albedo", "normal", "roughness"):
-            src = src_dir / f"{tex_id}_{map_kind}.png"
+            src = src_dir / f"{source_id}_{map_kind}.png"
             if not src.exists():
                 print(f"  ! missing map: {src}", file=sys.stderr)
                 continue
             dst = dst_dir / f"{map_kind}.png"
             shutil.copy2(src, dst)
-        print(f"  {slot} ({tex_id}) -> wgv3/{dst_slot}/")
+        print(f"  {slot} ({material_id} <= {source_id}) -> wgv3/{dst_slot}/")
         out_dirs[slot] = Path(dst_slot)
     return out_dirs
 
@@ -130,8 +154,9 @@ def main() -> int:
     args = ap.parse_args()
 
     kit = load_kit(args.kit)
+    catalog = load_catalog()
     print(f"deploying kit={args.kit}: {list(kit['slots'].items())}")
-    slot_dirs = deploy_textures(args.kit, kit)
+    slot_dirs = deploy_textures(args.kit, kit, catalog)
     if len(slot_dirs) != 5:
         print(f"  abort: only {len(slot_dirs)}/5 slots resolved", file=sys.stderr)
         return 2

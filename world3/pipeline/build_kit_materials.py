@@ -18,6 +18,7 @@ from pathlib import Path
 
 ROOT = Path(r"D:\assets\world3")
 BIOME_KITS = ROOT / "jobs" / "biome_kits.json"
+MATERIAL_CATALOG = ROOT / "materials" / "catalog.json"
 OUT_DIR = ROOT / "textures" / "wgv3"
 
 # Slot order matches terrain_blend.gdshader uniforms.
@@ -25,7 +26,22 @@ SLOTS = ["grass", "dirt", "rock_light", "rock_dark", "snow"]
 MAPS = ["albedo", "normal", "roughness"]
 
 
-def material_tres(kit_name: str, kit: dict) -> str:
+def load_catalog() -> dict[str, dict]:
+    if not MATERIAL_CATALOG.exists():
+        return {}
+    data = json.loads(MATERIAL_CATALOG.read_text(encoding="utf-8"))
+    return {m["id"]: m for m in data.get("materials", [])}
+
+
+def runtime_dir_name(material_id: str, catalog: dict[str, dict]) -> str:
+    entry = catalog.get(material_id, {})
+    runtime_texture_dir = entry.get("runtime_texture_dir")
+    if runtime_texture_dir:
+        return Path(runtime_texture_dir).name
+    return material_id
+
+
+def material_tres(kit_name: str, kit: dict, catalog: dict[str, dict]) -> str:
     """Render a Godot 4 .tres ShaderMaterial that binds this kit."""
     slots = kit["slots"]
     bands = kit.get("height_bands", {})
@@ -38,10 +54,11 @@ def material_tres(kit_name: str, kit: dict) -> str:
     counter = 1
     for slot in SLOTS:
         tex_id = slots[slot]
+        tex_dir = runtime_dir_name(tex_id, catalog)
         for m in MAPS:
             res_id = f"r{counter}"
             counter += 1
-            path = f"res://textures/wgv3/{tex_id}/{m}.png"
+            path = f"res://textures/wgv3/{tex_dir}/{m}.png"
             ext_lines.append(f'[ext_resource type="Texture2D" path="{path}" id="{res_id}"]')
             res_id_for[(slot, m)] = res_id
 
@@ -80,10 +97,11 @@ def material_tres(kit_name: str, kit: dict) -> str:
 
 def main():
     data = json.loads(BIOME_KITS.read_text(encoding="utf-8"))
+    catalog = load_catalog()
     kits = data["kits"]
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     for kit_name, kit in kits.items():
-        body = material_tres(kit_name, kit)
+        body = material_tres(kit_name, kit, catalog)
         out = OUT_DIR / f"terrain_blend_{kit_name}.tres"
         out.write_text(body, encoding="utf-8")
         print(f"  wrote {out.relative_to(ROOT)} (slots: {list(kit['slots'].values())})")

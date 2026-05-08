@@ -37,14 +37,18 @@ because:
 
 | ID | What | Owner | Blocks | Blocked by |
 |----|------|-------|--------|------------|
-| **M1** | Material catalog: single source of truth aligning kit slots + OpenTopo material classes. | Orchestrator drafts spec; worker handoff for migrating their 6 materials. | M2, M4 | — |
-| **M2** | Transition material prototype: 4–6 transitions across kit/class/source pairs, integrated into existing review scene. | Worker (handoff, has the QA infra) | M4 | M1 |
+| **M1** | Material catalog: single source of truth aligning kit slots + OpenTopo material classes. | Consolidated in this chat for now. | M2, M4 | — |
+| **M2** | Transition material prototype: 4–6 transitions across kit/class/source pairs, integrated into existing review scene. | Consolidated in this chat for now; use OpenTopo QA infra. | M4 | M1 |
 | **M3** | Chunk-size sweep: parameterized streaming harness + sweep at 256/512/1024 m, evidence-backed chunk-size lock. | Orchestrator | M5 | — (parallel with M1/M2) |
 | **M4** | Splat-shader prototype: chunk emits per-pixel weights against material-class library; shader resolves. | Orchestrator | M5 | M1, M2 |
 | **M5** | Wire streaming + splat into `walk.tscn`. | Orchestrator | — | M3, M4 |
 
 **Parallelism**: M1+M3 can start simultaneously. M2 starts as soon
 as M1's catalog spec is drafted. M4/M5 wait on the others.
+
+**2026-05-08 operating note**: user asked this chat to keep worker and
+orchestrator work consolidated for now. Owner labels still describe natural
+responsibility boundaries, but this chat may execute both sides directly.
 
 ## M1 — Material catalog (orchestrator-led)
 
@@ -53,8 +57,8 @@ kit-slot terminology with material-class terminology so M2, M4 have
 a defined input.
 
 **Deliverables**:
-- `world3/materials/CATALOG.md` (or `catalog.json` — decide during
-  drafting).
+- `world3/materials/CATALOG.md` plus machine-readable
+  `world3/materials/catalog.json`.
 - Schema for each entry:
   - `id` — canonical name
   - `source` — real / procedural / fantasy
@@ -76,17 +80,18 @@ a defined input.
   slot textures into the catalog.
 
 **Sequence**:
-1. Orchestrator drafts catalog format (~half session).
-2. Orchestrator writes M1-migration handoff for worker (their 6
-   materials → catalog format).
-3. Worker executes migration; replies with done.
-4. Orchestrator does kit-slot refactor + verifies build.
+1. Draft catalog format.
+2. Migrate the 25 procedural kit-slot materials.
+3. Migrate the 6 finished OpenTopo materials.
+4. Refactor `biome_kits.json` to reference catalog ids.
+5. Verify catalog references and runtime material generation.
 
 **Exit**: every material in the system has one canonical id and one
 catalog entry. `biome_kits.json` references catalog ids. Existing
-runtime scenes still build + render.
+runtime scenes still build + render. Verified 2026-05-08 for base/per-mode
+material generation, Godot import, Phase E smoke capture, and region gallery.
 
-## M2 — Transition material prototype (worker handoff)
+## M2 — Transition material prototype (consolidated, using OpenTopo QA infra)
 
 **Goal**: build 4–6 transition strips spanning the kit-class spectrum
 to learn transition mechanics + cost.
@@ -106,10 +111,10 @@ to learn transition mechanics + cost.
   side-by-side at `world3/docs/captures/transitions/`.
 
 **Sequence**:
-1. M1 catalog format drafted.
-2. Orchestrator writes M2 handoff with catalog ids + accept criteria.
-3. Worker builds tool + transitions + captures.
-4. Orchestrator reviews + integrates + flags any that need redo.
+1. M1 catalog references verified.
+2. Build transition tool against catalog ids.
+3. Generate the listed transitions using OpenTopo review infrastructure.
+4. Capture hard-cut vs. transition-strip comparisons and flag redos.
 
 **Exit**: at least 3 transitions read visibly better than hard cuts.
 We have a ballpark cost-per-transition (minutes, ComfyUI calls,

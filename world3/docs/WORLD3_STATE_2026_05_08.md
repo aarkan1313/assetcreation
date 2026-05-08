@@ -121,16 +121,16 @@ not interchangeable across them.
 
 | Gap | Status | Severity | Owner |
 |-----|--------|----------|-------|
-| **Aligned material taxonomy** (kit slots vs material classes) | Two parallel ontologies; no unified catalog | HIGH — blocks everything else | Orchestrator drafts catalog spec; worker may execute migration |
-| **Transition materials** between kits/classes | NEITHER side has them | HIGH — blocks within-chunk mixing AND tile-to-tile blending | Worker (handoff target — has the QA infrastructure) |
+| **Aligned material taxonomy** (kit slots vs material classes) | Catalog exists with 25 procedural + 6 OpenTopo entries; material generation, import, and representative renders verified | HIGH — blocks M2/M4 until maintained | Consolidated in this chat |
+| **Transition materials** between kits/classes | NEITHER side has them | HIGH — blocks within-chunk mixing AND tile-to-tile blending | Consolidated in this chat; use OpenTopo QA infrastructure |
 | **Per-pixel splat shader** | Have height-banded shader; no splat shader exists | HIGH — required for "chunks emit weights, materials decide what" | Orchestrator |
 | **Within-chunk material variation** | NEITHER side can do this today | HIGH | Orchestrator (depends on splat shader) |
-| **Cross-source style bridge** (real ↔ procedural ↔ fantasy adjacent) | Worker flagged it; no fix yet | MEDIUM | Worker for color normalization; orchestrator for shader path |
+| **Cross-source style bridge** (real ↔ procedural ↔ fantasy adjacent) | Worker flagged it; no fix yet | MEDIUM | Consolidated in this chat |
 | **Chunk size + format decision** | Sweep deferred until streaming harness built | MEDIUM | Orchestrator (Phase F.4-sweep) |
 | **Streaming load/unload** | Static-load only today | MEDIUM | Orchestrator |
-| **Corner textures** (3-way junctions) | Not built; user flagged from past experience | HIGH long-term | Worker once pairwise transitions are validated |
+| **Corner textures** (3-way junctions) | Not built; user flagged from past experience | HIGH long-term | Consolidated in this chat once pairwise transitions are validated |
 | **Fantasy biome / fantasy material source** | Acknowledged future; no code yet | LOW (deferred) | TBD |
-| **Provenance metadata** on procedural materials | Worker's materials carry it; orchestrator's don't | LOW | Orchestrator (add to `biome_kits.json` once catalog aligns) |
+| **Provenance metadata** on procedural materials | Draft catalog now carries procedural + real-source provenance | LOW | Consolidated in this chat; keep expanding during M2/M4 |
 
 ---
 
@@ -146,8 +146,8 @@ Establish a single source of truth for "what materials exist."
 Aligns kit-slot terminology with material-class terminology.
 
 **Deliverables:**
-- `world3/materials/CATALOG.md` (or `world3/materials/catalog.json` —
-  decide format during drafting). Each entry has: id, source
+- `world3/materials/CATALOG.md` plus machine-readable
+  `world3/materials/catalog.json`. Each entry has: id, source
   (real/procedural/fantasy), provenance (DEM/orthophoto crop or
   prompt), scale, color family, current PBR maps path, validated
   views (close/mid/far ok or not).
@@ -157,9 +157,10 @@ Aligns kit-slot terminology with material-class terminology.
 - Migrate the 6 OpenTopo-finished materials AND the 5×5 = 25 kit
   slot textures into one numbered catalog.
 
-**Sequence:** orchestrator drafts catalog format (small; ~half
-session). Worker handoff: migrate their 6 materials into the
-format. Orchestrator handles kit migration.
+**Sequence:** consolidated in this chat for now. Draft catalog format,
+migrate the 25 procedural kit-slot materials, migrate the 6 finished
+OpenTopo materials, refactor `biome_kits.json`, then verify catalog
+references and runtime material generation.
 
 **Exit:** one source of truth for materials.
 
@@ -305,3 +306,23 @@ These start when chunk + biome + tile + transition is ~80% solved
     `terrain_blend.gdshader`; worker's finished OpenTopo materials
     use `terrain_hex_detail.gdshader`. Unified shader is the M4
     deliverable, not current state.
+- **2026-05-08 (M1 start)**: Orchestrator drafted the material catalog
+  contract at `world3/materials/CATALOG.md` and migrated the 25 procedural
+  kit-slot materials into `world3/materials/catalog.json`. `biome_kits.json`
+  now references catalog material ids; source generator ids remain preserved
+  under catalog provenance. Added worker handoff
+  `docs/handoffs/HANDOFF_to_opentopo_m1_material_catalog_migration_2026_05_08.md`
+  for the six finished OpenTopo material classes.
+- **2026-05-08 (direction clarification)**: Treat world3/assets as a pipeline
+  and workflow creation set. Current content is primarily validation material
+  for proving the workflow can reach AAA quality; production promotion requires
+  separate camera-range, source/style-mix, and provenance review.
+- **2026-05-08 (consolidated mode)**: User directed this chat to handle both
+  orchestrator and worker work for now. The M1 OpenTopo migration handoff was
+  marked DROPPED/superseded, and the six finished OpenTopo material classes
+  were migrated directly into `world3/materials/catalog.json`.
+- **2026-05-08 (M1 verification)**: Regenerated catalog-backed base kit
+  materials and per-mode variants, ran Godot import, rendered a Phase E alpine
+  smoke capture, and regenerated the region gallery. Grassland and
+  temperate_forest catalog-id paths rendered nonblank images, so M1 is
+  unblocked for M2/M4 inputs.
