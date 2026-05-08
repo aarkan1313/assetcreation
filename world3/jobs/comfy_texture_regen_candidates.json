@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "updated": "2026-05-08",
+  "purpose": "M8 regeneration queue for ComfyUI/aaa_texture materials that block terrain visual closure.",
+  "operating_policy": [
+    "OpenTopo and ComfyUI are peer texture-source lanes, not alternatives.",
+    "Regenerate priority organic blockers through prompt and variant control before relying on deterministic filtering.",
+    "Treat regenerated outputs as candidates until Godot terrain-context close/mid/far captures pass.",
+    "Use albedo-only or low-strength detail first; promote normal/detail maps only after terrain review."
+  ],
+  "shared_gate": [
+    "aaa_texture.py gate passes at the requested quality preset",
+    "2x2 tile sheet has no object-like repetition or visible seam",
+    "Blender plane and sphere previews read as material, not objects",
+    "M6 source-material noise audit improves against the current blocker",
+    "source-stack runtime review passes close, mid, and topdown/iso context"
+  ],
+  "command_templates": {
+    "generate": "python pipelines/textures/aaa_texture.py --prompt \"<prompt>\" --id <regen_id> --category Ground --quality strict --pbr-backend sm",
+    "inventory": "python world3/pipeline/build_comfy_material_candidate_catalog.py"
+  },
+  "candidates": [
+    {
+      "material_id": "grassland_grass",
+      "current_source_asset_id": "wgv3_gl_tall_grass",
+      "regen_id": "m8_grassland_grass_calm_v1",
+      "category": "Ground",
+      "quality": "strict",
+      "pbr_backend": "sm",
+      "failure_mode": "object-like dry grass blades and noisy yellow clumps dominate close views",
+      "prompt": "top-down orthographic macro photograph of low continuous dry grass ground cover mixed with broken tan soil, matted short blades, muted straw and olive colors, even overcast lighting, seamless PBR terrain texture, no flowers, no long blades, no isolated clumps, no perspective, no shadows",
+      "source_stack_role": "albedo candidate first; normal/detail disabled until close/mid/far terrain review passes"
+    },
+    {
+      "material_id": "grass",
+      "current_source_asset_id": "wgv3_grass",
+      "regen_id": "m8_grass_calm_v1",
+      "category": "Ground",
+      "quality": "strict",
+      "pbr_backend": "sm",
+      "failure_mode": "green organic speckle and small clover/object repetition reads too busy at walk scale",
+      "prompt": "top-down orthographic macro photograph of short natural turf ground, fine even grass texture with small dark soil gaps, calm green color variation, even overcast lighting, seamless PBR terrain texture, no clover leaves, no flowers, no long blades, no bright speckles, no perspective, no shadows",
+      "source_stack_role": "albedo candidate first; normal/detail disabled until close/mid/far terrain review passes"
+    },
+    {
+      "material_id": "temperate_forest_grass",
+      "current_source_asset_id": "wgv3_tf_leaf_litter",
+      "regen_id": "m8_temperate_forest_floor_calm_v1",
+      "category": "Ground",
+      "quality": "strict",
+      "pbr_backend": "sm",
+      "failure_mode": "leaf-litter objects and high contrast fragments create visual noise in close terrain",
+      "prompt": "top-down orthographic macro photograph of damp temperate forest floor, decomposed brown leaf mulch blended with dark loam, fine granular organic matter, muted natural color, even overcast lighting, seamless PBR terrain texture, no whole fresh leaves, no branches, no green plants, no strong outlines, no perspective, no shadows",
+      "source_stack_role": "albedo candidate first; normal/detail disabled until close/mid/far terrain review passes"
+    },
+    {
+      "material_id": "tundra_moss",
+      "current_source_asset_id": "tundra_moss",
+      "regen_id": "m8_tundra_moss_calm_v1",
+      "category": "Ground",
+      "quality": "strict",
+      "pbr_backend": "sm",
+      "failure_mode": "moss detail is too high-frequency and can turn into colored speckle in runtime",
+      "prompt": "top-down orthographic macro photograph of low tundra moss carpet with exposed dark gritty soil and tiny stone flecks, muted olive and brown tones, soft continuous cushion texture, even overcast lighting, seamless PBR terrain texture, no tall plants, no bright spots, no flower heads, no perspective, no shadows",
+      "source_stack_role": "albedo candidate first; normal/detail disabled until close/mid/far terrain review passes"
+    },
+    {
+      "material_id": "tundra_lichen",
+      "current_source_asset_id": "tundra_lichen",
+      "regen_id": "m8_tundra_lichen_calm_v1",
+      "category": "Ground",
+      "quality": "strict",
+      "pbr_backend": "sm",
+      "failure_mode": "lichen spots and pale contrast can repeat as visible object clusters",
+      "prompt": "top-down orthographic macro photograph of pale tundra lichen crust blended into gritty dark soil and small stone chips, muted sage gray and off-white tones, irregular continuous crust texture, even overcast lighting, seamless PBR terrain texture, no circular spot clusters, no plant stems, no bright isolated blobs, no perspective, no shadows",
+      "source_stack_role": "albedo candidate first; normal/detail disabled until close/mid/far terrain review passes"
+    }
+  ]
+}

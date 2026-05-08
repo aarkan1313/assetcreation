@@ -48,7 +48,7 @@ movement along each axis without forcing changes to the others.
 | **Per-mode `terrain_blend_<kit>_<mode>.tres`** (15 files) | View: walk/iso/topdown. | `pipelines/textures/emit_per_mode_materials.py`, commits `c4d68c0` `75b15d1` |
 | **Anchor-mode framing** (IsoCam/TopDownCam + PlayerAnchor + CamFraming) | View: iso/topdown at configurable diameter. | Phase C, commits `1dee0f8` `eca28ba` |
 | **Region gallery** with per-mode swap | Granularity: whole-region kit. | `world3/scripts/RegionGalleryCapture.gd` |
-| **`deploy_kit_to_world3.py`** | Tooling for building kit `.tres` from `biome_kits.json`. | `pipelines/textures/deploy_kit_to_world3.py` |
+| **`deploy_kit_to_world3.py`** | Tooling for building kit `.tres` from `biome_kits.json`; now stages the full PBR map set for catalog/runtime inventory. | `pipelines/textures/deploy_kit_to_world3.py` |
 | **2x2 stitch test** | Granularity: chunk-stitched (4× same heightmap). | Phase F.3, `world3/scenes/capture_phase_f/`, commit `f76fde1` |
 | **ComfyUI texture generation** (`aaa_texture.py` + 9-stage pipeline) | Source: procedural. | `pipelines/textures/aaa_texture.py`, Phases A/A-polish/B |
 
@@ -132,6 +132,12 @@ boundary-mask generation for straight runtime test boundaries. Full biome-map
 contours, async/background chunk build, corner/junction cases, and broader
 game-mode migration are still future hardening work.
 
+The **texture-source model now has two peer lanes**. OpenTopo is the real-source
+control lane and current visual reference. ComfyUI/`aaa_texture.py` is the
+procedural generation lane for scalable biome materials, missing-biome fill,
+controlled variants, and future fantasy materials. Both lanes must pass source
+inventory, QA, and terrain-context promotion gates before visual closure.
+
 ---
 
 ## 3. Gaps (orchestrator-tracked)
@@ -140,6 +146,7 @@ game-mode migration are still future hardening work.
 |-----|--------|----------|-------|
 | **Aligned material taxonomy** (kit slots vs material classes) | Catalog exists with 25 procedural + 6 OpenTopo entries; material generation, import, and representative renders verified | HIGH — blocks M2/M4 until maintained | Consolidated in this chat |
 | **Transition materials** between kits/classes | M2 generated four reviewed/tuned boundary strips; M7 now places them automatically through generated per-chunk masks; visual promotion is pending M1-M7 audit | HIGH - blocks tile-to-tile blending | Consolidated in this chat; use OpenTopo QA infrastructure |
+| **Procedural organic texture quality** | ComfyUI inventory exists for all 25 generated materials; five organic blockers have an M8 regeneration queue; deterministic repair candidates remain quarantined | HIGH - blocks M7 visual closure and M8 source cleanup | Orchestrator |
 | **Per-pixel splat shader** | M4 pass 2 prototype exists; M6 wires it through `walk.tscn` with export-safe splat cache and streamed chunks | HIGH - working prototype, still not final material indirection | Orchestrator |
 | **Within-chunk material variation** | Prototype splat map generated from height/slope and consumed by both review chunks and the walk scene | HIGH | Orchestrator |
 | **Cross-source style bridge** (real ↔ procedural ↔ fantasy adjacent) | Worker flagged it; no fix yet | MEDIUM | Consolidated in this chat |
@@ -170,9 +177,10 @@ The broader near lane is M7-M12:
 
 Details and exits live in `world3/docs/M7_M12_NEAR_ROADMAP.md`.
 
-Before starting M8, run
-`world3/docs/M1_M7_VISUAL_AUDIT_PLAN_2026_05_08.md` so the project does not
-confuse pipeline success with final visual quality.
+M8 starts from the visual remediation lane: the M1-M7 audit is complete, M7 is
+workflow-pass/visual-rework, and the first repair work is the source-stack plus
+ComfyUI texture regeneration path recorded in
+`M1_M7_VISUAL_REMEDIATION_PLAN_2026_05_08.md`.
 
 ### M1 — Material catalog (orchestrator-led, blocking)
 
@@ -487,3 +495,12 @@ These start when chunk + biome + tile + transition is ~80% solved
   organic source cleanup, runtime polish, cross-source blending, junctions, and
   walk/iso/topdown parity. Deferred scatter/props/buildings/fantasy remain
   after that lane.
+- **2026-05-08 (M7 visual audit/remediation)**: M7 remains a workflow pass, but
+  visual closure is paused. The audit set the target at roughly 70 percent of
+  the best stacked photo/topo OpenTopo reference, added the source-stack runtime
+  bridge, and quarantined deterministic organic repair candidates.
+- **2026-05-08 (ComfyUI parity inventory)**: Added the generated-texture
+  inventory and M8 regeneration queue. ComfyUI/`aaa_texture.py` is now treated
+  as a peer texture-source lane to OpenTopo: 25 generated materials are audited,
+  five organic blockers are queued for prompt/variant regeneration, and
+  full-PBR runtime staging is closed and auditable before promotion.

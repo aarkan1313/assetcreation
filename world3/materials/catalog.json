@@ -516,8 +516,8 @@
         "albedo": "world3/textures/wgv3/temperate_forest_grass/albedo.png",
         "normal": "world3/textures/wgv3/temperate_forest_grass/normal.png",
         "roughness": "world3/textures/wgv3/temperate_forest_grass/roughness.png",
-        "height": null,
-        "ao": null
+        "height": "world3/textures/wgv3/temperate_forest_grass/height.png",
+        "ao": "world3/textures/wgv3/temperate_forest_grass/ao.png"
       },
       "shader_binding": "terrain_blend",
       "validated_views": {
@@ -546,8 +546,8 @@
         "albedo": "world3/textures/wgv3/temperate_forest_dirt/albedo.png",
         "normal": "world3/textures/wgv3/temperate_forest_dirt/normal.png",
         "roughness": "world3/textures/wgv3/temperate_forest_dirt/roughness.png",
-        "height": null,
-        "ao": null
+        "height": "world3/textures/wgv3/temperate_forest_dirt/height.png",
+        "ao": "world3/textures/wgv3/temperate_forest_dirt/ao.png"
       },
       "shader_binding": "terrain_blend",
       "validated_views": {
@@ -576,8 +576,8 @@
         "albedo": "world3/textures/wgv3/temperate_forest_rock_light/albedo.png",
         "normal": "world3/textures/wgv3/temperate_forest_rock_light/normal.png",
         "roughness": "world3/textures/wgv3/temperate_forest_rock_light/roughness.png",
-        "height": null,
-        "ao": null
+        "height": "world3/textures/wgv3/temperate_forest_rock_light/height.png",
+        "ao": "world3/textures/wgv3/temperate_forest_rock_light/ao.png"
       },
       "shader_binding": "terrain_blend",
       "validated_views": {
@@ -606,8 +606,8 @@
         "albedo": "world3/textures/wgv3/temperate_forest_rock_dark/albedo.png",
         "normal": "world3/textures/wgv3/temperate_forest_rock_dark/normal.png",
         "roughness": "world3/textures/wgv3/temperate_forest_rock_dark/roughness.png",
-        "height": null,
-        "ao": null
+        "height": "world3/textures/wgv3/temperate_forest_rock_dark/height.png",
+        "ao": "world3/textures/wgv3/temperate_forest_rock_dark/ao.png"
       },
       "shader_binding": "terrain_blend",
       "validated_views": {
@@ -637,8 +637,8 @@
         "albedo": "world3/textures/wgv3/temperate_forest_snow/albedo.png",
         "normal": "world3/textures/wgv3/temperate_forest_snow/normal.png",
         "roughness": "world3/textures/wgv3/temperate_forest_snow/roughness.png",
-        "height": null,
-        "ao": null
+        "height": "world3/textures/wgv3/temperate_forest_snow/height.png",
+        "ao": "world3/textures/wgv3/temperate_forest_snow/ao.png"
       },
       "shader_binding": "terrain_blend",
       "validated_views": {
@@ -668,8 +668,8 @@
         "albedo": "world3/textures/wgv3/grassland_grass/albedo.png",
         "normal": "world3/textures/wgv3/grassland_grass/normal.png",
         "roughness": "world3/textures/wgv3/grassland_grass/roughness.png",
-        "height": null,
-        "ao": null
+        "height": "world3/textures/wgv3/grassland_grass/height.png",
+        "ao": "world3/textures/wgv3/grassland_grass/ao.png"
       },
       "shader_binding": "terrain_blend",
       "validated_views": {
@@ -698,8 +698,8 @@
         "albedo": "world3/textures/wgv3/grassland_dirt/albedo.png",
         "normal": "world3/textures/wgv3/grassland_dirt/normal.png",
         "roughness": "world3/textures/wgv3/grassland_dirt/roughness.png",
-        "height": null,
-        "ao": null
+        "height": "world3/textures/wgv3/grassland_dirt/height.png",
+        "ao": "world3/textures/wgv3/grassland_dirt/ao.png"
       },
       "shader_binding": "terrain_blend",
       "validated_views": {
@@ -728,8 +728,8 @@
         "albedo": "world3/textures/wgv3/grassland_rock_light/albedo.png",
         "normal": "world3/textures/wgv3/grassland_rock_light/normal.png",
         "roughness": "world3/textures/wgv3/grassland_rock_light/roughness.png",
-        "height": null,
-        "ao": null
+        "height": "world3/textures/wgv3/grassland_rock_light/height.png",
+        "ao": "world3/textures/wgv3/grassland_rock_light/ao.png"
       },
       "shader_binding": "terrain_blend",
       "validated_views": {
@@ -758,8 +758,8 @@
         "albedo": "world3/textures/wgv3/grassland_rock_dark/albedo.png",
         "normal": "world3/textures/wgv3/grassland_rock_dark/normal.png",
         "roughness": "world3/textures/wgv3/grassland_rock_dark/roughness.png",
-        "height": null,
-        "ao": null
+        "height": "world3/textures/wgv3/grassland_rock_dark/height.png",
+        "ao": "world3/textures/wgv3/grassland_rock_dark/ao.png"
       },
       "shader_binding": "terrain_blend",
       "validated_views": {
@@ -789,8 +789,8 @@
         "albedo": "world3/textures/wgv3/grassland_snow/albedo.png",
         "normal": "world3/textures/wgv3/grassland_snow/normal.png",
         "roughness": "world3/textures/wgv3/grassland_snow/roughness.png",
-        "height": null,
-        "ao": null
+        "height": "world3/textures/wgv3/grassland_snow/height.png",
+        "ao": "world3/textures/wgv3/grassland_snow/ao.png"
       },
       "shader_binding": "terrain_blend",
       "validated_views": {

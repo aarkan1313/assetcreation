@@ -51,6 +51,12 @@ as M1's catalog spec is drafted. M4/M5 wait on the others.
 orchestrator work consolidated for now. Owner labels still describe natural
 responsibility boundaries, but this chat may execute both sides directly.
 
+**2026-05-08 visual remediation note**: M7 is a workflow pass but not visual
+closure. M8 starts with source-stack remediation and ComfyUI/`aaa_texture.py`
+regeneration of the five priority organic blockers. See
+`M1_M7_VISUAL_REMEDIATION_PLAN_2026_05_08.md` and
+`COMFYUI_TEXTURE_WORKFLOW_INVENTORY_2026_05_08.md`.
+
 ## M1 — Material catalog (orchestrator-led)
 
 **Goal**: one source of truth for "what materials exist." Aligns

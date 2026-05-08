@@ -1,7 +1,7 @@
 """Copy Phase-D kit textures from world/textures/library/<id>/ into
-world3/textures/wgv3/<slot>/{albedo,normal,roughness}.png so the
-terrain_blend_<kit>.tres ShaderMaterials can resolve them via Godot's
-res:// resource path.
+world3/textures/wgv3/<slot>/ so the terrain_blend_<kit>.tres ShaderMaterials
+and catalog/runtime review tools can resolve them via Godot's res:// resource
+path.
 
 The .tres files use logical slot names (`grass`, `dirt`, `rock_light`,
 `rock_dark`, `snow`) and reference fixed paths like
@@ -31,14 +31,15 @@ CATALOG_JSON = REPO / "world3" / "materials" / "catalog.json"
 
 # Per-kit slot -> catalog-material-id mapping is read from biome_kits.json.
 # Source generator ids and runtime dirs resolve through materials/catalog.json.
-# The .tres generator below writes per-kit slot dirs:
-#   world3/textures/wgv3/<kit>_<slot>/{albedo,normal,roughness}.png
+# The .tres generator below writes per-kit slot dirs with the full PBR map set:
+#   world3/textures/wgv3/<kit>_<slot>/{albedo,normal,roughness,metallic,height,ao}.png
 # This avoids clobbering the existing alpine slot dirs that other kits
 # (alpine, desert, tundra) reference at fixed paths.
 
 # Map .tres -> <kit>_<slot> dirs vs alpine-default dirs. Alpine/desert/tundra
 # use the original paths; new kits get prefixed slots.
 NEW_KITS = {"temperate_forest", "grassland"}
+MAP_KINDS = ("albedo", "normal", "roughness", "metallic", "height", "ao")
 
 
 def load_kit(kit_name: str) -> dict:
@@ -81,7 +82,7 @@ def deploy_textures(kit_name: str, kit: dict, catalog: dict[str, dict]) -> dict[
         dst_slot = runtime_dir_name(material_id, kit_name, slot, catalog)
         dst_dir = WGV3 / dst_slot
         dst_dir.mkdir(parents=True, exist_ok=True)
-        for map_kind in ("albedo", "normal", "roughness"):
+        for map_kind in MAP_KINDS:
             src = src_dir / f"{source_id}_{map_kind}.png"
             if not src.exists():
                 print(f"  ! missing map: {src}", file=sys.stderr)

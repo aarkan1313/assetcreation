@@ -1,0 +1,1576 @@
+{
+  "version": 1,
+  "generated_at": "2026-05-08",
+  "purpose": "Audit ComfyUI/aaa_texture procedural materials as peer inputs to the source-stack remediation lane.",
+  "library_root": "world/textures/library",
+  "catalog_path": "world3/materials/catalog.json",
+  "promotion_gate": [
+    "source library maps and staged runtime maps are present",
+    "aaa_texture.py quality gate and seam QA pass",
+    "2x2 tile and Blender preview do not show object-like repetition",
+    "Godot terrain-context captures pass close, mid, and far views",
+    "source-stack detail use starts albedo-only/low-strength until normal/detail review passes"
+  ],
+  "summary": {
+    "catalog_materials_total": 31,
+    "comfy_materials_total": 25,
+    "library_sets_present": 25,
+    "runtime_core_complete": 25,
+    "library_core_complete": 25,
+    "qa_summary_present": 25,
+    "priority_regen_total": 5,
+    "close_needs_review_total": 18
+  },
+  "materials": [
+    {
+      "id": "grass",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "source_asset_id": "wgv3_grass",
+      "color_family": "green-organic",
+      "prompt": "lush green grass with small clovers and dirt patches, top-down photo, even lighting, photoreal",
+      "catalog_qa_grade": "B",
+      "catalog_passed_gate": true,
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      },
+      "runtime": {
+        "dir": "world3/textures/wgv3/grass",
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": false
+        },
+        "missing_core_maps": []
+      },
+      "library": {
+        "dir": "world/textures/library/wgv3_grass",
+        "exists": true,
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": true
+        },
+        "missing_core_maps": [],
+        "qa": {
+          "summary_exists": true,
+          "seam_score_exists": true,
+          "sanity_exists": true,
+          "tile_2x2_exists": true,
+          "summary_grade": "A",
+          "summary_passed": true,
+          "pipeline_grade": "B",
+          "pipeline_passed_gate": true,
+          "pipeline_quality": "default",
+          "pipeline_pbr_method": "stablematerials_standard",
+          "pipeline_n_variants": 4,
+          "pipeline_seed_base": 42,
+          "seam_grade": "A",
+          "sanity_ok": true
+        }
+      },
+      "flags": {
+        "organic_or_vegetation_like": true,
+        "priority_regen": true,
+        "close_needs_review": true
+      },
+      "recommended_action": "regenerate_with_comfy_prompt_and_terrain_gate"
+    },
+    {
+      "id": "dirt",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "source_asset_id": "wgv3_dirt_test",
+      "color_family": "brown-earth",
+      "prompt": "rich brown dirt with small pebbles and fine debris, top-down photo, even lighting, photoreal",
+      "catalog_qa_grade": "A",
+      "catalog_passed_gate": true,
+      "validated_views": {
+        "close": "ok",
+        "mid": "ok",
+        "far": "ok"
+      },
+      "runtime": {
+        "dir": "world3/textures/wgv3/dirt",
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": false
+        },
+        "missing_core_maps": []
+      },
+      "library": {
+        "dir": "world/textures/library/wgv3_dirt_test",
+        "exists": true,
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": true
+        },
+        "missing_core_maps": [],
+        "qa": {
+          "summary_exists": true,
+          "seam_score_exists": true,
+          "sanity_exists": true,
+          "tile_2x2_exists": true,
+          "summary_grade": "A",
+          "summary_passed": true,
+          "pipeline_grade": "A",
+          "pipeline_passed_gate": true,
+          "pipeline_quality": "default",
+          "pipeline_pbr_method": "stablematerials_standard",
+          "pipeline_n_variants": 4,
+          "pipeline_seed_base": 42,
+          "seam_grade": "A",
+          "sanity_ok": true
+        }
+      },
+      "flags": {
+        "organic_or_vegetation_like": false,
+        "priority_regen": false,
+        "close_needs_review": false
+      },
+      "recommended_action": "eligible_for_source_stack_detail_trial"
+    },
+    {
+      "id": "rock_light",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "source_asset_id": "wgv3_rock_light",
+      "color_family": "tan-rock",
+      "prompt": "weathered tan limestone rock surface with cracks and lichen, top-down photo, even lighting, photoreal",
+      "catalog_qa_grade": "B",
+      "catalog_passed_gate": true,
+      "validated_views": {
+        "close": "ok",
+        "mid": "ok",
+        "far": "ok"
+      },
+      "runtime": {
+        "dir": "world3/textures/wgv3/rock_light",
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": false
+        },
+        "missing_core_maps": []
+      },
+      "library": {
+        "dir": "world/textures/library/wgv3_rock_light",
+        "exists": true,
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": true
+        },
+        "missing_core_maps": [],
+        "qa": {
+          "summary_exists": true,
+          "seam_score_exists": true,
+          "sanity_exists": true,
+          "tile_2x2_exists": true,
+          "summary_grade": "A",
+          "summary_passed": true,
+          "pipeline_grade": "B",
+          "pipeline_passed_gate": true,
+          "pipeline_quality": "default",
+          "pipeline_pbr_method": "stablematerials_standard",
+          "pipeline_n_variants": 6,
+          "pipeline_seed_base": 100,
+          "seam_grade": "A",
+          "sanity_ok": true
+        }
+      },
+      "flags": {
+        "organic_or_vegetation_like": true,
+        "priority_regen": false,
+        "close_needs_review": false
+      },
+      "recommended_action": "eligible_for_source_stack_detail_trial"
+    },
+    {
+      "id": "rock_dark",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "source_asset_id": "wgv3_rock_dark",
+      "color_family": "dark-grey-rock",
+      "prompt": "dark grey volcanic rock surface, weathered, sharp edges and small cracks, top-down photo, even lighting, photoreal",
+      "catalog_qa_grade": "A",
+      "catalog_passed_gate": true,
+      "validated_views": {
+        "close": "ok",
+        "mid": "ok",
+        "far": "ok"
+      },
+      "runtime": {
+        "dir": "world3/textures/wgv3/rock_dark",
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": false
+        },
+        "missing_core_maps": []
+      },
+      "library": {
+        "dir": "world/textures/library/wgv3_rock_dark",
+        "exists": true,
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": true
+        },
+        "missing_core_maps": [],
+        "qa": {
+          "summary_exists": true,
+          "seam_score_exists": true,
+          "sanity_exists": true,
+          "tile_2x2_exists": true,
+          "summary_grade": "A",
+          "summary_passed": true,
+          "pipeline_grade": "A",
+          "pipeline_passed_gate": true,
+          "pipeline_quality": "default",
+          "pipeline_pbr_method": "stablematerials_standard",
+          "pipeline_n_variants": 4,
+          "pipeline_seed_base": 42,
+          "seam_grade": "A",
+          "sanity_ok": true
+        }
+      },
+      "flags": {
+        "organic_or_vegetation_like": false,
+        "priority_regen": false,
+        "close_needs_review": false
+      },
+      "recommended_action": "eligible_for_source_stack_detail_trial"
+    },
+    {
+      "id": "snow",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "source_asset_id": "wgv3_snow",
+      "color_family": "white-snow",
+      "prompt": "fresh white snow with small dimples, top-down photo, even lighting, photoreal",
+      "catalog_qa_grade": "A",
+      "catalog_passed_gate": true,
+      "validated_views": {
+        "close": "ok",
+        "mid": "ok",
+        "far": "ok"
+      },
+      "runtime": {
+        "dir": "world3/textures/wgv3/snow",
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": false
+        },
+        "missing_core_maps": []
+      },
+      "library": {
+        "dir": "world/textures/library/wgv3_snow",
+        "exists": true,
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": true
+        },
+        "missing_core_maps": [],
+        "qa": {
+          "summary_exists": true,
+          "seam_score_exists": true,
+          "sanity_exists": true,
+          "tile_2x2_exists": true,
+          "summary_grade": "A",
+          "summary_passed": true,
+          "pipeline_grade": "A",
+          "pipeline_passed_gate": true,
+          "pipeline_quality": "default",
+          "pipeline_pbr_method": "stablematerials_standard",
+          "pipeline_n_variants": 4,
+          "pipeline_seed_base": 100,
+          "seam_grade": "A",
+          "sanity_ok": true
+        }
+      },
+      "flags": {
+        "organic_or_vegetation_like": false,
+        "priority_regen": false,
+        "close_needs_review": false
+      },
+      "recommended_action": "eligible_for_source_stack_detail_trial"
+    },
+    {
+      "id": "desert_dry_brush",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "source_asset_id": "desert_dry_brush",
+      "color_family": "dry-tan-organic",
+      "prompt": "extreme close-up macro photograph of cracked dry desert mud surface with subtle scattering of small dead twigs and bits of dry grass, light tan color, ground level top-down view, photoreal",
+      "catalog_qa_grade": "A",
+      "catalog_passed_gate": true,
+      "validated_views": {
+        "close": "not_validated",
+        "mid": "ok",
+        "far": "ok"
+      },
+      "runtime": {
+        "dir": "world3/textures/wgv3/desert_dry_brush",
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": false
+        },
+        "missing_core_maps": []
+      },
+      "library": {
+        "dir": "world/textures/library/desert_dry_brush",
+        "exists": true,
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": true
+        },
+        "missing_core_maps": [],
+        "qa": {
+          "summary_exists": true,
+          "seam_score_exists": true,
+          "sanity_exists": true,
+          "tile_2x2_exists": true,
+          "summary_grade": "A",
+          "summary_passed": true,
+          "pipeline_grade": "A",
+          "pipeline_passed_gate": true,
+          "pipeline_quality": "default",
+          "pipeline_pbr_method": "stablematerials_standard",
+          "pipeline_n_variants": 6,
+          "pipeline_seed_base": 400,
+          "seam_grade": "A",
+          "sanity_ok": true
+        }
+      },
+      "flags": {
+        "organic_or_vegetation_like": true,
+        "priority_regen": false,
+        "close_needs_review": false
+      },
+      "recommended_action": "terrain_context_review_required"
+    },
+    {
+      "id": "desert_sand",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "source_asset_id": "desert_sand",
+      "color_family": "warm-sand",
+      "prompt": "close-up photograph of natural desert sand dunes, soft wind ripples, fine sand grains, warm golden tan color, no debris, no objects, top-down view, even daylight, photoreal, sharp focus",
+      "catalog_qa_grade": "A",
+      "catalog_passed_gate": true,
+      "validated_views": {
+        "close": "not_validated",
+        "mid": "ok",
+        "far": "ok"
+      },
+      "runtime": {
+        "dir": "world3/textures/wgv3/desert_sand",
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": false
+        },
+        "missing_core_maps": []
+      },
+      "library": {
+        "dir": "world/textures/library/desert_sand",
+        "exists": true,
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": true
+        },
+        "missing_core_maps": [],
+        "qa": {
+          "summary_exists": true,
+          "seam_score_exists": true,
+          "sanity_exists": true,
+          "tile_2x2_exists": true,
+          "summary_grade": "A",
+          "summary_passed": true,
+          "pipeline_grade": "A",
+          "pipeline_passed_gate": true,
+          "pipeline_quality": "default",
+          "pipeline_pbr_method": "stablematerials_standard",
+          "pipeline_n_variants": 6,
+          "pipeline_seed_base": 200,
+          "seam_grade": "A",
+          "sanity_ok": true
+        }
+      },
+      "flags": {
+        "organic_or_vegetation_like": false,
+        "priority_regen": false,
+        "close_needs_review": false
+      },
+      "recommended_action": "terrain_context_review_required"
+    },
+    {
+      "id": "desert_canyon_rock",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "source_asset_id": "desert_canyon_rock",
+      "color_family": "tan-sandstone",
+      "prompt": "weathered tan canyon sandstone with horizontal striations, top-down photo",
+      "catalog_qa_grade": "B",
+      "catalog_passed_gate": true,
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      },
+      "runtime": {
+        "dir": "world3/textures/wgv3/desert_canyon_rock",
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": false
+        },
+        "missing_core_maps": []
+      },
+      "library": {
+        "dir": "world/textures/library/desert_canyon_rock",
+        "exists": true,
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": true
+        },
+        "missing_core_maps": [],
+        "qa": {
+          "summary_exists": true,
+          "seam_score_exists": true,
+          "sanity_exists": true,
+          "tile_2x2_exists": true,
+          "summary_grade": "B",
+          "summary_passed": null,
+          "pipeline_grade": "B",
+          "pipeline_passed_gate": true,
+          "pipeline_quality": "default",
+          "pipeline_pbr_method": "stablematerials_standard",
+          "pipeline_n_variants": 4,
+          "pipeline_seed_base": 42,
+          "seam_grade": "B",
+          "sanity_ok": true
+        }
+      },
+      "flags": {
+        "organic_or_vegetation_like": false,
+        "priority_regen": false,
+        "close_needs_review": true
+      },
+      "recommended_action": "terrain_context_review_required"
+    },
+    {
+      "id": "desert_dark_rock",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "source_asset_id": "desert_dark_rock",
+      "color_family": "dark-red-brown-rock",
+      "prompt": "dark basalt rock with red-brown patina, weathered, top-down photo",
+      "catalog_qa_grade": "A",
+      "catalog_passed_gate": true,
+      "validated_views": {
+        "close": "not_validated",
+        "mid": "ok",
+        "far": "ok"
+      },
+      "runtime": {
+        "dir": "world3/textures/wgv3/desert_dark_rock",
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": false
+        },
+        "missing_core_maps": []
+      },
+      "library": {
+        "dir": "world/textures/library/desert_dark_rock",
+        "exists": true,
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": true
+        },
+        "missing_core_maps": [],
+        "qa": {
+          "summary_exists": true,
+          "seam_score_exists": true,
+          "sanity_exists": true,
+          "tile_2x2_exists": true,
+          "summary_grade": "A",
+          "summary_passed": true,
+          "pipeline_grade": "A",
+          "pipeline_passed_gate": true,
+          "pipeline_quality": "default",
+          "pipeline_pbr_method": "stablematerials_standard",
+          "pipeline_n_variants": 4,
+          "pipeline_seed_base": 42,
+          "seam_grade": "A",
+          "sanity_ok": true
+        }
+      },
+      "flags": {
+        "organic_or_vegetation_like": false,
+        "priority_regen": false,
+        "close_needs_review": false
+      },
+      "recommended_action": "terrain_context_review_required"
+    },
+    {
+      "id": "desert_salt_pan",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "source_asset_id": "desert_salt_pan",
+      "color_family": "white-salt",
+      "prompt": "white salt pan crust with hexagonal cracks, top-down photo",
+      "catalog_qa_grade": "B",
+      "catalog_passed_gate": true,
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      },
+      "runtime": {
+        "dir": "world3/textures/wgv3/desert_salt_pan",
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": false
+        },
+        "missing_core_maps": []
+      },
+      "library": {
+        "dir": "world/textures/library/desert_salt_pan",
+        "exists": true,
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": true
+        },
+        "missing_core_maps": [],
+        "qa": {
+          "summary_exists": true,
+          "seam_score_exists": true,
+          "sanity_exists": true,
+          "tile_2x2_exists": true,
+          "summary_grade": "B",
+          "summary_passed": null,
+          "pipeline_grade": "B",
+          "pipeline_passed_gate": true,
+          "pipeline_quality": "default",
+          "pipeline_pbr_method": "stablematerials_standard",
+          "pipeline_n_variants": 4,
+          "pipeline_seed_base": 42,
+          "seam_grade": "B",
+          "sanity_ok": true
+        }
+      },
+      "flags": {
+        "organic_or_vegetation_like": false,
+        "priority_regen": false,
+        "close_needs_review": true
+      },
+      "recommended_action": "terrain_context_review_required"
+    },
+    {
+      "id": "tundra_moss",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "source_asset_id": "tundra_moss",
+      "color_family": "olive-moss",
+      "prompt": "close-up photograph of arctic tundra moss ground cover, mixed dark green and reddish-brown moss with small lichen patches, damp permafrost soil visible underneath, top-down view, soft overcast daylight, photoreal, sharp focus",
+      "catalog_qa_grade": "A",
+      "catalog_passed_gate": true,
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      },
+      "runtime": {
+        "dir": "world3/textures/wgv3/tundra_moss",
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": false
+        },
+        "missing_core_maps": []
+      },
+      "library": {
+        "dir": "world/textures/library/tundra_moss",
+        "exists": true,
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": true
+        },
+        "missing_core_maps": [],
+        "qa": {
+          "summary_exists": true,
+          "seam_score_exists": true,
+          "sanity_exists": true,
+          "tile_2x2_exists": true,
+          "summary_grade": "A",
+          "summary_passed": true,
+          "pipeline_grade": "A",
+          "pipeline_passed_gate": true,
+          "pipeline_quality": "default",
+          "pipeline_pbr_method": "stablematerials_standard",
+          "pipeline_n_variants": 6,
+          "pipeline_seed_base": 500,
+          "seam_grade": "A",
+          "sanity_ok": true
+        }
+      },
+      "flags": {
+        "organic_or_vegetation_like": true,
+        "priority_regen": true,
+        "close_needs_review": true
+      },
+      "recommended_action": "regenerate_with_comfy_prompt_and_terrain_gate"
+    },
+    {
+      "id": "tundra_lichen",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "source_asset_id": "tundra_lichen",
+      "color_family": "pale-green-lichen",
+      "prompt": "close-up photograph of pale green and grey rock lichen on bare stone, patchy crustose lichen, top-down view, photoreal",
+      "catalog_qa_grade": "A",
+      "catalog_passed_gate": true,
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      },
+      "runtime": {
+        "dir": "world3/textures/wgv3/tundra_lichen",
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": false
+        },
+        "missing_core_maps": []
+      },
+      "library": {
+        "dir": "world/textures/library/tundra_lichen",
+        "exists": true,
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": true
+        },
+        "missing_core_maps": [],
+        "qa": {
+          "summary_exists": true,
+          "seam_score_exists": true,
+          "sanity_exists": true,
+          "tile_2x2_exists": true,
+          "summary_grade": "B",
+          "summary_passed": null,
+          "pipeline_grade": "A",
+          "pipeline_passed_gate": true,
+          "pipeline_quality": "default",
+          "pipeline_pbr_method": "stablematerials_standard",
+          "pipeline_n_variants": 4,
+          "pipeline_seed_base": 42,
+          "seam_grade": "B",
+          "sanity_ok": true
+        }
+      },
+      "flags": {
+        "organic_or_vegetation_like": true,
+        "priority_regen": true,
+        "close_needs_review": true
+      },
+      "recommended_action": "regenerate_with_comfy_prompt_and_terrain_gate"
+    },
+    {
+      "id": "tundra_frost_rock",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "source_asset_id": "tundra_frost_rock",
+      "color_family": "cool-grey-frost-rock",
+      "prompt": "frost-covered weathered grey rock with patchy ice crystals and snow dust, top-down photograph, photoreal",
+      "catalog_qa_grade": "B",
+      "catalog_passed_gate": true,
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      },
+      "runtime": {
+        "dir": "world3/textures/wgv3/tundra_frost_rock",
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": false
+        },
+        "missing_core_maps": []
+      },
+      "library": {
+        "dir": "world/textures/library/tundra_frost_rock",
+        "exists": true,
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": true
+        },
+        "missing_core_maps": [],
+        "qa": {
+          "summary_exists": true,
+          "seam_score_exists": true,
+          "sanity_exists": true,
+          "tile_2x2_exists": true,
+          "summary_grade": "B",
+          "summary_passed": null,
+          "pipeline_grade": "B",
+          "pipeline_passed_gate": true,
+          "pipeline_quality": "default",
+          "pipeline_pbr_method": "stablematerials_standard",
+          "pipeline_n_variants": 4,
+          "pipeline_seed_base": 42,
+          "seam_grade": "B",
+          "sanity_ok": true
+        }
+      },
+      "flags": {
+        "organic_or_vegetation_like": false,
+        "priority_regen": false,
+        "close_needs_review": true
+      },
+      "recommended_action": "terrain_context_review_required"
+    },
+    {
+      "id": "tundra_dark_rock",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "source_asset_id": "tundra_dark_rock",
+      "color_family": "dark-cool-rock",
+      "prompt": "dark wet weathered tundra rock surface with frost patches, top-down photo, photoreal",
+      "catalog_qa_grade": "A",
+      "catalog_passed_gate": true,
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      },
+      "runtime": {
+        "dir": "world3/textures/wgv3/tundra_dark_rock",
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": false
+        },
+        "missing_core_maps": []
+      },
+      "library": {
+        "dir": "world/textures/library/tundra_dark_rock",
+        "exists": true,
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": true
+        },
+        "missing_core_maps": [],
+        "qa": {
+          "summary_exists": true,
+          "seam_score_exists": true,
+          "sanity_exists": true,
+          "tile_2x2_exists": true,
+          "summary_grade": "B",
+          "summary_passed": null,
+          "pipeline_grade": "A",
+          "pipeline_passed_gate": true,
+          "pipeline_quality": "default",
+          "pipeline_pbr_method": "stablematerials_standard",
+          "pipeline_n_variants": 4,
+          "pipeline_seed_base": 42,
+          "seam_grade": "B",
+          "sanity_ok": true
+        }
+      },
+      "flags": {
+        "organic_or_vegetation_like": false,
+        "priority_regen": false,
+        "close_needs_review": true
+      },
+      "recommended_action": "terrain_context_review_required"
+    },
+    {
+      "id": "tundra_ice",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "source_asset_id": "tundra_ice",
+      "color_family": "blue-white-ice",
+      "prompt": "compacted snow surface with subtle wind ridges and tiny ice crystals, top-down photograph, photoreal",
+      "catalog_qa_grade": "B",
+      "catalog_passed_gate": true,
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      },
+      "runtime": {
+        "dir": "world3/textures/wgv3/tundra_ice",
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": false
+        },
+        "missing_core_maps": []
+      },
+      "library": {
+        "dir": "world/textures/library/tundra_ice",
+        "exists": true,
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": true
+        },
+        "missing_core_maps": [],
+        "qa": {
+          "summary_exists": true,
+          "seam_score_exists": true,
+          "sanity_exists": true,
+          "tile_2x2_exists": true,
+          "summary_grade": "C",
+          "summary_passed": null,
+          "pipeline_grade": "B",
+          "pipeline_passed_gate": true,
+          "pipeline_quality": "default",
+          "pipeline_pbr_method": "stablematerials_standard",
+          "pipeline_n_variants": 4,
+          "pipeline_seed_base": 42,
+          "seam_grade": "C",
+          "sanity_ok": true
+        }
+      },
+      "flags": {
+        "organic_or_vegetation_like": false,
+        "priority_regen": false,
+        "close_needs_review": true
+      },
+      "recommended_action": "terrain_context_review_required"
+    },
+    {
+      "id": "temperate_forest_grass",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "source_asset_id": "wgv3_tf_leaf_litter",
+      "color_family": "brown-leaf-litter",
+      "prompt": "forest floor covered in deciduous leaf litter, brown and orange oak leaves, damp humus soil visible below, top-down photo, even diffuse light, photoreal",
+      "catalog_qa_grade": "B",
+      "catalog_passed_gate": false,
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      },
+      "runtime": {
+        "dir": "world3/textures/wgv3/temperate_forest_grass",
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": false
+        },
+        "missing_core_maps": []
+      },
+      "library": {
+        "dir": "world/textures/library/wgv3_tf_leaf_litter",
+        "exists": true,
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": true
+        },
+        "missing_core_maps": [],
+        "qa": {
+          "summary_exists": true,
+          "seam_score_exists": true,
+          "sanity_exists": true,
+          "tile_2x2_exists": true,
+          "summary_grade": "B",
+          "summary_passed": null,
+          "pipeline_grade": "B",
+          "pipeline_passed_gate": false,
+          "pipeline_quality": "strict",
+          "pipeline_pbr_method": "chord_v1+sm_roughness",
+          "pipeline_n_variants": 6,
+          "pipeline_seed_base": 200,
+          "seam_grade": "B",
+          "sanity_ok": false
+        }
+      },
+      "flags": {
+        "organic_or_vegetation_like": true,
+        "priority_regen": true,
+        "close_needs_review": true
+      },
+      "recommended_action": "regenerate_with_comfy_prompt_and_terrain_gate"
+    },
+    {
+      "id": "temperate_forest_dirt",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "source_asset_id": "wgv3_tf_loamy_soil",
+      "color_family": "dark-brown-earth",
+      "prompt": "loamy forest soil, dark brown, slightly moist, small root fragments, no leaves, top-down photo, even diffuse light, photoreal",
+      "catalog_qa_grade": "A",
+      "catalog_passed_gate": false,
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      },
+      "runtime": {
+        "dir": "world3/textures/wgv3/temperate_forest_dirt",
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": false
+        },
+        "missing_core_maps": []
+      },
+      "library": {
+        "dir": "world/textures/library/wgv3_tf_loamy_soil",
+        "exists": true,
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": true
+        },
+        "missing_core_maps": [],
+        "qa": {
+          "summary_exists": true,
+          "seam_score_exists": true,
+          "sanity_exists": true,
+          "tile_2x2_exists": true,
+          "summary_grade": "B",
+          "summary_passed": null,
+          "pipeline_grade": "A",
+          "pipeline_passed_gate": false,
+          "pipeline_quality": "strict",
+          "pipeline_pbr_method": "stablematerials_standard",
+          "pipeline_n_variants": 4,
+          "pipeline_seed_base": 42,
+          "seam_grade": "B",
+          "sanity_ok": false
+        }
+      },
+      "flags": {
+        "organic_or_vegetation_like": false,
+        "priority_regen": false,
+        "close_needs_review": true
+      },
+      "recommended_action": "rerun_aaa_texture_with_strict_gate"
+    },
+    {
+      "id": "temperate_forest_rock_light",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "source_asset_id": "wgv3_tf_mossy_rock",
+      "color_family": "mossy-grey-rock",
+      "prompt": "weathered granite rock surface, green moss patches, rough texture, outdoor forest, top-down photo, even diffuse light, photoreal",
+      "catalog_qa_grade": "A",
+      "catalog_passed_gate": true,
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      },
+      "runtime": {
+        "dir": "world3/textures/wgv3/temperate_forest_rock_light",
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": false
+        },
+        "missing_core_maps": []
+      },
+      "library": {
+        "dir": "world/textures/library/wgv3_tf_mossy_rock",
+        "exists": true,
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": true
+        },
+        "missing_core_maps": [],
+        "qa": {
+          "summary_exists": true,
+          "seam_score_exists": true,
+          "sanity_exists": true,
+          "tile_2x2_exists": true,
+          "summary_grade": "A",
+          "summary_passed": true,
+          "pipeline_grade": "A",
+          "pipeline_passed_gate": true,
+          "pipeline_quality": "strict",
+          "pipeline_pbr_method": "chord_v1+sm_roughness",
+          "pipeline_n_variants": 6,
+          "pipeline_seed_base": 100,
+          "seam_grade": "A",
+          "sanity_ok": true
+        }
+      },
+      "flags": {
+        "organic_or_vegetation_like": true,
+        "priority_regen": false,
+        "close_needs_review": true
+      },
+      "recommended_action": "terrain_context_review_required"
+    },
+    {
+      "id": "temperate_forest_rock_dark",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "source_asset_id": "wgv3_tf_bark_rock",
+      "color_family": "dark-forest-rock",
+      "prompt": "dark weathered basalt rock, surface cracked and stained, forest environment, no vegetation, top-down photo, even diffuse light, photoreal",
+      "catalog_qa_grade": "A",
+      "catalog_passed_gate": true,
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      },
+      "runtime": {
+        "dir": "world3/textures/wgv3/temperate_forest_rock_dark",
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": false
+        },
+        "missing_core_maps": []
+      },
+      "library": {
+        "dir": "world/textures/library/wgv3_tf_bark_rock",
+        "exists": true,
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": true
+        },
+        "missing_core_maps": [],
+        "qa": {
+          "summary_exists": true,
+          "seam_score_exists": true,
+          "sanity_exists": true,
+          "tile_2x2_exists": true,
+          "summary_grade": "A",
+          "summary_passed": true,
+          "pipeline_grade": "A",
+          "pipeline_passed_gate": true,
+          "pipeline_quality": "strict",
+          "pipeline_pbr_method": "stablematerials_standard",
+          "pipeline_n_variants": 4,
+          "pipeline_seed_base": 42,
+          "seam_grade": "A",
+          "sanity_ok": true
+        }
+      },
+      "flags": {
+        "organic_or_vegetation_like": false,
+        "priority_regen": false,
+        "close_needs_review": true
+      },
+      "recommended_action": "terrain_context_review_required"
+    },
+    {
+      "id": "temperate_forest_snow",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "source_asset_id": "wgv3_tf_fern_ground",
+      "color_family": "green-fern-organic",
+      "prompt": "forest floor with mixed fern undergrowth, varied frond sizes and orientations, irregular leaf cover, damp ground visible between fronds, top-down photo, even diffuse light, photoreal",
+      "catalog_qa_grade": "A",
+      "catalog_passed_gate": true,
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      },
+      "runtime": {
+        "dir": "world3/textures/wgv3/temperate_forest_snow",
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": false
+        },
+        "missing_core_maps": []
+      },
+      "library": {
+        "dir": "world/textures/library/wgv3_tf_fern_ground",
+        "exists": true,
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": true
+        },
+        "missing_core_maps": [],
+        "qa": {
+          "summary_exists": true,
+          "seam_score_exists": true,
+          "sanity_exists": true,
+          "tile_2x2_exists": true,
+          "summary_grade": "A",
+          "summary_passed": true,
+          "pipeline_grade": "A",
+          "pipeline_passed_gate": true,
+          "pipeline_quality": "strict",
+          "pipeline_pbr_method": "chord_v1+sm_roughness",
+          "pipeline_n_variants": 6,
+          "pipeline_seed_base": 100,
+          "seam_grade": "A",
+          "sanity_ok": true
+        }
+      },
+      "flags": {
+        "organic_or_vegetation_like": true,
+        "priority_regen": false,
+        "close_needs_review": true
+      },
+      "recommended_action": "terrain_context_review_required"
+    },
+    {
+      "id": "grassland_grass",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "source_asset_id": "wgv3_gl_tall_grass",
+      "color_family": "yellow-dry-grass",
+      "prompt": "tall savanna grass, golden-yellow, dry season, close-packed stems, top-down photo, even diffuse light, photoreal",
+      "catalog_qa_grade": "B",
+      "catalog_passed_gate": false,
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      },
+      "runtime": {
+        "dir": "world3/textures/wgv3/grassland_grass",
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": false
+        },
+        "missing_core_maps": []
+      },
+      "library": {
+        "dir": "world/textures/library/wgv3_gl_tall_grass",
+        "exists": true,
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": true
+        },
+        "missing_core_maps": [],
+        "qa": {
+          "summary_exists": true,
+          "seam_score_exists": true,
+          "sanity_exists": true,
+          "tile_2x2_exists": true,
+          "summary_grade": "B",
+          "summary_passed": null,
+          "pipeline_grade": "B",
+          "pipeline_passed_gate": false,
+          "pipeline_quality": "strict",
+          "pipeline_pbr_method": "chord_v1+sm_roughness",
+          "pipeline_n_variants": 6,
+          "pipeline_seed_base": 42,
+          "seam_grade": "B",
+          "sanity_ok": true
+        }
+      },
+      "flags": {
+        "organic_or_vegetation_like": true,
+        "priority_regen": true,
+        "close_needs_review": true
+      },
+      "recommended_action": "regenerate_with_comfy_prompt_and_terrain_gate"
+    },
+    {
+      "id": "grassland_dirt",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "source_asset_id": "wgv3_gl_dry_thatch",
+      "color_family": "tan-dry-thatch",
+      "prompt": "dry thatch and dead grass mat, tan and beige, slightly compacted, open plains, top-down photo, even diffuse light, photoreal",
+      "catalog_qa_grade": "B",
+      "catalog_passed_gate": false,
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      },
+      "runtime": {
+        "dir": "world3/textures/wgv3/grassland_dirt",
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": false
+        },
+        "missing_core_maps": []
+      },
+      "library": {
+        "dir": "world/textures/library/wgv3_gl_dry_thatch",
+        "exists": true,
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": true
+        },
+        "missing_core_maps": [],
+        "qa": {
+          "summary_exists": true,
+          "seam_score_exists": true,
+          "sanity_exists": true,
+          "tile_2x2_exists": true,
+          "summary_grade": "C",
+          "summary_passed": null,
+          "pipeline_grade": "B",
+          "pipeline_passed_gate": false,
+          "pipeline_quality": "strict",
+          "pipeline_pbr_method": "stablematerials_standard",
+          "pipeline_n_variants": 4,
+          "pipeline_seed_base": 42,
+          "seam_grade": "C",
+          "sanity_ok": true
+        }
+      },
+      "flags": {
+        "organic_or_vegetation_like": true,
+        "priority_regen": false,
+        "close_needs_review": true
+      },
+      "recommended_action": "rerun_aaa_texture_with_strict_gate"
+    },
+    {
+      "id": "grassland_rock_light",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "source_asset_id": "wgv3_gl_hardpan_soil",
+      "color_family": "pale-hardpan",
+      "prompt": "hardpan cracked clay soil, pale tan, shallow surface cracks, semi-arid grassland, no vegetation, top-down photo, even diffuse light, photoreal",
+      "catalog_qa_grade": "A",
+      "catalog_passed_gate": false,
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      },
+      "runtime": {
+        "dir": "world3/textures/wgv3/grassland_rock_light",
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": false
+        },
+        "missing_core_maps": []
+      },
+      "library": {
+        "dir": "world/textures/library/wgv3_gl_hardpan_soil",
+        "exists": true,
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": true
+        },
+        "missing_core_maps": [],
+        "qa": {
+          "summary_exists": true,
+          "seam_score_exists": true,
+          "sanity_exists": true,
+          "tile_2x2_exists": true,
+          "summary_grade": "C",
+          "summary_passed": null,
+          "pipeline_grade": "A",
+          "pipeline_passed_gate": false,
+          "pipeline_quality": "strict",
+          "pipeline_pbr_method": "stablematerials_standard",
+          "pipeline_n_variants": 4,
+          "pipeline_seed_base": 42,
+          "seam_grade": "C",
+          "sanity_ok": false
+        }
+      },
+      "flags": {
+        "organic_or_vegetation_like": true,
+        "priority_regen": false,
+        "close_needs_review": true
+      },
+      "recommended_action": "rerun_aaa_texture_with_strict_gate"
+    },
+    {
+      "id": "grassland_rock_dark",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "source_asset_id": "wgv3_gl_grass_rock",
+      "color_family": "dark-rock-yellow-grass",
+      "prompt": "dark weathered volcanic rock embedded in dry grass, rough surface, savanna, top-down photo, even diffuse light, photoreal",
+      "catalog_qa_grade": "A",
+      "catalog_passed_gate": true,
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      },
+      "runtime": {
+        "dir": "world3/textures/wgv3/grassland_rock_dark",
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": false
+        },
+        "missing_core_maps": []
+      },
+      "library": {
+        "dir": "world/textures/library/wgv3_gl_grass_rock",
+        "exists": true,
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": true
+        },
+        "missing_core_maps": [],
+        "qa": {
+          "summary_exists": true,
+          "seam_score_exists": true,
+          "sanity_exists": true,
+          "tile_2x2_exists": true,
+          "summary_grade": "A",
+          "summary_passed": true,
+          "pipeline_grade": "A",
+          "pipeline_passed_gate": true,
+          "pipeline_quality": "strict",
+          "pipeline_pbr_method": "stablematerials_standard",
+          "pipeline_n_variants": 4,
+          "pipeline_seed_base": 42,
+          "seam_grade": "A",
+          "sanity_ok": true
+        }
+      },
+      "flags": {
+        "organic_or_vegetation_like": true,
+        "priority_regen": false,
+        "close_needs_review": true
+      },
+      "recommended_action": "terrain_context_review_required"
+    },
+    {
+      "id": "grassland_snow",
+      "source": "procedural",
+      "asset_status": "pipeline_validation",
+      "source_asset_id": "wgv3_gl_weathered_stone",
+      "color_family": "pale-weathered-stone",
+      "prompt": "pale weathered limestone or sandstone surface, worn smooth, light grey, grassland hilltop, top-down photo, even diffuse light, photoreal",
+      "catalog_qa_grade": "B",
+      "catalog_passed_gate": false,
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "ok",
+        "far": "ok"
+      },
+      "runtime": {
+        "dir": "world3/textures/wgv3/grassland_snow",
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": false
+        },
+        "missing_core_maps": []
+      },
+      "library": {
+        "dir": "world/textures/library/wgv3_gl_weathered_stone",
+        "exists": true,
+        "map_status": {
+          "albedo": true,
+          "normal": true,
+          "roughness": true,
+          "height": true,
+          "ao": true,
+          "metallic": true
+        },
+        "missing_core_maps": [],
+        "qa": {
+          "summary_exists": true,
+          "seam_score_exists": true,
+          "sanity_exists": true,
+          "tile_2x2_exists": true,
+          "summary_grade": "B",
+          "summary_passed": null,
+          "pipeline_grade": "B",
+          "pipeline_passed_gate": false,
+          "pipeline_quality": "strict",
+          "pipeline_pbr_method": "stablematerials_standard",
+          "pipeline_n_variants": 4,
+          "pipeline_seed_base": 42,
+          "seam_grade": "B",
+          "sanity_ok": true
+        }
+      },
+      "flags": {
+        "organic_or_vegetation_like": true,
+        "priority_regen": false,
+        "close_needs_review": true
+      },
+      "recommended_action": "rerun_aaa_texture_with_strict_gate"
+    }
+  ]
+}

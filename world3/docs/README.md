@@ -21,6 +21,7 @@ find something.
 | "How do we repair the failed M1-M7 visual gate?"             | [M1_M7_VISUAL_REMEDIATION_PLAN_2026_05_08.md](M1_M7_VISUAL_REMEDIATION_PLAN_2026_05_08.md) |
 | "What did the first source-stack runtime remediation ship?"  | [SOURCE_STACK_RUNTIME_REMEDIATION_2026_05_08.md](SOURCE_STACK_RUNTIME_REMEDIATION_2026_05_08.md) |
 | "How were the worst organic textures repaired/quarantined?"  | [M1_M7_ORGANIC_TEXTURE_REPAIR_2026_05_08.md](M1_M7_ORGANIC_TEXTURE_REPAIR_2026_05_08.md) |
+| "What is the current ComfyUI texture workflow inventory?"    | [COMFYUI_TEXTURE_WORKFLOW_INVENTORY_2026_05_08.md](COMFYUI_TEXTURE_WORKFLOW_INVENTORY_2026_05_08.md) |
 | "What did M6 harden in the streamed runtime?"                | [M6_RUNTIME_HARDENING.md](M6_RUNTIME_HARDENING.md)    |
 | "Which green/organic source materials are too noisy?"        | [M6_SOURCE_MATERIAL_NOISE_AUDIT.md](M6_SOURCE_MATERIAL_NOISE_AUDIT.md) |
 | "What did the first M4 splat shader prototype prove?"        | [M4_SPLAT_SHADER_PROTOTYPE.md](M4_SPLAT_SHADER_PROTOTYPE.md) |
@@ -73,6 +74,9 @@ find something.
   new entries even when they reverse old ones.
 - **TEXTURE_PIPELINE_FIX_PLAN.md** — the audit + fix doc for the
   texture pipeline overhaul on 2026-05-07. Reference / archive value.
+- **COMFYUI_TEXTURE_WORKFLOW_INVENTORY_2026_05_08.md** - current
+  ComfyUI/`aaa_texture.py` material inventory, M8 regeneration blockers,
+  staging gaps, and shared promotion gate.
 - **pipelines/textures/RECIPES.md** — canonical commands per use case.
   *Operator's guide.* "I want X, here's the invocation." Reach for
   this first when actually running the pipeline.

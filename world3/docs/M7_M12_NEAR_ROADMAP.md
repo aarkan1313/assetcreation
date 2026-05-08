@@ -102,10 +102,18 @@ albedo-only/low-strength until terrain-context captures pass. The stronger
 near-term baseline is the source-stack runtime bridge documented in
 `SOURCE_STACK_RUNTIME_REMEDIATION_2026_05_08.md`.
 
+2026-05-08 ComfyUI parity update: the generated texture lane is now explicitly
+tracked through `COMFYUI_TEXTURE_WORKFLOW_INVENTORY_2026_05_08.md` and
+`world3/jobs/comfy_texture_regen_candidates.json`. M8 should regenerate the five
+priority organic blockers through ComfyUI/`aaa_texture.py` prompt and variant
+control before relying on deterministic repair.
+
 Deliverables:
 
 - Regenerate or filter the highest-priority flagged materials from
   `M6_SOURCE_MATERIAL_NOISE_AUDIT`.
+- Run the ComfyUI regeneration queue for the first five organic blockers and
+  archive the resulting `aaa_texture.py` QA.
 - Re-run the source-material noise audit and record before/after.
 - Update catalog validation state for close/mid/far views.
 - Capture close/mid review sheets for the repaired materials.
@@ -114,6 +122,8 @@ Exit:
 
 - The priority organic materials no longer dominate close-range review with
   speckle or harsh micro-contrast.
+- Regenerated ComfyUI candidates pass inventory, seam QA, and terrain-context
+  close/mid/far review before canonical promotion.
 - Remaining failures are explicitly labeled as pipeline-validation only.
 
 ## M9 - Runtime Performance And Interaction Polish

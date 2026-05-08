@@ -84,6 +84,11 @@ direction; treat the rest as where we've been.
   worst organic materials now have quarantined repair candidates. Evidence:
   `world3/docs/SOURCE_STACK_RUNTIME_REMEDIATION_2026_05_08.md` and
   `world3/docs/M1_M7_ORGANIC_TEXTURE_REPAIR_2026_05_08.md`.
+- ComfyUI/`aaa_texture.py` is now explicitly tracked as the peer procedural
+  material lane for M8: 25 generated materials are inventoried, five organic
+  blockers have a regeneration queue, and full-PBR runtime staging is auditable.
+  Evidence: `world3/docs/COMFYUI_TEXTURE_WORKFLOW_INVENTORY_2026_05_08.md`
+  and `world3/jobs/comfy_texture_regen_candidates.json`.
 - Visual target is now explicit: reach roughly 70 percent of the best stacked
   photo/topo OpenTopo reference quality before visual milestone closure.
   Evidence: `world3/docs/M1_M7_VISION_GAP_REVIEW_2026_05_08.md`.
@@ -93,8 +98,9 @@ explicit in [`M7_M12_NEAR_ROADMAP.md`](M7_M12_NEAR_ROADMAP.md):
 
 1. M7 biome-boundary runtime integration. Runtime pass complete; visual
    remediation required before visual closure.
-2. M8 organic source-material cleanup. Blocked until the audit remediation lane
-   is either completed or explicitly scoped as M8's first work.
+2. M8 organic source-material cleanup. Start with the ComfyUI regeneration
+   queue plus source-stack terrain review; deterministic repair candidates stay
+   quarantined until promoted.
 3. M9 runtime performance and interaction polish.
 4. M10 cross-source blending.
 5. M11 corner and junction transitions.

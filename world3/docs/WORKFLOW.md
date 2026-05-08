@@ -168,6 +168,20 @@ anchor mode. Canonical commands per use case live in
 Output of each texture lives at `world/textures/library/<id>/`. Stage
 4 pulls from there.
 
+For M8/M1-M7 remediation work, inventory the generated texture lane before
+promoting or rerendering:
+
+```powershell
+python world3/pipeline/build_comfy_material_candidate_catalog.py
+```
+
+This writes `world3/materials/comfy_texture_workflow_inventory.json` and
+`world3/docs/COMFYUI_TEXTURE_WORKFLOW_INVENTORY_2026_05_08.md`. Use
+`world3/jobs/comfy_texture_regen_candidates.json` as the first ComfyUI
+regeneration queue for noisy organic blockers. These generated materials are
+peer inputs to the source-stack workflow, but they still need seam QA, 2x2
+review, and Godot terrain-context close/mid/far review before promotion.
+
 ## Stage 4 — Stage textures into world3
 
 Each texture set gets its own subfolder under `world3/textures/wgv3/`

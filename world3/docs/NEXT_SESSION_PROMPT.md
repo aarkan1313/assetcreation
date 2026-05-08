@@ -33,6 +33,7 @@ Read first:
 14. `world3/docs/M1_M7_VISUAL_REMEDIATION_PLAN_2026_05_08.md`
 15. `world3/docs/SOURCE_STACK_RUNTIME_REMEDIATION_2026_05_08.md`
 16. `world3/docs/M1_M7_ORGANIC_TEXTURE_REPAIR_2026_05_08.md`
+17. `world3/docs/COMFYUI_TEXTURE_WORKFLOW_INVENTORY_2026_05_08.md`
 
 ## Current status
 
@@ -55,6 +56,15 @@ Recent scoped commits:
 - `0cc4349` - `world3: record final audit hash`
 - `18d6bac` - `world3: harden streamed runtime`
 - `0eddcc0` - `world3: add m7 boundary runtime masks`
+- `c575823` - `world3: add visual remediation source stack`
+
+Active lane: M7 is a workflow pass but visual closure is paused. Continue the
+M1-M7 remediation/M8 organic cleanup path. OpenTopo source stacks and
+ComfyUI/`aaa_texture.py` generated textures are peer lanes: OpenTopo is the
+current visual reference/control path; ComfyUI is the scalable material
+regeneration path. Start with `world3/jobs/comfy_texture_regen_candidates.json`
+and keep regenerated outputs quarantined until seam QA plus Godot
+close/mid/far terrain-context captures pass.
 
 M1 is done:
 

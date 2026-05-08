@@ -5,10 +5,13 @@ Date: 2026-05-08
 ## Purpose
 
 This pass starts the M1-M7 visual remediation by moving runtime terrain review
-toward the OpenTopo stack model:
+toward a source-stack model. OpenTopo is the first control because its
+photo/topo stacks are the current visual reference, but the runtime policy is
+not OpenTopo-only:
 
 - source-derived macro albedo anchors the terrain;
-- generated/tileable materials are low-strength close detail only;
+- generated/tileable materials from ComfyUI/`aaa_texture.py` are low-strength
+  close detail only until promoted;
 - procedural organic materials stay quarantined until terrain-context captures
   prove they do not damage the source read.
 
@@ -81,11 +84,19 @@ review showed the important caveat: repaired procedural organics should be
 albedo-only and very low strength until they earn normal/detail use. They remain
 `repair_candidate`, not canonical material promotions.
 
+The next generated-texture repair pass should go through ComfyUI prompt/variant
+regeneration first, then reuse this source-stack terrain review gate. The
+inventory and candidate queue are tracked in
+`COMFYUI_TEXTURE_WORKFLOW_INVENTORY_2026_05_08.md` and
+`world3/jobs/comfy_texture_regen_candidates.json`.
+
 ## Roadmap Impact
 
 - R2 control pair is still `scrub_sparse -> dry_wash`.
 - R3 source-stack pivot is started and has a working runtime review bridge.
 - R4 source-material repair is active, but not visually closed.
+- ComfyUI/`aaa_texture.py` is now tracked as a peer texture-source lane for M8
+  regeneration, not a secondary cleanup path.
 - R5/R6/R7 remain pending: repaired M4 context, M5/M7 rerenders, and visual
   closure decision still need to happen after the source/detail policy is stable.
 

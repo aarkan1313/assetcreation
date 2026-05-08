@@ -1078,3 +1078,29 @@ must be albedo-only and very low strength until it earns more influence.
 OpenTopo detail controls first. Procedural organic repair candidates can be
 tested, but they must remain `repair_candidate` until visual review promotes
 them explicitly.
+
+---
+
+## 2026-05-08 - Treat OpenTopo and ComfyUI as peer texture-source lanes
+
+**Decision**: The source-stack remediation model has two first-class material
+sources. OpenTopo provides the current visual reference/control lane for real
+macro terrain and real-ground classes. ComfyUI/`aaa_texture.py` provides the
+procedural generation lane for scalable biome materials, missing-biome fill,
+controlled variants, and future fantasy materials.
+
+**Why**: The M1-M7 visual audit proved the pipeline can move data, but the
+weakest visible failures come from generated organic texture content. Treating
+ComfyUI as a secondary cleanup path would leave the procedural lane under-gated.
+It needs the same inventory, QA, and terrain-context promotion rules as the
+OpenTopo-derived materials.
+
+**Evidence**:
+`world3/docs/COMFYUI_TEXTURE_WORKFLOW_INVENTORY_2026_05_08.md`,
+`world3/jobs/comfy_texture_regen_candidates.json`, and
+`world3/docs/M1_M7_VISUAL_REMEDIATION_PLAN_2026_05_08.md`.
+
+**Implication**: M8 starts with ComfyUI regeneration for the five priority
+organic blockers, then tests those candidates through the source-stack runtime
+gate. Deterministic organic repair remains a quarantine/candidate tool, not a
+canonical promotion path by itself.
