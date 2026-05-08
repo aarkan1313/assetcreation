@@ -103,6 +103,10 @@ transition review harness is part of the preexisting OpenTopo worker
 dirt and was not folded into this commit. Evidence:
 `world3/docs/M2_TRANSITION_MATERIAL_PROTOTYPE.md`.
 
+User visual review: transition workflow reads promising/good. The noisy
+grass/leaves issue is tracked as source material quality, not a transition
+workflow failure.
+
 **Deliverables**:
 - Tool: `pipelines/textures/build_transition_strip.py` — takes two
   catalog ids, emits a 2–8 tile wide blended strip (noisy mask,

@@ -348,3 +348,7 @@ These start when chunk + biome + tile + transition is ~80% solved
 - **2026-05-08 (M2 user visual review)**: User called the transitions pretty
   good/promising. Caveat: grass/leaves read too noisy for production; track that
   as source texture quality, not a transition workflow failure.
+- **2026-05-08 (workflow docs refresh)**: Added
+  `WORKFLOW_SNAPSHOT_2026_05_08.md` and refreshed `NEXT_SESSION_PROMPT.md`,
+  `ROADMAP.md`, and `PLAN.md` so the pipeline/workflow state records M1 done,
+  M3 done, and M2 prototype pass 1 as promising but still in review/scoring.

@@ -39,6 +39,19 @@ record + design notes (especially Phase F's research findings + the
 Recommended Transition Pipeline). Treat this section as the current
 direction; treat the rest as where we've been.
 
+**Current status after the 2026-05-08 pass**:
+
+- M1 material catalog is done and committed.
+- M3 chunk-size sweep is done and locks 256 m as the synchronous base
+  chunk size.
+- M2 transition prototype pass 1 is done: four catalog-driven strips
+  exist and user review says the transition workflow is promising.
+  Remaining M2 work is Godot review-scene integration and scoring.
+- M4 unified splat shader is still next after M2 has enough evidence
+  to define its inputs.
+
+Workflow snapshot: [`WORKFLOW_SNAPSHOT_2026_05_08.md`](WORKFLOW_SNAPSHOT_2026_05_08.md).
+
 ---
 
 ## Operating principles

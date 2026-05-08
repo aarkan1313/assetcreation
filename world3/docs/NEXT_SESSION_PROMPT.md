@@ -1,119 +1,86 @@
 # Next-Session Prompt
 
-Copy/paste this as the opening message in a fresh session. It contains
-the minimum context to pick up where the last session left off,
-without re-reading everything. Past-session, you wrote it to yourself.
+Copy/paste this as the opening message in a fresh session. It contains the
+minimum context to pick up where this session left off.
 
 ---
 
-## Session opener (copy from here)
+## Session opener
 
-We just switched world3 to a **single-stream orchestrator/worker
-operating model (2026-05-08)**. The world3 main chat (this one) is
-the orchestrator — owns roadmap, sequencing, most work, all
-cross-cutting decisions. The OpenTopo chat is a worker that takes
-scoped task handoffs in their domain (real-data sourcing, master-
-stack assembly, real-source material extraction, transition tile
-authoring).
+You are picking up `world3` in `D:/assets/world3` as the single-stream
+orchestrator. The user asked this chat to keep worker/orchestrator work
+consolidated for now.
 
-**The current iteration is M1–M5**, replacing the original "Phase F
-end-to-end" plan because material taxonomy + transitions + splat
-shader + chunk size are interlocked and need to be sequenced
-together.
+The project framing matters: `world3` and `assets` are a pipeline/workflow
+creation set. Current content is primarily workflow-validation material for
+AAA-quality pipelines; production promotion is a separate review.
 
-**Phases done**: A, A polish, B, C, D, E, F.1, F.3. **All work
-committed.**
+Read first:
 
-**Read these first, in order, ~15 min total**:
+1. `world3/docs/WORLD3_STATE_2026_05_08.md`
+2. `world3/docs/PLAN.md`
+3. `world3/docs/WORKFLOW_SNAPSHOT_2026_05_08.md`
+4. `world3/docs/M2_TRANSITION_MATERIAL_PROTOTYPE.md`
+5. `world3/docs/PHASE_F_CHUNK_SIZE_SWEEP.md`
 
-1. [`docs/handoffs/HANDOFF_world3_orchestrator_2026_05_08.md`](../../docs/handoffs/HANDOFF_world3_orchestrator_2026_05_08.md)
-   — **READ FIRST.** Single-page orchestrator handoff: what you own,
-   what's been built, M1–M5, first move, sharp edges. If you only
-   have time for one file, this is it.
-2. [`world3/docs/WORLD3_STATE_2026_05_08.md`](world3/docs/WORLD3_STATE_2026_05_08.md)
-   — full orchestrator state doc + knob-space + worker infra inventory
-   + M1–M5 detail + handoff protocol + change log.
-3. [`world3/docs/PLAN.md`](world3/docs/PLAN.md) — current iteration:
-   M1–M5 with sequence + ownership.
-4. [`world3/docs/ROADMAP.md`](world3/docs/ROADMAP.md) — phase
-   history (A–E done) + 2026-05-08 update note up top.
-5. [`docs/handoffs/HANDOFF_TEMPLATE_to_worker.md`](docs/handoffs/HANDOFF_TEMPLATE_to_worker.md)
-   — handoff template format.
-6. Captures for visual sign-off (no action; just review):
-   - `world3/docs/captures/phase_e_gallery/` — 7 regions × 5 kits.
-   - `world3/docs/captures/phase_e/` — alpine walk/iso/topdown.
-   - `world3/docs/captures/phase_c/` — anchor zoom levels.
-   - `world3/docs/captures/phase_f/` — F.3 2x2 stitch test.
+## Current status
 
-## What's next: M1 (material catalog)
+Recent scoped commits:
 
-M1 is the gating step — it defines the contract that M2 (transitions)
-and M4 (splat shader) need.
+- `6e31107` - `world3: add material catalog`
+- `23933a3` - `world3: add chunk size sweep`
+- `3a7317d` - `world3: start transition strip prototype`
+- `116766f` - `world3: record transition visual review`
 
-**Concrete first move:**
+M1 is done:
 
-1. Draft `world3/materials/CATALOG.md` (or `catalog.json` — decide
-   during drafting). Schema for each material entry: id, source
-   (real/procedural/fantasy), provenance, scale, color family,
-   current PBR maps path, validated views (close/mid/far ok or not).
-2. Migrate the 25 kit-slot textures (5 kits × 5 slots) into the
-   catalog. Re-derive `biome_kits.json` so kit slots reference
-   catalog ids.
-3. Write a handoff for the worker covering migration of their 6
-   OpenTopo finished materials into the same catalog format. Use
-   the handoff template at `docs/handoffs/HANDOFF_TEMPLATE_to_worker.md`.
+- `world3/materials/CATALOG.md`
+- `world3/materials/catalog.json`
+- `world3/jobs/biome_kits.json` references catalog IDs.
+- Kit material generation and representative renders were verified.
 
-**Exit for M1**: every material in the system has one canonical id
-+ one catalog entry. `biome_kits.json` references catalog ids.
-Existing runtime scenes still build + render.
+M3 is done:
 
-**Parallel work possible**: M3 (chunk-size sweep) doesn't depend on
-M1. If M1's drafting is paused waiting on user feedback or worker
-response, start M3 in parallel.
+- `world3/scripts/ChunkLoader.gd`
+- `world3/scripts/ChunkSweepRunner.gd`
+- `world3/scenes/capture_phase_f/chunk_size_sweep.tscn`
+- 256 m is locked as the synchronous base chunk size at 8 m mesh spacing.
+
+M2 is in progress:
+
+- `pipelines/textures/build_transition_strip.py` builds deterministic
+  transition strips from catalog IDs.
+- Four pairs were generated under `world3/textures/transitions/`.
+- Comparison sheets live under `world3/docs/captures/transitions/`.
+- User visual review: transitions are promising/good.
+- Caveat: grass/leaves are too noisy for production. Track that as source
+  texture quality/prompt QA, not transition workflow failure.
+
+## Next best move
+
+Finish M2 review integration before starting M4:
+
+1. Integrate generated transition strips into a clean Godot review scene or a
+   new scene that does not sweep in unrelated OpenTopo worker dirt.
+2. Add transition scoring: hue/value delta, roughness delta, normal energy,
+   visible-frequency mismatch.
+3. Decide whether transition strips become catalog entries or generated
+   boundary assets referenced by biome rules.
+
+Then start M4:
+
+- Unified splat shader.
+- Chunks emit per-pixel weights against catalog materials.
+- Shader supports both current `terrain_blend` behavior and the OpenTopo
+  `terrain_hex_detail` material style.
 
 ## Operating reminders
 
-- **Godot binary**: `C:/Godot/Godot_v4.5-stable_win64.exe`.
-- **Always run captures WITHOUT `--headless`.** SceneTree-script
-  runner pattern hangs in headless. Real-window mode is fast (~2s/
-  scene) and produces correct output. Documented in
-  `world3/docs/captures/phase_c/README.md`.
-- **After deploying / regenerating any .tres**, run
-  `Godot --headless --editor --import` once before capturing.
-- **D: drive**: was 100% on 2026-05-06. Check `df -h /d` before bulk
-  pulls / multi-tile runs.
-- ComfyUI: test with `curl -fsS http://127.0.0.1:8188/system_stats`.
-  If down: see `pipelines/textures/RECIPES.md` "Prerequisites".
-- Always set `$env:PYTHONIOENCODING="utf-8"` in PowerShell.
-- **PowerShell `Write-Output` for unicode** crashes on Windows
-  cp1252. Use plain ASCII (`->` not `→`) in print statements + use
-  the `Write` tool only for UTF-8 docs.
-
-## Worker handoff protocol
-
-Orchestrator writes a small spec at
-`docs/handoffs/HANDOFF_to_opentopo_<topic>_<date>.md`. Worker
-executes, commits, replies inline. Orchestrator reviews + integrates
-+ marks status DONE.
-
-When in doubt: keep handoffs SMALL (one bounded task). Easier to
-review + integrate + course-correct than a big multi-feature
-handoff.
-
-## Acknowledged future scope (NOT planned now)
-
-Props, decorations, buildings, POIs, fantasy biomes. All exist as
-known future pipelines. Kick in once chunk + biome + tile +
-transition is ~80% solved. Listed in WORLD3_STATE section 6 so we
-don't accidentally architect ourselves out of them.
-
-## Doc-system reminder
-
-- Code/behavior change → relevant runbook (PIPELINE/TOOLS/RECIPES) +
-  DECISIONS entry if architecturally meaningful.
-- "I expected X but got Y" surprise → LESSONS.
-- Sweep / experiment / prompt opinion → TEXTURE_RND.
-- New canonical command for a use case → RECIPES.
-- Phase / iteration wrap-up → handoff doc under `docs/handoffs/`.
-- Worker handoff: `docs/handoffs/HANDOFF_to_opentopo_*.md`.
-- Otherwise: DECISIONS.md is the safe default (append-only).
+- Godot binary: `C:/Godot/Godot_v4.5-stable_win64.exe`.
+- Captures generally need visible/windowed Godot; headless capture can hang.
+- After deploying or regenerating `.tres`/PNG assets, run Godot import:
+  `Godot --path world3 --quiet --headless --editor --import`
+- Use surgical `git add <path>`. The worktree has preexisting OpenTopo worker
+  dirt; do not stage unrelated `OPENTOPO_*`, toporeview, or pipeline files.
+- `world3/docs/DECISIONS.md` currently has unrelated unstaged OpenTopo edits in
+  the worktree. Stage only explicit hunks if adding decisions.
