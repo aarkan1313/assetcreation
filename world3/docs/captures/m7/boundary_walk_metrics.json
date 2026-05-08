@@ -1,0 +1,100 @@
+{
+	"build_collision_chunks": true,
+	"capture": "res://docs/captures/m7/boundary_walk_after_crossing.png",
+	"chunk_resolution_m": 8.0,
+	"chunk_size_m": 256.0,
+	"chunks_built": 12,
+	"chunks_removed": 3,
+	"collision_build_ms_max": 3.375,
+	"collision_build_ms_total": 32.837,
+	"collision_chunks_built": 12,
+	"distance_z_m": 384.0,
+	"enable_transition_boundaries": true,
+	"end_position": [
+		128.0,
+		2561.81081740872,
+		1920.0
+	],
+	"frame_time_max_ms": 27.313,
+	"frame_time_mean_ms": 4.26302333333333,
+	"frame_time_p95_ms": 4.873,
+	"frame_time_p99_ms": 4.97,
+	"frames": 300,
+	"peak_loaded_chunks": 9,
+	"rebuild_after_reset": true,
+	"sample_captures": [],
+	"samples": [
+		{
+			"chunk": [
+				0,
+				6
+			],
+			"frame": 0,
+			"last_update_ms": 0.016,
+			"loaded_chunks": 9,
+			"z": 1536.0
+		},
+		{
+			"chunk": [
+				0,
+				6
+			],
+			"frame": 60,
+			"last_update_ms": 0.019,
+			"loaded_chunks": 9,
+			"z": 1613.05685618729
+		},
+		{
+			"chunk": [
+				0,
+				6
+			],
+			"frame": 120,
+			"last_update_ms": 0.021,
+			"loaded_chunks": 9,
+			"z": 1690.11371237458
+		},
+		{
+			"chunk": [
+				0,
+				6
+			],
+			"frame": 180,
+			"last_update_ms": 0.017,
+			"loaded_chunks": 9,
+			"z": 1767.17056856187
+		},
+		{
+			"chunk": [
+				0,
+				7
+			],
+			"frame": 240,
+			"last_update_ms": 0.043,
+			"loaded_chunks": 9,
+			"z": 1844.22742474916
+		},
+		{
+			"chunk": [
+				0,
+				7
+			],
+			"frame": 299,
+			"last_update_ms": 0.024,
+			"loaded_chunks": 9,
+			"z": 1920.0
+		}
+	],
+	"scene": "res://scenes/capture_phase_m7/boundary_walk_review.tscn",
+	"start_position": [
+		128.0,
+		2561.81637741427,
+		1536.0
+	],
+	"transition_mask_build_ms_max": 14.142,
+	"transition_mask_build_ms_total": 83.454,
+	"transition_masks_built": 6,
+	"transition_rule_id": "opentopo_scrub_sparse__dry_wash_neighbor",
+	"view_radius_chunks": 1,
+	"worst_update_ms": 26.599
+}

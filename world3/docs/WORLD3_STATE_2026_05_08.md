@@ -120,11 +120,16 @@ gallery still use the old whole-kit shader path, while M6 has hardened
   runtime height/splat caches, and streamed chunk collision. Evidence:
   `world3/docs/M5_WALK_SPLAT_STREAMING.md` and
   `world3/docs/M6_RUNTIME_HARDENING.md`.
+- `world3/docs/M7_BOUNDARY_RUNTIME_INTEGRATION.md` - M7 pass 1. `ChunkLoader.gd`
+  now generates per-chunk transition masks from boundary rules, selects catalog
+  material pairs, binds transition manifests, and feeds the unified shader
+  through `use_transition_mask`.
 
 The **shared runtime contract is started, not complete**. M6 proves the primary
 walk-scene stream can use export-safe generated image caches, streamed
-collision, and an opt-in transition-strip shader hook. Material indirection,
-automatic boundary-mask generation, async/background chunk build, and broader
+collision, and an opt-in transition-strip shader hook. M7 proves automatic
+boundary-mask generation for straight runtime test boundaries. Full biome-map
+contours, async/background chunk build, corner/junction cases, and broader
 game-mode migration are still future hardening work.
 
 ---
@@ -134,7 +139,7 @@ game-mode migration are still future hardening work.
 | Gap | Status | Severity | Owner |
 |-----|--------|----------|-------|
 | **Aligned material taxonomy** (kit slots vs material classes) | Catalog exists with 25 procedural + 6 OpenTopo entries; material generation, import, and representative renders verified | HIGH — blocks M2/M4 until maintained | Consolidated in this chat |
-| **Transition materials** between kits/classes | M2 generated four reviewed/tuned boundary strips; M6 adds an opt-in runtime sampler hook, but placement is still manual/prototype | HIGH — blocks tile-to-tile blending | Consolidated in this chat; use OpenTopo QA infrastructure |
+| **Transition materials** between kits/classes | M2 generated four reviewed/tuned boundary strips; M7 now places them automatically through generated per-chunk masks; visual promotion is pending M1-M7 audit | HIGH - blocks tile-to-tile blending | Consolidated in this chat; use OpenTopo QA infrastructure |
 | **Per-pixel splat shader** | M4 pass 2 prototype exists; M6 wires it through `walk.tscn` with export-safe splat cache and streamed chunks | HIGH - working prototype, still not final material indirection | Orchestrator |
 | **Within-chunk material variation** | Prototype splat map generated from height/slope and consumed by both review chunks and the walk scene | HIGH | Orchestrator |
 | **Cross-source style bridge** (real ↔ procedural ↔ fantasy adjacent) | Worker flagged it; no fix yet | MEDIUM | Consolidated in this chat |
@@ -146,11 +151,11 @@ game-mode migration are still future hardening work.
 
 ---
 
-## 4. Near-term focused plan (M1–M6)
+## 4. Near-term focused plan (M1-M7)
 
 **This is the orchestrator's plan.** It's the next sharp set of things,
-not a multi-month roadmap. M1-M6 are now complete for workflow validation;
-M7 is the next boundary-runtime integration layer.
+not a multi-month roadmap. M1-M7 are now complete for workflow validation;
+the next gate is a visual audit before M8.
 
 The broader near lane is M7-M12:
 
@@ -164,6 +169,10 @@ The broader near lane is M7-M12:
 | M12 | Walk/iso/topdown view-mode parity |
 
 Details and exits live in `world3/docs/M7_M12_NEAR_ROADMAP.md`.
+
+Before starting M8, run
+`world3/docs/M1_M7_VISUAL_AUDIT_PLAN_2026_05_08.md` so the project does not
+confuse pipeline success with final visual quality.
 
 ### M1 — Material catalog (orchestrator-led, blocking)
 

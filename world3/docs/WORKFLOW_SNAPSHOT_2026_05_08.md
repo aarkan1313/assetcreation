@@ -1,7 +1,8 @@
 # world3 Workflow Snapshot - 2026-05-08
 
 This is the compact record of the current world3 workflow after M1, M2, M3,
-M4 prototype pass 2, M5 prototype final form, and M6 runtime hardening.
+M4 prototype pass 2, M5 prototype final form, M6 runtime hardening, and M7
+boundary runtime integration pass 1.
 
 ## Framing
 
@@ -102,9 +103,20 @@ material-generation QA rather than transition logic.
    - Source-material noise audit:
      `world3/docs/M6_SOURCE_MATERIAL_NOISE_AUDIT.md`
    - Evidence:
-     `world3/docs/M6_RUNTIME_HARDENING.md`
+      `world3/docs/M6_RUNTIME_HARDENING.md`
 
-9. **Visual QA**
+9. **M7 boundary runtime integration**
+   - `ChunkLoader.gd` can generate per-chunk transition masks from
+     `world3/jobs/biome_transition_rules.json`.
+   - Boundary rules select catalog `from_material` / `to_material` IDs and
+     transition manifests instead of scene-hardcoded shader knobs.
+   - `terrain_splat_unified.gdshader` samples generated masks through `UV2`
+     when `use_transition_mask` is enabled.
+   - `M5WalkStreamRunner.gd` records transition-mask build metrics.
+   - Evidence:
+     `world3/docs/M7_BOUNDARY_RUNTIME_INTEGRATION.md`
+
+10. **Visual QA**
    - Region/gallery captures verify kit-level reads.
    - Transition comparison sheets verify hard cut vs transition strip.
    - `godot_transition_strip_review.png` verifies the transition index in a
@@ -116,7 +128,9 @@ material-generation QA rather than transition logic.
    - M5 walk captures verify the real `walk.tscn` visual stream and a scripted
      900 m chunk crossing.
    - M6 captures verify the export-safe cache + streamed collision path and the
-     opt-in runtime transition-strip shader hook.
+      opt-in runtime transition-strip shader hook.
+   - M7 captures verify automatic mask placement from rules and catalog
+      material IDs. They are workflow evidence, not final visual promotion.
    - Godot review scenes are used for in-engine sanity, but some OpenTopo
      review harness files are still in preexisting worker dirt and should not
      be swept into unrelated commits.
@@ -146,6 +160,15 @@ material-generation QA rather than transition logic.
   sampling. It is a shader hook proof, not automatic biome-boundary placement.
 - M6 source-material noise audit flags 10 of 17 audited green/organic materials;
   grass/leaves are now tracked as source QA before production promotion.
+- M7 same-source boundary control capture is nonblank and uses generated masks
+  from `opentopo_scrub_sparse__dry_wash_neighbor`.
+- M7 biome stress capture is nonblank and uses generated masks from
+  `biome_desert__grassland_base`; it exposes the known grassland/organic source
+  noise issue.
+- M7 walk crossing holds 9 loaded chunks, builds 12 chunks, builds 6 transition
+  masks, records 83.454 ms total transition-mask build time, 14.142 ms max
+  transition-mask build time, 26.599 ms worst update, and 4.873 ms p95 frame
+  time over 384 m.
 - Architectural decisions are appended to docs before moving on.
 
 ## Open Work
@@ -154,12 +177,14 @@ material-generation QA rather than transition logic.
   `world3/docs/M7_M12_NEAR_ROADMAP.md`: boundary runtime, organic cleanup,
   runtime polish, cross-source blending, corner/junction transitions, and
   walk/iso/topdown parity.
+- Before M8, run `world3/docs/M1_M7_VISUAL_AUDIT_PLAN_2026_05_08.md` to
+  classify current outputs as production-candidate, pipeline-only, rework, or
+  deferred.
 - Regenerate or filter flagged green/organic source materials before treating
   them as production close-range candidates.
-- M1-M6 are complete for workflow validation. Next phase should automate
-  biome-boundary runtime integration: per-chunk boundary masks from transition
-  rules, automatic transition-strip placement, and async/background chunk build
-  if synchronous collision spikes become visible interactively.
+- M1-M7 are complete for workflow validation. Next phase should audit visuals
+  before M8, then clean up organic source materials or take a visual-targeted
+  M7 follow-up if the audit says the boundary read is still too weak.
 
 ## Recent Commits
 

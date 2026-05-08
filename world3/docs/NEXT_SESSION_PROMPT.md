@@ -26,6 +26,8 @@ Read first:
 7. `world3/docs/M4_CHUNK_MATERIAL_CONTRACT.md`
 8. `world3/docs/M6_RUNTIME_HARDENING.md`
 9. `world3/docs/M7_M12_NEAR_ROADMAP.md`
+10. `world3/docs/M7_BOUNDARY_RUNTIME_INTEGRATION.md`
+11. `world3/docs/M1_M7_VISUAL_AUDIT_PLAN_2026_05_08.md`
 
 ## Current status
 
@@ -183,17 +185,38 @@ Deferred systems remain after this lane: scatter, vegetation, props, buildings,
 POIs, fantasy biome expansion, full procedural infinite-world extension, and
 production asset promotion.
 
+M7 pass 1 is complete for workflow/runtime validation:
+
+- `ChunkLoader.gd` generates per-chunk transition masks from
+  `world3/jobs/biome_transition_rules.json`.
+- Boundary rules select catalog `from_material` / `to_material` IDs and
+  transition manifests instead of scene-hardcoded shader placement.
+- `terrain_splat_unified.gdshader` samples generated masks with
+  `use_transition_mask`.
+- Captures:
+  - `world3/docs/captures/m7/boundary_runtime_review.png`
+  - `world3/docs/captures/m7/boundary_runtime_biome_stress.png`
+  - `world3/docs/captures/m7/boundary_walk_after_crossing.png`
+  - `world3/docs/captures/m7/boundary_walk_metrics.json`
+- Metrics: 9 peak loaded chunks, 12 chunks built, 6 transition masks built,
+  83.454 ms total transition-mask build time, 14.142 ms max transition-mask
+  build time, 26.599 ms worst update, 4.873 ms p95 frame time over 384 m.
+- Honest visual read: M7 proves runtime placement, but not final terrain-art
+  quality. The same-source control is calm but subtle; the biome stress case
+  exposes known grassland/organic noise.
+
 ## Next best move
 
-Start M7 boundary-runtime integration:
+Run the M1-M7 visual audit before M8:
 
-1. Generate per-chunk biome/material boundary masks from
-   `world3/jobs/biome_transition_rules.json`.
-2. Feed those masks into `terrain_splat_unified.gdshader` instead of manual
-   `transition_center_u` / `transition_width_u` review knobs.
-3. Keep streamed collision metrics active. If interactive play shows hitching,
+1. Use `world3/docs/M1_M7_VISUAL_AUDIT_PLAN_2026_05_08.md`.
+2. Classify each current visual output as `PASS`, `PIPELINE_ONLY`, `REWORK`, or
+   `DEFER`.
+3. Decide whether M8 starts with organic material cleanup, or whether M7 needs a
+   visual-targeted boundary pass first.
+4. Keep streamed collision metrics active. If interactive play shows hitching,
    start async/background mesh+collision build.
-4. In parallel or immediately after, regenerate/filter the flagged organic
+5. In parallel or immediately after, regenerate/filter the flagged organic
    source materials before production promotion.
 
 ## Operating reminders

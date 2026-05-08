@@ -41,6 +41,17 @@ workflow automatic, robust, and view-mode consistent.
 Current state: the shader can sample a transition strip, but placement uses
 manual review knobs (`transition_center_u`, `transition_width_u`).
 
+2026-05-08 update: M7 pass 1 is complete for workflow/runtime validation.
+`ChunkLoader.gd` now builds per-chunk transition masks from transition rules,
+selects the rule's catalog material pair, binds the transition manifest assets,
+and records mask-build metrics. Evidence:
+`M7_BOUNDARY_RUNTIME_INTEGRATION.md`.
+
+Visual caveat: M7 should not be treated as final terrain-art quality. The
+same-source control is calm but subtle; the desert-to-grassland stress case
+exposes the known noisy grass/organic source-material issue. Run
+`M1_M7_VISUAL_AUDIT_PLAN_2026_05_08.md` before starting M8.
+
 Deliverables:
 
 - Per-chunk boundary mask generation from `world3/jobs/biome_transition_rules.json`.
@@ -55,6 +66,8 @@ Exit:
 - A streamed walk capture shows an automatically placed transition strip with
   no manual shader-position knobs.
 - Boundary assets are selected from rules/catalog IDs, not hardcoded in a scene.
+- Visual promotion is explicitly deferred to the M1-M7 audit; M7's exit is
+  workflow/runtime integration, not final asset approval.
 
 ## M8 - Organic Source-Material Cleanup
 

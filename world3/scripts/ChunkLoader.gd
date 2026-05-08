@@ -25,6 +25,15 @@ class_name ChunkLoader
 @export var build_collision_chunks: bool = false
 @export_flags_3d_physics var collision_layer: int = 1
 @export_flags_3d_physics var collision_mask: int = 1
+@export var enable_transition_boundaries: bool = false
+@export var transition_rules_path: String = "res://jobs/biome_transition_rules.json"
+@export var transition_rule_id: String = "biome_desert__grassland_base"
+@export_enum("x", "z") var transition_boundary_axis: String = "z"
+@export var transition_boundary_world_m: float = 1800.0
+@export var transition_width_m: float = 96.0
+@export var transition_repeat_m: float = 128.0
+@export var transition_mask_resolution: int = 128
+@export_range(0.0, 1.0, 0.01) var transition_strength: float = 0.75
 
 var last_update_usec: int = 0
 var peak_loaded_chunks: int = 0
@@ -33,6 +42,9 @@ var chunks_removed: int = 0
 var collision_chunks_built: int = 0
 var collision_build_usec_total: int = 0
 var collision_build_usec_max: int = 0
+var transition_masks_built: int = 0
+var transition_mask_build_usec_total: int = 0
+var transition_mask_build_usec_max: int = 0
 
 var _chunks: Dictionary = {}
 var _height_img: Image
@@ -44,6 +56,16 @@ var _elev_min_m: float = 0.0
 var _elev_range_m: float = 1.0
 var _last_center: Vector2i = Vector2i(99999999, 99999999)
 var _source_loaded: bool = false
+var _transition_rule_loaded: bool = false
+var _transition_rule_ok: bool = false
+var _transition_rule: Dictionary = {}
+var _transition_manifest: Dictionary = {}
+var _transition_albedo: Texture2D
+var _transition_rough: Texture2D
+var _transition_ao: Texture2D
+var _transition_from_maps: Dictionary = {}
+var _transition_to_maps: Dictionary = {}
+var _white_texture: Texture2D
 
 
 func _ready() -> void:
@@ -77,6 +99,9 @@ func reset_metrics() -> void:
 	collision_chunks_built = 0
 	collision_build_usec_total = 0
 	collision_build_usec_max = 0
+	transition_masks_built = 0
+	transition_mask_build_usec_total = 0
+	transition_mask_build_usec_max = 0
 
 
 func clear_chunks() -> void:
@@ -173,7 +198,11 @@ func _load_runtime_texture(cache_path: String, path: String) -> Texture2D:
 
 
 func _load_meta() -> Dictionary:
-	var f: FileAccess = FileAccess.open(meta_path, FileAccess.READ)
+	return _load_json(meta_path)
+
+
+func _load_json(path: String) -> Dictionary:
+	var f: FileAccess = FileAccess.open(path, FileAccess.READ)
 	if f == null:
 		return {}
 	var txt: String = f.get_as_text()
@@ -182,6 +211,23 @@ func _load_meta() -> Dictionary:
 	if typeof(parsed) != TYPE_DICTIONARY:
 		return {}
 	return parsed
+
+
+func _res_path(path: String) -> String:
+	if path.begins_with("res://"):
+		return path
+	if path.begins_with("world3/"):
+		return "res://" + path.substr(7)
+	return path
+
+
+func _hash2(x: float, y: float) -> float:
+	return fposmod(sin(x * 12.9898 + y * 78.233) * 43758.5453, 1.0)
+
+
+func _smoothstep(edge0: float, edge1: float, x: float) -> float:
+	var t: float = clamp((x - edge0) / max(edge1 - edge0, 0.000001), 0.0, 1.0)
+	return t * t * (3.0 - 2.0 * t)
 
 
 func _build_chunk(cx: int, cz: int) -> MeshInstance3D:
@@ -193,11 +239,167 @@ func _build_chunk(cx: int, cz: int) -> MeshInstance3D:
 		(float(cz) + 0.5) * chunk_size_m
 	)
 	mesh_instance.mesh = _build_chunk_mesh(cx, cz)
-	mesh_instance.material_override = terrain_material
+	mesh_instance.material_override = _material_for_chunk(cx, cz)
 	if build_collision_chunks:
 		_add_collision(mesh_instance)
 	add_child(mesh_instance)
 	return mesh_instance
+
+
+func _material_for_chunk(cx: int, cz: int) -> Material:
+	if not enable_transition_boundaries:
+		return terrain_material
+	if not _ensure_transition_rule_loaded():
+		return terrain_material
+	if not terrain_material is ShaderMaterial:
+		return terrain_material
+
+	var mat: ShaderMaterial = (terrain_material as ShaderMaterial).duplicate()
+	_bind_boundary_side_material(mat, _chunk_is_to_side(cx, cz))
+	if not _chunk_intersects_transition(cx, cz):
+		mat.set_shader_parameter("use_transition_strip", false)
+		mat.set_shader_parameter("use_transition_mask", false)
+		return mat
+
+	mat.set_shader_parameter("use_transition_strip", false)
+	mat.set_shader_parameter("use_transition_mask", true)
+	mat.set_shader_parameter("transition_mask", _build_transition_mask_texture(cx, cz))
+	mat.set_shader_parameter("transition_albedo", _transition_albedo)
+	mat.set_shader_parameter("transition_rough", _transition_rough)
+	mat.set_shader_parameter("transition_ao", _transition_ao)
+	mat.set_shader_parameter("transition_strength", transition_strength)
+	return mat
+
+
+func _chunk_is_to_side(cx: int, cz: int) -> bool:
+	var center_v: float = (float(cx if transition_boundary_axis == "x" else cz) + 0.5) * chunk_size_m
+	return center_v >= transition_boundary_world_m
+
+
+func _chunk_intersects_transition(cx: int, cz: int) -> bool:
+	if not enable_transition_boundaries:
+		return false
+	var min_v: float = float(cx if transition_boundary_axis == "x" else cz) * chunk_size_m
+	var max_v: float = min_v + chunk_size_m
+	var half_width: float = transition_width_m * 0.5
+	return transition_boundary_world_m >= min_v - half_width and transition_boundary_world_m <= max_v + half_width
+
+
+func _ensure_transition_rule_loaded() -> bool:
+	if _transition_rule_loaded:
+		return _transition_rule_ok
+	_transition_rule_loaded = true
+
+	var rules_doc: Dictionary = _load_json(transition_rules_path)
+	for rule in rules_doc.get("rules", []):
+		if typeof(rule) == TYPE_DICTIONARY and str(rule.get("id", "")) == transition_rule_id and bool(rule.get("enabled", false)):
+			_transition_rule = rule
+			break
+	if _transition_rule.is_empty():
+		push_warning("ChunkLoader: transition rule not found: " + transition_rule_id)
+		return false
+
+	var manifest_path: String = _res_path(str(_transition_rule.get("transition_manifest", "")))
+	_transition_manifest = _load_json(manifest_path)
+	if _transition_manifest.is_empty():
+		push_warning("ChunkLoader: failed to load transition manifest: " + manifest_path)
+		return false
+
+	var catalog_path: String = _res_path(str(rules_doc.get("material_catalog", "world3/materials/catalog.json")))
+	var catalog_doc: Dictionary = _load_json(catalog_path)
+	_transition_from_maps = _load_catalog_texture_set(catalog_doc, str(_transition_rule.get("from_material", "")))
+	_transition_to_maps = _load_catalog_texture_set(catalog_doc, str(_transition_rule.get("to_material", "")))
+	if _transition_from_maps.is_empty() or _transition_to_maps.is_empty():
+		push_warning("ChunkLoader: failed to load transition side materials for rule: " + transition_rule_id)
+		return false
+
+	var outputs: Dictionary = _transition_manifest.get("outputs", {})
+	_transition_albedo = RuntimeImageCache.load_texture("", _res_path(str(outputs.get("albedo", ""))))
+	_transition_rough = RuntimeImageCache.load_texture("", _res_path(str(outputs.get("roughness", ""))))
+	_transition_ao = RuntimeImageCache.load_texture("", _res_path(str(outputs.get("ao", ""))))
+	_transition_rule_ok = _transition_albedo != null and _transition_rough != null and _transition_ao != null
+	if not _transition_rule_ok:
+		push_warning("ChunkLoader: failed to load transition textures for rule: " + transition_rule_id)
+	return _transition_rule_ok
+
+
+func _load_catalog_texture_set(catalog_doc: Dictionary, material_id: String) -> Dictionary:
+	var material: Dictionary = {}
+	for entry in catalog_doc.get("materials", []):
+		if typeof(entry) == TYPE_DICTIONARY and str(entry.get("id", "")) == material_id:
+			material = entry
+			break
+	if material.is_empty():
+		return {}
+
+	var pbr_maps: Dictionary = material.get("pbr_maps", {})
+	var textures: Dictionary = {}
+	for channel in ["albedo", "normal", "roughness", "ao"]:
+		var path: String = str(pbr_maps.get(channel, ""))
+		if path == "" or path == "<null>":
+			continue
+		var tex: Texture2D = RuntimeImageCache.load_texture("", _res_path(path))
+		if tex != null:
+			textures[channel] = tex
+	if not textures.has("albedo") or not textures.has("normal") or not textures.has("roughness"):
+		return {}
+	return textures
+
+
+func _bind_boundary_side_material(mat: ShaderMaterial, use_to_side: bool) -> void:
+	var maps: Dictionary = _transition_to_maps if use_to_side else _transition_from_maps
+	for slot in ["grass", "dirt", "rock_light", "rock_dark", "snow"]:
+		mat.set_shader_parameter(slot + "_albedo", maps.get("albedo"))
+		mat.set_shader_parameter(slot + "_normal", maps.get("normal"))
+		mat.set_shader_parameter(slot + "_rough", maps.get("roughness"))
+		mat.set_shader_parameter(slot + "_ao", maps.get("ao", _get_white_texture()))
+		mat.set_shader_parameter(slot + "_detail_albedo", maps.get("albedo"))
+		mat.set_shader_parameter(slot + "_detail_normal", maps.get("normal"))
+		mat.set_shader_parameter(slot + "_detail_rough", maps.get("roughness"))
+
+
+func _get_white_texture() -> Texture2D:
+	if _white_texture != null:
+		return _white_texture
+	var img: Image = Image.create(1, 1, false, Image.FORMAT_RGBA8)
+	img.set_pixel(0, 0, Color.WHITE)
+	_white_texture = ImageTexture.create_from_image(img)
+	return _white_texture
+
+
+func _build_transition_mask_texture(cx: int, cz: int) -> Texture2D:
+	var started_usec: int = Time.get_ticks_usec()
+	var n: int = clampi(transition_mask_resolution, 16, 1024)
+	var img: Image = Image.create(n, n, false, Image.FORMAT_RGBA8)
+	var min_x: float = float(cx) * chunk_size_m
+	var min_z: float = float(cz) * chunk_size_m
+	var width_m: float = max(transition_width_m, 0.001)
+	var repeat_m: float = max(transition_repeat_m, 0.001)
+	var tuning: Dictionary = _transition_rule.get("tuning", {})
+	var noise_strength: float = float(tuning.get("noise_strength", 0.0))
+
+	for y in range(n):
+		for x in range(n):
+			var fx: float = (float(x) + 0.5) / float(n)
+			var fz: float = (float(y) + 0.5) / float(n)
+			var global_x: float = min_x + fx * chunk_size_m
+			var global_z: float = min_z + fz * chunk_size_m
+			var across: float = global_x if transition_boundary_axis == "x" else global_z
+			var along: float = global_z if transition_boundary_axis == "x" else global_x
+			var noisy_offset: float = (_hash2(global_x * 0.035, global_z * 0.035) - 0.5) * width_m * noise_strength
+			var raw_local: float = ((across - transition_boundary_world_m) + noisy_offset) / width_m + 0.5
+			var inside: float = 1.0 if raw_local >= 0.0 and raw_local <= 1.0 else 0.0
+			var band: float = inside * _smoothstep(0.0, 0.12, raw_local) * (1.0 - _smoothstep(0.88, 1.0, raw_local))
+			var transition_u: float = clamp(raw_local, 0.0, 1.0)
+			var transition_v: float = fposmod(along / repeat_m, 1.0)
+			img.set_pixel(x, y, Color(band, transition_u, transition_v, 1.0))
+
+	var tex: ImageTexture = ImageTexture.create_from_image(img)
+	var elapsed: int = Time.get_ticks_usec() - started_usec
+	transition_masks_built += 1
+	transition_mask_build_usec_total += elapsed
+	transition_mask_build_usec_max = maxi(transition_mask_build_usec_max, elapsed)
+	return tex
 
 
 func _add_collision(mesh_instance: MeshInstance3D) -> void:
@@ -222,10 +424,12 @@ func _build_chunk_mesh(cx: int, cz: int) -> ArrayMesh:
 	var vert_count: int = (n + 1) * (n + 1)
 	var verts: PackedVector3Array = PackedVector3Array()
 	var uvs: PackedVector2Array = PackedVector2Array()
+	var uv2s: PackedVector2Array = PackedVector2Array()
 	var normals: PackedVector3Array = PackedVector3Array()
 	var indices: PackedInt32Array = PackedInt32Array()
 	verts.resize(vert_count)
 	uvs.resize(vert_count)
+	uv2s.resize(vert_count)
 	normals.resize(vert_count)
 
 	var min_x: float = float(cx) * chunk_size_m
@@ -246,6 +450,7 @@ func _build_chunk_mesh(cx: int, cz: int) -> ArrayMesh:
 				_wrapped_fraction(global_x, _source_size_x_m),
 				_wrapped_fraction(global_z, _source_size_z_m)
 			)
+			uv2s[i] = Vector2(fx, fz)
 			normals[i] = _sample_normal_global(global_x, global_z, mesh_step)
 
 	indices.resize(n * n * 6)
@@ -267,6 +472,7 @@ func _build_chunk_mesh(cx: int, cz: int) -> ArrayMesh:
 	arrays.resize(Mesh.ARRAY_MAX)
 	arrays[Mesh.ARRAY_VERTEX] = verts
 	arrays[Mesh.ARRAY_TEX_UV] = uvs
+	arrays[Mesh.ARRAY_TEX_UV2] = uv2s
 	arrays[Mesh.ARRAY_NORMAL] = normals
 	arrays[Mesh.ARRAY_INDEX] = indices
 

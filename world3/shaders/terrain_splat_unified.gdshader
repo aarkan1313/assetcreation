@@ -60,6 +60,8 @@ uniform float splat_uv_scale = 1.0;
 uniform float splat_weight_power : hint_range(0.25, 8.0) = 1.0;
 
 uniform bool use_transition_strip = false;
+uniform bool use_transition_mask = false;
+uniform sampler2D transition_mask;
 uniform sampler2D transition_albedo : source_color;
 uniform sampler2D transition_rough;
 uniform sampler2D transition_ao : hint_default_white;
@@ -503,13 +505,21 @@ void fragment() {
 
     final_rough = mix(0.5, final_rough, roughness_strength);
 
-    if (use_transition_strip) {
-        float transition_local = (UV.x - transition_center_u) / max(transition_width_u, 0.001) + 0.5;
-        float transition_inside = step(0.0, transition_local) * step(transition_local, 1.0);
-        float transition_band = transition_inside * smoothstep(0.0, 0.12, transition_local);
-        transition_band *= 1.0 - smoothstep(0.88, 1.0, transition_local);
-        transition_band *= transition_strength;
-        vec2 transition_uv = vec2(clamp(transition_local, 0.0, 1.0), fract(UV.y * transition_repeat_v));
+    if (use_transition_strip || use_transition_mask) {
+        float transition_band = 0.0;
+        vec2 transition_uv = vec2(0.0);
+        if (use_transition_mask) {
+            vec4 mask_sample = texture(transition_mask, UV2);
+            transition_band = mask_sample.r * transition_strength;
+            transition_uv = vec2(mask_sample.g, mask_sample.b);
+        } else {
+            float transition_local = (UV.x - transition_center_u) / max(transition_width_u, 0.001) + 0.5;
+            float transition_inside = step(0.0, transition_local) * step(transition_local, 1.0);
+            transition_band = transition_inside * smoothstep(0.0, 0.12, transition_local);
+            transition_band *= 1.0 - smoothstep(0.88, 1.0, transition_local);
+            transition_band *= transition_strength;
+            transition_uv = vec2(clamp(transition_local, 0.0, 1.0), fract(UV.y * transition_repeat_v));
+        }
         vec3 transition_a = texture(transition_albedo, transition_uv).rgb;
         float transition_r = texture(transition_rough, transition_uv).r;
         float transition_ao_value = texture(transition_ao, transition_uv).r;

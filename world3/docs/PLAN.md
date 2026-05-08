@@ -1,4 +1,4 @@
-# world3 — Current Iteration Plan: M1–M6
+# world3 - Current Iteration Plan: M1-M7
 
 **Operating model change (2026-05-08)**: switched from two-chat
 parallel pipelines to **single-stream orchestrator + worker**. The
@@ -298,6 +298,29 @@ blindly extending the prototype without clear exits.
 Deferred systems remain deferred until M7-M12 are proven: scatter, vegetation,
 props, buildings/POIs, fantasy biome expansion, full procedural infinite-world
 extension, and production asset promotion.
+
+## M7 current checkpoint
+
+**Status 2026-05-08**: PASS 1 COMPLETE for workflow/runtime validation.
+
+`ChunkLoader.gd` now generates per-chunk transition masks from
+`world3/jobs/biome_transition_rules.json`, selects the rule's catalog material
+pair, binds transition-strip textures from the manifest, and feeds
+`terrain_splat_unified.gdshader` through `use_transition_mask`. The older
+manual `use_transition_strip` path remains available for shader review.
+
+Evidence:
+
+- `world3/docs/M7_BOUNDARY_RUNTIME_INTEGRATION.md`
+- `world3/docs/captures/m7/boundary_runtime_review.png`
+- `world3/docs/captures/m7/boundary_runtime_biome_stress.png`
+- `world3/docs/captures/m7/boundary_walk_after_crossing.png`
+- `world3/docs/captures/m7/boundary_walk_metrics.json`
+
+Visual review note: M7 closes the runtime placement workflow, not final terrain
+art quality. Before M8 starts, run
+`world3/docs/M1_M7_VISUAL_AUDIT_PLAN_2026_05_08.md` and decide whether organic
+cleanup is enough or whether M7 needs a second visual-targeted boundary pass.
 
 ## Open polish items (parked)
 

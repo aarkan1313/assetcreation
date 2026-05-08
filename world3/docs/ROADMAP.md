@@ -69,11 +69,16 @@ direction; treat the rest as where we've been.
   machine-readable audit. Evidence:
   `world3/docs/M6_RUNTIME_HARDENING.md` and
   `world3/docs/M6_SOURCE_MATERIAL_NOISE_AUDIT.md`.
+- M7 pass 1 is complete for workflow/runtime validation: streamed chunks can
+  generate rule-driven transition masks, bind catalog material pairs, and sample
+  transition manifests without manual shader-position knobs. Evidence:
+  `world3/docs/M7_BOUNDARY_RUNTIME_INTEGRATION.md`. Visual promotion is pending
+  `world3/docs/M1_M7_VISUAL_AUDIT_PLAN_2026_05_08.md`.
 
-Recommended next lane: **M7-M12 near roadmap**. The six-step sequence is now
+Recommended next lane: finish the **M7-M12 near roadmap**. The six-step sequence is now
 explicit in [`M7_M12_NEAR_ROADMAP.md`](M7_M12_NEAR_ROADMAP.md):
 
-1. M7 biome-boundary runtime integration.
+1. M7 biome-boundary runtime integration. Pass 1 complete; visual audit next.
 2. M8 organic source-material cleanup.
 3. M9 runtime performance and interaction polish.
 4. M10 cross-source blending.

@@ -960,3 +960,57 @@ chunk-to-chunk, biome-to-biome, source-to-source, and view-mode parity.
 
 **Implication**: When new ideas appear, classify them against this sequence.
 If they do not strengthen M7-M12, park them unless they fix a blocker.
+
+---
+
+## 2026-05-08 - M7 transition placement uses generated per-chunk masks
+
+**Decision**: Automatic transition placement in the streamed runtime uses
+generated per-chunk RGBA mask textures sampled through `UV2`.
+
+**Mask contract**:
+
+- `R`: transition band strength.
+- `G`: normalized transition-strip U across the boundary.
+- `B`: transition-strip V along the boundary.
+- `A`: reserved/opaque.
+
+`ChunkLoader.gd` reads `world3/jobs/biome_transition_rules.json`, loads the
+rule's catalog material pair and transition manifest, duplicates the chunk
+material where needed, and enables `use_transition_mask` on
+`terrain_splat_unified.gdshader`. The older manual `use_transition_strip`
+uniforms remain for shader/prototype review.
+
+**Alternatives considered**:
+
+- Keep manual `transition_center_u` / `transition_width_u`: rejected for runtime
+  use because placement would live in scene-specific knobs instead of boundary
+  data.
+- Encode transition placement only in the splat map: deferred. It may become the
+  right broader contract, but M7 needed a small bridge from M2 rule assets into
+  the already-working M5/M6 streamed chunk path.
+
+**Why**: The mask texture makes boundary-space sampling explicit and lets each
+chunk bind the same transition strip with local placement data. It also gives us
+measurable build cost in the existing walk-stream metrics.
+
+**Evidence**: `world3/docs/M7_BOUNDARY_RUNTIME_INTEGRATION.md`.
+
+---
+
+## 2026-05-08 - Run an M1-M7 visual audit before M8
+
+**Decision**: Before starting M8, perform a formal visual audit across M1-M7.
+
+**Why**: M7 proved the runtime boundary contract, but the capture review showed
+that "technically working" and "visually good enough" are different gates. The
+same-source boundary control is calm but subtle; the desert-to-grassland stress
+case exposes the already-known grassland/organic texture noise. Moving straight
+to more implementation without an audit would blur pipeline success with asset
+quality.
+
+**Audit doc**: `world3/docs/M1_M7_VISUAL_AUDIT_PLAN_2026_05_08.md`.
+
+**Implication**: M8 should start only after current visuals are classified as
+`PASS`, `PIPELINE_ONLY`, `REWORK`, or `DEFER`. If the audit says M7 needs a
+visual-targeted boundary pass before organic cleanup, do that before M8.

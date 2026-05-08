@@ -14,6 +14,8 @@ find something.
 | "What was the original roadmap before reframing?"            | [ROADMAP_v1_archived.md](ROADMAP_v1_archived.md)      |
 | "What's the current iteration's scope?"                      | [PLAN.md](PLAN.md)                                    |
 | "What are the next six milestones after M6?"                 | [M7_M12_NEAR_ROADMAP.md](M7_M12_NEAR_ROADMAP.md)      |
+| "How did M7 automatic boundary placement work?"              | [M7_BOUNDARY_RUNTIME_INTEGRATION.md](M7_BOUNDARY_RUNTIME_INTEGRATION.md) |
+| "How should we review M1-M7 visually before M8?"             | [M1_M7_VISUAL_AUDIT_PLAN_2026_05_08.md](M1_M7_VISUAL_AUDIT_PLAN_2026_05_08.md) |
 | "What did M6 harden in the streamed runtime?"                | [M6_RUNTIME_HARDENING.md](M6_RUNTIME_HARDENING.md)    |
 | "Which green/organic source materials are too noisy?"        | [M6_SOURCE_MATERIAL_NOISE_AUDIT.md](M6_SOURCE_MATERIAL_NOISE_AUDIT.md) |
 | "What did the first M4 splat shader prototype prove?"        | [M4_SPLAT_SHADER_PROTOTYPE.md](M4_SPLAT_SHADER_PROTOTYPE.md) |
@@ -48,6 +50,7 @@ find something.
 | "What do the Phase E per-mode tuning captures look like?" | [captures/phase_e/](captures/phase_e/) (alpine walk/iso/topdown) |
 | "What do the Phase E region gallery captures look like?" | [captures/phase_e_gallery/](captures/phase_e_gallery/) (7 regions x iso + topdown across all 5 kits) |
 | "What do the M6 runtime hardening captures look like?" | [captures/m6/](captures/m6/) (walk cache/collision + runtime transition-strip review) |
+| "What do the M7 automatic boundary captures look like?" | [captures/m7/](captures/m7/) (same-source control, biome stress, walk crossing + metrics) |
 | "What do the historical iteration screenshots look like?"    | [captures/](captures/) iter*/, phase2_*/ — kept locally only, gitignored |
 
 ## Doc roles, in one sentence each

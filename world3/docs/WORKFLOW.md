@@ -252,9 +252,18 @@ Current streamed walk scenes use the newer unified prototype shader:
 - `world3/textures/m4_splat/alpine_height_slope_weights_rgba.png`
 
 That shader supports five semantic terrain slots, RGBA splat weights with a
-fifth-slot remainder, OpenTopo macro/detail compatibility, and an opt-in M6
-transition-strip sampler. Transition sampling is disabled by default and is
-only enabled in explicit review scenes until M7 adds automatic boundary masks.
+fifth-slot remainder, OpenTopo macro/detail compatibility, an opt-in M6
+transition-strip sampler, and the M7 generated transition-mask path.
+
+Runtime boundary placement lives in `ChunkLoader.gd`:
+
+- `enable_transition_boundaries = true`
+- `transition_rules_path = res://jobs/biome_transition_rules.json`
+- `transition_rule_id = <rule id>`
+- generated mask sampled through `UV2` by `use_transition_mask`
+
+The manual `use_transition_strip` uniforms remain for shader review. Production
+runtime placement should use the rule/mask path.
 
 ## Stage 6 — The Godot project
 
