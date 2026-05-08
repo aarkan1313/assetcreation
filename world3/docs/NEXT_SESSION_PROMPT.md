@@ -45,7 +45,7 @@ Recent scoped commits:
 - `b74d109` - `world3: record m5 streaming budget`
 - `1cc9fda` - `world3: close m1 m5 final audit`
 - `0cc4349` - `world3: record final audit hash`
-- `a766f34` - `world3: harden streamed runtime`
+- `18d6bac` - `world3: harden streamed runtime`
 
 M1 is done:
 
