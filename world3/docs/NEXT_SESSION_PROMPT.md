@@ -26,16 +26,20 @@ committed.**
 
 **Read these first, in order, ~15 min total**:
 
-1. [`world3/docs/WORLD3_STATE_2026_05_08.md`](world3/docs/WORLD3_STATE_2026_05_08.md)
-   — orchestrator state doc + knob-space + worker infra inventory +
-   M1–M5 plan + handoff protocol. **Read first.**
-2. [`world3/docs/PLAN.md`](world3/docs/PLAN.md) — current iteration:
+1. [`docs/handoffs/HANDOFF_world3_orchestrator_2026_05_08.md`](../../docs/handoffs/HANDOFF_world3_orchestrator_2026_05_08.md)
+   — **READ FIRST.** Single-page orchestrator handoff: what you own,
+   what's been built, M1–M5, first move, sharp edges. If you only
+   have time for one file, this is it.
+2. [`world3/docs/WORLD3_STATE_2026_05_08.md`](world3/docs/WORLD3_STATE_2026_05_08.md)
+   — full orchestrator state doc + knob-space + worker infra inventory
+   + M1–M5 detail + handoff protocol + change log.
+3. [`world3/docs/PLAN.md`](world3/docs/PLAN.md) — current iteration:
    M1–M5 with sequence + ownership.
-3. [`world3/docs/ROADMAP.md`](world3/docs/ROADMAP.md) — phase
+4. [`world3/docs/ROADMAP.md`](world3/docs/ROADMAP.md) — phase
    history (A–E done) + 2026-05-08 update note up top.
-4. [`docs/handoffs/HANDOFF_TEMPLATE_to_worker.md`](docs/handoffs/HANDOFF_TEMPLATE_to_worker.md)
+5. [`docs/handoffs/HANDOFF_TEMPLATE_to_worker.md`](docs/handoffs/HANDOFF_TEMPLATE_to_worker.md)
    — handoff template format.
-5. Captures for visual sign-off (no action; just review):
+6. Captures for visual sign-off (no action; just review):
    - `world3/docs/captures/phase_e_gallery/` — 7 regions × 5 kits.
    - `world3/docs/captures/phase_e/` — alpine walk/iso/topdown.
    - `world3/docs/captures/phase_c/` — anchor zoom levels.

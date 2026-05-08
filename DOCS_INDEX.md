@@ -40,7 +40,8 @@ When a pipeline gets a deep-dive (Phase 11+ pattern), the deep-dive handoff supe
 
 | Handoff | Pipeline | Status |
 |---|---|---|
-| **[world3/docs/WORLD3_STATE_2026_05_08.md](world3/docs/WORLD3_STATE_2026_05_08.md)** | world3 (orchestrator state) | **Latest — orchestrator/worker model + M1–M5 plan + worker infra inventory. Read first for direction.** |
+| **[docs/handoffs/HANDOFF_world3_orchestrator_2026_05_08.md](docs/handoffs/HANDOFF_world3_orchestrator_2026_05_08.md)** | world3 (NEW orchestrator entry point) | **READ FIRST if you are picking up world3 as orchestrator. Single-page caught-up doc: what you own, what's been built, M1–M5, first move, sharp edges, doc-system map.** |
+| **[world3/docs/WORLD3_STATE_2026_05_08.md](world3/docs/WORLD3_STATE_2026_05_08.md)** | world3 (orchestrator state) | Full orchestrator state doc — knob-space + inventory + gaps + M1–M5 detail + owner/worker boundary + handoff protocol + change log. Source of truth for direction. |
 | **[docs/handoffs/HANDOFF_TEMPLATE_to_worker.md](docs/handoffs/HANDOFF_TEMPLATE_to_worker.md)** | world3 (template) | Handoff template for orchestrator → OpenTopo worker tasks. |
 | **[docs/handoffs/HANDOFF_world3_phases_cde_2026_05_07.md](docs/handoffs/HANDOFF_world3_phases_cde_2026_05_07.md)** | world3 / textures | Phase C/D/E session arc (anchor framing + kit-binding fix + per-mode tuning). Superseded by state doc for direction; still the deep dive on what landed. |
 | [docs/handoffs/HANDOFF_phase_c_anchor_framing_2026_05_07.md](docs/handoffs/HANDOFF_phase_c_anchor_framing_2026_05_07.md) | world3 / textures | Phase C-only handoff (mid-session); the C/D/E consolidated handoff above supersedes for orientation. |

@@ -29,7 +29,7 @@ Open these in order if you're new:
 | `_archive/` | Superseded snapshots. Historical only — never edit. |
 
 **Current focus (2026-05-08):**
-- 🟢 **world3 operating model switched to orchestrator/worker (2026-05-08).** Single state doc + M1–M5 iteration replaces parallel-pipelines framing. See [world3/docs/WORLD3_STATE_2026_05_08.md](world3/docs/WORLD3_STATE_2026_05_08.md).
+- 🟢 **world3 operating model switched to orchestrator/worker (2026-05-08).** Single state doc + M1–M5 iteration replaces parallel-pipelines framing. **New orchestrator picking up?** Read [docs/handoffs/HANDOFF_world3_orchestrator_2026_05_08.md](docs/handoffs/HANDOFF_world3_orchestrator_2026_05_08.md) first. Full state at [world3/docs/WORLD3_STATE_2026_05_08.md](world3/docs/WORLD3_STATE_2026_05_08.md).
 - ✅ **world3 Phases A–E + F.1/F.3 complete.** Texture pipeline (B), iso/topdown framing (C), all 5 biome kits with bound .tres (D), per-game-mode material variants (E), Phase F research + 2x2 stitch test (F.1/F.3). Captures at `world3/docs/captures/phase_e_gallery/`, `phase_c/`, `phase_e/`, `phase_f/`.
 - ✅ **Per-pipeline manual review pass complete.** 7 of 8 pipelines reviewed at `docs/pipeline_reviews/`. Calibrated honest verdicts per lane against user judgment.
 - ✅ **All 13 animator tools install-validated.** Including Anytop (Windows-ported from Linux conda) and MaterialAnything (kaolin install path corrected). See `animators/INSTALL_MATRIX.md`.
