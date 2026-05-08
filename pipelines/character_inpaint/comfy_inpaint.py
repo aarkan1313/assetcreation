@@ -2,7 +2,7 @@
 
 Two backends:
   dry-run   -- PIL composite only; no ML model needed.
-  flux-fill -- Calls ComfyUI HTTP API with FLUX.1-Fill + XLabs IP-Adapter.
+  flux-fill -- Calls ComfyUI HTTP API with FLUX.1-Fill + FLUX.1-Redux workflow.
 
 Public API
 ----------
@@ -32,9 +32,10 @@ def inpaint_view(
     backend: str = "dry-run",
     comfy_url: str = "http://127.0.0.1:8188",
     positive_prompt: str = "faction emblem branded onto leather armor, seamlessly integrated",
-    ip_adapter_weight: float = 0.85,
-    denoise: float = 0.85,
-    steps: int = 20,
+    redux_strength: float = 1.0,
+    use_redux: bool = False,
+    denoise: float = 0.95,
+    steps: int = 28,
 ) -> Image.Image:
     """Inpaint the mask region using the reference image. Returns RGBA PIL Image.
 
@@ -49,15 +50,21 @@ def inpaint_view(
         RGBA reference insignia to blend into the mask region.
     backend:
         "dry-run"  -- PIL-only composite (no ComfyUI required).
-        "flux-fill" -- ComfyUI FLUX.1-Fill + XLabs IP-Adapter workflow.
+        "flux-fill" -- ComfyUI FLUX.1-Fill + FLUX.1-Redux reference conditioning.
     comfy_url:
         Base URL of the ComfyUI server (flux-fill backend only).
     positive_prompt:
         Positive text conditioning (flux-fill backend only).
-    ip_adapter_weight:
-        IP-Adapter influence weight 0..1 (flux-fill backend only).
+    redux_strength:
+        FLUX.1-Redux reference image influence weight 0..10 (flux-fill backend only).
+        Only used when use_redux=True.
+    use_redux:
+        If True, include FLUX.1-Redux reference conditioning. Default False — prompt-only
+        inpainting is more reliable for hard insignia stamps (Redux is a style adapter,
+        not a logo compositor).
     denoise:
-        KSampler denoise strength 0..1 (flux-fill backend only).
+        KSampler denoise strength 0..1 (flux-fill backend only). Default 0.95 (high) so
+        FLUX overwrites the mask region completely.
     steps:
         KSampler step count (flux-fill backend only).
 
@@ -78,7 +85,8 @@ def inpaint_view(
             reference=reference,
             comfy_url=comfy_url.rstrip("/"),
             positive_prompt=positive_prompt,
-            ip_adapter_weight=ip_adapter_weight,
+            redux_strength=redux_strength,
+            use_redux=use_redux,
             denoise=denoise,
             steps=steps,
         )
@@ -195,55 +203,49 @@ def _upload_image(
 def _build_workflow(
     source_name: str,
     mask_name: str,
-    reference_name: str,
+    reference_name: str | None,
     positive_prompt: str,
-    ip_adapter_weight: float,
+    redux_strength: float,
+    use_redux: bool,
     denoise: float,
     steps: int,
     seed: int,
 ) -> dict:
-    """Build the ComfyUI workflow dict for FLUX.1-Fill + XLabs IP-Adapter.
+    """Build the ComfyUI workflow dict for FLUX.1-Fill inpainting.
 
-    Node class names for XLabs IP-Adapter nodes are confirmed from:
-      d:/assets/animators/ComfyUI/custom_nodes/x-flux-comfyui/nodes.py
-      NODE_CLASS_MAPPINGS:
-        "LoadFluxIPAdapter"  -> LoadFluxIPAdapter  (loader, inputs: ipadatper, clip_vision, provider)
-        "ApplyFluxIPAdapter" -> ApplyFluxIPAdapter (apply,  inputs: model, ip_adapter_flux, image, ip_scale)
+    Two modes controlled by use_redux:
+      use_redux=False (default): prompt-only. Text prompt drives the inpaint.
+        Best for hard insignia stamps where you describe the mark in the prompt.
+        Node graph: LoadImage×2, VAELoader, DualCLIPLoader, UNETLoader,
+          CLIPTextEncode×2, InpaintModelConditioning, KSampler, VAEDecode, SaveImage
 
-    Standard ComfyUI built-in class names used here:
-      LoadImage, VAELoader, DualCLIPLoader, UNETLoader, CLIPTextEncode,
-      InpaintModelConditioning, KSampler, VAEDecode, SaveImage
+      use_redux=True: adds FLUX.1-Redux reference image conditioning.
+        Nodes 3,9,10,11,12 added. Redux is a style adapter — useful for texture/style
+        transfer but not reliable for exact logo placement.
+        Requires: sigclip_vision_patch14_384.safetensors, flux1-redux-dev.safetensors
+
+    All class names confirmed in D:/assets/animators/ComfyUI/nodes.py.
     """
-    return {
+    # Positive conditioning source: node 12 (StyleModelApply) if redux, else node 7 (text)
+    positive_cond = ["12", 0] if use_redux else ["7", 0]
+
+    nodes: dict = {
         # Node 1: Load source image
         "1": {
             "class_type": "LoadImage",
-            "inputs": {
-                "image": source_name,
-            },
+            "inputs": {"image": source_name},
         },
-        # Node 2: Load mask image
+        # Node 2: Load mask image (slot 1 output = MASK tensor)
         "2": {
             "class_type": "LoadImage",
-            "inputs": {
-                "image": mask_name,
-            },
+            "inputs": {"image": mask_name},
         },
-        # Node 3: Load reference image (fed to IP-Adapter)
-        "3": {
-            "class_type": "LoadImage",
-            "inputs": {
-                "image": reference_name,
-            },
-        },
-        # Node 4: Load VAE
+        # Node 4: Load VAE (standard FLUX AE, 16-ch; Fill packs 96ch = 6×16ch)
         "4": {
             "class_type": "VAELoader",
-            "inputs": {
-                "vae_name": "flux2-vae.safetensors",
-            },
+            "inputs": {"vae_name": "ae.safetensors"},
         },
-        # Node 5: Load dual CLIP (FLUX requires clip_l + t5xxl)
+        # Node 5: Load dual CLIP (clip_l + t5xxl for FLUX text conditioning)
         "5": {
             "class_type": "DualCLIPLoader",
             "inputs": {
@@ -252,8 +254,7 @@ def _build_workflow(
                 "type": "flux",
             },
         },
-        # Node 6: Load FLUX.1-Fill UNET
-        # Using fp8_e4m3fn quant from camenduru/FLUX.1-dev (11.9 GB, fits in 24 GB VRAM).
+        # Node 6: Load FLUX.1-Fill UNET (fp8 quant, 11.9 GB, fits 24 GB VRAM)
         "6": {
             "class_type": "UNETLoader",
             "inputs": {
@@ -261,65 +262,36 @@ def _build_workflow(
                 "weight_dtype": "fp8_e4m3fn",
             },
         },
-        # Node 7: Positive prompt
+        # Node 7: Positive text prompt
         "7": {
             "class_type": "CLIPTextEncode",
-            "inputs": {
-                "clip": ["5", 0],
-                "text": positive_prompt,
-            },
+            "inputs": {"clip": ["5", 0], "text": positive_prompt},
         },
-        # Node 8: Negative prompt (empty -- FLUX does not use negative meaningfully)
+        # Node 8: Negative prompt (empty; FLUX doesn't use negatives meaningfully)
         "8": {
             "class_type": "CLIPTextEncode",
-            "inputs": {
-                "clip": ["5", 0],
-                "text": "",
-            },
+            "inputs": {"clip": ["5", 0], "text": ""},
         },
-        # Node 9: Load XLabs IP-Adapter for FLUX
-        # Class name confirmed from x-flux-comfyui/nodes.py NODE_CLASS_MAPPINGS.
-        # Note: "ipadatper" is a typo preserved from the source (not "ipadapter").
-        # Actual filename on HF is ip_adapter.safetensors (XLabs-AI/flux-ip-adapter).
-        "9": {
-            "class_type": "LoadFluxIPAdapter",
-            "inputs": {
-                "ipadatper": "ip_adapter.safetensors",
-                "clip_vision": "clip_vision_g.safetensors",
-                "provider": "GPU",
-            },
-        },
-        # Node 10: Apply XLabs IP-Adapter to model
-        # Class name confirmed from x-flux-comfyui/nodes.py NODE_CLASS_MAPPINGS.
-        "10": {
-            "class_type": "ApplyFluxIPAdapter",
-            "inputs": {
-                "model": ["6", 0],
-                "ip_adapter_flux": ["9", 0],
-                "image": ["3", 0],
-                "ip_scale": ip_adapter_weight,
-            },
-        },
-        # Node 11: InpaintModelConditioning -- combines source pixels, mask, and conditionings
-        # mask comes from LoadImage output slot 1 (slot 0 = image, slot 1 = mask)
-        "11": {
+        # Node 13: InpaintModelConditioning (noise_mask=True required in ComfyUI 0.20+)
+        "13": {
             "class_type": "InpaintModelConditioning",
             "inputs": {
-                "positive": ["7", 0],
+                "positive": positive_cond,
                 "negative": ["8", 0],
                 "vae": ["4", 0],
                 "pixels": ["1", 0],
                 "mask": ["2", 1],
+                "noise_mask": True,
             },
         },
-        # Node 12: KSampler
-        "12": {
+        # Node 14: KSampler (cfg=1.0 for FLUX distilled guidance)
+        "14": {
             "class_type": "KSampler",
             "inputs": {
-                "model": ["10", 0],
-                "positive": ["11", 0],
-                "negative": ["11", 1],
-                "latent_image": ["11", 2],
+                "model": ["6", 0],
+                "positive": ["13", 0],
+                "negative": ["13", 1],
+                "latent_image": ["13", 2],
                 "seed": seed,
                 "steps": steps,
                 "cfg": 1.0,
@@ -328,23 +300,56 @@ def _build_workflow(
                 "denoise": denoise,
             },
         },
-        # Node 13: VAEDecode
-        "13": {
+        # Node 15: VAEDecode
+        "15": {
             "class_type": "VAEDecode",
-            "inputs": {
-                "samples": ["12", 0],
-                "vae": ["4", 0],
-            },
+            "inputs": {"samples": ["14", 0], "vae": ["4", 0]},
         },
-        # Node 14: SaveImage
-        "14": {
+        # Node 16: SaveImage
+        "16": {
             "class_type": "SaveImage",
             "inputs": {
-                "images": ["13", 0],
+                "images": ["15", 0],
                 "filename_prefix": "inpaint_out",
             },
         },
     }
+
+    if use_redux and reference_name is not None:
+        nodes.update({
+            # Node 3: Load reference image for Redux style conditioning
+            "3": {
+                "class_type": "LoadImage",
+                "inputs": {"image": reference_name},
+            },
+            # Node 9: Load SigLIP vision encoder (redux_dim=1152, requires SO400M-patch14-384)
+            "9": {
+                "class_type": "CLIPVisionLoader",
+                "inputs": {"clip_name": "sigclip_vision_patch14_384.safetensors"},
+            },
+            # Node 10: Encode reference image (crop required in ComfyUI 0.20+)
+            "10": {
+                "class_type": "CLIPVisionEncode",
+                "inputs": {"clip_vision": ["9", 0], "image": ["3", 0], "crop": "center"},
+            },
+            # Node 11: Load FLUX.1-Redux style model
+            "11": {
+                "class_type": "StyleModelLoader",
+                "inputs": {"style_model_name": "flux1-redux-dev.safetensors"},
+            },
+            # Node 12: Apply Redux style conditioning (strength controls reference influence)
+            "12": {
+                "class_type": "StyleModelApply",
+                "inputs": {
+                    "conditioning": ["7", 0],
+                    "style_model": ["11", 0],
+                    "clip_vision_output": ["10", 0],
+                    "strength": redux_strength,
+                },
+            },
+        })
+
+    return nodes
 
 
 def _flux_fill(
@@ -353,7 +358,8 @@ def _flux_fill(
     reference: Image.Image,
     comfy_url: str,
     positive_prompt: str,
-    ip_adapter_weight: float,
+    redux_strength: float,
+    use_redux: bool,
     denoise: float,
     steps: int,
 ) -> Image.Image:
@@ -366,7 +372,7 @@ def _flux_fill(
     run_id = uuid.uuid4().hex[:8]
     source_name = _upload_image(comfy_url, source,    f"ci_source_{run_id}.png")
     mask_name   = _upload_image(comfy_url, mask,      f"ci_mask_{run_id}.png")
-    ref_name    = _upload_image(comfy_url, reference, f"ci_ref_{run_id}.png")
+    ref_name    = _upload_image(comfy_url, reference, f"ci_ref_{run_id}.png") if use_redux else None
 
     # 3. Build and submit workflow
     seed = int(uuid.uuid4().int & 0xFFFFFFFF)
@@ -375,7 +381,8 @@ def _flux_fill(
         mask_name=mask_name,
         reference_name=ref_name,
         positive_prompt=positive_prompt,
-        ip_adapter_weight=ip_adapter_weight,
+        redux_strength=redux_strength,
+        use_redux=use_redux,
         denoise=denoise,
         steps=steps,
         seed=seed,
@@ -427,5 +434,24 @@ def _flux_fill(
     dl_resp = requests.get(f"{comfy_url}/view", params=params, timeout=60)
     dl_resp.raise_for_status()
 
-    result = Image.open(io.BytesIO(dl_resp.content)).convert("RGBA")
+    flux_result = Image.open(io.BytesIO(dl_resp.content)).convert("RGBA")
+
+    # 6. Composite: keep source outside mask, use FLUX result inside mask only.
+    # FLUX.1-Fill returns full-image regeneration; we only want the inpainted region.
+    # Resize flux result to match source in case ComfyUI resampled.
+    if flux_result.size != source.size:
+        flux_result = flux_result.resize(source.size, Image.LANCZOS)
+    mask_resized = mask.resize(source.size, Image.NEAREST)
+
+    # Only paste where BOTH the mask is white AND the source character has visible pixels
+    # (source alpha > 0). This prevents FLUX's transparent background from bleeding in.
+    src_alpha = np.array(source)[:, :, 3]          # H x W uint8
+    mask_arr = np.array(mask_resized)               # H x W uint8
+    composite_mask_arr = np.minimum(mask_arr, (src_alpha > 128).astype(np.uint8) * 255)
+    composite_mask = Image.fromarray(composite_mask_arr, mode="L")
+
+    # Paste only the RGB channels of FLUX result (its alpha is unreliable)
+    flux_rgb = flux_result.convert("RGB").convert("RGBA")
+    result = source.copy()
+    result.paste(flux_rgb, mask=composite_mask)
     return result

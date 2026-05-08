@@ -1,6 +1,6 @@
 # Path 2 Design — Per-Instance Mesh Albedo Inpaint Workflow
 
-**Status:** **Phase 1 batch CLI complete 2026-05-07 evening.** Architecture B confirmed (brief #09). 5-module pipeline built; dry-run smoke test passed end-to-end. FLUX.1-Fill and nvdiffrast GPU backends are coded — gated on model download and GPU validation. Phase 2 (Grounded-SAM-2 masks, multi-variant fan-out) is next.
+**Status:** **Phase 1 pipeline executes, quality inconclusive (2026-05-07 night).** Full GPU pipeline runs without errors: Blender 5.1 headless → FLUX.1-Fill-dev-fp8 + FLUX.1-Redux-dev (ComfyUI) → nvdiffrast back-projection → GLB repack. Output `goblin_p_ashen_live.glb` produced (3.2 MB) but visually indistinguishable from source — faction mark not legible. Root cause unknown (redux_strength too low? mask too generic? back-projection coverage too sparse?). Next: tuning pass on redux_strength, prompt, and mask generation before declaring Phase 1 quality-passing.
 
 _Initial design (pre-brief) preserved below for context. All open questions from the original design are now answered._
 

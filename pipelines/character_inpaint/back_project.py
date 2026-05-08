@@ -261,6 +261,7 @@ def _nvdiffrast_backend(
     elevation_deg: float,
     resolution: int,
     uv_size: int,
+    front_azimuth_deg: float = 270.0,
 ) -> Path:
     """nvdiffrast GPU rasterization back-projection backend."""
     try:
@@ -293,7 +294,8 @@ def _nvdiffrast_backend(
     atlas_color = np.zeros((uv_size, uv_size, 4), dtype=np.float64)
     atlas_count = np.zeros((uv_size, uv_size), dtype=np.float64)
 
-    azimuths = [360.0 * i / n_views for i in range(n_views)]
+    # Must match render_views.py orbit order: start at front_azimuth_deg, step 360/n_views
+    azimuths = [(front_azimuth_deg + 360.0 * i / n_views) % 360.0 for i in range(n_views)]
 
     for i, az in enumerate(azimuths):
         print(f"[back_project] Processing view {i:02d} (az={az:.1f}deg)")
@@ -392,6 +394,7 @@ def back_project(
     resolution: int = 512,
     uv_size: int = 1024,
     backend: str = "nvdiffrast",
+    front_azimuth_deg: float = 270.0,
 ) -> Path:
     """Back-project inpainted view pixels to UV space and write variant_albedo.png.
 
@@ -455,6 +458,7 @@ def back_project(
             elevation_deg=elevation_deg,
             resolution=resolution,
             uv_size=uv_size,
+            front_azimuth_deg=front_azimuth_deg,
         )
     else:
         raise ValueError(f"Unknown backend: {backend!r}. Use 'nvdiffrast' or 'dry-run'.")

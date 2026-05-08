@@ -142,8 +142,8 @@ def run_variant(
     print(f"[inpaint_variants] Step 2/5: Generating {n_views} circular masks...")
     mask_paths: list[Path] = []
     cx = resolution // 2
-    cy = resolution * 2 // 3
-    radius = resolution // 6
+    cy = resolution * 9 // 20  # ~45% down — sternum/pec area for T-pose (head ~20%, chest ~45%)
+    radius = resolution // 7   # tight circle targeting chest, avoids bleed into transparent edges
 
     for i in range(n_views):
         mask_img = Image.new("L", (resolution, resolution), 0)
@@ -206,6 +206,7 @@ def run_variant(
         resolution=resolution,
         uv_size=uv_size,
         backend=project_backend,
+        front_azimuth_deg=270.0,
     )
     print(f"[inpaint_variants]   -> atlas: {atlas_path}")
 
