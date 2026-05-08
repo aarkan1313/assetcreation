@@ -556,9 +556,15 @@ def main():
             raise
         finally:
             shutil.rmtree(sr_dir, ignore_errors=True)
+            # Always flush log so aaa_pipeline.json exists even on ladder failure.
+            log.setdefault("completed_at", datetime.now(timezone.utc).isoformat())
+            (out_dir / "aaa_pipeline.json").write_text(
+                json.dumps(log, indent=2), encoding="utf-8"
+            )
 
-    log["completed_at"] = datetime.now(timezone.utc).isoformat()
-    (out_dir / "aaa_pipeline.json").write_text(json.dumps(log, indent=2), encoding="utf-8")
+    if "completed_at" not in log:
+        log["completed_at"] = datetime.now(timezone.utc).isoformat()
+        (out_dir / "aaa_pipeline.json").write_text(json.dumps(log, indent=2), encoding="utf-8")
 
     print(f"\n{'='*60}")
     print(f"DONE: {out_dir}")
