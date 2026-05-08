@@ -17,5 +17,22 @@
   "mask": "world3/textures/transitions/desert_sand__grassland_grass/mask.png",
   "preview": "world3/docs/captures/transitions/desert_sand__grassland_grass_hard_vs_transition.png",
   "hard_edge_mean_abs_albedo_delta": 0.139652,
+  "scores": {
+    "source_hue_delta": 0.04236,
+    "source_value_delta": 0.062045,
+    "source_saturation_delta": 0.128229,
+    "roughness_mean_abs_delta": 0.336034,
+    "normal_energy_delta": 0.043535,
+    "normal_mean_abs_delta": 0.053639,
+    "visible_frequency_delta": 0.099164,
+    "hard_edge_mean_abs_albedo_delta": 0.139652,
+    "transition_center_albedo_delta": 0.030852,
+    "edge_delta_improvement_ratio": 0.779082,
+    "transition_gradient_p95": 0.13779
+  },
+  "review_hints": [
+    "roughness_grade_before_runtime",
+    "visible_frequency_mismatch"
+  ],
   "status": "prototype_transition_strip"
 }

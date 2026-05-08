@@ -96,12 +96,10 @@ material generation, Godot import, Phase E smoke capture, and region gallery.
 **Goal**: build 4–6 transition strips spanning the kit-class spectrum
 to learn transition mechanics + cost.
 
-**Status 2026-05-08**: IN PROGRESS. Prototype pass 1 generated four
-catalog-driven transition strips plus hard-cut comparison captures.
-Godot review-scene integration remains open because the existing
-transition review harness is part of the preexisting OpenTopo worker
-dirt and was not folded into this commit. Evidence:
-`world3/docs/M2_TRANSITION_MATERIAL_PROTOTYPE.md`.
+**Status 2026-05-08**: IN PROGRESS. Prototype pass 2 generated four
+catalog-driven transition strips, numeric score hints, hard-cut comparison
+captures, and a clean Godot review scene isolated from the dirty OpenTopo
+review harness. Evidence: `world3/docs/M2_TRANSITION_MATERIAL_PROTOTYPE.md`.
 
 User visual review: transition workflow reads promising/good. The noisy
 grass/leaves issue is tracked as source material quality, not a transition
@@ -117,19 +115,22 @@ workflow failure.
   - `tundra_moss` ↔ `temperate_forest_grass` (cross-biome moderate)
   - One real ↔ procedural pair (e.g. `dry_wash` OpenTopo ↔
     `desert_dry_brush` procedural)
-- Integrate into `biome_tile_transition_review.tscn`.
+- Clean Godot review scene:
+  `world3/scenes/capture_phase_m2/transition_strip_review.tscn`.
 - Captures: each transition rendered hard-cut vs. transition-strip
   side-by-side at `world3/docs/captures/transitions/`.
 
 **Sequence**:
 1. M1 catalog references verified.
 2. Build transition tool against catalog ids.
-3. Generate the listed transitions using OpenTopo review infrastructure.
-4. Capture hard-cut vs. transition-strip comparisons and flag redos.
+3. Generate the listed transitions from catalog ids.
+4. Capture hard-cut vs. transition-strip comparisons, score material/channel
+   mismatches, and flag redos.
 
 **Exit**: at least 3 transitions read visibly better than hard cuts.
 We have a ballpark cost-per-transition (minutes, ComfyUI calls,
-hand-touched steps).
+hand-touched steps). Visual exit is met for the first four pairs; remaining M2
+work is the transition asset-contract decision plus score-informed tuning.
 
 ## M3 — Chunk-size sweep (orchestrator, parallel with M1/M2)
 

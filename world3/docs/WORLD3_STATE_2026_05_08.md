@@ -352,3 +352,8 @@ These start when chunk + biome + tile + transition is ~80% solved
   `WORKFLOW_SNAPSHOT_2026_05_08.md` and refreshed `NEXT_SESSION_PROMPT.md`,
   `ROADMAP.md`, and `PLAN.md` so the pipeline/workflow state records M1 done,
   M3 done, and M2 prototype pass 1 as promising but still in review/scoring.
+- **2026-05-08 (M2 review/scoring)**: Added transition score hints to
+  `build_transition_strip.py`, regenerated the four transition manifests, and
+  added a clean Godot review scene/capture for hard cuts beside generated
+  strips. M2's remaining decision is transition asset contract: catalog entries
+  or generated boundary assets.

@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import math
 from pathlib import Path
 from typing import Any
 
@@ -122,6 +123,122 @@ def hard_cut(a: np.ndarray, b: np.ndarray) -> np.ndarray:
     return out
 
 
+def luminance(rgb: np.ndarray) -> np.ndarray:
+    return rgb[..., 0] * 0.2126 + rgb[..., 1] * 0.7152 + rgb[..., 2] * 0.0722
+
+
+def rgb_to_hsv(rgb: np.ndarray) -> np.ndarray:
+    r = rgb[..., 0]
+    g = rgb[..., 1]
+    b = rgb[..., 2]
+    maxc = np.max(rgb, axis=-1)
+    minc = np.min(rgb, axis=-1)
+    delta = maxc - minc
+
+    h = np.zeros_like(maxc)
+    valid = delta > 1e-6
+
+    r_is_max = valid & (maxc == r)
+    g_is_max = valid & (maxc == g)
+    b_is_max = valid & (maxc == b)
+
+    h[r_is_max] = np.mod((g[r_is_max] - b[r_is_max]) / delta[r_is_max], 6.0)
+    h[g_is_max] = ((b[g_is_max] - r[g_is_max]) / delta[g_is_max]) + 2.0
+    h[b_is_max] = ((r[b_is_max] - g[b_is_max]) / delta[b_is_max]) + 4.0
+    h = np.mod(h / 6.0, 1.0)
+
+    s = np.zeros_like(maxc)
+    bright = maxc > 1e-6
+    s[bright] = delta[bright] / maxc[bright]
+    return np.stack([h, s, maxc], axis=-1)
+
+
+def circular_hue_mean(hue: np.ndarray, saturation: np.ndarray) -> float:
+    weights = np.clip(saturation, 0.0, 1.0)
+    total_weight = float(np.sum(weights))
+    if total_weight <= 1e-6:
+        return 0.0
+    angles = hue * math.tau
+    x = float(np.sum(np.cos(angles) * weights)) / total_weight
+    y = float(np.sum(np.sin(angles) * weights)) / total_weight
+    angle = math.atan2(y, x)
+    if angle < 0.0:
+        angle += math.tau
+    return angle / math.tau
+
+
+def high_frequency_energy(rgb: np.ndarray) -> float:
+    lum = luminance(rgb)
+    dx = float(np.mean(np.abs(np.diff(lum, axis=1)))) if lum.shape[1] > 1 else 0.0
+    dy = float(np.mean(np.abs(np.diff(lum, axis=0)))) if lum.shape[0] > 1 else 0.0
+    return dx + dy
+
+
+def normal_energy(normal: np.ndarray) -> float:
+    n = normal * 2.0 - 1.0
+    xy = np.sqrt(n[..., 0] * n[..., 0] + n[..., 1] * n[..., 1])
+    return float(np.mean(xy))
+
+
+def transition_scores(
+    a_maps: dict[str, np.ndarray],
+    b_maps: dict[str, np.ndarray],
+    transition_albedo: np.ndarray,
+    hard_edge_delta: float,
+) -> dict[str, float]:
+    a_hsv = rgb_to_hsv(a_maps["albedo"])
+    b_hsv = rgb_to_hsv(b_maps["albedo"])
+    a_hue = circular_hue_mean(a_hsv[..., 0], a_hsv[..., 1])
+    b_hue = circular_hue_mean(b_hsv[..., 0], b_hsv[..., 1])
+    hue_delta = abs(a_hue - b_hue)
+    hue_delta = min(hue_delta, 1.0 - hue_delta)
+
+    a_freq = high_frequency_energy(a_maps["albedo"])
+    b_freq = high_frequency_energy(b_maps["albedo"])
+    a_normal_energy = normal_energy(a_maps["normal"])
+    b_normal_energy = normal_energy(b_maps["normal"])
+
+    mid = transition_albedo.shape[1] // 2
+    transition_center_delta = float(
+        np.mean(np.abs(transition_albedo[:, mid - 1] - transition_albedo[:, mid]))
+    )
+    edge_improvement = 1.0 - transition_center_delta / max(hard_edge_delta, 1e-6)
+
+    lum = luminance(transition_albedo)
+    transition_gradient_p95 = float(np.percentile(np.abs(np.diff(lum, axis=1)), 95.0))
+
+    return {
+        "source_hue_delta": round(float(hue_delta), 6),
+        "source_value_delta": round(float(abs(np.mean(a_hsv[..., 2]) - np.mean(b_hsv[..., 2]))), 6),
+        "source_saturation_delta": round(float(abs(np.mean(a_hsv[..., 1]) - np.mean(b_hsv[..., 1]))), 6),
+        "roughness_mean_abs_delta": round(float(np.mean(np.abs(a_maps["roughness"] - b_maps["roughness"]))), 6),
+        "normal_energy_delta": round(float(abs(a_normal_energy - b_normal_energy)), 6),
+        "normal_mean_abs_delta": round(float(np.mean(np.abs(a_maps["normal"] - b_maps["normal"]))), 6),
+        "visible_frequency_delta": round(float(abs(a_freq - b_freq)), 6),
+        "hard_edge_mean_abs_albedo_delta": round(float(hard_edge_delta), 6),
+        "transition_center_albedo_delta": round(float(transition_center_delta), 6),
+        "edge_delta_improvement_ratio": round(float(edge_improvement), 6),
+        "transition_gradient_p95": round(float(transition_gradient_p95), 6),
+    }
+
+
+def review_hints(scores: dict[str, float]) -> list[str]:
+    hints: list[str] = []
+    if scores["source_value_delta"] >= 0.18:
+        hints.append("value_grade_before_runtime")
+    if scores["source_hue_delta"] >= 0.16:
+        hints.append("palette_grade_before_runtime")
+    if scores["roughness_mean_abs_delta"] >= 0.18:
+        hints.append("roughness_grade_before_runtime")
+    if scores["normal_energy_delta"] >= 0.08:
+        hints.append("normal_energy_mismatch")
+    if scores["visible_frequency_delta"] >= 0.035:
+        hints.append("visible_frequency_mismatch")
+    if scores["edge_delta_improvement_ratio"] < 0.55:
+        hints.append("transition_band_needs_wider_or_stronger_mask")
+    return hints
+
+
 def material_maps(material: dict[str, Any], size: int, width: int, height: int) -> dict[str, np.ndarray]:
     pbr = material.get("pbr_maps", {})
     albedo = tile_to_strip(load_rgb(resolve_asset(pbr["albedo"]), size), width, height)
@@ -195,6 +312,7 @@ def build_pair(
     make_preview(hard, transition_albedo, a_id, b_id, preview_path)
 
     edge_delta = float(np.mean(np.abs(a_maps["albedo"][:, width // 2 - 1] - b_maps["albedo"][:, width // 2])))
+    scores = transition_scores(a_maps, b_maps, transition_albedo, edge_delta)
     manifest = {
         "pair": [a_id, b_id],
         "seed": seed,
@@ -205,6 +323,8 @@ def build_pair(
         "mask": str((out_dir / "mask.png").relative_to(ROOT)).replace("\\", "/"),
         "preview": str(preview_path.relative_to(ROOT)).replace("\\", "/"),
         "hard_edge_mean_abs_albedo_delta": round(edge_delta, 6),
+        "scores": scores,
+        "review_hints": review_hints(scores),
         "status": "prototype_transition_strip",
     }
     (out_dir / "manifest.json").write_bytes((json.dumps(manifest, indent=2) + "\n").encode("utf-8"))

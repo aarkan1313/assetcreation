@@ -31,6 +31,8 @@ Recent scoped commits:
 - `23933a3` - `world3: add chunk size sweep`
 - `3a7317d` - `world3: start transition strip prototype`
 - `116766f` - `world3: record transition visual review`
+- `680b22c` - `world3: refresh workflow docs`
+- `HEAD at handoff` - `world3: add transition review scoring`
 
 M1 is done:
 
@@ -49,23 +51,25 @@ M3 is done:
 M2 is in progress:
 
 - `pipelines/textures/build_transition_strip.py` builds deterministic
-  transition strips from catalog IDs.
+  transition strips from catalog IDs and writes score hints into each manifest.
 - Four pairs were generated under `world3/textures/transitions/`.
 - Comparison sheets live under `world3/docs/captures/transitions/`.
+- Clean Godot scene:
+  `world3/scenes/capture_phase_m2/transition_strip_review.tscn`
+- In-engine capture:
+  `world3/docs/captures/transitions/godot_transition_strip_review.png`
 - User visual review: transitions are promising/good.
 - Caveat: grass/leaves are too noisy for production. Track that as source
   texture quality/prompt QA, not transition workflow failure.
 
 ## Next best move
 
-Finish M2 review integration before starting M4:
+Finish the M2 asset-contract decision before starting M4:
 
-1. Integrate generated transition strips into a clean Godot review scene or a
-   new scene that does not sweep in unrelated OpenTopo worker dirt.
-2. Add transition scoring: hue/value delta, roughness delta, normal energy,
-   visible-frequency mismatch.
-3. Decide whether transition strips become catalog entries or generated
+1. Decide whether transition strips become catalog entries or generated
    boundary assets referenced by biome rules.
+2. Use the score hints to tune the next strip pass: palette/value normalization,
+   roughness/normal weighting, band width, and mask noise scale.
 
 Then start M4:
 

@@ -17,5 +17,23 @@
   "mask": "world3/textures/transitions/tundra_moss__temperate_forest_grass/mask.png",
   "preview": "world3/docs/captures/transitions/tundra_moss__temperate_forest_grass_hard_vs_transition.png",
   "hard_edge_mean_abs_albedo_delta": 0.287778,
+  "scores": {
+    "source_hue_delta": 0.178208,
+    "source_value_delta": 0.169383,
+    "source_saturation_delta": 0.19634,
+    "roughness_mean_abs_delta": 0.494944,
+    "normal_energy_delta": 0.611044,
+    "normal_mean_abs_delta": 0.215603,
+    "visible_frequency_delta": 0.010571,
+    "hard_edge_mean_abs_albedo_delta": 0.287778,
+    "transition_center_albedo_delta": 0.032179,
+    "edge_delta_improvement_ratio": 0.88818,
+    "transition_gradient_p95": 0.120971
+  },
+  "review_hints": [
+    "palette_grade_before_runtime",
+    "roughness_grade_before_runtime",
+    "normal_energy_mismatch"
+  ],
   "status": "prototype_transition_strip"
 }

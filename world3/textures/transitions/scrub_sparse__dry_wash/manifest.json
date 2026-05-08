@@ -17,5 +17,19 @@
   "mask": "world3/textures/transitions/scrub_sparse__dry_wash/mask.png",
   "preview": "world3/docs/captures/transitions/scrub_sparse__dry_wash_hard_vs_transition.png",
   "hard_edge_mean_abs_albedo_delta": 0.033954,
+  "scores": {
+    "source_hue_delta": 0.000178,
+    "source_value_delta": 0.000648,
+    "source_saturation_delta": 0.093394,
+    "roughness_mean_abs_delta": 0.002457,
+    "normal_energy_delta": 4.6e-05,
+    "normal_mean_abs_delta": 0.000992,
+    "visible_frequency_delta": 0.005822,
+    "hard_edge_mean_abs_albedo_delta": 0.033954,
+    "transition_center_albedo_delta": 0.008786,
+    "edge_delta_improvement_ratio": 0.741247,
+    "transition_gradient_p95": 0.023813
+  },
+  "review_hints": [],
   "status": "prototype_transition_strip"
 }

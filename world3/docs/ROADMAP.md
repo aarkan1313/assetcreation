@@ -44,11 +44,11 @@ direction; treat the rest as where we've been.
 - M1 material catalog is done and committed.
 - M3 chunk-size sweep is done and locks 256 m as the synchronous base
   chunk size.
-- M2 transition prototype pass 1 is done: four catalog-driven strips
-  exist and user review says the transition workflow is promising.
-  Remaining M2 work is Godot review-scene integration and scoring.
-- M4 unified splat shader is still next after M2 has enough evidence
-  to define its inputs.
+- M2 transition prototype pass 2 is done: four catalog-driven strips
+  exist, user review says the transition workflow is promising, and the
+  clean Godot review scene plus score hints are in place.
+- M4 unified splat shader is still next after we choose the transition
+  asset contract: catalog entries vs generated boundary assets.
 
 Workflow snapshot: [`WORKFLOW_SNAPSHOT_2026_05_08.md`](WORKFLOW_SNAPSHOT_2026_05_08.md).
 

@@ -1,7 +1,7 @@
 # world3 Workflow Snapshot - 2026-05-08
 
 This is the compact record of the current world3 workflow after M1, M3, and
-the first M2 prototype pass.
+the second M2 prototype pass.
 
 ## Framing
 
@@ -44,7 +44,9 @@ material-generation QA rather than transition logic.
    - Tool: `pipelines/textures/build_transition_strip.py`
    - Input: two catalog IDs.
    - Output: a deterministic 6-tile transition strip with PBR maps, mask,
-     manifest, and hard-cut comparison capture.
+     manifest, score hints, and hard-cut comparison capture.
+   - Review scene:
+     `world3/scenes/capture_phase_m2/transition_strip_review.tscn`
    - Current pairs:
      - `desert_sand` -> `grassland_grass`
      - `scrub_sparse` -> `dry_wash`
@@ -61,6 +63,8 @@ material-generation QA rather than transition logic.
 6. **Visual QA**
    - Region/gallery captures verify kit-level reads.
    - Transition comparison sheets verify hard cut vs transition strip.
+   - `godot_transition_strip_review.png` verifies the transition index in a
+     clean in-engine scene.
    - Godot review scenes are used for in-engine sanity, but some OpenTopo
      review harness files are still in preexisting worker dirt and should not
      be swept into unrelated commits.
@@ -72,14 +76,15 @@ material-generation QA rather than transition logic.
 - Python tools compile.
 - Godot import passes after `.tres`/PNG changes.
 - Representative captures are nonblank and visually inspected.
+- Transition manifests carry review metrics for hue/value, roughness, normal
+  energy, visible frequency, and edge-delta improvement.
 - Architectural decisions are appended to docs before moving on.
 
 ## Open Work
 
-- Finish M2 review-scene integration and scoring.
 - Decide whether transition strips become catalog entries or generated boundary
   assets referenced by biome rules.
-- Add transition knobs/scoring:
+- Use transition scores to tune:
   - band width
   - noise strength and scale
   - palette/value normalization
@@ -96,3 +101,5 @@ material-generation QA rather than transition logic.
 - `23933a3` - `world3: add chunk size sweep`
 - `3a7317d` - `world3: start transition strip prototype`
 - `116766f` - `world3: record transition visual review`
+- `680b22c` - `world3: refresh workflow docs`
+- `HEAD at handoff` - `world3: add transition review scoring`
