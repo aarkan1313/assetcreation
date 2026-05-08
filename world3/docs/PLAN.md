@@ -180,6 +180,14 @@ classes (height/slope-banded procedural kits AND hex-detail finished
 real materials) or we end up with three shaders, not one. Best
 absorbed as one design pass.
 
+**Status 2026-05-08**: PROTOTYPE PASS 1 DONE. `terrain_splat_unified.gdshader`
+now supports the current five terrain slots, height/slope fallback,
+RGBA splat weights with fifth-slot remainder, and the OpenTopo
+macro/detail controls. `build_m4_splat_prototype.py` emits an alpine
+height/slope splat map plus splat/fallback/OpenTopo `.tres` materials.
+Godot captures prove terrain A/B and OpenTopo reference-vs-unified
+compatibility. Evidence: `world3/docs/M4_SPLAT_SHADER_PROTOTYPE.md`.
+
 **Deliverables**:
 - New unified shader supporting:
   - N-channel splat weight texture + N material-class refs
@@ -194,13 +202,14 @@ absorbed as one design pass.
   material rendered through the new unified shader matches its
   current `terrain_hex_detail` look.
 
-Scope: prove the splat path works on one chunk + the unified shader
-matches both predecessors' looks. Wiring it into production scenes
-is M5.
+Scope: pass 1 proves the splat path works on one chunk + the unified
+shader matches both predecessors' looks. The remaining M4 work is the
+M5-facing chunk contract: material IDs, weight texture storage, and
+the future boundary-weight lane for M2 transition strips.
 
-**Exit**: unified splat shader renders a synthetic chunk with
-weighted material blends AND reproduces a worker finished-material
-scene's current look. Comparison captures committed.
+**Exit**: pass 1 exit met for prototype evidence. Full M4 exits when the
+chunk material/weight contract is written and a small `ChunkLoader.gd`
+scene can consume it without changing `walk.tscn` yet.
 
 ## M5 — Wire streaming + splat into walk.tscn (orchestrator, after M3+M4)
 

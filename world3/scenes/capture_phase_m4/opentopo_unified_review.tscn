@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/M4OpenTopoUnifiedReview.gd" id="review_script"]
+
+[sub_resource type="Environment" id="env"]
+background_mode = 1
+background_color = Color(0.52, 0.62, 0.64, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.6, 0.64, 0.7, 1)
+ambient_light_energy = 0.35
+tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 6.0
+ssao_intensity = 1.2
+
+[node name="M4OpenTopoUnifiedReview" type="Node3D"]
+script = ExtResource("review_script")
+
+[node name="WorldEnv" type="WorldEnvironment" parent="."]
+environment = SubResource("env")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.7071, -0.5, 0.5, 0, 0.7071, 0.7071, -0.7071, -0.5, 0.5, 0, 1200, 0)
+light_color = Color(1, 0.97, 0.92, 1)
+light_energy = 1.8
+shadow_enabled = true
+directional_shadow_max_distance = 3000.0

@@ -22,6 +22,7 @@ Read first:
 3. `world3/docs/WORKFLOW_SNAPSHOT_2026_05_08.md`
 4. `world3/docs/M2_TRANSITION_MATERIAL_PROTOTYPE.md`
 5. `world3/docs/PHASE_F_CHUNK_SIZE_SWEEP.md`
+6. `world3/docs/M4_SPLAT_SHADER_PROTOTYPE.md`
 
 ## Current status
 
@@ -35,7 +36,8 @@ Recent scoped commits:
 - `ae31568` - `world3: add transition review scoring`
 - `a2cc5fc` - `world3: add transition boundary contract`
 - `dfb2bdd` - `world3: checkpoint opentopo worktree`
-- `HEAD at handoff` - M2 tuned transition assets
+- `edc9902` - `world3: tune transition boundary assets`
+- `HEAD at handoff` - M4 splat shader prototype pass 1
 
 M1 is done:
 
@@ -69,23 +71,36 @@ M2 is done for workflow/M4 input:
 - Caveat: grass/leaves are too noisy for production. Track that as source
   texture quality/prompt QA, not transition workflow failure.
 
+M4 prototype pass 1 is done:
+
+- `world3/shaders/terrain_splat_unified.gdshader`
+- `world3/pipeline/build_m4_splat_prototype.py`
+- Generated alpine RGBA splat weights:
+  `world3/textures/m4_splat/alpine_height_slope_weights_rgba.png`
+- Generated materials:
+  - `world3/textures/wgv3/terrain_splat_alpine.tres`
+  - `world3/textures/wgv3/terrain_splat_alpine_fallback.tres`
+  - `world3/textures/wgv3/terrain_splat_scrub_sparse_single.tres`
+  - `world3/textures/wgv3/terrain_hex_detail_scrub_sparse_reference.tres`
+- Captures:
+  - `world3/docs/captures/m4/splat_shader_review.png`
+  - `world3/docs/captures/m4/opentopo_unified_review.png`
+- OpenTopo reference-vs-unified sampled panel delta is about 5.3 / 255.
+- Known prototype caveat: the review script binds the fresh splat PNG
+  dynamically because a new unimported PNG is not loadable from `.tres` as a
+  `Texture2D` in runtime Godot.
+
 ## Next best move
 
-Start M4:
+Continue M4 with the chunk-facing contract:
 
-1. Build the unified splat shader prototype against catalog material IDs and
-   the boundary rule contract.
-2. Keep transition strips as generated boundary assets referenced by
-   `biome_transition_rules.json`; do not add them to the base material catalog.
-3. Preserve residual normal-energy mismatch on stress pairs as a shader/source
-   QA signal, not something to hide.
-
-Then start M4:
-
-- Unified splat shader.
-- Chunks emit per-pixel weights against catalog materials.
-- Shader supports both current `terrain_blend` behavior and the OpenTopo
-  `terrain_hex_detail` material style.
+1. Define how a 256 m chunk stores material IDs plus weight textures.
+2. Decide whether pass 2 stays fixed at five slots or introduces atlas/
+   texture-array indirection.
+3. Add a boundary-weight lane for future M2 transition-strip sampling once
+   boundary-space UVs exist.
+4. Build a small `ChunkLoader.gd` review scene that consumes the M4 material
+   contract before changing `walk.tscn`.
 
 ## Operating reminders
 

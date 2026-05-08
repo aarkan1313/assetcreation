@@ -92,9 +92,10 @@ world3/docs/OPENTOPO_RENDER_REPAIR_WORKFLOW.md
 world3/opentopo/STATUS.md
 ```
 
-### 2C. Shader stack — partially shared, not yet unified
+### 2C. Shader stack - prototype unified path exists
 
-The runtime currently uses **two shaders**, not one:
+The production/runtime scenes still use **two old shaders**, but M4 pass 1
+now has a prototype unified path:
 
 - `world3/shaders/terrain_blend.gdshader` — height/slope-banded
   multi-slot blend. Bound by all `terrain_blend_<kit>_<mode>.tres`
@@ -107,13 +108,15 @@ The runtime currently uses **two shaders**, not one:
   worker's master-stack review scenes use this for finished
   source-real materials; review-only scenes use yet other shaders
   for layer/heightmap inspection.
+- `world3/shaders/terrain_splat_unified.gdshader` - M4 prototype.
+  Supports the current five semantic terrain slots, height/slope fallback,
+  RGBA splat weights with fifth-slot remainder, and the OpenTopo macro/detail
+  material path. Review materials and captures are documented in
+  `world3/docs/M4_SPLAT_SHADER_PROTOTYPE.md`.
 
-The **shared runtime contract is the goal, not fully true today**.
-M4 (splat shader prototype) is where this consolidates: a single
-shader that handles N-slot weighted blend + per-slot material refs,
-which absorbs both the height/slope-band path and the hex-detail
-path. Until M4 lands, both shaders coexist and `.tres` files are
-not interchangeable across them.
+The **shared runtime contract is started, not complete**. Existing game scenes
+are not moved yet. Next M4 work is the chunk material/weight contract that M5
+can wire into `ChunkLoader.gd` and eventually `walk.tscn`.
 
 ---
 
@@ -122,9 +125,9 @@ not interchangeable across them.
 | Gap | Status | Severity | Owner |
 |-----|--------|----------|-------|
 | **Aligned material taxonomy** (kit slots vs material classes) | Catalog exists with 25 procedural + 6 OpenTopo entries; material generation, import, and representative renders verified | HIGH — blocks M2/M4 until maintained | Consolidated in this chat |
-| **Transition materials** between kits/classes | NEITHER side has them | HIGH — blocks within-chunk mixing AND tile-to-tile blending | Consolidated in this chat; use OpenTopo QA infrastructure |
-| **Per-pixel splat shader** | Have height-banded shader; no splat shader exists | HIGH — required for "chunks emit weights, materials decide what" | Orchestrator |
-| **Within-chunk material variation** | NEITHER side can do this today | HIGH | Orchestrator (depends on splat shader) |
+| **Transition materials** between kits/classes | M2 generated four reviewed/tuned boundary strips; not sampled in runtime shader yet | HIGH — blocks tile-to-tile blending | Consolidated in this chat; use OpenTopo QA infrastructure |
+| **Per-pixel splat shader** | M4 pass 1 prototype exists and renders: five slots, RGBA weights, height/slope fallback, OpenTopo detail compatibility | HIGH — still needs chunk material/weight contract | Orchestrator |
+| **Within-chunk material variation** | Prototype splat map generated from height/slope; not wired into streaming chunks yet | HIGH | Orchestrator (depends on splat shader + M5 wiring) |
 | **Cross-source style bridge** (real ↔ procedural ↔ fantasy adjacent) | Worker flagged it; no fix yet | MEDIUM | Consolidated in this chat |
 | **Chunk size + format decision** | Sweep deferred until streaming harness built | MEDIUM | Orchestrator (Phase F.4-sweep) |
 | **Streaming load/unload** | Static-load only today | MEDIUM | Orchestrator |
@@ -234,6 +237,16 @@ Scope: extend `terrain_blend.gdshader` to take an N-channel weight
 texture + N material-class refs, OR write a new shader that does.
 Do NOT do this before M1 — without aligned taxonomy the inputs aren't
 defined.
+
+**Status 2026-05-08:** PROTOTYPE PASS 1 DONE. Added
+`terrain_splat_unified.gdshader`, `build_m4_splat_prototype.py`, an alpine
+height/slope splat map, splat/fallback/OpenTopo `.tres` materials, and two
+Godot review captures. Evidence:
+`world3/docs/M4_SPLAT_SHADER_PROTOTYPE.md`.
+
+**Remaining M4 work:** turn the prototype into a chunk-facing contract:
+material IDs per chunk, weight texture storage/import, and a future
+boundary-weight lane for M2 transition strips.
 
 ### M5 — Streaming wired into walk.tscn (orchestrator, after M3)
 
@@ -369,3 +382,8 @@ These start when chunk + biome + tile + transition is ~80% solved
   width, mask noise, albedo matching, local frequency dampening, roughness
   matching, and normal-energy dampening. Regenerated all four transition pairs;
   M2 is now done for workflow/M4 input.
+- **2026-05-08 (M4 prototype pass 1)**: Added `terrain_splat_unified.gdshader`
+  and `build_m4_splat_prototype.py`. Generated an alpine RGBA splat map plus
+  splat/fallback/OpenTopo materials, then rendered terrain A/B and OpenTopo
+  reference-vs-unified captures. M4 now has prototype evidence; next is the
+  M5-facing chunk material/weight contract.

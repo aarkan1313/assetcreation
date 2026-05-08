@@ -13,6 +13,7 @@ find something.
 | "What are we building toward, in phases?"                    | [ROADMAP.md](ROADMAP.md) (v2 — reframed 2026-05-07; updated 2026-05-08 with M1–M5 sequence)   |
 | "What was the original roadmap before reframing?"            | [ROADMAP_v1_archived.md](ROADMAP_v1_archived.md)      |
 | "What's the current iteration's scope?"                      | [PLAN.md](PLAN.md)                                    |
+| "What did the first M4 splat shader prototype prove?"        | [M4_SPLAT_SHADER_PROTOTYPE.md](M4_SPLAT_SHADER_PROTOTYPE.md) |
 | "Why did we choose X over Y?"                                | [DECISIONS.md](DECISIONS.md)                          |
 | "What's the canonical command for [common task]?"            | [../../pipelines/textures/RECIPES.md](../../pipelines/textures/RECIPES.md) |
 | "How does the texture pipeline work internally?"             | [../../pipelines/textures/PIPELINE.md](../../pipelines/textures/PIPELINE.md) |

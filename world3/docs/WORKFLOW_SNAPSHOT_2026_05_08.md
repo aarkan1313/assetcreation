@@ -1,7 +1,7 @@
 # world3 Workflow Snapshot - 2026-05-08
 
-This is the compact record of the current world3 workflow after M1, M2, and
-M3.
+This is the compact record of the current world3 workflow after M1, M2, M3,
+and M4 prototype pass 1.
 
 ## Framing
 
@@ -64,11 +64,21 @@ material-generation QA rather than transition logic.
    - Decision: 256 m synchronous base chunks at 8 m mesh spacing.
    - Evidence: `world3/docs/PHASE_F_CHUNK_SIZE_SWEEP.md`
 
-6. **Visual QA**
+6. **M4 splat shader prototype**
+   - Shader: `world3/shaders/terrain_splat_unified.gdshader`
+   - Builder: `world3/pipeline/build_m4_splat_prototype.py`
+   - Output: fixed five-slot unified shader, alpine RGBA splat weights,
+     height/slope fallback material, splat material, and OpenTopo single
+     material compatibility.
+   - Evidence: `world3/docs/M4_SPLAT_SHADER_PROTOTYPE.md`
+
+7. **Visual QA**
    - Region/gallery captures verify kit-level reads.
    - Transition comparison sheets verify hard cut vs transition strip.
    - `godot_transition_strip_review.png` verifies the transition index in a
      clean in-engine scene.
+   - M4 captures verify terrain old-vs-splat and OpenTopo
+     `terrain_hex_detail` vs unified shader compatibility.
    - Godot review scenes are used for in-engine sanity, but some OpenTopo
      review harness files are still in preexisting worker dirt and should not
      be swept into unrelated commits.
@@ -82,13 +92,16 @@ material-generation QA rather than transition logic.
 - Representative captures are nonblank and visually inspected.
 - Transition manifests carry review metrics for hue/value, roughness, normal
   energy, visible frequency, and edge-delta improvement.
+- M4 OpenTopo reference-vs-unified capture is visually close; sampled panel
+  mean absolute RGB delta is about 5.3 / 255.
 - Architectural decisions are appended to docs before moving on.
 
 ## Open Work
 
 - Reduce noisy grass/leaves at source texture generation/QA.
-- M4: build the unified splat shader using catalog materials and boundary
-  transition rules.
+- M4: turn the prototype into the chunk material/weight contract M5 can
+  consume, including weight texture import/storage and a future boundary-weight
+  lane for transition strips.
 - M5: wire 256 m chunk streaming plus splat into `walk.tscn`.
 
 ## Recent Commits
@@ -101,4 +114,5 @@ material-generation QA rather than transition logic.
 - `ae31568` - `world3: add transition review scoring`
 - `a2cc5fc` - `world3: add transition boundary contract`
 - `dfb2bdd` - `world3: checkpoint opentopo worktree`
-- `HEAD at handoff` - M2 tuned transition assets
+- `edc9902` - `world3: tune transition boundary assets`
+- `HEAD at handoff` - M4 splat shader prototype pass 1
