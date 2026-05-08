@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3]
+
+; Phase F.3 — same 2x2 stitch test but viewed from straight above so seam
+; quality is unambiguous. Tiles should appear as one large 8km square.
+
+[ext_resource type="Script" path="res://scripts/Terrain.gd" id="terrain_script"]
+[ext_resource type="Material" path="res://textures/wgv3/terrain_blend_alpine_topdown.tres" id="terrain_mat"]
+[ext_resource type="Script" path="res://scripts/TopDownCam.gd" id="top_script"]
+[ext_resource type="Script" path="res://scripts/PlayerAnchor.gd" id="anchor_script"]
+
+[sub_resource type="Environment" id="env"]
+background_mode = 1
+background_color = Color(0.05, 0.05, 0.07, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.6, 0.65, 0.8, 1)
+ambient_light_energy = 0.35
+tonemap_mode = 2
+
+[node name="Tetons2x2Top" type="Node3D"]
+
+[node name="WorldEnv" type="WorldEnvironment" parent="."]
+environment = SubResource("env")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866, -0.354, 0.354, 0, 0.707, 0.707, -0.5, -0.612, 0.612, 0, 8000, 0)
+light_color = Color(1, 0.97, 0.92, 1)
+light_energy = 1.6
+shadow_enabled = true
+directional_shadow_max_distance = 30000.0
+
+[node name="TileNW" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2000, 0, -2000)
+script = ExtResource("terrain_script")
+material_override = ExtResource("terrain_mat")
+subdivisions = 128
+
+[node name="TileNE" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2000, 0, -2000)
+script = ExtResource("terrain_script")
+material_override = ExtResource("terrain_mat")
+subdivisions = 128
+
+[node name="TileSW" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2000, 0, 2000)
+script = ExtResource("terrain_script")
+material_override = ExtResource("terrain_mat")
+subdivisions = 128
+
+[node name="TileSE" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2000, 0, 2000)
+script = ExtResource("terrain_script")
+material_override = ExtResource("terrain_mat")
+subdivisions = 128
+
+[node name="PlayerAnchor" type="Node3D" parent="."]
+script = ExtResource("anchor_script")
+snap_to_terrain = false
+
+[node name="TopCam" type="Camera3D" parent="."]
+script = ExtResource("top_script")
+projection = 1
+near = 1.0
+far = 30000.0
+current = true
+anchor_path = NodePath("../PlayerAnchor")
+visible_diameter_m = 9000.0
