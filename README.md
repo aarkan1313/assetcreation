@@ -8,32 +8,33 @@ Open these in order if you're new:
 
 | Doc | What it's for |
 |---|---|
-| [DOCS_INDEX.md](DOCS_INDEX.md) | **Canonical doc-ownership map** — which doc owns what, where to update first |
-| [PIPELINE_DIRECTORY.md](PIPELINE_DIRECTORY.md) | **Live status table** — what works today, in one page |
-| [PIPELINE_GUIDE.md](PIPELINE_GUIDE.md) | **Walkthroughs** — copy-paste recipes for every workflow |
-| [TOOLS_INDEX.md](TOOLS_INDEX.md) | **Tool directory** — every script + env + quick-reference table |
-| [docs/plans/ROADMAP.md](docs/plans/ROADMAP.md) | **What's next** — current focus + priorities + parity scorecard |
-| [docs/plans/EXPANSION_PLAN.md](docs/plans/EXPANSION_PLAN.md) | **Living checklist** — phased plan + per-phase punch lists + decision log |
-| [docs/audits/REVIEW.md](docs/audits/REVIEW.md) | Pipeline post-mortems (bugs found + fixed, REVIEW-discipline format) |
+| [WORKFLOWS.md](WORKFLOWS.md) | 🌳 **Master workflow list** — per-asset trees, tool branches, run order. **Start here if you want to make something.** |
+| [DOCS_INDEX.md](DOCS_INDEX.md) | Canonical doc-ownership map |
+| [PIPELINE_DIRECTORY.md](PIPELINE_DIRECTORY.md) | Live status table — what works today, in one page |
+| [PIPELINE_GUIDE.md](PIPELINE_GUIDE.md) | Copy-paste recipes for every workflow |
+| [TOOLS_INDEX.md](TOOLS_INDEX.md) | Tool directory — every script + env |
+| [docs/tools/README.md](docs/tools/README.md) | **In-tree doc map** — index of every per-tool/per-pipeline doc that lives next to its code |
+| [animators/INSTALL_MATRIX.md](animators/INSTALL_MATRIX.md) | **Animator install recipes** — RTX 5090 / Win11 stacks for the 13 animator tools |
+| [docs/plans/ROADMAP.md](docs/plans/ROADMAP.md) | What's next — current focus + priorities |
+| [docs/audits/AUDIT_2026_05_07_post_nuke.md](docs/audits/AUDIT_2026_05_07_post_nuke.md) | **Latest audit** — truth-from-disk, post-worldgen-nuke |
+| [docs/pipeline_reviews/](docs/pipeline_reviews/README.md) | **Per-pipeline review pass** (2026-05-07) — honest quality verdicts per lane |
+| [docs/audits/REVIEW.md](docs/audits/REVIEW.md) | Pipeline post-mortems (bugs found + fixed) |
 | [docs/plans/RESEARCH_HANDOFF.md](docs/plans/RESEARCH_HANDOFF.md) | Briefs for sub-agents researching SOTA per category |
 | [research/](research/) | Returned reports (A terrain, B textures, C/C2 VFX, D UI, E/E2 audio, F/F2 game data, G deep dive, J2 props, K open-weights) |
-| [docs/reference/OPENTOPO_API.md](docs/reference/OPENTOPO_API.md) | **Full OpenTopography API reference** — 3944 datasets, all endpoints, bbox limits, rate limits |
-| [docs/reference/CLOUD_KEYS.md](docs/reference/CLOUD_KEYS.md) | **Cloud env-var index** — every `*_API_KEY` we read, what tool it activates, fallback when missing |
-| [docs/plans/LONG_TERM_VISION.md](docs/plans/LONG_TERM_VISION.md) | Multi-month directional intent for the asset factory |
-| `docs/handoffs/HANDOFF_phase11_props_2026_05_06.md` | Phase 11 props deep-dive (latest props snapshot; supersedes `HANDOFF_props_v2`) |
-| `docs/handoffs/HANDOFF_phase12_audio_2026_05_06.md` | Phase 12 audio deep-dive — real Stable Audio Open 1.0 bake on all 10 biomes (latest audio snapshot; supersedes `HANDOFF_audio_v3`) |
-| `HANDOFF_<pipeline>_<v>_2026_05_06.md` | Older per-pipeline build snapshots (ui v3, vfx v2, game_data v2, phase9, audit_expand). Kept for forensics. |
-| `docs/audits/AUDIT_2026_05_07.md` | Most recent project-state audit (drift flags + reconciliation TODO list). |
-| `_archive/` | Superseded handoffs, old audits, orphan research. Historical only — never edit. |
+| [docs/reference/OPENTOPO_API.md](docs/reference/OPENTOPO_API.md) | OpenTopography API reference |
+| [docs/reference/CLOUD_KEYS.md](docs/reference/CLOUD_KEYS.md) | Cloud env-var index |
+| [docs/plans/LONG_TERM_VISION.md](docs/plans/LONG_TERM_VISION.md) | Multi-month directional intent |
+| [docs/handoffs/](docs/handoffs/) | Per-pipeline deep-dive handoff snapshots |
+| `_archive/` | Superseded snapshots. Historical only — never edit. |
 
-**Current focus:** Phase 11 (props) + Phase 12 (audio) deep-dives both **complete** as of 2026-05-06 PM.
-
-**Next-step menu** (pick one; see [ROADMAP](docs/plans/ROADMAP.md) "What comes next" for details):
-- **A.** Phase 13 — VFX GPU baker deep-dive (parallels Phase 11/12). ~half day.
-- **B.** Worldgen v2 status check + push. ~30-90 min. Unblocks scene integration if v2 is close.
-- **C.** Small closeouts: listen-test Phase 12 audio, re-export to Godot import, multi-prop test. ~30 min.
-
-**Active blocker:** worldgen v1 broke 2026-05-06; v2 rebuild lives at `pipelines/worldgen_v2/`. Blocks scene-integration of Phase 11 props + Phase 12 ambience.
+**Current focus (2026-05-07 PM):**
+- ✅ **Per-pipeline manual review pass complete.** 7 of 8 pipelines reviewed at `docs/pipeline_reviews/`. Calibrated honest verdicts per lane against user judgment.
+- ✅ **All 13 animator tools install-validated.** Including Anytop (Windows-ported from Linux conda) and MaterialAnything (kaolin install path corrected). See `animators/INSTALL_MATRIX.md`.
+- ✅ **Audio output archived** (189 MB, was noise-tier). Pipeline retained.
+- 🚧 **Worldgen rebuild in flight** at `world3/` (background worker).
+- 🚧 **Texture quality improvement in flight** in `world/textures/library/` + `pipelines/textures/` (background worker).
+- 🟡 **Path 2 character_inpaint pipeline** mechanically correct end-to-end as of 2026-05-07 night (5 bugs found + fixed via visual inspection). FLUX prompt quality is the remaining open gap. See [docs/plans/PATH_2_INPAINT_DESIGN_2026_05_07.md](docs/plans/PATH_2_INPAINT_DESIGN_2026_05_07.md).
+- 📋 **Next planned:** FLUX prompt engineering / ControlNet on chest insignia, then characters animation deep-dive.
 
 ## What's in here (highest level)
 
@@ -41,17 +42,18 @@ Open these in order if you're new:
 D:\assets\
 ├── meshy/             Character pipeline (Meshy API + preprocess + bake + atlas)
 ├── animators/         AI rigging/animation/generation tools (each in own venv)
-├── pipelines/         Non-character pipelines (terrain, textures, world maps, godot export)
-├── art_lab/           Magic/World Art Lab (shaders, maps, biomes — first-party)
-├── world/             Outputs: terrain bundles, texture library, world maps
+├── pipelines/         Non-character pipelines (terrain DEMs, textures, godot export, props, ui, vfx, audio, game_data, character_inpaint)
+├── art_lab/           Magic/World Art Lab (shaders, maps, biomes — first-party; references to baked worlds now stale)
+├── world/             Outputs: textures library, props library (terrain/worlds/maps moved to _archive/worldgen_2026_05_07/)
 ├── characters/        Reserved for future character outputs
+├── dems/              222 cached OpenTopography TIFFs (~8.1 GB) — relocated 2026-05-07 from pipelines/terrain/source_dems/
 ├── godot_pack/        Godot exporter output — drop into a Godot 4.5 project
 └── research/          Returned research reports
 ```
 
 ## Today's state (one paragraph)
 
-**22+ working pipelines, all 5 formerly-vapor categories shipped v2/v3 SOTA. Phase 11 (props) + Phase 12 (audio) deep-dives complete as of 2026-05-06 PM.** Coverage on disk (verified by `docs/audits/AUDIT_2026_05_07.md`): **51 props** (was 24 v2; +1 Phase 11 hero obelisk) with 4-tier LOD + CoACD collision + AAA-PBR binding + AI route adapters (Trellis2 default, HY3D-2.1 fallback); 135 icons + 28 HUD scenes; 39 sounds / 112 SFX variants + **142 real Stable Audio Open ambience stems across 10 biomes** (Phase 12, not dry-run anymore — 56 MB of real audio); 57 effect.json entries (46 in current catalog + 11 migrated legacy, 4 export targets, volumetric_fog backend, MeshTrail3D + AudioCueBus runtime); 14/14 game_data records round-trip + balance TOML + kill-dummy sim + DuckDB reports + Yarn link validator. **10 biomes** registered. The world-gen stack reached maturity at v1 then **broke and is rebuilding at `pipelines/worldgen_v2/` (milestone 1, terrain only)**. Character pipeline (Meshy → 5 riggers → animate → bake → atlas, ~33 GLBs) is mature and unaffected. **Reframe (2026-05-06 PM):** the assets being produced today are **mostly throwaway** — except possibly the characters. The point is to figure out which pipelines work, not to build a content library. **The honest drag now**: cross-pipeline seams partly proven (Phase 10A scatter v3 prop_pool path landed + spawn-on-terrain raycast landed; one-button "biome + props + ambience + VFX + HUD" demo NOT yet built); several **pipelines not yet built** (cinematics / quest / save-load / localization / performance budgets / cross-pipeline gallery); **remaining GPU flips queued** (FLUX schnell + LoRA, Taichi VFX, Hunyuan3D-Omni, F5-TTS, vLLM, Wan, YuE — Stable Audio + Trellis2 done in Phase 11/12). Real content authoring is gated on user intent, not pipeline readiness.
+**Pipelines work, content is mostly placeholder.** A 2026-05-07 manual review pass (see `docs/pipeline_reviews/`) calibrated the gap between **pipeline plumbing** (real, mature, deserves keeping) and **current content output** (procedural/unprompted, mostly throwaway). Audio output was archived 2026-05-07 after auditioning revealed noise-tier quality. UI is "good placeholders," VFX has 18 of 24 spell effects as palette-swap recolors, game data has 14 toy records, props has 1 hero (obelisk) + 14 procedural-variant families. **Reframe:** pipelines are the deliverable; content gets re-authored with focus when game-design intent is clear, not procedurally fanned out. Character pipeline (Meshy → 5 riggers → animate → bake → atlas, ~33 GLBs + 5 animations) is the one lane that may produce production content — but the **animation step is uncalibrated** and needs deep-dive. **Worldgen** is being rebuilt at `world3/` after v1/v2 nuke; **OpenTopography DEM fetching still works end-to-end** (cache-aware, OT+ Pro active, 220 regions / 8.1 GB at `dems/`). All 13 animator tools install-validated end-to-end as of 2026-05-07.
 
 ## One-command starting points
 
@@ -59,12 +61,6 @@ D:\assets\
 # Pre-flight (each new shell): make the env var available to subprocesses.
 # OT+ tier active 2026-05-06: All Access (USGS 1m unlocked), 400 calls/24h.
 $env:OPENTOPOGRAPHY_API_KEY = [Environment]::GetEnvironmentVariable("OPENTOPOGRAPHY_API_KEY", "User")
-
-# THE BIG ONE: real DEM → fantasy style → biome paint → AAA bind → 3 Godot scenes
-python pipelines\terrain\region_pipeline.py `
-  --preset bryce_hoodoo --style spired --strength 1.5 `
-  --biomes mana_crystal,mana_crystal,grassland,grassland `
-  --id spire_garden --project C:\Users\josep\test\new-game-project --size 1024
 
 # Bulk-pull DEMs from the wishlist (resumable, cache-aware, rate-limit-aware; ~50GB at full)
 python pipelines\terrain\bulk_pull.py --tier premium --dry-run    # plan
@@ -82,21 +78,15 @@ python pipelines\terrain\import_dem.py --id half_dome_1m --source opentopo --bbo
 # Tile-stitch a huge DEM (e.g. full Yosemite at 1m as 9-tile composite)
 python pipelines\terrain\tile_stitch.py --id yosemite_full_1m --bbox -119.75 37.65 -119.40 37.90 --dataset USGS1m --rows 3 --cols 3 --size 4096
 
-# Apply a fantasy style to an existing heightmap
-python pipelines\terrain\dem_fantasy_edit.py --in <bundle>/height_16.png --out fantasy.png --style mythic --strength 1.2
+# Pull a regional STAC-only raster (ArcticDEM / REMA / LINZ — bypasses OT /globaldem)
+python pipelines\terrain\fetch_regional_stac.py --id milford_1m --bbox 167.85 -44.70 167.95 -44.60 --provider linz
 
 # Generate one AAA texture from a prompt (StableMaterials backend)
 python pipelines\textures\aaa_texture.py --prompt "weathered cobblestone, mossy gaps" --id cobble --category Bricks --quality default
-
-# Build a synthetic mountain terrain with hydraulic erosion
-python pipelines\terrain\terrain_bundle.py --id alpine_a --biome mountains --erosion 60 --erosion-mode hydraulic
-
-# Build a strategic political world map (settlements, factions, rivers, labels)
-python art_lab\maps\generators\generate_world_map.py --id mythos_a --size 1024 --seed 7
 ```
 
-## Curated starter recipes
+## Curated DEM presets
 
-`art_lab/biomes/world_catalogue.json` ships 10 known-good `(preset × style × biome-mix)` combos: `frostfang_fjord`, `embercaldera`, `spire_garden`, `stormhalls`, `obsidian_mesas`, `skyforest`, `alpenheart`, `endless_dunes`, `kami_alps`, `the_titansteps`. Each is a one-line `region_pipeline.py` command — copy and run.
+The OpenTopography wishlist at `art_lab/biomes/data_wishlist.json` ships 172 named regions across stitched / highres-open / showcase / premium / standard / bathymetric tiers. `bulk_pull.py --tier <name>` resumably fetches them. The biome / world-catalogue / region_pipeline machinery that consumed them is **gone** — those 222 cached TIFFs are now seed data for whatever new worldgen pipeline gets built.
 
 # assetcreation

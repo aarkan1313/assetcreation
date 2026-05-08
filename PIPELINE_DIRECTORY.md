@@ -15,6 +15,7 @@ Live status of every pipeline in `D:\assets\`. Updated 2026-05-07 (post-worldgen
 | **Game Data** | ✅ working; **research-calibrated 2026-05-07** ([brief #08](docs/research_briefs/2026_05_07_sota_survey/08_game_data_balance.response.md)) — infrastructure validated as best-in-project; "run the plumbed cascade" is biggest unlock (cloud parked); 5 additive tools queued (pymoo Pareto, fastjsonschema, DSPy+GEPA, schema-diff CI, incremental linker) | schemas + records + reports | `pipelines/game_data/generate_records.py` |
 | **Textures** | 🟡 Phase B + D done; Phase C next | 31+ sets; 5 biome kits all purpose-built; `wgv3_rock_dark` has 2K/1K/512 mip ladder | `pipelines/textures/aaa_texture.py` (canonical; `--ladder` for hero-quality) |
 | **DEM Fetch** | ✅ working | 222 TIFFs / 8.1 GB | `pipelines/terrain/import_dem.py` + `bulk_pull.py` |
+| **Character Inpaint** | 🟡 pipeline mechanically correct (2026-05-07 night), FLUX prompt quality is the open gap — see [Path 2 design](docs/plans/PATH_2_INPAINT_DESIGN_2026_05_07.md) | 1 test variant GLB (`goblin_p_ashen_v5.glb`) | `pipelines/character_inpaint/inpaint_variants.py` |
 | **Scene composition** | ❌ **gone** (worldgen archived) | — | — — — *to be rebuilt* |
 
 For canonical run-order recipes, see [WORKFLOWS.md](WORKFLOWS.md).
@@ -116,6 +117,16 @@ For canonical run-order recipes, see [WORKFLOWS.md](WORKFLOWS.md).
 - **Random sampler:** `mystery_sampler.py` (300 procedurally-sampled worldwide bboxes from interesting strips).
 - **Output:** 222 cached TIFFs / 8.1 GB at `D:/assets/dems/`.
 - **API reference:** [docs/reference/OPENTOPO_API.md](docs/reference/OPENTOPO_API.md).
+
+### Character Inpaint (`pipelines/character_inpaint/`)
+
+- **Entry:** `inpaint_variants.py` — 5-step orchestrator: render N orbit views (Blender headless) → mask each view → inpaint via ComfyUI/FLUX.1-Fill → back-project to UV atlas (nvdiffrast) → repack into output GLB.
+- **Backends:** `--inpaint-backend {dry-run,flux-fill}` × `--project-backend {dry-run,nvdiffrast}`. Dry-run paths exist for pipeline smoke tests without GPU/ComfyUI.
+- **Models (flux-fill backend):** `flux1-fill-dev-fp8.safetensors` (11.9 GB), `ae.safetensors` (FLUX 16-ch VAE, 319 MB), `clip_l.safetensors` + `t5xxl_fp8_e4m3fn.safetensors` (CLIP), optional `flux1-redux-dev.safetensors` (123 MB) + `sigclip_vision_patch14_384.safetensors` (816 MB) when `use_redux=True` (style-adapter mode, off by default — Redux can't reliably place specific logos).
+- **Status (2026-05-07 night):** pipeline mechanically correct end-to-end. Five bugs found and fixed via visual inspection of intermediates: camera azimuth start, mask cy position, Redux vs prompt-only, FLUX result composite, back-projector azimuth match. Output `goblin_p_ashen_v5.glb` produced cleanly. **Open gap:** FLUX.1-Fill fills the masked chest with goblin skin continuation rather than a distinct insignia — strong surrounding context overwhelms the text prompt. Next: prompt engineering or ControlNet-reference approach.
+- **Design doc:** [docs/plans/PATH_2_INPAINT_DESIGN_2026_05_07.md](docs/plans/PATH_2_INPAINT_DESIGN_2026_05_07.md).
+- **Research brief:** [docs/research_briefs/2026_05_07_sota_survey/09_mesh_inpaint_per_instance.response.md](docs/research_briefs/2026_05_07_sota_survey/09_mesh_inpaint_per_instance.response.md) (Architecture B confirmed).
+- **Phase 0 reference assets:** `pipelines/character_inpaint/phase_0_assets/` (insignia, UV layout extracts).
 
 ### Scene composition — ❌ gone
 
