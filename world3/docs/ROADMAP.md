@@ -51,10 +51,11 @@ direction; treat the rest as where we've been.
 - M2 transition asset contract is resolved: generated boundary assets are
   referenced by `world3/jobs/biome_transition_rules.json`; base materials stay
   in the material catalog.
-- M4 unified splat shader prototype pass 1 is done: a fixed five-slot shader
+- M4 unified splat shader prototype pass 2 is done: a fixed five-slot shader
   renders height/slope fallback, RGBA splat weights, and OpenTopo macro/detail
-  material compatibility. Next M4 move is the chunk material/weight contract
-  that M5 can consume.
+  material compatibility; `ChunkLoader.gd` can now bind the runtime splat
+  weight texture through the chunk material/weight contract. Next move is M5
+  wiring into `walk.tscn`.
 
 Workflow snapshot: [`WORKFLOW_SNAPSHOT_2026_05_08.md`](WORKFLOW_SNAPSHOT_2026_05_08.md).
 

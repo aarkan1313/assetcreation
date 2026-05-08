@@ -14,6 +14,7 @@ find something.
 | "What was the original roadmap before reframing?"            | [ROADMAP_v1_archived.md](ROADMAP_v1_archived.md)      |
 | "What's the current iteration's scope?"                      | [PLAN.md](PLAN.md)                                    |
 | "What did the first M4 splat shader prototype prove?"        | [M4_SPLAT_SHADER_PROTOTYPE.md](M4_SPLAT_SHADER_PROTOTYPE.md) |
+| "What does a streamed chunk provide to the splat shader?"     | [M4_CHUNK_MATERIAL_CONTRACT.md](M4_CHUNK_MATERIAL_CONTRACT.md) |
 | "Why did we choose X over Y?"                                | [DECISIONS.md](DECISIONS.md)                          |
 | "What's the canonical command for [common task]?"            | [../../pipelines/textures/RECIPES.md](../../pipelines/textures/RECIPES.md) |
 | "How does the texture pipeline work internally?"             | [../../pipelines/textures/PIPELINE.md](../../pipelines/textures/PIPELINE.md) |

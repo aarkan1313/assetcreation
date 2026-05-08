@@ -180,13 +180,16 @@ classes (height/slope-banded procedural kits AND hex-detail finished
 real materials) or we end up with three shaders, not one. Best
 absorbed as one design pass.
 
-**Status 2026-05-08**: PROTOTYPE PASS 1 DONE. `terrain_splat_unified.gdshader`
+**Status 2026-05-08**: PROTOTYPE PASS 2 DONE. `terrain_splat_unified.gdshader`
 now supports the current five terrain slots, height/slope fallback,
 RGBA splat weights with fifth-slot remainder, and the OpenTopo
 macro/detail controls. `build_m4_splat_prototype.py` emits an alpine
 height/slope splat map plus splat/fallback/OpenTopo `.tres` materials.
 Godot captures prove terrain A/B and OpenTopo reference-vs-unified
-compatibility. Evidence: `world3/docs/M4_SPLAT_SHADER_PROTOTYPE.md`.
+compatibility. `ChunkLoader.gd` now binds a runtime `splat_weights_path`,
+and `chunk_splat_stream_review.tscn` proves the 256 m chunk path can consume
+the splat material. Evidence: `world3/docs/M4_SPLAT_SHADER_PROTOTYPE.md` and
+`world3/docs/M4_CHUNK_MATERIAL_CONTRACT.md`.
 
 **Deliverables**:
 - New unified shader supporting:
@@ -202,14 +205,14 @@ compatibility. Evidence: `world3/docs/M4_SPLAT_SHADER_PROTOTYPE.md`.
   material rendered through the new unified shader matches its
   current `terrain_hex_detail` look.
 
-Scope: pass 1 proves the splat path works on one chunk + the unified
-shader matches both predecessors' looks. The remaining M4 work is the
-M5-facing chunk contract: material IDs, weight texture storage, and
-the future boundary-weight lane for M2 transition strips.
+Scope: pass 1 proved the splat path works on one chunk + the unified
+shader matches both predecessors' looks. Pass 2 defines and renders the
+M5-facing chunk contract: material IDs, weight texture storage/binding, and
+the reserved future boundary-weight lane for M2 transition strips.
 
-**Exit**: pass 1 exit met for prototype evidence. Full M4 exits when the
-chunk material/weight contract is written and a small `ChunkLoader.gd`
-scene can consume it without changing `walk.tscn` yet.
+**Exit**: M4 prototype exit met. Remaining work belongs to M5: wire the fixed
+five-slot splat material contract into `walk.tscn`, then iterate on import,
+boundary lanes, and material indirection only as needed.
 
 ## M5 — Wire streaming + splat into walk.tscn (orchestrator, after M3+M4)
 

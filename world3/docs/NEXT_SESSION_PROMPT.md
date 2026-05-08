@@ -23,6 +23,7 @@ Read first:
 4. `world3/docs/M2_TRANSITION_MATERIAL_PROTOTYPE.md`
 5. `world3/docs/PHASE_F_CHUNK_SIZE_SWEEP.md`
 6. `world3/docs/M4_SPLAT_SHADER_PROTOTYPE.md`
+7. `world3/docs/M4_CHUNK_MATERIAL_CONTRACT.md`
 
 ## Current status
 
@@ -37,7 +38,8 @@ Recent scoped commits:
 - `a2cc5fc` - `world3: add transition boundary contract`
 - `dfb2bdd` - `world3: checkpoint opentopo worktree`
 - `edc9902` - `world3: tune transition boundary assets`
-- `HEAD at handoff` - M4 splat shader prototype pass 1
+- `62c5736` - `world3: add splat shader prototype`
+- `HEAD at handoff` - M4 chunk material contract
 
 M1 is done:
 
@@ -71,7 +73,7 @@ M2 is done for workflow/M4 input:
 - Caveat: grass/leaves are too noisy for production. Track that as source
   texture quality/prompt QA, not transition workflow failure.
 
-M4 prototype pass 1 is done:
+M4 prototype pass 2 is done:
 
 - `world3/shaders/terrain_splat_unified.gdshader`
 - `world3/pipeline/build_m4_splat_prototype.py`
@@ -85,22 +87,31 @@ M4 prototype pass 1 is done:
 - Captures:
   - `world3/docs/captures/m4/splat_shader_review.png`
   - `world3/docs/captures/m4/opentopo_unified_review.png`
+  - `world3/docs/captures/m4/chunk_splat_stream_review.png`
 - OpenTopo reference-vs-unified sampled panel delta is about 5.3 / 255.
-- Known prototype caveat: the review script binds the fresh splat PNG
-  dynamically because a new unimported PNG is not loadable from `.tres` as a
-  `Texture2D` in runtime Godot.
+- Chunk contract:
+  - `world3/jobs/m4_chunk_material_contract.json`
+  - `world3/docs/M4_CHUNK_MATERIAL_CONTRACT.md`
+  - `ChunkLoader.gd` has `splat_weights_path` for dynamic runtime binding.
+- Known prototype caveat: fresh splat PNGs bind dynamically because a new
+  unimported PNG is not loadable from `.tres` as a `Texture2D` in runtime
+  Godot.
 
 ## Next best move
 
-Continue M4 with the chunk-facing contract:
+Start M5:
 
-1. Define how a 256 m chunk stores material IDs plus weight textures.
-2. Decide whether pass 2 stays fixed at five slots or introduces atlas/
-   texture-array indirection.
-3. Add a boundary-weight lane for future M2 transition-strip sampling once
-   boundary-space UVs exist.
-4. Build a small `ChunkLoader.gd` review scene that consumes the M4 material
-   contract before changing `walk.tscn`.
+1. Wire `ChunkLoader.gd` into `walk.tscn` using:
+   - `chunk_size_m = 256`
+   - `chunk_resolution_m = 8`
+   - `view_radius_chunks = 1`
+   - `terrain_material = res://textures/wgv3/terrain_splat_alpine.tres`
+   - `splat_weights_path = res://textures/m4_splat/alpine_height_slope_weights_rgba.png`
+2. Keep M5 fixed at the five-slot prototype contract until the walk scene is
+   stable.
+3. Only after the visual stream is stable, decide whether to formalize weight
+   texture import/cache, material indirection, and transition-strip boundary
+   sampling.
 
 ## Operating reminders
 

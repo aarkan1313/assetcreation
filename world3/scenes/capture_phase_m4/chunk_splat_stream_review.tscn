@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/M4ChunkSplatReview.gd" id="review_script"]
+[ext_resource type="Script" path="res://scripts/ChunkLoader.gd" id="chunk_loader"]
+[ext_resource type="Material" path="res://textures/wgv3/terrain_splat_alpine.tres" id="terrain_mat"]
+
+[sub_resource type="Environment" id="env"]
+background_mode = 1
+background_color = Color(0.5, 0.64, 0.68, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.6, 0.64, 0.7, 1)
+ambient_light_energy = 0.3
+tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 6.0
+ssao_intensity = 1.4
+
+[node name="M4ChunkSplatStreamReview" type="Node3D"]
+script = ExtResource("review_script")
+loader_path = NodePath("ChunkLoader")
+target_path = NodePath("SplatTarget")
+camera_path = NodePath("Camera3D")
+
+[node name="WorldEnv" type="WorldEnvironment" parent="."]
+environment = SubResource("env")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.7071, -0.5, 0.5, 0, 0.7071, 0.7071, -0.7071, -0.5, 0.5, 0, 8000, 0)
+light_color = Color(1, 0.97, 0.92, 1)
+light_energy = 1.7
+shadow_enabled = true
+directional_shadow_max_distance = 6000.0
+
+[node name="ChunkLoader" type="Node3D" parent="."]
+script = ExtResource("chunk_loader")
+terrain_material = ExtResource("terrain_mat")
+splat_weights_path = "res://textures/m4_splat/alpine_height_slope_weights_rgba.png"
+chunk_size_m = 256.0
+view_radius_chunks = 1
+chunk_resolution_m = 8.0
+auto_update = false
+
+[node name="SplatTarget" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 128)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+projection = 1
+size = 900.0
+near = 1.0
+far = 10000.0
+current = true

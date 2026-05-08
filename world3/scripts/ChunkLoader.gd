@@ -12,6 +12,7 @@ class_name ChunkLoader
 @export var heightmap_path: String = "res://heightmap/heightmap.png"
 @export var meta_path: String = "res://heightmap/meta.json"
 @export var terrain_material: Material
+@export var splat_weights_path: String = ""
 @export var chunk_size_m: float = 512.0
 @export var view_radius_chunks: int = 1
 @export var chunk_resolution_m: float = 8.0
@@ -152,8 +153,19 @@ func _load_source() -> void:
 		var sm: ShaderMaterial = terrain_material as ShaderMaterial
 		sm.set_shader_parameter("elev_min_m", _elev_min_m)
 		sm.set_shader_parameter("elev_range_m", _elev_range_m)
+		if splat_weights_path != "":
+			var splat_tex: Texture2D = _load_runtime_texture(splat_weights_path)
+			if splat_tex != null:
+				sm.set_shader_parameter("splat_weights", splat_tex)
 
 	_source_loaded = true
+
+
+func _load_runtime_texture(path: String) -> Texture2D:
+	var img: Image = Image.load_from_file(path)
+	if img == null:
+		return load(path) as Texture2D
+	return ImageTexture.create_from_image(img)
 
 
 func _load_meta() -> Dictionary:

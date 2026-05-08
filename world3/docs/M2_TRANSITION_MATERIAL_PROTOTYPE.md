@@ -126,5 +126,6 @@ Quality caveats:
 - Use `world3/jobs/biome_transition_rules.json` as the boundary input contract.
 - Keep `raw_scores` in manifests as source-material QA signals.
 - Use tuned `scores` as the transition-asset read.
-- Start M4 with normal two-material splat blending first, then add explicit
-  boundary asset sampling once boundary-space UVs exist.
+- M4 pass 1/2 followed this: normal splat blending and the chunk material
+  contract landed first. Explicit boundary asset sampling remains reserved for
+  when boundary-space UVs exist.

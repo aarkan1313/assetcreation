@@ -337,7 +337,7 @@ void splat_layer_weights(vec2 uv,
                          out float w_grass, out float w_dirt,
                          out float w_rl, out float w_rd,
                          out float w_snow) {
-    vec4 rgba = max(texture(splat_weights, uv * splat_uv_scale), vec4(0.0));
+    vec4 rgba = max(texture(splat_weights, fract(uv * splat_uv_scale)), vec4(0.0));
     w_grass = pow(rgba.r, splat_weight_power);
     w_dirt = pow(rgba.g, splat_weight_power);
     w_rl = pow(rgba.b, splat_weight_power);

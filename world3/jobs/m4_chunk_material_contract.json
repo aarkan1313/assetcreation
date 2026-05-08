@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "status": "prototype_pass_2",
+  "date": "2026-05-08",
+  "chunk_size_m": 256,
+  "mesh_spacing_m": 8,
+  "shader": "world3/shaders/terrain_splat_unified.gdshader",
+  "material_table_shape": {
+    "prototype_slot_count": 5,
+    "slot_order": [
+      "grass",
+      "dirt",
+      "rock_light",
+      "rock_dark",
+      "snow"
+    ],
+    "production_note": "Pass 2 stays fixed at five semantic terrain slots so M5 can wire streaming without solving texture arrays. A later pass can replace this with atlas or texture-array indirection."
+  },
+  "weight_texture_shape": {
+    "format": "RGBA PNG prototype",
+    "channels": {
+      "r": "grass weight",
+      "g": "dirt weight",
+      "b": "rock_light weight",
+      "a": "rock_dark weight",
+      "implicit": "snow weight = max(1 - r - g - b - a, 0)"
+    },
+    "uv_space": "Chunk mesh UVs store global source XZ fraction. The current prototype weight map covers the tiled source heightmap and repeats with it.",
+    "runtime_import_note": "Fresh generated PNGs are bound as ImageTexture by ChunkLoader.splat_weights_path until the import/cache step is formalized."
+  },
+  "boundary_lane": {
+    "status": "reserved_not_sampled",
+    "future_inputs": [
+      "material_a_weight",
+      "material_b_weight",
+      "boundary_weight",
+      "boundary_signed_distance_u",
+      "boundary_repeat_v"
+    ],
+    "source_contract": "world3/jobs/biome_transition_rules.json"
+  },
+  "prototype_chunk": {
+    "id": "tetons_alpine_256m_splat",
+    "heightmap": "world3/heightmap/heightmap.png",
+    "meta": "world3/heightmap/meta.json",
+    "kit": "alpine",
+    "materials": {
+      "grass": "grass",
+      "dirt": "dirt",
+      "rock_light": "rock_light",
+      "rock_dark": "rock_dark",
+      "snow": "snow"
+    },
+    "splat_weights": "world3/textures/m4_splat/alpine_height_slope_weights_rgba.png",
+    "debug_weights": "world3/textures/m4_splat/alpine_height_slope_weights_debug.png",
+    "material": "world3/textures/wgv3/terrain_splat_alpine.tres",
+    "review_scene": "world3/scenes/capture_phase_m4/chunk_splat_stream_review.tscn",
+    "review_capture": "world3/docs/captures/m4/chunk_splat_stream_review.png"
+  }
+}

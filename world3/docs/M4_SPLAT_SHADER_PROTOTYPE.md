@@ -14,6 +14,15 @@ Prototype pass 1 is complete. It proves the first M4 slice:
 
 This is workflow-validation quality, not the final runtime contract.
 
+Prototype pass 2 adds the chunk-facing contract:
+
+- `world3/jobs/m4_chunk_material_contract.json`
+- `world3/docs/M4_CHUNK_MATERIAL_CONTRACT.md`
+- `ChunkLoader.gd` can bind a runtime splat weight texture through
+  `splat_weights_path`
+- `world3/scenes/capture_phase_m4/chunk_splat_stream_review.tscn`
+- `world3/docs/captures/m4/chunk_splat_stream_review.png`
+
 ## Files
 
 - Shader: `world3/shaders/terrain_splat_unified.gdshader`
@@ -22,9 +31,12 @@ This is workflow-validation quality, not the final runtime contract.
   `world3/scenes/capture_phase_m4/splat_shader_review.tscn`
 - OpenTopo compatibility scene:
   `world3/scenes/capture_phase_m4/opentopo_unified_review.tscn`
+- Chunk stream review scene:
+  `world3/scenes/capture_phase_m4/chunk_splat_stream_review.tscn`
 - Review scripts:
   - `world3/scripts/M4SplatShaderReview.gd`
   - `world3/scripts/M4OpenTopoUnifiedReview.gd`
+  - `world3/scripts/M4ChunkSplatReview.gd`
 
 Generated assets:
 
@@ -39,6 +51,7 @@ Captures:
 
 - `world3/docs/captures/m4/splat_shader_review.png`
 - `world3/docs/captures/m4/opentopo_unified_review.png`
+- `world3/docs/captures/m4/chunk_splat_stream_review.png`
 
 ## Splat Contract
 
@@ -88,6 +101,7 @@ Capture stats:
 |---------|----------|------------|------|
 | `splat_shader_review.png` | 139.51, 113.75, 89.14 | 59.44, 52.82, 45.80 | nonblank terrain A/B |
 | `opentopo_unified_review.png` | 173.10, 183.81, 178.87 | 13.70, 15.93, 26.34 | nonblank OpenTopo A/B |
+| `chunk_splat_stream_review.png` | 158.08, 189.62, 157.36 | 30.46, 39.66, 61.22 | nonblank ChunkLoader splat binding |
 
 OpenTopo compatibility crop delta:
 
@@ -107,22 +121,21 @@ difference belongs in shader tuning after the M5 runtime path exists.
   rules, canopy masks, soil classes, or M2 boundary strips.
 - Boundary transition strips are not sampled in shader yet. M2 remains the
   boundary asset contract; M4 pass 1 only proves normal splat blending.
-- The review script binds the fresh splat PNG dynamically because Godot runtime
-  `.tres` loading does not see unimported new PNGs as `Texture2D` resources.
-  M5 should either run the import step or write an imported/runtime texture
-  resource for generated splat maps.
+- Review scripts and `ChunkLoader.splat_weights_path` bind the fresh splat PNG
+  dynamically because Godot runtime `.tres` loading does not see unimported new
+  PNGs as `Texture2D` resources. M5 should either formalize the import step or
+  keep generated splat maps on this runtime texture path.
 - The terrain A/B capture is not expected to be pixel-identical. The right side
   is the offline splat-weight path and intentionally exposes the chunk-weight
   output instead of recomputing height/slope weights in-fragment.
 
 ## Next
 
-M4 pass 2 should turn this into the M5-facing contract:
+The next step is M5-prep, then M5 proper:
 
-- define how a 256 m chunk stores material IDs plus weight textures;
-- decide whether the first production form stays fixed at five slots or moves
-  to atlas/texture-array indirection;
+- keep pass 2 fixed at five slots for the first `walk.tscn` integration;
+- formalize generated weight-map import/cache if dynamic binding becomes
+  fragile;
 - add a boundary-weight lane that can later sample M2 transition strips once
   boundary-space UVs exist;
-- wire the splat material into a small `ChunkLoader.gd` scene before changing
-  `walk.tscn`.
+- wire the splat material into `walk.tscn` through `ChunkLoader.gd`.
