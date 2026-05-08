@@ -20,8 +20,31 @@ look.
 | `des_mojave_usa` | desert | sand-tan with directional shadows | smoothed sand color, lower contrast |
 | `tun_arctic_alaska` | tundra | moss + frost patches | flatter green/white blocks |
 | `med_california_chaparral` | temperate_forest | brown rocky chaparral | flat brown color blocks |
-| `mgs_tibetan_plateau` | grassland | uniform yellow grass | uniform pale yellow |
-| `tgs_serengeti_tanzania` | grassland | uniform yellow grass | uniform pale yellow |
+| `mgs_tibetan_plateau` | grassland | uniform yellow grass (by design — see note) | uniform pale yellow |
+| `tgs_serengeti_tanzania` | grassland | uniform yellow grass (by design) | uniform pale yellow |
+
+### Grassland kit design note (2026-05-07)
+
+The grassland kit's loose height bands (`h_grass_dirt=0.4`,
+`h_dirt_rockdark=0.75`, `h_rockdark_snow=0.95`) and high
+`slope_threshold=0.5` are intentional. Real Serengeti and Tibetan
+plateau imagery is biologically near-uniform tall_grass with rare
+rocky outcrops; tightening these bands triggers different slot
+textures but they all read yellow-tan (tall_grass / dry_thatch /
+hardpan_soil are all warm-toned), giving fake variation that doesn't
+match real biome reference. We tested tighter bands (alpine-cadence
+0.2/0.5/0.8 + slope 0.35); the result was *more* uniform-looking
+because all 5 grassland slots share a yellow color family.
+
+If a specific grassland landform needs visible rocky variation
+(East African kopjes, Tibetan buttes), the right fix is **either**:
+(1) a region-specific kit override, or (2) regenerating
+`wgv3_gl_grass_rock` and `wgv3_gl_weathered_stone` with darker /
+greyer prompts. Don't widen the kit's bands — that breaks the
+biome's faithful reading on the four other grassland regions.
+
+This is documented as decision-locked in `biome_kits.json` (grassland
+`height_bands._comment` field).
 
 ## Implementation note: elev_min/range push
 

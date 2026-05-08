@@ -102,6 +102,7 @@
         "snow": "wgv3_gl_weathered_stone"
       },
       "height_bands": {
+        "_comment": "Loose bands by design — grassland regions (Serengeti, Tibet, Great Plains, Pantanal) are biologically near-uniform tall_grass with rare rocky outcrops. Tightening these adds fake variation that doesn't match real savanna/plateau imagery. The visual flatness in renders is faithful to the biome; visible variation comes from the macro_value_strength (Phase E topdown) not from triggering different slots. If a region needs a specific rocky landform (e.g. East African kopjes), it should be modeled in the heightmap or get its own kit, not handled by widening the height bands here.",
         "h_grass_dirt": 0.4,
         "h_dirt_rockdark": 0.75,
         "h_rockdark_snow": 0.95

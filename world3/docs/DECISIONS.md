@@ -732,3 +732,39 @@ per-material flexibility without a forced migration.
 - Recommended use: hero rock materials at `--quality strict
   --pbr-backend chord_sm_rough`. Defer for non-rock categories
   unless A/B shows a roughness regression in some other case.
+
+---
+
+## 2026-05-07 — Grassland kit's loose height bands are decision-locked
+
+**Decision**: The grassland kit's `biome_kits.json` height_bands are
+`h_grass_dirt=0.4`, `h_dirt_rockdark=0.75`, `h_rockdark_snow=0.95`
+and `slope_threshold=0.5`. These are looser than alpine
+(0.2/0.55/0.85, slope 0.45) by design.
+
+**Alternative considered**: Tighten to alpine cadence (0.2/0.5/0.8,
+slope 0.35) so Tibet + Serengeti show rock/dirt variation instead of
+uniform tall_grass. Tested 2026-05-07 evening; rejected.
+
+**Why**: Real grassland imagery (Serengeti, Tibetan plateau, Great
+Plains, Pantanal) is biologically near-uniform tall_grass with rare
+rocky outcrops. Tightening the bands surfaces different slot textures
+(`dry_thatch`, `hardpan_soil`, `grass_rock`) but they all read
+yellow-tan because all 5 grassland slots share a warm color family —
+the textures don't *visually* differentiate even when triggered. Result
+of the tighter test: actually *more* uniform-looking, not less, because
+yellow-on-yellow blending averages out the macro tint variation.
+
+**Implication**: If a region needs visible rocky variation (e.g. East
+African kopjes, Tibetan buttes), the right fix is **either**:
+
+1. A region-specific kit override (one-off `terrain_blend_<region>.tres`).
+2. Regenerate `wgv3_gl_grass_rock` and `wgv3_gl_weathered_stone` with
+   darker/greyer prompts so they actually contrast against tall_grass.
+
+Don't widen kit bands — that breaks the faithful reading on the four
+other grassland regions which actually *should* look uniform.
+
+**Locked in**: `world3/jobs/biome_kits.json` grassland kit's
+`height_bands._comment` field carries the rationale inline so future
+sessions don't fight this decision.
