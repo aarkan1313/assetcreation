@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "kind": "runtime_image_cache",
+  "source_path": "res://heightmap/heightmap.png",
+  "source_sha256": "2929d9f61fd475e4ce808c816ac1d6740d397d764dd8cf836284ccd48717ecaa",
+  "width": 1024,
+  "height": 1024,
+  "format": "rf32",
+  "data_path": "res://runtime_cache/heightmap_rf32.bin"
+}

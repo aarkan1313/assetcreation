@@ -852,3 +852,86 @@ latency is the deciding constraint.
 offline cache unit. 1024 m is far-LOD/prebuilt-region scale, not a synchronous
 near-field chunk. If M5 needs more visible horizon, increase chunk radius before
 increasing base chunk size.
+
+---
+
+## 2026-05-08 - M6 uses runtime image caches for generated height/splat inputs
+
+**Decision**: Primary runtime height/splat inputs should be loaded from small
+JSON manifests plus raw binary blobs under `world3/runtime_cache/`, not direct
+PNG file loads.
+
+**Why**: Godot's direct image file loading is convenient in editor review, but
+it is the wrong contract for exported/runtime generated terrain inputs. A cache
+manifest makes format, dimensions, source path, and source hash explicit, and
+the runtime can read it through `FileAccess` in both editor and export-oriented
+paths.
+
+**Current format**:
+
+- Heightmap cache: `rf32` normalized float image.
+- Splat cache: `rgba8` weight texture.
+- Builder: `world3/pipeline/build_runtime_image_cache.py`.
+- Loader: `world3/scripts/RuntimeImageCache.gd`.
+
+**Implication**: New generated runtime rasters should get cache builders or
+cache outputs before being wired into `walk.tscn` or future exported scenes.
+Legacy review scripts may still load source PNGs directly until touched.
+
+---
+
+## 2026-05-08 - M6 collision is streamed per visual chunk
+
+**Decision**: The primary walk scene should use collision built with each
+loaded `ChunkLoader.gd` visual chunk, not a hidden full-terrain collision mesh.
+
+**Why**: The M5 hidden-terrain collision workaround proved interaction shape but
+was not the right scalable runtime model. Per-chunk collision keeps visual and
+physical residency aligned and exposes the real cost in metrics.
+
+**Evidence**: The M6 900 m crossing built 21 collision chunks, held 9 peak
+loaded chunks, recorded 60.433 ms total collision build time, 5.033 ms max
+collision-shape build time, 28.675 ms worst update, and 4.594 ms p95 frame
+time.
+
+**Implication**: Synchronous collision is acceptable for this prototype pass.
+If interactive play reveals visible hitching, the next runtime target is
+async/background chunk mesh and collision build, not larger chunks.
+
+---
+
+## 2026-05-08 - Transition strips are opt-in shader samples before automatic masks
+
+**Decision**: M6 adds runtime transition-strip sampling as an opt-in uniform set
+on `terrain_splat_unified.gdshader`, but does not yet make biome-boundary
+placement automatic.
+
+**Why**: We needed to prove M2 transition assets can be sampled in the streamed
+terrain shader before committing to a full boundary-mask generator. The review
+scene also caught a real band-mask bug, which was fixed by feathering the strip
+in/out at its local edges.
+
+**Implication**: M7 should generate per-chunk boundary masks from
+`world3/jobs/biome_transition_rules.json` and feed those masks into the shader.
+Manual `transition_center_u` / `transition_width_u` knobs are review/prototype
+knobs, not production placement logic.
+
+---
+
+## 2026-05-08 - Noisy grass/leaves are source QA, not transition failure
+
+**Decision**: Treat noisy grass/leaves and other green/organic close-range
+materials as source-material QA failures before production promotion.
+
+**Why**: User review and M6 metrics agree: the transition workflow reads
+promising, but some source organic textures carry too much high-frequency
+micro-contrast or speckle. Adding more transition/shader complexity would hide
+the actual weak link.
+
+**Evidence**: `world3/pipeline/audit_material_source_noise.py` flags 10 of 17
+green/organic candidates, including `grassland_grass`, `grass`,
+`temperate_forest_grass`, `tundra_moss`, and `tundra_lichen`.
+
+**Implication**: Regenerate, filter, or downweight flagged green/organic
+materials before calling them production candidates at walk-camera distance.
+Keep using them as workflow-validation inputs where appropriate.

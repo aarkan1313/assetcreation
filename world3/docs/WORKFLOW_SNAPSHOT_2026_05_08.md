@@ -1,7 +1,7 @@
 # world3 Workflow Snapshot - 2026-05-08
 
 This is the compact record of the current world3 workflow after M1, M2, M3,
-M4 prototype pass 2, and M5 prototype final form.
+M4 prototype pass 2, M5 prototype final form, and M6 runtime hardening.
 
 ## Framing
 
@@ -88,7 +88,23 @@ material-generation QA rather than transition logic.
      `world3/docs/M5_STREAMING_BUDGET.md`
    - Closure audit: `world3/docs/M1_M5_FINAL_AUDIT_2026_05_08.md`
 
-7. **Visual QA**
+8. **M6 runtime hardening**
+   - Runtime cache builder:
+     `world3/pipeline/build_runtime_image_cache.py`
+   - Runtime loader:
+     `world3/scripts/RuntimeImageCache.gd`
+   - Cache outputs:
+     `world3/runtime_cache/heightmap_rf32.{json,bin}` and
+     `world3/runtime_cache/alpine_splat_rgba8.{json,bin}`
+   - `walk.tscn` now uses export-safe height/splat caches and streamed
+     collision chunks.
+   - `terrain_splat_unified.gdshader` has an opt-in transition-strip sampler.
+   - Source-material noise audit:
+     `world3/docs/M6_SOURCE_MATERIAL_NOISE_AUDIT.md`
+   - Evidence:
+     `world3/docs/M6_RUNTIME_HARDENING.md`
+
+9. **Visual QA**
    - Region/gallery captures verify kit-level reads.
    - Transition comparison sheets verify hard cut vs transition strip.
    - `godot_transition_strip_review.png` verifies the transition index in a
@@ -99,6 +115,8 @@ material-generation QA rather than transition logic.
      unified splat material and runtime weight texture.
    - M5 walk captures verify the real `walk.tscn` visual stream and a scripted
      900 m chunk crossing.
+   - M6 captures verify the export-safe cache + streamed collision path and the
+     opt-in runtime transition-strip shader hook.
    - Godot review scenes are used for in-engine sanity, but some OpenTopo
      review harness files are still in preexisting worker dirt and should not
      be swept into unrelated commits.
@@ -121,15 +139,23 @@ material-generation QA rather than transition logic.
   an 18.816 ms worst synchronous update over 900 m of movement.
 - M5 long-form sampled review holds 9 loaded chunks, builds 18, removes 18,
   and records an 18.317 ms worst synchronous update over 1536 m of movement.
+- M6 walk hardening crossing holds 9 loaded chunks, builds 21 collision chunks,
+  records 60.433 ms total collision build time, 5.033 ms max collision build
+  time, 28.675 ms worst update, and 4.594 ms p95 frame time over 900 m.
+- M6 transition-strip review capture is nonblank and verifies opt-in runtime
+  sampling. It is a shader hook proof, not automatic biome-boundary placement.
+- M6 source-material noise audit flags 10 of 17 audited green/organic materials;
+  grass/leaves are now tracked as source QA before production promotion.
 - Architectural decisions are appended to docs before moving on.
 
 ## Open Work
 
-- Reduce noisy grass/leaves at source texture generation/QA.
-- M1-M5 are complete for workflow validation. Next phase should harden the
-  streaming material runtime: export-safe image import/cache, streamed
-  collision, runtime boundary-strip sampling, and source-material QA for noisy
-  grass/leaves.
+- Regenerate or filter flagged green/organic source materials before treating
+  them as production close-range candidates.
+- M1-M6 are complete for workflow validation. Next phase should automate
+  biome-boundary runtime integration: per-chunk boundary masks from transition
+  rules, automatic transition-strip placement, and async/background chunk build
+  if synchronous collision spikes become visible interactively.
 
 ## Recent Commits
 
@@ -147,3 +173,5 @@ material-generation QA rather than transition logic.
 - `4db433a` - `world3: wire walk scene to splat streaming`
 - `b74d109` - `world3: record m5 streaming budget`
 - `1cc9fda` - `world3: close m1 m5 final audit`
+- `0cc4349` - `world3: record final audit hash`
+- `a766f34` - `world3: harden streamed runtime`

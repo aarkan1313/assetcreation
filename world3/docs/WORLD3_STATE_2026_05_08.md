@@ -95,8 +95,8 @@ world3/opentopo/STATUS.md
 ### 2C. Shader stack - prototype unified path exists
 
 The production/runtime scenes are mid-migration. Iso/topdown and the region
-gallery still use the old whole-kit shader path, while M5 prototype-final has moved
-`walk.tscn` onto the prototype unified splat path:
+gallery still use the old whole-kit shader path, while M6 has hardened
+`walk.tscn` on the prototype unified splat path:
 
 - `world3/shaders/terrain_blend.gdshader` — height/slope-banded
   multi-slot blend. Bound by all `terrain_blend_<kit>_<mode>.tres`
@@ -115,15 +115,17 @@ gallery still use the old whole-kit shader path, while M5 prototype-final has mo
   material path. Review materials, chunk contract, and captures are documented
   in `world3/docs/M4_SPLAT_SHADER_PROTOTYPE.md` and
   `world3/docs/M4_CHUNK_MATERIAL_CONTRACT.md`.
-- `world3/scenes/walk.tscn` - M5 prototype-final runtime wiring. Visible
-  terrain now comes from `ChunkLoader.gd` with `terrain_splat_alpine.tres` and
-  `splat_weights_path`; the legacy `Terrain.gd` mesh is hidden and retained
-  for collision only. Evidence: `world3/docs/M5_WALK_SPLAT_STREAMING.md`.
+- `world3/scenes/walk.tscn` - M6-hardened runtime wiring. Visible terrain now
+  comes from `ChunkLoader.gd` with `terrain_splat_alpine.tres`, export-safe
+  runtime height/splat caches, and streamed chunk collision. Evidence:
+  `world3/docs/M5_WALK_SPLAT_STREAMING.md` and
+  `world3/docs/M6_RUNTIME_HARDENING.md`.
 
-The **shared runtime contract is started, not complete**. M5 proves the first
-walk-scene stream, but material indirection, export-safe generated image
-loading, streamed collision, and transition-strip boundary sampling are still
-future hardening work.
+The **shared runtime contract is started, not complete**. M6 proves the primary
+walk-scene stream can use export-safe generated image caches, streamed
+collision, and an opt-in transition-strip shader hook. Material indirection,
+automatic boundary-mask generation, async/background chunk build, and broader
+game-mode migration are still future hardening work.
 
 ---
 
@@ -132,23 +134,23 @@ future hardening work.
 | Gap | Status | Severity | Owner |
 |-----|--------|----------|-------|
 | **Aligned material taxonomy** (kit slots vs material classes) | Catalog exists with 25 procedural + 6 OpenTopo entries; material generation, import, and representative renders verified | HIGH — blocks M2/M4 until maintained | Consolidated in this chat |
-| **Transition materials** between kits/classes | M2 generated four reviewed/tuned boundary strips; not sampled in runtime shader yet | HIGH — blocks tile-to-tile blending | Consolidated in this chat; use OpenTopo QA infrastructure |
-| **Per-pixel splat shader** | M4 pass 2 prototype exists; M5 prototype-final wires it into `walk.tscn` through 256 m streamed chunks | HIGH - working prototype, still not final material indirection | Orchestrator |
+| **Transition materials** between kits/classes | M2 generated four reviewed/tuned boundary strips; M6 adds an opt-in runtime sampler hook, but placement is still manual/prototype | HIGH — blocks tile-to-tile blending | Consolidated in this chat; use OpenTopo QA infrastructure |
+| **Per-pixel splat shader** | M4 pass 2 prototype exists; M6 wires it through `walk.tscn` with export-safe splat cache and streamed chunks | HIGH - working prototype, still not final material indirection | Orchestrator |
 | **Within-chunk material variation** | Prototype splat map generated from height/slope and consumed by both review chunks and the walk scene | HIGH | Orchestrator |
 | **Cross-source style bridge** (real ↔ procedural ↔ fantasy adjacent) | Worker flagged it; no fix yet | MEDIUM | Consolidated in this chat |
 | **Chunk size + format decision** | M3 sweep locks 256 m base chunks at 8 m mesh spacing | MEDIUM | Orchestrator |
-| **Streaming load/unload** | M5 prototype-final stream in `walk.tscn`; scripted 900 m and 1536 m crossings built/removed chunks correctly | MEDIUM | Orchestrator |
+| **Streaming load/unload + collision** | M6 stream in `walk.tscn`; scripted crossings build/remove visual chunks and streamed collision, with measured collision/update metrics | MEDIUM | Orchestrator |
 | **Corner textures** (3-way junctions) | Not built; user flagged from past experience | HIGH long-term | Consolidated in this chat once pairwise transitions are validated |
 | **Fantasy biome / fantasy material source** | Acknowledged future; no code yet | LOW (deferred) | TBD |
 | **Provenance metadata** on procedural materials | Draft catalog now carries procedural + real-source provenance | LOW | Consolidated in this chat; keep expanding during M2/M4 |
 
 ---
 
-## 4. Near-term focused plan (M1–M5)
+## 4. Near-term focused plan (M1–M6)
 
-**This is the orchestrator's plan.** It's the next 3–5 sharp things,
-not a multi-month roadmap. Anything beyond M5 is parked until M1–M3
-clarify the real next layer.
+**This is the orchestrator's plan.** It's the next sharp set of things,
+not a multi-month roadmap. M1-M6 are now complete for workflow validation;
+M7 is the next boundary-runtime integration layer.
 
 ### M1 — Material catalog (orchestrator-led, blocking)
 
@@ -275,9 +277,31 @@ Evidence: `world3/docs/M5_WALK_SPLAT_STREAMING.md` and
 `world3/docs/M5_STREAMING_BUDGET.md`. Closure audit:
 `world3/docs/M1_M5_FINAL_AUDIT_2026_05_08.md`.
 
-**Remaining production work:** export-safe generated image loading, streamed
-collision, runtime boundary-strip sampling, and source-material QA for noisy
-grass/leaves.
+**Remaining production work after M5:** export-safe generated image loading,
+streamed collision, runtime boundary-strip sampling, and source-material QA for
+noisy grass/leaves. These became the M6 scope below.
+
+### M6 — Runtime hardening (orchestrator, after M5)
+
+**Status 2026-05-08:** COMPLETE for the primary walk/runtime path. M6 added
+runtime image caches for generated height/splat inputs, moved the walk scene to
+streamed chunk collision, added collision metrics to the walk runner, added an
+opt-in transition-strip sampler to the unified splat shader, and audited
+green/organic source-material noise.
+
+Evidence:
+
+- `world3/docs/M6_RUNTIME_HARDENING.md`
+- `world3/docs/M6_SOURCE_MATERIAL_NOISE_AUDIT.md`
+- `world3/docs/captures/m6/walk_stream_collision_cache.png`
+- `world3/docs/captures/m6/walk_stream_collision_cache_metrics.json`
+- `world3/docs/captures/m6/transition_runtime_review.png`
+
+**Remaining production work after M6:** automatic biome-boundary mask
+generation and transition-strip placement, async/background chunk build if
+synchronous collision spikes show up interactively, material indirection beyond
+the fixed five-slot prototype, and regeneration/filtering of flagged organic
+materials before close-range production promotion.
 
 ---
 
@@ -429,3 +453,10 @@ These start when chunk + biome + tile + transition is ~80% solved
   `M5WalkStreamRunner.gd`, rendered the 1536 m sampled long-walk contact sheet,
   and closed M1-M5 at prototype final form in
   `M1_M5_FINAL_AUDIT_2026_05_08.md`.
+- **2026-05-08 (M6 hardening)**: Added export-safe runtime image caches and
+  loader, moved the primary walk path to streamed collision chunks, added
+  collision/frame metrics to the walk runner, added an opt-in runtime
+  transition-strip sampler to `terrain_splat_unified.gdshader`, rendered M6
+  walk/transition captures, and added source-material noise QA for green/
+  organic materials. Evidence: `M6_RUNTIME_HARDENING.md` and
+  `M6_SOURCE_MATERIAL_NOISE_AUDIT.md`.

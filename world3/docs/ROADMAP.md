@@ -23,16 +23,17 @@ Two changes since the original v2 reframe:
    [`WORLD3_STATE_2026_05_08.md`](WORLD3_STATE_2026_05_08.md).
    Replaces the "two parallel pipelines" framing.
 
-2. **Phase F absorbed into M1–M5.** Once we recognized that
+2. **Phase F absorbed into M1–M6.** Once we recognized that
    material taxonomy + transitions + splat shader + chunk size are
    interlocked, doing them as a sequential "Phase F → G → H → I"
-   was wrong. M1–M5 in [`PLAN.md`](PLAN.md) is the current
+   was wrong. M1–M6 in [`PLAN.md`](PLAN.md) is the current
    iteration:
    - M1 — material catalog (orchestrator-led, blocks rest)
    - M2 — transition prototype (worker handoff)
    - M3 — chunk-size sweep (orchestrator, was Phase F.4-sweep)
    - M4 — splat-shader prototype (orchestrator, after M1+M2)
    - M5 — wire streaming + splat into `walk.tscn` (orchestrator)
+   - M6 — harden streamed runtime: cache, collision, transition hook, source QA
 
 The phase-by-phase content below stays accurate as historical
 record + design notes (especially Phase F's research findings + the
@@ -56,16 +57,24 @@ direction; treat the rest as where we've been.
   material compatibility; `ChunkLoader.gd` can now bind the runtime splat
   weight texture through the chunk material/weight contract.
 - M5 is complete at prototype final form: visible terrain streams through
-  256 m `ChunkLoader.gd` chunks using `terrain_splat_alpine.tres`, while the
-  legacy single terrain remains hidden for collision. Static, short-crossing,
-  and long-form sampled walk evidence live in
+  256 m `ChunkLoader.gd` chunks using `terrain_splat_alpine.tres`. Static,
+  short-crossing, and long-form sampled walk evidence live in
   `world3/docs/M5_WALK_SPLAT_STREAMING.md`; budget evidence lives in
   `world3/docs/M5_STREAMING_BUDGET.md`; the M1-M5 closure audit is
   `world3/docs/M1_M5_FINAL_AUDIT_2026_05_08.md`.
+- M6 hardening is complete for the primary walk/runtime path: generated
+  height/splat inputs have export-safe runtime caches, `walk.tscn` uses
+  streamed chunk collision, the unified splat shader has an opt-in runtime
+  transition-strip sampler, and green/organic source material noise has a
+  machine-readable audit. Evidence:
+  `world3/docs/M6_RUNTIME_HARDENING.md` and
+  `world3/docs/M6_SOURCE_MATERIAL_NOISE_AUDIT.md`.
 
-Recommended next phase: **M6 harden the streaming material runtime**:
-export-safe generated image import/cache, streamed collision, runtime
-boundary-strip sampling, and source-material QA for noisy grass/leaves.
+Recommended next phase: **M7 biome-boundary runtime integration**:
+generate per-chunk boundary masks from biome/material rules, place M2
+transition strips automatically instead of by manual shader knobs, and start
+async/background chunk build work if the M6 synchronous collision spike becomes
+visible during interactive review.
 
 Workflow snapshot: [`WORKFLOW_SNAPSHOT_2026_05_08.md`](WORKFLOW_SNAPSHOT_2026_05_08.md).
 

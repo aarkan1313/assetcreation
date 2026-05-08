@@ -12,24 +12,32 @@ This is not production-final terrain. The final M1-M5 audit is
 `world3/docs/M1_M5_FINAL_AUDIT_2026_05_08.md`; the streaming budget is
 `world3/docs/M5_STREAMING_BUDGET.md`.
 
+M6 update: the current `walk.tscn` now uses export-safe runtime height/splat
+caches and streamed chunk collision. The M5 notes below remain the historical
+prototype closure; current runtime hardening evidence lives in
+`world3/docs/M6_RUNTIME_HARDENING.md`.
+
 ## Scene Contract
 
 `world3/scenes/walk.tscn` now uses two terrain paths:
 
-- Hidden legacy `Terrain.gd`: collision source only, still attached to
-  `TerrainBody`.
+- Hidden legacy `Terrain.gd`: historical fallback. In M6 it is deferred and no
+  longer builds the full hidden terrain/collision on scene start.
 - Visible `ChunkLoader.gd`: 256 m streamed chunks using the unified splat
-  material.
+  material and, in M6, streamed chunk collision.
 
 Current `ChunkLoader` parameters:
 
 ```text
 terrain_material = res://textures/wgv3/terrain_splat_alpine.tres
 splat_weights_path = res://textures/m4_splat/alpine_height_slope_weights_rgba.png
+splat_weights_cache_path = res://runtime_cache/alpine_splat_rgba8.json
+heightmap_cache_path = res://runtime_cache/heightmap_rf32.json
 chunk_size_m = 256
 chunk_resolution_m = 8
 view_radius_chunks = 1
 target_path = ../Player
+build_collision_chunks = true
 ```
 
 The player spawn is lowered to a terrain-visible altitude near the sampled
@@ -119,21 +127,21 @@ The capture is nonblank and shows no obvious chunk-edge split. The worst update
 time is in the same envelope as the M3 256 m sweep and is acceptable for this
 prototype because the current loader is still synchronous.
 
-Known expected warnings:
+Historical M5 expected warnings:
 
 ```text
 Loaded resource as image file, this will not work on export
 ```
 
-These are from runtime `Image.load_from_file()` for the heightmap and fresh
-splat PNG. They are acceptable for dev smoke tests. Export-safe loading remains
-an M5/M6 hardening item.
+These were from runtime `Image.load_from_file()` for the heightmap and fresh
+splat PNG. M6 replaced the primary walk/runtime path with `RuntimeImageCache.gd`
+and generated cache manifests; see `M6_RUNTIME_HARDENING.md`.
 
 ## Remaining Production Work
 
-- Keep `M5_STREAMING_BUDGET.md` updated as chunk radius, collision, or async
-  loading changes.
-- Decide whether the next hardening step is export-safe generated image import,
-  chunk collision, or boundary-strip sampling.
-- Keep M2 transition strips out of the runtime shader until boundary-space UVs
-  and material-pair selection are explicit.
+- Keep `M5_STREAMING_BUDGET.md` and `M6_RUNTIME_HARDENING.md` updated as chunk
+  radius, collision, or async loading changes.
+- Move from manual transition-strip shader knobs to generated per-chunk
+  boundary masks.
+- Regenerate/filter flagged organic source materials before production
+  close-range promotion.

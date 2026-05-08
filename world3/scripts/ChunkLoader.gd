@@ -10,9 +10,11 @@ class_name ChunkLoader
 # seen in the Phase F.3 static stitch test.
 
 @export var heightmap_path: String = "res://heightmap/heightmap.png"
+@export var heightmap_cache_path: String = ""
 @export var meta_path: String = "res://heightmap/meta.json"
 @export var terrain_material: Material
 @export var splat_weights_path: String = ""
+@export var splat_weights_cache_path: String = ""
 @export var chunk_size_m: float = 512.0
 @export var view_radius_chunks: int = 1
 @export var chunk_resolution_m: float = 8.0
@@ -20,11 +22,17 @@ class_name ChunkLoader
 @export var height_scale: float = 1.0
 @export var target_path: NodePath
 @export var auto_update: bool = true
+@export var build_collision_chunks: bool = false
+@export_flags_3d_physics var collision_layer: int = 1
+@export_flags_3d_physics var collision_mask: int = 1
 
 var last_update_usec: int = 0
 var peak_loaded_chunks: int = 0
 var chunks_built: int = 0
 var chunks_removed: int = 0
+var collision_chunks_built: int = 0
+var collision_build_usec_total: int = 0
+var collision_build_usec_max: int = 0
 
 var _chunks: Dictionary = {}
 var _height_img: Image
@@ -66,6 +74,9 @@ func reset_metrics() -> void:
 	peak_loaded_chunks = _chunks.size()
 	chunks_built = 0
 	chunks_removed = 0
+	collision_chunks_built = 0
+	collision_build_usec_total = 0
+	collision_build_usec_max = 0
 
 
 func clear_chunks() -> void:
@@ -132,11 +143,7 @@ func _load_source() -> void:
 		push_error("ChunkLoader: failed to load meta " + meta_path)
 		return
 
-	_height_img = Image.load_from_file(heightmap_path)
-	if _height_img == null:
-		var tex: Texture2D = load(heightmap_path) as Texture2D
-		if tex != null:
-			_height_img = tex.get_image()
+	_height_img = RuntimeImageCache.load_image(heightmap_cache_path, heightmap_path)
 	if _height_img == null:
 		push_error("ChunkLoader: failed to load heightmap " + heightmap_path)
 		return
@@ -154,18 +161,15 @@ func _load_source() -> void:
 		sm.set_shader_parameter("elev_min_m", _elev_min_m)
 		sm.set_shader_parameter("elev_range_m", _elev_range_m)
 		if splat_weights_path != "":
-			var splat_tex: Texture2D = _load_runtime_texture(splat_weights_path)
+			var splat_tex: Texture2D = _load_runtime_texture(splat_weights_cache_path, splat_weights_path)
 			if splat_tex != null:
 				sm.set_shader_parameter("splat_weights", splat_tex)
 
 	_source_loaded = true
 
 
-func _load_runtime_texture(path: String) -> Texture2D:
-	var img: Image = Image.load_from_file(path)
-	if img == null:
-		return load(path) as Texture2D
-	return ImageTexture.create_from_image(img)
+func _load_runtime_texture(cache_path: String, path: String) -> Texture2D:
+	return RuntimeImageCache.load_texture(cache_path, path)
 
 
 func _load_meta() -> Dictionary:
@@ -190,8 +194,27 @@ func _build_chunk(cx: int, cz: int) -> MeshInstance3D:
 	)
 	mesh_instance.mesh = _build_chunk_mesh(cx, cz)
 	mesh_instance.material_override = terrain_material
+	if build_collision_chunks:
+		_add_collision(mesh_instance)
 	add_child(mesh_instance)
 	return mesh_instance
+
+
+func _add_collision(mesh_instance: MeshInstance3D) -> void:
+	var started_usec: int = Time.get_ticks_usec()
+	var body: StaticBody3D = StaticBody3D.new()
+	body.name = "Collision"
+	body.collision_layer = collision_layer
+	body.collision_mask = collision_mask
+	var shape: CollisionShape3D = CollisionShape3D.new()
+	shape.name = "Shape"
+	shape.shape = mesh_instance.mesh.create_trimesh_shape()
+	body.add_child(shape)
+	mesh_instance.add_child(body)
+	var elapsed: int = Time.get_ticks_usec() - started_usec
+	collision_chunks_built += 1
+	collision_build_usec_total += elapsed
+	collision_build_usec_max = maxi(collision_build_usec_max, elapsed)
 
 
 func _build_chunk_mesh(cx: int, cz: int) -> ArrayMesh:

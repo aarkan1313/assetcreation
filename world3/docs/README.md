@@ -13,6 +13,8 @@ find something.
 | "What are we building toward, in phases?"                    | [ROADMAP.md](ROADMAP.md) (v2 — reframed 2026-05-07; updated 2026-05-08 with M1–M5 sequence)   |
 | "What was the original roadmap before reframing?"            | [ROADMAP_v1_archived.md](ROADMAP_v1_archived.md)      |
 | "What's the current iteration's scope?"                      | [PLAN.md](PLAN.md)                                    |
+| "What did M6 harden in the streamed runtime?"                | [M6_RUNTIME_HARDENING.md](M6_RUNTIME_HARDENING.md)    |
+| "Which green/organic source materials are too noisy?"        | [M6_SOURCE_MATERIAL_NOISE_AUDIT.md](M6_SOURCE_MATERIAL_NOISE_AUDIT.md) |
 | "What did the first M4 splat shader prototype prove?"        | [M4_SPLAT_SHADER_PROTOTYPE.md](M4_SPLAT_SHADER_PROTOTYPE.md) |
 | "What does a streamed chunk provide to the splat shader?"     | [M4_CHUNK_MATERIAL_CONTRACT.md](M4_CHUNK_MATERIAL_CONTRACT.md) |
 | "Why did we choose X over Y?"                                | [DECISIONS.md](DECISIONS.md)                          |
@@ -44,6 +46,7 @@ find something.
 | "What do the Phase C zoom-level captures look like?" | [captures/phase_c/](captures/phase_c/) (40m ARPG / 300m strategy / 50m game-tile / 10km minimap on Tetons) |
 | "What do the Phase E per-mode tuning captures look like?" | [captures/phase_e/](captures/phase_e/) (alpine walk/iso/topdown) |
 | "What do the Phase E region gallery captures look like?" | [captures/phase_e_gallery/](captures/phase_e_gallery/) (7 regions x iso + topdown across all 5 kits) |
+| "What do the M6 runtime hardening captures look like?" | [captures/m6/](captures/m6/) (walk cache/collision + runtime transition-strip review) |
 | "What do the historical iteration screenshots look like?"    | [captures/](captures/) iter*/, phase2_*/ — kept locally only, gitignored |
 
 ## Doc roles, in one sentence each

@@ -5,6 +5,7 @@ class_name Terrain
 # Reads world dimensions from meta.json so the scale matches reality.
 
 @export var heightmap_path: String = "res://heightmap/heightmap.png"
+@export var heightmap_cache_path: String = ""
 @export var meta_path: String = "res://heightmap/meta.json"
 @export var subdivisions: int = 256  # mesh resolution; 256 = 65k verts
 @export var height_scale: float = 1.0  # multiplier on real elevation
@@ -31,14 +32,7 @@ func rebuild() -> void:
 	if meta.is_empty():
 		push_error("Terrain: failed to load meta.json")
 		return
-	# Prefer the raw file for review bundles so regenerated heightmaps are used
-	# immediately and 16-bit PNG precision survives Godot's import pipeline.
-	var img: Image
-	img = Image.load_from_file(heightmap_path)
-	if img == null:
-		var tex: Texture2D = load(heightmap_path) as Texture2D
-		if tex != null:
-			img = tex.get_image()
+	var img: Image = RuntimeImageCache.load_image(heightmap_cache_path, heightmap_path)
 	if img == null:
 		push_error("Terrain: failed to load heightmap " + heightmap_path)
 		return

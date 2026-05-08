@@ -59,6 +59,15 @@ uniform sampler2D splat_weights;
 uniform float splat_uv_scale = 1.0;
 uniform float splat_weight_power : hint_range(0.25, 8.0) = 1.0;
 
+uniform bool use_transition_strip = false;
+uniform sampler2D transition_albedo : source_color;
+uniform sampler2D transition_rough;
+uniform sampler2D transition_ao : hint_default_white;
+uniform float transition_center_u : hint_range(0.0, 1.0) = 0.5;
+uniform float transition_width_u : hint_range(0.001, 1.0) = 0.12;
+uniform float transition_repeat_v = 2.0;
+uniform float transition_strength : hint_range(0.0, 1.0) = 1.0;
+
 uniform float world_uv_scale = 0.1;
 uniform float hex_strength : hint_range(0.0, 1.0) = 1.0;
 uniform float blend_sharpness : hint_range(1.0, 32.0) = 8.0;
@@ -493,6 +502,21 @@ void fragment() {
     }
 
     final_rough = mix(0.5, final_rough, roughness_strength);
+
+    if (use_transition_strip) {
+        float transition_local = (UV.x - transition_center_u) / max(transition_width_u, 0.001) + 0.5;
+        float transition_inside = step(0.0, transition_local) * step(transition_local, 1.0);
+        float transition_band = transition_inside * smoothstep(0.0, 0.12, transition_local);
+        transition_band *= 1.0 - smoothstep(0.88, 1.0, transition_local);
+        transition_band *= transition_strength;
+        vec2 transition_uv = vec2(clamp(transition_local, 0.0, 1.0), fract(UV.y * transition_repeat_v));
+        vec3 transition_a = texture(transition_albedo, transition_uv).rgb;
+        float transition_r = texture(transition_rough, transition_uv).r;
+        float transition_ao_value = texture(transition_ao, transition_uv).r;
+        final_albedo = mix(final_albedo, transition_a, transition_band);
+        final_rough = mix(final_rough, transition_r, transition_band);
+        ao = mix(ao, transition_ao_value, transition_band);
+    }
 
     ALBEDO = final_albedo;
     NORMAL = normalize((VIEW_MATRIX * vec4(final_normal, 0.0)).xyz);

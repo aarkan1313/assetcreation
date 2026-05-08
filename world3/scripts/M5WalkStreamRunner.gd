@@ -40,6 +40,8 @@ func _run() -> void:
 	var sample_dir: String = _arg_value("--sample-dir", "")
 	var sample_every_frames: int = int(_arg_value("--sample-every-frames", "0"))
 	var clearance_m: float = float(_arg_value("--clearance-m", "32.0"))
+	var build_collision_arg: String = _arg_value("--build-collision", "")
+	var rebuild_after_reset: bool = _arg_value("--rebuild-after-reset", "").to_lower() in ["1", "true", "yes"]
 	var width: int = int(_arg_value("--width", "1920"))
 	var height: int = int(_arg_value("--height", "1080"))
 
@@ -66,8 +68,15 @@ func _run() -> void:
 		quit(3)
 		return
 
+	if build_collision_arg != "":
+		loader.set("build_collision_chunks", build_collision_arg.to_lower() in ["1", "true", "yes"])
+
 	if loader.has_method("reset_metrics"):
 		loader.call("reset_metrics")
+	if rebuild_after_reset and loader.has_method("clear_chunks") and loader.has_method("update_for_position"):
+		loader.call("clear_chunks")
+		loader.call("reset_metrics")
+		loader.call("update_for_position", player.global_position)
 
 	var start_z: float = player.global_position.z
 	var end_z: float = start_z + distance_z_m
@@ -147,6 +156,11 @@ func _run() -> void:
 		"peak_loaded_chunks": int(loader.get("peak_loaded_chunks")),
 		"chunks_built": int(loader.get("chunks_built")),
 		"chunks_removed": int(loader.get("chunks_removed")),
+		"build_collision_chunks": bool(loader.get("build_collision_chunks")),
+		"rebuild_after_reset": rebuild_after_reset,
+		"collision_chunks_built": int(loader.get("collision_chunks_built")),
+		"collision_build_ms_total": float(loader.get("collision_build_usec_total")) / 1000.0,
+		"collision_build_ms_max": float(loader.get("collision_build_usec_max")) / 1000.0,
 		"worst_update_ms": float(worst_update_usec) / 1000.0,
 		"frame_time_mean_ms": _mean(frame_times_ms),
 		"frame_time_p95_ms": _percentile(frame_times_ms, 0.95),

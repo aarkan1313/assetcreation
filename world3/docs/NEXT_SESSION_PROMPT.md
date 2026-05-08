@@ -24,6 +24,7 @@ Read first:
 5. `world3/docs/PHASE_F_CHUNK_SIZE_SWEEP.md`
 6. `world3/docs/M4_SPLAT_SHADER_PROTOTYPE.md`
 7. `world3/docs/M4_CHUNK_MATERIAL_CONTRACT.md`
+8. `world3/docs/M6_RUNTIME_HARDENING.md`
 
 ## Current status
 
@@ -43,6 +44,8 @@ Recent scoped commits:
 - `4db433a` - `world3: wire walk scene to splat streaming`
 - `b74d109` - `world3: record m5 streaming budget`
 - `1cc9fda` - `world3: close m1 m5 final audit`
+- `0cc4349` - `world3: record final audit hash`
+- `a766f34` - `world3: harden streamed runtime`
 
 M1 is done:
 
@@ -108,7 +111,8 @@ M5 is complete at prototype final form:
   - `chunk_size_m = 256`
   - `chunk_resolution_m = 8`
   - `view_radius_chunks = 1`
-- The legacy single `Terrain.gd` is hidden and retained for collision only.
+- The legacy single `Terrain.gd` is hidden; M6 defers its build and uses
+  streamed chunk collision instead.
 - The player spawn was lowered so smoke captures and interactive use start
   near the terrain instead of high in the sky.
 - `ChunkLoader.gd` writes UVs with `_wrapped_fraction(...)`, matching height
@@ -134,14 +138,49 @@ M5 is complete at prototype final form:
 - Final audit:
   `world3/docs/M1_M5_FINAL_AUDIT_2026_05_08.md`
 
+M6 is complete for the primary walk/runtime hardening pass:
+
+- Runtime image cache builder:
+  `world3/pipeline/build_runtime_image_cache.py`
+- Runtime loader:
+  `world3/scripts/RuntimeImageCache.gd`
+- Generated runtime caches:
+  - `world3/runtime_cache/heightmap_rf32.json`
+  - `world3/runtime_cache/heightmap_rf32.bin`
+  - `world3/runtime_cache/alpine_splat_rgba8.json`
+  - `world3/runtime_cache/alpine_splat_rgba8.bin`
+- `walk.tscn` now uses export-safe height/splat cache paths and streamed
+  collision chunks.
+- `M5WalkStreamRunner.gd` records collision metrics and can rebuild after reset
+  for clean measurement.
+- `terrain_splat_unified.gdshader` has an opt-in transition-strip sampler.
+- Runtime transition review scene:
+  `world3/scenes/capture_phase_m6/transition_runtime_review.tscn`
+- M6 captures:
+  - `world3/docs/captures/m6/walk_stream_collision_cache.png`
+  - `world3/docs/captures/m6/walk_stream_collision_cache_metrics.json`
+  - `world3/docs/captures/m6/transition_runtime_review.png`
+- M6 walk result: 900 m, 9 peak loaded chunks, 21 collision chunks built,
+  60.433 ms total collision build time, 5.033 ms max collision build time,
+  28.675 ms worst update, 4.594 ms p95 frame time.
+- Source-material audit:
+  `world3/docs/M6_SOURCE_MATERIAL_NOISE_AUDIT.md`
+- Source QA result: 10 of 17 green/organic materials flagged. Treat grass/
+  leaves noise as source-material production-promotion work, not transition
+  workflow failure.
+
 ## Next best move
 
-Start M6 hardening:
+Start M7 boundary-runtime integration:
 
-1. Export-safe generated image import/cache for height and splat maps.
-2. Streamed collision chunks with separate budget measurements.
-3. Runtime boundary-strip sampling for M2 transition assets.
-4. Source-material QA pass for noisy grass/leaves before broadening visuals.
+1. Generate per-chunk biome/material boundary masks from
+   `world3/jobs/biome_transition_rules.json`.
+2. Feed those masks into `terrain_splat_unified.gdshader` instead of manual
+   `transition_center_u` / `transition_width_u` review knobs.
+3. Keep streamed collision metrics active. If interactive play shows hitching,
+   start async/background mesh+collision build.
+4. In parallel or immediately after, regenerate/filter the flagged organic
+   source materials before production promotion.
 
 ## Operating reminders
 
@@ -151,5 +190,6 @@ Start M6 hardening:
   `Godot --path world3 --quiet --headless --editor --import`
 - Use surgical `git add <path>`. The worktree has preexisting OpenTopo worker
   dirt; do not stage unrelated `OPENTOPO_*`, toporeview, or pipeline files.
-- `world3/docs/DECISIONS.md` currently has unrelated unstaged OpenTopo edits in
-  the worktree. Stage only explicit hunks if adding decisions.
+- Be careful with old review utilities that still use direct image loading.
+  The primary `walk.tscn` runtime path is cache-safe; migrate legacy capture
+  scripts as touched.

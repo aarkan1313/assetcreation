@@ -103,6 +103,24 @@ Expected output:
 OK heightmap.png (1024x1024 u16) elev 2498..4059m world 4000m material=rock_dark
 ```
 
+For runtime/export-oriented walk scenes, also build the generated-image caches:
+
+```powershell
+python D:/assets/world3/pipeline/build_runtime_image_cache.py
+```
+
+This writes:
+
+```text
+world3/runtime_cache/heightmap_rf32.{json,bin}
+world3/runtime_cache/alpine_splat_rgba8.{json,bin}
+```
+
+`RuntimeImageCache.gd` reads these through `FileAccess` and creates `Image` /
+`ImageTexture` objects at runtime. The primary `walk.tscn` path uses these
+caches for height and splat inputs; legacy review utilities may still load PNGs
+directly until touched.
+
 ## Stage 3 — Generate texture sets (parallel pipeline)
 
 Prereq: ComfyUI running on `127.0.0.1:8188`.
@@ -227,6 +245,17 @@ serves all 6 textures; only the textures and tuning differ. When we
 add iter 4 (macro+detail) and iter 5 (slope+height blend), they go in
 this same shader file — incremental.
 
+Current streamed walk scenes use the newer unified prototype shader:
+
+- `world3/shaders/terrain_splat_unified.gdshader`
+- `world3/textures/wgv3/terrain_splat_alpine.tres`
+- `world3/textures/m4_splat/alpine_height_slope_weights_rgba.png`
+
+That shader supports five semantic terrain slots, RGBA splat weights with a
+fifth-slot remainder, OpenTopo macro/detail compatibility, and an opt-in M6
+transition-strip sampler. Transition sampling is disabled by default and is
+only enabled in explicit review scenes until M7 adds automatic boundary masks.
+
 ## Stage 6 — The Godot project
 
 Layout:
@@ -234,15 +263,20 @@ Layout:
 world3/
   project.godot                  # Godot 4.5 project root
   pipeline/build_world.py        # Stage 2
+  pipeline/build_runtime_image_cache.py
   heightmap/                     # Stage 2 output
     heightmap.png
     meta.json
+  runtime_cache/                 # M6 export-safe generated image caches
   textures/wgv3/                 # Stage 4 staged textures + materials
     dirt/  grass/  ...
   shaders/
     terrain_hex.gdshader         # Stage 5 shader
+    terrain_splat_unified.gdshader
   scripts/
     Terrain.gd                   # builds mesh + collision at runtime
+    ChunkLoader.gd               # streams visible/collision terrain chunks
+    RuntimeImageCache.gd         # reads generated image caches
     IsoCam.gd                    # auto-frames the AABB in ortho
     TopDownCam.gd                # auto-frames from straight above
     Walker.gd                    # CharacterBody3D, F=fly toggle
@@ -260,11 +294,9 @@ world3/
     capture_texture_grid_hex.tscn               # capture wrappers
 ```
 
-`Terrain.gd` is the heart of it:
+`Terrain.gd` is the original single-mesh path:
 1. Reads `meta.json` for world size + elevation range
-2. Loads `heightmap.png` (prefers Godot's resource system; falls back
-   to `Image.load_from_file` so 16-bit precision survives Godot's
-   8-bit import normalize)
+2. Loads the heightmap through `RuntimeImageCache.gd` when a cache path is set
 3. Builds a subdivided plane `ArrayMesh` at runtime (default 256×256,
    ~131k tris) with vertex Y from heightmap, normals from finite
    differences, world-space UVs
@@ -274,6 +306,16 @@ world3/
 
 The 3 view scenes share `Terrain.gd` + a hex-shader material; differ
 only in camera setup, sun angle, fog, ambient.
+
+`walk.tscn` is now the streamed prototype path:
+
+1. `ChunkLoader.gd` tiles the source heightmap into 256 m chunks at 8 m mesh
+   spacing.
+2. Visible terrain uses `terrain_splat_alpine.tres` and runtime splat weights.
+3. Height and splat inputs come from `world3/runtime_cache/`.
+4. Collision is built per loaded chunk when `build_collision_chunks = true`.
+5. `M5WalkStreamRunner.gd` measures chunk, collision, update, and frame timing
+   budgets for repeatable smoke tests.
 
 ## Stage 7 — Run, view, capture
 

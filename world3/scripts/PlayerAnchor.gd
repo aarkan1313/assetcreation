@@ -18,6 +18,7 @@ class_name PlayerAnchor
 @export var snap_to_terrain: bool = true
 @export var snap_offset_m: float = 0.0  # add to Y after snap (e.g. eye height)
 @export var heightmap_path: String = "res://heightmap/heightmap.png"
+@export var heightmap_cache_path: String = ""
 @export var meta_path: String = "res://heightmap/meta.json"
 
 
@@ -28,11 +29,7 @@ func _ready() -> void:
 	if meta.is_empty():
 		push_warning("PlayerAnchor: failed to read meta.json, leaving Y unchanged")
 		return
-	var img := Image.load_from_file(heightmap_path)
-	if img == null:
-		var tex: Texture2D = load(heightmap_path) as Texture2D
-		if tex != null:
-			img = tex.get_image()
+	var img: Image = RuntimeImageCache.load_image(heightmap_cache_path, heightmap_path)
 	if img == null:
 		push_warning("PlayerAnchor: failed to read heightmap, leaving Y unchanged")
 		return

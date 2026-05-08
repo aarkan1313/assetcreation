@@ -1,4 +1,4 @@
-# world3 — Current Iteration Plan: M1–M5
+# world3 — Current Iteration Plan: M1–M6
 
 **Operating model change (2026-05-08)**: switched from two-chat
 parallel pipelines to **single-stream orchestrator + worker**. The
@@ -7,7 +7,7 @@ is a worker that takes scoped task handoffs. State + boundary +
 handoff protocol live in
 [`WORLD3_STATE_2026_05_08.md`](WORLD3_STATE_2026_05_08.md).
 
-This iteration replaces "Phase F end-to-end" with the M1–M5 plan
+This iteration replaces "Phase F end-to-end" with the M1–M6 plan
 because:
 
 1. The world is bigger than just chunks. Material taxonomy,
@@ -33,7 +33,7 @@ because:
 | F.3 — 2x2 stitch test | DONE |
 | F.2/F.4/F.5/F.6 | absorbed into M3/M5 below |
 
-## M1–M5 sequence (current iteration)
+## M1–M6 sequence (current iteration)
 
 | ID | What | Owner | Blocks | Blocked by |
 |----|------|-------|--------|------------|
@@ -41,7 +41,8 @@ because:
 | **M2** | Transition material prototype: 4–6 transitions across kit/class/source pairs, integrated into existing review scene. | Consolidated in this chat for now; use OpenTopo QA infra. | M4 | M1 |
 | **M3** | Chunk-size sweep: parameterized streaming harness + sweep at 256/512/1024 m, evidence-backed chunk-size lock. | Orchestrator | M5 | — (parallel with M1/M2) |
 | **M4** | Splat-shader prototype: chunk emits per-pixel weights against material-class library; shader resolves. | Orchestrator | M5 | M1, M2 |
-| **M5** | Wire streaming + splat into `walk.tscn`. | Orchestrator | — | M3, M4 |
+| **M5** | Wire streaming + splat into `walk.tscn`. | Orchestrator | M6 | M3, M4 |
+| **M6** | Harden streamed runtime: export-safe image cache, streamed collision, transition-strip shader hook, source-material noise QA. | Orchestrator | M7 | M5 |
 
 **Parallelism**: M1+M3 can start simultaneously. M2 starts as soon
 as M1's catalog spec is drafted. M4/M5 wait on the others.
@@ -245,9 +246,39 @@ Final evidence: `walk_chunk_splat_smoke.png` renders the real walk scene.
 long-form sampled walk review across chunk rows `[0,5]` to `[0,11]`, holding
 9 loaded chunks. The budget note is `world3/docs/M5_STREAMING_BUDGET.md`.
 
-M1-M5 are closed for workflow validation. Production hardening moves to the
-next roadmap phase: export-safe generated image loading, streamed collision,
-runtime boundary-strip sampling, and source-material QA.
+M1-M5 are closed for workflow validation. M6 closes the first production
+hardening pass for the primary walk/runtime path.
+
+## M6 — Runtime hardening (orchestrator, after M5)
+
+**Goal**: remove the sharp runtime blockers from the M5 walk stream before
+building broader biome-boundary automation.
+
+**Status 2026-05-08**: COMPLETE for the primary runtime path. Added
+`RuntimeImageCache.gd` plus `build_runtime_image_cache.py`, generated runtime
+height/splat caches, moved `walk.tscn` onto streamed chunk collision, added
+collision metrics to `M5WalkStreamRunner.gd`, added an opt-in transition-strip
+sampler to `terrain_splat_unified.gdshader`, rendered an M6 transition review
+scene, and audited noisy green/organic source materials.
+
+Evidence:
+
+- `world3/docs/M6_RUNTIME_HARDENING.md`
+- `world3/docs/M6_SOURCE_MATERIAL_NOISE_AUDIT.md`
+- `world3/docs/captures/m6/walk_stream_collision_cache.png`
+- `world3/docs/captures/m6/walk_stream_collision_cache_metrics.json`
+- `world3/docs/captures/m6/transition_runtime_review.png`
+
+**Verification**: Godot import passed. The 900 m M6 walk crossing held 9 peak
+loaded chunks, built 21 collision chunks, recorded 60.433 ms total collision
+build time, 5.033 ms max collision-shape build time, 28.675 ms worst update,
+and 4.594 ms p95 frame time.
+
+**Remaining production work**: transition-strip placement is still manual.
+M7 should generate boundary masks from biome/material rules and feed those into
+the unified shader. If interactive review exposes the M6 synchronous
+collision/update spike, async/background chunk build becomes the next runtime
+engineering target.
 
 ## Open polish items (parked)
 
