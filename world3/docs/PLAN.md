@@ -242,8 +242,9 @@ terrain with mixed materials and acceptable framerate.
 Pass 1 evidence: `walk_chunk_splat_smoke.png` renders the real walk scene, and
 `M5WalkStreamRunner.gd` moves the player 900 m across chunk rows `[0,5]` to
 `[0,9]` with 9 peak loaded chunks, 12 builds, 12 removals, and a worst
-synchronous update of 20.096 ms. Remaining exit work is the longer user-facing
-walk capture and the explicit streaming budget note.
+synchronous update of 20.096 ms. The first budget note is
+`world3/docs/M5_STREAMING_BUDGET.md`. Remaining exit work is the longer
+user-facing walk capture and hardening decisions.
 
 ## Open polish items (parked)
 

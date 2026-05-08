@@ -8,9 +8,10 @@ M5 pass 1 is wired and smoke-tested. `walk.tscn` now uses the M3
 `ChunkLoader.gd` visual stream with the M4 fixed five-slot splat material.
 
 This is not the final M5 exit yet. It proves the first playable scene wiring
-and chunk-crossing behavior. Remaining M5 work is the longer walk demo,
-formal streaming budget writeup, export-safe image import/cache, and the
-eventual collision migration from the hidden single terrain to streamed chunks.
+and chunk-crossing behavior. The first budget note is in
+`world3/docs/M5_STREAMING_BUDGET.md`. Remaining M5 work is the longer walk
+demo, export-safe image import/cache, and the eventual collision migration from
+the hidden single terrain to streamed chunks.
 
 ## Scene Contract
 
@@ -112,7 +113,8 @@ an M5/M6 hardening item.
 
 - Run a longer player-facing walk capture once the user has visually checked
   the pass 1 scene.
-- Record a concise streaming budget for the wired `walk.tscn` path.
+- Keep `M5_STREAMING_BUDGET.md` updated as chunk radius, collision, or async
+  loading changes.
 - Decide whether the next hardening step is export-safe generated image import,
   chunk collision, or boundary-strip sampling.
 - Keep M2 transition strips out of the runtime shader until boundary-space UVs

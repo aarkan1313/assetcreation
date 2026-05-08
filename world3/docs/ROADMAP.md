@@ -58,8 +58,9 @@ direction; treat the rest as where we've been.
 - M5 pass 1 is wired into `walk.tscn`: visible terrain now streams through
   256 m `ChunkLoader.gd` chunks using `terrain_splat_alpine.tres`, while the
   legacy single terrain remains hidden for collision. Smoke evidence lives in
-  `world3/docs/M5_WALK_SPLAT_STREAMING.md`. Remaining M5 exit work is the
-  longer walk capture, explicit budget note, and hardening decisions.
+  `world3/docs/M5_WALK_SPLAT_STREAMING.md`; the first budget note lives in
+  `world3/docs/M5_STREAMING_BUDGET.md`. Remaining M5 exit work is the longer
+  walk capture and hardening decisions.
 
 Workflow snapshot: [`WORKFLOW_SNAPSHOT_2026_05_08.md`](WORKFLOW_SNAPSHOT_2026_05_08.md).
 

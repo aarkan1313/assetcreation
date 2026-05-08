@@ -270,11 +270,11 @@ edges. `M5WalkStreamRunner.gd` moved the player 900 m across chunk rows
 `[0,5]` to `[0,9]`, held 9 loaded chunks, built 12, removed 12, and saw a
 20.096 ms worst synchronous update.
 
-Evidence: `world3/docs/M5_WALK_SPLAT_STREAMING.md`.
+Evidence: `world3/docs/M5_WALK_SPLAT_STREAMING.md` and
+`world3/docs/M5_STREAMING_BUDGET.md`.
 
-**Remaining:** longer user-facing walk capture, explicit streaming budget note,
-export-safe generated image loading, and the collision/transition-strip
-hardening decisions.
+**Remaining:** longer user-facing walk capture, export-safe generated image
+loading, and the collision/transition-strip hardening decisions.
 
 ---
 

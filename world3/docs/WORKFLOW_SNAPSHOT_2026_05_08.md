@@ -84,7 +84,8 @@ material-generation QA rather than transition logic.
      collision source.
    - Fix landed: chunk UVs now use the same wrapped source fraction as height
      sampling, removing the first smoke-test material split at a chunk edge.
-   - Evidence: `world3/docs/M5_WALK_SPLAT_STREAMING.md`
+   - Evidence: `world3/docs/M5_WALK_SPLAT_STREAMING.md` and
+     `world3/docs/M5_STREAMING_BUDGET.md`
 
 7. **Visual QA**
    - Region/gallery captures verify kit-level reads.
@@ -122,9 +123,9 @@ material-generation QA rather than transition logic.
 ## Open Work
 
 - Reduce noisy grass/leaves at source texture generation/QA.
-- M5 pass 1 is wired. Remaining M5 exit work: longer user-facing walk capture,
-  explicit streaming budget note, export-safe image import/cache, and the
-  collision/transition-strip hardening decision.
+- M5 pass 1 is wired and the first streaming budget is recorded. Remaining M5
+  exit work: longer user-facing walk capture, export-safe image import/cache,
+  and the collision/transition-strip hardening decision.
 - Later M4/M5 polish: formalize weight texture import/cache, material
   indirection, and boundary-strip sampling.
 

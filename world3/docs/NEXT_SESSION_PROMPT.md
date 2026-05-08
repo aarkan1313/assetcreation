@@ -121,6 +121,8 @@ M5 pass 1 is wired:
   chunks, 12 builds, 12 removals, 20.096 ms worst synchronous update.
 - Evidence doc:
   `world3/docs/M5_WALK_SPLAT_STREAMING.md`
+- Budget note:
+  `world3/docs/M5_STREAMING_BUDGET.md`
 
 ## Next best move
 
@@ -129,8 +131,7 @@ Continue M5 from pass 1:
 1. Let the user visually review `walk.tscn` and the M5 captures.
 2. Run or build a longer user-facing walk capture if the pass 1 view is
    accepted.
-3. Write the concise streaming budget note for the wired `walk.tscn` path.
-4. Choose the next hardening target: export-safe generated image import/cache,
+3. Choose the next hardening target: export-safe generated image import/cache,
    streamed collision, or boundary-strip sampling.
 
 ## Operating reminders

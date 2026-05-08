@@ -9,7 +9,8 @@ Status: M5 pass 1 is wired. `walk.tscn` now renders visible terrain through
 the legacy single terrain remains hidden as the collision source. The older
 MVP notes below are still useful for the base pipeline, but the current
 workflow state lives in `docs/WORKFLOW_SNAPSHOT_2026_05_08.md` and
-`docs/M5_WALK_SPLAT_STREAMING.md`.
+`docs/M5_WALK_SPLAT_STREAMING.md`; the current walk-stream budget is in
+`docs/M5_STREAMING_BUDGET.md`.
 
 ## Layout
 
