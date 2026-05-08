@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scripts/Terrain.gd" id="terrain_script"]
 [ext_resource type="Material" path="res://textures/wgv3/terrain_blend_tetons.tres" id="terrain_mat"]
 [ext_resource type="Script" path="res://scripts/TopDownCam.gd" id="top_script"]
 [ext_resource type="Script" path="res://scripts/PlayerAnchor.gd" id="anchor_script"]
-[ext_resource type="Script" path="res://scripts/HeadlessCapture.gd" id="cap_script"]
 
 [sub_resource type="Environment" id="env"]
 background_mode = 1
@@ -42,7 +41,3 @@ far = 30000.0
 current = true
 anchor_path = NodePath("../PlayerAnchor")
 visible_diameter_m = 10000.0
-
-[node name="Capture" type="Node" parent="."]
-script = ExtResource("cap_script")
-output_path = "D:/tmp/world3_screens/phase_c/topdown_minimap_10km.png"

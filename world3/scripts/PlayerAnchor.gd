@@ -1,49 +1,77 @@
 extends Node3D
 class_name PlayerAnchor
 
-# Phase C: a simple "where the player is right now" marker that the iso/
-# topdown cameras can frame relative to. For now it's just a Node3D with
-# optional snap-to-terrain on _ready so test captures don't need pixel-
-# perfect Y placement in the .tscn.
+# Phase C: a "where the player is right now" marker that the iso/topdown
+# cameras can frame relative to. Snaps Y to the actual terrain surface by
+# sampling the same heightmap + meta the Terrain mesh uses.
 #
-# When `snap_to_terrain` is true, the anchor raycasts down at start and
-# resets its Y to the terrain surface. Requires a Terrain sibling that
-# has finished building (Terrain.rebuild() runs in _ready); we defer two
-# frames the same way the cameras do.
+# When `snap_to_terrain` is true, the anchor:
+#   1. Reads heightmap_path + meta_path (defaults match Terrain.gd)
+#   2. Clamps anchor XZ into the terrain footprint
+#   3. Samples the heightmap at the anchor's XZ
+#   4. Sets Y to the sampled elevation + snap_offset_m
+#
+# We can't query the Terrain mesh's vertices directly because Terrain.rebuild
+# is async-ish (deferred to first frame). Reading the source heightmap is
+# both more reliable and matches the elevation Terrain uses 1:1.
 
 @export var snap_to_terrain: bool = true
-@export var snap_offset_m: float = 0.0  # add this to Y after snap (e.g. eye height)
+@export var snap_offset_m: float = 0.0  # add to Y after snap (e.g. eye height)
+@export var heightmap_path: String = "res://heightmap/heightmap.png"
+@export var meta_path: String = "res://heightmap/meta.json"
 
 
 func _ready() -> void:
 	if not snap_to_terrain:
 		return
-	await get_tree().process_frame
-	await get_tree().process_frame
-	var terrain := _find_terrain()
-	if terrain == null:
+	var meta := _load_meta()
+	if meta.is_empty():
+		push_warning("PlayerAnchor: failed to read meta.json, leaving Y unchanged")
 		return
-	var aabb: AABB = terrain.get_aabb()
-	# Raycast straight down through the terrain mesh AABB to find ground Y.
-	# We don't have physics here in capture scenes, so sample the mesh directly
-	# by querying the heightmap-derived AABB top and let the actual mesh take
-	# care of the rest — for capture purposes the camera's ortho projection
-	# means small Y errors on the anchor don't matter visually. We just need
-	# to be inside the terrain footprint vertically.
-	var x: float = global_position.x
-	var z: float = global_position.z
-	# Clamp anchor into the terrain's XZ footprint so it's never outside.
-	x = clamp(x, aabb.position.x, aabb.position.x + aabb.size.x)
-	z = clamp(z, aabb.position.z, aabb.position.z + aabb.size.z)
-	# Y: midpoint of the terrain AABB — good enough for ortho framing.
-	var y: float = aabb.position.y + aabb.size.y * 0.5 + snap_offset_m
+	var img := Image.load_from_file(heightmap_path)
+	if img == null:
+		var tex: Texture2D = load(heightmap_path) as Texture2D
+		if tex != null:
+			img = tex.get_image()
+	if img == null:
+		push_warning("PlayerAnchor: failed to read heightmap, leaving Y unchanged")
+		return
+
+	var world_size: float = float(meta.get("world_size_m", 1024.0))
+	var world_size_x: float = float(meta.get("world_size_x_m", world_size))
+	var world_size_z: float = float(meta.get("world_size_z_m", world_size))
+	var elev_min: float = float(meta.get("elevation_min_m", 0.0))
+	var elev_range: float = float(meta.get("elevation_range_m", 1.0))
+
+	var half_x: float = world_size_x * 0.5
+	var half_z: float = world_size_z * 0.5
+
+	# Clamp anchor XZ into terrain footprint.
+	var x: float = clamp(global_position.x, -half_x, half_x)
+	var z: float = clamp(global_position.z, -half_z, half_z)
+
+	# Sample heightmap at (x, z). Terrain.gd places verts so that
+	#   wx = fx * world_size_x - half_x  (fx in [0..1])
+	#   sx = fx * (img_w - 1)
+	# Invert: fx = (x + half_x) / world_size_x → sx
+	var fx: float = clamp((x + half_x) / world_size_x, 0.0, 1.0)
+	var fz: float = clamp((z + half_z) / world_size_z, 0.0, 1.0)
+	var sx: int = clampi(int(round(fx * float(img.get_width() - 1))), 0, img.get_width() - 1)
+	var sz: int = clampi(int(round(fz * float(img.get_height() - 1))), 0, img.get_height() - 1)
+	var nrm: float = img.get_pixel(sx, sz).r
+	var y: float = elev_min + nrm * elev_range + snap_offset_m
+
 	global_position = Vector3(x, y, z)
+	print("[PlayerAnchor] snapped to (", x, ", ", y, ", ", z, ") elev=", y - snap_offset_m)
 
 
-func _find_terrain() -> MeshInstance3D:
-	if get_parent() == null:
-		return null
-	for child in get_parent().get_children():
-		if child is MeshInstance3D and child.name == "Terrain":
-			return child
-	return null
+func _load_meta() -> Dictionary:
+	var f := FileAccess.open(meta_path, FileAccess.READ)
+	if f == null:
+		return {}
+	var txt := f.get_as_text()
+	f.close()
+	var parsed = JSON.parse_string(txt)
+	if typeof(parsed) != TYPE_DICTIONARY:
+		return {}
+	return parsed
