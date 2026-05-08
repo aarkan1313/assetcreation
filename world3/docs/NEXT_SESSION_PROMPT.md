@@ -32,7 +32,10 @@ Recent scoped commits:
 - `3a7317d` - `world3: start transition strip prototype`
 - `116766f` - `world3: record transition visual review`
 - `680b22c` - `world3: refresh workflow docs`
-- `HEAD at handoff` - `world3: add transition review scoring`
+- `ae31568` - `world3: add transition review scoring`
+- `a2cc5fc` - `world3: add transition boundary contract`
+- `dfb2bdd` - `world3: checkpoint opentopo worktree`
+- `HEAD at handoff` - M2 tuned transition assets
 
 M1 is done:
 
@@ -48,12 +51,14 @@ M3 is done:
 - `world3/scenes/capture_phase_f/chunk_size_sweep.tscn`
 - 256 m is locked as the synchronous base chunk size at 8 m mesh spacing.
 
-M2 is in progress:
+M2 is done for workflow/M4 input:
 
 - `pipelines/textures/build_transition_strip.py` builds deterministic
   transition strips from catalog IDs and writes score hints into each manifest.
 - Boundary rules live in `world3/jobs/biome_transition_rules.json`.
 - Contract note: `world3/docs/M2_BOUNDARY_TRANSITION_CONTRACT.md`.
+- Rule-level tuning has been applied for width, mask noise, albedo matching,
+  frequency dampening, roughness matching, and normal-energy dampening.
 - Four pairs were generated under `world3/textures/transitions/`.
 - Comparison sheets live under `world3/docs/captures/transitions/`.
 - Clean Godot scene:
@@ -66,12 +71,14 @@ M2 is in progress:
 
 ## Next best move
 
-Finish the score-informed M2 tuning pass, then start M4:
+Start M4:
 
-1. Use the score hints to tune the next strip pass: palette/value normalization,
-   roughness/normal weighting, band width, and mask noise scale.
+1. Build the unified splat shader prototype against catalog material IDs and
+   the boundary rule contract.
 2. Keep transition strips as generated boundary assets referenced by
    `biome_transition_rules.json`; do not add them to the base material catalog.
+3. Preserve residual normal-energy mismatch on stress pairs as a shader/source
+   QA signal, not something to hide.
 
 Then start M4:
 

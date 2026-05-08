@@ -3,10 +3,18 @@
     "desert_sand",
     "grassland_grass"
   ],
+  "rule_id": "biome_desert__grassland_base",
   "seed": 5071285863296570644,
   "tile_px": 512,
-  "tiles_wide": 6,
-  "noise_strength": 0.22,
+  "tiles_wide": 8,
+  "noise_strength": 0.18,
+  "tuning": {
+    "albedo_match_strength": 0.15,
+    "albedo_frequency_dampen_strength": 0.45,
+    "albedo_frequency_blur_radius_px": 1.4,
+    "roughness_match_strength": 0.55,
+    "normal_match_strength": 0.1
+  },
   "outputs": {
     "albedo": "world3/textures/transitions/desert_sand__grassland_grass/albedo.png",
     "normal": "world3/textures/transitions/desert_sand__grassland_grass/normal.png",
@@ -17,7 +25,7 @@
   "mask": "world3/textures/transitions/desert_sand__grassland_grass/mask.png",
   "preview": "world3/docs/captures/transitions/desert_sand__grassland_grass_hard_vs_transition.png",
   "hard_edge_mean_abs_albedo_delta": 0.139652,
-  "scores": {
+  "raw_scores": {
     "source_hue_delta": 0.04236,
     "source_value_delta": 0.062045,
     "source_saturation_delta": 0.128229,
@@ -26,11 +34,25 @@
     "normal_mean_abs_delta": 0.053639,
     "visible_frequency_delta": 0.099164,
     "hard_edge_mean_abs_albedo_delta": 0.139652,
-    "transition_center_albedo_delta": 0.030852,
-    "edge_delta_improvement_ratio": 0.779082,
-    "transition_gradient_p95": 0.13779
+    "transition_center_albedo_delta": 0.029648,
+    "edge_delta_improvement_ratio": 0.7877,
+    "transition_gradient_p95": 0.137194
   },
-  "review_hints": [
+  "scores": {
+    "source_hue_delta": 0.037108,
+    "source_value_delta": 0.06029,
+    "source_saturation_delta": 0.115574,
+    "roughness_mean_abs_delta": 0.151638,
+    "normal_energy_delta": 0.038903,
+    "normal_mean_abs_delta": 0.053275,
+    "visible_frequency_delta": 0.034751,
+    "hard_edge_mean_abs_albedo_delta": 0.139652,
+    "transition_center_albedo_delta": 0.02257,
+    "edge_delta_improvement_ratio": 0.838387,
+    "transition_gradient_p95": 0.089435
+  },
+  "review_hints": [],
+  "raw_review_hints": [
     "roughness_grade_before_runtime",
     "visible_frequency_mismatch"
   ],

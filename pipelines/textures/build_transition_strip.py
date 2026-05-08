@@ -18,7 +18,7 @@ from pathlib import Path
 from typing import Any
 
 import numpy as np
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -27,6 +27,13 @@ DEFAULT_OUT_ROOT = ROOT / "world3/textures/transitions"
 DEFAULT_CAPTURE_ROOT = ROOT / "world3/docs/captures/transitions"
 
 MAPS = ("albedo", "normal", "roughness", "height", "ao")
+DEFAULT_TUNING = {
+    "albedo_match_strength": 0.0,
+    "albedo_frequency_dampen_strength": 0.0,
+    "albedo_frequency_blur_radius_px": 1.25,
+    "roughness_match_strength": 0.0,
+    "normal_match_strength": 0.0,
+}
 
 
 def load_catalog(path: Path) -> dict[str, dict[str, Any]]:
@@ -117,6 +124,85 @@ def blend_normals(a: np.ndarray, b: np.ndarray, mask: np.ndarray) -> np.ndarray:
     length = np.linalg.norm(n, axis=2, keepdims=True)
     n = n / np.maximum(length, 1e-6)
     return n * 0.5 + 0.5
+
+
+def normalize_normals(n: np.ndarray) -> np.ndarray:
+    length = np.linalg.norm(n, axis=2, keepdims=True)
+    return n / np.maximum(length, 1e-6)
+
+
+def mix_array(a: np.ndarray, b: np.ndarray, strength: float) -> np.ndarray:
+    s = np.clip(float(strength), 0.0, 1.0)
+    return a * (1.0 - s) + b * s
+
+
+def match_mean_std_pair(a: np.ndarray, b: np.ndarray, strength: float) -> tuple[np.ndarray, np.ndarray]:
+    if strength <= 0.0:
+        return a, b
+    axes = (0, 1)
+    a_mean = np.mean(a, axis=axes, keepdims=True)
+    b_mean = np.mean(b, axis=axes, keepdims=True)
+    a_std = np.std(a, axis=axes, keepdims=True)
+    b_std = np.std(b, axis=axes, keepdims=True)
+    target_mean = (a_mean + b_mean) * 0.5
+    target_std = (a_std + b_std) * 0.5
+    a_matched = (a - a_mean) * (target_std / np.maximum(a_std, 1e-6)) + target_mean
+    b_matched = (b - b_mean) * (target_std / np.maximum(b_std, 1e-6)) + target_mean
+    return mix_array(a, np.clip(a_matched, 0.0, 1.0), strength), mix_array(
+        b, np.clip(b_matched, 0.0, 1.0), strength
+    )
+
+
+def gaussian_blur_array(arr: np.ndarray, radius_px: float) -> np.ndarray:
+    if radius_px <= 0.0:
+        return arr
+    if arr.ndim == 2:
+        img = Image.fromarray((np.clip(arr, 0.0, 1.0) * 255.0 + 0.5).astype(np.uint8), mode="L")
+        blurred = img.filter(ImageFilter.GaussianBlur(radius=float(radius_px)))
+        return np.asarray(blurred, dtype=np.float32) / 255.0
+    img = Image.fromarray((np.clip(arr, 0.0, 1.0) * 255.0 + 0.5).astype(np.uint8), mode="RGB")
+    blurred = img.filter(ImageFilter.GaussianBlur(radius=float(radius_px)))
+    return np.asarray(blurred, dtype=np.float32) / 255.0
+
+
+def dampen_noisier_albedo(
+    a: np.ndarray,
+    b: np.ndarray,
+    strength: float,
+    radius_px: float,
+) -> tuple[np.ndarray, np.ndarray]:
+    if strength <= 0.0:
+        return a, b
+    a_freq = high_frequency_energy(a)
+    b_freq = high_frequency_energy(b)
+    if abs(a_freq - b_freq) <= 1e-6:
+        return a, b
+    if a_freq > b_freq:
+        return mix_array(a, gaussian_blur_array(a, radius_px), strength), b
+    return a, mix_array(b, gaussian_blur_array(b, radius_px), strength)
+
+
+def scale_normal_xy(normal: np.ndarray, scale: float) -> np.ndarray:
+    n = normal * 2.0 - 1.0
+    n[..., 0:2] *= float(scale)
+    n = normalize_normals(n)
+    return n * 0.5 + 0.5
+
+
+def match_normal_energy_pair(a: np.ndarray, b: np.ndarray, strength: float) -> tuple[np.ndarray, np.ndarray]:
+    if strength <= 0.0:
+        return a, b
+    a_energy = normal_energy(a)
+    b_energy = normal_energy(b)
+    target = min(a_energy, b_energy)
+
+    def scale_for(current: float) -> float:
+        if current <= 1e-6:
+            return 1.0
+        target_scale = np.clip(target / current, 0.25, 1.0)
+        return (1.0 - strength) + target_scale * strength
+
+    return scale_normal_xy(a, scale_for(a_energy)), scale_normal_xy(b, scale_for(b_energy))
 
 
 def hard_cut(a: np.ndarray, b: np.ndarray) -> np.ndarray:
@@ -263,6 +349,42 @@ def material_maps(material: dict[str, Any], size: int, width: int, height: int) 
     }
 
 
+def tuned_maps(
+    a_maps: dict[str, np.ndarray],
+    b_maps: dict[str, np.ndarray],
+    tuning: dict[str, float],
+) -> tuple[dict[str, np.ndarray], dict[str, np.ndarray]]:
+    a_out = {key: value.copy() for key, value in a_maps.items()}
+    b_out = {key: value.copy() for key, value in b_maps.items()}
+
+    albedo_strength = float(tuning.get("albedo_match_strength", 0.0))
+    a_out["albedo"], b_out["albedo"] = match_mean_std_pair(a_out["albedo"], b_out["albedo"], albedo_strength)
+    freq_strength = float(tuning.get("albedo_frequency_dampen_strength", 0.0))
+    freq_radius = float(tuning.get("albedo_frequency_blur_radius_px", 1.25))
+    a_out["albedo"], b_out["albedo"] = dampen_noisier_albedo(
+        a_out["albedo"],
+        b_out["albedo"],
+        freq_strength,
+        freq_radius,
+    )
+
+    roughness_strength = float(tuning.get("roughness_match_strength", 0.0))
+    a_out["roughness"], b_out["roughness"] = match_mean_std_pair(
+        a_out["roughness"],
+        b_out["roughness"],
+        roughness_strength,
+    )
+
+    normal_strength = float(tuning.get("normal_match_strength", 0.0))
+    a_out["normal"], b_out["normal"] = match_normal_energy_pair(
+        a_out["normal"],
+        b_out["normal"],
+        normal_strength,
+    )
+
+    return a_out, b_out
+
+
 def pair_seed(a_id: str, b_id: str) -> int:
     digest = hashlib.sha256(f"{a_id}->{b_id}".encode("utf-8")).digest()
     return int.from_bytes(digest[:8], "little", signed=False)
@@ -277,6 +399,8 @@ def build_pair(
     tile_px: int,
     tiles_wide: int,
     noise_strength: float,
+    tuning: dict[str, float] | None = None,
+    rule_id: str | None = None,
 ) -> dict[str, Any]:
     if a_id not in catalog:
         raise SystemExit(f"unknown material id: {a_id}")
@@ -286,10 +410,18 @@ def build_pair(
     width = tile_px * tiles_wide
     height = tile_px
     seed = pair_seed(a_id, b_id)
+    tuning = {**DEFAULT_TUNING, **(tuning or {})}
     mask = make_mask(width, height, seed, noise_strength)
 
-    a_maps = material_maps(catalog[a_id], tile_px, width, height)
-    b_maps = material_maps(catalog[b_id], tile_px, width, height)
+    raw_a_maps = material_maps(catalog[a_id], tile_px, width, height)
+    raw_b_maps = material_maps(catalog[b_id], tile_px, width, height)
+    raw_transition_albedo = raw_a_maps["albedo"] * (1.0 - mask[:, :, None]) + raw_b_maps["albedo"] * mask[:, :, None]
+    raw_edge_delta = float(
+        np.mean(np.abs(raw_a_maps["albedo"][:, width // 2 - 1] - raw_b_maps["albedo"][:, width // 2]))
+    )
+    raw_scores = transition_scores(raw_a_maps, raw_b_maps, raw_transition_albedo, raw_edge_delta)
+
+    a_maps, b_maps = tuned_maps(raw_a_maps, raw_b_maps, tuning)
 
     out_dir = out_root / f"{a_id}__{b_id}"
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -309,25 +441,28 @@ def build_pair(
     save_gray(transition["ao"], out_dir / "ao.png")
     save_gray(mask, out_dir / "mask.png")
 
-    hard = hard_cut(a_maps["albedo"], b_maps["albedo"])
+    hard = hard_cut(raw_a_maps["albedo"], raw_b_maps["albedo"])
     transition_albedo = transition["albedo"]
     preview_path = capture_root / f"{a_id}__{b_id}_hard_vs_transition.png"
     make_preview(hard, transition_albedo, a_id, b_id, preview_path)
 
-    edge_delta = float(np.mean(np.abs(a_maps["albedo"][:, width // 2 - 1] - b_maps["albedo"][:, width // 2])))
-    scores = transition_scores(a_maps, b_maps, transition_albedo, edge_delta)
+    scores = transition_scores(a_maps, b_maps, transition_albedo, raw_edge_delta)
     manifest = {
         "pair": [a_id, b_id],
+        "rule_id": rule_id,
         "seed": seed,
         "tile_px": tile_px,
         "tiles_wide": tiles_wide,
         "noise_strength": noise_strength,
+        "tuning": tuning,
         "outputs": {name: str((out_dir / f"{name}.png").relative_to(ROOT)).replace("\\", "/") for name in MAPS},
         "mask": str((out_dir / "mask.png").relative_to(ROOT)).replace("\\", "/"),
         "preview": str(preview_path.relative_to(ROOT)).replace("\\", "/"),
-        "hard_edge_mean_abs_albedo_delta": round(edge_delta, 6),
+        "hard_edge_mean_abs_albedo_delta": round(raw_edge_delta, 6),
+        "raw_scores": raw_scores,
         "scores": scores,
         "review_hints": review_hints(scores),
+        "raw_review_hints": review_hints(raw_scores),
         "status": "prototype_transition_strip",
     }
     (out_dir / "manifest.json").write_bytes((json.dumps(manifest, indent=2) + "\n").encode("utf-8"))
@@ -361,8 +496,20 @@ def parse_pair(text: str) -> tuple[str, str]:
     return a.strip(), b.strip()
 
 
-def load_rule_pairs(paths: list[Path]) -> tuple[list[tuple[str, str]], list[str]]:
-    pairs: list[tuple[str, str]] = []
+def normalized_tuning(raw: dict[str, Any] | None) -> dict[str, float]:
+    raw = raw or {}
+    return {
+        key: float(raw.get(key, default))
+        for key, default in DEFAULT_TUNING.items()
+    }
+
+
+def load_rule_specs(
+    paths: list[Path],
+    default_tiles_wide: int,
+    default_noise_strength: float,
+) -> tuple[list[dict[str, Any]], list[str]]:
+    specs: list[dict[str, Any]] = []
     rule_sources: list[str] = []
     for path in paths:
         path = path.resolve()
@@ -375,18 +522,26 @@ def load_rule_pairs(paths: list[Path]) -> tuple[list[tuple[str, str]], list[str]
             b_id = str(rule.get("to_material", "")).strip()
             if not a_id or not b_id:
                 raise SystemExit(f"rule {rule.get('id', '<unknown>')} is missing from_material/to_material")
-            pairs.append((a_id, b_id))
-    return pairs, rule_sources
+            tuning = rule.get("tuning", {})
+            specs.append({
+                "pair": (a_id, b_id),
+                "rule_id": rule.get("id"),
+                "tiles_wide": int(tuning.get("tiles_wide", rule.get("prototype_width_repeats", default_tiles_wide))),
+                "noise_strength": float(tuning.get("noise_strength", default_noise_strength)),
+                "tuning": normalized_tuning(tuning),
+            })
+    return specs, rule_sources
 
 
-def unique_pairs(pairs: list[tuple[str, str]]) -> list[tuple[str, str]]:
-    out: list[tuple[str, str]] = []
+def unique_specs(specs: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    out: list[dict[str, Any]] = []
     seen: set[tuple[str, str]] = set()
-    for pair in pairs:
+    for spec in specs:
+        pair = spec["pair"]
         if pair in seen:
             continue
         seen.add(pair)
-        out.append(pair)
+        out.append(spec)
     return out
 
 
@@ -414,14 +569,25 @@ def main() -> int:
     )
     args = ap.parse_args()
 
-    rule_pairs, rule_sources = load_rule_pairs(args.rules)
-    pairs = unique_pairs([*args.pair, *rule_pairs])
-    if not pairs:
+    pair_specs = [
+        {
+            "pair": pair,
+            "rule_id": None,
+            "tiles_wide": args.tiles_wide,
+            "noise_strength": args.noise_strength,
+            "tuning": normalized_tuning(None),
+        }
+        for pair in args.pair
+    ]
+    rule_specs, rule_sources = load_rule_specs(args.rules, args.tiles_wide, args.noise_strength)
+    specs = unique_specs([*pair_specs, *rule_specs])
+    if not specs:
         raise SystemExit("provide at least one --pair or --rules file")
 
     catalog = load_catalog(args.catalog)
     manifests = []
-    for a_id, b_id in pairs:
+    for spec in specs:
+        a_id, b_id = spec["pair"]
         manifest = build_pair(
             a_id,
             b_id,
@@ -429,8 +595,10 @@ def main() -> int:
             args.out_root,
             args.capture_root,
             args.tile_px,
-            args.tiles_wide,
-            args.noise_strength,
+            int(spec["tiles_wide"]),
+            float(spec["noise_strength"]),
+            spec["tuning"],
+            spec["rule_id"],
         )
         manifests.append(manifest)
         print(f"OK {a_id}->{b_id} preview={manifest['preview']}")

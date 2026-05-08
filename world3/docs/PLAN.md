@@ -96,12 +96,12 @@ material generation, Godot import, Phase E smoke capture, and region gallery.
 **Goal**: build 4–6 transition strips spanning the kit-class spectrum
 to learn transition mechanics + cost.
 
-**Status 2026-05-08**: IN PROGRESS. Prototype pass 2 generated four
-catalog-driven transition strips, numeric score hints, hard-cut comparison
-captures, and a clean Godot review scene isolated from the dirty OpenTopo
-review harness. The asset contract is now explicit: transition strips are
-generated boundary assets referenced by `world3/jobs/biome_transition_rules.json`,
-not base catalog entries. Evidence:
+**Status 2026-05-08**: DONE for workflow/M4 input. Prototype pass 3 generated
+four catalog-driven transition strips, numeric score hints, score-informed
+tuning, hard-cut comparison captures, and a clean Godot review scene isolated
+from the dirty OpenTopo review harness. The asset contract is explicit:
+transition strips are generated boundary assets referenced by
+`world3/jobs/biome_transition_rules.json`, not base catalog entries. Evidence:
 `world3/docs/M2_TRANSITION_MATERIAL_PROTOTYPE.md` and
 `world3/docs/M2_BOUNDARY_TRANSITION_CONTRACT.md`.
 
@@ -134,9 +134,9 @@ workflow failure.
    mismatches, and flag redos.
 
 **Exit**: at least 3 transitions read visibly better than hard cuts.
-We have a ballpark cost-per-transition (minutes, ComfyUI calls,
-hand-touched steps). Visual exit and contract exit are met for the first four
-pairs; remaining M2 work is score-informed tuning before M4 consumes the rules.
+Completed 2026-05-08: all four improve over hard cuts, rule-level tuning clears
+roughness/frequency flags on the tuned assets, and residual normal-energy
+mismatch is preserved as an M4/source-material risk signal.
 
 ## M3 — Chunk-size sweep (orchestrator, parallel with M1/M2)
 

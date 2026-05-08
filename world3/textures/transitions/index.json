@@ -9,10 +9,18 @@
         "desert_sand",
         "grassland_grass"
       ],
+      "rule_id": "biome_desert__grassland_base",
       "seed": 5071285863296570644,
       "tile_px": 512,
-      "tiles_wide": 6,
-      "noise_strength": 0.22,
+      "tiles_wide": 8,
+      "noise_strength": 0.18,
+      "tuning": {
+        "albedo_match_strength": 0.15,
+        "albedo_frequency_dampen_strength": 0.45,
+        "albedo_frequency_blur_radius_px": 1.4,
+        "roughness_match_strength": 0.55,
+        "normal_match_strength": 0.1
+      },
       "outputs": {
         "albedo": "world3/textures/transitions/desert_sand__grassland_grass/albedo.png",
         "normal": "world3/textures/transitions/desert_sand__grassland_grass/normal.png",
@@ -23,7 +31,7 @@
       "mask": "world3/textures/transitions/desert_sand__grassland_grass/mask.png",
       "preview": "world3/docs/captures/transitions/desert_sand__grassland_grass_hard_vs_transition.png",
       "hard_edge_mean_abs_albedo_delta": 0.139652,
-      "scores": {
+      "raw_scores": {
         "source_hue_delta": 0.04236,
         "source_value_delta": 0.062045,
         "source_saturation_delta": 0.128229,
@@ -32,11 +40,25 @@
         "normal_mean_abs_delta": 0.053639,
         "visible_frequency_delta": 0.099164,
         "hard_edge_mean_abs_albedo_delta": 0.139652,
-        "transition_center_albedo_delta": 0.030852,
-        "edge_delta_improvement_ratio": 0.779082,
-        "transition_gradient_p95": 0.13779
+        "transition_center_albedo_delta": 0.029648,
+        "edge_delta_improvement_ratio": 0.7877,
+        "transition_gradient_p95": 0.137194
       },
-      "review_hints": [
+      "scores": {
+        "source_hue_delta": 0.037108,
+        "source_value_delta": 0.06029,
+        "source_saturation_delta": 0.115574,
+        "roughness_mean_abs_delta": 0.151638,
+        "normal_energy_delta": 0.038903,
+        "normal_mean_abs_delta": 0.053275,
+        "visible_frequency_delta": 0.034751,
+        "hard_edge_mean_abs_albedo_delta": 0.139652,
+        "transition_center_albedo_delta": 0.02257,
+        "edge_delta_improvement_ratio": 0.838387,
+        "transition_gradient_p95": 0.089435
+      },
+      "review_hints": [],
+      "raw_review_hints": [
         "roughness_grade_before_runtime",
         "visible_frequency_mismatch"
       ],
@@ -47,10 +69,18 @@
         "scrub_sparse",
         "dry_wash"
       ],
+      "rule_id": "opentopo_scrub_sparse__dry_wash_neighbor",
       "seed": 3073375898574248816,
       "tile_px": 512,
       "tiles_wide": 6,
-      "noise_strength": 0.22,
+      "noise_strength": 0.2,
+      "tuning": {
+        "albedo_match_strength": 0.0,
+        "albedo_frequency_dampen_strength": 0.0,
+        "albedo_frequency_blur_radius_px": 1.25,
+        "roughness_match_strength": 0.0,
+        "normal_match_strength": 0.0
+      },
       "outputs": {
         "albedo": "world3/textures/transitions/scrub_sparse__dry_wash/albedo.png",
         "normal": "world3/textures/transitions/scrub_sparse__dry_wash/normal.png",
@@ -61,6 +91,19 @@
       "mask": "world3/textures/transitions/scrub_sparse__dry_wash/mask.png",
       "preview": "world3/docs/captures/transitions/scrub_sparse__dry_wash_hard_vs_transition.png",
       "hard_edge_mean_abs_albedo_delta": 0.033954,
+      "raw_scores": {
+        "source_hue_delta": 0.000178,
+        "source_value_delta": 0.000648,
+        "source_saturation_delta": 0.093394,
+        "roughness_mean_abs_delta": 0.002457,
+        "normal_energy_delta": 4.6e-05,
+        "normal_mean_abs_delta": 0.000992,
+        "visible_frequency_delta": 0.005822,
+        "hard_edge_mean_abs_albedo_delta": 0.033954,
+        "transition_center_albedo_delta": 0.008808,
+        "edge_delta_improvement_ratio": 0.740581,
+        "transition_gradient_p95": 0.023812
+      },
       "scores": {
         "source_hue_delta": 0.000178,
         "source_value_delta": 0.000648,
@@ -70,11 +113,12 @@
         "normal_mean_abs_delta": 0.000992,
         "visible_frequency_delta": 0.005822,
         "hard_edge_mean_abs_albedo_delta": 0.033954,
-        "transition_center_albedo_delta": 0.008786,
-        "edge_delta_improvement_ratio": 0.741247,
-        "transition_gradient_p95": 0.023813
+        "transition_center_albedo_delta": 0.008808,
+        "edge_delta_improvement_ratio": 0.740581,
+        "transition_gradient_p95": 0.023812
       },
       "review_hints": [],
+      "raw_review_hints": [],
       "status": "prototype_transition_strip"
     },
     {
@@ -82,10 +126,18 @@
         "tundra_moss",
         "temperate_forest_grass"
       ],
+      "rule_id": "biome_tundra__temperate_forest_base",
       "seed": 16272299386617983414,
       "tile_px": 512,
-      "tiles_wide": 6,
-      "noise_strength": 0.22,
+      "tiles_wide": 8,
+      "noise_strength": 0.18,
+      "tuning": {
+        "albedo_match_strength": 0.35,
+        "albedo_frequency_dampen_strength": 0.0,
+        "albedo_frequency_blur_radius_px": 1.25,
+        "roughness_match_strength": 0.7,
+        "normal_match_strength": 0.9
+      },
       "outputs": {
         "albedo": "world3/textures/transitions/tundra_moss__temperate_forest_grass/albedo.png",
         "normal": "world3/textures/transitions/tundra_moss__temperate_forest_grass/normal.png",
@@ -96,7 +148,7 @@
       "mask": "world3/textures/transitions/tundra_moss__temperate_forest_grass/mask.png",
       "preview": "world3/docs/captures/transitions/tundra_moss__temperate_forest_grass_hard_vs_transition.png",
       "hard_edge_mean_abs_albedo_delta": 0.287778,
-      "scores": {
+      "raw_scores": {
         "source_hue_delta": 0.178208,
         "source_value_delta": 0.169383,
         "source_saturation_delta": 0.19634,
@@ -105,11 +157,27 @@
         "normal_mean_abs_delta": 0.215603,
         "visible_frequency_delta": 0.010571,
         "hard_edge_mean_abs_albedo_delta": 0.287778,
-        "transition_center_albedo_delta": 0.032179,
-        "edge_delta_improvement_ratio": 0.88818,
-        "transition_gradient_p95": 0.120971
+        "transition_center_albedo_delta": 0.032526,
+        "edge_delta_improvement_ratio": 0.886974,
+        "transition_gradient_p95": 0.120546
+      },
+      "scores": {
+        "source_hue_delta": 0.120329,
+        "source_value_delta": 0.108409,
+        "source_saturation_delta": 0.125751,
+        "roughness_mean_abs_delta": 0.148489,
+        "normal_energy_delta": 0.383937,
+        "normal_mean_abs_delta": 0.146318,
+        "visible_frequency_delta": 0.005724,
+        "hard_edge_mean_abs_albedo_delta": 0.287778,
+        "transition_center_albedo_delta": 0.032655,
+        "edge_delta_improvement_ratio": 0.886526,
+        "transition_gradient_p95": 0.120614
       },
       "review_hints": [
+        "normal_energy_mismatch"
+      ],
+      "raw_review_hints": [
         "palette_grade_before_runtime",
         "roughness_grade_before_runtime",
         "normal_energy_mismatch"
@@ -121,10 +189,18 @@
         "dry_wash",
         "desert_dry_brush"
       ],
+      "rule_id": "mixed_real_dry_wash__procedural_desert_brush",
       "seed": 5513914794428438422,
       "tile_px": 512,
-      "tiles_wide": 6,
-      "noise_strength": 0.22,
+      "tiles_wide": 8,
+      "noise_strength": 0.18,
+      "tuning": {
+        "albedo_match_strength": 0.2,
+        "albedo_frequency_dampen_strength": 0.0,
+        "albedo_frequency_blur_radius_px": 1.25,
+        "roughness_match_strength": 0.85,
+        "normal_match_strength": 0.9
+      },
       "outputs": {
         "albedo": "world3/textures/transitions/dry_wash__desert_dry_brush/albedo.png",
         "normal": "world3/textures/transitions/dry_wash__desert_dry_brush/normal.png",
@@ -135,7 +211,7 @@
       "mask": "world3/textures/transitions/dry_wash__desert_dry_brush/mask.png",
       "preview": "world3/docs/captures/transitions/dry_wash__desert_dry_brush_hard_vs_transition.png",
       "hard_edge_mean_abs_albedo_delta": 0.135151,
-      "scores": {
+      "raw_scores": {
         "source_hue_delta": 0.009525,
         "source_value_delta": 0.143665,
         "source_saturation_delta": 0.48152,
@@ -144,11 +220,27 @@
         "normal_mean_abs_delta": 0.166031,
         "visible_frequency_delta": 0.01054,
         "hard_edge_mean_abs_albedo_delta": 0.135151,
-        "transition_center_albedo_delta": 0.014317,
-        "edge_delta_improvement_ratio": 0.894064,
-        "transition_gradient_p95": 0.036321
+        "transition_center_albedo_delta": 0.01413,
+        "edge_delta_improvement_ratio": 0.895454,
+        "transition_gradient_p95": 0.036375
+      },
+      "scores": {
+        "source_hue_delta": 0.007057,
+        "source_value_delta": 0.114957,
+        "source_saturation_delta": 0.38173,
+        "roughness_mean_abs_delta": 0.12926,
+        "normal_energy_delta": 0.319896,
+        "normal_mean_abs_delta": 0.10056,
+        "visible_frequency_delta": 0.006457,
+        "hard_edge_mean_abs_albedo_delta": 0.135151,
+        "transition_center_albedo_delta": 0.014219,
+        "edge_delta_improvement_ratio": 0.894789,
+        "transition_gradient_p95": 0.03629
       },
       "review_hints": [
+        "normal_energy_mismatch"
+      ],
+      "raw_review_hints": [
         "roughness_grade_before_runtime",
         "normal_energy_mismatch"
       ],

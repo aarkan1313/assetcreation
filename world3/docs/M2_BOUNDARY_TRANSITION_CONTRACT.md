@@ -66,8 +66,18 @@ Each rule contains:
 - `prototype_width_repeats`: strip width in texture repeats.
 - `runtime_width_m`: runtime boundary width, left `null` until M4 tests scale.
 - `mask_strategy`: current mask family.
+- `tuning`: score-informed build knobs for this boundary asset.
 - `status`: review state.
 - `m4_use`: why this pair exists in the next shader pass.
+
+Current tuning fields:
+
+- `noise_strength`
+- `albedo_match_strength`
+- `albedo_frequency_dampen_strength`
+- `albedo_frequency_blur_radius_px`
+- `roughness_match_strength`
+- `normal_match_strength`
 
 ## Current Read
 

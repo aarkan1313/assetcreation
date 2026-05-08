@@ -4,17 +4,18 @@ Date: 2026-05-08
 
 ## Status
 
-Prototype pass 2 is complete: deterministic transition strips now build from
+Prototype pass 3 is complete: deterministic transition strips now build from
 catalog material IDs and produce PBR outputs, hard-cut comparison captures,
-numeric score hints, and a clean Godot review scene.
+numeric score hints, rule-level tuning, and a clean Godot review scene.
 User visual review on 2026-05-08: transitions read as promising/good; the
 remaining concern is source texture noise in grass/leaves, not the transition
 workflow.
 
-Full M2 remains **in progress** for the next score-informed tuning pass. The
-asset-contract decision is closed: transition strips are generated boundary
-assets referenced by `world3/jobs/biome_transition_rules.json`, not base
-material catalog entries.
+M2 workflow exit is met. The asset-contract decision is closed: transition
+strips are generated boundary assets referenced by
+`world3/jobs/biome_transition_rules.json`, not base material catalog entries.
+The remaining normal-energy mismatch on two stress pairs is a known M4 shader
+and source-material risk, not a blocker for starting M4.
 
 ## Tool
 
@@ -51,6 +52,15 @@ Each manifest now also carries score hints:
 
 These are review signals, not automatic pass/fail gates.
 
+Rule files can provide per-pair tuning:
+
+- transition width in texture repeats
+- mask noise strength
+- albedo mean/std matching
+- transition-local albedo frequency dampening
+- roughness mean/std matching
+- normal-energy dampening
+
 ## Godot Review Scene
 
 - Scene: `world3/scenes/capture_phase_m2/transition_strip_review.tscn`
@@ -75,20 +85,20 @@ Index: `world3/textures/transitions/index.json`
 Rule contract: `world3/jobs/biome_transition_rules.json`
 Contract note: `world3/docs/M2_BOUNDARY_TRANSITION_CONTRACT.md`
 
-## Score Read
+## Tuned Score Read
 
-| Pair | Hard edge | Transition center | Improvement | Review hints |
-|------|-----------|-------------------|-------------|--------------|
-| `desert_sand` -> `grassland_grass` | 0.139652 | 0.030852 | 77.9% | roughness, visible frequency |
-| `scrub_sparse` -> `dry_wash` | 0.033954 | 0.008786 | 74.1% | none |
-| `tundra_moss` -> `temperate_forest_grass` | 0.287778 | 0.032179 | 88.8% | palette, roughness, normal energy |
-| `dry_wash` -> `desert_dry_brush` | 0.135151 | 0.014317 | 89.4% | roughness, normal energy |
+| Pair | Width | Hard edge | Tuned center | Improvement | Raw -> tuned key deltas | Remaining hints |
+|------|-------|-----------|--------------|-------------|-------------------------|-----------------|
+| `desert_sand` -> `grassland_grass` | 8 | 0.139652 | 0.022570 | 83.8% | freq 0.099164 -> 0.034751; rough 0.336034 -> 0.151638 | none |
+| `scrub_sparse` -> `dry_wash` | 6 | 0.033954 | 0.008808 | 74.1% | unchanged control pair | none |
+| `tundra_moss` -> `temperate_forest_grass` | 8 | 0.287778 | 0.032655 | 88.7% | rough 0.494944 -> 0.148489; normal 0.611044 -> 0.383937 | normal energy |
+| `dry_wash` -> `desert_dry_brush` | 8 | 0.135151 | 0.014219 | 89.5% | rough 0.861734 -> 0.129260; normal 0.544815 -> 0.319896 | normal energy |
 
 Read: the transition strips reduce the immediate center discontinuity on all
-four pairs, including the hard stress cases. The score hints also match the
-visual caveats: same-source OpenTopo material pairs are the cleanest; cross
-source/cross biome pairs need style and channel normalization before
-production promotion.
+four pairs, including the hard stress cases. The tuned pass clears the
+roughness/frequency flags on all but the deliberately untouched control pair.
+Normal-energy mismatch remains visible on the two hardest cross-source pairs;
+that should feed M4 shader design and source-material QA rather than be hidden.
 
 ## Read
 
@@ -111,7 +121,10 @@ Quality caveats:
   should eventually drive mask placement using slope, wetness, elevation,
   biome distance fields, and authored exceptions.
 
-## Remaining M2 Work
+## M4 Handoff
 
-- Use the score hints to tune the next strip generation pass: palette/value
-  normalization, roughness/normal weighting, band width, and mask noise scale.
+- Use `world3/jobs/biome_transition_rules.json` as the boundary input contract.
+- Keep `raw_scores` in manifests as source-material QA signals.
+- Use tuned `scores` as the transition-asset read.
+- Start M4 with normal two-material splat blending first, then add explicit
+  boundary asset sampling once boundary-space UVs exist.

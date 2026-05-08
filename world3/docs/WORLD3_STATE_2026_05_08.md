@@ -164,38 +164,38 @@ references and runtime material generation.
 
 **Exit:** one source of truth for materials.
 
-### M2 — Transition material prototype (worker handoff)
+### M2 — Transition material prototype (consolidated)
 
-Highest-leverage gap. Worker has the QA infra
-(`biome_tile_transition_review.tscn`); they're the cheaper path.
+Highest-leverage gap: pairwise material/biome boundaries need to read better
+than hard cuts before M4 splat work.
 
-**Status 2026-05-08:** IN PROGRESS. Prototype pass 1 generated four
-catalog-driven transition strips and hard-cut comparison captures via
-`pipelines/textures/build_transition_strip.py`. Godot review-scene
-integration remains open. Evidence:
-`world3/docs/M2_TRANSITION_MATERIAL_PROTOTYPE.md`.
+**Status 2026-05-08:** DONE for workflow/M4 input. Prototype pass 3 generated
+four catalog-driven transition strips, hard-cut comparison captures, score
+hints, rule-level tuning, and a clean Godot review scene. Transition strips
+are generated boundary assets referenced by
+`world3/jobs/biome_transition_rules.json`, not base catalog materials.
+Evidence: `world3/docs/M2_TRANSITION_MATERIAL_PROTOTYPE.md`.
 
 **Deliverables:**
-- Tool: `pipelines/textures/build_transition_strip.py` —
-  takes two material IDs from M1's catalog, emits a 2-8 tile wide
-  blended strip with: noisy mask, palette interpolation, edge
-  feathering.
+- Tool: `pipelines/textures/build_transition_strip.py` takes two material IDs
+  from M1's catalog or the boundary rule file, emits a 6-8 repeat blended strip
+  with PBR maps, noisy mask, tuning, score hints, and hard-cut comparison
+  capture.
 - Test pairs (4–6, hand-picked from current failure cases):
   - `desert_sand` ↔ `grassland_grass` (cross-biome high-style-delta)
   - `scrub_sparse` ↔ `dry_wash` (within-OpenTopo class neighbors)
   - `tundra_moss` ↔ `temperate_forest_grass` (cross-biome moderate)
   - One real ↔ procedural pair (e.g. `dry_wash` OpenTopo ↔
     `desert_dry_brush` procedural)
-- Drop generated transitions into the existing transition review
-  scene; visually verify hard borders soften into believable bands.
+- Clean review scene:
+  `world3/scenes/capture_phase_m2/transition_strip_review.tscn`.
 
-**Sequence:** orchestrator writes the handoff doc with M1's catalog
-format as input. Worker builds the tool + the 4–6 transitions +
-returns captures. Orchestrator integrates into the runtime.
+**Sequence:** M1 catalog feeds transition rules; builder emits pair assets and
+metrics; Godot review scene renders hard cut beside tuned strips.
 
-**Exit:** at least 3 transitions read better than hard cuts in
-`biome_tile_transition_review.tscn`. We learn how expensive a
-transition is and roughly how many we need long-term.
+**Exit:** at least 3 transitions read better than hard cuts in review.
+Completed: all four improve over hard cuts. Residual normal-energy mismatch on
+stress pairs is carried into M4/source-material QA.
 
 ### M3 — Chunk-size sweep (orchestrator-led, was Phase F.4-sweep)
 
@@ -362,3 +362,10 @@ These start when chunk + biome + tile + transition is ~80% solved
   `world3/jobs/biome_transition_rules.json`; base source materials stay in
   `world3/materials/catalog.json`. `build_transition_strip.py` can now build
   directly from the rule file.
+- **2026-05-08 (dirty worktree checkpoint)**: User asked to commit all dirty
+  files. Committed the accumulated OpenTopo docs/captures/review scenes and
+  generated support files as `world3: checkpoint opentopo worktree`.
+- **2026-05-08 (M2 tuning pass)**: Added rule-level tuning knobs for transition
+  width, mask noise, albedo matching, local frequency dampening, roughness
+  matching, and normal-energy dampening. Regenerated all four transition pairs;
+  M2 is now done for workflow/M4 input.

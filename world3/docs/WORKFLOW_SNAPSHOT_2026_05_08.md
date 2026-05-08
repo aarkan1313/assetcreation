@@ -1,7 +1,7 @@
 # world3 Workflow Snapshot - 2026-05-08
 
-This is the compact record of the current world3 workflow after M1, M3, and
-the second M2 prototype pass.
+This is the compact record of the current world3 workflow after M1, M2, and
+M3.
 
 ## Framing
 
@@ -43,10 +43,12 @@ material-generation QA rather than transition logic.
 4. **Transition prototype**
    - Tool: `pipelines/textures/build_transition_strip.py`
    - Inputs: two catalog IDs, or `world3/jobs/biome_transition_rules.json`.
-   - Output: a deterministic 6-tile transition strip with PBR maps, mask,
+   - Output: deterministic 6-8 repeat transition strips with PBR maps, mask,
      manifest, score hints, and hard-cut comparison capture.
    - Contract: transition strips are generated boundary assets referenced by
      biome/material rules, not base material catalog entries.
+   - Tuning: rule-level knobs now adjust width, mask noise, albedo matching,
+     local frequency dampening, roughness matching, and normal-energy dampening.
    - Review scene:
      `world3/scenes/capture_phase_m2/transition_strip_review.tscn`
    - Current pairs:
@@ -84,12 +86,6 @@ material-generation QA rather than transition logic.
 
 ## Open Work
 
-- Use transition scores to tune:
-  - band width
-  - noise strength and scale
-  - palette/value normalization
-  - roughness/normal/height channel weighting
-  - geography-driven masks from slope, wetness, elevation, biome distance
 - Reduce noisy grass/leaves at source texture generation/QA.
 - M4: build the unified splat shader using catalog materials and boundary
   transition rules.
@@ -102,4 +98,7 @@ material-generation QA rather than transition logic.
 - `3a7317d` - `world3: start transition strip prototype`
 - `116766f` - `world3: record transition visual review`
 - `680b22c` - `world3: refresh workflow docs`
-- `HEAD at handoff` - `world3: add transition review scoring`
+- `ae31568` - `world3: add transition review scoring`
+- `a2cc5fc` - `world3: add transition boundary contract`
+- `dfb2bdd` - `world3: checkpoint opentopo worktree`
+- `HEAD at handoff` - M2 tuned transition assets
