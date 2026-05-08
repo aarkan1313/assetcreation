@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/Terrain.gd" id="terrain_script"]
+[ext_resource type="Material" path="res://textures/wgv3/terrain_blend_tetons.tres" id="terrain_mat"]
+[ext_resource type="Script" path="res://scripts/TopDownCam.gd" id="top_script"]
+[ext_resource type="Script" path="res://scripts/PlayerAnchor.gd" id="anchor_script"]
+[ext_resource type="Script" path="res://scripts/HeadlessCapture.gd" id="cap_script"]
+
+[sub_resource type="Environment" id="env"]
+background_mode = 1
+background_color = Color(0.05, 0.05, 0.07, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.6, 0.65, 0.8, 1)
+ambient_light_energy = 0.35
+tonemap_mode = 2
+
+[node name="TopdownMinimap10km" type="Node3D"]
+
+[node name="WorldEnv" type="WorldEnvironment" parent="."]
+environment = SubResource("env")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866, -0.354, 0.354, 0, 0.707, 0.707, -0.5, -0.612, 0.612, 0, 8000, 0)
+light_color = Color(1, 0.97, 0.92, 1)
+light_energy = 1.6
+shadow_enabled = true
+directional_shadow_max_distance = 30000.0
+
+[node name="Terrain" type="MeshInstance3D" parent="."]
+script = ExtResource("terrain_script")
+material_override = ExtResource("terrain_mat")
+subdivisions = 256
+
+[node name="PlayerAnchor" type="Node3D" parent="."]
+script = ExtResource("anchor_script")
+
+[node name="TopCam" type="Camera3D" parent="."]
+script = ExtResource("top_script")
+projection = 1
+near = 1.0
+far = 30000.0
+current = true
+anchor_path = NodePath("../PlayerAnchor")
+visible_diameter_m = 10000.0
+
+[node name="Capture" type="Node" parent="."]
+script = ExtResource("cap_script")
+output_path = "D:/tmp/world3_screens/phase_c/topdown_minimap_10km.png"

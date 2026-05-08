@@ -212,32 +212,34 @@ Exit criteria:
 - [x] Documented per-backend bake rules (`bake_pbr.py` ROUGHNESS_BLEND_ALPHA table)
 - [ ] B.6: alt backends evaluated (deferred; pursue if material-class gap surfaces)
 
-## Phase C — Iso/topdown scale review
+## Phase C — Iso/topdown scale review (IN PROGRESS, 2026-05-07)
 
 Auto-frame works for "render whole tile" but not for "render the area
 around a player" or "render at a fixed game-relevant zoom level."
 
 Checklist:
-- [ ] Define the target zoom levels. Two reference points each:
-      - Iso ARPG-style: ~30-50m visible diameter (Diablo, PoE)
-      - Iso strategy: ~200-500m visible (Civ, RTS)
-      - Topdown minimap: whole region or ~10km radius
-      - Topdown game-tile: ~50m radius (Stardew-ish)
-- [ ] Add a "framing target" mode to IsoCam / TopDownCam: instead of
-      auto-AABB, frame around a world position with a configurable
-      visible diameter.
-- [ ] A "player anchor" concept (just a Vector3 for now) that the
-      iso/topdown cameras can frame relative to.
+- [x] Define the target zoom levels. Locked in `world3/scripts/CamFraming.gd`:
+      - Iso ARPG: 40m diameter (Diablo, PoE)
+      - Iso strategy: 300m diameter (Civ, RTS)
+      - Topdown game-tile: 50m diameter (Stardew-ish)
+      - Topdown minimap: 10km diameter (whole-region)
+- [x] Add a "framing target" mode to IsoCam / TopDownCam. Both scripts
+      now support `anchor_path` + `visible_diameter_m`. Falls through
+      to legacy auto-AABB when anchor isn't set — non-breaking.
+- [x] A "player anchor" concept — `world3/scripts/PlayerAnchor.gd`,
+      a Node3D with optional snap-to-terrain in `_ready`.
+- [x] Capture the same region at each zoom level for visual review.
+      4 capture scenes under `world3/scenes/capture_phase_c/` against
+      Tetons heightmap (4km region).
 - [ ] Decide: do iso/topdown share a player anchor with walk, or do
-      they each get their own?
-- [ ] Capture the same region at each zoom level for visual review.
-      Helps lock in which game type each mode actually serves.
+      they each get their own? Deferred until we wire walk-mode into
+      the same anchor system.
 
 Exit criteria:
-- Each game mode has 1-2 documented "good" framings with example
-  captures.
-- IsoCam/TopDownCam scripts support both auto-AABB and
-  framed-around-anchor modes.
+- [x] IsoCam/TopDownCam scripts support both auto-AABB and
+      framed-around-anchor modes.
+- [ ] Each game mode has 1-2 documented "good" framings with example
+      captures (captures rendering — review pending).
 
 ## Phase D — Biome generalization (fill out kits)
 
@@ -362,11 +364,14 @@ Immediate OpenTopo texture sprint status:
 3. Done: six material classes generated with the same soft-composite workflow:
    `bare_soil`, `bright_rock`, `dry_wash`, `rocky_slope`, `scrub_dense`, and
    `scrub_sparse`.
-4. Current review: compare the six-class Godot gallery and 2x2 sheet, then mark
-   which classes work at close, mid, and far camera distances.
-5. Next build step: wire viable classes into a real reusable material path with
-   macro/meso/micro separation instead of treating one orthophoto composite as
-   every scale of ground detail.
+4. Done: finish pass writes balanced albedo, neutral source-derived detail maps,
+   and `terrain_hex_detail` Godot materials for all six classes.
+5. Current review: use `tileable_finished_material_review.tscn` and the real
+   Godot captures to mark which classes work at close, mid, and far camera
+   distances.
+6. Next build step: promote viable classes into the normal world3 material
+   library and use the full real map as macro color/reference instead of
+   treating one orthophoto composite as every scale of ground detail.
 
 Current HD audit:
 
