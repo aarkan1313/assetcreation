@@ -79,7 +79,7 @@ Open / deferred items (candidates for a later phase):
 - Variation-and-stitch tool (cprimozic-inspired) — could rescue
   lattice-prone materials more cleanly than prompt rewrites alone.
 
-## Phase A polish — pipeline foundation hardening (IN PROGRESS, 2026-05-07)
+## Phase A polish — pipeline foundation hardening (DONE 2026-05-07)
 
 Bridge between Phase A's prompt R&D and Phase B's upscaling. The
 deferred items from Phase A's exit notes turned out to have higher
@@ -183,7 +183,7 @@ Open / parked candidates (not in this phase):
   that Phase B + future kits can use as anchors for material
   accuracy. ~half session to source + organize.
 
-## Phase B — Upscaling + multi-resolution pipeline (NEXT after polish)
+## Phase B — Upscaling + multi-resolution pipeline (DONE 2026-05-07)
 
 Currently 512 throughout. Some uses (close-walk, hero materials, large
 iso-camera footprint) need more. Some uses (mid-range topdown, far
@@ -248,7 +248,7 @@ Renderer caveat: the SceneTree-script runner hangs in `--headless`
 (process_frame awaits never resume). Run captures without `--headless`
 — ~2s/scene with a real window. Documented in captures/README.
 
-## Phase D — Biome generalization (fill out kits)
+## Phase D — Biome generalization (DONE 2026-05-07)
 
 5 biome kits defined; only 3 (alpine, desert, tundra) have purpose-built
 textures. temperate_forest and grassland reuse alpine textures, which
@@ -322,7 +322,7 @@ Exit criteria — all met:
 - [x] Same region rendered through the 3 modes shows clearly different
   treatments (close detail vs. mid detail vs. flat color blocks).
 
-## Phase F — Multi-tile / continuous world
+## Phase F — Multi-tile / continuous world (NEXT)
 
 Long-term goal: walk off the edge of one region and seamlessly enter
 another. We don't need to solve infinite-world today, but we should
@@ -420,9 +420,15 @@ docs/OPENTOPO_TILEABLE_TEXTURE_PILOT_AUDIT.md
 
 ## Phase order
 
-Roughly sequential but Phase F can start in parallel with E if
-desired. A → B → D → C → E → F is a sensible default. C might come
-earlier if framing concerns block visible progress.
+Originally A → B → D → C → E → F. Actual order shipped:
+A (done) → A polish (done) → B (done) → C (done) → D (done) → E
+(done) → F (next).
+
+C/D/E all landed in a single 2026-05-07 evening session. D's
+kit-binding bug was surfaced by the C-D handoff capturing a regression
+on chaparral/grassland regions; the fix mechanism (`deploy_kit_to_world3.py`)
+ended up being the same plumbing E needed for per-mode emission, so
+D and E share the texture-deploy / .tres-rewriting tooling.
 
 Each phase's first action is a small written plan (PLAN.md rewrite)
 that decomposes the phase's checklist into the next session's worth
