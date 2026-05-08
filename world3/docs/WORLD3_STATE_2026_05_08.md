@@ -169,6 +169,12 @@ references and runtime material generation.
 Highest-leverage gap. Worker has the QA infra
 (`biome_tile_transition_review.tscn`); they're the cheaper path.
 
+**Status 2026-05-08:** IN PROGRESS. Prototype pass 1 generated four
+catalog-driven transition strips and hard-cut comparison captures via
+`pipelines/textures/build_transition_strip.py`. Godot review-scene
+integration remains open. Evidence:
+`world3/docs/M2_TRANSITION_MATERIAL_PROTOTYPE.md`.
+
 **Deliverables:**
 - Tool: `pipelines/textures/build_transition_strip.py` —
   takes two material IDs from M1's catalog, emits a 2-8 tile wide
@@ -335,3 +341,7 @@ These start when chunk + biome + tile + transition is ~80% solved
   and `chunk_size_sweep.tscn`; measured 256/512/1024 m chunks with 8 m mesh
   spacing. 256 m is locked as the synchronous base chunk for M5 because it kept
   worst-case load latency near one 60 Hz frame while larger chunks spiked.
+- **2026-05-08 (M2 prototype pass 1)**: Added catalog-driven transition-strip
+  generation for four roadmap pairs and wrote hard-cut comparison captures under
+  `world3/docs/captures/transitions/`. This starts M2 but does not close it;
+  Godot review-scene integration and scoring remain.

@@ -96,6 +96,13 @@ material generation, Godot import, Phase E smoke capture, and region gallery.
 **Goal**: build 4–6 transition strips spanning the kit-class spectrum
 to learn transition mechanics + cost.
 
+**Status 2026-05-08**: IN PROGRESS. Prototype pass 1 generated four
+catalog-driven transition strips plus hard-cut comparison captures.
+Godot review-scene integration remains open because the existing
+transition review harness is part of the preexisting OpenTopo worker
+dirt and was not folded into this commit. Evidence:
+`world3/docs/M2_TRANSITION_MATERIAL_PROTOTYPE.md`.
+
 **Deliverables**:
 - Tool: `pipelines/textures/build_transition_strip.py` — takes two
   catalog ids, emits a 2–8 tile wide blended strip (noisy mask,

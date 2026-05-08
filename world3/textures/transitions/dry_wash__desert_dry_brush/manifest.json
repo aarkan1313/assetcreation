@@ -1,0 +1,21 @@
+{
+  "pair": [
+    "dry_wash",
+    "desert_dry_brush"
+  ],
+  "seed": 5513914794428438422,
+  "tile_px": 512,
+  "tiles_wide": 6,
+  "noise_strength": 0.22,
+  "outputs": {
+    "albedo": "world3/textures/transitions/dry_wash__desert_dry_brush/albedo.png",
+    "normal": "world3/textures/transitions/dry_wash__desert_dry_brush/normal.png",
+    "roughness": "world3/textures/transitions/dry_wash__desert_dry_brush/roughness.png",
+    "height": "world3/textures/transitions/dry_wash__desert_dry_brush/height.png",
+    "ao": "world3/textures/transitions/dry_wash__desert_dry_brush/ao.png"
+  },
+  "mask": "world3/textures/transitions/dry_wash__desert_dry_brush/mask.png",
+  "preview": "world3/docs/captures/transitions/dry_wash__desert_dry_brush_hard_vs_transition.png",
+  "hard_edge_mean_abs_albedo_delta": 0.135151,
+  "status": "prototype_transition_strip"
+}

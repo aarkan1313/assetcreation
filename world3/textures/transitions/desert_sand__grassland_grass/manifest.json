@@ -1,0 +1,21 @@
+{
+  "pair": [
+    "desert_sand",
+    "grassland_grass"
+  ],
+  "seed": 5071285863296570644,
+  "tile_px": 512,
+  "tiles_wide": 6,
+  "noise_strength": 0.22,
+  "outputs": {
+    "albedo": "world3/textures/transitions/desert_sand__grassland_grass/albedo.png",
+    "normal": "world3/textures/transitions/desert_sand__grassland_grass/normal.png",
+    "roughness": "world3/textures/transitions/desert_sand__grassland_grass/roughness.png",
+    "height": "world3/textures/transitions/desert_sand__grassland_grass/height.png",
+    "ao": "world3/textures/transitions/desert_sand__grassland_grass/ao.png"
+  },
+  "mask": "world3/textures/transitions/desert_sand__grassland_grass/mask.png",
+  "preview": "world3/docs/captures/transitions/desert_sand__grassland_grass_hard_vs_transition.png",
+  "hard_edge_mean_abs_albedo_delta": 0.139652,
+  "status": "prototype_transition_strip"
+}
