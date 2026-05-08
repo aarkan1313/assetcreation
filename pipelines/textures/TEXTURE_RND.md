@@ -18,6 +18,35 @@ The contact sheets and manifests for sweeps live in
 
 # Part 1 — Experiments
 
+## B.5 — orchestrator integration: aaa_texture.py --ladder (2026-05-07)
+
+**What:** Wired the full SR → bake → mip → per-tier QA pipeline into
+`aaa_texture.py` as Stage 8, activated by `--ladder`.
+
+**Captures:** `world3/docs/captures/phase_b/B5_flagship_rock_dark_ladder/`
+
+**Key findings:**
+
+- The full pipeline (Stage 8) adds ~30s to a strict run (SR is the
+  dominant cost at ~2s/map × 6 maps = 12s, plus bake ~3s, mip ~5s,
+  QA ~5s, overhead ~5s). Acceptable for hero materials; off by default.
+
+- rock_dark flagship: all 3 tiers grade B. Junction ratio increases at
+  lower res (1.50 at 2K, 2.11 at 1K, 2.66 at 512) — expected behavior
+  for high-contrast edge material (documented in B.4 entry). Edge MSE
+  is consistently 0.0001 across all tiers, confirming the bake + mip
+  filtering chain preserves tileability end-to-end.
+
+- `aaa_pipeline.json` now records `ladder.tier_grades` alongside the
+  gen-res grade, giving a complete single-file quality record per material.
+
+**Decision:** `--ladder` is the canonical path for hero/strict materials.
+`--quality fast` and `--quality default` remain gen-res-only by default.
+No automatic up-promotion of default to ladder — YAGNI.
+
+**Next:** B6 (optional) — alternative SR backends if Real-ESRGAN
+underperforms on specific material classes (snow, vegetation).
+
 ## B.4 — per-tier QA: texture_qa.py --ladder (2026-05-07)
 
 **What:** Extended `texture_qa.py` with `--ladder <mat_dir>` flag.

@@ -198,28 +198,19 @@ Foundation it'll consume from Phase A polish:
   outputs that get upscaled.
 
 Checklist:
-- [ ] Audit current `flux_upscale.py` — what works, what doesn't,
-      what's PBR-aware vs. albedo-only.
-- [ ] Research alternatives:
-      - Real-ESRGAN, SwinIR, BSRGAN (general-purpose SR)
-      - Tileable-aware super-resolution wrappers
-      - ComfyUI's upscaler ecosystem (UltimateSDUpscale, ESRGAN,
-        custom workflows)
-      - 4× SR followed by tiling repair vs. integrated tile-aware SR
-- [ ] Decide a target resolution ladder: e.g. 512 default, 1024 for
-      "good" terrain materials, 2K/4K for hero materials.
-- [ ] Build/extend an upscaler that handles all 5 PBR maps (not just
-      albedo). Normal needs special handling (don't blur it; bicubic
-      or normal-aware SR).
-- [ ] Per-tier QA: tile_2x2 + Blender preview at every resolution
-      tier so we can compare visually.
-- [ ] Pick a flagship texture (probably wgv3_rock_dark) and produce
-      the full ladder; document the difference visually.
+- [x] B.1 — SR survey + first SR tool (Real-ESRGAN via ComfyUI) — `sr_upscale.py`
+- [x] B.2 — `bake_pbr.py` — high-res re-derive of normal/AO/roughness
+- [x] B.3 — `mip_ladder.py` — 2K master → 2K/1K/512 with per-map correct filtering
+- [x] B.4 — Per-tier QA wiring — `texture_qa.py --ladder` + cross-tier contact sheet
+- [x] B.5 — Orchestrator integration — `aaa_texture.py --ladder` + flagship ladder
+- [ ] B.6 — Alternative SR backends (optional; only if survey supports a better default)
 
 Exit criteria:
-- One pipeline command that takes a 512 PBR set → 1K or 2K with all
-  maps preserved and tiling intact.
-- Clear policy: which textures get which tier, and why.
+- [x] One command produces a full mip ladder per material (`aaa_texture.py --ladder`)
+- [x] Cross-tier QA wired (`texture_qa.py --ladder-dir`) with contact sheet
+- [x] Flagship rock_dark full ladder shipped + reviewed (B5_flagship captures)
+- [x] Documented per-backend bake rules (`bake_pbr.py` ROUGHNESS_BLEND_ALPHA table)
+- [ ] B.6: alt backends evaluated (deferred; pursue if material-class gap surfaces)
 
 ## Phase C — Iso/topdown scale review
 
