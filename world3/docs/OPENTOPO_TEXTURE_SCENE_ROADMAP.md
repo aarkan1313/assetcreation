@@ -1,5 +1,20 @@
 # OpenTopo Texture, Scene, And High-Detail Roadmap
 
+> **2026-05-08 — Direction superseded.** Project direction now flows
+> through the orchestrator state doc at
+> [`WORLD3_STATE_2026_05_08.md`](WORLD3_STATE_2026_05_08.md). The
+> world3 main chat is the orchestrator; this OpenTopo chat is a
+> worker that takes scoped handoffs.
+>
+> This doc is **retained as the worker's runbook** — the workflow
+> recipes, build commands, layer definitions, and pilot audits below
+> remain the source of truth for how OpenTopo data gets fetched,
+> processed, and turned into materials. Don't follow the "Proposed
+> Next Sprint" sequencing as roadmap direction; follow the M1–M5
+> plan + handoffs from the orchestrator instead.
+
+---
+
 This plan extends the two OpenTopo pilots:
 
 - Phase 1 proved same-product mosaics: several DEM calls can become one
@@ -93,6 +108,32 @@ Goal: make viewable maps/scenes that preserve the actual place.
 This is what Phase 2 currently demonstrates. The scene is not just a heightmap:
 it has real color and real support layers.
 
+There is now a no-color sibling workflow for places where we have DTM/DSM but
+no orthophoto. The BC Coast stack uses DTM as ground, DSM-DTM as surface height,
+and derives forest, rock/slope, wetness, and material masks from those measured
+rasters. It preserves actual terrain while leaving final color/style under our
+control.
+
+Current master-stack pair:
+
+```text
+Gloss Mountain Textured Master Stack
+  real DSM + orthomosaic
+  0.62 x 1.08 km Godot review scene
+  render_albedo, raw orthophoto, fill mask, cliff mask
+
+Zion USGS10m No-Texture Master Stack
+  4-call USGS10m mosaic
+  36.80 x 36.88 km Godot review scene
+  procedural sandstone material, coverage_count, seam_delta
+```
+
+Full audit and rebuild commands:
+
+```text
+D:/assets/world3/docs/OPENTOPO_MASTER_STACKS_AUDIT.md
+```
+
 Inputs:
 
 - DTM/DEM as base ground.
@@ -100,6 +141,7 @@ Inputs:
 - NIR/vegetation products as masks.
 - LAZ-derived canopy/CHM and point-cloud color products.
 - Slope, roughness, hillshade, and QA layers.
+- For no-color stacks: paired DTM/DSM and derived DSM-DTM surface height.
 
 Outputs:
 
@@ -206,6 +248,17 @@ Workflow 2 and Workflow 3 share data, but they are not the same decision.
 
 Workflow 1 is separate: it extracts reusable materials from the same evidence.
 
+Biome-to-biome transition QA is now its own checkpoint. The scene
+`res://toporeview/biome_tile_transition_review.tscn` compares OpenTopo
+photoreal real-source material classes against regular generated biome-kit
+materials with hard tile borders. It is not a blending solution; it is the
+failure view that tells us where transition bands, palette normalization, and
+runtime biome masks are required. See:
+
+```text
+D:/assets/world3/docs/OPENTOPO_BIOME_TILE_TRANSITION_REVIEW.md
+```
+
 The likely end state combines all three:
 
 1. Build a fused real-place stack.
@@ -281,11 +334,13 @@ Deliverables:
   `bright_rock`, `dry_wash`, `rocky_slope`, `scrub_dense`, and `scrub_sparse`.
 - Existing: `tileable_soft_composite_gallery.tscn` and labeled 2x2 material
   sheet for review.
+- Existing: finished Godot material pass with balanced albedo, neutral
+  source-derived detail maps, `terrain_hex_detail` material files, and
+  `tileable_finished_material_review.tscn`.
 - Next: close/mid/far scale notes so noisy crops are rejected even when seam QA
   passes.
-- Next: reusable Godot material path that treats the real map as macro color,
-  soft composites as meso material, and separate generated/filtered detail as
-  close micro texture.
+- Next: promote accepted finished classes into the normal material library and
+  treat the real map as macro color/reference.
 
 Questions to answer:
 

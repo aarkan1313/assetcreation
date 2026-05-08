@@ -10,6 +10,37 @@ project.
 world, real-DEM grounded, optionally procedural for arbitrary
 extension. v2 just changes what we work on *first* to get there.
 
+---
+
+## 2026-05-08 update — operating-model + sequence revision
+
+Two changes since the original v2 reframe:
+
+1. **Single-stream orchestrator/worker model.** The world3 main chat
+   is the orchestrator (owns roadmap + most work + cross-cutting
+   decisions). The OpenTopo chat is a worker that takes scoped
+   handoffs. State + boundary + handoff protocol live in
+   [`WORLD3_STATE_2026_05_08.md`](WORLD3_STATE_2026_05_08.md).
+   Replaces the "two parallel pipelines" framing.
+
+2. **Phase F absorbed into M1–M5.** Once we recognized that
+   material taxonomy + transitions + splat shader + chunk size are
+   interlocked, doing them as a sequential "Phase F → G → H → I"
+   was wrong. M1–M5 in [`PLAN.md`](PLAN.md) is the current
+   iteration:
+   - M1 — material catalog (orchestrator-led, blocks rest)
+   - M2 — transition prototype (worker handoff)
+   - M3 — chunk-size sweep (orchestrator, was Phase F.4-sweep)
+   - M4 — splat-shader prototype (orchestrator, after M1+M2)
+   - M5 — wire streaming + splat into `walk.tscn` (orchestrator)
+
+The phase-by-phase content below stays accurate as historical
+record + design notes (especially Phase F's research findings + the
+Recommended Transition Pipeline). Treat this section as the current
+direction; treat the rest as where we've been.
+
+---
+
 ## Operating principles
 
 - **One thing at a time.** Each phase has a clear scope and an exit

@@ -40,7 +40,9 @@ When a pipeline gets a deep-dive (Phase 11+ pattern), the deep-dive handoff supe
 
 | Handoff | Pipeline | Status |
 |---|---|---|
-| **[docs/handoffs/HANDOFF_world3_phases_cde_2026_05_07.md](docs/handoffs/HANDOFF_world3_phases_cde_2026_05_07.md)** | world3 / textures | **Latest — Phase C/D/E session arc (anchor framing + kit-binding fix + per-mode tuning) — Phase F next** |
+| **[world3/docs/WORLD3_STATE_2026_05_08.md](world3/docs/WORLD3_STATE_2026_05_08.md)** | world3 (orchestrator state) | **Latest — orchestrator/worker model + M1–M5 plan + worker infra inventory. Read first for direction.** |
+| **[docs/handoffs/HANDOFF_TEMPLATE_to_worker.md](docs/handoffs/HANDOFF_TEMPLATE_to_worker.md)** | world3 (template) | Handoff template for orchestrator → OpenTopo worker tasks. |
+| **[docs/handoffs/HANDOFF_world3_phases_cde_2026_05_07.md](docs/handoffs/HANDOFF_world3_phases_cde_2026_05_07.md)** | world3 / textures | Phase C/D/E session arc (anchor framing + kit-binding fix + per-mode tuning). Superseded by state doc for direction; still the deep dive on what landed. |
 | [docs/handoffs/HANDOFF_phase_c_anchor_framing_2026_05_07.md](docs/handoffs/HANDOFF_phase_c_anchor_framing_2026_05_07.md) | world3 / textures | Phase C-only handoff (mid-session); the C/D/E consolidated handoff above supersedes for orientation. |
 | [docs/handoffs/HANDOFF_phase_d_complete_2026_05_07.md](docs/handoffs/HANDOFF_phase_d_complete_2026_05_07.md) | world3 / textures | Phase D handoff (kit generation, predates the kit-binding fix). |
 | **[docs/handoffs/HANDOFF_2026_05_07_night_path2_parked.md](docs/handoffs/HANDOFF_2026_05_07_night_path2_parked.md)** | Cross-cutting | Latest — whole-project orientation + Path 2 parked + open backlog |

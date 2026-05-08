@@ -9,7 +9,8 @@ find something.
 |--------------------------------------------------------------|-------------------------------------------------------|
 | "How is the docs system organized? Where do new findings go?" | [DOCS_GUIDE.md](DOCS_GUIDE.md)                       |
 | "What is world3 and how do I run it end-to-end?"             | [WORKFLOW.md](WORKFLOW.md)                            |
-| "What are we building toward, in phases?"                    | [ROADMAP.md](ROADMAP.md) (v2 — reframed 2026-05-07)   |
+| "What's the current operating model + state of the project?" | [WORLD3_STATE_2026_05_08.md](WORLD3_STATE_2026_05_08.md) (orchestrator/worker model + M1–M5 plan + worker infra inventory) |
+| "What are we building toward, in phases?"                    | [ROADMAP.md](ROADMAP.md) (v2 — reframed 2026-05-07; updated 2026-05-08 with M1–M5 sequence)   |
 | "What was the original roadmap before reframing?"            | [ROADMAP_v1_archived.md](ROADMAP_v1_archived.md)      |
 | "What's the current iteration's scope?"                      | [PLAN.md](PLAN.md)                                    |
 | "Why did we choose X over Y?"                                | [DECISIONS.md](DECISIONS.md)                          |
@@ -23,10 +24,12 @@ find something.
 | "How do I view the OpenTopo pilot scenes?"                   | [../toporeview/README.md](../toporeview/README.md) |
 | "How do I pull/process OpenTopography data?"                 | [OPENTOPO_GUIDE.md](OPENTOPO_GUIDE.md), [OPENTOPO_DATA_TYPES.md](OPENTOPO_DATA_TYPES.md), [OPENTOPO_MOSAIC_FUSION_WORKFLOWS.md](OPENTOPO_MOSAIC_FUSION_WORKFLOWS.md), [../opentopo/STATUS.md](../opentopo/STATUS.md) |
 | "What OpenTopo tooling/knobs do we have, and what should I turn?" | [OPENTOPO_TOOLING_KNOBS_GUIDE.md](OPENTOPO_TOOLING_KNOBS_GUIDE.md) |
+| "What are the current final OpenTopo master stacks?" | [OPENTOPO_MASTER_STACKS_AUDIT.md](OPENTOPO_MASTER_STACKS_AUDIT.md) |
 | "How do we stitch tiles or fuse height/color/canopy layers?" | [OPENTOPO_MOSAIC_FUSION_WORKFLOWS.md](OPENTOPO_MOSAIC_FUSION_WORKFLOWS.md) |
 | "How do OpenTopo textures, real-place scenes, and HD zoom fit together?" | [OPENTOPO_TEXTURE_SCENE_ROADMAP.md](OPENTOPO_TEXTURE_SCENE_ROADMAP.md) |
 | "How do we rebuild the finished OpenTopo ground materials?" | [OPENTOPO_TILEABLE_REAL_TEXTURE_WORKFLOW.md](OPENTOPO_TILEABLE_REAL_TEXTURE_WORKFLOW.md#current-endpoint-quickstart) |
 | "How do we turn real OpenTopo ground into tileable textures?" | [OPENTOPO_TILEABLE_REAL_TEXTURE_WORKFLOW.md](OPENTOPO_TILEABLE_REAL_TEXTURE_WORKFLOW.md) |
+| "How do we review unlike biome tile-to-tile transitions?" | [OPENTOPO_BIOME_TILE_TRANSITION_REVIEW.md](OPENTOPO_BIOME_TILE_TRANSITION_REVIEW.md) |
 | "What happened in the BC Coast DTM/DSM no-color stack?" | [OPENTOPO_BC_COAST_DTM_DSM_AUDIT.md](OPENTOPO_BC_COAST_DTM_DSM_AUDIT.md) |
 | "What happened in the first tileable real-ground texture pilot?" | [OPENTOPO_TILEABLE_TEXTURE_PILOT_AUDIT.md](OPENTOPO_TILEABLE_TEXTURE_PILOT_AUDIT.md) |
 | "What happened in the Phase 2 HD review pass?"             | [OPENTOPO_PHASE2_HD_REVIEW.md](OPENTOPO_PHASE2_HD_REVIEW.md) |
@@ -72,6 +75,7 @@ find something.
   OPENTOPO_TOOLING_KNOBS_GUIDE.md /
   OPENTOPO_MOSAIC_FUSION_WORKFLOWS.md /
   OPENTOPO_TEXTURE_SCENE_ROADMAP.md /
+  OPENTOPO_MASTER_STACKS_AUDIT.md /
   OPENTOPO_PHASE2_HD_REVIEW.md /
   OPENTOPO_PHASE2_MAX_REVIEW.md /
   OPENTOPO_LARGE_4CALL_PLAN.md /
