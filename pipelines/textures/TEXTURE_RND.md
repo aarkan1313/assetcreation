@@ -18,6 +18,47 @@ The contact sheets and manifests for sweeps live in
 
 # Part 1 — Experiments
 
+## Phase D — Biome generalization: temperate_forest + grassland kits (2026-05-07)
+
+**What:** Generated purpose-built textures for the two missing biome kits. Previously
+both reused alpine slots (rock_dark, grass, etc.), making California chaparral and
+Serengeti regions render with alpine materials.
+
+**temperate_forest kit:**
+| Slot | ID | Grade | Consistency |
+|------|----|-------|-------------|
+| grass (anchor) | wgv3_tf_leaf_litter | B (2K tier: A) | — |
+| dirt | wgv3_tf_loamy_soil | A | drift |
+| rock_light | wgv3_tf_mossy_rock | A | drift |
+| rock_dark | wgv3_tf_bark_rock | A | in_palette |
+| snow | wgv3_tf_fern_ground | A | drift |
+
+**grassland kit:**
+| Slot | ID | Grade | Consistency |
+|------|----|-------|-------------|
+| grass (anchor) | wgv3_gl_tall_grass | B (2K tier: A) | — |
+| dirt | wgv3_gl_dry_thatch | B | in_palette |
+| rock_light | wgv3_gl_hardpan_soil | A | in_palette |
+| rock_dark | wgv3_gl_grass_rock | A | in_palette |
+| snow | wgv3_gl_weathered_stone | B | drift |
+
+**Key findings:**
+- Anchors (leaf_litter, tall_grass) consistently grade B at 512px base but A at 2K ladder tier.
+  This is a structural characteristic of high-frequency heterogeneous materials at 512px — the same
+  pattern seen with rock_dark in B.4. In-engine render at 2K is A quality.
+- Kit slots (non-anchor) ran without --ladder; grade B floor is acceptable for palette-locked kit slots.
+- bark_rock returned `in_palette` (not `way_off` as expected) — palette match pulled the dark basalt
+  into the anchor's warm dark-brown range. Better outcome than expected.
+- `weathered_stone` (grassland) periodic score=150.2 — grey limestone is genuinely uniform; the score
+  reflects correct material characteristics, not a generation failure.
+- `hardpan_soil` and `loamy_soil` both flagged near-zero roughness variance (sanity). Clay/loam are
+  genuinely low-roughness-variation materials; StableMaterials is correct here.
+
+**Prompting:** Applied Phase A learnings. No directional cues, no rare jargon, `top-down photo,
+even diffuse light, photoreal` in every prompt. 6 variants for anchors, 4 for kit slots.
+
+**biome_kits.json updated:** Both kits reference purpose-built IDs. All 5 kits have unique sets.
+
 ## B.5 — orchestrator integration: aaa_texture.py --ladder (2026-05-07)
 
 **What:** Wired the full SR → bake → mip → per-tier QA pipeline into

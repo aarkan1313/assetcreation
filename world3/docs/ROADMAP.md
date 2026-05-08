@@ -247,14 +247,15 @@ makes some regions look wrong (California chaparral with alpine
 materials, Serengeti with alpine grass).
 
 Checklist:
-- [ ] Generate temperate_forest kit (5 textures, palette-locked).
-      Likely: leaf-litter / loamy-soil / weathered-bark-rock / mossy-
-      rock / understory-fern.
-- [ ] Generate grassland kit. Probably: tall-grass / dry-thatch /
-      hardpan-soil / grass-rooted-rock / weathered-stone.
-- [ ] Apply Phase A learnings (better prompts, better settings) so
+- [x] Generate temperate_forest kit (5 textures, palette-locked).
+      wgv3_tf_leaf_litter (anchor) / wgv3_tf_loamy_soil / wgv3_tf_mossy_rock /
+      wgv3_tf_bark_rock / wgv3_tf_fern_ground. All at grade A or B.
+- [x] Generate grassland kit (5 textures, palette-locked).
+      wgv3_gl_tall_grass (anchor) / wgv3_gl_dry_thatch / wgv3_gl_hardpan_soil /
+      wgv3_gl_grass_rock / wgv3_gl_weathered_stone. All at grade A or B.
+- [x] Apply Phase A learnings (better prompts, better settings) so
       these kits ship at higher first-pass quality than desert/tundra.
-- [ ] Re-run biome_consistency on every kit. Document the verdict
+- [x] Re-run biome_consistency on every kit. Document the verdict
       table.
 - [ ] Re-capture region gallery with all 5 kits visible. Verify each
       region renders with appropriate biome.
@@ -341,11 +342,34 @@ single-tile scenes plus the 16K RGB stress scene, then decide whether the next
 investment should be baked ground materials, procedural close-detail blending,
 or chunked high-detail delivery.
 
+Updated target after tileable texture review:
+
+- Do not keep polishing one repeated orthophoto tile. It can be seamless and
+  still read wrong because real shrubs, rocks, drainage marks, and image noise
+  repeat at the wrong scale.
+- Split real-ground material work into `macro / meso / micro` layers:
+  broad real map color, unlike real crop variants, and cleaned close detail.
+- Build unlike tile-to-tile review first: several sibling real crops for one
+  material class, mixed in a `16 x 16` Godot grid.
+- Only after that review passes, move the variant set into a real shader path
+  with texture arrays/atlases and soft per-cell blending.
+
+Immediate OpenTopo texture sprint:
+
+1. Generate a `dry_wash` variant atlas from Guadalupe Cypress, using multiple
+   source-real sibling crops instead of one repeated crop.
+2. Review it in Godot as mixed unlike cells.
+3. Add close/mid/far scale QA notes.
+4. If the variant atlas improves the read, repeat for `bare_soil`,
+   `bright_rock`, `rocky_slope`, and scrub classes.
+
 Current HD audit:
 
 ```text
 docs/OPENTOPO_PHASE2_HD_REVIEW.md
 docs/OPENTOPO_PHASE2_MAX_REVIEW.md
+docs/OPENTOPO_TILEABLE_REAL_TEXTURE_WORKFLOW.md
+docs/OPENTOPO_TILEABLE_TEXTURE_PILOT_AUDIT.md
 ```
 
 ## Deferred

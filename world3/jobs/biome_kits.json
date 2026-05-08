@@ -1,6 +1,5 @@
 {
   "_comment": "Biome kits = sets of 5 textures bound to the 5 slots in terrain_blend.gdshader, plus per-kit height-band tuning. Each kit's texture IDs reference world3/textures/wgv3/<id>/.",
-
   "kits": {
     "alpine": {
       "description": "High-elevation rocky terrain with snow caps. Default — matches Tetons, Cascades, Sierra.",
@@ -13,14 +12,18 @@
         "snow": "snow"
       },
       "height_bands": {
-        "h_grass_dirt": 0.20,
+        "h_grass_dirt": 0.2,
         "h_dirt_rockdark": 0.55,
         "h_rockdark_snow": 0.85
       },
       "slope_threshold": 0.45,
-      "regions": ["tcf_pnw_cascades_usa", "tcf_sierra_madre_mexico", "tbm_appalachians_usa", "tcf_bc_coast_canada"]
+      "regions": [
+        "tcf_pnw_cascades_usa",
+        "tcf_sierra_madre_mexico",
+        "tbm_appalachians_usa",
+        "tcf_bc_coast_canada"
+      ]
     },
-
     "desert": {
       "description": "Arid landform: sand low, dry rock high, no snow. Mojave, mesa, dune fields.",
       "anchor": "desert_sand",
@@ -34,13 +37,14 @@
       "height_bands": {
         "_comment": "No real snow — top band is salt-pan / sun-bleached. Push high band up so it appears only on rare plateau tops.",
         "h_grass_dirt": 0.15,
-        "h_dirt_rockdark": 0.50,
+        "h_dirt_rockdark": 0.5,
         "h_rockdark_snow": 0.92
       },
-      "slope_threshold": 0.40,
-      "regions": ["des_mojave_usa"]
+      "slope_threshold": 0.4,
+      "regions": [
+        "des_mojave_usa"
+      ]
     },
-
     "tundra": {
       "description": "Cold low-relief terrain. Moss/lichen low, frosted rock mid, ice/snow even at moderate elevation.",
       "anchor": "tundra_moss",
@@ -54,52 +58,62 @@
       "height_bands": {
         "_comment": "Snow band lower (60% instead of 85%) — even modest elevation has frost cover at high latitudes.",
         "h_grass_dirt": 0.15,
-        "h_dirt_rockdark": 0.40,
-        "h_rockdark_snow": 0.60
+        "h_dirt_rockdark": 0.4,
+        "h_rockdark_snow": 0.6
       },
-      "slope_threshold": 0.40,
-      "regions": ["tun_arctic_alaska", "bor_alaska_interior", "bor_yukon_canada"]
+      "slope_threshold": 0.4,
+      "regions": [
+        "tun_arctic_alaska",
+        "bor_alaska_interior",
+        "bor_yukon_canada"
+      ]
     },
-
     "temperate_forest": {
       "description": "Lowland forest with bare rock peaks. Forest floor low, grass/dirt mid, rock above tree line.",
-      "anchor": "forest_floor",
+      "anchor": "wgv3_tf_leaf_litter",
       "slots": {
-        "grass": "forest_floor",
-        "dirt": "dirt",
-        "rock_light": "rock_light",
-        "rock_dark": "rock_dark",
-        "snow": "snow"
+        "grass": "wgv3_tf_leaf_litter",
+        "dirt": "wgv3_tf_loamy_soil",
+        "rock_light": "wgv3_tf_mossy_rock",
+        "rock_dark": "wgv3_tf_bark_rock",
+        "snow": "wgv3_tf_fern_ground"
       },
       "height_bands": {
         "_comment": "Tree line (rock takes over) is around 60-70% elevation in temperate latitudes.",
-        "h_grass_dirt": 0.30,
+        "h_grass_dirt": 0.3,
         "h_dirt_rockdark": 0.65,
-        "h_rockdark_snow": 0.90
+        "h_rockdark_snow": 0.9
       },
       "slope_threshold": 0.45,
-      "regions": ["med_california_chaparral", "tdf_yucatan_mexico", "tmf_amazon_brazil"]
+      "regions": [
+        "med_california_chaparral",
+        "tdf_yucatan_mexico",
+        "tmf_amazon_brazil"
+      ]
     },
-
     "grassland": {
       "description": "Open plains with subtle relief. Mostly grass + dirt; rock only on rare hilltops.",
-      "anchor": "grass",
+      "anchor": "wgv3_gl_tall_grass",
       "slots": {
-        "grass": "grass",
-        "dirt": "dirt",
-        "rock_light": "rock_light",
-        "rock_dark": "rock_dark",
-        "snow": "snow"
+        "grass": "wgv3_gl_tall_grass",
+        "dirt": "wgv3_gl_dry_thatch",
+        "rock_light": "wgv3_gl_hardpan_soil",
+        "rock_dark": "wgv3_gl_grass_rock",
+        "snow": "wgv3_gl_weathered_stone"
       },
       "height_bands": {
-        "h_grass_dirt": 0.40,
+        "h_grass_dirt": 0.4,
         "h_dirt_rockdark": 0.75,
         "h_rockdark_snow": 0.95
       },
-      "slope_threshold": 0.50,
-      "regions": ["tgr_great_plains_usa", "tgs_serengeti_tanzania", "mgs_tibetan_plateau", "fgs_pantanal_brazil"]
+      "slope_threshold": 0.5,
+      "regions": [
+        "tgr_great_plains_usa",
+        "tgs_serengeti_tanzania",
+        "mgs_tibetan_plateau",
+        "fgs_pantanal_brazil"
+      ]
     }
   },
-
   "default_kit": "alpine"
 }
