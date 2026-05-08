@@ -42,9 +42,11 @@ material-generation QA rather than transition logic.
 
 4. **Transition prototype**
    - Tool: `pipelines/textures/build_transition_strip.py`
-   - Input: two catalog IDs.
+   - Inputs: two catalog IDs, or `world3/jobs/biome_transition_rules.json`.
    - Output: a deterministic 6-tile transition strip with PBR maps, mask,
      manifest, score hints, and hard-cut comparison capture.
+   - Contract: transition strips are generated boundary assets referenced by
+     biome/material rules, not base material catalog entries.
    - Review scene:
      `world3/scenes/capture_phase_m2/transition_strip_review.tscn`
    - Current pairs:
@@ -82,8 +84,6 @@ material-generation QA rather than transition logic.
 
 ## Open Work
 
-- Decide whether transition strips become catalog entries or generated boundary
-  assets referenced by biome rules.
 - Use transition scores to tune:
   - band width
   - noise strength and scale
@@ -91,8 +91,8 @@ material-generation QA rather than transition logic.
   - roughness/normal/height channel weighting
   - geography-driven masks from slope, wetness, elevation, biome distance
 - Reduce noisy grass/leaves at source texture generation/QA.
-- M4: build the unified splat shader using catalog materials and transition
-  evidence.
+- M4: build the unified splat shader using catalog materials and boundary
+  transition rules.
 - M5: wire 256 m chunk streaming plus splat into `walk.tscn`.
 
 ## Recent Commits

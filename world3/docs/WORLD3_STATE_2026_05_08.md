@@ -355,5 +355,10 @@ These start when chunk + biome + tile + transition is ~80% solved
 - **2026-05-08 (M2 review/scoring)**: Added transition score hints to
   `build_transition_strip.py`, regenerated the four transition manifests, and
   added a clean Godot review scene/capture for hard cuts beside generated
-  strips. M2's remaining decision is transition asset contract: catalog entries
+  strips. This exposed the transition asset contract question: catalog entries
   or generated boundary assets.
+- **2026-05-08 (M2 boundary contract)**: Resolved the transition asset contract.
+  Transition strips remain generated boundary assets referenced by
+  `world3/jobs/biome_transition_rules.json`; base source materials stay in
+  `world3/materials/catalog.json`. `build_transition_strip.py` can now build
+  directly from the rule file.

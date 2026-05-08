@@ -1,5 +1,8 @@
 {
   "catalog": "world3/materials/catalog.json",
+  "rules": [
+    "world3/jobs/biome_transition_rules.json"
+  ],
   "pairs": [
     {
       "pair": [

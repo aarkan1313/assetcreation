@@ -52,6 +52,8 @@ M2 is in progress:
 
 - `pipelines/textures/build_transition_strip.py` builds deterministic
   transition strips from catalog IDs and writes score hints into each manifest.
+- Boundary rules live in `world3/jobs/biome_transition_rules.json`.
+- Contract note: `world3/docs/M2_BOUNDARY_TRANSITION_CONTRACT.md`.
 - Four pairs were generated under `world3/textures/transitions/`.
 - Comparison sheets live under `world3/docs/captures/transitions/`.
 - Clean Godot scene:
@@ -64,12 +66,12 @@ M2 is in progress:
 
 ## Next best move
 
-Finish the M2 asset-contract decision before starting M4:
+Finish the score-informed M2 tuning pass, then start M4:
 
-1. Decide whether transition strips become catalog entries or generated
-   boundary assets referenced by biome rules.
-2. Use the score hints to tune the next strip pass: palette/value normalization,
+1. Use the score hints to tune the next strip pass: palette/value normalization,
    roughness/normal weighting, band width, and mask noise scale.
+2. Keep transition strips as generated boundary assets referenced by
+   `biome_transition_rules.json`; do not add them to the base material catalog.
 
 Then start M4:
 

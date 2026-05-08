@@ -3,6 +3,9 @@
 This is the M2 prototype path: it does not try to solve biome transitions
 permanently. It gives us deterministic transition assets and hard-cut
 comparisons so M4 has concrete material pairs to design against.
+
+Pairs can be passed directly with --pair or loaded from the M2 boundary
+contract with --rules world3/jobs/biome_transition_rules.json.
 """
 
 from __future__ import annotations
@@ -358,9 +361,45 @@ def parse_pair(text: str) -> tuple[str, str]:
     return a.strip(), b.strip()
 
 
+def load_rule_pairs(paths: list[Path]) -> tuple[list[tuple[str, str]], list[str]]:
+    pairs: list[tuple[str, str]] = []
+    rule_sources: list[str] = []
+    for path in paths:
+        path = path.resolve()
+        data = json.loads(path.read_text(encoding="utf-8"))
+        rule_sources.append(str(path.relative_to(ROOT)).replace("\\", "/"))
+        for rule in data.get("rules", []):
+            if not rule.get("enabled", True):
+                continue
+            a_id = str(rule.get("from_material", "")).strip()
+            b_id = str(rule.get("to_material", "")).strip()
+            if not a_id or not b_id:
+                raise SystemExit(f"rule {rule.get('id', '<unknown>')} is missing from_material/to_material")
+            pairs.append((a_id, b_id))
+    return pairs, rule_sources
+
+
+def unique_pairs(pairs: list[tuple[str, str]]) -> list[tuple[str, str]]:
+    out: list[tuple[str, str]] = []
+    seen: set[tuple[str, str]] = set()
+    for pair in pairs:
+        if pair in seen:
+            continue
+        seen.add(pair)
+        out.append(pair)
+    return out
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--catalog", type=Path, default=DEFAULT_CATALOG)
+    ap.add_argument(
+        "--rules",
+        action="append",
+        type=Path,
+        default=[],
+        help="Boundary transition rules JSON. Repeat to build multiple rule files.",
+    )
     ap.add_argument("--out-root", type=Path, default=DEFAULT_OUT_ROOT)
     ap.add_argument("--capture-root", type=Path, default=DEFAULT_CAPTURE_ROOT)
     ap.add_argument("--tile-px", type=int, default=512)
@@ -370,14 +409,19 @@ def main() -> int:
         "--pair",
         action="append",
         type=parse_pair,
-        required=True,
+        default=[],
         help="Material pair as A:B. Repeat for multiple pairs.",
     )
     args = ap.parse_args()
 
+    rule_pairs, rule_sources = load_rule_pairs(args.rules)
+    pairs = unique_pairs([*args.pair, *rule_pairs])
+    if not pairs:
+        raise SystemExit("provide at least one --pair or --rules file")
+
     catalog = load_catalog(args.catalog)
     manifests = []
-    for a_id, b_id in args.pair:
+    for a_id, b_id in pairs:
         manifest = build_pair(
             a_id,
             b_id,
@@ -393,6 +437,7 @@ def main() -> int:
 
     index = {
         "catalog": str(args.catalog.relative_to(ROOT)).replace("\\", "/"),
+        "rules": rule_sources,
         "pairs": manifests,
     }
     args.out_root.mkdir(parents=True, exist_ok=True)

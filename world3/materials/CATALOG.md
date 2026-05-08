@@ -53,6 +53,19 @@ runtime texture dir: world3/textures/wgv3/grassland_grass
 This keeps M2 transition pairs and M4 splat channels stable while preserving
 the source generator provenance needed to regenerate the asset.
 
+## Boundary Transition Assets
+
+Transition strips are not base material catalog entries. They are generated
+boundary assets derived from catalog material pairs and referenced by:
+
+```text
+world3/jobs/biome_transition_rules.json
+```
+
+This prevents the catalog from growing into every possible pair combination.
+The catalog owns source material identity; the transition rules own pair
+context, boundary intent, generated strip manifests, and M4 runtime use.
+
 ## Current Coverage
 
 Committed in this draft:

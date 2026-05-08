@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "updated": "2026-05-08",
+  "role": "generated_boundary_asset_contract",
+  "decision": "Transition strips are generated boundary assets referenced by biome/material boundary rules. They are not first-class base material catalog entries.",
+  "material_catalog": "world3/materials/catalog.json",
+  "transition_index": "world3/textures/transitions/index.json",
+  "default_builder": "pipelines/textures/build_transition_strip.py",
+  "runtime_contract": {
+    "base_material_identity": "catalog_id",
+    "boundary_asset_identity": "rule_id",
+    "transition_assets_are_catalog_materials": false,
+    "m4_weight_inputs": [
+      "material_a_weight",
+      "material_b_weight",
+      "boundary_weight"
+    ],
+    "boundary_sampling": {
+      "u": "normalized signed distance across biome/material boundary, 0..1",
+      "v": "world distance along boundary divided by repeat scale",
+      "fallback": "If boundary-space UVs are unavailable, use score hints to tune ordinary two-material splat blending."
+    }
+  },
+  "rules": [
+    {
+      "id": "biome_desert__grassland_base",
+      "enabled": true,
+      "scope": "biome_boundary",
+      "from_kit": "desert",
+      "to_kit": "grassland",
+      "from_material": "desert_sand",
+      "to_material": "grassland_grass",
+      "transition_manifest": "world3/textures/transitions/desert_sand__grassland_grass/manifest.json",
+      "prototype_width_repeats": 6,
+      "runtime_width_m": null,
+      "mask_strategy": "distance_field_noisy_ramp",
+      "status": "prototype_reviewed",
+      "m4_use": "stress test for roughness and visible-frequency normalization before runtime promotion"
+    },
+    {
+      "id": "opentopo_scrub_sparse__dry_wash_neighbor",
+      "enabled": true,
+      "scope": "real_source_material_neighbor",
+      "from_kit": null,
+      "to_kit": null,
+      "from_material": "scrub_sparse",
+      "to_material": "dry_wash",
+      "transition_manifest": "world3/textures/transitions/scrub_sparse__dry_wash/manifest.json",
+      "prototype_width_repeats": 6,
+      "runtime_width_m": null,
+      "mask_strategy": "distance_field_noisy_ramp",
+      "status": "prototype_reviewed",
+      "m4_use": "clean same-source control pair"
+    },
+    {
+      "id": "biome_tundra__temperate_forest_base",
+      "enabled": true,
+      "scope": "biome_boundary",
+      "from_kit": "tundra",
+      "to_kit": "temperate_forest",
+      "from_material": "tundra_moss",
+      "to_material": "temperate_forest_grass",
+      "transition_manifest": "world3/textures/transitions/tundra_moss__temperate_forest_grass/manifest.json",
+      "prototype_width_repeats": 6,
+      "runtime_width_m": null,
+      "mask_strategy": "distance_field_noisy_ramp",
+      "status": "prototype_reviewed",
+      "m4_use": "stress test for palette and normal-energy mismatch"
+    },
+    {
+      "id": "mixed_real_dry_wash__procedural_desert_brush",
+      "enabled": true,
+      "scope": "real_to_procedural_bridge",
+      "from_kit": null,
+      "to_kit": "desert",
+      "from_material": "dry_wash",
+      "to_material": "desert_dry_brush",
+      "transition_manifest": "world3/textures/transitions/dry_wash__desert_dry_brush/manifest.json",
+      "prototype_width_repeats": 6,
+      "runtime_width_m": null,
+      "mask_strategy": "distance_field_noisy_ramp",
+      "status": "prototype_reviewed",
+      "m4_use": "stress test for real/procedural roughness and normal mismatch"
+    }
+  ]
+}

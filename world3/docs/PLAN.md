@@ -99,7 +99,11 @@ to learn transition mechanics + cost.
 **Status 2026-05-08**: IN PROGRESS. Prototype pass 2 generated four
 catalog-driven transition strips, numeric score hints, hard-cut comparison
 captures, and a clean Godot review scene isolated from the dirty OpenTopo
-review harness. Evidence: `world3/docs/M2_TRANSITION_MATERIAL_PROTOTYPE.md`.
+review harness. The asset contract is now explicit: transition strips are
+generated boundary assets referenced by `world3/jobs/biome_transition_rules.json`,
+not base catalog entries. Evidence:
+`world3/docs/M2_TRANSITION_MATERIAL_PROTOTYPE.md` and
+`world3/docs/M2_BOUNDARY_TRANSITION_CONTRACT.md`.
 
 User visual review: transition workflow reads promising/good. The noisy
 grass/leaves issue is tracked as source material quality, not a transition
@@ -117,6 +121,8 @@ workflow failure.
     `desert_dry_brush` procedural)
 - Clean Godot review scene:
   `world3/scenes/capture_phase_m2/transition_strip_review.tscn`.
+- Boundary rule contract:
+  `world3/jobs/biome_transition_rules.json`.
 - Captures: each transition rendered hard-cut vs. transition-strip
   side-by-side at `world3/docs/captures/transitions/`.
 
@@ -129,8 +135,8 @@ workflow failure.
 
 **Exit**: at least 3 transitions read visibly better than hard cuts.
 We have a ballpark cost-per-transition (minutes, ComfyUI calls,
-hand-touched steps). Visual exit is met for the first four pairs; remaining M2
-work is the transition asset-contract decision plus score-informed tuning.
+hand-touched steps). Visual exit and contract exit are met for the first four
+pairs; remaining M2 work is score-informed tuning before M4 consumes the rules.
 
 ## M3 — Chunk-size sweep (orchestrator, parallel with M1/M2)
 

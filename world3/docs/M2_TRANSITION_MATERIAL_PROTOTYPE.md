@@ -11,10 +11,10 @@ User visual review on 2026-05-08: transitions read as promising/good; the
 remaining concern is source texture noise in grass/leaves, not the transition
 workflow.
 
-Full M2 remains **in progress** for the policy decision about how runtime
-biome boundaries reference transition assets and for the next tuning pass. The
-review-scene and scoring gaps are now closed without folding in the preexisting
-dirty OpenTopo `biome_tile_transition_review` harness.
+Full M2 remains **in progress** for the next score-informed tuning pass. The
+asset-contract decision is closed: transition strips are generated boundary
+assets referenced by `world3/jobs/biome_transition_rules.json`, not base
+material catalog entries.
 
 ## Tool
 
@@ -23,6 +23,7 @@ dirty OpenTopo `biome_tile_transition_review` harness.
 Inputs:
 
 - `world3/materials/catalog.json`
+- Optional rule file: `world3/jobs/biome_transition_rules.json`
 - Pair list as catalog IDs, e.g. `desert_sand:grassland_grass`
 
 Outputs per pair:
@@ -71,6 +72,8 @@ stays clean.
 | `dry_wash` -> `desert_dry_brush` | Real -> procedural style bridge | `dry_wash__desert_dry_brush_hard_vs_transition.png` | 0.135151 |
 
 Index: `world3/textures/transitions/index.json`
+Rule contract: `world3/jobs/biome_transition_rules.json`
+Contract note: `world3/docs/M2_BOUNDARY_TRANSITION_CONTRACT.md`
 
 ## Score Read
 
@@ -110,7 +113,5 @@ Quality caveats:
 
 ## Remaining M2 Work
 
-- Decide whether transition materials become first-class catalog entries or
-  remain generated boundary assets referenced by biome-boundary rules.
 - Use the score hints to tune the next strip generation pass: palette/value
   normalization, roughness/normal weighting, band width, and mask noise scale.

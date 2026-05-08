@@ -47,8 +47,11 @@ direction; treat the rest as where we've been.
 - M2 transition prototype pass 2 is done: four catalog-driven strips
   exist, user review says the transition workflow is promising, and the
   clean Godot review scene plus score hints are in place.
-- M4 unified splat shader is still next after we choose the transition
-  asset contract: catalog entries vs generated boundary assets.
+- M2 transition asset contract is resolved: generated boundary assets are
+  referenced by `world3/jobs/biome_transition_rules.json`; base materials stay
+  in the material catalog.
+- M4 unified splat shader is next after the score-informed transition tuning
+  pass, using the boundary rules as input.
 
 Workflow snapshot: [`WORKFLOW_SNAPSHOT_2026_05_08.md`](WORKFLOW_SNAPSHOT_2026_05_08.md).
 
