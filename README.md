@@ -28,14 +28,14 @@ Open these in order if you're new:
 | [docs/handoffs/](docs/handoffs/) | Per-pipeline deep-dive handoff snapshots |
 | `_archive/` | Superseded snapshots. Historical only — never edit. |
 
-**Current focus (2026-05-07 PM):**
+**Current focus (2026-05-07 night):**
+- ✅ **world3 Phases A–E complete.** Texture pipeline (B), iso/topdown framing (C), all 5 biome kits with bound .tres (D), per-game-mode material variants (E). 7-region gallery captures across all 5 kits at `world3/docs/captures/phase_e_gallery/`. See [world3/docs/PLAN.md](world3/docs/PLAN.md) and [world3/docs/ROADMAP.md](world3/docs/ROADMAP.md).
 - ✅ **Per-pipeline manual review pass complete.** 7 of 8 pipelines reviewed at `docs/pipeline_reviews/`. Calibrated honest verdicts per lane against user judgment.
 - ✅ **All 13 animator tools install-validated.** Including Anytop (Windows-ported from Linux conda) and MaterialAnything (kaolin install path corrected). See `animators/INSTALL_MATRIX.md`.
 - ✅ **Audio output archived** (189 MB, was noise-tier). Pipeline retained.
-- 🚧 **Worldgen rebuild in flight** at `world3/` (background worker).
-- 🚧 **Texture quality improvement in flight** in `world/textures/library/` + `pipelines/textures/` (background worker).
-- 🟡 **Path 2 character_inpaint pipeline** mechanically correct end-to-end as of 2026-05-07 night (5 bugs found + fixed via visual inspection). FLUX prompt quality is the remaining open gap. See [docs/plans/PATH_2_INPAINT_DESIGN_2026_05_07.md](docs/plans/PATH_2_INPAINT_DESIGN_2026_05_07.md).
-- 📋 **Next planned:** FLUX prompt engineering / ControlNet on chest insignia, then characters animation deep-dive.
+- 🟡 **Path 2 character_inpaint pipeline** mechanically correct end-to-end (2026-05-07 night, 5 bugs fixed). FLUX prompt quality is the remaining open gap. See [docs/plans/PATH_2_INPAINT_DESIGN_2026_05_07.md](docs/plans/PATH_2_INPAINT_DESIGN_2026_05_07.md).
+- 📋 **Next planned (world3):** Phase F (multi-tile / continuous world) — research + prototype phase. Open polish items: grassland slope/height tuning, non-alpine per-mode review, walk-mode anchor wiring, gallery walk shot.
+- 📋 **Other queued:** FLUX prompt engineering / ControlNet on chest insignia, then characters animation deep-dive.
 
 ## What's in here (highest level)
 

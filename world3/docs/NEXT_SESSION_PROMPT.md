@@ -8,127 +8,116 @@ without re-reading everything. Past-session, you wrote it to yourself.
 
 ## Session opener (copy from here)
 
-We just finished **Phase A polish** on world3 (richness QA, CHORD
-opt-in PBR, variant_blend rescue tool, reference-anchor mode,
-CHORD+SM-roughness hybrid). The texture pipeline now has a solid
-foundation: 4 PBR backends, an advisory richness gate that catches
-"smooth A" failures, a rescue tool for lattice-prone materials, and
-optional reference-photo anchoring. **All work is committed.**
+We just finished **Phases B/C/D/E** on world3. Texture pipeline,
+camera framing, biome generalization, and per-game-mode material
+tuning are all in place. **All work is committed.**
 
-**The texture pipeline is paused. Next up is Phase B: upscaling +
-multi-resolution pipeline** — currently 512 throughout; close-walk
-and hero-material use cases need 1K-2K. Phase A polish left several
-foundations Phase B will consume (sharper CHORD geometry pairs well
-with SR; richness gate validates upscaled outputs; reference anchor
-could anchor upscaled albedos).
+**Next up is Phase F: multi-tile / continuous world** — walk off the
+edge of one region into another seamlessly. Current "regions" are
+4-20km tiles loaded one at a time; we don't stream. This is a research
++ prototype phase, not a single-session item.
 
 **Project state**: world3 is a real-DEM-driven terrain generator at
-`D:/assets/world3/`. Phases 0-2.5 done (MVP loop, shader stack,
-biome kits, region gallery). Phase A done (texture quality + prompt
-R&D). Phase A polish just finished (this session arc):
+`D:/assets/world3/`. The phase ledger after this session arc:
 
-- A.7  richness QA metric (advisory)               — `b551203`
-- A.8  CHORD opt-in PBR backend                    — `ee73ccd`
-- A.9  variant_blend.py rescue tool                — `530db77`
-- A.10 reference-image anchor mode                 — `a486363`
-- A.11 CHORD + SM-roughness hybrid backend         — `0b38aab`
-- (doc full-pass)                                  — pending commit
+- Phase 0-2.5: MVP loop, shader stack, biome kits, region gallery — DONE
+- Phase A:    texture quality + prompt R&D — DONE
+- Phase A polish: 4 PBR backends, richness gate, variant_blend, reference anchor — DONE
+- Phase B:    SR + mip-ladder + per-tier QA via `aaa_texture.py --ladder` — DONE (`84ed00e`, `6e62b37`)
+- Phase C:    anchor-mode framing + PlayerAnchor + zoom captures — DONE (`1dee0f8`, `eca28ba`, `8ca2ec0`)
+- Phase D:    all 5 biome kits with bound .tres + region gallery — DONE (`ca171e9`, `4b53a0f`, `2d92cd1`)
+- Phase E:    per-mode material variants wired into game scenes + gallery — DONE (`c4d68c0`, `75b15d1`, `2346acf`)
 
 **Read these first, in order, ~15 min total**:
 
 1. [`world3/docs/README.md`](world3/docs/README.md) — docs index. Get oriented.
-2. [`world3/docs/PLAN.md`](world3/docs/PLAN.md) — Phase A polish status table; Phase B is NEXT.
-3. [`world3/docs/ROADMAP.md`](world3/docs/ROADMAP.md) — Phase B scope is laid out under "Phase B — Upscaling + multi-resolution pipeline (NEXT after polish)".
-4. [`pipelines/textures/RECIPES.md`](pipelines/textures/RECIPES.md) — **NEW THIS SESSION** — canonical commands per use case. The operator's guide.
-5. [`pipelines/textures/EXTERNAL_TECHNIQUES.md`](pipelines/textures/EXTERNAL_TECHNIQUES.md) — A.5 survey; many entries are upscaling-adjacent and worth a re-skim before starting Phase B.
-6. [`world3/docs/DOCS_GUIDE.md`](world3/docs/DOCS_GUIDE.md) — where new findings go.
+2. [`world3/docs/PLAN.md`](world3/docs/PLAN.md) — current iteration: B/C/D/E recap and Phase F plan.
+3. [`world3/docs/ROADMAP.md`](world3/docs/ROADMAP.md) — Phase F scope under "Phase F — Multi-tile / continuous world".
+4. [`world3/docs/captures/phase_e_gallery/`](world3/docs/captures/phase_e_gallery/) — 7-region gallery showing all 5 kits through both iso and topdown modes. Visual review of the iteration's outputs.
+5. [`world3/docs/captures/phase_c/`](world3/docs/captures/phase_c/) — anchor-framing zoom-level captures (40m / 300m / 50m / 10km).
+6. [`world3/docs/captures/phase_e/`](world3/docs/captures/phase_e/) — alpine walk/iso/topdown sanity captures.
 
-## Phase B scope (from ROADMAP.md)
+## Phase F scope (from ROADMAP.md)
 
-The texture pipeline currently outputs at 512×512. Phase B's goal:
+The long-term goal is continuous / potentially infinite world. We don't
+need to solve infinite-world today, but we should build a small
+proof-of-concept.
 
-- Audit `pipelines/textures/flux_upscale.py` (already exists; review what works).
-- Research alternatives: **Real-ESRGAN, SwinIR, BSRGAN** (general-purpose
-  super-resolution); ComfyUI's upscaler ecosystem (UltimateSDUpscale,
-  ESRGAN, custom workflows); tileable-aware SR strategies.
-- Pick a 512→1K and a 512→2K path. Decision point: 4× SR followed by
-  tiling repair, vs. integrated tile-aware SR, vs. SR via FLUX img2img
-  at higher res.
-- Build/extend an upscaler that handles **all 5 PBR maps**, not just
-  albedo. Normal needs special handling (don't blur — bicubic or
-  normal-aware SR; see TEXTURE_RND if anything was logged).
-- Per-tier QA using the **post-A.7 gate** (richness advisory included
-  so smooth-A failures get caught at every resolution tier).
-- Pick a flagship texture (probably wgv3_rock_dark with the new
-  CHORD geometry from A.8/A.11) and produce the full 512→1K→2K
-  ladder.
+Checklist:
 
-**Exit**: pipeline command `512 → 1K|2K` with all maps preserved
-and tiling intact. Documented policy: which textures get which tier.
+1. **Research existing approaches**:
+   - Godot 4 chunk streaming patterns (built-in or library).
+   - Existing terrain plugins (Terrain3D, HTerrain) — feasibility of
+     integrating with our heightmap + blend material approach.
+   - Memory budget per chunk.
+2. **Design**: what's a "chunk"? Current "region" is 4-20km — too
+   big for walk-mode streaming. Chunks probably want to be 256-512m.
+3. **Small test**: 2x2 grid of identical Tetons tiles at 4km each,
+   stitched. Verify:
+   - No visible seam between tiles.
+   - No double-load of shared edge.
+   - Mesh continuity at boundaries.
+4. **Decide**: keep one heightmap per region, or split regions into
+   multiple chunks at build time?
 
-## Foundations Phase B consumes
+**Exit**:
+- Walking off the edge of one tile and into another works without
+  visible discontinuity.
+- Documented streaming budget (how many tiles loadable at once before
+  frame budget breaks).
+- Decision-locked on chunk size + format.
 
-- **A.7 richness gate** catches smooth-A at every resolution tier.
-- **A.8 CHORD backend** operates at 1024 native — naturally pairs with
-  upscaling research (we already have a 1K-class backend).
-- **A.10 reference-anchor** — the heal-pass `BasicScheduler` swap we
-  did for anchor mode is also relevant infrastructure for Phase B
-  if we end up using img2img-style upscaling (i.e. SR via partial
-  denoise).
-- **A.11 hybrid (chord_sm_rough)** — this is probably the
-  starting-point backend for the flagship rock_dark upscale ladder
-  (sharp normals + correct roughness at 1024 → can be cleanly
-  upscaled).
+## Open polish items (parked, can pick up before F)
 
-## Open candidates (parked, in ROADMAP "Open / parked candidates")
+None block Phase F, but each is small enough to fit before/within an
+F session:
 
-These are queued behind Phase B but worth keeping in mind as the
-upscaling work surfaces specific needs:
+- **Grassland slope/height tuning.** Tibet + Serengeti currently read
+  as near-uniform tall_grass. Kit binding is correct; `slope_threshold`
+  / `h_grass_dirt` need lowering so rock/dirt show through on slopes.
+  Half-session of param sweeping + recapture.
+- **Non-alpine per-mode visual review.** Phase E's emit tool covers
+  all 5 kits; only alpine got dedicated capture scenes. Other kits
+  validated only via the gallery's per-mode swap. Could add
+  kit-specific capture scenes for closer inspection.
+- **Walk-mode shared-anchor decision.** Phase C deferred whether walk
+  shares a `PlayerAnchor` with iso/topdown or each gets its own.
+  Decide when walk-mode wires into the anchor system.
+- **Region gallery: walk shot.** Gallery currently produces iso +
+  topdown per region; could add a walk shot using the walk-tuned
+  material. Walk needs an eye-level Camera3D pose.
 
-- **Auto-rescue mode** in orchestrator (detect "all variants share
-  lattice", fall through to `variant_blend`).
-- **Promote richness from advisory to hard-gate** (wait until we have
-  more data on whether new generations score consistently).
-- **Hero-mesh lane** (Hunyuan3D-Paint 2.1) — separate workflow for
-  UV-baked bespoke terrain. User said "we'll see"; deferred.
-- **klein-9B Edit** — stronger native reference handling than
-  klein-4B. Revisit if A.10's anchor isn't enough for some use case.
-- **Honest partial-denoise heal pass audit** (LESSONS issue surfaced
-  by A.10c) — `Flux2Scheduler` silently drops `denoise`. Switching
-  the heal pass to `BasicScheduler` at honest 0.5 might improve
-  content preservation. Requires A/B against shipping set.
-- **Curated reference-photo set** under `world/textures/references/`
-  for A.10 anchor mode.
+## Operational reminders
 
-## Operational
-
+- **Godot binary**: `C:/Godot/Godot_v4.5-stable_win64.exe`.
+- **Always run captures WITHOUT `--headless`.** The SceneTree-script
+  runner pattern hangs in headless (process_frame awaits never resume
+  reliably). Real-window mode is fast (~2s/scene) and produces correct
+  output. See `world3/docs/captures/phase_c/README.md` for the
+  documented gotcha.
+- **After deploying / regenerating any .tres**, run
+  `Godot --headless --editor --import` once before capturing to register
+  new texture .import metadata.
+- **D: drive**: was 100% on 2026-05-06. Check `df -h /d` before bulk
+  pulls / multi-tile runs.
 - ComfyUI: test with `curl -fsS http://127.0.0.1:8188/system_stats`.
-  If down: see RECIPES.md "Prerequisites".
+  If down: see `pipelines/textures/RECIPES.md` "Prerequisites".
 - Always set `$env:PYTHONIOENCODING="utf-8"` in PowerShell.
-- Sweep outputs go to `D:/tmp/world3_experiments/<name>/`.
-- HF token is configured at `~/.cache/huggingface/token` (rotate the
-  one that was pasted in chat — pls verify it's been replaced with
-  a fresh one).
-- D: drive: was 100% on 2026-05-06; verified 74% during this session.
-  Check `df -h /d` before bulk pulls / multi-tile runs.
 
-## Things to know before generating
+## What I'd ask before doing anything
 
-- **The directional-cue rule** is project-wide (TEXTURE_RND Part 2
-  anatomy): if the desired material doesn't *naturally* have a
-  visible directional structure at 1m² scale, don't put a directional
-  word in the prompt (`ridges`, `striations`, `wind ridges`, `bands`).
-  Confirmed across 3 materials and 3 directional words; periodic
-  failures up to 1269 if violated.
-- **Avoid seed 300** — A.2 found it produces lattice on 4/5
-  representative materials. Use 100/200/400 by default.
-- **Two `experiment.py` runs with the same `--name` race-condition
-  each other** through shared library paths (LESSONS L19). One at a
-  time, or use distinct `--name` values.
-- **The richness metric is currently advisory** (computed + printed
-  but not part of the A/B/C/D grade). LESSONS L16 still applies —
-  always eyeball the contact sheet, the metric isn't a substitute
-  for visual review.
+Phase F is the next ROADMAP item but it's a research + prototype
+phase, not a single-session item. The user may prefer to:
+
+> "Phase F is research-heavy and not a single-session task. Want me
+> to start the research phase, or pick up one of the open polish items
+> (grassland tuning, non-alpine per-mode review, region-gallery walk
+> shot, walk-anchor wiring) first?"
+
+If they say start Phase F, begin with the research bullet — survey
+Godot chunk-streaming patterns and Terrain3D/HTerrain integration
+feasibility. Don't install anything until research clarifies which
+approach fits our heightmap + ShaderMaterial + meta.json pattern.
 
 ## Doc-system reminder (where to write new findings)
 
@@ -136,31 +125,6 @@ upscaling work surfaces specific needs:
   DECISIONS entry if architecturally meaningful
 - "I expected X but got Y" surprise → LESSONS
 - Sweep / experiment / prompt opinion → TEXTURE_RND
-- New external-tech survey → new dated `EXTERNAL_TECHNIQUES_<date>.md`
-- New canonical command for a use case → RECIPES (the new doc!)
+- New canonical command for a use case → RECIPES
+- Phase wrap-up → handoff doc under `docs/handoffs/`
 - Otherwise: DECISIONS.md is the safe default (append-only)
-
-## The two failure modes I keep getting bitten by
-
-- **"Smooth A"** — featureless texture that grades A on metrics but
-  looks blank in-world. The richness check now flags it (advisory
-  for now). Always eyeball.
-- **Concurrent experiment.py runs corrupt each other** — see L19.
-  One at a time.
-
-## What I'd ask before doing anything
-
-The user might prefer to **not start Phase B immediately** and instead
-take one of the parked items (e.g. honest partial-denoise heal audit
-is small and could surface real wins). Worth asking:
-
-> "Phase B (upscaling research) is the next ROADMAP item, but several
-> Phase A parked candidates are also small enough to land in a single
-> session. Want to start Phase B, or pick up one of the parked items
-> first? Options visible in ROADMAP under 'Open / parked candidates'."
-
-If they say go, start Phase B with the audit of `flux_upscale.py`
-and a research pass on Real-ESRGAN / SwinIR / BSRGAN compatibility
-with our pipeline. Don't install anything until the research
-clarifies which approach is right (per memory rule:
-"Research before installing").

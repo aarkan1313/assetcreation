@@ -267,7 +267,9 @@ Checklist:
 - [x] Re-run biome_consistency on every kit. Document the verdict
       table.
 - [x] Re-capture region gallery with all 5 kits visible (2026-05-07).
-      Captures in `world3/docs/captures/phase_d_kits/`. Surfaced and
+      Captures in `world3/docs/captures/phase_e_gallery/` (the gallery
+      was extended in Phase E to swap iso vs topdown materials per shot,
+      so the post-fix captures live with the Phase E set). Surfaced and
       fixed a kit-binding bug: `terrain_blend_temperate_forest.tres`
       and `terrain_blend_grassland.tres` still pointed at alpine
       defaults. New tool `pipelines/textures/deploy_kit_to_world3.py`

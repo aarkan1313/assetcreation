@@ -22,9 +22,12 @@ find something.
 | "What was broken about the texture pipeline + how was it fixed?" | [TEXTURE_PIPELINE_FIX_PLAN.md](TEXTURE_PIPELINE_FIX_PLAN.md) |
 | "How do I view the OpenTopo pilot scenes?"                   | [../toporeview/README.md](../toporeview/README.md) |
 | "How do I pull/process OpenTopography data?"                 | [OPENTOPO_GUIDE.md](OPENTOPO_GUIDE.md), [OPENTOPO_DATA_TYPES.md](OPENTOPO_DATA_TYPES.md), [OPENTOPO_MOSAIC_FUSION_WORKFLOWS.md](OPENTOPO_MOSAIC_FUSION_WORKFLOWS.md), [../opentopo/STATUS.md](../opentopo/STATUS.md) |
+| "What OpenTopo tooling/knobs do we have, and what should I turn?" | [OPENTOPO_TOOLING_KNOBS_GUIDE.md](OPENTOPO_TOOLING_KNOBS_GUIDE.md) |
 | "How do we stitch tiles or fuse height/color/canopy layers?" | [OPENTOPO_MOSAIC_FUSION_WORKFLOWS.md](OPENTOPO_MOSAIC_FUSION_WORKFLOWS.md) |
 | "How do OpenTopo textures, real-place scenes, and HD zoom fit together?" | [OPENTOPO_TEXTURE_SCENE_ROADMAP.md](OPENTOPO_TEXTURE_SCENE_ROADMAP.md) |
+| "How do we rebuild the finished OpenTopo ground materials?" | [OPENTOPO_TILEABLE_REAL_TEXTURE_WORKFLOW.md](OPENTOPO_TILEABLE_REAL_TEXTURE_WORKFLOW.md#current-endpoint-quickstart) |
 | "How do we turn real OpenTopo ground into tileable textures?" | [OPENTOPO_TILEABLE_REAL_TEXTURE_WORKFLOW.md](OPENTOPO_TILEABLE_REAL_TEXTURE_WORKFLOW.md) |
+| "What happened in the BC Coast DTM/DSM no-color stack?" | [OPENTOPO_BC_COAST_DTM_DSM_AUDIT.md](OPENTOPO_BC_COAST_DTM_DSM_AUDIT.md) |
 | "What happened in the first tileable real-ground texture pilot?" | [OPENTOPO_TILEABLE_TEXTURE_PILOT_AUDIT.md](OPENTOPO_TILEABLE_TEXTURE_PILOT_AUDIT.md) |
 | "What happened in the Phase 2 HD review pass?"             | [OPENTOPO_PHASE2_HD_REVIEW.md](OPENTOPO_PHASE2_HD_REVIEW.md) |
 | "What happened in the Phase 2 max review pass?"            | [OPENTOPO_PHASE2_MAX_REVIEW.md](OPENTOPO_PHASE2_MAX_REVIEW.md) |
@@ -32,15 +35,19 @@ find something.
 | "What happened in the Smokies 4-call `USGS1m` run?"        | [OPENTOPO_PHASE3_SMOKIES_4CALL_AUDIT.md](OPENTOPO_PHASE3_SMOKIES_4CALL_AUDIT.md) |
 | "What happened in the first OpenTopo mosaic pilot?"          | [OPENTOPO_PILOT1_GRAND_CANYON_USGS10M_AUDIT.md](OPENTOPO_PILOT1_GRAND_CANYON_USGS10M_AUDIT.md) |
 | "What happened in the first OpenTopo fusion pilot?"          | [OPENTOPO_PILOT2_GUADALUPE_CYPRESS_FUSION_AUDIT.md](OPENTOPO_PILOT2_GUADALUPE_CYPRESS_FUSION_AUDIT.md) |
-| "What do the current Phase A before/after captures look like?" | [captures/phase_a/](captures/phase_a/) (per-material before/after) |
+| "What do the Phase A texture before/after captures look like?" | [captures/phase_a/](captures/phase_a/) (per-material before/after) |
+| "What do the Phase C zoom-level captures look like?" | [captures/phase_c/](captures/phase_c/) (40m ARPG / 300m strategy / 50m game-tile / 10km minimap on Tetons) |
+| "What do the Phase E per-mode tuning captures look like?" | [captures/phase_e/](captures/phase_e/) (alpine walk/iso/topdown) |
+| "What do the Phase E region gallery captures look like?" | [captures/phase_e_gallery/](captures/phase_e_gallery/) (7 regions x iso + topdown across all 5 kits) |
 | "What do the historical iteration screenshots look like?"    | [captures/](captures/) iter*/, phase2_*/ — kept locally only, gitignored |
 
 ## Doc roles, in one sentence each
 
 - **WORKFLOW.md** — *as-built* operational steps. The "how to recreate
   what we have today" guide. Updated when behaviour changes.
-- **ROADMAP.md** — phased plan toward the long-term vision. Phase 0
-  done, Phase 1 in progress, Phases 2–6 sketched. Updated rarely.
+- **ROADMAP.md** — phased plan toward the long-term vision. v2 reframe
+  (2026-05-07) sequences A→B→D→C→E→F. Phases A–E done as of 2026-05-07
+  evening; F (multi-tile / continuous world) is next.
 - **PLAN.md** — current iteration only. What's in scope right now,
   what's deliberately deferred, exit criteria. Rewritten each iteration.
 - **DECISIONS.md** — append-only log of architectural choices and the
@@ -62,15 +69,17 @@ find something.
 - **pipelines/textures/LESSONS.md** — surprises, gotchas, and "why
   the obvious thing was wrong" entries. Append-only.
 - **OPENTOPO_GUIDE.md / OPENTOPO_DATA_TYPES.md /
+  OPENTOPO_TOOLING_KNOBS_GUIDE.md /
   OPENTOPO_MOSAIC_FUSION_WORKFLOWS.md /
   OPENTOPO_TEXTURE_SCENE_ROADMAP.md /
   OPENTOPO_PHASE2_HD_REVIEW.md /
   OPENTOPO_PHASE2_MAX_REVIEW.md /
   OPENTOPO_LARGE_4CALL_PLAN.md /
   OPENTOPO_PHASE3_SMOKIES_4CALL_AUDIT.md /
+  OPENTOPO_BC_COAST_DTM_DSM_AUDIT.md /
   OPENTOPO_PILOT1_GRAND_CANYON_USGS10M_AUDIT.md /
   OPENTOPO_PILOT2_GUADALUPE_CYPRESS_FUSION_AUDIT.md / opentopo/STATUS.md** —
-  OpenTopography sourcing, tooling commands, data-type findings, mosaic/fusion
+  OpenTopography sourcing, tooling knobs, data-type findings, mosaic/fusion
   plans, pilot audits, and fetched output inventory.
 - **toporeview/README.md** - Godot scene paths, controls, and layer
   inventories for the OpenTopo mosaic and fusion pilots.
@@ -86,17 +95,34 @@ world3/
 │   ├── PLAN.md
 │   ├── DECISIONS.md
 │   ├── TEXTURE_PIPELINE_FIX_PLAN.md
-│   ├── OPENTOPO_GUIDE.md / OPENTOPO_DATA_TYPES.md / OPENTOPO_MOSAIC_FUSION_WORKFLOWS.md
+│   ├── OPENTOPO_GUIDE.md / OPENTOPO_DATA_TYPES.md / OPENTOPO_TOOLING_KNOBS_GUIDE.md / OPENTOPO_MOSAIC_FUSION_WORKFLOWS.md
 │   ├── OPENTOPO_PILOT1_GRAND_CANYON_USGS10M_AUDIT.md
 │   ├── OPENTOPO_PILOT2_GUADALUPE_CYPRESS_FUSION_AUDIT.md
 │   └── captures/                   # before/after screenshots
-│       ├── phase_a/                 # CURRENT — Phase A texture evidence (tracked)
+│       ├── phase_a/                 # Phase A texture evidence (tracked)
 │       │   ├── snow_{before,after}/                  # A.3
 │       │   ├── forest_floor_{before,after}/          # A.3
 │       │   ├── tundra_ice_{before,after}/            # A.6
 │       │   ├── desert_canyon_rock_{before,after}/    # A.6
 │       │   ├── A8_chord_ab/                          # A.8 CHORD vs SM A/B
 │       │   └── A9_variant_blend_ab/                  # A.9 select vs blend A/B
+│       ├── phase_c/                 # Phase C anchor-framing zoom captures (Tetons)
+│       │   ├── iso_arpg_40m.png
+│       │   ├── iso_strategy_300m.png
+│       │   ├── topdown_game_tile_50m.png
+│       │   └── topdown_minimap_10km.png
+│       ├── phase_e/                 # Phase E per-mode sanity captures (alpine)
+│       │   ├── alpine_walk.png
+│       │   ├── alpine_iso.png
+│       │   └── alpine_topdown.png
+│       ├── phase_e_gallery/         # Phase E region gallery — 7 regions x iso+topdown
+│       │   ├── tcf_pnw_cascades_usa/{iso,topdown}.png    # alpine
+│       │   ├── tbm_appalachians_usa/{iso,topdown}.png    # alpine
+│       │   ├── des_mojave_usa/{iso,topdown}.png          # desert
+│       │   ├── tun_arctic_alaska/{iso,topdown}.png       # tundra
+│       │   ├── med_california_chaparral/{iso,topdown}.png # temperate_forest
+│       │   ├── mgs_tibetan_plateau/{iso,topdown}.png     # grassland
+│       │   └── tgs_serengeti_tanzania/{iso,topdown}.png  # grassland
 │       └── iter*/, phase2_*/        # historical iteration screenshots (gitignored — local only)
 ├── pipeline/                       # Python: OpenTopo + DEM processing
 │   ├── opentopo_fetch.py

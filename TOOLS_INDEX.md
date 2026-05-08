@@ -220,6 +220,8 @@ D:\assets\
 | [pipelines/textures/polyhaven_fetch.py](pipelines/textures/polyhaven_fetch.py), [pipelines/textures/ambientcg_fetch.py](pipelines/textures/ambientcg_fetch.py) | Third-party PBR ingestion |
 | [pipelines/textures/variant_select.py](pipelines/textures/variant_select.py) | Variant picker |
 | [pipelines/textures/make_test_texture.py](pipelines/textures/make_test_texture.py) | Solid test pattern |
+| [pipelines/textures/deploy_kit_to_world3.py](pipelines/textures/deploy_kit_to_world3.py) | Phase D: read `world3/jobs/biome_kits.json` and (re)build kit `terrain_blend_<kit>.tres` files; copy library textures into per-kit slot dirs in `world3/textures/wgv3/<kit>_<slot>/` |
+| [pipelines/textures/emit_per_mode_materials.py](pipelines/textures/emit_per_mode_materials.py) | Phase E: read each kit's base `terrain_blend_<kit>.tres` and emit walk/iso/topdown variants with per-mode shader-param overrides (UV scale, normal strength, macro tint, blend sharpness, band softness) |
 
 ### DEM Fetch (post-worldgen)
 

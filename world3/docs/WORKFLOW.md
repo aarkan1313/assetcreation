@@ -395,6 +395,22 @@ The six current Guadalupe Cypress classes are `bare_soil`, `bright_rock`,
 source-real meso material candidates; keep the full map as macro color/reference
 and add separate close detail where real-world motifs repeat too visibly.
 
+Current finish pass:
+
+```powershell
+python D:/assets/world3/pipeline/finish_opentopo_soft_materials.py
+```
+
+It writes `finished_material/` siblings with balanced albedo, neutral
+source-derived detail maps, `material_hex_detail_finished.tres`, and
+`finish_manifest.json`. Review the endpoint in:
+
+```text
+res://toporeview/tileable_finished_material_review.tscn
+D:/assets/world3/docs/captures/opentopo/godot_tileable_finished_material_review.png
+D:/assets/world3/docs/captures/opentopo/godot_tileable_finished_material_close.png
+```
+
 ### Texture grid captures (testing the shader at scale)
 The viewer scenes lay 6 ground planes (200×200 m) in a 2×3 grid, then
 take far_overhead, mid_oblique (per plane), and close_walk shots:
@@ -458,8 +474,22 @@ where they overlap.
 | `terrain_blend.gdshader`      | Multi-texture (5 PBR sets) selected by world Y (height-banded) and surface slope. Shared hex+macro. |
 
 Iter 5 (`terrain_blend`) is what's bound to the iso/topdown/walk Tetons
-scenes via `world3/textures/wgv3/terrain_blend_tetons.tres`. Layer
-weights:
+scenes. As of Phase E (2026-05-07) each scene binds a per-mode-tuned
+variant:
+
+- `walk.tscn` → `terrain_blend_alpine_walk.tres` (UV scale 0.4, sharp
+  normals, low macro tint — close-up surface detail)
+- `iso.tscn` → `terrain_blend_alpine_iso.tres` (UV scale 0.1, default
+  normal, moderate macro — mid-detail blend; same as historical default)
+- `topdown.tscn` → `terrain_blend_alpine_topdown.tres` (UV scale 0.02,
+  muted normal, high macro tint — color-blocking dominates)
+
+The `terrain_blend_<kit>_<mode>.tres` variants are emitted from each
+kit's base `terrain_blend_<kit>.tres` by
+`pipelines/textures/emit_per_mode_materials.py`. Re-run after any kit
+shader-param change.
+
+Layer weights (same in every variant):
 
 | Layer        | Selected when                                  |
 |--------------|------------------------------------------------|

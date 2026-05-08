@@ -40,7 +40,10 @@ When a pipeline gets a deep-dive (Phase 11+ pattern), the deep-dive handoff supe
 
 | Handoff | Pipeline | Status |
 |---|---|---|
-| **[docs/handoffs/HANDOFF_2026_05_07_night_path2_parked.md](docs/handoffs/HANDOFF_2026_05_07_night_path2_parked.md)** | Cross-cutting | **Latest — whole-project orientation + Path 2 parked + open backlog** |
+| **[docs/handoffs/HANDOFF_world3_phases_cde_2026_05_07.md](docs/handoffs/HANDOFF_world3_phases_cde_2026_05_07.md)** | world3 / textures | **Latest — Phase C/D/E session arc (anchor framing + kit-binding fix + per-mode tuning) — Phase F next** |
+| [docs/handoffs/HANDOFF_phase_c_anchor_framing_2026_05_07.md](docs/handoffs/HANDOFF_phase_c_anchor_framing_2026_05_07.md) | world3 / textures | Phase C-only handoff (mid-session); the C/D/E consolidated handoff above supersedes for orientation. |
+| [docs/handoffs/HANDOFF_phase_d_complete_2026_05_07.md](docs/handoffs/HANDOFF_phase_d_complete_2026_05_07.md) | world3 / textures | Phase D handoff (kit generation, predates the kit-binding fix). |
+| **[docs/handoffs/HANDOFF_2026_05_07_night_path2_parked.md](docs/handoffs/HANDOFF_2026_05_07_night_path2_parked.md)** | Cross-cutting | Latest — whole-project orientation + Path 2 parked + open backlog |
 | **[docs/handoffs/HANDOFF_phase12_audio_2026_05_06.md](docs/handoffs/HANDOFF_phase12_audio_2026_05_06.md)** | Audio | **Latest — Phase 12 deep-dive (Stable Audio Open 1.0 real bake on 10 biomes / 142 stems)** |
 | [_archive/handoffs_2026_05_06/HANDOFF_audio_v3_2026_05_06.md](_archive/handoffs_2026_05_06/HANDOFF_audio_v3_2026_05_06.md) | Audio | Superseded by Phase 12 (archived; A2 deferred fixes still relevant for tooling forensics) |
 | [docs/handoffs/HANDOFF_ui_v3_2026_05_06.md](docs/handoffs/HANDOFF_ui_v3_2026_05_06.md) | UI / Icons | Latest — v3 (D + U2) |
