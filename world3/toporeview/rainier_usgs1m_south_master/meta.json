@@ -1,0 +1,18 @@
+{
+  "source_dem": "D:\\assets\\world3\\opentopo\\processed\\master_stacks\\rainier_usgs1m_south_master\\mosaic.tif",
+  "source_crs": "EPSG:26910",
+  "source_bounds": {
+    "left": 579472.0,
+    "bottom": 5174432.0,
+    "right": 609797.0,
+    "top": 5189993.0
+  },
+  "heightmap_size_px": 8192,
+  "elevation_min_m": 553.6980590820312,
+  "elevation_max_m": 1891.78466796875,
+  "elevation_range_m": 1338.0866088867188,
+  "world_size_m": 15561.0,
+  "world_size_x_m": 30325.0,
+  "world_size_z_m": 15561.0,
+  "material": "alpine_no_texture"
+}

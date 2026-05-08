@@ -1,0 +1,104 @@
+{
+  "name": "BC Coast DTM DSM No-Color Stack",
+  "mode": "dtm_dsm_no_color_stack",
+  "dtm": "D:\\assets\\world3\\opentopo\\raw\\cog\\tcf_bc_coast_canada\\CA_MRDEM_DTM_m123.1398_p49.9096_m122.8602_p50.0904.tif",
+  "dsm": "D:\\assets\\world3\\opentopo\\raw\\cog\\tcf_bc_coast_canada\\CA_MRDEM_DSM_m123.1398_p49.9096_m122.8602_p50.0904.tif",
+  "output_dir": "D:\\assets\\world3\\opentopo\\processed\\heightmaps\\tcf_bc_coast_dtm_dsm_stack",
+  "layers": [
+    {
+      "name": "terrain_texture",
+      "path": "layers/terrain_texture.png"
+    },
+    {
+      "name": "dtm_gray",
+      "path": "layers/dtm_gray.png"
+    },
+    {
+      "name": "dsm_gray",
+      "path": "layers/dsm_gray.png"
+    },
+    {
+      "name": "surface_height",
+      "path": "layers/surface_height.png"
+    },
+    {
+      "name": "forest_surface_mask",
+      "path": "layers/forest_surface_mask.png"
+    },
+    {
+      "name": "rock_slope_mask",
+      "path": "layers/rock_slope_mask.png"
+    },
+    {
+      "name": "wetness_valley_mask",
+      "path": "layers/wetness_valley_mask.png"
+    },
+    {
+      "name": "material_mask_rgba",
+      "path": "layers/material_mask_rgba.png"
+    },
+    {
+      "name": "hillshade",
+      "path": "layers/hillshade.png"
+    },
+    {
+      "name": "elevation_gray",
+      "path": "layers/elevation_gray.png"
+    },
+    {
+      "name": "slope_deg",
+      "path": "layers/slope_deg.png"
+    },
+    {
+      "name": "roughness",
+      "path": "layers/roughness.png"
+    },
+    {
+      "name": "source_valid_mask",
+      "path": "layers/source_valid_mask.png"
+    },
+    {
+      "name": "surface_valid_mask",
+      "path": "layers/surface_valid_mask.png"
+    }
+  ],
+  "stats": {
+    "dtm": {
+      "valid": 787656,
+      "min": 297.445,
+      "max": 2640.762,
+      "mean": 1336.446,
+      "p05": 521.776,
+      "p95": 2117.201
+    },
+    "dsm": {
+      "valid": 787656,
+      "min": 308.681,
+      "max": 2657.512,
+      "mean": 1343.991,
+      "p05": 535.719,
+      "p95": 2116.75
+    },
+    "surface_height_m": {
+      "valid": 787656,
+      "min": 0.0,
+      "max": 45.336,
+      "mean": 8.187,
+      "p05": 0.0,
+      "p95": 20.523
+    },
+    "slope_deg": {
+      "valid": 787656,
+      "min": 0.0,
+      "max": 68.887,
+      "mean": 20.256,
+      "p05": 1.78,
+      "p95": 39.432
+    }
+  },
+  "compression_policy": {
+    "source": "raw GeoTIFFs untouched",
+    "review": "16-bit height PNG plus 8-bit PNG layers",
+    "master_recommendation": "write aligned float32 tiled GeoTIFF/Zarr before destructive compression when this stack grows"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "name": "BC Coast DTM DSM No-Color Stack",
+  "source_dtm": "D:\\assets\\world3\\opentopo\\raw\\cog\\tcf_bc_coast_canada\\CA_MRDEM_DTM_m123.1398_p49.9096_m122.8602_p50.0904.tif",
+  "source_dsm": "D:\\assets\\world3\\opentopo\\raw\\cog\\tcf_bc_coast_canada\\CA_MRDEM_DSM_m123.1398_p49.9096_m122.8602_p50.0904.tif",
+  "source_crs": "EPSG:3979",
+  "source_bounds": {
+    "left": -1949310.0,
+    "right": -1922700.0,
+    "bottom": 530820.0,
+    "top": 557460.0
+  },
+  "source_shape": [
+    887,
+    888
+  ],
+  "source_cell_size_m": [
+    30.0,
+    30.0
+  ],
+  "heightmap_size_px": 4096,
+  "elevation_min_m": 297.4452819824219,
+  "elevation_max_m": 2640.76171875,
+  "elevation_range_m": 2343.316436767578,
+  "world_size_m": 26610.0,
+  "world_size_x_m": 26610.0,
+  "world_size_z_m": 26640.0,
+  "material": "opentopo_dtm_dsm_no_color",
+  "nodata_repair": {
+    "method": "none",
+    "source_valid_pixels": 787656,
+    "source_invalid_pixels": 0,
+    "fill_pixels": 0
+  },
+  "dsm_nodata_repair": {
+    "method": "none",
+    "source_valid_pixels": 787656,
+    "source_invalid_pixels": 0,
+    "fill_pixels": 0
+  },
+  "surface_max_m": 45.0
+}

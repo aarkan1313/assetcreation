@@ -1,0 +1,18 @@
+{
+  "source_dem": "D:\\assets\\world3\\opentopo\\processed\\master_stacks\\zion_usgs10m_master_4call\\mosaic.tif",
+  "source_crs": "EPSG:32612",
+  "source_bounds": {
+    "left": 308730.0,
+    "bottom": 4111520.0,
+    "right": 345530.0,
+    "top": 4148400.0
+  },
+  "heightmap_size_px": 8192,
+  "elevation_min_m": 1080.220703125,
+  "elevation_max_m": 2856.739990234375,
+  "elevation_range_m": 1776.519287109375,
+  "world_size_m": 36800.0,
+  "world_size_x_m": 36800.0,
+  "world_size_z_m": 36880.0,
+  "material": "sandstone_no_texture"
+}

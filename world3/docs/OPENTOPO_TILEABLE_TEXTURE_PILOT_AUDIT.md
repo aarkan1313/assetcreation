@@ -259,12 +259,29 @@ D:/assets/world3/docs/captures/opentopo/godot_tileable_soft_composite_gallery.pn
 D:/assets/world3/docs/captures/opentopo/opentopo_soft_composite_2x2_material_sheet.png
 ```
 
+Finished material pass:
+
+```text
+D:/assets/world3/pipeline/finish_opentopo_soft_materials.py
+D:/assets/world3/opentopo/processed/textures/Guadalupe_Cypress_finished_materials_index.json
+res://toporeview/tileable_finished_material_review.tscn
+D:/assets/world3/docs/captures/opentopo/godot_tileable_finished_material_review.png
+D:/assets/world3/docs/captures/opentopo/godot_tileable_finished_material_close.png
+D:/assets/world3/docs/captures/opentopo/opentopo_finished_material_2x2_sheet.png
+```
+
+This pass writes `finished_material` siblings for all six classes. Each pack has
+balanced albedo, neutral source-derived detail maps, a Godot
+`terrain_hex_detail` material, and a manifest. Balanced edge MSE remains low:
+`0.000011632` to `0.000023212`.
+
 Verdict: unlike real variants are the right direction. Hard "one full tile per
 cell" switching is a QA view, not the final material. The current practical
 pipeline is the soft composite: a single tileable PBR set made from multiple
 real variants. It fixes hard seams, but it does not magically remove all
-recognizable source motifs; those still need better crop selection, scale
-assignment, and macro/meso/micro blending.
+recognizable source motifs. The finishing pass is the current practical answer:
+attenuate low-frequency repetition, use neutral source-derived close detail, and
+let the existing hex/detail shader handle runtime repetition.
 
 ## Verdict
 

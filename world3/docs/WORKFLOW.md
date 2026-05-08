@@ -64,6 +64,7 @@ exports, canopy mosaics, and the sample viewer workflow are documented in:
 - `world3/docs/OPENTOPO_GUIDE.md`
 - `world3/docs/OPENTOPO_DATA_TYPES.md`
 - `world3/docs/OPENTOPO_MOSAIC_FUSION_WORKFLOWS.md`
+- `world3/docs/OPENTOPO_MASTER_STACKS_AUDIT.md`
 - `world3/opentopo/STATUS.md`
 
 Those docs are the source of truth for the newer OpenTopo campaign under

@@ -73,6 +73,21 @@ Current converted heightmap bundle count: 72.
 - `bor_yukon_canada`: `CA_MRDEM_DTM`, `CA_MRDEM_DSM`
 - `tcf_bc_coast_canada`: `CA_MRDEM_DTM`, `CA_MRDEM_DSM`
 
+BC Coast no-color Godot stack generated from `tcf_bc_coast_canada`:
+
+```text
+D:/assets/world3/opentopo/processed/heightmaps/tcf_bc_coast_dtm_dsm_stack/
+D:/assets/world3/toporeview/bc_coast_dtm_dsm/
+D:/assets/world3/toporeview/bc_coast_dtm_dsm_review.tscn
+D:/assets/world3/docs/captures/opentopo/godot_bc_coast_dtm_dsm.png
+D:/assets/world3/docs/captures/opentopo/opentopo_bc_coast_dtm_dsm_layer_sheet.png
+```
+
+Stack stats: 26.61 x 26.64 km, source 30 m cells, 4096 review export, DTM
+297.4-2640.8 m, DSM-DTM surface height max 45.3 m and p95 20.5 m. This stack
+has no real color; `terrain_texture.png` is a procedural layer driven by DTM,
+DSM-DTM, slope, roughness, hillshade, and wetness.
+
 ### GEDI Raster Metrics
 
 - `tmf_amazon_brazil`: `GEDI_L3_ELEV`, `GEDI_L3_RH100`, 80 km sample
@@ -453,6 +468,31 @@ but some real-world motifs still repeat visibly depending on scale. Production
 materials should use this as a source-real meso layer, with macro color from the
 full map and separate close detail/noise where needed.
 
+Finished material pass completed:
+
+```text
+D:/assets/world3/pipeline/finish_opentopo_soft_materials.py
+D:/assets/world3/opentopo/processed/textures/Guadalupe_Cypress_finished_materials_index.json
+```
+
+Each class now has a `finished_material/` sibling beside `tileable_soft/` with
+balanced albedo, source-derived neutral detail maps, an `ao_white.png`, a
+`material_hex_detail_finished.tres`, a `tile_2x2.png`, and a
+`finish_manifest.json`. The finished pass keeps raw survey-derived color intact
+as provenance, then creates a practical reusable Godot material candidate. Real
+Godot captures:
+
+```text
+D:/assets/world3/toporeview/tileable_finished_material_review.tscn
+D:/assets/world3/docs/captures/opentopo/godot_tileable_finished_material_review.png
+D:/assets/world3/docs/captures/opentopo/godot_tileable_finished_material_close.png
+D:/assets/world3/docs/captures/opentopo/opentopo_finished_material_2x2_sheet.png
+```
+
+Current verdict: this is the best reproducible endpoint for tileable real-ground
+materials so far. Remaining judgment is art/scale selection per class, not a
+known pipeline blocker.
+
 Known Phase 2 detail facts:
 
 ```text
@@ -592,6 +632,68 @@ mesh/normal artifacts. The no-data curtain class should be fixed by geometry
 repair and masks. Photoreal cliff/slope improvement should come from chunked
 terrain and real DSM/LAZ/color projection where available, not procedural
 repainting over orthophoto.
+
+## Final Master Stack Pair: Gloss Mountain + Zion
+
+Generated:
+
+```text
+D:/assets/world3/docs/OPENTOPO_MASTER_STACKS_AUDIT.md
+D:/assets/world3/pipeline/build_opentopo_textured_master_stack.py
+```
+
+Updated:
+
+```text
+D:/assets/world3/pipeline/build_opentopo_mosaic.py
+D:/assets/world3/pipeline/export_heightmap_review_layers.py
+```
+
+Primary textured stack:
+
+```text
+name: Gloss Mountain Textured Master Stack
+source: OTDS.072022.32615.1
+raw: D:/assets/world3/opentopo/raw/dataspace/Gloss_Mountain_2021/
+processed: D:/assets/world3/opentopo/processed/master_stacks/gloss_mountain_textured_master/
+scene: D:/assets/world3/toporeview/gloss_mountain_textured_master_review.tscn
+capture: D:/assets/world3/docs/captures/opentopo/godot_gloss_mountain_textured_master.png
+world size: 619.4 x 1075.4 m
+elevation range: 393.84-477.62 m
+valid DEM after crop: 84.44 percent
+orthophoto coverage after crop: 84.49 percent
+```
+
+Primary no-texture stack:
+
+```text
+name: Zion USGS10m No-Texture Master Stack
+dataset: USGS10m
+raw: D:/assets/world3/opentopo/raw/usgsdem/zion_usgs10m_master_4call/
+processed: D:/assets/world3/opentopo/processed/master_stacks/zion_usgs10m_master_4call/
+scene: D:/assets/world3/toporeview/zion_usgs10m_master_4call_review.tscn
+capture: D:/assets/world3/docs/captures/opentopo/godot_zion_usgs10m_master_4call.png
+world size: 36.80 x 36.88 km
+target grid: 3680 x 3688 at 10 m
+elevation range: 1080.22-2856.74 m
+seam p99: 1.400 m
+```
+
+Final comparison sheet:
+
+```text
+D:/assets/world3/docs/captures/opentopo/opentopo_master_stack_final_comparison.png
+```
+
+Rejected/superseded candidates retained for QA:
+
+```text
+Chuculay Chile: real texture, but source-valid DEM remained about 50 percent
+inside the cropped review rectangle.
+
+Rainier USGS1m: high nominal detail, but two of four API tiles returned no
+raster and the partial mosaic had only about 7.4 percent valid terrain.
+```
 
 ## Comparison Report
 

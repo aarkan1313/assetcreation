@@ -12,6 +12,74 @@ The rule is simple:
   filtered, palette-shifted, or generated, but it must not be labeled as source
   repair.
 
+## Current Endpoint Quickstart
+
+Current best endpoint: six Guadalupe Cypress finished Godot material candidates
+from real OpenTopo orthophoto/terrain layers.
+
+```text
+Source stack:
+D:/assets/world3/toporeview/phase2_fusion_max/
+
+Finished material index:
+D:/assets/world3/opentopo/processed/textures/Guadalupe_Cypress_finished_materials_index.json
+
+Best review scene:
+res://toporeview/tileable_finished_material_review.tscn
+```
+
+Rebuild sequence from the already-fetched Phase 2 stack:
+
+```powershell
+# 1) Single-crop baseline/macro outputs.
+python D:/assets/world3/pipeline/build_opentopo_tileable_texture.py `
+  --stack-dir D:/assets/world3/toporeview/phase2_fusion_max `
+  --output-dir D:/assets/world3/opentopo/processed/textures/Guadalupe_Cypress `
+  --crop-sizes-m 32,64 `
+  --output-size 1024 `
+  --macro-output-size 4096
+
+# 2) Six source-real unlike-variant soft composites.
+$classes = @("bare_soil", "bright_rock", "dry_wash", "rocky_slope", "scrub_dense", "scrub_sparse")
+foreach ($class in $classes) {
+  python D:/assets/world3/pipeline/build_opentopo_texture_variant_atlas.py `
+    --stack-dir D:/assets/world3/toporeview/phase2_fusion_max `
+    --output-dir "D:/assets/world3/opentopo/processed/textures/Guadalupe_Cypress_variants_$class" `
+    --material-class $class `
+    --crop-size-m 64 `
+    --variants 12 `
+    --output-size 1024 `
+    --min-distance-m 90 `
+    --color-normalize-strength 0.85 `
+    --composite-size 4096 `
+    --composite-cells 8 `
+    --composite-sharpness 9
+}
+
+# 3) Finished Godot material packs from the soft composites.
+python D:/assets/world3/pipeline/finish_opentopo_soft_materials.py
+```
+
+Review sequence:
+
+```powershell
+& "C:/Godot/Godot_v4.5-stable_win64.exe" --path "D:/assets/world3" "res://toporeview/capture_tileable_finished_material_review.tscn"
+& "C:/Godot/Godot_v4.5-stable_win64.exe" --path "D:/assets/world3" "res://toporeview/capture_tileable_finished_material_close.tscn"
+```
+
+Expected review outputs:
+
+```text
+D:/assets/world3/docs/captures/opentopo/godot_tileable_finished_material_review.png
+D:/assets/world3/docs/captures/opentopo/godot_tileable_finished_material_close.png
+D:/assets/world3/docs/captures/opentopo/opentopo_finished_material_2x2_sheet.png
+```
+
+Use `tileable_finished_material_review.tscn` interactively and press `[` / `]`
+to cycle the six classes. The left panel is raw `tileable_soft`, the middle is
+balanced repeat, and the right panel is the finished `terrain_hex_detail`
+shader.
+
 ## Why This Is Worth Doing
 
 The Phase 2 Guadalupe Cypress orthophoto looks excellent from above because it
@@ -413,6 +481,93 @@ still repeat as recognizable motifs at the wrong scale, so production use still
 needs macro/meso/micro separation and source selection by intended camera
 distance.
 
+## Finished Godot Material Pass
+
+The current finishing pass keeps every `tileable_soft` source-real composite
+intact and writes a sibling `finished_material` folder for game use:
+
+```powershell
+python D:/assets/world3/pipeline/finish_opentopo_soft_materials.py
+```
+
+What it does:
+
+1. Reads the six Guadalupe Cypress `tileable_soft` manifests.
+2. Builds `albedo_balanced.png` with periodic low-frequency tone balancing so
+   repeated real-world motifs are less obvious.
+3. Derives neutral close-detail maps from source luminance and height:
+   `detail_albedo_neutral.png`, `detail_height.png`, `detail_normal.png`, and
+   `detail_roughness.png`.
+4. Writes `material_hex_detail_finished.tres`, bound to
+   `res://shaders/terrain_hex_detail.gdshader`.
+5. Writes `finish_manifest.json` per class plus:
+   `opentopo/processed/textures/Guadalupe_Cypress_finished_materials_index.json`.
+
+Representative finished output folder:
+
+```text
+D:/assets/world3/opentopo/processed/textures/Guadalupe_Cypress_variants_dry_wash/dry_wash_064m_soft_composite/finished_material/
+  albedo_balanced.png
+  detail_albedo_neutral.png
+  detail_height.png
+  detail_normal.png
+  detail_roughness.png
+  ao_white.png
+  material_hex_detail_finished.tres
+  tile_2x2.png
+  finish_manifest.json
+```
+
+Finished balanced-albedo edge metrics:
+
+| Class | Balanced Edge MSE Mean |
+|---|---:|
+| `bare_soil` | `0.000015637` |
+| `bright_rock` | `0.000015962` |
+| `dry_wash` | `0.000017950` |
+| `rocky_slope` | `0.000021902` |
+| `scrub_dense` | `0.000023212` |
+| `scrub_sparse` | `0.000011632` |
+
+Review assets:
+
+```text
+res://toporeview/tileable_finished_material_review.tscn
+res://toporeview/capture_tileable_finished_material_review.tscn
+res://toporeview/capture_tileable_finished_material_close.tscn
+D:/assets/world3/docs/captures/opentopo/godot_tileable_finished_material_review.png
+D:/assets/world3/docs/captures/opentopo/godot_tileable_finished_material_close.png
+D:/assets/world3/docs/captures/opentopo/opentopo_finished_material_2x2_sheet.png
+```
+
+Interpretation: `tileable_soft` is the source-real meso product. The finished
+material is the practical Godot layer: source-real color, source-derived neutral
+detail, hex/detail shader sampling, and explicit provenance. It is no longer a
+literal one-place map chunk; it is a reusable material candidate.
+
+## Unlike Tile And Biome Transition Review
+
+The next QA layer is hard adjacency between unlike material classes and unlike
+biomes. Use:
+
+```text
+res://toporeview/biome_tile_transition_review.tscn
+res://toporeview/capture_biome_tile_transition_review.tscn
+res://toporeview/capture_biome_tile_transition_opentopo.tscn
+res://toporeview/capture_biome_tile_transition_regular.tscn
+D:/assets/world3/docs/captures/opentopo/godot_biome_tile_transition_review.png
+D:/assets/world3/docs/captures/opentopo/godot_biome_tile_transition_opentopo.png
+D:/assets/world3/docs/captures/opentopo/godot_biome_tile_transition_regular.png
+```
+
+This scene deliberately uses hard borders. A visible line is not a failure of
+the material by itself; it identifies where we need palette/value normalization,
+transition strips, macro masks, or a runtime blend shader. The full audit is:
+
+```text
+D:/assets/world3/docs/OPENTOPO_BIOME_TILE_TRANSITION_REVIEW.md
+```
+
 ## Height And Normal Map Tiling
 
 Height is more sensitive than albedo because edge discontinuity creates visible
@@ -471,6 +626,8 @@ Every tileable output should have:
 - Color-normalized atlas review (`tileable_real_norm`) before judging variant
   mixing.
 - Soft composite `tile_2x2` review before calling the product seamless.
+- Hard unlike-tile transition review before placing one material beside a
+  different biome or material class.
 - Sidecar metadata listing source crop, ground size, operations, and whether it
   is source-real or stylized.
 
@@ -528,9 +685,12 @@ The current unlike-variant script is:
 
 ```text
 D:/assets/world3/pipeline/build_opentopo_texture_variant_atlas.py
+D:/assets/world3/pipeline/finish_opentopo_soft_materials.py
 ```
 
 Responsibilities:
+
+Variant atlas responsibilities:
 
 1. Select several sibling real crops for one material class.
 2. Reject crops too close to the source image edge or too near an existing
@@ -539,6 +699,12 @@ Responsibilities:
 4. Build hard-mixed variant QA images.
 5. Build one periodic soft-composite `tileable_soft` PBR product.
 6. Write a manifest with source crop positions, output paths, and edge metrics.
+
+Finish-pass responsibilities:
+
+1. Build the balanced albedo and source-derived neutral detail maps.
+2. Write Godot `terrain_hex_detail` material files.
+3. Write per-class finish manifests and the combined finished-material index.
 
 Use `make_image_comparison_sheet.py` to build labeled material sheets from the
 generated `tile_2x2.png` files.

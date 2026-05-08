@@ -1,0 +1,18 @@
+{
+  "heightmap": "D:\\assets\\world3\\opentopo\\processed\\master_stacks\\zion_usgs10m_master_4call\\heightmap.png",
+  "meta": "D:\\assets\\world3\\opentopo\\processed\\master_stacks\\zion_usgs10m_master_4call\\meta.json",
+  "output_dir": "D:\\assets\\world3\\opentopo\\processed\\master_stacks\\zion_usgs10m_master_4call\\layers",
+  "mode": "procedural_review_layers_from_heightmap",
+  "not_real_imagery": true,
+  "size_px": [
+    8192,
+    8192
+  ],
+  "world_size_x_m": 36800.0,
+  "world_size_z_m": 36880.0,
+  "terrain_style": "sandstone",
+  "qa_layers": [
+    "coverage_count",
+    "seam_delta"
+  ]
+}

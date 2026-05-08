@@ -1,0 +1,18 @@
+{
+  "heightmap": "D:\\assets\\world3\\opentopo\\processed\\master_stacks\\rainier_usgs1m_south_master\\heightmap.png",
+  "meta": "D:\\assets\\world3\\opentopo\\processed\\master_stacks\\rainier_usgs1m_south_master\\meta.json",
+  "output_dir": "D:\\assets\\world3\\opentopo\\processed\\master_stacks\\rainier_usgs1m_south_master\\layers",
+  "mode": "procedural_review_layers_from_heightmap",
+  "not_real_imagery": true,
+  "size_px": [
+    8192,
+    8192
+  ],
+  "world_size_x_m": 30325.0,
+  "world_size_z_m": 15561.0,
+  "terrain_style": "alpine",
+  "qa_layers": [
+    "coverage_count",
+    "seam_delta"
+  ]
+}

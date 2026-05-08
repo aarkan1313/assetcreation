@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3]
+
+[ext_resource type="Texture2D" path="res://textures/wgv3/dirt/albedo.png" id="albedo"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/dirt/normal.png" id="normal"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/dirt/roughness.png" id="roughness"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/dirt/ao.png" id="ao"]
+
+[resource]
+albedo_texture = ExtResource("albedo")
+roughness_texture = ExtResource("roughness")
+normal_enabled = true
+normal_texture = ExtResource("normal")
+ao_enabled = true
+ao_texture = ExtResource("ao")
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv1_scale = Vector3(0.1, 0.1, 0.1)

@@ -1,0 +1,41 @@
+{
+  "output": "D:\\assets\\world3\\docs\\captures\\opentopo\\opentopo_master_stack_final_comparison.png",
+  "title": "OpenTopo Final Master Stack Comparison",
+  "subtitle": "Gloss Mountain real-textured stack and Zion 4-call no-texture stack; rendered in Godot plus key QA layers",
+  "items": [
+    {
+      "label": "Gloss Godot",
+      "path": "D:\\assets\\world3\\docs\\captures\\opentopo\\godot_gloss_mountain_textured_master.png",
+      "note": "Real Godot capture, render_albedo uses source orthophoto with edge extension documented by fill mask."
+    },
+    {
+      "label": "Gloss Orthophoto",
+      "path": "D:\\assets\\world3\\toporeview\\gloss_mountain_textured_master\\layers\\orthophoto_rgb.png",
+      "note": "Raw aligned orthophoto layer; unfilled source/reference color."
+    },
+    {
+      "label": "Gloss Fill Mask",
+      "path": "D:\\assets\\world3\\toporeview\\gloss_mountain_textured_master\\layers\\render_fill_mask.png",
+      "note": "White pixels are edge/gap pixels filled from nearby real imagery for render_albedo."
+    },
+    {
+      "label": "Zion Godot",
+      "path": "D:\\assets\\world3\\docs\\captures\\opentopo\\godot_zion_usgs10m_master_4call.png",
+      "note": "Real Godot capture of the 36.8 x 36.9 km no-texture master stack."
+    },
+    {
+      "label": "Zion Texture",
+      "path": "D:\\assets\\world3\\toporeview\\zion_usgs10m_master_4call\\layers\\terrain_texture.png",
+      "note": "Procedural sandstone review material from height, slope, roughness, and hillshade; not real color."
+    },
+    {
+      "label": "Zion Seam Delta",
+      "path": "D:\\assets\\world3\\toporeview\\zion_usgs10m_master_4call\\layers\\seam_delta.png",
+      "note": "Overlap seam QA. Most overlap is sub-meter; outliers are documented in mosaic_report.json."
+    }
+  ],
+  "size_px": [
+    2020,
+    1190
+  ]
+}

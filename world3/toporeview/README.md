@@ -12,10 +12,15 @@ res://toporeview/phase2_fusion_hd_review.tscn
 res://toporeview/phase2_fusion_max_review.tscn
 res://toporeview/phase2_fusion_ultra_rgb_review.tscn
 res://toporeview/phase3_smokies_4call_review.tscn
+res://toporeview/bc_coast_dtm_dsm_review.tscn
+res://toporeview/gloss_mountain_textured_master_review.tscn
+res://toporeview/zion_usgs10m_master_4call_review.tscn
 res://toporeview/tileable_texture_review.tscn
 res://toporeview/tileable_hex_column_16x16.tscn
 res://toporeview/tileable_variant_atlas_review.tscn
 res://toporeview/tileable_soft_composite_gallery.tscn
+res://toporeview/tileable_finished_material_review.tscn
+res://toporeview/biome_tile_transition_review.tscn
 ```
 
 Phase 1 shows the Grand Canyon `USGS10m` same-type mosaic. It starts on
@@ -41,6 +46,24 @@ Phase 3 shows the Smokies `USGS1m` 4-call mosaic: 29.005 km x 29.835 km at
 layers. It starts on `terrain_texture`, a procedural Appalachian review texture,
 not real aerial imagery.
 
+BC Coast DTM/DSM shows a no-color paired-raster stack: Canadian MRDEM DTM as
+bare-earth terrain and DSM-DTM as surface/vegetation signal. It covers
+26.61 km x 26.64 km from 30 m source cells, exported as a 4096 review package.
+It starts on `terrain_texture`, a synthetic coastal-mountain material layer
+driven by DTM, DSM-DTM, slope, roughness, hillshade, and wetness.
+
+Gloss Mountain Textured Master is the current primary real-color master stack.
+It uses OpenTopo Dataspace DSM plus orthomosaic over a compact Oklahoma mesa.
+It starts on `render_albedo`, which preserves the real orthophoto but extends
+nearby source pixels into edge gaps. `orthophoto_rgb`, `texture_coverage_mask`,
+`source_valid_mask`, `render_fill_mask`, and `cliff_mask` remain available so
+the repair is auditable.
+
+Zion USGS10m Master is the current primary large no-texture stack. It is a
+36.80 km x 36.88 km 4-call mosaic in UTM 12N with a procedural sandstone review
+material. It starts on `terrain_texture`; `coverage_count` and `seam_delta`
+show tile stitching QA.
+
 The tileable texture review shows Guadalupe Cypress `64 m` real-ground crops as
 repeated planes. Columns are source repeated, plain tileable, hex anti-tile, and
 a stylized pixel derivative. Plain repeat is intentionally harsh; the hex column
@@ -63,6 +86,18 @@ soft composite is the current usable tileable product.
 source-real soft composites at `2x` repeat: `bare_soil`, `bright_rock`,
 `dry_wash`, `rocky_slope`, `scrub_dense`, and `scrub_sparse`. Use it to compare
 the material classes after the hard tile-to-tile seams have been removed.
+
+`tileable_finished_material_review.tscn` is the practical Godot material review.
+It shows one class at a time with three panels: source soft repeat, balanced
+repeat, and the finished `terrain_hex_detail` shader. Use `[` and `]` to cycle
+classes. This is the current endpoint for judging whether the material is good
+enough for game use.
+
+`biome_tile_transition_review.tscn` is the hard-adjacency QA scene for unlike
+tiles. It puts OpenTopo photoreal real-source material classes, regular
+generated biome-kit rows, and a cross-biome chain into one review space with no
+blend masks. Use it to find material pairs that need transition bands,
+palette/value normalization, or runtime biome blending.
 
 ## Controls
 
@@ -94,6 +129,9 @@ res://toporeview/capture_phase2_fusion.tscn
 res://toporeview/capture_phase2_fusion_hd.tscn
 res://toporeview/capture_phase2_fusion_max.tscn
 res://toporeview/capture_phase3_smokies_4call.tscn
+res://toporeview/capture_bc_coast_dtm_dsm.tscn
+res://toporeview/capture_gloss_mountain_textured_master.tscn
+res://toporeview/capture_zion_usgs10m_master_4call.tscn
 res://toporeview/capture_phase2_close_baseline.tscn
 res://toporeview/capture_phase2_close_hd.tscn
 res://toporeview/capture_phase2_close_max.tscn
@@ -101,6 +139,11 @@ res://toporeview/capture_tileable_texture_review.tscn
 res://toporeview/capture_tileable_hex_column_16x16.tscn
 res://toporeview/capture_tileable_variant_atlas_review.tscn
 res://toporeview/capture_tileable_soft_composite_gallery.tscn
+res://toporeview/capture_tileable_finished_material_review.tscn
+res://toporeview/capture_tileable_finished_material_close.tscn
+res://toporeview/capture_biome_tile_transition_review.tscn
+res://toporeview/capture_biome_tile_transition_opentopo.tscn
+res://toporeview/capture_biome_tile_transition_regular.tscn
 ```
 
 Run them through normal Godot with the capture scene as the trailing argument:
@@ -119,6 +162,11 @@ D:/assets/world3/docs/captures/opentopo/godot_phase2_fusion.png
 D:/assets/world3/docs/captures/opentopo/godot_phase2_fusion_hd.png
 D:/assets/world3/docs/captures/opentopo/godot_phase2_fusion_max.png
 D:/assets/world3/docs/captures/opentopo/godot_phase3_smokies_4call.png
+D:/assets/world3/docs/captures/opentopo/godot_bc_coast_dtm_dsm.png
+D:/assets/world3/docs/captures/opentopo/godot_gloss_mountain_textured_master.png
+D:/assets/world3/docs/captures/opentopo/godot_zion_usgs10m_master_4call.png
+D:/assets/world3/docs/captures/opentopo/opentopo_master_stack_final_comparison.png
+D:/assets/world3/docs/captures/opentopo/opentopo_bc_coast_dtm_dsm_layer_sheet.png
 D:/assets/world3/docs/captures/opentopo/godot_real_render_phase_comparison.png
 D:/assets/world3/docs/captures/opentopo/godot_phase2_close_baseline.png
 D:/assets/world3/docs/captures/opentopo/godot_phase2_close_hd.png
@@ -127,6 +175,12 @@ D:/assets/world3/docs/captures/opentopo/godot_phase2_close_resolution_comparison
 D:/assets/world3/docs/captures/opentopo/godot_tileable_variant_atlas_review.png
 D:/assets/world3/docs/captures/opentopo/godot_tileable_soft_composite_gallery.png
 D:/assets/world3/docs/captures/opentopo/opentopo_soft_composite_2x2_material_sheet.png
+D:/assets/world3/docs/captures/opentopo/godot_tileable_finished_material_review.png
+D:/assets/world3/docs/captures/opentopo/godot_tileable_finished_material_close.png
+D:/assets/world3/docs/captures/opentopo/opentopo_finished_material_2x2_sheet.png
+D:/assets/world3/docs/captures/opentopo/godot_biome_tile_transition_review.png
+D:/assets/world3/docs/captures/opentopo/godot_biome_tile_transition_opentopo.png
+D:/assets/world3/docs/captures/opentopo/godot_biome_tile_transition_regular.png
 ```
 
 The older waited `--headless --scene ... --quit-after ...` path can hit a local

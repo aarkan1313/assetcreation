@@ -1,0 +1,41 @@
+{
+  "output": "D:\\assets\\world3\\docs\\captures\\opentopo\\opentopo_finished_material_2x2_sheet.png",
+  "title": "OpenTopo finished material 2x2 sheet",
+  "subtitle": "Balanced albedo outputs; source-real color plus derived neutral detail maps for Godot hex/detail shader",
+  "items": [
+    {
+      "label": "bare_soil",
+      "path": "D:\\assets\\world3\\opentopo\\processed\\textures\\Guadalupe_Cypress_variants_bare_soil\\bare_soil_064m_soft_composite\\finished_material\\tile_2x2.png",
+      "note": "balanced edge MSE 0.000015637"
+    },
+    {
+      "label": "bright_rock",
+      "path": "D:\\assets\\world3\\opentopo\\processed\\textures\\Guadalupe_Cypress_variants_bright_rock\\bright_rock_064m_soft_composite\\finished_material\\tile_2x2.png",
+      "note": "balanced edge MSE 0.000015962"
+    },
+    {
+      "label": "dry_wash",
+      "path": "D:\\assets\\world3\\opentopo\\processed\\textures\\Guadalupe_Cypress_variants_dry_wash\\dry_wash_064m_soft_composite\\finished_material\\tile_2x2.png",
+      "note": "balanced edge MSE 0.000017950"
+    },
+    {
+      "label": "rocky_slope",
+      "path": "D:\\assets\\world3\\opentopo\\processed\\textures\\Guadalupe_Cypress_variants_rocky_slope\\rocky_slope_064m_soft_composite\\finished_material\\tile_2x2.png",
+      "note": "balanced edge MSE 0.000021902"
+    },
+    {
+      "label": "scrub_dense",
+      "path": "D:\\assets\\world3\\opentopo\\processed\\textures\\Guadalupe_Cypress_variants_scrub_dense\\scrub_dense_064m_soft_composite\\finished_material\\tile_2x2.png",
+      "note": "balanced edge MSE 0.000023212"
+    },
+    {
+      "label": "scrub_sparse",
+      "path": "D:\\assets\\world3\\opentopo\\processed\\textures\\Guadalupe_Cypress_variants_scrub_sparse\\scrub_sparse_064m_soft_composite\\finished_material\\tile_2x2.png",
+      "note": "balanced edge MSE 0.000011632"
+    }
+  ],
+  "size_px": [
+    1900,
+    1238
+  ]
+}

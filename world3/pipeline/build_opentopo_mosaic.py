@@ -297,7 +297,9 @@ def write_heightmap(out_dir: Path, mosaic: np.ndarray, args, bounds, target_crs:
     img_f = img_f.resize((args.heightmap_size, args.heightmap_size), Image.Resampling.LANCZOS)
     arr16 = (np.asarray(img_f, dtype=np.float32) * 65535.0).clip(0, 65535).astype(np.uint16)
     Image.fromarray(arr16, mode="I;16").save(out_dir / "heightmap.png")
-    world_size_m = float(min(bounds[2] - bounds[0], bounds[3] - bounds[1]))
+    world_size_x_m = float(bounds[2] - bounds[0])
+    world_size_z_m = float(bounds[3] - bounds[1])
+    world_size_m = float(min(world_size_x_m, world_size_z_m))
     meta = {
         "source_dem": str(out_dir / "mosaic.tif"),
         "source_crs": target_crs,
@@ -312,6 +314,8 @@ def write_heightmap(out_dir: Path, mosaic: np.ndarray, args, bounds, target_crs:
         "elevation_max_m": h_max,
         "elevation_range_m": h_range,
         "world_size_m": world_size_m,
+        "world_size_x_m": world_size_x_m,
+        "world_size_z_m": world_size_z_m,
         "material": args.material,
     }
     (out_dir / "meta.json").write_text(json.dumps(meta, indent=2), encoding="utf-8")

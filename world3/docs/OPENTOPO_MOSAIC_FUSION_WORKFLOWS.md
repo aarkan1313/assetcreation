@@ -419,12 +419,29 @@ Filled pixels are visual/modeling aids, not measured source data.
 
 New scripts should be documented in `OPENTOPO_GUIDE.md` when created.
 
+Implemented since the original plan:
+
+```text
+pipeline/build_opentopo_dtm_dsm_stack.py
+  Matched DTM+DSM -> no-color Godot stack with surface-height, forest,
+  rock/slope, wetness, material mask, QA masks, and manifest.
+
+pipeline/build_opentopo_textured_master_stack.py
+  DEM/DSM + orthophoto -> raw-preserving textured master stack, review
+  heightmap/layers, valid-source masks, render_albedo, and fill provenance.
+
+pipeline/export_heightmap_review_layers.py
+  Now also supports sandstone/alpine review styles plus coverage_count and
+  seam_delta QA raster export into Godot-visible layers.
+
+pipeline/build_opentopo_mosaic.py
+  Same-type raster tiles -> projected GeoTIFF mosaic + seam QA. Now writes
+  world_size_x_m/world_size_z_m for rectangular review scenes.
+```
+
 Planned tools:
 
 ```text
-pipeline/build_opentopo_mosaic.py
-  Same-type raster tiles -> one seamless GeoTIFF + seam QA.
-
 pipeline/fetch_opentopo_tile_grid.py
   One AOI -> overlapping OpenTopography API requests for same-type mosaics.
 
@@ -446,6 +463,10 @@ pipeline/build_opentopo_stack.py
 pipeline/derive_opentopo_masks.py
   Orthophoto/NIR/slope/roughness/canopy -> material and vegetation masks.
 ```
+
+For large megastacks, build this folder as a review/runtime export from a
+lossless master stack. Keep raw GeoTIFF/LAZ sources and aligned float32 tiled
+GeoTIFF or chunked Zarr masters until the Godot review passes.
 
 Expected stack output:
 

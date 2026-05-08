@@ -68,6 +68,7 @@ world3/opentopo/STATUS.md              What has actually been fetched/converted
 world3/opentopo/sample_plan.json       14-biome / 70-site sample matrix
 world3/opentopo/data_type_matrix.json  Two-representative plan per data type
 world3/docs/OPENTOPO_DATA_TYPES.md     Sequential usage guide by data type
+world3/docs/OPENTOPO_TOOLING_KNOBS_GUIDE.md  Short control-panel guide for tools, knobs, and compression tiers
 world3/docs/OPENTOPO_MOSAIC_FUSION_WORKFLOWS.md  Stitching and layer-fusion plans
 world3/docs/OPENTOPO_TEXTURE_SCENE_ROADMAP.md    Texture baking, real-place scenes, HD zoom plan
 world3/docs/OPENTOPO_TILEABLE_REAL_TEXTURE_WORKFLOW.md  Real-source tileable ground texture workflow
@@ -76,7 +77,9 @@ world3/docs/OPENTOPO_PHASE2_MAX_REVIEW.md        8192 + 16K RGB Guadalupe Cypres
 world3/docs/OPENTOPO_RENDER_REPAIR_WORKFLOW.md   Source-first no-data/cliff repair workflow
 world3/docs/OPENTOPO_LARGE_4CALL_PLAN.md         Next 4-call `USGS1m` scale plan
 world3/docs/OPENTOPO_PHASE3_SMOKIES_4CALL_AUDIT.md  Completed Smokies 4-call `USGS1m` audit
+world3/docs/OPENTOPO_MASTER_STACKS_AUDIT.md      Final Gloss/Zion master-stack audit and commands
 world3/pipeline/opentopo_fetch.py      API/catalog/raster fetch helper
+world3/pipeline/finish_opentopo_soft_materials.py  Finished Godot material pass for tileable real-ground composites
 world3/pipeline/fetch_opentopo_tile_grid.py  Split one AOI into overlapping API tile pulls
 world3/pipeline/build_opentopo_mosaic.py     Same-type raster tiles -> GeoTIFF mosaic + seam QA
 world3/pipeline/build_opentopo_mosaic_streaming.py  Large same-CRS raster mosaic builder
@@ -84,6 +87,7 @@ world3/pipeline/validate_opentopo_mosaic.py  Re-read a mosaic and verify source/
 world3/pipeline/validate_opentopo_mosaic_streaming.py  Large mosaic validator
 world3/pipeline/build_world.py         GeoTIFF -> Godot heightmap converter
 world3/pipeline/extract_opentopo_layers.py  Extract DSM-DTM and GEDI layers
+world3/pipeline/build_opentopo_dtm_dsm_stack.py  Matched DTM+DSM -> no-color Godot stack with surface/material masks
 world3/pipeline/inspect_laz_headers.py      Inspect LAZ capabilities
 world3/pipeline/process_laz_samples.py      Stream LAZ and create DTM/DSM/color/QA rasters
 world3/pipeline/export_opentopo_texture.py  GeoTIFF -> aligned Godot PNG layer
@@ -94,6 +98,7 @@ world3/pipeline/export_opentopo_review_texture.py  Aligned diagnostic layers -> 
 world3/pipeline/export_heightmap_review_layers.py  Heightmap/meta -> diagnostic review layers
 world3/pipeline/build_opentopo_stack_manifest.py  Fused stack manifest + layer-size validation
 world3/pipeline/build_opentopo_render_albedo.py   Source-first render albedo from real orthophoto
+world3/pipeline/build_opentopo_textured_master_stack.py  DEM+orthophoto -> textured master stack and review package
 world3/pipeline/build_opentopo_tileable_texture.py Real-source crop/material pilot builder
 world3/scripts/OpenTopoSampleViewer.gd      Godot sample/layer browser
 world3/toporeview/phase1_mosaic_review.tscn Phase 1 same-type mosaic review scene
@@ -102,6 +107,9 @@ world3/toporeview/phase2_fusion_hd_review.tscn Phase 2 4096 HD fused-stack revie
 world3/toporeview/phase2_fusion_max_review.tscn Phase 2 8192 max fused-stack review scene
 world3/toporeview/phase2_fusion_ultra_rgb_review.tscn Phase 2 16K RGB stress scene
 world3/toporeview/phase3_smokies_4call_review.tscn Phase 3 large 4-call `USGS1m` review scene
+world3/toporeview/bc_coast_dtm_dsm_review.tscn BC Coast DTM/DSM no-color stack review scene
+world3/toporeview/gloss_mountain_textured_master_review.tscn Final real-textured master scene
+world3/toporeview/zion_usgs10m_master_4call_review.tscn Final large no-texture master scene
 world3/toporeview/tileable_texture_review.tscn OpenTopo repeated-plane texture review scene
 world3/toporeview/capture_phase*.tscn    Real Godot viewport capture wrappers
 world3/toporeview/TopoReviewCapture.gd   Deterministic camera capture helper
@@ -121,10 +129,39 @@ world3/opentopo/
   processed/heightmaps/    ignored Godot-ready heightmap bundles
   processed/mosaics/       ignored same-type stitched raster stacks
   processed/stacks/        ignored cross-type fused raster stacks
+  processed/master_stacks/  ignored full source-aligned authoring stacks
   processed/pointcloud/    ignored LAZ-derived DTM/DSM/color/canopy products
   processed/comparison/    ignored audit reports
   sample_plan.json         tracked biome/site plan
 ```
+
+## Current Master Stack Quickstart
+
+Use these two scenes as the current primary OpenTopo master-stack review set:
+
+```text
+res://toporeview/gloss_mountain_textured_master_review.tscn
+res://toporeview/zion_usgs10m_master_4call_review.tscn
+```
+
+Use these captures as the current validation images:
+
+```text
+D:/assets/world3/docs/captures/opentopo/godot_gloss_mountain_textured_master.png
+D:/assets/world3/docs/captures/opentopo/godot_zion_usgs10m_master_4call.png
+D:/assets/world3/docs/captures/opentopo/opentopo_master_stack_final_comparison.png
+```
+
+Rebuild and audit commands are recorded in:
+
+```text
+D:/assets/world3/docs/OPENTOPO_MASTER_STACKS_AUDIT.md
+```
+
+Gloss Mountain is the current real-textured stack. Zion is the current large
+no-texture stack. Chuculay and Rainier are retained as rejected/superseded QA
+attempts because their valid-source coverage was too sparse for the primary
+master-stack target.
 
 ## Discovery
 
@@ -427,6 +464,23 @@ python D:/assets/world3/pipeline/export_opentopo_texture.py `
 `export_opentopo_texture.py` writes square PNG texture channels plus a small
 JSON sidecar. Use `--match-meta` when a layer should align to an existing
 `build_world.py` terrain package.
+
+Build a no-color DTM/DSM stack when matched bare-earth and surface rasters
+exist but real orthophoto color does not:
+
+```powershell
+python D:/assets/world3/pipeline/build_opentopo_dtm_dsm_stack.py `
+  --dtm D:/assets/world3/opentopo/raw/cog/tcf_bc_coast_canada/CA_MRDEM_DTM_m123.1398_p49.9096_m122.8602_p50.0904.tif `
+  --dsm D:/assets/world3/opentopo/raw/cog/tcf_bc_coast_canada/CA_MRDEM_DSM_m123.1398_p49.9096_m122.8602_p50.0904.tif `
+  --output-dir D:/assets/world3/opentopo/processed/heightmaps/tcf_bc_coast_dtm_dsm_stack `
+  --name "BC Coast DTM DSM No-Color Stack" `
+  --size 4096 --surface-max-m 45
+```
+
+This writes `heightmap.png`, `meta.json`, `stack_manifest.json`, and aligned
+layers including `terrain_texture`, `surface_height`, `forest_surface_mask`,
+`rock_slope_mask`, `wetness_valley_mask`, `material_mask_rgba`, and QA masks.
+It is a practical starting point for a no-orthophoto megastack.
 
 After processing all Guadalupe LAZ regions, build one max-combined canopy layer:
 

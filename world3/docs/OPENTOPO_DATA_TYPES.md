@@ -217,12 +217,16 @@ Generated:
 ```text
 D:/assets/world3/opentopo/processed/extracted/surface_height/bor_yukon_canada/dsm_minus_dtm.tif
 D:/assets/world3/opentopo/processed/extracted/surface_height/tcf_bc_coast_canada/dsm_minus_dtm.tif
+D:/assets/world3/opentopo/processed/heightmaps/tcf_bc_coast_dtm_dsm_stack/
+D:/assets/world3/toporeview/bc_coast_dtm_dsm_review.tscn
 ```
 
 Results:
 
 - Yukon surface height: max 18.2 m, mean 2.8 m, p95 7.5 m.
 - BC Coast surface height: max 45.3 m, mean 8.2 m, p95 20.5 m.
+- BC Coast Godot stack: DTM elevation 297.4-2640.8 m, 26.61 x 26.64 km,
+  4096 review export, source 30 m cells.
 
 Good for:
 
@@ -241,10 +245,13 @@ Usage in Godot:
 - Use `DSM - DTM` as a mask for vegetation spawn height/density.
 - Use high surface-height areas to avoid placing roads/buildings unless the
   game intends forested/urban clutter.
+- When no orthophoto exists, generate a no-color procedural terrain texture
+  from DTM, hillshade, slope, roughness, wetness, and surface-height masks.
 
 Next extraction:
 
-- Convert surface-height rasters into normalized biome masks and Godot textures.
+- Try the same DTM/DSM stack builder on the Yukon representative and compare
+  whether low-canopy boreal terrain needs different surface-height scaling.
 
 ## 6. GEDI L3 Metrics
 

@@ -1,0 +1,41 @@
+{
+  "output": "D:\\assets\\world3\\docs\\captures\\opentopo\\opentopo_bc_coast_dtm_dsm_layer_sheet.png",
+  "title": "BC Coast DTM/DSM No-Color Stack",
+  "subtitle": "DTM terrain plus DSM-DTM surface masks; synthetic texture, no orthophoto color",
+  "items": [
+    {
+      "label": "Godot render",
+      "path": "D:\\assets\\world3\\docs\\captures\\opentopo\\godot_bc_coast_dtm_dsm.png",
+      "note": "Real Godot viewport capture of the 26.6 km terrain package."
+    },
+    {
+      "label": "Terrain texture",
+      "path": "D:\\assets\\world3\\toporeview\\bc_coast_dtm_dsm\\layers\\terrain_texture.png",
+      "note": "Procedural no-color texture driven by DTM elevation, hillshade, slope, roughness, wetness, and DSM-DTM surface height."
+    },
+    {
+      "label": "Surface height",
+      "path": "D:\\assets\\world3\\toporeview\\bc_coast_dtm_dsm\\layers\\surface_height.png",
+      "note": "DSM minus DTM, normalized to 45 m; this is the main vegetation/surface signal."
+    },
+    {
+      "label": "Forest surface mask",
+      "path": "D:\\assets\\world3\\toporeview\\bc_coast_dtm_dsm\\layers\\forest_surface_mask.png",
+      "note": "Canopy/surface-density mask derived from positive DSM-DTM height."
+    },
+    {
+      "label": "Rock slope mask",
+      "path": "D:\\assets\\world3\\toporeview\\bc_coast_dtm_dsm\\layers\\rock_slope_mask.png",
+      "note": "Slope and roughness-derived rock/cliff material mask."
+    },
+    {
+      "label": "Wet valley mask",
+      "path": "D:\\assets\\world3\\toporeview\\bc_coast_dtm_dsm\\layers\\wetness_valley_mask.png",
+      "note": "Low-elevation, low-slope proxy for wet valleys and darker ground blends."
+    }
+  ],
+  "size_px": [
+    1780,
+    1134
+  ]
+}

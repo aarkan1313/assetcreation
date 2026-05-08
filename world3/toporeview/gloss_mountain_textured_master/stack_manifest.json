@@ -1,0 +1,59 @@
+{
+  "name": "Gloss Mountain Textured Master Stack",
+  "builder": "build_opentopo_textured_master_stack.py",
+  "target_crs": "EPSG:32615",
+  "target_bounds": {
+    "left": -996.9363174361063,
+    "bottom": 4038698.846322414,
+    "right": -377.52582553610625,
+    "top": 4039774.274823914
+  },
+  "target_cell_size_m": 0.0698557,
+  "target_width": 8867,
+  "target_height": 15395,
+  "vertical_datum": "source metadata",
+  "base_height_layer": "dem_repaired_float32",
+  "layers": [
+    {
+      "name": "dem_repaired_float32",
+      "path": "master/dem_repaired_float32.tif",
+      "role": "base_height"
+    },
+    {
+      "name": "source_valid_mask",
+      "path": "master/source_valid_mask.tif",
+      "role": "qa"
+    },
+    {
+      "name": "orthophoto_rgb_aligned_to_dem",
+      "path": "master/orthophoto_rgb_aligned_to_dem.tif",
+      "role": "real_texture"
+    },
+    {
+      "name": "texture_coverage_mask",
+      "path": "master/texture_coverage_mask.tif",
+      "role": "qa"
+    },
+    {
+      "name": "raw_orthophoto",
+      "path": "D:\\assets\\world3\\opentopo\\raw\\dataspace\\Gloss_Mountain_2021\\Gloss_Mountain_Orthomosaic.tif",
+      "role": "preserved_highest_resolution_texture_source"
+    }
+  ],
+  "review_layers": [
+    "cliff_mask.png",
+    "elevation_gray.png",
+    "hillshade.png",
+    "orthophoto_rgb.png",
+    "render_albedo.png",
+    "render_fill_mask.png",
+    "roughness.png",
+    "slope_deg.png",
+    "source_valid_mask.png",
+    "texture_coverage_mask.png"
+  ],
+  "known_limits": [
+    "Review scene uses a downsampled orthophoto layer for interactivity.",
+    "Vertical cliff faces are not photogrammetric side geometry; they need mesh/texture repair if exposed at close range."
+  ]
+}

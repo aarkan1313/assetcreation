@@ -1,0 +1,39 @@
+{
+  "name": "Mount Rainier USGS1m South No-Texture Master Stack",
+  "target_crs": "EPSG:26910",
+  "target_bounds": {
+    "left": 579472.0,
+    "bottom": 5174432.0,
+    "right": 609797.0,
+    "top": 5189993.0
+  },
+  "target_cell_size_m": 1.0,
+  "target_width": 30325,
+  "target_height": 15561,
+  "vertical_datum": "unknown",
+  "base_height_layer": "mosaic",
+  "layers": [
+    {
+      "name": "mosaic",
+      "path": "mosaic.tif",
+      "role": "base_height"
+    },
+    {
+      "name": "coverage_count",
+      "path": "coverage_count.tif",
+      "role": "qa"
+    },
+    {
+      "name": "seam_delta",
+      "path": "seam_delta.tif",
+      "role": "qa"
+    }
+  ],
+  "vectors": [
+    {
+      "name": "tile_footprints",
+      "path": "tile_footprints.geojson",
+      "role": "qa"
+    }
+  ]
+}

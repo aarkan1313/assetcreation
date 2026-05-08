@@ -1,0 +1,39 @@
+{
+  "name": "Zion USGS10m No-Texture Master Stack",
+  "target_crs": "EPSG:32612",
+  "target_bounds": {
+    "left": 308730.0,
+    "bottom": 4111520.0,
+    "right": 345530.0,
+    "top": 4148400.0
+  },
+  "target_cell_size_m": 10.0,
+  "target_width": 3680,
+  "target_height": 3688,
+  "vertical_datum": "unknown",
+  "base_height_layer": "mosaic",
+  "layers": [
+    {
+      "name": "mosaic",
+      "path": "mosaic.tif",
+      "role": "base_height"
+    },
+    {
+      "name": "coverage_count",
+      "path": "coverage_count.tif",
+      "role": "qa"
+    },
+    {
+      "name": "seam_delta",
+      "path": "seam_delta.tif",
+      "role": "qa"
+    }
+  ],
+  "vectors": [
+    {
+      "name": "tile_footprints",
+      "path": "tile_footprints.geojson",
+      "role": "qa"
+    }
+  ]
+}

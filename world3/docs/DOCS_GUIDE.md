@@ -27,7 +27,9 @@ process changes, update the doc. Older versions don't matter.
 | [pipelines/textures/TOOLS.md](../../pipelines/textures/TOOLS.md) | Inventory of every tool script + when to reach for each              |
 | [OPENTOPO_GUIDE.md](OPENTOPO_GUIDE.md)       | OpenTopo data acquisition runbook                                    |
 | [OPENTOPO_DATA_TYPES.md](OPENTOPO_DATA_TYPES.md) | What each OT dataset contains + when to use it                   |
+| [OPENTOPO_TOOLING_KNOBS_GUIDE.md](OPENTOPO_TOOLING_KNOBS_GUIDE.md) | Concise OpenTopo control-panel guide: tools, quality knobs, compression, and workflow choices |
 | [OPENTOPO_MOSAIC_FUSION_WORKFLOWS.md](OPENTOPO_MOSAIC_FUSION_WORKFLOWS.md) | Tile-stitching and layer-fusion runbook            |
+| [OPENTOPO_TILEABLE_REAL_TEXTURE_WORKFLOW.md](OPENTOPO_TILEABLE_REAL_TEXTURE_WORKFLOW.md) | Current finished real-ground texture rebuild path and provenance rules |
 | [opentopo/STATUS.md](../opentopo/STATUS.md)  | Current state of the OpenTopo data we have                           |
 
 **Write-rule**: edit in place. Replace stale sections.
@@ -66,6 +68,7 @@ should still make sense.
 | [OPENTOPO_PILOT2_*_AUDIT.md](OPENTOPO_PILOT2_GUADALUPE_CYPRESS_FUSION_AUDIT.md) | Pilot 2 audit                            |
 | [OPENTOPO_PHASE2_HD_REVIEW.md](OPENTOPO_PHASE2_HD_REVIEW.md) | Phase 2 HD-tile review pass (4096/8192/16K stress test)        |
 | [OPENTOPO_PHASE2_MAX_REVIEW.md](OPENTOPO_PHASE2_MAX_REVIEW.md) | Phase 2 max-resolution review pass                          |
+| [OPENTOPO_BC_COAST_DTM_DSM_AUDIT.md](OPENTOPO_BC_COAST_DTM_DSM_AUDIT.md) | BC Coast DTM/DSM no-color stack audit                  |
 | [OPENTOPO_TILEABLE_REAL_TEXTURE_WORKFLOW.md](OPENTOPO_TILEABLE_REAL_TEXTURE_WORKFLOW.md) | Real-source crop, tileable texture, and stylized derivative workflow |
 | [OPENTOPO_TILEABLE_TEXTURE_PILOT_AUDIT.md](OPENTOPO_TILEABLE_TEXTURE_PILOT_AUDIT.md) | First Guadalupe Cypress tileable real-ground texture pilot |
 | [pipelines/textures/EXTERNAL_TECHNIQUES.md](../../pipelines/textures/EXTERNAL_TECHNIQUES.md) | Survey of external tileable-PBR techniques (2026-05-07 snapshot) |

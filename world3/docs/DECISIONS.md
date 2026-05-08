@@ -771,6 +771,36 @@ sessions don't fight this decision.
 
 ---
 
+## 2026-05-07 - OpenTopo master stacks prioritize valid coverage over nominal size
+
+**Decision**: A master-stack candidate must pass valid-source coverage review
+before it becomes the recommended scene. High nominal resolution or a large API
+bounding box is not enough.
+
+**Why**: The Rainier `USGS1m` 4-call attempt looked ideal on paper, but two
+tiles returned no raster and the partial mosaic had only about `7.4 percent`
+valid terrain. The Chuculay textured candidate had real orthophoto color, but
+after valid-footprint crop only about `50 percent` of the review rectangle had
+source-valid elevation. Both are useful QA/failure cases, but bad primary
+master stacks.
+
+**Chosen endpoints**:
+
+- Gloss Mountain for the real-textured stack because DSM and orthomosaic overlap
+  well after crop, giving about `84 percent` valid DEM/texture coverage.
+- Zion `USGS10m` for the large no-texture stack because all four API tiles
+  downloaded cleanly and produced a broad 36.8 km review scene.
+
+**Implementation**:
+
+- `build_opentopo_textured_master_stack.py` adds valid-footprint crop,
+  source-valid masks, texture coverage masks, and render-fill provenance.
+- `export_heightmap_review_layers.py` adds QA raster overlays and sandstone
+  review style.
+- Full audit: `docs/OPENTOPO_MASTER_STACKS_AUDIT.md`.
+
+---
+
 ## 2026-05-08 - world3/assets content is pipeline-validation material first
 
 **Decision**: Treat `world3` and the broader `assets` work as a pipeline and
