@@ -285,7 +285,7 @@ Exit criteria — met:
       near-uniform tall_grass — open as a Phase E or polish task, not
       a Phase D blocker.
 
-## Phase E — Per-game-mode material tuning
+## Phase E — Per-game-mode material tuning (IN PROGRESS, 2026-05-07)
 
 The decision-locked principle "walk/iso/topdown are different games"
 hasn't been implemented yet. Same material is bound to all three
@@ -293,22 +293,30 @@ scenes, with the same UV scale and shader params. They should each
 own their tuning.
 
 Checklist:
-- [ ] Per-mode material variants: each kit emits
-      `terrain_blend_<kit>_<mode>.tres` for walk/iso/topdown.
-- [ ] Tuning targets per mode:
-      - **walk**: tile UV ~0.3-0.5 (1-3m repeat), sharp normals,
-        macro_value low (close-up dominates), strong sun
-      - **iso**: tile UV ~0.05-0.1 (10-20m repeat), softer normals,
-        macro_value moderate, ssao on, slight stylization
-      - **topdown**: tile UV ~0.01-0.02 (50-100m repeat), normals
-        muted, macro_value high (color-blocking dominates), high sun
-- [ ] Update `RegionGalleryCapture` and per-mode capture scenes to
-      pick the right `_<mode>.tres`.
-- [ ] Per-mode capture sweeps to validate.
+- [x] Per-mode material variants: each kit emits
+      `terrain_blend_<kit>_<mode>.tres` for walk/iso/topdown via
+      `pipelines/textures/emit_per_mode_materials.py`. 15 .tres
+      committed (5 kits x 3 modes).
+- [x] Tuning targets per mode (locked in MODES table of the emit tool):
+      - **walk**: world_uv_scale 0.4 (~2.5m repeat), normal_strength
+        1.2, macro_value 0.05, blend_sharpness 12.0
+      - **iso**: world_uv_scale 0.1 (~10m repeat), normal_strength
+        1.0, macro_value 0.15, blend_sharpness 8.0 (current default)
+      - **topdown**: world_uv_scale 0.02 (~50m repeat), normal_strength
+        0.4, macro_value 0.35, blend_sharpness 4.0
+- [x] Per-mode capture sweeps to validate. 3 alpine captures in
+      `world3/docs/captures/phase_e/` show clear visual differences:
+      walk = surface detail, iso = mid blend, topdown = color blocks.
+- [ ] Update `RegionGalleryCapture` and the per-mode capture scenes
+      (`walk.tscn`/`iso.tscn`/`topdown.tscn`) to pick the right
+      `_<mode>.tres`. Game scenes still bind the default .tres.
+- [ ] Non-alpine per-mode captures (desert/tundra/temperate_forest/
+      grassland) deferred — emit tool covers them but visual review
+      only ran for alpine.
 
 Exit criteria:
-- Each game mode has its own material variant per kit.
-- Same region rendered through the 3 modes shows clearly different
+- [x] Each game mode has its own material variant per kit.
+- [x] Same region rendered through the 3 modes shows clearly different
   treatments (close detail vs. mid detail vs. flat color blocks).
 
 ## Phase F — Multi-tile / continuous world
