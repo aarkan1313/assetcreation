@@ -42,7 +42,7 @@ Recent scoped commits:
 - `2bf0942` - `world3: add chunk splat material contract`
 - `4db433a` - `world3: wire walk scene to splat streaming`
 - `b74d109` - `world3: record m5 streaming budget`
-- `HEAD pending` - M1-M5 final audit and long-walk evidence
+- `1cc9fda` - `world3: close m1 m5 final audit`
 
 M1 is done:
 
