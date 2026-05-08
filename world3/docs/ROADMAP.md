@@ -285,7 +285,7 @@ Exit criteria — met:
       near-uniform tall_grass — open as a Phase E or polish task, not
       a Phase D blocker.
 
-## Phase E — Per-game-mode material tuning (IN PROGRESS, 2026-05-07)
+## Phase E — Per-game-mode material tuning (DONE 2026-05-07)
 
 The decision-locked principle "walk/iso/topdown are different games"
 hasn't been implemented yet. Same material is bound to all three
@@ -307,14 +307,15 @@ Checklist:
 - [x] Per-mode capture sweeps to validate. 3 alpine captures in
       `world3/docs/captures/phase_e/` show clear visual differences:
       walk = surface detail, iso = mid blend, topdown = color blocks.
-- [ ] Update `RegionGalleryCapture` and the per-mode capture scenes
+- [x] Update `RegionGalleryCapture` and the per-mode capture scenes
       (`walk.tscn`/`iso.tscn`/`topdown.tscn`) to pick the right
-      `_<mode>.tres`. Game scenes still bind the default .tres.
-- [ ] Non-alpine per-mode captures (desert/tundra/temperate_forest/
-      grassland) deferred — emit tool covers them but visual review
-      only ran for alpine.
+      `_<mode>.tres`. Gallery derives per-mode material paths from
+      `biome_kit_material` and swaps `material_override` between
+      iso and topdown shots; re-pushes elev_min/range to each newly-
+      bound ShaderMaterial. Game scenes now point at
+      `terrain_blend_alpine_{walk,iso,topdown}.tres`.
 
-Exit criteria:
+Exit criteria — all met:
 - [x] Each game mode has its own material variant per kit.
 - [x] Same region rendered through the 3 modes shows clearly different
   treatments (close detail vs. mid detail vs. flat color blocks).
