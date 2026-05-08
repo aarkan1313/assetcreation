@@ -59,9 +59,31 @@ Option 1 is simpler and matches how Terrain3D handles this internally.
   own `HeightMapShape3D`; deferred to F.4 where streaming + collision
   matter together).
 
-## Next: F.4 streaming prototype
+## Superseded F.4 streaming prototype note
 
 Per PLAN.md: walker XZ enters a chunk's "warmup zone" → load chunk;
 walker leaves "keepalive zone" → unload. Verify load/unload doesn't
 stutter and frame budget stays within target. Chunk size 512m at
 256 subdivisions per F.2 default.
+
+This note is superseded by the M3 sweep below.
+
+## M3 chunk-size sweep outcome
+
+M3 added a parameterized streaming loader and sweep scene:
+
+- `world3/scripts/ChunkLoader.gd`
+- `world3/scripts/ChunkSweepRunner.gd`
+- `world3/scenes/capture_phase_f/chunk_size_sweep.tscn`
+
+Results live in `chunk_sweep/`:
+
+| File | Notes |
+|------|-------|
+| `chunk_sweep/chunk_sweep_metrics.json` | Raw 256/512/1024 m sweep metrics. |
+| `chunk_sweep/chunk_256m_seam.png` | Winning base chunk size seam capture. |
+| `chunk_sweep/chunk_512m_seam.png` | Larger chunk comparison; higher load spike. |
+| `chunk_sweep/chunk_1024m_seam.png` | Far-LOD scale comparison; too heavy synchronously. |
+
+Verdict: use 256 m as the current synchronous base chunk size. Details:
+`world3/docs/PHASE_F_CHUNK_SIZE_SWEEP.md`.

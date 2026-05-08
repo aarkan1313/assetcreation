@@ -196,6 +196,11 @@ transition is and roughly how many we need long-term.
 Doesn't block M1/M2 (material-side). User's 2026-05-08 call: chunk
 size needs evidence under streaming load.
 
+**Status 2026-05-08:** DONE. Built `ChunkLoader.gd`, ran the
+256/512/1024 m sweep at 8 m mesh spacing, and locked 256 m as the
+synchronous base chunk size. Evidence:
+`world3/docs/PHASE_F_CHUNK_SIZE_SWEEP.md`.
+
 **Deliverables:**
 - `world3/scripts/ChunkLoader.gd` — walker-driven chunk
   load/unload around an XZ position. Takes `chunk_size_m` as a
@@ -210,7 +215,7 @@ size needs evidence under streaming load.
   source heightmap when building each chunk's hgrid.
 
 **Exit:** chunk size + format committed to DECISIONS.md with sweep
-evidence as justification.
+evidence as justification. Completed with 256 m base chunks.
 
 ### M4 — Splat-shader prototype (orchestrator, after M1+M2)
 
@@ -226,7 +231,7 @@ defined.
 
 ### M5 — Streaming wired into walk.tscn (orchestrator, after M3)
 
-Take M3's chunk-size winner and wire the chunk loader into
+Take M3's 256 m chunk-size winner and wire the chunk loader into
 `walk.tscn`. Iso/topdown stay on auto-AABB (Phase C zoom levels fit
 one chunk fine).
 
@@ -326,3 +331,7 @@ These start when chunk + biome + tile + transition is ~80% solved
   smoke capture, and regenerated the region gallery. Grassland and
   temperate_forest catalog-id paths rendered nonblank images, so M1 is
   unblocked for M2/M4 inputs.
+- **2026-05-08 (M3 sweep)**: Added `ChunkLoader.gd`, `ChunkSweepRunner.gd`,
+  and `chunk_size_sweep.tscn`; measured 256/512/1024 m chunks with 8 m mesh
+  spacing. 256 m is locked as the synchronous base chunk for M5 because it kept
+  worst-case load latency near one 60 Hz frame while larger chunks spiked.

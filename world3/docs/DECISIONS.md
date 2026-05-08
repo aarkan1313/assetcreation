@@ -795,3 +795,30 @@ replaced without invalidating the pipeline.
   asset contract, not optional documentation.
 - Real-source review scenes and procedural kits can be excellent workflow
   evidence even when they are not final shipped content.
+
+---
+
+## 2026-05-08 - M3 locks 256 m as the synchronous base chunk
+
+**Decision**: Use `256 m` as the base runtime chunk size for the current
+synchronous `walk.tscn` streaming path.
+
+**Format**:
+
+- Base chunk size: `256 m`.
+- Mesh spacing: `8 m`.
+- Subdivisions per base chunk: `32`.
+- Initial loaded neighborhood: 3x3 chunks around the walker.
+- Chunk border normals sample the global height source one mesh step outside
+  the local chunk footprint.
+
+**Why**: The M3 sweep measured 256/512/1024 m chunks at constant 8 m mesh
+spacing. With the same 3x3 loaded neighborhood, 256 m kept worst-case
+synchronous load latency to about `19 ms`; 512 m spiked to about `71 ms`; 1024 m
+spiked to about `263 ms`. Video memory stayed close across all three, so load
+latency is the deciding constraint.
+
+**Implication**: 512 m can return later as an async-built mid/far tile or
+offline cache unit. 1024 m is far-LOD/prebuilt-region scale, not a synchronous
+near-field chunk. If M5 needs more visible horizon, increase chunk radius before
+increasing base chunk size.

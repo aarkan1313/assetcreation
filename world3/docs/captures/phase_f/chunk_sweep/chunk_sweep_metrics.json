@@ -1,0 +1,52 @@
+{
+	"chunk_resolution_m": 8.0,
+	"height_source": "res://heightmap/heightmap.png",
+	"results": [
+		{
+			"chunk_size_m": 256,
+			"chunks_built": 29,
+			"chunks_removed": 20,
+			"frame_ms_mean": 4.42178125,
+			"frame_ms_p95": 17.108,
+			"frame_ms_p99": 20.05,
+			"load_ms_p95": 16.575,
+			"load_ms_worst": 19.37,
+			"peak_loaded_chunks": 9,
+			"peak_video_mem_mb": 122.985595703125,
+			"seam_capture": "chunk_256m_seam.png",
+			"steady_loaded_chunks": 9,
+			"subdivisions_per_chunk": 32
+		},
+		{
+			"chunk_size_m": 512,
+			"chunks_built": 29,
+			"chunks_removed": 20,
+			"frame_ms_mean": 7.01355208333333,
+			"frame_ms_p95": 65.479,
+			"frame_ms_p99": 72.098,
+			"load_ms_p95": 64.806,
+			"load_ms_worst": 71.444,
+			"peak_loaded_chunks": 9,
+			"peak_video_mem_mb": 125.224853515625,
+			"seam_capture": "chunk_512m_seam.png",
+			"steady_loaded_chunks": 9,
+			"subdivisions_per_chunk": 64
+		},
+		{
+			"chunk_size_m": 1024,
+			"chunks_built": 29,
+			"chunks_removed": 20,
+			"frame_ms_mean": 17.24865625,
+			"frame_ms_p95": 260.862,
+			"frame_ms_p99": 263.276,
+			"load_ms_p95": 260.078,
+			"load_ms_worst": 262.627,
+			"peak_loaded_chunks": 9,
+			"peak_video_mem_mb": 130.890869140625,
+			"seam_capture": "chunk_1024m_seam.png",
+			"steady_loaded_chunks": 9,
+			"subdivisions_per_chunk": 128
+		}
+	],
+	"view_radius_chunks": 1
+}

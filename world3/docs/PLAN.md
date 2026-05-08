@@ -125,6 +125,11 @@ hand-touched steps).
 **Goal**: chunk size + format committed to DECISIONS.md with
 evidence under streaming load.
 
+**Status 2026-05-08**: DONE. `ChunkLoader.gd` + sweep scene landed,
+256/512/1024 m were measured at 8 m mesh spacing, and 256 m is locked
+as the synchronous base chunk size for M5. Evidence:
+`world3/docs/PHASE_F_CHUNK_SIZE_SWEEP.md`.
+
 **Deliverables**:
 - `world3/scripts/ChunkLoader.gd` — walker-driven chunk
   load/unload around an XZ position. `chunk_size_m` runtime parameter.
@@ -140,7 +145,8 @@ evidence under streaming load.
   building each chunk's hgrid.
 - `world3/docs/PHASE_F_CHUNK_SIZE_SWEEP.md` with table + winner.
 
-**Exit**: chunk size + format locked in DECISIONS.md.
+**Exit**: chunk size + format locked in DECISIONS.md. Completed
+2026-05-08 with 256 m as the base chunk.
 
 ## M4 — Splat-shader prototype (orchestrator, after M1+M2)
 
@@ -186,7 +192,7 @@ chunk."
 **Deliverables**:
 - `walk.tscn` uses `ChunkLoader.gd` (M3) and the splat shader (M4).
 - Walker can move across chunk boundaries with no visible seam.
-- Documented streaming + memory budget at the locked chunk size.
+- Documented streaming + memory budget at the locked 256 m base chunk size.
 - Handoff doc closing M1–M5 iteration.
 
 Iso/topdown game scenes stay on auto-AABB single-load (Phase C zoom
