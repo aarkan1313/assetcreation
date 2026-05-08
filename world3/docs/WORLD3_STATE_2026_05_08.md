@@ -345,3 +345,6 @@ These start when chunk + biome + tile + transition is ~80% solved
   generation for four roadmap pairs and wrote hard-cut comparison captures under
   `world3/docs/captures/transitions/`. This starts M2 but does not close it;
   Godot review-scene integration and scoring remain.
+- **2026-05-08 (M2 user visual review)**: User called the transitions pretty
+  good/promising. Caveat: grass/leaves read too noisy for production; track that
+  as source texture quality, not a transition workflow failure.

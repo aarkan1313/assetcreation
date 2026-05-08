@@ -6,6 +6,9 @@ Date: 2026-05-08
 
 Prototype pass 1 is complete: deterministic transition strips now build from
 catalog material IDs and produce PBR outputs plus hard-cut comparison captures.
+User visual review on 2026-05-08: transitions read as promising/good; the
+remaining concern is source texture noise in grass/leaves, not the transition
+workflow.
 
 Full M2 is still **in progress** because the Godot `biome_tile_transition_review`
 harness is currently part of the preexisting OpenTopo worker dirt. This pass
@@ -51,7 +54,8 @@ Index: `world3/textures/transitions/index.json`
 
 All four generated strips are visibly better than hard cuts as texture-sheet
 prototypes. The noisy feathered band removes the instant seam and gives the
-shader/M4 path real assets to consume.
+shader/M4 path real assets to consume. The transition method passes the current
+workflow-read check.
 
 Quality caveats:
 
@@ -60,6 +64,9 @@ Quality caveats:
   would need color/roughness grading.
 - `tundra_moss` -> `temperate_forest_grass` exposes the largest value/style
   gap. It is a good stress pair for M4, not a solved art direction.
+- Grass/leaves in the generated source textures are too noisy for production
+  at current review scale. Treat that as a material-generation/prompt/QA issue,
+  not a transition workflow failure.
 - The current transition mask is a texture-space prototype. Runtime geography
   should eventually drive mask placement using slope, wetness, elevation,
   biome distance fields, and authored exceptions.
