@@ -24,6 +24,7 @@ Open these in order if you're new:
 | [docs/reference/OPENTOPO_API.md](docs/reference/OPENTOPO_API.md) | OpenTopography API reference |
 | [docs/reference/CLOUD_KEYS.md](docs/reference/CLOUD_KEYS.md) | Cloud env-var index |
 | [docs/plans/LONG_TERM_VISION.md](docs/plans/LONG_TERM_VISION.md) | Multi-month directional intent |
+| [docs/handoffs/HANDOFF_2026_05_07_night_path2_parked.md](docs/handoffs/HANDOFF_2026_05_07_night_path2_parked.md) | **Latest cross-cutting handoff** — whole-project orientation + Path 2 parked + open backlog |
 | [docs/handoffs/](docs/handoffs/) | Per-pipeline deep-dive handoff snapshots |
 | `_archive/` | Superseded snapshots. Historical only — never edit. |
 
