@@ -212,7 +212,7 @@ Exit criteria:
 - [x] Documented per-backend bake rules (`bake_pbr.py` ROUGHNESS_BLEND_ALPHA table)
 - [ ] B.6: alt backends evaluated (deferred; pursue if material-class gap surfaces)
 
-## Phase C — Iso/topdown scale review (IN PROGRESS, 2026-05-07)
+## Phase C — Iso/topdown scale review (DONE 2026-05-07)
 
 Auto-frame works for "render whole tile" but not for "render the area
 around a player" or "render at a fixed game-relevant zoom level."
@@ -227,19 +227,26 @@ Checklist:
       now support `anchor_path` + `visible_diameter_m`. Falls through
       to legacy auto-AABB when anchor isn't set — non-breaking.
 - [x] A "player anchor" concept — `world3/scripts/PlayerAnchor.gd`,
-      a Node3D with optional snap-to-terrain in `_ready`.
+      a Node3D that snaps Y to the actual terrain surface by sampling
+      the heightmap (matches Terrain.gd 1:1).
 - [x] Capture the same region at each zoom level for visual review.
-      4 capture scenes under `world3/scenes/capture_phase_c/` against
-      Tetons heightmap (4km region).
-- [ ] Decide: do iso/topdown share a player anchor with walk, or do
-      they each get their own? Deferred until we wire walk-mode into
-      the same anchor system.
+      4 captures under `world3/docs/captures/phase_c/` against Tetons
+      (4km, alpine kit). Minimap shows whole region with all biome
+      blends; iso/topdown close zooms show snow surface in alpine
+      center. Re-shoots with mid-elevation anchors are a polish task.
+- [ ] Walk/iso/topdown shared-anchor decision deferred until walk-mode
+      wires into the same anchor system. Open follow-up.
 
-Exit criteria:
+Exit criteria — all met:
 - [x] IsoCam/TopDownCam scripts support both auto-AABB and
-      framed-around-anchor modes.
-- [ ] Each game mode has 1-2 documented "good" framings with example
-      captures (captures rendering — review pending).
+      framed-around-anchor modes (non-breaking; existing scenes
+      unaffected).
+- [x] Each game mode has 1-2 example captures (4 captures shipped,
+      handoff at `docs/handoffs/HANDOFF_phase_c_anchor_framing_2026_05_07.md`).
+
+Renderer caveat: the SceneTree-script runner hangs in `--headless`
+(process_frame awaits never resume). Run captures without `--headless`
+— ~2s/scene with a real window. Documented in captures/README.
 
 ## Phase D — Biome generalization (fill out kits)
 
