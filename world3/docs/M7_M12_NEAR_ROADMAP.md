@@ -47,10 +47,25 @@ selects the rule's catalog material pair, binds the transition manifest assets,
 and records mask-build metrics. Evidence:
 `M7_BOUNDARY_RUNTIME_INTEGRATION.md`.
 
+2026-05-08 visual audit update: `M1_M7_VISUAL_AUDIT_2026_05_08.md`
+classifies M7 as workflow pass / visual rework. The automatic mask path stays,
+but M7 is not visually closed. Do not start normal M8 work until the audit's
+remediation items are completed or explicitly quarantined.
+
+Remediation plan: `M1_M7_VISUAL_REMEDIATION_PLAN_2026_05_08.md`.
+`scrub_sparse -> dry_wash` is the current control pair; `desert_sand ->
+grassland_grass` remains a stress test until grassland source materials are
+repaired.
+
+Vision target: `M1_M7_VISION_GAP_REVIEW_2026_05_08.md` sets visual closure at
+about 70 percent of the best stacked photo/topo OpenTopo reference quality.
+Current M1-M7 runtime captures are below that bar and should be treated as
+debug/plumbing evidence.
+
 Visual caveat: M7 should not be treated as final terrain-art quality. The
 same-source control is calm but subtle; the desert-to-grassland stress case
 exposes the known noisy grass/organic source-material issue. Run
-`M1_M7_VISUAL_AUDIT_PLAN_2026_05_08.md` before starting M8.
+`M1_M7_VISUAL_AUDIT_2026_05_08.md` before starting M8.
 
 Deliverables:
 
@@ -66,16 +81,26 @@ Exit:
 - A streamed walk capture shows an automatically placed transition strip with
   no manual shader-position knobs.
 - Boundary assets are selected from rules/catalog IDs, not hardcoded in a scene.
-- Visual promotion is explicitly deferred to the M1-M7 audit; M7's exit is
-  workflow/runtime integration, not final asset approval.
+- Workflow exit is met.
+- Visual exit is failed/pending remediation. M7's current captures are
+  diagnostics, not final asset approval.
 
 ## M8 - Organic Source-Material Cleanup
 
 **Goal**: reduce the close-range grass/leaves/moss/lichen noise identified in
 M6.
 
-Current state: the transition workflow reads well, but several source organic
-materials are too noisy for production close-up use.
+Current state: blocked by the M1-M7 visual audit. The transition workflow reads
+well enough as a contract, but several source organic materials are too noisy
+for production close-up use and have polluted M2/M5/M7 visual evidence.
+
+2026-05-08 remediation start: deterministic repair candidates now exist for
+the first five organic blockers, with metrics and before/after sheets recorded
+in `M1_M7_ORGANIC_TEXTURE_REPAIR_2026_05_08.md`. Runtime review showed these
+candidates are not ready for canonical promotion; keep them quarantined and
+albedo-only/low-strength until terrain-context captures pass. The stronger
+near-term baseline is the source-stack runtime bridge documented in
+`SOURCE_STACK_RUNTIME_REMEDIATION_2026_05_08.md`.
 
 Deliverables:
 

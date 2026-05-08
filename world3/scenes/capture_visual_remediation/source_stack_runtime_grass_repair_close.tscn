@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/SourceStackRuntimeReview.gd" id="source_stack_review"]
+
+[node name="SourceStackRuntimeGrassRepairClose" type="Node3D"]
+script = ExtResource("source_stack_review")
+material_path = "res://textures/wgv3/terrain_source_stack_gloss_grass_repair_source_stack.tres"
+review_shot = "close_oblique"
+overlay_text = "Source-Stack Close Review | OpenTopo macro + grass_repair_calm detail"

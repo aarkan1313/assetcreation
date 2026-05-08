@@ -6,6 +6,9 @@ Date: 2026-05-08
 
 Run this audit after M7 and before starting M8.
 
+Status: completed in `M1_M7_VISUAL_AUDIT_2026_05_08.md`. Keep this file as
+the audit template and use the completed audit as the current truth state.
+
 The goal is to separate two different questions:
 
 - Does the workflow/pipeline contract work?

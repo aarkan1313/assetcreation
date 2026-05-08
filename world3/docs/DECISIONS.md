@@ -1014,3 +1014,67 @@ quality.
 **Implication**: M8 should start only after current visuals are classified as
 `PASS`, `PIPELINE_ONLY`, `REWORK`, or `DEFER`. If the audit says M7 needs a
 visual-targeted boundary pass before organic cleanup, do that before M8.
+
+---
+
+## 2026-05-08 - M7 is workflow pass, visual rework
+
+**Decision**: Keep the M7 runtime boundary-mask implementation, but do not
+close M7 as a visual milestone.
+
+**Why**: The M1-M7 visual audit found that rule-driven masks, catalog material
+pair selection, shader sampling, and metrics are working. The visible result is
+not strong enough for AAA-target terrain sign-off because it inherits noisy
+green/organic source materials, prototype splat/material context, and weak
+terrain-context transition evidence.
+
+**Evidence**: `world3/docs/M1_M7_VISUAL_AUDIT_2026_05_08.md`.
+
+**Implication**: Normal M8 work is paused until visual remediation is done or
+explicitly scoped as the M8 starting work. Current M4/M5/M7 captures are
+diagnostics only. Nonblank captures and runtime metrics are no longer allowed
+to imply visual approval.
+
+---
+
+## 2026-05-08 - OpenTopo stack quality is the visual reference bar
+
+**Decision**: Use the best stacked photo/topo OpenTopo captures as the near-term
+visual reference. A terrain milestone should reach roughly `70 percent` of that
+quality before visual closure.
+
+**Why**: The M1-M7 vision review showed that the procedural runtime captures are
+not near-miss art passes. They read as debug material assignment: harsh
+procedural color, visible rectangles, repeated object-like textures, and weak
+landform anchoring. The OpenTopo stack captures are still imperfect, but they
+have the right foundation: real/source-derived macro color and material detail
+that follows the terrain.
+
+**Evidence**: `world3/docs/M1_M7_VISION_GAP_REVIEW_2026_05_08.md`.
+
+**Implication**: The remediation path should pivot toward an OpenTopo-style
+source stack: source-derived macro albedo first, procedural/tileable detail
+second. Tuning the current debug-looking procedural captures is not enough.
+
+---
+
+## 2026-05-08 - Quarantine repaired organic materials until terrain review
+
+**Decision**: Repaired procedural organic materials live in a sidecar candidate
+catalog and are not promoted into the canonical material catalog until close,
+mid, and far terrain-context captures pass.
+
+**Why**: The deterministic repair pass sharply reduced high-frequency/green
+noise metrics, but runtime source-stack review showed that repaired organic
+normals/details can still damage the terrain read. The source macro albedo path
+is stronger than the repaired procedural organic detail, so bad organic content
+must be albedo-only and very low strength until it earns more influence.
+
+**Evidence**:
+`world3/docs/M1_M7_ORGANIC_TEXTURE_REPAIR_2026_05_08.md` and
+`world3/docs/SOURCE_STACK_RUNTIME_REMEDIATION_2026_05_08.md`.
+
+**Implication**: Future M2/M5/M7 rerenders should prefer real/source-derived
+OpenTopo detail controls first. Procedural organic repair candidates can be
+tested, but they must remain `repair_candidate` until visual review promotes
+them explicitly.

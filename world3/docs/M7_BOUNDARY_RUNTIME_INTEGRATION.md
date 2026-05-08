@@ -4,12 +4,16 @@ Date: 2026-05-08
 
 ## Status
 
-M7 pass 1 is complete for workflow/runtime validation.
+M7 pass 1 is complete for workflow/runtime validation, but M7 is **not
+complete as a visual milestone**.
 
 The streamed runtime can now place transition strips automatically from
 `world3/jobs/biome_transition_rules.json`. This is not a production visual
 promotion. The captures are evidence that the contract works; final visual
 quality needs the M1-M7 visual audit before M8.
+
+Audit result: `world3/docs/M1_M7_VISUAL_AUDIT_2026_05_08.md` classifies M7 as
+`workflow pass / visual rework`.
 
 ## What Changed
 
@@ -71,8 +75,9 @@ The runtime contract works, but the visual result is mixed.
   too strong for production close-range use.
 - The walk capture is usable as engineering evidence, not a beauty shot.
 
-Conclusion: M7 can close as a workflow milestone, but it should not be used to
-claim final terrain-art quality. The next gate is a formal M1-M7 visual audit.
+Conclusion: M7 cannot close as a visual milestone. Keep the runtime mask path,
+but treat the current captures as diagnostics until the earlier source-material
+and splat/context issues are repaired.
 
 ## Remaining Risks
 

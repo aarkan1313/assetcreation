@@ -59,6 +59,10 @@ uniform sampler2D splat_weights;
 uniform float splat_uv_scale = 1.0;
 uniform float splat_weight_power : hint_range(0.25, 8.0) = 1.0;
 
+uniform bool use_source_macro_albedo = false;
+uniform sampler2D source_macro_albedo : source_color;
+uniform float source_macro_strength : hint_range(0.0, 1.0) = 1.0;
+
 uniform bool use_transition_strip = false;
 uniform bool use_transition_mask = false;
 uniform sampler2D transition_mask;
@@ -452,6 +456,11 @@ void fragment() {
             macro_albedo.b *= 1.0 + (n_b * 2.0 - 1.0) * macro_hue_strength;
         }
         macro_albedo = clamp(macro_albedo, vec3(0.0), vec3(1.0));
+    }
+
+    if (use_source_macro_albedo) {
+        vec3 source_macro = texture(source_macro_albedo, UV).rgb;
+        macro_albedo = mix(macro_albedo, source_macro, source_macro_strength);
     }
 
     vec3 final_albedo = macro_albedo;

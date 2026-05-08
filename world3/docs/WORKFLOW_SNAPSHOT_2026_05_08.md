@@ -4,6 +4,11 @@ This is the compact record of the current world3 workflow after M1, M2, M3,
 M4 prototype pass 2, M5 prototype final form, M6 runtime hardening, and M7
 boundary runtime integration pass 1.
 
+Visual audit correction: M7 is workflow-complete but not visually complete.
+`M1_M7_VISUAL_AUDIT_2026_05_08.md` is now the truth state for M1-M7 visual
+quality. Do not treat M4/M5/M7 captures as beauty-pass evidence until the
+audit remediation items are rerun.
+
 ## Framing
 
 world3 and the broader `assets` repo are currently a **pipeline and workflow
@@ -116,7 +121,21 @@ material-generation QA rather than transition logic.
    - Evidence:
      `world3/docs/M7_BOUNDARY_RUNTIME_INTEGRATION.md`
 
-10. **Visual QA**
+10. **M1-M7 visual audit**
+   - Audit: `world3/docs/M1_M7_VISUAL_AUDIT_2026_05_08.md`
+   - Vision gap review:
+     `world3/docs/M1_M7_VISION_GAP_REVIEW_2026_05_08.md`
+   - Repair plan:
+     `world3/docs/M1_M7_VISUAL_REMEDIATION_PLAN_2026_05_08.md`
+   - Result: M7 is workflow pass / visual rework.
+   - Target bar: about 70 percent of the best stacked photo/topo OpenTopo
+     reference quality.
+   - Earlier visual drift was also identified: organic source materials,
+     prototype splat weights, terrain-context transition captures, and the lack
+     of source-derived macro terrain color need remediation before M8 starts
+     normally.
+
+11. **Visual QA**
    - Region/gallery captures verify kit-level reads.
    - Transition comparison sheets verify hard cut vs transition strip.
    - `godot_transition_strip_review.png` verifies the transition index in a
@@ -131,6 +150,9 @@ material-generation QA rather than transition logic.
       opt-in runtime transition-strip shader hook.
    - M7 captures verify automatic mask placement from rules and catalog
       material IDs. They are workflow evidence, not final visual promotion.
+   - M1-M7 audit classifies current M4/M5/M7 terrain visuals as rework or
+     pipeline-only; current captures are diagnostics until rerendered after
+     source-material and splat-context cleanup.
    - Godot review scenes are used for in-engine sanity, but some OpenTopo
      review harness files are still in preexisting worker dirt and should not
      be swept into unrelated commits.
@@ -141,7 +163,8 @@ material-generation QA rather than transition logic.
 - Material PBR paths exist.
 - Python tools compile.
 - Godot import passes after `.tres`/PNG changes.
-- Representative captures are nonblank and visually inspected.
+- Representative captures are nonblank and visually inspected. Nonblank is a
+  runtime smoke gate only; visual approval requires explicit audit status.
 - Transition manifests carry review metrics for hue/value, roughness, normal
   energy, visible frequency, and edge-delta improvement.
 - M4 OpenTopo reference-vs-unified capture is visually close; sampled panel
@@ -161,14 +184,21 @@ material-generation QA rather than transition logic.
 - M6 source-material noise audit flags 10 of 17 audited green/organic materials;
   grass/leaves are now tracked as source QA before production promotion.
 - M7 same-source boundary control capture is nonblank and uses generated masks
-  from `opentopo_scrub_sparse__dry_wash_neighbor`.
+  from `opentopo_scrub_sparse__dry_wash_neighbor`; it is diagnostic evidence.
 - M7 biome stress capture is nonblank and uses generated masks from
   `biome_desert__grassland_base`; it exposes the known grassland/organic source
-  noise issue.
+  noise issue and is visual rework, not a pass.
 - M7 walk crossing holds 9 loaded chunks, builds 12 chunks, builds 6 transition
   masks, records 83.454 ms total transition-mask build time, 14.142 ms max
   transition-mask build time, 26.599 ms worst update, and 4.873 ms p95 frame
   time over 384 m.
+- M1-M7 visual audit is complete. It classifies M7 as workflow pass / visual
+  rework, corrects `grass.close` to `needs_review`, and blocks normal M8 until
+  visual remediation is complete or explicitly quarantined.
+- First remediation bridge is in place:
+  `SOURCE_STACK_RUNTIME_REMEDIATION_2026_05_08.md` records the source macro
+  albedo runtime path, mid/close/topdown source-stack captures, and quarantined
+  organic repair candidates.
 - Architectural decisions are appended to docs before moving on.
 
 ## Open Work
@@ -177,14 +207,18 @@ material-generation QA rather than transition logic.
   `world3/docs/M7_M12_NEAR_ROADMAP.md`: boundary runtime, organic cleanup,
   runtime polish, cross-source blending, corner/junction transitions, and
   walk/iso/topdown parity.
-- Before M8, run `world3/docs/M1_M7_VISUAL_AUDIT_PLAN_2026_05_08.md` to
-  classify current outputs as production-candidate, pipeline-only, rework, or
-  deferred.
-- Regenerate or filter flagged green/organic source materials before treating
-  them as production close-range candidates.
-- M1-M7 are complete for workflow validation. Next phase should audit visuals
-  before M8, then clean up organic source materials or take a visual-targeted
-  M7 follow-up if the audit says the boundary read is still too weak.
+- Before M8, use `world3/docs/M1_M7_VISUAL_AUDIT_2026_05_08.md` to drive
+  remediation. The audit already classifies current outputs as pass,
+  pipeline-only, rework, or deferred.
+- `world3/docs/M1_M7_VISUAL_REMEDIATION_PLAN_2026_05_08.md` defines the
+  repair lane. R1 catalog sync is done; R2 uses `scrub_sparse -> dry_wash` as
+  the control pair; R3 has a working source-stack runtime bridge; R4 has
+  candidate outputs but remains active.
+- Regenerated/filtered green organic candidates are quarantined as
+  `repair_candidate`; do not promote them until terrain-context captures pass.
+- M1-M7 are complete for workflow validation. They are not complete for visual
+  milestone closure. Next work is visual remediation, then a decision on
+  whether M7 can close visually or needs a second visual-targeted pass.
 
 ## Recent Commits
 
@@ -204,3 +238,4 @@ material-generation QA rather than transition logic.
 - `1cc9fda` - `world3: close m1 m5 final audit`
 - `0cc4349` - `world3: record final audit hash`
 - `18d6bac` - `world3: harden streamed runtime`
+- `0eddcc0` - `world3: add m7 boundary runtime masks`

@@ -72,14 +72,29 @@ direction; treat the rest as where we've been.
 - M7 pass 1 is complete for workflow/runtime validation: streamed chunks can
   generate rule-driven transition masks, bind catalog material pairs, and sample
   transition manifests without manual shader-position knobs. Evidence:
-  `world3/docs/M7_BOUNDARY_RUNTIME_INTEGRATION.md`. Visual promotion is pending
-  `world3/docs/M1_M7_VISUAL_AUDIT_PLAN_2026_05_08.md`.
+  `world3/docs/M7_BOUNDARY_RUNTIME_INTEGRATION.md`.
+- M1-M7 visual audit is complete and downgrades M7 to workflow pass / visual
+  rework. Current M4/M5/M7 terrain captures are diagnostics, not visual
+  milestone closure. Evidence:
+  `world3/docs/M1_M7_VISUAL_AUDIT_2026_05_08.md`.
+- Visual remediation plan is active before normal M8 progress. Evidence:
+  `world3/docs/M1_M7_VISUAL_REMEDIATION_PLAN_2026_05_08.md`.
+- First remediation bridge is complete enough for review: runtime terrain can
+  use OpenTopo source macro albedo with low-strength tileable detail, and the
+  worst organic materials now have quarantined repair candidates. Evidence:
+  `world3/docs/SOURCE_STACK_RUNTIME_REMEDIATION_2026_05_08.md` and
+  `world3/docs/M1_M7_ORGANIC_TEXTURE_REPAIR_2026_05_08.md`.
+- Visual target is now explicit: reach roughly 70 percent of the best stacked
+  photo/topo OpenTopo reference quality before visual milestone closure.
+  Evidence: `world3/docs/M1_M7_VISION_GAP_REVIEW_2026_05_08.md`.
 
 Recommended next lane: finish the **M7-M12 near roadmap**. The six-step sequence is now
 explicit in [`M7_M12_NEAR_ROADMAP.md`](M7_M12_NEAR_ROADMAP.md):
 
-1. M7 biome-boundary runtime integration. Pass 1 complete; visual audit next.
-2. M8 organic source-material cleanup.
+1. M7 biome-boundary runtime integration. Runtime pass complete; visual
+   remediation required before visual closure.
+2. M8 organic source-material cleanup. Blocked until the audit remediation lane
+   is either completed or explicitly scoped as M8's first work.
 3. M9 runtime performance and interaction polish.
 4. M10 cross-source blending.
 5. M11 corner and junction transitions.

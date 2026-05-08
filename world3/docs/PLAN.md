@@ -301,7 +301,8 @@ extension, and production asset promotion.
 
 ## M7 current checkpoint
 
-**Status 2026-05-08**: PASS 1 COMPLETE for workflow/runtime validation.
+**Status 2026-05-08**: PASS 1 COMPLETE for workflow/runtime validation;
+VISUAL REWORK for milestone closure.
 
 `ChunkLoader.gd` now generates per-chunk transition masks from
 `world3/jobs/biome_transition_rules.json`, selects the rule's catalog material
@@ -312,15 +313,23 @@ manual `use_transition_strip` path remains available for shader review.
 Evidence:
 
 - `world3/docs/M7_BOUNDARY_RUNTIME_INTEGRATION.md`
+- `world3/docs/M1_M7_VISUAL_AUDIT_2026_05_08.md`
+- `world3/docs/M1_M7_VISION_GAP_REVIEW_2026_05_08.md`
+- `world3/docs/M1_M7_VISUAL_REMEDIATION_PLAN_2026_05_08.md`
 - `world3/docs/captures/m7/boundary_runtime_review.png`
 - `world3/docs/captures/m7/boundary_runtime_biome_stress.png`
 - `world3/docs/captures/m7/boundary_walk_after_crossing.png`
 - `world3/docs/captures/m7/boundary_walk_metrics.json`
 
-Visual review note: M7 closes the runtime placement workflow, not final terrain
-art quality. Before M8 starts, run
-`world3/docs/M1_M7_VISUAL_AUDIT_PLAN_2026_05_08.md` and decide whether organic
-cleanup is enough or whether M7 needs a second visual-targeted boundary pass.
+Visual audit note: M7 does not close as a visual milestone. The same-source
+control is useful as a workflow diagnostic, but the biome stress case and the
+walk captures inherit noisy/over-repeated source materials and prototype splat
+context. Visual remediation is now active before M8. R1 catalog sync is done;
+R2 uses `scrub_sparse -> dry_wash` as the control pair; R3 has a working
+source-stack runtime bridge; R4 has quarantined organic repair candidates but
+does not have visual promotion. The target bar is about 70 percent of the best
+stacked photo/topo OpenTopo reference quality; current M4/M5/M7 captures remain
+debug/plumbing evidence until rerendered through the source-stack policy.
 
 ## Open polish items (parked)
 

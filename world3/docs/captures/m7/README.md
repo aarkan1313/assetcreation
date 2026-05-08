@@ -2,7 +2,8 @@
 
 Date: 2026-05-08
 
-These captures validate automatic runtime boundary placement.
+These captures validate automatic runtime boundary placement as a workflow
+proof. They do not validate M7 as a visual-quality milestone.
 
 - `boundary_runtime_review.png`: same-source control using
   `opentopo_scrub_sparse__dry_wash_neighbor`.
@@ -14,4 +15,5 @@ These captures validate automatic runtime boundary placement.
   build metrics for the walk crossing.
 
 Visual note: these are M7 workflow evidence, not final terrain-art promotion.
-Run `../../M1_M7_VISUAL_AUDIT_PLAN_2026_05_08.md` before M8.
+`../../M1_M7_VISUAL_AUDIT_2026_05_08.md` classifies M7 as workflow pass /
+visual rework.

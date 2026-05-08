@@ -28,6 +28,11 @@ Read first:
 9. `world3/docs/M7_M12_NEAR_ROADMAP.md`
 10. `world3/docs/M7_BOUNDARY_RUNTIME_INTEGRATION.md`
 11. `world3/docs/M1_M7_VISUAL_AUDIT_PLAN_2026_05_08.md`
+12. `world3/docs/M1_M7_VISUAL_AUDIT_2026_05_08.md`
+13. `world3/docs/M1_M7_VISION_GAP_REVIEW_2026_05_08.md`
+14. `world3/docs/M1_M7_VISUAL_REMEDIATION_PLAN_2026_05_08.md`
+15. `world3/docs/SOURCE_STACK_RUNTIME_REMEDIATION_2026_05_08.md`
+16. `world3/docs/M1_M7_ORGANIC_TEXTURE_REPAIR_2026_05_08.md`
 
 ## Current status
 
@@ -49,6 +54,7 @@ Recent scoped commits:
 - `1cc9fda` - `world3: close m1 m5 final audit`
 - `0cc4349` - `world3: record final audit hash`
 - `18d6bac` - `world3: harden streamed runtime`
+- `0eddcc0` - `world3: add m7 boundary runtime masks`
 
 M1 is done:
 
@@ -185,7 +191,8 @@ Deferred systems remain after this lane: scatter, vegetation, props, buildings,
 POIs, fantasy biome expansion, full procedural infinite-world extension, and
 production asset promotion.
 
-M7 pass 1 is complete for workflow/runtime validation:
+M7 pass 1 is complete for workflow/runtime validation, but not visual
+milestone closure:
 
 - `ChunkLoader.gd` generates per-chunk transition masks from
   `world3/jobs/biome_transition_rules.json`.
@@ -201,23 +208,34 @@ M7 pass 1 is complete for workflow/runtime validation:
 - Metrics: 9 peak loaded chunks, 12 chunks built, 6 transition masks built,
   83.454 ms total transition-mask build time, 14.142 ms max transition-mask
   build time, 26.599 ms worst update, 4.873 ms p95 frame time over 384 m.
-- Honest visual read: M7 proves runtime placement, but not final terrain-art
-  quality. The same-source control is calm but subtle; the biome stress case
-  exposes known grassland/organic noise.
+- Visual audit result: `world3/docs/M1_M7_VISUAL_AUDIT_2026_05_08.md`
+  classifies M7 as workflow pass / visual rework. The same-source control is
+  calm but subtle; the biome stress case exposes known grassland/organic noise
+  and prototype material-context issues.
+- Vision gap review result:
+  `world3/docs/M1_M7_VISION_GAP_REVIEW_2026_05_08.md` sets the target at about
+  70 percent of the best stacked photo/topo OpenTopo reference quality. Current
+  M1-M7 runtime captures are debug/plumbing evidence and are well below that
+  target.
 
 ## Next best move
 
-Run the M1-M7 visual audit before M8:
+Continue visual remediation before normal M8 work:
 
-1. Use `world3/docs/M1_M7_VISUAL_AUDIT_PLAN_2026_05_08.md`.
-2. Classify each current visual output as `PASS`, `PIPELINE_ONLY`, `REWORK`, or
-   `DEFER`.
-3. Decide whether M8 starts with organic material cleanup, or whether M7 needs a
-   visual-targeted boundary pass first.
-4. Keep streamed collision metrics active. If interactive play shows hitching,
+1. Use `world3/docs/M1_M7_VISUAL_AUDIT_2026_05_08.md` as the truth state.
+2. Use `world3/docs/M1_M7_VISUAL_REMEDIATION_PLAN_2026_05_08.md` as the
+   repair sequence. R1/R2 are done; R3 is started; R4 is active.
+3. Use `scrub_sparse -> dry_wash` as the first M2/M7 control pair.
+4. Use `SOURCE_STACK_RUNTIME_REMEDIATION_2026_05_08.md` as the current source
+   stack bridge: source-derived macro color first, tileable detail second.
+5. Keep organic repair candidates quarantined. They improved metrics, but
+   runtime review showed they must stay albedo-only/low-strength until proven.
+6. Add valid-area/clamp policy for source macro sampling before wider chunk
+   source-stack views.
+7. Repair M4 splat context, then rerender M5/M7 and decide whether M7 can close
+   visually or needs a second visual-targeted boundary pass.
+8. Keep streamed collision metrics active. If interactive play shows hitching,
    start async/background mesh+collision build.
-5. In parallel or immediately after, regenerate/filter the flagged organic
-   source materials before production promotion.
 
 ## Operating reminders
 

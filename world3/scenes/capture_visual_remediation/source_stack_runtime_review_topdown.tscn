@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/SourceStackRuntimeReview.gd" id="source_stack_review"]
+
+[node name="SourceStackRuntimeReviewTopdown" type="Node3D"]
+script = ExtResource("source_stack_review")
+review_shot = "topdown"
+overlay_text = "Source-Stack Topdown Review | OpenTopo macro albedo + scrub_sparse detail"

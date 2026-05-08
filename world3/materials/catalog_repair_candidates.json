@@ -1,0 +1,337 @@
+{
+  "version": 1,
+  "updated": "2026-05-08",
+  "role": "quarantined_repair_candidates_not_canonical_catalog",
+  "materials": [
+    {
+      "id": "grassland_grass_repair_calm",
+      "source": "procedural",
+      "asset_status": "repair_candidate",
+      "provenance": {
+        "type": "deterministic_organic_repair_candidate",
+        "source_material_id": "grassland_grass",
+        "tool": "world3/pipeline/repair_organic_materials.py",
+        "policy": "object_silhouette_suppression_neutral_detail_quarantine",
+        "metrics_before": {
+          "high_frequency_energy": 0.061187,
+          "gradient_p95": 0.178127,
+          "green_dominance": 0.0,
+          "saturation_mean": 0.528222,
+          "noise_score": 0.093508
+        },
+        "metrics_after": {
+          "high_frequency_energy": 0.002578,
+          "gradient_p95": 0.006705,
+          "green_dominance": 0.0,
+          "saturation_mean": 0.362513,
+          "noise_score": 0.003512
+        },
+        "operations": [
+          "periodic_low_frequency_blur",
+          "saturation_and_green_dominance_reduction",
+          "target_mean_palette_fit",
+          "neutral_detail_albedo_from_repaired_luminance",
+          "normal_from_low_contrast_repaired_height"
+        ],
+        "settings": {
+          "world_uv_scale": 0.015625,
+          "hex_strength": 1.0,
+          "blend_sharpness": 8.0,
+          "roughness_strength": 1.0,
+          "normal_strength": 0.0,
+          "detail_uv_scale_mult": 12.0,
+          "detail_albedo_strength": 0.015,
+          "detail_normal_strength": 0.0,
+          "detail_rough_strength": 0.0,
+          "detail_fade_start_m": 4.0,
+          "detail_fade_end_m": 30.0
+        }
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "yellow-dry-grass-repair-calm",
+      "runtime_texture_dir": "world3/textures/wgv3_repair/grassland_grass_repair_calm",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3_repair/grassland_grass_repair_calm/albedo_balanced.png",
+        "normal": "world3/textures/wgv3_repair/grassland_grass_repair_calm/normal.png",
+        "roughness": "world3/textures/wgv3_repair/grassland_grass_repair_calm/roughness.png",
+        "height": "world3/textures/wgv3_repair/grassland_grass_repair_calm/height.png",
+        "ao": "world3/textures/wgv3_repair/grassland_grass_repair_calm/ao_white.png",
+        "detail_albedo": "world3/textures/wgv3_repair/grassland_grass_repair_calm/detail_albedo_neutral.png",
+        "detail_height": "world3/textures/wgv3_repair/grassland_grass_repair_calm/detail_height.png",
+        "detail_normal": "world3/textures/wgv3_repair/grassland_grass_repair_calm/detail_normal.png",
+        "detail_roughness": "world3/textures/wgv3_repair/grassland_grass_repair_calm/detail_roughness.png",
+        "tile_2x2": "world3/textures/wgv3_repair/grassland_grass_repair_calm/tile_2x2.png"
+      },
+      "shader_binding": "terrain_hex_detail",
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "needs_review",
+        "far": "needs_review"
+      }
+    },
+    {
+      "id": "grass_repair_calm",
+      "source": "procedural",
+      "asset_status": "repair_candidate",
+      "provenance": {
+        "type": "deterministic_organic_repair_candidate",
+        "source_material_id": "grass",
+        "tool": "world3/pipeline/repair_organic_materials.py",
+        "policy": "object_silhouette_suppression_neutral_detail_quarantine",
+        "metrics_before": {
+          "high_frequency_energy": 0.034363,
+          "gradient_p95": 0.127072,
+          "green_dominance": 0.287614,
+          "saturation_mean": 0.626185,
+          "noise_score": 0.088025
+        },
+        "metrics_after": {
+          "high_frequency_energy": 0.00231,
+          "gradient_p95": 0.006678,
+          "green_dominance": 0.083854,
+          "saturation_mean": 0.314548,
+          "noise_score": 0.003546
+        },
+        "operations": [
+          "periodic_low_frequency_blur",
+          "saturation_and_green_dominance_reduction",
+          "target_mean_palette_fit",
+          "neutral_detail_albedo_from_repaired_luminance",
+          "normal_from_low_contrast_repaired_height"
+        ],
+        "settings": {
+          "world_uv_scale": 0.015625,
+          "hex_strength": 1.0,
+          "blend_sharpness": 8.0,
+          "roughness_strength": 1.0,
+          "normal_strength": 0.0,
+          "detail_uv_scale_mult": 12.0,
+          "detail_albedo_strength": 0.015,
+          "detail_normal_strength": 0.0,
+          "detail_rough_strength": 0.0,
+          "detail_fade_start_m": 4.0,
+          "detail_fade_end_m": 30.0
+        }
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "green-organic-repair-calm",
+      "runtime_texture_dir": "world3/textures/wgv3_repair/grass_repair_calm",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3_repair/grass_repair_calm/albedo_balanced.png",
+        "normal": "world3/textures/wgv3_repair/grass_repair_calm/normal.png",
+        "roughness": "world3/textures/wgv3_repair/grass_repair_calm/roughness.png",
+        "height": "world3/textures/wgv3_repair/grass_repair_calm/height.png",
+        "ao": "world3/textures/wgv3_repair/grass_repair_calm/ao_white.png",
+        "detail_albedo": "world3/textures/wgv3_repair/grass_repair_calm/detail_albedo_neutral.png",
+        "detail_height": "world3/textures/wgv3_repair/grass_repair_calm/detail_height.png",
+        "detail_normal": "world3/textures/wgv3_repair/grass_repair_calm/detail_normal.png",
+        "detail_roughness": "world3/textures/wgv3_repair/grass_repair_calm/detail_roughness.png",
+        "tile_2x2": "world3/textures/wgv3_repair/grass_repair_calm/tile_2x2.png"
+      },
+      "shader_binding": "terrain_hex_detail",
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "needs_review",
+        "far": "needs_review"
+      }
+    },
+    {
+      "id": "temperate_forest_grass_repair_calm",
+      "source": "procedural",
+      "asset_status": "repair_candidate",
+      "provenance": {
+        "type": "deterministic_organic_repair_candidate",
+        "source_material_id": "temperate_forest_grass",
+        "tool": "world3/pipeline/repair_organic_materials.py",
+        "policy": "object_silhouette_suppression_neutral_detail_quarantine",
+        "metrics_before": {
+          "high_frequency_energy": 0.040315,
+          "gradient_p95": 0.131602,
+          "green_dominance": 0.000515,
+          "saturation_mean": 0.243741,
+          "noise_score": 0.050194
+        },
+        "metrics_after": {
+          "high_frequency_energy": 0.002728,
+          "gradient_p95": 0.007193,
+          "green_dominance": 0.0,
+          "saturation_mean": 0.24456,
+          "noise_score": 0.003395
+        },
+        "operations": [
+          "periodic_low_frequency_blur",
+          "saturation_and_green_dominance_reduction",
+          "target_mean_palette_fit",
+          "neutral_detail_albedo_from_repaired_luminance",
+          "normal_from_low_contrast_repaired_height"
+        ],
+        "settings": {
+          "world_uv_scale": 0.015625,
+          "hex_strength": 1.0,
+          "blend_sharpness": 8.0,
+          "roughness_strength": 1.0,
+          "normal_strength": 0.0,
+          "detail_uv_scale_mult": 12.0,
+          "detail_albedo_strength": 0.015,
+          "detail_normal_strength": 0.0,
+          "detail_rough_strength": 0.0,
+          "detail_fade_start_m": 4.0,
+          "detail_fade_end_m": 30.0
+        }
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "brown-leaf-litter-repair-calm",
+      "runtime_texture_dir": "world3/textures/wgv3_repair/temperate_forest_grass_repair_calm",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3_repair/temperate_forest_grass_repair_calm/albedo_balanced.png",
+        "normal": "world3/textures/wgv3_repair/temperate_forest_grass_repair_calm/normal.png",
+        "roughness": "world3/textures/wgv3_repair/temperate_forest_grass_repair_calm/roughness.png",
+        "height": "world3/textures/wgv3_repair/temperate_forest_grass_repair_calm/height.png",
+        "ao": "world3/textures/wgv3_repair/temperate_forest_grass_repair_calm/ao_white.png",
+        "detail_albedo": "world3/textures/wgv3_repair/temperate_forest_grass_repair_calm/detail_albedo_neutral.png",
+        "detail_height": "world3/textures/wgv3_repair/temperate_forest_grass_repair_calm/detail_height.png",
+        "detail_normal": "world3/textures/wgv3_repair/temperate_forest_grass_repair_calm/detail_normal.png",
+        "detail_roughness": "world3/textures/wgv3_repair/temperate_forest_grass_repair_calm/detail_roughness.png",
+        "tile_2x2": "world3/textures/wgv3_repair/temperate_forest_grass_repair_calm/tile_2x2.png"
+      },
+      "shader_binding": "terrain_hex_detail",
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "needs_review",
+        "far": "needs_review"
+      }
+    },
+    {
+      "id": "tundra_moss_repair_calm",
+      "source": "procedural",
+      "asset_status": "repair_candidate",
+      "provenance": {
+        "type": "deterministic_organic_repair_candidate",
+        "source_material_id": "tundra_moss",
+        "tool": "world3/pipeline/repair_organic_materials.py",
+        "policy": "object_silhouette_suppression_neutral_detail_quarantine",
+        "metrics_before": {
+          "high_frequency_energy": 0.043535,
+          "gradient_p95": 0.136708,
+          "green_dominance": 0.037008,
+          "saturation_mean": 0.440082,
+          "noise_score": 0.067335
+        },
+        "metrics_after": {
+          "high_frequency_energy": 0.004082,
+          "gradient_p95": 0.011124,
+          "green_dominance": 0.024732,
+          "saturation_mean": 0.171077,
+          "noise_score": 0.005016
+        },
+        "operations": [
+          "periodic_low_frequency_blur",
+          "saturation_and_green_dominance_reduction",
+          "target_mean_palette_fit",
+          "neutral_detail_albedo_from_repaired_luminance",
+          "normal_from_low_contrast_repaired_height"
+        ],
+        "settings": {
+          "world_uv_scale": 0.015625,
+          "hex_strength": 1.0,
+          "blend_sharpness": 8.0,
+          "roughness_strength": 1.0,
+          "normal_strength": 0.0,
+          "detail_uv_scale_mult": 12.0,
+          "detail_albedo_strength": 0.015,
+          "detail_normal_strength": 0.0,
+          "detail_rough_strength": 0.0,
+          "detail_fade_start_m": 4.0,
+          "detail_fade_end_m": 30.0
+        }
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "olive-moss-repair-calm",
+      "runtime_texture_dir": "world3/textures/wgv3_repair/tundra_moss_repair_calm",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3_repair/tundra_moss_repair_calm/albedo_balanced.png",
+        "normal": "world3/textures/wgv3_repair/tundra_moss_repair_calm/normal.png",
+        "roughness": "world3/textures/wgv3_repair/tundra_moss_repair_calm/roughness.png",
+        "height": "world3/textures/wgv3_repair/tundra_moss_repair_calm/height.png",
+        "ao": "world3/textures/wgv3_repair/tundra_moss_repair_calm/ao_white.png",
+        "detail_albedo": "world3/textures/wgv3_repair/tundra_moss_repair_calm/detail_albedo_neutral.png",
+        "detail_height": "world3/textures/wgv3_repair/tundra_moss_repair_calm/detail_height.png",
+        "detail_normal": "world3/textures/wgv3_repair/tundra_moss_repair_calm/detail_normal.png",
+        "detail_roughness": "world3/textures/wgv3_repair/tundra_moss_repair_calm/detail_roughness.png",
+        "tile_2x2": "world3/textures/wgv3_repair/tundra_moss_repair_calm/tile_2x2.png"
+      },
+      "shader_binding": "terrain_hex_detail",
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "needs_review",
+        "far": "needs_review"
+      }
+    },
+    {
+      "id": "tundra_lichen_repair_calm",
+      "source": "procedural",
+      "asset_status": "repair_candidate",
+      "provenance": {
+        "type": "deterministic_organic_repair_candidate",
+        "source_material_id": "tundra_lichen",
+        "tool": "world3/pipeline/repair_organic_materials.py",
+        "policy": "object_silhouette_suppression_neutral_detail_quarantine",
+        "metrics_before": {
+          "high_frequency_energy": 0.042001,
+          "gradient_p95": 0.142026,
+          "green_dominance": 0.044482,
+          "saturation_mean": 0.332659,
+          "noise_score": 0.060953
+        },
+        "metrics_after": {
+          "high_frequency_energy": 0.002713,
+          "gradient_p95": 0.006895,
+          "green_dominance": 0.018263,
+          "saturation_mean": 0.074432,
+          "noise_score": 0.003021
+        },
+        "operations": [
+          "periodic_low_frequency_blur",
+          "saturation_and_green_dominance_reduction",
+          "target_mean_palette_fit",
+          "neutral_detail_albedo_from_repaired_luminance",
+          "normal_from_low_contrast_repaired_height"
+        ],
+        "settings": {
+          "world_uv_scale": 0.015625,
+          "hex_strength": 1.0,
+          "blend_sharpness": 8.0,
+          "roughness_strength": 1.0,
+          "normal_strength": 0.0,
+          "detail_uv_scale_mult": 12.0,
+          "detail_albedo_strength": 0.015,
+          "detail_normal_strength": 0.0,
+          "detail_rough_strength": 0.0,
+          "detail_fade_start_m": 4.0,
+          "detail_fade_end_m": 30.0
+        }
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "pale-green-lichen-repair-calm",
+      "runtime_texture_dir": "world3/textures/wgv3_repair/tundra_lichen_repair_calm",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3_repair/tundra_lichen_repair_calm/albedo_balanced.png",
+        "normal": "world3/textures/wgv3_repair/tundra_lichen_repair_calm/normal.png",
+        "roughness": "world3/textures/wgv3_repair/tundra_lichen_repair_calm/roughness.png",
+        "height": "world3/textures/wgv3_repair/tundra_lichen_repair_calm/height.png",
+        "ao": "world3/textures/wgv3_repair/tundra_lichen_repair_calm/ao_white.png",
+        "detail_albedo": "world3/textures/wgv3_repair/tundra_lichen_repair_calm/detail_albedo_neutral.png",
+        "detail_height": "world3/textures/wgv3_repair/tundra_lichen_repair_calm/detail_height.png",
+        "detail_normal": "world3/textures/wgv3_repair/tundra_lichen_repair_calm/detail_normal.png",
+        "detail_roughness": "world3/textures/wgv3_repair/tundra_lichen_repair_calm/detail_roughness.png",
+        "tile_2x2": "world3/textures/wgv3_repair/tundra_lichen_repair_calm/tile_2x2.png"
+      },
+      "shader_binding": "terrain_hex_detail",
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "needs_review",
+        "far": "needs_review"
+      }
+    }
+  ]
+}

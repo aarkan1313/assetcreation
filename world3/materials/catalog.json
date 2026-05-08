@@ -52,7 +52,8 @@
         "prompt": "lush green grass with small clovers and dirt patches, top-down photo, even lighting, photoreal",
         "seed_base": 42,
         "qa_grade": "B",
-        "passed_gate": true
+        "passed_gate": true,
+        "visual_audit_note": "M6 source-material noise audit flags this as green_organic_speckle; keep as pipeline-validation until regenerated or filtered."
       },
       "scale_m_per_repeat": 10.0,
       "color_family": "green-organic",
@@ -66,7 +67,7 @@
       },
       "shader_binding": "terrain_blend",
       "validated_views": {
-        "close": "ok",
+        "close": "needs_review",
         "mid": "ok",
         "far": "ok"
       }

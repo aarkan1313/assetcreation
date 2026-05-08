@@ -101,6 +101,15 @@ tune the workflow. It may become a production candidate later, but promotion
 requires a separate review pass at the camera ranges and source/style mix used
 by the target game.
 
+2026-05-08 visual-audit correction: the base `grass` material is now marked
+`close = needs_review` because the M6 source-material noise audit flags it for
+green-organic speckle. This keeps the catalog aligned with later QA instead of
+letting an early M1 validation label imply production readiness.
+
+M1-M7 audit sync: all ten materials flagged by
+`../docs/M6_SOURCE_MATERIAL_NOISE_AUDIT.md` are now `close = needs_review` in
+`catalog.json`. Mid/far validation remains unchanged until rerendered.
+
 ## M1 Verification
 
 2026-05-08 verification:
