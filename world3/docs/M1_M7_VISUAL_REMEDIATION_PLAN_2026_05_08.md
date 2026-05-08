@@ -112,3 +112,9 @@ repair loop. See `SOURCE_STACK_RUNTIME_REMEDIATION_2026_05_08.md` and
 Added ComfyUI/`aaa_texture.py` parity inventory and the first M8 regeneration
 queue. See `COMFYUI_TEXTURE_WORKFLOW_INVENTORY_2026_05_08.md` and
 `world3/jobs/comfy_texture_regen_candidates.json`.
+
+Ran the first ComfyUI regeneration on `grassland_grass`. The first two
+grass-worded attempts failed or stayed too tufted; `m8_grassland_grass_calm_v3`
+passed strict QA with the hardpan/straw-fragment prompt. It remains a sidecar
+candidate pending terrain-context review. See
+`M8_COMFYUI_TEXTURE_REGEN_PASS_2026_05_08.md`.

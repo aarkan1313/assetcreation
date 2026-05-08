@@ -34,6 +34,7 @@ Read first:
 15. `world3/docs/SOURCE_STACK_RUNTIME_REMEDIATION_2026_05_08.md`
 16. `world3/docs/M1_M7_ORGANIC_TEXTURE_REPAIR_2026_05_08.md`
 17. `world3/docs/COMFYUI_TEXTURE_WORKFLOW_INVENTORY_2026_05_08.md`
+18. `world3/docs/M8_COMFYUI_TEXTURE_REGEN_PASS_2026_05_08.md`
 
 ## Current status
 
@@ -65,6 +66,10 @@ current visual reference/control path; ComfyUI is the scalable material
 regeneration path. Start with `world3/jobs/comfy_texture_regen_candidates.json`
 and keep regenerated outputs quarantined until seam QA plus Godot
 close/mid/far terrain-context captures pass.
+
+First ComfyUI M8 result: `m8_grassland_grass_calm_v3` passed strict
+`aaa_texture.py` QA and is worth terrain-context testing, but it is not promoted
+yet.
 
 M1 is done:
 

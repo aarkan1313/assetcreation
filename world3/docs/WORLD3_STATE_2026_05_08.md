@@ -504,3 +504,8 @@ These start when chunk + biome + tile + transition is ~80% solved
   as a peer texture-source lane to OpenTopo: 25 generated materials are audited,
   five organic blockers are queued for prompt/variant regeneration, and
   full-PBR runtime staging is closed and auditable before promotion.
+- **2026-05-08 (M8 first ComfyUI regeneration)**: Ran the first
+  `grassland_grass` regeneration. Two grass-worded prompts failed or remained
+  visually tufted; the hardpan/straw-fragment prompt produced
+  `m8_grassland_grass_calm_v3`, which passed strict `aaa_texture.py` QA. It is
+  a sidecar candidate only until terrain-context review passes.

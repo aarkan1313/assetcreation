@@ -108,6 +108,11 @@ tracked through `COMFYUI_TEXTURE_WORKFLOW_INVENTORY_2026_05_08.md` and
 priority organic blockers through ComfyUI/`aaa_texture.py` prompt and variant
 control before relying on deterministic repair.
 
+First regeneration result: `m8_grassland_grass_calm_v3` passed strict
+`aaa_texture.py` QA for the `grassland_grass` blocker. It remains a candidate
+until terrain-context captures pass. Evidence:
+`M8_COMFYUI_TEXTURE_REGEN_PASS_2026_05_08.md`.
+
 Deliverables:
 
 - Regenerate or filter the highest-priority flagged materials from
