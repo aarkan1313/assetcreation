@@ -20,60 +20,78 @@ biologically near-uniform; loose bands are correct).
    community has Terrain3D and HTerrain. Survey what they do before
    designing our own chunk streaming.
 
-## Phase F checklist (from ROADMAP)
+## Phase F checklist (revised 2026-05-08 after F.1 + F.3)
 
-- [ ] **F.1 — Research existing approaches**
-  - Godot 4.5 chunk-streaming patterns (built-in or community).
-  - Terrain3D and HTerrain plugins — what they do, what they expect
-    as input, do they integrate with our heightmap-PNG + meta.json
-    + ShaderMaterial pattern.
-  - Memory budget per chunk at our 256-subdiv resolution.
-  - Output: `pipelines/textures/EXTERNAL_TECHNIQUES.md`-style survey
-    doc at `world3/docs/PHASE_F_RESEARCH_2026_05_07.md`. Verdict on
-    plugin vs. roll-our-own.
+F.2 is now an **output of the F.4 sweep**, not a precondition for it.
+The user's call: chunk size has to be picked from real performance +
+quality data under streaming load, not from back-of-envelope numbers.
+Sweep multiple sizes, compare, then lock.
 
-- [ ] **F.2 — Chunk-size decision**
-  - Walk-mode visibility: ~500m circle around player at decent FPS
-    requires ~9 chunks loaded if chunks are 256m, ~4 if chunks are
-    512m. Pick based on memory budget from F.1.
-  - Iso-mode: 300m diameter (Phase C lock) easily fits in a single
-    512m chunk. Topdown minimap (10km) needs different streaming
-    or the existing per-region heightmap.
+- [x] **F.1 — Research existing approaches**
+  - Findings at `world3/docs/PHASE_F_RESEARCH_2026_05_07.md`.
+  - Verdict: hand-roll on Terrain.gd (Option A) for the prototype;
+    Terrain3D (Option B) on standby if A surfaces fundamental issues.
+
+- [x] **F.3 — Stitch test (Tetons 2x2)**
+  - 4 Terrain instances, same Tetons heightmap, ±2000m XZ
+    translation. Topdown view confirms continuous 8km square.
+  - Caveat: per-chunk normal calc uses one-sided finite differences
+    at borders → faint shading seam. F.4 needs 1-2 pixel overlap
+    sampling to fix.
+  - Captures + verdict at `world3/docs/captures/phase_f/`.
+
+- [ ] **F.4 — Streaming harness (parameterized chunk size)**
+  - Build a minimal walker-driven streaming scene that loads/unloads
+    chunks around the walker's XZ position. Must take `chunk_size_m`
+    as a runtime parameter so the same harness re-runs at multiple
+    sizes.
+  - Tile a single Tetons heightmap across an arbitrary grid to
+    simulate "infinite world" without needing real DEM stitching
+    (DEM-stitch is a follow-up; we want streaming mechanics first).
+  - Fix the F.3 normal seam by sampling 1-2 pixel overlap from the
+    source heightmap when building each chunk's hgrid.
+  - Walker moves on a fixed deterministic path so runs at different
+    chunk sizes are comparable.
+  - Output: scene + walker script + chunk loader. Document in
+    `world3/docs/PHASE_F_HARNESS.md`.
+
+- [ ] **F.4-sweep — Run the harness at multiple chunk sizes**
+  - Sweep `chunk_size_m` ∈ {256, 512, 1024}. Maybe 128 + 2048 if
+    early data suggests they're interesting boundary cases.
+  - Capture per size:
+    - GPU memory steady-state (Godot's monitor + nvidia-smi).
+    - Frame time mean + p95 + p99 (Godot's perf monitor) over the
+      walker's deterministic path.
+    - Number of chunks loaded simultaneously at peak.
+    - Worst-case load latency (chunk-load triggered → mesh visible).
+    - Visible seam quality: a screenshot at a known chunk crossing
+      under each size.
+  - Output: `world3/docs/PHASE_F_CHUNK_SIZE_SWEEP.md` with per-size
+    table + screenshots + recommended winner with rationale.
+
+- [ ] **F.5 — Budget audit (digest sweep into decision)**
+  - From the sweep table, pick the chunk size that hits acceptable
+    framerate at acceptable memory at acceptable seam quality.
+  - Document the trade-offs ("we lose X by choosing 512m over 256m,
+    we gain Y").
+  - Note any chunk-size ranges that are clearly broken (memory
+    explosion, unacceptable seams, load stutter).
+
+- [ ] **F.2 — Chunk-size + format decision (LOCKED)**
+  - Once F.5 picks a winner, commit the decision to DECISIONS.md
+    with the sweep evidence as justification.
   - Decide: keep one heightmap per region, OR split regions into
-    multiple chunks at build time. Documented decision in
-    DECISIONS.md.
+    multiple chunks at build time? (This is the "format" half of
+    the decision; the chunk size is the "size" half. May be coupled
+    if a chunk size doesn't divide region size cleanly.)
 
-- [ ] **F.3 — Stitch test (Tetons 2x2)**
-  - Build a 2x2 grid of Tetons tiles (4km each = 8km total). Same
-    heightmap repeated 4× to remove "real DEM seam" complications.
-  - Expected: a single 8km terrain, no visible seam between the 4
-    tiles, no double-load of shared edges.
-  - Verify: mesh continuity at boundaries (vertex Y matches at the
-    seam), no z-fighting, no normal discontinuity.
-  - Output: capture scene + screenshot at
-    `world3/docs/captures/phase_f/tetons_2x2_stitch.png`.
-
-- [ ] **F.4 — Streaming prototype**
-  - Replace static 4-chunk load with on-demand load/unload as the
-    walker moves. Trigger: walker XZ enters a chunk's "warmup zone"
-    (configurable; ~2 chunks ahead).
-  - Verify: walking off the edge of one chunk and into another
-    works without stutter, frame budget stays within target (need to
-    define target).
-  - Output: capture scene + a short timestamp log of load/unload
-    events.
-
-- [ ] **F.5 — Streaming budget audit**
-  - How many chunks loaded simultaneously before frame budget breaks?
-  - GPU memory used per chunk (mesh + .import textures + collision
-    shape).
-  - Documented numbers in `world3/docs/PHASE_F_BUDGET.md`.
-
-- [ ] **F.6 — Decision lock + handoff**
-  - Final chunk-size + format pick.
-  - Update existing per-region scenes (walk/iso/topdown) to use
-    streaming where it makes sense; auto-AABB/single-load stays
-    available for region-gallery review.
+- [ ] **F.6 — Wire streaming into game scenes + handoff**
+  - Update walk.tscn (the highest-impact mode for streaming) to use
+    the chunk loader. iso.tscn and topdown.tscn at their current
+    zoom levels (Phase C lock) probably don't need streaming at all
+    — single-region load is fine.
+  - Decide: gallery / capture scenes stay on auto-AABB single-load,
+    or also use streaming?
   - Handoff doc at `docs/handoffs/HANDOFF_phase_f_*.md`.
 
 ## Exit criteria
@@ -84,16 +102,22 @@ biologically near-uniform; loose bands are correct).
   before frame budget breaks).
 - Decision-locked on chunk size + format.
 
-## Sequencing rationale
+## Sequencing rationale (revised 2026-05-08)
 
-- **F.1 first** because we don't know the right approach yet. A
-  Terrain3D plugin investment or a roll-our-own decision should be
-  made on evidence, not speculation.
-- **F.3 (stitch test) before F.4 (streaming)** because if we can't
-  get 2 stationary tiles to stitch cleanly, no amount of streaming
-  logic helps.
-- **F.5 (budget) before F.6 (decision lock)** because chunk size
-  isn't picked from architecture alone; it has to fit GPU memory.
+- **F.1 + F.3 first** (DONE) because we needed an architectural
+  recommendation and a basic stitch verification before sinking
+  effort into streaming.
+- **F.4 (parameterized streaming harness) before F.4-sweep** so the
+  sweep can compare chunk sizes against the same scene + walker
+  path.
+- **F.4-sweep before F.5** because the sweep IS the budget audit;
+  F.5 just digests its data.
+- **F.5 before F.2** because the chunk-size decision must be
+  evidence-backed, not assumption-based. User's call (2026-05-08):
+  "we need to see how performance changes when it's an infinite
+  world, how quality changes with different sizes."
+- **F.6 last** because wiring streaming into game scenes requires
+  the chunk size + format to be locked first.
 
 ## Open polish items (parked, not blocking F)
 
