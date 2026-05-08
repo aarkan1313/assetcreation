@@ -1,0 +1,18 @@
+{
+  "source_dem": "D:\\assets\\world3\\opentopo\\processed\\mosaics\\smokies_usgs1m_4call\\mosaic.tif",
+  "source_crs": "EPSG:26917",
+  "source_bounds": {
+    "left": 259022.0,
+    "bottom": 3927557.0,
+    "right": 288027.0,
+    "top": 3957392.0
+  },
+  "heightmap_size_px": 8192,
+  "elevation_min_m": 358.20086669921875,
+  "elevation_max_m": 2025.1490478515625,
+  "elevation_range_m": 1666.9481811523438,
+  "world_size_m": 29005.0,
+  "world_size_x_m": 29005.0,
+  "world_size_z_m": 29835.0,
+  "material": "forest_floor"
+}

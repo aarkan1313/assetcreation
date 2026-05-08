@@ -1,0 +1,41 @@
+{
+  "output": "D:\\assets\\world3\\docs\\captures\\opentopo\\opentopo_soft_composite_2x2_material_sheet.png",
+  "title": "OpenTopo tileable_soft 2x2 material sheet",
+  "subtitle": "Six Guadalupe Cypress source-real soft composites; each panel is its own generated 2x2 repeat check",
+  "items": [
+    {
+      "label": "bare_soil",
+      "path": "D:\\assets\\world3\\opentopo\\processed\\textures\\Guadalupe_Cypress_variants_bare_soil\\bare_soil_064m_soft_composite\\tileable_soft\\tile_2x2.png",
+      "note": "edge MSE mean 0.000011675"
+    },
+    {
+      "label": "bright_rock",
+      "path": "D:\\assets\\world3\\opentopo\\processed\\textures\\Guadalupe_Cypress_variants_bright_rock\\bright_rock_064m_soft_composite\\tileable_soft\\tile_2x2.png",
+      "note": "edge MSE mean 0.000012058"
+    },
+    {
+      "label": "dry_wash",
+      "path": "D:\\assets\\world3\\opentopo\\processed\\textures\\Guadalupe_Cypress_variants_dry_wash\\dry_wash_064m_soft_composite\\tileable_soft\\tile_2x2.png",
+      "note": "edge MSE mean 0.000013659"
+    },
+    {
+      "label": "rocky_slope",
+      "path": "D:\\assets\\world3\\opentopo\\processed\\textures\\Guadalupe_Cypress_variants_rocky_slope\\rocky_slope_064m_soft_composite\\tileable_soft\\tile_2x2.png",
+      "note": "edge MSE mean 0.000017213"
+    },
+    {
+      "label": "scrub_dense",
+      "path": "D:\\assets\\world3\\opentopo\\processed\\textures\\Guadalupe_Cypress_variants_scrub_dense\\scrub_dense_064m_soft_composite\\tileable_soft\\tile_2x2.png",
+      "note": "edge MSE mean 0.000018498"
+    },
+    {
+      "label": "scrub_sparse",
+      "path": "D:\\assets\\world3\\opentopo\\processed\\textures\\Guadalupe_Cypress_variants_scrub_sparse\\scrub_sparse_064m_soft_composite\\tileable_soft\\tile_2x2.png",
+      "note": "edge MSE mean 0.000008059"
+    }
+  ],
+  "size_px": [
+    1900,
+    1238
+  ]
+}

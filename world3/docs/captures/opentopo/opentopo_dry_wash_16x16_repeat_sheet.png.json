@@ -1,0 +1,14 @@
+{
+  "output": "D:\\assets\\world3\\docs\\captures\\opentopo\\opentopo_dry_wash_16x16_repeat_sheet.png",
+  "manifest": "D:\\assets\\world3\\opentopo\\processed\\textures\\Guadalupe_Cypress\\manifest.json",
+  "crop_class": "dry_wash",
+  "crop_size_m": 64,
+  "repeat": 16,
+  "cell_px": 64,
+  "policies": [
+    "source",
+    "tileable_real",
+    "stylized_pixel"
+  ],
+  "note": "Exact square repeat; hex anti-tile requires Godot shader capture."
+}

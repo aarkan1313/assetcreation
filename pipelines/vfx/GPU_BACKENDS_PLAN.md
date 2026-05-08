@@ -1,5 +1,20 @@
 # GPU backends - install plan (do not run yet)
 
+> **⚠ 2026-05-07 — superseded by research brief #04.** This four-backend plan is half-stale. The current state of each:
+>
+> - **NVIDIA Warp** ✅ — keep, **promote to primary GPU backend.** Validated on RTX 5090 sm_120 (CUDA 12.9, native Windows wheels).
+> - **Taichi** 🟡 — drop. In maintenance mode since mid-2024 (per [taichi-dev/taichi#8506](https://github.com/taichi-dev/taichi/discussions/8506)).
+> - **PhiFlow** 🟡 — keep on watch list only. Alive (PyPI 3.4.0 Aug 2025), Apache-2.0, healthy small team. Strength is differentiable PDE for ML training (gradients through PDE solves) — overkill for baked flipbooks. Adopt only if a future use case actually needs differentiable physics.
+> - **LiquidFun** ❌ — drop. Dead.
+>
+> Per the brief, **the priority order also changes:** build LLM-driven `effect_from_description.py` *first* (addresses the "18 palette-swap recolors" content-authoring problem at the right layer), *then* Warp-port the particle baker. The GPU port is no longer #1 priority — content authoring is.
+>
+> Full reasoning: [`docs/research_briefs/2026_05_07_sota_survey/04_vfx_3d_bake.response.md`](../../docs/research_briefs/2026_05_07_sota_survey/04_vfx_3d_bake.response.md).
+>
+> Sections below kept for historical reference; **only the Warp section is still active**, with priority deferred behind the LLM authoring tool.
+
+---
+
 The 5090 is busy with other pipelines, so we keep these as **install/setup
 documentation** for now. The current CPU bakers (`particle_cpu`,
 `fracture2d`, `smoke_field`) cover the demo phenomenon classes; GPU bakers

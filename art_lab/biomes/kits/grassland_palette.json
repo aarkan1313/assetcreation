@@ -1,0 +1,87 @@
+{
+  "kit": "grassland",
+  "anchor": "wgv3_gl_tall_grass",
+  "anchor_palette": {
+    "dominant_colors": [
+      {
+        "rgb": [
+          168,
+          140,
+          75
+        ],
+        "weight": 0.2556037902832031
+      },
+      {
+        "rgb": [
+          123,
+          96,
+          55
+        ],
+        "weight": 0.22867584228515625
+      },
+      {
+        "rgb": [
+          205,
+          178,
+          93
+        ],
+        "weight": 0.21900558471679688
+      },
+      {
+        "rgb": [
+          229,
+          203,
+          108
+        ],
+        "weight": 0.1580047607421875
+      },
+      {
+        "rgb": [
+          244,
+          223,
+          139
+        ],
+        "weight": 0.13871002197265625
+      }
+    ],
+    "lab_means": [
+      184.70618438720703,
+      158.44700241088867,
+      88.21781921386719
+    ]
+  },
+  "match_strength": 0.6,
+  "members": [
+    "wgv3_gl_tall_grass",
+    "wgv3_gl_dry_thatch",
+    "wgv3_gl_hardpan_soil",
+    "wgv3_gl_grass_rock",
+    "wgv3_gl_weathered_stone"
+  ],
+  "additions": [
+    {
+      "id": "wgv3_gl_dry_thatch",
+      "prompt": "dry thatch and dead grass mat, tan and beige, slightly compacted, open plains, top-down photo, even diffuse light, photoreal",
+      "category": "Ground",
+      "palette_match_strength": 0.6
+    },
+    {
+      "id": "wgv3_gl_hardpan_soil",
+      "prompt": "hardpan cracked clay soil, pale tan, shallow surface cracks, semi-arid grassland, no vegetation, top-down photo, even diffuse light, photoreal",
+      "category": "Ground",
+      "palette_match_strength": 0.6
+    },
+    {
+      "id": "wgv3_gl_grass_rock",
+      "prompt": "dark weathered volcanic rock embedded in dry grass, rough surface, savanna, top-down photo, even diffuse light, photoreal",
+      "category": "Rock",
+      "palette_match_strength": 0.6
+    },
+    {
+      "id": "wgv3_gl_weathered_stone",
+      "prompt": "pale weathered limestone or sandstone surface, worn smooth, light grey, grassland hilltop, top-down photo, even diffuse light, photoreal",
+      "category": "Rock",
+      "palette_match_strength": 0.6
+    }
+  ]
+}

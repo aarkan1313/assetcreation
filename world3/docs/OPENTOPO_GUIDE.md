@@ -70,13 +70,18 @@ world3/opentopo/data_type_matrix.json  Two-representative plan per data type
 world3/docs/OPENTOPO_DATA_TYPES.md     Sequential usage guide by data type
 world3/docs/OPENTOPO_MOSAIC_FUSION_WORKFLOWS.md  Stitching and layer-fusion plans
 world3/docs/OPENTOPO_TEXTURE_SCENE_ROADMAP.md    Texture baking, real-place scenes, HD zoom plan
+world3/docs/OPENTOPO_TILEABLE_REAL_TEXTURE_WORKFLOW.md  Real-source tileable ground texture workflow
 world3/docs/OPENTOPO_PHASE2_HD_REVIEW.md         4096 Guadalupe Cypress HD review pass
 world3/docs/OPENTOPO_PHASE2_MAX_REVIEW.md        8192 + 16K RGB Guadalupe Cypress max pass
+world3/docs/OPENTOPO_RENDER_REPAIR_WORKFLOW.md   Source-first no-data/cliff repair workflow
 world3/docs/OPENTOPO_LARGE_4CALL_PLAN.md         Next 4-call `USGS1m` scale plan
+world3/docs/OPENTOPO_PHASE3_SMOKIES_4CALL_AUDIT.md  Completed Smokies 4-call `USGS1m` audit
 world3/pipeline/opentopo_fetch.py      API/catalog/raster fetch helper
 world3/pipeline/fetch_opentopo_tile_grid.py  Split one AOI into overlapping API tile pulls
 world3/pipeline/build_opentopo_mosaic.py     Same-type raster tiles -> GeoTIFF mosaic + seam QA
+world3/pipeline/build_opentopo_mosaic_streaming.py  Large same-CRS raster mosaic builder
 world3/pipeline/validate_opentopo_mosaic.py  Re-read a mosaic and verify source/mosaic consistency
+world3/pipeline/validate_opentopo_mosaic_streaming.py  Large mosaic validator
 world3/pipeline/build_world.py         GeoTIFF -> Godot heightmap converter
 world3/pipeline/extract_opentopo_layers.py  Extract DSM-DTM and GEDI layers
 world3/pipeline/inspect_laz_headers.py      Inspect LAZ capabilities
@@ -86,13 +91,21 @@ world3/pipeline/export_opentopo_mosaic.py   Many single-band GeoTIFFs -> one ali
 world3/pipeline/export_opentopo_rgb_mosaic.py  Many RGB GeoTIFFs -> one aligned RGB PNG layer
 world3/pipeline/export_opentopo_vegetation_mask.py  NIR/false-color ortho -> vegetation signal PNG
 world3/pipeline/export_opentopo_review_texture.py  Aligned diagnostic layers -> synthetic review RGB
+world3/pipeline/export_heightmap_review_layers.py  Heightmap/meta -> diagnostic review layers
 world3/pipeline/build_opentopo_stack_manifest.py  Fused stack manifest + layer-size validation
+world3/pipeline/build_opentopo_render_albedo.py   Source-first render albedo from real orthophoto
+world3/pipeline/build_opentopo_tileable_texture.py Real-source crop/material pilot builder
 world3/scripts/OpenTopoSampleViewer.gd      Godot sample/layer browser
 world3/toporeview/phase1_mosaic_review.tscn Phase 1 same-type mosaic review scene
 world3/toporeview/phase2_fusion_review.tscn Phase 2 fused-stack review scene
 world3/toporeview/phase2_fusion_hd_review.tscn Phase 2 4096 HD fused-stack review scene
 world3/toporeview/phase2_fusion_max_review.tscn Phase 2 8192 max fused-stack review scene
 world3/toporeview/phase2_fusion_ultra_rgb_review.tscn Phase 2 16K RGB stress scene
+world3/toporeview/phase3_smokies_4call_review.tscn Phase 3 large 4-call `USGS1m` review scene
+world3/toporeview/tileable_texture_review.tscn OpenTopo repeated-plane texture review scene
+world3/toporeview/capture_phase*.tscn    Real Godot viewport capture wrappers
+world3/toporeview/TopoReviewCapture.gd   Deterministic camera capture helper
+world3/docs/captures/opentopo/           Real Godot screenshots and QA sheets
 ```
 
 ## Storage
@@ -256,6 +269,31 @@ python D:/assets/world3/pipeline/validate_opentopo_mosaic.py `
   --mosaic-dir D:/assets/world3/opentopo/processed/mosaics/grand_canyon_usgs10m_pilot `
   --raw-dir D:/assets/world3/opentopo/raw/usgsdem/grand_canyon_usgs10m_pilot `
   --glob "USGS10m_*.tif"
+```
+
+For large same-CRS mosaics such as the Smokies `USGS1m` 4-call run, use the
+streaming builder/validator instead of the all-in-memory builder:
+
+```powershell
+python D:/assets/world3/pipeline/build_opentopo_mosaic_streaming.py `
+  --input-dir D:/assets/world3/opentopo/raw/usgsdem/smokies_usgs1m_4call `
+  --glob "USGS1m_*.tif" `
+  --output-dir D:/assets/world3/opentopo/processed/mosaics/smokies_usgs1m_4call `
+  --name smokies_usgs1m_4call `
+  --target-crs EPSG:26917 `
+  --target-cell-size-m 1 `
+  --reducer first `
+  --resampling bilinear `
+  --heightmap-size 8192 `
+  --preview-size 2048 `
+  --mem-limit 512
+
+python D:/assets/world3/pipeline/validate_opentopo_mosaic_streaming.py `
+  --mosaic-dir D:/assets/world3/opentopo/processed/mosaics/smokies_usgs1m_4call `
+  --raw-dir D:/assets/world3/opentopo/raw/usgsdem/smokies_usgs1m_4call `
+  --glob "USGS1m_*.tif" `
+  --max-seam-p99 0.05 `
+  --max-unique-p99 0.05
 ```
 
 ## Dataspace Direct Downloads
@@ -453,6 +491,7 @@ res://toporeview/phase2_fusion_review.tscn
 res://toporeview/phase2_fusion_hd_review.tscn
 res://toporeview/phase2_fusion_max_review.tscn
 res://toporeview/phase2_fusion_ultra_rgb_review.tscn
+res://toporeview/phase3_smokies_4call_review.tscn
 ```
 
 The shared controller is:
@@ -460,6 +499,63 @@ The shared controller is:
 ```text
 res://toporeview/TopoReview.gd
 ```
+
+Real viewport capture workflow:
+
+```powershell
+$args = @("--path", "D:/assets/world3", "res://toporeview/capture_phase1_mosaic.tscn")
+$p = Start-Process -FilePath "C:/Godot/Godot_v4.5-stable_win64.exe" -ArgumentList $args -Wait -PassThru
+"EXIT=$($p.ExitCode)"
+```
+
+Use normal Godot and pass the capture scene as the trailing argument. This
+produces real in-engine viewport screenshots through `scripts/HeadlessCapture.gd`.
+Do not use the older waited `--headless --scene ... --quit-after ...` command as
+scene validation; that local Windows runner path can hit access violation
+`-1073741819` even when the real capture scene works.
+
+Current OpenTopo real Godot captures:
+
+```text
+D:/assets/world3/docs/captures/opentopo/godot_phase1_mosaic.png
+D:/assets/world3/docs/captures/opentopo/godot_phase2_fusion.png
+D:/assets/world3/docs/captures/opentopo/godot_phase2_fusion_hd.png
+D:/assets/world3/docs/captures/opentopo/godot_phase2_fusion_max.png
+D:/assets/world3/docs/captures/opentopo/godot_phase3_smokies_4call.png
+D:/assets/world3/docs/captures/opentopo/godot_real_render_phase_comparison.png
+D:/assets/world3/docs/captures/opentopo/godot_phase2_close_baseline.png
+D:/assets/world3/docs/captures/opentopo/godot_phase2_close_hd.png
+D:/assets/world3/docs/captures/opentopo/godot_phase2_close_max.png
+D:/assets/world3/docs/captures/opentopo/godot_phase2_close_resolution_comparison.png
+```
+
+The older `opentopo_phase_*` comparison sheets in the same folder are static
+data-layer QA references. They are useful, but they are not substitutes for
+real Godot screenshots.
+
+Render repair policy:
+
+- Geometry can be repaired for a render-safe heightmap.
+- Real orthophoto color remains the default albedo source.
+- `render_albedo` is source-first; it does not procedurally repaint repaired
+  DEM areas.
+- Any future generated or stylized material must be tracked separately from
+  source data.
+
+Repair workflow:
+
+```text
+world3/docs/OPENTOPO_RENDER_REPAIR_WORKFLOW.md
+```
+
+Close-up Phase 2 finding:
+
+- 1024/256 mesh is too soft at ground distance.
+- 4096/512 improves orthophoto readability but still needs better geometry and
+  material treatment.
+- 8192/1024 is visibly sharper, but terrain triangles/normals become obvious.
+  The next fidelity step should be chunked terrain plus real data projection
+  from DSM/LAZ/color sources where available.
 
 Controls are documented in:
 

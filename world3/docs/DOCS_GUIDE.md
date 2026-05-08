@@ -66,6 +66,8 @@ should still make sense.
 | [OPENTOPO_PILOT2_*_AUDIT.md](OPENTOPO_PILOT2_GUADALUPE_CYPRESS_FUSION_AUDIT.md) | Pilot 2 audit                            |
 | [OPENTOPO_PHASE2_HD_REVIEW.md](OPENTOPO_PHASE2_HD_REVIEW.md) | Phase 2 HD-tile review pass (4096/8192/16K stress test)        |
 | [OPENTOPO_PHASE2_MAX_REVIEW.md](OPENTOPO_PHASE2_MAX_REVIEW.md) | Phase 2 max-resolution review pass                          |
+| [OPENTOPO_TILEABLE_REAL_TEXTURE_WORKFLOW.md](OPENTOPO_TILEABLE_REAL_TEXTURE_WORKFLOW.md) | Real-source crop, tileable texture, and stylized derivative workflow |
+| [OPENTOPO_TILEABLE_TEXTURE_PILOT_AUDIT.md](OPENTOPO_TILEABLE_TEXTURE_PILOT_AUDIT.md) | First Guadalupe Cypress tileable real-ground texture pilot |
 | [pipelines/textures/EXTERNAL_TECHNIQUES.md](../../pipelines/textures/EXTERNAL_TECHNIQUES.md) | Survey of external tileable-PBR techniques (2026-05-07 snapshot) |
 
 **Write-rule**: don't edit unless fixing typos. New audits = new

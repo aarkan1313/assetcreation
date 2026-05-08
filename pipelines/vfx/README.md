@@ -1,5 +1,7 @@
 # VFX Pipeline
 
+> **Two VFX lanes exist.** This is the **content baker** lane (frames + manifest + Godot SpriteFrames). The other is `art_lab/shaders/` — shader iteration via `.gdshader` files. **Simulation-driven → here. Formula-driven → there.** Full decision tree at [../../docs/VFX_LANES.md](../../docs/VFX_LANES.md).
+
 **Status:** ✅ Working end-to-end (CPU-only, 3 backends, 3 demo spells, 11 spell-lab artifacts migrated). GPU backends planned in [GPU_BACKENDS_PLAN.md](GPU_BACKENDS_PLAN.md).
 
 Per `research/I_vfx_lab_local_audit_and_migration_plan.md`'s **content-first**

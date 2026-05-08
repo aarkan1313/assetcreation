@@ -8,7 +8,7 @@
 |---|---|
 | [proc_generate.py](proc_generate.py) | Blender-headless procedural prop generator. 13 kinds; writes `prop_asset.v1`. |
 | [variation_sweep.py](variation_sweep.py) | `prop_sweep.v1` batch runner for deterministic recipe variants. |
-| [lod_chain.py](lod_chain.py) | Blender DECIMATE COLLAPSE LOD ladder authoring. |
+| [lod_chain.py](lod_chain.py) | LOD ladder authoring. Two methods (`--method decimate` default, `--method meshopt`); side-by-side via `--suffix _meshopt`. See "LOD method comparison" below. |
 | [collision_decompose.py](collision_decompose.py) | CoACD convex hull decomposition for scene/hero props. |
 | [billboard_bake.py](billboard_bake.py) | Sprite3D billboard/impostor bake. |
 | [material_lod.py](material_lod.py) | Far-distance color atlas for procedural kit LODs. |
@@ -70,4 +70,33 @@ python pipelines\props\meshy_route.py world\props\library\rock_small_a01\thumbna
 - Procedural geometry is still lower-fidelity than character Meshy GLBs; PBR binding improves material quality but not silhouette complexity.
 - Trellis2 and Meshy routes are adapters only until the GPU is free / cloud spend is authorized.
 - Biome scatter v3 has real `prop_pool` data, but the world-scene scatter compiler still needs to instantiate these GLBs instead of placeholder primitives.
+
+## LOD method comparison (decimate vs meshopt)
+
+Per brief #03 SOTA survey 2026-05-07, **meshoptimizer** is recommended over Blender's DECIMATE COLLAPSE for silhouette quality at low LODs. We ship both side-by-side for A/B comparison; `decimate` remains the default so existing pipelines and Godot scenes don't change.
+
+**Tool:** [tools/meshoptimizer/gltfpack.exe](../../tools/meshoptimizer/gltfpack.exe) (zeux/meshoptimizer v1.1, prebuilt Windows binary, ~1.4 MB).
+
+**Run side-by-side on the same prop:**
+```powershell
+# Generates the canonical model_lod{N}.glb files (default behavior, unchanged)
+python pipelines\props\lod_chain.py obelisk_egyptian_a04
+
+# Generates model_lod{N}_meshopt.glb files alongside; preserves canonical lods array;
+# adds prop.json `lods_meshopt` sibling field for the new run.
+python pipelines\props\lod_chain.py obelisk_egyptian_a04 --method meshopt --suffix _meshopt
+```
+
+**Verified 2026-05-07** on `obelisk_egyptian_a04` (4-LOD hero ladder 1.0/0.65/0.35/0.15):
+
+| LOD | Tris (decimate) | Tris (meshopt) | File size (decimate) | File size (meshopt) | Δ size |
+|---|---|---|---|---|---|
+| 0 | 100,000 | 100,000 | 11.72 MB | 11.72 MB | — (LOD0 is a copy) |
+| 1 | 64,998 | 64,998 | 10.34 MB | 10.24 MB | **−100 KB** |
+| 2 | 35,000 | 34,998 | 9.56 MB | 9.37 MB | **−192 KB** |
+| 3 | 15,000 | 15,000 | 8.82 MB | 8.75 MB | **−66 KB** |
+
+Both methods hit the requested triangle ratio essentially exactly; meshopt produces 1-2% smaller GLBs at matched tri counts (more efficient vertex/index packing). The brief's "real silhouette win" claim is about visual quality at low LODs and requires visual inspection — the file-size delta is incidental.
+
+**Switching the default:** when ready, change `--method decimate` to `--method meshopt` in `postprocess_ai_route.py`'s `stage_lod_chain` invocation. Don't switch yet — visual A/B first.
 

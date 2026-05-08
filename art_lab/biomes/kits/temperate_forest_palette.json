@@ -1,0 +1,87 @@
+{
+  "kit": "temperate_forest",
+  "anchor": "wgv3_tf_leaf_litter",
+  "anchor_palette": {
+    "dominant_colors": [
+      {
+        "rgb": [
+          84,
+          75,
+          68
+        ],
+        "weight": 0.30019378662109375
+      },
+      {
+        "rgb": [
+          59,
+          56,
+          53
+        ],
+        "weight": 0.23213577270507812
+      },
+      {
+        "rgb": [
+          180,
+          133,
+          108
+        ],
+        "weight": 0.17784881591796875
+      },
+      {
+        "rgb": [
+          135,
+          102,
+          83
+        ],
+        "weight": 0.158416748046875
+      },
+      {
+        "rgb": [
+          200,
+          165,
+          139
+        ],
+        "weight": 0.13140487670898438
+      }
+    ],
+    "lab_means": [
+      119.58942031860352,
+      97.425048828125,
+      83.49638748168945
+    ]
+  },
+  "match_strength": 0.6,
+  "members": [
+    "wgv3_tf_leaf_litter",
+    "wgv3_tf_loamy_soil",
+    "wgv3_tf_mossy_rock",
+    "wgv3_tf_bark_rock",
+    "wgv3_tf_fern_ground"
+  ],
+  "additions": [
+    {
+      "id": "wgv3_tf_loamy_soil",
+      "prompt": "loamy forest soil, dark brown, slightly moist, small root fragments, no leaves, top-down photo, even diffuse light, photoreal",
+      "category": "Ground",
+      "palette_match_strength": 0.6
+    },
+    {
+      "id": "wgv3_tf_mossy_rock",
+      "prompt": "weathered granite rock surface, green moss patches, rough texture, outdoor forest, top-down photo, even diffuse light, photoreal",
+      "category": "Rock",
+      "palette_match_strength": 0.6
+    },
+    {
+      "id": "wgv3_tf_bark_rock",
+      "prompt": "dark weathered basalt rock, surface cracked and stained, forest environment, no vegetation, top-down photo, even diffuse light, photoreal",
+      "category": "Rock",
+      "palette_match_strength": 0.6
+    },
+    {
+      "id": "wgv3_tf_fern_ground",
+      "prompt": "dense low fern undergrowth, green fronds, forest floor, dappled texture, top-down photo, even diffuse light, photoreal",
+      "category": "Ground",
+      "palette_match_strength": 0.6
+    }
+  ]
+}

@@ -123,6 +123,8 @@ What we extracted:
 - California chaparral `USGS10m`: 235 x 195 px, ~8.5-10.3 m cells, 933-1462 m.
 - California chaparral `USGS1m`: 1962 x 2046 px, 1 m cells, 937-1463 m.
 - Appalachians also has a valid `USGS10m` + `USGS1m` pair.
+- Smokies 4-call `USGS1m`: 4 tiles, 29005 x 29835 mosaic at 1 m,
+  845,312,752 valid pixels, 358.2-2025.1 m elevation.
 - Mojave returned `USGS10m` but no raster for `USGS1m` at the tested box.
 
 Good for:
@@ -135,8 +137,9 @@ Weaknesses:
 
 - U.S.-only.
 - `USGS1m` must use small AOIs; OpenTopography caps it at 250 km2 per job.
-- For the planned 4-call scale test, use 2x2 tiles of 225 km2 each; see
-  `OPENTOPO_LARGE_4CALL_PLAN.md`.
+- For 4-call scale tests, use 2x2 tiles of 225 km2 each; see
+  `OPENTOPO_LARGE_4CALL_PLAN.md` and
+  `OPENTOPO_PHASE3_SMOKIES_4CALL_AUDIT.md`.
 - Files grow quickly; 2 km x 2 km already produced ~12 MB compressed GeoTIFF.
 
 Usage in Godot:

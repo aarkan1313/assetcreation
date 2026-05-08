@@ -1,8 +1,14 @@
 # OpenTopo Large 4-Call Plan
 
-Status: planned and preflighted after Phase 2 max validation.
+Status: completed for `smokies_usgs1m_4call`.
 
 Date: 2026-05-07
+
+As-built audit:
+
+```text
+D:/assets/world3/docs/OPENTOPO_PHASE3_SMOKIES_4CALL_AUDIT.md
+```
 
 ## Why This Exists
 
@@ -19,9 +25,9 @@ Those are not the same constraint. Four raster API calls can maximize a height
 mosaic. "All datasets" requires choosing an AOI where other products overlap
 the mosaic and then pulling those products separately.
 
-## Validation Baseline
+## Data Validation Baseline
 
-Phase 2 max is validated before starting this larger run:
+Phase 2 max data is validated before starting this larger run:
 
 ```text
 D:/assets/world3/toporeview/phase2_fusion_max/stack_manifest.json
@@ -29,13 +35,20 @@ status: pass
 layers: 10
 heightmap: 8192 x 8192
 world size: 1600 m
-
-D:/assets/world3/toporeview/phase2_fusion_max_review.tscn
-Godot headless load: pass
-
-D:/assets/world3/toporeview/phase2_fusion_ultra_rgb_review.tscn
-Godot headless load: pass
 ```
+
+Real Godot viewport captures now validate through the toporeview capture
+wrappers. Use normal Godot with the capture scene as the trailing argument, for
+example:
+
+```powershell
+$args = @("--path", "D:/assets/world3", "res://toporeview/capture_phase3_smokies_4call.tscn")
+$p = Start-Process -FilePath "C:/Godot/Godot_v4.5-stable_win64.exe" -ArgumentList $args -Wait -PassThru
+```
+
+Do not use the older waited `--headless --scene ... --quit-after ...` path as
+scene validation; that path can hit a local Windows access violation even when
+the real capture wrapper works.
 
 The 16K RGB stress layer is present:
 
@@ -95,8 +108,8 @@ over the limit.
 | Mt. Rainier / Cascades | lon -121.80, lat 46.85 | Dramatic elevation, glaciers, forests, known point-cloud catalog hits. | We have not yet proved `USGS1m` at this exact AOI locally; snow/glacier coverage may complicate material interpretation. |
 | Grand Canyon | lon -112.10, lat 36.10 | Visually dramatic and already has a successful `USGS10m` mosaic flow. | `USGS1m` coverage is less certain for the exact AOI; less useful for vegetation/canopy. |
 
-Recommended first huge run: Southern Appalachians / Smokies. It is the lowest
-risk because the repo already has a successful small `USGS1m` pull there.
+Completed first huge run: Southern Appalachians / Smokies. It was the lowest
+risk because the repo already had a successful small `USGS1m` pull there.
 
 ## Preflight Command
 
@@ -130,7 +143,7 @@ per tile area: 225 km2
 
 ## Fetch Command
 
-When ready to spend the bandwidth/disk:
+The completed fetch used:
 
 ```powershell
 python D:/assets/world3/pipeline/fetch_opentopo_tile_grid.py `
@@ -154,6 +167,23 @@ Raw output:
 D:/assets/world3/opentopo/raw/usgsdem/smokies_usgs1m_4call/
 ```
 
+Processed output:
+
+```text
+D:/assets/world3/opentopo/processed/mosaics/smokies_usgs1m_4call/
+D:/assets/world3/toporeview/phase3_smokies_4call_review.tscn
+```
+
+As-built validation:
+
+```text
+status: pass_with_notes
+target grid: 29005 x 29835 at 1 m
+valid pixels: 845,312,752
+seam p99: 0.0 m
+source-window unique-area p99 delta: 0.00006103515625 m
+```
+
 ## Processing Plan
 
 1. Fetch four `USGS1m` tiles.
@@ -161,7 +191,8 @@ D:/assets/world3/opentopo/raw/usgsdem/smokies_usgs1m_4call/
 3. Validate source-to-mosaic consistency with `validate_opentopo_mosaic.py`.
 4. Export a Godot heightmap and initial diagnostic texture layers.
 5. Make a new `toporeview` scene for the 4-call mosaic.
-6. Run headless Godot load validation.
+6. Open the review scene interactively in Godot, or run the matching
+   `res://toporeview/capture_phase*.tscn` wrapper for a real viewport PNG.
 7. Start the overlap pass:
    - USGS/NOAA/OpenTopo point-cloud coverage for canopy and surface detail.
    - Color imagery source for texture, preferring OpenTopo orthophoto when
@@ -197,5 +228,5 @@ material overlays: streamed or baked per chunk
 - Every request window under 250 km2.
 - Mosaic reports sane CRS, resolution, bounds, nodata, and overlap coverage.
 - Seam QA shows no obvious border jumps.
-- Godot review scene loads and can navigate the full terrain.
+- Godot review scene loads interactively and can navigate the full terrain.
 - Docs list raw paths, processed paths, exact commands, and validation results.

@@ -1,12 +1,30 @@
 """Audio QA: waveform PNG + spectrogram PNG + sanity checks.
 
-No librosa, no matplotlib. Uses numpy + PIL only. Spectrogram via STFT
-implemented in numpy. Adequate for visually checking that a generated SFX
+No librosa, no matplotlib in the core path. Uses numpy + PIL only. Spectrogram
+via STFT in numpy. Adequate for visually checking that a generated SFX
 looks/sounds reasonable.
+
+Two QA layers, additive, per brief #06:
+
+  - **Sanity (DEFAULT, always runs):** LUFS-like RMS/peak/clip/click/DC checks.
+    Pure numpy/PIL, runs anywhere. The original behavior — unchanged.
+  - **--clap-prompt <text>:** CLAP audio-text similarity score. Catches the
+    "sounds like noise/static" failure mode that LUFS-only QA misses (LUFS is
+    spec-correct on noise; CLAP measures whether the audio actually matches
+    the prompt). Requires the dedicated audio venv (torch + laion-clap):
+
+        D:\\assets\\pipelines\\audio\\.venv\\Scripts\\python.exe \\
+            pipelines\\audio\\audio_qa.py <wav> --clap-prompt "forest at dusk"
+
+  - **--loop-check:** PyMusicLooper seam validation. For ambience loops only —
+    flags WAVs where no clean loop point can be found. Same audio venv.
 
 CLI:
   python audio_qa.py audio/sfx/processed.wav
     -> writes waveform.png + spectrogram.png + qa.json next to the input
+
+  python audio_qa.py audio/ambience/forest.wav --clap-prompt "forest at dusk" --loop-check
+    -> qa.json adds clap_score + loop_seam_score for content-correctness checks
 """
 from __future__ import annotations
 
@@ -134,7 +152,78 @@ def sanity(samples: np.ndarray, sr: int) -> dict:
     }
 
 
-def qa(in_path: Path, out_dir: Path | None = None) -> dict:
+# ---------------------------------------------------------------------------
+# Optional content-correctness scorers (lazy-imported so sanity QA keeps
+# working without torch installed). Per brief #06 — additive, not replacement.
+# Only runs when --clap-prompt or --loop-check are passed.
+# ---------------------------------------------------------------------------
+
+_CLAP_MODEL = None
+
+
+def _lazy_clap():
+    """Load LAION-CLAP once per process. Returns the model handle.
+
+    Uses the default 630k-audioset checkpoint, which is the recommended
+    general-purpose audio-text checkpoint per the LAION-CLAP README.
+    """
+    global _CLAP_MODEL
+    if _CLAP_MODEL is None:
+        import laion_clap  # type: ignore
+        m = laion_clap.CLAP_Module(enable_fusion=False)
+        m.load_ckpt()  # downloads on first call; cached in HF cache after
+        _CLAP_MODEL = m
+    return _CLAP_MODEL
+
+
+def clap_score(in_path: Path, prompt: str) -> dict:
+    """Return cosine similarity between audio embedding and prompt embedding.
+
+    Score in roughly [-1, 1]; >0.30 = matches prompt well, <0.20 = "this
+    audio does not sound like the prompt." Per brief #06, the noise/static
+    archive would have scored well below 0.20 against its biome prompts.
+    """
+    model = _lazy_clap()
+    # CLAP eats stereo or mono; resamples internally. Pass file path directly.
+    audio_emb = model.get_audio_embedding_from_filelist([str(in_path)], use_tensor=False)
+    text_emb = model.get_text_embedding([prompt], use_tensor=False)
+    # Cosine similarity (both already L2-normalized by laion-clap).
+    sim = float(np.dot(audio_emb[0], text_emb[0]))
+    return {
+        "prompt": prompt,
+        "clap_score": sim,
+        "interpretation": (
+            "matches" if sim > 0.30
+            else "weak" if sim > 0.20
+            else "does_not_match"
+        ),
+    }
+
+
+def loop_seam_check(in_path: Path) -> dict:
+    """Find best loop point via PyMusicLooper. Returns seam quality + offsets.
+
+    Per brief #06: "if PyMusicLooper can't find a seam, the loop isn't loopable."
+    We expose the cross-correlation score at the loop point as `seam_score`.
+    """
+    from pymusiclooper.core import MusicLooper  # type: ignore
+    looper = MusicLooper(filename=str(in_path))
+    pairs = looper.find_loop_pairs()
+    if not pairs:
+        return {"loop_found": False, "seam_score": 0.0, "loop_start_s": None, "loop_end_s": None}
+    # PyMusicLooper sorts pairs by score descending. Top one is the cleanest seam.
+    top = pairs[0]
+    return {
+        "loop_found": True,
+        "seam_score": float(getattr(top, "score", getattr(top, "loop_score", 0.0))),
+        "loop_start_s": float(getattr(top, "loop_start", 0)) / float(getattr(looper, "rate", 44100)),
+        "loop_end_s": float(getattr(top, "loop_end", 0)) / float(getattr(looper, "rate", 44100)),
+        "candidate_count": len(pairs),
+    }
+
+
+def qa(in_path: Path, out_dir: Path | None = None,
+       *, clap_prompt: str | None = None, run_loop_check: bool = False) -> dict:
     samples, sr = read_wav(in_path)
     out_dir = out_dir or in_path.parent / f"{in_path.stem}_qa"
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -145,6 +234,22 @@ def qa(in_path: Path, out_dir: Path | None = None) -> dict:
     info["source"] = str(in_path)
     info["waveform"] = str(out_dir / "waveform.png")
     info["spectrogram"] = str(out_dir / "spectrogram.png")
+
+    # Optional content-correctness layer — only runs when user asks. Keeps
+    # the default path zero-torch.
+    if clap_prompt:
+        try:
+            info["clap"] = clap_score(in_path, clap_prompt)
+        except Exception as e:
+            info["clap"] = {"error": f"{type(e).__name__}: {e}",
+                            "hint": "run from pipelines/audio/.venv (needs torch + laion-clap)"}
+    if run_loop_check:
+        try:
+            info["loop"] = loop_seam_check(in_path)
+        except Exception as e:
+            info["loop"] = {"error": f"{type(e).__name__}: {e}",
+                            "hint": "run from pipelines/audio/.venv (needs pymusiclooper)"}
+
     (out_dir / "qa.json").write_text(json.dumps(info, indent=2))
     return info
 
@@ -153,11 +258,26 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("input", type=Path)
     ap.add_argument("--out", type=Path, default=None)
+    ap.add_argument("--clap-prompt", default=None,
+                    help="If set, computes CLAP audio-text similarity to this prompt. "
+                         "Catches the noise/static failure mode that LUFS-only QA misses. "
+                         "Requires the dedicated pipelines/audio/.venv (torch + laion-clap).")
+    ap.add_argument("--loop-check", action="store_true",
+                    help="If set, runs PyMusicLooper seam validation. "
+                         "Flags WAVs where no clean loop point can be found. "
+                         "Requires the dedicated pipelines/audio/.venv (pymusiclooper).")
     args = ap.parse_args()
-    info = qa(args.input, args.out)
+    info = qa(args.input, args.out, clap_prompt=args.clap_prompt,
+              run_loop_check=args.loop_check)
     print(f"[audio_qa] {args.input.name}: dur={info['duration_s']:.3f}s "
           f"rms={info['rms_dbfs']:.1f}dBFS peak={info['peak_dbfs']:.1f}dBFS "
           f"clipped={info['clipped_samples']} clicks~={info['click_count_estimate']}")
+    if "clap" in info and "clap_score" in info["clap"]:
+        c = info["clap"]
+        print(f"[audio_qa] clap: prompt={c['prompt']!r}  score={c['clap_score']:+.3f}  ({c['interpretation']})")
+    if "loop" in info and info["loop"].get("loop_found"):
+        print(f"[audio_qa] loop: seam_score={info['loop']['seam_score']:.3f}  "
+              f"start={info['loop']['loop_start_s']:.2f}s  end={info['loop']['loop_end_s']:.2f}s")
 
 
 if __name__ == "__main__":

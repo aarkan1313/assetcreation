@@ -1,0 +1,87 @@
+{
+  "kit": "desert",
+  "anchor": "desert_sand",
+  "anchor_palette": {
+    "dominant_colors": [
+      {
+        "rgb": [
+          214,
+          200,
+          184
+        ],
+        "weight": 0.2985038757324219
+      },
+      {
+        "rgb": [
+          210,
+          179,
+          138
+        ],
+        "weight": 0.2719306945800781
+      },
+      {
+        "rgb": [
+          210,
+          189,
+          165
+        ],
+        "weight": 0.18419647216796875
+      },
+      {
+        "rgb": [
+          201,
+          171,
+          133
+        ],
+        "weight": 0.16357040405273438
+      },
+      {
+        "rgb": [
+          204,
+          178,
+          142
+        ],
+        "weight": 0.08179855346679688
+      }
+    ],
+    "lab_means": [
+      208.6628532409668,
+      185.2381362915039,
+      156.3601417541504
+    ]
+  },
+  "match_strength": 0.55,
+  "members": [
+    "desert_sand",
+    "desert_dry_brush",
+    "desert_canyon_rock",
+    "desert_dark_rock",
+    "desert_salt_pan"
+  ],
+  "additions": [
+    {
+      "id": "desert_dry_brush",
+      "prompt": "sparse dry desert brush and small dead twigs over sandy soil, top-down photo",
+      "category": "Foliage",
+      "palette_match_strength": 0.55
+    },
+    {
+      "id": "desert_canyon_rock",
+      "prompt": "weathered tan canyon sandstone with horizontal striations, top-down photo",
+      "category": "Rock",
+      "palette_match_strength": 0.55
+    },
+    {
+      "id": "desert_dark_rock",
+      "prompt": "dark basalt rock with red-brown patina, weathered, top-down photo",
+      "category": "Rock",
+      "palette_match_strength": 0.55
+    },
+    {
+      "id": "desert_salt_pan",
+      "prompt": "white salt pan crust with hexagonal cracks, top-down photo",
+      "category": "Ground",
+      "palette_match_strength": 0.55
+    }
+  ]
+}

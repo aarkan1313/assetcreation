@@ -1,0 +1,23 @@
+{
+  "input": "D:\\assets\\world3\\opentopo\\processed\\mosaics\\smokies_usgs1m_4call\\seam_delta.tif",
+  "output": "D:\\assets\\world3\\toporeview\\phase3_smokies_4call\\layers\\seam_delta.png",
+  "source_crs": "EPSG:26917",
+  "source_bounds": {
+    "left": 259022.0,
+    "bottom": 3927557.0,
+    "right": 288027.0,
+    "top": 3957392.0
+  },
+  "size_px": 8192,
+  "resampling": "nearest",
+  "mode": "gray",
+  "min_value": 0.0,
+  "max_value": 0.05,
+  "valid_pixels": 4382881,
+  "matched_bounds": {
+    "left": 259022.0,
+    "bottom": 3927557.0,
+    "right": 288027.0,
+    "top": 3957392.0
+  }
+}

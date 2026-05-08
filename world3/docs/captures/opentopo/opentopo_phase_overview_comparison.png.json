@@ -1,0 +1,26 @@
+{
+  "output": "D:\\assets\\world3\\docs\\captures\\opentopo\\opentopo_phase_overview_comparison.png",
+  "title": "OpenTopo Phase Overview",
+  "subtitle": "Static comparison from exported review layers; no Godot headless renderer used.",
+  "items": [
+    {
+      "label": "Phase 1 Grand Canyon",
+      "path": "D:\\assets\\world3\\toporeview\\phase1_mosaic\\layers\\terrain_texture.png",
+      "note": "USGS10m same-type mosaic, synthetic terrain texture for seams and form."
+    },
+    {
+      "label": "Phase 2 Guadalupe Cypress",
+      "path": "D:\\assets\\world3\\toporeview\\phase2_fusion_max\\layers\\orthophoto_rgb.png",
+      "note": "Real RGB orthophoto fused with DTM, NIR, canopy, point-cloud and derived layers."
+    },
+    {
+      "label": "Phase 3 Smokies",
+      "path": "D:\\assets\\world3\\toporeview\\phase3_smokies_4call\\layers\\terrain_texture.png",
+      "note": "Four-call USGS1m stitched mosaic, procedural review texture pending color/canopy overlay."
+    }
+  ],
+  "size_px": [
+    2020,
+    712
+  ]
+}

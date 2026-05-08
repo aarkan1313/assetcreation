@@ -11,12 +11,18 @@ from PIL import Image
 
 def layer_role(name: str) -> str:
     lower = name.lower()
+    if "render_albedo" in lower:
+        return "final_render_texture"
     if "orthophoto_rgb" in lower:
         return "color_reference"
     if "orthophoto_nir" in lower:
         return "nir_reference"
     if "vegetation" in lower or "canopy" in lower or "chm" in lower:
         return "vegetation"
+    if "source_valid" in lower or "render_fill" in lower:
+        return "render_repair_mask"
+    if "cliff" in lower or "mask" in lower:
+        return "material_mask_source"
     if "pointcloud" in lower:
         return "pointcloud_reference"
     if "slope" in lower or "roughness" in lower:

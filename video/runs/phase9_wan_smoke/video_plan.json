@@ -1,0 +1,35 @@
+{
+  "schema": "comfy_video.plan.v1",
+  "id": "phase9_wan_smoke",
+  "backend": "comfy_wan_video",
+  "model": "Wan-AI/Wan2.5-T2V",
+  "license": "Apache-2.0 or compatible Wan model license; verify exact checkpoint before shipping.",
+  "workflow": "D:\\assets\\pipelines\\_meta\\comfy_workflows\\wan_t2v_5s_720p.json",
+  "host": "http://127.0.0.1:8188",
+  "output_node": "3",
+  "prompt": "looping glowing portal UI stinger",
+  "negative_prompt": "text, watermark, logo, harsh flicker, low quality",
+  "seed": 42,
+  "duration_s": 2.0,
+  "fps": 12,
+  "frames": 24,
+  "width": 512,
+  "height": 288,
+  "steps": 24,
+  "required_custom_nodes": [
+    "ComfyUI-WanVideoWrapper or compatible Wan video nodes"
+  ],
+  "overrides": {
+    "1.inputs.prompt": "looping glowing portal UI stinger",
+    "1.inputs.negative_prompt": "text, watermark, logo, harsh flicker, low quality",
+    "2.inputs.model": "Wan-AI/Wan2.5-T2V",
+    "2.inputs.seed": 42,
+    "2.inputs.steps": 24,
+    "2.inputs.width": 512,
+    "2.inputs.height": 288,
+    "2.inputs.fps": 12,
+    "2.inputs.frames": 24,
+    "3.inputs.filename_prefix": "phase9_wan_smoke"
+  },
+  "timestamp": "2026-05-06T21:19:45+00:00"
+}

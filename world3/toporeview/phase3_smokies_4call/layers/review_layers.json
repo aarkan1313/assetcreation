@@ -1,0 +1,14 @@
+{
+  "heightmap": "D:\\assets\\world3\\toporeview\\phase3_smokies_4call\\heightmap.png",
+  "meta": "D:\\assets\\world3\\toporeview\\phase3_smokies_4call\\meta.json",
+  "output_dir": "D:\\assets\\world3\\toporeview\\phase3_smokies_4call\\layers",
+  "mode": "procedural_review_layers_from_heightmap",
+  "not_real_imagery": true,
+  "size_px": [
+    8192,
+    8192
+  ],
+  "world_size_x_m": 29005.0,
+  "world_size_z_m": 29835.0,
+  "terrain_style": "appalachian"
+}

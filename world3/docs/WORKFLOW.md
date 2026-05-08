@@ -86,7 +86,8 @@ What it does (`pipeline/build_world.py`):
 1. Opens the GeoTIFF with rasterio
 2. Optionally crops with `--bbox left bottom right top` or
    `--center lon lat --extent-km N` (the latter recommended for game-scale)
-3. Replaces nodata pixels with the local minimum
+3. Builds a source-valid mask, fills no-data for render-safe geometry, and
+   writes repair masks
 4. Resamples to a square `--size` × `--size` PNG using LANCZOS in
    float32, then quantizes to 16-bit grayscale
 5. Computes world XZ size in meters from DEM bounds (handles geographic
@@ -332,6 +333,67 @@ For OpenTopo review screenshots, use the same trailing-argument pattern with
 `--headless --scene ... --quit-after ...` path as scene validation; that path
 can fail locally with a Windows access violation even when the real capture
 scene works.
+
+`toporeview/TopoReviewCapture.gd` is the deterministic comparison helper for
+OpenTopo close-up screenshots. It sets the same camera pose across multiple
+review scenes before saving the viewport.
+
+For OpenTopo albedo repair, use `pipeline/build_opentopo_render_albedo.py`.
+It is source-first: it preserves real orthophoto color and only extends nearby
+real pixels into explicit color gaps. It does not procedurally repaint terrain.
+
+For turning OpenTopo top-down imagery into reusable ground materials, use the
+separate tileable texture workflow:
+
+```text
+D:/assets/world3/docs/OPENTOPO_TILEABLE_REAL_TEXTURE_WORKFLOW.md
+```
+
+That workflow deliberately separates source crops, tileable-real derivatives,
+and stylized/fantasy derivatives. Real-place maps should be chunked; reusable
+ground textures can be tiled, repaired, downscaled, or stylized with provenance.
+
+First Guadalupe Cypress pilot command:
+
+```powershell
+python D:/assets/world3/pipeline/build_opentopo_tileable_texture.py `
+  --stack-dir D:/assets/world3/toporeview/phase2_fusion_max `
+  --output-dir D:/assets/world3/opentopo/processed/textures/Guadalupe_Cypress `
+  --crop-sizes-m 32,64 `
+  --output-size 1024 `
+  --macro-output-size 4096
+```
+
+Review scene:
+
+```text
+res://toporeview/tileable_texture_review.tscn
+res://toporeview/tileable_hex_column_16x16.tscn
+```
+
+The review scene deliberately shows both plain repeat and `hex anti-tile`. Plain
+repeat exposes whether a crop is truly seamless; hex anti-tiling is the current
+practical path for hiding square repetition from real orthophoto crops.
+The focused `tileable_hex_column_16x16.tscn` scene isolates the third column at
+`16x` repeat for interactive review. It looks substantially better than plain
+repeat, but faint tile-to-tile lines remain because it still reuses one crop.
+The follow-up production step is now implemented as a soft composite prototype:
+several unlike real crops per material class are independently repaired, color
+normalized, and blended with periodic soft masks into one seamless PBR product.
+
+Current soft-composite review assets:
+
+```text
+res://toporeview/tileable_variant_atlas_review.tscn
+res://toporeview/tileable_soft_composite_gallery.tscn
+D:/assets/world3/docs/captures/opentopo/godot_tileable_soft_composite_gallery.png
+D:/assets/world3/docs/captures/opentopo/opentopo_soft_composite_2x2_material_sheet.png
+```
+
+The six current Guadalupe Cypress classes are `bare_soil`, `bright_rock`,
+`dry_wash`, `rocky_slope`, `scrub_dense`, and `scrub_sparse`. Use these as
+source-real meso material candidates; keep the full map as macro color/reference
+and add separate close detail where real-world motifs repeat too visibly.
 
 ### Texture grid captures (testing the shader at scale)
 The viewer scenes lay 6 ground planes (200×200 m) in a 2×3 grid, then

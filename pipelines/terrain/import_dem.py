@@ -105,7 +105,7 @@ DEFAULT_DATASET = "COP30"
 # Persistent cache for raw OpenTopo TIFFs. Avoids re-downloading on re-runs and
 # lets us re-process a region (different size, fantasy edits, etc) without
 # spending API credits.
-DEM_CACHE_DIR = Path(r"D:\assets\pipelines\terrain\source_dems")
+DEM_CACHE_DIR = Path(r"D:\assets\dems")
 
 
 def _cache_key(bbox: tuple[float, float, float, float], dataset: str) -> Path:

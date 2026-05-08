@@ -191,7 +191,8 @@ Current rule:
 Future fill pipeline should support:
 
 - Edge-aware raster inpainting for small orthophoto gaps.
-- Terrain-aware procedural texture fill using slope/roughness/elevation masks.
+- Source-pixel inpaint/extension for small orthophoto gaps.
+- Separate art-material fill for non-photoreal game materials.
 - Canopy/vegetation fill from nearby NIR and point-cloud statistics.
 - Optional generative fill for visual-only albedo, with a separate filled mask.
 - `source_valid_mask.png` and `filled_mask.png` for every filled layer.

@@ -2,7 +2,7 @@
 
 Date: 2026-05-07
 
-Status: first HD single-tile pass generated and validated.
+Status: first HD single-tile pass generated and data-validated.
 
 ## Purpose
 
@@ -68,8 +68,8 @@ Interpretation:
   higher than 4096.
 - Mesh detail is still lower than the 1 m DTM. A 1024-subdivision mesh would
   reach about 1.56 m/vertex, but may be heavier.
-- True sub-meter geometry would need LAZ-derived surface detail, normal maps,
-  or procedural micro-detail.
+- True sub-meter geometry would need LAZ-derived surface detail, source-derived
+  normal maps, or chunked terrain.
 
 ## Layers
 
@@ -93,7 +93,10 @@ roughness.png
 
 ```text
 stack_manifest.json status: pass
-Godot headless scene load: success
+Real Godot capture: pass
+Real close-up capture: pass
+Render-safe geometry repair: pass
+Source-first render_albedo: pass
 ```
 
 Validation command:
@@ -105,10 +108,23 @@ python D:/assets/world3/pipeline/build_opentopo_stack_manifest.py `
   --site Guadalupe_Cypress `
   --description "4096 Phase 2 HD single-tile review stack for texture, scene, and zoom fidelity testing"
 
-& "C:/Godot/Godot_v4.5-stable_win64.exe" `
-  --headless --path "D:/assets/world3" `
-  "res://toporeview/phase2_fusion_hd_review.tscn" --quit-after 3
 ```
+
+Godot capture note:
+
+Real viewport capture was validated with normal Godot and the capture scene as
+the trailing argument:
+
+```text
+res://toporeview/capture_phase2_fusion_hd.tscn
+res://toporeview/capture_phase2_close_hd.tscn
+D:/assets/world3/docs/captures/opentopo/godot_phase2_fusion_hd.png
+D:/assets/world3/docs/captures/opentopo/godot_phase2_close_hd.png
+```
+
+The older waited `--headless --scene ... --quit-after ...` path can hit a local
+Windows access violation across multiple review scenes. Do not use that path as
+scene validation.
 
 ## Rebuild Commands
 
@@ -192,15 +208,27 @@ Use this scene to answer:
 
 - At what camera height does 4096 stop holding up?
 - Does the 512-subdivision mesh visibly limit close-up quality?
-- Does orthophoto need procedural detail blended under it for ground-level use?
+- Does orthophoto need source-derived detail maps or chunked delivery for
+  ground-level use?
 - Which layers are useful as final visual layers, and which should only drive
   masks/material placement?
 
+Current close-up finding:
+
+4096 improves the orthophoto enough to make the terrain read better than the
+1024 baseline, but it is still not a solved ground-level scene. Geometry spacing
+and material treatment are still limiting factors.
+
+Current repair policy is source-first and documented in:
+
+```text
+D:/assets/world3/docs/OPENTOPO_RENDER_REPAIR_WORKFLOW.md
+```
+
 ## Next
 
-1. Capture fixed screenshots: overview, mid-altitude, close ground, steep slope,
-   and vegetated patch.
+1. Capture close-range and layer-switched screenshots: overview, mid-altitude,
+   close ground, steep slope, and vegetated patch.
 2. If 4096 still fails too early, create an 8192 RGB-only stress export.
 3. If texture holds but terrain geometry fails, test a 1024-subdivision scene.
 4. Start baked ground texture crops from the 4096 orthophoto and masks.
-

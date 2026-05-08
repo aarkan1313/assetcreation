@@ -50,11 +50,23 @@ SCHNELL_MODEL_ID = "black-forest-labs/FLUX.1-schnell"
 KREA_DEV_ID = "black-forest-labs/FLUX.1-Krea-dev"
 DEV_MODEL_ID = "black-forest-labs/FLUX.1-dev"
 
-NON_COMMERCIAL_IDS = {DEV_MODEL_ID, KREA_DEV_ID}
+# FLUX.2 family added 2026-05-07 per research brief #07.
+# - Klein 4B: Apache 2.0, commercial-safe, ~13 GB, day-0 ComfyUI Blackwell support.
+#   This is the recommended replacement for FLUX.1 [schnell] for shipped assets.
+# - dev (32B): non-commercial license like FLUX.1 [dev]. Higher quality ceiling
+#   for hero icons but DO NOT SHIP outputs without per-asset license review.
+FLUX2_KLEIN_4B_ID = "black-forest-labs/FLUX.2-klein-4B"
+FLUX2_DEV_ID = "black-forest-labs/FLUX.2-dev"
+
+NON_COMMERCIAL_IDS = {DEV_MODEL_ID, KREA_DEV_ID, FLUX2_DEV_ID}
+
+# Commercial-safe (Apache 2.0) family — the default-eligible choices.
+COMMERCIAL_SAFE_IDS = {SCHNELL_MODEL_ID, FLUX2_KLEIN_4B_ID}
 
 LICENSE_NOTE = (
-    "FLUX.1 [schnell] is Apache-2.0 (commercial use OK). "
-    "FLUX.1 [dev] and FLUX.1 [Krea-dev] are non-commercial; do NOT ship outputs."
+    "FLUX.1 [schnell] AND FLUX.2 [klein-4B] are Apache-2.0 (commercial OK). "
+    "FLUX.1 [dev], FLUX.1 [Krea-dev], and FLUX.2 [dev] are non-commercial; "
+    "do NOT ship outputs from those without per-asset license review."
 )
 
 
@@ -85,12 +97,12 @@ def build_plan(specs: list[dict], *,
     if model_id in NON_COMMERCIAL_IDS:
         raise ValueError(
             f"local_diffusion_icons: refusing to plan with {model_id!r}; "
-            "non-commercial license. Use FLUX.1 [schnell] or pass "
-            "--i-know-its-non-commercial.")
+            "non-commercial license. Use FLUX.1 [schnell] or FLUX.2 [klein-4B] "
+            "(both Apache-2.0), or pass --i-know-its-non-commercial.")
     return {
         "model_id": model_id,
-        "license": "Apache-2.0" if model_id == SCHNELL_MODEL_ID
-                    else "FLUX.1 license; verify before shipping",
+        "license": "Apache-2.0" if model_id in COMMERCIAL_SAFE_IDS
+                    else "FLUX license; verify before shipping",
         "size_px": size,
         "steps": steps,
         "guidance_scale": guidance,
@@ -320,7 +332,12 @@ def main() -> int:
     ap.add_argument("--backend", choices=("diffusers", "comfy"), default="diffusers",
                     help="diffusers keeps the original direct FLUX path; comfy uses comfy_runner + IP-Adapter workflow.")
     ap.add_argument("--model-id", default=SCHNELL_MODEL_ID,
-                    help=f"HF model id. Default: {SCHNELL_MODEL_ID} (Apache-2.0).")
+                    help=f"HF model id. Default: {SCHNELL_MODEL_ID} (Apache-2.0). "
+                         f"Commercial-safe alternates: {FLUX2_KLEIN_4B_ID} (FLUX.2 "
+                         f"Klein 4B, ~13 GB, Apache-2.0, day-0 ComfyUI Blackwell support, "
+                         f"recommended replacement per brief #07 2026-05-07). "
+                         f"Non-commercial (require --i-know-its-non-commercial): "
+                         f"{DEV_MODEL_ID}, {KREA_DEV_ID}, {FLUX2_DEV_ID}.")
     ap.add_argument("--size", type=int, default=1024)
     ap.add_argument("--steps", type=int, default=4,
                     help="schnell is 1-4 step distilled; default 4.")

@@ -1,0 +1,87 @@
+{
+  "kit": "tundra",
+  "anchor": "tundra_moss",
+  "anchor_palette": {
+    "dominant_colors": [
+      {
+        "rgb": [
+          44,
+          36,
+          24
+        ],
+        "weight": 0.257415771484375
+      },
+      {
+        "rgb": [
+          17,
+          25,
+          18
+        ],
+        "weight": 0.23488998413085938
+      },
+      {
+        "rgb": [
+          61,
+          69,
+          52
+        ],
+        "weight": 0.22753143310546875
+      },
+      {
+        "rgb": [
+          90,
+          108,
+          84
+        ],
+        "weight": 0.161376953125
+      },
+      {
+        "rgb": [
+          135,
+          167,
+          130
+        ],
+        "weight": 0.11878585815429688
+      }
+    ],
+    "lab_means": [
+      61.45026397705078,
+      70.00945663452148,
+      52.768314361572266
+    ]
+  },
+  "match_strength": 0.55,
+  "members": [
+    "tundra_moss",
+    "tundra_lichen",
+    "tundra_frost_rock",
+    "tundra_dark_rock",
+    "tundra_ice"
+  ],
+  "additions": [
+    {
+      "id": "tundra_lichen",
+      "prompt": "close-up photograph of pale green and grey rock lichen on bare stone, patchy crustose lichen, top-down view, photoreal",
+      "category": "Foliage",
+      "palette_match_strength": 0.55
+    },
+    {
+      "id": "tundra_frost_rock",
+      "prompt": "frost-covered weathered grey rock with patchy ice crystals and snow dust, top-down photograph, photoreal",
+      "category": "Rock",
+      "palette_match_strength": 0.55
+    },
+    {
+      "id": "tundra_dark_rock",
+      "prompt": "dark wet weathered tundra rock surface with frost patches, top-down photo, photoreal",
+      "category": "Rock",
+      "palette_match_strength": 0.55
+    },
+    {
+      "id": "tundra_ice",
+      "prompt": "compacted snow surface with subtle wind ridges and tiny ice crystals, top-down photograph, photoreal",
+      "category": "Snow",
+      "palette_match_strength": 0.55
+    }
+  ]
+}

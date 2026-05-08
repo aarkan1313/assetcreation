@@ -245,7 +245,7 @@ def _bbox_intersects(a, b) -> bool:
     return not (a[2] < b[0] or a[0] > b[2] or a[3] < b[1] or a[1] > b[3])
 
 
-_LINZ_CATALOG_CACHE = Path(__file__).resolve().parent / "source_dems" / "_linz_catalog_cache.json"
+_LINZ_CATALOG_CACHE = Path(r"D:\assets\dems") / "_linz_catalog_cache.json"
 
 
 def _linz_load_catalog_index(variant: str) -> list[dict]:
@@ -326,7 +326,7 @@ def fetch_linz(dataset: str, bbox_lonlat: tuple[float, float, float, float],
     # Per-item bbox is only available inside the item.json — N HTTP fetches.
     # Cache per-collection item lists to avoid re-fetching on repeat queries.
     item_urls = []
-    items_cache_path = (Path(__file__).resolve().parent / "source_dems"
+    items_cache_path = (Path(r"D:\assets\dems")
                         / f"_linz_items_cache.json")
     items_cache = {}
     if items_cache_path.exists():
@@ -468,7 +468,7 @@ def main() -> int:
                     metavar=("W", "S", "E", "N"))
     ap.add_argument("--id", required=True)
     ap.add_argument("--out-dir", type=Path,
-                    default=Path(__file__).resolve().parent / "source_dems")
+                    default=Path(r"D:\assets\dems"))
     ap.add_argument("--size", type=int, default=1024)
     args = ap.parse_args()
 

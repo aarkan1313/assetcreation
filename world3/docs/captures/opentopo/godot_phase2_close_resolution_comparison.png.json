@@ -1,0 +1,26 @@
+{
+  "output": "D:\\assets\\world3\\docs\\captures\\opentopo\\godot_phase2_close_resolution_comparison.png",
+  "title": "Phase 2 Real Godot Close-Up Comparison",
+  "subtitle": "After render-safe no-data repair. Same camera; scenes now start on render_albedo.",
+  "items": [
+    {
+      "label": "Baseline 1024/256 mesh",
+      "path": "D:\\assets\\world3\\docs\\captures\\opentopo\\godot_phase2_close_baseline.png",
+      "note": "Render-safe heightmap; still soft because texture and mesh are low resolution."
+    },
+    {
+      "label": "HD 4096/512 mesh",
+      "path": "D:\\assets\\world3\\docs\\captures\\opentopo\\godot_phase2_close_hd.png",
+      "note": "Sharper texture and safer no-data handling; geometry still limits close ground view."
+    },
+    {
+      "label": "MAX 8192/1024 mesh",
+      "path": "D:\\assets\\world3\\docs\\captures\\opentopo\\godot_phase2_close_max.png",
+      "note": "Best current single-mesh scene; remaining artifacts point to chunking and normal/detail maps."
+    }
+  ],
+  "size_px": [
+    1960,
+    621
+  ]
+}

@@ -2,7 +2,7 @@
 
 Date: 2026-05-07
 
-Status: max single-tile pass generated and validated.
+Status: max single-tile pass generated and data-validated.
 
 ## Purpose
 
@@ -79,7 +79,10 @@ Validation:
 stack_manifest.json status: pass
 layers: 10
 heightmap size: 8192 x 8192
-Godot headless scene load: success
+Real Godot capture: pass
+Real close-up capture: pass
+Render-safe geometry repair: pass
+Source-first render_albedo: pass
 ```
 
 ## 16K RGB Stress Specs
@@ -90,6 +93,7 @@ Texture scale:   about 0.0977 m/px
 Compressed file: about 252 MB
 Layer role:      RGB orthophoto stress/reference only
 Godot scene:     phase2_fusion_ultra_rgb_review.tscn
+Capture status:  not rerun in this pass
 ```
 
 Source-data ceiling:
@@ -108,6 +112,22 @@ Interpretation:
   multi-layer scene format.
 - Full source-native over the whole 1.6 km AOI would be roughly 24K pixels wide.
   That belongs in a chunked/streamed workflow.
+
+Real close-up result:
+
+The 8192 texture is clearly sharper than the 1024 and 4096 captures, but it also
+reveals mesh/normal artifacts at close range. The correct next step is not just
+larger single-image exports; it is chunked terrain plus real DSM/LAZ/color
+projection where available.
+
+No-data/cliff repair policy:
+
+```text
+D:/assets/world3/docs/OPENTOPO_RENDER_REPAIR_WORKFLOW.md
+```
+
+`render_albedo.png` is now source-first. It preserves the real orthophoto and
+does not procedurally repaint repaired DEM areas.
 
 ## Rebuild Commands
 
@@ -151,17 +171,22 @@ python D:/assets/world3/pipeline/build_opentopo_stack_manifest.py `
   --description "8192 Phase 2 max single-tile review stack for upper-bound texture and zoom testing"
 ```
 
-Godot load checks:
+Godot capture note:
 
-```powershell
-& "C:/Godot/Godot_v4.5-stable_win64.exe" `
-  --headless --path "D:/assets/world3" `
-  "res://toporeview/phase2_fusion_max_review.tscn" --quit-after 3
+Real viewport capture was validated with normal Godot and the capture scene as
+the trailing argument:
 
-& "C:/Godot/Godot_v4.5-stable_win64.exe" `
-  --headless --path "D:/assets/world3" `
-  "res://toporeview/phase2_fusion_ultra_rgb_review.tscn" --quit-after 3
+```text
+res://toporeview/capture_phase2_fusion_max.tscn
+res://toporeview/capture_phase2_close_max.tscn
+D:/assets/world3/docs/captures/opentopo/godot_phase2_fusion_max.png
+D:/assets/world3/docs/captures/opentopo/godot_phase2_close_max.png
+D:/assets/world3/docs/captures/opentopo/godot_phase2_close_resolution_comparison.png
 ```
+
+The older waited `--headless --scene ... --quit-after ...` path can hit a local
+Windows access violation across multiple review scenes. Do not use that path as
+scene validation.
 
 ## Review Questions
 
@@ -171,8 +196,8 @@ Use this pass to decide:
 - Does the 1024-subdivision mesh now become the limiting factor?
 - Does 16K RGB materially beat 8192 in Godot, or is it overkill for the full
   AOI?
-- Should the next real investment be chunked terrain, baked ground textures, or
-  procedural detail layered over orthophoto?
+- Should the next real investment be chunked terrain, baked real-ground
+  textures, or point-cloud/color projection for steep surfaces?
 
 ## Decision Boundary
 
@@ -182,5 +207,6 @@ texture. Move to chunks:
 - 256 m to 400 m chunks.
 - 2048 or 4096 per chunk.
 - Nearby chunks high-res; far chunks downsampled.
-- Real orthophoto/reference layer plus procedural detail material close up.
-
+- Real orthophoto/reference layer plus source-derived detail maps close up.
+- If stylized/fantasy materials are used, keep them separate from source-first
+  repair outputs.

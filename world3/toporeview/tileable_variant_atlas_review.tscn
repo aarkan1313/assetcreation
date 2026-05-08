@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://toporeview/TileableVariantAtlasReview.gd" id="review_script"]
+[ext_resource type="Script" path="res://scripts/FlyCam.gd" id="flycam_script"]
+
+[sub_resource type="Environment" id="env"]
+background_mode = 1
+background_color = Color(0.52, 0.61, 0.68, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.72, 0.72, 0.68, 1)
+ambient_light_energy = 0.42
+tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 3.0
+ssao_intensity = 0.9
+
+[node name="TileableVariantAtlasReview" type="Node3D"]
+script = ExtResource("review_script")
+manifest_path = "res://opentopo/processed/textures/Guadalupe_Cypress_variants/manifest.json"
+material_class = "dry_wash"
+crop_size_m = 64
+grid_count = 16
+cell_size_m = 7.0
+grid_gap_m = 28.0
+use_hex_inside_cells = true
+variant_output_policy = "tileable_real_norm"
+show_soft_composite = true
+soft_repeat_count = 2.0
+camera_path = NodePath("Camera3D")
+label_path = NodePath("CanvasLayer/ReviewLabel")
+
+[node name="WorldEnv" type="WorldEnvironment" parent="."]
+environment = SubResource("env")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.7071, -0.5, 0.5, 0, 0.7071, 0.7071, -0.7071, -0.5, 0.5, 0, 300, 0)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 1.45
+shadow_enabled = true
+directional_shadow_max_distance = 900.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+script = ExtResource("flycam_script")
+near = 0.05
+far = 3000.0
+current = true
+move_speed = 65.0
+fast_mult = 8.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ReviewLabel" type="Label" parent="CanvasLayer"]
+offset_left = 18.0
+offset_top = 16.0
+offset_right = 1560.0
+offset_bottom = 126.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 19
+text = "OpenTopo variant atlas review"

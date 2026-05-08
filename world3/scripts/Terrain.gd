@@ -31,30 +31,25 @@ func rebuild() -> void:
 	if meta.is_empty():
 		push_error("Terrain: failed to load meta.json")
 		return
-	# Prefer load() (resource system, works in exports) but fall back to
-	# load_from_file() so 16-bit PNG precision survives if Godot's import
-	# pipeline drops to 8-bit.
+	# Prefer the raw file for review bundles so regenerated heightmaps are used
+	# immediately and 16-bit PNG precision survives Godot's import pipeline.
 	var img: Image
-	var tex: Texture2D = load(heightmap_path) as Texture2D
-	if tex != null:
-		img = tex.get_image()
-		# If the imported texture is 8-bit but the source PNG is 16-bit, prefer
-		# the source for precision (only matters in dev; exports use the .ctex).
-		if img != null and img.get_format() == Image.FORMAT_RGB8:
-			var raw := Image.load_from_file(heightmap_path)
-			if raw != null:
-				img = raw
+	img = Image.load_from_file(heightmap_path)
 	if img == null:
-		img = Image.load_from_file(heightmap_path)
+		var tex: Texture2D = load(heightmap_path) as Texture2D
+		if tex != null:
+			img = tex.get_image()
 	if img == null:
 		push_error("Terrain: failed to load heightmap " + heightmap_path)
 		return
 
 	var world_size: float = float(meta.get("world_size_m", 1024.0))
+	var world_size_x: float = float(meta.get("world_size_x_m", world_size))
+	var world_size_z: float = float(meta.get("world_size_z_m", world_size))
 	var elev_min: float = float(meta.get("elevation_min_m", 0.0))
 	var elev_range: float = float(meta.get("elevation_range_m", 1.0))
 
-	mesh = _build_mesh(img, world_size, elev_min, elev_range)
+	mesh = _build_mesh(img, world_size_x, world_size_z, elev_min, elev_range)
 
 	# If the scene set a ShaderMaterial that uses elev_min_m / elev_range_m
 	# uniforms (e.g. terrain_blend.gdshader), populate them from meta so the
@@ -69,32 +64,31 @@ func rebuild() -> void:
 	if collision_target != NodePath(""):
 		var body: StaticBody3D = get_node_or_null(collision_target) as StaticBody3D
 		if body != null:
-			# HeightMapShape3D grid covers (map_width-1) x (map_depth-1) world units
-			# centered on the body, with Y values used as absolute heights post-scale.
-			# Scale the body so each cell spans world_size/subdivisions meters in X/Z.
+			# HeightMapShape3D grid covers (map_width-1) x (map_depth-1) cells
+			# centered on the body. Scale X/Z to the terrain footprint and keep Y
+			# unscaled so stored elevations remain world meters.
 			var collision_subdiv := subdivisions
-			var s := world_size / float(collision_subdiv)
+			var sx_scale := world_size_x / float(collision_subdiv)
+			var sz_scale := world_size_z / float(collision_subdiv)
 			var hm_shape := HeightMapShape3D.new()
 			hm_shape.map_width = collision_subdiv + 1
 			hm_shape.map_depth = collision_subdiv + 1
 			var heights := PackedFloat32Array()
 			heights.resize((collision_subdiv + 1) * (collision_subdiv + 1))
-			var step: float = float(img.get_width() - 1) / float(collision_subdiv)
-			# Heights are stored relative to the body's Y. We scale the body uniformly
-			# in X/Z by `s`, so we must store heights pre-scale: divide by s so that
-			# after the body's scale is applied, world Y matches elevation_meters.
+			var step_x: float = float(img.get_width() - 1) / float(collision_subdiv)
+			var step_z: float = float(img.get_height() - 1) / float(collision_subdiv)
 			for z in range(collision_subdiv + 1):
 				for x in range(collision_subdiv + 1):
-					var sx: int = clampi(int(round(x * step)), 0, img.get_width() - 1)
-					var sz: int = clampi(int(round(z * step)), 0, img.get_width() - 1)
-					var nrm: float = img.get_pixel(sx, sz).r
+					var sample_x: int = clampi(int(round(x * step_x)), 0, img.get_width() - 1)
+					var sample_z: int = clampi(int(round(z * step_z)), 0, img.get_height() - 1)
+					var nrm: float = img.get_pixel(sample_x, sample_z).r
 					var elev: float = elev_min + nrm * elev_range * height_scale
-					heights[z * (collision_subdiv + 1) + x] = elev / s
+					heights[z * (collision_subdiv + 1) + x] = elev
 			hm_shape.map_data = heights
 			var col := CollisionShape3D.new()
 			col.shape = hm_shape
 			body.add_child(col)
-			body.transform = Transform3D(Basis().scaled(Vector3(s, s, s)), Vector3.ZERO)
+			body.transform = Transform3D(Basis().scaled(Vector3(sx_scale, 1.0, sz_scale)), Vector3.ZERO)
 
 
 func _load_meta() -> Dictionary:
@@ -109,7 +103,7 @@ func _load_meta() -> Dictionary:
 	return parsed
 
 
-func _build_mesh(img: Image, world_size: float, elev_min: float, elev_range: float) -> ArrayMesh:
+func _build_mesh(img: Image, world_size_x: float, world_size_z: float, elev_min: float, elev_range: float) -> ArrayMesh:
 	var n := subdivisions
 	var verts := PackedVector3Array()
 	var uvs := PackedVector2Array()
@@ -120,18 +114,21 @@ func _build_mesh(img: Image, world_size: float, elev_min: float, elev_range: flo
 	normals.resize((n + 1) * (n + 1))
 
 	var img_w := img.get_width()
-	var step := float(img_w - 1) / float(n)
-	var half := world_size * 0.5
+	var img_h := img.get_height()
+	var step_x := float(img_w - 1) / float(n)
+	var step_z := float(img_h - 1) / float(n)
+	var half_x := world_size_x * 0.5
+	var half_z := world_size_z * 0.5
 
 	# Pre-sample heights into a 2D array for normal calculation.
 	var hgrid := PackedFloat32Array()
 	hgrid.resize((n + 1) * (n + 1))
 	for z in range(n + 1):
 		for x in range(n + 1):
-			var sx := int(round(x * step))
-			var sz := int(round(z * step))
+			var sx := int(round(x * step_x))
+			var sz := int(round(z * step_z))
 			sx = clampi(sx, 0, img_w - 1)
-			sz = clampi(sz, 0, img_w - 1)
+			sz = clampi(sz, 0, img_h - 1)
 			var nrm: float = img.get_pixel(sx, sz).r
 			var elev: float = elev_min + nrm * elev_range * height_scale
 			hgrid[z * (n + 1) + x] = elev
@@ -141,13 +138,14 @@ func _build_mesh(img: Image, world_size: float, elev_min: float, elev_range: flo
 			var i: int = z * (n + 1) + x
 			var fx: float = float(x) / float(n)
 			var fz: float = float(z) / float(n)
-			var wx: float = fx * world_size - half
-			var wz: float = fz * world_size - half
+			var wx: float = fx * world_size_x - half_x
+			var wz: float = fz * world_size_z - half_z
 			verts[i] = Vector3(wx, hgrid[i], wz)
 			uvs[i] = Vector2(fx, fz)
 
 	# Compute normals from finite differences on the world-space height grid.
-	var dx: float = world_size / float(n)
+	var dx: float = world_size_x / float(n)
+	var dz: float = world_size_z / float(n)
 	for z in range(n + 1):
 		for x in range(n + 1):
 			var i: int = z * (n + 1) + x
@@ -160,7 +158,7 @@ func _build_mesh(img: Image, world_size: float, elev_min: float, elev_range: flo
 			var hd: float = hgrid[zd * (n + 1) + x]
 			var hu: float = hgrid[zu * (n + 1) + x]
 			var dhx: float = (hr - hl) / max(float(xr - xl), 1.0) / dx
-			var dhz: float = (hu - hd) / max(float(zu - zd), 1.0) / dx
+			var dhz: float = (hu - hd) / max(float(zu - zd), 1.0) / dz
 			normals[i] = Vector3(-dhx, 1.0, -dhz).normalized()
 
 	# Triangle indices: two tris per quad.

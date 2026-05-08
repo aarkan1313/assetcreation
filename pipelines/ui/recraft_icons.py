@@ -121,6 +121,7 @@ def generate_one(prompt: str, *, size: int = 1024,
 
 
 def generate_batch(specs: list[dict], out_dir: Path, *, size: int = 1024,
+                   model: str = "recraftv3",
                    style: str = "icon",
                    substyle: str | None = None,
                    style_id: str | None = None,
@@ -133,7 +134,7 @@ def generate_batch(specs: list[dict], out_dir: Path, *, size: int = 1024,
     for spec in specs:
         sid = spec["id"]
         prompt = spec["prompt"]
-        result = generate_one(prompt, size=size, style=style,
+        result = generate_one(prompt, size=size, model=model, style=style,
                               substyle=substyle, style_id=style_id, svg=svg)
         png_path = out_dir / f"{sid}.png"
         png_path.write_bytes(result["png"])
@@ -141,8 +142,8 @@ def generate_batch(specs: list[dict], out_dir: Path, *, size: int = 1024,
             "id": sid,
             "path": str(png_path.relative_to(Path(r"D:\assets")).as_posix()),
             "size_px": size,
-            "backend": "recraft_v3",
-            "model": "recraftv3",
+            "backend": f"recraft_{model.replace('-', '_')}",
+            "model": model,
             "prompt": prompt,
             "style": style,
             "license": "Recraft commercial use (user owns generations)",
@@ -191,6 +192,15 @@ def main() -> int:
                     help="Optional Recraft style UUID for set-style consistency.")
     ap.add_argument("--svg", action="store_true",
                     help="Request SVG output (vector lane). PNG is rasterized via resvg-py.")
+    ap.add_argument("--model", default="recraftv3",
+                    choices=["recraftv3", "recraftv4", "recraftv4-pro-vector"],
+                    help="Recraft model. recraftv3 (default; existing behavior). "
+                         "recraftv4 (Feb 2026 ground-up rebuild, $0.04/raster, $0.08/vector, "
+                         "explicit icon-grid logic + consistent stroke widths per brief #07). "
+                         "recraftv4-pro-vector ($0.30/SVG, finest paths, recommended for "
+                         "hero-icon pass per brief #07 — ~$9 for 30 hero icons). "
+                         "Verify exact API model id via Recraft docs before run; this CLI "
+                         "exposes the toggle but the API key gate still blocks unauthorized spend.")
     ap.add_argument("--out", type=Path, default=ICONS_DIR)
     ap.add_argument("--throttle", type=float, default=0.5,
                     help="Seconds to wait between API calls.")
@@ -208,7 +218,7 @@ def main() -> int:
         raise SystemExit("--prompts must be a JSON array of {id, prompt}")
 
     icons = generate_batch(
-        specs, args.out, size=args.size, style=args.style,
+        specs, args.out, size=args.size, model=args.model, style=args.style,
         substyle=args.substyle, style_id=args.style_id, svg=args.svg,
         throttle_s=args.throttle,
     )

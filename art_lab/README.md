@@ -1,5 +1,7 @@
 # Magic / World Art Lab
 
+> **Two VFX lanes exist.** This is the **shader iteration** lane (`.gdshader` files, evolve+score+promote workflow). The other is `pipelines/vfx/` — content baker (frames + manifest). **Formula-driven → here. Simulation-driven → there.** Full decision tree at [../docs/VFX_LANES.md](../docs/VFX_LANES.md).
+
 Per `research/G_deep_dive_world_textures_decor_shader.md`, this is the first-party shader/map/biome/UI lab. Pattern: request JSON in, artifact folder out, preview required, manifest required, Godot export expected.
 
 Shader workflow status and next-work handoff: `SHADER_WORKFLOW_STATUS.md`.

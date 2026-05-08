@@ -1,0 +1,41 @@
+{
+  "output": "D:\\assets\\world3\\docs\\captures\\opentopo\\opentopo_phase2_data_layer_comparison.png",
+  "title": "Phase 2 Data Layer Comparison",
+  "subtitle": "Guadalupe Cypress max stack: real color plus vegetation/canopy/point-cloud/terrain signals.",
+  "items": [
+    {
+      "label": "RGB Orthophoto",
+      "path": "D:\\assets\\world3\\toporeview\\phase2_fusion_max\\layers\\orthophoto_rgb.png",
+      "note": "Real aerial color; best for ground texture reference at high altitude."
+    },
+    {
+      "label": "NIR False Color",
+      "path": "D:\\assets\\world3\\toporeview\\phase2_fusion_max\\layers\\orthophoto_nir_false.png",
+      "note": "Near-infrared source, useful for vegetation discrimination."
+    },
+    {
+      "label": "Vegetation Signal",
+      "path": "D:\\assets\\world3\\toporeview\\phase2_fusion_max\\layers\\vegetation_ndvi_like.png",
+      "note": "Derived vegetation mask from NIR-style data; not a color texture."
+    },
+    {
+      "label": "Canopy Height",
+      "path": "D:\\assets\\world3\\toporeview\\phase2_fusion_max\\layers\\canopy_height_mosaic.png",
+      "note": "Point-cloud-derived canopy/surface height signal."
+    },
+    {
+      "label": "Point Cloud RGB",
+      "path": "D:\\assets\\world3\\toporeview\\phase2_fusion_max\\layers\\pointcloud_rgb_topdown_mosaic.png",
+      "note": "Top-down color from LAZ point clouds; coverage differs from orthophoto."
+    },
+    {
+      "label": "Hillshade",
+      "path": "D:\\assets\\world3\\toporeview\\phase2_fusion_max\\layers\\hillshade.png",
+      "note": "Terrain form layer from DTM; useful for texture baking and QA."
+    }
+  ],
+  "size_px": [
+    1780,
+    1126
+  ]
+}

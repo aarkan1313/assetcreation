@@ -47,7 +47,7 @@ Image.MAX_IMAGE_PIXELS = 1_000_000_000
 
 REPO = Path(r"D:\assets")
 TERRAIN_DIR = REPO / "pipelines" / "terrain"
-SOURCE_CACHE = TERRAIN_DIR / "source_dems"
+SOURCE_CACHE = REPO / "dems"
 OUT_DIR = TERRAIN_DIR / "output"
 
 

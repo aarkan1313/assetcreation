@@ -1,0 +1,41 @@
+{
+  "output": "D:\\assets\\world3\\docs\\captures\\opentopo\\godot_phase2_repair_before_after.png",
+  "title": "Phase 2 No-Data and Cliff Repair QA",
+  "subtitle": "Real Godot captures. Geometry is repaired; albedo remains source-first real orthophoto.",
+  "items": [
+    {
+      "label": "Before MAX overview",
+      "path": "D:\\assets\\world3\\docs\\captures\\opentopo\\godot_phase2_fusion_max_before_repair.png",
+      "note": "Legacy heightmap used min-fill for nodata."
+    },
+    {
+      "label": "After MAX overview",
+      "path": "D:\\assets\\world3\\docs\\captures\\opentopo\\godot_phase2_fusion_max.png",
+      "note": "Render-safe heightmap; render_albedo preserves real orthophoto."
+    },
+    {
+      "label": "Repair edge check",
+      "path": "D:\\assets\\world3\\docs\\captures\\opentopo\\godot_phase2_repair_edge_max.png",
+      "note": "No-data edge no longer becomes a curtain; remaining issue is true side-view texture limits."
+    },
+    {
+      "label": "Before close MAX",
+      "path": "D:\\assets\\world3\\docs\\captures\\opentopo\\godot_phase2_close_max_before_repair.png",
+      "note": "Raw orthophoto on legacy min-filled terrain."
+    },
+    {
+      "label": "Current fill mask",
+      "path": "D:\\assets\\world3\\toporeview\\phase2_fusion_max\\layers\\render_fill_mask.png",
+      "note": "White pixels are source-invalid DTM cells repaired for rendering."
+    },
+    {
+      "label": "Source-first policy",
+      "path": "D:\\assets\\world3\\docs\\captures\\opentopo\\godot_phase2_fusion_max.png",
+      "note": "Albedo repair does not procedurally repaint real orthophoto pixels."
+    }
+  ],
+  "size_px": [
+    1960,
+    1132
+  ]
+}

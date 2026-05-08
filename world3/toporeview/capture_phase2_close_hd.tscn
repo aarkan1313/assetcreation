@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://toporeview/phase2_fusion_hd_review.tscn" id="scene"]
+[ext_resource type="Script" path="res://toporeview/TopoReviewCapture.gd" id="cap_script"]
+
+[node name="CapturePhase2CloseHD" type="Node"]
+
+[node name="Inner" parent="." instance=ExtResource("scene")]
+
+[node name="Capture" type="Node" parent="."]
+script = ExtResource("cap_script")
+output_path = "D:/assets/world3/docs/captures/opentopo/godot_phase2_close_hd.png"
+warmup_frames = 12
+shot = "close_oblique"
+hide_ui = false

@@ -143,5 +143,20 @@ docs/OPENTOPO_LARGE_4CALL_PLAN.md
 docs/OPENTOPO_PHASE3_SMOKIES_4CALL_AUDIT.md
 ```
 
-Next OpenTopo step: overlap point-cloud/color/canopy sources onto the
-Smokies height mosaic, then split into chunks for close-up fidelity.
+Current OpenTopo texture state: the unlike real tile-to-tile prototype has been
+promoted into six `4096` soft-composite source-real material classes. It fixes
+the hard seam problem well enough for review, but scale/noise/motif repetition
+still need production judgment.
+
+Immediate OpenTopo texture plan:
+
+1. Review the six-class `tileable_soft` gallery and 2x2 material sheet.
+2. Pick which classes are viable at close, mid, and far camera distances.
+3. Promote good classes into a reusable Godot material path.
+4. Keep the full real map as a macro color/reference layer; use soft composites
+   as meso material layers; add separate close detail where source motifs repeat.
+5. Use the same workflow on the next AOI only after these scale decisions are
+   documented.
+
+Smokies color/canopy fusion and chunking remain important, but they should not
+interrupt the current texture-quality question.

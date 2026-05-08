@@ -91,5 +91,31 @@
     "nearest_reference": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
     "render_source": "cpu_proxy",
     "selection_score": 87.11
+  },
+  "reference_review": {
+    "reference_set": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref",
+    "scorer": "all",
+    "rank_by": "edge_mse",
+    "reference_score": 93.43,
+    "nearest_reference": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+    "reference_distance": 0.0309,
+    "all_scorers": {
+      "edge_mse": {
+        "score": 93.43,
+        "nearest": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+        "distance": 0.0309
+      },
+      "dreamsim": {
+        "score": 0.8204029202461243,
+        "nearest": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+        "distance": 0.17959707975387573
+      },
+      "lpips": {
+        "score": 0.917282223701477,
+        "nearest": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+        "distance": 0.08271777629852295
+      }
+    },
+    "created": "2026-05-07T20:34:07.622768+00:00"
   }
 }

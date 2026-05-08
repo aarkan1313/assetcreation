@@ -1,0 +1,41 @@
+{
+  "output": "D:\\assets\\world3\\docs\\captures\\opentopo\\opentopo_phase3_smokies_qa_layers.png",
+  "title": "Phase 3 Smokies 4-Call QA Layers",
+  "subtitle": "USGS1m 29.005 x 29.835 km stitched mosaic: rendered from exported 8192 review layers.",
+  "items": [
+    {
+      "label": "Terrain Texture",
+      "path": "D:\\assets\\world3\\toporeview\\phase3_smokies_4call\\layers\\terrain_texture.png",
+      "note": "Procedural Appalachian diagnostic texture, not real orthophoto."
+    },
+    {
+      "label": "Hillshade",
+      "path": "D:\\assets\\world3\\toporeview\\phase3_smokies_4call\\layers\\hillshade.png",
+      "note": "Terrain form over the full stitched mosaic."
+    },
+    {
+      "label": "Elevation",
+      "path": "D:\\assets\\world3\\toporeview\\phase3_smokies_4call\\layers\\elevation_gray.png",
+      "note": "Normalized elevation, 358.2 to 2025.1 m."
+    },
+    {
+      "label": "Slope",
+      "path": "D:\\assets\\world3\\toporeview\\phase3_smokies_4call\\layers\\slope_deg.png",
+      "note": "Derived from the 8192 review heightmap."
+    },
+    {
+      "label": "Coverage Count",
+      "path": "D:\\assets\\world3\\toporeview\\phase3_smokies_4call\\layers\\coverage_count.png",
+      "note": "Source tile coverage; overlap areas show where multiple tiles contribute."
+    },
+    {
+      "label": "Seam Delta",
+      "path": "D:\\assets\\world3\\toporeview\\phase3_smokies_4call\\layers\\seam_delta.png",
+      "note": "Overlap elevation delta; validation p99 is 0.0 m."
+    }
+  ],
+  "size_px": [
+    1780,
+    1126
+  ]
+}

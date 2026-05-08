@@ -1,0 +1,11 @@
+{
+  "schema": "flipbook_extract.plan.v1",
+  "frames_dir": "video\\runs\\phase9_wan_smoke\\frames",
+  "pattern": "*.png",
+  "frame_count": 0,
+  "cols": 0,
+  "rows": 0,
+  "out": "video\\runs\\phase9_wan_smoke\\flipbook.png",
+  "timestamp": "2026-05-06T21:19:55+00:00",
+  "dry_run": true
+}

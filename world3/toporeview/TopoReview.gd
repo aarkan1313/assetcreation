@@ -151,6 +151,9 @@ func _is_qa_layer(layer_name: String) -> bool:
 		or layer_name.contains("vegetation")
 		or layer_name.contains("canopy")
 		or layer_name.contains("chm")
+		or layer_name.contains("mask")
+		or layer_name.contains("fill")
+		or layer_name.contains("cliff")
 	)
 
 
@@ -192,15 +195,18 @@ func _update_label() -> void:
 		layer_name = String(_layers[_layer_index].get("name", ""))
 	var elev_min := float(_meta.get("elevation_min_m", 0.0))
 	var elev_max := float(_meta.get("elevation_max_m", 0.0))
-	var world_km := float(_meta.get("world_size_m", 0.0)) / 1000.0
-	label.text = "%s\nLayer: %s (%d/%d)\nElevation: %.1f-%.1f m | %.2f km | height x %.2f\nRMB+mouse look, WASD move, Space/Ctrl up/down, Shift fast\nL/Tab layer | 1 iso | 2 top | 3 low | R reset | Z/X height | H UI" % [
+	var fallback_world := float(_meta.get("world_size_m", 0.0))
+	var world_x_km := float(_meta.get("world_size_x_m", fallback_world)) / 1000.0
+	var world_z_km := float(_meta.get("world_size_z_m", fallback_world)) / 1000.0
+	label.text = "%s\nLayer: %s (%d/%d)\nElevation: %.1f-%.1f m | %.2f x %.2f km | height x %.2f\nRMB+mouse look, WASD move, Space/Ctrl up/down, Shift fast\nL/Tab layer | 1 iso | 2 top | 3 low | R reset | Z/X height | H UI" % [
 		review_title,
 		layer_name,
 		_layer_index + 1,
 		max(_layers.size(), 1),
 		elev_min,
 		elev_max,
-		world_km,
+		world_x_km,
+		world_z_km,
 		_height_scale,
 	]
 

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://toporeview/tileable_texture_review.tscn" id="scene"]
+[ext_resource type="Script" path="res://scripts/HeadlessCapture.gd" id="cap_script"]
+
+[node name="CaptureTileableHexColumn16x16" type="Node"]
+
+[node name="Inner" parent="." instance=ExtResource("scene")]
+crop_size_m = 64
+focus_policy = "hex_anti_tile"
+plane_size_m = 36.0
+repeat_count = 16.0
+gap_m = 10.0
+orthographic_overview = true
+
+[node name="Capture" type="Node" parent="."]
+script = ExtResource("cap_script")
+output_path = "D:/assets/world3/docs/captures/opentopo/godot_tileable_hex_column_16x16.png"
+warmup_frames = 12

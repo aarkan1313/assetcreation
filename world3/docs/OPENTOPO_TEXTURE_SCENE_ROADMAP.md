@@ -15,6 +15,12 @@ become?" There are three useful workflows.
 Goal: turn real OpenTopo imagery and derived masks into reusable ground
 materials.
 
+Operational recipe:
+
+```text
+D:/assets/world3/docs/OPENTOPO_TILEABLE_REAL_TEXTURE_WORKFLOW.md
+```
+
 This is not a real-place map workflow. It treats orthophoto and fused layers as
 source material for textures: dry wash, rocky slope, scrub, exposed soil,
 chaparral floor, canyon rock, etc.
@@ -44,6 +50,30 @@ Not good for:
 - Preserving exact geography.
 - Close-range photogrammetry.
 - Treating measured pixels as authoritative after tiling/inpainting/style work.
+
+Updated direction after first visual review:
+
+The first single-tile hex review is useful but not final. Some crops are
+technically seamless yet still read wrong because noisy orthophoto structure is
+repeated at the wrong scale. The next step is not heavier repair of one crop; it
+is a multi-variant source-real atlas.
+
+Material stack target:
+
+```text
+macro: full-map or large-crop real color, low frequency
+meso: unlike real crop variants per material class
+micro: cleaned close-detail normal/roughness/noise
+```
+
+First executable slice:
+
+1. Pick one class, starting with `dry_wash`.
+2. Select `8-16` sibling real crops from the same fused stack.
+3. Repair each crop independently as `tileable_real`.
+4. Build a mixed `16 x 16` Godot review grid.
+5. Reject variants that create blocky color changes, repeated noisy motifs, or
+   implausible scale.
 
 Prototype:
 
@@ -94,8 +124,8 @@ Not good for:
 
 Near-term improvements:
 
-1. Add a better terrain material that can blend orthophoto with procedural
-   detail up close.
+1. Add a better terrain material that can preserve orthophoto while using
+   source-derived detail maps up close.
 2. Use NDVI/CHM/canopy layers to place simple vegetation markers or instanced
    prototypes.
 3. Add material-mask exports, not just debug overlays.
@@ -130,7 +160,7 @@ DTM:            1.0 m cell size
 
 That means color can support much closer inspection than the current viewer.
 Geometry is bounded by the 1 m DTM unless we derive surface detail from LAZ,
-normal maps, or procedural micro-displacement.
+source-derived normal maps, or chunked higher-density meshes.
 
 Single-tile texture ladder for the 1.6 km AOI:
 
@@ -180,8 +210,9 @@ The likely end state combines all three:
 
 1. Build a fused real-place stack.
 2. Deliver it as chunks/LOD for close zoom.
-3. Use baked/procedural detail materials under the orthophoto or in place of it
-   when close range exposes image limits.
+3. Use baked real-ground materials or source-derived detail maps when close
+   range exposes image limits. Keep any fantasy/stylized material as a separate
+   art derivative, not source repair.
 
 ## Proposed Next Sprint
 
@@ -218,6 +249,7 @@ Current audit:
 world3/docs/OPENTOPO_PHASE2_HD_REVIEW.md
 world3/docs/OPENTOPO_PHASE2_MAX_REVIEW.md
 world3/docs/OPENTOPO_LARGE_4CALL_PLAN.md
+world3/docs/OPENTOPO_PHASE3_SMOKIES_4CALL_AUDIT.md
 ```
 
 Questions to answer:
@@ -231,18 +263,38 @@ Questions to answer:
 
 Use Phase 2 as texture source.
 
+Status: first pilot complete; unlike-tile prototype has produced six current
+soft-composite source-real material classes.
+See:
+
+```text
+D:/assets/world3/docs/OPENTOPO_TILEABLE_TEXTURE_PILOT_AUDIT.md
+D:/assets/world3/docs/OPENTOPO_TILEABLE_REAL_TEXTURE_WORKFLOW.md
+```
+
 Deliverables:
 
-- 4-6 cropped source patches.
-- Seamless albedo/PBR outputs for at least 2 patches.
-- Comparison material scene in Godot.
-- Notes on which source layers helped: RGB only, RGB+NIR, RGB+slope, etc.
+- Existing: 4-6 source material classes, `source/`, `tileable_real`, and
+  `stylized_pixel` outputs, plus Godot comparison scene.
+- Existing: `dry_wash` mixed-cell variant atlas scene for hard-switch QA.
+- Existing: six `4096` `tileable_soft` composites for `bare_soil`,
+  `bright_rock`, `dry_wash`, `rocky_slope`, `scrub_dense`, and `scrub_sparse`.
+- Existing: `tileable_soft_composite_gallery.tscn` and labeled 2x2 material
+  sheet for review.
+- Next: close/mid/far scale notes so noisy crops are rejected even when seam QA
+  passes.
+- Next: reusable Godot material path that treats the real map as macro color,
+  soft composites as meso material, and separate generated/filtered detail as
+  close micro texture.
 
 Questions to answer:
 
 - Can real orthophoto crops become good tileable game textures?
 - Do they need heavy delighting/shadow removal?
 - Do generated/stylized variants beat direct repaired crops?
+- Does a multi-variant source-real atlas read more natural than a single crop?
+- How much color normalization is needed before unlike variants stop looking
+  blocky?
 
 ### Step 3: Chunked HD Prototype
 

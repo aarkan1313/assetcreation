@@ -19,6 +19,18 @@ Sources supported:
                       "semantic_tags": ["..."], "rtl_mirror": false}
                    Use this for Lucide / Phosphor / Tabler raw GitHub URLs.
 
+  mit-iso-libs     UI-chrome libraries via jsDelivr (auto URL templates).
+                   --library {lucide,phosphor,tabler,iconoir} --picks <txt>
+                   Iconoir added 2026-05-07 per brief #07 (~1600 hand-drawn
+                   line icons, MIT). Tabler is the largest free-license set
+                   we ingest (~6128, MIT) — the biggest *quantity* win for
+                   generic inventory glyphs per the brief.
+
+  oga-rpg700       OpenGameArt 700+ RPG Icons pack (CC0). User-supplied zip
+                   only — OGA doesn't expose a stable HTTP API. Fetch
+                   manually from https://opengameart.org/content/700-rpg-icons
+                   then --zip <path>. Per brief #07 worth-considering ingest.
+
 License hygiene:
   * --accept-license is required for any network fetch. CC-BY libraries also
     require attribution; this tool always writes ATTRIBUTION.md aggregating
@@ -67,12 +79,28 @@ GAME_ICONS_NET_URL_TMPL = "https://game-icons.net/icons/ffffff/000000/1x1/{autho
 LUCIDE_URL_TMPL   = "https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/{name}.svg"
 PHOSPHOR_URL_TMPL = "https://cdn.jsdelivr.net/npm/@phosphor-icons/core@latest/assets/{weight}/{name}{weight_suffix}.svg"
 TABLER_URL_TMPL   = "https://cdn.jsdelivr.net/npm/@tabler/icons@latest/icons/outline/{name}.svg"
+# Iconoir added 2026-05-07 per brief #07 — ~1600 hand-drawn line icons, MIT.
+# Pairs well with fantasy UI chrome where Tabler/Phosphor read too geometric.
+ICONOIR_URL_TMPL  = "https://cdn.jsdelivr.net/npm/iconoir/icons/regular/{name}.svg"
 
 UI_LIB_LICENSES = {
     "lucide":   "ISC",
     "phosphor": "MIT",
     "tabler":   "MIT",
+    "iconoir":  "MIT",
 }
+
+# OpenGameArt 700+ RPG Icons pack (CC0) — fantasy/RPG specific, raster originally
+# but community SVG conversions exist. Per brief #07 worth-considering ingest.
+# Unlike CDN libs, this is a single zip download; users must fetch it manually
+# via --zip <path> --source oga-rpg700 since OGA doesn't expose a stable HTTP API.
+# Original pack: https://opengameart.org/content/700-rpg-icons
+OGA_RPG700_LICENSE = "CC0"
+OGA_RPG700_ATTRIBUTION_TEXT = (
+    "OpenGameArt 700+ RPG Icons (CC0). Original at "
+    "https://opengameart.org/content/700-rpg-icons. CC0 = no attribution "
+    "required, but recording the source here for asset provenance."
+)
 # game-icons.net's primary mirror also exposes per-icon raw SVGs by slug.
 # The raw silhouette URL pattern is /<author>/<slug>.svg under their CDN.
 # We try a couple of patterns because the public site organizes by author.
@@ -614,7 +642,10 @@ def _ui_lib_url(entry: dict) -> str:
                                         weight_suffix=suffix)
     if lib == "tabler":
         return TABLER_URL_TMPL.format(name=name)
-    raise ValueError(f"unknown ui lib {lib!r}; valid: lucide / phosphor / tabler")
+    if lib == "iconoir":
+        # Added 2026-05-07 per brief #07. Hand-drawn line icons, MIT, ~1600 entries.
+        return ICONOIR_URL_TMPL.format(name=name)
+    raise ValueError(f"unknown ui lib {lib!r}; valid: lucide / phosphor / tabler / iconoir")
 
 
 def ingest_ui_lib_picklist(items: list[dict], out_dir: Path,
@@ -785,6 +816,16 @@ MIT_ISO_LIB_REGISTRY: dict[str, dict] = {
         "source_html": "https://tabler.io/icons/icon/{slug}",
         "attribution": "Tabler Icons / MIT (no attribution required)",
     },
+    # Iconoir added 2026-05-07 per brief #07. ~1600 hand-drawn line icons,
+    # MIT. Pairs better with fantasy UI chrome than the more geometric
+    # Lucide/Phosphor/Tabler — line weight is friendlier to ornate frames.
+    "iconoir": {
+        "license": "MIT",
+        # Iconoir's regular weight is the default. solid/ also exists.
+        "url_template": "https://raw.githubusercontent.com/iconoir-icons/iconoir/main/icons/regular/{slug}.svg",
+        "source_html": "https://iconoir.com/?search={slug}",
+        "attribution": "Iconoir / MIT (no attribution required)",
+    },
 }
 
 
@@ -813,6 +854,14 @@ MIT_ISO_DEFAULT_PICKS: dict[str, list[str]] = {
         "settings", "menu-2", "x", "plus", "minus", "search",
         "info-circle", "alert-triangle", "check", "circle",
         "filter", "list", "trash", "device-floppy",
+    ],
+    "iconoir": [
+        # Default UI-chrome subset; Iconoir's strength is ornate-line aesthetic
+        # so picks bias toward icons that game frames actually need.
+        "nav-arrow-left", "nav-arrow-right", "nav-arrow-up", "nav-arrow-down",
+        "settings", "menu", "xmark", "plus", "minus", "search",
+        "info-circle", "warning-triangle", "check", "circle",
+        "filter-list", "list", "trash", "save",
     ],
 }
 

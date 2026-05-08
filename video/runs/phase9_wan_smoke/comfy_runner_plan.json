@@ -1,0 +1,14 @@
+{
+  "schema": "comfy_runner.result.v1",
+  "workflow_path": "D:\\assets\\pipelines\\_meta\\comfy_workflows\\wan_t2v_5s_720p.json",
+  "host": "http://127.0.0.1:8188",
+  "dry_run": true,
+  "node_count": 3,
+  "output_node_ids": [
+    "3"
+  ],
+  "prompt_id": null,
+  "missing_node_types": [],
+  "downloaded": [],
+  "elapsed_s": 0.0
+}

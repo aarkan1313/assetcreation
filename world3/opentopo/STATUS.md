@@ -349,6 +349,10 @@ Scenes:
 ```text
 D:/assets/world3/toporeview/phase1_mosaic_review.tscn
 D:/assets/world3/toporeview/phase2_fusion_review.tscn
+D:/assets/world3/toporeview/phase2_fusion_hd_review.tscn
+D:/assets/world3/toporeview/phase2_fusion_max_review.tscn
+D:/assets/world3/toporeview/phase2_fusion_ultra_rgb_review.tscn
+D:/assets/world3/toporeview/phase3_smokies_4call_review.tscn
 ```
 
 Shared controller:
@@ -378,6 +382,76 @@ Current direction:
 - Fused real-place scenes/maps using the aligned Phase 2 stack pattern.
 - High-detail zoom experiments, starting with a 4096 Phase 2 HD single-tile
   review scene and optional 8192 RGB stress test.
+- Tileable real-ground texture workflow documented at
+  `D:/assets/world3/docs/OPENTOPO_TILEABLE_REAL_TEXTURE_WORKFLOW.md`; source
+  maps stay chunked real-place scenes, while reusable materials can be tiled,
+  repaired, downscaled, or stylized with provenance.
+
+Tileable texture pilot status:
+
+```text
+D:/assets/world3/docs/OPENTOPO_TILEABLE_TEXTURE_PILOT_AUDIT.md
+D:/assets/world3/opentopo/processed/textures/Guadalupe_Cypress/
+D:/assets/world3/toporeview/tileable_texture_review.tscn
+D:/assets/world3/toporeview/tileable_hex_column_16x16.tscn
+D:/assets/world3/docs/captures/opentopo/godot_tileable_texture_review.png
+```
+
+The first pilot produced six crop classes at `32 m` and `64 m`, plus a `4096`
+full-map macro atlas. The macro atlas keeps the broad real-ground view because
+it looks good, but it is not forced seamless. Reusable material outputs are
+stored separately as `source/`, `tileable_real/`, and `stylized_pixel/`.
+
+Follow-up after visual review: plain square repeat is not good enough. The
+builder uses source-pixel offset patch quilting for border repair, and the Godot
+review scene added a `hex anti-tile` column. That broke up square repetition but
+still reused one crop, so faint tile-to-tile lines remained. The current path is
+the unlike-variant soft composite below. Additional visual note: several current
+crops contain noisy real-world patterns that can read unnaturally depending on
+scale, so production materials need source-native crops plus macro/meso/micro
+separation, not a single orthophoto tile doing every job.
+
+First unlike-tile slice completed:
+
+```text
+D:/assets/world3/pipeline/build_opentopo_texture_variant_atlas.py
+D:/assets/world3/opentopo/processed/textures/Guadalupe_Cypress_variants/
+D:/assets/world3/toporeview/tileable_variant_atlas_review.tscn
+D:/assets/world3/docs/captures/opentopo/godot_tileable_variant_atlas_review.png
+```
+
+Result: `12` dry-wash sibling variants were generated and reviewed. RGB
+normalization reduces the checkerboard, but hard per-cell switching still shows
+patch boundaries. A `4096` `tileable_soft` composite now blends unlike variants
+with periodic masks and wrap-safe offsets into a single seamless PBR product.
+Latest dry-wash soft-composite edge MSE mean: `0.0000136595`.
+
+Expanded current material batch:
+
+```text
+D:/assets/world3/opentopo/processed/textures/Guadalupe_Cypress_variants_bare_soil/
+D:/assets/world3/opentopo/processed/textures/Guadalupe_Cypress_variants_bright_rock/
+D:/assets/world3/opentopo/processed/textures/Guadalupe_Cypress_variants_dry_wash/
+D:/assets/world3/opentopo/processed/textures/Guadalupe_Cypress_variants_rocky_slope/
+D:/assets/world3/opentopo/processed/textures/Guadalupe_Cypress_variants_scrub_dense/
+D:/assets/world3/opentopo/processed/textures/Guadalupe_Cypress_variants_scrub_sparse/
+```
+
+Each class has `12` source-real variants, a `4096` `tileable_soft` PBR output
+(`albedo`, `height`, `normal`, `roughness`), and a generated `tile_2x2.png`.
+Observed edge MSE means range from `0.000008059` to `0.000018498`, with no hard
+tile boundary left in the soft-composite output. Review assets:
+
+```text
+D:/assets/world3/toporeview/tileable_soft_composite_gallery.tscn
+D:/assets/world3/docs/captures/opentopo/godot_tileable_soft_composite_gallery.png
+D:/assets/world3/docs/captures/opentopo/opentopo_soft_composite_2x2_material_sheet.png
+```
+
+Remaining texture risk: the seam problem is largely solved for this prototype,
+but some real-world motifs still repeat visibly depending on scale. Production
+materials should use this as a source-real meso layer, with macro color from the
+full map and separate close detail/noise where needed.
 
 Known Phase 2 detail facts:
 
@@ -406,7 +480,8 @@ Layers: 10 x 4096 aligned PNG layers
 Texture scale: about 0.3906 m/px over 1.6 km
 Scene mesh: 512 subdivisions, about 3.125 m/vertex
 Manifest: pass
-Godot headless load: success
+Real Godot capture: pass
+Real close-up capture: pass
 ```
 
 ## Phase 2 Max Review Pass
@@ -418,6 +493,7 @@ D:/assets/world3/toporeview/phase2_fusion_max/
 D:/assets/world3/toporeview/phase2_fusion_max_review.tscn
 D:/assets/world3/toporeview/phase2_fusion_ultra_rgb_review.tscn
 D:/assets/world3/docs/OPENTOPO_PHASE2_MAX_REVIEW.md
+D:/assets/world3/docs/OPENTOPO_RENDER_REPAIR_WORKFLOW.md
 ```
 
 Result:
@@ -428,21 +504,28 @@ Texture scale: about 0.1953 m/px over 1.6 km
 Scene mesh: 1024 subdivisions, about 1.5625 m/vertex
 Compressed stack size: about 520 MB
 Manifest: pass
-Godot max scene headless load: success
+Real Godot max capture: pass
+Real Godot max close-up capture: pass
+Render-safe geometry repair: pass
+Source-first render_albedo: pass
 
 Ultra RGB: 16384 x 16384 orthophoto stress layer
 Ultra RGB scale: about 0.0977 m/px
 Ultra RGB compressed file: about 252 MB
-Godot ultra RGB scene headless load: success
+Ultra RGB capture: not rerun in this pass
 ```
 
-## Large 4-Call USGS1m Plan
+## Phase 3 Large 4-Call USGS1m Mosaic
 
-Prepared:
+Generated:
 
 ```text
 D:/assets/world3/docs/OPENTOPO_LARGE_4CALL_PLAN.md
+D:/assets/world3/docs/OPENTOPO_PHASE3_SMOKIES_4CALL_AUDIT.md
 D:/assets/world3/pipeline/fetch_opentopo_tile_grid.py
+D:/assets/world3/pipeline/build_opentopo_mosaic_streaming.py
+D:/assets/world3/pipeline/validate_opentopo_mosaic_streaming.py
+D:/assets/world3/pipeline/export_heightmap_review_layers.py
 ```
 
 Tooling update:
@@ -452,7 +535,21 @@ fetch_opentopo_tile_grid.py now records per-tile width/height/area and supports
 --max-tile-area-km2 for preflight guardrails.
 ```
 
-Recommended first large target:
+Raw:
+
+```text
+D:/assets/world3/opentopo/raw/usgsdem/smokies_usgs1m_4call/
+```
+
+Processed:
+
+```text
+D:/assets/world3/opentopo/processed/mosaics/smokies_usgs1m_4call/
+D:/assets/world3/toporeview/phase3_smokies_4call/
+D:/assets/world3/toporeview/phase3_smokies_4call_review.tscn
+```
+
+Result:
 
 ```text
 stack: smokies_usgs1m_4call
@@ -463,7 +560,38 @@ tiles: 2 x 2
 overlap: 1 km
 per request: 225 km2
 preflight over_limit: []
+target grid: 29005 x 29835 at 1 m
+valid pixels: 845,312,752
+elevation range: 358.2009-2025.1490 m
+validation: pass_with_notes
+seam p99: 0.0 m
+source-window unique-area p99 delta: 0.00006103515625 m
 ```
+
+Real Godot viewport captures:
+
+```text
+D:/assets/world3/docs/captures/opentopo/godot_phase1_mosaic.png
+D:/assets/world3/docs/captures/opentopo/godot_phase2_fusion.png
+D:/assets/world3/docs/captures/opentopo/godot_phase2_fusion_hd.png
+D:/assets/world3/docs/captures/opentopo/godot_phase2_fusion_max.png
+D:/assets/world3/docs/captures/opentopo/godot_phase3_smokies_4call.png
+D:/assets/world3/docs/captures/opentopo/godot_real_render_phase_comparison.png
+D:/assets/world3/docs/captures/opentopo/godot_phase2_close_baseline.png
+D:/assets/world3/docs/captures/opentopo/godot_phase2_close_hd.png
+D:/assets/world3/docs/captures/opentopo/godot_phase2_close_max.png
+D:/assets/world3/docs/captures/opentopo/godot_phase2_close_resolution_comparison.png
+```
+
+Capture validation uses normal Godot with `res://toporeview/capture_phase*.tscn`
+as the trailing scene argument. Older static comparison sheets remain useful
+for layer QA, but are not real render captures.
+
+Close-up Phase 2 conclusion: higher texture resolution helps, but MAX exposes
+mesh/normal artifacts. The no-data curtain class should be fixed by geometry
+repair and masks. Photoreal cliff/slope improvement should come from chunked
+terrain and real DSM/LAZ/color projection where available, not procedural
+repainting over orthophoto.
 
 ## Comparison Report
 

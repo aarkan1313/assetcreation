@@ -312,7 +312,7 @@ SRTMGL1, SRTMGL1_E, AW3D30_E, COP90, NASADEM, EU_DTM, GEDI_L3, GEBCOSubIceTopo, 
 - **Auto-pick AW3D30** for high-latitude presets where SRTMGL3 has coverage gaps
 - **Bathymetry merge:** GEBCOIceTopo via `--bathymetry` flag
 - **High-res pulls:** `--res N` saves the full-resolution heightmap as a sidecar before downsampling for renderable mesh
-- **TIFF cache:** persistent at `D:\assets\pipelines\terrain\source_dems\`. Re-runs hit cache, no API credit re-spend
+- **TIFF cache:** persistent at `D:\assets\dems\` (relocated 2026-05-07; was `pipelines/terrain/source_dems/`). Re-runs hit cache, no API credit re-spend
 - **Pre-flight bbox area check:** rejects requests over the dataset's per-call km² limit, suggests a coarser dataset
 - **Rate limit awareness:** `bulk_pull.py` tracks `~/.opentopo_calls.jsonl` and stops at quota
 

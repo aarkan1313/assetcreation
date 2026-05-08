@@ -24,6 +24,8 @@ find something.
 | "How do I pull/process OpenTopography data?"                 | [OPENTOPO_GUIDE.md](OPENTOPO_GUIDE.md), [OPENTOPO_DATA_TYPES.md](OPENTOPO_DATA_TYPES.md), [OPENTOPO_MOSAIC_FUSION_WORKFLOWS.md](OPENTOPO_MOSAIC_FUSION_WORKFLOWS.md), [../opentopo/STATUS.md](../opentopo/STATUS.md) |
 | "How do we stitch tiles or fuse height/color/canopy layers?" | [OPENTOPO_MOSAIC_FUSION_WORKFLOWS.md](OPENTOPO_MOSAIC_FUSION_WORKFLOWS.md) |
 | "How do OpenTopo textures, real-place scenes, and HD zoom fit together?" | [OPENTOPO_TEXTURE_SCENE_ROADMAP.md](OPENTOPO_TEXTURE_SCENE_ROADMAP.md) |
+| "How do we turn real OpenTopo ground into tileable textures?" | [OPENTOPO_TILEABLE_REAL_TEXTURE_WORKFLOW.md](OPENTOPO_TILEABLE_REAL_TEXTURE_WORKFLOW.md) |
+| "What happened in the first tileable real-ground texture pilot?" | [OPENTOPO_TILEABLE_TEXTURE_PILOT_AUDIT.md](OPENTOPO_TILEABLE_TEXTURE_PILOT_AUDIT.md) |
 | "What happened in the Phase 2 HD review pass?"             | [OPENTOPO_PHASE2_HD_REVIEW.md](OPENTOPO_PHASE2_HD_REVIEW.md) |
 | "What happened in the Phase 2 max review pass?"            | [OPENTOPO_PHASE2_MAX_REVIEW.md](OPENTOPO_PHASE2_MAX_REVIEW.md) |
 | "What is the next huge 4-call OpenTopo plan?"              | [OPENTOPO_LARGE_4CALL_PLAN.md](OPENTOPO_LARGE_4CALL_PLAN.md) |

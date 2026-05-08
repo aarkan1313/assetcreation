@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="PackedScene" path="res://toporeview/tileable_texture_review.tscn" id="scene"]
+
+[node name="TileableHexColumn16x16" instance=ExtResource("scene")]
+crop_size_m = 64
+focus_policy = "hex_anti_tile"
+plane_size_m = 96.0
+repeat_count = 16.0
+gap_m = 22.0

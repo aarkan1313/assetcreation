@@ -9,6 +9,21 @@ animators/
 pipelines/terrain/source_dems/
 pipelines/terrain/output/
 
+# Top-level DEM cache (~8 GB, regenerated from OpenTopography on demand)
+dems/
+
+# AI model checkpoints + cloned research repos (~3 GB)
+models/
+
+# Cloned tools (built from source: meshoptimizer etc.)
+tools/
+
+# Local Claude Code state
+.claude/
+
+# Stray smoketest captures
+__b1_smoketest.png
+
 # Generated texture library (regenerated from FLUX prompts)
 world/textures/library/
 

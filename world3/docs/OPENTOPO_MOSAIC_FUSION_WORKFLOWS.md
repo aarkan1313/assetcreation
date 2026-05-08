@@ -362,10 +362,10 @@ Important distinction:
 - Workflow 3 decides how to render those layers close up.
 - Workflow 1 extracts reusable materials from the same source evidence.
 
-## Next Large 4-Call Mosaic
+## Large 4-Call Mosaic Result
 
-The next scale test is a 2x2 `USGS1m` mosaic with four API calls. The planned
-first target is Southern Appalachians / Smokies because the repo already has a
+The scale test is a completed 2x2 `USGS1m` mosaic with four API calls. The first
+target is Southern Appalachians / Smokies because the repo already had a
 known-good `USGS1m` pull there and the local catalog reports nearby USGS/NOAA
 point-cloud datasets.
 
@@ -379,12 +379,16 @@ unique AOI: 29 km x 29 km
 tiles: 2 x 2
 overlap: 1 km
 per request: 15 km x 15 km = 225 km2
+result grid: 29005 x 29835 at 1 m
+validation: pass_with_notes
+seam p99: 0.0 m
 ```
 
 Runbook:
 
 ```text
 world3/docs/OPENTOPO_LARGE_4CALL_PLAN.md
+world3/docs/OPENTOPO_PHASE3_SMOKIES_4CALL_AUDIT.md
 ```
 
 ## No-Data And Fill Policy
@@ -404,7 +408,8 @@ Future fill modes:
 | Fill Mode | Good For | Must Track |
 |---|---|---|
 | Neighbor inpaint | tiny orthophoto cracks or edge slivers | `filled_mask.png` |
-| Terrain-aware procedural fill | game albedo/material gaps | slope/roughness/elevation inputs |
+| Source-pixel inpaint/extension | tiny orthophoto cracks or edge slivers | source mask + fill provenance |
+| Art-material fill | non-photoreal game albedo/material gaps | separate art mask + provenance |
 | Vegetation-stat fill | missing canopy/vegetation hints | source-valid vegetation mask |
 | Generative image fill | visual-only color gaps | synthetic/fill provenance |
 

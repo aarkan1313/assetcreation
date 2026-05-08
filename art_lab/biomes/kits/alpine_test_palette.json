@@ -1,0 +1,73 @@
+{
+  "kit": "alpine_test",
+  "anchor": "wgv3_rock_dark",
+  "anchor_palette": {
+    "dominant_colors": [
+      {
+        "rgb": [
+          58,
+          47,
+          41
+        ],
+        "weight": 0.3052635192871094
+      },
+      {
+        "rgb": [
+          60,
+          49,
+          43
+        ],
+        "weight": 0.21548080444335938
+      },
+      {
+        "rgb": [
+          61,
+          51,
+          44
+        ],
+        "weight": 0.20729827880859375
+      },
+      {
+        "rgb": [
+          53,
+          41,
+          33
+        ],
+        "weight": 0.14544296264648438
+      },
+      {
+        "rgb": [
+          64,
+          54,
+          47
+        ],
+        "weight": 0.12651443481445312
+      }
+    ],
+    "lab_means": [
+      58.798194885253906,
+      48.075557708740234,
+      41.246673583984375
+    ]
+  },
+  "match_strength": 0.6,
+  "members": [
+    "wgv3_rock_dark",
+    "wgv3_alpine_moss",
+    "wgv3_alpine_scree"
+  ],
+  "additions": [
+    {
+      "id": "wgv3_alpine_moss",
+      "prompt": "moss-covered alpine boulder, top-down photo",
+      "category": "Foliage",
+      "palette_match_strength": 0.6
+    },
+    {
+      "id": "wgv3_alpine_scree",
+      "prompt": "scree slope of broken grey rock fragments, top-down photo",
+      "category": "Rock",
+      "palette_match_strength": 0.6
+    }
+  ]
+}

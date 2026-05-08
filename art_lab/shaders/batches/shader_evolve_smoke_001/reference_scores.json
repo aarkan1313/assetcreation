@@ -1,0 +1,145 @@
+{
+  "batch": "shader_evolve_smoke_001",
+  "reference_set": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref",
+  "reference_count": 1,
+  "scorer": "all",
+  "rank_by": "all",
+  "created": "2026-05-07T20:34:07.991906+00:00",
+  "rows": [
+    {
+      "id": "shader_evolve_smoke_001_g01_portal_swirl_2d_001",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "base_score": 90.26,
+      "reference_score": 95.89,
+      "nearest_reference": "ref_001.png",
+      "reference_distance": 0.01909,
+      "preview": "shader_evolve_smoke_001_g01_portal_swirl_2d_001\\preview.png",
+      "all_scorers": {
+        "edge_mse": {
+          "score": 95.89,
+          "nearest": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+          "distance": 0.01909
+        },
+        "dreamsim": {
+          "score": 0.8497330546379089,
+          "nearest": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+          "distance": 0.15026694536209106
+        },
+        "lpips": {
+          "score": 0.9397496283054352,
+          "nearest": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+          "distance": 0.06025037169456482
+        }
+      }
+    },
+    {
+      "id": "shader_evolve_smoke_001_g00_portal_swirl_2d_001",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "base_score": 89.95,
+      "reference_score": 95.52,
+      "nearest_reference": "ref_001.png",
+      "reference_distance": 0.02082,
+      "preview": "shader_evolve_smoke_001_g00_portal_swirl_2d_001\\preview.png",
+      "all_scorers": {
+        "edge_mse": {
+          "score": 95.52,
+          "nearest": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+          "distance": 0.02082
+        },
+        "dreamsim": {
+          "score": 0.8601711988449097,
+          "nearest": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+          "distance": 0.13982880115509033
+        },
+        "lpips": {
+          "score": 0.9460063278675079,
+          "nearest": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+          "distance": 0.053993672132492065
+        }
+      }
+    },
+    {
+      "id": "shader_evolve_smoke_001_g01_portal_swirl_2d_004",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "base_score": 89.08,
+      "reference_score": 94.74,
+      "nearest_reference": "ref_001.png",
+      "reference_distance": 0.02458,
+      "preview": "shader_evolve_smoke_001_g01_portal_swirl_2d_004\\preview.png",
+      "all_scorers": {
+        "edge_mse": {
+          "score": 94.74,
+          "nearest": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+          "distance": 0.02458
+        },
+        "dreamsim": {
+          "score": 0.8244016170501709,
+          "nearest": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+          "distance": 0.1755983829498291
+        },
+        "lpips": {
+          "score": 0.9361525103449821,
+          "nearest": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+          "distance": 0.06384748965501785
+        }
+      }
+    },
+    {
+      "id": "shader_evolve_smoke_001_g00_portal_swirl_2d_005",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "base_score": 87.4,
+      "reference_score": 94.1,
+      "nearest_reference": "ref_001.png",
+      "reference_distance": 0.02762,
+      "preview": "shader_evolve_smoke_001_g00_portal_swirl_2d_005\\preview.png",
+      "all_scorers": {
+        "edge_mse": {
+          "score": 94.1,
+          "nearest": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+          "distance": 0.02762
+        },
+        "dreamsim": {
+          "score": 0.783688485622406,
+          "nearest": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+          "distance": 0.216311514377594
+        },
+        "lpips": {
+          "score": 0.9112900644540787,
+          "nearest": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+          "distance": 0.08870993554592133
+        }
+      }
+    },
+    {
+      "id": "shader_evolve_smoke_001_g01_portal_swirl_2d_006",
+      "template": "portal_swirl_2d",
+      "role": "portal",
+      "base_score": 87.49,
+      "reference_score": 93.79,
+      "nearest_reference": "ref_001.png",
+      "reference_distance": 0.02914,
+      "preview": "shader_evolve_smoke_001_g01_portal_swirl_2d_006\\preview.png",
+      "all_scorers": {
+        "edge_mse": {
+          "score": 93.79,
+          "nearest": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+          "distance": 0.02914
+        },
+        "dreamsim": {
+          "score": 0.7628855109214783,
+          "nearest": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+          "distance": 0.23711448907852173
+        },
+        "lpips": {
+          "score": 0.9056798219680786,
+          "nearest": "D:\\assets\\art_lab\\shaders\\reference_sets\\smoke_portal_ref\\ref_001.png",
+          "distance": 0.09432017803192139
+        }
+      }
+    }
+  ]
+}

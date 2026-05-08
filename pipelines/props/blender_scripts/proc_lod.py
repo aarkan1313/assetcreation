@@ -32,6 +32,9 @@ def parse_args() -> argparse.Namespace:
     ap = argparse.ArgumentParser()
     ap.add_argument("--in", dest="src", required=True, help="path to model_lod0.glb")
     ap.add_argument("--out-dir", required=True, help="prop directory")
+    ap.add_argument("--suffix", default="",
+                    help="output filename suffix (e.g. '_decimate') for A/B side-by-side; "
+                         "when empty (default) writes canonical model_lod{N}.glb")
     ap.add_argument("--ratios", default="1.0,0.5,0.2,0.08",
                     help="comma list, applied off LOD0 tris (LOD0 stays as-is)")
     ap.add_argument("--tri-floor", type=int, default=32)
@@ -106,20 +109,30 @@ def main() -> int:
     base_tris = len(base.data.polygons)
 
     written = []
-    # LOD0 is the source — already on disk. Re-emit only LOD1+.
+    suffix = args.suffix or ""
+    # LOD0: when suffix is empty, source already on disk — skip re-emit.
+    # When suffix is set (A/B mode), copy LOD0 to model_lod0<suffix>.glb
+    # so both decimate and meshopt outputs have a parallel LOD0.
     for i, r in enumerate(ratios):
         if i == 0:
-            written.append({"index": 0, "file": "model_lod0.glb",
-                            "ratio": 1.0, "triangles": base_tris})
+            if suffix:
+                # Re-export the base mesh under the suffixed name.
+                lod0_path = out_dir / f"model_lod0{suffix}.glb"
+                export_glb(base, lod0_path)
+                written.append({"index": 0, "file": lod0_path.name,
+                                "ratio": 1.0, "triangles": base_tris})
+            else:
+                written.append({"index": 0, "file": "model_lod0.glb",
+                                "ratio": 1.0, "triangles": base_tris})
             continue
         target = max(args.tri_floor, int(round(base_tris * r)))
         if target < args.tri_floor or base_tris * r < args.tri_floor:
             print(f"[proc_lod] LOD{i} (r={r}) would fall below tri-floor {args.tri_floor}; skipping")
             continue
         new_obj, tris = make_lod_clone(base, r, i)
-        out_path = out_dir / f"model_lod{i}.glb"
+        out_path = out_dir / f"model_lod{i}{suffix}.glb"
         export_glb(new_obj, out_path)
-        written.append({"index": i, "file": f"model_lod{i}.glb",
+        written.append({"index": i, "file": out_path.name,
                         "ratio": r, "triangles": tris})
         # Drop the duplicate to avoid carrying state.
         bpy.data.objects.remove(new_obj, do_unlink=True)

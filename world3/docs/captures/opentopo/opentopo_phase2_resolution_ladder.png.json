@@ -1,0 +1,26 @@
+{
+  "output": "D:\\assets\\world3\\docs\\captures\\opentopo\\opentopo_phase2_resolution_ladder.png",
+  "title": "Phase 2 Orthophoto Resolution Ladder",
+  "subtitle": "Same Guadalupe Cypress AOI exported at increasing review texture sizes.",
+  "items": [
+    {
+      "label": "1024 Review",
+      "path": "D:\\assets\\world3\\toporeview\\phase2_fusion\\layers\\orthophoto_rgb.png",
+      "note": "Original lightweight fused-stack scene; about 1.56 m per texture pixel."
+    },
+    {
+      "label": "4096 HD",
+      "path": "D:\\assets\\world3\\toporeview\\phase2_fusion_hd\\layers\\orthophoto_rgb.png",
+      "note": "HD pass; about 0.39 m per texture pixel."
+    },
+    {
+      "label": "8192 MAX",
+      "path": "D:\\assets\\world3\\toporeview\\phase2_fusion_max\\layers\\orthophoto_rgb.png",
+      "note": "Max full-stack pass; about 0.195 m per texture pixel."
+    }
+  ],
+  "size_px": [
+    1960,
+    692
+  ]
+}

@@ -354,14 +354,19 @@ Updated target after tileable texture review:
 - Only after that review passes, move the variant set into a real shader path
   with texture arrays/atlases and soft per-cell blending.
 
-Immediate OpenTopo texture sprint:
+Immediate OpenTopo texture sprint status:
 
-1. Generate a `dry_wash` variant atlas from Guadalupe Cypress, using multiple
-   source-real sibling crops instead of one repeated crop.
-2. Review it in Godot as mixed unlike cells.
-3. Add close/mid/far scale QA notes.
-4. If the variant atlas improves the read, repeat for `bare_soil`,
-   `bright_rock`, `rocky_slope`, and scrub classes.
+1. Done: `dry_wash` unlike-variant atlas and hard-mixed QA scene.
+2. Done: `4096` soft-composite output that blends unlike variants instead of
+   hard-switching at tile borders.
+3. Done: six material classes generated with the same soft-composite workflow:
+   `bare_soil`, `bright_rock`, `dry_wash`, `rocky_slope`, `scrub_dense`, and
+   `scrub_sparse`.
+4. Current review: compare the six-class Godot gallery and 2x2 sheet, then mark
+   which classes work at close, mid, and far camera distances.
+5. Next build step: wire viable classes into a real reusable material path with
+   macro/meso/micro separation instead of treating one orthophoto composite as
+   every scale of ground detail.
 
 Current HD audit:
 
