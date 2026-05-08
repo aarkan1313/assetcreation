@@ -55,9 +55,21 @@ a defined input.
 **Deliverables**:
 - `world3/materials/CATALOG.md` (or `catalog.json` — decide during
   drafting).
-- Schema for each entry: id, source (real/procedural/fantasy),
-  provenance, scale, color family, current PBR maps path,
-  validated views (close/mid/far ok or not).
+- Schema for each entry:
+  - `id` — canonical name
+  - `source` — real / procedural / fantasy
+  - `provenance` — DEM/orthophoto crop reference OR generation prompt
+  - `scale_m_per_repeat` — physical scale at which the texture
+    naturally repeats (matters for shader UV scaling)
+  - `color_family` — for transition planning (e.g. warm-tan,
+    cool-grey, green-organic)
+  - `pbr_maps` — paths to albedo/normal/roughness/height/ao
+  - `shader_binding` — which shader the material was authored
+    against today (`terrain_blend` for orchestrator-side kits,
+    `terrain_hex_detail` for worker's finished OpenTopo materials).
+    M4 unifies these; until then the catalog records reality.
+  - `validated_views` — close/mid/far ok-or-not (worker's QA notes
+    fold into this)
 - Refactor `biome_kits.json` so kit slots reference material-class
   IDs, not local texture paths.
 - Migrate the 6 OpenTopo-finished materials AND the 5×5 = 25 kit
@@ -128,21 +140,38 @@ evidence under streaming load.
 ## M4 — Splat-shader prototype (orchestrator, after M1+M2)
 
 **Goal**: replace whole-chunk-kit binding with per-pixel splat
-weights.
+weights AND consolidate the two existing shaders
+(`terrain_blend.gdshader` + `terrain_hex_detail.gdshader`) into one
+unified path.
+
+**Why both at once**: today the orchestrator-side scenes run
+`terrain_blend` and the worker's 6 finished OpenTopo materials run
+`terrain_hex_detail`. M4's splat shader has to handle both source
+classes (height/slope-banded procedural kits AND hex-detail finished
+real materials) or we end up with three shaders, not one. Best
+absorbed as one design pass.
 
 **Deliverables**:
-- New shader (or extension of `terrain_blend.gdshader`) supporting
-  N-channel splat weight texture + N material-class refs.
-- Splat-mask generation: for one test chunk, produce a 4-channel
+- New unified shader supporting:
+  - N-channel splat weight texture + N material-class refs
+    (per-pixel mix)
+  - Per-slot hex-tile sampling (currently only in `terrain_hex_detail`)
+  - Per-slot height/slope rule fallback when splat weights aren't
+    provided (current `terrain_blend` behavior)
+- Splat-mask generation: for one test chunk, produce an N-channel
   weight texture from height + slope + biome rules.
-- Side-by-side comparison: same chunk rendered through old
-  whole-kit `.tres` vs. new splat path.
+- A/B captures: same chunk rendered through old whole-kit `.tres`
+  (height/slope-banded) vs. new splat path. Plus a worker finished
+  material rendered through the new unified shader matches its
+  current `terrain_hex_detail` look.
 
-Scope: prove the splat path works on one chunk. Wiring it into
-production scenes is M5.
+Scope: prove the splat path works on one chunk + the unified shader
+matches both predecessors' looks. Wiring it into production scenes
+is M5.
 
-**Exit**: splat shader renders a synthetic chunk with weighted
-material blends; comparison capture committed.
+**Exit**: unified splat shader renders a synthetic chunk with
+weighted material blends AND reproduces a worker finished-material
+scene's current look. Comparison captures committed.
 
 ## M5 — Wire streaming + splat into walk.tscn (orchestrator, after M3+M4)
 

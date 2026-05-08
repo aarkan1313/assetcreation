@@ -62,9 +62,9 @@ and what it produces.
 | Capability | Where it lives | What we get out |
 |-----------|----------------|------------------|
 | Real DEM + orthophoto fetch / mosaic / fusion | `world3/pipeline/build_opentopo_*.py`, `world3/opentopo/` | Master stacks (DEM + orthophoto + masks aligned) |
-| Real-source tileable PBR materials | `world3/pipeline/build_opentopo_tileable_texture.py` | 6 finished material classes: `bare_soil`, `bright_rock`, `dry_wash`, `rocky_slope`, `scrub_dense`, `scrub_sparse` (Guadalupe Cypress) |
+| Real-source tileable PBR materials | `build_opentopo_tileable_texture.py` (early single-crop / baseline products) → `build_opentopo_texture_variant_atlas.py` (multi-crop variants) → `finish_opentopo_soft_materials.py` (final 6 classes via the soft-composite path) | 6 finished material classes: `bare_soil`, `bright_rock`, `dry_wash`, `rocky_slope`, `scrub_dense`, `scrub_sparse` (Guadalupe Cypress). Finishing tool wrote balanced albedo + neutral source-derived detail maps + `terrain_hex_detail`-bound `.tres` per class. |
 | Multi-crop variant atlases | `world3/pipeline/build_opentopo_texture_variant_atlas.py` | Within-class variation for sibling-tile review |
-| Master stacks (production-quality real-place scenes) | `world3/opentopo/processed/master_stacks/` | Gloss Mountain (textured 0.6×1.1km), Zion (4-call USGS10m 36×37km no-color) |
+| Master stacks (production-facing real-place review scenes) | `world3/opentopo/processed/master_stacks/` | Gloss Mountain (textured 0.6×1.1km), Zion (4-call USGS10m 36×37km no-color). Production-facing structure, not final production assets — still need runtime chunking, compression policy, and game-side integration before they ship. |
 | Hard-adjacency biome transition QA | `world3/toporeview/biome_tile_transition_review.tscn` | Failure-view scene with both kits + OpenTopo materials side-by-side |
 | HD inspection (4096 / 8192 / 16K stress) | `world3/toporeview/phase2_fusion_*_review.tscn` | Close-range view limits documented |
 | Worker docs | `world3/docs/OPENTOPO_*.md` | Their detailed runbook, source-of-truth for real-data work |
@@ -92,12 +92,28 @@ world3/docs/OPENTOPO_RENDER_REPAIR_WORKFLOW.md
 world3/opentopo/STATUS.md
 ```
 
-### 2C. Shared shader stack
+### 2C. Shader stack — partially shared, not yet unified
 
-Both sides emit `terrain_blend_*.tres` files into
-`world3/textures/wgv3/` (or adjacent paths) and render through the
-same `world3/shaders/terrain_blend.gdshader`. This is the de-facto
-runtime contract.
+The runtime currently uses **two shaders**, not one:
+
+- `world3/shaders/terrain_blend.gdshader` — height/slope-banded
+  multi-slot blend. Bound by all `terrain_blend_<kit>_<mode>.tres`
+  files (5 kits × 3 modes = 15) and by region-gallery materials.
+  This is what the orchestrator-side `walk.tscn` / `iso.tscn` /
+  `topdown.tscn` and `RegionGalleryCapture.gd` use.
+- `world3/shaders/terrain_hex_detail.gdshader` — hex-tile + macro/
+  detail layered. Bound by the worker's 6 finished OpenTopo
+  material classes' `material_hex_detail_finished.tres` files. The
+  worker's master-stack review scenes use this for finished
+  source-real materials; review-only scenes use yet other shaders
+  for layer/heightmap inspection.
+
+The **shared runtime contract is the goal, not fully true today**.
+M4 (splat shader prototype) is where this consolidates: a single
+shader that handles N-slot weighted blend + per-slot material refs,
+which absorbs both the height/slope-band path and the hex-detail
+path. Until M4 lands, both shaders coexist and `.tres` files are
+not interchangeable across them.
 
 ---
 
@@ -276,3 +292,16 @@ These start when chunk + biome + tile + transition is ~80% solved
   pipelines" to single-stream orchestrator/worker model. Worker
   retains its OpenTopo doc set as runbook; orchestrator owns
   direction.
+- **2026-05-08 (later)**: Worker corrections applied to section 2B
+  + 2C:
+  - 6 finished OpenTopo material classes came from the
+    variant/soft-composite path + `finish_opentopo_soft_materials.py`,
+    not from `build_opentopo_tileable_texture.py` alone (that was
+    earlier baseline products).
+  - Master stacks (Gloss Mountain, Zion) are production-facing
+    review scenes, not final production assets. Still need runtime
+    chunking, compression policy, and game-side integration.
+  - Shader stack is NOT fully unified today: orchestrator-side runs
+    `terrain_blend.gdshader`; worker's finished OpenTopo materials
+    use `terrain_hex_detail.gdshader`. Unified shader is the M4
+    deliverable, not current state.
