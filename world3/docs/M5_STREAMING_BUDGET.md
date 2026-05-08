@@ -4,7 +4,7 @@ Date: 2026-05-08
 
 ## Current Budget
 
-This budget applies to the wired M5 pass 1 `walk.tscn` path:
+This budget applies to the wired M5 prototype-final `walk.tscn` path:
 
 ```text
 base chunk size = 256 m
@@ -41,15 +41,30 @@ chunk path = [0,5] -> [0,9]
 peak loaded chunks = 9
 chunks built = 12
 chunks removed = 12
-worst synchronous update = 20.096 ms
+worst synchronous update = 18.816 ms
+frame mean / p95 / p99 / max = 4.255 / 4.593 / 4.768 / 19.351 ms
+```
+
+M5 long-form sampled walk review:
+
+```text
+distance = 1536 m along +Z
+chunk path = [0,5] -> [0,11]
+peak loaded chunks = 9
+chunks built = 18
+chunks removed = 18
+worst synchronous update = 18.317 ms
+frame mean / p95 / p99 / max = 4.152 / 4.582 / 4.661 / 19.076 ms
 ```
 
 ## Interpretation
 
 The current synchronous loader is acceptable for prototype review, but it is
-not a production streaming budget yet. The worst update is just over one 60 Hz
-frame (16.67 ms), which matches the M3 sweep result and confirms that 256 m is
-the right synchronous base size for now.
+not a production streaming budget yet. The worst update is still over one
+60 Hz frame (16.67 ms), while p99 measured frame time in the scripted review is
+under 5 ms because chunk rebuild spikes are infrequent. This confirms that
+256 m is the right synchronous base size for now, and that the next performance
+work should target rebuild spikes rather than steady-state rendering.
 
 The visible mesh budget is modest. The risk is not steady-state triangle count;
 it is synchronous chunk construction and, later, collision/scatter/material

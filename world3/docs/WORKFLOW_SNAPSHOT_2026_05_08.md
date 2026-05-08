@@ -1,7 +1,7 @@
 # world3 Workflow Snapshot - 2026-05-08
 
 This is the compact record of the current world3 workflow after M1, M2, M3,
-M4 prototype pass 2, and M5 pass 1.
+M4 prototype pass 2, and M5 prototype final form.
 
 ## Framing
 
@@ -86,6 +86,7 @@ material-generation QA rather than transition logic.
      sampling, removing the first smoke-test material split at a chunk edge.
    - Evidence: `world3/docs/M5_WALK_SPLAT_STREAMING.md` and
      `world3/docs/M5_STREAMING_BUDGET.md`
+   - Closure audit: `world3/docs/M1_M5_FINAL_AUDIT_2026_05_08.md`
 
 7. **Visual QA**
    - Region/gallery captures verify kit-level reads.
@@ -116,18 +117,19 @@ material-generation QA rather than transition logic.
 - M4 chunk-stream capture is nonblank through `ChunkLoader.splat_weights_path`;
   visible material-region blocking is accepted as prototype weight-map content.
 - M5 static walk capture is nonblank and seam-clean after the chunk UV fix.
-- M5 scripted crossing holds 9 loaded chunks, builds 12, removes 12, and records
-  a 20.096 ms worst synchronous update over 900 m of movement.
+- M5 short crossing holds 9 loaded chunks, builds 12, removes 12, and records
+  an 18.816 ms worst synchronous update over 900 m of movement.
+- M5 long-form sampled review holds 9 loaded chunks, builds 18, removes 18,
+  and records an 18.317 ms worst synchronous update over 1536 m of movement.
 - Architectural decisions are appended to docs before moving on.
 
 ## Open Work
 
 - Reduce noisy grass/leaves at source texture generation/QA.
-- M5 pass 1 is wired and the first streaming budget is recorded. Remaining M5
-  exit work: longer user-facing walk capture, export-safe image import/cache,
-  and the collision/transition-strip hardening decision.
-- Later M4/M5 polish: formalize weight texture import/cache, material
-  indirection, and boundary-strip sampling.
+- M1-M5 are complete for workflow validation. Next phase should harden the
+  streaming material runtime: export-safe image import/cache, streamed
+  collision, runtime boundary-strip sampling, and source-material QA for noisy
+  grass/leaves.
 
 ## Recent Commits
 
@@ -142,4 +144,6 @@ material-generation QA rather than transition logic.
 - `edc9902` - `world3: tune transition boundary assets`
 - `62c5736` - `world3: add splat shader prototype`
 - `2bf0942` - `world3: add chunk splat material contract`
-- `HEAD pending` - M5 walk-scene stream wiring
+- `4db433a` - `world3: wire walk scene to splat streaming`
+- `b74d109` - `world3: record m5 streaming budget`
+- `HEAD pending` - M1-M5 final audit and long-walk evidence

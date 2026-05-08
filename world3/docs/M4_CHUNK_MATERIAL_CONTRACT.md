@@ -61,8 +61,8 @@ If the assigned `terrain_material` is a `ShaderMaterial`, `ChunkLoader` pushes:
 
 The dynamic `ImageTexture` path is intentional for now. Godot runtime `.tres`
 loading did not resolve a fresh unimported PNG as a `Texture2D` resource during
-the M4 pass 1 render. M5 should either formalize an import/cache step or keep
-runtime-generated weight maps on this dynamic binding path.
+the M4 pass 1 render. M5 kept generated weight maps on this dynamic binding
+path; M6 should formalize export-safe import/cache.
 
 ## Boundary Lane
 
@@ -97,11 +97,12 @@ For the first `walk.tscn` integration, use:
 That gives M5 a concrete streaming material contract while keeping the known
 prototype limits visible.
 
-M5 pass 1 applied this contract in `walk.tscn`. One contract bug surfaced and
-was fixed: chunk mesh UVs must use the same wrapped source fraction as height
-sampling, not raw `global_x / source_size`, or splat lookup creates artificial
-material breaks at chunk edges. The pass 1 evidence is recorded in
-`world3/docs/M5_WALK_SPLAT_STREAMING.md`.
+M5 prototype-final applied this contract in `walk.tscn`. One contract bug
+surfaced and was fixed: chunk mesh UVs must use the same wrapped source
+fraction as height sampling, not raw `global_x / source_size`, or splat lookup
+creates artificial material breaks at chunk edges. Evidence is recorded in
+`world3/docs/M5_WALK_SPLAT_STREAMING.md` and
+`world3/docs/M1_M5_FINAL_AUDIT_2026_05_08.md`.
 
 ## Verification
 

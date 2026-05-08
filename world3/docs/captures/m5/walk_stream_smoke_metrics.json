@@ -7,11 +7,16 @@
 	"distance_z_m": 900.0,
 	"end_position": [
 		0.0,
-		3019.43502424533,
+		2916.43502424533,
 		2400.0
 	],
+	"frame_time_max_ms": 19.351,
+	"frame_time_mean_ms": 4.25548888888889,
+	"frame_time_p95_ms": 4.593,
+	"frame_time_p99_ms": 4.768,
 	"frames": 360,
 	"peak_loaded_chunks": 9,
+	"sample_captures": [],
 	"samples": [
 		{
 			"chunk": [
@@ -29,7 +34,7 @@
 				6
 			],
 			"frame": 60,
-			"last_update_ms": 0.02,
+			"last_update_ms": 0.022,
 			"loaded_chunks": 9,
 			"z": 1650.41782729805
 		},
@@ -39,7 +44,7 @@
 				7
 			],
 			"frame": 120,
-			"last_update_ms": 0.017,
+			"last_update_ms": 0.013,
 			"loaded_chunks": 9,
 			"z": 1800.8356545961
 		},
@@ -49,7 +54,7 @@
 				7
 			],
 			"frame": 180,
-			"last_update_ms": 0.02,
+			"last_update_ms": 0.018,
 			"loaded_chunks": 9,
 			"z": 1951.25348189415
 		},
@@ -59,7 +64,7 @@
 				8
 			],
 			"frame": 240,
-			"last_update_ms": 0.018,
+			"last_update_ms": 0.02,
 			"loaded_chunks": 9,
 			"z": 2101.6713091922
 		},
@@ -69,7 +74,7 @@
 				8
 			],
 			"frame": 300,
-			"last_update_ms": 0.036,
+			"last_update_ms": 0.021,
 			"loaded_chunks": 9,
 			"z": 2252.08913649025
 		},
@@ -79,7 +84,7 @@
 				9
 			],
 			"frame": 359,
-			"last_update_ms": 0.02,
+			"last_update_ms": 0.019,
 			"loaded_chunks": 9,
 			"z": 2400.0
 		}
@@ -87,9 +92,9 @@
 	"scene": "res://scenes/walk.tscn",
 	"start_position": [
 		0.0,
-		3525.92728412201,
+		3422.92728412201,
 		1500.0
 	],
 	"view_radius_chunks": 1,
-	"worst_update_ms": 20.096
+	"worst_update_ms": 18.816
 }

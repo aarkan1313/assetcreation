@@ -4,13 +4,13 @@ Real-DEM-driven world generator. OpenTopography heightmap → Godot 4.5 terrain
 mesh → three view modes (iso, topdown, walkable). Fresh rebuild, no inherited
 code from `worldgen_v2` or earlier attempts.
 
-Status: M5 pass 1 is wired. `walk.tscn` now renders visible terrain through
-256 m streamed `ChunkLoader.gd` chunks with the M4 unified splat material;
-the legacy single terrain remains hidden as the collision source. The older
-MVP notes below are still useful for the base pipeline, but the current
-workflow state lives in `docs/WORKFLOW_SNAPSHOT_2026_05_08.md` and
-`docs/M5_WALK_SPLAT_STREAMING.md`; the current walk-stream budget is in
-`docs/M5_STREAMING_BUDGET.md`.
+Status: M1-M5 are complete at prototype final form. `walk.tscn` renders visible
+terrain through 256 m streamed `ChunkLoader.gd` chunks with the M4 unified splat
+material; the legacy single terrain remains hidden as the collision source. The
+older MVP notes below are still useful for the base pipeline, but the current
+workflow state lives in `docs/WORKFLOW_SNAPSHOT_2026_05_08.md`, the M5 evidence
+lives in `docs/M5_WALK_SPLAT_STREAMING.md`, and the closure audit is
+`docs/M1_M5_FINAL_AUDIT_2026_05_08.md`.
 
 ## Layout
 

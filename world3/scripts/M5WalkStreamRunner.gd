@@ -13,11 +13,33 @@ func _init() -> void:
 	call_deferred("_run")
 
 
+func _mean(values: Array) -> float:
+	if values.is_empty():
+		return 0.0
+	var total: float = 0.0
+	for value in values:
+		total += float(value)
+	return total / float(values.size())
+
+
+func _percentile(values: Array, percentile: float) -> float:
+	if values.is_empty():
+		return 0.0
+	var sorted_values: Array = values.duplicate()
+	sorted_values.sort()
+	var index: int = clampi(int(round(float(sorted_values.size() - 1) * percentile)), 0, sorted_values.size() - 1)
+	return float(sorted_values[index])
+
+
 func _run() -> void:
 	var scene_path: String = _arg_value("--scene", "res://scenes/walk.tscn")
 	var out_path: String = _arg_value("--out", "res://docs/captures/m5/walk_stream_after_crossing.png")
 	var metrics_path: String = _arg_value("--metrics", "res://docs/captures/m5/walk_stream_smoke_metrics.json")
 	var frames: int = maxi(2, int(_arg_value("--frames", "360")))
+	var distance_z_m: float = float(_arg_value("--distance-z", "900.0"))
+	var sample_dir: String = _arg_value("--sample-dir", "")
+	var sample_every_frames: int = int(_arg_value("--sample-every-frames", "0"))
+	var clearance_m: float = float(_arg_value("--clearance-m", "32.0"))
 	var width: int = int(_arg_value("--width", "1920"))
 	var height: int = int(_arg_value("--height", "1080"))
 
@@ -48,15 +70,21 @@ func _run() -> void:
 		loader.call("reset_metrics")
 
 	var start_z: float = player.global_position.z
-	var end_z: float = start_z + 900.0
+	var end_z: float = start_z + distance_z_m
 	var x: float = player.global_position.x
-	var clearance_m: float = 135.0
 	var start_y: float = float(loader.call("sample_height_global", x, start_z)) + clearance_m
 	var end_y: float = start_y
 	var worst_update_usec: int = 0
 	var samples: Array = []
+	var sample_captures: Array = []
+	var frame_times_ms: Array = []
+
+	if sample_dir != "":
+		var sample_global_dir: String = ProjectSettings.globalize_path(sample_dir)
+		DirAccess.make_dir_recursive_absolute(sample_global_dir)
 
 	for frame in range(frames):
+		var frame_start_usec: int = Time.get_ticks_usec()
 		var t: float = float(frame) / float(frames - 1)
 		var z: float = lerp(start_z, end_z, t)
 		var terrain_y: float = float(loader.call("sample_height_global", x, z))
@@ -81,6 +109,21 @@ func _run() -> void:
 
 		await process_frame
 		await RenderingServer.frame_post_draw
+		frame_times_ms.append(float(Time.get_ticks_usec() - frame_start_usec) / 1000.0)
+
+		if sample_dir != "" and sample_every_frames > 0:
+			if frame % sample_every_frames == 0 or frame == frames - 1:
+				var sample_img: Image = root_view.get_texture().get_image()
+				if sample_img != null:
+					var sample_name: String = "walk_long_%04d.png" % frame
+					var sample_res_path: String = sample_dir.path_join(sample_name)
+					var sample_global_path: String = ProjectSettings.globalize_path(sample_res_path)
+					var sample_rc: int = sample_img.save_png(sample_global_path)
+					sample_captures.append({
+						"frame": frame,
+						"path": sample_res_path,
+						"rc": sample_rc
+					})
 
 	var img: Image = root_view.get_texture().get_image()
 	if img == null:
@@ -105,7 +148,12 @@ func _run() -> void:
 		"chunks_built": int(loader.get("chunks_built")),
 		"chunks_removed": int(loader.get("chunks_removed")),
 		"worst_update_ms": float(worst_update_usec) / 1000.0,
-		"samples": samples
+		"frame_time_mean_ms": _mean(frame_times_ms),
+		"frame_time_p95_ms": _percentile(frame_times_ms, 0.95),
+		"frame_time_p99_ms": _percentile(frame_times_ms, 0.99),
+		"frame_time_max_ms": _percentile(frame_times_ms, 1.0),
+		"samples": samples,
+		"sample_captures": sample_captures
 	}
 
 	var global_metrics: String = ProjectSettings.globalize_path(metrics_path)

@@ -131,7 +131,7 @@ difference belongs in shader tuning after the M5 runtime path exists.
 
 ## Next
 
-M5 pass 1 has consumed this prototype:
+M5 prototype-final has consumed this prototype:
 
 - `walk.tscn` now uses `terrain_splat_alpine.tres` through `ChunkLoader.gd`;
 - `ChunkLoader.gd` binds the generated splat PNG through `splat_weights_path`;
@@ -144,5 +144,5 @@ Next hardening:
   fragile;
 - add a boundary-weight lane that can later sample M2 transition strips once
   boundary-space UVs exist;
-- keep M5 fixed at five slots until the longer walk demo and streaming budget
-  are written.
+- keep the next hardening pass fixed at five slots until export-safe loading,
+  streamed collision, and boundary-strip sampling are individually measured.

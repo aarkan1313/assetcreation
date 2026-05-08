@@ -219,13 +219,14 @@ boundary lanes, and material indirection only as needed.
 **Goal**: end-to-end "walk an infinite world with mixed materials per
 chunk."
 
-**Status 2026-05-08**: PASS 1 WIRED. `walk.tscn` now keeps the legacy
-single `Terrain.gd` hidden as the collision source and renders visible terrain
-through `ChunkLoader.gd` using the M4 `terrain_splat_alpine.tres` material and
-runtime splat weights. A first smoke capture exposed a chunk-edge material UV
-split; `ChunkLoader.gd` now writes UVs with the same wrapped source fraction as
-height sampling, and the rerender is seam-clean. Evidence:
-`world3/docs/M5_WALK_SPLAT_STREAMING.md`.
+**Status 2026-05-08**: PROTOTYPE FINAL FORM COMPLETE. `walk.tscn` keeps the
+legacy single `Terrain.gd` hidden as the collision source and renders visible
+terrain through `ChunkLoader.gd` using the M4 `terrain_splat_alpine.tres`
+material and runtime splat weights. A first smoke capture exposed a chunk-edge
+material UV split; `ChunkLoader.gd` now writes UVs with the same wrapped source
+fraction as height sampling, and the rerender is seam-clean. Evidence:
+`world3/docs/M5_WALK_SPLAT_STREAMING.md` and
+`world3/docs/M1_M5_FINAL_AUDIT_2026_05_08.md`.
 
 **Deliverables**:
 - `walk.tscn` uses `ChunkLoader.gd` (M3) and the splat shader (M4).
@@ -239,12 +240,14 @@ levels fit one chunk fine).
 **Exit**: long-form walk demo (~30s capture) shows continuous
 terrain with mixed materials and acceptable framerate.
 
-Pass 1 evidence: `walk_chunk_splat_smoke.png` renders the real walk scene, and
-`M5WalkStreamRunner.gd` moves the player 900 m across chunk rows `[0,5]` to
-`[0,9]` with 9 peak loaded chunks, 12 builds, 12 removals, and a worst
-synchronous update of 20.096 ms. The first budget note is
-`world3/docs/M5_STREAMING_BUDGET.md`. Remaining exit work is the longer
-user-facing walk capture and hardening decisions.
+Final evidence: `walk_chunk_splat_smoke.png` renders the real walk scene.
+`M5WalkStreamRunner.gd` covers both a 900 m smoke crossing and a 1536 m
+long-form sampled walk review across chunk rows `[0,5]` to `[0,11]`, holding
+9 loaded chunks. The budget note is `world3/docs/M5_STREAMING_BUDGET.md`.
+
+M1-M5 are closed for workflow validation. Production hardening moves to the
+next roadmap phase: export-safe generated image loading, streamed collision,
+runtime boundary-strip sampling, and source-material QA.
 
 ## Open polish items (parked)
 

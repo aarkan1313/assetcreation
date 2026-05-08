@@ -55,12 +55,17 @@ direction; treat the rest as where we've been.
   renders height/slope fallback, RGBA splat weights, and OpenTopo macro/detail
   material compatibility; `ChunkLoader.gd` can now bind the runtime splat
   weight texture through the chunk material/weight contract.
-- M5 pass 1 is wired into `walk.tscn`: visible terrain now streams through
+- M5 is complete at prototype final form: visible terrain streams through
   256 m `ChunkLoader.gd` chunks using `terrain_splat_alpine.tres`, while the
-  legacy single terrain remains hidden for collision. Smoke evidence lives in
-  `world3/docs/M5_WALK_SPLAT_STREAMING.md`; the first budget note lives in
-  `world3/docs/M5_STREAMING_BUDGET.md`. Remaining M5 exit work is the longer
-  walk capture and hardening decisions.
+  legacy single terrain remains hidden for collision. Static, short-crossing,
+  and long-form sampled walk evidence live in
+  `world3/docs/M5_WALK_SPLAT_STREAMING.md`; budget evidence lives in
+  `world3/docs/M5_STREAMING_BUDGET.md`; the M1-M5 closure audit is
+  `world3/docs/M1_M5_FINAL_AUDIT_2026_05_08.md`.
+
+Recommended next phase: **M6 harden the streaming material runtime**:
+export-safe generated image import/cache, streamed collision, runtime
+boundary-strip sampling, and source-material QA for noisy grass/leaves.
 
 Workflow snapshot: [`WORKFLOW_SNAPSHOT_2026_05_08.md`](WORKFLOW_SNAPSHOT_2026_05_08.md).
 

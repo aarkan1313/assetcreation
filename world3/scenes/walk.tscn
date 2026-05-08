@@ -52,7 +52,7 @@ chunk_resolution_m = 8.0
 target_path = NodePath("../Player")
 
 [node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3525, 1500)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3421, 1500)
 script = ExtResource("walker_script")
 
 [node name="Collider" type="CollisionShape3D" parent="Player"]

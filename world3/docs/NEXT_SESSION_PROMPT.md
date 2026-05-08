@@ -40,7 +40,9 @@ Recent scoped commits:
 - `edc9902` - `world3: tune transition boundary assets`
 - `62c5736` - `world3: add splat shader prototype`
 - `2bf0942` - `world3: add chunk splat material contract`
-- `HEAD pending` - M5 walk-scene stream wiring
+- `4db433a` - `world3: wire walk scene to splat streaming`
+- `b74d109` - `world3: record m5 streaming budget`
+- `HEAD pending` - M1-M5 final audit and long-walk evidence
 
 M1 is done:
 
@@ -98,7 +100,7 @@ M4 prototype pass 2 is done:
   unimported PNG is not loadable from `.tres` as a `Texture2D` in runtime
   Godot.
 
-M5 pass 1 is wired:
+M5 is complete at prototype final form:
 
 - `world3/scenes/walk.tscn` now uses visible 256 m `ChunkLoader.gd` chunks with:
   - `terrain_material = res://textures/wgv3/terrain_splat_alpine.tres`
@@ -107,7 +109,8 @@ M5 pass 1 is wired:
   - `chunk_resolution_m = 8`
   - `view_radius_chunks = 1`
 - The legacy single `Terrain.gd` is hidden and retained for collision only.
-- The player spawn was lowered so smoke captures see terrain instead of sky.
+- The player spawn was lowered so smoke captures and interactive use start
+  near the terrain instead of high in the sky.
 - `ChunkLoader.gd` writes UVs with `_wrapped_fraction(...)`, matching height
   sampling. This fixed the first M5 smoke-test material split at a chunk edge.
 - Static capture:
@@ -118,21 +121,27 @@ M5 pass 1 is wired:
   - `world3/docs/captures/m5/walk_stream_after_crossing.png`
   - `world3/docs/captures/m5/walk_stream_smoke_metrics.json`
 - Crossing result: 900 m along +Z, chunk path `[0,5] -> [0,9]`, 9 peak loaded
-  chunks, 12 builds, 12 removals, 20.096 ms worst synchronous update.
+  chunks, 12 builds, 12 removals, 18.816 ms worst synchronous update.
+- Long sampled walk review:
+  - `world3/docs/captures/m5/walk_long_contact_sheet.png`
+  - `world3/docs/captures/m5/walk_long_metrics.json`
+- Long result: 1536 m along +Z, chunk path `[0,5] -> [0,11]`, 9 peak loaded
+  chunks, 18 builds, 18 removals, 18.317 ms worst synchronous update.
 - Evidence doc:
   `world3/docs/M5_WALK_SPLAT_STREAMING.md`
 - Budget note:
   `world3/docs/M5_STREAMING_BUDGET.md`
+- Final audit:
+  `world3/docs/M1_M5_FINAL_AUDIT_2026_05_08.md`
 
 ## Next best move
 
-Continue M5 from pass 1:
+Start M6 hardening:
 
-1. Let the user visually review `walk.tscn` and the M5 captures.
-2. Run or build a longer user-facing walk capture if the pass 1 view is
-   accepted.
-3. Choose the next hardening target: export-safe generated image import/cache,
-   streamed collision, or boundary-strip sampling.
+1. Export-safe generated image import/cache for height and splat maps.
+2. Streamed collision chunks with separate budget measurements.
+3. Runtime boundary-strip sampling for M2 transition assets.
+4. Source-material QA pass for noisy grass/leaves before broadening visuals.
 
 ## Operating reminders
 

@@ -4,14 +4,13 @@ Date: 2026-05-08
 
 ## Status
 
-M5 pass 1 is wired and smoke-tested. `walk.tscn` now uses the M3
-`ChunkLoader.gd` visual stream with the M4 fixed five-slot splat material.
+M5 is complete at prototype final form. `walk.tscn` now uses the M3
+`ChunkLoader.gd` visual stream with the M4 fixed five-slot splat material, and
+the workflow has both short crossing and long-form sampled walk evidence.
 
-This is not the final M5 exit yet. It proves the first playable scene wiring
-and chunk-crossing behavior. The first budget note is in
-`world3/docs/M5_STREAMING_BUDGET.md`. Remaining M5 work is the longer walk
-demo, export-safe image import/cache, and the eventual collision migration from
-the hidden single terrain to streamed chunks.
+This is not production-final terrain. The final M1-M5 audit is
+`world3/docs/M1_M5_FINAL_AUDIT_2026_05_08.md`; the streaming budget is
+`world3/docs/M5_STREAMING_BUDGET.md`.
 
 ## Scene Contract
 
@@ -33,9 +32,9 @@ view_radius_chunks = 1
 target_path = ../Player
 ```
 
-The player spawn was lowered to a terrain-visible altitude near the sampled
-height at the current start position so headless smoke captures do not render
-blank sky.
+The player spawn is lowered to a terrain-visible altitude near the sampled
+height at the current start position so interactive use and smoke captures
+start on the actual terrain instead of high in the sky.
 
 ## Chunk Material UV Fix
 
@@ -72,8 +71,8 @@ Result:
 ```text
 capture = world3/docs/captures/m5/walk_chunk_splat_smoke.png
 size = 1920 x 1080
-mean RGB = 157.27, 144.55, 137.60
-stddev RGB = 40.57, 54.78, 67.94
+mean RGB = 153.59, 120.44, 98.58
+stddev RGB = 15.87, 21.46, 26.71
 ```
 
 Scripted chunk-crossing smoke:
@@ -92,7 +91,28 @@ chunk path = [0,5] -> [0,9]
 peak loaded chunks = 9
 chunks built = 12
 chunks removed = 12
-worst synchronous update = 20.096 ms
+worst synchronous update = 18.816 ms
+frame mean / p95 / p99 / max = 4.255 / 4.593 / 4.768 / 19.351 ms
+```
+
+Long-form sampled walk review:
+
+```powershell
+C:/Godot/Godot_v4.5-stable_win64.exe --path world3 --script res://scripts/M5WalkStreamRunner.gd -- --out res://docs/captures/m5/walk_long_after_crossing.png --metrics res://docs/captures/m5/walk_long_metrics.json --sample-dir res://docs/captures/m5/walk_long_frames --sample-every-frames 300 --frames 1800 --distance-z 1536 --width 1920 --height 1080
+```
+
+Result:
+
+```text
+contact sheet = world3/docs/captures/m5/walk_long_contact_sheet.png
+metrics = world3/docs/captures/m5/walk_long_metrics.json
+distance = 1536 m along +Z
+chunk path = [0,5] -> [0,11]
+peak loaded chunks = 9
+chunks built = 18
+chunks removed = 18
+worst synchronous update = 18.317 ms
+frame mean / p95 / p99 / max = 4.152 / 4.582 / 4.661 / 19.076 ms
 ```
 
 The capture is nonblank and shows no obvious chunk-edge split. The worst update
@@ -109,10 +129,8 @@ These are from runtime `Image.load_from_file()` for the heightmap and fresh
 splat PNG. They are acceptable for dev smoke tests. Export-safe loading remains
 an M5/M6 hardening item.
 
-## Remaining M5 Work
+## Remaining Production Work
 
-- Run a longer player-facing walk capture once the user has visually checked
-  the pass 1 scene.
 - Keep `M5_STREAMING_BUDGET.md` updated as chunk radius, collision, or async
   loading changes.
 - Decide whether the next hardening step is export-safe generated image import,

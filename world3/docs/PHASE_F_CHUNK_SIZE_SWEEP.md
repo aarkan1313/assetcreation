@@ -72,7 +72,7 @@ That means neighboring chunks compute the same normal at shared border vertices.
 
 ## Follow-up
 
-M5 pass 1 has wired `ChunkLoader.gd` into `walk.tscn` with:
+M5 prototype-final has wired `ChunkLoader.gd` into `walk.tscn` with:
 
 - `chunk_size_m = 256`
 - `chunk_resolution_m = 8`
@@ -84,4 +84,5 @@ If walk speed or camera horizon pushes the 3x3 256 m neighborhood too small,
 increase radius before increasing base chunk size. Increase chunk size only
 after async build/cache exists.
 
-Pass 1 evidence is in `world3/docs/M5_WALK_SPLAT_STREAMING.md`.
+Final M5 evidence is in `world3/docs/M5_WALK_SPLAT_STREAMING.md` and
+`world3/docs/M1_M5_FINAL_AUDIT_2026_05_08.md`.
