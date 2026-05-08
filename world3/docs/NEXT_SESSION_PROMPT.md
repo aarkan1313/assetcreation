@@ -25,6 +25,7 @@ Read first:
 6. `world3/docs/M4_SPLAT_SHADER_PROTOTYPE.md`
 7. `world3/docs/M4_CHUNK_MATERIAL_CONTRACT.md`
 8. `world3/docs/M6_RUNTIME_HARDENING.md`
+9. `world3/docs/M7_M12_NEAR_ROADMAP.md`
 
 ## Current status
 
@@ -168,6 +169,19 @@ M6 is complete for the primary walk/runtime hardening pass:
 - Source QA result: 10 of 17 green/organic materials flagged. Treat grass/
   leaves noise as source-material production-promotion work, not transition
   workflow failure.
+
+M7-M12 near roadmap is now explicit:
+
+1. M7 boundary-runtime integration.
+2. M8 organic source-material cleanup.
+3. M9 runtime performance and interaction polish.
+4. M10 cross-source blending.
+5. M11 corner and junction transitions.
+6. M12 walk/iso/topdown view-mode parity.
+
+Deferred systems remain after this lane: scatter, vegetation, props, buildings,
+POIs, fantasy biome expansion, full procedural infinite-world extension, and
+production asset promotion.
 
 ## Next best move
 

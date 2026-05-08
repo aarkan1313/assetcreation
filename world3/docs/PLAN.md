@@ -220,12 +220,12 @@ boundary lanes, and material indirection only as needed.
 **Goal**: end-to-end "walk an infinite world with mixed materials per
 chunk."
 
-**Status 2026-05-08**: PROTOTYPE FINAL FORM COMPLETE. `walk.tscn` keeps the
-legacy single `Terrain.gd` hidden as the collision source and renders visible
+**Status 2026-05-08**: PROTOTYPE FINAL FORM COMPLETE. M5 rendered visible
 terrain through `ChunkLoader.gd` using the M4 `terrain_splat_alpine.tres`
-material and runtime splat weights. A first smoke capture exposed a chunk-edge
-material UV split; `ChunkLoader.gd` now writes UVs with the same wrapped source
-fraction as height sampling, and the rerender is seam-clean. Evidence:
+material and runtime splat weights; M6 later moved collision onto streamed
+chunks. A first smoke capture exposed a chunk-edge material UV split;
+`ChunkLoader.gd` now writes UVs with the same wrapped source fraction as height
+sampling, and the rerender is seam-clean. Evidence:
 `world3/docs/M5_WALK_SPLAT_STREAMING.md` and
 `world3/docs/M1_M5_FINAL_AUDIT_2026_05_08.md`.
 
@@ -279,6 +279,25 @@ M7 should generate boundary masks from biome/material rules and feed those into
 the unified shader. If interactive review exposes the M6 synchronous
 collision/update spike, async/background chunk build becomes the next runtime
 engineering target.
+
+## M7-M12 near roadmap
+
+The next six milestones are now explicitly tracked in
+[`M7_M12_NEAR_ROADMAP.md`](M7_M12_NEAR_ROADMAP.md). This keeps us from
+blindly extending the prototype without clear exits.
+
+| ID | Focus | Why it comes here |
+|----|-------|-------------------|
+| **M7** | Biome-boundary runtime integration | Converts M2 transition strips from manual shader review knobs into automatic streamed-chunk behavior. |
+| **M8** | Organic source-material cleanup | Fixes the grass/leaves/moss/lichen source-quality issue before adding more visual complexity. |
+| **M9** | Runtime performance and interaction polish | Measures and fixes real interactive chunk/collision hitches if they show up beyond scripted captures. |
+| **M10** | Cross-source blending | Makes real OpenTopo materials and procedural materials coexist through one runtime contract. |
+| **M11** | Corner and junction transitions | Handles three-way/corner cases after pairwise transitions are reliable. |
+| **M12** | View-mode parity | Brings walk, iso, and topdown onto consistent material/chunk/QA contracts with mode-specific tuning. |
+
+Deferred systems remain deferred until M7-M12 are proven: scatter, vegetation,
+props, buildings/POIs, fantasy biome expansion, full procedural infinite-world
+extension, and production asset promotion.
 
 ## Open polish items (parked)
 

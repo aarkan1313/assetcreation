@@ -80,8 +80,8 @@ material-generation QA rather than transition logic.
    - Scene: `world3/scenes/walk.tscn`
    - Runner: `world3/scripts/M5WalkStreamRunner.gd`
    - Contract: visible terrain streams through 256 m `ChunkLoader.gd` chunks
-     using `terrain_splat_alpine.tres`; hidden legacy `Terrain.gd` remains as
-     collision source.
+     using `terrain_splat_alpine.tres`; M6 replaces the old hidden-terrain
+     collision fallback with streamed chunk collision.
    - Fix landed: chunk UVs now use the same wrapped source fraction as height
      sampling, removing the first smoke-test material split at a chunk edge.
    - Evidence: `world3/docs/M5_WALK_SPLAT_STREAMING.md` and
@@ -150,6 +150,10 @@ material-generation QA rather than transition logic.
 
 ## Open Work
 
+- Near-roadmap sequence is explicit in
+  `world3/docs/M7_M12_NEAR_ROADMAP.md`: boundary runtime, organic cleanup,
+  runtime polish, cross-source blending, corner/junction transitions, and
+  walk/iso/topdown parity.
 - Regenerate or filter flagged green/organic source materials before treating
   them as production close-range candidates.
 - M1-M6 are complete for workflow validation. Next phase should automate

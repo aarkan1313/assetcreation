@@ -9,10 +9,11 @@ find something.
 |--------------------------------------------------------------|-------------------------------------------------------|
 | "How is the docs system organized? Where do new findings go?" | [DOCS_GUIDE.md](DOCS_GUIDE.md)                       |
 | "What is world3 and how do I run it end-to-end?"             | [WORKFLOW.md](WORKFLOW.md)                            |
-| "What's the current operating model + state of the project?" | [WORLD3_STATE_2026_05_08.md](WORLD3_STATE_2026_05_08.md) (orchestrator/worker model + M1–M5 plan + worker infra inventory) |
-| "What are we building toward, in phases?"                    | [ROADMAP.md](ROADMAP.md) (v2 — reframed 2026-05-07; updated 2026-05-08 with M1–M5 sequence)   |
+| "What's the current operating model + state of the project?" | [WORLD3_STATE_2026_05_08.md](WORLD3_STATE_2026_05_08.md) (orchestrator/worker model + M1-M6 state + M7-M12 lane + worker infra inventory) |
+| "What are we building toward, in phases?"                    | [ROADMAP.md](ROADMAP.md) (v2 — reframed 2026-05-07; updated 2026-05-08 with M1-M6 and M7-M12 sequence)   |
 | "What was the original roadmap before reframing?"            | [ROADMAP_v1_archived.md](ROADMAP_v1_archived.md)      |
 | "What's the current iteration's scope?"                      | [PLAN.md](PLAN.md)                                    |
+| "What are the next six milestones after M6?"                 | [M7_M12_NEAR_ROADMAP.md](M7_M12_NEAR_ROADMAP.md)      |
 | "What did M6 harden in the streamed runtime?"                | [M6_RUNTIME_HARDENING.md](M6_RUNTIME_HARDENING.md)    |
 | "Which green/organic source materials are too noisy?"        | [M6_SOURCE_MATERIAL_NOISE_AUDIT.md](M6_SOURCE_MATERIAL_NOISE_AUDIT.md) |
 | "What did the first M4 splat shader prototype prove?"        | [M4_SPLAT_SHADER_PROTOTYPE.md](M4_SPLAT_SHADER_PROTOTYPE.md) |

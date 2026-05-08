@@ -14,9 +14,9 @@ the worker's existing infrastructure lives so we can point at it
 without absorbing it.
 
 Long-term scope (props / decoration / buildings / POIs / fantasy
-biomes) is **acknowledged as future** — kicks in once chunk-to-chunk
-+ biome-to-biome + tile-to-tile is ~80% solved (per user 2026-05-08).
-NOT planned in this doc.
+biomes) is **acknowledged as future** and stays deferred until the M7-M12
+terrain lane is proven. The current near roadmap is
+[`M7_M12_NEAR_ROADMAP.md`](M7_M12_NEAR_ROADMAP.md).
 
 ---
 
@@ -151,6 +151,19 @@ game-mode migration are still future hardening work.
 **This is the orchestrator's plan.** It's the next sharp set of things,
 not a multi-month roadmap. M1-M6 are now complete for workflow validation;
 M7 is the next boundary-runtime integration layer.
+
+The broader near lane is M7-M12:
+
+| ID | Focus |
+|----|-------|
+| M7 | Biome-boundary runtime integration |
+| M8 | Organic source-material cleanup |
+| M9 | Runtime performance and interaction polish |
+| M10 | Cross-source blending |
+| M11 | Corner and junction transitions |
+| M12 | Walk/iso/topdown view-mode parity |
+
+Details and exits live in `world3/docs/M7_M12_NEAR_ROADMAP.md`.
 
 ### M1 — Material catalog (orchestrator-led, blocking)
 
@@ -460,3 +473,8 @@ These start when chunk + biome + tile + transition is ~80% solved
   walk/transition captures, and added source-material noise QA for green/
   organic materials. Evidence: `M6_RUNTIME_HARDENING.md` and
   `M6_SOURCE_MATERIAL_NOISE_AUDIT.md`.
+- **2026-05-08 (M7-M12 planning)**: Added `M7_M12_NEAR_ROADMAP.md` to lock the
+  next six milestones before continuing implementation: boundary runtime,
+  organic source cleanup, runtime polish, cross-source blending, junctions, and
+  walk/iso/topdown parity. Deferred scatter/props/buildings/fantasy remain
+  after that lane.

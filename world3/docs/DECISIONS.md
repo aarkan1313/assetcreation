@@ -935,3 +935,28 @@ green/organic candidates, including `grassland_grass`, `grass`,
 **Implication**: Regenerate, filter, or downweight flagged green/organic
 materials before calling them production candidates at walk-camera distance.
 Keep using them as workflow-validation inputs where appropriate.
+
+---
+
+## 2026-05-08 - M7-M12 is the near roadmap before deferred systems
+
+**Decision**: Do not start scatter, vegetation, props, buildings, POIs, fantasy
+biome expansion, full procedural infinite-world work, or production promotion
+until the M7-M12 terrain lane is proven.
+
+**Near sequence**:
+
+1. M7 biome-boundary runtime integration.
+2. M8 organic source-material cleanup.
+3. M9 runtime performance and interaction polish.
+4. M10 cross-source blending.
+5. M11 corner and junction transitions.
+6. M12 walk/iso/topdown view-mode parity.
+
+**Why**: The terrain pipeline now has a working spine, but it is not yet
+automatic or view-mode consistent. Adding deferred systems now would multiply
+unfinished contracts. The next six milestones keep the work focused on
+chunk-to-chunk, biome-to-biome, source-to-source, and view-mode parity.
+
+**Implication**: When new ideas appear, classify them against this sequence.
+If they do not strengthen M7-M12, park them unless they fix a blocker.

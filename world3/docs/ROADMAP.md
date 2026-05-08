@@ -70,11 +70,19 @@ direction; treat the rest as where we've been.
   `world3/docs/M6_RUNTIME_HARDENING.md` and
   `world3/docs/M6_SOURCE_MATERIAL_NOISE_AUDIT.md`.
 
-Recommended next phase: **M7 biome-boundary runtime integration**:
-generate per-chunk boundary masks from biome/material rules, place M2
-transition strips automatically instead of by manual shader knobs, and start
-async/background chunk build work if the M6 synchronous collision spike becomes
-visible during interactive review.
+Recommended next lane: **M7-M12 near roadmap**. The six-step sequence is now
+explicit in [`M7_M12_NEAR_ROADMAP.md`](M7_M12_NEAR_ROADMAP.md):
+
+1. M7 biome-boundary runtime integration.
+2. M8 organic source-material cleanup.
+3. M9 runtime performance and interaction polish.
+4. M10 cross-source blending.
+5. M11 corner and junction transitions.
+6. M12 walk/iso/topdown view-mode parity.
+
+Deferred systems (scatter, props, buildings/POIs, fantasy biome expansion, full
+procedural infinite-world generation) stay parked until that lane proves the
+terrain foundation.
 
 Workflow snapshot: [`WORKFLOW_SNAPSHOT_2026_05_08.md`](WORKFLOW_SNAPSHOT_2026_05_08.md).
 
