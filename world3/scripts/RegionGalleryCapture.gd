@@ -48,19 +48,22 @@ func _ready() -> void:
 		if bundle == null:
 			continue
 
-		# Bind the kit's terrain_blend material before loading the heightmap
-		# so that Terrain.load_dataset's runtime push of elev_min/range hits
-		# the right ShaderMaterial (terrain.gd looks at material_override).
+		# Phase E: derive per-mode material paths from `biome_kit_material`.
+		# Expected form: res://textures/wgv3/terrain_blend_<kit>.tres
+		# Per-mode variants:           ..._<kit>_<mode>.tres   (mode in iso/topdown)
+		# If the per-mode variant is missing, fall back to the base kit material.
 		var kit_mat_path: String = region.get("biome_kit_material", "")
-		if kit_mat_path != "":
-			var mat: Material = load(kit_mat_path) as Material
-			if mat != null:
-				terrain.material_override = mat
-			else:
-				push_warning("[gallery] kit material not found: " + kit_mat_path +
-							  "; falling back to current material_override")
+		var iso_mat_path: String = _per_mode_path(kit_mat_path, "iso")
+		var topdown_mat_path: String = _per_mode_path(kit_mat_path, "topdown")
 
 		print("[gallery] %s / %s (kit=%s)" % [rid, ds, region.get("biome_kit", "?")])
+		# Read meta upfront so per-mode swaps can re-push elev_min/range to
+		# the new ShaderMaterial (Terrain.rebuild only pushes to whatever was
+		# bound at load time).
+		var meta := _read_meta(bundle["meta_path"])
+		var elev_min: float = float(meta.get("elevation_min_m", 0.0))
+		var elev_range: float = float(meta.get("elevation_range_m", 1.0))
+
 		terrain.load_dataset(bundle["heightmap_path"], bundle["meta_path"])
 		# Wait a couple frames for the rebuild to settle.
 		for i in range(warmup_frames_per_view):
@@ -73,13 +76,15 @@ func _ready() -> void:
 		var region_dir: String = output_dir.path_join(rid)
 		DirAccess.make_dir_recursive_absolute(region_dir)
 
-		# Iso view: +X+Y+Z diagonal looking at center.
+		# Iso view: bind iso-tuned material, frame, capture.
+		_bind_material(terrain, iso_mat_path, kit_mat_path, elev_min, elev_range)
 		_frame_iso(iso_cam, aabb, center, diag)
 		for i in range(warmup_frames_per_view):
 			await get_tree().process_frame
 		await _save(region_dir.path_join("iso.png"))
 
-		# Topdown view: straight down.
+		# Topdown view: swap to topdown-tuned material, reframe, capture.
+		_bind_material(terrain, topdown_mat_path, kit_mat_path, elev_min, elev_range)
 		_frame_topdown(iso_cam, aabb, center)
 		for i in range(warmup_frames_per_view):
 			await get_tree().process_frame
@@ -170,3 +175,36 @@ func _bundle_of(region: Dictionary, dataset: String) -> Variant:
 		if b.get("dataset", "") == dataset:
 			return b
 	return null
+
+
+func _per_mode_path(base: String, mode: String) -> String:
+	# Convert .../terrain_blend_<kit>.tres -> .../terrain_blend_<kit>_<mode>.tres
+	if not base.ends_with(".tres"):
+		return ""
+	return base.substr(0, base.length() - 5) + "_" + mode + ".tres"
+
+
+func _bind_material(terrain: MeshInstance3D, primary: String, fallback: String,
+		elev_min: float, elev_range: float) -> void:
+	for path in [primary, fallback]:
+		if path == "":
+			continue
+		var mat: Material = load(path) as Material
+		if mat != null:
+			terrain.material_override = mat
+			# Re-push elev params (Terrain.rebuild only pushed to the prior material).
+			if mat is ShaderMaterial:
+				var sm: ShaderMaterial = mat
+				sm.set_shader_parameter("elev_min_m", elev_min)
+				sm.set_shader_parameter("elev_range_m", elev_range)
+			return
+	push_warning("[gallery] no material loaded; primary=%s fallback=%s" % [primary, fallback])
+
+
+func _read_meta(meta_path: String) -> Dictionary:
+	var f := FileAccess.open(meta_path, FileAccess.READ)
+	if f == null:
+		return {}
+	var parsed = JSON.parse_string(f.get_as_text())
+	f.close()
+	return parsed if typeof(parsed) == TYPE_DICTIONARY else {}
