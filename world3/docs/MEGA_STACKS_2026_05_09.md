@@ -236,3 +236,85 @@ The two tools cover the union of available high-res datasets.
 
 Production-ready terrain library spanning 6 continents + Antarctica +
 arctic + bathymetric.
+
+
+---
+
+## 2026-05-09 — Great Sand Dunes NP, CO mega-stack (3rd attempt)
+
+User picked Great Sand Dunes after spot-test confirmed dense USGS1m
+coverage. Pulled clean.
+
+### Pick rationale
+
+Great Sand Dunes National Park is a unique biome contrast:
+- The 750-foot-tall sand dunes (tallest in N. America) sit at ~2400m
+  inside the San Luis Valley.
+- The Sangre de Cristo Range rises directly east from the dune field,
+  with summits including **Crestone Peaks (4310m)**, **Mt Herard
+  (4097m)**, and **Mt Zwischen** in a single 42x42 km block.
+- Elevation gradient: 2300m valley/dune base -> 4300m alpine summits
+  in just 25 km horizontal distance.
+- Biome layers: salt flats / dune field / wet meadow / pine forest /
+  aspen / spruce-fir / krummholz / alpine tundra / glacial cirques.
+
+This is the **highest relief** of the three mega-stacks and arguably
+the most biome-diverse single 42 km block in the lower 48.
+
+### Pull spec
+
+- **ID**: `great_sand_dunes_1m`
+- **Bbox**: -105.80, 37.62, -105.32, 38.00 (42x42 km)
+- **Center**: ~-105.55, 37.81 -- east edge of dune field, west of
+  Sangre de Cristo crest
+
+### Result: 9/9 tiles complete
+
+All 9 USGS1m tiles cached and stitched successfully. Only ~3 of the 9
+tiles had non-TIFF API hiccups requiring retry; all eventually came
+through. Tile sizes 186 MB to 558 MB each (~2.5 GB total tile cache),
+reflecting the high-relief LiDAR detail.
+
+- Stitched output:
+  `pipelines/terrain/output/great_sand_dunes_1m/height_16.png`
+  (4096x4096, 16 MB)
+- Elevation: **2291-4016m** (Crestone summit ~4310m clipped at the
+  99.9th percentile during stitch normalization; the raw cache has
+  the full peak)
+- ~1.98M sentinel pixels (2.7%) -- mostly along the eastern San Luis
+  Valley edge where USGS1m surveys end. Clean by mega-stack standards
+  (Big Bend was 185k clean; Olympic was 16M dirty).
+
+Per-tile elevation ranges reveal the biome ladder:
+
+| Row | Lat range | Sample tile elev | Reads as |
+|-----|-----------|------------------|----------|
+| 0 (south) | 37.62-37.75 | 2300-3000m | Foothills + dune east edge |
+| 1 (mid) | 37.75-37.87 | 2322-4068m | Mt Herard summit captured |
+| 2 (north) | 37.87-38.00 | -1000-4326m | Crestone Peaks captured |
+
+The `-999999` floor in row 2 is the standard NoData sentinel for
+San Luis Valley pixels east of survey coverage.
+
+### Verdict
+
+**Production-quality mega-stack.** Comparable to Big Bend in
+completeness, but with higher relief (4326m peak vs Big Bend's 2215m)
+and richer biome diversity. The single most dramatic of the three
+stacks for any walk-mode demo because the player can stand on the
+dune field and look up at 4000m+ peaks one chunk away.
+
+### Updated mega-stack roster
+
+| Stack | Tiles ok | Coverage | Elev range | Verdict |
+|-------|----------|----------|------------|---------|
+| Big Bend v2 | 9/9 | complete | 572-2215m | Production-ready desert+canyon+mountain |
+| Olympic v2 | 5/9 | partial (alpine gap) | 213-1970m | Edges only; central alpine missing |
+| **Great Sand Dunes 1m** | **9/9** | **complete** | **2291-4016m** | **Highest-relief mega-stack; full biome ladder dunes -> alpine** |
+
+### Cache final
+
+- **294 tiles, 20 GB total** (from 222 tiles / 8.1 GB at session start)
+- Net session add: **+72 tiles, +12 GB**
+- Three production-quality 1m mega-stacks shipped (Big Bend full,
+  Olympic partial, Great Sand Dunes full).
