@@ -1,0 +1,55 @@
+# M8 Organic Regeneration Queue Status
+
+Date: 2026-05-08
+
+This is the current execution board for the M8 ComfyUI/`aaa_texture.py`
+organic source-material cleanup lane. It turns the queue JSON into an
+explicit status report so we do not treat strict texture QA as visual
+promotion.
+
+## Summary
+
+- Total blockers: `5`
+- Sidecar candidates needing runtime trials: `1`
+- Visual rejected: `1`
+- Queued untested: `3`
+
+## Gate
+
+- aaa_texture.py gate passes at the requested quality preset
+- 2x2 tile sheet has no object-like repetition or visible seam
+- Blender plane and sphere previews read as material, not objects
+- M6 source-material noise audit improves against the current blocker
+- source-stack runtime review passes close, mid, and topdown/iso context
+
+Organic-specific hard rule:
+
+- A candidate may pass seam/PBR QA and still fail if it contains
+  object-like plants, landmark blotches, boxy sod panels, bright patch
+  islands, or visible repeated leaf/grass clumps.
+
+## Queue
+
+| Material | Status | Latest | Next Action |
+|----------|--------|--------|-------------|
+| `grassland_grass` | `sidecar_candidate_needs_runtime_trials` | `m8_grassland_grass_calm_v3` | Keep quarantined; run M4/M7 rerender trials and only promote if terrain context stays clean. |
+| `grass` | `visual_rejected` | `4 rejected attempts through m8_grass_calm_v4_anchor_v1` | Do not stage; revise prompt and require visual landmark/object veto before any sidecar material. |
+| `temperate_forest_grass` | `queued_untested` | `-` | Generate the first candidate, then run seam/PBR QA, visual veto, noise audit, and terrain-context review. |
+| `tundra_moss` | `queued_untested` | `-` | Generate the first candidate, then run seam/PBR QA, visual veto, noise audit, and terrain-context review. |
+| `tundra_lichen` | `queued_untested` | `-` | Generate the first candidate, then run seam/PBR QA, visual veto, noise audit, and terrain-context review. |
+
+## Next Execution Order
+
+1. Run M4/M7 runtime trials for `m8_grassland_grass_calm_v3` while it
+   remains sidecar-only.
+2. Retry `grass` only after a prompt revision explicitly suppresses
+   patch islands, box panels, dark landmarks, and individual plant objects.
+3. Generate the untested blockers in queue order:
+   `temperate_forest_grass`, `tundra_moss`, then `tundra_lichen`.
+4. Rebuild this report after every candidate attempt.
+
+## Command
+
+```powershell
+python world3/pipeline/build_m8_regen_queue_status.py
+```

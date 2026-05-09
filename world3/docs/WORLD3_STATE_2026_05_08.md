@@ -542,3 +542,8 @@ These start when chunk + biome + tile + transition is ~80% solved
   source-stack M7 control: 25 loaded chunks, 5 boundary-mask chunks, mean band
   coverage `0.280469`, and worst mean edge band delta `0.047768`. Evidence:
   `M7_TRANSITION_MASK_METRICS_2026_05_08.md`.
+- **2026-05-08 (M8 organic queue board)**: Added
+  `build_m8_regen_queue_status.py` and generated
+  `M8_ORGANIC_REGEN_QUEUE_STATUS_2026_05_08.md`: 5 blockers, 1 sidecar
+  candidate needing M4/M7 runtime trials, 1 visual reject, and 3 untested queue
+  items.

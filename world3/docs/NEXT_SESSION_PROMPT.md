@@ -48,6 +48,7 @@ Read first:
 29. `world3/docs/M6_SOURCE_STACK_RUNTIME_REVIEW_2026_05_08.md`
 30. `world3/docs/M7_SOURCE_STACK_BOUNDARY_REVIEW_2026_05_08.md`
 31. `world3/docs/M7_TRANSITION_MASK_METRICS_2026_05_08.md`
+32. `world3/docs/M8_ORGANIC_REGEN_QUEUE_STATUS_2026_05_08.md`
 
 ## Current status
 
@@ -159,6 +160,13 @@ reference-anchor test created individual plant objects. Do not sidecar-stage
 `grass` until a flat tile passes a visual landmark/object veto. Use
 `world3/pipeline/audit_comfy_visual_veto.py` as an advisory helper only;
 `needs_visual_review` is not a pass.
+
+M8 queue board:
+`world3/docs/M8_ORGANIC_REGEN_QUEUE_STATUS_2026_05_08.md` summarizes the five
+priority organic blockers. Current state: `grassland_grass` has one sidecar
+candidate needing M4/M7 runtime trials, `grass` is visually rejected after four
+attempts, and `temperate_forest_grass`, `tundra_moss`, and `tundra_lichen` are
+still untested queue items.
 
 M1 is done:
 

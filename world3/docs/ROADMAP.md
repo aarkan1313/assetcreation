@@ -110,6 +110,10 @@ direction; treat the rest as where we've been.
   Evidence: `world3/docs/COMFYUI_TEXTURE_WORKFLOW_INVENTORY_2026_05_08.md`
   and `world3/docs/M8_COMFYUI_TEXTURE_REGEN_PASS_2026_05_08.md` and
   `world3/docs/M8_COMFYUI_TERRAIN_CONTEXT_REVIEW_2026_05_08.md`.
+- M8 organic cleanup now has an explicit queue status report: 5 blockers, 1
+  sidecar candidate needing M4/M7 runtime trials, 1 visual reject, and 3
+  untested queue items. Evidence:
+  `world3/docs/M8_ORGANIC_REGEN_QUEUE_STATUS_2026_05_08.md`.
 - Visual target is now explicit: reach roughly 70 percent of the best stacked
   photo/topo OpenTopo reference quality before visual milestone closure.
   Evidence: `world3/docs/M1_M7_VISION_GAP_REVIEW_2026_05_08.md`.

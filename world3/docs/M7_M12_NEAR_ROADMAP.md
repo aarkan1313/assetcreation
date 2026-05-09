@@ -146,6 +146,12 @@ before sidecar staging, even after seam/PBR QA passes. Evidence:
 `M8_GRASS_REGEN_ATTEMPTS_REVIEW_2026_05_08.md`. Advisory helper:
 `world3/pipeline/audit_comfy_visual_veto.py`.
 
+Queue status update: `M8_ORGANIC_REGEN_QUEUE_STATUS_2026_05_08.md` is the
+current execution board. It records five blockers: one sidecar candidate needing
+M4/M7 runtime trials (`grassland_grass`), one visual reject (`grass`), and three
+untested queue items (`temperate_forest_grass`, `tundra_moss`,
+`tundra_lichen`).
+
 Deliverables:
 
 - Regenerate or filter the highest-priority flagged materials from

@@ -49,6 +49,9 @@ Use `world3/jobs/comfy_texture_regen_candidates.json` as the first M8
 work queue. The first pass should regenerate these from prompt/variant
 control, not rely only on deterministic blur/filter repair.
 
+Queue status board: `M8_ORGANIC_REGEN_QUEUE_STATUS_2026_05_08.md` is generated
+from that queue and should be rebuilt after every candidate attempt.
+
 ## Context-Review Queue
 
 | Material | Source asset | Catalog QA | Action |

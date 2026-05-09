@@ -163,3 +163,8 @@ Added same-source M7 transition-mask QA:
 `M7_TRANSITION_MASK_METRICS_2026_05_08.md` records a `PASS` for coverage and
 chunk-edge continuity over the source-stack control scene. Cross-material stress
 and view parity remain open.
+
+Added M8 organic queue status:
+`M8_ORGANIC_REGEN_QUEUE_STATUS_2026_05_08.md` records the current execution
+board for the five priority organic blockers so texture regeneration, visual
+veto, and terrain-context review stay tied together.
