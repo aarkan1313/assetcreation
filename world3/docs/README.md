@@ -13,6 +13,8 @@ find something.
 | "What are we building toward, in phases?"                    | [ROADMAP.md](ROADMAP.md) (v2 — reframed 2026-05-07; updated 2026-05-08 with M1-M6 and M7-M12 sequence)   |
 | "What was the original roadmap before reframing?"            | [ROADMAP_v1_archived.md](ROADMAP_v1_archived.md)      |
 | "What's the current iteration's scope?"                      | [PLAN.md](PLAN.md)                                    |
+| "What are the post-M5 directions queued (alternative world sources, explorable interiors)?" | [FUTURE_WORLD_SOURCES_2026_05_08.md](FUTURE_WORLD_SOURCES_2026_05_08.md) (NLCD, bathy, planetary, fantasy generators, sketch-to-heightmap, interiors) |
+| "What structure-generator families could feed worlds (trees, crystals, scree, lattices, fractals)?" | [FUTURE_PROCEDURAL_STRUCTURES_2026_05_08.md](FUTURE_PROCEDURAL_STRUCTURES_2026_05_08.md) (11 families surveyed; G1 trees + G7 grass + G5 scree are tier 1) |
 | "What are the next six milestones after M6?"                 | [M7_M12_NEAR_ROADMAP.md](M7_M12_NEAR_ROADMAP.md)      |
 | "How did M7 automatic boundary placement work?"              | [M7_BOUNDARY_RUNTIME_INTEGRATION.md](M7_BOUNDARY_RUNTIME_INTEGRATION.md) |
 | "How should we review M1-M7 visually before M8?"             | [M1_M7_VISUAL_AUDIT_PLAN_2026_05_08.md](M1_M7_VISUAL_AUDIT_PLAN_2026_05_08.md) |
@@ -33,6 +35,8 @@ find something.
 | "What did M6 harden in the streamed runtime?"                | [M6_RUNTIME_HARDENING.md](M6_RUNTIME_HARDENING.md)    |
 | "Which green/organic source materials are too noisy?"        | [M6_SOURCE_MATERIAL_NOISE_AUDIT.md](M6_SOURCE_MATERIAL_NOISE_AUDIT.md) |
 | "What did the first M4 splat shader prototype prove?"        | [M4_SPLAT_SHADER_PROTOTYPE.md](M4_SPLAT_SHADER_PROTOTYPE.md) |
+| "What is the repaired M4 source-stack visual context?"       | [M4_SOURCE_STACK_CONTEXT_REVIEW_2026_05_08.md](M4_SOURCE_STACK_CONTEXT_REVIEW_2026_05_08.md) |
+| "How does M3 look through the repaired M4 source-stack context?" | [M3_SOURCE_STACK_SEAM_REVIEW_2026_05_08.md](M3_SOURCE_STACK_SEAM_REVIEW_2026_05_08.md) |
 | "What does a streamed chunk provide to the splat shader?"     | [M4_CHUNK_MATERIAL_CONTRACT.md](M4_CHUNK_MATERIAL_CONTRACT.md) |
 | "Why did we choose X over Y?"                                | [DECISIONS.md](DECISIONS.md)                          |
 | "What's the canonical command for [common task]?"            | [../../pipelines/textures/RECIPES.md](../../pipelines/textures/RECIPES.md) |

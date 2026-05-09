@@ -36,6 +36,7 @@ Open these in order if you're new:
 - ✅ **Audio output archived** (189 MB, was noise-tier). Pipeline retained.
 - 🟡 **Path 2 character_inpaint pipeline** mechanically correct end-to-end (2026-05-07 night, 5 bugs fixed). FLUX prompt quality is the remaining open gap. See [docs/plans/PATH_2_INPAINT_DESIGN_2026_05_07.md](docs/plans/PATH_2_INPAINT_DESIGN_2026_05_07.md).
 - 📋 **Next planned (world3):** M1 material catalog → M2 transition prototype (worker handoff) → M3 chunk-size sweep → M4 splat-shader → M5 wire streaming + splat into walk.tscn. M1+M3 can run in parallel; M2 starts as soon as M1's catalog spec is drafted.
+- 🔭 **Post-M5 option registers (forward-looking, not in scope yet):** [Track A: alternative world sources](world3/docs/FUTURE_WORLD_SOURCES_2026_05_08.md) (NLCD land-cover, bathymetry, planetary DEMs, fantasy world generators) + Track B explorable interiors (castles/dungeons). [Track C: procedural structure generators](world3/docs/FUTURE_PROCEDURAL_STRUCTURES_2026_05_08.md) (trees, grass, crystals, voronoi, fractals, scree — 11 families).
 - 📋 **Other queued:** FLUX prompt engineering / ControlNet on chest insignia, then characters animation deep-dive.
 
 ## What's in here (highest level)

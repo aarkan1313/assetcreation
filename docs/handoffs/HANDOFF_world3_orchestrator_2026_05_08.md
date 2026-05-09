@@ -283,6 +283,35 @@ region-specific kit override OR regenerating
 These start when chunk + biome + tile + transition is ~80% solved
 (per user 2026-05-08). NOT in scope for current iteration.
 
+## Post-M5 option registers (for when the user asks "what next")
+
+Two forward-looking docs that survey post-M5 directions. Don't plan
+work from them now — they exist so the next "what's next?"
+conversation has concrete options on the table.
+
+- [`world3/docs/FUTURE_WORLD_SOURCES_2026_05_08.md`](../../world3/docs/FUTURE_WORLD_SOURCES_2026_05_08.md)
+  — Track A (alternative heightmap/world sources: NLCD land-cover,
+  bathymetry, planetary DEMs, sketch-to-heightmap, fantasy world
+  generators, photo+depth) and Track B (explorable interiors —
+  castles, dungeons, building insides). Highest-leverage Track A
+  item is **NLCD land-cover** (free per-pixel biome ground truth;
+  pairs with M4 splat shader).
+
+- [`world3/docs/FUTURE_PROCEDURAL_STRUCTURES_2026_05_08.md`](../../world3/docs/FUTURE_PROCEDURAL_STRUCTURES_2026_05_08.md)
+  — Track C (procedural structure generators: 11 families covering
+  trees, grass, crystals, voronoi, fractals, scree, layered rock,
+  cellular, lattices, etc). Highest-leverage Track C item is
+  **G1 trees + G7 grass + G5 scree** as a Tier 1 starter group;
+  vegetation transforms "terrain" into "place."
+
+The single most powerful post-M5 pairing called out across the docs:
+**NLCD biome masks (Track A #1) + tree scatter at biome-class
+density (Track C G1)** — a ~2-3 session arc to a demo that looks
+like a real game world for the first time.
+
+Both docs are also linked from `world3/docs/ROADMAP.md` "Far-end
+direction (post-M1–M5 option registers)" section.
+
 ---
 
 ## Open polish items (parked)

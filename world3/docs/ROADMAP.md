@@ -531,6 +531,100 @@ docs/OPENTOPO_TILEABLE_TEXTURE_PILOT_AUDIT.md
 - **Real water / sea level / scatter / vegetation**: gameplay layer,
   out of scope for terrain phases.
 
+## Far-end direction (post-M1–M5 option registers)
+
+Once the M1–M5 iteration closes (material catalog → transitions →
+chunk-size sweep → splat shader → streamed walk scene), three
+forward-looking option registers describe what the system could
+expand into next. None of these are in scope today; each is a queued
+direction the orchestrator picks from when the user asks "what
+next."
+
+### Track A — alternative world sources
+
+[`FUTURE_WORLD_SOURCES_2026_05_08.md`](FUTURE_WORLD_SOURCES_2026_05_08.md)
+
+Extensions of the heightmap-driven terrain pipeline. New source
+classes that plug into the existing pipeline at the
+`heightmap.png + meta.json` boundary:
+
+- **A1 NLCD/Copernicus land-cover** — free per-pixel biome ground
+  truth; force-multiplier on the M4 splat shader. Highest-leverage
+  Track A item.
+- **A2 Bathymetry + coastal blend** — extends "terrain" to "world"
+  (coastlines, islands, sea floor) via GEBCO global bathymetry.
+- **A3 Planetary DEMs (Mars / Moon / Mercury)** — real alien
+  geology from USGS Astrogeology + NASA PDS. Stress-tests kit-system
+  Earth assumptions.
+- **A4 Sketch-to-heightmap** — fantasy-axis source via user-drawn
+  maps. Orthogonal to OpenTopo.
+- **A5 Fantasy world generators (Azgaar, WorldEngine)** — whole
+  worlds with biomes/rivers/climate baked in; minimal code to ingest.
+- **A6 Photo + depth estimation** — cheap experiment ingesting
+  non-DEM imagery as terrain.
+
+### Track B — explorable interiors / structures
+
+Captured under the same Track A doc's "Track B" section. Different
+pipeline shape from terrain (not heightmap-based; layout generator +
+3D extrusion + props + gameplay metadata). 6 sub-categories from
+single-room caves through full castle/dungeon networks. Suggested
+starter: ingest a CC0 modular kit, hand-author one tavern interior,
+validate POI/door/lighting integration before committing to a full
+generator.
+
+### Track C — procedural structure generators
+
+[`FUTURE_PROCEDURAL_STRUCTURES_2026_05_08.md`](FUTURE_PROCEDURAL_STRUCTURES_2026_05_08.md)
+
+What lives ON terrain that isn't covered by heightmap + texture.
+11 structure-generator families surveyed:
+
+- G1 branching (trees, rivers, lightning, vessels)
+- G2 cellular/Voronoi (crystals, basalt, foam)
+- G3 reaction-diffusion (animal markings, coral)
+- G4 fractals (mountains, ferns, mandelbulb)
+- G5 aggregates (scree, pebbles, rubble)
+- G6 layered (rock strata, agate)
+- G7 filaments (grass, hair, fabric)
+- G8 folded surfaces (mountain folds, brain coral)
+- G9 diffusion (frost, dust, lichen)
+- G10 tilings (Penrose, Islamic, hex, brick)
+- G11 wave patterns (Chladni, ripples, dunes)
+
+Recommended Tier 1 first targets: **G1 trees + G7 grass + G5 scree.**
+Vegetation is the single biggest visual delta from "terrain" to
+"place."
+
+The most powerful single post-M5 pairing called out in the doc:
+**NLCD biome masks (Track A #1) + tree scatter at biome-class
+density (Track C G1)** — ~2-3 session arc to a demo that looks like
+a real game world for the first time.
+
+### Cross-cutting integration constraints
+
+The Track A/B/C docs describe what M1–M5 should keep
+source/output-agnostic so neither track requires retrofitting later:
+
+- **M1 catalog**: include `material_role` (ground, vegetation,
+  crystal, fabric, decal, structural) and `geometry_class`
+  (2d_texture, instanced_mesh, field_scatter, decal, volumetric).
+  Don't bake "ground material only" assumptions.
+- **M2 transitions**: the data model should support
+  `transition_type` beyond "2D blended strip" — also density
+  gradient, scatter taper, edge decoration, threshold (door /
+  surface↔underground).
+- **M3+M5 chunks**: per-chunk data format should be extensible
+  (named layers, not fixed-shape struct) so scatter density masks +
+  mesh population lists + decal placement can be added per-chunk
+  later.
+- **M4 splat shader**: long-term unified shader could absorb
+  interior-floor splatting and per-mesh per-pixel mixing. Don't
+  over-design now, but don't hard-code "terrain ground only."
+
+These are small amounts of restraint at design time that pay off
+substantially when the post-M5 tracks kick off.
+
 ## Phase order
 
 Originally A → B → D → C → E → F. Actual order shipped:
