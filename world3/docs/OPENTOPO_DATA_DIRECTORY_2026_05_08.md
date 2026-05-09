@@ -353,14 +353,138 @@ enough — pull more US-LiDAR + bathy.
 
 ---
 
+## Coverage check vs. existing cache (2026-05-08)
+
+Cross-checked the 50 curated regions against `dems/` (222 cached
+tiles, 8.1 GB) using bbox overlap + preferred-dataset match:
+
+| Status | Count | Meaning |
+|--------|------:|---------|
+| **FULL** | 16 | Have a cached tile that fully covers the bbox at the preferred dataset (or close substitute) |
+| **PARTIAL** | 10 | Cached tile at preferred dataset overlaps but doesn't fully cover the curated bbox (mostly stitched-region cases where we have one corner) |
+| **OVERLAP** | 1 | Have nearby tiles at a *different* dataset than preferred |
+| **MISSING** | 23 | No cached tile in this bbox at all |
+
+### What's already covered
+
+Tier 1 flagship hero — **8/8 covered** (FULL or PARTIAL):
+- yosemite_valley (FULL — 13 tiles incl. USGS1m + USGS10m)
+- grand_canyon_inner (FULL — USGS1m)
+- bryce_hoodoo_hd (FULL — USGS1m + COP30)
+- death_valley_basin (PARTIAL — USGS10m, need more for stitch)
+- mt_st_helens_crater (FULL — USGS1m)
+- crater_lake (FULL — USGS1m + USGS10m)
+- tetons_existing (FULL — COP30, already integrated)
+- half_dome_test (FULL — multiple tiles)
+
+Tier 3 extreme — **9/10 covered** (mostly via prior worker work):
+- norwegian_fjords FULL, iceland_eyja PARTIAL, greenland_disko PARTIAL,
+  antarctic_dryval FULL, nz_milford FULL, nz_mt_cook FULL,
+  aconcagua PARTIAL, annapurna_nepal PARTIAL, atacama_plateau FULL,
+  mt_fuji has nearby COP30 only (need AW3D30 spot-pull).
+
+Tier 4 coastal+bathy — **3/8 covered**:
+- great_barrier_reef FULL, norwegian_fjord_coast FULL,
+  hawaiian_islands FULL.
+
+### What's missing
+
+Tier 2 biome variety — **0/15 covered fully** (12 missing, 2 partial,
+1 substitute). This is the gap-fill tier; almost nothing is cached
+because most of these aren't even in the wishlist yet.
+
+Tier 4 coastal+bathy — 5/8 missing (Maldives, Bay of Fundy, Outer
+Banks, Indonesia, Big Sur).
+
+Tier 5 non-famous — **6/9 missing** (Lena delta, Mekong delta,
+Caucasus, Tien Shan, Macdonnell ranges, Bolivian Altiplano partial,
+Drakensberg partial, japanese_alps has substitute, Faroe partial).
+
+### Wishlist alignment
+
+Out of 50 curated regions:
+- **17** have an entry in `art_lab/biomes/data_wishlist.json`
+  (loose-match by name, e.g. `bryce_hoodoo_hd` exists, `mt_st_helens_crater`
+  → `mt_st_helens_flank_1m` exists).
+- **33** are NEW — need to be added to the wishlist before
+  `bulk_pull.py` can fetch them.
+
+The 33 NEW entries cluster into:
+- **Tier 2 biomes** (13): Serengeti, Great Plains, Pantanal, Okavango,
+  Namib, Sahara, Alaska boreal, Yukon boreal, Madagascar, Ethiopian,
+  California chaparral (regions.json has it but not wishlist), Borneo,
+  Patagonia.
+- **Tier 3 extreme** (4): Norwegian fjords (multi-tile), Aconcagua
+  (have stitched entry, may need showcase/highres), Annapurna, Mt
+  Fuji, Atacama.
+- **Tier 4 coastal** (7): Maldives, Norwegian fjord coast, Hawaiian
+  islands (both DEM + bathy combo), Bay of Fundy, Outer Banks,
+  Indonesia volcanic, Big Sur.
+- **Tier 5 non-famous** (7): Bolivian Altiplano, Lena delta, Mekong
+  delta, Caucasus Georgia, Tien Shan, Aussie Macdonnell, Faroe
+  Islands.
+
+### Real pull-budget after coverage check
+
+Cache today: **8.1 GB / 222 tiles**.
+
+To go from 8.1 GB to ~30 GB target (~22 GB additional):
+- Tier 2 (13 NEW + 2 partial): mostly COP30, ~50-100 MB each →
+  ~1.5 GB
+- Tier 4 coastal additions (7 NEW): GEBCO + COP30 pairs →
+  ~1 GB
+- Tier 5 non-famous (7 NEW): COP30 →
+  ~0.7 GB
+- Tier 3 missing details: Norwegian fjords stitched, Aconcagua
+  showcase, Mt Fuji AW3D30, Annapurna fill →
+  ~3 GB
+- Stitched tier 1 fills (death_valley remaining tiles, Yosemite
+  full stitch, Bryce extended) →
+  ~5 GB
+- HD inspection material (USGS1m extras at flagship sites for the
+  M3 chunk-size sweep, NLCD-pairing prep) →
+  ~5 GB
+- Headroom for opportunistic pulls →
+  ~5 GB
+
+Total additional: **~22 GB**. Lands at ~30 GB target.
+
+### Don't-pull list (already covered)
+
+The following 16 FULL regions don't need new pulls; they're already
+cached:
+
+Tier 1: yosemite_valley, grand_canyon_inner, bryce_hoodoo_hd,
+mt_st_helens_crater, crater_lake, tetons_existing, half_dome_test
+(7).
+
+Tier 3: norwegian_fjords (have one tile but stitched needs more —
+recheck), antarctic_dryval (have AW3D30 substitute — confirm REMA
+not needed), nz_milford, nz_mt_cook, atacama_plateau (5).
+
+Tier 4: great_barrier_reef, norwegian_fjord_coast,
+hawaiian_islands (3).
+
+Tier 5: japanese_alps (have COP30 substitute — confirm AW3D30 not
+needed) (1).
+
+Worker handoff should sanity-check these vs. desired dataset; some
+"FULL" entries might not be at preferred dataset.
+
+---
+
 ## Status
 
-- **Doc**: drafted 2026-05-08, awaiting user review.
-- **NEW wishlist entries**: not yet added.
-- **Pulls**: not yet executed.
+- **Doc**: drafted 2026-05-08, coverage cross-check appended same
+  day.
+- **NEW wishlist entries**: 33 identified, not yet added.
+- **Pulls**: not yet executed. ~22 GB additional needed to hit ~30 GB
+  target.
 
-This doc is the **plan + directory**. Pulls happen via the existing
-bulk_pull tooling once the user approves the curation.
+This doc is the **plan + directory + coverage report**. Worker
+handoff candidate once user approves: (1) gap-fill 33 NEW wishlist
+entries, (2) bulk-pull the missing/partial set tier-by-tier, (3)
+verify cache breakdown matches the rule-of-thumb table.
 
 ---
 
