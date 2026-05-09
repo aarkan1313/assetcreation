@@ -19,33 +19,33 @@
     },
     {
       "milestone": "M2",
-      "status": "PASS / REVIEW",
-      "read": "Transition workflow is demonstrable, but the view is still a debug comparison board."
+      "status": "PASS / DEBUG REVIEW",
+      "read": "Transition rules and hard-cut comparisons are reproducible; the review board stays diagnostic."
     },
     {
       "milestone": "M3",
-      "status": "PASS",
-      "read": "Chunk sweep reruns and preserves 256 m seam evidence."
+      "status": "PASS / SOURCE-STACK BASELINE",
+      "read": "Chunk sweep reruns and now has repaired source-stack seam evidence."
     },
     {
       "milestone": "M4",
-      "status": "PIPELINE PASS / VISUAL REWORK",
-      "read": "Unified splat shader works, but the current material context is still debug-looking."
+      "status": "PIPELINE PASS / SOURCE-STACK BASELINE",
+      "read": "Unified splat path runs over source-stack context; Comfy sidecar remains quarantined."
     },
     {
       "milestone": "M5",
-      "status": "PIPELINE PASS / VISUAL REWORK",
-      "read": "Streaming chunks and metrics work; the visible terrain remains below the 70 percent visual target."
+      "status": "PIPELINE PASS / SOURCE-STACK BASELINE",
+      "read": "Streaming walk runs over repaired source-stack context using inspection framing."
     },
     {
       "milestone": "M6",
-      "status": "PIPELINE PASS / VISUAL REWORK",
-      "read": "Runtime cache/collision path works; visual context is still inherited from M5."
+      "status": "RUNTIME PASS / SOURCE-STACK BASELINE",
+      "read": "Runtime cache and streamed collision run over the repaired source-stack context."
     },
     {
       "milestone": "M7",
-      "status": "WORKFLOW PASS / VISUAL REWORK",
-      "read": "Boundary placement runs over source-stack terrain, but the control capture remains diagnostic."
+      "status": "WORKFLOW PASS / SOURCE-STACK CONTROL",
+      "read": "Boundary placement runs in source-stack context; same-source control is cleaner but not final closure."
     }
   ],
   "items": [
@@ -74,28 +74,28 @@
       "milestone": "M4",
       "label": "M4 Splat Shader",
       "path": "world3/docs/captures/m1_m7_validation_2026_05_08/m4_chunk_splat_stream_review.png",
-      "note": "Streamed chunk set consuming the unified splat material; visual context still needs repair.",
+      "note": "Original streamed-chunk diagnostic for the unified splat material.",
       "exists": true
     },
     {
       "milestone": "M5",
       "label": "M5 Walk Streaming",
       "path": "world3/docs/captures/m1_m7_validation_2026_05_08/m5_walk_stream_after_crossing.png",
-      "note": "Walk scene crosses streamed chunks; terrain read remains below visual target.",
+      "note": "Original walk-streaming diagnostic; source-stack rerender is in the visual sheet.",
       "exists": true
     },
     {
       "milestone": "M6",
       "label": "M6 Runtime Hardening",
       "path": "world3/docs/captures/m1_m7_validation_2026_05_08/m6_walk_stream_collision_cache.png",
-      "note": "Runtime cache + streamed collision validate, but inherit the M5 visual context.",
+      "note": "Original runtime cache + streamed collision diagnostic.",
       "exists": true
     },
     {
       "milestone": "M7",
       "label": "M7 Boundary Runtime",
       "path": "world3/docs/captures/m1_m7_validation_2026_05_08/m7_boundary_runtime_source_stack_control.png",
-      "note": "Automatic boundary path over valid-mask source-stack terrain; diagnostic control.",
+      "note": "Original automatic boundary-mask diagnostic control.",
       "exists": true
     }
   ],
@@ -122,6 +122,18 @@
       "label": "M5 Source-Stack Walk",
       "path": "world3/docs/captures/m1_m7_validation_2026_05_08/m5_source_stack_walk_after_crossing.png",
       "note": "Walk streaming over the repaired M4 context using an inspection camera.",
+      "exists": true
+    },
+    {
+      "label": "M6 Source-Stack Collision",
+      "path": "world3/docs/captures/m1_m7_validation_2026_05_08/m6_source_stack_collision.png",
+      "note": "Same source-stack walk context with streamed collision chunks enabled.",
+      "exists": true
+    },
+    {
+      "label": "M7 Source-Stack Boundary",
+      "path": "world3/docs/captures/m1_m7_validation_2026_05_08/m7_boundary_runtime_source_stack_context.png",
+      "note": "Automatic boundary mask over a source-stack same-source control context.",
       "exists": true
     }
   ]

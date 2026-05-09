@@ -39,6 +39,7 @@ Scenes:
 - `world3/scenes/capture_phase_m7/boundary_runtime_review.tscn`
 - `world3/scenes/capture_phase_m7/boundary_runtime_biome_stress.tscn`
 - `world3/scenes/capture_phase_m7/boundary_runtime_source_stack_control.tscn`
+- `world3/scenes/capture_phase_m7/boundary_runtime_source_stack_context.tscn`
 - `world3/scenes/capture_phase_m7/boundary_walk_review.tscn`
 
 Captures:
@@ -46,6 +47,7 @@ Captures:
 - `world3/docs/captures/m7/boundary_runtime_review.png`
 - `world3/docs/captures/m7/boundary_runtime_biome_stress.png`
 - `world3/docs/captures/m7/boundary_runtime_source_stack_control.png`
+- `world3/docs/captures/m7/boundary_runtime_source_stack_context.png`
 - `world3/docs/captures/m7/boundary_walk_after_crossing.png`
 - `world3/docs/captures/m7/boundary_walk_metrics.json`
 
@@ -89,6 +91,12 @@ shows the boundary path can run over valid-mask source macro terrain. It still
 does not close M7 visually: finite footprint/framing and source-photo shadow
 content are obvious, and the transition is intentionally subtle at source-stack
 strength.
+
+Follow-up source-stack context rerender:
+`world3/docs/M7_SOURCE_STACK_BOUNDARY_REVIEW_2026_05_08.md` adds a cleaner
+5x5-neighborhood same-source control capture. This is the current M7 visual
+control, but walk/iso/topdown parity and cross-material stress review remain
+open.
 
 ## Remaining Risks
 

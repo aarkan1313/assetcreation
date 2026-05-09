@@ -79,6 +79,15 @@ direction; treat the rest as where we've been.
   `world3/docs/M1_M7_VISUAL_AUDIT_2026_05_08.md`.
 - Visual remediation plan is active before normal M8 progress. Evidence:
   `world3/docs/M1_M7_VISUAL_REMEDIATION_PLAN_2026_05_08.md`.
+- M3-M7 now have source-stack visual baseline rerenders. The bad finite-chunk
+  and debug captures are retained as engineering diagnostics, while the main
+  validation sheet uses the source-stack lane. Evidence:
+  `world3/docs/M1_M7_WORKFLOW_VALIDATION_RUN_2026_05_08.md`,
+  `world3/docs/M3_SOURCE_STACK_SEAM_REVIEW_2026_05_08.md`,
+  `world3/docs/M4_SOURCE_STACK_CONTEXT_REVIEW_2026_05_08.md`,
+  `world3/docs/M5_SOURCE_STACK_WALK_REVIEW_2026_05_08.md`,
+  `world3/docs/M6_SOURCE_STACK_RUNTIME_REVIEW_2026_05_08.md`, and
+  `world3/docs/M7_SOURCE_STACK_BOUNDARY_REVIEW_2026_05_08.md`.
 - First remediation bridge is complete enough for review: runtime terrain can
   use OpenTopo source macro albedo with low-strength tileable detail, and the
   worst organic materials now have quarantined repair candidates. Evidence:
@@ -105,8 +114,9 @@ direction; treat the rest as where we've been.
 Recommended next lane: finish the **M7-M12 near roadmap**. The six-step sequence is now
 explicit in [`M7_M12_NEAR_ROADMAP.md`](M7_M12_NEAR_ROADMAP.md):
 
-1. M7 biome-boundary runtime integration. Runtime pass complete; visual
-   remediation required before visual closure.
+1. M7 biome-boundary runtime integration. Runtime pass complete; source-stack
+   control rerendered; visual closure still needs cross-material stress and view
+   parity.
 2. M8 organic source-material cleanup. Start with the ComfyUI regeneration
    queue plus source-stack terrain review; deterministic repair candidates stay
    quarantined until promoted.

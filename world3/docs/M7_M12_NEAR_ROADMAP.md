@@ -57,10 +57,17 @@ Remediation plan: `M1_M7_VISUAL_REMEDIATION_PLAN_2026_05_08.md`.
 grassland_grass` remains a stress test until grassland source materials are
 repaired.
 
-R6 source-stack control rerender has started:
-`docs/captures/m7/boundary_runtime_source_stack_control.png`. It proves the M7
-boundary path can run over valid-mask source macro terrain, but remains
-diagnostic rather than visual closure.
+R6 source-stack rerenders now cover M3-M7:
+
+- M3: `M3_SOURCE_STACK_SEAM_REVIEW_2026_05_08.md`
+- M4: `M4_SOURCE_STACK_CONTEXT_REVIEW_2026_05_08.md`
+- M5: `M5_SOURCE_STACK_WALK_REVIEW_2026_05_08.md`
+- M6: `M6_SOURCE_STACK_RUNTIME_REVIEW_2026_05_08.md`
+- M7: `M7_SOURCE_STACK_BOUNDARY_REVIEW_2026_05_08.md`
+
+This gives the workflow a credible source-stack visual baseline and moves the
+old finite-chunk/debug captures into engineering diagnostics. It still does not
+make M7 production-visual closed.
 
 Vision target: `M1_M7_VISION_GAP_REVIEW_2026_05_08.md` sets visual closure at
 about 70 percent of the best stacked photo/topo OpenTopo reference quality.
@@ -68,9 +75,10 @@ Current M1-M7 runtime captures are below that bar and should be treated as
 debug/plumbing evidence.
 
 Visual caveat: M7 should not be treated as final terrain-art quality. The
-same-source control is calm but subtle; the desert-to-grassland stress case
-exposes the known noisy grass/organic source-material issue. Run
-`M1_M7_VISUAL_AUDIT_2026_05_08.md` before starting M8.
+source-stack same-source control is cleaner but subtle; the desert-to-grassland
+stress case still exposes the known noisy grass/organic source-material issue.
+M8 can continue as source-material cleanup, but M7 visual closure still needs
+cross-material stress, transition-mask metrics, and view parity.
 
 Deliverables:
 
@@ -87,8 +95,8 @@ Exit:
   no manual shader-position knobs.
 - Boundary assets are selected from rules/catalog IDs, not hardcoded in a scene.
 - Workflow exit is met.
-- Visual exit is failed/pending remediation. M7's current captures are
-  diagnostics, not final asset approval.
+- Visual exit is partially remediated. Source-stack control evidence exists,
+  but final visual closure remains open.
 
 ## M8 - Organic Source-Material Cleanup
 

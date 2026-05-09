@@ -63,3 +63,10 @@ M3/M5 update: M3 now has a source-stack visual seam capture
 (`M3_SOURCE_STACK_SEAM_REVIEW_2026_05_08.md`), and M5 has a source-stack
 inspection walk rerender (`M5_SOURCE_STACK_WALK_REVIEW_2026_05_08.md`). The
 old M3/M5 captures remain technical diagnostics.
+
+M6/M7 update: M6 now has a source-stack collision rerender
+(`M6_SOURCE_STACK_RUNTIME_REVIEW_2026_05_08.md`), and M7 has a cleaner
+source-stack same-source boundary context
+(`M7_SOURCE_STACK_BOUNDARY_REVIEW_2026_05_08.md`). M7 is improved but not
+visually closed because cross-material stress, mask metrics, and view parity
+remain open.

@@ -217,12 +217,12 @@ def copy_if_exists(src: Path, dst: Path) -> None:
 def write_report(out_dir: Path, m1: dict, items: list[dict], visual_items: list[dict]) -> None:
     verdicts = [
         ("M1", "PASS", "Catalog and biome-kit material references resolve."),
-        ("M2", "PASS / REVIEW", "Transition workflow is demonstrable, but the view is still a debug comparison board."),
-        ("M3", "PASS", "Chunk sweep reruns and preserves 256 m seam evidence."),
-        ("M4", "PIPELINE PASS / VISUAL REWORK", "Unified splat shader works, but the current material context is still debug-looking."),
-        ("M5", "PIPELINE PASS / VISUAL REWORK", "Streaming chunks and metrics work; the visible terrain remains below the 70 percent visual target."),
-        ("M6", "PIPELINE PASS / VISUAL REWORK", "Runtime cache/collision path works; visual context is still inherited from M5."),
-        ("M7", "WORKFLOW PASS / VISUAL REWORK", "Boundary placement runs over source-stack terrain, but the control capture remains diagnostic."),
+        ("M2", "PASS / DEBUG REVIEW", "Transition rules and hard-cut comparisons are reproducible; the review board stays diagnostic."),
+        ("M3", "PASS / SOURCE-STACK BASELINE", "Chunk sweep reruns and now has repaired source-stack seam evidence."),
+        ("M4", "PIPELINE PASS / SOURCE-STACK BASELINE", "Unified splat path runs over source-stack context; Comfy sidecar remains quarantined."),
+        ("M5", "PIPELINE PASS / SOURCE-STACK BASELINE", "Streaming walk runs over repaired source-stack context using inspection framing."),
+        ("M6", "RUNTIME PASS / SOURCE-STACK BASELINE", "Runtime cache and streamed collision run over the repaired source-stack context."),
+        ("M7", "WORKFLOW PASS / SOURCE-STACK CONTROL", "Boundary placement runs in source-stack context; same-source control is cleaner but not final closure."),
     ]
     manifest = {
         "kind": "m1_m7_workflow_validation",
@@ -303,12 +303,13 @@ def write_report(out_dir: Path, m1: dict, items: list[dict], visual_items: list[
             "## Read",
             "",
             "This suite validates that the M1-M7 workflow can be rerun in order.",
-            "It is not a blanket visual promotion. The main sheet is now visual-focused",
-            "and intentionally excludes finite-chunk/topdown/debug terrain captures that",
-            "still read as bad prototype evidence. Those remain in the engineering",
-            "diagnostics sheet because they prove plumbing, not art quality. M7 remains",
-            "workflow-pass / visual-rework until source-material cleanup, source-stack",
-            "framing, and M5/M7 rerenders close.",
+            "It is not a blanket visual promotion. The main sheet is the current",
+            "source-stack visual baseline and intentionally excludes finite-chunk,",
+            "topdown, and debug terrain captures that still read as prototype evidence.",
+            "Those remain in the engineering diagnostics sheet because they prove",
+            "plumbing, not art quality. M7 now has a cleaner same-source control,",
+            "but still needs cross-material stress, transition-mask metrics, and",
+            "walk/iso/topdown parity before production-visual closure.",
         ]
     )
     write_text_lf(out_dir / "README.md", "\n".join(lines) + "\n")
@@ -361,6 +362,14 @@ def main() -> int:
         ROOT / "docs/captures/m5/walk_source_stack_after_crossing.png",
         out_dir / "m5_source_stack_walk_after_crossing.png",
     )
+    copy_if_exists(
+        ROOT / "docs/captures/m6/walk_source_stack_collision.png",
+        out_dir / "m6_source_stack_collision.png",
+    )
+    copy_if_exists(
+        ROOT / "docs/captures/m7/boundary_runtime_source_stack_context.png",
+        out_dir / "m7_boundary_runtime_source_stack_context.png",
+    )
 
     items = [
         {
@@ -385,25 +394,25 @@ def main() -> int:
             "milestone": "M4",
             "label": "M4 Splat Shader",
             "path": str(out_dir / "m4_chunk_splat_stream_review.png"),
-            "note": "Streamed chunk set consuming the unified splat material; visual context still needs repair.",
+            "note": "Original streamed-chunk diagnostic for the unified splat material.",
         },
         {
             "milestone": "M5",
             "label": "M5 Walk Streaming",
             "path": str(out_dir / "m5_walk_stream_after_crossing.png"),
-            "note": "Walk scene crosses streamed chunks; terrain read remains below visual target.",
+            "note": "Original walk-streaming diagnostic; source-stack rerender is in the visual sheet.",
         },
         {
             "milestone": "M6",
             "label": "M6 Runtime Hardening",
             "path": str(out_dir / "m6_walk_stream_collision_cache.png"),
-            "note": "Runtime cache + streamed collision validate, but inherit the M5 visual context.",
+            "note": "Original runtime cache + streamed collision diagnostic.",
         },
         {
             "milestone": "M7",
             "label": "M7 Boundary Runtime",
             "path": str(out_dir / "m7_boundary_runtime_source_stack_control.png"),
-            "note": "Automatic boundary path over valid-mask source-stack terrain; diagnostic control.",
+            "note": "Original automatic boundary-mask diagnostic control.",
         },
     ]
     visual_items = [
@@ -426,6 +435,16 @@ def main() -> int:
             "label": "M5 Source-Stack Walk",
             "path": str(out_dir / "m5_source_stack_walk_after_crossing.png"),
             "note": "Walk streaming over the repaired M4 context using an inspection camera.",
+        },
+        {
+            "label": "M6 Source-Stack Collision",
+            "path": str(out_dir / "m6_source_stack_collision.png"),
+            "note": "Same source-stack walk context with streamed collision chunks enabled.",
+        },
+        {
+            "label": "M7 Source-Stack Boundary",
+            "path": str(out_dir / "m7_boundary_runtime_source_stack_context.png"),
+            "note": "Automatic boundary mask over a source-stack same-source control context.",
         },
     ]
     make_contact_sheet(

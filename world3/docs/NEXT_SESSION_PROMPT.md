@@ -45,6 +45,8 @@ Read first:
 26. `world3/docs/M4_SOURCE_STACK_CONTEXT_REVIEW_2026_05_08.md`
 27. `world3/docs/M3_SOURCE_STACK_SEAM_REVIEW_2026_05_08.md`
 28. `world3/docs/M5_SOURCE_STACK_WALK_REVIEW_2026_05_08.md`
+29. `world3/docs/M6_SOURCE_STACK_RUNTIME_REVIEW_2026_05_08.md`
+30. `world3/docs/M7_SOURCE_STACK_BOUNDARY_REVIEW_2026_05_08.md`
 
 ## Current status
 
@@ -134,6 +136,16 @@ M5 now has a source-stack inspection rerender:
 walk camera exposed finite-footprint artifacts and should not be used as visual
 evidence; keep the accepted inspection camera until a wider/far-field policy is
 implemented.
+
+M6 now has a collision-enabled source-stack rerender:
+`world3/docs/captures/m6/walk_source_stack_collision.png` and
+`world3/docs/captures/m6/walk_source_stack_collision_metrics.json`. It uses the
+same inspection scene with streamed collision chunks enabled. M7 now has a
+cleaner same-source source-stack control:
+`world3/scenes/capture_phase_m7/boundary_runtime_source_stack_context.tscn` and
+`world3/docs/captures/m7/boundary_runtime_source_stack_context.png`. M7 is
+improved but not visually closed; cross-material stress, view parity, and
+transition-mask metrics remain open.
 
 Second ComfyUI M8 target: `grass` produced strict grade-A outputs, but visual
 review rejected them. `m8_grass_calm_v1` is the best failed direction; v2/v3

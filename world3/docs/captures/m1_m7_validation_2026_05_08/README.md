@@ -21,12 +21,12 @@ engineering diagnostics that prove workflow plumbing.
 | Milestone | Status | Read |
 |-----------|--------|------|
 | M1 | PASS | Catalog and biome-kit material references resolve. |
-| M2 | PASS / REVIEW | Transition workflow is demonstrable, but the view is still a debug comparison board. |
-| M3 | PASS | Chunk sweep reruns and preserves 256 m seam evidence. |
-| M4 | PIPELINE PASS / VISUAL REWORK | Unified splat shader works, but the current material context is still debug-looking. |
-| M5 | PIPELINE PASS / VISUAL REWORK | Streaming chunks and metrics work; the visible terrain remains below the 70 percent visual target. |
-| M6 | PIPELINE PASS / VISUAL REWORK | Runtime cache/collision path works; visual context is still inherited from M5. |
-| M7 | WORKFLOW PASS / VISUAL REWORK | Boundary placement runs over source-stack terrain, but the control capture remains diagnostic. |
+| M2 | PASS / DEBUG REVIEW | Transition rules and hard-cut comparisons are reproducible; the review board stays diagnostic. |
+| M3 | PASS / SOURCE-STACK BASELINE | Chunk sweep reruns and now has repaired source-stack seam evidence. |
+| M4 | PIPELINE PASS / SOURCE-STACK BASELINE | Unified splat path runs over source-stack context; Comfy sidecar remains quarantined. |
+| M5 | PIPELINE PASS / SOURCE-STACK BASELINE | Streaming walk runs over repaired source-stack context using inspection framing. |
+| M6 | RUNTIME PASS / SOURCE-STACK BASELINE | Runtime cache and streamed collision run over the repaired source-stack context. |
+| M7 | WORKFLOW PASS / SOURCE-STACK CONTROL | Boundary placement runs in source-stack context; same-source control is cleaner but not final closure. |
 
 ## Sequence
 
@@ -37,13 +37,13 @@ engineering diagnostics that prove workflow plumbing.
 - **M3**: `present` - world3/docs/captures/m1_m7_validation_2026_05_08/m3_chunk_256m_seam.png
   256 m chunk seam capture from the chunk-size sweep.
 - **M4**: `present` - world3/docs/captures/m1_m7_validation_2026_05_08/m4_chunk_splat_stream_review.png
-  Streamed chunk set consuming the unified splat material; visual context still needs repair.
+  Original streamed-chunk diagnostic for the unified splat material.
 - **M5**: `present` - world3/docs/captures/m1_m7_validation_2026_05_08/m5_walk_stream_after_crossing.png
-  Walk scene crosses streamed chunks; terrain read remains below visual target.
+  Original walk-streaming diagnostic; source-stack rerender is in the visual sheet.
 - **M6**: `present` - world3/docs/captures/m1_m7_validation_2026_05_08/m6_walk_stream_collision_cache.png
-  Runtime cache + streamed collision validate, but inherit the M5 visual context.
+  Original runtime cache + streamed collision diagnostic.
 - **M7**: `present` - world3/docs/captures/m1_m7_validation_2026_05_08/m7_boundary_runtime_source_stack_control.png
-  Automatic boundary path over valid-mask source-stack terrain; diagnostic control.
+  Original automatic boundary-mask diagnostic control.
 
 ## Main Visual Sheet
 
@@ -55,13 +55,18 @@ engineering diagnostics that prove workflow plumbing.
   Same M4 source-stack path with Comfy v3 sidecar detail; still quarantined.
 - `present` - world3/docs/captures/m1_m7_validation_2026_05_08/m5_source_stack_walk_after_crossing.png
   Walk streaming over the repaired M4 context using an inspection camera.
+- `present` - world3/docs/captures/m1_m7_validation_2026_05_08/m6_source_stack_collision.png
+  Same source-stack walk context with streamed collision chunks enabled.
+- `present` - world3/docs/captures/m1_m7_validation_2026_05_08/m7_boundary_runtime_source_stack_context.png
+  Automatic boundary mask over a source-stack same-source control context.
 
 ## Read
 
 This suite validates that the M1-M7 workflow can be rerun in order.
-It is not a blanket visual promotion. The main sheet is now visual-focused
-and intentionally excludes finite-chunk/topdown/debug terrain captures that
-still read as bad prototype evidence. Those remain in the engineering
-diagnostics sheet because they prove plumbing, not art quality. M7 remains
-workflow-pass / visual-rework until source-material cleanup, source-stack
-framing, and M5/M7 rerenders close.
+It is not a blanket visual promotion. The main sheet is the current
+source-stack visual baseline and intentionally excludes finite-chunk,
+topdown, and debug terrain captures that still read as prototype evidence.
+Those remain in the engineering diagnostics sheet because they prove
+plumbing, not art quality. M7 now has a cleaner same-source control,
+but still needs cross-material stress, transition-mask metrics, and
+walk/iso/topdown parity before production-visual closure.

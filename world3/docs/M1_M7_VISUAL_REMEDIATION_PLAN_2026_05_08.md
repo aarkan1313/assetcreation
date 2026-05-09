@@ -26,7 +26,7 @@ should stay, but current M7 captures are diagnostics only.
 | R3 | Source-stack pivot | Done for review bridge | Source macro albedo drives runtime terrain through a valid-mask contract; parity captures exist for mid/close/topdown. |
 | R4 | Source-material repair | Active | Organic repair candidates exist, but remain quarantined; ComfyUI inventory and regeneration queue now define the first M8 repair lane. |
 | R5 | M4 splat context repair | Active / close-view v1 captured | Replace prototype/debug-looking splat context with a visually credible material assignment for rerenders. |
-| R6 | M5/M7 rerender | Active / M5 inspection capture complete | Rerender walk and automatic-boundary captures against repaired sources/context. |
+| R6 | M5/M7 rerender | Active / M5-M7 source-stack captures complete | Rerender walk and automatic-boundary captures against repaired sources/context. |
 | R7 | Visual closure decision | Pending | Decide whether M7 can close visually or needs a second boundary-placement pass. |
 
 ## R2 Baseline Pair
@@ -151,3 +151,10 @@ Started R6 by rerendering M5 over the M4 source-stack context:
 `docs/captures/m5/walk_source_stack_after_crossing.png`. The first horizon-style
 walk camera exposed finite-footprint artifacts, so the retained capture uses an
 inspection camera. See `M5_SOURCE_STACK_WALK_REVIEW_2026_05_08.md`.
+
+Extended R6 through M6 and M7:
+`docs/captures/m6/walk_source_stack_collision.png` validates collision over the
+same source-stack visual context, and
+`docs/captures/m7/boundary_runtime_source_stack_context.png` is the current M7
+same-source boundary control. See `M6_SOURCE_STACK_RUNTIME_REVIEW_2026_05_08.md`
+and `M7_SOURCE_STACK_BOUNDARY_REVIEW_2026_05_08.md`.

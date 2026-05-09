@@ -528,3 +528,12 @@ These start when chunk + biome + tile + transition is ~80% solved
   `source_macro_valid_mask.png`, rerendered the current/Comfy grassland
   terrain-context captures, and recorded the policy in
   `SOURCE_STACK_VALID_AREA_POLICY_2026_05_08.md`.
+- **2026-05-08 (M3-M7 source-stack refinements)**: Split bad debug/finite-chunk
+  proof captures from visual validation, then rerendered M3 seam, M4 context,
+  M5 walk inspection, M6 collision, and M7 boundary control through the
+  source-stack visual lane. Evidence:
+  `M3_SOURCE_STACK_SEAM_REVIEW_2026_05_08.md`,
+  `M4_SOURCE_STACK_CONTEXT_REVIEW_2026_05_08.md`,
+  `M5_SOURCE_STACK_WALK_REVIEW_2026_05_08.md`,
+  `M6_SOURCE_STACK_RUNTIME_REVIEW_2026_05_08.md`, and
+  `M7_SOURCE_STACK_BOUNDARY_REVIEW_2026_05_08.md`.

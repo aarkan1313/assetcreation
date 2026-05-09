@@ -39,6 +39,8 @@ find something.
 | "What is the repaired M4 source-stack visual context?"       | [M4_SOURCE_STACK_CONTEXT_REVIEW_2026_05_08.md](M4_SOURCE_STACK_CONTEXT_REVIEW_2026_05_08.md) |
 | "How does M3 look through the repaired M4 source-stack context?" | [M3_SOURCE_STACK_SEAM_REVIEW_2026_05_08.md](M3_SOURCE_STACK_SEAM_REVIEW_2026_05_08.md) |
 | "How does M5 walk streaming look over the repaired source-stack context?" | [M5_SOURCE_STACK_WALK_REVIEW_2026_05_08.md](M5_SOURCE_STACK_WALK_REVIEW_2026_05_08.md) |
+| "How does M6 collision/runtime hardening behave over source-stack terrain?" | [M6_SOURCE_STACK_RUNTIME_REVIEW_2026_05_08.md](M6_SOURCE_STACK_RUNTIME_REVIEW_2026_05_08.md) |
+| "How does M7 automatic boundary placement look over source-stack terrain?" | [M7_SOURCE_STACK_BOUNDARY_REVIEW_2026_05_08.md](M7_SOURCE_STACK_BOUNDARY_REVIEW_2026_05_08.md) |
 | "What does a streamed chunk provide to the splat shader?"     | [M4_CHUNK_MATERIAL_CONTRACT.md](M4_CHUNK_MATERIAL_CONTRACT.md) |
 | "Why did we choose X over Y?"                                | [DECISIONS.md](DECISIONS.md)                          |
 | "What's the canonical command for [common task]?"            | [../../pipelines/textures/RECIPES.md](../../pipelines/textures/RECIPES.md) |

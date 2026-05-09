@@ -6,6 +6,10 @@ M6 hardens the M5 streamed walk prototype into a more export-aware runtime
 contract. This is still workflow-validation content, but it closes four
 practical gaps that would otherwise become production blockers.
 
+2026-05-08 source-stack update: M6 now has a source-stack collision rerender
+over the repaired M4/M5 visual context. See
+`world3/docs/M6_SOURCE_STACK_RUNTIME_REVIEW_2026_05_08.md`.
+
 ## What Landed
 
 ### Export-safe runtime image cache

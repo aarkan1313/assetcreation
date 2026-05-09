@@ -9,6 +9,10 @@ Visual audit correction: M7 is workflow-complete but not visually complete.
 quality. Do not treat M4/M5/M7 captures as beauty-pass evidence until the
 audit remediation items are rerun.
 
+Source-stack refinement update: M3-M7 now have visual-baseline rerenders through
+the repaired source-stack context. The old debug/finite-chunk captures remain
+engineering diagnostics. M7 is cleaner but still not production-visual closed.
+
 ## Framing
 
 world3 and the broader `assets` repo are currently a **pipeline and workflow
