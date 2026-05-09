@@ -97,6 +97,12 @@ R6 has started with a source-stack M7 control rerender:
 better than the old alpine debug context, but still diagnostic because it is a
 one-chunk finite-footprint view with strong source-photo shadow content.
 
+Fresh M1-M7 validation suite:
+`world3/docs/captures/m1_m7_validation_2026_05_08/` and
+`world3/docs/M1_M7_WORKFLOW_VALIDATION_RUN_2026_05_08.md`. Result: M1-M3 pass
+as workflow evidence; M4-M6 are pipeline-pass/visual-rework; M7 remains
+workflow-pass/visual-rework.
+
 Second ComfyUI M8 target: `grass` produced strict grade-A outputs, but visual
 review rejected them. `m8_grass_calm_v1` is the best failed direction; v2/v3
 overcorrected into pale boxy sod or bright patch islands, and the v4

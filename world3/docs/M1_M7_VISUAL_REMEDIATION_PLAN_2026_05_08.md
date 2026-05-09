@@ -129,3 +129,8 @@ Started R6 with a source-stack M7 control rerender:
 the boundary path can run over valid-mask source macro terrain, but remains
 diagnostic because it is a one-chunk finite-footprint view with visible source
 photo shadow content. See `M7_BOUNDARY_RUNTIME_INTEGRATION.md`.
+
+Ran a fresh sequential M1-M7 workflow validation suite at
+`docs/captures/m1_m7_validation_2026_05_08/`. Result: M1-M3 pass as workflow
+evidence; M4-M6 remain pipeline-pass/visual-rework; M7 remains workflow-pass/
+visual-rework. See `M1_M7_WORKFLOW_VALIDATION_RUN_2026_05_08.md`.

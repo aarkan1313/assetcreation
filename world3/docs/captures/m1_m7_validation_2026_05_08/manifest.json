@@ -1,0 +1,102 @@
+{
+  "kind": "m1_m7_workflow_validation",
+  "date": "2026-05-08",
+  "m1": {
+    "catalog_material_count": 31,
+    "source_counts": {
+      "procedural": 25,
+      "real": 6
+    },
+    "kit_count": 5,
+    "missing_kit_refs": [],
+    "status": "PASS"
+  },
+  "verdicts": [
+    {
+      "milestone": "M1",
+      "status": "PASS",
+      "read": "Catalog and biome-kit material references resolve."
+    },
+    {
+      "milestone": "M2",
+      "status": "PASS / REVIEW",
+      "read": "Transition workflow is demonstrable, but the view is still a debug comparison board."
+    },
+    {
+      "milestone": "M3",
+      "status": "PASS",
+      "read": "Chunk sweep reruns and preserves 256 m seam evidence."
+    },
+    {
+      "milestone": "M4",
+      "status": "PIPELINE PASS / VISUAL REWORK",
+      "read": "Unified splat shader works, but the current material context is still debug-looking."
+    },
+    {
+      "milestone": "M5",
+      "status": "PIPELINE PASS / VISUAL REWORK",
+      "read": "Streaming chunks and metrics work; the visible terrain remains below the 70 percent visual target."
+    },
+    {
+      "milestone": "M6",
+      "status": "PIPELINE PASS / VISUAL REWORK",
+      "read": "Runtime cache/collision path works; visual context is still inherited from M5."
+    },
+    {
+      "milestone": "M7",
+      "status": "WORKFLOW PASS / VISUAL REWORK",
+      "read": "Boundary placement runs over source-stack terrain, but the control capture remains diagnostic."
+    }
+  ],
+  "items": [
+    {
+      "milestone": "M1",
+      "label": "M1 Catalog",
+      "path": "world3/docs/captures/m1_m7_validation_2026_05_08/m1_catalog_validation.png",
+      "note": "Material catalog and biome-kit reference contract.",
+      "exists": true
+    },
+    {
+      "milestone": "M2",
+      "label": "M2 Transitions",
+      "path": "world3/docs/captures/m1_m7_validation_2026_05_08/m2_transition_strip_review.png",
+      "note": "Catalog-driven transition strips beside hard-cut controls; debug review board.",
+      "exists": true
+    },
+    {
+      "milestone": "M3",
+      "label": "M3 Chunk Sweep",
+      "path": "world3/docs/captures/m1_m7_validation_2026_05_08/m3_chunk_256m_seam.png",
+      "note": "256 m chunk seam capture from the chunk-size sweep.",
+      "exists": true
+    },
+    {
+      "milestone": "M4",
+      "label": "M4 Splat Shader",
+      "path": "world3/docs/captures/m1_m7_validation_2026_05_08/m4_chunk_splat_stream_review.png",
+      "note": "Streamed chunk set consuming the unified splat material; visual context still needs repair.",
+      "exists": true
+    },
+    {
+      "milestone": "M5",
+      "label": "M5 Walk Streaming",
+      "path": "world3/docs/captures/m1_m7_validation_2026_05_08/m5_walk_stream_after_crossing.png",
+      "note": "Walk scene crosses streamed chunks; terrain read remains below visual target.",
+      "exists": true
+    },
+    {
+      "milestone": "M6",
+      "label": "M6 Runtime Hardening",
+      "path": "world3/docs/captures/m1_m7_validation_2026_05_08/m6_walk_stream_collision_cache.png",
+      "note": "Runtime cache + streamed collision validate, but inherit the M5 visual context.",
+      "exists": true
+    },
+    {
+      "milestone": "M7",
+      "label": "M7 Boundary Runtime",
+      "path": "world3/docs/captures/m1_m7_validation_2026_05_08/m7_boundary_runtime_source_stack_control.png",
+      "note": "Automatic boundary path over valid-mask source-stack terrain; diagnostic control.",
+      "exists": true
+    }
+  ]
+}

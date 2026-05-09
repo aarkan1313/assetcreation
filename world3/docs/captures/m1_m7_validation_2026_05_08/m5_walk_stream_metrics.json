@@ -1,0 +1,110 @@
+{
+	"build_collision_chunks": true,
+	"capture": "res://docs/captures/m1_m7_validation_2026_05_08/m5_walk_stream_after_crossing.png",
+	"chunk_resolution_m": 8.0,
+	"chunk_size_m": 256.0,
+	"chunks_built": 12,
+	"chunks_removed": 12,
+	"collision_build_ms_max": 3.619,
+	"collision_build_ms_total": 33.425,
+	"collision_chunks_built": 12,
+	"distance_z_m": 900.0,
+	"enable_transition_boundaries": false,
+	"end_position": [
+		0.0,
+		2529.80453319436,
+		2400.0
+	],
+	"frame_time_max_ms": 28.442,
+	"frame_time_mean_ms": 4.34966388888889,
+	"frame_time_p95_ms": 4.349,
+	"frame_time_p99_ms": 5.212,
+	"frames": 360,
+	"peak_loaded_chunks": 9,
+	"rebuild_after_reset": false,
+	"sample_captures": [],
+	"samples": [
+		{
+			"chunk": [
+				0,
+				5
+			],
+			"frame": 0,
+			"last_update_ms": 0.022,
+			"loaded_chunks": 9,
+			"z": 1500.0
+		},
+		{
+			"chunk": [
+				0,
+				6
+			],
+			"frame": 60,
+			"last_update_ms": 0.018,
+			"loaded_chunks": 9,
+			"z": 1650.41782729805
+		},
+		{
+			"chunk": [
+				0,
+				7
+			],
+			"frame": 120,
+			"last_update_ms": 0.015,
+			"loaded_chunks": 9,
+			"z": 1800.8356545961
+		},
+		{
+			"chunk": [
+				0,
+				7
+			],
+			"frame": 180,
+			"last_update_ms": 0.021,
+			"loaded_chunks": 9,
+			"z": 1951.25348189415
+		},
+		{
+			"chunk": [
+				0,
+				8
+			],
+			"frame": 240,
+			"last_update_ms": 0.015,
+			"loaded_chunks": 9,
+			"z": 2101.6713091922
+		},
+		{
+			"chunk": [
+				0,
+				8
+			],
+			"frame": 300,
+			"last_update_ms": 0.021,
+			"loaded_chunks": 9,
+			"z": 2252.08913649025
+		},
+		{
+			"chunk": [
+				0,
+				9
+			],
+			"frame": 359,
+			"last_update_ms": 0.018,
+			"loaded_chunks": 9,
+			"z": 2400.0
+		}
+	],
+	"scene": "res://scenes/walk.tscn",
+	"start_position": [
+		0.0,
+		2529.81992506069,
+		1500.0
+	],
+	"transition_mask_build_ms_max": 0.0,
+	"transition_mask_build_ms_total": 0.0,
+	"transition_masks_built": 0,
+	"transition_rule_id": "biome_desert__grassland_base",
+	"view_radius_chunks": 1,
+	"worst_update_ms": 27.708
+}

@@ -1,0 +1,110 @@
+{
+	"build_collision_chunks": true,
+	"capture": "res://docs/captures/m1_m7_validation_2026_05_08/m6_walk_stream_collision_cache.png",
+	"chunk_resolution_m": 8.0,
+	"chunk_size_m": 256.0,
+	"chunks_built": 21,
+	"chunks_removed": 12,
+	"collision_build_ms_max": 4.041,
+	"collision_build_ms_total": 58.056,
+	"collision_chunks_built": 21,
+	"distance_z_m": 900.0,
+	"enable_transition_boundaries": false,
+	"end_position": [
+		0.0,
+		2545.80453319436,
+		2400.0
+	],
+	"frame_time_max_ms": 28.332,
+	"frame_time_mean_ms": 4.319625,
+	"frame_time_p95_ms": 4.3,
+	"frame_time_p99_ms": 6.184,
+	"frames": 360,
+	"peak_loaded_chunks": 9,
+	"rebuild_after_reset": true,
+	"sample_captures": [],
+	"samples": [
+		{
+			"chunk": [
+				0,
+				5
+			],
+			"frame": 0,
+			"last_update_ms": 0.018,
+			"loaded_chunks": 9,
+			"z": 1500.0
+		},
+		{
+			"chunk": [
+				0,
+				6
+			],
+			"frame": 60,
+			"last_update_ms": 0.023,
+			"loaded_chunks": 9,
+			"z": 1650.41782729805
+		},
+		{
+			"chunk": [
+				0,
+				7
+			],
+			"frame": 120,
+			"last_update_ms": 0.017,
+			"loaded_chunks": 9,
+			"z": 1800.8356545961
+		},
+		{
+			"chunk": [
+				0,
+				7
+			],
+			"frame": 180,
+			"last_update_ms": 0.024,
+			"loaded_chunks": 9,
+			"z": 1951.25348189415
+		},
+		{
+			"chunk": [
+				0,
+				8
+			],
+			"frame": 240,
+			"last_update_ms": 0.022,
+			"loaded_chunks": 9,
+			"z": 2101.6713091922
+		},
+		{
+			"chunk": [
+				0,
+				8
+			],
+			"frame": 300,
+			"last_update_ms": 0.022,
+			"loaded_chunks": 9,
+			"z": 2252.08913649025
+		},
+		{
+			"chunk": [
+				0,
+				9
+			],
+			"frame": 359,
+			"last_update_ms": 0.027,
+			"loaded_chunks": 9,
+			"z": 2400.0
+		}
+	],
+	"scene": "res://scenes/walk.tscn",
+	"start_position": [
+		0.0,
+		2545.81992506069,
+		1500.0
+	],
+	"transition_mask_build_ms_max": 0.0,
+	"transition_mask_build_ms_total": 0.0,
+	"transition_masks_built": 0,
+	"transition_rule_id": "biome_desert__grassland_base",
+	"view_radius_chunks": 1,
+	"worst_update_ms": 27.516
+}
