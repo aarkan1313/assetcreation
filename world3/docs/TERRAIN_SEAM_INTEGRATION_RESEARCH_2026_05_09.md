@@ -158,8 +158,10 @@ Scanner hardening is now implemented in
 `world3/pipeline/scan_terrain_seam_compatibility.py`: optional fill/artifact
 veto masks, rectilinear/low-detail visual-veto scoring, score filtering,
 weighted candidate penalties, and ranked preview offsets. A second
-Chuculay-Guadalupe real-to-real candidate has been generated with captures and
-is pending live visual review.
+Chuculay-Guadalupe real-to-real candidate was generated with captures. Live
+review rejected it as accepted visual evidence because the Chuculay desert
+source macro was already low quality before seam solving. This validates the
+need for source-quality gates in addition to seam-compatibility metrics.
 
 ## Sources
 

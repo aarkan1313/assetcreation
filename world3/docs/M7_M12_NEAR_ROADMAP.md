@@ -228,6 +228,14 @@ optional fill-mask inputs. A Chuculay-Guadalupe second real-to-real proof
 candidate now exists with metrics and topdown/iso/3D captures. Its numeric seam
 quality is strong, but it remains pending live visual acceptance.
 
+2026-05-09 second-pair visual review: Chuculay-Guadalupe is rejected as accepted
+M10 visual evidence. The seam math passed, but live review flagged the desert
+source macro as low quality/low resolution. Diagnostic review showed the problem
+is already present in the Chuculay source crop: blurred orthophoto detail,
+bright track/road content, and black/red speckle artifacts. The scanner now also
+has explicit low-detail, chroma-spike, dark-speckle, dark-fraction,
+bright-fraction, and rectilinear thresholds.
+
 Deliverables:
 
 - A seam/integration-band artifact with solved height, normal/material weights,
@@ -247,9 +255,10 @@ Exit:
 
 Current exit state: overlap and nearby non-overlap same-source proofs pass as
 workflow/geometry evidence, and the different-source Gloss-Guadalupe proof has
-passed live visual review. Scanner veto hardening is implemented, and a
-Chuculay-Guadalupe second real-to-real candidate is ready for live review. If it
-passes, M10 can move to real-to-procedural/unlike-biome blending.
+passed live visual review. Scanner veto hardening is implemented.
+Chuculay-Guadalupe is kept as negative evidence for source-quality gating, not
+as accepted proof. M10 still needs a stronger second source/crop before moving
+to real-to-procedural/unlike-biome blending.
 
 ## M11 - Corner And Junction Transitions
 

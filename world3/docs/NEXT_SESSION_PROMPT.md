@@ -123,7 +123,9 @@ rectilinear/low-detail visual-veto scoring, score filtering, weighted candidate
 penalties, and ranked preview offsets. A second Chuculay-Guadalupe
 real-to-real proof candidate exists in
 `source_stack_cross_source_chuculay_guadalupe_tour.tscn`; it has metrics and
-captures and is pending live visual acceptance.
+captures, but live review rejected it because the Chuculay desert source macro
+is visibly low quality/low resolution before seam solving. Treat it as negative
+source-quality evidence, not an accepted proof.
 
 M10 review launch/capture note: use explicit `--scene` wrapper launches, not the
 older waited `--script _codex_render_runner.gd` path. The current seam review
@@ -356,8 +358,9 @@ M7-M12 near roadmap is now explicit:
 3. M9 runtime performance and interaction polish.
 4. M10 terrain seam integration and cross-source blending. First overlap proof,
    nearby non-overlap proof, and accepted Gloss-Guadalupe different-source proof
-   exist; Chuculay-Guadalupe second real-to-real candidate is ready for live
-   review; next is acceptance, then real-to-procedural/unlike-biome promotion.
+   exist; Chuculay-Guadalupe second real-to-real candidate is rejected as visual
+   evidence; next is a stronger second source/crop, then
+   real-to-procedural/unlike-biome promotion.
 5. M11 corner and junction transitions.
 6. M12 walk/iso/topdown view-mode parity.
 

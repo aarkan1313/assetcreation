@@ -152,9 +152,10 @@ direction; treat the rest as where we've been.
 - M10 different-source work has its first accepted proof: a compatibility
   scanner selects candidate real-to-real crop pairs, and the Gloss-Guadalupe
   proof passed live topdown/iso/3D visual review. Scanner veto hardening is now
-  implemented, and a Chuculay-Guadalupe second real-to-real proof candidate has
-  metrics and captures. Next M10 gate is live visual acceptance of that second
-  proof, then real-to-procedural/unlike-biome promotion.
+  implemented. A Chuculay-Guadalupe second real-to-real proof candidate has
+  metrics and captures but is visually rejected because the Chuculay desert
+  source macro is below the quality bar. Next M10 gate is selecting a stronger
+  second source/crop, then real-to-procedural/unlike-biome promotion.
 - Visual target is now explicit: reach roughly 70 percent of the best stacked
   photo/topo OpenTopo reference quality before visual milestone closure.
   Evidence: `world3/docs/M1_M7_VISION_GAP_REVIEW_2026_05_08.md`.
@@ -171,8 +172,9 @@ explicit in [`M7_M12_NEAR_ROADMAP.md`](M7_M12_NEAR_ROADMAP.md):
 3. M9 runtime performance and interaction polish.
 4. M10 terrain seam integration and cross-source blending. Overlap and nearby
    non-overlap same-source proofs are implemented; different-source
-   Gloss-Guadalupe proof is accepted; Chuculay-Guadalupe second proof candidate
-   is ready for live review; next gate is acceptance, then
+   Gloss-Guadalupe proof is accepted; Chuculay-Guadalupe is rejected as visual
+   evidence due source texture quality; next gate is a stronger second proof,
+   then
    real-to-procedural/unlike-biome promotion.
 5. M11 corner and junction transitions.
 6. M12 walk/iso/topdown view-mode parity.

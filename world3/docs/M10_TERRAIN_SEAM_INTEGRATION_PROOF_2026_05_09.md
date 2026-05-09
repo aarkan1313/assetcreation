@@ -267,6 +267,12 @@ python world3/pipeline/scan_terrain_seam_compatibility.py `
   --source-margin-px 120 `
   --right-veto-mask world3/toporeview/phase2_fusion_max/layers/render_fill_mask.png `
   --max-visual-veto-score 0.85 `
+  --max-low-detail-fraction 0.80 `
+  --max-chroma-spike-fraction 0.08 `
+  --max-dark-speckle-fraction 0.03 `
+  --max-dark-fraction 0.08 `
+  --max-bright-fraction 0.05 `
+  --max-rectilinear-score 0.70 `
   --visual-veto-weight 2.0 `
   --top-k 20 `
   --preview-start-rank 1 `
@@ -325,8 +331,13 @@ Implemented after the first live-accepted cross-source proof:
   masks;
 - per-crop visual-veto metrics written into each candidate:
   `visual_veto_score`, fill-mask mean/p95, invalid fraction, rectilinear edge
-  score, low-detail fraction, dark fraction, and bright fraction;
+  score, low-detail fraction, detail energy, chroma-spike fraction,
+  dark-speckle fraction, dark fraction, and bright fraction;
 - `--max-visual-veto-score` to filter high-risk crops before pairing;
+- `--max-low-detail-fraction`, `--max-chroma-spike-fraction`,
+  `--max-dark-speckle-fraction`, `--max-dark-fraction`,
+  `--max-bright-fraction`, and `--max-rectilinear-score` to reject weak source
+  crops before pairing;
 - `--visual-veto-weight` to keep borderline crops numerically disadvantaged;
 - `--preview-start-rank` and `--preview-rows` so human/vision review can inspect
   non-top-ranked candidates without one-off preview scripts.
@@ -335,7 +346,7 @@ This does not replace human visual review. It makes the scanner better at
 surfacing why a crop is risky and prevents obvious fill/landmark candidates from
 winning purely on height/RGB edge statistics.
 
-## Rung 4: Second Real-To-Real Candidate
+## Rung 4: Second Real-To-Real Candidate Rejected
 
 The second different-source pair is Chuculay to Guadalupe. This is intended to
 prove that the workflow is not overfit to Gloss-Guadalupe.
@@ -385,13 +396,20 @@ Metrics:
 - Macro join step p95: `0.009` on the left join, `0.037` on the right join.
 - Valid mask coverage is full valid.
 
-Current read:
+Visual review read:
 
 - Numeric geometry and macro seam metrics are stronger than the accepted
   Gloss-Guadalupe proof.
 - Godot topdown, iso, and 3D capture wrappers all exited successfully.
-- This second proof is still pending live visual acceptance before promotion
-  from candidate to accepted M10 evidence.
+- Live user review flagged the desert side as low quality/low resolution.
+- Diagnostic evidence:
+  `world3/docs/captures/review/chuculay_guadalupe_texture_quality_diagnostic.png`
+- Root cause: the issue is already visible in the Chuculay source crop before
+  Godot or seam solving. The crop has blurred orthophoto detail, a bright
+  road/track, and black/red speckle artifacts. The seam solver preserved a weak
+  source macro; it did not create the low-quality texture.
+- Status: rejected as accepted M10 visual evidence. Keep it as a useful negative
+  example for scanner/source-quality gating.
 
 ## Review Lighting Correction
 
@@ -434,10 +452,10 @@ violation before scene code runs.
 
 ## Next Step
 
-M10 now has an accepted different-source real-to-real proof. The next M10 gates
-are:
+M10 now has an accepted different-source real-to-real proof and one useful
+negative second-pair result. The next M10 gates are:
 
-1. live-review the Chuculay-Guadalupe second proof;
-2. if accepted, promote the second proof to accepted M10 evidence;
+1. select a stronger second proof source or alternate high-quality crop pair;
+2. run the hardened scanner with source-quality veto thresholds enabled;
 3. promote the same integration contract to real-to-procedural and unlike-biome
    cross-source blending.

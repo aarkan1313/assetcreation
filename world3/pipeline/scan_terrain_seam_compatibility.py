@@ -143,8 +143,13 @@ def visual_veto_metrics(sample: dict[str, Any]) -> dict[str, float]:
     veto_mean = float(np.mean(veto_mask))
     veto_p95 = float(np.percentile(veto_mask, 95))
     low_detail_fraction = float(np.mean(mag < 0.01))
+    detail_energy = float(np.mean(mag))
     dark_fraction = float(np.mean(gray < 0.16))
     bright_fraction = float(np.mean(gray > 0.88))
+    chroma = rgb - gray[:, :, None]
+    chroma_mag = np.linalg.norm(chroma, axis=2)
+    chroma_spike_fraction = float(np.mean(chroma_mag > 0.24))
+    dark_speckle_fraction = float(np.mean((gray < 0.2) & (mag > strong_threshold)))
     score = max(
         min(1.0, veto_p95),
         min(1.0, veto_mean * 4.0),
@@ -161,9 +166,26 @@ def visual_veto_metrics(sample: dict[str, Any]) -> dict[str, float]:
         "axis_edge_ratio": axis_ratio,
         "edge_density": edge_density,
         "low_detail_fraction": low_detail_fraction,
+        "detail_energy": detail_energy,
+        "chroma_spike_fraction": chroma_spike_fraction,
+        "dark_speckle_fraction": dark_speckle_fraction,
         "dark_fraction": dark_fraction,
         "bright_fraction": bright_fraction,
     }
+
+
+def passes_veto(desc: dict[str, Any], args: argparse.Namespace) -> bool:
+    veto = desc["visual_veto"]
+    return (
+        desc["valid_coverage"] >= args.min_valid_coverage
+        and veto["score"] <= args.max_visual_veto_score
+        and veto["low_detail_fraction"] <= args.max_low_detail_fraction
+        and veto["chroma_spike_fraction"] <= args.max_chroma_spike_fraction
+        and veto["dark_speckle_fraction"] <= args.max_dark_speckle_fraction
+        and veto["dark_fraction"] <= args.max_dark_fraction
+        and veto["bright_fraction"] <= args.max_bright_fraction
+        and veto["rectilinear_score"] <= args.max_rectilinear_score
+    )
 
 
 def descriptor(sample: dict[str, Any], edge: str, edge_px: int) -> dict[str, Any]:
@@ -295,6 +317,12 @@ def main() -> int:
     parser.add_argument("--edge-px", type=int, default=32)
     parser.add_argument("--min-valid-coverage", type=float, default=0.98)
     parser.add_argument("--max-visual-veto-score", type=float, default=1.0)
+    parser.add_argument("--max-low-detail-fraction", type=float, default=1.0)
+    parser.add_argument("--max-chroma-spike-fraction", type=float, default=1.0)
+    parser.add_argument("--max-dark-speckle-fraction", type=float, default=1.0)
+    parser.add_argument("--max-dark-fraction", type=float, default=1.0)
+    parser.add_argument("--max-bright-fraction", type=float, default=1.0)
+    parser.add_argument("--max-rectilinear-score", type=float, default=1.0)
     parser.add_argument("--visual-veto-weight", type=float, default=1.5)
     parser.add_argument("--top-k", type=int, default=20)
     parser.add_argument("--preview-start-rank", type=int, default=1)
@@ -332,14 +360,14 @@ def main() -> int:
     for crop in left_crops:
         sample = sample_crop(left_source, crop, out_size)
         desc = descriptor(sample, "right", edge_px)
-        if desc["valid_coverage"] >= args.min_valid_coverage and desc["visual_veto"]["score"] <= args.max_visual_veto_score:
+        if passes_veto(desc, args):
             left_descs.append({"crop": crop, "descriptor": desc})
 
     right_descs = []
     for crop in right_crops:
         sample = sample_crop(right_source, crop, out_size)
         desc = descriptor(sample, "left", edge_px)
-        if desc["valid_coverage"] >= args.min_valid_coverage and desc["visual_veto"]["score"] <= args.max_visual_veto_score:
+        if passes_veto(desc, args):
             right_descs.append({"crop": crop, "descriptor": desc})
 
     candidates: list[dict[str, Any]] = []
@@ -371,6 +399,12 @@ def main() -> int:
         "edge_px": edge_px,
         "source_margin_px": args.source_margin_px,
         "max_visual_veto_score": args.max_visual_veto_score,
+        "max_low_detail_fraction": args.max_low_detail_fraction,
+        "max_chroma_spike_fraction": args.max_chroma_spike_fraction,
+        "max_dark_speckle_fraction": args.max_dark_speckle_fraction,
+        "max_dark_fraction": args.max_dark_fraction,
+        "max_bright_fraction": args.max_bright_fraction,
+        "max_rectilinear_score": args.max_rectilinear_score,
         "visual_veto_weight": args.visual_veto_weight,
         "left_candidates_scanned": len(left_descs),
         "right_candidates_scanned": len(right_descs),

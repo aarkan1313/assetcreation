@@ -47,7 +47,9 @@ fill/artifact masks, rectilinear/low-detail scores, visual-veto filtering, and
 rank-offset preview sheets are part of the scanner. A second real-to-real
 Chuculay-Guadalupe proof candidate exists in
 `source_stack_cross_source_chuculay_guadalupe_tour.tscn` with metrics and
-captures; it is pending live visual acceptance before promotion.
+captures, but live review rejected it as accepted visual evidence because the
+Chuculay desert source macro is low quality/low resolution. Keep it as negative
+scanner/source-quality evidence, not a promoted proof.
 
 ## Framing
 
