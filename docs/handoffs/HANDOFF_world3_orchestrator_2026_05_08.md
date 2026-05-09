@@ -283,6 +283,26 @@ region-specific kit override OR regenerating
 These start when chunk + biome + tile + transition is ~80% solved
 (per user 2026-05-08). NOT in scope for current iteration.
 
+## Curated DEM data directory (parallel to M1–M5)
+
+[`world3/docs/OPENTOPO_DATA_DIRECTORY_2026_05_08.md`](../../world3/docs/OPENTOPO_DATA_DIRECTORY_2026_05_08.md)
+
+A 50-region curation across 5 tiers targeting ~30 GB cached DEM data.
+Doesn't block or depend on M1–M5; pure data acquisition. The user
+explicitly wanted a balanced mix (famous + non-famous, biome
+coverage, no buildings).
+
+This is a strong worker-handoff candidate — real-data sourcing is
+OpenTopo chat's domain. Don't pull yourself unless the user asks
+you to. When you write the handoff, the existing
+`pipelines/terrain/bulk_pull.py` + `art_lab/biomes/data_wishlist.json`
+wishlist do the work; the directory doc is the curation that picks
+which entries.
+
+The doc lists `NEW` entries that need to be added to the wishlist
+before the pull (savanna, taiga, dune fields, deltas, coastal-mix,
+non-canyon drylands). That's part of the handoff scope.
+
 ## Post-M5 option registers (for when the user asks "what next")
 
 Two forward-looking docs that survey post-M5 directions. Don't plan

@@ -531,6 +531,25 @@ docs/OPENTOPO_TILEABLE_TEXTURE_PILOT_AUDIT.md
 - **Real water / sea level / scatter / vegetation**: gameplay layer,
   out of scope for terrain phases.
 
+## Curated data directory (works alongside M1–M5)
+
+[`OPENTOPO_DATA_DIRECTORY_2026_05_08.md`](OPENTOPO_DATA_DIRECTORY_2026_05_08.md)
+
+A 50-region curation across 5 tiers (showcase / stitched / premium /
+standard / bathymetric / highres-open) targeting ~30 GB cached DEM
+data. Mix-balanced: ~60% famous landmarks for recognizable hero
+captures + ~40% lesser-known regions to validate the pipeline isn't
+photogenic-only. Biome coverage gap-fills the wishlist's
+alpine/volcanic bias with savanna, taiga, dune fields, deltas,
+coastal mixed, and Mars-analog polar regions.
+
+Independent of M1–M5 work — pure data acquisition. Worker handoff
+once approved (real-data sourcing is OpenTopo chat's domain).
+Existing tooling (`pipelines/terrain/bulk_pull.py` + the
+`art_lab/biomes/data_wishlist.json` wishlist) executes the pulls;
+the directory doc is the curation that decides which entries to
+hit first.
+
 ## Far-end direction (post-M1–M5 option registers)
 
 Once the M1–M5 iteration closes (material catalog → transitions →
