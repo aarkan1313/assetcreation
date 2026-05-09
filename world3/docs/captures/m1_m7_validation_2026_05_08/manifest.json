@@ -45,7 +45,7 @@
     {
       "milestone": "M7",
       "status": "WORKFLOW PASS / SOURCE-STACK CONTROL",
-      "read": "Boundary placement runs in source-stack context; same-source control is cleaner but not final closure."
+      "read": "Boundary placement runs in source-stack context; same-source control and mask QA pass but final closure remains open."
     }
   ],
   "items": [

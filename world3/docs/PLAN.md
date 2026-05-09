@@ -70,7 +70,8 @@ grassland captures were rerendered under that contract. See
 visual baseline rerenders and docs. The old M3-M6/M7 finite-chunk/debug captures
 remain engineering diagnostics, not visual approval. M7 is improved but still
 not fully visually closed; next roadmap work should continue M8 source-material
-cleanup while keeping M7 cross-material stress, metrics, and view parity open.
+cleanup while keeping M7 cross-material stress and view parity open. The
+same-source M7 transition mask now has coverage and edge-continuity metrics.
 
 ## M1 — Material catalog (orchestrator-led)
 
@@ -338,9 +339,11 @@ Evidence:
 - `world3/docs/M1_M7_VISION_GAP_REVIEW_2026_05_08.md`
 - `world3/docs/M1_M7_VISUAL_REMEDIATION_PLAN_2026_05_08.md`
 - `world3/docs/M7_SOURCE_STACK_BOUNDARY_REVIEW_2026_05_08.md`
+- `world3/docs/M7_TRANSITION_MASK_METRICS_2026_05_08.md`
 - `world3/docs/captures/m7/boundary_runtime_review.png`
 - `world3/docs/captures/m7/boundary_runtime_biome_stress.png`
 - `world3/docs/captures/m7/boundary_runtime_source_stack_context.png`
+- `world3/docs/captures/m7/transition_mask_metrics_source_stack_context.json`
 - `world3/docs/captures/m7/boundary_walk_after_crossing.png`
 - `world3/docs/captures/m7/boundary_walk_metrics.json`
 
@@ -356,8 +359,9 @@ stacked photo/topo OpenTopo reference quality; current M4/M5/M7 captures remain
 debug/plumbing evidence until rerendered through the source-stack policy.
 
 Source-stack refinement update: M3-M7 have now been rerendered through the
-source-stack policy for visual-baseline evidence. The remaining M7 gaps are
-cross-material stress, transition-mask metrics, and walk/topdown/iso parity.
+source-stack policy for visual-baseline evidence. The same-source M7 mask QA
+passes; the remaining M7 gaps are cross-material stress with its own metrics and
+walk/topdown/iso parity.
 
 ## Open polish items (parked)
 

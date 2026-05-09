@@ -537,3 +537,8 @@ These start when chunk + biome + tile + transition is ~80% solved
   `M5_SOURCE_STACK_WALK_REVIEW_2026_05_08.md`,
   `M6_SOURCE_STACK_RUNTIME_REVIEW_2026_05_08.md`, and
   `M7_SOURCE_STACK_BOUNDARY_REVIEW_2026_05_08.md`.
+- **2026-05-08 (M7 transition-mask metrics)**: Added
+  `audit_transition_mask_metrics.py` and recorded a `PASS` for the same-source
+  source-stack M7 control: 25 loaded chunks, 5 boundary-mask chunks, mean band
+  coverage `0.280469`, and worst mean edge band delta `0.047768`. Evidence:
+  `M7_TRANSITION_MASK_METRICS_2026_05_08.md`.

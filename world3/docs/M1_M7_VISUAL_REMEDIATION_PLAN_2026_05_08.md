@@ -158,3 +158,8 @@ same source-stack visual context, and
 `docs/captures/m7/boundary_runtime_source_stack_context.png` is the current M7
 same-source boundary control. See `M6_SOURCE_STACK_RUNTIME_REVIEW_2026_05_08.md`
 and `M7_SOURCE_STACK_BOUNDARY_REVIEW_2026_05_08.md`.
+
+Added same-source M7 transition-mask QA:
+`M7_TRANSITION_MASK_METRICS_2026_05_08.md` records a `PASS` for coverage and
+chunk-edge continuity over the source-stack control scene. Cross-material stress
+and view parity remain open.

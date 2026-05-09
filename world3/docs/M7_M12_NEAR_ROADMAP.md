@@ -64,6 +64,7 @@ R6 source-stack rerenders now cover M3-M7:
 - M5: `M5_SOURCE_STACK_WALK_REVIEW_2026_05_08.md`
 - M6: `M6_SOURCE_STACK_RUNTIME_REVIEW_2026_05_08.md`
 - M7: `M7_SOURCE_STACK_BOUNDARY_REVIEW_2026_05_08.md`
+- M7 mask QA: `M7_TRANSITION_MASK_METRICS_2026_05_08.md`
 
 This gives the workflow a credible source-stack visual baseline and moves the
 old finite-chunk/debug captures into engineering diagnostics. It still does not
@@ -77,8 +78,9 @@ debug/plumbing evidence.
 Visual caveat: M7 should not be treated as final terrain-art quality. The
 source-stack same-source control is cleaner but subtle; the desert-to-grassland
 stress case still exposes the known noisy grass/organic source-material issue.
-M8 can continue as source-material cleanup, but M7 visual closure still needs
-cross-material stress, transition-mask metrics, and view parity.
+The same-source transition mask now has a quantitative QA pass. M8 can continue
+as source-material cleanup, but M7 visual closure still needs cross-material
+stress with its own mask metrics and view parity.
 
 Deliverables:
 
@@ -88,6 +90,7 @@ Deliverables:
   uniforms.
 - Walk-scene capture crossing an automatic biome/material boundary.
 - Metrics added to the same budget table as M5/M6.
+- Same-source transition-mask QA for coverage and chunk-edge continuity.
 
 Exit:
 
@@ -96,7 +99,7 @@ Exit:
 - Boundary assets are selected from rules/catalog IDs, not hardcoded in a scene.
 - Workflow exit is met.
 - Visual exit is partially remediated. Source-stack control evidence exists,
-  but final visual closure remains open.
+  same-source mask QA passes, but final visual closure remains open.
 
 ## M8 - Organic Source-Material Cleanup
 

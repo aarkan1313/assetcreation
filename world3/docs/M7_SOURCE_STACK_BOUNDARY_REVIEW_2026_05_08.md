@@ -20,6 +20,8 @@ This pass keeps the M7 runtime contract:
 ## Capture
 
 - `docs/captures/m7/boundary_runtime_source_stack_context.png`
+- `docs/captures/m7/transition_mask_metrics_source_stack_context.json`
+- `docs/captures/m7/transition_mask_metrics_source_stack_context.png`
 - scene: `scenes/capture_phase_m7/boundary_runtime_source_stack_context.tscn`
 
 ## Read
@@ -37,12 +39,18 @@ reviewed inside the repaired visual context. M7 still needs:
 
 - a stronger but clean cross-material control pair;
 - a walk/iso/topdown parity pass;
-- transition-mask metrics;
+- transition-mask metrics rerun for each future cross-material stress scene;
 - a far-field/finite-footprint policy before horizon views are promoted.
+
+The same-source control now has a quantitative mask QA pass in
+`M7_TRANSITION_MASK_METRICS_2026_05_08.md`: 25 loaded chunks, 5 boundary-mask
+chunks, mean band coverage `0.280469`, and worst mean chunk-edge band delta
+`0.047768`.
 
 ## Next Refinement
 
 1. Use this as the M7 same-source control.
 2. Add a second source-stack cross-material stress capture once the source
    materials stop sabotaging the read.
-3. Combine M7 boundary masks with the M6 collision review.
+3. Reuse the mask metric audit for every M7 cross-material trial.
+4. Combine M7 boundary masks with the M6 collision review.

@@ -12,6 +12,8 @@ audit remediation items are rerun.
 Source-stack refinement update: M3-M7 now have visual-baseline rerenders through
 the repaired source-stack context. The old debug/finite-chunk captures remain
 engineering diagnostics. M7 is cleaner but still not production-visual closed.
+The M7 same-source source-stack transition mask now also has quantitative
+coverage and chunk-edge continuity QA in `M7_TRANSITION_MASK_METRICS_2026_05_08.md`.
 
 ## Framing
 

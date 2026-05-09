@@ -1,0 +1,180 @@
+{
+  "version": 1,
+  "updated": "2026-05-08",
+  "kind": "m7_transition_mask_metrics",
+  "scene": "world3/scenes/capture_phase_m7/boundary_runtime_source_stack_context.tscn",
+  "rules": "world3/jobs/biome_transition_rules.json",
+  "config": {
+    "transition_rule_id": "opentopo_scrub_sparse__dry_wash_neighbor",
+    "transition_boundary_axis": "z",
+    "transition_boundary_world_m": 128.0,
+    "chunk_size_m": 256.0,
+    "view_radius_chunks": 2,
+    "transition_width_m": 72.0,
+    "transition_repeat_m": 128.0,
+    "transition_mask_resolution": 128,
+    "rule_noise_strength": 0.2
+  },
+  "summary": {
+    "transition_rule_id": "opentopo_scrub_sparse__dry_wash_neighbor",
+    "loaded_chunks": 25,
+    "intersecting_chunks": 5,
+    "band_coverage_mean": 0.280469,
+    "band_coverage_min": 0.279297,
+    "band_coverage_max": 0.282043,
+    "band_peak_min": 1.0,
+    "edge_checks": 4,
+    "edge_band_mean_abs_max": 0.047768,
+    "edge_u_mean_abs_max": 0.022314,
+    "edge_v_circular_mean_abs_max": 0.015625,
+    "acceptance": {
+      "status": "PASS",
+      "failures": [],
+      "thresholds": {
+        "band_coverage_min": 0.18,
+        "band_coverage_max": 0.36,
+        "band_peak_min": 0.95,
+        "edge_band_mean_abs_max": 0.08,
+        "edge_u_mean_abs_max": 0.08,
+        "edge_v_circular_mean_abs_max": 0.03
+      }
+    }
+  },
+  "chunks": [
+    {
+      "coord": [
+        -2,
+        0
+      ],
+      "band_coverage_ratio": 0.279297,
+      "band_mean": 0.247802,
+      "band_max": 1.0,
+      "u_min": 0.0,
+      "u_max": 1.0,
+      "v_min": 0.007812,
+      "v_max": 0.992188
+    },
+    {
+      "coord": [
+        -1,
+        0
+      ],
+      "band_coverage_ratio": 0.279541,
+      "band_mean": 0.247502,
+      "band_max": 1.0,
+      "u_min": 0.0,
+      "u_max": 1.0,
+      "v_min": 0.007812,
+      "v_max": 0.992188
+    },
+    {
+      "coord": [
+        0,
+        0
+      ],
+      "band_coverage_ratio": 0.280579,
+      "band_mean": 0.246959,
+      "band_max": 1.0,
+      "u_min": 0.0,
+      "u_max": 1.0,
+      "v_min": 0.007812,
+      "v_max": 0.992188
+    },
+    {
+      "coord": [
+        1,
+        0
+      ],
+      "band_coverage_ratio": 0.282043,
+      "band_mean": 0.247969,
+      "band_max": 1.0,
+      "u_min": 0.0,
+      "u_max": 1.0,
+      "v_min": 0.007812,
+      "v_max": 0.992188
+    },
+    {
+      "coord": [
+        2,
+        0
+      ],
+      "band_coverage_ratio": 0.280884,
+      "band_mean": 0.247595,
+      "band_max": 1.0,
+      "u_min": 0.0,
+      "u_max": 1.0,
+      "v_min": 0.007812,
+      "v_max": 0.992188
+    }
+  ],
+  "edge_checks": [
+    {
+      "from": [
+        -2,
+        0
+      ],
+      "to": [
+        -1,
+        0
+      ],
+      "axis": "x",
+      "band_mean_abs": 0.040341,
+      "band_max_abs": 1.0,
+      "u_mean_abs": 0.018631,
+      "u_max_abs": 0.188281,
+      "v_circular_mean_abs": 0.015625,
+      "v_circular_max_abs": 0.015625
+    },
+    {
+      "from": [
+        -1,
+        0
+      ],
+      "to": [
+        0,
+        0
+      ],
+      "axis": "x",
+      "band_mean_abs": 0.036989,
+      "band_max_abs": 0.857433,
+      "u_mean_abs": 0.018612,
+      "u_max_abs": 0.190625,
+      "v_circular_mean_abs": 0.015625,
+      "v_circular_max_abs": 0.015625
+    },
+    {
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        1,
+        0
+      ],
+      "axis": "x",
+      "band_mean_abs": 0.047768,
+      "band_max_abs": 1.0,
+      "u_mean_abs": 0.021729,
+      "u_max_abs": 0.160938,
+      "v_circular_mean_abs": 0.015625,
+      "v_circular_max_abs": 0.015625
+    },
+    {
+      "from": [
+        1,
+        0
+      ],
+      "to": [
+        2,
+        0
+      ],
+      "axis": "x",
+      "band_mean_abs": 0.043099,
+      "band_max_abs": 1.0,
+      "u_mean_abs": 0.022314,
+      "u_max_abs": 0.160156,
+      "v_circular_mean_abs": 0.015625,
+      "v_circular_max_abs": 0.015625
+    }
+  ]
+}

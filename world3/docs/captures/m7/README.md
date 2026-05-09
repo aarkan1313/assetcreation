@@ -18,6 +18,10 @@ proof. They do not validate M7 as a visual-quality milestone.
   same-source control rule.
 - `boundary_walk_metrics.json`: chunk, collision, frame, and transition-mask
   build metrics for the walk crossing.
+- `transition_mask_metrics_source_stack_context.json`: mask coverage and
+  chunk-edge continuity metrics for the source-stack control scene.
+- `transition_mask_metrics_source_stack_context.png`: visual QA sheet for the
+  source-stack control transition mask band.
 
 Visual note: these are M7 workflow evidence, not final terrain-art promotion.
 `../../M1_M7_VISUAL_AUDIT_2026_05_08.md` classifies M7 as workflow pass /
@@ -26,5 +30,5 @@ visual rework.
 Source-stack note: the original source-stack control removed the old alpine
 debug material context, but was still too diagnostic. The newer source-stack
 context capture is the current M7 visual control. Treat it as R6 progress, not
-M7 visual closure: cross-material stress, view parity, and transition-mask
-metrics remain open.
+M7 visual closure: the same-source mask metrics now pass, but cross-material
+stress and view parity remain open.

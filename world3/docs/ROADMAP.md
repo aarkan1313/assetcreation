@@ -88,6 +88,9 @@ direction; treat the rest as where we've been.
   `world3/docs/M5_SOURCE_STACK_WALK_REVIEW_2026_05_08.md`,
   `world3/docs/M6_SOURCE_STACK_RUNTIME_REVIEW_2026_05_08.md`, and
   `world3/docs/M7_SOURCE_STACK_BOUNDARY_REVIEW_2026_05_08.md`.
+- M7 same-source transition-mask QA is now measurable and passing for the
+  source-stack control scene. Evidence:
+  `world3/docs/M7_TRANSITION_MASK_METRICS_2026_05_08.md`.
 - First remediation bridge is complete enough for review: runtime terrain can
   use OpenTopo source macro albedo with low-strength tileable detail, and the
   worst organic materials now have quarantined repair candidates. Evidence:
@@ -115,8 +118,8 @@ Recommended next lane: finish the **M7-M12 near roadmap**. The six-step sequence
 explicit in [`M7_M12_NEAR_ROADMAP.md`](M7_M12_NEAR_ROADMAP.md):
 
 1. M7 biome-boundary runtime integration. Runtime pass complete; source-stack
-   control rerendered; visual closure still needs cross-material stress and view
-   parity.
+   control rerendered; same-source mask QA passes; visual closure still needs
+   cross-material stress and view parity.
 2. M8 organic source-material cleanup. Start with the ComfyUI regeneration
    queue plus source-stack terrain review; deterministic repair candidates stay
    quarantined until promoted.

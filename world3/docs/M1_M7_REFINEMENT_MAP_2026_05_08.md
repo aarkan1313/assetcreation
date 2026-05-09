@@ -20,7 +20,7 @@ promotion.
 | M4 Splat shader | Added the unified terrain splat shader, RGBA splat weights, OpenTopo reference comparison, and chunk material contract. | Runtime terrain can bind multi-material terrain data through one shader/material path. | Old splat showcase context is diagnostic only. Close-view source-stack context now looks credible, but wider/topdown/iso review is not solved. | Continue M4 around source-stack macro terrain, valid-area masks, repaired detail materials, and review scenes that look like the intended pipeline. |
 | M5 Walk streaming | Wired visible 256 m chunks into the walk scene, scripted chunk crossing, and captured streaming metrics. | The player can move through streamed terrain chunks with measurable chunk build/remove behavior. | Old walk capture inherits bad M4 context. Source-stack inspection capture now exists, but first-person/horizon framing still exposes finite-footprint artifacts. | Refine walk/iso/topdown framing, far-field policy, lighting, camera height, hitch budgets, and repeatability. |
 | M6 Runtime hardening | Added runtime image caches, export-safe paths, streamed collision chunks, collision metrics, and transition runtime review hooks. | Runtime terrain data can be loaded from cache and collided against instead of depending on editor-only image imports. | Source-stack collision rerender exists; async/background build and collision LOD policy remain future hardening. | Add async/background build options, stricter cache manifests, collision LOD policy, profiling gates, and validation scenes that run under walk/iso/topdown. |
-| M7 Boundary runtime | Generated per-chunk transition masks from biome rules and placed transitions automatically in runtime boundary scenes. Added source-stack control/context rerenders. | Boundary placement is now data-driven and can run through runtime chunks instead of manual shader placement. | Same-source source-stack control is visually cleaner but subtle; cross-material stress and view parity remain open. | Add clean cross-material source-stack control pairs, transition-mask metrics, and walk/topdown/iso boundary reviews. |
+| M7 Boundary runtime | Generated per-chunk transition masks from biome rules and placed transitions automatically in runtime boundary scenes. Added source-stack control/context rerenders and same-source mask QA. | Boundary placement is now data-driven, measurable, and can run through runtime chunks instead of manual shader placement. | Same-source source-stack control is visually cleaner and has a mask-metrics pass, but cross-material stress and view parity remain open. | Add clean cross-material source-stack control pairs, rerun mask metrics per stress scene, and add walk/topdown/iso boundary reviews. |
 
 ## Refinement Principles
 
@@ -65,6 +65,8 @@ promotion.
 
 4. M7 boundary rerender.
    Re-run automatic boundary placement over the repaired M4/M5 terrain context.
+   Same-source source-stack control and mask metrics now exist; next M7 work is
+   cross-material stress and view parity.
 
 5. M2 transition refinement.
    Review same-source calm controls and cross-biome stress pairs after the source
@@ -80,4 +82,7 @@ promotion.
 Do not continue treating the old M3-M6 debug screenshots as visual validation.
 They belong in the engineering diagnostics contact sheet. The main visual pass
 should refine M4/M5/M7 around the source-stack path, while M1/M2/M3/M6 get
-targeted contract and QA improvements that support that visual lane.
+targeted contract and QA improvements that support that visual lane. M7 now has
+a same-source source-stack visual control plus quantitative transition-mask QA,
+so the next practical roadmap move is M8 organic cleanup while cross-material M7
+stress and view parity stay open.

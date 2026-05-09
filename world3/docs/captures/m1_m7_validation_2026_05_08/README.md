@@ -26,7 +26,7 @@ engineering diagnostics that prove workflow plumbing.
 | M4 | PIPELINE PASS / SOURCE-STACK BASELINE | Unified splat path runs over source-stack context; Comfy sidecar remains quarantined. |
 | M5 | PIPELINE PASS / SOURCE-STACK BASELINE | Streaming walk runs over repaired source-stack context using inspection framing. |
 | M6 | RUNTIME PASS / SOURCE-STACK BASELINE | Runtime cache and streamed collision run over the repaired source-stack context. |
-| M7 | WORKFLOW PASS / SOURCE-STACK CONTROL | Boundary placement runs in source-stack context; same-source control is cleaner but not final closure. |
+| M7 | WORKFLOW PASS / SOURCE-STACK CONTROL | Boundary placement runs in source-stack context; same-source control and mask QA pass but final closure remains open. |
 
 ## Sequence
 
@@ -67,6 +67,7 @@ It is not a blanket visual promotion. The main sheet is the current
 source-stack visual baseline and intentionally excludes finite-chunk,
 topdown, and debug terrain captures that still read as prototype evidence.
 Those remain in the engineering diagnostics sheet because they prove
-plumbing, not art quality. M7 now has a cleaner same-source control,
-but still needs cross-material stress, transition-mask metrics, and
-walk/iso/topdown parity before production-visual closure.
+plumbing, not art quality. M7 now has a cleaner same-source control
+and same-source mask QA, but still needs cross-material stress with
+its own metrics plus walk/iso/topdown parity before production-visual
+closure.

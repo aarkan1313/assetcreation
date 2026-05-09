@@ -68,5 +68,6 @@ M6/M7 update: M6 now has a source-stack collision rerender
 (`M6_SOURCE_STACK_RUNTIME_REVIEW_2026_05_08.md`), and M7 has a cleaner
 source-stack same-source boundary context
 (`M7_SOURCE_STACK_BOUNDARY_REVIEW_2026_05_08.md`). M7 is improved but not
-visually closed because cross-material stress, mask metrics, and view parity
-remain open.
+visually closed. Same-source mask metrics now pass
+(`M7_TRANSITION_MASK_METRICS_2026_05_08.md`); cross-material stress and view
+parity remain open.

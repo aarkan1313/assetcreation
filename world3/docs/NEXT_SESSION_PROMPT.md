@@ -47,6 +47,7 @@ Read first:
 28. `world3/docs/M5_SOURCE_STACK_WALK_REVIEW_2026_05_08.md`
 29. `world3/docs/M6_SOURCE_STACK_RUNTIME_REVIEW_2026_05_08.md`
 30. `world3/docs/M7_SOURCE_STACK_BOUNDARY_REVIEW_2026_05_08.md`
+31. `world3/docs/M7_TRANSITION_MASK_METRICS_2026_05_08.md`
 
 ## Current status
 
@@ -75,6 +76,9 @@ Recent scoped commits:
 - `9d10702` - `world3: add comfy terrain context review`
 - `a23c286` - `world3: log grass regen visual veto`
 - `c57fdfa` - `world3: add comfy visual veto audit`
+- `35f0ac8` - `world3: split m1 m7 visual validation`
+- `daca50a` - `world3: add source stack m3 m5 visual refinements`
+- `ff5411e` - `world3: add source stack m6 m7 refinements`
 
 Active lane: M7 is a workflow pass but visual closure is paused. Continue the
 M1-M7 remediation/M8 organic cleanup path. OpenTopo source stacks and
@@ -144,8 +148,9 @@ same inspection scene with streamed collision chunks enabled. M7 now has a
 cleaner same-source source-stack control:
 `world3/scenes/capture_phase_m7/boundary_runtime_source_stack_context.tscn` and
 `world3/docs/captures/m7/boundary_runtime_source_stack_context.png`. M7 is
-improved but not visually closed; cross-material stress, view parity, and
-transition-mask metrics remain open.
+improved but not visually closed. The same-source transition mask now passes
+coverage/edge-continuity QA in `world3/docs/M7_TRANSITION_MASK_METRICS_2026_05_08.md`;
+cross-material stress and view parity remain open.
 
 Second ComfyUI M8 target: `grass` produced strict grade-A outputs, but visual
 review rejected them. `m8_grass_calm_v1` is the best failed direction; v2/v3

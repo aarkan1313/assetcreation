@@ -50,6 +50,8 @@ Captures:
 - `world3/docs/captures/m7/boundary_runtime_source_stack_context.png`
 - `world3/docs/captures/m7/boundary_walk_after_crossing.png`
 - `world3/docs/captures/m7/boundary_walk_metrics.json`
+- `world3/docs/captures/m7/transition_mask_metrics_source_stack_context.json`
+- `world3/docs/captures/m7/transition_mask_metrics_source_stack_context.png`
 
 Verification:
 
@@ -65,6 +67,10 @@ Verification:
 - Collision chunks built: `12`
 - Transition masks built: `6`
 - Transition mask build total / max: `83.454 ms / 14.142 ms`
+- Source-stack mask QA: `PASS`
+- Source-stack mask chunks: `5 / 25`
+- Source-stack mask mean coverage: `0.280469`
+- Source-stack mask worst mean edge band delta: `0.047768`
 - Worst update: `26.599 ms`
 - Frame mean / p95 / p99: `4.263 ms / 4.873 ms / 4.970 ms`
 
@@ -97,6 +103,12 @@ Follow-up source-stack context rerender:
 5x5-neighborhood same-source control capture. This is the current M7 visual
 control, but walk/iso/topdown parity and cross-material stress review remain
 open.
+
+Follow-up transition-mask metrics:
+`world3/docs/M7_TRANSITION_MASK_METRICS_2026_05_08.md` adds a reusable mask QA
+audit and records a `PASS` for the same-source source-stack context. This closes
+the same-source mask-quality gap, but future cross-material stress scenes still
+need their own metric run before visual closure.
 
 ## Remaining Risks
 
