@@ -54,22 +54,28 @@ start on the actual terrain instead of high in the sky.
 The first M5 smoke render exposed a hard material boundary at a chunk edge. The
 cause was a coordinate-contract mismatch:
 
-- height sampling uses `_wrapped_fraction(global_x + source_half_extent)`;
+- height sampling used a source-space repeat fraction;
 - chunk UVs were using raw `global_x / source_size`.
 
-`ChunkLoader.gd` now writes mesh UVs with the same wrapped source fraction used
-for height sampling:
+`ChunkLoader.gd` now writes mesh UVs with the same source fraction used for
+height sampling:
 
 ```gdscript
 uvs[i] = Vector2(
-    _wrapped_fraction(global_x, _source_size_x_m),
-    _wrapped_fraction(global_z, _source_size_z_m)
+    _source_fraction(global_x, _source_size_x_m),
+    _source_fraction(global_z, _source_size_z_m)
 )
 ```
 
 That removed the artificial vertical split in the walk capture. Remaining
 large material changes are prototype splat-map content, not chunk-boundary UV
 breakage.
+
+2026-05-09 update: the source fraction is now configurable. The default
+`source_repeat_mode = "mirror"` is for finite OpenTopo crops whose opposite
+edges do not match; it prevents repeated-source height walls. Legacy `"wrap"`
+is retained only for proven toroidal/seam-safe height sources, and `"clamp"` is
+available for finite-footprint diagnostics.
 
 ## Verification
 

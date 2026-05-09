@@ -75,8 +75,10 @@ frame mean / p95 / p99 / max = 4.152 / 4.582 / 4.661 / 19.076 ms
 - Visible terrain is streamed through `ChunkLoader.gd` using
   `terrain_splat_alpine.tres`.
 - Legacy single `Terrain.gd` is hidden and retained only for collision.
-- Chunk UVs now match the height sampler's wrapped source fraction, which fixed
-  the first smoke-test material split at chunk edges.
+- Chunk UVs now match the height sampler's source fraction, which fixed the
+  first smoke-test material split at chunk edges. The default source repeat
+  policy is mirrored finite-source sampling; wrap is opt-in for proven
+  toroidal/seam-safe sources.
 - `M5WalkStreamRunner.gd` now produces short/long crossing metrics, frame
   timing summaries, and sampled review frames.
 

@@ -64,6 +64,12 @@ uniform sampler2D source_macro_albedo : source_color;
 uniform bool use_source_macro_valid_mask = false;
 uniform sampler2D source_macro_valid_mask;
 uniform float source_macro_strength : hint_range(0.0, 1.0) = 1.0;
+uniform bool use_source_macro_world_uv = false;
+uniform vec2 source_world_size_m = vec2(1.0, 1.0);
+uniform float source_repeat_mode_code = 0.0;
+uniform bool use_source_macro_seam_blend = false;
+uniform vec2 source_macro_seam_width_uv = vec2(0.0, 0.0);
+uniform float source_macro_seam_fade : hint_range(0.0, 1.0) = 0.0;
 
 uniform bool use_transition_strip = false;
 uniform bool use_transition_mask = false;
@@ -101,6 +107,12 @@ uniform float h_grass_dirt : hint_range(0.0, 1.0) = 0.20;
 uniform float h_dirt_rockdark : hint_range(0.0, 1.0) = 0.55;
 uniform float h_rockdark_snow : hint_range(0.0, 1.0) = 0.85;
 uniform float h_band_softness : hint_range(0.01, 0.3) = 0.08;
+
+varying vec3 source_world_pos;
+
+void vertex() {
+    source_world_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
+}
 
 vec2 hash22(vec2 p) {
     p = vec2(dot(p, vec2(127.1, 311.7)),
@@ -380,6 +392,93 @@ void apply_sample(LayerSample s, float w,
     wsum += w;
 }
 
+float source_edge_weight(float value, float width) {
+    if (width <= 0.0001) return 0.0;
+    float low = 1.0 - smoothstep(0.0, width, value);
+    float high = smoothstep(1.0 - width, 1.0, value);
+    return max(low, high);
+}
+
+float source_seam_weight(vec2 uv) {
+    if (!use_source_macro_seam_blend) return 0.0;
+    float wx = clamp(source_macro_seam_width_uv.x, 0.0, 0.49);
+    float wz = clamp(source_macro_seam_width_uv.y, 0.0, 0.49);
+    return max(source_edge_weight(uv.x, wx), source_edge_weight(uv.y, wz));
+}
+
+vec2 safe_source_uv(vec2 uv) {
+    return clamp(uv, vec2(0.001), vec2(0.999));
+}
+
+float source_world_fraction(float value_m, float size_m) {
+    float coord = (value_m + size_m * 0.5) / max(size_m, 0.001);
+    if (source_repeat_mode_code > 2.5) {
+        return clamp(coord, 0.0, 1.0);
+    }
+    if (source_repeat_mode_code > 0.5) {
+        return fract(coord);
+    }
+    float local = mod(coord, 2.0);
+    if (local < 0.0) {
+        local += 2.0;
+    }
+    return local <= 1.0 ? local : 2.0 - local;
+}
+
+vec2 source_macro_uv(vec3 world_pos, vec2 fallback_uv) {
+    if (!use_source_macro_world_uv) {
+        return fallback_uv;
+    }
+    return vec2(
+        source_world_fraction(world_pos.x, source_world_size_m.x),
+        source_world_fraction(world_pos.z, source_world_size_m.y)
+    );
+}
+
+vec3 sample_source_macro_color(vec2 uv) {
+    vec2 source_uv = safe_source_uv(uv);
+    vec3 color = texture(source_macro_albedo, source_uv).rgb;
+    if (!use_source_macro_seam_blend) return color;
+
+    float wx = clamp(source_macro_seam_width_uv.x, 0.0, 0.49);
+    float wz = clamp(source_macro_seam_width_uv.y, 0.0, 0.49);
+    float edge_x = source_edge_weight(uv.x, wx);
+    if (edge_x > 0.001) {
+        vec2 alt_uv = safe_source_uv(vec2(1.0 - uv.x, uv.y));
+        vec3 alt = texture(source_macro_albedo, alt_uv).rgb;
+        color = mix(color, (color + alt) * 0.5, edge_x);
+    }
+    float edge_z = source_edge_weight(uv.y, wz);
+    if (edge_z > 0.001) {
+        vec2 alt_uv = safe_source_uv(vec2(uv.x, 1.0 - uv.y));
+        vec3 alt = texture(source_macro_albedo, alt_uv).rgb;
+        color = mix(color, (color + alt) * 0.5, edge_z);
+    }
+    return color;
+}
+
+float sample_source_macro_valid(vec2 uv) {
+    vec2 source_uv = safe_source_uv(uv);
+    float valid = texture(source_macro_valid_mask, source_uv).r;
+    if (!use_source_macro_seam_blend) return valid;
+
+    float wx = clamp(source_macro_seam_width_uv.x, 0.0, 0.49);
+    float wz = clamp(source_macro_seam_width_uv.y, 0.0, 0.49);
+    float edge_x = source_edge_weight(uv.x, wx);
+    if (edge_x > 0.001) {
+        vec2 alt_uv = safe_source_uv(vec2(1.0 - uv.x, uv.y));
+        float alt = texture(source_macro_valid_mask, alt_uv).r;
+        valid = mix(valid, max(valid, alt), edge_x);
+    }
+    float edge_z = source_edge_weight(uv.y, wz);
+    if (edge_z > 0.001) {
+        vec2 alt_uv = safe_source_uv(vec2(uv.x, 1.0 - uv.y));
+        float alt = texture(source_macro_valid_mask, alt_uv).r;
+        valid = mix(valid, max(valid, alt), edge_z);
+    }
+    return valid;
+}
+
 void fragment() {
     vec3 wp = (INV_VIEW_MATRIX * vec4(VERTEX, 1.0)).xyz;
     vec3 wn = normalize((INV_VIEW_MATRIX * vec4(NORMAL, 0.0)).xyz);
@@ -461,13 +560,15 @@ void fragment() {
     }
 
     if (use_source_macro_albedo) {
-        vec2 source_uv = clamp(UV, vec2(0.001), vec2(0.999));
-        vec3 source_macro = texture(source_macro_albedo, source_uv).rgb;
+        vec2 source_uv = source_macro_uv(source_world_pos, UV);
+        vec3 source_macro = sample_source_macro_color(source_uv);
         float source_valid = 1.0;
         if (use_source_macro_valid_mask) {
-            source_valid = smoothstep(0.15, 0.85, texture(source_macro_valid_mask, source_uv).r);
+            source_valid = smoothstep(0.15, 0.85, sample_source_macro_valid(source_uv));
         }
-        macro_albedo = mix(macro_albedo, source_macro, source_macro_strength * source_valid);
+        float source_weight = source_macro_strength * source_valid;
+        source_weight *= 1.0 - source_seam_weight(source_uv) * source_macro_seam_fade;
+        macro_albedo = mix(macro_albedo, source_macro, source_weight);
     }
 
     vec3 final_albedo = macro_albedo;

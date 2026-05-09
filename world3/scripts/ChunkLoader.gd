@@ -3,15 +3,17 @@ class_name ChunkLoader
 
 # Runtime chunk streamer for the M3 size sweep.
 #
-# Chunks sample one source heightmap as an infinite tiled height field. Mesh
-# vertices are local to each chunk, but heights/normals are sampled from global
-# XZ so adjacent chunks agree at shared borders. Normals sample one mesh step
-# outside the chunk footprint, which avoids the one-sided finite-difference seam
-# seen in the Phase F.3 static stitch test.
+# Chunks sample one source heightmap through a repeat policy. Mesh vertices are
+# local to each chunk, but heights/normals are sampled from global XZ so
+# adjacent chunks agree at shared borders. Normals sample one mesh step outside
+# the chunk footprint, which avoids the one-sided finite-difference seam seen in
+# the Phase F.3 static stitch test.
 
 @export var heightmap_path: String = "res://heightmap/heightmap.png"
 @export var heightmap_cache_path: String = ""
 @export var meta_path: String = "res://heightmap/meta.json"
+@export var source_valid_mask_path: String = ""
+@export var source_valid_mask_cache_path: String = ""
 @export var terrain_material: Material
 @export var splat_weights_path: String = ""
 @export var splat_weights_cache_path: String = ""
@@ -20,6 +22,11 @@ class_name ChunkLoader
 @export var chunk_resolution_m: float = 8.0
 @export var max_subdivisions_per_chunk: int = 160
 @export var height_scale: float = 1.0
+@export_enum("mirror", "wrap", "blend_wrap", "clamp") var source_repeat_mode: String = "mirror"
+@export var source_repeat_blend_width_m: float = 96.0
+@export var source_repeat_blend_macro_color: bool = true
+@export_range(0.0, 1.0, 0.01) var source_repeat_blend_macro_fade: float = 0.0
+@export var clip_to_source_bounds: bool = false
 @export var target_path: NodePath
 @export var auto_update: bool = true
 @export var build_collision_chunks: bool = false
@@ -48,8 +55,11 @@ var transition_mask_build_usec_max: int = 0
 
 var _chunks: Dictionary = {}
 var _height_img: Image
+var _source_valid_mask_img: Image
 var _img_w: int = 0
 var _img_h: int = 0
+var _valid_mask_w: int = 0
+var _valid_mask_h: int = 0
 var _source_size_x_m: float = 1.0
 var _source_size_z_m: float = 1.0
 var _elev_min_m: float = 0.0
@@ -180,11 +190,30 @@ func _load_source() -> void:
 	_elev_range_m = float(meta.get("elevation_range_m", 1.0))
 	_img_w = _height_img.get_width()
 	_img_h = _height_img.get_height()
+	if source_valid_mask_path != "":
+		_source_valid_mask_img = RuntimeImageCache.load_image(source_valid_mask_cache_path, source_valid_mask_path)
+		if _source_valid_mask_img == null:
+			push_warning("ChunkLoader: failed to load source valid mask " + source_valid_mask_path)
+		else:
+			_valid_mask_w = _source_valid_mask_img.get_width()
+			_valid_mask_h = _source_valid_mask_img.get_height()
 
 	if terrain_material is ShaderMaterial:
 		var sm: ShaderMaterial = terrain_material as ShaderMaterial
 		sm.set_shader_parameter("elev_min_m", _elev_min_m)
 		sm.set_shader_parameter("elev_range_m", _elev_range_m)
+		sm.set_shader_parameter("use_source_macro_world_uv", true)
+		sm.set_shader_parameter("source_world_size_m", Vector2(_source_size_x_m, _source_size_z_m))
+		sm.set_shader_parameter("source_repeat_mode_code", _source_repeat_mode_code())
+		sm.set_shader_parameter("use_source_macro_seam_blend", source_repeat_mode == "blend_wrap" and source_repeat_blend_macro_color)
+		sm.set_shader_parameter("source_macro_seam_fade", source_repeat_blend_macro_fade)
+		sm.set_shader_parameter(
+			"source_macro_seam_width_uv",
+			Vector2(
+				clamp(source_repeat_blend_width_m / max(_source_size_x_m, 0.001), 0.0, 0.49),
+				clamp(source_repeat_blend_width_m / max(_source_size_z_m, 0.001), 0.0, 0.49)
+			)
+		)
 		if splat_weights_path != "":
 			var splat_tex: Texture2D = _load_runtime_texture(splat_weights_cache_path, splat_weights_path)
 			if splat_tex != null:
@@ -447,8 +476,8 @@ func _build_chunk_mesh(cx: int, cz: int) -> ArrayMesh:
 			var elev: float = _sample_height_global(global_x, global_z)
 			verts[i] = Vector3(fx * chunk_size_m - half_size, elev, fz * chunk_size_m - half_size)
 			uvs[i] = Vector2(
-				_wrapped_fraction(global_x, _source_size_x_m),
-				_wrapped_fraction(global_z, _source_size_z_m)
+				_source_fraction(global_x, _source_size_x_m),
+				_source_fraction(global_z, _source_size_z_m)
 			)
 			uv2s[i] = Vector2(fx, fz)
 			normals[i] = _sample_normal_global(global_x, global_z, mesh_step)
@@ -457,6 +486,8 @@ func _build_chunk_mesh(cx: int, cz: int) -> ArrayMesh:
 	var k: int = 0
 	for z in range(n):
 		for x in range(n):
+			if clip_to_source_bounds and not _cell_inside_source_bounds(min_x, min_z, x, z, mesh_step):
+				continue
 			var i00: int = z * (n + 1) + x
 			var i10: int = i00 + 1
 			var i01: int = i00 + (n + 1)
@@ -467,6 +498,7 @@ func _build_chunk_mesh(cx: int, cz: int) -> ArrayMesh:
 			indices[k] = i00; k += 1
 			indices[k] = i10; k += 1
 			indices[k] = i11; k += 1
+	indices.resize(k)
 
 	var arrays: Array = []
 	arrays.resize(Mesh.ARRAY_MAX)
@@ -486,6 +518,41 @@ func _subdivisions_for_chunk() -> int:
 	return clampi(n, 8, max_subdivisions_per_chunk)
 
 
+func _cell_inside_source_bounds(min_x: float, min_z: float, x: int, z: int, step_m: float) -> bool:
+	return (
+		_inside_source_bounds(min_x + float(x) * step_m, min_z + float(z) * step_m)
+		and _inside_source_bounds(min_x + float(x + 1) * step_m, min_z + float(z) * step_m)
+		and _inside_source_bounds(min_x + float(x) * step_m, min_z + float(z + 1) * step_m)
+		and _inside_source_bounds(min_x + float(x + 1) * step_m, min_z + float(z + 1) * step_m)
+	)
+
+
+func _inside_source_bounds(global_x: float, global_z: float) -> bool:
+	var half_x: float = _source_size_x_m * 0.5
+	var half_z: float = _source_size_z_m * 0.5
+	var in_bounds: bool = (
+		global_x >= -half_x
+		and global_x <= half_x
+		and global_z >= -half_z
+		and global_z <= half_z
+	)
+	if not in_bounds:
+		return false
+	if _source_valid_mask_img == null:
+		return true
+	return _sample_source_valid_mask(global_x, global_z) >= 0.5
+
+
+func _sample_source_valid_mask(global_x: float, global_z: float) -> float:
+	if _source_valid_mask_img == null or _valid_mask_w < 1 or _valid_mask_h < 1:
+		return 1.0
+	var fx: float = _clamped_fraction(global_x, _source_size_x_m)
+	var fz: float = _clamped_fraction(global_z, _source_size_z_m)
+	var px: int = clampi(int(round(fx * float(_valid_mask_w - 1))), 0, _valid_mask_w - 1)
+	var pz: int = clampi(int(round(fz * float(_valid_mask_h - 1))), 0, _valid_mask_h - 1)
+	return _source_valid_mask_img.get_pixel(px, pz).r
+
+
 func _sample_normal_global(global_x: float, global_z: float, spacing_m: float) -> Vector3:
 	var hl: float = _sample_height_global(global_x - spacing_m, global_z)
 	var hr: float = _sample_height_global(global_x + spacing_m, global_z)
@@ -497,14 +564,71 @@ func _sample_normal_global(global_x: float, global_z: float, spacing_m: float) -
 
 
 func _sample_height_global(global_x: float, global_z: float) -> float:
-	var fx: float = _wrapped_fraction(global_x, _source_size_x_m)
-	var fz: float = _wrapped_fraction(global_z, _source_size_z_m)
+	if source_repeat_mode == "blend_wrap":
+		return _sample_height_global_blend_wrap(global_x, global_z)
+	var fx: float = _source_fraction(global_x, _source_size_x_m)
+	var fz: float = _source_fraction(global_z, _source_size_z_m)
 	var nrm: float = _sample_height_fraction(fx, fz)
 	return _elev_min_m + nrm * _elev_range_m * height_scale
 
 
+func _sample_height_global_blend_wrap(global_x: float, global_z: float) -> float:
+	var fx: float = _wrapped_fraction(global_x, _source_size_x_m)
+	var fz: float = _wrapped_fraction(global_z, _source_size_z_m)
+	var nrm: float = _sample_height_fraction(fx, fz)
+	var wx: float = clamp(source_repeat_blend_width_m / max(_source_size_x_m, 0.001), 0.0, 0.49)
+	var wz: float = clamp(source_repeat_blend_width_m / max(_source_size_z_m, 0.001), 0.0, 0.49)
+	if wx > 0.0:
+		var edge_x: float = max(1.0 - _smoothstep(0.0, wx, fx), _smoothstep(1.0 - wx, 1.0, fx))
+		if edge_x > 0.0:
+			var alt_x: float = _sample_height_fraction(1.0 - fx, fz)
+			nrm = lerp(nrm, (nrm + alt_x) * 0.5, edge_x)
+	if wz > 0.0:
+		var edge_z: float = max(1.0 - _smoothstep(0.0, wz, fz), _smoothstep(1.0 - wz, 1.0, fz))
+		if edge_z > 0.0:
+			var alt_z: float = _sample_height_fraction(fx, 1.0 - fz)
+			nrm = lerp(nrm, (nrm + alt_z) * 0.5, edge_z)
+	return _elev_min_m + nrm * _elev_range_m * height_scale
+
+
+func _source_fraction(v: float, size_m: float) -> float:
+	match source_repeat_mode:
+		"wrap":
+			return _wrapped_fraction(v, size_m)
+		"blend_wrap":
+			return _wrapped_fraction(v, size_m)
+		"clamp":
+			return _clamped_fraction(v, size_m)
+		_:
+			return _mirrored_fraction(v, size_m)
+
+
+func _source_repeat_mode_code() -> float:
+	match source_repeat_mode:
+		"wrap":
+			return 1.0
+		"blend_wrap":
+			return 2.0
+		"clamp":
+			return 3.0
+		_:
+			return 0.0
+
+
 func _wrapped_fraction(v: float, size_m: float) -> float:
 	return fposmod(v + size_m * 0.5, size_m) / size_m
+
+
+func _mirrored_fraction(v: float, size_m: float) -> float:
+	var period_m: float = max(size_m * 2.0, 0.001)
+	var local_m: float = fposmod(v + size_m * 0.5, period_m)
+	if local_m <= size_m:
+		return local_m / max(size_m, 0.001)
+	return (period_m - local_m) / max(size_m, 0.001)
+
+
+func _clamped_fraction(v: float, size_m: float) -> float:
+	return clamp((v + size_m * 0.5) / max(size_m, 0.001), 0.0, 1.0)
 
 
 func _sample_height_fraction(fx: float, fz: float) -> float:

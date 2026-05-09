@@ -1,0 +1,79 @@
+{
+  "name": "Gloss Mountain Textured Master Stack",
+  "builder": "build_opentopo_textured_master_stack.py",
+  "source_dem": "D:\\assets\\world3\\opentopo\\raw\\dataspace\\Gloss_Mountain_2021\\Gloss_Mountain_DEM.tif",
+  "source_orthophoto": "D:\\assets\\world3\\opentopo\\raw\\dataspace\\Gloss_Mountain_2021\\Gloss_Mountain_Orthomosaic.tif",
+  "source_crs": "EPSG:32615",
+  "source_bounds": {
+    "left": -996.9363174361063,
+    "bottom": 4038698.846322414,
+    "right": -377.52582553610625,
+    "top": 4039774.274823914
+  },
+  "source_bounds_wgs84": {
+    "west": -98.58250224853123,
+    "south": 36.36292455747933,
+    "east": -98.57493917546509,
+    "north": 36.37289581558865
+  },
+  "source_resolution_m": {
+    "x": 0.0698557,
+    "y": 0.06985569999999007
+  },
+  "heightmap_size_px": [
+    4718,
+    8192
+  ],
+  "elevation_min_m": 393.8431701660156,
+  "elevation_max_m": 477.6233215332031,
+  "elevation_range_m": 83.7801513671875,
+  "world_size_m": 577.6227302977532,
+  "world_size_x_m": 367.44690197457624,
+  "world_size_z_m": 577.6227302977532,
+  "material": "real_mesa_orthophoto",
+  "texture_is_real_imagery": true,
+  "review_note": "The review texture is downsampled from the raw orthophoto; the raw 3 cm orthophoto is preserved separately.",
+  "crop_to_valid_dem": true,
+  "crop_margin_px": 16,
+  "crop_window_px": {
+    "col_off": 592,
+    "row_off": 1136,
+    "width": 8867,
+    "height": 15395
+  },
+  "source_conditioning": {
+    "kind": "same_source_blend_height_edge_conditioning",
+    "source_heightmap": "res://toporeview/gloss_mountain_textured_master/heightmap.png",
+    "height_edge_condition_band_px": 64,
+    "height_internal_heal_band_px": 0,
+    "valid_crop_fraction": [
+      0.15254237288135594,
+      0.302734375,
+      0.7457627118644068,
+      0.83984375
+    ],
+    "valid_crop_px": [
+      720,
+      2480,
+      3519,
+      6880
+    ],
+    "source_roll_fraction": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "source_roll_px": {
+      "x_px": 0,
+      "y_px": 0
+    },
+    "before": {
+      "x_edge_mean_abs_rgb": 0.11956091970205307,
+      "y_edge_mean_abs_rgb": 0.1683095544576645
+    },
+    "after": {
+      "x_edge_mean_abs_rgb": 2.1702095182263292e-05,
+      "y_edge_mean_abs_rgb": 3.063620169996284e-05
+    },
+    "policy": "review_only_same_source_repeat_poc"
+  }
+}

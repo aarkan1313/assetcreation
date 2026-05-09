@@ -15,6 +15,11 @@ The project framing matters: `world3` and `assets` are a pipeline/workflow
 creation set. Current content is primarily workflow-validation material for
 AAA-quality pipelines; production promotion is a separate review.
 
+Repo-level data inventory is now centralized in `docs/MASTER_DATA_CATALOG.md`
+and `world3/data_catalog.json`. Re-run
+`python pipelines/terrain/build_master_catalog.py` whenever new DEMs, stacks,
+or texture sets land.
+
 Read first:
 
 1. `world3/docs/WORLD3_STATE_2026_05_08.md`
@@ -50,6 +55,8 @@ Read first:
 31. `world3/docs/M7_TRANSITION_MASK_METRICS_2026_05_08.md`
 32. `world3/docs/M8_ORGANIC_REGEN_QUEUE_STATUS_2026_05_08.md`
 33. `world3/docs/REVIEW_SCENE_AUTO_TOUR_2026_05_08.md`
+34. `world3/docs/SOURCE_REPEAT_POLICY_2026_05_09.md`
+35. `world3/docs/TERRAIN_SEAM_INTEGRATION_RESEARCH_2026_05_09.md`
 
 ## Current status
 
@@ -89,6 +96,16 @@ current visual reference/control path; ComfyUI is the scalable material
 regeneration path. Start with `world3/jobs/comfy_texture_regen_candidates.json`
 and keep regenerated outputs quarantined until seam QA, Godot close/mid/far
 terrain-context captures, and M4/M7 rerender trials pass.
+
+OpenTopo/DEM data is not to be framed as "make one crop infinite." Use the
+master catalog to pick source exemplars, mosaics, and coverage gaps. Long-term
+procedural expansion should learn landform/material/vegetation/drainage rules
+from many sources, then generate or stream compatible neighboring terrain.
+Repeated-source 2x2/3x3 review is diagnostic only. It is allowed for
+sample-space, shader, and chunk-boundary bugs, but not as visual closure.
+Production-facing continuity now means terrain seam integration: a solved
+world-space band for height, normals, material/source weights, macro color,
+valid masks, and feature layers.
 
 First ComfyUI M8 result: `m8_grassland_grass_calm_v3` passed strict
 `aaa_texture.py` QA, source-material noise audit, and the first terrain-context
@@ -175,7 +192,15 @@ close 3D, medium 3D, iso, topdown, controlled overview, and near-field sweep
 views over the current source-stack/M8 sidecar workflow. Use it for quick mobile
 remote-desktop validation before continuing the roadmap. True far/horizon views
 are deliberately excluded from the default tour because they expose finite
-footprint/source-height repeat artifacts.
+footprint limits. Source-height repeat artifacts now have a runtime policy:
+`ChunkLoader.gd` defaults to mirrored finite-source sampling, with legacy wrap
+retained only for proven toroidal/seam-safe inputs.
+
+Full-map moving review scene:
+`world3/scenes/review/source_stack_full_map_fast_tour.tscn` traverses the valid
+Gloss Mountain source footprint faster and wider. It uses `clip_to_source_bounds`
+plus `source_macro_valid_mask` clipping, so missing source imagery is shown as
+dataset boundary/empty background instead of fake beige terrain.
 
 M1 is done:
 
@@ -245,8 +270,10 @@ M5 is complete at prototype final form:
   streamed chunk collision instead.
 - The player spawn was lowered so smoke captures and interactive use start
   near the terrain instead of high in the sky.
-- `ChunkLoader.gd` writes UVs with `_wrapped_fraction(...)`, matching height
-  sampling. This fixed the first M5 smoke-test material split at a chunk edge.
+- `ChunkLoader.gd` writes UVs with the same source fraction used for height
+  sampling. The default is mirrored finite-source sampling, which prevents
+  OpenTopo crop-edge height walls; legacy `_wrapped_fraction(...)` behavior is
+  still available via `source_repeat_mode = "wrap"`.
 - Static capture:
   `world3/docs/captures/m5/walk_chunk_splat_smoke.png`
 - Scripted crossing runner:
@@ -304,7 +331,7 @@ M7-M12 near roadmap is now explicit:
 1. M7 boundary-runtime integration.
 2. M8 organic source-material cleanup.
 3. M9 runtime performance and interaction polish.
-4. M10 cross-source blending.
+4. M10 terrain seam integration and cross-source blending.
 5. M11 corner and junction transitions.
 6. M12 walk/iso/topdown view-mode parity.
 

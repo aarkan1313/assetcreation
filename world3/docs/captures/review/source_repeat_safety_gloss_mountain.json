@@ -1,0 +1,36 @@
+{
+  "heightmap": "D:\\assets\\world3\\toporeview\\gloss_mountain_textured_master\\heightmap.png",
+  "meta": "D:\\assets\\world3\\toporeview\\gloss_mountain_textured_master\\meta.json",
+  "source_name": "Gloss Mountain Textured Master Stack",
+  "heightmap_size_px": [
+    4718,
+    8192
+  ],
+  "world_size_m": {
+    "x": 619.4104919,
+    "z": 1075.4285014998168
+  },
+  "elevation_range_m": 83.7801513671875,
+  "thresholds_m": {
+    "mean": 1.0,
+    "p95": 3.0,
+    "max": 8.0
+  },
+  "edge_delta_m": {
+    "x_wrap_left_vs_right": {
+      "mean_m": 3.090365171432495,
+      "median_m": 0.0,
+      "p95_m": 11.831620216369629,
+      "max_m": 19.489255905151367
+    },
+    "z_wrap_top_vs_bottom": {
+      "mean_m": 2.8458898067474365,
+      "median_m": 0.0,
+      "p95_m": 25.471481323242188,
+      "max_m": 26.726295471191406
+    }
+  },
+  "wrap_safe": false,
+  "recommended_repeat_mode": "mirror",
+  "policy_note": "Use wrap only when opposite source edges are elevation-compatible. Use mirror for finite OpenTopo crops to avoid runtime height walls; use clamp only for explicit finite-footprint diagnostics."
+}

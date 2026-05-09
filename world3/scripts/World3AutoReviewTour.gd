@@ -4,6 +4,9 @@ extends Node3D
 @export var material_path: String = "res://textures/wgv3/terrain_source_stack_gloss_grassland_comfy_v3_source_stack.tres"
 @export var heightmap_path: String = "res://toporeview/gloss_mountain_textured_master/heightmap.png"
 @export var meta_path: String = "res://toporeview/gloss_mountain_textured_master/meta.json"
+@export var source_valid_mask_path: String = ""
+@export var source_macro_albedo_override_path: String = ""
+@export var source_macro_valid_mask_override_path: String = ""
 @export var transition_rule_id: String = "opentopo_scrub_sparse__dry_wash_neighbor"
 @export var start_x_m: float = 64.0
 @export var start_z_m: float = 128.0
@@ -11,14 +14,21 @@ extends Node3D
 @export var chunk_size_m: float = 256.0
 @export var chunk_resolution_m: float = 8.0
 @export var view_radius_chunks: int = 2
+@export_enum("mirror", "wrap", "blend_wrap", "clamp") var source_repeat_mode: String = "mirror"
+@export var source_repeat_blend_width_m: float = 96.0
+@export var source_repeat_blend_macro_color: bool = true
+@export_range(0.0, 1.0, 0.01) var source_repeat_blend_macro_fade: float = 0.0
+@export var clip_to_source_bounds: bool = false
 @export var transition_width_m: float = 72.0
 @export var transition_repeat_m: float = 128.0
 @export_range(0.0, 1.0, 0.01) var transition_strength: float = 0.28
 @export var enable_transition_boundary: bool = false
 @export var show_footprint_debug_views: bool = false
+@export var review_use_source_macro_valid_mask: bool = true
 @export var review_normal_strength: float = 0.06
 @export var review_detail_normal_strength: float = 0.025
 @export var review_detail_rough_strength: float = 0.025
+@export_enum("standard", "full_map_fast", "same_source_blend") var tour_profile: String = "standard"
 @export var initial_tour_index: int = 0
 @export var auto_play: bool = true
 
@@ -82,6 +92,12 @@ func _advance_tour(dir: int) -> void:
 
 
 func _build_tour() -> void:
+	if tour_profile == "full_map_fast":
+		_build_full_map_fast_tour()
+		return
+	if tour_profile == "same_source_blend":
+		_build_same_source_blend_tour()
+		return
 	_tour = [
 		{
 			"name": "3D close ground pass",
@@ -159,6 +175,172 @@ func _build_tour() -> void:
 		)
 
 
+func _build_same_source_blend_tour() -> void:
+	var source_size: Vector2 = _review_source_size_m()
+	var seam_x: float = source_size.x * 0.5
+	var seam_z: float = source_size.y * 0.5
+	var x_span: float = clamp(source_size.x * 0.48, 120.0, 220.0)
+	var z_span: float = clamp(source_size.y * 0.34, 140.0, 240.0)
+	var topdown_size: float = clamp(max(source_size.x, source_size.y) * 0.36, 240.0, 420.0)
+	var corner_size: float = clamp(max(source_size.x, source_size.y) * 0.54, 300.0, 560.0)
+	_tour = [
+		{
+			"name": "X seam topdown blend",
+			"mode": "topdown",
+			"duration": 5.0,
+			"focus": Vector2(seam_x - x_span * 0.5, 0.0),
+			"focus_end": Vector2(seam_x + x_span * 0.5, 0.0),
+			"camera": Vector3(0.0, 820.0, 0.01),
+			"camera_end": Vector3(0.0, 820.0, 0.01),
+			"size": topdown_size
+		},
+		{
+			"name": "Z seam topdown blend",
+			"mode": "topdown",
+			"duration": 5.0,
+			"focus": Vector2(0.0, seam_z - z_span * 0.5),
+			"focus_end": Vector2(0.0, seam_z + z_span * 0.5),
+			"camera": Vector3(0.0, 860.0, 0.01),
+			"camera_end": Vector3(0.0, 860.0, 0.01),
+			"size": topdown_size
+		},
+		{
+			"name": "2x2 corner overview",
+			"mode": "topdown",
+			"duration": 5.0,
+			"focus": Vector2(seam_x, seam_z),
+			"focus_end": Vector2(seam_x, seam_z),
+			"camera": Vector3(0.0, 980.0, 0.01),
+			"camera_end": Vector3(0.0, 980.0, 0.01),
+			"size": corner_size
+		},
+		{
+			"name": "3D X seam traverse",
+			"mode": "perspective",
+			"duration": 5.0,
+			"focus": Vector2(seam_x - x_span * 0.5, 20.0),
+			"focus_end": Vector2(seam_x + x_span * 0.5, 20.0),
+			"camera": Vector3(-190.0, 150.0, -230.0),
+			"camera_end": Vector3(-160.0, 150.0, -210.0),
+			"fov": 48.0
+		},
+		{
+			"name": "3D Z seam traverse",
+			"mode": "perspective",
+			"duration": 5.0,
+			"focus": Vector2(40.0, seam_z - z_span * 0.5),
+			"focus_end": Vector2(40.0, seam_z + z_span * 0.5),
+			"camera": Vector3(-220.0, 170.0, -250.0),
+			"camera_end": Vector3(-200.0, 170.0, -230.0),
+			"fov": 48.0
+		},
+		{
+			"name": "2x2 corner 3D pass",
+			"mode": "perspective",
+			"duration": 5.0,
+			"focus": Vector2(seam_x - x_span * 0.3, seam_z - z_span * 0.3),
+			"focus_end": Vector2(seam_x + x_span * 0.3, seam_z + z_span * 0.3),
+			"camera": Vector3(-260.0, 230.0, -320.0),
+			"camera_end": Vector3(-230.0, 230.0, -300.0),
+			"fov": 46.0
+		}
+	]
+
+
+func _review_source_size_m() -> Vector2:
+	var f: FileAccess = FileAccess.open(meta_path, FileAccess.READ)
+	if f == null:
+		return Vector2(619.0, 1075.0)
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	f.close()
+	if typeof(parsed) != TYPE_DICTIONARY:
+		return Vector2(619.0, 1075.0)
+	var meta: Dictionary = parsed
+	var world_size: float = float(meta.get("world_size_m", 1024.0))
+	return Vector2(
+		float(meta.get("world_size_x_m", world_size)),
+		float(meta.get("world_size_z_m", world_size))
+	)
+
+
+func _build_full_map_fast_tour() -> void:
+	_tour = [
+		{
+			"name": "Full map topdown sweep",
+			"mode": "topdown",
+			"duration": 4.5,
+			"focus": Vector2(0.0, -360.0),
+			"focus_end": Vector2(0.0, 360.0),
+			"camera": Vector3(0.0, 900.0, 0.01),
+			"camera_end": Vector3(0.0, 900.0, 0.01),
+			"size": 348.0
+		},
+		{
+			"name": "Full map iso diagonal",
+			"mode": "ortho",
+			"duration": 5.0,
+			"focus": Vector2(-260.0, -460.0),
+			"focus_end": Vector2(260.0, 460.0),
+			"camera": Vector3(-410.0, 520.0, -470.0),
+			"camera_end": Vector3(-390.0, 520.0, -450.0),
+			"size": 520.0
+		},
+		{
+			"name": "3D long northbound flyover",
+			"mode": "perspective",
+			"duration": 5.0,
+			"focus": Vector2(-240.0, -460.0),
+			"focus_end": Vector2(220.0, 470.0),
+			"camera": Vector3(-260.0, 210.0, -320.0),
+			"camera_end": Vector3(-220.0, 230.0, -300.0),
+			"fov": 46.0
+		},
+		{
+			"name": "3D reverse cross-map sweep",
+			"mode": "perspective",
+			"duration": 5.0,
+			"focus": Vector2(260.0, -420.0),
+			"focus_end": Vector2(-260.0, 420.0),
+			"camera": Vector3(300.0, 230.0, -360.0),
+			"camera_end": Vector3(260.0, 240.0, -330.0),
+			"fov": 48.0
+		},
+		{
+			"name": "Full source overview",
+			"mode": "topdown",
+			"duration": 4.0,
+			"focus": Vector2(0.0, -320.0),
+			"focus_end": Vector2(0.0, 320.0),
+			"camera": Vector3(0.0, 900.0, 0.01),
+			"camera_end": Vector3(0.0, 900.0, 0.01),
+			"size": 348.0
+		},
+		{
+			"name": "Low-altitude center traverse",
+			"mode": "perspective",
+			"duration": 4.5,
+			"focus": Vector2(-290.0, -120.0),
+			"focus_end": Vector2(290.0, 160.0),
+			"camera": Vector3(-150.0, 120.0, -210.0),
+			"camera_end": Vector3(-130.0, 130.0, -190.0),
+			"fov": 50.0
+		}
+	]
+	if show_footprint_debug_views:
+		_tour.append(
+			{
+				"name": "Diagnostic finite-footprint view",
+				"mode": "ortho",
+				"duration": 5.0,
+				"focus": Vector2(0.0, 0.0),
+				"focus_end": Vector2(0.0, 0.0),
+				"camera": Vector3(-480.0, 900.0, -520.0),
+				"camera_end": Vector3(-480.0, 900.0, -520.0),
+				"size": 1500.0
+			}
+		)
+
+
 func _setup_terrain() -> void:
 	_anchor = Node3D.new()
 	_anchor.name = "ReviewAnchor"
@@ -172,19 +354,27 @@ func _setup_terrain() -> void:
 	var mat: ShaderMaterial = (material_res as ShaderMaterial).duplicate()
 	mat.set_shader_parameter("use_transition_strip", false)
 	mat.set_shader_parameter("use_transition_mask", false)
+	mat.set_shader_parameter("use_source_macro_valid_mask", review_use_source_macro_valid_mask)
 	mat.set_shader_parameter("normal_strength", review_normal_strength)
 	mat.set_shader_parameter("detail_normal_strength", review_detail_normal_strength)
 	mat.set_shader_parameter("detail_rough_strength", review_detail_rough_strength)
+	_apply_source_macro_overrides(mat)
 
 	_loader = ChunkLoader.new()
 	_loader.name = "ChunkLoader"
 	_loader.auto_update = true
 	_loader.heightmap_path = heightmap_path
 	_loader.meta_path = meta_path
+	_loader.source_valid_mask_path = source_valid_mask_path
 	_loader.terrain_material = mat
 	_loader.chunk_size_m = chunk_size_m
 	_loader.chunk_resolution_m = chunk_resolution_m
 	_loader.view_radius_chunks = view_radius_chunks
+	_loader.source_repeat_mode = source_repeat_mode
+	_loader.source_repeat_blend_width_m = source_repeat_blend_width_m
+	_loader.source_repeat_blend_macro_color = source_repeat_blend_macro_color
+	_loader.source_repeat_blend_macro_fade = source_repeat_blend_macro_fade
+	_loader.clip_to_source_bounds = clip_to_source_bounds
 	_loader.max_subdivisions_per_chunk = 96
 	_loader.enable_transition_boundaries = enable_transition_boundary
 	_loader.transition_rule_id = transition_rule_id
@@ -197,6 +387,22 @@ func _setup_terrain() -> void:
 	add_child(_loader)
 	_loader.target_path = _loader.get_path_to(_anchor)
 	_loader.update_for_position(_anchor.global_position)
+
+
+func _apply_source_macro_overrides(mat: ShaderMaterial) -> void:
+	if source_macro_albedo_override_path != "":
+		var albedo_tex: Texture2D = RuntimeImageCache.load_texture("", source_macro_albedo_override_path)
+		if albedo_tex != null:
+			mat.set_shader_parameter("source_macro_albedo", albedo_tex)
+			mat.set_shader_parameter("use_source_macro_albedo", true)
+		else:
+			push_warning("World3AutoReviewTour failed to load source macro override: " + source_macro_albedo_override_path)
+	if source_macro_valid_mask_override_path != "":
+		var mask_tex: Texture2D = RuntimeImageCache.load_texture("", source_macro_valid_mask_override_path)
+		if mask_tex != null:
+			mat.set_shader_parameter("source_macro_valid_mask", mask_tex)
+		else:
+			push_warning("World3AutoReviewTour failed to load source macro valid-mask override: " + source_macro_valid_mask_override_path)
 
 
 func _setup_camera() -> void:
@@ -304,10 +510,15 @@ func _update_overlay(frame: Dictionary, t: float) -> void:
 	var workflow_text: String = "M4/M5 source-stack + M8 sidecar candidate"
 	if enable_transition_boundary:
 		workflow_text = "M7 boundary-enabled source-stack review"
+	var view_text: String = "close/medium 3D, iso, topdown, controlled overview, near sweep"
+	if tour_profile == "full_map_fast":
+		view_text = "fast full-map topdown, iso, long 3D traverses, overview"
+	if tour_profile == "same_source_blend":
+		view_text = "same-source 2x2 seam blend: X, Z, corner, 3D traverses"
 	_overlay_label.text = (
 		"world3 Source-Stack Auto Review | " + workflow_text + "\n"
 		+ "%d/%d  %s  |  %s  |  progress %02d%%\n"
-		+ "Views: close/medium 3D, iso, topdown, controlled overview, near sweep\n"
+		+ "Views: " + view_text + "\n"
 		+ "Keys: Space pause | N/B step | R reset | H UI"
 	) % [
 		_tour_index + 1,

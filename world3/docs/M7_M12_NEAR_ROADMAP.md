@@ -194,18 +194,28 @@ Exit:
 - Scripted and interactive walk review agree that chunk crossings are usable.
 - Any remaining hitch risk has a measured threshold and next mitigation.
 
-## M10 - Cross-Source Blending
+## M10 - Terrain Seam Integration And Cross-Source Blending
 
-**Goal**: make real-source OpenTopo materials and procedural kit materials
-coexist through the same runtime contracts.
+**Goal**: make real-source OpenTopo materials, neighboring real-source terrain,
+and procedural kit materials meet through one terrain integration contract.
 
 Current state: the catalog includes both sources, and the unified shader can
 approximate OpenTopo detail behavior, but source-to-source style bridging is
 not solved.
 
+2026-05-09 methodology correction: same-source repeated tiling is diagnostic
+only. It can expose sampling and chunk bugs, but it is not a production visual
+closure path. The production proof is a terrain seam integration band that
+solves height, normals, material weights, source macro color, valid masks, and
+feature layers together. Reference:
+`TERRAIN_SEAM_INTEGRATION_RESEARCH_2026_05_09.md`.
+
 Deliverables:
 
+- A seam/integration-band artifact with solved height, normal/material weights,
+  macro albedo, valid mask, manifest, and QA metrics.
 - A mixed real/procedural test chunk or review grid.
+- A real-to-real or offset-source seam proof before unlike-biome promotion.
 - Transition rules for at least one real-to-procedural pair.
 - Shader/material binding path that does not special-case real materials into
   a separate runtime.
@@ -213,8 +223,9 @@ Deliverables:
 
 Exit:
 
-- One real-source material and one procedural biome material can meet in the
-  same runtime path without a jarring source-style break.
+- One real-source terrain bundle and one neighboring/procedural bundle meet in
+  the same runtime path without a height wall, orthophoto box, ghost strip,
+  invalid fallback plateau, or jarring source-style break.
 
 ## M11 - Corner And Junction Transitions
 

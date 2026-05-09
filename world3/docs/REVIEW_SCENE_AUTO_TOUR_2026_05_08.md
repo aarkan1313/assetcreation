@@ -11,6 +11,7 @@ a production gameplay scene.
 Scene:
 
 - `world3/scenes/review/source_stack_auto_tour.tscn`
+- `world3/scenes/review/source_stack_full_map_fast_tour.tscn`
 
 Script:
 
@@ -21,6 +22,8 @@ Smoke capture:
 - `world3/docs/captures/review/source_stack_auto_tour_smoke.png`
 - `world3/docs/captures/review/source_stack_auto_tour_topdown_smoke.png`
 - `world3/docs/captures/review/source_stack_auto_tour_overview_smoke.png`
+- `world3/docs/captures/review/source_stack_auto_tour_near_sweep_smoke.png`
+- `world3/docs/captures/review/source_stack_full_map_fast_tour_smoke.png`
 
 ## What It Shows
 
@@ -28,6 +31,11 @@ Smoke capture:
 - M4/M5 streamed visual baseline context.
 - Quarantined M8 `m8_grassland_grass_calm_v3` sidecar detail candidate.
 - 7x7 streamed chunk neighborhood using `ChunkLoader.gd`.
+- Mirrored finite-source height/UV sampling, so non-toroidal OpenTopo crop
+  edges do not create repeated height walls during the review loop.
+- Optional source-footprint clipping. The full-map fast tour clips to both the
+  height source bounds and the source macro valid mask, so invalid/no-image
+  areas show as dataset boundary/empty background instead of fake beige terrain.
 - Automatic camera tour through:
   - close 3D ground pass;
   - medium 3D boundary read;
@@ -46,8 +54,8 @@ Smoke capture:
 
 ## Read
 
-Use this scene to judge whether the current best visual lane reads coherently
-across close, medium, far, iso, topdown, and 3D views. It defaults to the
+Use these scenes to judge whether the current best visual lane reads coherently
+across close, medium, iso, topdown, and 3D views. The default tour uses the
 M4/M5 source-stack visual context with the M8 sidecar candidate, because the
 M7 boundary-enabled scene is already validated separately and still reads too
 diagnostic as a first user-facing review.
@@ -56,10 +64,23 @@ Do not treat it as a final art pass: the current terrain is still source-stack
 validation material, and M8 organic texture cleanup is still active.
 
 2026-05-09 correction: true far/horizon views are intentionally excluded from
-the default tour. They expose finite-footprint and source-height repeat edges
-that are real workflow gaps, not acceptable representative review. The
-`show_footprint_debug_views` toggle can expose that diagnostic view when needed,
-but normal review stays inside the valid inspection footprint.
+the default tour. They expose finite-footprint limits that are real workflow
+gaps, not acceptable representative review. The `show_footprint_debug_views`
+toggle can expose that diagnostic view when needed, but normal review stays
+inside the valid inspection footprint.
+
+2026-05-09 runtime correction: the visible wall/box artifact in the tour came
+from wrapping a finite OpenTopo height source whose opposite edges do not
+match. `ChunkLoader.gd` now defaults to `source_repeat_mode = "mirror"` and the
+auto-tour scenes set that explicitly. Legacy `"wrap"` remains available for
+sources that have been proven toroidal/seam-safe; `"clamp"` is available for
+finite-footprint diagnostics.
+
+2026-05-09 full-map correction: the first fast full-map tour made missing
+source imagery look like terrain by clamping to fallback material. The review
+scene now uses `clip_to_source_bounds = true` and
+`source_macro_valid_mask.png`, so absent source data is visible as a data
+boundary instead of a plateau.
 
 ## Next Steps After Review
 

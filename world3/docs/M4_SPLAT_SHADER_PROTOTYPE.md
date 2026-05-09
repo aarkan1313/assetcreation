@@ -148,8 +148,10 @@ M5 prototype-final has consumed this prototype:
 
 - `walk.tscn` now uses `terrain_splat_alpine.tres` through `ChunkLoader.gd`;
 - `ChunkLoader.gd` binds the generated splat PNG through `splat_weights_path`;
-- chunk mesh UVs now use the same wrapped source fraction as height sampling,
-  which fixed the first M5 smoke-test material split at chunk edges.
+- chunk mesh UVs now use the same source fraction as height sampling, which
+  fixed the first M5 smoke-test material split at chunk edges. The default
+  source repeat policy is mirrored finite-source sampling; wrap is opt-in for
+  proven toroidal/seam-safe sources.
 
 Next hardening:
 
