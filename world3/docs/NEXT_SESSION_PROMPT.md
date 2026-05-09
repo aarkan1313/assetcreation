@@ -108,6 +108,13 @@ Production-facing continuity now means terrain seam integration: a solved
 world-space band for height, normals, material/source weights, macro color,
 valid masks, and feature layers.
 
+M8 texture generation policy updated 2026-05-09: treat ComfyUI regeneration as
+a three-lane bakeoff, not a one-model autopromotion path. Use FLUX.2-klein,
+AuraFlow v0.3, and SD 3.5 Large with model-specific prompts/settings; then
+visual-veto and terrain-context review survivors. Qwen-Image is parked for
+ground textures and Chroma1-HD is rejected for this phase. Evidence:
+`pipelines/textures/DIVERSITY_COMPARE_2026_05_09.md`.
+
 First M10 seam proofs exist: `build_terrain_seam_integration_proof.py` builds
 overlap and nearby non-overlap Gloss Mountain seam artifacts.
 `source_stack_seam_integration_tour.tscn` reviews the overlap proof;

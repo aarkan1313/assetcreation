@@ -80,6 +80,14 @@ The current transition workflow is promising. The visible caveat from user
 review is source texture noise in generated grass/leaves, which belongs to
 material-generation QA rather than transition logic.
 
+2026-05-09 texture generator review: the generated-material lane is now a
+candidate bakeoff workflow. FLUX.2-klein remains the canonical reference lane,
+AuraFlow v0.3 is an active diversity lane, and SD 3.5 Large is an active
+experimental photoreal lane. Qwen-Image is parked for ground textures, and
+Chroma1-HD is rejected for this phase. Future M8 material work should batch all
+three active lanes with model-specific prompts/settings, then promote only the
+best terrain-context survivor.
+
 ## Current Pipeline
 
 1. **Material source**

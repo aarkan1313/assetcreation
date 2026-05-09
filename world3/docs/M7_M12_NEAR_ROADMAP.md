@@ -152,6 +152,16 @@ M4/M7 runtime trials (`grassland_grass`), one visual reject (`grass`), and three
 untested queue items (`temperate_forest_grass`, `tundra_moss`,
 `tundra_lichen`).
 
+2026-05-09 generator-diversity update: the texture lane now has a first
+multi-model bakeoff artifact in
+`../../pipelines/textures/DIVERSITY_COMPARE_2026_05_09.md`, with harness
+`../../pipelines/textures/diversity_compare.py`. M8 should use FLUX.2-klein as
+the canonical reference lane, AuraFlow v0.3 as an active diversity lane, and SD
+3.5 Large as an active experimental photoreal lane. Qwen-Image is parked for
+ground textures, and Chroma1-HD is rejected for this phase. Future M8 candidates
+should be generated in batches with model-specific prompts/settings, then
+promoted only after visual veto and terrain-context review.
+
 Deliverables:
 
 - Regenerate or filter the highest-priority flagged materials from

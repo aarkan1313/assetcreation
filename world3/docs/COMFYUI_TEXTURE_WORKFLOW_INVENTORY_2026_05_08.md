@@ -35,6 +35,33 @@ A ComfyUI material can participate in M5/M7/M8 visual closure only after:
 - Godot terrain-context captures pass close, mid, and far views;
 - source-stack detail use starts albedo-only/low-strength until normal/detail review passes.
 
+## Generator Lane Policy
+
+2026-05-09 diversity bakeoff result: ComfyUI regeneration should run as a
+multi-model candidate workflow, not a single-model autopromotion path.
+
+Active M8 bakeoff lanes:
+
+- `FLUX.2-klein`: canonical reference lane; fastest and strongest overall in
+  the first sandstone/forest comparison.
+- `AuraFlow v0.3`: active diversity lane; useful for calmer, more uniform, and
+  slightly painterly material variants.
+- `SD 3.5 Large`: active experimental photoreal lane; useful especially for
+  forest/organic ground, but requires anti-composition prompting and stricter
+  visual veto for center-biased samples.
+
+Parked/rejected lanes:
+
+- `Qwen-Image Q6_K`: parked for ground textures because the first pass leaned
+  toward hero-shot depth of field and was too slow for laptop batch work.
+- `Chroma1-HD`: rejected for this phase after producing decorative/grid
+  failures in the first comparison.
+
+Policy: future M8 regen batches should generate several candidates from the
+three active lanes with model-specific prompts/settings, then promote only the
+best terrain-context survivor. Reference:
+`../../pipelines/textures/DIVERSITY_COMPARE_2026_05_09.md`.
+
 ## Priority Regeneration Queue
 
 | Material | Source asset | Catalog QA | Close view | Recommended action |

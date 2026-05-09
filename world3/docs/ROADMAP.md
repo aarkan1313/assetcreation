@@ -124,6 +124,11 @@ direction; treat the rest as where we've been.
   sidecar candidate needing M4/M7 runtime trials, 1 visual reject, and 3
   untested queue items. Evidence:
   `world3/docs/M8_ORGANIC_REGEN_QUEUE_STATUS_2026_05_08.md`.
+- 2026-05-09 ComfyUI generator bakeoff is recorded. Active texture-regen lanes
+  are FLUX.2-klein, AuraFlow v0.3, and SD 3.5 Large, with model-specific
+  prompts/settings and terrain-context selection. Qwen-Image is parked for
+  ground textures; Chroma1-HD is rejected for this phase. Evidence:
+  `pipelines/textures/DIVERSITY_COMPARE_2026_05_09.md`.
 - A representative auto-tour review scene now exists for quick visual
   validation across close 3D, medium 3D, iso, topdown, far overview, and
   near-field sweep views. Evidence:
