@@ -13,6 +13,7 @@ Scene:
 - `world3/scenes/review/source_stack_auto_tour.tscn`
 - `world3/scenes/review/source_stack_full_map_fast_tour.tscn`
 - `world3/scenes/review/source_stack_seam_integration_tour.tscn`
+- `world3/scenes/review/source_stack_seam_nonoverlap_tour.tscn`
 
 Script:
 
@@ -28,6 +29,9 @@ Smoke capture:
 - `world3/docs/captures/review/source_stack_seam_integration_tour_smoke.png`
 - `world3/docs/captures/review/source_stack_seam_integration_tour_iso_smoke.png`
 - `world3/docs/captures/review/source_stack_seam_integration_tour_3d_smoke.png`
+- `world3/docs/captures/review/source_stack_seam_nonoverlap_tour_smoke.png`
+- `world3/docs/captures/review/source_stack_seam_nonoverlap_tour_iso_smoke.png`
+- `world3/docs/captures/review/source_stack_seam_nonoverlap_tour_3d_smoke.png`
 
 ## What It Shows
 
@@ -42,6 +46,8 @@ Smoke capture:
   areas show as dataset boundary/empty background instead of fake beige terrain.
 - M10 seam integration proof scene: two overlapping source crops integrated
   into one height/macro bundle with an explicit integration band.
+- M10 nearby non-overlap proof scene: two compatible non-overlap crops
+  integrated into one height/macro bundle with the same review camera path.
 - Automatic camera tour through:
   - close 3D ground pass;
   - medium 3D boundary read;
@@ -88,11 +94,11 @@ scene now uses `clip_to_source_bounds = true` and
 `source_macro_valid_mask.png`, so absent source data is visible as a data
 boundary instead of a plateau.
 
-2026-05-09 M10 seam proof: `source_stack_seam_integration_tour.tscn` is the
-first review scene for terrain seam integration. It auto-cycles topdown, iso,
-close 3D, medium 3D, and footprint views over the integrated seam artifact.
-Use it to validate the methodology shift away from forced repeated-source
-tiling.
+2026-05-09 M10 seam proofs: `source_stack_seam_integration_tour.tscn` covers
+the overlap proof. `source_stack_seam_nonoverlap_tour.tscn` covers the nearby
+non-overlap proof. Both auto-cycle topdown, iso, close 3D, medium 3D, and
+footprint views over integrated seam artifacts. Use them to validate the
+methodology shift away from forced repeated-source tiling.
 
 ## Next Steps After Review
 

@@ -136,7 +136,9 @@ Implemented 2026-05-09:
 
 This first rung uses overlapping same-source Gloss Mountain crops. It validates
 the integration-band artifact and runtime path, not unlike-source synthesis.
-The next rung is nearby non-overlap, then different-source real terrain.
+The second rung now uses nearby non-overlap Gloss Mountain crops. It validates
+crop compatibility gating, valid-mask repair, and the same runtime review path
+without shared source pixels. The next rung is different-source real terrain.
 
 ## Sources
 

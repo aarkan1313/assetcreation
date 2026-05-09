@@ -389,9 +389,8 @@ now owns terrain seam integration as a generated integration-band proof before
 broader cross-source blending.
 
 2026-05-09 first proof: `M10_TERRAIN_SEAM_INTEGRATION_PROOF_2026_05_09.md`
-records the initial overlap-based Gloss Mountain integration band, metrics, and
-review scene. Next proof should use nearby non-overlap source crops, then
-different real sources.
+records the initial overlap-based Gloss Mountain integration band and the
+second nearby non-overlap proof. Next proof should use different real sources.
 
 ## Open polish items (parked)
 

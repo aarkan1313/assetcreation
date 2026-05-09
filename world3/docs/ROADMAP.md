@@ -145,9 +145,9 @@ direction; treat the rest as where we've been.
   together. Evidence:
   `world3/docs/TERRAIN_SEAM_INTEGRATION_RESEARCH_2026_05_09.md` and
   `world3/docs/SOURCE_REPEAT_POLICY_2026_05_09.md`.
-- First M10 seam-integration proof is implemented: two overlapping Gloss
-  Mountain source crops are integrated into one runtime height/macro bundle
-  with metrics and topdown/iso/3D smoke captures. Evidence:
+- First M10 seam-integration proofs are implemented: overlapping and nearby
+  non-overlap Gloss Mountain source crops are integrated into runtime
+  height/macro bundles with metrics and topdown/iso/3D smoke captures. Evidence:
   `world3/docs/M10_TERRAIN_SEAM_INTEGRATION_PROOF_2026_05_09.md`.
 - Visual target is now explicit: reach roughly 70 percent of the best stacked
   photo/topo OpenTopo reference quality before visual milestone closure.
@@ -163,8 +163,9 @@ explicit in [`M7_M12_NEAR_ROADMAP.md`](M7_M12_NEAR_ROADMAP.md):
    queue plus source-stack terrain review; deterministic repair candidates stay
    quarantined until promoted.
 3. M9 runtime performance and interaction polish.
-4. M10 terrain seam integration and cross-source blending. First overlap proof
-   is implemented; next rung is nearby non-overlap, then different-source.
+4. M10 terrain seam integration and cross-source blending. Overlap and nearby
+   non-overlap same-source proofs are implemented; next rung is different
+   real-source terrain.
 5. M11 corner and junction transitions.
 6. M12 walk/iso/topdown view-mode parity.
 

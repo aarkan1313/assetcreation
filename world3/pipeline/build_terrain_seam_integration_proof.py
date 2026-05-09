@@ -55,6 +55,13 @@ def load_mask(path: Path) -> np.ndarray:
     return np.asarray(Image.open(path).convert("L"), dtype=np.float32) / 255.0
 
 
+def gaussian_rgb(arr: np.ndarray, radius: float) -> np.ndarray:
+    if radius <= 0.0:
+        return arr
+    img = Image.fromarray(np.clip(arr * 255.0, 0, 255).astype(np.uint8), mode="RGB")
+    return np.asarray(img.filter(ImageFilter.GaussianBlur(radius=radius)), dtype=np.float32) / 255.0
+
+
 def load_height_m(path: Path, meta: dict[str, Any]) -> np.ndarray:
     img = Image.open(path)
     arr = np.asarray(img)
@@ -176,6 +183,9 @@ def integrate_rgb(
     right: np.ndarray,
     overlap_px: int,
     right_feather_px: int,
+    band_mode: str,
+    bridge_blur_px: float,
+    bridge_detail_strength: float,
 ) -> tuple[np.ndarray, dict[str, Any]]:
     if left.shape != right.shape:
         raise ValueError(f"left/right RGB shapes differ: {left.shape} vs {right.shape}")
@@ -200,12 +210,25 @@ def integrate_rgb(
 
     b = right_matched[:, :overlap_px, :]
     t = smoothstep((np.arange(overlap_px, dtype=np.float32) + 0.5) / float(overlap_px))[None, :, None]
-    band = a * (1.0 - t) + b * t
+    if band_mode == "lowpass_bridge":
+        a_low = gaussian_rgb(a, bridge_blur_px)
+        b_low = gaussian_rgb(b, bridge_blur_px)
+        band = a_low * (1.0 - t) + b_low * t
+        if bridge_detail_strength > 0.0:
+            a_detail = a - a_low
+            b_detail = b - b_low
+            detail = (a_detail * (1.0 - t) + b_detail * t) * bridge_detail_strength
+            band = np.clip(band + detail, 0.0, 1.0)
+    else:
+        band = a * (1.0 - t) + b * t
     out = np.concatenate([left[:, :-overlap_px, :], band, right_matched[:, overlap_px:, :]], axis=1)
     left_width = left.shape[1] - overlap_px
 
     metrics = {
         "raw_overlap_delta_rgb01": stats(diff),
+        "band_mode": band_mode,
+        "bridge_blur_px": float(bridge_blur_px),
+        "bridge_detail_strength": float(bridge_detail_strength),
         "global_bias_rgb01": [float(v) for v in global_bias],
         "post_overlap_delta_rgb01": stats(a - b),
         "post_join_steps_rgb01": seam_step_stats(out.mean(axis=2), left_width, overlap_px),
@@ -260,8 +283,18 @@ def write_outputs(args: argparse.Namespace) -> dict[str, Any]:
         right_rgb,
         args.overlap_px,
         args.color_feather_px,
+        args.macro_band_mode,
+        args.macro_bridge_blur_px,
+        args.macro_bridge_detail_strength,
     )
     mask_out, mask_metrics = integrate_mask(left_mask, right_mask, args.overlap_px)
+    if float(mask_out.mean()) >= args.fill_valid_mask_above:
+        mask_out[:, :] = 1.0
+        mask_metrics["output_coverage_before_hole_fill"] = mask_metrics["output_coverage"]
+        mask_metrics["output_coverage"] = 1.0
+        mask_metrics["hole_fill_policy"] = (
+            f"filled_to_full_valid_because_coverage_above_{args.fill_valid_mask_above:.4f}"
+        )
 
     out_h, out_w = height_out.shape
     output_elev_min = float(np.min(height_out))
@@ -346,6 +379,9 @@ def write_outputs(args: argparse.Namespace) -> dict[str, Any]:
             "height_feather_px": args.height_feather_px,
             "color_feather_px": args.color_feather_px,
             "profile_blur_px": args.profile_blur_px,
+            "macro_band_mode": args.macro_band_mode,
+            "macro_bridge_blur_px": args.macro_bridge_blur_px,
+            "macro_bridge_detail_strength": args.macro_bridge_detail_strength,
             "left_output_width_px": left_width,
             "integration_band_output_px": args.overlap_px,
             "right_output_width_px": right_crop[2] - args.overlap_px,
@@ -377,6 +413,10 @@ def main() -> int:
     parser.add_argument("--height-feather-px", type=int, default=128)
     parser.add_argument("--color-feather-px", type=int, default=96)
     parser.add_argument("--profile-blur-px", type=float, default=12.0)
+    parser.add_argument("--macro-band-mode", choices=["blend", "lowpass_bridge"], default="blend")
+    parser.add_argument("--macro-bridge-blur-px", type=float, default=28.0)
+    parser.add_argument("--macro-bridge-detail-strength", type=float, default=0.0)
+    parser.add_argument("--fill-valid-mask-above", type=float, default=0.995)
     args = parser.parse_args()
 
     manifest = write_outputs(args)

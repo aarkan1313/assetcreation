@@ -210,9 +210,10 @@ solves height, normals, material weights, source macro color, valid masks, and
 feature layers together. Reference:
 `TERRAIN_SEAM_INTEGRATION_RESEARCH_2026_05_09.md`.
 
-2026-05-09 proof update: first-rung terrain seam integration is implemented for
-two overlapping Gloss Mountain source crops. It emits a runtime height/macro
-bundle, manifest, metrics, and an auto-tour review scene. Evidence:
+2026-05-09 proof update: first- and second-rung terrain seam integration are
+implemented for Gloss Mountain. Rung 1 uses overlapping source crops. Rung 2
+uses nearby non-overlap crops with compatibility gating. Both emit runtime
+height/macro bundles, manifests, metrics, and auto-tour review scenes. Evidence:
 `M10_TERRAIN_SEAM_INTEGRATION_PROOF_2026_05_09.md`.
 
 Deliverables:
@@ -232,8 +233,9 @@ Exit:
   the same runtime path without a height wall, orthophoto box, ghost strip,
   invalid fallback plateau, or jarring source-style break.
 
-Current exit state: first-rung overlap proof passes. M10 is not closed until a
-nearby non-overlap or different-source pair passes the same gates.
+Current exit state: overlap and nearby non-overlap same-source proofs pass as
+workflow/geometry evidence. M10 is not closed until a different-source real
+terrain pair passes the same gates.
 
 ## M11 - Corner And Junction Transitions
 

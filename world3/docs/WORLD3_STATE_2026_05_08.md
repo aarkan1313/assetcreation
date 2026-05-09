@@ -36,6 +36,8 @@ First M10 proof is implemented in
 Gloss Mountain seam artifact and reviews it through
 `source_stack_seam_integration_tour.tscn`. It proves the integration-band
 runtime path, not full cross-source closure.
+Second-rung nearby non-overlap proof now exists through
+`source_stack_seam_nonoverlap_tour.tscn`; next is different-source real terrain.
 
 Long-term scope (props / decoration / buildings / POIs / fantasy
 biomes) is **acknowledged as future** and stays deferred until the M7-M12
@@ -526,6 +528,10 @@ These start when chunk + biome + tile + transition is ~80% solved
   `build_terrain_seam_integration_proof.py`, generated the Gloss Mountain
   overlap seam artifact, added `source_stack_seam_integration_tour.tscn`, and
   fixed `ChunkLoader.gd` so clipped empty chunks do not submit invalid meshes.
+- **2026-05-09 (M10 non-overlap seam proof)**: Added the nearby non-overlap
+  Gloss Mountain seam artifact and `source_stack_seam_nonoverlap_tour.tscn`.
+  Rejected an over-aggressive non-overlap pair that needed a `26 m` vertical
+  bias; crop compatibility is now an explicit gate.
 - **2026-05-08 (M7 visual audit/remediation)**: M7 remains a workflow pass, but
   visual closure is paused. The audit set the target at roughly 70 percent of
   the best stacked photo/topo OpenTopo reference, added the source-stack runtime

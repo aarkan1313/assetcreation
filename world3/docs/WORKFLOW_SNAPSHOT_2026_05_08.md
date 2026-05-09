@@ -36,6 +36,8 @@ valid masks, and feature layers together.
 First M10 proof is now implemented in
 `M10_TERRAIN_SEAM_INTEGRATION_PROOF_2026_05_09.md`, with a generated
 height/macro seam artifact and `source_stack_seam_integration_tour.tscn`.
+Second-rung nearby non-overlap proof is also implemented through
+`source_stack_seam_nonoverlap_tour.tscn`.
 
 ## Framing
 
