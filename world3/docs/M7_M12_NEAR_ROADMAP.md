@@ -116,6 +116,13 @@ quarantined and is not canonically promoted. Evidence:
 `M8_COMFYUI_TEXTURE_REGEN_PASS_2026_05_08.md` and
 `M8_COMFYUI_TERRAIN_CONTEXT_REVIEW_2026_05_08.md`.
 
+Second regeneration target update: `grass` produced several strict grade-A
+outputs, but visual review rejected them for landmark blotches, pale/boxy sod
+forms, bright patch islands, or individual plant objects. This exposed a
+workflow rule: organic ComfyUI candidates need a visual landmark/object veto
+before sidecar staging, even after seam/PBR QA passes. Evidence:
+`M8_GRASS_REGEN_ATTEMPTS_REVIEW_2026_05_08.md`.
+
 Deliverables:
 
 - Regenerate or filter the highest-priority flagged materials from

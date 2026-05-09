@@ -515,3 +515,8 @@ These start when chunk + biome + tile + transition is ~80% solved
   re-ran the source-material noise audit. The candidate is safer and calmer
   than current `grassland_grass`, but still slightly pale/hazy under stress, so
   it is approved for M4/M7 rerender trials but not canonical promotion.
+- **2026-05-08 (M8 grass visual veto lesson)**: Ran the next `grass`
+  regeneration target. Multiple outputs passed strict seam/PBR QA, but visual
+  review rejected them for landmark blotches, pale/boxy sod panels, bright
+  patch islands, or individual plant objects. New rule: organic ComfyUI outputs
+  need visual landmark/object veto before sidecar staging.

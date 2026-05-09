@@ -401,6 +401,26 @@ rm -rf D:/tmp/world3_experiments/<name>
 ```
 Then re-launch a single `experiment.py` process.
 
+## L20 - Seam/PBR grade does not catch semantic landmarks
+
+Observed 2026-05-08 during world3 M8 `grass` regeneration. Three
+`m8_grass_calm_v*` outputs passed strict `aaa_texture.py` grade A, but visual
+review rejected them:
+
+- v1: best tone/scale, but still had repeated dark/bright landmarks and colored
+  patches.
+- v2: technically clean but pale, boxy, and sod-panel-like.
+- v3: bright green patch islands plus repeated vertical dark landmarks.
+
+An albedo-only reference-anchor rescue also failed by generating individual
+plant objects.
+
+**Implication**: for organic ground materials, seam grade and PBR sanity are
+only technical gates. They must be followed by a visual landmark/object veto
+before staging or promotion. Ban conditions include rectangular panels, bright
+patch islands, repeated colored/dark landmarks, individual plant objects, and
+pale washout.
+
 ## What we don't know yet (open questions)
 
 - **Does palette_lock actually produce more cohesive biome sets?** Step

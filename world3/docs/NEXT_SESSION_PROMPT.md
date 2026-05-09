@@ -37,6 +37,7 @@ Read first:
 18. `world3/docs/M8_COMFYUI_TEXTURE_REGEN_PASS_2026_05_08.md`
 19. `world3/docs/M8_COMFYUI_TERRAIN_CONTEXT_REVIEW_2026_05_08.md`
 20. `world3/docs/M8_COMFYUI_CANDIDATE_NOISE_AUDIT.md`
+21. `world3/docs/M8_GRASS_REGEN_ATTEMPTS_REVIEW_2026_05_08.md`
 
 ## Current status
 
@@ -76,6 +77,12 @@ First ComfyUI M8 result: `m8_grassland_grass_calm_v3` passed strict
 candidate review. It is calmer than current `grassland_grass` under detail
 stress, but still slightly pale/hazy, so it is sidecar-only and not promoted
 yet.
+
+Second ComfyUI M8 target: `grass` produced strict grade-A outputs, but visual
+review rejected them. `m8_grass_calm_v1` is the best failed direction; v2/v3
+overcorrected into pale boxy sod or bright patch islands, and the v4
+reference-anchor test created individual plant objects. Do not sidecar-stage
+`grass` until a flat tile passes a visual landmark/object veto.
 
 M1 is done:
 
@@ -256,11 +263,13 @@ closed:
 6. Use `m8_grassland_grass_calm_v3` only as a sidecar ComfyUI candidate in
    M4/M7 rerender trials. It passed the first candidate gate, not canonical
    promotion.
-7. Add valid-area/clamp policy for source macro sampling before wider chunk
+7. Continue `grass` from the darker v1 direction, but require visual veto before
+   PBR/sidecar staging.
+8. Add valid-area/clamp policy for source macro sampling before wider chunk
    source-stack views.
-8. Repair M4 splat context, then rerender M5/M7 and decide whether M7 can close
+9. Repair M4 splat context, then rerender M5/M7 and decide whether M7 can close
    visually or needs a second visual-targeted boundary pass.
-9. Keep streamed collision metrics active. If interactive play shows hitching,
+10. Keep streamed collision metrics active. If interactive play shows hitching,
    start async/background mesh+collision build.
 
 ## Operating reminders

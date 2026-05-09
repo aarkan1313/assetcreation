@@ -58,7 +58,10 @@ regeneration of the five priority organic blockers. See
 `COMFYUI_TEXTURE_WORKFLOW_INVENTORY_2026_05_08.md`. The first ComfyUI
 candidate, `m8_grassland_grass_calm_v3`, passed strict QA and the first
 terrain-context candidate gate, but remains sidecar-only until M4/M7 rerender
-trials prove it does not wash out the source-stack terrain.
+trials prove it does not wash out the source-stack terrain. The next `grass`
+attempts proved the opposite lesson: grade-A seam/PBR output can still fail
+visual review, so M8 organic outputs now require a visual landmark/object veto
+before sidecar staging.
 
 ## M1 — Material catalog (orchestrator-led)
 

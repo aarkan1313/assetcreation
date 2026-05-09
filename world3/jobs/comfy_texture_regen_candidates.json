@@ -67,13 +67,65 @@
     {
       "material_id": "grass",
       "current_source_asset_id": "wgv3_grass",
-      "regen_id": "m8_grass_calm_v1",
+      "regen_id": "m8_grass_calm_v5",
       "category": "Ground",
       "quality": "strict",
       "pbr_backend": "sm",
       "failure_mode": "green organic speckle and small clover/object repetition reads too busy at walk scale",
-      "prompt": "top-down orthographic macro photograph of short natural turf ground, fine even grass texture with small dark soil gaps, calm green color variation, even overcast lighting, seamless PBR terrain texture, no clover leaves, no flowers, no long blades, no bright speckles, no perspective, no shadows",
-      "source_stack_role": "albedo candidate first; normal/detail disabled until close/mid/far terrain review passes"
+      "prompt": "top-down orthographic photogrammetry texture of dark muted vegetated loam carpet, extremely fine short green-brown ground nap blended into soil, continuous small-scale granular terrain material, low contrast, even overcast lighting, seamless PBR terrain texture, no soil holes, no sod panels, no pasture lanes, no rectangular patches, no bright green islands, no dark landmark blotches, no colored patches, no clover leaves, no flowers, no individual plant objects, no tufts, no radial clumps, no perspective, no shadows",
+      "source_stack_role": "albedo candidate first; normal/detail disabled until close/mid/far terrain review passes",
+      "latest_tested_candidate": {
+        "status": "visual_rejected_no_sidecar_stage",
+        "review_doc": "world3/docs/M8_GRASS_REGEN_ATTEMPTS_REVIEW_2026_05_08.md",
+        "contact_sheet": "world3/docs/captures/visual_remediation/m8_grass_regen_attempts_contact_sheet.png",
+        "attempts": [
+          {
+            "id": "m8_grass_calm_v1",
+            "qa": {
+              "grade": "A",
+              "edge_mse": 0.0003,
+              "junction_ratio": 1.05,
+              "periodic_locality": 10.0,
+              "sanity_ok": true
+            },
+            "visual_result": "best_direction_darker_dirtier_but_has_landmark_blotches_and_colored_patches",
+            "verdict": "reject_for_staging_keep_as_direction_reference"
+          },
+          {
+            "id": "m8_grass_calm_v2",
+            "qa": {
+              "grade": "A",
+              "edge_mse": 0.0003,
+              "junction_ratio": 0.94,
+              "periodic_locality": 14.0,
+              "sanity_ok": true
+            },
+            "visual_result": "pale_sod_panel_box_shapes_and_washout",
+            "verdict": "reject"
+          },
+          {
+            "id": "m8_grass_calm_v3",
+            "qa": {
+              "grade": "A",
+              "edge_mse": 0.0014,
+              "junction_ratio": 1.01,
+              "periodic_locality": 16.4,
+              "sanity_ok": true
+            },
+            "visual_result": "bright_green_patch_islands_and_repeated_dark_landmarks",
+            "verdict": "reject"
+          },
+          {
+            "id": "m8_grass_calm_v4_anchor_v1",
+            "qa": {
+              "stage": "albedo_only_reference_anchor_test"
+            },
+            "visual_result": "individual_plant_objects",
+            "verdict": "reject_do_not_pbr"
+          }
+        ],
+        "workflow_lesson": "Strict seam/PBR QA is necessary but not sufficient. Organic ComfyUI materials need visual landmark/object veto before sidecar staging."
+      }
     },
     {
       "material_id": "temperate_forest_grass",

@@ -197,6 +197,12 @@ updates `world3/materials/catalog_comfy_candidates.json`. Review tools opt into
 that sidecar with `--extra-catalog`; canonical promotion stays blocked until
 terrain-context and M4/M7 rerender trials pass.
 
+M8 organic-material rule: strict `aaa_texture.py` QA is necessary but not
+sufficient. Before sidecar staging, visually veto rectangular panels, bright
+patch islands, repeated dark/colored landmarks, individual plant objects, and
+pale washout. `M8_GRASS_REGEN_ATTEMPTS_REVIEW_2026_05_08.md` is the first
+recorded failure case for this rule.
+
 ## Stage 4 — Stage textures into world3
 
 Each texture set gets its own subfolder under `world3/textures/wgv3/`
