@@ -49,7 +49,11 @@ Chuculay-Guadalupe proof candidate exists in
 `source_stack_cross_source_chuculay_guadalupe_tour.tscn` with metrics and
 captures, but live review rejected it as accepted visual evidence because the
 Chuculay desert source macro is low quality/low resolution. Keep it as negative
-scanner/source-quality evidence, not a promoted proof.
+scanner/source-quality evidence, not a promoted proof. A stronger second
+Gloss-Guadalupe clean-crop candidate now exists in
+`source_stack_cross_source_second_tour.tscn` with scanner evidence, metrics, and
+topdown/iso/3D captures. It is locally accepted by orchestrator review and
+pending live user acceptance.
 
 ## Framing
 

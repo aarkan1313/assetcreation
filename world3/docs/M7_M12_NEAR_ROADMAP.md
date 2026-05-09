@@ -267,8 +267,10 @@ Current exit state: overlap and nearby non-overlap same-source proofs pass as
 workflow/geometry evidence, and the different-source Gloss-Guadalupe proof has
 passed live visual review. Scanner veto hardening is implemented.
 Chuculay-Guadalupe is kept as negative evidence for source-quality gating, not
-as accepted proof. M10 still needs a stronger second source/crop before moving
-to real-to-procedural/unlike-biome blending.
+as accepted proof. A stronger second Gloss-Guadalupe clean-crop candidate now
+has scanner evidence, metrics, and topdown/iso/3D captures; it is locally
+accepted by orchestrator review but still needs live user acceptance before M10
+moves to real-to-procedural/unlike-biome blending.
 
 ## M11 - Corner And Junction Transitions
 

@@ -132,7 +132,12 @@ real-to-real proof candidate exists in
 `source_stack_cross_source_chuculay_guadalupe_tour.tscn`; it has metrics and
 captures, but live review rejected it because the Chuculay desert source macro
 is visibly low quality/low resolution before seam solving. Treat it as negative
-source-quality evidence, not an accepted proof.
+source-quality evidence, not an accepted proof. A stronger second
+Gloss-Guadalupe clean-crop candidate now exists in
+`source_stack_cross_source_second_tour.tscn`; scanner evidence, metrics, and
+topdown/iso/3D captures are recorded. It is locally accepted by orchestrator
+review and pending live user acceptance before M10 proceeds to
+real-to-procedural/unlike-biome promotion.
 
 M10 review launch/capture note: use explicit `--scene` wrapper launches, not the
 older waited `--script _codex_render_runner.gd` path. The current seam review

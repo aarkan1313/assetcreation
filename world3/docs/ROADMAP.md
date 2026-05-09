@@ -159,8 +159,10 @@ direction; treat the rest as where we've been.
   proof passed live topdown/iso/3D visual review. Scanner veto hardening is now
   implemented. A Chuculay-Guadalupe second real-to-real proof candidate has
   metrics and captures but is visually rejected because the Chuculay desert
-  source macro is below the quality bar. Next M10 gate is selecting a stronger
-  second source/crop, then real-to-procedural/unlike-biome promotion.
+  source macro is below the quality bar. A stronger second Gloss-Guadalupe
+  clean-crop candidate now has scanner evidence, metrics, and topdown/iso/3D
+  captures; it is pending live user acceptance before
+  real-to-procedural/unlike-biome promotion.
 - Visual target is now explicit: reach roughly 70 percent of the best stacked
   photo/topo OpenTopo reference quality before visual milestone closure.
   Evidence: `world3/docs/M1_M7_VISION_GAP_REVIEW_2026_05_08.md`.

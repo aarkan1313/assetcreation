@@ -411,6 +411,73 @@ Visual review read:
 - Status: rejected as accepted M10 visual evidence. Keep it as a useful negative
   example for scanner/source-quality gating.
 
+## Rung 4b: Second Clean-Crop Candidate
+
+After the Chuculay rejection, the stronger second proof path moved to an
+alternate high-quality Gloss-Guadalupe crop pair rather than forcing a weak
+source macro through the seam solver.
+
+Scanner evidence:
+
+- Candidate list: `world3/docs/captures/review/terrain_seam_cross_source_gloss_guadalupe_second_candidates.json`
+- Candidate previews:
+  - `world3/docs/captures/review/terrain_seam_cross_source_gloss_guadalupe_second_candidates_1_18_preview.png`
+  - `world3/docs/captures/review/terrain_seam_cross_source_gloss_guadalupe_second_candidates_19_36_preview.png`
+
+Selected pair:
+
+- Left source: `world3/textures/source_stack/gloss_scrub_source_stack/source_macro_albedo.png`
+- Left valid mask: `world3/textures/source_stack/gloss_scrub_source_stack/source_macro_valid_mask.png`
+- Left height: `world3/toporeview/gloss_mountain_textured_master/heightmap.png`
+- Right source: `world3/toporeview/phase2_fusion_max/layers/render_albedo.png`
+- Right valid mask: `world3/toporeview/phase2_fusion_max/layers/source_valid_mask.png`
+- Right fill/artifact veto mask: `world3/toporeview/phase2_fusion_max/layers/render_fill_mask.png`
+- Right height: `world3/toporeview/phase2_fusion_max/heightmap.png`
+- Left crop: `229,734,229,457`
+- Right crop: `6893,731,614,1229`
+- Normalized solve size: `512,1024`
+- Integration band: `128 px`
+
+Outputs:
+
+- Runtime macro: `world3/textures/source_stack/gloss_guadalupe_second_cross_source_proof/source_macro_albedo.png`
+- Runtime valid mask: `world3/textures/source_stack/gloss_guadalupe_second_cross_source_proof/source_macro_valid_mask.png`
+- Seam mask: `world3/textures/source_stack/gloss_guadalupe_second_cross_source_proof/seam_integration_mask.png`
+- Manifest: `world3/textures/source_stack/gloss_guadalupe_second_cross_source_proof/manifest.json`
+- Runtime height: `world3/toporeview/gloss_guadalupe_second_cross_source_proof/heightmap.png`
+- Runtime meta: `world3/toporeview/gloss_guadalupe_second_cross_source_proof/meta.json`
+- Metrics: `world3/docs/captures/review/terrain_seam_cross_source_gloss_guadalupe_second_metrics.json`
+- Review scene: `world3/scenes/review/source_stack_cross_source_second_tour.tscn`
+- Captures:
+  - `world3/docs/captures/review/source_stack_cross_source_second_tour_smoke.png`
+  - `world3/docs/captures/review/source_stack_cross_source_second_tour_iso_smoke.png`
+  - `world3/docs/captures/review/source_stack_cross_source_second_tour_3d_smoke.png`
+
+Metrics:
+
+- Raw height datum mismatch: `725.55 m` median, `728.42 m` p95.
+- Post-solve overlap mismatch: `0.91 m` median, `3.42 m` p95.
+- Join steps after solve: `0.23 m` p95 on the left join, `0.09 m` p95 on
+  the right join.
+- Raw macro RGB delta p95: `0.306`.
+- Post macro RGB delta p95: `0.278`.
+- Macro join step p95: `0.086` on the left join, `0.034` on the right join.
+- Valid mask coverage is full valid.
+
+Orchestrator visual review read:
+
+- Topdown/iso/3D capture wrappers exited cleanly with code `0`.
+- The selected crop avoids the obvious human-made pad/road that dominated the
+  earlier top-ranked candidates.
+- The geometry read is coherent in 3D, with no visible height wall, fake
+  invalid plateau, or source-boundary box.
+- The macro transition is still visible in topdown because the two source
+  styles differ, but it reads as a plausible arid terrain shift rather than a
+  broken chunk edge.
+- Status: second M10 real-to-real proof candidate generated and locally
+  accepted by orchestrator review. It still needs live user acceptance before
+  M10 moves on to real-to-procedural/unlike-biome promotion.
+
 ## Review Lighting Correction
 
 The first M10 review window read too bright because of the review scene setup,
@@ -452,10 +519,10 @@ violation before scene code runs.
 
 ## Next Step
 
-M10 now has an accepted different-source real-to-real proof and one useful
-negative second-pair result. The next M10 gates are:
+M10 now has an accepted different-source real-to-real proof, one useful negative
+second-pair result, and a stronger second clean-crop candidate with metrics and
+captures. The next M10 gates are:
 
-1. select a stronger second proof source or alternate high-quality crop pair;
-2. run the hardened scanner with source-quality veto thresholds enabled;
-3. promote the same integration contract to real-to-procedural and unlike-biome
+1. get live user acceptance or rejection on the second clean-crop candidate;
+2. if accepted, promote the same integration contract to real-to-procedural and unlike-biome
    cross-source blending.
