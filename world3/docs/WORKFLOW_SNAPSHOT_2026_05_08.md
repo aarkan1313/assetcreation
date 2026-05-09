@@ -16,6 +16,9 @@ The M7 same-source source-stack transition mask now also has quantitative
 coverage and chunk-edge continuity QA in `M7_TRANSITION_MASK_METRICS_2026_05_08.md`.
 M8 organic cleanup now has a queue execution board in
 `M8_ORGANIC_REGEN_QUEUE_STATUS_2026_05_08.md`.
+For quick human validation, open
+`world3/scenes/review/source_stack_auto_tour.tscn`; it auto-cycles close 3D,
+medium 3D, iso, topdown, far overview, and near-field sweep views.
 
 ## Framing
 

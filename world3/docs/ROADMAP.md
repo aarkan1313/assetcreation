@@ -114,6 +114,10 @@ direction; treat the rest as where we've been.
   sidecar candidate needing M4/M7 runtime trials, 1 visual reject, and 3
   untested queue items. Evidence:
   `world3/docs/M8_ORGANIC_REGEN_QUEUE_STATUS_2026_05_08.md`.
+- A representative auto-tour review scene now exists for quick visual
+  validation across close 3D, medium 3D, iso, topdown, far overview, and
+  near-field sweep views. Evidence:
+  `world3/docs/REVIEW_SCENE_AUTO_TOUR_2026_05_08.md`.
 - Visual target is now explicit: reach roughly 70 percent of the best stacked
   photo/topo OpenTopo reference quality before visual milestone closure.
   Evidence: `world3/docs/M1_M7_VISION_GAP_REVIEW_2026_05_08.md`.

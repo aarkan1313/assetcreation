@@ -547,3 +547,7 @@ These start when chunk + biome + tile + transition is ~80% solved
   `M8_ORGANIC_REGEN_QUEUE_STATUS_2026_05_08.md`: 5 blockers, 1 sidecar
   candidate needing M4/M7 runtime trials, 1 visual reject, and 3 untested queue
   items.
+- **2026-05-08 (auto review scene)**: Added
+  `world3/scenes/review/source_stack_auto_tour.tscn` with
+  `World3AutoReviewTour.gd`. It auto-cycles close 3D, medium 3D, iso, topdown,
+  far overview, and near-field sweep views for remote-desktop validation.

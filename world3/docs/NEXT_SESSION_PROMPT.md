@@ -49,6 +49,7 @@ Read first:
 30. `world3/docs/M7_SOURCE_STACK_BOUNDARY_REVIEW_2026_05_08.md`
 31. `world3/docs/M7_TRANSITION_MASK_METRICS_2026_05_08.md`
 32. `world3/docs/M8_ORGANIC_REGEN_QUEUE_STATUS_2026_05_08.md`
+33. `world3/docs/REVIEW_SCENE_AUTO_TOUR_2026_05_08.md`
 
 ## Current status
 
@@ -167,6 +168,12 @@ priority organic blockers. Current state: `grassland_grass` has one sidecar
 candidate needing M4/M7 runtime trials, `grass` is visually rejected after four
 attempts, and `temperate_forest_grass`, `tundra_moss`, and `tundra_lichen` are
 still untested queue items.
+
+Representative review scene:
+`world3/scenes/review/source_stack_auto_tour.tscn` runs an automatic tour through
+close 3D, medium 3D, iso, topdown, far overview, and near-field sweep views over
+the current source-stack/M7 boundary workflow. Use it for quick mobile
+remote-desktop validation before continuing the roadmap.
 
 M1 is done:
 
