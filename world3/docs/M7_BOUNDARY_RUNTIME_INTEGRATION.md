@@ -38,12 +38,14 @@ Scenes:
 
 - `world3/scenes/capture_phase_m7/boundary_runtime_review.tscn`
 - `world3/scenes/capture_phase_m7/boundary_runtime_biome_stress.tscn`
+- `world3/scenes/capture_phase_m7/boundary_runtime_source_stack_control.tscn`
 - `world3/scenes/capture_phase_m7/boundary_walk_review.tscn`
 
 Captures:
 
 - `world3/docs/captures/m7/boundary_runtime_review.png`
 - `world3/docs/captures/m7/boundary_runtime_biome_stress.png`
+- `world3/docs/captures/m7/boundary_runtime_source_stack_control.png`
 - `world3/docs/captures/m7/boundary_walk_after_crossing.png`
 - `world3/docs/captures/m7/boundary_walk_metrics.json`
 
@@ -78,6 +80,15 @@ The runtime contract works, but the visual result is mixed.
 Conclusion: M7 cannot close as a visual milestone. Keep the runtime mask path,
 but treat the current captures as diagnostics until the earlier source-material
 and splat/context issues are repaired.
+
+2026-05-08 source-stack control rerender: added a one-chunk
+`scrub_sparse -> dry_wash` control scene using the Gloss Mountain source-stack
+height/meta inputs and `terrain_source_stack_gloss_scrub_source_stack.tres`.
+This removes the old alpine debug material context from the control read and
+shows the boundary path can run over valid-mask source macro terrain. It still
+does not close M7 visually: finite footprint/framing and source-photo shadow
+content are obvious, and the transition is intentionally subtle at source-stack
+strength.
 
 ## Remaining Risks
 

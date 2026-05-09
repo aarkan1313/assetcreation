@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/M7BoundaryRuntimeReview.gd" id="script"]
+
+[node name="M7BoundaryRuntimeSourceStackControl" type="Node3D"]
+script = ExtResource("script")
+material_path = "res://textures/wgv3/terrain_source_stack_gloss_scrub_source_stack.tres"
+heightmap_path = "res://toporeview/gloss_mountain_textured_master/heightmap.png"
+heightmap_cache_path = ""
+meta_path = "res://toporeview/gloss_mountain_textured_master/meta.json"
+transition_rule_id = "opentopo_scrub_sparse__dry_wash_neighbor"
+anchor_x_m = 128.0
+boundary_z_m = 128.0
+view_radius_chunks = 0
+transition_width_m = 64.0
+transition_strength = 0.16
+camera_size_m = 300.0

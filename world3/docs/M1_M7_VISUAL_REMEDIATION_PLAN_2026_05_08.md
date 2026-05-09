@@ -123,3 +123,9 @@ Implemented source-stack valid-area policy and rerendered current/Comfy
 grassland terrain-context captures. Source macro albedo is now gated by
 `source_macro_valid_mask`; invalid macro pixels are edge-bleed repaired before
 save. See `SOURCE_STACK_VALID_AREA_POLICY_2026_05_08.md`.
+
+Started R6 with a source-stack M7 control rerender:
+`docs/captures/m7/boundary_runtime_source_stack_control.png`. The capture proves
+the boundary path can run over valid-mask source macro terrain, but remains
+diagnostic because it is a one-chunk finite-footprint view with visible source
+photo shadow content. See `M7_BOUNDARY_RUNTIME_INTEGRATION.md`.

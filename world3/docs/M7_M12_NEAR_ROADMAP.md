@@ -57,6 +57,11 @@ Remediation plan: `M1_M7_VISUAL_REMEDIATION_PLAN_2026_05_08.md`.
 grassland_grass` remains a stress test until grassland source materials are
 repaired.
 
+R6 source-stack control rerender has started:
+`docs/captures/m7/boundary_runtime_source_stack_control.png`. It proves the M7
+boundary path can run over valid-mask source macro terrain, but remains
+diagnostic rather than visual closure.
+
 Vision target: `M1_M7_VISION_GAP_REVIEW_2026_05_08.md` sets visual closure at
 about 70 percent of the best stacked photo/topo OpenTopo reference quality.
 Current M1-M7 runtime captures are below that bar and should be treated as

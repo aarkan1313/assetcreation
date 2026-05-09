@@ -91,6 +91,12 @@ that mask. Current/Comfy grassland close/mid/topdown and detail-stress captures
 were rerendered. Evidence:
 `world3/docs/SOURCE_STACK_VALID_AREA_POLICY_2026_05_08.md`.
 
+R6 has started with a source-stack M7 control rerender:
+`world3/scenes/capture_phase_m7/boundary_runtime_source_stack_control.tscn` and
+`world3/docs/captures/m7/boundary_runtime_source_stack_control.png`. This is
+better than the old alpine debug context, but still diagnostic because it is a
+one-chunk finite-footprint view with strong source-photo shadow content.
+
 Second ComfyUI M8 target: `grass` produced strict grade-A outputs, but visual
 review rejected them. `m8_grass_calm_v1` is the best failed direction; v2/v3
 overcorrected into pale boxy sod or bright patch islands, and the v4

@@ -2,11 +2,21 @@ extends Node3D
 
 
 @export var material_path: String = "res://textures/wgv3/terrain_splat_alpine.tres"
+@export var heightmap_path: String = "res://heightmap/heightmap.png"
+@export var heightmap_cache_path: String = "res://runtime_cache/heightmap_rf32.json"
+@export var meta_path: String = "res://heightmap/meta.json"
 @export var splat_cache_path: String = "res://runtime_cache/alpine_splat_rgba8.json"
 @export var splat_path: String = "res://textures/m4_splat/alpine_height_slope_weights_rgba.png"
 @export var transition_rule_id: String = "opentopo_scrub_sparse__dry_wash_neighbor"
+@export var start_x_m: float = 128.0
 @export var start_z_m: float = 1536.0
 @export var boundary_z_m: float = 1792.0
+@export var chunk_size_m: float = 256.0
+@export var chunk_resolution_m: float = 8.0
+@export var view_radius_chunks: int = 1
+@export var transition_width_m: float = 192.0
+@export var transition_repeat_m: float = 128.0
+@export var transition_strength: float = 0.92
 
 var _player: Node3D
 var _loader: ChunkLoader
@@ -18,7 +28,7 @@ func _ready() -> void:
 
 	_player = Node3D.new()
 	_player.name = "Player"
-	_player.position = Vector3(128.0, 0.0, start_z_m)
+	_player.position = Vector3(start_x_m, 0.0, start_z_m)
 	add_child(_player)
 
 	var mat: ShaderMaterial = (load(material_path) as ShaderMaterial).duplicate()
@@ -52,21 +62,23 @@ func _new_boundary_loader(mat: ShaderMaterial) -> ChunkLoader:
 	var loader: ChunkLoader = ChunkLoader.new()
 	loader.name = "ChunkLoader"
 	loader.auto_update = true
-	loader.heightmap_cache_path = "res://runtime_cache/heightmap_rf32.json"
+	loader.heightmap_path = heightmap_path
+	loader.heightmap_cache_path = heightmap_cache_path
+	loader.meta_path = meta_path
 	loader.terrain_material = mat
 	loader.splat_weights_path = splat_path
 	loader.splat_weights_cache_path = splat_cache_path
-	loader.chunk_size_m = 256.0
-	loader.chunk_resolution_m = 8.0
-	loader.view_radius_chunks = 1
+	loader.chunk_size_m = chunk_size_m
+	loader.chunk_resolution_m = chunk_resolution_m
+	loader.view_radius_chunks = view_radius_chunks
 	loader.enable_transition_boundaries = true
 	loader.transition_rule_id = transition_rule_id
 	loader.transition_boundary_axis = "z"
 	loader.transition_boundary_world_m = boundary_z_m
-	loader.transition_width_m = 192.0
-	loader.transition_repeat_m = 128.0
+	loader.transition_width_m = transition_width_m
+	loader.transition_repeat_m = transition_repeat_m
 	loader.transition_mask_resolution = 128
-	loader.transition_strength = 0.92
+	loader.transition_strength = transition_strength
 	return loader
 
 
