@@ -82,6 +82,7 @@ Results live in `chunk_sweep/`:
 |------|-------|
 | `chunk_sweep/chunk_sweep_metrics.json` | Raw 256/512/1024 m sweep metrics. |
 | `chunk_sweep/chunk_256m_seam.png` | Winning base chunk size seam capture. |
+| `chunk_sweep/chunk_256m_source_stack_visual_seam.png` | Visual-facing 256 m seam capture using the repaired M4 source-stack context. |
 | `chunk_sweep/chunk_512m_seam.png` | Larger chunk comparison; higher load spike. |
 | `chunk_sweep/chunk_1024m_seam.png` | Far-LOD scale comparison; too heavy synchronously. |
 

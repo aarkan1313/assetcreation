@@ -53,3 +53,13 @@ The strongest visual direction is still the source-stack path, but M4/M5/M7
 need rerenders after source-material cleanup and source-stack framing before
 visual closure. Use `M1_M7_REFINEMENT_MAP_2026_05_08.md` to refine each
 milestone instead of blindly advancing the roadmap.
+
+M4 update: `M4_SOURCE_STACK_CONTEXT_REVIEW_2026_05_08.md` adds the first
+acceptable close-view M4 context using 256 m chunks, 8 m mesh spacing, and the
+unified shader over source-stack terrain. The main visual contact sheet now
+uses those M4 source-stack captures. Wider/topdown/iso M4 review remains open.
+
+M3/M5 update: M3 now has a source-stack visual seam capture
+(`M3_SOURCE_STACK_SEAM_REVIEW_2026_05_08.md`), and M5 has a source-stack
+inspection walk rerender (`M5_SOURCE_STACK_WALK_REVIEW_2026_05_08.md`). The
+old M3/M5 captures remain technical diagnostics.

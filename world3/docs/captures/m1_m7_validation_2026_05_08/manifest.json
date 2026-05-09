@@ -101,15 +101,27 @@
   ],
   "visual_items": [
     {
-      "label": "Source Stack Close",
-      "path": "world3/docs/captures/m1_m7_validation_2026_05_08/source_stack_grassland_current_close.png",
-      "note": "Current best terrain direction: source macro terrain plus low-strength detail.",
+      "label": "M3 Source-Stack Seam",
+      "path": "world3/docs/captures/m1_m7_validation_2026_05_08/m3_source_stack_visual_seam.png",
+      "note": "256 m chunk seam displayed through the repaired source-stack visual context.",
       "exists": true
     },
     {
-      "label": "Comfy V3 Stress",
-      "path": "world3/docs/captures/m1_m7_validation_2026_05_08/source_stack_grassland_comfy_v3_detail_stress_close.png",
-      "note": "Comfy sidecar is calmer than current grassland detail, but not promoted.",
+      "label": "M4 Source-Stack Current",
+      "path": "world3/docs/captures/m1_m7_validation_2026_05_08/m4_source_stack_context_current_close.png",
+      "note": "256 m ChunkLoader path with source macro terrain and current grassland detail.",
+      "exists": true
+    },
+    {
+      "label": "M4 Source-Stack Comfy V3",
+      "path": "world3/docs/captures/m1_m7_validation_2026_05_08/m4_source_stack_context_comfy_v3_close.png",
+      "note": "Same M4 source-stack path with Comfy v3 sidecar detail; still quarantined.",
+      "exists": true
+    },
+    {
+      "label": "M5 Source-Stack Walk",
+      "path": "world3/docs/captures/m1_m7_validation_2026_05_08/m5_source_stack_walk_after_crossing.png",
+      "note": "Walk streaming over the repaired M4 context using an inspection camera.",
       "exists": true
     }
   ]

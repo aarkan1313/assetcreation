@@ -17,6 +17,11 @@ caches and streamed chunk collision. The M5 notes below remain the historical
 prototype closure; current runtime hardening evidence lives in
 `world3/docs/M6_RUNTIME_HARDENING.md`.
 
+2026-05-08 visual-remediation update: the original M5 walk capture remains
+streaming proof only. The first source-stack visual rerender lives in
+`world3/docs/M5_SOURCE_STACK_WALK_REVIEW_2026_05_08.md` and uses
+`world3/scenes/capture_phase_m5/walk_source_stack.tscn`.
+
 ## Scene Contract
 
 `world3/scenes/walk.tscn` now uses two terrain paths:

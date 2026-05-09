@@ -16,9 +16,9 @@ promotion.
 |-----------|-------------|----------------|-------------|-------------------|
 | M1 Material catalog | Created a catalog of material IDs, source classes, biome kits, and generated material references. | The rest of the terrain pipeline can reference materials through stable IDs instead of ad hoc file paths. | Catalog entries know too little about promotion state, visual risk, source role, and view-specific readiness. | Turn the catalog into a real asset registry: provenance, source lane, promotion state, close/mid/far QA, quarantine flags, and required maps. |
 | M2 Transition materials | Built deterministic transition strips from catalog IDs and biome transition rules, then reviewed them in Godot. | Transitions can be generated and reviewed as data-driven assets, not hand-placed one-offs. | The strips are promising, but source texture noise can make good blends look bad. The review board is still diagnostic. | Keep same-source calm control pairs, add stronger seam/edge metrics, review source-stack transitions, and separate transition failure from bad input-material failure. |
-| M3 Chunk sweep | Tested terrain chunk sizes and locked 256 m chunks at 8 m mesh spacing for the synchronous base path. | The engine has a practical initial chunk size with seam evidence and runtime budget awareness. | M3 evidence is engineering/debug quality, not a visual target. | Keep M3 mostly technical: seam tests, border stitching, height/splat alignment, view-mode parity, and future LOD/async chunk budgets. |
-| M4 Splat shader | Added the unified terrain splat shader, RGBA splat weights, OpenTopo reference comparison, and chunk material contract. | Runtime terrain can bind multi-material terrain data through one shader/material path. | The old splat showcase context looks prototype/debug and should not represent the art target. | Rebuild M4 around source-stack macro terrain, valid-area masks, repaired detail materials, and review scenes that look like the intended pipeline. |
-| M5 Walk streaming | Wired visible 256 m chunks into the walk scene, scripted chunk crossing, and captured streaming metrics. | The player can move through streamed terrain chunks with measurable chunk build/remove behavior. | The old walk capture inherits the bad M4 visual context. It proves streaming, not quality. | Rerender walk streaming over the source-stack visual path, then refine framing, lighting, camera height, hitch budgets, and repeatability. |
+| M3 Chunk sweep | Tested terrain chunk sizes and locked 256 m chunks at 8 m mesh spacing for the synchronous base path. | The engine has a practical initial chunk size with seam evidence and runtime budget awareness. | Old M3 evidence is engineering/debug quality. A source-stack visual seam capture now exists, but seam metrics are still technical. | Keep M3 mostly technical: seam tests, border stitching, height/splat alignment, view-mode parity, and future LOD/async chunk budgets. |
+| M4 Splat shader | Added the unified terrain splat shader, RGBA splat weights, OpenTopo reference comparison, and chunk material contract. | Runtime terrain can bind multi-material terrain data through one shader/material path. | Old splat showcase context is diagnostic only. Close-view source-stack context now looks credible, but wider/topdown/iso review is not solved. | Continue M4 around source-stack macro terrain, valid-area masks, repaired detail materials, and review scenes that look like the intended pipeline. |
+| M5 Walk streaming | Wired visible 256 m chunks into the walk scene, scripted chunk crossing, and captured streaming metrics. | The player can move through streamed terrain chunks with measurable chunk build/remove behavior. | Old walk capture inherits bad M4 context. Source-stack inspection capture now exists, but first-person/horizon framing still exposes finite-footprint artifacts. | Refine walk/iso/topdown framing, far-field policy, lighting, camera height, hitch budgets, and repeatability. |
 | M6 Runtime hardening | Added runtime image caches, export-safe paths, streamed collision chunks, collision metrics, and transition runtime review hooks. | Runtime terrain data can be loaded from cache and collided against instead of depending on editor-only image imports. | It is technically useful but visually invisible as its own milestone; it inherits M5's terrain look. | Add async/background build options, stricter cache manifests, collision LOD policy, profiling gates, and validation scenes that run under walk/iso/topdown. |
 | M7 Boundary runtime | Generated per-chunk transition masks from biome rules and placed transitions automatically in runtime boundary scenes. Added a source-stack control rerender. | Boundary placement is now data-driven and can run through runtime chunks instead of manual shader placement. | M7 is workflow-pass / visual-rework. The source-stack control is better, but still diagnostic and finite-footprint. | Rerender M7 after M4/M5 source-stack repair, add same-source and cross-biome control pairs, then review boundary masks in walk, topdown, and iso views. |
 
@@ -56,7 +56,8 @@ promotion.
 
 2. M4 source-stack splat context.
    Replace the old prototype terrain context with source-stack macro color plus
-   valid-mask-gated detail.
+   valid-mask-gated detail. Close-view v1 is captured; next is wider/topdown/iso
+   framing without finite-footprint debug artifacts.
 
 3. M5 source-stack walk rerender.
    Reuse the repaired M4 context in an actual walk/streaming scene and compare
@@ -71,7 +72,8 @@ promotion.
 
 6. M3/M6 technical hardening.
    Keep these as engineering foundations: seam/collision/cache/performance gates,
-   then expose them through prettier review views only when useful.
+   then expose them through prettier review views only when useful. M3 now has a
+   source-stack visual seam capture; next is quantitative seam discontinuity QA.
 
 ## Immediate Next Move
 

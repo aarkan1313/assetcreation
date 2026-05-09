@@ -14,6 +14,16 @@ Prototype pass 1 is complete. It proves the first M4 slice:
 
 This is workflow-validation quality, not the final runtime contract.
 
+2026-05-08 visual-remediation update: the original `splat_shader_review.png`
+and `chunk_splat_stream_review.png` are engineering diagnostics only. The
+current M4 visual repair path uses source-stack context captures instead:
+
+- `world3/docs/captures/m4/source_stack_context_current_close.png`
+- `world3/docs/captures/m4/source_stack_context_comfy_v3_close.png`
+- `world3/docs/captures/m4/source_stack_context_review.png`
+
+See `world3/docs/M4_SOURCE_STACK_CONTEXT_REVIEW_2026_05_08.md`.
+
 Prototype pass 2 adds the chunk-facing contract:
 
 - `world3/jobs/m4_chunk_material_contract.json`
@@ -52,6 +62,9 @@ Captures:
 - `world3/docs/captures/m4/splat_shader_review.png`
 - `world3/docs/captures/m4/opentopo_unified_review.png`
 - `world3/docs/captures/m4/chunk_splat_stream_review.png`
+- `world3/docs/captures/m4/source_stack_context_current_close.png`
+- `world3/docs/captures/m4/source_stack_context_comfy_v3_close.png`
+- `world3/docs/captures/m4/source_stack_context_review.png`
 
 ## Splat Contract
 

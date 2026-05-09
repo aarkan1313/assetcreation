@@ -1,0 +1,21 @@
+{
+  "output": "world3\\docs\\captures\\m4\\source_stack_context_review.png",
+  "title": "M4 Source-Stack Context Review",
+  "subtitle": "256 m ChunkLoader path using unified shader; old M4 debug splat context excluded from visual target",
+  "items": [
+    {
+      "label": "Current source-stack",
+      "path": "world3\\docs\\captures\\m4\\source_stack_context_current_close.png",
+      "note": "Current grassland detail over source macro terrain; visual baseline, not promotion."
+    },
+    {
+      "label": "Comfy v3 sidecar",
+      "path": "world3\\docs\\captures\\m4\\source_stack_context_comfy_v3_close.png",
+      "note": "Comfy sidecar detail over same source macro; calmer candidate, still quarantined."
+    }
+  ],
+  "size_px": [
+    1602,
+    702
+  ]
+}

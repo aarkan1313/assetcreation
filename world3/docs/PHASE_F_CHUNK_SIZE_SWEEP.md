@@ -33,6 +33,19 @@ Raw metrics: `world3/docs/captures/phase_f/chunk_sweep/chunk_sweep_metrics.json`
 | 512 m | 64 | 9 | 7.01 ms | 65.48 ms | 72.10 ms | 71.44 ms | 125.22 MB | `chunk_512m_seam.png` |
 | 1024 m | 128 | 9 | 17.25 ms | 260.86 ms | 263.28 ms | 262.63 ms | 130.89 MB | `chunk_1024m_seam.png` |
 
+## Visual-Facing Seam Review
+
+2026-05-08 update: the original M3 seam captures remain technical diagnostics.
+After the M4 source-stack context repair, M3 also has a visual-facing 256 m seam
+capture:
+
+- `world3/docs/captures/phase_f/chunk_sweep/chunk_256m_source_stack_visual_seam.png`
+- `world3/scenes/capture_phase_f/chunk_256m_source_stack_visual_seam.tscn`
+
+This uses the same 256 m chunk / 8 m mesh spacing contract, but displays it
+through source-stack terrain instead of the old debug/prototype material view.
+See `world3/docs/M3_SOURCE_STACK_SEAM_REVIEW_2026_05_08.md`.
+
 ## Interpretation
 
 The sweep keeps vertex spacing constant at 8 m, so larger chunks do more work

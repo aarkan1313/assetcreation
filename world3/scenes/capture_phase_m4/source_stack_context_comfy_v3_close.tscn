@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/SourceStackRuntimeReview.gd" id="source_stack_review"]
+
+[node name="M4SourceStackContextComfyV3Close" type="Node3D"]
+script = ExtResource("source_stack_review")
+heightmap_path = "res://toporeview/gloss_mountain_textured_master/heightmap.png"
+meta_path = "res://toporeview/gloss_mountain_textured_master/meta.json"
+material_path = "res://textures/wgv3/terrain_source_stack_gloss_grassland_comfy_v3_source_stack.tres"
+chunk_size_m = 256.0
+chunk_resolution_m = 8.0
+view_radius_chunks = 2
+review_shot = "close_oblique"
+overlay_text = "M4 Source-Stack Context | Comfy v3 sidecar detail | 256m chunks"

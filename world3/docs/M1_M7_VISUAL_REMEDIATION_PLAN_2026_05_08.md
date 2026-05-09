@@ -25,8 +25,8 @@ should stay, but current M7 captures are diagnostics only.
 | R2 | M2 control-pair selection | Done | `scrub_sparse -> dry_wash` is the baseline control pair. |
 | R3 | Source-stack pivot | Done for review bridge | Source macro albedo drives runtime terrain through a valid-mask contract; parity captures exist for mid/close/topdown. |
 | R4 | Source-material repair | Active | Organic repair candidates exist, but remain quarantined; ComfyUI inventory and regeneration queue now define the first M8 repair lane. |
-| R5 | M4 splat context repair | Pending | Replace prototype/debug-looking splat context with a visually credible material assignment for rerenders. |
-| R6 | M5/M7 rerender | Pending | Rerender walk and automatic-boundary captures against repaired sources/context. |
+| R5 | M4 splat context repair | Active / close-view v1 captured | Replace prototype/debug-looking splat context with a visually credible material assignment for rerenders. |
+| R6 | M5/M7 rerender | Active / M5 inspection capture complete | Rerender walk and automatic-boundary captures against repaired sources/context. |
 | R7 | Visual closure decision | Pending | Decide whether M7 can close visually or needs a second boundary-placement pass. |
 
 ## R2 Baseline Pair
@@ -140,3 +140,14 @@ visual sheet now only shows close-view source-stack baseline candidates, while
 the bad finite-chunk/debug M3-M6/M7 proof captures live in the engineering
 diagnostics sheet. Added `M1_M7_REFINEMENT_MAP_2026_05_08.md` as the per-
 milestone refinement guide.
+
+Started R5 by adding M4-specific source-stack context scenes and captures using
+256 m `ChunkLoader.gd` chunks, 8 m mesh spacing, and the unified shader. This is
+the first acceptable M4 visual context candidate, but it is close-view only; M4
+still needs a wider/topdown/iso footprint strategy before visual closure. See
+`M4_SOURCE_STACK_CONTEXT_REVIEW_2026_05_08.md`.
+
+Started R6 by rerendering M5 over the M4 source-stack context:
+`docs/captures/m5/walk_source_stack_after_crossing.png`. The first horizon-style
+walk camera exposed finite-footprint artifacts, so the retained capture uses an
+inspection camera. See `M5_SOURCE_STACK_WALK_REVIEW_2026_05_08.md`.

@@ -1,0 +1,80 @@
+{
+	"build_collision_chunks": false,
+	"capture": "res://docs/captures/m5/walk_source_stack_after_crossing.png",
+	"chunk_resolution_m": 8.0,
+	"chunk_size_m": 256.0,
+	"chunks_built": 5,
+	"chunks_removed": 5,
+	"collision_build_ms_max": 0.0,
+	"collision_build_ms_total": 0.0,
+	"collision_chunks_built": 0,
+	"distance_z_m": 256.0,
+	"enable_transition_boundaries": false,
+	"end_position": [
+		0.0,
+		483.109734537313,
+		64.0
+	],
+	"frame_time_max_ms": 30.925,
+	"frame_time_mean_ms": 4.27706666666667,
+	"frame_time_p95_ms": 4.275,
+	"frame_time_p99_ms": 4.585,
+	"frames": 180,
+	"peak_loaded_chunks": 25,
+	"rebuild_after_reset": false,
+	"sample_captures": [],
+	"samples": [
+		{
+			"chunk": [
+				0,
+				-1
+			],
+			"frame": 0,
+			"last_update_ms": 0.043,
+			"loaded_chunks": 25,
+			"z": -192.0
+		},
+		{
+			"chunk": [
+				0,
+				-1
+			],
+			"frame": 60,
+			"last_update_ms": 0.041,
+			"loaded_chunks": 25,
+			"z": -106.189944134078
+		},
+		{
+			"chunk": [
+				0,
+				-1
+			],
+			"frame": 120,
+			"last_update_ms": 0.044,
+			"loaded_chunks": 25,
+			"z": -20.3798882681564
+		},
+		{
+			"chunk": [
+				0,
+				0
+			],
+			"frame": 179,
+			"last_update_ms": 0.037,
+			"loaded_chunks": 25,
+			"z": 64.0
+		}
+	],
+	"scene": "res://scenes/capture_phase_m5/walk_source_stack.tscn",
+	"start_position": [
+		0.0,
+		489.023627222501,
+		-192.0
+	],
+	"transition_mask_build_ms_max": 0.0,
+	"transition_mask_build_ms_total": 0.0,
+	"transition_masks_built": 0,
+	"transition_rule_id": "biome_desert__grassland_base",
+	"view_radius_chunks": 2,
+	"worst_update_ms": 30.067
+}

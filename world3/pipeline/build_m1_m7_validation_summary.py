@@ -334,6 +334,10 @@ def main() -> int:
         out_dir / "m3_chunk_256m_seam.png",
     )
     copy_if_exists(
+        ROOT / "docs/captures/phase_f/chunk_sweep/chunk_256m_source_stack_visual_seam.png",
+        out_dir / "m3_source_stack_visual_seam.png",
+    )
+    copy_if_exists(
         ROOT / "docs/captures/phase_f/chunk_sweep/chunk_sweep_metrics.json",
         out_dir / "m3_chunk_sweep_metrics.json",
     )
@@ -344,6 +348,18 @@ def main() -> int:
     copy_if_exists(
         ROOT / "docs/captures/visual_remediation/source_stack_runtime_grassland_comfy_v3_detail_stress_close.png",
         out_dir / "source_stack_grassland_comfy_v3_detail_stress_close.png",
+    )
+    copy_if_exists(
+        ROOT / "docs/captures/m4/source_stack_context_current_close.png",
+        out_dir / "m4_source_stack_context_current_close.png",
+    )
+    copy_if_exists(
+        ROOT / "docs/captures/m4/source_stack_context_comfy_v3_close.png",
+        out_dir / "m4_source_stack_context_comfy_v3_close.png",
+    )
+    copy_if_exists(
+        ROOT / "docs/captures/m5/walk_source_stack_after_crossing.png",
+        out_dir / "m5_source_stack_walk_after_crossing.png",
     )
 
     items = [
@@ -392,21 +408,31 @@ def main() -> int:
     ]
     visual_items = [
         {
-            "label": "Source Stack Close",
-            "path": str(out_dir / "source_stack_grassland_current_close.png"),
-            "note": "Current best terrain direction: source macro terrain plus low-strength detail.",
+            "label": "M3 Source-Stack Seam",
+            "path": str(out_dir / "m3_source_stack_visual_seam.png"),
+            "note": "256 m chunk seam displayed through the repaired source-stack visual context.",
         },
         {
-            "label": "Comfy V3 Stress",
-            "path": str(out_dir / "source_stack_grassland_comfy_v3_detail_stress_close.png"),
-            "note": "Comfy sidecar is calmer than current grassland detail, but not promoted.",
+            "label": "M4 Source-Stack Current",
+            "path": str(out_dir / "m4_source_stack_context_current_close.png"),
+            "note": "256 m ChunkLoader path with source macro terrain and current grassland detail.",
+        },
+        {
+            "label": "M4 Source-Stack Comfy V3",
+            "path": str(out_dir / "m4_source_stack_context_comfy_v3_close.png"),
+            "note": "Same M4 source-stack path with Comfy v3 sidecar detail; still quarantined.",
+        },
+        {
+            "label": "M5 Source-Stack Walk",
+            "path": str(out_dir / "m5_source_stack_walk_after_crossing.png"),
+            "note": "Walk streaming over the repaired M4 context using an inspection camera.",
         },
     ]
     make_contact_sheet(
         out_dir / "m1_m7_validation_contact_sheet.png",
         visual_items,
         title="M1-M7 Visual Baseline Candidates",
-        subtitle="Only credible close-view source-stack candidates; all finite-chunk diagnostics excluded",
+        subtitle="Credible source-stack candidates only; all bad finite-chunk diagnostics excluded",
     )
     make_contact_sheet(
         out_dir / "m1_m7_engineering_diagnostics_contact_sheet.png",

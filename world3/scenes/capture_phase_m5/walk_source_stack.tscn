@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/ChunkLoader.gd" id="chunk_loader"]
+[ext_resource type="Material" path="res://textures/wgv3/terrain_source_stack_gloss_grassland_current_source_stack.tres" id="source_stack_mat"]
+
+[sub_resource type="Environment" id="env"]
+background_mode = 1
+background_color = Color(0.55, 0.70, 0.90, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.52, 0.56, 0.60, 1)
+ambient_light_energy = 0.25
+tonemap_mode = 2
+tonemap_exposure = 0.82
+fog_enabled = true
+fog_density = 0.00003
+fog_light_color = Color(0.70, 0.78, 0.88, 1)
+ssao_enabled = true
+ssao_radius = 5.0
+ssao_intensity = 1.0
+
+[node name="WalkSourceStack" type="Node3D"]
+
+[node name="WorldEnv" type="WorldEnvironment" parent="."]
+environment = SubResource("env")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.7071, -0.5, 0.5, 0, 0.7071, 0.7071, -0.7071, -0.5, 0.5, 0, 8000, 0)
+light_color = Color(1, 0.97, 0.92, 1)
+light_energy = 1.3
+shadow_enabled = true
+directional_shadow_max_distance = 3000.0
+
+[node name="ChunkLoader" type="Node3D" parent="."]
+script = ExtResource("chunk_loader")
+heightmap_path = "res://toporeview/gloss_mountain_textured_master/heightmap.png"
+meta_path = "res://toporeview/gloss_mountain_textured_master/meta.json"
+terrain_material = ExtResource("source_stack_mat")
+chunk_size_m = 256.0
+view_radius_chunks = 2
+chunk_resolution_m = 8.0
+target_path = NodePath("../Player")
+build_collision_chunks = false
+
+[node name="Player" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 430, -192)
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 150, 120)
+projection = 1
+size = 170.0
+near = 0.5
+far = 6000.0
+fov = 50.0
+current = true

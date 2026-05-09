@@ -47,10 +47,14 @@ engineering diagnostics that prove workflow plumbing.
 
 ## Main Visual Sheet
 
-- `present` - world3/docs/captures/m1_m7_validation_2026_05_08/source_stack_grassland_current_close.png
-  Current best terrain direction: source macro terrain plus low-strength detail.
-- `present` - world3/docs/captures/m1_m7_validation_2026_05_08/source_stack_grassland_comfy_v3_detail_stress_close.png
-  Comfy sidecar is calmer than current grassland detail, but not promoted.
+- `present` - world3/docs/captures/m1_m7_validation_2026_05_08/m3_source_stack_visual_seam.png
+  256 m chunk seam displayed through the repaired source-stack visual context.
+- `present` - world3/docs/captures/m1_m7_validation_2026_05_08/m4_source_stack_context_current_close.png
+  256 m ChunkLoader path with source macro terrain and current grassland detail.
+- `present` - world3/docs/captures/m1_m7_validation_2026_05_08/m4_source_stack_context_comfy_v3_close.png
+  Same M4 source-stack path with Comfy v3 sidecar detail; still quarantined.
+- `present` - world3/docs/captures/m1_m7_validation_2026_05_08/m5_source_stack_walk_after_crossing.png
+  Walk streaming over the repaired M4 context using an inspection camera.
 
 ## Read
 

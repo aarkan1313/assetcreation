@@ -42,6 +42,9 @@ Read first:
 23. `world3/docs/M8_GRASS_VISUAL_VETO_AUDIT.md`
 24. `world3/docs/M1_M7_WORKFLOW_VALIDATION_RUN_2026_05_08.md`
 25. `world3/docs/M1_M7_REFINEMENT_MAP_2026_05_08.md`
+26. `world3/docs/M4_SOURCE_STACK_CONTEXT_REVIEW_2026_05_08.md`
+27. `world3/docs/M3_SOURCE_STACK_SEAM_REVIEW_2026_05_08.md`
+28. `world3/docs/M5_SOURCE_STACK_WALK_REVIEW_2026_05_08.md`
 
 ## Current status
 
@@ -107,6 +110,30 @@ workflow-pass/visual-rework. The main visual sheet was tightened after user
 review: bad finite-chunk/debug M3-M6/M7 proof captures are engineering
 diagnostics only, not visual validation. Use
 `world3/docs/M1_M7_REFINEMENT_MAP_2026_05_08.md` to refine each milestone.
+
+M4 refinement has started with `world3/docs/M4_SOURCE_STACK_CONTEXT_REVIEW_2026_05_08.md`.
+New scenes:
+`world3/scenes/capture_phase_m4/source_stack_context_current_close.tscn` and
+`world3/scenes/capture_phase_m4/source_stack_context_comfy_v3_close.tscn`.
+New captures:
+`world3/docs/captures/m4/source_stack_context_review.png`,
+`source_stack_context_current_close.png`, and
+`source_stack_context_comfy_v3_close.png`. These are the current M4 visual
+baseline candidates; wider/topdown/iso review is still open.
+
+M3 now has a visual-facing seam capture through the repaired M4 context:
+`world3/scenes/capture_phase_f/chunk_256m_source_stack_visual_seam.tscn` and
+`world3/docs/captures/phase_f/chunk_sweep/chunk_256m_source_stack_visual_seam.png`.
+The old M3 sweep remains the technical truth; this new capture is for visual
+validation only.
+
+M5 now has a source-stack inspection rerender:
+`world3/scenes/capture_phase_m5/walk_source_stack.tscn`,
+`world3/docs/captures/m5/walk_source_stack_after_crossing.png`, and
+`world3/docs/captures/m5/walk_source_stack_metrics.json`. The first horizon
+walk camera exposed finite-footprint artifacts and should not be used as visual
+evidence; keep the accepted inspection camera until a wider/far-field policy is
+implemented.
 
 Second ComfyUI M8 target: `grass` produced strict grade-A outputs, but visual
 review rejected them. `m8_grass_calm_v1` is the best failed direction; v2/v3
