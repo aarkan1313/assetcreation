@@ -269,7 +269,7 @@ func _build_chunk(cx: int, cz: int) -> MeshInstance3D:
 	)
 	mesh_instance.mesh = _build_chunk_mesh(cx, cz)
 	mesh_instance.material_override = _material_for_chunk(cx, cz)
-	if build_collision_chunks:
+	if build_collision_chunks and mesh_instance.mesh.get_surface_count() > 0:
 		_add_collision(mesh_instance)
 	add_child(mesh_instance)
 	return mesh_instance
@@ -499,6 +499,8 @@ func _build_chunk_mesh(cx: int, cz: int) -> ArrayMesh:
 			indices[k] = i10; k += 1
 			indices[k] = i11; k += 1
 	indices.resize(k)
+	if k == 0:
+		return ArrayMesh.new()
 
 	var arrays: Array = []
 	arrays.resize(Mesh.ARRAY_MAX)

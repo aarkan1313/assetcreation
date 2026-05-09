@@ -57,6 +57,7 @@ Read first:
 33. `world3/docs/REVIEW_SCENE_AUTO_TOUR_2026_05_08.md`
 34. `world3/docs/SOURCE_REPEAT_POLICY_2026_05_09.md`
 35. `world3/docs/TERRAIN_SEAM_INTEGRATION_RESEARCH_2026_05_09.md`
+36. `world3/docs/M10_TERRAIN_SEAM_INTEGRATION_PROOF_2026_05_09.md`
 
 ## Current status
 
@@ -106,6 +107,12 @@ sample-space, shader, and chunk-boundary bugs, but not as visual closure.
 Production-facing continuity now means terrain seam integration: a solved
 world-space band for height, normals, material/source weights, macro color,
 valid masks, and feature layers.
+
+First M10 seam proof exists: `build_terrain_seam_integration_proof.py` builds
+an overlapping Gloss Mountain seam artifact, and
+`source_stack_seam_integration_tour.tscn` reviews it in topdown, iso, close
+3D, medium 3D, and footprint views. This is first-rung overlap validation, not
+M10 closure.
 
 First ComfyUI M8 result: `m8_grassland_grass_calm_v3` passed strict
 `aaa_texture.py` QA, source-material noise audit, and the first terrain-context
@@ -331,7 +338,8 @@ M7-M12 near roadmap is now explicit:
 1. M7 boundary-runtime integration.
 2. M8 organic source-material cleanup.
 3. M9 runtime performance and interaction polish.
-4. M10 terrain seam integration and cross-source blending.
+4. M10 terrain seam integration and cross-source blending. First overlap proof
+   exists; next is nearby non-overlap, then different-source.
 5. M11 corner and junction transitions.
 6. M12 walk/iso/topdown view-mode parity.
 

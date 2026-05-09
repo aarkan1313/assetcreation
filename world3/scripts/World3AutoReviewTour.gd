@@ -28,7 +28,7 @@ extends Node3D
 @export var review_normal_strength: float = 0.06
 @export var review_detail_normal_strength: float = 0.025
 @export var review_detail_rough_strength: float = 0.025
-@export_enum("standard", "full_map_fast", "same_source_blend") var tour_profile: String = "standard"
+@export_enum("standard", "full_map_fast", "same_source_blend", "seam_integration") var tour_profile: String = "standard"
 @export var initial_tour_index: int = 0
 @export var auto_play: bool = true
 
@@ -45,6 +45,7 @@ var _ui_visible: bool = true
 
 
 func _ready() -> void:
+	_apply_command_line_overrides()
 	_setup_environment()
 	_build_tour()
 	_tour_index = clampi(initial_tour_index, 0, _tour.size() - 1)
@@ -86,6 +87,15 @@ func _unhandled_input(event: InputEvent) -> void:
 			_overlay_label.visible = _ui_visible
 
 
+func _apply_command_line_overrides() -> void:
+	var args: PackedStringArray = OS.get_cmdline_user_args()
+	for i in range(args.size()):
+		if args[i] == "--tour-index" and i + 1 < args.size():
+			initial_tour_index = int(args[i + 1])
+		if args[i] == "--tour-profile" and i + 1 < args.size():
+			tour_profile = args[i + 1]
+
+
 func _advance_tour(dir: int) -> void:
 	_tour_index = posmod(_tour_index + dir, _tour.size())
 	_tour_time = 0.0
@@ -97,6 +107,9 @@ func _build_tour() -> void:
 		return
 	if tour_profile == "same_source_blend":
 		_build_same_source_blend_tour()
+		return
+	if tour_profile == "seam_integration":
+		_build_seam_integration_tour()
 		return
 	_tour = [
 		{
@@ -243,6 +256,67 @@ func _build_same_source_blend_tour() -> void:
 			"camera": Vector3(-260.0, 230.0, -320.0),
 			"camera_end": Vector3(-230.0, 230.0, -300.0),
 			"fov": 46.0
+		}
+	]
+
+
+func _build_seam_integration_tour() -> void:
+	var source_size: Vector2 = _review_source_size_m()
+	var x_span: float = clamp(source_size.x * 0.30, 90.0, 150.0)
+	var z_span: float = clamp(source_size.y * 0.36, 140.0, 240.0)
+	var band_topdown_size: float = clamp(source_size.x * 0.62, 220.0, 270.0)
+	var footprint_topdown_size: float = clamp(source_size.y * 1.02, 420.0, 600.0)
+	var iso_size: float = clamp(max(source_size.x, source_size.y) * 0.74, 320.0, 560.0)
+	_tour = [
+		{
+			"name": "Seam integration topdown band",
+			"mode": "topdown",
+			"duration": 6.0,
+			"focus": Vector2(-x_span * 0.25, 0.0),
+			"focus_end": Vector2(x_span * 0.25, 0.0),
+			"camera": Vector3(0.0, 860.0, 0.01),
+			"camera_end": Vector3(0.0, 860.0, 0.01),
+			"size": band_topdown_size
+		},
+		{
+			"name": "Seam integration iso sweep",
+			"mode": "ortho",
+			"duration": 6.0,
+			"focus": Vector2(-x_span * 0.5, -z_span * 0.4),
+			"focus_end": Vector2(x_span * 0.5, z_span * 0.4),
+			"camera": Vector3(-360.0, 430.0, -430.0),
+			"camera_end": Vector3(-340.0, 430.0, -410.0),
+			"size": iso_size
+		},
+		{
+			"name": "Close 3D seam traverse",
+			"mode": "perspective",
+			"duration": 6.0,
+			"focus": Vector2(-x_span * 0.5, 18.0),
+			"focus_end": Vector2(x_span * 0.5, 18.0),
+			"camera": Vector3(-150.0, 115.0, -185.0),
+			"camera_end": Vector3(-120.0, 115.0, -165.0),
+			"fov": 46.0
+		},
+		{
+			"name": "Medium 3D seam and landform read",
+			"mode": "perspective",
+			"duration": 6.0,
+			"focus": Vector2(-x_span * 0.4, -z_span * 0.35),
+			"focus_end": Vector2(x_span * 0.4, z_span * 0.35),
+			"camera": Vector3(-245.0, 190.0, -300.0),
+			"camera_end": Vector3(-225.0, 195.0, -280.0),
+			"fov": 48.0
+		},
+		{
+			"name": "Full integrated source footprint",
+			"mode": "topdown",
+			"duration": 5.0,
+			"focus": Vector2(0.0, 0.0),
+			"focus_end": Vector2(0.0, 0.0),
+			"camera": Vector3(0.0, 900.0, 0.01),
+			"camera_end": Vector3(0.0, 900.0, 0.01),
+			"size": footprint_topdown_size
 		}
 	]
 
@@ -515,6 +589,9 @@ func _update_overlay(frame: Dictionary, t: float) -> void:
 		view_text = "fast full-map topdown, iso, long 3D traverses, overview"
 	if tour_profile == "same_source_blend":
 		view_text = "same-source 2x2 seam blend: X, Z, corner, 3D traverses"
+	if tour_profile == "seam_integration":
+		workflow_text = "M10 terrain seam-integration proof"
+		view_text = "integration-band topdown, iso, close 3D, medium 3D, footprint"
 	_overlay_label.text = (
 		"world3 Source-Stack Auto Review | " + workflow_text + "\n"
 		+ "%d/%d  %s  |  %s  |  progress %02d%%\n"

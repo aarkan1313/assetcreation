@@ -31,6 +31,12 @@ world-space band that solves height, normals, material weights, source macro
 color, valid masks, and feature layers together. Reference:
 `TERRAIN_SEAM_INTEGRATION_RESEARCH_2026_05_09.md`.
 
+First M10 proof is implemented in
+`M10_TERRAIN_SEAM_INTEGRATION_PROOF_2026_05_09.md`. It builds an overlapping
+Gloss Mountain seam artifact and reviews it through
+`source_stack_seam_integration_tour.tscn`. It proves the integration-band
+runtime path, not full cross-source closure.
+
 Long-term scope (props / decoration / buildings / POIs / fantasy
 biomes) is **acknowledged as future** and stays deferred until the M7-M12
 terrain lane is proven. The current near roadmap is
@@ -516,6 +522,10 @@ These start when chunk + biome + tile + transition is ~80% solved
 - **2026-05-09 (terrain seam methodology correction)**: Same-source repeat is
   diagnostic only. M10 now owns a production-facing terrain seam integration
   proof before broader cross-source blending.
+- **2026-05-09 (M10 first seam proof)**: Added
+  `build_terrain_seam_integration_proof.py`, generated the Gloss Mountain
+  overlap seam artifact, added `source_stack_seam_integration_tour.tscn`, and
+  fixed `ChunkLoader.gd` so clipped empty chunks do not submit invalid meshes.
 - **2026-05-08 (M7 visual audit/remediation)**: M7 remains a workflow pass, but
   visual closure is paused. The audit set the target at roughly 70 percent of
   the best stacked photo/topo OpenTopo reference, added the source-stack runtime

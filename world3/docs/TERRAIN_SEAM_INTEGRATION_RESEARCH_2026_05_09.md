@@ -126,6 +126,18 @@ prototype:
 - exit: no wall, no box, no ghost strip, and no fake plateau, while preserving
   plausible landform shape.
 
+## First Implementation
+
+Implemented 2026-05-09:
+
+- proof doc: `M10_TERRAIN_SEAM_INTEGRATION_PROOF_2026_05_09.md`;
+- generator: `world3/pipeline/build_terrain_seam_integration_proof.py`;
+- review scene: `world3/scenes/review/source_stack_seam_integration_tour.tscn`.
+
+This first rung uses overlapping same-source Gloss Mountain crops. It validates
+the integration-band artifact and runtime path, not unlike-source synthesis.
+The next rung is nearby non-overlap, then different-source real terrain.
+
 ## Sources
 
 - Poisson Image Editing, Perez/Gangnet/Blake, ACM TOG 2003:

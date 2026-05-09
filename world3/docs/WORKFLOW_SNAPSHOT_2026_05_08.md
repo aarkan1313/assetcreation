@@ -33,6 +33,9 @@ The production-facing path is terrain seam integration, documented in
 `TERRAIN_SEAM_INTEGRATION_RESEARCH_2026_05_09.md`: solve a world-space
 integration band for height, normals, material weights, source macro color,
 valid masks, and feature layers together.
+First M10 proof is now implemented in
+`M10_TERRAIN_SEAM_INTEGRATION_PROOF_2026_05_09.md`, with a generated
+height/macro seam artifact and `source_stack_seam_integration_tour.tscn`.
 
 ## Framing
 
