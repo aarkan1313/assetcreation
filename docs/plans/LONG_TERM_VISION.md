@@ -77,3 +77,31 @@ when SpellLab v2 gets to "bake-once, react-cheap" phase.
   more goes through baked paths.
 - For 2.5D iso: terrain stays heightmap-based, but **anything taller than ~2 m gets
   a separate mesh/decal layer** so we can cull, occlude, and animate independently.
+
+## Factory operations vision (added 2026-05-09)
+
+Beyond the assets themselves, the **factory operations** direction (how
+pipelines are operated):
+
+> "Long term I want all the pipelines to be easy to understand and used by
+> both LLM and human. Basically opens up a GUI / has a perfect command/API
+> set. You select the target asset you are making, you select where you are
+> at in the process. Then you just set stuff up with drop-downs or whatever's
+> appropriate and each workflow, tool, pipeline, etc. is represented,
+> configurable, and usable end to end."
+
+Concretely: every pipeline gets a uniform contract — `run.py` entry point,
+`config_schema.json` declared knobs, `stages.json` discoverable steps,
+`smoke_test.py` end-to-end shape verification, `run.json` per-run
+provenance. GUI = thin frontend over the same schema-driven backend the
+LLM uses; no GUI-only or CLI-only logic.
+
+Full description in `docs/plans/ROADMAP.md` § "Long-term direction
+(2026-05-09)". Pipeline-specific gaps in the gaps queue immediately
+below that section. Migration is per-pipeline when each gets touched;
+not a rewrite, additive over existing scripts.
+
+This is the operations side of the same coherence goal: just as the
+in-game look needs to be coherent across regions/biomes/zooms, the
+factory operations need to be coherent across pipelines so a single
+human or single agent can drive the whole thing.

@@ -59,6 +59,170 @@ Full recipes per tool: [`animators/INSTALL_MATRIX.md`](../../animators/INSTALL_M
 
 ---
 
+## 🌟 Long-term direction (2026-05-09)
+
+**Every pipeline becomes a discoverable, configurable, end-to-end-validated
+unit, usable by either human (GUI) or LLM (API), with a uniform contract.**
+
+User intent (2026-05-09):
+
+> "Long term I want all the pipelines to be easy to understand and used by
+> both LLM and human. Basically opens up a GUI / has a perfect command/API
+> set. You select the target asset you are making, you select where you are
+> at in the process. Then you just set stuff up with drop-downs or whatever's
+> appropriate and each workflow, tool, pipeline, etc. is represented,
+> configurable, and usable end to end. Ideally working end to end in all
+> configurations."
+
+### What this means concretely
+
+For every pipeline (textures, props, characters, VFX, UI, audio, world3,
+inpaint, etc.), the goal state is:
+
+1. **One canonical entry point** — a single `pipelines/<lane>/run.py` (or
+   equivalent) that takes structured input and produces the final asset.
+2. **Step-discoverable** — the entry point exposes "what stages exist,
+   what stage am I at, what stages remain" so a human GUI or an LLM can
+   pick up at any point.
+3. **Uniform option contract** — every tunable knob is declared in JSON
+   schema (per-pipeline `config_schema.json`); the GUI generates dropdowns
+   from the schema, the CLI exposes the same as flags, the LLM API exposes
+   the same as a structured tool.
+4. **End-to-end test harness** — every pipeline has a `smoke_test.py`
+   that runs a default config from start to finish and verifies output
+   shape (not quality, just shape — a smoke test, not a quality gate).
+   When this test passes, the pipeline is "usable." When it fails, the
+   pipeline is broken and that's surfaced loud.
+5. **Provenance + state file** — every run writes a `run.json` capturing
+   inputs, settings, intermediate artifacts, and final outputs. Resumable.
+   Reproducible. Inspectable by GUI or LLM.
+6. **GUI = same backend, different frontend** — the GUI is a thin
+   layer over the same JSON-schema-driven config + `run.py` invocation
+   the LLM uses. No GUI-only logic. No CLI-only logic.
+
+### Why this matters
+
+- **Knob-space coherence** — `world3/docs/WORLD3_STATE_2026_05_08.md`
+  defines the world-generation knob-space (Source / View / Style /
+  Granularity / Decoration); the same idea generalizes to every other
+  pipeline. A unified config schema across pipelines means a game can
+  declare "I want X in Y style at Z LOD" once and have every pipeline
+  honor it.
+- **LLM agent usability** — for an agent to drive the factory
+  end-to-end, it needs a stable tool contract per pipeline. Today every
+  pipeline has different argparse, different defaults, different output
+  paths. The agent has to read all the docs to use anything. Schema-
+  driven tools fix this.
+- **Human onboarding** — same problem in reverse. A new operator
+  shouldn't need to read 30 docs to make a texture. They should open a
+  GUI, pick "Texture / Ground / Generate from prompt", and go.
+- **Configuration isn't ad-hoc** — today many pipeline knobs are buried
+  in module-level constants, scattered across files, or only set by
+  reading source. A schema makes them declared, validated, defaulted,
+  and discoverable.
+
+### What this is NOT (yet)
+
+- **Not in scope today.** This is the multi-month direction, not next
+  iteration. M1–M7 in world3 takes precedence; texture pipeline polish
+  takes precedence; the gaps queue below takes precedence.
+- **Not a rewrite.** Existing scripts stay; the unified contract wraps
+  them, doesn't replace them. Each pipeline gets a `run.py` orchestrator
+  on top of what exists.
+- **Not a single GUI.** Each pipeline can have its own GUI panel; the
+  unification is in the *contract* (config schema + run protocol +
+  smoke test), not the visual presentation.
+
+### Architectural sketch (for reference, not commitment)
+
+Per pipeline:
+```
+pipelines/<lane>/
+  run.py                  # canonical orchestrator (entry point)
+  config_schema.json      # knob declarations + defaults
+  stages.json             # ordered list of stages with names + descriptions
+  smoke_test.py           # end-to-end shape verification
+  presets/                # named config snapshots ("hero", "fast", etc.)
+  README.md               # human-readable overview
+```
+
+Top-level:
+```
+pipelines/_framework/
+  config_loader.py        # validate config against schema
+  run_recorder.py         # write run.json provenance
+  schema_validator.py     # JSON-schema utilities
+  smoke_runner.py         # discovers and runs all smoke_test.py
+ui/pipeline_dashboard/    # optional GUI layer over the contract
+```
+
+This is **target architecture**, not a current task. Pipeline by pipeline,
+when each gets touched for any reason, it can be migrated. Highest priority
+at migration: `pipelines/textures/` (most actively used) and `world3/`
+runtime (most LLM-driven).
+
+---
+
+## 📋 Pipeline gaps queue (append-only)
+
+Specific known gaps in existing pipelines, surfaced through use. Pick from
+this list when the user asks "what should we work on" and there's no
+larger directive in flight.
+
+Format: each entry has scope (small/medium/large), pipeline lane, status,
+date surfaced, and one-line description.
+
+### 2026-05-09
+
+- **[character LOD chain]** scope: small. Lane: meshy + props. Status:
+  open. Tripo3D-style "rigged character mesh decimation that preserves
+  skinning weights". We have `pipelines/props/lod_chain.py` (decimate +
+  meshopt via gltfpack) for static props but no rigged-character LOD
+  path. gltfpack supports rig preservation via `-kn` + skin flags;
+  half-session of work to add `lod_chain_character.py` or a
+  `--character-rigged` flag. Tools already on disk: Blender +
+  `tools/meshoptimizer/gltfpack.exe`.
+
+- **[FUTURE_MODEL_WATCHLIST]** scope: small (ongoing). Lane: textures /
+  cross-cutting. Status: open. Track ComfyUI-compatible image-gen
+  alternatives as diversity options. First entry HiDream-O1-Image
+  queued (35GB hold). Doc lives at `docs/FUTURE_MODEL_WATCHLIST.md`.
+  Adding alternatives is research, not install.
+
+- **[texture pipeline diversity research]** scope: medium. Lane: textures.
+  Status: open (handed off to separate research session 2026-05-09).
+  Identify 5-8 ComfyUI-compatible image-gen models that fit 24GB VRAM
+  (full or quant) and could slot in as FLUX alternatives. Goal:
+  generation-style diversity for ground textures, not replacement.
+
+- **[megastack pull queue]** scope: medium. Lane: terrain (DEM cache).
+  Status: in flight 2026-05-09 ~04:51 EDT. 63 stitched mega-stacks
+  queued via `pipelines/terrain/pull_megastack_queue.py`. Status JSON
+  at `D:/d/tmp/bulk_pull_logs/megastack_status.json`. Queue doc:
+  `world3/docs/MEGASTACK_PULL_QUEUE_2026_05_09.md`.
+
+- **[unified pipeline GUI/API contract — long-term]** scope: large
+  (multi-month). Lane: cross-cutting. Status: directional intent
+  recorded in "Long-term direction" section above. Migrate one pipeline
+  at a time when each gets touched. First migration target:
+  `pipelines/textures/` when next polish session lands.
+
+### How to extend this queue
+
+Append new entries above the most recent date header. Format:
+
+```
+- **[short-id]** scope: small/medium/large. Lane: <pipeline>.
+  Status: open/in-flight/done/blocked. <one-line description with
+  enough detail to evaluate effort>.
+```
+
+When an entry is **done**, leave it in place but flip status to
+`done YYYY-MM-DD` and add the commit hash. When an entry is **rejected**,
+flip to `rejected YYYY-MM-DD: <reason>`.
+
+---
+
 ## 🛣 What comes next
 
 The user's stated next-direction priorities (from session 2026-05-07 PM):
