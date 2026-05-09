@@ -67,21 +67,54 @@ python pipelines/terrain/tile_stitch.py \
 
 ## Results (in flight)
 
-### Olympic Peninsula v2 — DONE 2026-05-08 23:49
+### Olympic Peninsula v2 — 5/9 tiles (USGS1m coverage gap in central alpine)
 
-- 5/9 tiles successful
-- 4 tiles failed: USGS1m API returned non-TIFF responses (empty body).
-  Pattern: failures cluster on adjacent bboxes — possibly transient
-  API issues or USGS1m coverage gaps in the central interior.
-- Stitched output: 4096×4096, elevation 213-1970m (close to
-  Mt Olympus summit at 2428m; partial coverage).
-- Cache: 5 new USGS1m tiles, ~30 MB to ~400 MB each.
+- 5/9 tiles cached + stitched. Re-shoot of failed tiles repeated the
+  same "non-TIFF response (0 bytes)" failure on the same 4 cells.
+- Failure pattern: the **central interior** tiles all fail (rows 0-1
+  middle column + row 1 left column). These cluster around the high
+  alpine / Mt Olympus core which **USGS1m LiDAR doesn't cover** —
+  USGS1m focuses on populated / lower-elevation areas, not remote
+  alpine. The eastern strip (column 2 of all rows) plus 2 western
+  edge tiles work because those areas have lower-elevation LiDAR
+  surveys.
+- Stitched output: `pipelines/terrain/output/olympic_peninsula_1m_v2/height_16.png`
+  (4096x4096), elevation 213-1970m (Mt Olympus summit is 2428m;
+  the 1970m peak in the data is a satellite ridge, not the summit).
+- ~16M sentinel pixels mean-filled in the failed cells (visible as
+  flat patches at ~1000m elevation in the stitched output).
+- Cache: 5 new USGS1m tiles (~30 MB to ~400 MB each, ~700 MB total).
+- **Verdict**: partial mega-stack. Useful for the eastern + western
+  edges where data exists. For the full Olympic interior at 1m,
+  switch to USGS10m which covers everywhere.
 
-### Big Bend v2 — IN FLIGHT (started 2026-05-08 23:48)
+### Big Bend v2 — 9/9 tiles complete (full coverage!)
 
-- Slow due to USGS1m API timeouts on some tiles
-- 4/9 tiles complete by 2026-05-08 23:59
-- Final result + audit pending
+- All 9 tiles cached + stitched successfully. Some cells took
+  multiple API attempts (BB had its own non-TIFF flakiness mid-pull).
+- Stitched output: `pipelines/terrain/output/big_bend_1m_v2/height_16.png`
+  (4096x4096), elevation 572-2215m (Chisos summit ~2400m, very
+  close).
+- Only 185k sentinel pixels mean-filled (clean coverage; almost no
+  gaps).
+- Cache: 9 new USGS1m tiles (~50 MB to ~540 MB each, ~2.5 GB total).
+- **Verdict**: full-quality mega-stack. Big Bend NP is a complete
+  3x3 USGS1m mosaic — production-ready terrain.
+
+### Comparison
+
+| Stack | Tiles ok | Coverage | Elev range | Stitch quality |
+|-------|----------|----------|------------|----------------|
+| Olympic v2 | 5/9 | partial (central alpine missing) | 213-1970m | 16M sentinel-fill artifacts |
+| Big Bend v2 | 9/9 | complete | 572-2215m | 185k clean stitch |
+
+Big Bend is the fully successful mega-stack. Olympic is partial-but-
+usable (eastern strip + western edge). For a clean Olympic alternative,
+either:
+- Re-do Olympic at USGS10m (10m vs 1m, but full coverage)
+- Pick a different US LiDAR-covered area for the alpine biome (the
+  Wasatch range, Sierra-Yosemite extension, or White Mountains may
+  have better coverage)
 
 ## Caveats / known issues
 
