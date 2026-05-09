@@ -149,6 +149,11 @@ direction; treat the rest as where we've been.
   non-overlap Gloss Mountain source crops are integrated into runtime
   height/macro bundles with metrics and topdown/iso/3D smoke captures. Evidence:
   `world3/docs/M10_TERRAIN_SEAM_INTEGRATION_PROOF_2026_05_09.md`.
+- M10 different-source work has started: a compatibility scanner now selects
+  candidate real-to-real crop pairs, and a Gloss-Guadalupe proof candidate is
+  generated with review captures. Geometry integration passes the first numeric
+  gate, but source-style continuity still needs live visual acceptance before
+  M10 closure.
 - Visual target is now explicit: reach roughly 70 percent of the best stacked
   photo/topo OpenTopo reference quality before visual milestone closure.
   Evidence: `world3/docs/M1_M7_VISION_GAP_REVIEW_2026_05_08.md`.
@@ -164,8 +169,9 @@ explicit in [`M7_M12_NEAR_ROADMAP.md`](M7_M12_NEAR_ROADMAP.md):
    quarantined until promoted.
 3. M9 runtime performance and interaction polish.
 4. M10 terrain seam integration and cross-source blending. Overlap and nearby
-   non-overlap same-source proofs are implemented; next rung is different
-   real-source terrain.
+   non-overlap same-source proofs are implemented; different-source
+   Gloss-Guadalupe candidate exists; next gate is live visual review and
+   source-style refinement.
 5. M11 corner and junction transitions.
 6. M12 walk/iso/topdown view-mode parity.
 

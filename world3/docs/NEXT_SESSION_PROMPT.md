@@ -114,6 +114,13 @@ overlap and nearby non-overlap Gloss Mountain seam artifacts.
 `source_stack_seam_nonoverlap_tour.tscn` reviews the nearby non-overlap proof.
 These validate the runtime/integration-band path, not full M10 closure.
 
+M10 different-source rung has started. `scan_terrain_seam_compatibility.py`
+scores real-to-real crop pairs, and `source_stack_cross_source_tour.tscn`
+currently reviews a Gloss-Guadalupe proof candidate. Geometry integration is
+credible; macro/source-style continuity still needs live visual acceptance.
+Do not mark M10 closed until a different-source proof passes topdown, iso, and
+close 3D review without a jarring source-style break.
+
 M10 review launch/capture note: use explicit `--scene` wrapper launches, not the
 older waited `--script _codex_render_runner.gd` path. The current seam review
 scenes use a matte validation preset with dark neutral background, zero

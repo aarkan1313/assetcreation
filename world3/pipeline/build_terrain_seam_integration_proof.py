@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the first terrain seam-integration proof artifact.
+"""Build terrain seam-integration proof artifacts.
 
 This is intentionally not a tile-wrap tool. It takes two adjacent/overlapping
 source bundles, builds a world-space integration band, and writes a single
@@ -82,10 +82,35 @@ def crop_array(arr: np.ndarray, crop: tuple[int, int, int, int]) -> np.ndarray:
     return arr[y : y + h, x : x + w].copy()
 
 
+def resize_array(arr: np.ndarray, out_size: tuple[int, int] | None, resampling: int) -> np.ndarray:
+    if out_size is None:
+        return arr
+    out_w, out_h = out_size
+    if arr.shape[1] == out_w and arr.shape[0] == out_h:
+        return arr
+    mode = "RGB" if arr.ndim == 3 else "F"
+    if arr.ndim == 3:
+        img = Image.fromarray(np.clip(arr * 255.0, 0, 255).astype(np.uint8), mode=mode)
+        return np.asarray(img.resize((out_w, out_h), resampling), dtype=np.float32) / 255.0
+    img = Image.fromarray(arr.astype(np.float32), mode=mode)
+    return np.asarray(img.resize((out_w, out_h), resampling), dtype=np.float32)
+
+
+def parse_size(value: str) -> tuple[int, int]:
+    parts = [int(part.strip()) for part in value.split(",")]
+    if len(parts) != 2:
+        raise ValueError("size must be width,height")
+    w, h = parts
+    if w <= 0 or h <= 0:
+        raise ValueError("size width/height must be positive")
+    return w, h
+
+
 def crop_height_from_macro_space(
     height_m: np.ndarray,
     macro_size: tuple[int, int],
     crop: tuple[int, int, int, int],
+    out_size: tuple[int, int] | None = None,
 ) -> np.ndarray:
     macro_w, macro_h = macro_size
     x, y, w, h = crop
@@ -99,8 +124,9 @@ def crop_height_from_macro_space(
     hx1 = max(hx0 + 1, min(hx1, height_w))
     hy1 = max(hy0 + 1, min(hy1, height_h))
     crop_m = height_m[hy0:hy1, hx0:hx1]
+    target_size = out_size if out_size is not None else (w, h)
     img = Image.fromarray(crop_m.astype(np.float32), mode="F")
-    img = img.resize((w, h), Image.Resampling.BILINEAR)
+    img = img.resize(target_size, Image.Resampling.BILINEAR)
     return np.asarray(img, dtype=np.float32)
 
 
@@ -197,7 +223,7 @@ def integrate_rgb(
     diff = a - b_raw
     global_bias = np.median(diff.reshape(-1, 3), axis=0).astype(np.float32)
 
-    right_matched = np.clip(right + global_bias[None, None, :], 0.0, 1.0)
+    right_matched = np.array(right, copy=True)
     feather_px = max(0, min(right_feather_px, right.shape[1]))
     if feather_px > 0:
         t = smoothstep(np.linspace(0.0, 1.0, feather_px, dtype=np.float32))[None, :, None]
@@ -207,6 +233,8 @@ def integrate_rgb(
             0.0,
             1.0,
         )
+    else:
+        right_matched = np.clip(right + global_bias[None, None, :], 0.0, 1.0)
 
     b = right_matched[:, :overlap_px, :]
     t = smoothstep((np.arange(overlap_px, dtype=np.float32) + 0.5) / float(overlap_px))[None, :, None]
@@ -252,24 +280,59 @@ def integrate_mask(left: np.ndarray, right: np.ndarray, overlap_px: int) -> tupl
     }
 
 
+def _arg_path(primary: Path | None, fallback: Path) -> Path:
+    return primary if primary is not None else fallback
+
+
+def _source_bundle(args: argparse.Namespace, side: str) -> dict[str, Any]:
+    macro_path = _arg_path(getattr(args, f"{side}_macro"), args.macro)
+    mask_path = _arg_path(getattr(args, f"{side}_valid_mask"), args.valid_mask)
+    height_path = _arg_path(getattr(args, f"{side}_heightmap"), args.heightmap)
+    meta_path = _arg_path(getattr(args, f"{side}_meta"), args.meta)
+    meta = json.loads(meta_path.read_text(encoding="utf-8"))
+    macro = load_rgb(macro_path)
+    mask = load_mask(mask_path)
+    height_m = load_height_m(height_path, meta)
+    return {
+        "macro_path": macro_path,
+        "mask_path": mask_path,
+        "height_path": height_path,
+        "meta_path": meta_path,
+        "meta": meta,
+        "macro": macro,
+        "mask": mask,
+        "height_m": height_m,
+    }
+
+
+def _crop_world_size(meta: dict[str, Any], macro_size: tuple[int, int], crop: tuple[int, int, int, int]) -> tuple[float, float]:
+    macro_w, macro_h = macro_size
+    world_x = float(meta.get("world_size_x_m", meta.get("world_size_m", 1.0)))
+    world_z = float(meta.get("world_size_z_m", meta.get("world_size_m", 1.0)))
+    return world_x * (crop[2] / float(macro_w)), world_z * (crop[3] / float(macro_h))
+
+
 def write_outputs(args: argparse.Namespace) -> dict[str, Any]:
-    meta = json.loads(args.meta.read_text(encoding="utf-8"))
-    macro = load_rgb(args.macro)
-    mask = load_mask(args.valid_mask)
-    height_m = load_height_m(args.heightmap, meta)
-    macro_h, macro_w = macro.shape[:2]
+    left_source = _source_bundle(args, "left")
+    right_source = _source_bundle(args, "right")
+    left_macro = left_source["macro"]
+    right_macro = right_source["macro"]
+    left_macro_h, left_macro_w = left_macro.shape[:2]
+    right_macro_h, right_macro_w = right_macro.shape[:2]
 
     left_crop = parse_crop(args.left_crop)
     right_crop = parse_crop(args.right_crop)
-    if left_crop[2:] != right_crop[2:]:
+    output_size = parse_size(args.output_size) if args.output_size else None
+    if output_size is None and left_crop[2:] != right_crop[2:]:
         raise ValueError("left and right crops must have matching width/height")
+    target_crop_w, target_crop_h = output_size if output_size is not None else left_crop[2:]
 
-    left_rgb = crop_array(macro, left_crop)
-    right_rgb = crop_array(macro, right_crop)
-    left_mask = crop_array(mask, left_crop)
-    right_mask = crop_array(mask, right_crop)
-    left_h = crop_height_from_macro_space(height_m, (macro_w, macro_h), left_crop)
-    right_h = crop_height_from_macro_space(height_m, (macro_w, macro_h), right_crop)
+    left_rgb = resize_array(crop_array(left_macro, left_crop), output_size, Image.Resampling.BILINEAR)
+    right_rgb = resize_array(crop_array(right_macro, right_crop), output_size, Image.Resampling.BILINEAR)
+    left_mask = resize_array(crop_array(left_source["mask"], left_crop), output_size, Image.Resampling.BILINEAR)
+    right_mask = resize_array(crop_array(right_source["mask"], right_crop), output_size, Image.Resampling.BILINEAR)
+    left_h = crop_height_from_macro_space(left_source["height_m"], (left_macro_w, left_macro_h), left_crop, output_size)
+    right_h = crop_height_from_macro_space(right_source["height_m"], (right_macro_w, right_macro_h), right_crop, output_size)
 
     height_out, height_metrics = integrate_scalar(
         left_h,
@@ -317,39 +380,42 @@ def write_outputs(args: argparse.Namespace) -> dict[str, Any]:
     Image.fromarray(np.clip(mask_out * 255.0, 0, 255).astype(np.uint8), mode="L").save(mask_path)
 
     seam_mask = np.zeros((out_h, out_w), dtype=np.float32)
-    left_width = left_crop[2] - args.overlap_px
+    left_width = target_crop_w - args.overlap_px
     seam_mask[:, left_width : left_width + args.overlap_px] = 1.0
     Image.fromarray(np.clip(seam_mask * 255.0, 0, 255).astype(np.uint8), mode="L").save(seam_mask_path)
     Image.fromarray(np.clip(height_norm * 65535.0, 0, 65535).astype(np.uint16), mode="I;16").save(height_path)
 
-    source_world_x = float(meta.get("world_size_x_m", meta.get("world_size_m", 1.0)))
-    source_world_z = float(meta.get("world_size_z_m", meta.get("world_size_m", 1.0)))
-    out_meta = dict(meta)
+    left_crop_world_x, left_crop_world_z = _crop_world_size(left_source["meta"], (left_macro_w, left_macro_h), left_crop)
+    right_crop_world_x, right_crop_world_z = _crop_world_size(right_source["meta"], (right_macro_w, right_macro_h), right_crop)
+    avg_mpp_x = ((left_crop_world_x / float(target_crop_w)) + (right_crop_world_x / float(target_crop_w))) * 0.5
+    avg_mpp_z = ((left_crop_world_z / float(target_crop_h)) + (right_crop_world_z / float(target_crop_h))) * 0.5
+    out_meta = dict(left_source["meta"])
     out_meta.update(
         {
-            "name": "Gloss Mountain terrain seam integration proof",
+            "name": args.artifact_name,
+            "builder": "build_terrain_seam_integration_proof.py",
             "heightmap_size_px": [int(out_w), int(out_h)],
-            "world_size_x_m": source_world_x * (out_w / float(macro_w)),
-            "world_size_z_m": source_world_z * (out_h / float(macro_h)),
-            "world_size_m": max(
-                source_world_x * (out_w / float(macro_w)),
-                source_world_z * (out_h / float(macro_h)),
-            ),
+            "world_size_x_m": avg_mpp_x * float(out_w),
+            "world_size_z_m": avg_mpp_z * float(out_h),
+            "world_size_m": max(avg_mpp_x * float(out_w), avg_mpp_z * float(out_h)),
             "elevation_min_m": output_elev_min,
             "elevation_max_m": output_elev_max,
             "elevation_range_m": output_elev_range,
             "terrain_seam_integration": {
                 "version": 1,
-                "kind": "overlap_integration_band_proof",
-                "source_macro": res_path(args.macro),
-                "source_heightmap": res_path(args.heightmap),
+                "kind": args.integration_kind,
+                "left_source_macro": res_path(left_source["macro_path"]),
+                "left_source_heightmap": res_path(left_source["height_path"]),
+                "right_source_macro": res_path(right_source["macro_path"]),
+                "right_source_heightmap": res_path(right_source["height_path"]),
                 "left_crop_macro_px": list(left_crop),
                 "right_crop_macro_px": list(right_crop),
+                "target_crop_size_px": [int(target_crop_w), int(target_crop_h)],
                 "overlap_px": args.overlap_px,
-                "integration_band_world_m": (
-                    source_world_x * (args.overlap_px / float(macro_w))
-                ),
-                "policy": "adjacent_overlap_sources_solved_into_single_runtime_bundle",
+                "integration_band_world_m": avg_mpp_x * float(args.overlap_px),
+                "left_crop_world_m": [left_crop_world_x, left_crop_world_z],
+                "right_crop_world_m": [right_crop_world_x, right_crop_world_z],
+                "policy": args.policy,
             },
         }
     )
@@ -365,14 +431,20 @@ def write_outputs(args: argparse.Namespace) -> dict[str, Any]:
         "runtime_heightmap": res_path(height_path),
         "runtime_meta": res_path(meta_path),
         "left_source": {
-            "macro": res_path(args.macro),
-            "heightmap": res_path(args.heightmap),
+            "macro": res_path(left_source["macro_path"]),
+            "valid_mask": res_path(left_source["mask_path"]),
+            "heightmap": res_path(left_source["height_path"]),
+            "meta": res_path(left_source["meta_path"]),
             "crop_macro_px": list(left_crop),
+            "crop_world_m": [left_crop_world_x, left_crop_world_z],
         },
         "right_source": {
-            "macro": res_path(args.macro),
-            "heightmap": res_path(args.heightmap),
+            "macro": res_path(right_source["macro_path"]),
+            "valid_mask": res_path(right_source["mask_path"]),
+            "heightmap": res_path(right_source["height_path"]),
+            "meta": res_path(right_source["meta_path"]),
             "crop_macro_px": list(right_crop),
+            "crop_world_m": [right_crop_world_x, right_crop_world_z],
         },
         "integration": {
             "overlap_px": args.overlap_px,
@@ -384,14 +456,15 @@ def write_outputs(args: argparse.Namespace) -> dict[str, Any]:
             "macro_bridge_detail_strength": args.macro_bridge_detail_strength,
             "left_output_width_px": left_width,
             "integration_band_output_px": args.overlap_px,
-            "right_output_width_px": right_crop[2] - args.overlap_px,
+            "right_output_width_px": target_crop_w - args.overlap_px,
+            "target_crop_size_px": [int(target_crop_w), int(target_crop_h)],
         },
         "metrics": {
             "height_m": height_metrics,
             "macro_rgb01": rgb_metrics,
             "valid_mask": mask_metrics,
         },
-        "policy": "production_path_proof_not_tile_wrap",
+        "policy": args.policy,
     }
     manifest_path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
     args.metrics_out.write_text(json.dumps(manifest["metrics"], indent=2) + "\n", encoding="utf-8")
@@ -404,11 +477,20 @@ def main() -> int:
     parser.add_argument("--valid-mask", type=Path, default=DEFAULT_MASK)
     parser.add_argument("--heightmap", type=Path, default=DEFAULT_HEIGHT)
     parser.add_argument("--meta", type=Path, default=DEFAULT_META)
+    parser.add_argument("--left-macro", type=Path)
+    parser.add_argument("--left-valid-mask", type=Path)
+    parser.add_argument("--left-heightmap", type=Path)
+    parser.add_argument("--left-meta", type=Path)
+    parser.add_argument("--right-macro", type=Path)
+    parser.add_argument("--right-valid-mask", type=Path)
+    parser.add_argument("--right-heightmap", type=Path)
+    parser.add_argument("--right-meta", type=Path)
     parser.add_argument("--texture-out", type=Path, default=DEFAULT_TEXTURE_OUT)
     parser.add_argument("--topo-out", type=Path, default=DEFAULT_TOPO_OUT)
     parser.add_argument("--metrics-out", type=Path, default=DEFAULT_METRICS)
     parser.add_argument("--left-crop", default="240,520,416,1024")
     parser.add_argument("--right-crop", default="592,520,416,1024")
+    parser.add_argument("--output-size", default="")
     parser.add_argument("--overlap-px", type=int, default=64)
     parser.add_argument("--height-feather-px", type=int, default=128)
     parser.add_argument("--color-feather-px", type=int, default=96)
@@ -417,6 +499,12 @@ def main() -> int:
     parser.add_argument("--macro-bridge-blur-px", type=float, default=28.0)
     parser.add_argument("--macro-bridge-detail-strength", type=float, default=0.0)
     parser.add_argument("--fill-valid-mask-above", type=float, default=0.995)
+    parser.add_argument("--artifact-name", default="Gloss Mountain terrain seam integration proof")
+    parser.add_argument("--integration-kind", default="overlap_integration_band_proof")
+    parser.add_argument(
+        "--policy",
+        default="adjacent_overlap_sources_solved_into_single_runtime_bundle",
+    )
     args = parser.parse_args()
 
     manifest = write_outputs(args)

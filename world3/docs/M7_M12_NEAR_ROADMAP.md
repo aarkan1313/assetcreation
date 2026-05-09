@@ -216,6 +216,14 @@ uses nearby non-overlap crops with compatibility gating. Both emit runtime
 height/macro bundles, manifests, metrics, and auto-tour review scenes. Evidence:
 `M10_TERRAIN_SEAM_INTEGRATION_PROOF_2026_05_09.md`.
 
+2026-05-09 cross-source update: Rung 3 now has a different-source scanner and
+a Gloss-Guadalupe real-to-real proof candidate. The geometry solve handles a
+large vertical datum mismatch without creating a height wall, and the RGB solve
+now correctly feathers source color bias instead of tinting the whole right
+source. The remaining closure risk is macro/source-style continuity after live
+review. M10 stays open until that different-source proof passes visually, not
+just numerically.
+
 Deliverables:
 
 - A seam/integration-band artifact with solved height, normal/material weights,
@@ -234,8 +242,9 @@ Exit:
   invalid fallback plateau, or jarring source-style break.
 
 Current exit state: overlap and nearby non-overlap same-source proofs pass as
-workflow/geometry evidence. M10 is not closed until a different-source real
-terrain pair passes the same gates.
+workflow/geometry evidence. A different-source Gloss-Guadalupe candidate now
+exists and should be live-reviewed next. M10 is not closed until that candidate
+or a better real-to-real pair passes the same visual gates.
 
 ## M11 - Corner And Junction Transitions
 

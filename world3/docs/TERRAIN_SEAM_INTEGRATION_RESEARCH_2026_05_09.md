@@ -138,7 +138,20 @@ This first rung uses overlapping same-source Gloss Mountain crops. It validates
 the integration-band artifact and runtime path, not unlike-source synthesis.
 The second rung now uses nearby non-overlap Gloss Mountain crops. It validates
 crop compatibility gating, valid-mask repair, and the same runtime review path
-without shared source pixels. The next rung is different-source real terrain.
+without shared source pixels.
+
+The third rung now has a first different-source implementation:
+
+- scanner: `world3/pipeline/scan_terrain_seam_compatibility.py`;
+- review scene: `world3/scenes/review/source_stack_cross_source_tour.tscn`;
+- current candidate: Gloss Mountain source stack into Guadalupe Cypress
+  `phase2_fusion_max`.
+
+The method lesson is that scanner metrics are necessary but insufficient. Top
+numeric candidates can contain landmarks, source-edge fill, or capture artifacts
+that would be unacceptable in a production terrain workflow. Different-source
+terrain promotion therefore requires both numeric compatibility and visual
+veto before a proof can close M10.
 
 ## Sources
 
