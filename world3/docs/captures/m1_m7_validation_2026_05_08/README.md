@@ -4,13 +4,17 @@ Date: 2026-05-08
 
 This is a sequential validation pass over the established M1-M7 workflow
 using the current source-stack valid-mask and M7 source-stack control state.
+It deliberately separates credible visual baseline candidates from
+engineering diagnostics that prove workflow plumbing.
 
 ## Summary
 
 - M1 catalog status: `PASS`
 - Catalog material count: `31`
 - Biome kit count: `5`
-- Contact sheet: `m1_m7_validation_contact_sheet.png`
+- Visual validation sheet: `m1_m7_validation_contact_sheet.png`
+- Engineering diagnostics sheet: `m1_m7_engineering_diagnostics_contact_sheet.png`
+- Refinement map: `../../M1_M7_REFINEMENT_MAP_2026_05_08.md`
 
 ## Milestone Verdicts
 
@@ -41,10 +45,19 @@ using the current source-stack valid-mask and M7 source-stack control state.
 - **M7**: `present` - world3/docs/captures/m1_m7_validation_2026_05_08/m7_boundary_runtime_source_stack_control.png
   Automatic boundary path over valid-mask source-stack terrain; diagnostic control.
 
+## Main Visual Sheet
+
+- `present` - world3/docs/captures/m1_m7_validation_2026_05_08/source_stack_grassland_current_close.png
+  Current best terrain direction: source macro terrain plus low-strength detail.
+- `present` - world3/docs/captures/m1_m7_validation_2026_05_08/source_stack_grassland_comfy_v3_detail_stress_close.png
+  Comfy sidecar is calmer than current grassland detail, but not promoted.
+
 ## Read
 
 This suite validates that the M1-M7 workflow can be rerun in order.
-It is not a blanket visual promotion. The strongest current visual direction
-is the source-stack path, while the M4-M6 runtime captures still read as
-prototype/debug terrain. M7 remains workflow-pass / visual-rework until
-source-material cleanup, source-stack framing, and M5/M7 rerenders close.
+It is not a blanket visual promotion. The main sheet is now visual-focused
+and intentionally excludes finite-chunk/topdown/debug terrain captures that
+still read as bad prototype evidence. Those remain in the engineering
+diagnostics sheet because they prove plumbing, not art quality. M7 remains
+workflow-pass / visual-rework until source-material cleanup, source-stack
+framing, and M5/M7 rerenders close.

@@ -157,7 +157,13 @@ def placeholder(label: str, box: tuple[int, int]) -> Image.Image:
     return img
 
 
-def make_contact_sheet(out_path: Path, items: list[dict]) -> None:
+def make_contact_sheet(
+    out_path: Path,
+    items: list[dict],
+    *,
+    title: str,
+    subtitle: str,
+) -> None:
     cols = 2
     cell_w = 760
     image_h = 430
@@ -170,13 +176,8 @@ def make_contact_sheet(out_path: Path, items: list[dict]) -> None:
     h = margin * 2 + title_h + rows * (image_h + caption_h) + (rows - 1) * gutter
     sheet = Image.new("RGB", (w, h), (12, 15, 14))
     draw = ImageDraw.Draw(sheet)
-    draw.text((margin, margin - 2), "M1-M7 Workflow Validation", font=load_font(32, True), fill=(238, 241, 235))
-    draw.text(
-        (margin, margin + 42),
-        "Fresh validation captures using current source-stack and runtime contracts",
-        font=load_font(17),
-        fill=(176, 185, 174),
-    )
+    draw.text((margin, margin - 2), title, font=load_font(32, True), fill=(238, 241, 235))
+    draw.text((margin, margin + 42), subtitle, font=load_font(17), fill=(176, 185, 174))
 
     for idx, item in enumerate(items):
         row = idx // cols
@@ -213,7 +214,7 @@ def copy_if_exists(src: Path, dst: Path) -> None:
         shutil.copy2(src, dst)
 
 
-def write_report(out_dir: Path, m1: dict, items: list[dict]) -> None:
+def write_report(out_dir: Path, m1: dict, items: list[dict], visual_items: list[dict]) -> None:
     verdicts = [
         ("M1", "PASS", "Catalog and biome-kit material references resolve."),
         ("M2", "PASS / REVIEW", "Transition workflow is demonstrable, but the view is still a debug comparison board."),
@@ -241,6 +242,15 @@ def write_report(out_dir: Path, m1: dict, items: list[dict]) -> None:
             }
             for item in items
         ],
+        "visual_items": [
+            {
+                "label": item["label"],
+                "path": rel(Path(item["path"])),
+                "note": item["note"],
+                "exists": Path(item["path"]).exists(),
+            }
+            for item in visual_items
+        ],
     }
     write_text_lf(out_dir / "manifest.json", json.dumps(manifest, indent=2) + "\n")
 
@@ -251,13 +261,17 @@ def write_report(out_dir: Path, m1: dict, items: list[dict]) -> None:
         "",
         "This is a sequential validation pass over the established M1-M7 workflow",
         "using the current source-stack valid-mask and M7 source-stack control state.",
+        "It deliberately separates credible visual baseline candidates from",
+        "engineering diagnostics that prove workflow plumbing.",
         "",
         "## Summary",
         "",
         f"- M1 catalog status: `{m1['status']}`",
         f"- Catalog material count: `{m1['catalog_material_count']}`",
         f"- Biome kit count: `{m1['kit_count']}`",
-        "- Contact sheet: `m1_m7_validation_contact_sheet.png`",
+        "- Visual validation sheet: `m1_m7_validation_contact_sheet.png`",
+        "- Engineering diagnostics sheet: `m1_m7_engineering_diagnostics_contact_sheet.png`",
+        "- Refinement map: `../../M1_M7_REFINEMENT_MAP_2026_05_08.md`",
         "",
         "## Milestone Verdicts",
         "",
@@ -275,13 +289,26 @@ def write_report(out_dir: Path, m1: dict, items: list[dict]) -> None:
     lines.extend(
         [
             "",
+            "## Main Visual Sheet",
+            "",
+        ]
+    )
+    for item in visual_items:
+        status = "present" if Path(item["path"]).exists() else "missing"
+        lines.append(f"- `{status}` - {rel(Path(item['path']))}")
+        lines.append(f"  {item['note']}")
+    lines.extend(
+        [
+            "",
             "## Read",
             "",
             "This suite validates that the M1-M7 workflow can be rerun in order.",
-            "It is not a blanket visual promotion. The strongest current visual direction",
-            "is the source-stack path, while the M4-M6 runtime captures still read as",
-            "prototype/debug terrain. M7 remains workflow-pass / visual-rework until",
-            "source-material cleanup, source-stack framing, and M5/M7 rerenders close.",
+            "It is not a blanket visual promotion. The main sheet is now visual-focused",
+            "and intentionally excludes finite-chunk/topdown/debug terrain captures that",
+            "still read as bad prototype evidence. Those remain in the engineering",
+            "diagnostics sheet because they prove plumbing, not art quality. M7 remains",
+            "workflow-pass / visual-rework until source-material cleanup, source-stack",
+            "framing, and M5/M7 rerenders close.",
         ]
     )
     write_text_lf(out_dir / "README.md", "\n".join(lines) + "\n")
@@ -309,6 +336,14 @@ def main() -> int:
     copy_if_exists(
         ROOT / "docs/captures/phase_f/chunk_sweep/chunk_sweep_metrics.json",
         out_dir / "m3_chunk_sweep_metrics.json",
+    )
+    copy_if_exists(
+        ROOT / "docs/captures/visual_remediation/source_stack_runtime_grassland_current_close.png",
+        out_dir / "source_stack_grassland_current_close.png",
+    )
+    copy_if_exists(
+        ROOT / "docs/captures/visual_remediation/source_stack_runtime_grassland_comfy_v3_detail_stress_close.png",
+        out_dir / "source_stack_grassland_comfy_v3_detail_stress_close.png",
     )
 
     items = [
@@ -355,9 +390,33 @@ def main() -> int:
             "note": "Automatic boundary path over valid-mask source-stack terrain; diagnostic control.",
         },
     ]
-    make_contact_sheet(out_dir / "m1_m7_validation_contact_sheet.png", items)
-    write_report(out_dir, m1, items)
+    visual_items = [
+        {
+            "label": "Source Stack Close",
+            "path": str(out_dir / "source_stack_grassland_current_close.png"),
+            "note": "Current best terrain direction: source macro terrain plus low-strength detail.",
+        },
+        {
+            "label": "Comfy V3 Stress",
+            "path": str(out_dir / "source_stack_grassland_comfy_v3_detail_stress_close.png"),
+            "note": "Comfy sidecar is calmer than current grassland detail, but not promoted.",
+        },
+    ]
+    make_contact_sheet(
+        out_dir / "m1_m7_validation_contact_sheet.png",
+        visual_items,
+        title="M1-M7 Visual Baseline Candidates",
+        subtitle="Only credible close-view source-stack candidates; all finite-chunk diagnostics excluded",
+    )
+    make_contact_sheet(
+        out_dir / "m1_m7_engineering_diagnostics_contact_sheet.png",
+        items,
+        title="M1-M7 Engineering Diagnostics",
+        subtitle="Workflow proof captures, including known-bad prototype terrain panels",
+    )
+    write_report(out_dir, m1, items, visual_items)
     print(f"wrote {rel(out_dir / 'm1_m7_validation_contact_sheet.png')}")
+    print(f"wrote {rel(out_dir / 'm1_m7_engineering_diagnostics_contact_sheet.png')}")
     print(f"wrote {rel(out_dir / 'README.md')}")
     return 0
 

@@ -10,8 +10,10 @@ the current contracts and writes one review folder:
 
 - `docs/captures/m1_m7_validation_2026_05_08/`
 - `docs/captures/m1_m7_validation_2026_05_08/m1_m7_validation_contact_sheet.png`
+- `docs/captures/m1_m7_validation_2026_05_08/m1_m7_engineering_diagnostics_contact_sheet.png`
 - `docs/captures/m1_m7_validation_2026_05_08/README.md`
 - `docs/captures/m1_m7_validation_2026_05_08/manifest.json`
+- `M1_M7_REFINEMENT_MAP_2026_05_08.md`
 
 ## Sequence Run
 
@@ -40,7 +42,14 @@ the current contracts and writes one review folder:
 This suite validates that the M1-M7 workflow can be rerun in order. It does not
 promote M4-M7 to final visual quality.
 
-The strongest visual direction is the source-stack path. The M4-M6 runtime
-captures still show the old procedural/debug splat context, so the roadmap
-should continue with source-material cleanup, source-stack framing, and M5/M7
-rerenders before visual closure.
+The user rejected the diagnostic M3/M4-style finite chunk views as visual
+evidence. That read is correct: they are engineering diagnostics, not quality
+targets. The main visual contact sheet now only carries close-view source-stack
+baseline candidates. The bad prototype/debug terrain captures remain in the
+engineering diagnostics sheet so we can prove workflow plumbing without
+confusing it with art approval.
+
+The strongest visual direction is still the source-stack path, but M4/M5/M7
+need rerenders after source-material cleanup and source-stack framing before
+visual closure. Use `M1_M7_REFINEMENT_MAP_2026_05_08.md` to refine each
+milestone instead of blindly advancing the roadmap.

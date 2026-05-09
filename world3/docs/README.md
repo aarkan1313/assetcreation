@@ -18,6 +18,7 @@ find something.
 | "How should we review M1-M7 visually before M8?"             | [M1_M7_VISUAL_AUDIT_PLAN_2026_05_08.md](M1_M7_VISUAL_AUDIT_PLAN_2026_05_08.md) |
 | "What did the M1-M7 visual audit find?"                      | [M1_M7_VISUAL_AUDIT_2026_05_08.md](M1_M7_VISUAL_AUDIT_2026_05_08.md) |
 | "What happened when we reran the full M1-M7 workflow sequence?" | [M1_M7_WORKFLOW_VALIDATION_RUN_2026_05_08.md](M1_M7_WORKFLOW_VALIDATION_RUN_2026_05_08.md) |
+| "What did each M1-M7 milestone do, and how should we refine it?" | [M1_M7_REFINEMENT_MAP_2026_05_08.md](M1_M7_REFINEMENT_MAP_2026_05_08.md) |
 | "What visual gaps did Codex see in the actual M1-M7 captures?" | [M1_M7_VISION_GAP_REVIEW_2026_05_08.md](M1_M7_VISION_GAP_REVIEW_2026_05_08.md) |
 | "How do we repair the failed M1-M7 visual gate?"             | [M1_M7_VISUAL_REMEDIATION_PLAN_2026_05_08.md](M1_M7_VISUAL_REMEDIATION_PLAN_2026_05_08.md) |
 | "What did the first source-stack runtime remediation ship?"  | [SOURCE_STACK_RUNTIME_REMEDIATION_2026_05_08.md](SOURCE_STACK_RUNTIME_REMEDIATION_2026_05_08.md) |

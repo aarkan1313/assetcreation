@@ -40,6 +40,8 @@ Read first:
 21. `world3/docs/M8_COMFYUI_CANDIDATE_NOISE_AUDIT.md`
 22. `world3/docs/M8_GRASS_REGEN_ATTEMPTS_REVIEW_2026_05_08.md`
 23. `world3/docs/M8_GRASS_VISUAL_VETO_AUDIT.md`
+24. `world3/docs/M1_M7_WORKFLOW_VALIDATION_RUN_2026_05_08.md`
+25. `world3/docs/M1_M7_REFINEMENT_MAP_2026_05_08.md`
 
 ## Current status
 
@@ -101,7 +103,10 @@ Fresh M1-M7 validation suite:
 `world3/docs/captures/m1_m7_validation_2026_05_08/` and
 `world3/docs/M1_M7_WORKFLOW_VALIDATION_RUN_2026_05_08.md`. Result: M1-M3 pass
 as workflow evidence; M4-M6 are pipeline-pass/visual-rework; M7 remains
-workflow-pass/visual-rework.
+workflow-pass/visual-rework. The main visual sheet was tightened after user
+review: bad finite-chunk/debug M3-M6/M7 proof captures are engineering
+diagnostics only, not visual validation. Use
+`world3/docs/M1_M7_REFINEMENT_MAP_2026_05_08.md` to refine each milestone.
 
 Second ComfyUI M8 target: `grass` produced strict grade-A outputs, but visual
 review rejected them. `m8_grass_calm_v1` is the best failed direction; v2/v3

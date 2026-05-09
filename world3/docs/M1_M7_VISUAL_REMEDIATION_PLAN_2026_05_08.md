@@ -134,3 +134,9 @@ Ran a fresh sequential M1-M7 workflow validation suite at
 `docs/captures/m1_m7_validation_2026_05_08/`. Result: M1-M3 pass as workflow
 evidence; M4-M6 remain pipeline-pass/visual-rework; M7 remains workflow-pass/
 visual-rework. See `M1_M7_WORKFLOW_VALIDATION_RUN_2026_05_08.md`.
+
+After user visual review, split the validation package more strictly: the main
+visual sheet now only shows close-view source-stack baseline candidates, while
+the bad finite-chunk/debug M3-M6/M7 proof captures live in the engineering
+diagnostics sheet. Added `M1_M7_REFINEMENT_MAP_2026_05_08.md` as the per-
+milestone refinement guide.
