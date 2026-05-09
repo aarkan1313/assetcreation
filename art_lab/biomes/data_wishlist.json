@@ -62,7 +62,10 @@
         {"id": "kilauea_active",      "bbox": [-155.30, 19.40, -155.22, 19.45], "tags": ["volcano", "active-lava"], "fantasy_styles": ["realistic"], "tagline": "Kīlauea active volcano with recent flows"},
         {"id": "olympus_mons_analog", "bbox": [-121.85, 46.85, -121.65, 47.00], "tags": ["shield-volcano"], "fantasy_styles": ["realistic", "exaggerated"], "tagline": "Cascades shield volcano broad-flank"},
         {"id": "carlsbad_caves",      "bbox": [-104.46, 32.16, -104.42, 32.20], "tags": ["karst", "cave-country"], "fantasy_styles": ["realistic"], "tagline": "Carlsbad karst — surface above the caves"},
-        {"id": "rocky_mtn_park_ridge","bbox": [-105.70, 40.30, -105.60, 40.40], "tags": ["alpine", "ridge"], "fantasy_styles": ["mythic"], "tagline": "Rocky Mountain alpine ridges + cirques"}
+        {"id": "rocky_mtn_park_ridge","bbox": [-105.70, 40.30, -105.60, 40.40], "tags": ["alpine", "ridge"], "fantasy_styles": ["mythic"], "tagline": "Rocky Mountain alpine ridges + cirques"},
+        {"id": "mt_fuji_aw3d30",    "bbox": [138.60, 35.30, 138.80, 35.45], "dataset": "AW3D30", "tags": ["volcano", "stratovolcano", "symmetric"], "fantasy_styles": ["mythic"], "tagline": "Mt Fuji symmetric stratovolcano (AW3D30)"},
+        {"id": "japanese_alps_aw",  "bbox": [137.50, 36.40, 138.00, 36.90], "dataset": "AW3D30", "tags": ["alpine", "lesser-known"], "fantasy_styles": ["realistic"], "tagline": "Japanese Alps Hida range (AW3D30)"},
+        {"id": "faroe_islands_aw",  "bbox": [-7.20, 61.80, -6.50, 62.50], "dataset": "AW3D30", "tags": ["volcanic-island", "north-atlantic"], "fantasy_styles": ["realistic"], "tagline": "Faroe Islands volcanic North Atlantic (AW3D30)"}
       ]
     },
     "premium": {
@@ -118,7 +121,27 @@
         {"id": "luzon_cordillera",    "bbox": [ 120.7, 17.0,  121.2, 17.4], "tags": ["rice-terrace"], "fantasy_styles": ["terraced"], "tagline": "Banaue — 2000-year-old rice terraces"},
         {"id": "annapurna_dhaulagiri","bbox": [  83.0, 28.5,   84.0, 29.0], "tags": ["high-altitude", "deep-gorge"], "fantasy_styles": ["mythic"], "tagline": "Dhaulagiri + Kali Gandaki — deepest gorge on Earth"},
         {"id": "danakil_depression",  "bbox": [  40.2, 14.2,   40.6, 14.5], "tags": ["below-sea", "alien", "lava-lake"], "fantasy_styles": ["realistic", "exaggerated"], "tagline": "Danakil — hottest place on Earth, sulfur + lava"},
-        {"id": "socotra_island",      "bbox": [  53.5, 12.4,   54.0, 12.7], "tags": ["alien-flora", "limestone-plateau"], "fantasy_styles": ["realistic"], "tagline": "Socotra — Yemen's alien biodiversity island"}
+        {"id": "socotra_island",      "bbox": [  53.5, 12.4,   54.0, 12.7], "tags": ["alien-flora", "limestone-plateau"], "fantasy_styles": ["realistic"], "tagline": "Socotra — Yemen's alien biodiversity island"},
+        {"id": "serengeti_tanzania",   "bbox": [34.50, -3.00, 35.50, -2.00], "tags": ["savanna", "grassland", "plains"], "fantasy_styles": ["realistic"], "tagline": "Serengeti plains - East African savanna grassland"},
+        {"id": "great_plains_us",      "bbox": [-101.00, 40.00, -99.50, 41.50], "tags": ["temperate-grassland", "plains"], "fantasy_styles": ["realistic"], "tagline": "Great Plains Nebraska/Kansas - temperate grassland"},
+        {"id": "pantanal_brazil",      "bbox": [-57.00, -18.00, -55.50, -16.50], "tags": ["wetland", "floodplain"], "fantasy_styles": ["realistic"], "tagline": "Pantanal wetlands - largest tropical floodplain"},
+        {"id": "okavango_botswana",    "bbox": [22.50, -19.50, 24.00, -18.00], "tags": ["delta", "wetland"], "fantasy_styles": ["realistic"], "tagline": "Okavango Delta - inland endorheic delta"},
+        {"id": "namib_dunes",          "bbox": [14.50, -25.00, 15.50, -23.50], "tags": ["dune-field", "desert"], "fantasy_styles": ["mythic", "exaggerated"], "tagline": "Namib Desert dunes - red coastal desert"},
+        {"id": "sahara_erg_chebbi",    "bbox": [-4.50, 31.00, -3.50, 32.00], "tags": ["dune-field", "desert", "erg"], "fantasy_styles": ["mythic"], "tagline": "Sahara Erg Chebbi - towering dune sea"},
+        {"id": "alaska_boreal",        "bbox": [-149.00, 64.00, -147.00, 65.00], "tags": ["taiga", "boreal-forest"], "fantasy_styles": ["realistic"], "tagline": "Alaska boreal interior - subarctic taiga"},
+        {"id": "yukon_boreal",         "bbox": [-138.00, 62.00, -136.00, 63.00], "tags": ["taiga", "boreal-forest"], "fantasy_styles": ["realistic"], "tagline": "Yukon boreal - Canadian taiga"},
+        {"id": "madagascar_central",   "bbox": [46.50, -19.00, 47.50, -18.00], "tags": ["tropical-highlands", "deforested"], "fantasy_styles": ["realistic", "exaggerated"], "tagline": "Madagascar central highlands"},
+        {"id": "ethiopian_highlands",  "bbox": [38.50, 9.00, 39.50, 10.00], "tags": ["high-altitude", "grassland", "afromontane"], "fantasy_styles": ["realistic", "mythic"], "tagline": "Ethiopian highlands - Roof of Africa"},
+        {"id": "california_chaparral", "bbox": [-121.00, 35.50, -120.00, 36.50], "tags": ["mediterranean", "shrubland"], "fantasy_styles": ["realistic"], "tagline": "California chaparral - Mediterranean shrub"},
+        {"id": "borneo_rainforest",    "bbox": [114.00, 1.00, 115.00, 2.00], "tags": ["tropical-rainforest"], "fantasy_styles": ["realistic", "mythic"], "tagline": "Borneo rainforest - tropical primary forest"},
+        {"id": "patagonian_steppe",    "bbox": [-71.00, -50.00, -70.00, -49.00], "tags": ["cold-steppe", "grassland"], "fantasy_styles": ["realistic"], "tagline": "Patagonian steppe - cold dry grassland"},
+        {"id": "annapurna_nepal",      "bbox": [83.50, 28.40, 84.50, 29.00], "tags": ["high-altitude", "himalayan"], "fantasy_styles": ["mythic", "exaggerated"], "tagline": "Annapurna circuit - Himalayan high-altitude"},
+        {"id": "atacama_plateau_high", "bbox": [-68.50, -23.50, -67.50, -22.50], "tags": ["high-desert", "altiplano"], "fantasy_styles": ["realistic", "mythic"], "tagline": "Atacama plateau - driest high desert"},
+        {"id": "bolivian_altiplano",   "bbox": [-68.00, -20.00, -67.00, -19.00], "tags": ["altiplano", "salt-flat"], "fantasy_styles": ["realistic", "mythic"], "tagline": "Bolivian Altiplano - salt-flat plateau"},
+        {"id": "caucasus_georgia",     "bbox": [43.00, 42.50, 44.00, 43.50], "tags": ["alpine", "lesser-known"], "fantasy_styles": ["mythic"], "tagline": "Caucasus mountains Georgia - off-radar alpine"},
+        {"id": "tien_shan_kg",         "bbox": [78.00, 42.00, 79.00, 43.00], "tags": ["alpine", "central-asia"], "fantasy_styles": ["mythic"], "tagline": "Tien Shan Kyrgyzstan - Asian alpine"},
+        {"id": "aussie_macdonnell",    "bbox": [132.00, -24.00, 134.00, -23.50], "tags": ["arid-mountain", "outback"], "fantasy_styles": ["realistic"], "tagline": "MacDonnell ranges - Australian outback mountains"},
+        {"id": "drakensberg_extended", "bbox": [29.00, -29.50, 30.00, -28.50], "tags": ["escarpment", "afromontane"], "fantasy_styles": ["realistic", "mythic"], "tagline": "Drakensberg escarpment - South African cliff/savanna"}
       ]
     },
     "standard": {
@@ -186,7 +209,13 @@
         {"id": "rapa_nui_easter",     "bbox": [ -109.45,-27.20, -109.20,-27.05], "tags": ["volcanic-island"], "fantasy_styles": ["realistic"], "tagline": "Easter Island — three volcanic peaks"},
         {"id": "ireland_cliffs",      "bbox": [  -9.50, 52.95,   -9.40, 53.05], "tags": ["sea-cliff"], "fantasy_styles": ["sharpened"], "tagline": "Cliffs of Moher — vertical sea cliffs"},
         {"id": "scottish_quiraing",   "bbox": [  -6.27, 57.62,   -6.20, 57.65], "dataset": "AW3D30", "tags": ["landslip"], "fantasy_styles": ["sharpened"], "tagline": "Quiraing — surreal Skye landslip"},
-        {"id": "iceland_fjadrargljufur","bbox": [-18.20, 63.75, -18.15, 63.78], "dataset": "AW3D30", "tags": ["narrow-canyon"], "fantasy_styles": ["realistic"], "tagline": "Fjaðrárgljúfur — sinuous moss canyon"}
+        {"id": "iceland_fjadrargljufur","bbox": [-18.20, 63.75, -18.15, 63.78], "dataset": "AW3D30", "tags": ["narrow-canyon"], "fantasy_styles": ["realistic"], "tagline": "Fjaðrárgljúfur — sinuous moss canyon"},
+        {"id": "bay_of_fundy_land",         "bbox": [-66.00, 45.00, -64.00, 46.00], "tags": ["coastal", "macro-tide"], "fantasy_styles": ["realistic"], "tagline": "Bay of Fundy coast - land DEM"},
+        {"id": "outer_banks_land",          "bbox": [-76.00, 35.00, -75.00, 36.00], "tags": ["barrier-island", "coastal"], "fantasy_styles": ["realistic"], "tagline": "Outer Banks NC barrier island land"},
+        {"id": "indonesia_volcanic_land",   "bbox": [115.00, -8.50, 116.00, -7.50], "tags": ["volcanic-island", "tropical"], "fantasy_styles": ["realistic", "exaggerated"], "tagline": "Indonesia Bali/Lombok volcanic land"},
+        {"id": "california_big_sur",        "bbox": [-122.00, 36.00, -121.50, 36.50], "tags": ["cliff-coast", "redwood"], "fantasy_styles": ["realistic", "mythic"], "tagline": "Big Sur cliff coast - California"},
+        {"id": "lena_delta",                "bbox": [124.00, 72.00, 126.00, 73.50], "tags": ["arctic-delta", "river"], "fantasy_styles": ["realistic"], "tagline": "Lena River delta - Russian arctic"},
+        {"id": "mekong_delta",              "bbox": [105.50, 9.50, 106.50, 10.50], "tags": ["tropical-delta", "river"], "fantasy_styles": ["realistic"], "tagline": "Mekong delta - Vietnamese tropical river"}
       ]
     },
     "bathymetric": {
@@ -207,7 +236,11 @@
         {"id": "bath_iceland_shelf",  "bbox": [ -28.0, 63.0,  -22.0, 67.0], "tags": ["volcanic-shelf"], "fantasy_styles": ["realistic"], "tagline": "Full Iceland with seafloor context"},
         {"id": "bath_nz_chatham",     "bbox": [ 175.0,-45.0,  178.0,-43.0], "tags": ["submerged-plateau"], "fantasy_styles": ["realistic"], "tagline": "Chatham Rise — NZ submerged plateau"},
         {"id": "bath_madagascar",     "bbox": [  43.0,-22.0,   45.0,-20.0], "tags": ["coastal-shelf"], "fantasy_styles": ["realistic"], "tagline": "W Madagascar coral coastline"},
-        {"id": "bath_arctic_chukchi", "bbox": [-170.0, 70.0, -166.0, 72.0], "tags": ["arctic-shelf"], "fantasy_styles": ["realistic"], "tagline": "Chukchi Sea — Arctic continental shelf"}
+        {"id": "bath_arctic_chukchi", "bbox": [-170.0, 70.0, -166.0, 72.0], "tags": ["arctic-shelf"], "fantasy_styles": ["realistic"], "tagline": "Chukchi Sea — Arctic continental shelf"},
+        {"id": "maldives_atoll",            "bbox": [73.00, 4.00, 74.00, 5.00], "dataset": "GEBCOIceTopo", "bathymetry": true, "tags": ["coral-atoll", "tropical"], "fantasy_styles": ["realistic"], "tagline": "Maldives atoll bathymetry"},
+        {"id": "bay_of_fundy_bathy",        "bbox": [-66.00, 45.00, -64.00, 46.00], "dataset": "GEBCOIceTopo", "bathymetry": true, "tags": ["macro-tide", "coastal"], "fantasy_styles": ["realistic"], "tagline": "Bay of Fundy bathy - macro-tide coast"},
+        {"id": "outer_banks_bathy",         "bbox": [-76.00, 35.00, -75.00, 36.00], "dataset": "GEBCOIceTopo", "bathymetry": true, "tags": ["barrier-island", "coastal"], "fantasy_styles": ["realistic"], "tagline": "Outer Banks NC barrier island bathymetry"},
+        {"id": "indonesia_volcanic_bathy",  "bbox": [115.00, -8.50, 116.00, -7.50], "dataset": "GEBCOIceTopo", "bathymetry": true, "tags": ["volcanic-island", "shelf"], "fantasy_styles": ["realistic"], "tagline": "Indonesia Bali/Lombok volcanic island shelf"}
       ]
     }
   }
