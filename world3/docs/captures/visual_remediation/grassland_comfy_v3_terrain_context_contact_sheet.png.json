@@ -1,0 +1,41 @@
+{
+  "output": "world3\\docs\\captures\\visual_remediation\\grassland_comfy_v3_terrain_context_contact_sheet.png",
+  "title": "Grassland Comfy V3 Terrain Context",
+  "subtitle": "Source-stack valid-mask rerender: current material vs ComfyUI sidecar",
+  "items": [
+    {
+      "label": "Current close",
+      "path": "world3\\docs\\captures\\visual_remediation\\source_stack_runtime_grassland_current_close.png",
+      "note": "Canonical grassland_grass detail, normal source-stack strength"
+    },
+    {
+      "label": "Current mid",
+      "path": "world3\\docs\\captures\\visual_remediation\\source_stack_runtime_grassland_current_mid.png",
+      "note": "Mid-distance source macro read"
+    },
+    {
+      "label": "Current topdown",
+      "path": "world3\\docs\\captures\\visual_remediation\\source_stack_runtime_grassland_current_topdown.png",
+      "note": "Topdown structure and source coverage"
+    },
+    {
+      "label": "Comfy v3 close",
+      "path": "world3\\docs\\captures\\visual_remediation\\source_stack_runtime_grassland_comfy_v3_close.png",
+      "note": "m8_grassland_grass_calm_v3 sidecar detail"
+    },
+    {
+      "label": "Comfy v3 mid",
+      "path": "world3\\docs\\captures\\visual_remediation\\source_stack_runtime_grassland_comfy_v3_mid.png",
+      "note": "Candidate under normal source-stack strength"
+    },
+    {
+      "label": "Comfy v3 topdown",
+      "path": "world3\\docs\\captures\\visual_remediation\\source_stack_runtime_grassland_comfy_v3_topdown.png",
+      "note": "Candidate structure check"
+    }
+  ],
+  "size_px": [
+    2020,
+    1102
+  ]
+}

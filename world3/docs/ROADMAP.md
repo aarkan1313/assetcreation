@@ -84,6 +84,10 @@ direction; treat the rest as where we've been.
   worst organic materials now have quarantined repair candidates. Evidence:
   `world3/docs/SOURCE_STACK_RUNTIME_REMEDIATION_2026_05_08.md` and
   `world3/docs/M1_M7_ORGANIC_TEXTURE_REPAIR_2026_05_08.md`.
+- Source-stack valid-area policy is implemented: runtime source macro color is
+  masked by OpenTopo coverage, invalid macro pixels are edge-bleed repaired,
+  and the current/Comfy grassland terrain-context captures were rerendered.
+  Evidence: `world3/docs/SOURCE_STACK_VALID_AREA_POLICY_2026_05_08.md`.
 - ComfyUI/`aaa_texture.py` is now explicitly tracked as the peer procedural
   material lane for M8: 25 generated materials are inventoried, five organic
   blockers have a regeneration queue, and full-PBR runtime staging is auditable.

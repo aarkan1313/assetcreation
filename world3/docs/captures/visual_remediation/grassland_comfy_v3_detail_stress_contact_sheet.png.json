@@ -1,0 +1,21 @@
+{
+  "output": "world3\\docs\\captures\\visual_remediation\\grassland_comfy_v3_detail_stress_contact_sheet.png",
+  "title": "Grassland Detail Stress",
+  "subtitle": "Lower source macro strength, pushed detail albedo, source valid-mask contract enabled",
+  "items": [
+    {
+      "label": "Current detail stress",
+      "path": "world3\\docs\\captures\\visual_remediation\\source_stack_runtime_grassland_current_detail_stress_close.png",
+      "note": "Canonical grassland_grass with detail deliberately pushed"
+    },
+    {
+      "label": "Comfy v3 detail stress",
+      "path": "world3\\docs\\captures\\visual_remediation\\source_stack_runtime_grassland_comfy_v3_detail_stress_close.png",
+      "note": "ComfyUI sidecar under the same stress settings"
+    }
+  ],
+  "size_px": [
+    1602,
+    690
+  ]
+}

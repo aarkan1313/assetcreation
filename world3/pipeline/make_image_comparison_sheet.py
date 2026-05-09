@@ -139,7 +139,9 @@ def main() -> int:
         ],
         "size_px": [sheet.width, sheet.height],
     }
-    args.output.with_suffix(args.output.suffix + ".json").write_text(json.dumps(sidecar, indent=2), encoding="utf-8")
+    sidecar_path = args.output.with_suffix(args.output.suffix + ".json")
+    with sidecar_path.open("w", encoding="utf-8", newline="\n") as f:
+        f.write(json.dumps(sidecar, indent=2) + "\n")
     print(f"OK {args.output} ({sheet.width}x{sheet.height})")
     return 0
 

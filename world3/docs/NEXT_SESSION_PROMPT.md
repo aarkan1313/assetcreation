@@ -32,13 +32,14 @@ Read first:
 13. `world3/docs/M1_M7_VISION_GAP_REVIEW_2026_05_08.md`
 14. `world3/docs/M1_M7_VISUAL_REMEDIATION_PLAN_2026_05_08.md`
 15. `world3/docs/SOURCE_STACK_RUNTIME_REMEDIATION_2026_05_08.md`
-16. `world3/docs/M1_M7_ORGANIC_TEXTURE_REPAIR_2026_05_08.md`
-17. `world3/docs/COMFYUI_TEXTURE_WORKFLOW_INVENTORY_2026_05_08.md`
-18. `world3/docs/M8_COMFYUI_TEXTURE_REGEN_PASS_2026_05_08.md`
-19. `world3/docs/M8_COMFYUI_TERRAIN_CONTEXT_REVIEW_2026_05_08.md`
-20. `world3/docs/M8_COMFYUI_CANDIDATE_NOISE_AUDIT.md`
-21. `world3/docs/M8_GRASS_REGEN_ATTEMPTS_REVIEW_2026_05_08.md`
-22. `world3/docs/M8_GRASS_VISUAL_VETO_AUDIT.md`
+16. `world3/docs/SOURCE_STACK_VALID_AREA_POLICY_2026_05_08.md`
+17. `world3/docs/M1_M7_ORGANIC_TEXTURE_REPAIR_2026_05_08.md`
+18. `world3/docs/COMFYUI_TEXTURE_WORKFLOW_INVENTORY_2026_05_08.md`
+19. `world3/docs/M8_COMFYUI_TEXTURE_REGEN_PASS_2026_05_08.md`
+20. `world3/docs/M8_COMFYUI_TERRAIN_CONTEXT_REVIEW_2026_05_08.md`
+21. `world3/docs/M8_COMFYUI_CANDIDATE_NOISE_AUDIT.md`
+22. `world3/docs/M8_GRASS_REGEN_ATTEMPTS_REVIEW_2026_05_08.md`
+23. `world3/docs/M8_GRASS_VISUAL_VETO_AUDIT.md`
 
 ## Current status
 
@@ -64,6 +65,9 @@ Recent scoped commits:
 - `c575823` - `world3: add visual remediation source stack`
 - `2f342d0` - `world3: add comfy texture workflow inventory`
 - `de95de3` - `world3: log first comfy m8 regen`
+- `9d10702` - `world3: add comfy terrain context review`
+- `a23c286` - `world3: log grass regen visual veto`
+- `c57fdfa` - `world3: add comfy visual veto audit`
 
 Active lane: M7 is a workflow pass but visual closure is paused. Continue the
 M1-M7 remediation/M8 organic cleanup path. OpenTopo source stacks and
@@ -78,6 +82,14 @@ First ComfyUI M8 result: `m8_grassland_grass_calm_v3` passed strict
 candidate review. It is calmer than current `grassland_grass` under detail
 stress, but still slightly pale/hazy, so it is sidecar-only and not promoted
 yet.
+
+Source-stack valid-area policy is now implemented for review materials:
+`build_source_stack_runtime_review.py` writes `source_macro_valid_mask.png`,
+edge-bleeds invalid macro pixels, and emits materials using
+`source_macro_valid_mask`. The unified shader gates source macro contribution by
+that mask. Current/Comfy grassland close/mid/topdown and detail-stress captures
+were rerendered. Evidence:
+`world3/docs/SOURCE_STACK_VALID_AREA_POLICY_2026_05_08.md`.
 
 Second ComfyUI M8 target: `grass` produced strict grade-A outputs, but visual
 review rejected them. `m8_grass_calm_v1` is the best failed direction; v2/v3
@@ -259,7 +271,8 @@ closed:
    repair sequence. R1/R2 are done; R3 is started; R4 is active.
 3. Use `scrub_sparse -> dry_wash` as the first M2/M7 control pair.
 4. Use `SOURCE_STACK_RUNTIME_REMEDIATION_2026_05_08.md` as the current source
-   stack bridge: source-derived macro color first, tileable detail second.
+   stack bridge: source-derived macro color first, valid-mask gated, tileable
+   detail second.
 5. Keep deterministic organic repair candidates quarantined. They improved
    metrics, but runtime review showed they must stay albedo-only/low-strength
    until proven.
@@ -268,11 +281,9 @@ closed:
    promotion.
 7. Continue `grass` from the darker v1 direction, but require visual veto before
    PBR/sidecar staging.
-8. Add valid-area/clamp policy for source macro sampling before wider chunk
-   source-stack views.
-9. Repair M4 splat context, then rerender M5/M7 and decide whether M7 can close
+8. Repair M4 splat context, then rerender M5/M7 and decide whether M7 can close
    visually or needs a second visual-targeted boundary pass.
-10. Keep streamed collision metrics active. If interactive play shows hitching,
+9. Keep streamed collision metrics active. If interactive play shows hitching,
    start async/background mesh+collision build.
 
 ## Operating reminders

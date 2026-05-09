@@ -116,6 +116,12 @@ quarantined and is not canonically promoted. Evidence:
 `M8_COMFYUI_TEXTURE_REGEN_PASS_2026_05_08.md` and
 `M8_COMFYUI_TERRAIN_CONTEXT_REVIEW_2026_05_08.md`.
 
+Source-stack valid-area update: the runtime source-stack bridge now uses
+OpenTopo valid masks for source macro contribution and edge-bleeds invalid
+macro pixels before save. Current/Comfy grassland source-stack captures were
+rerendered under this contract. Evidence:
+`SOURCE_STACK_VALID_AREA_POLICY_2026_05_08.md`.
+
 Second regeneration target update: `grass` produced several strict grade-A
 outputs, but visual review rejected them for landmark blotches, pale/boxy sod
 forms, bright patch islands, or individual plant objects. This exposed a

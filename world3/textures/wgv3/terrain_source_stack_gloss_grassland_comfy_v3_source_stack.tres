@@ -1,7 +1,8 @@
-[gd_resource type="ShaderMaterial" load_steps=38 format=3]
+[gd_resource type="ShaderMaterial" load_steps=39 format=3]
 
 [ext_resource type="Shader" path="res://shaders/terrain_splat_unified.gdshader" id="shader"]
 [ext_resource type="Texture2D" path="res://textures/source_stack/gloss_grassland_comfy_v3_source_stack/source_macro_albedo.png" id="source_macro_albedo"]
+[ext_resource type="Texture2D" path="res://textures/source_stack/gloss_grassland_comfy_v3_source_stack/source_macro_valid_mask.png" id="source_macro_valid_mask"]
 [ext_resource type="Texture2D" path="res://textures/wgv3_comfy_candidates/m8_grassland_grass_calm_v3/albedo.png" id="grass_albedo"]
 [ext_resource type="Texture2D" path="res://textures/wgv3_comfy_candidates/m8_grassland_grass_calm_v3/normal.png" id="grass_normal"]
 [ext_resource type="Texture2D" path="res://textures/wgv3_comfy_candidates/m8_grassland_grass_calm_v3/roughness.png" id="grass_rough"]
@@ -43,6 +44,8 @@ shader = ExtResource("shader")
 shader_parameter/source_macro_albedo = ExtResource("source_macro_albedo")
 shader_parameter/use_source_macro_albedo = true
 shader_parameter/source_macro_strength = 1.0
+shader_parameter/source_macro_valid_mask = ExtResource("source_macro_valid_mask")
+shader_parameter/use_source_macro_valid_mask = true
 shader_parameter/grass_albedo = ExtResource("grass_albedo")
 shader_parameter/grass_normal = ExtResource("grass_normal")
 shader_parameter/grass_rough = ExtResource("grass_rough")

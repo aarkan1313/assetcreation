@@ -215,6 +215,22 @@ python world3/pipeline/audit_comfy_visual_veto.py `
 `needs_visual_review` is not a pass. It means the helper did not catch an
 obvious hard veto and the tile still needs human/vision review.
 
+Source-stack runtime review has its own validity contract. The builder should
+keep source macro color anchored to source-valid pixels, then let the shader
+fall back to procedural/tileable terrain outside that mask:
+
+```powershell
+python world3/pipeline/build_source_stack_runtime_review.py `
+  --detail-material grassland_grass `
+  --id gloss_grassland_current_source_stack
+```
+
+`build_source_stack_runtime_review.py` discovers `texture_coverage_mask.png`,
+`source_valid_mask.png`, or inverted `render_fill_mask.png`, writes
+`source_macro_valid_mask.png`, edge-bleeds source macro color, and emits a
+material using `source_macro_valid_mask`. The policy and rerender evidence live
+in `SOURCE_STACK_VALID_AREA_POLICY_2026_05_08.md`.
+
 ## Stage 4 — Stage textures into world3
 
 Each texture set gets its own subfolder under `world3/textures/wgv3/`

@@ -20,6 +20,7 @@ find something.
 | "What visual gaps did Codex see in the actual M1-M7 captures?" | [M1_M7_VISION_GAP_REVIEW_2026_05_08.md](M1_M7_VISION_GAP_REVIEW_2026_05_08.md) |
 | "How do we repair the failed M1-M7 visual gate?"             | [M1_M7_VISUAL_REMEDIATION_PLAN_2026_05_08.md](M1_M7_VISUAL_REMEDIATION_PLAN_2026_05_08.md) |
 | "What did the first source-stack runtime remediation ship?"  | [SOURCE_STACK_RUNTIME_REMEDIATION_2026_05_08.md](SOURCE_STACK_RUNTIME_REMEDIATION_2026_05_08.md) |
+| "How does source-stack runtime review avoid invalid macro pixels?" | [SOURCE_STACK_VALID_AREA_POLICY_2026_05_08.md](SOURCE_STACK_VALID_AREA_POLICY_2026_05_08.md) |
 | "How were the worst organic textures repaired/quarantined?"  | [M1_M7_ORGANIC_TEXTURE_REPAIR_2026_05_08.md](M1_M7_ORGANIC_TEXTURE_REPAIR_2026_05_08.md) |
 | "What is the current ComfyUI texture workflow inventory?"    | [COMFYUI_TEXTURE_WORKFLOW_INVENTORY_2026_05_08.md](COMFYUI_TEXTURE_WORKFLOW_INVENTORY_2026_05_08.md) |
 | "What happened in the first M8 ComfyUI regeneration pass?"   | [M8_COMFYUI_TEXTURE_REGEN_PASS_2026_05_08.md](M8_COMFYUI_TEXTURE_REGEN_PASS_2026_05_08.md) |
@@ -85,6 +86,8 @@ find something.
 - **M8_COMFYUI_TERRAIN_CONTEXT_REVIEW_2026_05_08.md** - first sidecar
   ComfyUI candidate terrain-context gate; candidate pass, no canonical
   promotion.
+- **SOURCE_STACK_VALID_AREA_POLICY_2026_05_08.md** - source macro valid-mask
+  contract and rerender evidence for source-stack terrain review.
 - **M8_GRASS_REGEN_ATTEMPTS_REVIEW_2026_05_08.md** - failed `grass`
   regeneration attempts and the resulting visual landmark/object veto rule.
 - **pipelines/textures/RECIPES.md** — canonical commands per use case.

@@ -37,6 +37,11 @@ Terrain-context captures:
 - `captures/visual_remediation/source_stack_runtime_grassland_current_detail_stress_close.png`
 - `captures/visual_remediation/source_stack_runtime_grassland_comfy_v3_detail_stress_close.png`
 
+2026-05-08 rerender note: these captures were regenerated after
+`SOURCE_STACK_VALID_AREA_POLICY_2026_05_08.md`. The source-stack material now
+uses `source_macro_valid_mask` and falls back to procedural/tileable terrain
+where the OpenTopo source stack marks macro coverage invalid.
+
 ## Source-Material Noise Delta
 
 | Material | HF energy | Grad p95 | Green dom | Saturation | Noise score | Flags |
@@ -55,6 +60,9 @@ Normal source-stack review:
 - Close, mid, and topdown views are nearly identical between current and
   candidate because source macro color dominates and tileable detail strength
   is intentionally low.
+- After the valid-mask rerender, the normal views read as real source terrain
+  rather than debug texture assignment. The remaining blue/background footprint
+  in mid/topdown captures is review framing, not invalid source macro fill.
 - That is a useful safety result: the candidate does not visibly regress the
   OpenTopo source-stack terrain when used conservatively.
 - It is not enough by itself to promote the candidate, because the review path
@@ -81,7 +89,8 @@ Do not promote it into `world3/materials/catalog.json` yet.
 Promotion still requires:
 
 1. M7 boundary stress rerender using the candidate.
-2. M4/M5 source-stack rerender with valid-area/clamp policy fixed.
+2. M4/M5 source-stack rerender trials using the now-fixed valid-area/clamp
+   policy.
 3. Close/mid/topdown or walk/iso/topdown review where the candidate remains
    calmer without washing out the OpenTopo macro read.
 4. Optional palette tuning if the pale/hazy read persists.

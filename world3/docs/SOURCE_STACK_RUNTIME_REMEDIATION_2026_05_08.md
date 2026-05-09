@@ -21,8 +21,10 @@ reference quality, not "nonblank runtime screenshot."
 ## Shipped Workflow Pieces
 
 - Shader bridge: `shaders/terrain_splat_unified.gdshader` now has opt-in
-  `source_macro_albedo` support.
-- Builder: `pipeline/build_source_stack_runtime_review.py`.
+  `source_macro_albedo` and `source_macro_valid_mask` support.
+- Builder: `pipeline/build_source_stack_runtime_review.py`; it now discovers
+  source validity masks, writes runtime valid masks, and edge-bleeds source
+  macro color before save.
 - Capture helper: `scripts/CaptureSceneOnce.gd`.
 - Runtime review scene: `scenes/capture_visual_remediation/source_stack_runtime_review.tscn`.
 - Parity variants:
@@ -49,6 +51,17 @@ Repair-candidate source stacks:
 - `textures/source_stack/gloss_grassland_repair_source_stack/manifest.json`
 - `textures/wgv3/terrain_source_stack_gloss_grassland_repair_source_stack.tres`
 
+M8 terrain-context source stacks:
+
+- `textures/source_stack/gloss_grassland_current_source_stack/manifest.json`
+- `textures/source_stack/gloss_grassland_current_detail_stress/manifest.json`
+- `textures/source_stack/gloss_grassland_comfy_v3_source_stack/manifest.json`
+- `textures/source_stack/gloss_grassland_comfy_v3_detail_stress/manifest.json`
+
+All current source-stack review manifests include
+`runtime_source_macro_valid_mask` and source-valid coverage. See
+`SOURCE_STACK_VALID_AREA_POLICY_2026_05_08.md`.
+
 ## Captures
 
 Primary source-stack control:
@@ -74,8 +87,8 @@ target.
 It is not final art closure:
 
 - source orthophoto highlights and tree blobs remain visible;
-- the review footprint must avoid wrapped source edges until a proper valid-area
-  clamp/crop policy is added;
+- finite review footprint/background framing still needs cleanup for wider
+  views;
 - close view still needs a better physically grounded detail layer;
 - this validates source-stack runtime workflow, not all biome transitions.
 
@@ -94,6 +107,8 @@ inventory and candidate queue are tracked in
 
 - R2 control pair is still `scrub_sparse -> dry_wash`.
 - R3 source-stack pivot is started and has a working runtime review bridge.
+- Source-stack valid-area/clamp policy is now implemented for the review bridge.
+  Evidence: `SOURCE_STACK_VALID_AREA_POLICY_2026_05_08.md`.
 - R4 source-material repair is active, but not visually closed.
 - ComfyUI/`aaa_texture.py` is now tracked as a peer texture-source lane for M8
   regeneration, not a secondary cleanup path.
@@ -107,6 +122,8 @@ python world3/pipeline/repair_organic_materials.py
 python world3/pipeline/build_source_stack_runtime_review.py --detail-material scrub_sparse --id gloss_scrub_source_stack
 python world3/pipeline/build_source_stack_runtime_review.py --detail-material grass_repair_calm --id gloss_grass_repair_source_stack
 python world3/pipeline/build_source_stack_runtime_review.py --detail-material grassland_grass_repair_calm --id gloss_grassland_repair_source_stack
+python world3/pipeline/build_source_stack_runtime_review.py --detail-material grassland_grass --id gloss_grassland_current_source_stack
+python world3/pipeline/build_source_stack_runtime_review.py --detail-material m8_grassland_grass_calm_v3 --id gloss_grassland_comfy_v3_source_stack --extra-catalog world3/materials/catalog_comfy_candidates.json
 ```
 
 Run a Godot import after new PNG outputs, then capture through

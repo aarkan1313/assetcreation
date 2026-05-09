@@ -61,7 +61,10 @@ terrain-context candidate gate, but remains sidecar-only until M4/M7 rerender
 trials prove it does not wash out the source-stack terrain. The next `grass`
 attempts proved the opposite lesson: grade-A seam/PBR output can still fail
 visual review, so M8 organic outputs now require a visual landmark/object veto
-before sidecar staging.
+before sidecar staging. Source-stack valid-area policy is now implemented for
+review materials; the source macro path is mask-gated and the current/Comfy
+grassland captures were rerendered under that contract. See
+`SOURCE_STACK_VALID_AREA_POLICY_2026_05_08.md`.
 
 ## M1 — Material catalog (orchestrator-led)
 

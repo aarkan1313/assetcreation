@@ -12,8 +12,20 @@ by themselves.
 - `source_stack_runtime_review_topdown.png`
 
 Verdict: strongest current runtime direction. Source macro albedo carries the
-terrain much better than the procedural/debug M4-M7 captures. Still needs
-valid-area/clamp policy, highlight cleanup, and better close detail.
+terrain much better than the procedural/debug M4-M7 captures. Valid-area/clamp
+policy is now implemented for the source-stack review materials; remaining work
+is highlight cleanup, finite-footprint framing, and better close detail.
+
+## M8 Grassland Terrain Context Rerender
+
+- `grassland_comfy_v3_terrain_context_contact_sheet.png`
+- `grassland_comfy_v3_detail_stress_contact_sheet.png`
+- `source_stack_runtime_grassland_current_*.png`
+- `source_stack_runtime_grassland_comfy_v3_*.png`
+
+Verdict: after the valid-mask rerender, normal close/mid/topdown views read as
+source terrain. Current `grassland_grass` still fails detail stress with
+straw/tuft noise; `m8_grassland_grass_calm_v3` is calmer but still sidecar-only.
 
 ## Organic Repair Candidates
 

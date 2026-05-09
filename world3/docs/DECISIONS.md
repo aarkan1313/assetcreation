@@ -1104,3 +1104,26 @@ OpenTopo-derived materials.
 organic blockers, then tests those candidates through the source-stack runtime
 gate. Deterministic organic repair remains a quarantine/candidate tool, not a
 canonical promotion path by itself.
+
+---
+
+## 2026-05-08 - Source macro color must be validity-masked
+
+**Decision**: Runtime source-stack review must bind a source-valid mask beside
+source macro albedo. Invalid source macro pixels are repaired with edge bleed at
+build time, and shader contribution falls back to procedural/tileable terrain
+where the mask is invalid.
+
+**Why**: The visual remediation target is roughly 70 percent of the best
+stacked photo/topo OpenTopo reference. That target is not measurable if runtime
+captures are allowed to inherit filled, wrapped, or invalid source-stack pixels.
+The source macro is the visual anchor, so it needs an explicit coverage
+contract.
+
+**Evidence**: `world3/docs/SOURCE_STACK_VALID_AREA_POLICY_2026_05_08.md`.
+
+**Implication**: Future M4/M5/M7 source-stack rerenders should use
+`pipeline/build_source_stack_runtime_review.py` outputs with
+`source_macro_valid_mask.png`. Wider review scenes still need finite-footprint
+framing cleanup, but invalid macro pixels are no longer an accepted artifact in
+source-stack terrain review.

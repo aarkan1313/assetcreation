@@ -23,7 +23,7 @@ should stay, but current M7 captures are diagnostics only.
 |------|-------|--------|------|
 | R1 | M1 catalog validation sync | Done | Every M6-flagged material has `validated_views.close = needs_review`. |
 | R2 | M2 control-pair selection | Done | `scrub_sparse -> dry_wash` is the baseline control pair. |
-| R3 | Source-stack pivot | Started | Source macro albedo can now drive the runtime terrain material; parity captures exist for mid/close/topdown. |
+| R3 | Source-stack pivot | Done for review bridge | Source macro albedo drives runtime terrain through a valid-mask contract; parity captures exist for mid/close/topdown. |
 | R4 | Source-material repair | Active | Organic repair candidates exist, but remain quarantined; ComfyUI inventory and regeneration queue now define the first M8 repair lane. |
 | R5 | M4 splat context repair | Pending | Replace prototype/debug-looking splat context with a visually credible material assignment for rerenders. |
 | R6 | M5/M7 rerender | Pending | Rerender walk and automatic-boundary captures against repaired sources/context. |
@@ -95,13 +95,12 @@ For a repaired material to leave `close = needs_review`, it needs:
 Continue R3/R4 into R5/R6:
 
 1. Use the source-stack control captures as the visual baseline.
-2. Add valid-area/clamp policy for source macro sampling before wider chunk views.
-3. Regenerate the five priority organic blockers through the ComfyUI queue,
+2. Regenerate the five priority organic blockers through the ComfyUI queue,
    then re-run source-material noise and terrain-context review.
-4. Keep organic repair candidates albedo-only/low-strength until they pass
+3. Keep organic repair candidates albedo-only/low-strength until they pass
    terrain-context close/mid/far review.
-5. Repair M4 splat context against source-stack policy.
-6. Rerender M5/M7 captures only after the source/detail policy is stable.
+4. Repair M4 splat context against source-stack policy.
+5. Rerender M5/M7 captures only after the source/detail policy is stable.
 
 ## Progress 2026-05-08
 
@@ -115,6 +114,12 @@ queue. See `COMFYUI_TEXTURE_WORKFLOW_INVENTORY_2026_05_08.md` and
 
 Ran the first ComfyUI regeneration on `grassland_grass`. The first two
 grass-worded attempts failed or stayed too tufted; `m8_grassland_grass_calm_v3`
-passed strict QA with the hardpan/straw-fragment prompt. It remains a sidecar
-candidate pending terrain-context review. See
-`M8_COMFYUI_TEXTURE_REGEN_PASS_2026_05_08.md`.
+passed strict QA with the hardpan/straw-fragment prompt and passed the first
+terrain-context candidate gate. It remains a sidecar candidate, not a canonical
+promotion. See `M8_COMFYUI_TEXTURE_REGEN_PASS_2026_05_08.md` and
+`M8_COMFYUI_TERRAIN_CONTEXT_REVIEW_2026_05_08.md`.
+
+Implemented source-stack valid-area policy and rerendered current/Comfy
+grassland terrain-context captures. Source macro albedo is now gated by
+`source_macro_valid_mask`; invalid macro pixels are edge-bleed repaired before
+save. See `SOURCE_STACK_VALID_AREA_POLICY_2026_05_08.md`.

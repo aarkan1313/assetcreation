@@ -146,7 +146,7 @@ inventory, QA, and terrain-context promotion gates before visual closure.
 |-----|--------|----------|-------|
 | **Aligned material taxonomy** (kit slots vs material classes) | Catalog exists with 25 procedural + 6 OpenTopo entries; material generation, import, and representative renders verified | HIGH — blocks M2/M4 until maintained | Consolidated in this chat |
 | **Transition materials** between kits/classes | M2 generated four reviewed/tuned boundary strips; M7 now places them automatically through generated per-chunk masks; visual promotion is pending M1-M7 audit | HIGH - blocks tile-to-tile blending | Consolidated in this chat; use OpenTopo QA infrastructure |
-| **Procedural organic texture quality** | ComfyUI inventory exists for all 25 generated materials; five organic blockers have an M8 regeneration queue; first `grassland_grass` candidate passed strict QA and terrain-context candidate review but remains quarantined | HIGH - blocks M7 visual closure and M8 source cleanup | Orchestrator |
+| **Procedural organic texture quality** | ComfyUI inventory exists for all 25 generated materials; five organic blockers have an M8 regeneration queue; first `grassland_grass` candidate passed strict QA and terrain-context candidate review but remains quarantined; source-stack valid-area policy is now fixed for rerender trials | HIGH - blocks M7 visual closure and M8 source cleanup | Orchestrator |
 | **Per-pixel splat shader** | M4 pass 2 prototype exists; M6 wires it through `walk.tscn` with export-safe splat cache and streamed chunks | HIGH - working prototype, still not final material indirection | Orchestrator |
 | **Within-chunk material variation** | Prototype splat map generated from height/slope and consumed by both review chunks and the walk scene | HIGH | Orchestrator |
 | **Cross-source style bridge** (real ↔ procedural ↔ fantasy adjacent) | Worker flagged it; no fix yet | MEDIUM | Consolidated in this chat |
@@ -522,3 +522,9 @@ These start when chunk + biome + tile + transition is ~80% solved
   need visual landmark/object veto before sidecar staging. Added
   `audit_comfy_visual_veto.py` as an advisory helper; it can veto obvious
   failures but never promotes without visual review.
+- **2026-05-08 (source-stack valid-area policy)**: Added runtime source macro
+  valid-mask support to the unified shader and source-stack review builder.
+  Regenerated all source-stack review materials with
+  `source_macro_valid_mask.png`, rerendered the current/Comfy grassland
+  terrain-context captures, and recorded the policy in
+  `SOURCE_STACK_VALID_AREA_POLICY_2026_05_08.md`.
