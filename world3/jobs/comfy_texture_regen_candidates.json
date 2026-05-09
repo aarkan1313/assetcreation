@@ -32,7 +32,7 @@
       "source_stack_role": "albedo candidate first; normal/detail disabled until close/mid/far terrain review passes",
       "latest_tested_candidate": {
         "id": "m8_grassland_grass_calm_v3",
-        "status": "strict_gate_passed_terrain_review_pending",
+        "status": "terrain_context_candidate_pass_not_promoted",
         "settings": {
           "variants": 12,
           "heal_strength": 0.45,
@@ -46,7 +46,22 @@
           "periodic_locality": 13.7,
           "sanity_ok": true
         },
-        "notes": "Moved away from grass-cover wording toward hardpan soil plus flattened straw fragments. Do not promote until terrain-context captures pass."
+        "noise_audit": {
+          "current_material_noise_score": 0.093508,
+          "candidate_noise_score": 0.049726,
+          "current_flags": [
+            "high_frequency_noise",
+            "sharp_micro_contrast"
+          ],
+          "candidate_flags": []
+        },
+        "terrain_context_review": {
+          "doc": "world3/docs/M8_COMFYUI_TERRAIN_CONTEXT_REVIEW_2026_05_08.md",
+          "normal_source_stack_result": "safe_no_visible_regression_source_macro_dominant",
+          "detail_stress_result": "better_than_current_less_tufted_still_pale_hazy",
+          "promotion": "sidecar_candidate_only"
+        },
+        "notes": "Moved away from grass-cover wording toward hardpan soil plus flattened straw fragments. Passed candidate terrain-context gate, but do not promote until M4/M7 rerender trials pass without washout."
       }
     },
     {

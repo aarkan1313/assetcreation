@@ -146,7 +146,7 @@ inventory, QA, and terrain-context promotion gates before visual closure.
 |-----|--------|----------|-------|
 | **Aligned material taxonomy** (kit slots vs material classes) | Catalog exists with 25 procedural + 6 OpenTopo entries; material generation, import, and representative renders verified | HIGH — blocks M2/M4 until maintained | Consolidated in this chat |
 | **Transition materials** between kits/classes | M2 generated four reviewed/tuned boundary strips; M7 now places them automatically through generated per-chunk masks; visual promotion is pending M1-M7 audit | HIGH - blocks tile-to-tile blending | Consolidated in this chat; use OpenTopo QA infrastructure |
-| **Procedural organic texture quality** | ComfyUI inventory exists for all 25 generated materials; five organic blockers have an M8 regeneration queue; deterministic repair candidates remain quarantined | HIGH - blocks M7 visual closure and M8 source cleanup | Orchestrator |
+| **Procedural organic texture quality** | ComfyUI inventory exists for all 25 generated materials; five organic blockers have an M8 regeneration queue; first `grassland_grass` candidate passed strict QA and terrain-context candidate review but remains quarantined | HIGH - blocks M7 visual closure and M8 source cleanup | Orchestrator |
 | **Per-pixel splat shader** | M4 pass 2 prototype exists; M6 wires it through `walk.tscn` with export-safe splat cache and streamed chunks | HIGH - working prototype, still not final material indirection | Orchestrator |
 | **Within-chunk material variation** | Prototype splat map generated from height/slope and consumed by both review chunks and the walk scene | HIGH | Orchestrator |
 | **Cross-source style bridge** (real ↔ procedural ↔ fantasy adjacent) | Worker flagged it; no fix yet | MEDIUM | Consolidated in this chat |
@@ -507,5 +507,11 @@ These start when chunk + biome + tile + transition is ~80% solved
 - **2026-05-08 (M8 first ComfyUI regeneration)**: Ran the first
   `grassland_grass` regeneration. Two grass-worded prompts failed or remained
   visually tufted; the hardpan/straw-fragment prompt produced
-  `m8_grassland_grass_calm_v3`, which passed strict `aaa_texture.py` QA. It is
-  a sidecar candidate only until terrain-context review passes.
+  `m8_grassland_grass_calm_v3`, which passed strict `aaa_texture.py` QA. It was
+  held as a sidecar candidate pending terrain-context review.
+- **2026-05-08 (M8 first terrain-context candidate gate)**: Staged
+  `m8_grassland_grass_calm_v3` into a quarantined ComfyUI sidecar catalog,
+  rendered source-stack close/mid/topdown plus detail-stress comparisons, and
+  re-ran the source-material noise audit. The candidate is safer and calmer
+  than current `grassland_grass`, but still slightly pale/hazy under stress, so
+  it is approved for M4/M7 rerender trials but not canonical promotion.

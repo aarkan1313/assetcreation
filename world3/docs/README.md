@@ -23,6 +23,8 @@ find something.
 | "How were the worst organic textures repaired/quarantined?"  | [M1_M7_ORGANIC_TEXTURE_REPAIR_2026_05_08.md](M1_M7_ORGANIC_TEXTURE_REPAIR_2026_05_08.md) |
 | "What is the current ComfyUI texture workflow inventory?"    | [COMFYUI_TEXTURE_WORKFLOW_INVENTORY_2026_05_08.md](COMFYUI_TEXTURE_WORKFLOW_INVENTORY_2026_05_08.md) |
 | "What happened in the first M8 ComfyUI regeneration pass?"   | [M8_COMFYUI_TEXTURE_REGEN_PASS_2026_05_08.md](M8_COMFYUI_TEXTURE_REGEN_PASS_2026_05_08.md) |
+| "Did the first M8 ComfyUI candidate work in terrain context?" | [M8_COMFYUI_TERRAIN_CONTEXT_REVIEW_2026_05_08.md](M8_COMFYUI_TERRAIN_CONTEXT_REVIEW_2026_05_08.md) |
+| "How noisy is the first M8 ComfyUI candidate?"               | [M8_COMFYUI_CANDIDATE_NOISE_AUDIT.md](M8_COMFYUI_CANDIDATE_NOISE_AUDIT.md) |
 | "What did M6 harden in the streamed runtime?"                | [M6_RUNTIME_HARDENING.md](M6_RUNTIME_HARDENING.md)    |
 | "Which green/organic source materials are too noisy?"        | [M6_SOURCE_MATERIAL_NOISE_AUDIT.md](M6_SOURCE_MATERIAL_NOISE_AUDIT.md) |
 | "What did the first M4 splat shader prototype prove?"        | [M4_SPLAT_SHADER_PROTOTYPE.md](M4_SPLAT_SHADER_PROTOTYPE.md) |
@@ -78,6 +80,9 @@ find something.
 - **COMFYUI_TEXTURE_WORKFLOW_INVENTORY_2026_05_08.md** - current
   ComfyUI/`aaa_texture.py` material inventory, M8 regeneration blockers,
   staging gaps, and shared promotion gate.
+- **M8_COMFYUI_TERRAIN_CONTEXT_REVIEW_2026_05_08.md** - first sidecar
+  ComfyUI candidate terrain-context gate; candidate pass, no canonical
+  promotion.
 - **pipelines/textures/RECIPES.md** — canonical commands per use case.
   *Operator's guide.* "I want X, here's the invocation." Reach for
   this first when actually running the pipeline.

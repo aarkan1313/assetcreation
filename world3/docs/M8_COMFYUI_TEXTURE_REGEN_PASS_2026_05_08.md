@@ -59,16 +59,30 @@ python pipelines/textures/aaa_texture.py `
   --pbr-backend sm
 ```
 
+## Terrain-Context Follow-Up
+
+`m8_grassland_grass_calm_v3` has now passed the first terrain-context
+candidate gate. Evidence:
+`M8_COMFYUI_TERRAIN_CONTEXT_REVIEW_2026_05_08.md` and
+`M8_COMFYUI_CANDIDATE_NOISE_AUDIT.md`.
+
+Important nuance: the normal low-strength source-stack review shows no visible
+regression because the OpenTopo source macro dominates. The detail-stress
+review shows the real improvement: the candidate is much less tufted and less
+yellow/wavy than current `grassland_grass`, but it is still slightly pale/hazy
+when pushed. Keep it quarantined and use it in M4/M7 rerender trials; do not
+promote it into the canonical catalog yet.
+
 ## Verdict
 
 `m8_grassland_grass_calm_v3` is the first M8 ComfyUI candidate worth testing in
-terrain context. It is not promoted into `world3/materials/catalog.json` yet.
+terrain context. It has now passed the first candidate terrain-context gate,
+but it is not promoted into `world3/materials/catalog.json` yet.
 
 Next required gates:
 
 1. Stage as a sidecar candidate, not canonical `grassland_grass`.
-2. Capture source-stack close/mid/topdown or walk/iso/topdown review against the
-   current `grassland_grass`.
-3. Re-run source-material noise audit or equivalent high-frequency check.
+2. Use it in M4/M7 rerender trials against the current `grassland_grass`.
+3. Fix source-stack valid-area/clamp policy before broader review captures.
 4. Promote only if terrain-context review beats the current material without
    introducing pale/white washout.

@@ -105,6 +105,11 @@ def material_tres(
     macro_albedo: Path,
     detail_material: str,
     catalog: dict[str, dict],
+    source_macro_strength: float = 1.0,
+    normal_strength_override: float | None = None,
+    detail_albedo_strength_override: float | None = None,
+    detail_normal_strength_override: float | None = None,
+    detail_rough_strength_override: float | None = None,
 ) -> str:
     ext_lines = [
         ext_resource("Shader", "res://shaders/terrain_splat_unified.gdshader", "shader"),
@@ -127,7 +132,7 @@ def material_tres(
         'shader = ExtResource("shader")',
         'shader_parameter/source_macro_albedo = ExtResource("source_macro_albedo")',
         "shader_parameter/use_source_macro_albedo = true",
-        "shader_parameter/source_macro_strength = 1.0",
+        f"shader_parameter/source_macro_strength = {source_macro_strength}",
     ]
     for slot in SLOTS:
         for kind in [*BASE_MAPS, *DETAIL_MAPS]:
@@ -143,14 +148,30 @@ def material_tres(
         "hex_strength": float(settings.get("hex_strength", 1.0)),
         "blend_sharpness": float(settings.get("blend_sharpness", 8.0)),
         "roughness_strength": float(settings.get("roughness_strength", 1.0)),
-        "normal_strength": min(float(settings.get("normal_strength", 0.20)), 0.14),
+        "normal_strength": (
+            normal_strength_override
+            if normal_strength_override is not None
+            else min(float(settings.get("normal_strength", 0.20)), 0.14)
+        ),
         "macro_scale": 180.0,
         "macro_value_strength": 0.0,
         "macro_hue_strength": 0.0,
         "detail_uv_scale_mult": float(settings.get("detail_uv_scale_mult", 8.0)),
-        "detail_albedo_strength": min(float(settings.get("detail_albedo_strength", 0.14)), 0.075),
-        "detail_normal_strength": min(float(settings.get("detail_normal_strength", 0.16)), 0.09),
-        "detail_rough_strength": min(float(settings.get("detail_rough_strength", 0.12)), 0.06),
+        "detail_albedo_strength": (
+            detail_albedo_strength_override
+            if detail_albedo_strength_override is not None
+            else min(float(settings.get("detail_albedo_strength", 0.14)), 0.075)
+        ),
+        "detail_normal_strength": (
+            detail_normal_strength_override
+            if detail_normal_strength_override is not None
+            else min(float(settings.get("detail_normal_strength", 0.16)), 0.09)
+        ),
+        "detail_rough_strength": (
+            detail_rough_strength_override
+            if detail_rough_strength_override is not None
+            else min(float(settings.get("detail_rough_strength", 0.12)), 0.06)
+        ),
         "detail_fade_start_m": 6.0,
         "detail_fade_end_m": 52.0,
         "elev_min_m": 0.0,
@@ -185,6 +206,11 @@ def main() -> int:
     ap.add_argument("--detail-material", default="scrub_sparse")
     ap.add_argument("--id", default="gloss_scrub_source_stack")
     ap.add_argument("--max-macro-side", type=int, default=2048)
+    ap.add_argument("--source-macro-strength", type=float, default=1.0)
+    ap.add_argument("--normal-strength", type=float, default=None)
+    ap.add_argument("--detail-albedo-strength", type=float, default=None)
+    ap.add_argument("--detail-normal-strength", type=float, default=None)
+    ap.add_argument("--detail-rough-strength", type=float, default=None)
     ap.add_argument(
         "--extra-catalog",
         action="append",
@@ -207,7 +233,16 @@ def main() -> int:
     downsample_macro(source_macro, macro_out, args.max_macro_side)
     material_out.parent.mkdir(parents=True, exist_ok=True)
     material_out.write_text(
-        material_tres(macro_albedo=macro_out, detail_material=args.detail_material, catalog=catalog),
+        material_tres(
+            macro_albedo=macro_out,
+            detail_material=args.detail_material,
+            catalog=catalog,
+            source_macro_strength=args.source_macro_strength,
+            normal_strength_override=args.normal_strength,
+            detail_albedo_strength_override=args.detail_albedo_strength,
+            detail_normal_strength_override=args.detail_normal_strength,
+            detail_rough_strength_override=args.detail_rough_strength,
+        ),
         encoding="utf-8",
     )
     write_manifest(
@@ -223,6 +258,11 @@ def main() -> int:
             "detail_material": args.detail_material,
             "target": "70_percent_of_best_photo_topo_stack_reference",
             "policy": "source_macro_albedo_first_tileable_detail_second",
+            "source_macro_strength": args.source_macro_strength,
+            "detail_albedo_strength_override": args.detail_albedo_strength,
+            "detail_normal_strength_override": args.detail_normal_strength,
+            "detail_rough_strength_override": args.detail_rough_strength,
+            "normal_strength_override": args.normal_strength,
         },
     )
     print(f"wrote {macro_out.relative_to(REPO)}")

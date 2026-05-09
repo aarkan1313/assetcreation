@@ -35,6 +35,8 @@ Read first:
 16. `world3/docs/M1_M7_ORGANIC_TEXTURE_REPAIR_2026_05_08.md`
 17. `world3/docs/COMFYUI_TEXTURE_WORKFLOW_INVENTORY_2026_05_08.md`
 18. `world3/docs/M8_COMFYUI_TEXTURE_REGEN_PASS_2026_05_08.md`
+19. `world3/docs/M8_COMFYUI_TERRAIN_CONTEXT_REVIEW_2026_05_08.md`
+20. `world3/docs/M8_COMFYUI_CANDIDATE_NOISE_AUDIT.md`
 
 ## Current status
 
@@ -58,17 +60,21 @@ Recent scoped commits:
 - `18d6bac` - `world3: harden streamed runtime`
 - `0eddcc0` - `world3: add m7 boundary runtime masks`
 - `c575823` - `world3: add visual remediation source stack`
+- `2f342d0` - `world3: add comfy texture workflow inventory`
+- `de95de3` - `world3: log first comfy m8 regen`
 
 Active lane: M7 is a workflow pass but visual closure is paused. Continue the
 M1-M7 remediation/M8 organic cleanup path. OpenTopo source stacks and
 ComfyUI/`aaa_texture.py` generated textures are peer lanes: OpenTopo is the
 current visual reference/control path; ComfyUI is the scalable material
 regeneration path. Start with `world3/jobs/comfy_texture_regen_candidates.json`
-and keep regenerated outputs quarantined until seam QA plus Godot
-close/mid/far terrain-context captures pass.
+and keep regenerated outputs quarantined until seam QA, Godot close/mid/far
+terrain-context captures, and M4/M7 rerender trials pass.
 
 First ComfyUI M8 result: `m8_grassland_grass_calm_v3` passed strict
-`aaa_texture.py` QA and is worth terrain-context testing, but it is not promoted
+`aaa_texture.py` QA, source-material noise audit, and the first terrain-context
+candidate review. It is calmer than current `grassland_grass` under detail
+stress, but still slightly pale/hazy, so it is sidecar-only and not promoted
 yet.
 
 M1 is done:
@@ -235,7 +241,8 @@ milestone closure:
 
 ## Next best move
 
-Continue visual remediation before normal M8 work:
+Continue visual remediation and M8 cleanup before treating M7 as visually
+closed:
 
 1. Use `world3/docs/M1_M7_VISUAL_AUDIT_2026_05_08.md` as the truth state.
 2. Use `world3/docs/M1_M7_VISUAL_REMEDIATION_PLAN_2026_05_08.md` as the
@@ -243,13 +250,17 @@ Continue visual remediation before normal M8 work:
 3. Use `scrub_sparse -> dry_wash` as the first M2/M7 control pair.
 4. Use `SOURCE_STACK_RUNTIME_REMEDIATION_2026_05_08.md` as the current source
    stack bridge: source-derived macro color first, tileable detail second.
-5. Keep organic repair candidates quarantined. They improved metrics, but
-   runtime review showed they must stay albedo-only/low-strength until proven.
-6. Add valid-area/clamp policy for source macro sampling before wider chunk
+5. Keep deterministic organic repair candidates quarantined. They improved
+   metrics, but runtime review showed they must stay albedo-only/low-strength
+   until proven.
+6. Use `m8_grassland_grass_calm_v3` only as a sidecar ComfyUI candidate in
+   M4/M7 rerender trials. It passed the first candidate gate, not canonical
+   promotion.
+7. Add valid-area/clamp policy for source macro sampling before wider chunk
    source-stack views.
-7. Repair M4 splat context, then rerender M5/M7 and decide whether M7 can close
+8. Repair M4 splat context, then rerender M5/M7 and decide whether M7 can close
    visually or needs a second visual-targeted boundary pass.
-8. Keep streamed collision metrics active. If interactive play shows hitching,
+9. Keep streamed collision metrics active. If interactive play shows hitching,
    start async/background mesh+collision build.
 
 ## Operating reminders

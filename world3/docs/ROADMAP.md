@@ -87,10 +87,13 @@ direction; treat the rest as where we've been.
 - ComfyUI/`aaa_texture.py` is now explicitly tracked as the peer procedural
   material lane for M8: 25 generated materials are inventoried, five organic
   blockers have a regeneration queue, and full-PBR runtime staging is auditable.
-  First grassland blocker regeneration produced a strict-gate-pass candidate,
-  still pending terrain-context review.
+  First grassland blocker regeneration produced a strict-gate-pass candidate
+  that also passed the first terrain-context candidate review. It remains
+  quarantined because detail stress still reads slightly pale/hazy; use it for
+  M4/M7 rerender trials before canonical promotion.
   Evidence: `world3/docs/COMFYUI_TEXTURE_WORKFLOW_INVENTORY_2026_05_08.md`
-  and `world3/docs/M8_COMFYUI_TEXTURE_REGEN_PASS_2026_05_08.md`.
+  and `world3/docs/M8_COMFYUI_TEXTURE_REGEN_PASS_2026_05_08.md` and
+  `world3/docs/M8_COMFYUI_TERRAIN_CONTEXT_REVIEW_2026_05_08.md`.
 - Visual target is now explicit: reach roughly 70 percent of the best stacked
   photo/topo OpenTopo reference quality before visual milestone closure.
   Evidence: `world3/docs/M1_M7_VISION_GAP_REVIEW_2026_05_08.md`.

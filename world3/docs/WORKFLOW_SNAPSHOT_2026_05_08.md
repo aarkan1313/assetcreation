@@ -199,6 +199,9 @@ material-generation QA rather than transition logic.
   `SOURCE_STACK_RUNTIME_REMEDIATION_2026_05_08.md` records the source macro
   albedo runtime path, mid/close/topdown source-stack captures, and quarantined
   organic repair candidates.
+- ComfyUI is now an explicit peer texture-source lane. The first regenerated
+  grassland candidate passed strict QA and terrain-context candidate review, but
+  remains sidecar-only until M4/M7 rerender trials pass.
 - Architectural decisions are appended to docs before moving on.
 
 ## Open Work
@@ -214,8 +217,9 @@ material-generation QA rather than transition logic.
   repair lane. R1 catalog sync is done; R2 uses `scrub_sparse -> dry_wash` as
   the control pair; R3 has a working source-stack runtime bridge; R4 has
   candidate outputs but remains active.
-- Regenerated/filtered green organic candidates are quarantined as
-  `repair_candidate`; do not promote them until terrain-context captures pass.
+- Regenerated/filtered green organic candidates are quarantined as sidecar or
+  `repair_candidate` assets; do not promote them until terrain-context captures
+  and M4/M7 rerender trials pass.
 - M1-M7 are complete for workflow validation. They are not complete for visual
   milestone closure. Next work is visual remediation, then a decision on
   whether M7 can close visually or needs a second visual-targeted pass.

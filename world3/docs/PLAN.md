@@ -55,7 +55,10 @@ responsibility boundaries, but this chat may execute both sides directly.
 closure. M8 starts with source-stack remediation and ComfyUI/`aaa_texture.py`
 regeneration of the five priority organic blockers. See
 `M1_M7_VISUAL_REMEDIATION_PLAN_2026_05_08.md` and
-`COMFYUI_TEXTURE_WORKFLOW_INVENTORY_2026_05_08.md`.
+`COMFYUI_TEXTURE_WORKFLOW_INVENTORY_2026_05_08.md`. The first ComfyUI
+candidate, `m8_grassland_grass_calm_v3`, passed strict QA and the first
+terrain-context candidate gate, but remains sidecar-only until M4/M7 rerender
+trials prove it does not wash out the source-stack terrain.
 
 ## M1 — Material catalog (orchestrator-led)
 
@@ -330,10 +333,11 @@ Evidence:
 Visual audit note: M7 does not close as a visual milestone. The same-source
 control is useful as a workflow diagnostic, but the biome stress case and the
 walk captures inherit noisy/over-repeated source materials and prototype splat
-context. Visual remediation is now active before M8. R1 catalog sync is done;
-R2 uses `scrub_sparse -> dry_wash` as the control pair; R3 has a working
-source-stack runtime bridge; R4 has quarantined organic repair candidates but
-does not have visual promotion. The target bar is about 70 percent of the best
+context. Visual remediation is now active before M7 visual closure. R1 catalog
+sync is done; R2 uses `scrub_sparse -> dry_wash` as the control pair; R3 has a
+working source-stack runtime bridge; R4 has quarantined deterministic organic
+repair candidates and the first ComfyUI sidecar candidate, but does not have
+canonical visual promotion. The target bar is about 70 percent of the best
 stacked photo/topo OpenTopo reference quality; current M4/M5/M7 captures remain
 debug/plumbing evidence until rerendered through the source-stack policy.
 

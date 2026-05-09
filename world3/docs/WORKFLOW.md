@@ -182,6 +182,21 @@ regeneration queue for noisy organic blockers. These generated materials are
 peer inputs to the source-stack workflow, but they still need seam QA, 2x2
 review, and Godot terrain-context close/mid/far review before promotion.
 
+When a regenerated material passes `aaa_texture.py` QA, stage it into the
+quarantined sidecar catalog instead of editing the canonical material catalog:
+
+```powershell
+python world3/pipeline/stage_comfy_candidate_material.py `
+  --library-id m8_grassland_grass_calm_v3 `
+  --source-material-id grassland_grass `
+  --color-family pale-dry-grassland-straw
+```
+
+This writes PBR maps under `world3/textures/wgv3_comfy_candidates/<id>/` and
+updates `world3/materials/catalog_comfy_candidates.json`. Review tools opt into
+that sidecar with `--extra-catalog`; canonical promotion stays blocked until
+terrain-context and M4/M7 rerender trials pass.
+
 ## Stage 4 — Stage textures into world3
 
 Each texture set gets its own subfolder under `world3/textures/wgv3/`

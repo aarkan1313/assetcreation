@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "updated": "2026-05-08",
+  "role": "quarantined_comfy_regeneration_candidates_not_canonical_catalog",
+  "materials": [
+    {
+      "id": "m8_grassland_grass_calm_v3",
+      "source": "procedural",
+      "asset_status": "comfy_regen_candidate",
+      "provenance": {
+        "type": "comfy_regeneration_candidate",
+        "source_material_id": "grassland_grass",
+        "source_asset_id": "m8_grassland_grass_calm_v3",
+        "tool": "pipelines/textures/aaa_texture.py",
+        "prompt": "top-down orthographic photogrammetry texture of dry savanna hardpan soil with sparse flattened straw fibers and chopped dry grass fragments, continuous low ground material, mostly tan soil and muted straw, even overcast lighting, seamless PBR terrain texture, no green grass blades, no tufts, no radial clumps, no living plants, no perspective, no shadows",
+        "quality": "strict",
+        "pbr_backend": "sm",
+        "qa_grade": "A",
+        "passed_gate": true,
+        "seam_checks": {
+          "edge_continuity_mse": 0.0025115341413766146,
+          "junction_ratio": 0.9831596139090968,
+          "periodic_locality": 13.710696519018054
+        },
+        "policy": "sidecar_candidate_passed_first_terrain_context_not_canonical",
+        "terrain_context_review": {
+          "doc": "world3/docs/M8_COMFYUI_TERRAIN_CONTEXT_REVIEW_2026_05_08.md",
+          "normal_source_stack_result": "safe_no_visible_regression_source_macro_dominant",
+          "detail_stress_result": "better_than_current_less_tufted_still_pale_hazy",
+          "promotion": "do_not_promote_until_m4_m7_rerender_trials_pass",
+          "captures": [
+            "world3/docs/captures/visual_remediation/grassland_comfy_v3_terrain_context_contact_sheet.png",
+            "world3/docs/captures/visual_remediation/grassland_comfy_v3_detail_stress_contact_sheet.png"
+          ],
+          "noise_audit": "world3/docs/M8_COMFYUI_CANDIDATE_NOISE_AUDIT.md"
+        },
+        "settings": {
+          "world_uv_scale": 0.015625,
+          "hex_strength": 1.0,
+          "blend_sharpness": 8.0,
+          "roughness_strength": 1.0,
+          "normal_strength": 0.0,
+          "detail_uv_scale_mult": 10.0,
+          "detail_albedo_strength": 0.05,
+          "detail_normal_strength": 0.0,
+          "detail_rough_strength": 0.015,
+          "detail_fade_start_m": 4.0,
+          "detail_fade_end_m": 42.0
+        }
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "pale-dry-grassland-straw",
+      "runtime_texture_dir": "world3/textures/wgv3_comfy_candidates/m8_grassland_grass_calm_v3",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3_comfy_candidates/m8_grassland_grass_calm_v3/albedo.png",
+        "normal": "world3/textures/wgv3_comfy_candidates/m8_grassland_grass_calm_v3/normal.png",
+        "roughness": "world3/textures/wgv3_comfy_candidates/m8_grassland_grass_calm_v3/roughness.png",
+        "metallic": "world3/textures/wgv3_comfy_candidates/m8_grassland_grass_calm_v3/metallic.png",
+        "height": "world3/textures/wgv3_comfy_candidates/m8_grassland_grass_calm_v3/height.png",
+        "ao": "world3/textures/wgv3_comfy_candidates/m8_grassland_grass_calm_v3/ao.png",
+        "tile_2x2": "world3/textures/wgv3_comfy_candidates/m8_grassland_grass_calm_v3/qa_tile_2x2.png",
+        "blender_combo": "world3/textures/wgv3_comfy_candidates/m8_grassland_grass_calm_v3/qa_blender_combo.png",
+        "detail_albedo": "world3/textures/wgv3_comfy_candidates/m8_grassland_grass_calm_v3/albedo.png",
+        "detail_normal": "world3/textures/wgv3_comfy_candidates/m8_grassland_grass_calm_v3/normal.png",
+        "detail_roughness": "world3/textures/wgv3_comfy_candidates/m8_grassland_grass_calm_v3/roughness.png"
+      },
+      "shader_binding": "terrain_hex_detail",
+      "validated_views": {
+        "close": "candidate_pass_not_canonical",
+        "mid": "candidate_pass_not_canonical",
+        "far": "candidate_pass_not_canonical"
+      }
+    }
+  ]
+}

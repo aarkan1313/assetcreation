@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "kind": "source_stack_runtime_review",
+  "id": "gloss_grassland_current_source_stack",
+  "source_stack": "res://toporeview/gloss_mountain_textured_master",
+  "source_macro": "res://toporeview/gloss_mountain_textured_master/layers/render_albedo.png",
+  "runtime_macro": "res://textures/source_stack/gloss_grassland_current_source_stack/source_macro_albedo.png",
+  "material": "res://textures/wgv3/terrain_source_stack_gloss_grassland_current_source_stack.tres",
+  "detail_material": "grassland_grass",
+  "target": "70_percent_of_best_photo_topo_stack_reference",
+  "policy": "source_macro_albedo_first_tileable_detail_second"
+}

@@ -109,9 +109,12 @@ priority organic blockers through ComfyUI/`aaa_texture.py` prompt and variant
 control before relying on deterministic repair.
 
 First regeneration result: `m8_grassland_grass_calm_v3` passed strict
-`aaa_texture.py` QA for the `grassland_grass` blocker. It remains a candidate
-until terrain-context captures pass. Evidence:
-`M8_COMFYUI_TEXTURE_REGEN_PASS_2026_05_08.md`.
+`aaa_texture.py` QA for the `grassland_grass` blocker and passed the first
+terrain-context candidate gate. It is materially calmer than the current
+texture under detail stress, but still slightly pale/hazy, so it remains
+quarantined and is not canonically promoted. Evidence:
+`M8_COMFYUI_TEXTURE_REGEN_PASS_2026_05_08.md` and
+`M8_COMFYUI_TERRAIN_CONTEXT_REVIEW_2026_05_08.md`.
 
 Deliverables:
 
@@ -128,7 +131,8 @@ Exit:
 - The priority organic materials no longer dominate close-range review with
   speckle or harsh micro-contrast.
 - Regenerated ComfyUI candidates pass inventory, seam QA, and terrain-context
-  close/mid/far review before canonical promotion.
+  close/mid/far review before M4/M7 rerender trials; canonical promotion
+  requires those runtime rerenders to pass without washout.
 - Remaining failures are explicitly labeled as pipeline-validation only.
 
 ## M9 - Runtime Performance And Interaction Polish
