@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/World3AutoReviewTour.gd" id="script"]
 
-[node name="SourceStackAutoTour" type="Node3D"]
+[node name="SourceStackAutoTourOverviewCheck" type="Node3D"]
 script = ExtResource("script")
 material_path = "res://textures/wgv3/terrain_source_stack_gloss_grassland_comfy_v3_source_stack.tres"
 heightmap_path = "res://toporeview/gloss_mountain_textured_master/heightmap.png"
@@ -22,4 +22,5 @@ show_footprint_debug_views = false
 review_normal_strength = 0.06
 review_detail_normal_strength = 0.025
 review_detail_rough_strength = 0.025
-auto_play = true
+initial_tour_index = 4
+auto_play = false

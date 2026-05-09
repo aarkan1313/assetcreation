@@ -15,9 +15,11 @@ extends Node3D
 @export var transition_repeat_m: float = 128.0
 @export_range(0.0, 1.0, 0.01) var transition_strength: float = 0.28
 @export var enable_transition_boundary: bool = false
+@export var show_footprint_debug_views: bool = false
 @export var review_normal_strength: float = 0.06
 @export var review_detail_normal_strength: float = 0.025
 @export var review_detail_rough_strength: float = 0.025
+@export var initial_tour_index: int = 0
 @export var auto_play: bool = true
 
 var _anchor: Node3D
@@ -35,6 +37,7 @@ var _ui_visible: bool = true
 func _ready() -> void:
 	_setup_environment()
 	_build_tour()
+	_tour_index = clampi(initial_tour_index, 0, _tour.size() - 1)
 	_setup_terrain()
 	_setup_camera()
 	_setup_overlay()
@@ -83,64 +86,77 @@ func _build_tour() -> void:
 		{
 			"name": "3D close ground pass",
 			"mode": "perspective",
-			"duration": 9.0,
-			"focus": Vector2(0.0, -56.0),
-			"focus_end": Vector2(42.0, 24.0),
-			"camera": Vector3(-86.0, 116.0, -128.0),
-			"camera_end": Vector3(-62.0, 126.0, -112.0),
-			"fov": 46.0
+			"duration": 8.0,
+			"focus": Vector2(-36.0, -30.0),
+			"focus_end": Vector2(8.0, 18.0),
+			"camera": Vector3(-62.0, 82.0, -94.0),
+			"camera_end": Vector3(-46.0, 90.0, -82.0),
+			"fov": 42.0
 		},
 		{
-			"name": "3D medium boundary read",
+			"name": "3D medium terrain read",
 			"mode": "perspective",
-			"duration": 9.0,
-			"focus": Vector2(-30.0, -18.0),
-			"focus_end": Vector2(70.0, 72.0),
-			"camera": Vector3(-182.0, 250.0, -280.0),
-			"camera_end": Vector3(-146.0, 260.0, -236.0),
-			"fov": 42.0
+			"duration": 8.0,
+			"focus": Vector2(-28.0, -18.0),
+			"focus_end": Vector2(32.0, 32.0),
+			"camera": Vector3(-112.0, 150.0, -164.0),
+			"camera_end": Vector3(-96.0, 156.0, -144.0),
+			"fov": 40.0
 		},
 		{
 			"name": "Iso close material read",
 			"mode": "ortho",
-			"duration": 8.5,
-			"focus": Vector2(0.0, 0.0),
-			"focus_end": Vector2(96.0, 64.0),
-			"camera": Vector3(-210.0, 260.0, -250.0),
-			"camera_end": Vector3(-185.0, 260.0, -226.0),
-			"size": 230.0
+			"duration": 8.0,
+			"focus": Vector2(-10.0, -8.0),
+			"focus_end": Vector2(42.0, 26.0),
+			"camera": Vector3(-150.0, 205.0, -172.0),
+			"camera_end": Vector3(-138.0, 205.0, -160.0),
+			"size": 175.0
 		},
 		{
-			"name": "Topdown source-stack footprint",
+			"name": "Topdown local material map",
 			"mode": "topdown",
-			"duration": 8.5,
-			"focus": Vector2(0.0, 0.0),
-			"focus_end": Vector2(128.0, 0.0),
+			"duration": 8.0,
+			"focus": Vector2(-8.0, -8.0),
+			"focus_end": Vector2(56.0, 0.0),
 			"camera": Vector3(0.0, 780.0, 0.01),
 			"camera_end": Vector3(0.0, 780.0, 0.01),
-			"size": 430.0
+			"size": 245.0
 		},
 		{
-			"name": "Far overview chunks",
-			"mode": "ortho",
-			"duration": 9.0,
-			"focus": Vector2(-80.0, -80.0),
-			"focus_end": Vector2(160.0, 160.0),
-			"camera": Vector3(-360.0, 700.0, -420.0),
-			"camera_end": Vector3(-330.0, 700.0, -390.0),
-			"size": 760.0
+			"name": "Controlled overview",
+			"mode": "topdown",
+			"duration": 8.0,
+			"focus": Vector2(-8.0, -8.0),
+			"focus_end": Vector2(56.0, 0.0),
+			"camera": Vector3(0.0, 780.0, 0.01),
+			"camera_end": Vector3(0.0, 780.0, 0.01),
+			"size": 245.0
 		},
 		{
 			"name": "3D final near-field sweep",
 			"mode": "perspective",
-			"duration": 9.0,
-			"focus": Vector2(76.0, 36.0),
-			"focus_end": Vector2(-32.0, 112.0),
-			"camera": Vector3(86.0, 128.0, -148.0),
-			"camera_end": Vector3(118.0, 138.0, -126.0),
-			"fov": 46.0
+			"duration": 8.0,
+			"focus": Vector2(32.0, 18.0),
+			"focus_end": Vector2(-22.0, 44.0),
+			"camera": Vector3(58.0, 96.0, -98.0),
+			"camera_end": Vector3(76.0, 108.0, -86.0),
+			"fov": 42.0
 		}
 	]
+	if show_footprint_debug_views:
+		_tour.append(
+			{
+				"name": "Diagnostic finite-footprint view",
+				"mode": "ortho",
+				"duration": 8.0,
+				"focus": Vector2(0.0, 0.0),
+				"focus_end": Vector2(160.0, 160.0),
+				"camera": Vector3(-360.0, 700.0, -420.0),
+				"camera_end": Vector3(-330.0, 700.0, -390.0),
+				"size": 760.0
+			}
+		)
 
 
 func _setup_terrain() -> void:
@@ -291,7 +307,7 @@ func _update_overlay(frame: Dictionary, t: float) -> void:
 	_overlay_label.text = (
 		"world3 Source-Stack Auto Review | " + workflow_text + "\n"
 		+ "%d/%d  %s  |  %s  |  progress %02d%%\n"
-		+ "Views: close/medium 3D, iso, topdown, far, near sweep\n"
+		+ "Views: close/medium 3D, iso, topdown, controlled overview, near sweep\n"
 		+ "Keys: Space pause | N/B step | R reset | H UI"
 	) % [
 		_tour_index + 1,

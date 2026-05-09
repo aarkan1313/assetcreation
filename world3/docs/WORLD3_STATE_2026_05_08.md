@@ -551,3 +551,7 @@ These start when chunk + biome + tile + transition is ~80% solved
   `world3/scenes/review/source_stack_auto_tour.tscn` with
   `World3AutoReviewTour.gd`. It auto-cycles close 3D, medium 3D, iso, topdown,
   far overview, and near-field sweep views for remote-desktop validation.
+- **2026-05-09 (auto review scene correction)**: Removed true far/horizon views
+  from the default tour after mobile review exposed finite-footprint and
+  source-height repeat edges. The default tour now stays inside controlled
+  inspection framing; the footprint diagnostic is opt-in.

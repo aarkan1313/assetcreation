@@ -19,19 +19,21 @@ Script:
 Smoke capture:
 
 - `world3/docs/captures/review/source_stack_auto_tour_smoke.png`
+- `world3/docs/captures/review/source_stack_auto_tour_topdown_smoke.png`
+- `world3/docs/captures/review/source_stack_auto_tour_overview_smoke.png`
 
 ## What It Shows
 
 - Source-stack OpenTopo macro terrain.
 - M4/M5 streamed visual baseline context.
 - Quarantined M8 `m8_grassland_grass_calm_v3` sidecar detail candidate.
-- 5x5 streamed chunk neighborhood using `ChunkLoader.gd`.
+- 7x7 streamed chunk neighborhood using `ChunkLoader.gd`.
 - Automatic camera tour through:
   - close 3D ground pass;
   - medium 3D boundary read;
   - iso close material read;
   - topdown footprint;
-  - far chunk overview;
+  - controlled topdown overview;
   - final near-field sweep.
 
 ## Controls
@@ -52,6 +54,12 @@ diagnostic as a first user-facing review.
 
 Do not treat it as a final art pass: the current terrain is still source-stack
 validation material, and M8 organic texture cleanup is still active.
+
+2026-05-09 correction: true far/horizon views are intentionally excluded from
+the default tour. They expose finite-footprint and source-height repeat edges
+that are real workflow gaps, not acceptable representative review. The
+`show_footprint_debug_views` toggle can expose that diagnostic view when needed,
+but normal review stays inside the valid inspection footprint.
 
 ## Next Steps After Review
 

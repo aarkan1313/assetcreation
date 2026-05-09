@@ -171,9 +171,11 @@ still untested queue items.
 
 Representative review scene:
 `world3/scenes/review/source_stack_auto_tour.tscn` runs an automatic tour through
-close 3D, medium 3D, iso, topdown, far overview, and near-field sweep views over
-the current source-stack/M7 boundary workflow. Use it for quick mobile
-remote-desktop validation before continuing the roadmap.
+close 3D, medium 3D, iso, topdown, controlled overview, and near-field sweep
+views over the current source-stack/M8 sidecar workflow. Use it for quick mobile
+remote-desktop validation before continuing the roadmap. True far/horizon views
+are deliberately excluded from the default tour because they expose finite
+footprint/source-height repeat artifacts.
 
 M1 is done:
 

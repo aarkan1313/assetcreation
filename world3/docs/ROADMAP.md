@@ -118,6 +118,10 @@ direction; treat the rest as where we've been.
   validation across close 3D, medium 3D, iso, topdown, far overview, and
   near-field sweep views. Evidence:
   `world3/docs/REVIEW_SCENE_AUTO_TOUR_2026_05_08.md`.
+- 2026-05-09 review-scene correction: true far/horizon views are not part of
+  the default representative scene until finite-footprint and source-height
+  repeat artifacts have a real policy. The scene now uses controlled overview
+  framing instead.
 - Visual target is now explicit: reach roughly 70 percent of the best stacked
   photo/topo OpenTopo reference quality before visual milestone closure.
   Evidence: `world3/docs/M1_M7_VISION_GAP_REVIEW_2026_05_08.md`.
