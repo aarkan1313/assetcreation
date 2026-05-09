@@ -45,6 +45,12 @@ Smoke captures:
 - `world3/docs/captures/review/source_stack_seam_integration_tour_iso_smoke.png`
 - `world3/docs/captures/review/source_stack_seam_integration_tour_3d_smoke.png`
 
+Capture wrappers:
+
+- `world3/scenes/review/capture_source_stack_seam_integration_topdown.tscn`
+- `world3/scenes/review/capture_source_stack_seam_integration_iso.tscn`
+- `world3/scenes/review/capture_source_stack_seam_integration_3d.tscn`
+
 ## Metrics
 
 Height overlap before solve:
@@ -144,11 +150,56 @@ Visual read:
 - baked orthophoto lighting and shrub/tree marks remain visible, so this is a
   workflow proof, not a production beauty pass.
 
+Capture wrappers:
+
+- `world3/scenes/review/capture_source_stack_seam_nonoverlap_topdown.tscn`
+- `world3/scenes/review/capture_source_stack_seam_nonoverlap_iso.tscn`
+- `world3/scenes/review/capture_source_stack_seam_nonoverlap_3d.tscn`
+
 Method lesson:
 
 - A harsher first non-overlap crop pair required a `26 m` vertical bias and
   produced either a ghosted alpha-blend strip or a muddy lowpass bridge. That
   was rejected. Crop compatibility needs to be a real gate before solving.
+
+## Review Lighting Correction
+
+The first M10 review window read too bright because of the review scene setup,
+not because the seam artifacts were white. The terrain shader now exposes
+review-only `roughness_floor`, `specular_strength`, and `albedo_gain` controls.
+The seam scenes use a matte validation preset:
+
+- dark neutral background: `Color(0.08, 0.095, 0.1, 1)`;
+- source macro strength: `0.96`;
+- albedo gain: `0.92`;
+- roughness floor: `0.86`;
+- specular: `0.0`;
+- tonemap exposure: `0.58`;
+- sun energy: `0.55`;
+- ambient energy: `0.2`;
+- glow explicitly disabled.
+
+This keeps tan/white source-photo rocks visible but removes false white/blue
+review glare. Remaining bright patches are source orthophoto content and should
+be handled by source-material/feature extraction, not by hiding them with post
+processing.
+
+Validated capture command pattern:
+
+```powershell
+$args = @(
+  "--path", "D:/assets/world3",
+  "--single-window",
+  "--disable-crash-handler",
+  "--scene", "res://scenes/review/capture_source_stack_seam_nonoverlap_topdown.tscn"
+)
+$p = Start-Process -FilePath "C:/Godot/Godot_v4.5-stable_win64.exe" -ArgumentList $args -Wait -PassThru
+"EXIT=$($p.ExitCode)"
+```
+
+Avoid the older waited `--script res://scripts/_codex_render_runner.gd` path for
+these review captures on this machine; it can trigger a Windows access
+violation before scene code runs.
 
 ## Next Step
 

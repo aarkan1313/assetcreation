@@ -86,6 +86,9 @@ uniform float world_uv_scale = 0.1;
 uniform float hex_strength : hint_range(0.0, 1.0) = 1.0;
 uniform float blend_sharpness : hint_range(1.0, 32.0) = 8.0;
 uniform float roughness_strength : hint_range(0.0, 1.0) = 1.0;
+uniform float roughness_floor : hint_range(0.04, 1.0) = 0.04;
+uniform float specular_strength : hint_range(0.0, 1.0) = 0.5;
+uniform float albedo_gain : hint_range(0.0, 1.25) = 1.0;
 uniform float normal_strength : hint_range(0.0, 2.0) = 1.0;
 
 uniform float macro_scale = 80.0;
@@ -645,9 +648,10 @@ void fragment() {
         ao = mix(ao, transition_ao_value, transition_band);
     }
 
-    ALBEDO = final_albedo;
+    ALBEDO = clamp(final_albedo * albedo_gain, vec3(0.0), vec3(1.0));
     NORMAL = normalize((VIEW_MATRIX * vec4(final_normal, 0.0)).xyz);
-    ROUGHNESS = clamp(final_rough, 0.04, 1.0);
+    ROUGHNESS = clamp(final_rough, roughness_floor, 1.0);
+    SPECULAR = specular_strength;
     METALLIC = 0.0;
     AO = clamp(ao, 0.0, 1.0);
 }

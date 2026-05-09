@@ -424,30 +424,51 @@ Capture scenes wrap the real scene + `scripts/HeadlessCapture.gd`:
   for converted OpenTopo heightmaps; smoke-test after script or
   sample-layout changes)
 
-Run capture scenes through normal Godot with the capture scene as the trailing
-argument. This is the validated Windows path for real viewport screenshots.
+Run capture scenes through normal Godot with the explicit `--scene` option.
+This is the current validated Windows path for real viewport screenshots.
 
 ```powershell
-& "C:\Godot\Godot_v4.5-stable_win64.exe" --path "D:\assets\world3" "res://scenes/capture_iso.tscn"
-& "C:\Godot\Godot_v4.5-stable_win64.exe" --path "D:\assets\world3" "res://scenes/capture_topdown.tscn"
-& "C:\Godot\Godot_v4.5-stable_win64.exe" --path "D:\assets\world3" "res://scenes/capture_walk.tscn"
+& "C:\Godot\Godot_v4.5-stable_win64.exe" --path "D:\assets\world3" --scene "res://scenes/capture_iso.tscn"
+& "C:\Godot\Godot_v4.5-stable_win64.exe" --path "D:\assets\world3" --scene "res://scenes/capture_topdown.tscn"
+& "C:\Godot\Godot_v4.5-stable_win64.exe" --path "D:\assets\world3" --scene "res://scenes/capture_walk.tscn"
 ```
 
-Wait/hidden version (when you need PowerShell to block on the capture):
+Waited version (when you need PowerShell to block on the capture):
 ```powershell
-$args = @("--path", "D:/assets/world3", "res://scenes/capture_iso.tscn")
-$p = Start-Process -FilePath "C:/Godot/Godot_v4.5-stable_win64.exe" -ArgumentList $args -WindowStyle Hidden -Wait -PassThru
+$args = @("--path", "D:/assets/world3", "--single-window", "--disable-crash-handler", "--scene", "res://scenes/capture_iso.tscn")
+$p = Start-Process -FilePath "C:/Godot/Godot_v4.5-stable_win64.exe" -ArgumentList $args -Wait -PassThru
 "EXIT=$($p.ExitCode)"
 ```
 
 If a capture appears to do nothing, check for an existing Godot editor
 or hung Godot process before rerunning.
 
-For OpenTopo review screenshots, use the same trailing-argument pattern with
+Do not add `-WindowStyle Hidden` for viewport review captures on this machine;
+hidden launches have triggered Godot access violations before scene code ran.
+
+For OpenTopo review screenshots, use the same explicit `--scene` pattern with
 `res://toporeview/capture_phase*.tscn`. Do not use the older waited
 `--headless --scene ... --quit-after ...` path as scene validation; that path
 can fail locally with a Windows access violation even when the real capture
 scene works.
+
+For M10 seam review captures, use the dedicated wrapper scenes:
+
+```text
+res://scenes/review/capture_source_stack_seam_integration_topdown.tscn
+res://scenes/review/capture_source_stack_seam_integration_iso.tscn
+res://scenes/review/capture_source_stack_seam_integration_3d.tscn
+res://scenes/review/capture_source_stack_seam_nonoverlap_topdown.tscn
+res://scenes/review/capture_source_stack_seam_nonoverlap_iso.tscn
+res://scenes/review/capture_source_stack_seam_nonoverlap_3d.tscn
+```
+
+Open the live non-overlap review scene with:
+
+```powershell
+$args = @("--path", "D:/assets/world3", "--single-window", "--disable-crash-handler", "--scene", "res://scenes/review/source_stack_seam_nonoverlap_tour.tscn")
+Start-Process -FilePath "C:/Godot/Godot_v4.5-stable_win64.exe" -ArgumentList $args
+```
 
 `toporeview/TopoReviewCapture.gd` is the deterministic comparison helper for
 OpenTopo close-up screenshots. It sets the same camera pose across multiple

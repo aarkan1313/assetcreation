@@ -114,6 +114,11 @@ overlap and nearby non-overlap Gloss Mountain seam artifacts.
 `source_stack_seam_nonoverlap_tour.tscn` reviews the nearby non-overlap proof.
 These validate the runtime/integration-band path, not full M10 closure.
 
+M10 review launch/capture note: use explicit `--scene` wrapper launches, not the
+older waited `--script _codex_render_runner.gd` path. The current seam review
+scenes use a matte validation preset with dark neutral background, zero
+specular, high roughness, lower exposure, and glow disabled.
+
 First ComfyUI M8 result: `m8_grassland_grass_calm_v3` passed strict
 `aaa_texture.py` QA, source-material noise audit, and the first terrain-context
 candidate review. It is calmer than current `grassland_grass` under detail

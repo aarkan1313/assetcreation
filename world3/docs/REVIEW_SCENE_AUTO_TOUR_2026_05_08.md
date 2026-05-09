@@ -14,6 +14,12 @@ Scene:
 - `world3/scenes/review/source_stack_full_map_fast_tour.tscn`
 - `world3/scenes/review/source_stack_seam_integration_tour.tscn`
 - `world3/scenes/review/source_stack_seam_nonoverlap_tour.tscn`
+- `world3/scenes/review/capture_source_stack_seam_integration_topdown.tscn`
+- `world3/scenes/review/capture_source_stack_seam_integration_iso.tscn`
+- `world3/scenes/review/capture_source_stack_seam_integration_3d.tscn`
+- `world3/scenes/review/capture_source_stack_seam_nonoverlap_topdown.tscn`
+- `world3/scenes/review/capture_source_stack_seam_nonoverlap_iso.tscn`
+- `world3/scenes/review/capture_source_stack_seam_nonoverlap_3d.tscn`
 
 Script:
 
@@ -99,6 +105,19 @@ the overlap proof. `source_stack_seam_nonoverlap_tour.tscn` covers the nearby
 non-overlap proof. Both auto-cycle topdown, iso, close 3D, medium 3D, and
 footprint views over integrated seam artifacts. Use them to validate the
 methodology shift away from forced repeated-source tiling.
+
+2026-05-09 lighting correction: the M10 seam scenes now use a matte review
+preset instead of the older bright sky/exposure setup. `World3AutoReviewTour.gd`
+exposes review background, albedo gain, tonemap exposure, sun/ambient energy,
+roughness floor, and specular controls. For seam validation the scenes use a
+dark neutral background, zero specular, high roughness, lower exposure, and glow
+disabled. This is a validation preset, not a production art grade.
+
+2026-05-09 launch correction: for these review captures, use capture wrapper
+scenes with Godot's explicit `--scene` command line option. Do not use the
+waited `--script res://scripts/_codex_render_runner.gd` capture runner for M10
+on this machine; it can trigger a Windows access violation before scene code
+runs.
 
 ## Next Steps After Review
 

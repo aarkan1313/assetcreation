@@ -25,9 +25,18 @@ extends Node3D
 @export var enable_transition_boundary: bool = false
 @export var show_footprint_debug_views: bool = false
 @export var review_use_source_macro_valid_mask: bool = true
+@export_range(0.0, 1.0, 0.01) var review_source_macro_strength: float = 1.0
 @export var review_normal_strength: float = 0.06
 @export var review_detail_normal_strength: float = 0.025
 @export var review_detail_rough_strength: float = 0.025
+@export_range(0.0, 2.0, 0.01) var review_roughness_strength: float = 1.0
+@export_range(0.04, 1.0, 0.01) var review_roughness_floor: float = 0.04
+@export_range(0.0, 1.0, 0.01) var review_specular_strength: float = 0.5
+@export_range(0.0, 1.25, 0.01) var review_albedo_gain: float = 1.0
+@export var review_background_color: Color = Color(0.50, 0.62, 0.68)
+@export var review_tonemap_exposure: float = 0.94
+@export var review_sun_energy: float = 1.35
+@export var review_ambient_energy: float = 0.42
 @export_enum("standard", "full_map_fast", "same_source_blend", "seam_integration") var tour_profile: String = "standard"
 @export var initial_tour_index: int = 0
 @export var auto_play: bool = true
@@ -429,9 +438,14 @@ func _setup_terrain() -> void:
 	mat.set_shader_parameter("use_transition_strip", false)
 	mat.set_shader_parameter("use_transition_mask", false)
 	mat.set_shader_parameter("use_source_macro_valid_mask", review_use_source_macro_valid_mask)
+	mat.set_shader_parameter("source_macro_strength", review_source_macro_strength)
 	mat.set_shader_parameter("normal_strength", review_normal_strength)
 	mat.set_shader_parameter("detail_normal_strength", review_detail_normal_strength)
 	mat.set_shader_parameter("detail_rough_strength", review_detail_rough_strength)
+	mat.set_shader_parameter("roughness_strength", review_roughness_strength)
+	mat.set_shader_parameter("roughness_floor", review_roughness_floor)
+	mat.set_shader_parameter("specular_strength", review_specular_strength)
+	mat.set_shader_parameter("albedo_gain", review_albedo_gain)
 	_apply_source_macro_overrides(mat)
 
 	_loader = ChunkLoader.new()
@@ -491,12 +505,13 @@ func _setup_camera() -> void:
 func _setup_environment() -> void:
 	var env := Environment.new()
 	env.background_mode = Environment.BG_COLOR
-	env.background_color = Color(0.50, 0.62, 0.68)
+	env.background_color = review_background_color
 	env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
 	env.ambient_light_color = Color(0.55, 0.56, 0.54)
-	env.ambient_light_energy = 0.42
+	env.ambient_light_energy = review_ambient_energy
 	env.tonemap_mode = Environment.TONE_MAPPER_FILMIC
-	env.tonemap_exposure = 0.94
+	env.tonemap_exposure = review_tonemap_exposure
+	env.glow_enabled = false
 	env.ssao_enabled = true
 	env.ssao_radius = 4.0
 	env.ssao_intensity = 0.7
@@ -509,7 +524,7 @@ func _setup_environment() -> void:
 	var sun := DirectionalLight3D.new()
 	sun.name = "Sun"
 	sun.light_color = Color(1.0, 0.97, 0.90)
-	sun.light_energy = 1.35
+	sun.light_energy = review_sun_energy
 	sun.shadow_enabled = true
 	sun.directional_shadow_max_distance = 5000.0
 	add_child(sun)
