@@ -38,11 +38,13 @@ First M10 proof is now implemented in
 height/macro seam artifact and `source_stack_seam_integration_tour.tscn`.
 Second-rung nearby non-overlap proof is also implemented through
 `source_stack_seam_nonoverlap_tour.tscn`.
-Different-source M10 work has started. `scan_terrain_seam_compatibility.py`
-filters real-to-real crop pairs, and the current review candidate is
-Gloss-Guadalupe in `source_stack_cross_source_tour.tscn`. Treat it as a
-candidate pending live visual acceptance: geometry integration is credible, but
-macro/source-style continuity is the remaining closure risk.
+Different-source M10 work now has an accepted first proof.
+`scan_terrain_seam_compatibility.py` filters real-to-real crop pairs, and the
+accepted Gloss-Guadalupe review scene is
+`source_stack_cross_source_tour.tscn`. Geometry integration and live visual
+review passed for this pair. Next workflow work is scanner veto hardening,
+another real-to-real catalog pair, then real-to-procedural/unlike-biome
+promotion.
 
 ## Framing
 

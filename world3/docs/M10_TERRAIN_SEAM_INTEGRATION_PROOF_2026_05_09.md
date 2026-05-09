@@ -167,7 +167,8 @@ Method lesson:
 The third proof moves from same-source Gloss Mountain crops to a different real
 source pair. This is the first rung that is production-relevant for neighboring
 catalog data, because the left and right sides do not share source pixels,
-lighting, capture scale, or elevation datum.
+lighting, capture scale, or elevation datum. Live user review on 2026-05-09
+accepted this proof as visually successful.
 
 Compatibility scanner:
 
@@ -194,7 +195,7 @@ Scanner evidence:
   `world3/docs/captures/review/terrain_seam_cross_source_gloss_guadalupe_clean_candidates_7_18_preview.png`
 
 The best numeric candidates were rejected because they contained a visible
-human-made landmark in the Gloss crop. The current candidate is lower-ranked
+human-made landmark in the Gloss crop. The accepted proof is lower-ranked
 numerically but cleaner as terrain. This establishes a required method rule:
 compatibility scoring is a filter, not an autopromote decision. Visual veto for
 landmarks, source-edge fill, and obvious capture artifacts is mandatory.
@@ -233,13 +234,83 @@ Implementation fix found:
   feather now leaves the far side of the right source unchanged unless the
   feather is explicitly disabled.
 
-Current read:
+Live validation read:
 
 - Geometry/runtime integration is credible for a first different-source proof:
   the vertical datum mismatch is solved into a smooth terrain band, not a wall.
-- Macro/source-style integration is improved but not final closure. It still
-  needs live human validation and likely a stronger material/source-style pass
-  before M10 is marked closed.
+- Topdown, iso, and 3D tour review passed user visual acceptance on
+  2026-05-09.
+- Macro/source-style integration is accepted for the current real-to-real M10
+  proof. The remaining work is hardening the scanner/veto workflow and extending
+  the contract to real-to-procedural and unlike-biome cases.
+
+## Rung 3 Reproduction Workflow
+
+Compatibility scan:
+
+```powershell
+python world3/pipeline/scan_terrain_seam_compatibility.py `
+  --left-id gloss_mountain `
+  --right-id guadalupe_cypress `
+  --left-macro world3/textures/source_stack/gloss_scrub_source_stack/source_macro_albedo.png `
+  --left-valid-mask world3/textures/source_stack/gloss_scrub_source_stack/source_macro_valid_mask.png `
+  --left-heightmap world3/toporeview/gloss_mountain_textured_master/heightmap.png `
+  --left-meta world3/toporeview/gloss_mountain_textured_master/meta.json `
+  --right-macro world3/toporeview/phase2_fusion_max/layers/render_albedo.png `
+  --right-valid-mask world3/toporeview/phase2_fusion_max/layers/source_valid_mask.png `
+  --right-heightmap world3/toporeview/phase2_fusion_max/heightmap.png `
+  --right-meta world3/toporeview/phase2_fusion_max/meta.json `
+  --crop-world-size-m 120,240 `
+  --scan-output-size 256,512 `
+  --samples-x 10 `
+  --samples-y 8 `
+  --source-margin-px 120 `
+  --top-k 20 `
+  --out world3/docs/captures/review/terrain_seam_cross_source_gloss_guadalupe_clean_candidates.json `
+  --preview-out world3/docs/captures/review/terrain_seam_cross_source_gloss_guadalupe_clean_candidates_preview.png
+```
+
+Accepted proof build:
+
+```powershell
+python world3/pipeline/build_terrain_seam_integration_proof.py `
+  --left-macro world3/textures/source_stack/gloss_scrub_source_stack/source_macro_albedo.png `
+  --left-valid-mask world3/textures/source_stack/gloss_scrub_source_stack/source_macro_valid_mask.png `
+  --left-heightmap world3/toporeview/gloss_mountain_textured_master/heightmap.png `
+  --left-meta world3/toporeview/gloss_mountain_textured_master/meta.json `
+  --right-macro world3/toporeview/phase2_fusion_max/layers/render_albedo.png `
+  --right-valid-mask world3/toporeview/phase2_fusion_max/layers/source_valid_mask.png `
+  --right-heightmap world3/toporeview/phase2_fusion_max/heightmap.png `
+  --right-meta world3/toporeview/phase2_fusion_max/meta.json `
+  --left-crop 199,699,229,457 `
+  --right-crop 6642,3001,614,1229 `
+  --output-size 512,1024 `
+  --overlap-px 128 `
+  --height-feather-px 224 `
+  --color-feather-px 384 `
+  --profile-blur-px 20 `
+  --macro-band-mode blend `
+  --macro-bridge-blur-px 26 `
+  --macro-bridge-detail-strength 0.12 `
+  --artifact-name "Gloss-Guadalupe real-to-real seam proof" `
+  --integration-kind different_source_real_to_real_integration_band_proof `
+  --policy different_real_sources_scale_normalized_then_solved_into_single_runtime_bundle_with_visual_vetoed_candidate `
+  --texture-out world3/textures/source_stack/gloss_guadalupe_cross_source_proof `
+  --topo-out world3/toporeview/gloss_guadalupe_cross_source_proof `
+  --metrics-out world3/docs/captures/review/terrain_seam_cross_source_gloss_guadalupe_metrics.json
+```
+
+Review launch:
+
+```powershell
+$args = @(
+  "--path", "D:/assets/world3",
+  "--single-window",
+  "--disable-crash-handler",
+  "--scene", "res://scenes/review/source_stack_cross_source_tour.tscn"
+)
+Start-Process -FilePath "C:/Godot/Godot_v4.5-stable_win64.exe" -ArgumentList $args
+```
 
 ## Review Lighting Correction
 
@@ -282,12 +353,12 @@ violation before scene code runs.
 
 ## Next Step
 
-M10 should not be marked closed yet. The next M10 gate is:
+M10 now has an accepted different-source real-to-real proof. The next M10 gates
+are:
 
-1. live-review the Gloss-Guadalupe proof in topdown, iso, and close 3D;
-2. add explicit scanner veto/score support for landmarks, source-edge fill,
+1. add explicit scanner veto/score support for landmarks, source-edge fill,
    and capture artifacts;
-3. improve the macro/source-style bridge if the live scene still shows a
-   rectangular source-style break;
-4. only after different-source real terrain passes those gates, promote to
-   real-to-procedural and unlike-biome cross-source blending.
+2. run one more different-source pair from the master catalog to prove the
+   workflow is not overfit to Gloss-Guadalupe;
+3. promote the same integration contract to real-to-procedural and unlike-biome
+   cross-source blending.

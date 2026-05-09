@@ -114,12 +114,12 @@ overlap and nearby non-overlap Gloss Mountain seam artifacts.
 `source_stack_seam_nonoverlap_tour.tscn` reviews the nearby non-overlap proof.
 These validate the runtime/integration-band path, not full M10 closure.
 
-M10 different-source rung has started. `scan_terrain_seam_compatibility.py`
-scores real-to-real crop pairs, and `source_stack_cross_source_tour.tscn`
-currently reviews a Gloss-Guadalupe proof candidate. Geometry integration is
-credible; macro/source-style continuity still needs live visual acceptance.
-Do not mark M10 closed until a different-source proof passes topdown, iso, and
-close 3D review without a jarring source-style break.
+M10 different-source rung has its first accepted proof.
+`scan_terrain_seam_compatibility.py` scores real-to-real crop pairs, and
+`source_stack_cross_source_tour.tscn` reviews the accepted Gloss-Guadalupe
+proof. Geometry integration and live topdown/iso/3D visual review passed on
+2026-05-09. Next M10 work is scanner veto hardening, a second real-to-real pair,
+then real-to-procedural/unlike-biome promotion.
 
 M10 review launch/capture note: use explicit `--scene` wrapper launches, not the
 older waited `--script _codex_render_runner.gd` path. The current seam review
@@ -350,8 +350,10 @@ M7-M12 near roadmap is now explicit:
 1. M7 boundary-runtime integration.
 2. M8 organic source-material cleanup.
 3. M9 runtime performance and interaction polish.
-4. M10 terrain seam integration and cross-source blending. First overlap proof
-   and nearby non-overlap proof exist; next is different-source.
+4. M10 terrain seam integration and cross-source blending. First overlap proof,
+   nearby non-overlap proof, and accepted Gloss-Guadalupe different-source proof
+   exist; next is scanner veto hardening, a second real-to-real pair, then
+   real-to-procedural/unlike-biome promotion.
 5. M11 corner and junction transitions.
 6. M12 walk/iso/topdown view-mode parity.
 

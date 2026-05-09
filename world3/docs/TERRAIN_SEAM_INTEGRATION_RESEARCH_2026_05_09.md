@@ -144,14 +144,15 @@ The third rung now has a first different-source implementation:
 
 - scanner: `world3/pipeline/scan_terrain_seam_compatibility.py`;
 - review scene: `world3/scenes/review/source_stack_cross_source_tour.tscn`;
-- current candidate: Gloss Mountain source stack into Guadalupe Cypress
+- accepted proof: Gloss Mountain source stack into Guadalupe Cypress
   `phase2_fusion_max`.
 
-The method lesson is that scanner metrics are necessary but insufficient. Top
-numeric candidates can contain landmarks, source-edge fill, or capture artifacts
-that would be unacceptable in a production terrain workflow. Different-source
-terrain promotion therefore requires both numeric compatibility and visual
-veto before a proof can close M10.
+This proof passed live visual review on 2026-05-09. The method lesson is that
+scanner metrics are necessary but insufficient. Top numeric candidates can
+contain landmarks, source-edge fill, or capture artifacts that would be
+unacceptable in a production terrain workflow. Different-source terrain
+promotion therefore requires both numeric compatibility and visual veto before
+the output is accepted.
 
 ## Sources
 

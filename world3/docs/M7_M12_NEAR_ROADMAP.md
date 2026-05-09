@@ -216,13 +216,11 @@ uses nearby non-overlap crops with compatibility gating. Both emit runtime
 height/macro bundles, manifests, metrics, and auto-tour review scenes. Evidence:
 `M10_TERRAIN_SEAM_INTEGRATION_PROOF_2026_05_09.md`.
 
-2026-05-09 cross-source update: Rung 3 now has a different-source scanner and
-a Gloss-Guadalupe real-to-real proof candidate. The geometry solve handles a
+2026-05-09 cross-source validation: Rung 3 now has a different-source scanner
+and an accepted Gloss-Guadalupe real-to-real proof. The geometry solve handles a
 large vertical datum mismatch without creating a height wall, and the RGB solve
 now correctly feathers source color bias instead of tinting the whole right
-source. The remaining closure risk is macro/source-style continuity after live
-review. M10 stays open until that different-source proof passes visually, not
-just numerically.
+source. Topdown, iso, and 3D tour review passed live user visual acceptance.
 
 Deliverables:
 
@@ -242,9 +240,10 @@ Exit:
   invalid fallback plateau, or jarring source-style break.
 
 Current exit state: overlap and nearby non-overlap same-source proofs pass as
-workflow/geometry evidence. A different-source Gloss-Guadalupe candidate now
-exists and should be live-reviewed next. M10 is not closed until that candidate
-or a better real-to-real pair passes the same visual gates.
+workflow/geometry evidence, and the different-source Gloss-Guadalupe proof has
+passed live visual review. M10 should now harden scanner veto rules, validate at
+least one additional real-to-real pair, and then extend the same contract to
+real-to-procedural/unlike-biome blending.
 
 ## M11 - Corner And Junction Transitions
 
