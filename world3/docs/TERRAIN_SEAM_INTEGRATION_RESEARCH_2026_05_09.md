@@ -154,6 +154,13 @@ unacceptable in a production terrain workflow. Different-source terrain
 promotion therefore requires both numeric compatibility and visual veto before
 the output is accepted.
 
+Scanner hardening is now implemented in
+`world3/pipeline/scan_terrain_seam_compatibility.py`: optional fill/artifact
+veto masks, rectilinear/low-detail visual-veto scoring, score filtering,
+weighted candidate penalties, and ranked preview offsets. A second
+Chuculay-Guadalupe real-to-real candidate has been generated with captures and
+is pending live visual review.
+
 ## Sources
 
 - Poisson Image Editing, Perez/Gangnet/Blake, ACM TOG 2003:

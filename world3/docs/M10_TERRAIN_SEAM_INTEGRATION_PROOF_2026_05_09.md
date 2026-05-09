@@ -265,7 +265,12 @@ python world3/pipeline/scan_terrain_seam_compatibility.py `
   --samples-x 10 `
   --samples-y 8 `
   --source-margin-px 120 `
+  --right-veto-mask world3/toporeview/phase2_fusion_max/layers/render_fill_mask.png `
+  --max-visual-veto-score 0.85 `
+  --visual-veto-weight 2.0 `
   --top-k 20 `
+  --preview-start-rank 1 `
+  --preview-rows 8 `
   --out world3/docs/captures/review/terrain_seam_cross_source_gloss_guadalupe_clean_candidates.json `
   --preview-out world3/docs/captures/review/terrain_seam_cross_source_gloss_guadalupe_clean_candidates_preview.png
 ```
@@ -312,6 +317,82 @@ $args = @(
 Start-Process -FilePath "C:/Godot/Godot_v4.5-stable_win64.exe" -ArgumentList $args
 ```
 
+## Scanner Hardening Update
+
+Implemented after the first live-accepted cross-source proof:
+
+- optional `--left-veto-mask` and `--right-veto-mask` inputs for fill/artifact
+  masks;
+- per-crop visual-veto metrics written into each candidate:
+  `visual_veto_score`, fill-mask mean/p95, invalid fraction, rectilinear edge
+  score, low-detail fraction, dark fraction, and bright fraction;
+- `--max-visual-veto-score` to filter high-risk crops before pairing;
+- `--visual-veto-weight` to keep borderline crops numerically disadvantaged;
+- `--preview-start-rank` and `--preview-rows` so human/vision review can inspect
+  non-top-ranked candidates without one-off preview scripts.
+
+This does not replace human visual review. It makes the scanner better at
+surfacing why a crop is risky and prevents obvious fill/landmark candidates from
+winning purely on height/RGB edge statistics.
+
+## Rung 4: Second Real-To-Real Candidate
+
+The second different-source pair is Chuculay to Guadalupe. This is intended to
+prove that the workflow is not overfit to Gloss-Guadalupe.
+
+Scanner evidence:
+
+- Candidate list: `world3/docs/captures/review/terrain_seam_cross_source_chuculay_guadalupe_candidates.json`
+- Candidate preview: `world3/docs/captures/review/terrain_seam_cross_source_chuculay_guadalupe_candidates_preview.png`
+
+Selected pair:
+
+- Left source: `world3/toporeview/chuculay_textured_master/layers/render_albedo.png`
+- Left valid mask: `world3/toporeview/chuculay_textured_master/layers/source_valid_mask.png`
+- Left height: `world3/toporeview/chuculay_textured_master/heightmap.png`
+- Right source: `world3/toporeview/phase2_fusion_max/layers/render_albedo.png`
+- Right valid mask: `world3/toporeview/phase2_fusion_max/layers/source_valid_mask.png`
+- Right fill/artifact veto mask: `world3/toporeview/phase2_fusion_max/layers/render_fill_mask.png`
+- Right height: `world3/toporeview/phase2_fusion_max/heightmap.png`
+- Left crop: `2659,566,333,499`
+- Right crop: `3290,120,819,1229`
+- Normalized solve size: `512,768`
+- Integration band: `128 px`
+
+Outputs:
+
+- Runtime macro: `world3/textures/source_stack/chuculay_guadalupe_cross_source_proof/source_macro_albedo.png`
+- Runtime valid mask: `world3/textures/source_stack/chuculay_guadalupe_cross_source_proof/source_macro_valid_mask.png`
+- Seam mask: `world3/textures/source_stack/chuculay_guadalupe_cross_source_proof/seam_integration_mask.png`
+- Manifest: `world3/textures/source_stack/chuculay_guadalupe_cross_source_proof/manifest.json`
+- Runtime height: `world3/toporeview/chuculay_guadalupe_cross_source_proof/heightmap.png`
+- Runtime meta: `world3/toporeview/chuculay_guadalupe_cross_source_proof/meta.json`
+- Metrics: `world3/docs/captures/review/terrain_seam_cross_source_chuculay_guadalupe_metrics.json`
+- Review scene: `world3/scenes/review/source_stack_cross_source_chuculay_guadalupe_tour.tscn`
+- Captures:
+  - `world3/docs/captures/review/source_stack_cross_source_chuculay_guadalupe_tour_smoke.png`
+  - `world3/docs/captures/review/source_stack_cross_source_chuculay_guadalupe_tour_iso_smoke.png`
+  - `world3/docs/captures/review/source_stack_cross_source_chuculay_guadalupe_tour_3d_smoke.png`
+
+Metrics:
+
+- Raw height datum mismatch: `188.07 m` median, `190.91 m` p95.
+- Post-solve overlap mismatch: `0.60 m` median, `2.01 m` p95.
+- Join steps after solve: `0.05 m` p95 on the left join, `0.08 m` p95 on
+  the right join.
+- Raw macro RGB delta p95: `0.235`.
+- Post macro RGB delta p95: `0.224`.
+- Macro join step p95: `0.009` on the left join, `0.037` on the right join.
+- Valid mask coverage is full valid.
+
+Current read:
+
+- Numeric geometry and macro seam metrics are stronger than the accepted
+  Gloss-Guadalupe proof.
+- Godot topdown, iso, and 3D capture wrappers all exited successfully.
+- This second proof is still pending live visual acceptance before promotion
+  from candidate to accepted M10 evidence.
+
 ## Review Lighting Correction
 
 The first M10 review window read too bright because of the review scene setup,
@@ -356,9 +437,7 @@ violation before scene code runs.
 M10 now has an accepted different-source real-to-real proof. The next M10 gates
 are:
 
-1. add explicit scanner veto/score support for landmarks, source-edge fill,
-   and capture artifacts;
-2. run one more different-source pair from the master catalog to prove the
-   workflow is not overfit to Gloss-Guadalupe;
+1. live-review the Chuculay-Guadalupe second proof;
+2. if accepted, promote the second proof to accepted M10 evidence;
 3. promote the same integration contract to real-to-procedural and unlike-biome
    cross-source blending.

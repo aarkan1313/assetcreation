@@ -42,9 +42,12 @@ Different-source M10 work now has an accepted first proof.
 `scan_terrain_seam_compatibility.py` filters real-to-real crop pairs, and the
 accepted Gloss-Guadalupe review scene is
 `source_stack_cross_source_tour.tscn`. Geometry integration and live visual
-review passed for this pair. Next workflow work is scanner veto hardening,
-another real-to-real catalog pair, then real-to-procedural/unlike-biome
-promotion.
+review passed for this pair. Scanner veto hardening is now implemented:
+fill/artifact masks, rectilinear/low-detail scores, visual-veto filtering, and
+rank-offset preview sheets are part of the scanner. A second real-to-real
+Chuculay-Guadalupe proof candidate exists in
+`source_stack_cross_source_chuculay_guadalupe_tour.tscn` with metrics and
+captures; it is pending live visual acceptance before promotion.
 
 ## Framing
 

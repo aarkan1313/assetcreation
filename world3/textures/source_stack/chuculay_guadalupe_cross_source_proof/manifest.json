@@ -1,0 +1,140 @@
+{
+  "version": 1,
+  "kind": "terrain_seam_integration_proof",
+  "id": "chuculay_guadalupe_cross_source_proof",
+  "runtime_macro": "res://textures/source_stack/chuculay_guadalupe_cross_source_proof/source_macro_albedo.png",
+  "runtime_source_macro_valid_mask": "res://textures/source_stack/chuculay_guadalupe_cross_source_proof/source_macro_valid_mask.png",
+  "runtime_seam_mask": "res://textures/source_stack/chuculay_guadalupe_cross_source_proof/seam_integration_mask.png",
+  "runtime_heightmap": "res://toporeview/chuculay_guadalupe_cross_source_proof/heightmap.png",
+  "runtime_meta": "res://toporeview/chuculay_guadalupe_cross_source_proof/meta.json",
+  "left_source": {
+    "macro": "res://toporeview/chuculay_textured_master/layers/render_albedo.png",
+    "valid_mask": "res://toporeview/chuculay_textured_master/layers/source_valid_mask.png",
+    "heightmap": "res://toporeview/chuculay_textured_master/heightmap.png",
+    "meta": "res://toporeview/chuculay_textured_master/meta.json",
+    "crop_macro_px": [
+      2659,
+      566,
+      333,
+      499
+    ],
+    "crop_world_m": [
+      160.0367431640625,
+      239.85801128962225
+    ]
+  },
+  "right_source": {
+    "macro": "res://toporeview/phase2_fusion_max/layers/render_albedo.png",
+    "valid_mask": "res://toporeview/phase2_fusion_max/layers/source_valid_mask.png",
+    "heightmap": "res://toporeview/phase2_fusion_max/heightmap.png",
+    "meta": "res://toporeview/phase2_fusion_max/meta.json",
+    "crop_macro_px": [
+      3290,
+      120,
+      819,
+      1229
+    ],
+    "crop_world_m": [
+      159.9609375,
+      240.0390625
+    ]
+  },
+  "integration": {
+    "overlap_px": 128,
+    "height_feather_px": 224,
+    "color_feather_px": 384,
+    "profile_blur_px": 20.0,
+    "macro_band_mode": "blend",
+    "macro_bridge_blur_px": 26.0,
+    "macro_bridge_detail_strength": 0.12,
+    "left_output_width_px": 384,
+    "integration_band_output_px": 128,
+    "right_output_width_px": 384,
+    "target_crop_size_px": [
+      512,
+      768
+    ]
+  },
+  "metrics": {
+    "height_m": {
+      "raw_overlap_delta": {
+        "mean": 188.28769926788905,
+        "median": 188.066650390625,
+        "p95": 190.90513305664064,
+        "max": 192.67913818359375
+      },
+      "global_bias": -188.066650390625,
+      "row_bias": {
+        "mean": 0.7688189335579713,
+        "median": 0.7101706862449646,
+        "p95": 2.0066969573497766,
+        "max": 2.801517963409424
+      },
+      "post_overlap_delta": {
+        "mean": 0.7530044099936882,
+        "median": 0.601837158203125,
+        "p95": 2.009301757812498,
+        "max": 5.71173095703125
+      },
+      "post_join_steps": {
+        "left_to_band": {
+          "mean": 0.02360820770263672,
+          "median": 0.0218505859375,
+          "p95": 0.04644470214843747,
+          "max": 0.215087890625
+        },
+        "band_to_right": {
+          "mean": 0.027681748072306316,
+          "median": 0.020294189453125,
+          "p95": 0.0793212890625,
+          "max": 0.18194580078125
+        }
+      }
+    },
+    "macro_rgb01": {
+      "raw_overlap_delta_rgb01": {
+        "mean": 0.10313018965421684,
+        "median": 0.09411764144897461,
+        "p95": 0.2352941334247589,
+        "max": 0.49803924560546875
+      },
+      "band_mode": "blend",
+      "bridge_blur_px": 26.0,
+      "bridge_detail_strength": 0.12,
+      "global_bias_rgb01": [
+        0.11764705181121826,
+        0.011764705181121826,
+        -0.047058820724487305
+      ],
+      "post_overlap_delta_rgb01": {
+        "mean": 0.0787129065563224,
+        "median": 0.059226036071777344,
+        "p95": 0.22398504614830017,
+        "max": 0.5226019024848938
+      },
+      "post_join_steps_rgb01": {
+        "left_to_band": {
+          "mean": 0.003559986944310367,
+          "median": 0.002615123987197876,
+          "p95": 0.009154629707336426,
+          "max": 0.047054946422576904
+        },
+        "band_to_right": {
+          "mean": 0.012591652921400964,
+          "median": 0.009058356285095215,
+          "p95": 0.036505582928657535,
+          "max": 0.07049447298049927
+        }
+      }
+    },
+    "valid_mask": {
+      "left_coverage": 1.0,
+      "right_coverage": 1.0,
+      "band_coverage": 1.0,
+      "output_coverage": 1.0,
+      "output_coverage_before_hole_fill": 1.0,
+      "hole_fill_policy": "filled_to_full_valid_because_coverage_above_0.9950"
+    }
+  },
+  "policy": "second_real_to_real_cross_source_validation_with_visual_veto_scanner"
+}

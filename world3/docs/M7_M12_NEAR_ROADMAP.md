@@ -222,6 +222,12 @@ large vertical datum mismatch without creating a height wall, and the RGB solve
 now correctly feathers source color bias instead of tinting the whole right
 source. Topdown, iso, and 3D tour review passed live user visual acceptance.
 
+2026-05-09 scanner/second-pair update: the compatibility scanner now has
+artifact/fill/rectilinear visual-veto scoring, ranked preview offsets, and
+optional fill-mask inputs. A Chuculay-Guadalupe second real-to-real proof
+candidate now exists with metrics and topdown/iso/3D captures. Its numeric seam
+quality is strong, but it remains pending live visual acceptance.
+
 Deliverables:
 
 - A seam/integration-band artifact with solved height, normal/material weights,
@@ -241,9 +247,9 @@ Exit:
 
 Current exit state: overlap and nearby non-overlap same-source proofs pass as
 workflow/geometry evidence, and the different-source Gloss-Guadalupe proof has
-passed live visual review. M10 should now harden scanner veto rules, validate at
-least one additional real-to-real pair, and then extend the same contract to
-real-to-procedural/unlike-biome blending.
+passed live visual review. Scanner veto hardening is implemented, and a
+Chuculay-Guadalupe second real-to-real candidate is ready for live review. If it
+passes, M10 can move to real-to-procedural/unlike-biome blending.
 
 ## M11 - Corner And Junction Transitions
 

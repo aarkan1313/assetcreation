@@ -118,8 +118,12 @@ M10 different-source rung has its first accepted proof.
 `scan_terrain_seam_compatibility.py` scores real-to-real crop pairs, and
 `source_stack_cross_source_tour.tscn` reviews the accepted Gloss-Guadalupe
 proof. Geometry integration and live topdown/iso/3D visual review passed on
-2026-05-09. Next M10 work is scanner veto hardening, a second real-to-real pair,
-then real-to-procedural/unlike-biome promotion.
+2026-05-09. Scanner veto hardening is implemented: optional fill/artifact masks,
+rectilinear/low-detail visual-veto scoring, score filtering, weighted candidate
+penalties, and ranked preview offsets. A second Chuculay-Guadalupe
+real-to-real proof candidate exists in
+`source_stack_cross_source_chuculay_guadalupe_tour.tscn`; it has metrics and
+captures and is pending live visual acceptance.
 
 M10 review launch/capture note: use explicit `--scene` wrapper launches, not the
 older waited `--script _codex_render_runner.gd` path. The current seam review
@@ -352,8 +356,8 @@ M7-M12 near roadmap is now explicit:
 3. M9 runtime performance and interaction polish.
 4. M10 terrain seam integration and cross-source blending. First overlap proof,
    nearby non-overlap proof, and accepted Gloss-Guadalupe different-source proof
-   exist; next is scanner veto hardening, a second real-to-real pair, then
-   real-to-procedural/unlike-biome promotion.
+   exist; Chuculay-Guadalupe second real-to-real candidate is ready for live
+   review; next is acceptance, then real-to-procedural/unlike-biome promotion.
 5. M11 corner and junction transitions.
 6. M12 walk/iso/topdown view-mode parity.
 

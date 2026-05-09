@@ -1,0 +1,79 @@
+{
+  "name": "Chuculay-Guadalupe real-to-real seam proof",
+  "builder": "build_terrain_seam_integration_proof.py",
+  "source_dem": "D:\\assets\\world3\\opentopo\\raw\\dataspace\\Chuculay_Chile_2018\\Chuculay_18_1mDEM.tif",
+  "source_orthophoto": "D:\\assets\\world3\\opentopo\\raw\\dataspace\\Chuculay_Chile_2018\\Chuculay_18_ortho.tif",
+  "source_crs": "EPSG:32719",
+  "source_bounds": {
+    "left": 413020.951666887,
+    "bottom": 7666232.83682211,
+    "right": 416957.951666887,
+    "top": 7667339.83682211
+  },
+  "source_bounds_wgs84": {
+    "west": -69.83746307261374,
+    "south": -21.10310421837411,
+    "east": -69.79950565424534,
+    "north": -21.0929199806952
+  },
+  "source_resolution_m": {
+    "x": 1.0,
+    "y": 1.0
+  },
+  "heightmap_size_px": [
+    896,
+    768
+  ],
+  "elevation_min_m": 934.2622680664062,
+  "elevation_max_m": 953.9014892578125,
+  "elevation_range_m": 19.63922119140625,
+  "world_size_m": 279.9979705810547,
+  "world_size_x_m": 279.9979705810547,
+  "world_size_z_m": 239.94853689481113,
+  "material": "real_desert_orthophoto",
+  "texture_is_real_imagery": true,
+  "review_note": "The review texture is downsampled from the raw orthophoto; the raw 3 cm orthophoto is preserved separately.",
+  "crop_to_valid_dem": true,
+  "crop_margin_px": 16,
+  "crop_window_px": {
+    "col_off": 517,
+    "row_off": 353,
+    "width": 3937,
+    "height": 1107
+  },
+  "terrain_seam_integration": {
+    "version": 1,
+    "kind": "different_source_real_to_real_integration_band_proof",
+    "left_source_macro": "res://toporeview/chuculay_textured_master/layers/render_albedo.png",
+    "left_source_heightmap": "res://toporeview/chuculay_textured_master/heightmap.png",
+    "right_source_macro": "res://toporeview/phase2_fusion_max/layers/render_albedo.png",
+    "right_source_heightmap": "res://toporeview/phase2_fusion_max/heightmap.png",
+    "left_crop_macro_px": [
+      2659,
+      566,
+      333,
+      499
+    ],
+    "right_crop_macro_px": [
+      3290,
+      120,
+      819,
+      1229
+    ],
+    "target_crop_size_px": [
+      512,
+      768
+    ],
+    "overlap_px": 128,
+    "integration_band_world_m": 39.99971008300781,
+    "left_crop_world_m": [
+      160.0367431640625,
+      239.85801128962225
+    ],
+    "right_crop_world_m": [
+      159.9609375,
+      240.0390625
+    ],
+    "policy": "second_real_to_real_cross_source_validation_with_visual_veto_scanner"
+  }
+}
