@@ -181,3 +181,58 @@ standard/bathy/showcase NEW + 8 mega-stack tiles).
 - Tool: `pipelines/terrain/tile_stitch.py`
 - Worker reference: [`OPENTOPO_MASTER_STACKS_AUDIT.md`](OPENTOPO_MASTER_STACKS_AUDIT.md)
 - Curated directory: [`OPENTOPO_DATA_DIRECTORY_2026_05_08.md`](OPENTOPO_DATA_DIRECTORY_2026_05_08.md)
+
+---
+
+## 2026-05-09 update — highres_open + polar STAC bypass complete
+
+After the initial mega-stack run, two more sub-tasks landed:
+
+### Highres_open tier — 6 new pulls + 7 polar failures
+
+`bulk_fetch_to_cache.py --tier highres_open` ran the 15-region tier:
+- 2 cache hits (NZ Milford, NZ Mt Cook)
+- 6 new pulls (NZ Fiordland, Tongariro, Aoraki Glacier; US Yosemite/
+  Bryce/Grand Canyon at USGS10m)
+- 7 failures: all ArcticDEM_10m + REMA_10m. The OT `/globaldem`
+  endpoint rejects these datasets with 400 errors. Documented
+  limitation in the wishlist's `_note` field — these need the regional
+  STAC bypass via `pipelines/terrain/fetch_regional_stac.py`.
+
+### Polar STAC bypass — all 7 failed regions recovered
+
+`fetch_regional_stac.py` uses providers' direct S3 instead of OT API:
+- ArcticDEM10m: `https://pgc-opendata-dems.s3.us-west-2.amazonaws.com/`
+- REMA10m: same S3 bucket
+
+All 7 polar regions pulled:
+
+| ID | Dataset | Size | Elev range |
+|----|---------|------|------------|
+| greenland_disko | ArcticDEM10m | 1024x1024 | 23-961m (Disko Bay edge) |
+| alaska_denali | ArcticDEM10m | 1024x1024 | 1529-6200m (Denali summit 6190m) |
+| iceland_eyja | ArcticDEM10m | 1024x1024 | 66-1700m (Eyjafjallajokull summit 1651m) |
+| svalbard_pyramiden | ArcticDEM10m | 1024x1024 | 31-963m |
+| antarctic_dryval | REMA10m | 1024x1024 | 40-2202m (Dry Valleys / Mars analog) |
+| antarctic_erebus | REMA10m | 1024x1024 | (was already cached) |
+| antarctic_taylor | REMA10m | 1024x1024 | 20-1912m (Taylor Glacier / Blood Falls) |
+
+Each STAC pull has 25-46% "bad pixels" — that's the bbox-vs-source-
+tile overlap geometry; the valid pixels are real terrain.
+
+Recommendation for the curated directory doc: use `bulk_fetch_to_cache.py`
+for OT API datasets (COP30, AW3D30, USGS1m, USGS10m, GEBCOIceTopo)
+and `fetch_regional_stac.py` for ArcticDEM10m / REMA10m / LINZ1m.
+The two tools cover the union of available high-res datasets.
+
+### Cache final final
+
+282 tiles, 15 GB.
+- +60 tiles, +6.9 GB net this session.
+- Coverage now spans: COP30 global (most regions), AW3D30 alternate
+  global, USGS1m (28 US regions including 2 mega-stacks), USGS10m
+  (15 US regions), GEBCOIceTopo (19 bathy), ArcticDEM10m (5+1 polar),
+  REMA10m (3 antarctic), LINZ1m_DTM, CA_MRDEM_DTM, SRTM15Plus.
+
+Production-ready terrain library spanning 6 continents + Antarctica +
+arctic + bathymetric.
