@@ -38,6 +38,7 @@ Read first:
 19. `world3/docs/M8_COMFYUI_TERRAIN_CONTEXT_REVIEW_2026_05_08.md`
 20. `world3/docs/M8_COMFYUI_CANDIDATE_NOISE_AUDIT.md`
 21. `world3/docs/M8_GRASS_REGEN_ATTEMPTS_REVIEW_2026_05_08.md`
+22. `world3/docs/M8_GRASS_VISUAL_VETO_AUDIT.md`
 
 ## Current status
 
@@ -82,7 +83,9 @@ Second ComfyUI M8 target: `grass` produced strict grade-A outputs, but visual
 review rejected them. `m8_grass_calm_v1` is the best failed direction; v2/v3
 overcorrected into pale boxy sod or bright patch islands, and the v4
 reference-anchor test created individual plant objects. Do not sidecar-stage
-`grass` until a flat tile passes a visual landmark/object veto.
+`grass` until a flat tile passes a visual landmark/object veto. Use
+`world3/pipeline/audit_comfy_visual_veto.py` as an advisory helper only;
+`needs_visual_review` is not a pass.
 
 M1 is done:
 

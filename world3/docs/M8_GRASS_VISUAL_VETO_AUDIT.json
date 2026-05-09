@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "updated": "2026-05-08",
+  "policy": "advisory_veto_helper_not_promotion_gate",
+  "results": [
+    {
+      "id": "m8_grassland_grass_calm_v3",
+      "albedo": "world/textures/library/m8_grassland_grass_calm_v3/m8_grassland_grass_calm_v3_albedo.png",
+      "status": "needs_visual_review",
+      "flags": [],
+      "metrics": {
+        "luma_mean": 0.536397,
+        "saturation_mean": 0.327361,
+        "color_outlier_ratio": 0.008472,
+        "bright_green_ratio": 0.0,
+        "dark_landmark_ratio": 0.000359,
+        "bright_landmark_ratio": 0.000511,
+        "axis_line_score": 1.401285
+      }
+    },
+    {
+      "id": "m8_grass_calm_v1",
+      "albedo": "world/textures/library/m8_grass_calm_v1/m8_grass_calm_v1_albedo.png",
+      "status": "needs_visual_review",
+      "flags": [],
+      "metrics": {
+        "luma_mean": 0.223471,
+        "saturation_mean": 0.367362,
+        "color_outlier_ratio": 0.001987,
+        "bright_green_ratio": 0.0,
+        "dark_landmark_ratio": 0.0,
+        "bright_landmark_ratio": 0.001354,
+        "axis_line_score": 1.641931
+      }
+    },
+    {
+      "id": "m8_grass_calm_v2",
+      "albedo": "world/textures/library/m8_grass_calm_v2/m8_grass_calm_v2_albedo.png",
+      "status": "veto",
+      "flags": [
+        "axis_aligned_panel_or_row_structure"
+      ],
+      "metrics": {
+        "luma_mean": 0.46294,
+        "saturation_mean": 0.382368,
+        "color_outlier_ratio": 0.002342,
+        "bright_green_ratio": 0.0,
+        "dark_landmark_ratio": 8.8e-05,
+        "bright_landmark_ratio": 0.0,
+        "axis_line_score": 1.862756
+      }
+    },
+    {
+      "id": "m8_grass_calm_v3",
+      "albedo": "world/textures/library/m8_grass_calm_v3/m8_grass_calm_v3_albedo.png",
+      "status": "veto",
+      "flags": [
+        "bright_green_patch_islands",
+        "axis_aligned_panel_or_row_structure"
+      ],
+      "metrics": {
+        "luma_mean": 0.40489,
+        "saturation_mean": 0.332352,
+        "color_outlier_ratio": 0.004444,
+        "bright_green_ratio": 0.101013,
+        "dark_landmark_ratio": 0.003201,
+        "bright_landmark_ratio": 6.9e-05,
+        "axis_line_score": 2.539591
+      }
+    },
+    {
+      "id": "m8_grass_calm_v4_anchor_v1",
+      "albedo": "world/textures/library/m8_grass_calm_v4_anchor_v1/m8_grass_calm_v4_anchor_v1_albedo.png",
+      "status": "veto",
+      "flags": [
+        "colored_landmark_outliers",
+        "dark_landmark_blotches"
+      ],
+      "metrics": {
+        "luma_mean": 0.297179,
+        "saturation_mean": 0.217912,
+        "color_outlier_ratio": 0.041611,
+        "bright_green_ratio": 4e-06,
+        "dark_landmark_ratio": 0.013481,
+        "bright_landmark_ratio": 0.008217,
+        "axis_line_score": 1.410671
+      }
+    }
+  ]
+}

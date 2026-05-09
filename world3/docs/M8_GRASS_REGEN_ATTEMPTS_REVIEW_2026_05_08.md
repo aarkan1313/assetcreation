@@ -15,6 +15,7 @@ passed strict seam/PBR QA, but visual review rejected them.
 Evidence:
 
 - `captures/visual_remediation/m8_grass_regen_attempts_contact_sheet.png`
+- `M8_GRASS_VISUAL_VETO_AUDIT.md`
 - `world/textures/library/m8_grass_calm_v1/qa/tile_2x2.png`
 - `world/textures/library/m8_grass_calm_v2/qa/tile_2x2.png`
 - `world/textures/library/m8_grass_calm_v3/qa/tile_2x2.png`
@@ -68,3 +69,18 @@ produce field-scale patches or object landmarks.
 
 Do not spend terrain-context review time on `grass` until a flat tile passes
 the visual veto above.
+
+## Tooling Follow-Up
+
+Added `world3/pipeline/audit_comfy_visual_veto.py` as an advisory veto helper.
+It does not promote materials. It only catches obvious failures and marks
+everything else as `needs_visual_review`.
+
+Initial calibration:
+
+- `m8_grass_calm_v2`: vetoed for axis-aligned panel/row structure.
+- `m8_grass_calm_v3`: vetoed for bright green patch islands and panel/row
+  structure.
+- `m8_grass_calm_v4_anchor_v1`: vetoed for colored/dark landmark outliers.
+- `m8_grass_calm_v1`: left as `needs_visual_review`, matching the manual read:
+  not an obvious hard-metric veto, but still rejected for staging.

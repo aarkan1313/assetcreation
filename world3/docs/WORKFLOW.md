@@ -203,6 +203,18 @@ patch islands, repeated dark/colored landmarks, individual plant objects, and
 pale washout. `M8_GRASS_REGEN_ATTEMPTS_REVIEW_2026_05_08.md` is the first
 recorded failure case for this rule.
 
+Use the advisory visual-veto helper before sidecar staging organic candidates:
+
+```powershell
+python world3/pipeline/audit_comfy_visual_veto.py `
+  --library-id m8_grass_calm_v1 `
+  --out-json world3/docs/M8_GRASS_VISUAL_VETO_AUDIT.json `
+  --out-md world3/docs/M8_GRASS_VISUAL_VETO_AUDIT.md
+```
+
+`needs_visual_review` is not a pass. It means the helper did not catch an
+obvious hard veto and the tile still needs human/vision review.
+
 ## Stage 4 — Stage textures into world3
 
 Each texture set gets its own subfolder under `world3/textures/wgv3/`

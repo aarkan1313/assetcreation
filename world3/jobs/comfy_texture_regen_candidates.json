@@ -78,6 +78,7 @@
         "status": "visual_rejected_no_sidecar_stage",
         "review_doc": "world3/docs/M8_GRASS_REGEN_ATTEMPTS_REVIEW_2026_05_08.md",
         "contact_sheet": "world3/docs/captures/visual_remediation/m8_grass_regen_attempts_contact_sheet.png",
+        "visual_veto_audit": "world3/docs/M8_GRASS_VISUAL_VETO_AUDIT.md",
         "attempts": [
           {
             "id": "m8_grass_calm_v1",

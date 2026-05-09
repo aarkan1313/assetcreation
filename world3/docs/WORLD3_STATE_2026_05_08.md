@@ -519,4 +519,6 @@ These start when chunk + biome + tile + transition is ~80% solved
   regeneration target. Multiple outputs passed strict seam/PBR QA, but visual
   review rejected them for landmark blotches, pale/boxy sod panels, bright
   patch islands, or individual plant objects. New rule: organic ComfyUI outputs
-  need visual landmark/object veto before sidecar staging.
+  need visual landmark/object veto before sidecar staging. Added
+  `audit_comfy_visual_veto.py` as an advisory helper; it can veto obvious
+  failures but never promotes without visual review.

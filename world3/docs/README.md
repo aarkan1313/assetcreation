@@ -26,6 +26,7 @@ find something.
 | "Did the first M8 ComfyUI candidate work in terrain context?" | [M8_COMFYUI_TERRAIN_CONTEXT_REVIEW_2026_05_08.md](M8_COMFYUI_TERRAIN_CONTEXT_REVIEW_2026_05_08.md) |
 | "How noisy is the first M8 ComfyUI candidate?"               | [M8_COMFYUI_CANDIDATE_NOISE_AUDIT.md](M8_COMFYUI_CANDIDATE_NOISE_AUDIT.md) |
 | "What happened with the next ComfyUI grass attempts?"         | [M8_GRASS_REGEN_ATTEMPTS_REVIEW_2026_05_08.md](M8_GRASS_REGEN_ATTEMPTS_REVIEW_2026_05_08.md) |
+| "Which grass attempts hit the visual veto helper?"            | [M8_GRASS_VISUAL_VETO_AUDIT.md](M8_GRASS_VISUAL_VETO_AUDIT.md) |
 | "What did M6 harden in the streamed runtime?"                | [M6_RUNTIME_HARDENING.md](M6_RUNTIME_HARDENING.md)    |
 | "Which green/organic source materials are too noisy?"        | [M6_SOURCE_MATERIAL_NOISE_AUDIT.md](M6_SOURCE_MATERIAL_NOISE_AUDIT.md) |
 | "What did the first M4 splat shader prototype prove?"        | [M4_SPLAT_SHADER_PROTOTYPE.md](M4_SPLAT_SHADER_PROTOTYPE.md) |

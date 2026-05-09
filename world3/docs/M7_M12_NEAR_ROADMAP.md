@@ -121,7 +121,8 @@ outputs, but visual review rejected them for landmark blotches, pale/boxy sod
 forms, bright patch islands, or individual plant objects. This exposed a
 workflow rule: organic ComfyUI candidates need a visual landmark/object veto
 before sidecar staging, even after seam/PBR QA passes. Evidence:
-`M8_GRASS_REGEN_ATTEMPTS_REVIEW_2026_05_08.md`.
+`M8_GRASS_REGEN_ATTEMPTS_REVIEW_2026_05_08.md`. Advisory helper:
+`world3/pipeline/audit_comfy_visual_veto.py`.
 
 Deliverables:
 
