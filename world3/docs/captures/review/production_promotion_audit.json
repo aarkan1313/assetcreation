@@ -1,7 +1,7 @@
 {
   "updated": "2026-05-10",
   "manifest": "world3\\jobs\\production_promotion_candidates.json",
-  "candidate_count": 6,
+  "candidate_count": 7,
   "band_order": [
     "close",
     "medium",
@@ -9,7 +9,7 @@
     "topdown"
   ],
   "readiness_counts": {
-    "conditional": 3,
+    "conditional": 4,
     "workflow_ready_not_production": 3
   },
   "candidates": [
@@ -62,6 +62,34 @@
       ],
       "source_doc": "world3/docs/M11_FOURWAY_CORNER_PROOF_2026_05_10.md",
       "scene": "world3/scenes/review/source_stack_m11_fourway_corner_tour.tscn"
+    },
+    {
+      "id": "m16_cached_iso_impostor_seed",
+      "type": "renderer_experiment",
+      "promotion_track": "iso_runtime_strategy",
+      "promotion_state": "sidecar_candidate",
+      "production_status": "renderer_sidecar_only",
+      "band_status": {
+        "close": "not_applicable",
+        "medium": "not_applicable",
+        "iso": "conditional",
+        "topdown": "not_applicable"
+      },
+      "missing_files": [],
+      "missing_required_captures": [],
+      "failed_bands": [],
+      "conditional_bands": [
+        "iso"
+      ],
+      "not_reviewed_bands": [],
+      "readiness": "conditional",
+      "blockers": [
+        "First proof is a single cached card, not chunked runtime impostors.",
+        "Needs depth, picking, object-overlay, and streaming experiments before tactical use.",
+        "Must remain tied to the M12 source-stack contract; it is not a separate art path."
+      ],
+      "source_doc": "world3/docs/M16_ISO_IMPOSTOR_RESEARCH_PLAN_2026_05_10.md",
+      "scene": "world3/scenes/review/source_stack_m16_iso_impostor_card.tscn"
     },
     {
       "id": "m11_three_way_junction_workflow",

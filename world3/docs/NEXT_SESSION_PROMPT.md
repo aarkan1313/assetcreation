@@ -227,6 +227,14 @@ workflow/sidecar/production states, and
 `world3/pipeline/audit_production_promotion_candidates.py` regenerates
 `world3/docs/PRODUCTION_PROMOTION_AUDIT_2026_05_10.md`.
 
+M16 now has an iso renderer research sidecar:
+`world3/docs/M16_ISO_IMPOSTOR_RESEARCH_PLAN_2026_05_10.md`. The first rung is
+`source_stack_m16_iso_impostor_card.tscn`, a 2D cached playback of the M12
+runtime iso bake. It intentionally avoids live terrain meshes/`ChunkLoader` in
+that scene while staying traceable to the M12 source-stack contract. Later
+rungs are cached chunk impostors, 2D heightfield shader, and hybrid tactical
+renderer.
+
 M10 review launch/capture note: use explicit `--scene` wrapper launches, not the
 older waited `--script _codex_render_runner.gd` path. The current seam review
 scenes use a matte validation preset with dark neutral background, zero

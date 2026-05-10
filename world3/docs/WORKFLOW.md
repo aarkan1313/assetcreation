@@ -711,6 +711,16 @@ The promotion audit reads
 accepted while still blocked for production by close-play quality, placeholder
 scatter, missing evidence, or pending live review.
 
+Iso/tactical sidecar research starts with a cached 2D card proof:
+
+```powershell
+& 'C:/Godot/Godot_v4.5-stable_win64.exe' --path 'D:/assets/world3' --single-window --disable-crash-handler --quit-after 240 --scene 'res://scenes/review/capture_source_stack_m16_iso_impostor_card.tscn'
+```
+
+That scene displays the M12 runtime iso bake without live terrain meshes or a
+`ChunkLoader`. It is a first M16 renderer experiment, not a replacement for
+3D/iso/topdown validation.
+
 ## What's NOT yet documented here (because it doesn't exist yet)
 
 - **Tundra kit textures** — kit schema defined in `biome_kits.json`

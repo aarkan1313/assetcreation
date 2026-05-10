@@ -15,6 +15,9 @@ unless the promotion gate says so.
 - Close, medium, iso, and topdown bands must be recorded for visual promotion.
 - New scatter/props/procedural work must consume the source-stack contract
   rather than bypassing it.
+- Iso/tactical optimization is allowed, but alternate renderers must preserve
+  the M12 source-stack contract. Cached impostors and 2D heightfield shaders are
+  renderer choices, not separate art pipelines.
 - The master data catalog remains the authority for real-world source coverage.
 - Procedural generation should learn from many sources; do not stretch one
   finite OpenTopo crop into a world.
@@ -83,13 +86,15 @@ Exit:
 
 ## M16 - Bulk Region/Gallery Source-Stack Retrofit
 
-**Goal**: scale view-mode parity beyond one representative scene.
+**Goal**: scale view-mode parity beyond one representative scene and explore
+cheaper iso/tactical rendering without breaking the source-stack contract.
 
 Inputs:
 
 - `RegionGalleryCapture.gd` legacy path.
 - M12 runtime parity contract.
 - `docs/MASTER_DATA_CATALOG.md` and `world3/data_catalog.json`.
+- `M16_ISO_IMPOSTOR_RESEARCH_PLAN_2026_05_10.md`.
 
 Deliverables:
 
@@ -97,10 +102,19 @@ Deliverables:
   weights, and shared materials.
 - Candidate selector using master catalog state and coverage gaps.
 - Representative capture set across at least three regions.
+- Iso renderer sidecar ladder:
+  - cached iso card from an accepted source-stack bake
+  - cached iso chunk impostors
+  - optional 2D heightfield shader
+  - hybrid terrain-card plus object-overlay tactical renderer
+- Proof that any non-3D iso view is traceable to the same height/macro/mask/
+  splat contract as the 3D source-stack scene.
 
 Exit:
 
 - Region review is no longer limited to old per-kit material swaps.
+- The first iso-impostor experiment proves whether cached 2D playback can carry
+  the M12 source-stack contract without running live terrain meshes.
 
 ## M17 - Real-Data-Guided Procedural Extraction
 

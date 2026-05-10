@@ -23,6 +23,7 @@ find something.
 | "What comes after M12 parity?"                              | [M13_M18_POST_PARITY_ROADMAP_2026_05_10.md](M13_M18_POST_PARITY_ROADMAP_2026_05_10.md) |
 | "Which artifacts are workflow evidence vs. production candidates?" | [PRODUCTION_PROMOTION_AUDIT_2026_05_10.md](PRODUCTION_PROMOTION_AUDIT_2026_05_10.md) |
 | "What did the M12 runtime parity proof actually wire?"       | [M12_RUNTIME_PARITY_PROOF_2026_05_10.md](M12_RUNTIME_PARITY_PROOF_2026_05_10.md) |
+| "Can iso/tactical run without live 3D terrain every frame?"  | [M16_ISO_IMPOSTOR_RESEARCH_PLAN_2026_05_10.md](M16_ISO_IMPOSTOR_RESEARCH_PLAN_2026_05_10.md) |
 | "How did M7 automatic boundary placement work?"              | [M7_BOUNDARY_RUNTIME_INTEGRATION.md](M7_BOUNDARY_RUNTIME_INTEGRATION.md) |
 | "How should we review M1-M7 visually before M8?"             | [M1_M7_VISUAL_AUDIT_PLAN_2026_05_08.md](M1_M7_VISUAL_AUDIT_PLAN_2026_05_08.md) |
 | "What did the M1-M7 visual audit find?"                      | [M1_M7_VISUAL_AUDIT_2026_05_08.md](M1_M7_VISUAL_AUDIT_2026_05_08.md) |

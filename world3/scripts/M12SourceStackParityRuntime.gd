@@ -33,6 +33,7 @@ const WalkerScript := preload("res://scripts/Walker.gd")
 @export var initial_view_index: int = 0
 @export_range(0.0, 0.99, 0.01) var initial_view_progress: float = 0.0
 @export var auto_play: bool = true
+@export var show_ui: bool = true
 
 var _player: CharacterBody3D
 var _loader: ChunkLoader
@@ -52,7 +53,8 @@ func _ready() -> void:
 	_setup_player()
 	_setup_terrain()
 	_setup_camera()
-	_setup_overlay()
+	if show_ui:
+		_setup_overlay()
 	_build_views()
 	_view_index = clampi(initial_view_index, 0, _views.size() - 1)
 	_view_time = max(float(_views[_view_index].get("duration", 6.0)), 0.001) * clampf(initial_view_progress, 0.0, 0.99)

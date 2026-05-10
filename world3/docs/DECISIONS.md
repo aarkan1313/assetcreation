@@ -1336,3 +1336,26 @@ too easy to treat "looked good in a review scene" as "safe for production."
 **Implication**: Post-parity work starts with M13 promotion tracking, then moves
 to close-play materials, production scatter/features, gallery scaling,
 real-data-guided procedural extraction, and a playable representative slice.
+
+---
+
+## 2026-05-10 - Iso optimization is a renderer sidecar, not a separate art path
+
+**Decision**: Explore cached iso cards, cached chunk impostors, 2D heightfield
+shaders, and hybrid tactical rendering as M16 sidecar work. These approaches
+may avoid live 3D terrain rendering for iso/tactical gameplay, but they must
+consume or reference the same source-stack contract as the 3D validation scene.
+
+**Why**: Iso performance matters, but M12 proved that 3D, iso, and topdown must
+stay aligned. A fast iso renderer is useful only if it does not fork terrain
+ownership, masks, source macro, or promotion status.
+
+**Evidence**:
+`world3/docs/M16_ISO_IMPOSTOR_RESEARCH_PLAN_2026_05_10.md`,
+`world3/scripts/M16IsoImpostorCardReview.gd`, and
+`world3/scenes/review/source_stack_m16_iso_impostor_card.tscn`.
+
+**Implication**: The first iso sidecar rung can use cached 2D playback of an
+accepted M12 iso bake. Later rungs can test chunked impostors and 2D
+heightfield shaders, but all must remain traceable to the same
+height/macro/mask/splat data contract.

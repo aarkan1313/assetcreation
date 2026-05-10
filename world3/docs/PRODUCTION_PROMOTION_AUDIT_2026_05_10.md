@@ -8,8 +8,8 @@ play quality, placeholder scatter, missing bands, or incomplete live review.
 
 ## Summary
 
-- Candidates tracked: `6`.
-- `conditional`: `3`.
+- Candidates tracked: `7`.
+- `conditional`: `4`.
 - `workflow_ready_not_production`: `3`.
 
 ## Candidate Table
@@ -18,6 +18,7 @@ play quality, placeholder scatter, missing bands, or incomplete live review.
 |-----------|-------|-------|-----------|-------|------------------|
 | `m12_runtime_fourway_parity` | `view_mode_parity` | `ready_for_live_review` | `workflow_ready_not_production` | close:pass, medium:pass, iso:pass, topdown:pass | - |
 | `m11_fourway_corner_workflow` | `junction_case_library` | `accepted_workflow` | `workflow_ready_not_production` | close:pass, medium:pass, iso:pass, topdown:pass | - |
+| `m16_cached_iso_impostor_seed` | `iso_runtime_strategy` | `sidecar_candidate` | `conditional` | close:not_applicable, medium:not_applicable, iso:conditional, topdown:not_applicable | - |
 | `m11_three_way_junction_workflow` | `junction_case_library` | `accepted_workflow` | `workflow_ready_not_production` | close:pass, medium:pass, iso:pass, topdown:pass | - |
 | `m10_ecotone_layer_workflow` | `unlike_biome_ecotone` | `accepted_workflow` | `conditional` | close:conditional, medium:pass, iso:pass, topdown:pass | - |
 | `m10_real_procedural_gloss_canyon` | `real_to_procedural_neighbor` | `accepted_workflow` | `conditional` | close:conditional, medium:pass, iso:pass, topdown:pass | - |
@@ -32,6 +33,11 @@ play quality, placeholder scatter, missing bands, or incomplete live review.
 ### m11_fourway_corner_workflow
 - T/L/island variants are still future case-library work.
 - Fantasy domain is accepted as a stress case, not production promotion.
+
+### m16_cached_iso_impostor_seed
+- First proof is a single cached card, not chunked runtime impostors.
+- Needs depth, picking, object-overlay, and streaming experiments before tactical use.
+- Must remain tied to the M12 source-stack contract; it is not a separate art path.
 
 ### m11_three_way_junction_workflow
 - Canyon geometry is proof heightfield quality.

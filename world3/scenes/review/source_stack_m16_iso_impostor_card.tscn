@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/M16IsoImpostorCardReview.gd" id="script"]
+
+[node name="SourceStackM16IsoImpostorCard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("script")
+source_image_path = "res://docs/captures/review/source_stack_m12_runtime_fourway_iso_clean.png"
+title = "world3 M16 Cached Iso Impostor Seed"
+contract_note = "Baked from M12 runtime parity: same source/material/height/splat contract"
+auto_play = true
+background_color = Color(0.08, 0.095, 0.1, 1)

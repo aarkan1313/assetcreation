@@ -628,3 +628,9 @@ These start when chunk + biome + tile + transition is ~80% solved
   `audit_production_promotion_candidates.py`, and
   `PRODUCTION_PROMOTION_AUDIT_2026_05_10.md`. Workflow acceptance and
   production promotion are now explicitly separate states.
+- **2026-05-10 (iso renderer sidecar)**: Added
+  `M16_ISO_IMPOSTOR_RESEARCH_PLAN_2026_05_10.md` and the first cached 2D iso
+  card scene, `source_stack_m16_iso_impostor_card.tscn`. This tests iso
+  playback without live terrain meshes while keeping the bake traceable to the
+  M12 source-stack contract. Later rungs are cached chunk impostors, 2D
+  heightfield shader, and hybrid tactical renderer.

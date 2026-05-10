@@ -348,6 +348,11 @@ promotion is explicitly gated. The next roadmap is
 [`M13_M18_POST_PARITY_ROADMAP_2026_05_10.md`](M13_M18_POST_PARITY_ROADMAP_2026_05_10.md).
 M13 is active: production-promotion candidate tracking and audit.
 
+2026-05-10 iso renderer note: M16 now includes a source-stack iso impostor
+sidecar ladder. The first rung is a cached 2D iso card from the M12 runtime
+parity bake; later rungs are chunk impostors, 2D heightfield shader, and hybrid
+tactical renderer. See `M16_ISO_IMPOSTOR_RESEARCH_PLAN_2026_05_10.md`.
+
 ## M7 current checkpoint
 
 **Status 2026-05-08**: PASS 1 COMPLETE for workflow/runtime validation;

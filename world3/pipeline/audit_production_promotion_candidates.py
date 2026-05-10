@@ -206,8 +206,8 @@ def markdown(report: dict[str, Any]) -> str:
 def main() -> int:
     report = collect()
     OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
-    OUT_JSON.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
-    OUT_MD.write_text(markdown(report), encoding="utf-8")
+    OUT_JSON.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8", newline="\n")
+    OUT_MD.write_text(markdown(report), encoding="utf-8", newline="\n")
     print(OUT_MD.relative_to(ROOT))
     print(OUT_JSON.relative_to(ROOT))
     return 0

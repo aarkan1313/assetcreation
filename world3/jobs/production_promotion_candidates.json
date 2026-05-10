@@ -80,6 +80,39 @@
       ]
     },
     {
+      "id": "m16_cached_iso_impostor_seed",
+      "type": "renderer_experiment",
+      "promotion_track": "iso_runtime_strategy",
+      "promotion_state": "sidecar_candidate",
+      "source_doc": "world3/docs/M16_ISO_IMPOSTOR_RESEARCH_PLAN_2026_05_10.md",
+      "scene": "world3/scenes/review/source_stack_m16_iso_impostor_card.tscn",
+      "contract": {
+        "source_bake": "world3/docs/captures/review/source_stack_m12_runtime_fourway_iso_clean.png",
+        "source_scene": "world3/scenes/review/source_stack_m12_runtime_fourway_tour.tscn",
+        "material": "world3/textures/wgv3/terrain_m11_fourway_corner.tres",
+        "heightmap": "world3/toporeview/m11_fourway_corner_proof/heightmap.png",
+        "meta": "world3/toporeview/m11_fourway_corner_proof/meta.json",
+        "source_macro": "world3/textures/source_stack/m11_fourway_corner_proof/source_macro_albedo.png",
+        "source_mask": "world3/textures/source_stack/m11_fourway_corner_proof/source_macro_weight_mask.png",
+        "splat_weights": "world3/textures/source_stack/m11_fourway_corner_proof/layers/splat_weights_rgba.png"
+      },
+      "captures": {
+        "iso": "world3/docs/captures/review/source_stack_m16_iso_impostor_card.png"
+      },
+      "band_status": {
+        "close": "not_applicable",
+        "medium": "not_applicable",
+        "iso": "conditional",
+        "topdown": "not_applicable"
+      },
+      "production_status": "renderer_sidecar_only",
+      "blockers": [
+        "First proof is a single cached card, not chunked runtime impostors.",
+        "Needs depth, picking, object-overlay, and streaming experiments before tactical use.",
+        "Must remain tied to the M12 source-stack contract; it is not a separate art path."
+      ]
+    },
+    {
       "id": "m11_three_way_junction_workflow",
       "type": "workflow",
       "promotion_track": "junction_case_library",
