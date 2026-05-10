@@ -201,7 +201,8 @@ explicit in [`M7_M12_NEAR_ROADMAP.md`](M7_M12_NEAR_ROADMAP.md):
     workflow proof is accepted as workflow evidence; unlike-biome promotion is
     blocked until the ecotone/layer workflow in
     `M10_UNLIKE_BIOME_METHOD_REVIEW_2026_05_09.md` exists.
-5. M11 corner and junction transitions.
+5. M11 corner and junction transitions. First source/grassland/canyon Y junction
+   proof is accepted as workflow evidence; four-way/corner cases remain.
 6. M12 walk/iso/topdown view-mode parity.
 
 Deferred systems (scatter, props, buildings/POIs, fantasy biome expansion, and

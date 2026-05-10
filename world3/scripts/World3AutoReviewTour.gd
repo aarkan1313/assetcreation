@@ -51,7 +51,7 @@ const EcotoneScatterOverlayScript = preload("res://scripts/EcotoneScatterOverlay
 @export var scatter_soil_mask_path: String = ""
 @export var scatter_wash_mask_path: String = ""
 @export var scatter_no_mask_path: String = ""
-@export_enum("standard", "full_map_fast", "same_source_blend", "seam_integration", "ecotone_layer") var tour_profile: String = "standard"
+@export_enum("standard", "full_map_fast", "same_source_blend", "seam_integration", "ecotone_layer", "junction_layer") var tour_profile: String = "standard"
 @export var initial_tour_index: int = 0
 @export_range(0.0, 0.99, 0.01) var initial_tour_progress: float = 0.0
 @export var auto_play: bool = true
@@ -149,6 +149,9 @@ func _build_tour() -> void:
 		return
 	if tour_profile == "ecotone_layer":
 		_build_ecotone_layer_tour()
+		return
+	if tour_profile == "junction_layer":
+		_build_junction_layer_tour()
 		return
 	_tour = [
 		{
@@ -420,6 +423,66 @@ func _build_ecotone_layer_tour() -> void:
 	]
 
 
+func _build_junction_layer_tour() -> void:
+	var source_size: Vector2 = _review_source_size_m()
+	var x_span: float = clamp(source_size.x * 0.46, 180.0, 285.0)
+	var z_span: float = clamp(source_size.y * 0.46, 180.0, 285.0)
+	var topdown_size: float = clamp(max(source_size.x, source_size.y) * 0.88, 430.0, 580.0)
+	var iso_size: float = clamp(max(source_size.x, source_size.y) * 0.82, 400.0, 620.0)
+	_tour = [
+		{
+			"name": "Three-way junction topdown",
+			"mode": "topdown",
+			"duration": 6.0,
+			"focus": Vector2(-x_span * 0.22, -z_span * 0.08),
+			"focus_end": Vector2(x_span * 0.22, z_span * 0.08),
+			"camera": Vector3(0.0, 900.0, 0.01),
+			"camera_end": Vector3(0.0, 900.0, 0.01),
+			"size": topdown_size
+		},
+		{
+			"name": "Junction iso material ownership",
+			"mode": "ortho",
+			"duration": 6.0,
+			"focus": Vector2(-x_span * 0.18, -z_span * 0.12),
+			"focus_end": Vector2(x_span * 0.20, z_span * 0.16),
+			"camera": Vector3(-400.0, 460.0, -470.0),
+			"camera_end": Vector3(-370.0, 460.0, -440.0),
+			"size": iso_size
+		},
+		{
+			"name": "Medium 3D junction traverse",
+			"mode": "perspective",
+			"duration": 6.0,
+			"focus": Vector2(-x_span * 0.34, -z_span * 0.08),
+			"focus_end": Vector2(x_span * 0.34, z_span * 0.12),
+			"camera": Vector3(-255.0, 185.0, -315.0),
+			"camera_end": Vector3(-225.0, 190.0, -285.0),
+			"fov": 48.0
+		},
+		{
+			"name": "Close 3D triple-core pass",
+			"mode": "perspective",
+			"duration": 6.0,
+			"focus": Vector2(-x_span * 0.18, 12.0),
+			"focus_end": Vector2(x_span * 0.18, 26.0),
+			"camera": Vector3(-152.0, 108.0, -180.0),
+			"camera_end": Vector3(-124.0, 112.0, -160.0),
+			"fov": 46.0
+		},
+		{
+			"name": "Full junction footprint",
+			"mode": "topdown",
+			"duration": 5.0,
+			"focus": Vector2(0.0, 0.0),
+			"focus_end": Vector2(0.0, 0.0),
+			"camera": Vector3(0.0, 930.0, 0.01),
+			"camera_end": Vector3(0.0, 930.0, 0.01),
+			"size": clamp(max(source_size.x, source_size.y) * 1.02, 540.0, 720.0)
+		}
+	]
+
+
 func _review_source_size_m() -> Vector2:
 	var f: FileAccess = FileAccess.open(meta_path, FileAccess.READ)
 	if f == null:
@@ -586,7 +649,7 @@ func _apply_source_macro_overrides(mat: ShaderMaterial) -> void:
 
 
 func _setup_ecotone_scatter() -> void:
-	if tour_profile != "ecotone_layer":
+	if tour_profile != "ecotone_layer" and tour_profile != "junction_layer":
 		return
 	if scatter_shrub_mask_path == "" and scatter_grass_mask_path == "" and scatter_rock_mask_path == "":
 		return
@@ -736,6 +799,9 @@ func _update_overlay(frame: Dictionary, t: float) -> void:
 		view_text = "integration-band topdown, iso, close 3D, medium 3D, footprint"
 	if tour_profile == "ecotone_layer":
 		workflow_text = "M10 unlike-biome ecotone/layer proof"
+		view_text = "topdown, iso, medium/close 3D, footprint; S scatter, M mask debug"
+	if tour_profile == "junction_layer":
+		workflow_text = "M11 three-way junction/layer proof"
 		view_text = "topdown, iso, medium/close 3D, footprint; S scatter, M mask debug"
 	var scatter_text := ""
 	if _scatter != null and _scatter.has_method("get_scatter_summary"):

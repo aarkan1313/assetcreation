@@ -169,11 +169,23 @@ junctions.
 2026-05-10 ecotone scatter update: `EcotoneScatterOverlay.gd` now samples the
 pipeline-emitted masks in world space and places deterministic lightweight
 shrubs, dry-grass clumps, and rocks in the review scene. `S` toggles scatter,
-`M` toggles mask debug, and topdown LOD-hides 3D scatter to keep map captures
-clean. Current scatter counts are 333 shrubs, 205 grass clumps, and 30 rocks.
-This is mask-driven workflow evidence with composite low-poly review meshes and
-simple per-class visibility ranges, not production vegetation. The next scatter
-step is an asset-library pass, not another proof that masks can place objects.
+`M` toggles mask debug, and topdown/iso/default M11 review can LOD-hide 3D
+scatter to keep terrain captures clean. Current M11 scatter counts are 147
+shrubs, 138 grass clumps, and 171 rocks. This is mask-driven workflow evidence
+with composite low-poly review meshes and simple per-class visibility ranges,
+not production vegetation. The next scatter step is an asset-library pass, not
+another proof that masks can place objects.
+
+M11 first three-way junction proof is accepted as workflow evidence:
+`world3/docs/M11_JUNCTION_LAYER_PROOF_2026_05_10.md`. The generator is
+`world3/pipeline/build_m11_junction_layer_proof.py`; the live review scene is
+`source_stack_m11_junction_tour.tscn`. It uses generated source/grassland/canyon
+domain fields, RGBA runtime splat weights, macro guidance, feature masks, and a
+Zion master-stack canyon macro reference. The important correction was reducing
+neutral soil dominance; the accepted pass preserves readable source/grass/canyon
+ownership instead of a muddy beige strip. Scatter exists as a toggle/debug
+sidecar but defaults off in M11 because the current scatter meshes are
+placeholder assets. Next M11 work is four-way/corner proof, then M12 parity.
 
 Gameplay camera/zoom quality planning is now explicit:
 `world3/docs/GAMEPLAY_VIEW_QUALITY_PLAN_2026_05_09.md`. Future visual closure
@@ -416,7 +428,8 @@ M7-M12 near roadmap is now explicit:
    ecotone workflow proof exist. Chuculay-Guadalupe is rejected as visual
    evidence; production-final unlike-biome terrain remains blocked on scatter,
    stronger source candidates, and gameplay-zoom detail.
-5. M11 corner and junction transitions.
+5. M11 corner and junction transitions. First three-way Y junction proof is
+   accepted as workflow evidence; four-way/corner proof remains.
 6. M12 walk/iso/topdown view-mode parity.
 
 Deferred systems remain after this lane: scatter, vegetation, props, buildings,

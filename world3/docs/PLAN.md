@@ -334,7 +334,7 @@ blindly extending the prototype without clear exits.
 | **M8** | Organic source-material cleanup | Fixes the grass/leaves/moss/lichen source-quality issue before adding more visual complexity. |
 | **M9** | Runtime performance and interaction polish | Measures and fixes real interactive chunk/collision hitches if they show up beyond scripted captures. |
 | **M10** | Cross-source blending | Makes real OpenTopo materials and procedural materials coexist through one runtime contract. |
-| **M11** | Corner and junction transitions | Handles three-way/corner cases after pairwise transitions are reliable. |
+| **M11** | Corner and junction transitions | First three-way Y proof is accepted; next is four-way/corner coverage after pairwise transitions are reliable. |
 | **M12** | View-mode parity | Brings walk, iso, and topdown onto consistent material/chunk/QA contracts with mode-specific tuning. |
 
 Deferred systems remain deferred until M7-M12 are proven: scatter, vegetation,

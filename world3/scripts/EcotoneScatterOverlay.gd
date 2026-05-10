@@ -23,9 +23,9 @@ class_name EcotoneScatterOverlay
 @export var max_shrubs: int = 720
 @export var max_grass_tufts: int = 320
 @export var max_rocks: int = 420
-@export var shrub_visibility_end_m: float = 950.0
-@export var grass_visibility_end_m: float = 390.0
-@export var rock_visibility_end_m: float = 720.0
+@export var shrub_visibility_end_m: float = 360.0
+@export var grass_visibility_end_m: float = 320.0
+@export var rock_visibility_end_m: float = 360.0
 
 var _loader: Node
 var _world_size_x_m: float = 512.0
@@ -330,6 +330,7 @@ func _make_material(color: Color, roughness: float) -> StandardMaterial3D:
 	mat.albedo_color = color
 	mat.roughness = roughness
 	mat.specular_mode = BaseMaterial3D.SPECULAR_DISABLED
+	mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	mat.cull_mode = BaseMaterial3D.CULL_DISABLED
 	return mat
 

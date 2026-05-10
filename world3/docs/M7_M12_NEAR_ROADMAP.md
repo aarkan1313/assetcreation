@@ -310,8 +310,17 @@ camera LOD.
 
 **Goal**: handle three-way or corner junctions after pairwise transitions work.
 
-Current state: pairwise transitions are promising. Corner cases are known but
-not yet built.
+Current state: first representative three-way Y junction proof is accepted as
+workflow evidence. `build_m11_junction_layer_proof.py` emits source/grassland/
+canyon domain fields, runtime splat weights, a macro-guided source stack, and
+feature/scatter masks. `source_stack_m11_junction_tour.tscn` reviews topdown,
+iso, medium, and close views. This proves the mask/splat strategy for one
+junction, not the full corner library.
+
+2026-05-10 visual note: the accepted M11 pass uses the Zion master-stack terrain
+texture as the canyon macro reference so the canyon branch survives gameplay
+distance. Scatter exists as a deterministic mask-driven sidecar but defaults off
+in the M11 tour because the current scatter meshes are placeholders.
 
 Deliverables:
 
@@ -319,11 +328,15 @@ Deliverables:
 - Build a small review scene with at least one three-material junction.
 - Decide whether junctions are authored as special assets, composed from
   pairwise strips, or generated as masks over the existing splat map.
+- Build the next four-way/corner proof using the same domain/splat/macro
+  contract.
 
 Exit:
 
 - One representative three-way boundary renders without a hard visual corner.
 - The chosen junction strategy is documented before broader generation.
+- Four-way/corner cases have at least one accepted proof before M12 parity is
+  called complete.
 
 ## M12 - View-Mode Parity
 

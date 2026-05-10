@@ -1,0 +1,64 @@
+{
+  "name": "M11 three-way source grassland canyon junction proof",
+  "builder": "build_m11_junction_layer_proof.py",
+  "source_dem": "D:\\assets\\world3\\opentopo\\raw\\dataspace\\Gloss_Mountain_2021\\Gloss_Mountain_DEM.tif",
+  "source_orthophoto": "D:\\assets\\world3\\opentopo\\raw\\dataspace\\Gloss_Mountain_2021\\Gloss_Mountain_Orthomosaic.tif",
+  "source_crs": "EPSG:32615",
+  "source_bounds": {
+    "left": -996.9363174361063,
+    "bottom": 4038698.846322414,
+    "right": -377.52582553610625,
+    "top": 4039774.274823914
+  },
+  "source_bounds_wgs84": {
+    "west": -98.58250224853123,
+    "south": 36.36292455747933,
+    "east": -98.57493917546509,
+    "north": 36.37289581558865
+  },
+  "source_resolution_m": {
+    "x": 0.0698557,
+    "y": 0.06985569999999007
+  },
+  "heightmap_size_px": [
+    1024,
+    1024
+  ],
+  "elevation_min_m": 409.8135681152344,
+  "elevation_max_m": 463.3187561035156,
+  "elevation_range_m": 53.50518798828125,
+  "world_size_m": 537.7142507499084,
+  "world_size_x_m": 537.5223251742373,
+  "world_size_z_m": 537.7142507499084,
+  "material": "m11_three_way_junction_layer_preview",
+  "texture_is_real_imagery": false,
+  "review_note": "The review texture is downsampled from the raw orthophoto; the raw 3 cm orthophoto is preserved separately.",
+  "crop_to_valid_dem": true,
+  "crop_margin_px": 16,
+  "crop_window_px": {
+    "col_off": 592,
+    "row_off": 1136,
+    "width": 8867,
+    "height": 15395
+  },
+  "m11_junction_layer_proof": {
+    "version": 1,
+    "kind": "m11_three_way_junction_layer_proof",
+    "source_macro": "res://textures/source_stack/gloss_scrub_source_stack/source_macro_albedo.png",
+    "source_heightmap": "res://toporeview/gloss_mountain_textured_master/heightmap.png",
+    "source_crop_macro_px": [
+      80,
+      760,
+      1024,
+      1024
+    ],
+    "canyon_macro_reference": "res://opentopo/processed/master_stacks/zion_usgs10m_master_4call/layers/terrain_texture.png",
+    "canyon_macro_reference_crop": "2400,3500,3600,3600",
+    "domains": [
+      "source_scrub",
+      "grassland",
+      "canyon_rock"
+    ],
+    "policy": "macro_guidance_plus_runtime_splat_weights_plus_mask_driven_scatter"
+  }
+}

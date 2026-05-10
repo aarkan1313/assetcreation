@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "kind": "m11_three_way_junction_layer_proof",
+  "id": "m11_three_way_junction_proof",
+  "runtime_macro": "res://textures/source_stack/m11_three_way_junction_proof/source_macro_albedo.png",
+  "runtime_source_macro_valid_mask": "res://textures/source_stack/m11_three_way_junction_proof/source_macro_valid_mask.png",
+  "runtime_source_macro_weight_mask": "res://textures/source_stack/m11_three_way_junction_proof/source_macro_weight_mask.png",
+  "runtime_splat_weights": "res://textures/source_stack/m11_three_way_junction_proof/layers/splat_weights_rgba.png",
+  "runtime_material": "res://textures/wgv3/terrain_m11_three_way_junction.tres",
+  "runtime_heightmap": "res://toporeview/m11_three_way_junction_proof/heightmap.png",
+  "runtime_meta": "res://toporeview/m11_three_way_junction_proof/meta.json",
+  "contact_sheet": "res://docs/captures/review/m11_junction_layer_contact_sheet.png",
+  "layers": {
+    "source_scrub_domain": "res://textures/source_stack/m11_three_way_junction_proof/layers/source_scrub_domain.png",
+    "grassland_domain": "res://textures/source_stack/m11_three_way_junction_proof/layers/grassland_domain.png",
+    "canyon_domain": "res://textures/source_stack/m11_three_way_junction_proof/layers/canyon_domain.png",
+    "junction_weight": "res://textures/source_stack/m11_three_way_junction_proof/layers/junction_weight.png",
+    "triple_core_weight": "res://textures/source_stack/m11_three_way_junction_proof/layers/triple_core_weight.png",
+    "source_scrub_weight": "res://textures/source_stack/m11_three_way_junction_proof/layers/source_scrub_weight.png",
+    "grassland_weight": "res://textures/source_stack/m11_three_way_junction_proof/layers/grassland_weight.png",
+    "junction_soil_weight": "res://textures/source_stack/m11_three_way_junction_proof/layers/junction_soil_weight.png",
+    "canyon_rock_weight": "res://textures/source_stack/m11_three_way_junction_proof/layers/canyon_rock_weight.png",
+    "shrub_carryover_mask": "res://textures/source_stack/m11_three_way_junction_proof/layers/shrub_carryover_mask.png",
+    "dry_grass_density_mask": "res://textures/source_stack/m11_three_way_junction_proof/layers/dry_grass_density_mask.png",
+    "soil_exposure_mask": "res://textures/source_stack/m11_three_way_junction_proof/layers/soil_exposure_mask.png",
+    "rock_cluster_mask": "res://textures/source_stack/m11_three_way_junction_proof/layers/rock_cluster_mask.png",
+    "wash_line_mask": "res://textures/source_stack/m11_three_way_junction_proof/layers/wash_line_mask.png",
+    "no_scatter_mask": "res://textures/source_stack/m11_three_way_junction_proof/layers/no_scatter_mask.png",
+    "splat_weights_rgba": "res://textures/source_stack/m11_three_way_junction_proof/layers/splat_weights_rgba.png"
+  },
+  "metrics": {
+    "height_m": {
+      "min": 409.8135681152344,
+      "max": 463.3187561035156,
+      "range": 53.50518798828125,
+      "junction_gradient_p95_m_per_px": 0.39411452412605286
+    },
+    "junction": {
+      "mean_weight": 0.1785079836845398,
+      "coverage_gt_0_25": 0.260223388671875,
+      "triple_core_coverage_gt_0_25": 0.024781227111816406,
+      "dominant_domain_min_coverage": 0.31268787384033203
+    },
+    "weights": {
+      "max_sum_error": 2.384185791015625e-07,
+      "source_scrub_mean": 0.33426010608673096,
+      "grassland_mean": 0.31494998931884766,
+      "junction_soil_mean": 0.03611758351325989,
+      "canyon_rock_mean": 0.3146722912788391,
+      "macro_guidance_weight_mean": 0.7461386919021606
+    },
+    "feature_masks": {
+      "shrub_carryover_mean": 0.07417881488800049,
+      "dry_grass_density_mean": 0.25358784198760986,
+      "soil_exposure_mean": 0.07154911756515503,
+      "rock_cluster_mean": 0.08452431112527847,
+      "wash_line_mean": 0.028467033058404922,
+      "no_scatter_mean": 0.06990338116884232
+    }
+  },
+  "policy": "three_way_junction_macro_guidance_plus_runtime_splat_weights"
+}

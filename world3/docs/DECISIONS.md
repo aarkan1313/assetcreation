@@ -1219,3 +1219,29 @@ review without pretending we have production vegetation assets.
 objects"; that is done. The next scatter step is an asset-library pass:
 authored scrub/grass/rock variants, per-biome density presets, and gameplay
 camera LOD.
+
+---
+
+## 2026-05-10 - M11 junctions use generated domain fields, not RGB corner strips
+
+**Decision**: Accept the first M11 three-way source/grassland/canyon Y junction
+as workflow evidence. Junctions should be generated as domain fields plus
+runtime splat weights, macro guidance, and feature masks. Do not build M11 as a
+painted RGB corner strip.
+
+**Why**: The first draft over-relied on neutral soil and read like a muddy beige
+band. The accepted pass keeps a small soil/triple-core blend but preserves
+source, grassland, and canyon ownership. Using the Zion master-stack terrain
+texture as a canyon macro reference also keeps the canyon branch legible at
+gameplay-review distance.
+
+**Evidence**:
+`world3/docs/M11_JUNCTION_LAYER_PROOF_2026_05_10.md`,
+`world3/pipeline/build_m11_junction_layer_proof.py`,
+`world3/scenes/review/source_stack_m11_junction_tour.tscn`, and captures under
+`world3/docs/captures/review/source_stack_m11_junction_tour_*.png`.
+
+**Implication**: M11 can continue to four-way/corner cases using this
+domain/splat/macro contract. Production promotion remains blocked on authored
+scatter assets, stronger grassland material candidates, production landform
+geometry, and gameplay camera parity.
