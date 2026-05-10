@@ -182,9 +182,26 @@ direction; treat the rest as where we've been.
 - Visual target is now explicit: reach roughly 70 percent of the best stacked
   photo/topo OpenTopo reference quality before visual milestone closure.
   Evidence: `world3/docs/M1_M7_VISION_GAP_REVIEW_2026_05_08.md`.
+- M11 has accepted three-way and four-way/corner workflow evidence, and M12 now
+  has representative runtime parity evidence across true walk close/medium plus
+  gallery-style iso/topdown bands. Evidence:
+  `world3/docs/M11_JUNCTION_LAYER_PROOF_2026_05_10.md`,
+  `world3/docs/M11_FOURWAY_CORNER_PROOF_2026_05_10.md`,
+  `world3/docs/M12_RUNTIME_PARITY_PROOF_2026_05_10.md`.
+- M7-M12 closure is audited in
+  `world3/docs/M7_M12_CLOSURE_AUDIT_2026_05_10.md`. The foundation is strong
+  enough to open post-parity planning, but production promotion now requires the
+  M13 gate: `world3/jobs/production_promotion_candidates.json` plus
+  `world3/pipeline/audit_production_promotion_candidates.py`.
 
-Recommended next lane: finish the **M7-M12 near roadmap**. The six-step sequence is now
-explicit in [`M7_M12_NEAR_ROADMAP.md`](M7_M12_NEAR_ROADMAP.md):
+Post-parity roadmap: [`M13_M18_POST_PARITY_ROADMAP_2026_05_10.md`](M13_M18_POST_PARITY_ROADMAP_2026_05_10.md)
+starts with production-promotion gates before close-play material quality,
+scatter/features, bulk gallery retrofit, real-data-guided procedural extraction,
+and a playable representative slice.
+
+Foundation lane status: the **M7-M12 near roadmap** is now representative
+workflow-complete enough to open post-parity planning. Its six-step sequence is
+recorded in [`M7_M12_NEAR_ROADMAP.md`](M7_M12_NEAR_ROADMAP.md):
 
 1. M7 biome-boundary runtime integration. Runtime pass complete; source-stack
    control rerendered; same-source mask QA passes; visual closure still needs

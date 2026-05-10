@@ -621,3 +621,10 @@ These start when chunk + biome + tile + transition is ~80% solved
   four-way source/material/height/splat contract across true walk close/medium
   bands and gallery-style iso/topdown bands through `CharacterBody3D`,
   `Walker.gd`, streamed `ChunkLoader` chunks, and collision chunks.
+- **2026-05-10 (post-parity gate)**: Added
+  `M7_M12_CLOSURE_AUDIT_2026_05_10.md` and
+  `M13_M18_POST_PARITY_ROADMAP_2026_05_10.md`. M13 starts with production
+  promotion tracking: `world3/jobs/production_promotion_candidates.json`,
+  `audit_production_promotion_candidates.py`, and
+  `PRODUCTION_PROMOTION_AUDIT_2026_05_10.md`. Workflow acceptance and
+  production promotion are now explicitly separate states.

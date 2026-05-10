@@ -19,6 +19,10 @@ find something.
 | "What structure-generator families could feed worlds (trees, crystals, scree, lattices, fractals)?" | [FUTURE_PROCEDURAL_STRUCTURES_2026_05_08.md](FUTURE_PROCEDURAL_STRUCTURES_2026_05_08.md) (11 families surveyed; G1 trees + G7 grass + G5 scree are tier 1) |
 | "Which OpenTopo DEM regions should we pull next + what's already cached?" | [OPENTOPO_DATA_DIRECTORY_2026_05_08.md](OPENTOPO_DATA_DIRECTORY_2026_05_08.md) (50-region curated directory: famous + non-famous, biome + continent mix, ~30 GB target) |
 | "What are the next six milestones after M6?"                 | [M7_M12_NEAR_ROADMAP.md](M7_M12_NEAR_ROADMAP.md)      |
+| "Did the M7-M12 foundation lane close, and what is still conditional?" | [M7_M12_CLOSURE_AUDIT_2026_05_10.md](M7_M12_CLOSURE_AUDIT_2026_05_10.md) |
+| "What comes after M12 parity?"                              | [M13_M18_POST_PARITY_ROADMAP_2026_05_10.md](M13_M18_POST_PARITY_ROADMAP_2026_05_10.md) |
+| "Which artifacts are workflow evidence vs. production candidates?" | [PRODUCTION_PROMOTION_AUDIT_2026_05_10.md](PRODUCTION_PROMOTION_AUDIT_2026_05_10.md) |
+| "What did the M12 runtime parity proof actually wire?"       | [M12_RUNTIME_PARITY_PROOF_2026_05_10.md](M12_RUNTIME_PARITY_PROOF_2026_05_10.md) |
 | "How did M7 automatic boundary placement work?"              | [M7_BOUNDARY_RUNTIME_INTEGRATION.md](M7_BOUNDARY_RUNTIME_INTEGRATION.md) |
 | "How should we review M1-M7 visually before M8?"             | [M1_M7_VISUAL_AUDIT_PLAN_2026_05_08.md](M1_M7_VISUAL_AUDIT_PLAN_2026_05_08.md) |
 | "What did the M1-M7 visual audit find?"                      | [M1_M7_VISUAL_AUDIT_2026_05_08.md](M1_M7_VISUAL_AUDIT_2026_05_08.md) |

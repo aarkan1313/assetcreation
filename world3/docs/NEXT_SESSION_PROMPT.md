@@ -218,6 +218,15 @@ accepted four-way source/material/height/splat contract. The old bulk
 follow-up retrofit candidate, not necessarily an M12 blocker if the runtime
 parity proof passes live review.
 
+M7-M12 closure and post-parity planning are now recorded:
+`world3/docs/M7_M12_CLOSURE_AUDIT_2026_05_10.md` and
+`world3/docs/M13_M18_POST_PARITY_ROADMAP_2026_05_10.md`. The foundation is
+strong enough to open the next lane, but production promotion is explicitly
+gated. M13 is active: `world3/jobs/production_promotion_candidates.json` tracks
+workflow/sidecar/production states, and
+`world3/pipeline/audit_production_promotion_candidates.py` regenerates
+`world3/docs/PRODUCTION_PROMOTION_AUDIT_2026_05_10.md`.
+
 M10 review launch/capture note: use explicit `--scene` wrapper launches, not the
 older waited `--script _codex_render_runner.gd` path. The current seam review
 scenes use a matte validation preset with dark neutral background, zero

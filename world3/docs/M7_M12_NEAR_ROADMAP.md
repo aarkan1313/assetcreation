@@ -407,3 +407,10 @@ foundation:
 The checkpoint for opening those systems is: chunk-to-chunk, biome-to-biome,
 source-to-source, and walk/iso/topdown parity are all demonstrably working in
 the same workflow.
+
+2026-05-10 closure audit: `M7_M12_CLOSURE_AUDIT_2026_05_10.md` records the
+foundation status. The lane is strong enough to open post-parity planning, but
+M8 close-play material quality, M9 production performance closure, and live M12
+review remain conditional before any production promotion. The next roadmap is
+`M13_M18_POST_PARITY_ROADMAP_2026_05_10.md`, starting with the M13 promotion
+gate.

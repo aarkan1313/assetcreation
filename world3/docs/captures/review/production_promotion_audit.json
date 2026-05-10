@@ -1,0 +1,175 @@
+{
+  "updated": "2026-05-10",
+  "manifest": "world3\\jobs\\production_promotion_candidates.json",
+  "candidate_count": 6,
+  "band_order": [
+    "close",
+    "medium",
+    "iso",
+    "topdown"
+  ],
+  "readiness_counts": {
+    "conditional": 3,
+    "workflow_ready_not_production": 3
+  },
+  "candidates": [
+    {
+      "id": "m12_runtime_fourway_parity",
+      "type": "workflow",
+      "promotion_track": "view_mode_parity",
+      "promotion_state": "ready_for_live_review",
+      "production_status": "not_production_art",
+      "band_status": {
+        "close": "pass",
+        "medium": "pass",
+        "iso": "pass",
+        "topdown": "pass"
+      },
+      "missing_files": [],
+      "missing_required_captures": [],
+      "failed_bands": [],
+      "conditional_bands": [],
+      "not_reviewed_bands": [],
+      "readiness": "workflow_ready_not_production",
+      "blockers": [
+        "Needs live user review before M12 closure.",
+        "Bulk RegionGalleryCapture.gd remains a legacy follow-up path."
+      ],
+      "source_doc": "world3/docs/M12_RUNTIME_PARITY_PROOF_2026_05_10.md",
+      "scene": "world3/scenes/review/source_stack_m12_runtime_fourway_tour.tscn"
+    },
+    {
+      "id": "m11_fourway_corner_workflow",
+      "type": "workflow",
+      "promotion_track": "junction_case_library",
+      "promotion_state": "accepted_workflow",
+      "production_status": "not_production_art",
+      "band_status": {
+        "close": "pass",
+        "medium": "pass",
+        "iso": "pass",
+        "topdown": "pass"
+      },
+      "missing_files": [],
+      "missing_required_captures": [],
+      "failed_bands": [],
+      "conditional_bands": [],
+      "not_reviewed_bands": [],
+      "readiness": "workflow_ready_not_production",
+      "blockers": [
+        "T/L/island variants are still future case-library work.",
+        "Fantasy domain is accepted as a stress case, not production promotion."
+      ],
+      "source_doc": "world3/docs/M11_FOURWAY_CORNER_PROOF_2026_05_10.md",
+      "scene": "world3/scenes/review/source_stack_m11_fourway_corner_tour.tscn"
+    },
+    {
+      "id": "m11_three_way_junction_workflow",
+      "type": "workflow",
+      "promotion_track": "junction_case_library",
+      "promotion_state": "accepted_workflow",
+      "production_status": "not_production_art",
+      "band_status": {
+        "close": "pass",
+        "medium": "pass",
+        "iso": "pass",
+        "topdown": "pass"
+      },
+      "missing_files": [],
+      "missing_required_captures": [],
+      "failed_bands": [],
+      "conditional_bands": [],
+      "not_reviewed_bands": [],
+      "readiness": "workflow_ready_not_production",
+      "blockers": [
+        "Canyon geometry is proof heightfield quality.",
+        "Scatter assets are placeholder review meshes."
+      ],
+      "source_doc": "world3/docs/M11_JUNCTION_LAYER_PROOF_2026_05_10.md",
+      "scene": "world3/scenes/review/source_stack_m11_junction_tour.tscn"
+    },
+    {
+      "id": "m10_ecotone_layer_workflow",
+      "type": "workflow",
+      "promotion_track": "unlike_biome_ecotone",
+      "promotion_state": "accepted_workflow",
+      "production_status": "not_production_art",
+      "band_status": {
+        "close": "conditional",
+        "medium": "pass",
+        "iso": "pass",
+        "topdown": "pass"
+      },
+      "missing_files": [],
+      "missing_required_captures": [],
+      "failed_bands": [],
+      "conditional_bands": [
+        "close"
+      ],
+      "not_reviewed_bands": [],
+      "readiness": "conditional",
+      "blockers": [
+        "Scatter uses composite low-poly review meshes.",
+        "Grassland material still needs stronger close-play candidates."
+      ],
+      "source_doc": "world3/docs/M10_ECOTONE_LAYER_PROOF_2026_05_09.md",
+      "scene": "world3/scenes/review/source_stack_ecotone_layer_tour.tscn"
+    },
+    {
+      "id": "m10_real_procedural_gloss_canyon",
+      "type": "workflow",
+      "promotion_track": "real_to_procedural_neighbor",
+      "promotion_state": "accepted_workflow",
+      "production_status": "not_production_art",
+      "band_status": {
+        "close": "conditional",
+        "medium": "pass",
+        "iso": "pass",
+        "topdown": "pass"
+      },
+      "missing_files": [],
+      "missing_required_captures": [],
+      "failed_bands": [],
+      "conditional_bands": [
+        "close"
+      ],
+      "not_reviewed_bands": [],
+      "readiness": "conditional",
+      "blockers": [
+        "Procedural side needs richer close-range PBR/detail.",
+        "Needs production scatter/features before AAA close-play promotion."
+      ],
+      "source_doc": "world3/docs/M10_TERRAIN_SEAM_INTEGRATION_PROOF_2026_05_09.md",
+      "scene": "world3/scenes/review/source_stack_real_procedural_tour.tscn"
+    },
+    {
+      "id": "m8_grassland_grass_calm_v3",
+      "type": "texture",
+      "promotion_track": "comfyui_texture_regen",
+      "promotion_state": "sidecar_candidate",
+      "production_status": "sidecar_only",
+      "band_status": {
+        "close": "conditional",
+        "medium": "not_reviewed",
+        "iso": "not_applicable",
+        "topdown": "not_applicable"
+      },
+      "missing_files": [],
+      "missing_required_captures": [],
+      "failed_bands": [],
+      "conditional_bands": [
+        "close"
+      ],
+      "not_reviewed_bands": [
+        "medium"
+      ],
+      "readiness": "conditional",
+      "blockers": [
+        "Slightly pale/hazy under detail stress.",
+        "Needs M4/M7 rerender trials before canonical promotion."
+      ],
+      "source_doc": "world3/docs/M8_COMFYUI_TERRAIN_CONTEXT_REVIEW_2026_05_08.md",
+      "scene": ""
+    }
+  ]
+}

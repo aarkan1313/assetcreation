@@ -1291,3 +1291,48 @@ captures; gallery/walk paths still diverge from the source-stack review contract
 **Implication**: The next M12 implementation should build one parity
 scene/template around an accepted proof before globally updating gallery or walk
 mode.
+
+---
+
+## 2026-05-10 - M12 representative runtime parity can close before bulk gallery retrofit
+
+**Decision**: Use a representative runtime parity scene as the M12 closure
+target: true walk close/medium plus gallery-style iso/topdown over one
+source/material/height/splat contract. Do not block M12 on retrofitting the
+entire legacy bulk `RegionGalleryCapture.gd` path.
+
+**Why**: M12 is about proving that the workflow contract can be shared across
+gameplay bands. The old bulk gallery is useful, but it is a region screenshot
+tool with per-kit material swaps. Retrofitting it is valuable scale work, not
+the proof that the source-stack runtime contract works.
+
+**Evidence**:
+`world3/scripts/M12SourceStackParityRuntime.gd`,
+`world3/scenes/review/source_stack_m12_runtime_fourway_tour.tscn`,
+`world3/docs/M12_RUNTIME_PARITY_PROOF_2026_05_10.md`, and captures under
+`world3/docs/captures/review/source_stack_m12_runtime_fourway_*.png`.
+
+**Implication**: If live review passes, M12 can close as representative parity.
+Bulk gallery retrofit moves to the post-parity roadmap.
+
+---
+
+## 2026-05-10 - Production promotion is gated separately from workflow acceptance
+
+**Decision**: Add an explicit production-promotion gate before opening broad
+post-parity content work. Workflow evidence, sidecar candidates, negative
+evidence, production candidates, and production-promoted assets are separate
+states.
+
+**Why**: M10/M11/M12 now have impressive workflow proofs, but the docs
+correctly repeat that most are not production-final. Without a gate, it becomes
+too easy to treat "looked good in a review scene" as "safe for production."
+
+**Evidence**:
+`world3/jobs/production_promotion_candidates.json`,
+`world3/pipeline/audit_production_promotion_candidates.py`, and
+`world3/docs/PRODUCTION_PROMOTION_AUDIT_2026_05_10.md`.
+
+**Implication**: Post-parity work starts with M13 promotion tracking, then moves
+to close-play materials, production scatter/features, gallery scaling,
+real-data-guided procedural extraction, and a playable representative slice.

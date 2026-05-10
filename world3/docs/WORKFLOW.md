@@ -693,6 +693,24 @@ python world3/pipeline/index_regions.py
 python world3/pipeline/build_kit_materials.py
 ```
 
+## Post-M12 review and promotion audits
+
+Use these after generating or reviewing source-stack workflow artifacts:
+
+```powershell
+# Inventory source-stack review scenes and gameplay-band captures.
+python world3/pipeline/audit_m12_view_mode_parity.py
+
+# Check whether workflow/asset candidates have enough evidence for promotion.
+python world3/pipeline/audit_production_promotion_candidates.py
+```
+
+The promotion audit reads
+`world3/jobs/production_promotion_candidates.json` and writes
+`world3/docs/PRODUCTION_PROMOTION_AUDIT_2026_05_10.md`. A workflow can be
+accepted while still blocked for production by close-play quality, placeholder
+scatter, missing evidence, or pending live review.
+
 ## What's NOT yet documented here (because it doesn't exist yet)
 
 - **Tundra kit textures** — kit schema defined in `biome_kits.json`

@@ -341,6 +341,13 @@ Deferred systems remain deferred until M7-M12 are proven: scatter, vegetation,
 props, buildings/POIs, fantasy biome expansion, real-data-guided procedural
 world extension, and production asset promotion.
 
+2026-05-10 update: M7-M12 now has a closure audit:
+[`M7_M12_CLOSURE_AUDIT_2026_05_10.md`](M7_M12_CLOSURE_AUDIT_2026_05_10.md).
+The foundation is strong enough to open post-parity planning, but production
+promotion is explicitly gated. The next roadmap is
+[`M13_M18_POST_PARITY_ROADMAP_2026_05_10.md`](M13_M18_POST_PARITY_ROADMAP_2026_05_10.md).
+M13 is active: production-promotion candidate tracking and audit.
+
 ## M7 current checkpoint
 
 **Status 2026-05-08**: PASS 1 COMPLETE for workflow/runtime validation;
