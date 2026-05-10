@@ -283,6 +283,15 @@ needs the layer/mask/ecotone workflow in
 `GAMEPLAY_VIEW_QUALITY_PLAN_2026_05_09.md` as the cross-cutting camera-band
 quality contract.
 
+2026-05-09 ecotone update: the runtime layer proof in
+`M10_ECOTONE_LAYER_PROOF_2026_05_09.md` is now accepted as M10 unlike-biome
+workflow evidence. It is a real workflow change from texture-to-texture blending
+because it emits splat weights, source macro masks, material weights,
+feature/scatter masks, and continuous height, then uses macro guidance as broad
+landcover color rather than as the only transition contract. It is not
+production-final; scatter/object population, better grassland source candidates,
+and close gameplay detail remain for later gates.
+
 ## M11 - Corner And Junction Transitions
 
 **Goal**: handle three-way or corner junctions after pairwise transitions work.

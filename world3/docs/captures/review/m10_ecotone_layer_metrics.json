@@ -1,0 +1,33 @@
+{
+  "height_m": {
+    "min": 398.96246337890625,
+    "max": 473.40814208984375,
+    "range": 74.4456787109375,
+    "boundary_step_p95_m": 0.03028106689453125
+  },
+  "ecotone": {
+    "mean_weight": 0.15481814742088318,
+    "coverage_gt_0_25": 0.19888687133789062,
+    "boundary_x_std_px": 132.20472717285156,
+    "local_width_mean_px": 260.7352294921875,
+    "local_width_std_px": 28.00330924987793,
+    "boundary_diagonal_px": 235.0
+  },
+  "weights": {
+    "max_sum_error": 2.384185791015625e-07,
+    "source_scrub_mean": 0.49538567662239075,
+    "grassland_mean": 0.46374228596687317,
+    "ecotone_soil_mean": 0.03788096457719803,
+    "rock_exposure_mean": 0.00299116806127131,
+    "source_macro_weight_mean": 0.3053508996963501,
+    "macro_guidance_weight_mean": 0.7402725219726562
+  },
+  "feature_masks": {
+    "shrub_carryover_mean": 0.17831000685691833,
+    "dry_grass_density_mean": 0.39187413454055786,
+    "soil_exposure_mean": 0.050131626427173615,
+    "rock_cluster_mean": 0.009151684120297432,
+    "wash_line_mean": 0.016362730413675308,
+    "no_scatter_mean": 0.08595715463161469
+  }
+}

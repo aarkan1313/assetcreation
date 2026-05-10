@@ -149,9 +149,21 @@ needs richer PBR/detail and scatter before AAA visual closure.
 
 First unlike-biome M10 promotion attempt is rejected. The Gloss-to-grassland
 test preserved continuity but read as a muted blended strip, not a real ecotone.
-Do not promote the generated unlike-biome scene/captures. Next implementation
-should follow `M10_UNLIKE_BIOME_METHOD_REVIEW_2026_05_09.md`: biome/material
-weights, feature/scatter masks, irregular ecotone field, and camera-band review.
+Do not promote the generated unlike-biome scene/captures.
+
+First runtime ecotone/layer correction is accepted as M10 unlike-biome workflow
+evidence:
+`M10_ECOTONE_LAYER_PROOF_2026_05_09.md`. It adds
+`build_ecotone_layer_proof.py`, runtime splat weights, source macro masks,
+material weights, feature/scatter masks, and a dedicated review scene:
+`source_stack_ecotone_layer_tour.tscn`. The accepted correction is the
+macro-guided runtime-layer split: macro color gives broad landcover/photo
+guidance across the proof, while runtime splat/material weights stay as the
+material truth. This replaces the rejected texture-to-texture/RGB-strip bridge.
+It is workflow evidence, not production-final AAA terrain; next work is explicit
+debug views, scatter-mask population, better grassland material candidates,
+real adjacent source candidates, and carrying the same macro-guidance+splat
+contract into M11 junctions.
 
 Gameplay camera/zoom quality planning is now explicit:
 `world3/docs/GAMEPLAY_VIEW_QUALITY_PLAN_2026_05_09.md`. Future visual closure
@@ -389,10 +401,11 @@ M7-M12 near roadmap is now explicit:
 3. M9 runtime performance and interaction polish.
 4. M10 terrain seam integration and cross-source blending. First overlap proof,
    nearby non-overlap proof, accepted Gloss-Guadalupe different-source proof,
-   accepted second Gloss-Guadalupe clean-crop proof, and first
-   real-to-procedural canyon-rock workflow proof exist. Chuculay-Guadalupe is
-   rejected as visual evidence; unlike-biome promotion is blocked until the
-   ecotone/layer workflow replaces the failed strip bridge.
+   accepted second Gloss-Guadalupe clean-crop proof, first real-to-procedural
+   canyon-rock workflow proof, and unlike-biome macro-guided runtime-layer
+   ecotone workflow proof exist. Chuculay-Guadalupe is rejected as visual
+   evidence; production-final unlike-biome terrain remains blocked on scatter,
+   stronger source candidates, and gameplay-zoom detail.
 5. M11 corner and junction transitions.
 6. M12 walk/iso/topdown view-mode parity.
 

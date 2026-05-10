@@ -171,13 +171,34 @@ Unlike-biome evidence can pass as workflow evidence if:
 - material weights exist and can be inspected;
 - at least one feature/scatter mask exists even if meshes are deferred.
 
+## 2026-05-09 Runtime Layer Proof Update
+
+The first layer-based correction now exists:
+
+- `world3/pipeline/build_ecotone_layer_proof.py`
+- `world3/scenes/review/source_stack_ecotone_layer_tour.tscn`
+- `world3/docs/M10_ECOTONE_LAYER_PROOF_2026_05_09.md`
+
+This is materially different from the rejected RGB strip attempt. It emits
+runtime splat weights, biome/ecotone fields, feature masks, a continuous
+heightmap, and a masked source-photo payload. The generated material relies on
+the existing `terrain_splat_unified.gdshader` splat path, and generated PNGs are
+loaded through `RuntimeImageCache` instead of `.tres` `ExtResource` references.
+
+Current read after the macro-guided runtime layer pass: accepted as M10
+unlike-biome workflow evidence, not production-final visual closure. The latest
+captures remove the hard straight-line failure, keep both biome identities
+readable, suppress the repeated grass-tile problem, and use runtime splat
+weights plus macro guidance rather than an RGB strip alone. Remaining work is
+explicit debug views, scatter mask population, better grassland source
+candidates, and a fuller gameplay-zoom quality pass.
+
 ## Immediate Decision
 
 Pause M10 unlike-biome promotion.
 
-Keep the current attempt as local negative evidence only. The next implementation
-should be a dedicated ecotone/layer proof, not another parameter pass on the
-current strip.
+Keep the original RGB-strip attempt as local negative evidence only. Promote the
+new ecotone-layer proof as workflow evidence, with production caveats active.
 
 ## Sources
 

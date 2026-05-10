@@ -627,12 +627,21 @@ review accepted the real-to-procedural workflow shape on 2026-05-09.
 The first unlike-biome attempt is rejected as accepted visual evidence. It
 preserved continuity but read as a muted blended strip, which means this proof
 doc should not present unlike-biome as a simple continuation of the RGB seam
-bridge. The next gate is the ecotone/layer workflow in
-`M10_UNLIKE_BIOME_METHOD_REVIEW_2026_05_09.md`.
+bridge.
+
+A first runtime ecotone/layer proof now exists and is documented in
+`M10_ECOTONE_LAYER_PROOF_2026_05_09.md`. It corrects the workflow shape by
+emitting runtime splat weights, source macro masks, material masks, feature
+masks, and continuous height. The macro-guided layer pass is accepted as M10
+unlike-biome workflow evidence: it removes the hard strip read, keeps both biome
+identities, and suppresses the repeated grass-tile failure. It is not
+production-final visual closure because object scatter, better grassland source
+candidates, and close gameplay detail still need work.
 
 Next M10 gates:
 
-1. implement biome/material/scatter mask outputs for an unlike-biome ecotone;
+1. carry the accepted macro-guided ecotone workflow into M11 corner/junction
+   planning;
 2. keep gameplay camera/zoom bands explicit for visual closure;
 3. keep source-quality/procedural-quality vetoes active so weak macros are
    rejected before seam solving.

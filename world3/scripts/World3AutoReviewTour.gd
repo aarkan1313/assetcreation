@@ -5,6 +5,8 @@ extends Node3D
 @export var heightmap_path: String = "res://toporeview/gloss_mountain_textured_master/heightmap.png"
 @export var meta_path: String = "res://toporeview/gloss_mountain_textured_master/meta.json"
 @export var source_valid_mask_path: String = ""
+@export var splat_weights_path: String = ""
+@export var splat_weights_cache_path: String = ""
 @export var source_macro_albedo_override_path: String = ""
 @export var source_macro_valid_mask_override_path: String = ""
 @export var transition_rule_id: String = "opentopo_scrub_sparse__dry_wash_neighbor"
@@ -37,8 +39,9 @@ extends Node3D
 @export var review_tonemap_exposure: float = 0.94
 @export var review_sun_energy: float = 1.35
 @export var review_ambient_energy: float = 0.42
-@export_enum("standard", "full_map_fast", "same_source_blend", "seam_integration") var tour_profile: String = "standard"
+@export_enum("standard", "full_map_fast", "same_source_blend", "seam_integration", "ecotone_layer") var tour_profile: String = "standard"
 @export var initial_tour_index: int = 0
+@export_range(0.0, 0.99, 0.01) var initial_tour_progress: float = 0.0
 @export var auto_play: bool = true
 
 var _anchor: Node3D
@@ -58,6 +61,7 @@ func _ready() -> void:
 	_setup_environment()
 	_build_tour()
 	_tour_index = clampi(initial_tour_index, 0, _tour.size() - 1)
+	_tour_time = max(float(_tour[_tour_index].get("duration", 8.0)), 0.001) * clampf(initial_tour_progress, 0.0, 0.99)
 	_setup_terrain()
 	_setup_camera()
 	_setup_overlay()
@@ -119,6 +123,9 @@ func _build_tour() -> void:
 		return
 	if tour_profile == "seam_integration":
 		_build_seam_integration_tour()
+		return
+	if tour_profile == "ecotone_layer":
+		_build_ecotone_layer_tour()
 		return
 	_tour = [
 		{
@@ -330,6 +337,66 @@ func _build_seam_integration_tour() -> void:
 	]
 
 
+func _build_ecotone_layer_tour() -> void:
+	var source_size: Vector2 = _review_source_size_m()
+	var x_span: float = clamp(source_size.x * 0.44, 160.0, 260.0)
+	var z_span: float = clamp(source_size.y * 0.46, 180.0, 300.0)
+	var topdown_size: float = clamp(source_size.x * 0.80, 320.0, 500.0)
+	var iso_size: float = clamp(max(source_size.x, source_size.y) * 0.78, 360.0, 620.0)
+	_tour = [
+		{
+			"name": "Ecotone layer topdown sweep",
+			"mode": "topdown",
+			"duration": 6.0,
+			"focus": Vector2(-x_span * 0.45, 0.0),
+			"focus_end": Vector2(x_span * 0.45, 0.0),
+			"camera": Vector3(0.0, 880.0, 0.01),
+			"camera_end": Vector3(0.0, 880.0, 0.01),
+			"size": topdown_size
+		},
+		{
+			"name": "Ecotone iso material read",
+			"mode": "ortho",
+			"duration": 6.0,
+			"focus": Vector2(-x_span * 0.35, -z_span * 0.30),
+			"focus_end": Vector2(x_span * 0.35, z_span * 0.30),
+			"camera": Vector3(-390.0, 450.0, -455.0),
+			"camera_end": Vector3(-360.0, 450.0, -425.0),
+			"size": iso_size
+		},
+		{
+			"name": "Medium 3D ecotone traverse",
+			"mode": "perspective",
+			"duration": 6.0,
+			"focus": Vector2(-x_span * 0.45, -z_span * 0.08),
+			"focus_end": Vector2(x_span * 0.45, z_span * 0.10),
+			"camera": Vector3(-250.0, 185.0, -315.0),
+			"camera_end": Vector3(-220.0, 190.0, -285.0),
+			"fov": 48.0
+		},
+		{
+			"name": "Close 3D boundary pass",
+			"mode": "perspective",
+			"duration": 6.0,
+			"focus": Vector2(-x_span * 0.28, 28.0),
+			"focus_end": Vector2(x_span * 0.28, 36.0),
+			"camera": Vector3(-148.0, 108.0, -178.0),
+			"camera_end": Vector3(-118.0, 112.0, -158.0),
+			"fov": 46.0
+		},
+		{
+			"name": "Full ecotone footprint",
+			"mode": "topdown",
+			"duration": 5.0,
+			"focus": Vector2(0.0, 0.0),
+			"focus_end": Vector2(0.0, 0.0),
+			"camera": Vector3(0.0, 930.0, 0.01),
+			"camera_end": Vector3(0.0, 930.0, 0.01),
+			"size": clamp(max(source_size.x, source_size.y) * 1.02, 540.0, 760.0)
+		}
+	]
+
+
 func _review_source_size_m() -> Vector2:
 	var f: FileAccess = FileAccess.open(meta_path, FileAccess.READ)
 	if f == null:
@@ -454,6 +521,8 @@ func _setup_terrain() -> void:
 	_loader.heightmap_path = heightmap_path
 	_loader.meta_path = meta_path
 	_loader.source_valid_mask_path = source_valid_mask_path
+	_loader.splat_weights_path = splat_weights_path
+	_loader.splat_weights_cache_path = splat_weights_cache_path
 	_loader.terrain_material = mat
 	_loader.chunk_size_m = chunk_size_m
 	_loader.chunk_resolution_m = chunk_resolution_m
@@ -607,6 +676,9 @@ func _update_overlay(frame: Dictionary, t: float) -> void:
 	if tour_profile == "seam_integration":
 		workflow_text = "M10 terrain seam-integration proof"
 		view_text = "integration-band topdown, iso, close 3D, medium 3D, footprint"
+	if tour_profile == "ecotone_layer":
+		workflow_text = "M10 unlike-biome ecotone/layer proof"
+		view_text = "topdown, iso, medium/close 3D, footprint; masks in contact sheet"
 	_overlay_label.text = (
 		"world3 Source-Stack Auto Review | " + workflow_text + "\n"
 		+ "%d/%d  %s  |  %s  |  progress %02d%%\n"

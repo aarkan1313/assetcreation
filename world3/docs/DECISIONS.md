@@ -1127,3 +1127,52 @@ contract.
 `source_macro_valid_mask.png`. Wider review scenes still need finite-footprint
 framing cleanup, but invalid macro pixels are no longer an accepted artifact in
 source-stack terrain review.
+
+---
+
+## 2026-05-09 - Unlike-biome M10 must be runtime layer data, not RGB strip tuning
+
+**Decision**: Unlike-biome evidence cannot be promoted from a baked RGB
+transition strip or final macro blend alone. The M10 path must emit and review
+runtime layer data: biome weights, material splat weights, source macro masks,
+feature/scatter masks, and continuous height.
+
+**Why**: The rejected Gloss-to-grassland attempt proved that a soft RGB blend can
+remove a hard seam while still looking like a synthetic muddy strip. That is not
+the same problem as same-source seam integration. AAA-oriented terrain needs
+readable material ownership, intermediate ecotone materials, and eventual object
+distribution, not only albedo interpolation.
+
+**Evidence**:
+`world3/docs/M10_UNLIKE_BIOME_METHOD_REVIEW_2026_05_09.md` and
+`world3/docs/M10_ECOTONE_LAYER_PROOF_2026_05_09.md`.
+
+**Implication**: The current ecotone proof is allowed to remain in-progress even
+though its visuals are not accepted yet. Future work should harden
+height/material-biased blending, debug views, and scatter-mask population before
+calling unlike-biome M10 complete.
+
+---
+
+## 2026-05-09 - M10 unlike-biome proof accepts macro-guided runtime layers
+
+**Decision**: Accept the revised Gloss-to-grassland ecotone as M10
+unlike-biome workflow evidence, but not as production-final AAA terrain.
+
+**Why**: The revised pass changed the architecture, not just the colors. Macro
+color now acts as broad landcover/photo guidance across the proof while runtime
+splat/material weights stay as the material truth. That removes the hard seam
+and the previous muddy RGB-strip failure while keeping readable source scrub,
+grassland, soil, and rock ownership.
+
+**Evidence**:
+`world3/docs/M10_ECOTONE_LAYER_PROOF_2026_05_09.md`,
+`world3/docs/captures/review/source_stack_ecotone_layer_tour_topdown.png`,
+`world3/docs/captures/review/source_stack_ecotone_layer_tour_iso.png`,
+`world3/docs/captures/review/source_stack_ecotone_layer_tour_medium.png`, and
+`world3/docs/captures/review/source_stack_ecotone_layer_tour_close.png`.
+
+**Implication**: M10 can proceed to M11 junction/corner logic using this
+macro-guidance plus runtime-splat contract. Production promotion remains
+blocked on scatter/object population, stronger real adjacent sources, better
+grassland material candidates, and gameplay-zoom detail/normal review.
