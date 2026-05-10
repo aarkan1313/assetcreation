@@ -1,0 +1,23 @@
+[
+  {
+    "id": "m14_tundra_lichen_biocrust_flux10_03",
+    "seed": 202605253,
+    "final": "D:\\assets\\.tmp\\diversity_compare_2026_05_09\\m14_tundra_lichen_biocrust_flux10_03\\flux2_klein\\final_albedo.png",
+    "tile_2x2": "D:\\assets\\.tmp\\diversity_compare_2026_05_09\\m14_tundra_lichen_biocrust_flux10_03_2x2.png",
+    "final_seam": 0.030025846429257978
+  },
+  {
+    "id": "m14_tundra_lichen_biocrust_flux10_06",
+    "seed": 202605256,
+    "final": "D:\\assets\\.tmp\\diversity_compare_2026_05_09\\m14_tundra_lichen_biocrust_flux10_06\\flux2_klein\\final_albedo.png",
+    "tile_2x2": "D:\\assets\\.tmp\\diversity_compare_2026_05_09\\m14_tundra_lichen_biocrust_flux10_06_2x2.png",
+    "final_seam": 0.03701828923971549
+  },
+  {
+    "id": "m14_tundra_lichen_biocrust_flux10_09",
+    "seed": 202605259,
+    "final": "D:\\assets\\.tmp\\diversity_compare_2026_05_09\\m14_tundra_lichen_biocrust_flux10_09\\flux2_klein\\final_albedo.png",
+    "tile_2x2": "D:\\assets\\.tmp\\diversity_compare_2026_05_09\\m14_tundra_lichen_biocrust_flux10_09_2x2.png",
+    "final_seam": 0.014867228237036236
+  }
+]

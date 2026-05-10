@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/World3AutoReviewTour.gd" id="script"]
+
+[node name="GlossTundraLichenFlux1009M14Tour" type="Node3D"]
+script = ExtResource("script")
+material_path = "res://textures/wgv3/terrain_source_stack_gloss_tundra_lichen_flux10_09_source_stack.tres"
+heightmap_path = "res://toporeview/gloss_mountain_textured_master/heightmap.png"
+meta_path = "res://toporeview/gloss_mountain_textured_master/meta.json"
+source_valid_mask_path = "res://textures/source_stack/gloss_tundra_lichen_flux10_09_source_stack/source_macro_valid_mask.png"
+start_x_m = 0.0
+start_z_m = 0.0
+boundary_z_m = 128.0
+chunk_size_m = 256.0
+chunk_resolution_m = 8.0
+view_radius_chunks = 4
+source_repeat_mode = "clamp"
+clip_to_source_bounds = true
+transition_width_m = 72.0
+transition_repeat_m = 128.0
+transition_strength = 0.22
+enable_transition_boundary = false
+show_footprint_debug_views = false
+review_normal_strength = 0.0
+review_detail_normal_strength = 0.0
+review_detail_rough_strength = 0.015
+review_albedo_gain = 0.96
+review_tonemap_exposure = 0.86
+review_sun_energy = 1.08
+review_ambient_energy = 0.46
+review_workflow_label = "M14 tundra lichen sidecar | FLUX10 candidate 09"
+review_view_label = "Gloss real-source context: generated lichen/grit detail sidecar"
+tour_profile = "full_map_fast"
+initial_tour_index = 0
+auto_play = true

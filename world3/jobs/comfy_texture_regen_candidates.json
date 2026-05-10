@@ -321,7 +321,52 @@
       "pbr_backend": "sm",
       "failure_mode": "lichen spots and pale contrast can repeat as visible object clusters",
       "prompt": "top-down orthographic macro photograph of pale tundra lichen crust blended into gritty dark soil and small stone chips, muted sage gray and off-white tones, irregular continuous crust texture, even overcast lighting, seamless PBR terrain texture, no circular spot clusters, no plant stems, no bright isolated blobs, no perspective, no shadows",
-      "source_stack_role": "albedo candidate first; normal/detail disabled until close/mid/far terrain review passes"
+      "source_stack_role": "albedo candidate first; normal/detail disabled until close/mid/far terrain review passes",
+      "latest_tested_candidate": {
+        "status": "m14_sidecar_runtime_smoke_pass_conditional",
+        "m14_prompt_bakeoff_review": {
+          "status": "m14_sidecar_runtime_smoke_pass_conditional",
+          "doc": "world3/docs/M14_TUNDRA_LICHEN_BAKEOFF_REVIEW_2026_05_10.md",
+          "attempts": [
+            {
+              "id": "m14_tundra_lichen_substrate_v1",
+              "grid": "world3/docs/captures/m14/m14_tundra_lichen_substrate_v1_grid_final.png",
+              "summary": "world3/docs/captures/m14/m14_tundra_lichen_substrate_v1_summary.json",
+              "verdict": "FLUX reads as explicit lichen colonies, AuraFlow loses lichen into gray substrate, and SD makes patterned green blotches. Useful for lane diagnosis, not the selected sidecar."
+            },
+            {
+              "id": "m14_tundra_lichen_biocrust_flux10",
+              "grid": "world3/docs/captures/m14/m14_tundra_lichen_biocrust_flux10_contact_sheet.png",
+              "summary": "world3/docs/captures/m14/m14_tundra_lichen_flux10_shortlist3_summary.json",
+              "verdict": "Fast FLUX-only sweep produced several usable workflow candidates. Candidate 09 / seed 202605259 was selected after user review for clean tiling, usable lichen-on-grit read, and no obvious square/line/blur artifacts."
+            }
+          ],
+          "selected_shortlist": [
+            "m14_tundra_lichen_flux10_09_202605259"
+          ],
+          "runtime_staging": {
+            "material_id": "m14_tundra_lichen_flux10_09_202605259",
+            "candidate_catalog": "world3/materials/catalog_comfy_candidates.json",
+            "source_stack_material": "world3/textures/wgv3/terrain_source_stack_gloss_tundra_lichen_flux10_09_source_stack.tres",
+            "review_scene": "world3/scenes/review/source_stack_gloss_tundra_lichen_flux10_09_tour.tscn",
+            "doc": "world3/docs/M14_TUNDRA_LICHEN_BAKEOFF_REVIEW_2026_05_10.md",
+            "captures": {
+              "topdown": "world3/docs/captures/m14/m14_tundra_lichen_flux10_09_gloss_topdown.png",
+              "iso": "world3/docs/captures/m14/m14_tundra_lichen_flux10_09_gloss_iso.png",
+              "medium_3d": "world3/docs/captures/m14/m14_tundra_lichen_flux10_09_gloss_3d.png",
+              "close": "world3/docs/captures/m14/m14_tundra_lichen_flux10_09_gloss_close.png",
+              "contact_sheet": "world3/docs/captures/m14/m14_tundra_lichen_flux10_09_gloss_contact_sheet.png"
+            },
+            "status": "conditional_smoke_pass_gloss_source",
+            "limits": [
+              "Gloss Mountain is clean real-source runtime context, not a true tundra biome context",
+              "candidate validates the generated-texture sidecar workflow, not final tundra content",
+              "M15 scatter/decal/features should carry larger lichen colonies and biome identity"
+            ]
+          },
+          "next_action": "Keep as accepted M14 sidecar workflow evidence; do not M13-promote until true tundra/alpine source-context review plus M15 scatter/decal features exist."
+        }
+      }
     }
   ]
 }

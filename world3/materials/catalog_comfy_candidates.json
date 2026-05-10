@@ -219,6 +219,81 @@
         "iso": "conditional_pass_gloss_source",
         "topdown": "conditional_pass_gloss_source"
       }
+    },
+    {
+      "id": "m14_tundra_lichen_flux10_09_202605259",
+      "source": "procedural",
+      "asset_status": "comfy_regen_candidate",
+      "provenance": {
+        "type": "comfy_regeneration_candidate",
+        "source_material_id": "tundra_lichen",
+        "source_asset_id": "m14_tundra_lichen_flux10_09_202605259",
+        "tool": "pipelines/textures/diversity_compare.py + pipelines/textures/derive_pbr_v2.py",
+        "prompt": "top-down orthographic macro seamless PBR terrain material of arctic tundra biocrust soil, pale sage gray lichen-colored mineral crust dispersed as fine dusty mottling through compact dark brown gray gritty soil, continuous matte low-contrast substrate, tiny grit and tiny stone chips only, subtle off-white gray-green speckling, no visible lichen colonies, no round disks, no rosettes, no circular spots, no moss tufts, no green plants, no large stones, no object clusters, no central focal object, no perspective, no shadows, even overcast lighting",
+        "quality": "m14_flux10_visual_bakeoff",
+        "pbr_backend": "derive_pbr_v2",
+        "qa_grade": "visual_sidecar_candidate",
+        "passed_gate": false,
+        "seam_checks": {
+          "edge_continuity_mse": 0.01487297891487611,
+          "junction_ratio": null,
+          "periodic_locality": null
+        },
+        "policy": "sidecar_candidate_terrain_context_required_not_promoted",
+        "terrain_context_review": {
+          "doc": "world3/docs/M14_TUNDRA_LICHEN_BAKEOFF_REVIEW_2026_05_10.md",
+          "scene": "world3/scenes/review/source_stack_gloss_tundra_lichen_flux10_09_tour.tscn",
+          "status": "conditional_smoke_pass_gloss_source",
+          "smoke_captures": [
+            "world3/docs/captures/m14/m14_tundra_lichen_flux10_09_gloss_topdown.png",
+            "world3/docs/captures/m14/m14_tundra_lichen_flux10_09_gloss_iso.png",
+            "world3/docs/captures/m14/m14_tundra_lichen_flux10_09_gloss_3d.png",
+            "world3/docs/captures/m14/m14_tundra_lichen_flux10_09_gloss_close.png",
+            "world3/docs/captures/m14/m14_tundra_lichen_flux10_09_gloss_contact_sheet.png"
+          ],
+          "limits": [
+            "Gloss Mountain is a clean real-source terrain context, not a true tundra-region promotion",
+            "candidate validates generated-texture sidecar workflow, not final tundra content",
+            "M15 scatter/decal/features should carry larger lichen colonies and biome identity"
+          ]
+        },
+        "settings": {
+          "world_uv_scale": 0.015625,
+          "hex_strength": 1.0,
+          "blend_sharpness": 8.0,
+          "roughness_strength": 1.0,
+          "normal_strength": 0.0,
+          "detail_uv_scale_mult": 10.0,
+          "detail_albedo_strength": 0.05,
+          "detail_normal_strength": 0.0,
+          "detail_rough_strength": 0.015,
+          "detail_fade_start_m": 4.0,
+          "detail_fade_end_m": 42.0
+        }
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "pale-sage-lichen-grit",
+      "runtime_texture_dir": "world3/textures/wgv3_comfy_candidates/m14_tundra_lichen_flux10_09_202605259",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3_comfy_candidates/m14_tundra_lichen_flux10_09_202605259/albedo.png",
+        "normal": "world3/textures/wgv3_comfy_candidates/m14_tundra_lichen_flux10_09_202605259/normal.png",
+        "roughness": "world3/textures/wgv3_comfy_candidates/m14_tundra_lichen_flux10_09_202605259/roughness.png",
+        "metallic": "world3/textures/wgv3_comfy_candidates/m14_tundra_lichen_flux10_09_202605259/metallic.png",
+        "height": "world3/textures/wgv3_comfy_candidates/m14_tundra_lichen_flux10_09_202605259/height.png",
+        "ao": "world3/textures/wgv3_comfy_candidates/m14_tundra_lichen_flux10_09_202605259/ao.png",
+        "tile_2x2": "world3/textures/wgv3_comfy_candidates/m14_tundra_lichen_flux10_09_202605259/qa_tile_2x2.png",
+        "detail_albedo": "world3/textures/wgv3_comfy_candidates/m14_tundra_lichen_flux10_09_202605259/albedo.png",
+        "detail_normal": "world3/textures/wgv3_comfy_candidates/m14_tundra_lichen_flux10_09_202605259/normal.png",
+        "detail_roughness": "world3/textures/wgv3_comfy_candidates/m14_tundra_lichen_flux10_09_202605259/roughness.png"
+      },
+      "shader_binding": "terrain_hex_detail",
+      "validated_views": {
+        "close": "conditional_pass_gloss_source",
+        "mid": "conditional_pass_gloss_source",
+        "far": "conditional_pass_gloss_source",
+        "iso": "conditional_pass_gloss_source",
+        "topdown": "conditional_pass_gloss_source"
+      }
     }
   ]
 }

@@ -1,0 +1,38 @@
+[
+  {
+    "model": "flux2_klein",
+    "label": "FLUX.2-klein 4B (baseline)",
+    "pass1": "D:\\assets\\.tmp\\diversity_compare_2026_05_09\\m14_tundra_lichen_substrate_v1\\flux2_klein\\pass1_raw.png",
+    "pass1_seam": 0.030979446006343715,
+    "pass1_seconds": 4.1,
+    "pass3": "D:\\assets\\.tmp\\diversity_compare_2026_05_09\\m14_tundra_lichen_substrate_v1\\flux2_klein\\pass3_healed_shifted.png",
+    "final": "D:\\assets\\.tmp\\diversity_compare_2026_05_09\\m14_tundra_lichen_substrate_v1\\flux2_klein\\final_albedo.png",
+    "final_seam": 0.025384011332780662,
+    "pass3_seconds": 6.1,
+    "total_seconds": 10.2
+  },
+  {
+    "model": "auraflow_03",
+    "label": "AuraFlow v0.3 Q8_0",
+    "pass1": "D:\\assets\\.tmp\\diversity_compare_2026_05_09\\m14_tundra_lichen_substrate_v1\\auraflow_03\\pass1_raw.png",
+    "pass1_seam": 0.01912072580257593,
+    "pass1_seconds": 56.1,
+    "pass3": "D:\\assets\\.tmp\\diversity_compare_2026_05_09\\m14_tundra_lichen_substrate_v1\\auraflow_03\\pass3_healed_shifted.png",
+    "final": "D:\\assets\\.tmp\\diversity_compare_2026_05_09\\m14_tundra_lichen_substrate_v1\\auraflow_03\\final_albedo.png",
+    "final_seam": 0.008236916089965398,
+    "pass3_seconds": 50.4,
+    "total_seconds": 106.5
+  },
+  {
+    "model": "sd35_large",
+    "label": "SD 3.5 Large Q8_0",
+    "pass1": "D:\\assets\\.tmp\\diversity_compare_2026_05_09\\m14_tundra_lichen_substrate_v1\\sd35_large\\pass1_raw.png",
+    "pass1_seam": 0.051852712898885045,
+    "pass1_seconds": 58.1,
+    "pass3": "D:\\assets\\.tmp\\diversity_compare_2026_05_09\\m14_tundra_lichen_substrate_v1\\sd35_large\\pass3_healed_shifted.png",
+    "final": "D:\\assets\\.tmp\\diversity_compare_2026_05_09\\m14_tundra_lichen_substrate_v1\\sd35_large\\final_albedo.png",
+    "final_seam": 0.03181882043564975,
+    "pass3_seconds": 42.3,
+    "total_seconds": 100.4
+  }
+]
