@@ -532,6 +532,12 @@ These start when chunk + biome + tile + transition is ~80% solved
   Gloss Mountain seam artifact and `source_stack_seam_nonoverlap_tour.tscn`.
   Rejected an over-aggressive non-overlap pair that needed a `26 m` vertical
   bias; crop compatibility is now an explicit gate.
+- **2026-05-09 (M10 real-to-procedural proof)**: Added
+  `build_procedural_neighbor_bundle.py`, generated the procedural canyon-rock
+  source-shaped neighbor bundle, and joined it to the Gloss Mountain real-source
+  crop with the existing seam integration solver. Topdown/iso/medium captures
+  pass as workflow evidence; close-play quality remains conditional until the
+  procedural side has richer near-field material detail and scatter.
 - **2026-05-08 (M7 visual audit/remediation)**: M7 remains a workflow pass, but
   visual closure is paused. The audit set the target at roughly 70 percent of
   the best stacked photo/topo OpenTopo reference, added the source-stack runtime

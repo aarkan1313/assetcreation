@@ -161,8 +161,15 @@ direction; treat the rest as where we've been.
   metrics and captures but is visually rejected because the Chuculay desert
   source macro is below the quality bar. A stronger second Gloss-Guadalupe
   clean-crop candidate now has scanner evidence, metrics, and topdown/iso/3D
-  captures, and passed live user visual review on 2026-05-09. M10 can proceed
-  to real-to-procedural/unlike-biome promotion.
+  captures, and passed live user visual review on 2026-05-09.
+- M10 real-to-procedural has its first workflow proof:
+  `build_procedural_neighbor_bundle.py` generates a procedural canyon-rock
+  source-shaped bundle, then the existing terrain seam integration solver joins
+  it to the Gloss Mountain real-source crop. Topdown/iso/medium review evidence
+  shows no height wall, invalid plateau, ghost strip, or source box. Close-play
+  quality remains conditional because the procedural side still needs richer
+  near-field PBR/detail and scatter. Live user review is the next gate before
+  promoting M10 to unlike-biome blending.
 - Gameplay camera/zoom quality planning is now explicit. Future visual closure
   must say which gameplay bands it passes: close play, medium play, iso/tactical,
   and topdown/map. Evidence:
@@ -182,12 +189,12 @@ explicit in [`M7_M12_NEAR_ROADMAP.md`](M7_M12_NEAR_ROADMAP.md):
    quarantined until promoted.
 3. M9 runtime performance and interaction polish.
 4. M10 terrain seam integration and cross-source blending. Overlap and nearby
-   non-overlap same-source proofs are implemented; different-source
-   Gloss-Guadalupe proof is accepted; Chuculay-Guadalupe is rejected as visual
-   evidence due source texture quality; the second clean-crop
-   Gloss-Guadalupe proof is accepted; next gate is
-   real-to-procedural/unlike-biome promotion under the gameplay view-quality
-   contract.
+    non-overlap same-source proofs are implemented; different-source
+    Gloss-Guadalupe proof is accepted; Chuculay-Guadalupe is rejected as visual
+    evidence due source texture quality; the second clean-crop
+    Gloss-Guadalupe proof is accepted; the first real-to-procedural canyon-rock
+    workflow proof exists and needs live review; next gate is unlike-biome
+    promotion under the gameplay view-quality contract.
 5. M11 corner and junction transitions.
 6. M12 walk/iso/topdown view-mode parity.
 

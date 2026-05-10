@@ -246,6 +246,14 @@ bright track/road content, and black/red speckle artifacts. The scanner now also
 has explicit low-detail, chroma-spike, dark-speckle, dark-fraction,
 bright-fraction, and rectilinear thresholds.
 
+2026-05-09 real-to-procedural update: first real-to-procedural M10 workflow
+proof now exists. `build_procedural_neighbor_bundle.py` emits a procedural
+canyon-rock source-shaped bundle, and the existing terrain seam integration tool
+solves it against the Gloss Mountain real-source crop. The proof passes
+topdown/iso/medium workflow review without a height wall, invalid plateau, or
+source box. It is not close-play AAA final; the procedural side still needs
+better near-field PBR/detail and scatter.
+
 Deliverables:
 
 - A seam/integration-band artifact with solved height, normal/material weights,
@@ -264,14 +272,13 @@ Exit:
   invalid fallback plateau, or jarring source-style break.
 
 Current exit state: overlap and nearby non-overlap same-source proofs pass as
-workflow/geometry evidence, and the different-source Gloss-Guadalupe proof has
+workflow/geometry evidence, and two different-source Gloss-Guadalupe proofs have
 passed live visual review. Scanner veto hardening is implemented.
 Chuculay-Guadalupe is kept as negative evidence for source-quality gating, not
-as accepted proof. A stronger second Gloss-Guadalupe clean-crop candidate now
-has scanner evidence, metrics, topdown/iso/3D captures, and live user
-acceptance on 2026-05-09. M10 can move to real-to-procedural/unlike-biome
-blending, using `GAMEPLAY_VIEW_QUALITY_PLAN_2026_05_09.md` as the cross-cutting
-camera-band quality contract.
+as accepted proof. A first real-to-procedural Gloss-to-canyon-rock proof now
+exists as workflow evidence and needs live user review. M10 can then move to
+unlike-biome blending, using `GAMEPLAY_VIEW_QUALITY_PLAN_2026_05_09.md` as the
+cross-cutting camera-band quality contract.
 
 ## M11 - Corner And Junction Transitions
 

@@ -53,6 +53,12 @@ scanner/source-quality evidence, not a promoted proof. A stronger second
 Gloss-Guadalupe clean-crop candidate now exists in
 `source_stack_cross_source_second_tour.tscn` with scanner evidence, metrics, and
 topdown/iso/3D captures. It passed live user review on 2026-05-09.
+First real-to-procedural M10 workflow proof now exists in
+`source_stack_real_procedural_tour.tscn`. The procedural side is produced by
+`build_procedural_neighbor_bundle.py` as a normal source-shaped bundle, then
+joined to the Gloss Mountain real-source crop through the same terrain seam
+solver. It passes topdown/iso/medium workflow review, but close-play visual
+quality remains conditional pending richer procedural PBR/detail and scatter.
 
 Gameplay camera/zoom quality planning is now explicit in
 `GAMEPLAY_VIEW_QUALITY_PLAN_2026_05_09.md`. Future visual promotion should

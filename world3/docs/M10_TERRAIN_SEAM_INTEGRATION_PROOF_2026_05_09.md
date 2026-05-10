@@ -480,6 +480,105 @@ Orchestrator visual review read:
   real-to-procedural/unlike-biome promotion, with gameplay camera/zoom quality
   gates defined before visual closure.
 
+## Rung 5: Real-To-Procedural Candidate
+
+This rung keeps procedural terrain on the same runtime contract as the
+real-source proofs. The procedural side is generated as a normal source-shaped
+bundle, then passed through `build_terrain_seam_integration_proof.py` with the
+same height, macro-albedo, valid-mask, manifest, metrics, and review-scene
+outputs.
+
+New procedural neighbor builder:
+
+- Tool: `world3/pipeline/build_procedural_neighbor_bundle.py`
+- Source material: `desert_canyon_rock` from `world3/materials/catalog.json`
+- Output bundle:
+  `world3/toporeview/procedural_desert_canyon_rock_m10/`
+- Policy: catalog material color plus multiscale procedural macro variation and
+  smoothed synthetic wash/slope/ridge height.
+
+Generation command:
+
+```powershell
+python world3/pipeline/build_procedural_neighbor_bundle.py `
+  --material-id desert_canyon_rock `
+  --out world3/toporeview/procedural_desert_canyon_rock_m10 `
+  --size 512,1024 `
+  --world-size-m 120,240 `
+  --elev-min-m 412 `
+  --elev-range-m 18 `
+  --seed 1021 `
+  --name "Procedural desert canyon rock M10 neighbor"
+```
+
+Integration inputs:
+
+- Left source: `world3/textures/source_stack/gloss_scrub_source_stack/source_macro_albedo.png`
+- Left valid mask:
+  `world3/textures/source_stack/gloss_scrub_source_stack/source_macro_valid_mask.png`
+- Left height: `world3/toporeview/gloss_mountain_textured_master/heightmap.png`
+- Right source:
+  `world3/toporeview/procedural_desert_canyon_rock_m10/layers/render_albedo.png`
+- Right valid mask:
+  `world3/toporeview/procedural_desert_canyon_rock_m10/layers/source_valid_mask.png`
+- Right height: `world3/toporeview/procedural_desert_canyon_rock_m10/heightmap.png`
+- Left crop: `229,734,229,457`
+- Right crop: `0,0,512,1024`
+- Normalized solve size: `512,1024`
+- Integration band: `128 px`
+- Height feather: `224 px`
+- Color feather: `384 px`
+
+Outputs:
+
+- Runtime macro:
+  `world3/textures/source_stack/gloss_procedural_canyon_rock_proof/source_macro_albedo.png`
+- Runtime valid mask:
+  `world3/textures/source_stack/gloss_procedural_canyon_rock_proof/source_macro_valid_mask.png`
+- Seam mask:
+  `world3/textures/source_stack/gloss_procedural_canyon_rock_proof/seam_integration_mask.png`
+- Manifest:
+  `world3/textures/source_stack/gloss_procedural_canyon_rock_proof/manifest.json`
+- Runtime height:
+  `world3/toporeview/gloss_procedural_canyon_rock_proof/heightmap.png`
+- Runtime meta:
+  `world3/toporeview/gloss_procedural_canyon_rock_proof/meta.json`
+- Metrics:
+  `world3/docs/captures/review/terrain_seam_real_procedural_canyon_rock_metrics.json`
+- Review scene:
+  `world3/scenes/review/source_stack_real_procedural_tour.tscn`
+- Captures:
+  - `world3/docs/captures/review/source_stack_real_procedural_tour_topdown.png`
+  - `world3/docs/captures/review/source_stack_real_procedural_tour_iso.png`
+  - `world3/docs/captures/review/source_stack_real_procedural_tour_close.png`
+  - `world3/docs/captures/review/source_stack_real_procedural_tour_medium.png`
+
+Metrics:
+
+- Raw height mismatch: `16.49 m` median, `20.42 m` p95.
+- Post-solve overlap mismatch: `0.56 m` median, `3.01 m` p95.
+- Join steps after solve: `0.23 m` p95 on the left join, `0.15 m` p95 on
+  the right join.
+- Raw macro RGB delta p95: `0.349`.
+- Post macro RGB delta p95: `0.283`.
+- Macro join step p95: `0.086` on the left join, `0.008` on the right join.
+- Valid mask coverage is full valid.
+
+Orchestrator visual review read:
+
+- The first procedural attempts were rejected before checkpointing because the
+  sand/dry-brush macro read too flat and the procedural heightfield introduced
+  diagonal stair-step bands in 3D.
+- The accepted candidate uses the canyon-rock material lane with a lower
+  elevation range and smoothed heightfield, removing the visible height stairs.
+- Topdown, iso, close, and medium capture wrappers exited cleanly with code `0`.
+- Topdown/iso/medium read as a plausible first workflow proof: no height wall,
+  invalid plateau, ghost strip, or rectangular source box.
+- Close view is not AAA final. It validates the seam workflow, but the
+  procedural side still needs better close PBR/detail and later scatter support.
+- Status: first real-to-procedural M10 proof is generated and locally accepted
+  as workflow evidence, pending live user acceptance before M10 closure.
+
 ## Review Lighting Correction
 
 The first M10 review window read too bright because of the review scene setup,
@@ -521,12 +620,13 @@ violation before scene code runs.
 
 ## Next Step
 
-M10 now has two accepted different-source real-to-real proofs and one useful
-negative second-pair result. The next M10 gates are:
+M10 now has two accepted different-source real-to-real proofs, one useful
+negative second-pair result, and a first real-to-procedural workflow proof. The
+next M10 gates are:
 
 1. define gameplay camera/zoom quality bands before judging future visual
    closures;
-2. promote the same integration contract to real-to-procedural and unlike-biome
-   cross-source blending;
-3. keep source-quality vetoes active so weak macros are rejected before seam
-   solving.
+2. run live user review on `source_stack_real_procedural_tour.tscn`;
+3. promote the same integration contract to unlike-biome cross-source blending;
+4. keep source-quality/procedural-quality vetoes active so weak macros are
+   rejected before seam solving.

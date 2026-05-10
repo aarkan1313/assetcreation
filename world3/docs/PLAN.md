@@ -388,9 +388,11 @@ sample-space and chunk-boundary bugs, but it is not a visual closure path. M10
 now owns terrain seam integration as a generated integration-band proof before
 broader cross-source blending.
 
-2026-05-09 first proof: `M10_TERRAIN_SEAM_INTEGRATION_PROOF_2026_05_09.md`
-records the initial overlap-based Gloss Mountain integration band and the
-second nearby non-overlap proof. Next proof should use different real sources.
+2026-05-09 proof progression: `M10_TERRAIN_SEAM_INTEGRATION_PROOF_2026_05_09.md`
+records the initial overlap-based Gloss Mountain integration band, the nearby
+non-overlap proof, accepted Gloss-Guadalupe real-to-real proofs, and the first
+real-to-procedural Gloss-to-canyon-rock workflow proof. Next proof should move
+toward unlike-biome blending after live review of the real-to-procedural scene.
 
 ## Open polish items (parked)
 

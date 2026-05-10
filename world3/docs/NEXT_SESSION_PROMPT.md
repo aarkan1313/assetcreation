@@ -136,7 +136,16 @@ source-quality evidence, not an accepted proof. A stronger second
 Gloss-Guadalupe clean-crop candidate now exists in
 `source_stack_cross_source_second_tour.tscn`; scanner evidence, metrics, and
 topdown/iso/3D captures are recorded. It passed live user review on 2026-05-09,
-so M10 can proceed to real-to-procedural/unlike-biome promotion.
+so M10 proceeded to the first real-to-procedural workflow proof.
+
+M10 real-to-procedural proof now exists.
+`build_procedural_neighbor_bundle.py` generates a procedural canyon-rock
+source-shaped bundle, and the existing seam solver joins it to the Gloss
+Mountain real-source crop. Review scene:
+`source_stack_real_procedural_tour.tscn`. Captures and metrics are recorded in
+`M10_TERRAIN_SEAM_INTEGRATION_PROOF_2026_05_09.md`. Topdown/iso/medium pass as
+workflow evidence; close play remains conditional because the procedural side
+needs richer PBR/detail and scatter before AAA visual closure.
 
 Gameplay camera/zoom quality planning is now explicit:
 `world3/docs/GAMEPLAY_VIEW_QUALITY_PLAN_2026_05_09.md`. Future visual closure
@@ -374,10 +383,10 @@ M7-M12 near roadmap is now explicit:
 3. M9 runtime performance and interaction polish.
 4. M10 terrain seam integration and cross-source blending. First overlap proof,
    nearby non-overlap proof, accepted Gloss-Guadalupe different-source proof,
-   and accepted second Gloss-Guadalupe clean-crop proof exist.
-   Chuculay-Guadalupe is rejected as visual evidence; next is
-   real-to-procedural/unlike-biome promotion under the gameplay view-quality
-   contract.
+   accepted second Gloss-Guadalupe clean-crop proof, and first
+   real-to-procedural canyon-rock workflow proof exist. Chuculay-Guadalupe is
+   rejected as visual evidence; next is live review of the real-to-procedural
+   scene, then unlike-biome promotion under the gameplay view-quality contract.
 5. M11 corner and junction transitions.
 6. M12 walk/iso/topdown view-mode parity.
 

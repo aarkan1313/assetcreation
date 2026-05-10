@@ -1,0 +1,140 @@
+{
+  "version": 1,
+  "kind": "terrain_seam_integration_proof",
+  "id": "gloss_procedural_canyon_rock_proof",
+  "runtime_macro": "res://textures/source_stack/gloss_procedural_canyon_rock_proof/source_macro_albedo.png",
+  "runtime_source_macro_valid_mask": "res://textures/source_stack/gloss_procedural_canyon_rock_proof/source_macro_valid_mask.png",
+  "runtime_seam_mask": "res://textures/source_stack/gloss_procedural_canyon_rock_proof/seam_integration_mask.png",
+  "runtime_heightmap": "res://toporeview/gloss_procedural_canyon_rock_proof/heightmap.png",
+  "runtime_meta": "res://toporeview/gloss_procedural_canyon_rock_proof/meta.json",
+  "left_source": {
+    "macro": "res://textures/source_stack/gloss_scrub_source_stack/source_macro_albedo.png",
+    "valid_mask": "res://textures/source_stack/gloss_scrub_source_stack/source_macro_valid_mask.png",
+    "heightmap": "res://toporeview/gloss_mountain_textured_master/heightmap.png",
+    "meta": "res://toporeview/gloss_mountain_textured_master/meta.json",
+    "crop_macro_px": [
+      229,
+      734,
+      229,
+      457
+    ],
+    "crop_world_m": [
+      120.20762936025423,
+      239.97598886006654
+    ]
+  },
+  "right_source": {
+    "macro": "res://toporeview/procedural_desert_canyon_rock_m10/layers/render_albedo.png",
+    "valid_mask": "res://toporeview/procedural_desert_canyon_rock_m10/layers/source_valid_mask.png",
+    "heightmap": "res://toporeview/procedural_desert_canyon_rock_m10/heightmap.png",
+    "meta": "res://toporeview/procedural_desert_canyon_rock_m10/meta.json",
+    "crop_macro_px": [
+      0,
+      0,
+      512,
+      1024
+    ],
+    "crop_world_m": [
+      120.0,
+      240.0
+    ]
+  },
+  "integration": {
+    "overlap_px": 128,
+    "height_feather_px": 224,
+    "color_feather_px": 384,
+    "profile_blur_px": 20.0,
+    "macro_band_mode": "blend",
+    "macro_bridge_blur_px": 26.0,
+    "macro_bridge_detail_strength": 0.12,
+    "left_output_width_px": 384,
+    "integration_band_output_px": 128,
+    "right_output_width_px": 384,
+    "target_crop_size_px": [
+      512,
+      1024
+    ]
+  },
+  "metrics": {
+    "height_m": {
+      "raw_overlap_delta": {
+        "mean": 16.56202380405739,
+        "median": 16.493011474609375,
+        "p95": 20.423181152343748,
+        "max": 26.1453857421875
+      },
+      "global_bias": 16.493011474609375,
+      "row_bias": {
+        "mean": 1.1890755259506705,
+        "median": 1.1272713541984558,
+        "p95": 3.7047748804092357,
+        "max": 5.97932243347168
+      },
+      "post_overlap_delta": {
+        "mean": 0.8739450715947896,
+        "median": 0.558349609375,
+        "p95": 3.009567260742185,
+        "max": 7.568695068359375
+      },
+      "post_join_steps": {
+        "left_to_band": {
+          "mean": 0.06805437803268433,
+          "median": 0.0441131591796875,
+          "p95": 0.23437805175781243,
+          "max": 1.040985107421875
+        },
+        "band_to_right": {
+          "mean": 0.05559617280960083,
+          "median": 0.0674285888671875,
+          "p95": 0.15171051025390625,
+          "max": 0.155731201171875
+        }
+      }
+    },
+    "macro_rgb01": {
+      "raw_overlap_delta_rgb01": {
+        "mean": 0.12231604605888909,
+        "median": 0.09803920984268188,
+        "p95": 0.3490196168422699,
+        "max": 0.7176470756530762
+      },
+      "band_mode": "blend",
+      "bridge_blur_px": 26.0,
+      "bridge_detail_strength": 0.12,
+      "global_bias_rgb01": [
+        -0.1254901885986328,
+        -0.10196080803871155,
+        -0.03529411554336548
+      ],
+      "post_overlap_delta_rgb01": {
+        "mean": 0.086425724405179,
+        "median": 0.05934548377990723,
+        "p95": 0.2828458398580551,
+        "max": 0.6231012344360352
+      },
+      "post_join_steps_rgb01": {
+        "left_to_band": {
+          "mean": 0.027268824727798346,
+          "median": 0.01960974931716919,
+          "p95": 0.08628580644726754,
+          "max": 0.17386026680469513
+        },
+        "band_to_right": {
+          "mean": 0.0036337107594590634,
+          "median": 0.003607913851737976,
+          "p95": 0.008150346577167511,
+          "max": 0.012756288051605225
+        }
+      }
+    },
+    "valid_mask": {
+      "left_coverage": 1.0,
+      "right_coverage": 1.0,
+      "band_coverage": 1.0,
+      "output_coverage": 1.0,
+      "output_coverage_before_hole_fill": 1.0,
+      "hole_fill_policy": "filled_to_full_valid_because_coverage_above_0.9950"
+    }
+  },
+  "policy": "real_source_to_procedural_material_scale_normalized_then_solved_into_single_runtime_bundle"
+}

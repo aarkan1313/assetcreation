@@ -461,12 +461,23 @@ res://scenes/review/capture_source_stack_seam_integration_3d.tscn
 res://scenes/review/capture_source_stack_seam_nonoverlap_topdown.tscn
 res://scenes/review/capture_source_stack_seam_nonoverlap_iso.tscn
 res://scenes/review/capture_source_stack_seam_nonoverlap_3d.tscn
+res://scenes/review/capture_source_stack_real_procedural_topdown.tscn
+res://scenes/review/capture_source_stack_real_procedural_iso.tscn
+res://scenes/review/capture_source_stack_real_procedural_close.tscn
+res://scenes/review/capture_source_stack_real_procedural_medium.tscn
 ```
 
 Open the live non-overlap review scene with:
 
 ```powershell
 $args = @("--path", "D:/assets/world3", "--single-window", "--disable-crash-handler", "--scene", "res://scenes/review/source_stack_seam_nonoverlap_tour.tscn")
+Start-Process -FilePath "C:/Godot/Godot_v4.5-stable_win64.exe" -ArgumentList $args
+```
+
+Open the live real-to-procedural review scene with:
+
+```powershell
+$args = @("--path", "D:/assets/world3", "--single-window", "--disable-crash-handler", "--scene", "res://scenes/review/source_stack_real_procedural_tour.tscn")
 Start-Process -FilePath "C:/Godot/Godot_v4.5-stable_win64.exe" -ArgumentList $args
 ```
 

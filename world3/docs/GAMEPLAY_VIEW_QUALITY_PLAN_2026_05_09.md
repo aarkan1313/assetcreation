@@ -93,8 +93,8 @@ passes. A workflow can be accepted while an asset remains sidecar-only.
 
 ## Immediate Roadmap Impact
 
-1. M10 can proceed from accepted real-to-real proofs to real-to-procedural and
-   unlike-biome blending.
+1. M10 now has a first real-to-procedural workflow proof. It can move to live
+   review, then unlike-biome blending if the topdown/iso/medium bands hold up.
 2. M8 remains necessary for close play quality because bad generated organic
    textures still contaminate near-field reads.
 3. M12 should formalize view-mode parity using this camera-band matrix.

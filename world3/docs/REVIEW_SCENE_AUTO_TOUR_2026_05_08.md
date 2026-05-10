@@ -102,9 +102,10 @@ boundary instead of a plateau.
 
 2026-05-09 M10 seam proofs: `source_stack_seam_integration_tour.tscn` covers
 the overlap proof. `source_stack_seam_nonoverlap_tour.tscn` covers the nearby
-non-overlap proof. Both auto-cycle topdown, iso, close 3D, medium 3D, and
-footprint views over integrated seam artifacts. Use them to validate the
-methodology shift away from forced repeated-source tiling.
+non-overlap proof. `source_stack_real_procedural_tour.tscn` covers the first
+real-to-procedural canyon-rock proof. These scenes auto-cycle topdown, iso,
+close 3D, medium 3D, and footprint views over integrated seam artifacts. Use
+them to validate the methodology shift away from forced repeated-source tiling.
 
 2026-05-09 lighting correction: the M10 seam scenes now use a matte review
 preset instead of the older bright sky/exposure setup. `World3AutoReviewTour.gd`
@@ -127,5 +128,5 @@ runs.
    islands, and individual plant objects.
 3. Generate and review the untested organic queue items:
    `temperate_forest_grass`, `tundra_moss`, and `tundra_lichen`.
-4. After M8 cleanup, continue the near roadmap: M9 performance/interaction,
-   M10 cross-source blending, M11 junction transitions, and M12 view parity.
+4. Continue M10 with live review of the real-to-procedural proof, then
+   unlike-biome blending, M11 junction transitions, and M12 view parity.
