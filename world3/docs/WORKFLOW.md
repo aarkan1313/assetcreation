@@ -703,6 +703,9 @@ python world3/pipeline/audit_m12_view_mode_parity.py
 
 # Check whether workflow/asset candidates have enough evidence for promotion.
 python world3/pipeline/audit_production_promotion_candidates.py
+
+# Rebuild the M14 close-play material quality board.
+python world3/pipeline/build_m14_close_play_quality_board.py
 ```
 
 The promotion audit reads
@@ -710,6 +713,12 @@ The promotion audit reads
 `world3/docs/PRODUCTION_PROMOTION_AUDIT_2026_05_10.md`. A workflow can be
 accepted while still blocked for production by close-play quality, placeholder
 scatter, missing evidence, or pending live review.
+
+The M14 board reads the M8 organic regeneration queue plus
+`world3/jobs/m14_texture_bakeoff_plan.json` and writes
+`world3/docs/M14_CLOSE_PLAY_QUALITY_BOARD_2026_05_10.md`. It is the operating
+board for close-play material quality before candidates are promoted through
+M13.
 
 Iso/tactical sidecar research starts with a cached 2D card proof:
 

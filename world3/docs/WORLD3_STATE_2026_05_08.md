@@ -639,3 +639,8 @@ These start when chunk + biome + tile + transition is ~80% solved
   iso card is tracked as conditional sidecar evidence. The production-promotion
   audit is clean, so the next production-facing work is M14 close-play terrain
   quality while M13 remains the gate for every new candidate.
+- **2026-05-10 (M14 start)**: Added `m14_texture_bakeoff_plan.json`,
+  `build_m14_close_play_quality_board.py`, and
+  `M14_CLOSE_PLAY_QUALITY_BOARD_2026_05_10.md`. M14 now has an auditable
+  FLUX/Aura/SD close-play material lane, with Qwen parked and Chroma rejected
+  for this phase.

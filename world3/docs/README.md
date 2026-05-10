@@ -22,6 +22,7 @@ find something.
 | "Did the M7-M12 foundation lane close, and what is still conditional?" | [M7_M12_CLOSURE_AUDIT_2026_05_10.md](M7_M12_CLOSURE_AUDIT_2026_05_10.md) |
 | "What comes after M12 parity?"                              | [M13_M18_POST_PARITY_ROADMAP_2026_05_10.md](M13_M18_POST_PARITY_ROADMAP_2026_05_10.md) |
 | "Which artifacts are workflow evidence vs. production candidates?" | [PRODUCTION_PROMOTION_AUDIT_2026_05_10.md](PRODUCTION_PROMOTION_AUDIT_2026_05_10.md) |
+| "What is the M14 close-play terrain-quality board?"         | [M14_CLOSE_PLAY_QUALITY_BOARD_2026_05_10.md](M14_CLOSE_PLAY_QUALITY_BOARD_2026_05_10.md) |
 | "What did the M12 runtime parity proof actually wire?"       | [M12_RUNTIME_PARITY_PROOF_2026_05_10.md](M12_RUNTIME_PARITY_PROOF_2026_05_10.md) |
 | "Can iso/tactical run without live 3D terrain every frame?"  | [M16_ISO_IMPOSTOR_RESEARCH_PLAN_2026_05_10.md](M16_ISO_IMPOSTOR_RESEARCH_PLAN_2026_05_10.md) |
 | "How did M7 automatic boundary placement work?"              | [M7_BOUNDARY_RUNTIME_INTEGRATION.md](M7_BOUNDARY_RUNTIME_INTEGRATION.md) |

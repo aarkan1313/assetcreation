@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "updated": "2026-05-10",
+  "purpose": "M14 close-play terrain-quality bakeoff plan for generated ground materials.",
+  "source_queue": "world3/jobs/comfy_texture_regen_candidates.json",
+  "view_contract": "world3/docs/GAMEPLAY_VIEW_QUALITY_PLAN_2026_05_09.md",
+  "promotion_gate": "world3/jobs/production_promotion_candidates.json",
+  "active_model_lanes": [
+    {
+      "id": "flux2_klein",
+      "status": "active_reference",
+      "role": "Fast canonical material-generation lane.",
+      "variants_per_material": 8,
+      "prompt_policy": "FLUX-family prompts may use 'tileable seamless texture' wording.",
+      "settings": {
+        "resolution": 1024,
+        "heal_denoise": 0.35,
+        "quality": "strict",
+        "pbr_backend": "sm"
+      }
+    },
+    {
+      "id": "auraflow_v03",
+      "status": "active_diversity",
+      "role": "Calmer or more uniform alternate lane, useful for organic ground.",
+      "variants_per_material": 8,
+      "prompt_policy": "Prefer 'edge-to-edge overhead material sample' wording; keep tileability explicit but avoid decorative-tile cues.",
+      "settings": {
+        "resolution": 1024,
+        "heal_denoise": 0.35,
+        "quality": "strict",
+        "pbr_backend": "sm"
+      }
+    },
+    {
+      "id": "sd35_large",
+      "status": "active_experimental",
+      "role": "Photoreal alternate lane for forest/organic ground, center-bias watchlist.",
+      "variants_per_material": 8,
+      "prompt_policy": "Avoid the word 'tileable'; use 'uniform overhead edge-to-edge material scan, no central focal point'.",
+      "settings": {
+        "resolution": 1024,
+        "heal_denoise": 0.35,
+        "quality": "strict",
+        "pbr_backend": "sm",
+        "fallback": "Generate larger and crop off-center if central composition persists."
+      }
+    }
+  ],
+  "parked_model_lanes": [
+    {
+      "id": "qwen_image",
+      "status": "parked",
+      "reason": "Hero-shot/DOF bias and slow runtime; needs a dedicated material-scan prompt family before reconsideration."
+    }
+  ],
+  "rejected_model_lanes": [
+    {
+      "id": "chroma1_hd",
+      "status": "rejected_for_m14",
+      "reason": "Failed current ground-texture prompt family with decorative-tile/grid artifacts."
+    }
+  ],
+  "candidate_gate": [
+    "Seam/PBR QA filters candidates but does not promote them.",
+    "Visual veto rejects object landmarks, box panels, bright islands, central compositions, decorative tile motifs, and hero-shot depth of field.",
+    "Survivors require Godot terrain-context review in close, medium, iso, and topdown bands.",
+    "Close-play promotion requires source macro to stay low-frequency and generated PBR detail to carry near-field grain.",
+    "Promotion requires an explicit M13 manifest state change; M14 does not bypass M13."
+  ]
+}

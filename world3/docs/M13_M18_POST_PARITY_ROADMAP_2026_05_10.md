@@ -49,6 +49,8 @@ Inputs:
 - FLUX/Aura/SD multi-model bakeoff lane.
 - Source-stack terrain-context captures.
 - Gameplay view quality matrix.
+- `world3/jobs/m14_texture_bakeoff_plan.json`.
+- `world3/docs/M14_CLOSE_PLAY_QUALITY_BOARD_2026_05_10.md`.
 
 Deliverables:
 
@@ -56,6 +58,7 @@ Deliverables:
   prompts/settings.
 - Visual veto plus terrain-context capture sheet for each survivor.
 - M4/M7 runtime rerender trials for promoted sidecar materials.
+- M14 quality board generated from the M8 queue and model-lane policy.
 
 Exit:
 
@@ -166,5 +169,6 @@ Exit:
 
 M13 gate hygiene is active for every new artifact. The candidate manifest and
 audit are clean after M12 workflow acceptance and the M16 iso sidecar entry.
-Immediate next production-facing work should move into M14 close-play terrain
-quality while continuing to update the M13 manifest for every candidate.
+M14 close-play terrain quality is now active. Start with the M14 board's first
+move: runtime trials for `m8_grassland_grass_calm_v3`, then active
+FLUX/Aura/SD bakeoffs for the remaining organic blockers.

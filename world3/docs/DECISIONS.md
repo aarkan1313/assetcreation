@@ -1359,3 +1359,27 @@ ownership, masks, source macro, or promotion status.
 accepted M12 iso bake. Later rungs can test chunked impostors and 2D
 heightfield shaders, but all must remain traceable to the same
 height/macro/mask/splat data contract.
+
+---
+
+## 2026-05-10 - M14 close-play texture work uses three active model lanes
+
+**Decision**: Use FLUX.2-klein, AuraFlow v0.3, and SD 3.5 Large as the active
+M14 generated-ground bakeoff lanes. Park Qwen-Image and reject Chroma1-HD for
+this phase.
+
+**Why**: User review and the diversity comparison showed FLUX as the reliable
+reference, Aura as useful for calmer organic variants, and SD 3.5 as a viable
+photoreal experiment if prompts avoid central composition. Qwen produced
+hero-shot/DOF imagery and is too slow for batch ground work right now. Chroma
+failed the current terrain material target badly enough to stop spending M14
+time on it.
+
+**Evidence**:
+`pipelines/textures/DIVERSITY_COMPARE_2026_05_09.md`,
+`world3/jobs/m14_texture_bakeoff_plan.json`, and
+`world3/docs/M14_CLOSE_PLAY_QUALITY_BOARD_2026_05_10.md`.
+
+**Implication**: M14 candidates still need seam/PBR QA, visual veto,
+gameplay-band terrain-context review, and explicit M13 promotion-state changes
+before any production promotion.

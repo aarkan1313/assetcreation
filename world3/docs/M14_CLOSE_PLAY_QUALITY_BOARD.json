@@ -1,0 +1,123 @@
+{
+  "updated": "2026-05-10",
+  "source_queue": "world3/jobs/comfy_texture_regen_candidates.json",
+  "bakeoff_plan": "world3/jobs/m14_texture_bakeoff_plan.json",
+  "view_contract": "world3/docs/GAMEPLAY_VIEW_QUALITY_PLAN_2026_05_09.md",
+  "promotion_gate": "world3/jobs/production_promotion_candidates.json",
+  "active_model_lanes": [
+    {
+      "id": "flux2_klein",
+      "status": "active_reference",
+      "role": "Fast canonical material-generation lane.",
+      "variants_per_material": 8,
+      "prompt_policy": "FLUX-family prompts may use 'tileable seamless texture' wording.",
+      "settings": {
+        "resolution": 1024,
+        "heal_denoise": 0.35,
+        "quality": "strict",
+        "pbr_backend": "sm"
+      }
+    },
+    {
+      "id": "auraflow_v03",
+      "status": "active_diversity",
+      "role": "Calmer or more uniform alternate lane, useful for organic ground.",
+      "variants_per_material": 8,
+      "prompt_policy": "Prefer 'edge-to-edge overhead material sample' wording; keep tileability explicit but avoid decorative-tile cues.",
+      "settings": {
+        "resolution": 1024,
+        "heal_denoise": 0.35,
+        "quality": "strict",
+        "pbr_backend": "sm"
+      }
+    },
+    {
+      "id": "sd35_large",
+      "status": "active_experimental",
+      "role": "Photoreal alternate lane for forest/organic ground, center-bias watchlist.",
+      "variants_per_material": 8,
+      "prompt_policy": "Avoid the word 'tileable'; use 'uniform overhead edge-to-edge material scan, no central focal point'.",
+      "settings": {
+        "resolution": 1024,
+        "heal_denoise": 0.35,
+        "quality": "strict",
+        "pbr_backend": "sm",
+        "fallback": "Generate larger and crop off-center if central composition persists."
+      }
+    }
+  ],
+  "parked_model_lanes": [
+    {
+      "id": "qwen_image",
+      "status": "parked",
+      "reason": "Hero-shot/DOF bias and slow runtime; needs a dedicated material-scan prompt family before reconsideration."
+    }
+  ],
+  "rejected_model_lanes": [
+    {
+      "id": "chroma1_hd",
+      "status": "rejected_for_m14",
+      "reason": "Failed current ground-texture prompt family with decorative-tile/grid artifacts."
+    }
+  ],
+  "candidate_gate": [
+    "Seam/PBR QA filters candidates but does not promote them.",
+    "Visual veto rejects object landmarks, box panels, bright islands, central compositions, decorative tile motifs, and hero-shot depth of field.",
+    "Survivors require Godot terrain-context review in close, medium, iso, and topdown bands.",
+    "Close-play promotion requires source macro to stay low-frequency and generated PBR detail to carry near-field grain.",
+    "Promotion requires an explicit M13 manifest state change; M14 does not bypass M13."
+  ],
+  "summary": {
+    "total": 5,
+    "sidecar_needs_m14_runtime_trials": 1,
+    "prompt_rework_before_bakeoff": 1,
+    "queued_for_bakeoff": 3
+  },
+  "rows": [
+    {
+      "material_id": "grassland_grass",
+      "regen_id": "m8_grassland_grass_calm_v1",
+      "current_source_asset_id": "wgv3_gl_tall_grass",
+      "failure_mode": "object-like dry grass blades and noisy yellow clumps dominate close views",
+      "latest": "m8_grassland_grass_calm_v3",
+      "m14_status": "sidecar_needs_m14_runtime_trials",
+      "next_action": "Run M4/M7-style close/medium/iso/topdown rerenders before any promotion."
+    },
+    {
+      "material_id": "grass",
+      "regen_id": "m8_grass_calm_v5",
+      "current_source_asset_id": "wgv3_grass",
+      "failure_mode": "green organic speckle and small clover/object repetition reads too busy at walk scale",
+      "latest": "4 attempts through m8_grass_calm_v4_anchor_v1",
+      "m14_status": "prompt_rework_before_bakeoff",
+      "next_action": "Revise prompt from the best failed direction, then rerun active model lanes."
+    },
+    {
+      "material_id": "temperate_forest_grass",
+      "regen_id": "m8_temperate_forest_floor_calm_v1",
+      "current_source_asset_id": "wgv3_tf_leaf_litter",
+      "failure_mode": "leaf-litter objects and high contrast fragments create visual noise in close terrain",
+      "latest": "-",
+      "m14_status": "queued_for_bakeoff",
+      "next_action": "Run FLUX/Aura/SD batches, then visual-veto before terrain staging."
+    },
+    {
+      "material_id": "tundra_moss",
+      "regen_id": "m8_tundra_moss_calm_v1",
+      "current_source_asset_id": "tundra_moss",
+      "failure_mode": "moss detail is too high-frequency and can turn into colored speckle in runtime",
+      "latest": "-",
+      "m14_status": "queued_for_bakeoff",
+      "next_action": "Run FLUX/Aura/SD batches, then visual-veto before terrain staging."
+    },
+    {
+      "material_id": "tundra_lichen",
+      "regen_id": "m8_tundra_lichen_calm_v1",
+      "current_source_asset_id": "tundra_lichen",
+      "failure_mode": "lichen spots and pale contrast can repeat as visible object clusters",
+      "latest": "-",
+      "m14_status": "queued_for_bakeoff",
+      "next_action": "Run FLUX/Aura/SD batches, then visual-veto before terrain staging."
+    }
+  ]
+}

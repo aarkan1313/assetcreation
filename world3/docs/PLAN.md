@@ -352,6 +352,13 @@ the M16 iso impostor proof is conditional sidecar evidence, and no terrain art
 is production-promoted. Immediate next production-facing work is M14 close-play
 terrain quality.
 
+2026-05-10 M14 start: close-play terrain quality now has a generated board:
+`M14_CLOSE_PLAY_QUALITY_BOARD_2026_05_10.md`, backed by
+`world3/jobs/m14_texture_bakeoff_plan.json` and
+`build_m14_close_play_quality_board.py`. It turns the M8 organic queue into an
+active FLUX/Aura/SD bakeoff plan with gameplay-band review and M13 promotion
+gate requirements.
+
 2026-05-10 iso renderer note: M16 now includes a source-stack iso impostor
 sidecar ladder. The first rung is a cached 2D iso card from the M12 runtime
 parity bake; later rungs are chunk impostors, 2D heightfield shader, and hybrid
