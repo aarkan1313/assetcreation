@@ -135,9 +135,13 @@ is visibly low quality/low resolution before seam solving. Treat it as negative
 source-quality evidence, not an accepted proof. A stronger second
 Gloss-Guadalupe clean-crop candidate now exists in
 `source_stack_cross_source_second_tour.tscn`; scanner evidence, metrics, and
-topdown/iso/3D captures are recorded. It is locally accepted by orchestrator
-review and pending live user acceptance before M10 proceeds to
-real-to-procedural/unlike-biome promotion.
+topdown/iso/3D captures are recorded. It passed live user review on 2026-05-09,
+so M10 can proceed to real-to-procedural/unlike-biome promotion.
+
+Gameplay camera/zoom quality planning is now explicit:
+`world3/docs/GAMEPLAY_VIEW_QUALITY_PLAN_2026_05_09.md`. Future visual closure
+must state which bands pass: close play, medium play, iso/tactical, and
+topdown/map.
 
 M10 review launch/capture note: use explicit `--scene` wrapper launches, not the
 older waited `--script _codex_render_runner.gd` path. The current seam review
@@ -369,10 +373,11 @@ M7-M12 near roadmap is now explicit:
 2. M8 organic source-material cleanup.
 3. M9 runtime performance and interaction polish.
 4. M10 terrain seam integration and cross-source blending. First overlap proof,
-   nearby non-overlap proof, and accepted Gloss-Guadalupe different-source proof
-   exist; Chuculay-Guadalupe second real-to-real candidate is rejected as visual
-   evidence; next is a stronger second source/crop, then
-   real-to-procedural/unlike-biome promotion.
+   nearby non-overlap proof, accepted Gloss-Guadalupe different-source proof,
+   and accepted second Gloss-Guadalupe clean-crop proof exist.
+   Chuculay-Guadalupe is rejected as visual evidence; next is
+   real-to-procedural/unlike-biome promotion under the gameplay view-quality
+   contract.
 5. M11 corner and junction transitions.
 6. M12 walk/iso/topdown view-mode parity.
 

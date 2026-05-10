@@ -268,9 +268,10 @@ workflow/geometry evidence, and the different-source Gloss-Guadalupe proof has
 passed live visual review. Scanner veto hardening is implemented.
 Chuculay-Guadalupe is kept as negative evidence for source-quality gating, not
 as accepted proof. A stronger second Gloss-Guadalupe clean-crop candidate now
-has scanner evidence, metrics, and topdown/iso/3D captures; it is locally
-accepted by orchestrator review but still needs live user acceptance before M10
-moves to real-to-procedural/unlike-biome blending.
+has scanner evidence, metrics, topdown/iso/3D captures, and live user
+acceptance on 2026-05-09. M10 can move to real-to-procedural/unlike-biome
+blending, using `GAMEPLAY_VIEW_QUALITY_PLAN_2026_05_09.md` as the cross-cutting
+camera-band quality contract.
 
 ## M11 - Corner And Junction Transitions
 
@@ -298,6 +299,11 @@ contracts while preserving mode-specific tuning.
 
 Current state: walk is on the M6 streamed unified path. Iso/topdown/gallery
 still mostly use older whole-kit materials and single-load scenes.
+
+2026-05-09 planning update: gameplay visual closure must be judged by actual
+camera/zoom bands, not only by debug tours. Use
+`GAMEPLAY_VIEW_QUALITY_PLAN_2026_05_09.md` to separate close, medium, iso, and
+topdown acceptance requirements before promoting assets or workflows.
 
 Deliverables:
 

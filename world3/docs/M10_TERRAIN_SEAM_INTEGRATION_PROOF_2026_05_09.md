@@ -474,9 +474,11 @@ Orchestrator visual review read:
 - The macro transition is still visible in topdown because the two source
   styles differ, but it reads as a plausible arid terrain shift rather than a
   broken chunk edge.
-- Status: second M10 real-to-real proof candidate generated and locally
-  accepted by orchestrator review. It still needs live user acceptance before
-  M10 moves on to real-to-procedural/unlike-biome promotion.
+- Live user review on 2026-05-09 accepted the second clean-crop proof as
+  visually strong.
+- Status: second M10 real-to-real proof accepted. M10 can move to
+  real-to-procedural/unlike-biome promotion, with gameplay camera/zoom quality
+  gates defined before visual closure.
 
 ## Review Lighting Correction
 
@@ -519,10 +521,12 @@ violation before scene code runs.
 
 ## Next Step
 
-M10 now has an accepted different-source real-to-real proof, one useful negative
-second-pair result, and a stronger second clean-crop candidate with metrics and
-captures. The next M10 gates are:
+M10 now has two accepted different-source real-to-real proofs and one useful
+negative second-pair result. The next M10 gates are:
 
-1. get live user acceptance or rejection on the second clean-crop candidate;
-2. if accepted, promote the same integration contract to real-to-procedural and unlike-biome
-   cross-source blending.
+1. define gameplay camera/zoom quality bands before judging future visual
+   closures;
+2. promote the same integration contract to real-to-procedural and unlike-biome
+   cross-source blending;
+3. keep source-quality vetoes active so weak macros are rejected before seam
+   solving.

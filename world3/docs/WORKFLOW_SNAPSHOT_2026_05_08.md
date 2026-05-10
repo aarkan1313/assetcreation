@@ -52,8 +52,12 @@ Chuculay desert source macro is low quality/low resolution. Keep it as negative
 scanner/source-quality evidence, not a promoted proof. A stronger second
 Gloss-Guadalupe clean-crop candidate now exists in
 `source_stack_cross_source_second_tour.tscn` with scanner evidence, metrics, and
-topdown/iso/3D captures. It is locally accepted by orchestrator review and
-pending live user acceptance.
+topdown/iso/3D captures. It passed live user review on 2026-05-09.
+
+Gameplay camera/zoom quality planning is now explicit in
+`GAMEPLAY_VIEW_QUALITY_PLAN_2026_05_09.md`. Future visual promotion should
+state which bands it passes: close play, medium play, iso/tactical, and
+topdown/map.
 
 ## Framing
 
