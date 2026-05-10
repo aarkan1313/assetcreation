@@ -157,6 +157,51 @@ def wf_flux2_klein(prompt: str, size: int, seed: int, prefix: str,
     return base
 
 
+def wf_flux2_klein_9b_q8(prompt: str, size: int, seed: int, prefix: str,
+                          init_image: str | None = None, denoise: float = 1.0) -> dict:
+    """FLUX.2-klein 9B GGUF Q8_0 (unsloth). FLUX 2 arch, but 9B uses the
+    BIGGER 8B Qwen3 text encoder (qwen_3_8b_fp8mixed.safetensors, 8.66 GB)
+    -- NOT the qwen_3_4b that klein-4B uses. flux2-vae and Flux2Scheduler
+    are shared with klein-4B. 4-step euler, CFG=1.0 (distilled).
+    Total disk: 10 GB Q8 transformer + 8.66 GB fp8 text encoder = ~18.7 GB.
+    Peak VRAM ~12-14 GB (transformer + text encoder eviction-swapped)."""
+    base = {
+        "10": {"class_type": "UnetLoaderGGUF",
+               "inputs": {"unet_name": "flux-2-klein-9b-Q8_0.gguf"}},
+        "11": {"class_type": "CLIPLoader",
+               "inputs": {"clip_name": "qwen_3_8b_fp8mixed.safetensors", "type": "flux2", "device": "default"}},
+        "12": {"class_type": "VAELoader", "inputs": {"vae_name": "flux2-vae.safetensors"}},
+        "20": {"class_type": "CLIPTextEncode", "inputs": {"text": prompt, "clip": ["11", 0]}},
+        "21": {"class_type": "ConditioningZeroOut", "inputs": {"conditioning": ["20", 0]}},
+        "30": {"class_type": "CFGGuider",
+               "inputs": {"model": ["10", 0], "positive": ["20", 0],
+                          "negative": ["21", 0], "cfg": 1.0}},
+        "40": {"class_type": "KSamplerSelect", "inputs": {"sampler_name": "euler"}},
+        "42": {"class_type": "RandomNoise", "inputs": {"noise_seed": seed}},
+        "60": {"class_type": "VAEDecode", "inputs": {"samples": ["50", 0], "vae": ["12", 0]}},
+        "70": {"class_type": "SaveImage", "inputs": {"filename_prefix": prefix, "images": ["60", 0]}},
+    }
+    if init_image:
+        base["15"] = {"class_type": "LoadImage", "inputs": {"image": init_image}}
+        base["16"] = {"class_type": "VAEEncode",
+                      "inputs": {"pixels": ["15", 0], "vae": ["12", 0]}}
+        base["41"] = {"class_type": "BasicScheduler",
+                      "inputs": {"model": ["10", 0], "scheduler": "simple",
+                                 "steps": 8, "denoise": denoise}}
+        latent_src = ["16", 0]
+    else:
+        base["43"] = {"class_type": "EmptyFlux2LatentImage",
+                      "inputs": {"width": size, "height": size, "batch_size": 1}}
+        base["41"] = {"class_type": "Flux2Scheduler",
+                      "inputs": {"steps": 4, "width": size, "height": size}}
+        latent_src = ["43", 0]
+    base["50"] = {"class_type": "SamplerCustomAdvanced",
+                  "inputs": {"noise": ["42", 0], "guider": ["30", 0],
+                             "sampler": ["40", 0], "sigmas": ["41", 0],
+                             "latent_image": latent_src}}
+    return base
+
+
 def wf_chroma(prompt: str, size: int, seed: int, prefix: str,
                init_image: str | None = None, denoise: float = 1.0,
                steps: int = 26, cfg: float = 4.0) -> dict:
@@ -339,16 +384,18 @@ def edge_seam_score(im: np.ndarray) -> float:
 # ---------- model registry ----------
 
 MODELS = {
-    "flux2_klein":  {"builder": wf_flux2_klein,  "label": "FLUX.2-klein 4B (baseline)",
-                      "suffix": FLUX_TILE_PROMPT_SUFFIX},
-    "chroma1_hd":   {"builder": wf_chroma,       "label": "Chroma1-HD Q8_0",
-                      "suffix": DEFAULT_TILE_PROMPT_SUFFIX},
-    "sd35_large":   {"builder": wf_sd35,         "label": "SD 3.5 Large Q8_0",
-                      "suffix": SD35_TILE_PROMPT_SUFFIX},
-    "auraflow_03":  {"builder": wf_auraflow,     "label": "AuraFlow v0.3 Q8_0",
-                      "suffix": FLUX_TILE_PROMPT_SUFFIX},
-    "qwen_image":   {"builder": wf_qwen_image,   "label": "Qwen-Image Q6_K",
-                      "suffix": DEFAULT_TILE_PROMPT_SUFFIX},
+    "flux2_klein":      {"builder": wf_flux2_klein,        "label": "FLUX.2-klein 4B (baseline)",
+                          "suffix": FLUX_TILE_PROMPT_SUFFIX},
+    "flux2_klein_9b":   {"builder": wf_flux2_klein_9b_q8,  "label": "FLUX.2-klein 9B Q8_0 (unsloth)",
+                          "suffix": FLUX_TILE_PROMPT_SUFFIX},
+    "chroma1_hd":       {"builder": wf_chroma,             "label": "Chroma1-HD Q8_0",
+                          "suffix": DEFAULT_TILE_PROMPT_SUFFIX},
+    "sd35_large":       {"builder": wf_sd35,               "label": "SD 3.5 Large Q8_0",
+                          "suffix": SD35_TILE_PROMPT_SUFFIX},
+    "auraflow_03":      {"builder": wf_auraflow,           "label": "AuraFlow v0.3 Q8_0",
+                          "suffix": FLUX_TILE_PROMPT_SUFFIX},
+    "qwen_image":       {"builder": wf_qwen_image,         "label": "Qwen-Image Q6_K",
+                          "suffix": DEFAULT_TILE_PROMPT_SUFFIX},
 }
 
 ACTIVE_MODELS = ["flux2_klein", "auraflow_03", "sd35_large"]
