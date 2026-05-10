@@ -71,7 +71,7 @@
     "total": 5,
     "m14_trial_safe_close_conditional": 1,
     "methodology_rework_layered_substrate": 1,
-    "m14_substrate_sidecar_candidate_found": 1,
+    "m14_sidecar_staged_live_review_pending": 1,
     "queued_for_bakeoff": 2
   },
   "rows": [
@@ -99,8 +99,8 @@
       "current_source_asset_id": "wgv3_tf_leaf_litter",
       "failure_mode": "leaf-litter objects and high contrast fragments create visual noise in close terrain",
       "latest": "3 M14 attempts through m14_temperate_forest_humus_v3",
-      "m14_status": "m14_substrate_sidecar_candidate_found",
-      "next_action": "Stage AuraFlow v3 as a conservative albedo/detail sidecar and run close, medium, iso, and topdown terrain-context testing before any M13 promotion."
+      "m14_status": "m14_sidecar_staged_live_review_pending",
+      "next_action": "Run live close, medium, iso, and topdown terrain-context review before any M13 promotion."
     },
     {
       "material_id": "tundra_moss",

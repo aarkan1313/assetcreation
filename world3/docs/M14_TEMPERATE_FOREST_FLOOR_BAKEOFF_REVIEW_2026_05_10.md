@@ -64,10 +64,27 @@ terrain-context testing. Do not treat it as complete forest-floor dressing.
 It is a substrate/detail layer. M15 should add leaf scatter, sticks, moss
 breakup, and readable forest identity.
 
+## Runtime Staging
+
+The AuraFlow v3 albedo has been staged as:
+
+- sidecar material: `m14_temperate_forest_humus_v3_auraflow`
+- candidate catalog: `world3/materials/catalog_comfy_candidates.json`
+- source-stack material: `world3/textures/wgv3/terrain_source_stack_gloss_temperate_forest_humus_v3_source_stack.tres`
+- review scene: `world3/scenes/review/source_stack_gloss_temperate_forest_humus_v3_tour.tscn`
+- smoke captures:
+  `world3/docs/captures/m14/m14_temperate_forest_humus_v3_gloss_tour_smoke.png`,
+  `world3/docs/captures/m14/m14_temperate_forest_humus_v3_gloss_tour_close_smoke.png`,
+  `world3/docs/captures/m14/m14_temperate_forest_humus_v3_gloss_tour_3d_smoke.png`
+
+The first Chuculay staging smoke test was rejected as review evidence because
+that source macro contains white/empty imagery patches. The clean Gloss scene
+is kept for live sidecar behavior review even though it is not semantically a
+forest region.
+
 ## Next Action
 
-Stage only the AuraFlow v3 albedo as an M14 sidecar detail material, with
-normal/detail strength conservative at first. Runtime validation must check:
+Runtime validation must check:
 
 - close view: does the dark humus add usable grain without black crush?
 - medium/iso/topdown: does it disappear into source macro instead of tiling?

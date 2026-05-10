@@ -732,6 +732,15 @@ biome. M14 should produce calm substrate/detail candidates; M15 scatter/features
 carry blades, clumps, leaves, sticks, roots, and other readable objects. Record
 the visual veto before staging a sidecar for close/medium/iso/topdown review.
 
+When a bakeoff survivor is albedo-only, convert and stage it as a quarantined
+sidecar before source-stack runtime review:
+
+```powershell
+python pipelines/textures/derive_pbr_v2.py --albedo "<final_albedo.png>" --id <candidate_id> --category Ground --out "D:/assets/world/textures/library/<candidate_id>" --normal-strength 1.2
+python world3/pipeline/stage_comfy_candidate_material.py --library-id <candidate_id> --source-material-id <source_material_id> --color-family <short-family> --scale-m-per-repeat 10.0
+python world3/pipeline/build_source_stack_runtime_review.py --detail-material <candidate_id> --id <review_id> --extra-catalog world3/materials/catalog_comfy_candidates.json --normal-strength 0.0 --detail-normal-strength 0.0 --detail-albedo-strength 0.035 --detail-rough-strength 0.015
+```
+
 Iso/tactical sidecar research starts with a cached 2D card proof:
 
 ```powershell

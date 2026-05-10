@@ -175,7 +175,7 @@ the darker v1 direction as a layered substrate/detail target, then run active
 FLUX/Aura/SD bakeoffs for the remaining organic blockers. Do not require a flat
 `grass` tile to contain visible grass plants; M15 scatter/features should carry
 actual blades and clumps. The same rule now applies to `temperate_forest_grass`:
-AuraFlow v3 has the first sidecar-worthy dark humus substrate, while whole
-leaves/twigs should move to M15 scatter/features. Next M14 blockers are
-`tundra_moss` and `tundra_lichen`, followed by terrain-context runtime review
-for any sidecar-worthy survivors.
+AuraFlow v3 has the first staged sidecar-worthy dark humus substrate, while
+whole leaves/twigs should move to M15 scatter/features. Next action is live
+terrain-context review of `source_stack_gloss_temperate_forest_humus_v3_tour`,
+then `tundra_moss` and `tundra_lichen` bakeoffs.

@@ -45,6 +45,8 @@ const EcotoneScatterOverlayScript = preload("res://scripts/EcotoneScatterOverlay
 @export var show_ecotone_scatter_debug: bool = false
 @export var show_ecotone_scatter_in_topdown: bool = false
 @export var show_ecotone_scatter_in_ortho: bool = true
+@export var review_workflow_label: String = ""
+@export var review_view_label: String = ""
 @export var scatter_shrub_mask_path: String = ""
 @export var scatter_grass_mask_path: String = ""
 @export var scatter_rock_mask_path: String = ""
@@ -561,65 +563,72 @@ func _review_source_size_m() -> Vector2:
 
 
 func _build_full_map_fast_tour() -> void:
+	var source_size: Vector2 = _review_source_size_m()
+	var x_half: float = max(source_size.x * 0.46, 160.0)
+	var z_half: float = max(source_size.y * 0.46, 160.0)
+	var overview_size: float = clamp(max(source_size.y * 1.08, source_size.x * 0.62), 430.0, 2600.0)
+	var iso_size: float = clamp(max(source_size.x, source_size.y) * 0.50, 520.0, 2300.0)
+	var medium_height: float = clamp(max(source_size.x, source_size.y) * 0.13, 210.0, 520.0)
+	var low_height: float = clamp(max(source_size.x, source_size.y) * 0.055, 120.0, 260.0)
 	_tour = [
 		{
 			"name": "Full map topdown sweep",
 			"mode": "topdown",
 			"duration": 4.5,
-			"focus": Vector2(0.0, -360.0),
-			"focus_end": Vector2(0.0, 360.0),
+			"focus": Vector2(0.0, -z_half),
+			"focus_end": Vector2(0.0, z_half),
 			"camera": Vector3(0.0, 900.0, 0.01),
 			"camera_end": Vector3(0.0, 900.0, 0.01),
-			"size": 348.0
+			"size": overview_size
 		},
 		{
 			"name": "Full map iso diagonal",
 			"mode": "ortho",
 			"duration": 5.0,
-			"focus": Vector2(-260.0, -460.0),
-			"focus_end": Vector2(260.0, 460.0),
-			"camera": Vector3(-410.0, 520.0, -470.0),
-			"camera_end": Vector3(-390.0, 520.0, -450.0),
-			"size": 520.0
+			"focus": Vector2(-x_half, -z_half),
+			"focus_end": Vector2(x_half, z_half),
+			"camera": Vector3(-410.0, medium_height * 2.4, -470.0),
+			"camera_end": Vector3(-390.0, medium_height * 2.4, -450.0),
+			"size": iso_size
 		},
 		{
 			"name": "3D long northbound flyover",
 			"mode": "perspective",
 			"duration": 5.0,
-			"focus": Vector2(-240.0, -460.0),
-			"focus_end": Vector2(220.0, 470.0),
-			"camera": Vector3(-260.0, 210.0, -320.0),
-			"camera_end": Vector3(-220.0, 230.0, -300.0),
+			"focus": Vector2(-x_half * 0.72, -z_half),
+			"focus_end": Vector2(x_half * 0.72, z_half),
+			"camera": Vector3(-260.0, medium_height, -320.0),
+			"camera_end": Vector3(-220.0, medium_height * 1.08, -300.0),
 			"fov": 46.0
 		},
 		{
 			"name": "3D reverse cross-map sweep",
 			"mode": "perspective",
 			"duration": 5.0,
-			"focus": Vector2(260.0, -420.0),
-			"focus_end": Vector2(-260.0, 420.0),
-			"camera": Vector3(300.0, 230.0, -360.0),
-			"camera_end": Vector3(260.0, 240.0, -330.0),
+			"focus": Vector2(x_half, -z_half * 0.78),
+			"focus_end": Vector2(-x_half, z_half * 0.78),
+			"camera": Vector3(300.0, medium_height * 1.08, -360.0),
+			"camera_end": Vector3(260.0, medium_height * 1.14, -330.0),
 			"fov": 48.0
 		},
 		{
 			"name": "Full source overview",
 			"mode": "topdown",
 			"duration": 4.0,
-			"focus": Vector2(0.0, -320.0),
-			"focus_end": Vector2(0.0, 320.0),
+			"focus": Vector2(0.0, -z_half * 0.72),
+			"focus_end": Vector2(0.0, z_half * 0.72),
 			"camera": Vector3(0.0, 900.0, 0.01),
 			"camera_end": Vector3(0.0, 900.0, 0.01),
-			"size": 348.0
+			"size": overview_size
 		},
 		{
 			"name": "Low-altitude center traverse",
 			"mode": "perspective",
 			"duration": 4.5,
-			"focus": Vector2(-290.0, -120.0),
-			"focus_end": Vector2(290.0, 160.0),
-			"camera": Vector3(-150.0, 120.0, -210.0),
-			"camera_end": Vector3(-130.0, 130.0, -190.0),
+			"focus": Vector2(-x_half * 0.74, -z_half * 0.22),
+			"focus_end": Vector2(x_half * 0.74, z_half * 0.28),
+			"camera": Vector3(-150.0, low_height, -210.0),
+			"camera_end": Vector3(-130.0, low_height * 1.08, -190.0),
 			"fov": 50.0
 		}
 	]
@@ -870,6 +879,10 @@ func _update_overlay(frame: Dictionary, t: float) -> void:
 	if tour_profile == "m12_parity":
 		workflow_text = "M12 view-mode parity template"
 		view_text = "close play, medium play, iso/tactical, topdown/map; same source/material contract"
+	if review_workflow_label != "":
+		workflow_text = review_workflow_label
+	if review_view_label != "":
+		view_text = review_view_label
 	var scatter_text := ""
 	if _scatter != null and _scatter.has_method("get_scatter_summary"):
 		var summary: Dictionary = _scatter.call("get_scatter_summary")

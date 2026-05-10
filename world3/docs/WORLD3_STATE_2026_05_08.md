@@ -656,4 +656,6 @@ These start when chunk + biome + tile + transition is ~80% solved
 - **2026-05-10 (M14 temperate forest floor bakeoff)**: Added
   `M14_TEMPERATE_FOREST_FLOOR_BAKEOFF_REVIEW_2026_05_10.md`. FLUX and SD
   repeated leaf/object failure modes; AuraFlow v3 is the first sidecar-worthy
-  dark humus substrate candidate, pending terrain-context review.
+  dark humus substrate candidate. It is staged in
+  `source_stack_gloss_temperate_forest_humus_v3_tour.tscn` for live
+  terrain-context review.
