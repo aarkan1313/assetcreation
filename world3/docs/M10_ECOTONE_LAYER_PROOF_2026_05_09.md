@@ -25,6 +25,7 @@ Tool:
 Runtime scene:
 
 - `world3/scenes/review/source_stack_ecotone_layer_tour.tscn`
+- `world3/scripts/EcotoneScatterOverlay.gd`
 
 Key outputs:
 
@@ -40,6 +41,31 @@ Key outputs:
 The shader now receives runtime splat weights through `ChunkLoader` and
 `terrain_splat_unified.gdshader` instead of relying only on a baked macro
 preview.
+
+## 2026-05-10 Scatter/Debug Pass
+
+The existing feature masks are now used in the live review scene instead of
+only appearing in the contact sheet.
+
+Runtime additions:
+
+- `EcotoneScatterOverlay.gd` samples masks in world space and places
+  deterministic lightweight shrub, dry-grass, and rock instances.
+- `S` toggles scatter visibility in the review scene.
+- `M` toggles the mask-debug overlay.
+- Topdown automatically hides 3D scatter so map/readability captures do not
+  turn into speckle fields. Iso, medium, and close 3D keep scatter visible.
+
+Current deterministic scatter counts:
+
+- shrubs: `333`
+- dry-grass clumps: `205`
+- rocks: `30`
+
+This is still prototype scatter. The important workflow step is that object
+breakup now comes from the same masks emitted by the ecotone pipeline. It is
+not hand-placed decoration and should be replaceable with higher-quality
+vegetation/rock assets later.
 
 ## Difference From M2 Texture-To-Texture
 
@@ -108,14 +134,16 @@ Accepted workflow read:
 - source macro is now broad guidance, not the sole transition contract;
 - the hard straight-line failure is removed;
 - the grassland side no longer reads primarily as repeated tile bands;
+- feature masks now drive visible scatter in medium/close views;
+- topdown remains clean because scatter is LOD-hidden there;
 - topdown, iso, medium, and close captures preserve both biome identities;
 - the transition reads as a believable proof-of-workflow ecotone, not merely a
   debug strip.
 
 Still not production-final:
 
-- there is no scatter/mesh population yet, so shrub/grass carryover exists only
-  as masks;
+- scatter uses simple generated placeholder meshes, not authored production
+  vegetation/rock assets;
 - the right-side biome is still a procedural/Comfy material macro, not a true
   adjacent real-source terrain pull;
 - the source-photo to PBR-material handoff is still visible in close play;
@@ -140,9 +168,10 @@ enough to promote as workflow evidence while keeping production caveats active.
 
 ## Next Work
 
-1. Add a runtime/debug view that can show splat weights, biome weights, and
-   scatter masks directly in Godot.
-2. Add first scatter placement from the existing masks.
+1. Replace placeholder scatter meshes with authored vegetation/rock assets and
+   add distance/scale bands for gameplay cameras.
+2. Add a runtime/debug view for splat weights and biome weights, not only
+   scatter masks.
 3. Re-run with better grassland material candidates from the ComfyUI workflow.
 4. Prefer real adjacent source data for production-like proofs whenever the data
    catalog has suitable neighboring tiles.

@@ -161,9 +161,18 @@ macro-guided runtime-layer split: macro color gives broad landcover/photo
 guidance across the proof, while runtime splat/material weights stay as the
 material truth. This replaces the rejected texture-to-texture/RGB-strip bridge.
 It is workflow evidence, not production-final AAA terrain; next work is explicit
-debug views, scatter-mask population, better grassland material candidates,
-real adjacent source candidates, and carrying the same macro-guidance+splat
-contract into M11 junctions.
+biome/splat debug views, replacement of placeholder scatter with authored
+vegetation/rock assets, better grassland material candidates, real adjacent
+source candidates, and carrying the same macro-guidance+splat contract into M11
+junctions.
+
+2026-05-10 ecotone scatter update: `EcotoneScatterOverlay.gd` now samples the
+pipeline-emitted masks in world space and places deterministic lightweight
+shrubs, dry-grass clumps, and rocks in the review scene. `S` toggles scatter,
+`M` toggles mask debug, and topdown LOD-hides 3D scatter to keep map captures
+clean. Current scatter counts are 333 shrubs, 205 grass clumps, and 30 rocks.
+This is mask-driven workflow evidence with placeholder meshes, not production
+vegetation.
 
 Gameplay camera/zoom quality planning is now explicit:
 `world3/docs/GAMEPLAY_VIEW_QUALITY_PLAN_2026_05_09.md`. Future visual closure

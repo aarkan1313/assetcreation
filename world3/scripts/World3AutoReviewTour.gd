@@ -1,5 +1,7 @@
 extends Node3D
 
+const EcotoneScatterOverlayScript = preload("res://scripts/EcotoneScatterOverlay.gd")
+
 
 @export var material_path: String = "res://textures/wgv3/terrain_source_stack_gloss_grassland_comfy_v3_source_stack.tres"
 @export var heightmap_path: String = "res://toporeview/gloss_mountain_textured_master/heightmap.png"
@@ -39,6 +41,16 @@ extends Node3D
 @export var review_tonemap_exposure: float = 0.94
 @export var review_sun_energy: float = 1.35
 @export var review_ambient_energy: float = 0.42
+@export var enable_ecotone_scatter: bool = false
+@export var show_ecotone_scatter_debug: bool = false
+@export var show_ecotone_scatter_in_topdown: bool = false
+@export var show_ecotone_scatter_in_ortho: bool = true
+@export var scatter_shrub_mask_path: String = ""
+@export var scatter_grass_mask_path: String = ""
+@export var scatter_rock_mask_path: String = ""
+@export var scatter_soil_mask_path: String = ""
+@export var scatter_wash_mask_path: String = ""
+@export var scatter_no_mask_path: String = ""
 @export_enum("standard", "full_map_fast", "same_source_blend", "seam_integration", "ecotone_layer") var tour_profile: String = "standard"
 @export var initial_tour_index: int = 0
 @export_range(0.0, 0.99, 0.01) var initial_tour_progress: float = 0.0
@@ -46,6 +58,7 @@ extends Node3D
 
 var _anchor: Node3D
 var _loader: ChunkLoader
+var _scatter
 var _camera: Camera3D
 var _overlay_label: Label
 var _overlay_panel: ColorRect
@@ -54,6 +67,7 @@ var _tour_index: int = 0
 var _tour_time: float = 0.0
 var _paused: bool = false
 var _ui_visible: bool = true
+var _scatter_visible_now: bool = false
 
 
 func _ready() -> void:
@@ -63,6 +77,7 @@ func _ready() -> void:
 	_tour_index = clampi(initial_tour_index, 0, _tour.size() - 1)
 	_tour_time = max(float(_tour[_tour_index].get("duration", 8.0)), 0.001) * clampf(initial_tour_progress, 0.0, 0.99)
 	_setup_terrain()
+	_setup_ecotone_scatter()
 	_setup_camera()
 	_setup_overlay()
 	_apply_tour_frame(0.0)
@@ -98,6 +113,14 @@ func _unhandled_input(event: InputEvent) -> void:
 			_ui_visible = not _ui_visible
 			_overlay_panel.visible = _ui_visible
 			_overlay_label.visible = _ui_visible
+		KEY_S:
+			enable_ecotone_scatter = not enable_ecotone_scatter
+			if _scatter != null and _scatter.has_method("set_scatter_visible"):
+				_scatter.call("set_scatter_visible", enable_ecotone_scatter)
+		KEY_M:
+			show_ecotone_scatter_debug = not show_ecotone_scatter_debug
+			if _scatter != null and _scatter.has_method("set_debug_masks_visible"):
+				_scatter.call("set_debug_masks_visible", show_ecotone_scatter_debug)
 
 
 func _apply_command_line_overrides() -> void:
@@ -562,6 +585,26 @@ func _apply_source_macro_overrides(mat: ShaderMaterial) -> void:
 			push_warning("World3AutoReviewTour failed to load source macro valid-mask override: " + source_macro_valid_mask_override_path)
 
 
+func _setup_ecotone_scatter() -> void:
+	if tour_profile != "ecotone_layer":
+		return
+	if scatter_shrub_mask_path == "" and scatter_grass_mask_path == "" and scatter_rock_mask_path == "":
+		return
+	_scatter = EcotoneScatterOverlayScript.new()
+	_scatter.name = "EcotoneScatterOverlay"
+	_scatter.set("enabled", enable_ecotone_scatter)
+	_scatter.set("debug_masks_visible", show_ecotone_scatter_debug)
+	_scatter.set("loader_path", _loader.get_path())
+	_scatter.set("meta_path", meta_path)
+	_scatter.set("shrub_mask_path", scatter_shrub_mask_path)
+	_scatter.set("grass_mask_path", scatter_grass_mask_path)
+	_scatter.set("rock_mask_path", scatter_rock_mask_path)
+	_scatter.set("soil_mask_path", scatter_soil_mask_path)
+	_scatter.set("wash_mask_path", scatter_wash_mask_path)
+	_scatter.set("no_scatter_mask_path", scatter_no_mask_path)
+	add_child(_scatter)
+
+
 func _setup_camera() -> void:
 	_camera = Camera3D.new()
 	_camera.name = "Camera3D"
@@ -658,7 +701,22 @@ func _apply_tour_frame(delta: float) -> void:
 		_camera.fov = float(frame.get("fov", 50.0))
 		_camera.look_at(focus, Vector3.UP)
 
+	_apply_scatter_lod(mode)
 	_update_overlay(frame, t)
+
+
+func _apply_scatter_lod(mode: String) -> void:
+	if _scatter == null:
+		return
+	_scatter_visible_now = enable_ecotone_scatter
+	if mode == "topdown" and not show_ecotone_scatter_in_topdown:
+		_scatter_visible_now = false
+	if mode == "ortho" and not show_ecotone_scatter_in_ortho:
+		_scatter_visible_now = false
+	if _scatter.has_method("set_scatter_visible"):
+		_scatter.call("set_scatter_visible", _scatter_visible_now)
+	if _scatter.has_method("set_debug_masks_visible"):
+		_scatter.call("set_debug_masks_visible", show_ecotone_scatter_debug)
 
 
 func _update_overlay(frame: Dictionary, t: float) -> void:
@@ -678,12 +736,22 @@ func _update_overlay(frame: Dictionary, t: float) -> void:
 		view_text = "integration-band topdown, iso, close 3D, medium 3D, footprint"
 	if tour_profile == "ecotone_layer":
 		workflow_text = "M10 unlike-biome ecotone/layer proof"
-		view_text = "topdown, iso, medium/close 3D, footprint; masks in contact sheet"
+		view_text = "topdown, iso, medium/close 3D, footprint; S scatter, M mask debug"
+	var scatter_text := ""
+	if _scatter != null and _scatter.has_method("get_scatter_summary"):
+		var summary: Dictionary = _scatter.call("get_scatter_summary")
+		var scatter_state: String = "visible" if _scatter_visible_now else ("lod-hidden" if enable_ecotone_scatter else "off")
+		scatter_text = " | scatter %s %d/%d/%d" % [
+			scatter_state,
+			int(summary.get("shrubs", 0)),
+			int(summary.get("grass_tufts", 0)),
+			int(summary.get("rocks", 0))
+		]
 	_overlay_label.text = (
 		"world3 Source-Stack Auto Review | " + workflow_text + "\n"
-		+ "%d/%d  %s  |  %s  |  progress %02d%%\n"
+		+ "%d/%d  %s  |  %s  |  progress %02d%%" + scatter_text + "\n"
 		+ "Views: " + view_text + "\n"
-		+ "Keys: Space pause | N/B step | R reset | H UI"
+		+ "Keys: Space pause | N/B step | R reset | H UI | S scatter | M masks"
 	) % [
 		_tour_index + 1,
 		_tour.size(),

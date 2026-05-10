@@ -289,8 +289,16 @@ workflow evidence. It is a real workflow change from texture-to-texture blending
 because it emits splat weights, source macro masks, material weights,
 feature/scatter masks, and continuous height, then uses macro guidance as broad
 landcover color rather than as the only transition contract. It is not
-production-final; scatter/object population, better grassland source candidates,
-and close gameplay detail remain for later gates.
+production-final; better grassland source candidates and close gameplay detail
+remain for later gates.
+
+2026-05-10 scatter update: first mask-driven ecotone scatter is implemented in
+`EcotoneScatterOverlay.gd` and enabled in
+`source_stack_ecotone_layer_tour.tscn`. It places deterministic placeholder
+shrubs, dry-grass clumps, and rocks from the existing masks, with topdown scatter
+LOD-hidden to keep map review clean. This closes the first scatter-mask
+population proof, but production vegetation/rock assets and distance bands
+remain later gates.
 
 ## M11 - Corner And Junction Transitions
 

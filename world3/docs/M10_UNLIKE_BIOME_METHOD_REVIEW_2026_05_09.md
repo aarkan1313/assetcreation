@@ -37,7 +37,8 @@ That averages biome identity away. A convincing unlike-biome transition needs:
 - slope/height/drainage-aware placement;
 - feature carryover such as scrub islands, soil exposure, wash traces, rock,
   dry grass, and vegetation density;
-- later scatter masks for shrubs/grass/rocks, even if no meshes are spawned yet.
+- scatter masks and lightweight review scatter for shrubs/grass/rocks before
+  production vegetation assets exist.
 
 ## Research Notes
 
@@ -169,7 +170,8 @@ Unlike-biome evidence can pass as workflow evidence if:
 - both biome identities remain readable;
 - the boundary is irregular and feature-driven;
 - material weights exist and can be inspected;
-- at least one feature/scatter mask exists even if meshes are deferred.
+- feature/scatter masks exist and at least one mask-driven scatter pass is
+  visible in medium/close review.
 
 ## 2026-05-09 Runtime Layer Proof Update
 
@@ -189,9 +191,14 @@ Current read after the macro-guided runtime layer pass: accepted as M10
 unlike-biome workflow evidence, not production-final visual closure. The latest
 captures remove the hard straight-line failure, keep both biome identities
 readable, suppress the repeated grass-tile problem, and use runtime splat
-weights plus macro guidance rather than an RGB strip alone. Remaining work is
-explicit debug views, scatter mask population, better grassland source
-candidates, and a fuller gameplay-zoom quality pass.
+weights plus macro guidance rather than an RGB strip alone.
+
+2026-05-10 update: `EcotoneScatterOverlay.gd` adds first mask-driven review
+scatter from the emitted shrub, grass, rock, soil, wash, and no-scatter masks.
+It is deterministic and LOD-aware: topdown hides 3D scatter to avoid speckle,
+while iso/medium/close keep scatter visible. Remaining work is explicit
+biome/splat debug views, production-quality scatter assets, better grassland
+source candidates, and a fuller gameplay-zoom quality pass.
 
 ## Immediate Decision
 

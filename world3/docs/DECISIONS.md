@@ -1176,3 +1176,25 @@ grassland, soil, and rock ownership.
 macro-guidance plus runtime-splat contract. Production promotion remains
 blocked on scatter/object population, stronger real adjacent sources, better
 grassland material candidates, and gameplay-zoom detail/normal review.
+
+---
+
+## 2026-05-10 - Ecotone scatter must be mask-driven and LOD-aware
+
+**Decision**: The first M10 ecotone scatter pass uses the pipeline-emitted
+feature masks as the source of truth for shrub, dry-grass, rock, soil, wash,
+and no-scatter placement. Topdown review hides 3D scatter by default.
+
+**Why**: The visual improvement we need is object breakup tied to the terrain
+logic, not hand-placed decoration. At the same time, raw 3D scatter makes
+topdown captures read as noise, so the review scene needs camera-band behavior
+even at prototype stage.
+
+**Evidence**:
+`world3/scripts/EcotoneScatterOverlay.gd`,
+`world3/scenes/review/source_stack_ecotone_layer_tour.tscn`, and
+`world3/docs/M10_ECOTONE_LAYER_PROOF_2026_05_09.md`.
+
+**Implication**: Future scatter work should replace placeholder meshes with
+authored assets and add real distance bands, but should keep mask-driven
+placement and topdown/iso/3D parity as part of the workflow contract.

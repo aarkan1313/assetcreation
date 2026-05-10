@@ -635,13 +635,21 @@ emitting runtime splat weights, source macro masks, material masks, feature
 masks, and continuous height. The macro-guided layer pass is accepted as M10
 unlike-biome workflow evidence: it removes the hard strip read, keeps both biome
 identities, and suppresses the repeated grass-tile failure. It is not
-production-final visual closure because object scatter, better grassland source
-candidates, and close gameplay detail still need work.
+production-final visual closure because the new scatter pass uses placeholder
+meshes, better grassland source candidates still need work, and close gameplay
+detail still needs a dedicated pass.
+
+2026-05-10 update: the first mask-driven scatter pass is live in
+`EcotoneScatterOverlay.gd` and `source_stack_ecotone_layer_tour.tscn`. It places
+deterministic shrubs, dry-grass clumps, and rocks from the emitted feature masks,
+and hides 3D scatter in topdown captures to avoid map-view speckle.
 
 Next M10 gates:
 
 1. carry the accepted macro-guided ecotone workflow into M11 corner/junction
    planning;
-2. keep gameplay camera/zoom bands explicit for visual closure;
-3. keep source-quality/procedural-quality vetoes active so weak macros are
+2. replace placeholder scatter with production-grade vegetation/rock assets and
+   distance bands;
+3. keep gameplay camera/zoom bands explicit for visual closure;
+4. keep source-quality/procedural-quality vetoes active so weak macros are
    rejected before seam solving.
