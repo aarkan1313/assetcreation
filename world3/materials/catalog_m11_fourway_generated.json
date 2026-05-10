@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "updated": "2026-05-10",
+  "role": "m11_fourway_sidecar_catalog_not_canonical",
+  "materials": [
+    {
+      "id": "fantasy_lava_field_controlled",
+      "source": "fantasy",
+      "asset_status": "m11_fourway_validation_candidate",
+      "provenance": {
+        "type": "staged_existing_library_material",
+        "source_asset_id": "biome_lava_field",
+        "source_path": "world/textures/library/biome_lava_field",
+        "policy": "M11 four-way proof only; review in terrain context before promotion",
+        "visual_note": "Chosen over mana crystal and ice cavern because it can read as controlled fantasy basalt/lava terrain. The staged albedo lifts the black values and subdues the hot cracks for terrain-context review.",
+        "settings": {
+          "world_uv_scale": 0.012,
+          "detail_uv_scale_mult": 8.0,
+          "normal_strength": 0.045,
+          "detail_albedo_strength": 0.025
+        }
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "fantasy-basalt-lava",
+      "runtime_texture_dir": "world3/textures/wgv3/fantasy_lava_field_controlled",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3/fantasy_lava_field_controlled/albedo.png",
+        "normal": "world3/textures/wgv3/fantasy_lava_field_controlled/normal.png",
+        "roughness": "world3/textures/wgv3/fantasy_lava_field_controlled/roughness.png",
+        "height": "world3/textures/wgv3/fantasy_lava_field_controlled/height.png",
+        "ao": "world3/textures/wgv3/fantasy_lava_field_controlled/ao.png",
+        "detail_albedo": "world3/textures/wgv3/fantasy_lava_field_controlled/albedo.png",
+        "detail_normal": "world3/textures/wgv3/fantasy_lava_field_controlled/normal.png",
+        "detail_roughness": "world3/textures/wgv3/fantasy_lava_field_controlled/roughness.png"
+      },
+      "shader_binding": "terrain_hex_detail",
+      "validated_views": {
+        "close": "needs_review",
+        "mid": "needs_review",
+        "far": "needs_review"
+      }
+    }
+  ]
+}

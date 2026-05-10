@@ -1,0 +1,31 @@
+{
+  "height_m": {
+    "min": 409.9164123535156,
+    "max": 463.7407531738281,
+    "range": 53.8243408203125,
+    "junction_gradient_p95_m_per_px": 0.3166424036026001
+  },
+  "junction": {
+    "mean_weight": 0.4292095899581909,
+    "coverage_gt_0_25": 0.6597318649291992,
+    "quad_core_coverage_gt_0_25": 0.11362838745117188,
+    "dominant_domain_min_coverage": 0.16387271881103516
+  },
+  "weights": {
+    "max_sum_error": 2.384185791015625e-07,
+    "grassland_mean": 0.23562932014465332,
+    "fantasy_lava_mean": 0.28003251552581787,
+    "canyon_rock_mean": 0.23038920760154724,
+    "source_scrub_mean": 0.25394895672798157,
+    "macro_guidance_weight_mean": 0.7600743770599365
+  },
+  "feature_masks": {
+    "shrub_carryover_mean": 0.07979920506477356,
+    "dry_grass_density_mean": 0.2394348382949829,
+    "soil_exposure_mean": 0.15056195855140686,
+    "rock_cluster_mean": 0.06200265511870384,
+    "fantasy_crack_mean": 0.0022133197635412216,
+    "wash_line_mean": 0.06773228943347931,
+    "no_scatter_mean": 0.06828146427869797
+  }
+}

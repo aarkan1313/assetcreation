@@ -51,7 +51,7 @@ const EcotoneScatterOverlayScript = preload("res://scripts/EcotoneScatterOverlay
 @export var scatter_soil_mask_path: String = ""
 @export var scatter_wash_mask_path: String = ""
 @export var scatter_no_mask_path: String = ""
-@export_enum("standard", "full_map_fast", "same_source_blend", "seam_integration", "ecotone_layer", "junction_layer") var tour_profile: String = "standard"
+@export_enum("standard", "full_map_fast", "same_source_blend", "seam_integration", "ecotone_layer", "junction_layer", "junction_fourway") var tour_profile: String = "standard"
 @export var initial_tour_index: int = 0
 @export_range(0.0, 0.99, 0.01) var initial_tour_progress: float = 0.0
 @export var auto_play: bool = true
@@ -151,6 +151,9 @@ func _build_tour() -> void:
 		_build_ecotone_layer_tour()
 		return
 	if tour_profile == "junction_layer":
+		_build_junction_layer_tour()
+		return
+	if tour_profile == "junction_fourway":
 		_build_junction_layer_tour()
 		return
 	_tour = [
@@ -429,9 +432,14 @@ func _build_junction_layer_tour() -> void:
 	var z_span: float = clamp(source_size.y * 0.46, 180.0, 285.0)
 	var topdown_size: float = clamp(max(source_size.x, source_size.y) * 0.88, 430.0, 580.0)
 	var iso_size: float = clamp(max(source_size.x, source_size.y) * 0.82, 400.0, 620.0)
+	var topdown_name: String = "Three-way junction topdown"
+	var close_name: String = "Close 3D triple-core pass"
+	if tour_profile == "junction_fourway":
+		topdown_name = "Four-way corner topdown"
+		close_name = "Close 3D quad-core pass"
 	_tour = [
 		{
-			"name": "Three-way junction topdown",
+			"name": topdown_name,
 			"mode": "topdown",
 			"duration": 6.0,
 			"focus": Vector2(-x_span * 0.22, -z_span * 0.08),
@@ -461,7 +469,7 @@ func _build_junction_layer_tour() -> void:
 			"fov": 48.0
 		},
 		{
-			"name": "Close 3D triple-core pass",
+			"name": close_name,
 			"mode": "perspective",
 			"duration": 6.0,
 			"focus": Vector2(-x_span * 0.18, 12.0),
@@ -649,7 +657,7 @@ func _apply_source_macro_overrides(mat: ShaderMaterial) -> void:
 
 
 func _setup_ecotone_scatter() -> void:
-	if tour_profile != "ecotone_layer" and tour_profile != "junction_layer":
+	if tour_profile != "ecotone_layer" and tour_profile != "junction_layer" and tour_profile != "junction_fourway":
 		return
 	if scatter_shrub_mask_path == "" and scatter_grass_mask_path == "" and scatter_rock_mask_path == "":
 		return
@@ -802,6 +810,9 @@ func _update_overlay(frame: Dictionary, t: float) -> void:
 		view_text = "topdown, iso, medium/close 3D, footprint; S scatter, M mask debug"
 	if tour_profile == "junction_layer":
 		workflow_text = "M11 three-way junction/layer proof"
+		view_text = "topdown, iso, medium/close 3D, footprint; S scatter, M mask debug"
+	if tour_profile == "junction_fourway":
+		workflow_text = "M11 four-way corner/layer proof"
 		view_text = "topdown, iso, medium/close 3D, footprint; S scatter, M mask debug"
 	var scatter_text := ""
 	if _scatter != null and _scatter.has_method("get_scatter_summary"):

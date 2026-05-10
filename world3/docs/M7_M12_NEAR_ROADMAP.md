@@ -314,8 +314,11 @@ Current state: first representative three-way Y junction proof is accepted as
 workflow evidence. `build_m11_junction_layer_proof.py` emits source/grassland/
 canyon domain fields, runtime splat weights, a macro-guided source stack, and
 feature/scatter masks. `source_stack_m11_junction_tour.tscn` reviews topdown,
-iso, medium, and close views. This proves the mask/splat strategy for one
-junction, not the full corner library.
+iso, medium, and close views. A first four-way/corner candidate now exists via
+`build_m11_fourway_corner_proof.py` and
+`source_stack_m11_fourway_corner_tour.tscn`, using photoreal source, current
+grassland sidecar, controlled fantasy lava/basalt, and canyon rock. It is
+pending live validation before M11 closure.
 
 2026-05-10 visual note: the accepted M11 pass uses the Zion master-stack terrain
 texture as the canyon macro reference so the canyon branch survives gameplay
@@ -328,7 +331,7 @@ Deliverables:
 - Build a small review scene with at least one three-material junction.
 - Decide whether junctions are authored as special assets, composed from
   pairwise strips, or generated as masks over the existing splat map.
-- Build the next four-way/corner proof using the same domain/splat/macro
+- Live-validate the four-way/corner proof using the same domain/splat/macro
   contract.
 
 Exit:

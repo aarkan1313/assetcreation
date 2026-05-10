@@ -1245,3 +1245,28 @@ gameplay-review distance.
 domain/splat/macro contract. Production promotion remains blocked on authored
 scatter assets, stronger grassland material candidates, production landform
 geometry, and gameplay camera parity.
+
+---
+
+## 2026-05-10 - M11 four-way corner proof uses all four RGBA splat channels
+
+**Decision**: Add a candidate four-way M11 proof that composes photoreal source,
+the current grassland sidecar, controlled fantasy lava/basalt, and canyon rock
+through one generated domain-field/splat/macro contract. Record it as candidate
+evidence until live validation.
+
+**Why**: A four-way proof should stress the actual runtime contract, not just
+repeat a same-source blend. The chosen fantasy material is intentionally
+controlled: mana crystal was too saturated and ice cavern was blown out, while
+lava/basalt can read as a fantasy terrain stress case without dominating the
+whole scene.
+
+**Evidence**:
+`world3/docs/M11_FOURWAY_CORNER_PROOF_2026_05_10.md`,
+`world3/pipeline/build_m11_fourway_corner_proof.py`,
+`world3/scenes/review/source_stack_m11_fourway_corner_tour.tscn`, and captures
+under `world3/docs/captures/review/source_stack_m11_fourway_corner_tour_*.png`.
+
+**Implication**: If live validation accepts this proof, M11 should move to a
+small junction-case matrix, then M12 view-mode parity. If rejected, tune fantasy
+darkness and domain widths before adding more junction cases.

@@ -3,6 +3,8 @@
 ## Status
 
 Accepted as first M11 workflow evidence for three-way terrain junctions.
+Follow-up four-way/corner candidate evidence is now recorded in
+`M11_FOURWAY_CORNER_PROOF_2026_05_10.md`.
 
 This is not production-final AAA terrain. It proves the junction method: three
 terrain domains can meet through generated domain fields, runtime splat weights,
@@ -96,7 +98,8 @@ Known limitations:
 - Grassland material remains sidecar quality and needs the planned ComfyUI
   FLUX/Aura/SD bakeoff before promotion.
 - Placeholder scatter assets are not production assets.
-- M11 currently proves a representative Y junction, not the full corner library.
+- M11 three-way proves a representative Y junction, not the full corner library.
+- The first four-way candidate exists, but remains pending live validation.
 
 ## Commands
 
@@ -120,9 +123,10 @@ display returns a null viewport texture for `HeadlessCapture.gd`.
 
 ## Next
 
-M11 is ready to move from "first representative Y junction" to:
+M11 has moved from "first representative Y junction" to the first four-way
+corner candidate:
 
-1. Four-way/corner junction proof using the same contract.
+1. Live-validate `source_stack_m11_fourway_corner_tour.tscn`.
 2. Debug view that overlays domain ownership, splat ownership, and mask layers in
    the live scene.
 3. Replacement scatter asset pass after authored scrub/grass/rock assets exist.
