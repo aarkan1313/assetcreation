@@ -99,6 +99,9 @@ python world3/pipeline/audit_m12_view_mode_parity.py
 
 ## Decision
 
-M12 now has representative runtime parity evidence. If the live scene passes
-user review, M12 can close without treating the full bulk region gallery
-retrofit as a blocker.
+M12 now has representative runtime parity evidence and passed live user review
+on 2026-05-10 as workflow evidence. M12 can close without treating the full bulk
+region gallery retrofit as a blocker.
+
+This does not promote the terrain art to production. Production promotion stays
+under the M13 candidate manifest and audit gate.

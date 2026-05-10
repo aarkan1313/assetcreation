@@ -18,7 +18,7 @@ production promotion without the new promotion gate.
 | M9 runtime performance/polish | Prototype evidence, not production perf closure | M5/M6 runner metrics and M12 runtime scene | No dedicated post-M12 interaction/hitch budget has been run. |
 | M10 seam/cross-source/ecotone | Workflow accepted | `M10_TERRAIN_SEAM_INTEGRATION_PROOF_2026_05_09.md`, `M10_ECOTONE_LAYER_PROOF_2026_05_09.md` | Real-to-procedural and unlike-biome close play are conditional until richer detail/scatter exists. |
 | M11 junction/corner | Representative workflow accepted | `M11_JUNCTION_LAYER_PROOF_2026_05_10.md`, `M11_FOURWAY_CORNER_PROOF_2026_05_10.md`, `M11_JUNCTION_CASE_MATRIX_2026_05_10.md` | T/L/island variants are future case-library work; placeholder scatter is not production. |
-| M12 view-mode parity | Representative runtime proof exists, pending live review | `M12_VIEW_MODE_PARITY_AUDIT_2026_05_10.md`, `M12_RUNTIME_PARITY_PROOF_2026_05_10.md` | Needs live validation before calling M12 closed; bulk region gallery remains legacy follow-up. |
+| M12 view-mode parity | Representative runtime workflow accepted after live review | `M12_VIEW_MODE_PARITY_AUDIT_2026_05_10.md`, `M12_RUNTIME_PARITY_PROOF_2026_05_10.md` | Bulk region gallery remains M16 follow-up; no production promotion is implied. |
 
 ## Foundation Gate
 
@@ -36,7 +36,6 @@ current terrain proof as production-promoted.
 
 ## Blockers Before Production Promotion
 
-- Live M12 runtime parity review.
 - Close-play material quality, especially organic/grass/ground detail.
 - Placeholder scatter and feature meshes.
 - Dedicated runtime interaction/performance pass after representative parity.

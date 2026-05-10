@@ -164,5 +164,7 @@ Exit:
 
 ## Current First Move
 
-M13 is active now. Do not promote or expand visuals until the candidate manifest
-and audit stay clean.
+M13 gate hygiene is active for every new artifact. The candidate manifest and
+audit are clean after M12 workflow acceptance and the M16 iso sidecar entry.
+Immediate next production-facing work should move into M14 close-play terrain
+quality while continuing to update the M13 manifest for every candidate.

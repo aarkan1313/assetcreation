@@ -16,7 +16,7 @@ play quality, placeholder scatter, missing bands, or incomplete live review.
 
 | Candidate | Track | State | Readiness | Bands | Missing Evidence |
 |-----------|-------|-------|-----------|-------|------------------|
-| `m12_runtime_fourway_parity` | `view_mode_parity` | `ready_for_live_review` | `workflow_ready_not_production` | close:pass, medium:pass, iso:pass, topdown:pass | - |
+| `m12_runtime_fourway_parity` | `view_mode_parity` | `accepted_workflow` | `workflow_ready_not_production` | close:pass, medium:pass, iso:pass, topdown:pass | - |
 | `m11_fourway_corner_workflow` | `junction_case_library` | `accepted_workflow` | `workflow_ready_not_production` | close:pass, medium:pass, iso:pass, topdown:pass | - |
 | `m16_cached_iso_impostor_seed` | `iso_runtime_strategy` | `sidecar_candidate` | `conditional` | close:not_applicable, medium:not_applicable, iso:conditional, topdown:not_applicable | - |
 | `m11_three_way_junction_workflow` | `junction_case_library` | `accepted_workflow` | `workflow_ready_not_production` | close:pass, medium:pass, iso:pass, topdown:pass | - |
@@ -24,11 +24,11 @@ play quality, placeholder scatter, missing bands, or incomplete live review.
 | `m10_real_procedural_gloss_canyon` | `real_to_procedural_neighbor` | `accepted_workflow` | `conditional` | close:conditional, medium:pass, iso:pass, topdown:pass | - |
 | `m8_grassland_grass_calm_v3` | `comfyui_texture_regen` | `sidecar_candidate` | `conditional` | close:conditional, medium:not_reviewed, iso:not_applicable, topdown:not_applicable | - |
 
-## Blockers
+## Blockers And Notes
 
 ### m12_runtime_fourway_parity
-- Needs live user review before M12 closure.
-- Bulk RegionGalleryCapture.gd remains a legacy follow-up path.
+- No production promotion requested; this remains workflow evidence.
+- Bulk RegionGalleryCapture.gd is an M16 follow-up, not an M12 blocker.
 
 ### m11_fourway_corner_workflow
 - T/L/island variants are still future case-library work.

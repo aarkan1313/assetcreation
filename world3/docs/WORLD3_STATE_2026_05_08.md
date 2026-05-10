@@ -634,3 +634,8 @@ These start when chunk + biome + tile + transition is ~80% solved
   playback without live terrain meshes while keeping the bake traceable to the
   M12 source-stack contract. Later rungs are cached chunk impostors, 2D
   heightfield shader, and hybrid tactical renderer.
+- **2026-05-10 (M13 gate hygiene)**: M12 runtime parity is now accepted as
+  workflow evidence after live user review, not production promotion. The M16
+  iso card is tracked as conditional sidecar evidence. The production-promotion
+  audit is clean, so the next production-facing work is M14 close-play terrain
+  quality while M13 remains the gate for every new candidate.

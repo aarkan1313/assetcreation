@@ -215,8 +215,8 @@ M12 representative runtime parity now exists:
 for close/medium walk bands, and gallery-style iso/topdown bands over the same
 accepted four-way source/material/height/splat contract. The old bulk
 `RegionGalleryCapture.gd` still uses per-kit material swaps and is now a
-follow-up retrofit candidate, not necessarily an M12 blocker if the runtime
-parity proof passes live review.
+follow-up retrofit candidate. User live review passed, so M12 is accepted as
+workflow evidence. It is not production-promoted terrain art.
 
 M7-M12 closure and post-parity planning are now recorded:
 `world3/docs/M7_M12_CLOSURE_AUDIT_2026_05_10.md` and
@@ -226,6 +226,9 @@ gated. M13 is active: `world3/jobs/production_promotion_candidates.json` tracks
 workflow/sidecar/production states, and
 `world3/pipeline/audit_production_promotion_candidates.py` regenerates
 `world3/docs/PRODUCTION_PROMOTION_AUDIT_2026_05_10.md`.
+The audit is clean after M12 workflow acceptance and the M16 iso sidecar entry.
+Next production-facing roadmap work is M14 close-play terrain quality, while
+M13 remains the gate for every new workflow/sidecar/production candidate.
 
 M16 now has an iso renderer research sidecar:
 `world3/docs/M16_ISO_IMPOSTOR_RESEARCH_PLAN_2026_05_10.md`. The first rung is

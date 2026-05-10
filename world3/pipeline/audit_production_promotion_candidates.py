@@ -174,7 +174,7 @@ def markdown(report: dict[str, Any]) -> str:
             )
         )
 
-    lines.extend(["", "## Blockers", ""])
+    lines.extend(["", "## Blockers And Notes", ""])
     for c in report["candidates"]:
         blockers = c.get("blockers", [])
         if not blockers:

@@ -17,7 +17,7 @@
       "id": "m12_runtime_fourway_parity",
       "type": "workflow",
       "promotion_track": "view_mode_parity",
-      "promotion_state": "ready_for_live_review",
+      "promotion_state": "accepted_workflow",
       "production_status": "not_production_art",
       "band_status": {
         "close": "pass",
@@ -32,8 +32,8 @@
       "not_reviewed_bands": [],
       "readiness": "workflow_ready_not_production",
       "blockers": [
-        "Needs live user review before M12 closure.",
-        "Bulk RegionGalleryCapture.gd remains a legacy follow-up path."
+        "No production promotion requested; this remains workflow evidence.",
+        "Bulk RegionGalleryCapture.gd is an M16 follow-up, not an M12 blocker."
       ],
       "source_doc": "world3/docs/M12_RUNTIME_PARITY_PROOF_2026_05_10.md",
       "scene": "world3/scenes/review/source_stack_m12_runtime_fourway_tour.tscn"

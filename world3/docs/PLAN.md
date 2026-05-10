@@ -346,7 +346,11 @@ world extension, and production asset promotion.
 The foundation is strong enough to open post-parity planning, but production
 promotion is explicitly gated. The next roadmap is
 [`M13_M18_POST_PARITY_ROADMAP_2026_05_10.md`](M13_M18_POST_PARITY_ROADMAP_2026_05_10.md).
-M13 is active: production-promotion candidate tracking and audit.
+M13 gate hygiene is active for all new artifacts. The current candidate
+manifest/audit is clean: M12 is accepted as workflow evidence after live review,
+the M16 iso impostor proof is conditional sidecar evidence, and no terrain art
+is production-promoted. Immediate next production-facing work is M14 close-play
+terrain quality.
 
 2026-05-10 iso renderer note: M16 now includes a source-stack iso impostor
 sidecar ladder. The first rung is a cached 2D iso card from the M12 runtime
