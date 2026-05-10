@@ -276,9 +276,12 @@ workflow/geometry evidence, and two different-source Gloss-Guadalupe proofs have
 passed live visual review. Scanner veto hardening is implemented.
 Chuculay-Guadalupe is kept as negative evidence for source-quality gating, not
 as accepted proof. A first real-to-procedural Gloss-to-canyon-rock proof now
-exists as workflow evidence and needs live user review. M10 can then move to
-unlike-biome blending, using `GAMEPLAY_VIEW_QUALITY_PLAN_2026_05_09.md` as the
-cross-cutting camera-band quality contract.
+exists as accepted workflow evidence. The first unlike-biome promotion attempt
+is rejected because it reads as a blended strip instead of an ecotone. M10 now
+needs the layer/mask/ecotone workflow in
+`M10_UNLIKE_BIOME_METHOD_REVIEW_2026_05_09.md`, using
+`GAMEPLAY_VIEW_QUALITY_PLAN_2026_05_09.md` as the cross-cutting camera-band
+quality contract.
 
 ## M11 - Corner And Junction Transitions
 

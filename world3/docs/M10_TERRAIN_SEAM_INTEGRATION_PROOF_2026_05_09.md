@@ -621,12 +621,18 @@ violation before scene code runs.
 ## Next Step
 
 M10 now has two accepted different-source real-to-real proofs, one useful
-negative second-pair result, and a first real-to-procedural workflow proof. The
-next M10 gates are:
+negative second-pair result, and a first real-to-procedural workflow proof. Live
+review accepted the real-to-procedural workflow shape on 2026-05-09.
 
-1. define gameplay camera/zoom quality bands before judging future visual
-   closures;
-2. run live user review on `source_stack_real_procedural_tour.tscn`;
-3. promote the same integration contract to unlike-biome cross-source blending;
-4. keep source-quality/procedural-quality vetoes active so weak macros are
+The first unlike-biome attempt is rejected as accepted visual evidence. It
+preserved continuity but read as a muted blended strip, which means this proof
+doc should not present unlike-biome as a simple continuation of the RGB seam
+bridge. The next gate is the ecotone/layer workflow in
+`M10_UNLIKE_BIOME_METHOD_REVIEW_2026_05_09.md`.
+
+Next M10 gates:
+
+1. implement biome/material/scatter mask outputs for an unlike-biome ecotone;
+2. keep gameplay camera/zoom bands explicit for visual closure;
+3. keep source-quality/procedural-quality vetoes active so weak macros are
    rejected before seam solving.

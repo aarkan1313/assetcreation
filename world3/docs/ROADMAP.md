@@ -168,8 +168,13 @@ direction; treat the rest as where we've been.
   it to the Gloss Mountain real-source crop. Topdown/iso/medium review evidence
   shows no height wall, invalid plateau, ghost strip, or source box. Close-play
   quality remains conditional because the procedural side still needs richer
-  near-field PBR/detail and scatter. Live user review is the next gate before
-  promoting M10 to unlike-biome blending.
+  near-field PBR/detail and scatter. Live user review accepted the workflow
+  shape on 2026-05-09.
+- First M10 unlike-biome promotion attempt is rejected. It produced a muted
+  brown/green strip rather than a believable ecotone. Do not continue by tuning
+  the same RGB bridge; rebuild this rung around biome weights, material masks,
+  feature/scatter masks, and an irregular world-space ecotone field. Evidence:
+  `world3/docs/M10_UNLIKE_BIOME_METHOD_REVIEW_2026_05_09.md`.
 - Gameplay camera/zoom quality planning is now explicit. Future visual closure
   must say which gameplay bands it passes: close play, medium play, iso/tactical,
   and topdown/map. Evidence:
@@ -193,8 +198,9 @@ explicit in [`M7_M12_NEAR_ROADMAP.md`](M7_M12_NEAR_ROADMAP.md):
     Gloss-Guadalupe proof is accepted; Chuculay-Guadalupe is rejected as visual
     evidence due source texture quality; the second clean-crop
     Gloss-Guadalupe proof is accepted; the first real-to-procedural canyon-rock
-    workflow proof exists and needs live review; next gate is unlike-biome
-    promotion under the gameplay view-quality contract.
+    workflow proof is accepted as workflow evidence; unlike-biome promotion is
+    blocked until the ecotone/layer workflow in
+    `M10_UNLIKE_BIOME_METHOD_REVIEW_2026_05_09.md` exists.
 5. M11 corner and junction transitions.
 6. M12 walk/iso/topdown view-mode parity.
 

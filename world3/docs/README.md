@@ -14,6 +14,7 @@ find something.
 | "What was the original roadmap before reframing?"            | [ROADMAP_v1_archived.md](ROADMAP_v1_archived.md)      |
 | "What's the current iteration's scope?"                      | [PLAN.md](PLAN.md)                                    |
 | "What did the M10 terrain seam workflow prove?"             | [M10_TERRAIN_SEAM_INTEGRATION_PROOF_2026_05_09.md](M10_TERRAIN_SEAM_INTEGRATION_PROOF_2026_05_09.md) |
+| "Why did the first M10 unlike-biome transition fail, and what replaces it?" | [M10_UNLIKE_BIOME_METHOD_REVIEW_2026_05_09.md](M10_UNLIKE_BIOME_METHOD_REVIEW_2026_05_09.md) |
 | "What are the post-M5 directions queued (alternative world sources, explorable interiors)?" | [FUTURE_WORLD_SOURCES_2026_05_08.md](FUTURE_WORLD_SOURCES_2026_05_08.md) (NLCD, bathy, planetary, fantasy generators, sketch-to-heightmap, interiors) |
 | "What structure-generator families could feed worlds (trees, crystals, scree, lattices, fractals)?" | [FUTURE_PROCEDURAL_STRUCTURES_2026_05_08.md](FUTURE_PROCEDURAL_STRUCTURES_2026_05_08.md) (11 families surveyed; G1 trees + G7 grass + G5 scree are tier 1) |
 | "Which OpenTopo DEM regions should we pull next + what's already cached?" | [OPENTOPO_DATA_DIRECTORY_2026_05_08.md](OPENTOPO_DATA_DIRECTORY_2026_05_08.md) (50-region curated directory: famous + non-famous, biome + continent mix, ~30 GB target) |

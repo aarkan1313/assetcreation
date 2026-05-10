@@ -391,8 +391,10 @@ broader cross-source blending.
 2026-05-09 proof progression: `M10_TERRAIN_SEAM_INTEGRATION_PROOF_2026_05_09.md`
 records the initial overlap-based Gloss Mountain integration band, the nearby
 non-overlap proof, accepted Gloss-Guadalupe real-to-real proofs, and the first
-real-to-procedural Gloss-to-canyon-rock workflow proof. Next proof should move
-toward unlike-biome blending after live review of the real-to-procedural scene.
+real-to-procedural Gloss-to-canyon-rock workflow proof. The first unlike-biome
+promotion attempt is rejected as visual evidence; next proof should implement
+the `M10_UNLIKE_BIOME_METHOD_REVIEW_2026_05_09.md` ecotone/layer workflow
+instead of tuning the failed strip bridge.
 
 ## Open polish items (parked)
 

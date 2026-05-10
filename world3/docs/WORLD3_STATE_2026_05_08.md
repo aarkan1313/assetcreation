@@ -37,7 +37,10 @@ Gloss Mountain seam artifact and reviews it through
 `source_stack_seam_integration_tour.tscn`. It proves the integration-band
 runtime path, not full cross-source closure.
 Second-rung nearby non-overlap proof now exists through
-`source_stack_seam_nonoverlap_tour.tscn`; next is different-source real terrain.
+`source_stack_seam_nonoverlap_tour.tscn`. Different-source real terrain and the
+first real-to-procedural proof are accepted workflow evidence. Unlike-biome
+promotion is blocked until the ecotone/layer workflow in
+`M10_UNLIKE_BIOME_METHOD_REVIEW_2026_05_09.md` exists.
 
 Long-term scope (props / decoration / buildings / POIs / fantasy
 biomes) is **acknowledged as future** and stays deferred until the M7-M12
@@ -538,6 +541,11 @@ These start when chunk + biome + tile + transition is ~80% solved
   crop with the existing seam integration solver. Topdown/iso/medium captures
   pass as workflow evidence; close-play quality remains conditional until the
   procedural side has richer near-field material detail and scatter.
+- **2026-05-09 (M10 unlike-biome method correction)**: Rejected the first
+  Gloss-to-grassland unlike-biome promotion attempt as visual evidence. It read
+  as a muted blended strip. Next unlike-biome work must produce ecotone,
+  material-weight, and feature/scatter-mask data instead of only a baked RGB
+  bridge.
 - **2026-05-08 (M7 visual audit/remediation)**: M7 remains a workflow pass, but
   visual closure is paused. The audit set the target at roughly 70 percent of
   the best stacked photo/topo OpenTopo reference, added the source-stack runtime

@@ -60,6 +60,11 @@ joined to the Gloss Mountain real-source crop through the same terrain seam
 solver. It passes topdown/iso/medium workflow review, but close-play visual
 quality remains conditional pending richer procedural PBR/detail and scatter.
 
+First unlike-biome M10 promotion attempt is rejected. It kept the mesh
+continuous but produced a muted strip, so next unlike-biome work must follow
+`M10_UNLIKE_BIOME_METHOD_REVIEW_2026_05_09.md`: explicit ecotone, material
+weights, feature/scatter masks, and debug toggles before visual promotion.
+
 Gameplay camera/zoom quality planning is now explicit in
 `GAMEPLAY_VIEW_QUALITY_PLAN_2026_05_09.md`. Future visual promotion should
 state which bands it passes: close play, medium play, iso/tactical, and

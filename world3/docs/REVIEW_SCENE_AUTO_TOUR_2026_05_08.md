@@ -128,5 +128,6 @@ runs.
    islands, and individual plant objects.
 3. Generate and review the untested organic queue items:
    `temperate_forest_grass`, `tundra_moss`, and `tundra_lichen`.
-4. Continue M10 with live review of the real-to-procedural proof, then
-   unlike-biome blending, M11 junction transitions, and M12 view parity.
+4. Continue M10 by replacing the rejected unlike-biome strip attempt with the
+   ecotone/layer workflow in `M10_UNLIKE_BIOME_METHOD_REVIEW_2026_05_09.md`,
+   then move to M11 junction transitions and M12 view parity.

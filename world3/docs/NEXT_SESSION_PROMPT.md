@@ -147,6 +147,12 @@ Mountain real-source crop. Review scene:
 workflow evidence; close play remains conditional because the procedural side
 needs richer PBR/detail and scatter before AAA visual closure.
 
+First unlike-biome M10 promotion attempt is rejected. The Gloss-to-grassland
+test preserved continuity but read as a muted blended strip, not a real ecotone.
+Do not promote the generated unlike-biome scene/captures. Next implementation
+should follow `M10_UNLIKE_BIOME_METHOD_REVIEW_2026_05_09.md`: biome/material
+weights, feature/scatter masks, irregular ecotone field, and camera-band review.
+
 Gameplay camera/zoom quality planning is now explicit:
 `world3/docs/GAMEPLAY_VIEW_QUALITY_PLAN_2026_05_09.md`. Future visual closure
 must state which bands pass: close play, medium play, iso/tactical, and
@@ -385,8 +391,8 @@ M7-M12 near roadmap is now explicit:
    nearby non-overlap proof, accepted Gloss-Guadalupe different-source proof,
    accepted second Gloss-Guadalupe clean-crop proof, and first
    real-to-procedural canyon-rock workflow proof exist. Chuculay-Guadalupe is
-   rejected as visual evidence; next is live review of the real-to-procedural
-   scene, then unlike-biome promotion under the gameplay view-quality contract.
+   rejected as visual evidence; unlike-biome promotion is blocked until the
+   ecotone/layer workflow replaces the failed strip bridge.
 5. M11 corner and junction transitions.
 6. M12 walk/iso/topdown view-mode parity.
 
