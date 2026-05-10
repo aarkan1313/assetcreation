@@ -242,6 +242,12 @@ The `m8_grassland_grass_calm_v3` runtime trial is now recorded in
 `world3/docs/M14_GRASSLAND_GRASS_RUNTIME_TRIAL_2026_05_10.md`; it is safe but
 close-conditional, so it remains sidecar-only. Continue with `grass` prompt
 rework and FLUX/Aura/SD bakeoffs for the remaining blockers.
+First `grass` prompt bakeoff review:
+`world3/docs/M14_GRASS_PROMPT_BAKEOFF_REVIEW_2026_05_10.md`. User review
+corrected the first FLUX result as sparse dirt, not grass. Treat that as a
+useful sidecar direction, not the grass replacement. The revised methodology is
+layered: base loam/organic substrate plus subtle green-brown ground nap, with
+actual grass identity deferred to M15 scatter/features.
 
 M16 now has an iso renderer research sidecar:
 `world3/docs/M16_ISO_IMPOSTOR_RESEARCH_PLAN_2026_05_10.md`. The first rung is

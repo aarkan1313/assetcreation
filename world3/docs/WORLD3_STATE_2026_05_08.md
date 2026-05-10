@@ -648,3 +648,8 @@ These start when chunk + biome + tile + transition is ~80% solved
   captures for current `grassland_grass` vs `m8_grassland_grass_calm_v3` and
   recorded `M14_GRASSLAND_GRASS_RUNTIME_TRIAL_2026_05_10.md`. The candidate is
   safe across the runtime bands but remains close-conditional and sidecar-only.
+- **2026-05-10 (M14 grass prompt correction)**: Added
+  `M14_GRASS_PROMPT_BAKEOFF_REVIEW_2026_05_10.md`. The first FLUX grass prompt
+  winner is reclassified as sparse vegetated dirt, not grass. Future grass work
+  should generate a calm substrate/detail layer and rely on M15 scatter/features
+  for real blades and clumps.

@@ -148,6 +148,26 @@
           }
         ],
         "workflow_lesson": "Strict seam/PBR QA is necessary but not sufficient. Organic ComfyUI materials need visual landmark/object veto before sidecar staging."
+        ,
+        "m14_prompt_bakeoff_review": {
+          "status": "methodology_rework_layered_substrate",
+          "doc": "world3/docs/M14_GRASS_PROMPT_BAKEOFF_REVIEW_2026_05_10.md",
+          "attempts": [
+            {
+              "id": "m14_grass_rework_v1",
+              "grid": "world3/docs/captures/m14/m14_grass_rework_v1_grid_final.png",
+              "summary": "world3/docs/captures/m14/m14_grass_rework_v1_summary.json",
+              "verdict": "FLUX is useful sparse vegetated dirt, Aura is forest/moss sidecar, SD is rejected for visible seams."
+            },
+            {
+              "id": "m14_grass_rework_v2",
+              "grid": "world3/docs/captures/m14/m14_grass_rework_v2_grid_final.png",
+              "summary": "world3/docs/captures/m14/m14_grass_rework_v2_summary.json",
+              "verdict": "FLUX overcorrects into clumped plant objects, Aura is too dark, SD is lawn-like but saturated and seam-failed."
+            }
+          ],
+          "next_action": "Stop treating grass as a monolithic plant-photo tile; generate a calm organic substrate/detail layer and let M15 scatter carry actual grass identity."
+        }
       }
     },
     {

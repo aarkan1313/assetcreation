@@ -39,6 +39,11 @@ def classify(candidate: dict[str, Any]) -> tuple[str, str]:
             "m14_trial_safe_close_conditional",
             "Keep as sidecar-only; M14 runtime trial was safe but not enough for production promotion.",
         )
+    if latest.get("m14_prompt_bakeoff_review"):
+        return (
+            "methodology_rework_layered_substrate",
+            "Treat as a layered substrate/detail target; actual blades and clumps belong to M15 scatter/features.",
+        )
     status = str(latest.get("status", ""))
     if status == "terrain_context_candidate_pass_not_promoted":
         return (
@@ -81,6 +86,8 @@ def row_for(candidate: dict[str, Any]) -> dict[str, Any]:
 def summarize(rows: list[dict[str, Any]]) -> dict[str, int]:
     keys = [
         "sidecar_candidate_needs_runtime_trials",
+        "m14_trial_safe_close_conditional",
+        "methodology_rework_layered_substrate",
         "visual_rejected",
         "queued_untested",
         "latest_status_unknown",
@@ -107,6 +114,8 @@ def write_markdown(queue: dict[str, Any], rows: list[dict[str, Any]], summary: d
         "",
         f"- Total blockers: `{summary['total']}`",
         f"- Sidecar candidates needing runtime trials: `{summary.get('sidecar_candidate_needs_runtime_trials', 0)}`",
+        f"- M14 safe but close-conditional: `{summary.get('m14_trial_safe_close_conditional', 0)}`",
+        f"- Methodology rework / layered substrate: `{summary.get('methodology_rework_layered_substrate', 0)}`",
         f"- Visual rejected: `{summary.get('visual_rejected', 0)}`",
         f"- Queued untested: `{summary.get('queued_untested', 0)}`",
         "",
@@ -142,8 +151,8 @@ def write_markdown(queue: dict[str, Any], rows: list[dict[str, Any]], summary: d
             "",
             "1. Keep `m8_grassland_grass_calm_v3` sidecar-only after its M14",
             "   runtime trial; use it as a safe reference, not a promotion target.",
-            "2. Retry `grass` only after a prompt revision explicitly suppresses",
-            "   patch islands, box panels, dark landmarks, and individual plant objects.",
+            "2. Retry `grass` only as a layered organic substrate/detail target;",
+            "   actual blades and clumps belong to M15 scatter/features.",
             "3. Generate the untested blockers in queue order:",
             "   `temperate_forest_grass`, `tundra_moss`, then `tundra_lichen`.",
             "4. Rebuild this report after every candidate attempt.",

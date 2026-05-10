@@ -51,6 +51,13 @@ def classify(candidate: dict[str, Any]) -> tuple[str, str]:
             "Keep sidecar-only; use M14 bakeoff lanes for stronger close-play candidates.",
         )
 
+    prompt_review = latest.get("m14_prompt_bakeoff_review")
+    if prompt_review:
+        return (
+            str(prompt_review.get("status", "m14_prompt_review_recorded")),
+            str(prompt_review.get("next_action", "Use M14 review findings for the next prompt pass.")),
+        )
+
     status = str(latest.get("status", ""))
     if status == "terrain_context_candidate_pass_not_promoted":
         return (
@@ -205,8 +212,9 @@ def markdown(report: dict[str, Any]) -> str:
             "",
             "1. Run close/medium/iso/topdown runtime trials for",
             "   any future sidecar candidates before M13 promotion.",
-            "2. Rework `grass` prompt from the darker v1 direction and rerun the active",
-            "   FLUX/Aura/SD lanes.",
+            "2. Convert `grass` from a monolithic plant-photo tile target into a",
+            "   layered substrate/detail target, then rerun the active FLUX/Aura/SD",
+            "   lanes only against that corrected brief.",
             "3. Generate first bakeoff batches for `temperate_forest_grass`,",
             "   `tundra_moss`, and `tundra_lichen` in queue order.",
             "4. Feed survivors back into `production_promotion_candidates.json` only",

@@ -70,7 +70,7 @@
   "summary": {
     "total": 5,
     "m14_trial_safe_close_conditional": 1,
-    "prompt_rework_before_bakeoff": 1,
+    "methodology_rework_layered_substrate": 1,
     "queued_for_bakeoff": 3
   },
   "rows": [
@@ -89,8 +89,8 @@
       "current_source_asset_id": "wgv3_grass",
       "failure_mode": "green organic speckle and small clover/object repetition reads too busy at walk scale",
       "latest": "4 attempts through m8_grass_calm_v4_anchor_v1",
-      "m14_status": "prompt_rework_before_bakeoff",
-      "next_action": "Revise prompt from the best failed direction, then rerun active model lanes."
+      "m14_status": "methodology_rework_layered_substrate",
+      "next_action": "Stop treating grass as a monolithic plant-photo tile; generate a calm organic substrate/detail layer and let M15 scatter carry actual grass identity."
     },
     {
       "material_id": "temperate_forest_grass",

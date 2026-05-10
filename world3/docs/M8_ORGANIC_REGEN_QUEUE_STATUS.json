@@ -5,10 +5,11 @@
   "source_queue": "world3/jobs/comfy_texture_regen_candidates.json",
   "summary": {
     "sidecar_candidate_needs_runtime_trials": 0,
-    "visual_rejected": 1,
+    "m14_trial_safe_close_conditional": 1,
+    "methodology_rework_layered_substrate": 1,
+    "visual_rejected": 0,
     "queued_untested": 3,
     "latest_status_unknown": 0,
-    "m14_trial_safe_close_conditional": 1,
     "total": 5
   },
   "rows": [
@@ -26,9 +27,9 @@
       "material_id": "grass",
       "regen_id": "m8_grass_calm_v5",
       "current_source_asset_id": "wgv3_grass",
-      "status": "visual_rejected",
+      "status": "methodology_rework_layered_substrate",
       "failure_mode": "green organic speckle and small clover/object repetition reads too busy at walk scale",
-      "next_action": "Do not stage; revise prompt and require visual landmark/object veto before any sidecar material.",
+      "next_action": "Treat as a layered substrate/detail target; actual blades and clumps belong to M15 scatter/features.",
       "latest_candidate_id": "4 rejected attempts through m8_grass_calm_v4_anchor_v1",
       "latest_review_doc": "world3/docs/M8_GRASS_REGEN_ATTEMPTS_REVIEW_2026_05_08.md"
     },

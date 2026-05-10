@@ -365,6 +365,13 @@ M14 first runtime trial is recorded in
 still close-conditional and remains sidecar-only. Next M14 work is `grass`
 prompt rework plus first bakeoffs for the remaining untested organic blockers.
 
+M14 `grass` prompt bakeoff review is recorded in
+`M14_GRASS_PROMPT_BAKEOFF_REVIEW_2026_05_10.md`. User review correctly noted
+that the first FLUX winner is sparse dirt, not grass. The updated methodology:
+do not force grass into one plant-photo tile. Generate a calm organic
+substrate/detail layer and let M15 scatter/features carry actual blades and
+clumps.
+
 2026-05-10 iso renderer note: M16 now includes a source-stack iso impostor
 sidecar ladder. The first rung is a cached 2D iso card from the M12 runtime
 parity bake; later rungs are chunk impostors, 2D heightfield shader, and hybrid
