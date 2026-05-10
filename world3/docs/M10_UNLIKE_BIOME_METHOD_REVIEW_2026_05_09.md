@@ -196,7 +196,9 @@ weights plus macro guidance rather than an RGB strip alone.
 2026-05-10 update: `EcotoneScatterOverlay.gd` adds first mask-driven review
 scatter from the emitted shrub, grass, rock, soil, wash, and no-scatter masks.
 It is deterministic and LOD-aware: topdown hides 3D scatter to avoid speckle,
-while iso/medium/close keep scatter visible. Remaining work is explicit
+while iso/medium/close keep scatter visible. A refinement pass moved the review
+assets from single primitives to composite low-poly shrubs, low grass clumps,
+slab rocks, and simple per-class visibility ranges. Remaining work is explicit
 biome/splat debug views, production-quality scatter assets, better grassland
 source candidates, and a fuller gameplay-zoom quality pass.
 

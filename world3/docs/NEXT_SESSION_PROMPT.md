@@ -171,8 +171,9 @@ pipeline-emitted masks in world space and places deterministic lightweight
 shrubs, dry-grass clumps, and rocks in the review scene. `S` toggles scatter,
 `M` toggles mask debug, and topdown LOD-hides 3D scatter to keep map captures
 clean. Current scatter counts are 333 shrubs, 205 grass clumps, and 30 rocks.
-This is mask-driven workflow evidence with placeholder meshes, not production
-vegetation.
+This is mask-driven workflow evidence with composite low-poly review meshes and
+simple per-class visibility ranges, not production vegetation. The next scatter
+step is an asset-library pass, not another proof that masks can place objects.
 
 Gameplay camera/zoom quality planning is now explicit:
 `world3/docs/GAMEPLAY_VIEW_QUALITY_PLAN_2026_05_09.md`. Future visual closure

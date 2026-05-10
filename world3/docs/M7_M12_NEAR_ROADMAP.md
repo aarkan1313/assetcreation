@@ -300,6 +300,12 @@ LOD-hidden to keep map review clean. This closes the first scatter-mask
 population proof, but production vegetation/rock assets and distance bands
 remain later gates.
 
+2026-05-10 scatter refinement: the proof now uses composite low-poly review
+shapes and simple per-class visibility ranges. This improves the visual review
+read, but it is still not a production scatter system. The remaining scatter
+gate is an authored asset-library pass with biome density presets and gameplay
+camera LOD.
+
 ## M11 - Corner And Junction Transitions
 
 **Goal**: handle three-way or corner junctions after pairwise transitions work.

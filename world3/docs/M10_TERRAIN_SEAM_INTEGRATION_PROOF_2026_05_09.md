@@ -642,14 +642,16 @@ detail still needs a dedicated pass.
 2026-05-10 update: the first mask-driven scatter pass is live in
 `EcotoneScatterOverlay.gd` and `source_stack_ecotone_layer_tour.tscn`. It places
 deterministic shrubs, dry-grass clumps, and rocks from the emitted feature masks,
-and hides 3D scatter in topdown captures to avoid map-view speckle.
+and hides 3D scatter in topdown captures to avoid map-view speckle. A follow-up
+refinement replaced single-primitive placeholders with composite low-poly review
+shapes and simple per-class visibility ranges.
 
 Next M10 gates:
 
 1. carry the accepted macro-guided ecotone workflow into M11 corner/junction
    planning;
-2. replace placeholder scatter with production-grade vegetation/rock assets and
-   distance bands;
+2. replace low-poly review scatter with production-grade vegetation/rock assets
+   and gameplay LOD;
 3. keep gameplay camera/zoom bands explicit for visual closure;
 4. keep source-quality/procedural-quality vetoes active so weak macros are
    rejected before seam solving.

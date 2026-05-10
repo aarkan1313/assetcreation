@@ -55,6 +55,10 @@ Runtime additions:
 - `M` toggles the mask-debug overlay.
 - Topdown automatically hides 3D scatter so map/readability captures do not
   turn into speckle fields. Iso, medium, and close 3D keep scatter visible.
+- The first distance bands are in place: grass fades first, rocks and shrubs
+  remain visible farther into medium review.
+- Shrubs and rocks now use composite low-poly review shapes instead of one
+  sphere per mask point.
 
 Current deterministic scatter counts:
 
@@ -63,9 +67,10 @@ Current deterministic scatter counts:
 - rocks: `30`
 
 This is still prototype scatter. The important workflow step is that object
-breakup now comes from the same masks emitted by the ecotone pipeline. It is
-not hand-placed decoration and should be replaceable with higher-quality
-vegetation/rock assets later.
+breakup now comes from the same masks emitted by the ecotone pipeline, and the
+review scene now has first camera-band behavior. It is not hand-placed
+decoration and should be replaceable with higher-quality vegetation/rock assets
+later.
 
 ## Difference From M2 Texture-To-Texture
 
@@ -142,7 +147,7 @@ Accepted workflow read:
 
 Still not production-final:
 
-- scatter uses simple generated placeholder meshes, not authored production
+- scatter uses composite low-poly review meshes, not authored production
   vegetation/rock assets;
 - the right-side biome is still a procedural/Comfy material macro, not a true
   adjacent real-source terrain pull;
@@ -168,8 +173,8 @@ enough to promote as workflow evidence while keeping production caveats active.
 
 ## Next Work
 
-1. Replace placeholder scatter meshes with authored vegetation/rock assets and
-   add distance/scale bands for gameplay cameras.
+1. Replace low-poly review scatter with authored vegetation/rock assets and a
+   real scatter asset library.
 2. Add a runtime/debug view for splat weights and biome weights, not only
    scatter masks.
 3. Re-run with better grassland material candidates from the ComfyUI workflow.

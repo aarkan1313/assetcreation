@@ -23,6 +23,9 @@ class_name EcotoneScatterOverlay
 @export var max_shrubs: int = 720
 @export var max_grass_tufts: int = 320
 @export var max_rocks: int = 420
+@export var shrub_visibility_end_m: float = 950.0
+@export var grass_visibility_end_m: float = 390.0
+@export var rock_visibility_end_m: float = 720.0
 
 var _loader: Node
 var _world_size_x_m: float = 512.0
@@ -108,8 +111,8 @@ func _rebuild() -> void:
 		shrub_spacing_m,
 		max_shrubs,
 		0.72,
-		Vector2(1.45, 3.2),
-		Vector2(0.52, 1.28),
+		Vector2(1.05, 2.45),
+		Vector2(0.34, 0.92),
 		seed + 11
 	)
 	var grass: Array[Transform3D] = _build_instances(
@@ -130,9 +133,17 @@ func _rebuild() -> void:
 		Vector2(0.28, 0.74),
 		seed + 37
 	)
-	_add_multimesh(_scatter_root, "shrub_carryover", _make_shrub_mesh(), _make_material(Color(0.23, 0.30, 0.14), 0.98), shrubs)
-	_add_multimesh(_scatter_root, "dry_grass_clumps", _make_grass_clump_mesh(), _make_material(Color(0.64, 0.58, 0.34), 0.98), grass)
-	_add_multimesh(_scatter_root, "rock_clusters", _make_rock_mesh(), _make_material(Color(0.42, 0.37, 0.29), 1.0), rocks)
+	var shrub_lobes_a: Array[Transform3D] = _offset_transforms(shrubs, Vector3(-0.16, 0.06, 0.05), Vector3(0.78, 0.72, 0.84))
+	var shrub_lobes_b: Array[Transform3D] = _offset_transforms(shrubs, Vector3(0.18, 0.02, -0.08), Vector3(0.68, 0.62, 0.76))
+	var shrub_trunks: Array[Transform3D] = _offset_transforms(shrubs, Vector3(0.0, -0.34, 0.0), Vector3(0.18, 0.48, 0.18))
+	var rock_caps: Array[Transform3D] = _offset_transforms(rocks, Vector3(0.08, 0.08, -0.04), Vector3(0.62, 0.42, 0.70))
+	_add_multimesh(_scatter_root, "shrub_main_lobes", _make_shrub_mesh(), _make_material(Color(0.16, 0.22, 0.12), 0.98), shrubs, shrub_visibility_end_m)
+	_add_multimesh(_scatter_root, "shrub_secondary_lobes_a", _make_shrub_mesh(), _make_material(Color(0.20, 0.26, 0.13), 0.98), shrub_lobes_a, shrub_visibility_end_m)
+	_add_multimesh(_scatter_root, "shrub_secondary_lobes_b", _make_shrub_mesh(), _make_material(Color(0.12, 0.17, 0.09), 0.98), shrub_lobes_b, shrub_visibility_end_m)
+	_add_multimesh(_scatter_root, "shrub_woody_cores", _make_trunk_mesh(), _make_material(Color(0.22, 0.16, 0.10), 1.0), shrub_trunks, 260.0)
+	_add_multimesh(_scatter_root, "dry_grass_clumps", _make_grass_clump_mesh(), _make_material(Color(0.64, 0.58, 0.34), 0.98), grass, grass_visibility_end_m)
+	_add_multimesh(_scatter_root, "rock_slabs", _make_rock_mesh(), _make_material(Color(0.42, 0.37, 0.29), 1.0), rocks, rock_visibility_end_m)
+	_add_multimesh(_scatter_root, "rock_caps", _make_rock_mesh(), _make_material(Color(0.52, 0.47, 0.38), 1.0), rock_caps, rock_visibility_end_m)
 	_build_debug_overlay()
 	_summary = {
 		"shrubs": shrubs.size(),
@@ -140,6 +151,14 @@ func _rebuild() -> void:
 		"rocks": rocks.size(),
 		"debug_tiles": _debug_root.get_child_count()
 	}
+
+
+func _offset_transforms(source: Array[Transform3D], local_offset: Vector3, local_scale: Vector3) -> Array[Transform3D]:
+	var out: Array[Transform3D] = []
+	for transform in source:
+		var child_basis := Basis().scaled(local_scale)
+		out.append(transform * Transform3D(child_basis, local_offset))
+	return out
 
 
 func _build_instances(
@@ -207,9 +226,9 @@ func _build_debug_overlay() -> void:
 	var soil_tiles: Array[Transform3D] = _build_debug_tiles("soil", seed + 101)
 	var green_tiles: Array[Transform3D] = _build_debug_tiles("green", seed + 103)
 	var wash_tiles: Array[Transform3D] = _build_debug_tiles("wash", seed + 107)
-	_add_multimesh(_debug_root, "soil_rock_debug", _make_debug_tile_mesh(), _make_debug_material(Color(0.88, 0.28, 0.12, 0.35)), soil_tiles)
-	_add_multimesh(_debug_root, "green_scatter_debug", _make_debug_tile_mesh(), _make_debug_material(Color(0.12, 0.82, 0.20, 0.32)), green_tiles)
-	_add_multimesh(_debug_root, "wash_debug", _make_debug_tile_mesh(), _make_debug_material(Color(0.18, 0.46, 1.0, 0.32)), wash_tiles)
+	_add_multimesh(_debug_root, "soil_rock_debug", _make_debug_tile_mesh(), _make_debug_material(Color(0.88, 0.28, 0.12, 0.35)), soil_tiles, 0.0)
+	_add_multimesh(_debug_root, "green_scatter_debug", _make_debug_tile_mesh(), _make_debug_material(Color(0.12, 0.82, 0.20, 0.32)), green_tiles, 0.0)
+	_add_multimesh(_debug_root, "wash_debug", _make_debug_tile_mesh(), _make_debug_material(Color(0.18, 0.46, 1.0, 0.32)), wash_tiles, 0.0)
 
 
 func _build_debug_tiles(kind: String, rng_seed: int) -> Array[Transform3D]:
@@ -239,7 +258,14 @@ func _build_debug_tiles(kind: String, rng_seed: int) -> Array[Transform3D]:
 	return transforms
 
 
-func _add_multimesh(parent: Node3D, node_name: String, mesh: Mesh, material: Material, transforms: Array[Transform3D]) -> void:
+func _add_multimesh(
+	parent: Node3D,
+	node_name: String,
+	mesh: Mesh,
+	material: Material,
+	transforms: Array[Transform3D],
+	visibility_end_m: float
+) -> void:
 	if transforms.is_empty():
 		return
 	var multimesh := MultiMesh.new()
@@ -252,24 +278,25 @@ func _add_multimesh(parent: Node3D, node_name: String, mesh: Mesh, material: Mat
 	inst.name = node_name
 	inst.multimesh = multimesh
 	inst.material_override = material
+	inst.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	if visibility_end_m > 0.0:
+		inst.visibility_range_end = visibility_end_m
+		inst.visibility_range_end_margin = min(visibility_end_m * 0.22, 140.0)
 	parent.add_child(inst)
 
 
 func _make_shrub_mesh() -> Mesh:
 	var mesh := SphereMesh.new()
 	mesh.radius = 0.5
-	mesh.height = 0.75
-	mesh.radial_segments = 7
-	mesh.rings = 4
+	mesh.height = 0.48
+	mesh.radial_segments = 6
+	mesh.rings = 3
 	return mesh
 
 
 func _make_rock_mesh() -> Mesh:
-	var mesh := SphereMesh.new()
-	mesh.radius = 0.5
-	mesh.height = 0.55
-	mesh.radial_segments = 8
-	mesh.rings = 4
+	var mesh := BoxMesh.new()
+	mesh.size = Vector3(1.0, 0.52, 0.82)
 	return mesh
 
 
@@ -279,6 +306,16 @@ func _make_grass_clump_mesh() -> Mesh:
 	mesh.height = 0.34
 	mesh.radial_segments = 7
 	mesh.rings = 3
+	return mesh
+
+
+func _make_trunk_mesh() -> Mesh:
+	var mesh := CylinderMesh.new()
+	mesh.top_radius = 0.18
+	mesh.bottom_radius = 0.26
+	mesh.height = 1.0
+	mesh.radial_segments = 5
+	mesh.rings = 1
 	return mesh
 
 

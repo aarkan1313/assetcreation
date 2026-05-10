@@ -1198,3 +1198,24 @@ even at prototype stage.
 **Implication**: Future scatter work should replace placeholder meshes with
 authored assets and add real distance bands, but should keep mask-driven
 placement and topdown/iso/3D parity as part of the workflow contract.
+
+---
+
+## 2026-05-10 - Ecotone scatter review assets use composite shapes first
+
+**Decision**: Improve the M10 ecotone scatter proof with composite low-poly
+review shapes and simple per-class visibility ranges before starting M11.
+
+**Why**: The first scatter pass proved mask-driven placement but still read too
+much like one primitive per point. Composite shrub lobes, slab-style rocks, low
+grass clumps, and camera distance bands make the proof more useful for visual
+review without pretending we have production vegetation assets.
+
+**Evidence**:
+`world3/scripts/EcotoneScatterOverlay.gd` and refreshed captures under
+`world3/docs/captures/review/source_stack_ecotone_layer_tour_*.png`.
+
+**Implication**: The next scatter step is no longer "prove masks can place
+objects"; that is done. The next scatter step is an asset-library pass:
+authored scrub/grass/rock variants, per-biome density presets, and gameplay
+camera LOD.
