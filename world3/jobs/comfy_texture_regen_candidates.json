@@ -248,9 +248,9 @@
       "prompt": "top-down orthographic macro photograph of low tundra moss carpet with exposed dark gritty soil and tiny stone flecks, muted olive and brown tones, soft continuous cushion texture, even overcast lighting, seamless PBR terrain texture, no tall plants, no bright spots, no flower heads, no perspective, no shadows",
       "source_stack_role": "albedo candidate first; normal/detail disabled until close/mid/far terrain review passes",
       "latest_tested_candidate": {
-        "status": "m14_flux50_shortlist_for_live_review",
+        "status": "m14_sidecar_runtime_smoke_pass_conditional",
         "m14_prompt_bakeoff_review": {
-          "status": "m14_flux50_shortlist_for_live_review",
+          "status": "m14_sidecar_runtime_smoke_pass_conditional",
           "doc": "world3/docs/M14_TUNDRA_MOSS_BAKEOFF_REVIEW_2026_05_10.md",
           "attempts": [
             {
@@ -289,7 +289,26 @@
             "m14_tundra_moss_flux50_b_202605203",
             "m14_tundra_moss_flux50_b_202605204"
           ],
-          "next_action": "Live-review the FLUX 50 shortlist sheet, then stage the chosen B-family tundra substrate sidecar in a close/medium/iso/topdown terrain scene before any M13 promotion."
+          "runtime_staging": {
+            "material_id": "m14_tundra_moss_flux50_b_202605207",
+            "candidate_catalog": "world3/materials/catalog_comfy_candidates.json",
+            "source_stack_material": "world3/textures/wgv3/terrain_source_stack_gloss_tundra_moss_flux50_b8_source_stack.tres",
+            "review_scene": "world3/scenes/review/source_stack_gloss_tundra_moss_flux50_b8_tour.tscn",
+            "doc": "world3/docs/M14_TUNDRA_MOSS_RUNTIME_SIDECAR_REVIEW_2026_05_10.md",
+            "captures": {
+              "topdown": "world3/docs/captures/m14/m14_tundra_moss_flux50_b8_gloss_topdown.png",
+              "iso": "world3/docs/captures/m14/m14_tundra_moss_flux50_b8_gloss_iso.png",
+              "medium_3d": "world3/docs/captures/m14/m14_tundra_moss_flux50_b8_gloss_3d.png",
+              "close": "world3/docs/captures/m14/m14_tundra_moss_flux50_b8_gloss_close.png",
+              "contact_sheet": "world3/docs/captures/m14/m14_tundra_moss_flux50_b8_gloss_contact_sheet.png"
+            },
+            "status": "conditional_smoke_pass_gloss_source",
+            "limits": [
+              "Gloss Mountain is clean real-source runtime context, not true tundra biome context",
+              "M15 scatter/features still required for tundra identity"
+            ]
+          },
+          "next_action": "Keep as accepted M14 sidecar evidence; do not M13-promote until true tundra/alpine source-context review plus M15 scatter/features exist. Start tundra_lichen with the same broad-candidate method."
         }
       }
     },

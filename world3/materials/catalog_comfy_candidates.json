@@ -146,6 +146,79 @@
         "iso": "conditional_pass_gloss_source",
         "topdown": "conditional_pass_gloss_source"
       }
+    },
+    {
+      "id": "m14_tundra_moss_flux50_b_202605207",
+      "source": "procedural",
+      "asset_status": "comfy_regen_candidate",
+      "provenance": {
+        "type": "comfy_regeneration_candidate",
+        "source_material_id": "tundra_moss",
+        "source_asset_id": "m14_tundra_moss_flux50_b_202605207",
+        "tool": "pipelines/textures/diversity_compare.py + pipelines/textures/derive_pbr_v2.py",
+        "prompt": "pale sage-gray tundra peat loam substrate, faint olive moss film, fine mineral grit and organic fibers, flat overhead terrain material, medium-light value, low object count, no black crush, no moss cushions, no tufts, no clumps, no individual plants, no stones as focal objects, no perspective, no shadows",
+        "quality": "m14_flux50_visual_bakeoff",
+        "pbr_backend": "derive_pbr_v2",
+        "qa_grade": "visual_sidecar_candidate",
+        "passed_gate": false,
+        "seam_checks": {
+          "edge_continuity_mse": 0.007448407106791859,
+          "junction_ratio": null,
+          "periodic_locality": null
+        },
+        "policy": "sidecar_candidate_terrain_context_required_not_promoted",
+        "terrain_context_review": {
+          "doc": "world3/docs/M14_TUNDRA_MOSS_RUNTIME_SIDECAR_REVIEW_2026_05_10.md",
+          "scene": "world3/scenes/review/source_stack_gloss_tundra_moss_flux50_b8_tour.tscn",
+          "status": "conditional_smoke_pass_gloss_source",
+          "smoke_captures": [
+            "world3/docs/captures/m14/m14_tundra_moss_flux50_b8_gloss_topdown.png",
+            "world3/docs/captures/m14/m14_tundra_moss_flux50_b8_gloss_iso.png",
+            "world3/docs/captures/m14/m14_tundra_moss_flux50_b8_gloss_3d.png",
+            "world3/docs/captures/m14/m14_tundra_moss_flux50_b8_gloss_close.png",
+            "world3/docs/captures/m14/m14_tundra_moss_flux50_b8_gloss_contact_sheet.png"
+          ],
+          "limits": [
+            "Gloss Mountain is a clean real-source terrain context, not a true tundra-region promotion",
+            "candidate is substrate/detail only; M15 scatter/features still carry moss cushions, lichen islands, stones, and plants"
+          ]
+        },
+        "settings": {
+          "world_uv_scale": 0.015625,
+          "hex_strength": 1.0,
+          "blend_sharpness": 8.0,
+          "roughness_strength": 1.0,
+          "normal_strength": 0.0,
+          "detail_uv_scale_mult": 10.0,
+          "detail_albedo_strength": 0.05,
+          "detail_normal_strength": 0.0,
+          "detail_rough_strength": 0.015,
+          "detail_fade_start_m": 4.0,
+          "detail_fade_end_m": 42.0
+        }
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "pale-sage-peat-loam",
+      "runtime_texture_dir": "world3/textures/wgv3_comfy_candidates/m14_tundra_moss_flux50_b_202605207",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3_comfy_candidates/m14_tundra_moss_flux50_b_202605207/albedo.png",
+        "normal": "world3/textures/wgv3_comfy_candidates/m14_tundra_moss_flux50_b_202605207/normal.png",
+        "roughness": "world3/textures/wgv3_comfy_candidates/m14_tundra_moss_flux50_b_202605207/roughness.png",
+        "metallic": "world3/textures/wgv3_comfy_candidates/m14_tundra_moss_flux50_b_202605207/metallic.png",
+        "height": "world3/textures/wgv3_comfy_candidates/m14_tundra_moss_flux50_b_202605207/height.png",
+        "ao": "world3/textures/wgv3_comfy_candidates/m14_tundra_moss_flux50_b_202605207/ao.png",
+        "detail_albedo": "world3/textures/wgv3_comfy_candidates/m14_tundra_moss_flux50_b_202605207/albedo.png",
+        "detail_normal": "world3/textures/wgv3_comfy_candidates/m14_tundra_moss_flux50_b_202605207/normal.png",
+        "detail_roughness": "world3/textures/wgv3_comfy_candidates/m14_tundra_moss_flux50_b_202605207/roughness.png"
+      },
+      "shader_binding": "terrain_hex_detail",
+      "validated_views": {
+        "close": "conditional_pass_gloss_source",
+        "mid": "conditional_pass_gloss_source",
+        "far": "conditional_pass_gloss_source",
+        "iso": "conditional_pass_gloss_source",
+        "topdown": "conditional_pass_gloss_source"
+      }
     }
   ]
 }

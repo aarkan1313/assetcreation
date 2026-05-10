@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/review/source_stack_gloss_tundra_moss_flux50_b8_tour.tscn" id="scene"]
+[ext_resource type="Script" path="res://scripts/HeadlessCapture.gd" id="cap_script"]
+
+[node name="CaptureM14TundraMossFlux50B8GlossTopdown" type="Node"]
+
+[node name="Inner" parent="." instance=ExtResource("scene")]
+initial_tour_index = 0
+
+[node name="Capture" type="Node" parent="."]
+script = ExtResource("cap_script")
+output_path = "res://docs/captures/m14/m14_tundra_moss_flux50_b8_gloss_topdown.png"
+warmup_frames = 150
+viewport_size = Vector2i(1600, 1000)

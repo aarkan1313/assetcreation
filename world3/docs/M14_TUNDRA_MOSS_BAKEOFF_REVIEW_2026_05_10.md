@@ -152,9 +152,10 @@ PBR derivation or runtime staging.
 
 ## Next Action
 
-Open the 50-candidate shortlist for live user review. If the B-family direction
-is accepted, stage `m14_tundra_moss_flux50_b_202605207` first when a suitable
-tundra-source runtime scene is ready. Before M13 promotion, validate:
+The B-family direction was accepted for sidecar staging. Runtime evidence is
+recorded in `world3/docs/M14_TUNDRA_MOSS_RUNTIME_SIDECAR_REVIEW_2026_05_10.md`.
+`m14_tundra_moss_flux50_b_202605207` has a conditional smoke pass in a Gloss
+real-source context, but remains sidecar-only. Before M13 promotion, validate:
 
 - close view: moss detail without black crush or object-repeat clumps
 - medium/iso/topdown: no repeated dark striping or object islands
