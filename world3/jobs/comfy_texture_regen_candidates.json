@@ -164,9 +164,15 @@
               "grid": "world3/docs/captures/m14/m14_grass_rework_v2_grid_final.png",
               "summary": "world3/docs/captures/m14/m14_grass_rework_v2_summary.json",
               "verdict": "FLUX overcorrects into clumped plant objects, Aura is too dark, SD is lawn-like but saturated and seam-failed."
+            },
+            {
+              "id": "m14_grass_substrate_v3",
+              "grid": "world3/docs/captures/m14/m14_grass_substrate_v3_grid_final.png",
+              "summary": "world3/docs/captures/m14/m14_grass_substrate_v3_summary.json",
+              "verdict": "FLUX is useful dry sparse groundcover dirt, Aura is a damp forest/moss sidecar direction, SD is rejected as cracked dry mud."
             }
           ],
-          "next_action": "Stop treating grass as a monolithic plant-photo tile; generate a calm organic substrate/detail layer and let M15 scatter carry actual grass identity."
+          "next_action": "Keep M14 grass work limited to substrate/detail candidates; let M15 scatter/features carry actual blades, clumps, dry stems, and vegetation identity."
         }
       }
     },
@@ -179,7 +185,35 @@
       "pbr_backend": "sm",
       "failure_mode": "leaf-litter objects and high contrast fragments create visual noise in close terrain",
       "prompt": "top-down orthographic macro photograph of damp temperate forest floor, decomposed brown leaf mulch blended with dark loam, fine granular organic matter, muted natural color, even overcast lighting, seamless PBR terrain texture, no whole fresh leaves, no branches, no green plants, no strong outlines, no perspective, no shadows",
-      "source_stack_role": "albedo candidate first; normal/detail disabled until close/mid/far terrain review passes"
+      "source_stack_role": "albedo candidate first; normal/detail disabled until close/mid/far terrain review passes",
+      "latest_tested_candidate": {
+        "status": "m14_substrate_sidecar_candidate_found",
+        "m14_prompt_bakeoff_review": {
+          "status": "m14_substrate_sidecar_candidate_found",
+          "doc": "world3/docs/M14_TEMPERATE_FOREST_FLOOR_BAKEOFF_REVIEW_2026_05_10.md",
+          "attempts": [
+            {
+              "id": "m14_temperate_forest_floor_v1",
+              "grid": "world3/docs/captures/m14/m14_temperate_forest_floor_v1_grid_final.png",
+              "summary": "world3/docs/captures/m14/m14_temperate_forest_floor_v1_summary.json",
+              "verdict": "FLUX is decorative repeated leaves, Aura is plausible but too dark/object-like, SD has loose leaf objects."
+            },
+            {
+              "id": "m14_temperate_forest_duff_v2",
+              "grid": "world3/docs/captures/m14/m14_temperate_forest_duff_v2_grid_final.png",
+              "summary": "world3/docs/captures/m14/m14_temperate_forest_duff_v2_summary.json",
+              "verdict": "Aura improves seam quality but retains visible leaf/object landmarks; FLUX and SD are rejected."
+            },
+            {
+              "id": "m14_temperate_forest_humus_v3",
+              "grid": "world3/docs/captures/m14/m14_temperate_forest_humus_v3_grid_final.png",
+              "summary": "world3/docs/captures/m14/m14_temperate_forest_humus_v3_summary.json",
+              "verdict": "AuraFlow is a sidecar-worthy dark humus substrate; FLUX is a dry straw-flecked loam reference; SD is rejected."
+            }
+          ],
+          "next_action": "Stage AuraFlow v3 as a conservative albedo/detail sidecar and run close, medium, iso, and topdown terrain-context testing before any M13 promotion."
+        }
+      }
     },
     {
       "material_id": "tundra_moss",

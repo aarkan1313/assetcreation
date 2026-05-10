@@ -12,6 +12,7 @@ source macro color and future scatter without producing repeated plant objects.
 |---------|------|---------|
 | v1 | `world3/docs/captures/m14/m14_grass_rework_v1_grid_final.png` | `world3/docs/captures/m14/m14_grass_rework_v1_summary.json` |
 | v2 | `world3/docs/captures/m14/m14_grass_rework_v2_grid_final.png` | `world3/docs/captures/m14/m14_grass_rework_v2_summary.json` |
+| v3 | `world3/docs/captures/m14/m14_grass_substrate_v3_grid_final.png` | `world3/docs/captures/m14/m14_grass_substrate_v3_summary.json` |
 
 ## Attempt v1
 
@@ -42,6 +43,23 @@ Visual result:
 - SD 3.5 gives the most lawn-like fine turf color/texture, but it is saturated
   and still fails seam quality.
 
+## Attempt v3
+
+Prompt direction: fine olive-brown organic root mat and loam substrate with
+subtle green-brown ground nap, explicitly excluding grass blades, tufts,
+clumps, and lawn forms.
+
+Visual result:
+
+- FLUX is the best practical read, but it still reads as dry sparse
+  groundcover / straw-litter dirt rather than grass. Keep it as a dry
+  sparse-organic dirt direction, not as a `grass` replacement.
+- AuraFlow has the best seam score, but it is too dark and too much like damp
+  forest floor with small plant objects. Keep it as a moss/forest-floor sidecar
+  direction.
+- SD 3.5 went to cracked dry mud with a high seam score. Reject it for this
+  material target.
+
 ## Decision
 
 Do not pursue `grass` as a single "grass photo texture" tile. That prompt
@@ -55,9 +73,10 @@ The correct M14 framing is layered:
   vegetation identity
 
 `m14_grass_rework_v1` FLUX can be kept as a sparse vegetated dirt direction.
-It should not replace `grass`. `m14_grass_rework_v2` FLUX is rejected for grass
-because of clumped plant objects. SD 3.5 remains interesting only if seam
-repair/cropping can remove its cross artifact.
+`m14_grass_substrate_v3` FLUX improves the sparse groundcover direction but
+still should not replace `grass`. `m14_grass_rework_v2` FLUX is rejected for
+grass because of clumped plant objects. SD 3.5 remains interesting only if
+seam repair/cropping can remove its cross artifact.
 
 ## Next Prompt Target
 
@@ -73,3 +92,8 @@ blades, no tufts, no clumps, no bright turf, no bare holes, no central object
 Promotion rule: a candidate is allowed to look less grassy in the flat tile if
 it becomes a better close-play substrate once combined with source macro color
 and scatter.
+
+Current next action: stop spending M14 time trying to make a flat texture carry
+the whole grass identity. M14 should keep only substrate/detail candidates,
+then M15 scatter/features should supply blades, clumps, dry stems, and readable
+vegetation structure.

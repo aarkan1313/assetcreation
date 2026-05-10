@@ -71,7 +71,8 @@
     "total": 5,
     "m14_trial_safe_close_conditional": 1,
     "methodology_rework_layered_substrate": 1,
-    "queued_for_bakeoff": 3
+    "m14_substrate_sidecar_candidate_found": 1,
+    "queued_for_bakeoff": 2
   },
   "rows": [
     {
@@ -88,18 +89,18 @@
       "regen_id": "m8_grass_calm_v5",
       "current_source_asset_id": "wgv3_grass",
       "failure_mode": "green organic speckle and small clover/object repetition reads too busy at walk scale",
-      "latest": "4 attempts through m8_grass_calm_v4_anchor_v1",
+      "latest": "3 M14 attempts through m14_grass_substrate_v3",
       "m14_status": "methodology_rework_layered_substrate",
-      "next_action": "Stop treating grass as a monolithic plant-photo tile; generate a calm organic substrate/detail layer and let M15 scatter carry actual grass identity."
+      "next_action": "Keep M14 grass work limited to substrate/detail candidates; let M15 scatter/features carry actual blades, clumps, dry stems, and vegetation identity."
     },
     {
       "material_id": "temperate_forest_grass",
       "regen_id": "m8_temperate_forest_floor_calm_v1",
       "current_source_asset_id": "wgv3_tf_leaf_litter",
       "failure_mode": "leaf-litter objects and high contrast fragments create visual noise in close terrain",
-      "latest": "-",
-      "m14_status": "queued_for_bakeoff",
-      "next_action": "Run FLUX/Aura/SD batches, then visual-veto before terrain staging."
+      "latest": "3 M14 attempts through m14_temperate_forest_humus_v3",
+      "m14_status": "m14_substrate_sidecar_candidate_found",
+      "next_action": "Stage AuraFlow v3 as a conservative albedo/detail sidecar and run close, medium, iso, and topdown terrain-context testing before any M13 promotion."
     },
     {
       "material_id": "tundra_moss",

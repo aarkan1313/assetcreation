@@ -25,6 +25,7 @@ find something.
 | "What is the M14 close-play terrain-quality board?"         | [M14_CLOSE_PLAY_QUALITY_BOARD_2026_05_10.md](M14_CLOSE_PLAY_QUALITY_BOARD_2026_05_10.md) |
 | "What happened in the first M14 grassland runtime trial?"   | [M14_GRASSLAND_GRASS_RUNTIME_TRIAL_2026_05_10.md](M14_GRASSLAND_GRASS_RUNTIME_TRIAL_2026_05_10.md) |
 | "What did the first M14 grass prompt bakeoff teach?"        | [M14_GRASS_PROMPT_BAKEOFF_REVIEW_2026_05_10.md](M14_GRASS_PROMPT_BAKEOFF_REVIEW_2026_05_10.md) |
+| "What did the M14 temperate forest floor bakeoff teach?"    | [M14_TEMPERATE_FOREST_FLOOR_BAKEOFF_REVIEW_2026_05_10.md](M14_TEMPERATE_FOREST_FLOOR_BAKEOFF_REVIEW_2026_05_10.md) |
 | "What did the M12 runtime parity proof actually wire?"       | [M12_RUNTIME_PARITY_PROOF_2026_05_10.md](M12_RUNTIME_PARITY_PROOF_2026_05_10.md) |
 | "Can iso/tactical run without live 3D terrain every frame?"  | [M16_ISO_IMPOSTOR_RESEARCH_PLAN_2026_05_10.md](M16_ISO_IMPOSTOR_RESEARCH_PLAN_2026_05_10.md) |
 | "How did M7 automatic boundary placement work?"              | [M7_BOUNDARY_RUNTIME_INTEGRATION.md](M7_BOUNDARY_RUNTIME_INTEGRATION.md) |

@@ -653,3 +653,7 @@ These start when chunk + biome + tile + transition is ~80% solved
   winner is reclassified as sparse vegetated dirt, not grass. Future grass work
   should generate a calm substrate/detail layer and rely on M15 scatter/features
   for real blades and clumps.
+- **2026-05-10 (M14 temperate forest floor bakeoff)**: Added
+  `M14_TEMPERATE_FOREST_FLOOR_BAKEOFF_REVIEW_2026_05_10.md`. FLUX and SD
+  repeated leaf/object failure modes; AuraFlow v3 is the first sidecar-worthy
+  dark humus substrate candidate, pending terrain-context review.

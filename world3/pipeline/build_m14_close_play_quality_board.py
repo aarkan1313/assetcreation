@@ -79,6 +79,10 @@ def latest_label(candidate: dict[str, Any]) -> str:
     latest = candidate.get("latest_tested_candidate") or {}
     if latest.get("id"):
         return str(latest["id"])
+    prompt_review = latest.get("m14_prompt_bakeoff_review") or {}
+    prompt_attempts = prompt_review.get("attempts") or []
+    if prompt_attempts:
+        return f"{len(prompt_attempts)} M14 attempts through {prompt_attempts[-1].get('id', 'unknown')}"
     attempts = latest.get("attempts") or []
     if attempts:
         return f"{len(attempts)} attempts through {attempts[-1].get('id', 'unknown')}"

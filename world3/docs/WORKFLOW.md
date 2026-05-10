@@ -720,6 +720,18 @@ The M14 board reads the M8 organic regeneration queue plus
 board for close-play material quality before candidates are promoted through
 M13.
 
+M14 organic materials use a layered review method:
+
+```powershell
+# Run a FLUX/Aura/SD bakeoff for a candidate prompt.
+python pipelines/textures/diversity_compare.py --prompt "<material prompt>" --id <m14_id> --seed <seed> --models active --heal-strength 0.35
+```
+
+For organic terrain, do not ask one flat tile to carry the whole readable
+biome. M14 should produce calm substrate/detail candidates; M15 scatter/features
+carry blades, clumps, leaves, sticks, roots, and other readable objects. Record
+the visual veto before staging a sidecar for close/medium/iso/topdown review.
+
 Iso/tactical sidecar research starts with a cached 2D card proof:
 
 ```powershell

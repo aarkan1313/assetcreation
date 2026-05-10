@@ -9,9 +9,10 @@ close, medium, iso, and topdown review.
 ## Summary
 
 - Materials tracked: `5`.
+- `m14_substrate_sidecar_candidate_found`: `1`.
 - `m14_trial_safe_close_conditional`: `1`.
 - `methodology_rework_layered_substrate`: `1`.
-- `queued_for_bakeoff`: `3`.
+- `queued_for_bakeoff`: `2`.
 
 ## Active Model Lanes
 
@@ -26,8 +27,8 @@ close, medium, iso, and topdown review.
 | Material | Status | Latest | Next Action | Failure Mode |
 |----------|--------|--------|-------------|--------------|
 | `grassland_grass` | `m14_trial_safe_close_conditional` | `m8_grassland_grass_calm_v3` | Keep sidecar-only; use M14 bakeoff lanes for stronger close-play candidates. | object-like dry grass blades and noisy yellow clumps dominate close views |
-| `grass` | `methodology_rework_layered_substrate` | `4 attempts through m8_grass_calm_v4_anchor_v1` | Stop treating grass as a monolithic plant-photo tile; generate a calm organic substrate/detail layer and let M15 scatter carry actual grass identity. | green organic speckle and small clover/object repetition reads too busy at walk scale |
-| `temperate_forest_grass` | `queued_for_bakeoff` | `-` | Run FLUX/Aura/SD batches, then visual-veto before terrain staging. | leaf-litter objects and high contrast fragments create visual noise in close terrain |
+| `grass` | `methodology_rework_layered_substrate` | `3 M14 attempts through m14_grass_substrate_v3` | Keep M14 grass work limited to substrate/detail candidates; let M15 scatter/features carry actual blades, clumps, dry stems, and vegetation identity. | green organic speckle and small clover/object repetition reads too busy at walk scale |
+| `temperate_forest_grass` | `m14_substrate_sidecar_candidate_found` | `3 M14 attempts through m14_temperate_forest_humus_v3` | Stage AuraFlow v3 as a conservative albedo/detail sidecar and run close, medium, iso, and topdown terrain-context testing before any M13 promotion. | leaf-litter objects and high contrast fragments create visual noise in close terrain |
 | `tundra_moss` | `queued_for_bakeoff` | `-` | Run FLUX/Aura/SD batches, then visual-veto before terrain staging. | moss detail is too high-frequency and can turn into colored speckle in runtime |
 | `tundra_lichen` | `queued_for_bakeoff` | `-` | Run FLUX/Aura/SD batches, then visual-veto before terrain staging. | lichen spots and pale contrast can repeat as visible object clusters |
 

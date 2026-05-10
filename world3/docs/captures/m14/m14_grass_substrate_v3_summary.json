@@ -1,0 +1,38 @@
+[
+  {
+    "model": "flux2_klein",
+    "label": "FLUX.2-klein 4B (baseline)",
+    "pass1": "D:\\tmp\\diversity_compare_2026_05_09\\m14_grass_substrate_v3\\flux2_klein\\pass1_raw.png",
+    "pass1_seam": 0.032154861561658976,
+    "pass1_seconds": 20.1,
+    "pass3": "D:\\tmp\\diversity_compare_2026_05_09\\m14_grass_substrate_v3\\flux2_klein\\pass3_healed_shifted.png",
+    "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_grass_substrate_v3\\flux2_klein\\final_albedo.png",
+    "final_seam": 0.02194312846921857,
+    "pass3_seconds": 6.2,
+    "total_seconds": 26.3
+  },
+  {
+    "model": "auraflow_03",
+    "label": "AuraFlow v0.3 Q8_0",
+    "pass1": "D:\\tmp\\diversity_compare_2026_05_09\\m14_grass_substrate_v3\\auraflow_03\\pass1_raw.png",
+    "pass1_seam": 0.011969795271049596,
+    "pass1_seconds": 54.1,
+    "pass3": "D:\\tmp\\diversity_compare_2026_05_09\\m14_grass_substrate_v3\\auraflow_03\\pass3_healed_shifted.png",
+    "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_grass_substrate_v3\\auraflow_03\\final_albedo.png",
+    "final_seam": 0.005180159073433295,
+    "pass3_seconds": 42.1,
+    "total_seconds": 96.2
+  },
+  {
+    "model": "sd35_large",
+    "label": "SD 3.5 Large Q8_0",
+    "pass1": "D:\\tmp\\diversity_compare_2026_05_09\\m14_grass_substrate_v3\\sd35_large\\pass1_raw.png",
+    "pass1_seam": 0.07734559724625144,
+    "pass1_seconds": 48.1,
+    "pass3": "D:\\tmp\\diversity_compare_2026_05_09\\m14_grass_substrate_v3\\sd35_large\\pass3_healed_shifted.png",
+    "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_grass_substrate_v3\\sd35_large\\final_albedo.png",
+    "final_seam": 0.057137365286188006,
+    "pass3_seconds": 34.2,
+    "total_seconds": 82.2
+  }
+]

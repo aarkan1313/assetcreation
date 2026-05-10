@@ -372,6 +372,13 @@ do not force grass into one plant-photo tile. Generate a calm organic
 substrate/detail layer and let M15 scatter/features carry actual blades and
 clumps.
 
+M14 `temperate_forest_grass` bakeoff review is recorded in
+`M14_TEMPERATE_FOREST_FLOOR_BAKEOFF_REVIEW_2026_05_10.md`. The same layered
+methodology applies: whole leaves and twigs should not be baked into a tiling
+close-play material. AuraFlow v3 is the first sidecar-worthy dark humus
+substrate candidate; it still needs terrain-context review for black crush,
+tiling, and view-band readability.
+
 2026-05-10 iso renderer note: M16 now includes a source-stack iso impostor
 sidecar ladder. The first rung is a cached 2D iso card from the M12 runtime
 parity bake; later rungs are chunk impostors, 2D heightfield shader, and hybrid
