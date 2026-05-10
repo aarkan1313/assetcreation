@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/M14LichenSidecarCompareBoard.gd" id="script"]
+
+[node name="M14TundraLichenCompareBoard" type="Node3D"]
+script = ExtResource("script")
+board_texture_path = "res://docs/captures/m14/m14_tundra_lichen_runtime_ab_compare_sheet.png"

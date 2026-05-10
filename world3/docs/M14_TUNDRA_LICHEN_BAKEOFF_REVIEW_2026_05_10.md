@@ -60,6 +60,23 @@ Comfy sidecar catalog:
 | close | `world3/docs/captures/m14/m14_tundra_lichen_flux10_09_gloss_close.png` |
 | contact sheet | `world3/docs/captures/m14/m14_tundra_lichen_flux10_09_gloss_contact_sheet.png` |
 
+## A/B Comparison Board
+
+The normal tour is intentionally subtle because the source macro remains
+dominant. To make M14 visible for workflow review, use the explicit comparison
+board:
+
+- scene: `world3/scenes/review/m14_tundra_lichen_compare_board.tscn`
+- capture: `world3/docs/captures/m14/m14_tundra_lichen_compare_board_scene.png`
+- runtime A/B sheet: `world3/docs/captures/m14/m14_tundra_lichen_runtime_ab_compare_sheet.png`
+
+Panels:
+
+1. source macro only
+2. runtime subtle sidecar
+3. debug stress sidecar
+4. raw generated lichen 2x2
+
 ## Verdict
 
 Conditional M14 sidecar workflow pass.
