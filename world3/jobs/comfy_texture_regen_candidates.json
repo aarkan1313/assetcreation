@@ -187,9 +187,9 @@
       "prompt": "top-down orthographic macro photograph of damp temperate forest floor, decomposed brown leaf mulch blended with dark loam, fine granular organic matter, muted natural color, even overcast lighting, seamless PBR terrain texture, no whole fresh leaves, no branches, no green plants, no strong outlines, no perspective, no shadows",
       "source_stack_role": "albedo candidate first; normal/detail disabled until close/mid/far terrain review passes",
       "latest_tested_candidate": {
-        "status": "m14_sidecar_staged_live_review_pending",
+        "status": "m14_sidecar_runtime_pass_conditional",
         "m14_prompt_bakeoff_review": {
-          "status": "m14_sidecar_staged_live_review_pending",
+          "status": "m14_sidecar_runtime_pass_conditional",
           "doc": "world3/docs/M14_TEMPERATE_FOREST_FLOOR_BAKEOFF_REVIEW_2026_05_10.md",
           "attempts": [
             {
@@ -222,7 +222,18 @@
               "world3/docs/captures/m14/m14_temperate_forest_humus_v3_gloss_tour_3d_smoke.png"
             ]
           },
-          "next_action": "Run live close, medium, iso, and topdown terrain-context review before any M13 promotion."
+          "runtime_live_review": {
+            "date": "2026-05-10",
+            "scene": "world3/scenes/review/source_stack_gloss_temperate_forest_humus_v3_tour.tscn",
+            "verdict": "sidecar_runtime_pass_conditional",
+            "user_read": "looked pretty great",
+            "limits": [
+              "review source is clean Gloss terrain, not semantically a forest region",
+              "candidate is a substrate/detail sidecar, not complete forest-floor dressing",
+              "production promotion still requires true forest-source review and M15 scatter/features"
+            ]
+          },
+          "next_action": "Keep as accepted M14 sidecar evidence; do not M13-promote until true forest-source review plus M15 scatter/features exist. Continue to tundra_moss and tundra_lichen bakeoffs."
         }
       }
     },

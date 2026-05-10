@@ -378,7 +378,8 @@ methodology applies: whole leaves and twigs should not be baked into a tiling
 close-play material. AuraFlow v3 is the first sidecar-worthy dark humus
 substrate candidate. It is staged in
 `source_stack_gloss_temperate_forest_humus_v3_tour.tscn` for live review; it
-still needs validation for black crush, tiling, and view-band readability.
+passed live review as conditional M14 sidecar evidence. It still needs a true
+forest-source review and M15 scatter/features before any production promotion.
 
 2026-05-10 iso renderer note: M16 now includes a source-stack iso impostor
 sidecar ladder. The first rung is a cached 2D iso card from the M12 runtime

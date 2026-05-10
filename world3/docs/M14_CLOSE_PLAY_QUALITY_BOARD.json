@@ -71,7 +71,7 @@
     "total": 5,
     "m14_trial_safe_close_conditional": 1,
     "methodology_rework_layered_substrate": 1,
-    "m14_sidecar_staged_live_review_pending": 1,
+    "m14_sidecar_runtime_pass_conditional": 1,
     "queued_for_bakeoff": 2
   },
   "rows": [
@@ -99,8 +99,8 @@
       "current_source_asset_id": "wgv3_tf_leaf_litter",
       "failure_mode": "leaf-litter objects and high contrast fragments create visual noise in close terrain",
       "latest": "3 M14 attempts through m14_temperate_forest_humus_v3",
-      "m14_status": "m14_sidecar_staged_live_review_pending",
-      "next_action": "Run live close, medium, iso, and topdown terrain-context review before any M13 promotion."
+      "m14_status": "m14_sidecar_runtime_pass_conditional",
+      "next_action": "Keep as accepted M14 sidecar evidence; do not M13-promote until true forest-source review plus M15 scatter/features exist. Continue to tundra_moss and tundra_lichen bakeoffs."
     },
     {
       "material_id": "tundra_moss",

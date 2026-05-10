@@ -9,7 +9,7 @@ close, medium, iso, and topdown review.
 ## Summary
 
 - Materials tracked: `5`.
-- `m14_sidecar_staged_live_review_pending`: `1`.
+- `m14_sidecar_runtime_pass_conditional`: `1`.
 - `m14_trial_safe_close_conditional`: `1`.
 - `methodology_rework_layered_substrate`: `1`.
 - `queued_for_bakeoff`: `2`.
@@ -28,7 +28,7 @@ close, medium, iso, and topdown review.
 |----------|--------|--------|-------------|--------------|
 | `grassland_grass` | `m14_trial_safe_close_conditional` | `m8_grassland_grass_calm_v3` | Keep sidecar-only; use M14 bakeoff lanes for stronger close-play candidates. | object-like dry grass blades and noisy yellow clumps dominate close views |
 | `grass` | `methodology_rework_layered_substrate` | `3 M14 attempts through m14_grass_substrate_v3` | Keep M14 grass work limited to substrate/detail candidates; let M15 scatter/features carry actual blades, clumps, dry stems, and vegetation identity. | green organic speckle and small clover/object repetition reads too busy at walk scale |
-| `temperate_forest_grass` | `m14_sidecar_staged_live_review_pending` | `3 M14 attempts through m14_temperate_forest_humus_v3` | Run live close, medium, iso, and topdown terrain-context review before any M13 promotion. | leaf-litter objects and high contrast fragments create visual noise in close terrain |
+| `temperate_forest_grass` | `m14_sidecar_runtime_pass_conditional` | `3 M14 attempts through m14_temperate_forest_humus_v3` | Keep as accepted M14 sidecar evidence; do not M13-promote until true forest-source review plus M15 scatter/features exist. Continue to tundra_moss and tundra_lichen bakeoffs. | leaf-litter objects and high contrast fragments create visual noise in close terrain |
 | `tundra_moss` | `queued_for_bakeoff` | `-` | Run FLUX/Aura/SD batches, then visual-veto before terrain staging. | moss detail is too high-frequency and can turn into colored speckle in runtime |
 | `tundra_lichen` | `queued_for_bakeoff` | `-` | Run FLUX/Aura/SD batches, then visual-veto before terrain staging. | lichen spots and pale contrast can repeat as visible object clusters |
 

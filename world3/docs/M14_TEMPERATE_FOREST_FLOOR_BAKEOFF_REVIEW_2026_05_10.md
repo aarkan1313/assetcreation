@@ -82,9 +82,27 @@ that source macro contains white/empty imagery patches. The clean Gloss scene
 is kept for live sidecar behavior review even though it is not semantically a
 forest region.
 
+## Live Review
+
+2026-05-10 live review verdict: user reviewed
+`world3/scenes/review/source_stack_gloss_temperate_forest_humus_v3_tour.tscn`
+and reported that it looked great.
+
+Status: **sidecar runtime pass, conditional**.
+
+- close/medium/iso/topdown tour behavior is acceptable on the clean Gloss
+  source-stack scene.
+- no obvious black crush, tiling strip, or distracting object repetition was
+  seen during live review.
+- the candidate remains a substrate/detail sidecar, not a full
+  `temperate_forest_grass` production replacement.
+- production promotion still requires a semantically appropriate forest source
+  and M15 scatter/features for leaves, sticks, roots, and moss breakup.
+
 ## Next Action
 
-Runtime validation must check:
+Keep `m14_temperate_forest_humus_v3_auraflow` as accepted M14 sidecar evidence.
+Before any M13 promotion, validation still must check:
 
 - close view: does the dark humus add usable grain without black crush?
 - medium/iso/topdown: does it disappear into source macro instead of tiling?

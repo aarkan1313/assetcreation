@@ -99,7 +99,16 @@
             "world3/docs/captures/m14/m14_temperate_forest_humus_v3_gloss_tour_close_smoke.png",
             "world3/docs/captures/m14/m14_temperate_forest_humus_v3_gloss_tour_3d_smoke.png"
           ],
-          "status": "runtime_scene_staged_live_review_pending"
+          "status": "runtime_live_review_pass_conditional",
+          "live_review": {
+            "date": "2026-05-10",
+            "user_read": "looked pretty great",
+            "verdict": "accepted_as_m14_sidecar_evidence",
+            "limits": [
+              "clean Gloss source-stack review, not true forest-source promotion",
+              "substrate/detail only; forest identity belongs to M15 scatter/features"
+            ]
+          }
         },
         "settings": {
           "world_uv_scale": 0.015625,
@@ -131,9 +140,11 @@
       },
       "shader_binding": "terrain_hex_detail",
       "validated_views": {
-        "close": "needs_review",
-        "mid": "needs_review",
-        "far": "needs_review"
+        "close": "conditional_pass_gloss_source",
+        "mid": "conditional_pass_gloss_source",
+        "far": "conditional_pass_gloss_source",
+        "iso": "conditional_pass_gloss_source",
+        "topdown": "conditional_pass_gloss_source"
       }
     }
   ]
