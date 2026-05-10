@@ -314,11 +314,10 @@ Current state: first representative three-way Y junction proof is accepted as
 workflow evidence. `build_m11_junction_layer_proof.py` emits source/grassland/
 canyon domain fields, runtime splat weights, a macro-guided source stack, and
 feature/scatter masks. `source_stack_m11_junction_tour.tscn` reviews topdown,
-iso, medium, and close views. A first four-way/corner candidate now exists via
+iso, medium, and close views. A first four-way/corner proof is also accepted via
 `build_m11_fourway_corner_proof.py` and
 `source_stack_m11_fourway_corner_tour.tscn`, using photoreal source, current
-grassland sidecar, controlled fantasy lava/basalt, and canyon rock. It is
-pending live validation before M11 closure.
+grassland sidecar, controlled fantasy lava/basalt, and canyon rock.
 
 2026-05-10 visual note: the accepted M11 pass uses the Zion master-stack terrain
 texture as the canyon macro reference so the canyon branch survives gameplay
@@ -331,8 +330,7 @@ Deliverables:
 - Build a small review scene with at least one three-material junction.
 - Decide whether junctions are authored as special assets, composed from
   pairwise strips, or generated as masks over the existing splat map.
-- Live-validate the four-way/corner proof using the same domain/splat/macro
-  contract.
+- Record the junction-case matrix so future T/L/island variants do not block M12.
 
 Exit:
 
@@ -340,6 +338,10 @@ Exit:
 - The chosen junction strategy is documented before broader generation.
 - Four-way/corner cases have at least one accepted proof before M12 parity is
   called complete.
+
+2026-05-10 closure note: M11 has met the roadmap bar for moving to M12. The
+remaining T-junction, L-corner, and island variants are future case-library work,
+not blockers for view-mode parity.
 
 ## M12 - View-Mode Parity
 
@@ -354,6 +356,14 @@ camera/zoom bands, not only by debug tours. Use
 `GAMEPLAY_VIEW_QUALITY_PLAN_2026_05_09.md` to separate close, medium, iso, and
 topdown acceptance requirements before promoting assets or workflows.
 
+2026-05-10 audit/template update:
+`M12_VIEW_MODE_PARITY_AUDIT_2026_05_10.md` inventories source-stack tour scenes
+and capture bands. `source_stack_m12_parity_fourway_tour.tscn` now wraps the
+accepted four-way proof with named close, medium, iso, and topdown camera bands.
+Five workflows have complete close/medium/iso/topdown capture sets, and four use
+runtime splat weights. Region/gallery and true walk-mode parity remain the main
+divergent paths.
+
 Deliverables:
 
 - Shared material contract for walk/iso/topdown.
@@ -364,6 +374,9 @@ Deliverables:
   generation.
 - Update region gallery so it can show parity evidence, not only old kit
   variants.
+- Use the M12 parity scene/template as the control while bringing one true walk
+  scene and one gallery/region view onto the same source/material/height/splat
+  contract.
 
 Exit:
 

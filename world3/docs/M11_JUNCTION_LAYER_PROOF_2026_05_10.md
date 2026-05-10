@@ -3,7 +3,7 @@
 ## Status
 
 Accepted as first M11 workflow evidence for three-way terrain junctions.
-Follow-up four-way/corner candidate evidence is now recorded in
+Follow-up four-way/corner accepted evidence is now recorded in
 `M11_FOURWAY_CORNER_PROOF_2026_05_10.md`.
 
 This is not production-final AAA terrain. It proves the junction method: three
@@ -99,7 +99,8 @@ Known limitations:
   FLUX/Aura/SD bakeoff before promotion.
 - Placeholder scatter assets are not production assets.
 - M11 three-way proves a representative Y junction, not the full corner library.
-- The first four-way candidate exists, but remains pending live validation.
+- The first four-way proof is accepted, but does not imply a full junction
+  library or production art promotion.
 
 ## Commands
 
@@ -123,11 +124,12 @@ display returns a null viewport texture for `HeadlessCapture.gd`.
 
 ## Next
 
-M11 has moved from "first representative Y junction" to the first four-way
-corner candidate:
+M11 has moved from "first representative Y junction" to accepted four-way
+corner evidence:
 
-1. Live-validate `source_stack_m11_fourway_corner_tour.tscn`.
+1. Use `M11_JUNCTION_CASE_MATRIX_2026_05_10.md` as the guardrail for future
+   junction variants.
 2. Debug view that overlays domain ownership, splat ownership, and mask layers in
    the live scene.
 3. Replacement scatter asset pass after authored scrub/grass/rock assets exist.
-4. M12 view-mode parity once M11 corner cases have at least one accepted proof.
+4. M12 view-mode parity.

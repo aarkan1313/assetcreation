@@ -1,0 +1,571 @@
+{
+  "updated": "2026-05-10",
+  "purpose": "M12 view-mode parity audit",
+  "required_bands": [
+    "close",
+    "medium",
+    "iso",
+    "topdown"
+  ],
+  "workflows": [
+    {
+      "id": "auto",
+      "scene": "res://scenes/review/source_stack_auto_tour.tscn",
+      "tour_profile": "standard",
+      "material_path": "res://textures/wgv3/terrain_source_stack_gloss_grassland_comfy_v3_source_stack.tres",
+      "heightmap_path": "res://toporeview/gloss_mountain_textured_master/heightmap.png",
+      "meta_path": "res://toporeview/gloss_mountain_textured_master/meta.json",
+      "splat_weights_path": "",
+      "source_macro_albedo_override_path": "",
+      "source_macro_valid_mask_override_path": "",
+      "transition_rule_id": "opentopo_scrub_sparse__dry_wash_neighbor",
+      "captures": [],
+      "capture_bands": [],
+      "missing_bands": [
+        "close",
+        "medium",
+        "iso",
+        "topdown"
+      ],
+      "has_source_stack_contract": false,
+      "has_runtime_splat_weights": false,
+      "parity_status": "missing_close_medium_iso_topdown"
+    },
+    {
+      "id": "cross_source",
+      "scene": "res://scenes/review/source_stack_cross_source_tour.tscn",
+      "tour_profile": "seam_integration",
+      "material_path": "res://textures/wgv3/terrain_source_stack_gloss_scrub_source_stack.tres",
+      "heightmap_path": "res://toporeview/gloss_guadalupe_cross_source_proof/heightmap.png",
+      "meta_path": "res://toporeview/gloss_guadalupe_cross_source_proof/meta.json",
+      "splat_weights_path": "",
+      "source_macro_albedo_override_path": "res://textures/source_stack/gloss_guadalupe_cross_source_proof/source_macro_albedo.png",
+      "source_macro_valid_mask_override_path": "res://textures/source_stack/gloss_guadalupe_cross_source_proof/source_macro_valid_mask.png",
+      "transition_rule_id": "opentopo_scrub_sparse__dry_wash_neighbor",
+      "captures": [
+        {
+          "scene": "res://scenes/review/capture_source_stack_cross_source_3d.tscn",
+          "target_scene": "res://scenes/review/source_stack_cross_source_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_cross_source_tour_3d_smoke.png",
+          "band": "medium",
+          "initial_tour_index": "2"
+        },
+        {
+          "scene": "res://scenes/review/capture_source_stack_cross_source_iso.tscn",
+          "target_scene": "res://scenes/review/source_stack_cross_source_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_cross_source_tour_iso_smoke.png",
+          "band": "iso",
+          "initial_tour_index": "1"
+        },
+        {
+          "scene": "res://scenes/review/capture_source_stack_cross_source_topdown.tscn",
+          "target_scene": "res://scenes/review/source_stack_cross_source_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_cross_source_tour_smoke.png",
+          "band": "topdown",
+          "initial_tour_index": "0"
+        }
+      ],
+      "capture_bands": [
+        "iso",
+        "medium",
+        "topdown"
+      ],
+      "missing_bands": [
+        "close"
+      ],
+      "has_source_stack_contract": true,
+      "has_runtime_splat_weights": false,
+      "parity_status": "missing_close"
+    },
+    {
+      "id": "cross_source_chuculay_guadalupe",
+      "scene": "res://scenes/review/source_stack_cross_source_chuculay_guadalupe_tour.tscn",
+      "tour_profile": "seam_integration",
+      "material_path": "res://textures/wgv3/terrain_source_stack_gloss_scrub_source_stack.tres",
+      "heightmap_path": "res://toporeview/chuculay_guadalupe_cross_source_proof/heightmap.png",
+      "meta_path": "res://toporeview/chuculay_guadalupe_cross_source_proof/meta.json",
+      "splat_weights_path": "",
+      "source_macro_albedo_override_path": "res://textures/source_stack/chuculay_guadalupe_cross_source_proof/source_macro_albedo.png",
+      "source_macro_valid_mask_override_path": "res://textures/source_stack/chuculay_guadalupe_cross_source_proof/source_macro_valid_mask.png",
+      "transition_rule_id": "opentopo_scrub_sparse__dry_wash_neighbor",
+      "captures": [
+        {
+          "scene": "res://scenes/review/capture_source_stack_cross_source_chuculay_guadalupe_3d.tscn",
+          "target_scene": "res://scenes/review/source_stack_cross_source_chuculay_guadalupe_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_cross_source_chuculay_guadalupe_tour_3d_smoke.png",
+          "band": "medium",
+          "initial_tour_index": "2"
+        },
+        {
+          "scene": "res://scenes/review/capture_source_stack_cross_source_chuculay_guadalupe_iso.tscn",
+          "target_scene": "res://scenes/review/source_stack_cross_source_chuculay_guadalupe_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_cross_source_chuculay_guadalupe_tour_iso_smoke.png",
+          "band": "iso",
+          "initial_tour_index": "1"
+        },
+        {
+          "scene": "res://scenes/review/capture_source_stack_cross_source_chuculay_guadalupe_topdown.tscn",
+          "target_scene": "res://scenes/review/source_stack_cross_source_chuculay_guadalupe_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_cross_source_chuculay_guadalupe_tour_smoke.png",
+          "band": "topdown",
+          "initial_tour_index": "0"
+        }
+      ],
+      "capture_bands": [
+        "iso",
+        "medium",
+        "topdown"
+      ],
+      "missing_bands": [
+        "close"
+      ],
+      "has_source_stack_contract": true,
+      "has_runtime_splat_weights": false,
+      "parity_status": "missing_close"
+    },
+    {
+      "id": "cross_source_second",
+      "scene": "res://scenes/review/source_stack_cross_source_second_tour.tscn",
+      "tour_profile": "seam_integration",
+      "material_path": "res://textures/wgv3/terrain_source_stack_gloss_scrub_source_stack.tres",
+      "heightmap_path": "res://toporeview/gloss_guadalupe_second_cross_source_proof/heightmap.png",
+      "meta_path": "res://toporeview/gloss_guadalupe_second_cross_source_proof/meta.json",
+      "splat_weights_path": "",
+      "source_macro_albedo_override_path": "res://textures/source_stack/gloss_guadalupe_second_cross_source_proof/source_macro_albedo.png",
+      "source_macro_valid_mask_override_path": "res://textures/source_stack/gloss_guadalupe_second_cross_source_proof/source_macro_valid_mask.png",
+      "transition_rule_id": "opentopo_scrub_sparse__dry_wash_neighbor",
+      "captures": [
+        {
+          "scene": "res://scenes/review/capture_source_stack_cross_source_second_3d.tscn",
+          "target_scene": "res://scenes/review/source_stack_cross_source_second_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_cross_source_second_tour_3d_smoke.png",
+          "band": "medium",
+          "initial_tour_index": "2"
+        },
+        {
+          "scene": "res://scenes/review/capture_source_stack_cross_source_second_iso.tscn",
+          "target_scene": "res://scenes/review/source_stack_cross_source_second_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_cross_source_second_tour_iso_smoke.png",
+          "band": "iso",
+          "initial_tour_index": "1"
+        },
+        {
+          "scene": "res://scenes/review/capture_source_stack_cross_source_second_topdown.tscn",
+          "target_scene": "res://scenes/review/source_stack_cross_source_second_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_cross_source_second_tour_smoke.png",
+          "band": "topdown",
+          "initial_tour_index": "0"
+        }
+      ],
+      "capture_bands": [
+        "iso",
+        "medium",
+        "topdown"
+      ],
+      "missing_bands": [
+        "close"
+      ],
+      "has_source_stack_contract": true,
+      "has_runtime_splat_weights": false,
+      "parity_status": "missing_close"
+    },
+    {
+      "id": "ecotone_layer",
+      "scene": "res://scenes/review/source_stack_ecotone_layer_tour.tscn",
+      "tour_profile": "ecotone_layer",
+      "material_path": "res://textures/wgv3/terrain_ecotone_layer_gloss_grassland.tres",
+      "heightmap_path": "res://toporeview/gloss_grassland_ecotone_layer_proof/heightmap.png",
+      "meta_path": "res://toporeview/gloss_grassland_ecotone_layer_proof/meta.json",
+      "splat_weights_path": "res://textures/source_stack/gloss_grassland_ecotone_layer_proof/layers/splat_weights_rgba.png",
+      "source_macro_albedo_override_path": "res://textures/source_stack/gloss_grassland_ecotone_layer_proof/source_macro_albedo.png",
+      "source_macro_valid_mask_override_path": "res://textures/source_stack/gloss_grassland_ecotone_layer_proof/source_macro_weight_mask.png",
+      "transition_rule_id": "m10_ecotone_scrub_sparse__grassland_hardpan",
+      "captures": [
+        {
+          "scene": "res://scenes/review/capture_source_stack_ecotone_layer_close.tscn",
+          "target_scene": "res://scenes/review/source_stack_ecotone_layer_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_ecotone_layer_tour_close.png",
+          "band": "close",
+          "initial_tour_index": "3"
+        },
+        {
+          "scene": "res://scenes/review/capture_source_stack_ecotone_layer_iso.tscn",
+          "target_scene": "res://scenes/review/source_stack_ecotone_layer_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_ecotone_layer_tour_iso.png",
+          "band": "iso",
+          "initial_tour_index": "1"
+        },
+        {
+          "scene": "res://scenes/review/capture_source_stack_ecotone_layer_medium.tscn",
+          "target_scene": "res://scenes/review/source_stack_ecotone_layer_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_ecotone_layer_tour_medium.png",
+          "band": "medium",
+          "initial_tour_index": "2"
+        },
+        {
+          "scene": "res://scenes/review/capture_source_stack_ecotone_layer_topdown.tscn",
+          "target_scene": "res://scenes/review/source_stack_ecotone_layer_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_ecotone_layer_tour_topdown.png",
+          "band": "topdown",
+          "initial_tour_index": "0"
+        }
+      ],
+      "capture_bands": [
+        "close",
+        "iso",
+        "medium",
+        "topdown"
+      ],
+      "missing_bands": [],
+      "has_source_stack_contract": true,
+      "has_runtime_splat_weights": true,
+      "parity_status": "full_capture_set"
+    },
+    {
+      "id": "full_map_fast",
+      "scene": "res://scenes/review/source_stack_full_map_fast_tour.tscn",
+      "tour_profile": "full_map_fast",
+      "material_path": "res://textures/wgv3/terrain_source_stack_gloss_grassland_comfy_v3_source_stack.tres",
+      "heightmap_path": "res://toporeview/gloss_mountain_textured_master/heightmap.png",
+      "meta_path": "res://toporeview/gloss_mountain_textured_master/meta.json",
+      "splat_weights_path": "",
+      "source_macro_albedo_override_path": "",
+      "source_macro_valid_mask_override_path": "",
+      "transition_rule_id": "opentopo_scrub_sparse__dry_wash_neighbor",
+      "captures": [],
+      "capture_bands": [],
+      "missing_bands": [
+        "close",
+        "medium",
+        "iso",
+        "topdown"
+      ],
+      "has_source_stack_contract": false,
+      "has_runtime_splat_weights": false,
+      "parity_status": "missing_close_medium_iso_topdown"
+    },
+    {
+      "id": "m11_fourway_corner",
+      "scene": "res://scenes/review/source_stack_m11_fourway_corner_tour.tscn",
+      "tour_profile": "junction_fourway",
+      "material_path": "res://textures/wgv3/terrain_m11_fourway_corner.tres",
+      "heightmap_path": "res://toporeview/m11_fourway_corner_proof/heightmap.png",
+      "meta_path": "res://toporeview/m11_fourway_corner_proof/meta.json",
+      "splat_weights_path": "res://textures/source_stack/m11_fourway_corner_proof/layers/splat_weights_rgba.png",
+      "source_macro_albedo_override_path": "res://textures/source_stack/m11_fourway_corner_proof/source_macro_albedo.png",
+      "source_macro_valid_mask_override_path": "res://textures/source_stack/m11_fourway_corner_proof/source_macro_weight_mask.png",
+      "transition_rule_id": "m11_fourway_photoreal_grassland_fantasy_canyon",
+      "captures": [
+        {
+          "scene": "res://scenes/review/capture_source_stack_m11_fourway_corner_close.tscn",
+          "target_scene": "res://scenes/review/source_stack_m11_fourway_corner_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_m11_fourway_corner_tour_close.png",
+          "band": "close",
+          "initial_tour_index": "3"
+        },
+        {
+          "scene": "res://scenes/review/capture_source_stack_m11_fourway_corner_iso.tscn",
+          "target_scene": "res://scenes/review/source_stack_m11_fourway_corner_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_m11_fourway_corner_tour_iso.png",
+          "band": "iso",
+          "initial_tour_index": "1"
+        },
+        {
+          "scene": "res://scenes/review/capture_source_stack_m11_fourway_corner_medium.tscn",
+          "target_scene": "res://scenes/review/source_stack_m11_fourway_corner_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_m11_fourway_corner_tour_medium.png",
+          "band": "medium",
+          "initial_tour_index": "2"
+        },
+        {
+          "scene": "res://scenes/review/capture_source_stack_m11_fourway_corner_topdown.tscn",
+          "target_scene": "res://scenes/review/source_stack_m11_fourway_corner_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_m11_fourway_corner_tour_topdown.png",
+          "band": "topdown",
+          "initial_tour_index": "0"
+        }
+      ],
+      "capture_bands": [
+        "close",
+        "iso",
+        "medium",
+        "topdown"
+      ],
+      "missing_bands": [],
+      "has_source_stack_contract": true,
+      "has_runtime_splat_weights": true,
+      "parity_status": "full_capture_set"
+    },
+    {
+      "id": "m11_junction",
+      "scene": "res://scenes/review/source_stack_m11_junction_tour.tscn",
+      "tour_profile": "junction_layer",
+      "material_path": "res://textures/wgv3/terrain_m11_three_way_junction.tres",
+      "heightmap_path": "res://toporeview/m11_three_way_junction_proof/heightmap.png",
+      "meta_path": "res://toporeview/m11_three_way_junction_proof/meta.json",
+      "splat_weights_path": "res://textures/source_stack/m11_three_way_junction_proof/layers/splat_weights_rgba.png",
+      "source_macro_albedo_override_path": "res://textures/source_stack/m11_three_way_junction_proof/source_macro_albedo.png",
+      "source_macro_valid_mask_override_path": "res://textures/source_stack/m11_three_way_junction_proof/source_macro_weight_mask.png",
+      "transition_rule_id": "m11_junction_source_grassland_canyon",
+      "captures": [
+        {
+          "scene": "res://scenes/review/capture_source_stack_m11_junction_close.tscn",
+          "target_scene": "res://scenes/review/source_stack_m11_junction_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_m11_junction_tour_close.png",
+          "band": "close",
+          "initial_tour_index": "3"
+        },
+        {
+          "scene": "res://scenes/review/capture_source_stack_m11_junction_iso.tscn",
+          "target_scene": "res://scenes/review/source_stack_m11_junction_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_m11_junction_tour_iso.png",
+          "band": "iso",
+          "initial_tour_index": "1"
+        },
+        {
+          "scene": "res://scenes/review/capture_source_stack_m11_junction_medium.tscn",
+          "target_scene": "res://scenes/review/source_stack_m11_junction_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_m11_junction_tour_medium.png",
+          "band": "medium",
+          "initial_tour_index": "2"
+        },
+        {
+          "scene": "res://scenes/review/capture_source_stack_m11_junction_topdown.tscn",
+          "target_scene": "res://scenes/review/source_stack_m11_junction_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_m11_junction_tour_topdown.png",
+          "band": "topdown",
+          "initial_tour_index": "0"
+        }
+      ],
+      "capture_bands": [
+        "close",
+        "iso",
+        "medium",
+        "topdown"
+      ],
+      "missing_bands": [],
+      "has_source_stack_contract": true,
+      "has_runtime_splat_weights": true,
+      "parity_status": "full_capture_set"
+    },
+    {
+      "id": "m12_parity_fourway",
+      "scene": "res://scenes/review/source_stack_m12_parity_fourway_tour.tscn",
+      "tour_profile": "m12_parity",
+      "material_path": "res://textures/wgv3/terrain_m11_fourway_corner.tres",
+      "heightmap_path": "res://toporeview/m11_fourway_corner_proof/heightmap.png",
+      "meta_path": "res://toporeview/m11_fourway_corner_proof/meta.json",
+      "splat_weights_path": "res://textures/source_stack/m11_fourway_corner_proof/layers/splat_weights_rgba.png",
+      "source_macro_albedo_override_path": "res://textures/source_stack/m11_fourway_corner_proof/source_macro_albedo.png",
+      "source_macro_valid_mask_override_path": "res://textures/source_stack/m11_fourway_corner_proof/source_macro_weight_mask.png",
+      "transition_rule_id": "m12_parity_fourway_source_stack_contract",
+      "captures": [
+        {
+          "scene": "res://scenes/review/capture_source_stack_m12_parity_fourway_close.tscn",
+          "target_scene": "res://scenes/review/source_stack_m12_parity_fourway_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_m12_parity_fourway_close.png",
+          "band": "close",
+          "initial_tour_index": "0"
+        },
+        {
+          "scene": "res://scenes/review/capture_source_stack_m12_parity_fourway_iso.tscn",
+          "target_scene": "res://scenes/review/source_stack_m12_parity_fourway_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_m12_parity_fourway_iso.png",
+          "band": "iso",
+          "initial_tour_index": "2"
+        },
+        {
+          "scene": "res://scenes/review/capture_source_stack_m12_parity_fourway_medium.tscn",
+          "target_scene": "res://scenes/review/source_stack_m12_parity_fourway_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_m12_parity_fourway_medium.png",
+          "band": "medium",
+          "initial_tour_index": "1"
+        },
+        {
+          "scene": "res://scenes/review/capture_source_stack_m12_parity_fourway_topdown.tscn",
+          "target_scene": "res://scenes/review/source_stack_m12_parity_fourway_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_m12_parity_fourway_topdown.png",
+          "band": "topdown",
+          "initial_tour_index": "3"
+        }
+      ],
+      "capture_bands": [
+        "close",
+        "iso",
+        "medium",
+        "topdown"
+      ],
+      "missing_bands": [],
+      "has_source_stack_contract": true,
+      "has_runtime_splat_weights": true,
+      "parity_status": "full_capture_set"
+    },
+    {
+      "id": "real_procedural",
+      "scene": "res://scenes/review/source_stack_real_procedural_tour.tscn",
+      "tour_profile": "seam_integration",
+      "material_path": "res://textures/wgv3/terrain_source_stack_gloss_scrub_source_stack.tres",
+      "heightmap_path": "res://toporeview/gloss_procedural_canyon_rock_proof/heightmap.png",
+      "meta_path": "res://toporeview/gloss_procedural_canyon_rock_proof/meta.json",
+      "splat_weights_path": "",
+      "source_macro_albedo_override_path": "res://textures/source_stack/gloss_procedural_canyon_rock_proof/source_macro_albedo.png",
+      "source_macro_valid_mask_override_path": "res://textures/source_stack/gloss_procedural_canyon_rock_proof/source_macro_valid_mask.png",
+      "transition_rule_id": "mixed_real_dry_wash__procedural_desert_brush",
+      "captures": [
+        {
+          "scene": "res://scenes/review/capture_source_stack_real_procedural_close.tscn",
+          "target_scene": "res://scenes/review/source_stack_real_procedural_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_real_procedural_tour_close.png",
+          "band": "close",
+          "initial_tour_index": "2"
+        },
+        {
+          "scene": "res://scenes/review/capture_source_stack_real_procedural_iso.tscn",
+          "target_scene": "res://scenes/review/source_stack_real_procedural_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_real_procedural_tour_iso.png",
+          "band": "iso",
+          "initial_tour_index": "1"
+        },
+        {
+          "scene": "res://scenes/review/capture_source_stack_real_procedural_medium.tscn",
+          "target_scene": "res://scenes/review/source_stack_real_procedural_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_real_procedural_tour_medium.png",
+          "band": "medium",
+          "initial_tour_index": "3"
+        },
+        {
+          "scene": "res://scenes/review/capture_source_stack_real_procedural_topdown.tscn",
+          "target_scene": "res://scenes/review/source_stack_real_procedural_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_real_procedural_tour_topdown.png",
+          "band": "topdown",
+          "initial_tour_index": "0"
+        }
+      ],
+      "capture_bands": [
+        "close",
+        "iso",
+        "medium",
+        "topdown"
+      ],
+      "missing_bands": [],
+      "has_source_stack_contract": true,
+      "has_runtime_splat_weights": false,
+      "parity_status": "full_capture_set"
+    },
+    {
+      "id": "same_source_blend",
+      "scene": "res://scenes/review/source_stack_same_source_blend_tour.tscn",
+      "tour_profile": "same_source_blend",
+      "material_path": "res://textures/wgv3/terrain_source_stack_gloss_scrub_source_stack.tres",
+      "heightmap_path": "res://toporeview/gloss_mountain_textured_master_same_source_blend/heightmap.png",
+      "meta_path": "res://toporeview/gloss_mountain_textured_master_same_source_blend/meta.json",
+      "splat_weights_path": "",
+      "source_macro_albedo_override_path": "res://textures/source_stack/gloss_scrub_same_source_blend/source_macro_albedo.png",
+      "source_macro_valid_mask_override_path": "res://textures/source_stack/gloss_scrub_same_source_blend/source_macro_valid_mask.png",
+      "transition_rule_id": "opentopo_scrub_sparse__dry_wash_neighbor",
+      "captures": [],
+      "capture_bands": [],
+      "missing_bands": [
+        "close",
+        "medium",
+        "iso",
+        "topdown"
+      ],
+      "has_source_stack_contract": true,
+      "has_runtime_splat_weights": false,
+      "parity_status": "missing_close_medium_iso_topdown"
+    },
+    {
+      "id": "seam_integration",
+      "scene": "res://scenes/review/source_stack_seam_integration_tour.tscn",
+      "tour_profile": "seam_integration",
+      "material_path": "res://textures/wgv3/terrain_source_stack_gloss_scrub_source_stack.tres",
+      "heightmap_path": "res://toporeview/gloss_mountain_seam_integration_proof/heightmap.png",
+      "meta_path": "res://toporeview/gloss_mountain_seam_integration_proof/meta.json",
+      "splat_weights_path": "",
+      "source_macro_albedo_override_path": "res://textures/source_stack/gloss_scrub_seam_integration_proof/source_macro_albedo.png",
+      "source_macro_valid_mask_override_path": "res://textures/source_stack/gloss_scrub_seam_integration_proof/source_macro_valid_mask.png",
+      "transition_rule_id": "opentopo_scrub_sparse__dry_wash_neighbor",
+      "captures": [
+        {
+          "scene": "res://scenes/review/capture_source_stack_seam_integration_3d.tscn",
+          "target_scene": "res://scenes/review/source_stack_seam_integration_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_seam_integration_tour_3d_smoke.png",
+          "band": "medium",
+          "initial_tour_index": "2"
+        },
+        {
+          "scene": "res://scenes/review/capture_source_stack_seam_integration_iso.tscn",
+          "target_scene": "res://scenes/review/source_stack_seam_integration_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_seam_integration_tour_iso_smoke.png",
+          "band": "iso",
+          "initial_tour_index": "1"
+        },
+        {
+          "scene": "res://scenes/review/capture_source_stack_seam_integration_topdown.tscn",
+          "target_scene": "res://scenes/review/source_stack_seam_integration_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_seam_integration_tour_smoke.png",
+          "band": "topdown",
+          "initial_tour_index": "0"
+        }
+      ],
+      "capture_bands": [
+        "iso",
+        "medium",
+        "topdown"
+      ],
+      "missing_bands": [
+        "close"
+      ],
+      "has_source_stack_contract": true,
+      "has_runtime_splat_weights": false,
+      "parity_status": "missing_close"
+    },
+    {
+      "id": "seam_nonoverlap",
+      "scene": "res://scenes/review/source_stack_seam_nonoverlap_tour.tscn",
+      "tour_profile": "seam_integration",
+      "material_path": "res://textures/wgv3/terrain_source_stack_gloss_scrub_source_stack.tres",
+      "heightmap_path": "res://toporeview/gloss_mountain_seam_nonoverlap_proof/heightmap.png",
+      "meta_path": "res://toporeview/gloss_mountain_seam_nonoverlap_proof/meta.json",
+      "splat_weights_path": "",
+      "source_macro_albedo_override_path": "res://textures/source_stack/gloss_scrub_seam_nonoverlap_proof/source_macro_albedo.png",
+      "source_macro_valid_mask_override_path": "res://textures/source_stack/gloss_scrub_seam_nonoverlap_proof/source_macro_valid_mask.png",
+      "transition_rule_id": "opentopo_scrub_sparse__dry_wash_neighbor",
+      "captures": [
+        {
+          "scene": "res://scenes/review/capture_source_stack_seam_nonoverlap_3d.tscn",
+          "target_scene": "res://scenes/review/source_stack_seam_nonoverlap_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_seam_nonoverlap_tour_3d_smoke.png",
+          "band": "medium",
+          "initial_tour_index": "2"
+        },
+        {
+          "scene": "res://scenes/review/capture_source_stack_seam_nonoverlap_iso.tscn",
+          "target_scene": "res://scenes/review/source_stack_seam_nonoverlap_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_seam_nonoverlap_tour_iso_smoke.png",
+          "band": "iso",
+          "initial_tour_index": "1"
+        },
+        {
+          "scene": "res://scenes/review/capture_source_stack_seam_nonoverlap_topdown.tscn",
+          "target_scene": "res://scenes/review/source_stack_seam_nonoverlap_tour.tscn",
+          "output_path": "res://docs/captures/review/source_stack_seam_nonoverlap_tour_smoke.png",
+          "band": "topdown",
+          "initial_tour_index": "0"
+        }
+      ],
+      "capture_bands": [
+        "iso",
+        "medium",
+        "topdown"
+      ],
+      "missing_bands": [
+        "close"
+      ],
+      "has_source_stack_contract": true,
+      "has_runtime_splat_weights": false,
+      "parity_status": "missing_close"
+    }
+  ]
+}

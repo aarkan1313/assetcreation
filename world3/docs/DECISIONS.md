@@ -1250,10 +1250,9 @@ geometry, and gameplay camera parity.
 
 ## 2026-05-10 - M11 four-way corner proof uses all four RGBA splat channels
 
-**Decision**: Add a candidate four-way M11 proof that composes photoreal source,
-the current grassland sidecar, controlled fantasy lava/basalt, and canyon rock
-through one generated domain-field/splat/macro contract. Record it as candidate
-evidence until live validation.
+**Decision**: Accept the four-way M11 proof that composes photoreal source, the
+current grassland sidecar, controlled fantasy lava/basalt, and canyon rock
+through one generated domain-field/splat/macro contract.
 
 **Why**: A four-way proof should stress the actual runtime contract, not just
 repeat a same-source blend. The chosen fantasy material is intentionally
@@ -1267,6 +1266,28 @@ whole scene.
 `world3/scenes/review/source_stack_m11_fourway_corner_tour.tscn`, and captures
 under `world3/docs/captures/review/source_stack_m11_fourway_corner_tour_*.png`.
 
-**Implication**: If live validation accepts this proof, M11 should move to a
-small junction-case matrix, then M12 view-mode parity. If rejected, tune fantasy
-darkness and domain widths before adding more junction cases.
+**Implication**: M11 can move to a small junction-case matrix, then M12
+view-mode parity. T-junction, L-corner, and island variants are future
+case-library work, not blockers.
+
+---
+
+## 2026-05-10 - M12 starts with an evidence inventory before new parity scenes
+
+**Decision**: Start M12 with a repeatable audit of source-stack review scenes,
+their camera-band captures, and whether they bind the runtime splat/source-stack
+contract.
+
+**Why**: We already have many review scenes, but they are not equivalent. Some
+are current M10/M11 workflow evidence with close/medium/iso/topdown captures;
+older cross-source scenes are historical evidence and usually lack close-band
+captures; gallery/walk paths still diverge from the source-stack review contract.
+
+**Evidence**:
+`world3/pipeline/audit_m12_view_mode_parity.py`,
+`world3/docs/M12_VIEW_MODE_PARITY_AUDIT_2026_05_10.md`, and
+`world3/docs/captures/review/m12_view_mode_parity_audit.json`.
+
+**Implication**: The next M12 implementation should build one parity
+scene/template around an accepted proof before globally updating gallery or walk
+mode.

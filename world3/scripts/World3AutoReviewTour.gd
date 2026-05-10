@@ -51,7 +51,7 @@ const EcotoneScatterOverlayScript = preload("res://scripts/EcotoneScatterOverlay
 @export var scatter_soil_mask_path: String = ""
 @export var scatter_wash_mask_path: String = ""
 @export var scatter_no_mask_path: String = ""
-@export_enum("standard", "full_map_fast", "same_source_blend", "seam_integration", "ecotone_layer", "junction_layer", "junction_fourway") var tour_profile: String = "standard"
+@export_enum("standard", "full_map_fast", "same_source_blend", "seam_integration", "ecotone_layer", "junction_layer", "junction_fourway", "m12_parity") var tour_profile: String = "standard"
 @export var initial_tour_index: int = 0
 @export_range(0.0, 0.99, 0.01) var initial_tour_progress: float = 0.0
 @export var auto_play: bool = true
@@ -155,6 +155,9 @@ func _build_tour() -> void:
 		return
 	if tour_profile == "junction_fourway":
 		_build_junction_layer_tour()
+		return
+	if tour_profile == "m12_parity":
+		_build_m12_parity_tour()
 		return
 	_tour = [
 		{
@@ -491,6 +494,56 @@ func _build_junction_layer_tour() -> void:
 	]
 
 
+func _build_m12_parity_tour() -> void:
+	var source_size: Vector2 = _review_source_size_m()
+	var x_span: float = clamp(source_size.x * 0.46, 180.0, 285.0)
+	var z_span: float = clamp(source_size.y * 0.46, 180.0, 285.0)
+	var iso_size: float = clamp(max(source_size.x, source_size.y) * 0.78, 360.0, 600.0)
+	var topdown_size: float = clamp(max(source_size.x, source_size.y) * 0.86, 420.0, 620.0)
+	_tour = [
+		{
+			"name": "Close play band",
+			"mode": "perspective",
+			"duration": 6.0,
+			"focus": Vector2(-x_span * 0.20, 8.0),
+			"focus_end": Vector2(x_span * 0.14, 24.0),
+			"camera": Vector3(-118.0, 72.0, -142.0),
+			"camera_end": Vector3(-94.0, 78.0, -126.0),
+			"fov": 50.0
+		},
+		{
+			"name": "Medium play band",
+			"mode": "perspective",
+			"duration": 6.0,
+			"focus": Vector2(-x_span * 0.36, -z_span * 0.06),
+			"focus_end": Vector2(x_span * 0.34, z_span * 0.12),
+			"camera": Vector3(-242.0, 176.0, -296.0),
+			"camera_end": Vector3(-210.0, 184.0, -264.0),
+			"fov": 48.0
+		},
+		{
+			"name": "Iso tactical band",
+			"mode": "ortho",
+			"duration": 6.0,
+			"focus": Vector2(-x_span * 0.16, -z_span * 0.10),
+			"focus_end": Vector2(x_span * 0.18, z_span * 0.16),
+			"camera": Vector3(-390.0, 450.0, -455.0),
+			"camera_end": Vector3(-360.0, 450.0, -425.0),
+			"size": iso_size
+		},
+		{
+			"name": "Topdown map band",
+			"mode": "topdown",
+			"duration": 6.0,
+			"focus": Vector2(-x_span * 0.20, -z_span * 0.08),
+			"focus_end": Vector2(x_span * 0.22, z_span * 0.08),
+			"camera": Vector3(0.0, 900.0, 0.01),
+			"camera_end": Vector3(0.0, 900.0, 0.01),
+			"size": topdown_size
+		}
+	]
+
+
 func _review_source_size_m() -> Vector2:
 	var f: FileAccess = FileAccess.open(meta_path, FileAccess.READ)
 	if f == null:
@@ -657,7 +710,7 @@ func _apply_source_macro_overrides(mat: ShaderMaterial) -> void:
 
 
 func _setup_ecotone_scatter() -> void:
-	if tour_profile != "ecotone_layer" and tour_profile != "junction_layer" and tour_profile != "junction_fourway":
+	if tour_profile != "ecotone_layer" and tour_profile != "junction_layer" and tour_profile != "junction_fourway" and tour_profile != "m12_parity":
 		return
 	if scatter_shrub_mask_path == "" and scatter_grass_mask_path == "" and scatter_rock_mask_path == "":
 		return
@@ -814,6 +867,9 @@ func _update_overlay(frame: Dictionary, t: float) -> void:
 	if tour_profile == "junction_fourway":
 		workflow_text = "M11 four-way corner/layer proof"
 		view_text = "topdown, iso, medium/close 3D, footprint; S scatter, M mask debug"
+	if tour_profile == "m12_parity":
+		workflow_text = "M12 view-mode parity template"
+		view_text = "close play, medium play, iso/tactical, topdown/map; same source/material contract"
 	var scatter_text := ""
 	if _scatter != null and _scatter.has_method("get_scatter_summary"):
 		var summary: Dictionary = _scatter.call("get_scatter_summary")

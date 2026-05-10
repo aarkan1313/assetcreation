@@ -2,7 +2,9 @@
 
 ## Status
 
-Candidate M11 four-way/corner workflow proof, pending live user validation.
+Accepted M11 four-way/corner workflow proof.
+
+Live validation result, 2026-05-10: accepted as "super solid" workflow evidence.
 
 This extends the accepted three-way M11 contract to four explicit terrain
 domains meeting in one generated corner. It is workflow evidence, not
@@ -66,7 +68,7 @@ The generator also emits sidecar masks for review and future scatter:
 
 ## Visual Read
 
-Pass so far:
+Pass:
 
 - No hard X-shaped strip in the current topdown/iso/3D captures.
 - The center is a broad warped mixed-ownership field rather than four rectangles
@@ -78,7 +80,7 @@ Pass so far:
 Known limitations:
 
 - The fantasy lava domain is intentionally controlled, but still darker than the
-  other three domains. This is acceptable as a stress case, not a promotion.
+  other three domains. This is accepted as a stress case, not a promotion.
 - The grassland material is still sidecar quality and needs the planned
   FLUX/Aura/SD batch-review workflow before canonical promotion.
 - The proof uses one representative four-way layout, not a complete junction
@@ -125,7 +127,6 @@ Do not use `--headless` for screenshot captures; use it only for import.
 
 ## Next
 
-Live validation should decide whether this closes the first four-way M11 proof.
-If accepted, the next M11 work is a small junction-case matrix and then M12
-view-mode parity. If rejected, tune the fantasy darkness and domain widths before
-adding more junction cases.
+This closes the first four-way M11 proof. The remaining M11 work is the junction
+case matrix in `M11_JUNCTION_CASE_MATRIX_2026_05_10.md`; then roadmap work moves
+to M12 view-mode parity.
