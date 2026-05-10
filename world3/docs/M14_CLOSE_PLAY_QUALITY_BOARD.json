@@ -63,6 +63,7 @@
   "candidate_gate": [
     "Seam/PBR QA filters candidates but does not promote them.",
     "Visual veto rejects object landmarks, box panels, bright islands, central compositions, decorative tile motifs, and hero-shot depth of field.",
+    "Organic blockers should use broad curation: identify the viable model lane, run 10-50 same-model prompt-family samples when fast enough, then shortlist by 2x2 visual review.",
     "Survivors require Godot terrain-context review in close, medium, iso, and topdown bands.",
     "Close-play promotion requires source macro to stay low-frequency and generated PBR detail to carry near-field grain.",
     "Promotion requires an explicit M13 manifest state change; M14 does not bypass M13."
@@ -72,7 +73,8 @@
     "m14_trial_safe_close_conditional": 1,
     "methodology_rework_layered_substrate": 1,
     "m14_sidecar_runtime_pass_conditional": 1,
-    "queued_for_bakeoff": 2
+    "m14_flux50_shortlist_for_live_review": 1,
+    "queued_for_bakeoff": 1
   },
   "rows": [
     {
@@ -107,9 +109,9 @@
       "regen_id": "m8_tundra_moss_calm_v1",
       "current_source_asset_id": "tundra_moss",
       "failure_mode": "moss detail is too high-frequency and can turn into colored speckle in runtime",
-      "latest": "-",
-      "m14_status": "queued_for_bakeoff",
-      "next_action": "Run FLUX/Aura/SD batches, then visual-veto before terrain staging."
+      "latest": "5 M14 attempts through m14_tundra_moss_flux50",
+      "m14_status": "m14_flux50_shortlist_for_live_review",
+      "next_action": "Live-review the FLUX 50 shortlist sheet, then stage the chosen B-family tundra substrate sidecar in a close/medium/iso/topdown terrain scene before any M13 promotion."
     },
     {
       "material_id": "tundra_lichen",

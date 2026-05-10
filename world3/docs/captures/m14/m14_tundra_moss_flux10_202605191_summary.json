@@ -1,0 +1,14 @@
+[
+  {
+    "model": "flux2_klein",
+    "label": "FLUX.2-klein 4B (baseline)",
+    "pass1": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux10_202605191\\flux2_klein\\pass1_raw.png",
+    "pass1_seam": 0.009767122133013745,
+    "pass1_seconds": 4.1,
+    "pass3": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux10_202605191\\flux2_klein\\pass3_healed_shifted.png",
+    "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux10_202605191\\flux2_klein\\final_albedo.png",
+    "final_seam": 0.007371999351211073,
+    "pass3_seconds": 6.1,
+    "total_seconds": 10.2
+  }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "m14_tundra_moss_flux10_202605192",
+    "seed": 202605192,
+    "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux10_202605192\\flux2_klein\\final_albedo.png",
+    "final_seam": 0.006910543064115965,
+    "total_seconds": 10.2
+  },
+  {
+    "id": "m14_tundra_moss_flux10_202605194",
+    "seed": 202605194,
+    "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux10_202605194\\flux2_klein\\final_albedo.png",
+    "final_seam": 0.006993944636678201,
+    "total_seconds": 10.2
+  },
+  {
+    "id": "m14_tundra_moss_flux10_202605198",
+    "seed": 202605198,
+    "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux10_202605198\\flux2_klein\\final_albedo.png",
+    "final_seam": 0.010626361968653884,
+    "total_seconds": 10.2
+  }
+]

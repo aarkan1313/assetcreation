@@ -1,0 +1,484 @@
+{
+  "families": [
+    {
+      "key": "a",
+      "label": "flux10"
+    },
+    {
+      "key": "b",
+      "label": "pale sage peat loam"
+    },
+    {
+      "key": "c",
+      "label": "cold mineral + moss stain"
+    },
+    {
+      "key": "d",
+      "label": "pressed organic felt"
+    },
+    {
+      "key": "e",
+      "label": "damp not-black peat"
+    }
+  ],
+  "records": [
+    {
+      "family": "a",
+      "family_label": "flux10",
+      "seed": 202605190,
+      "id": "m14_tundra_moss_flux10_202605190",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux10_202605190\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.011232238089016244,
+      "total_seconds": 22.2
+    },
+    {
+      "family": "a",
+      "family_label": "flux10",
+      "seed": 202605191,
+      "id": "m14_tundra_moss_flux10_202605191",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux10_202605191\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.007371999351211073,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "a",
+      "family_label": "flux10",
+      "seed": 202605192,
+      "id": "m14_tundra_moss_flux10_202605192",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux10_202605192\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.006910543064115965,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "a",
+      "family_label": "flux10",
+      "seed": 202605193,
+      "id": "m14_tundra_moss_flux10_202605193",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux10_202605193\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.011675186714544887,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "a",
+      "family_label": "flux10",
+      "seed": 202605194,
+      "id": "m14_tundra_moss_flux10_202605194",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux10_202605194\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.006993944636678201,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "a",
+      "family_label": "flux10",
+      "seed": 202605195,
+      "id": "m14_tundra_moss_flux10_202605195",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux10_202605195\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.00912387963763937,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "a",
+      "family_label": "flux10",
+      "seed": 202605196,
+      "id": "m14_tundra_moss_flux10_202605196",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux10_202605196\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.010819376674536236,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "a",
+      "family_label": "flux10",
+      "seed": 202605197,
+      "id": "m14_tundra_moss_flux10_202605197",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux10_202605197\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.009051791979046521,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "a",
+      "family_label": "flux10",
+      "seed": 202605198,
+      "id": "m14_tundra_moss_flux10_202605198",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux10_202605198\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.010626361968653884,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "a",
+      "family_label": "flux10",
+      "seed": 202605199,
+      "id": "m14_tundra_moss_flux10_202605199",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux10_202605199\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.008048312059964917,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "b",
+      "family_label": "pale sage peat loam",
+      "seed": 202605200,
+      "id": "m14_tundra_moss_flux50_b_202605200",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_b_202605200\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.009626766147635525,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "b",
+      "family_label": "pale sage peat loam",
+      "seed": 202605201,
+      "id": "m14_tundra_moss_flux50_b_202605201",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_b_202605201\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.012874145273152154,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "b",
+      "family_label": "pale sage peat loam",
+      "seed": 202605202,
+      "id": "m14_tundra_moss_flux50_b_202605202",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_b_202605202\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.015622736935613706,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "b",
+      "family_label": "pale sage peat loam",
+      "seed": 202605203,
+      "id": "m14_tundra_moss_flux50_b_202605203",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_b_202605203\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.008585595083621684,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "b",
+      "family_label": "pale sage peat loam",
+      "seed": 202605204,
+      "id": "m14_tundra_moss_flux50_b_202605204",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_b_202605204\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.008563432821811323,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "b",
+      "family_label": "pale sage peat loam",
+      "seed": 202605205,
+      "id": "m14_tundra_moss_flux50_b_202605205",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_b_202605205\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.010863365164540081,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "b",
+      "family_label": "pale sage peat loam",
+      "seed": 202605206,
+      "id": "m14_tundra_moss_flux50_b_202605206",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_b_202605206\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.012667503371599866,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "b",
+      "family_label": "pale sage peat loam",
+      "seed": 202605207,
+      "id": "m14_tundra_moss_flux50_b_202605207",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_b_202605207\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.007448407106791859,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "b",
+      "family_label": "pale sage peat loam",
+      "seed": 202605208,
+      "id": "m14_tundra_moss_flux50_b_202605208",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_b_202605208\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.01601705736675798,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "b",
+      "family_label": "pale sage peat loam",
+      "seed": 202605209,
+      "id": "m14_tundra_moss_flux50_b_202605209",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_b_202605209\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.016947904276600347,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "c",
+      "family_label": "cold mineral + moss stain",
+      "seed": 202605210,
+      "id": "m14_tundra_moss_flux50_c_202605210",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_c_202605210\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.019557531958861975,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "c",
+      "family_label": "cold mineral + moss stain",
+      "seed": 202605211,
+      "id": "m14_tundra_moss_flux50_c_202605211",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_c_202605211\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.011384919374459342,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "c",
+      "family_label": "cold mineral + moss stain",
+      "seed": 202605212,
+      "id": "m14_tundra_moss_flux50_c_202605212",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_c_202605212\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.009199426189746732,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "c",
+      "family_label": "cold mineral + moss stain",
+      "seed": 202605213,
+      "id": "m14_tundra_moss_flux50_c_202605213",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_c_202605213\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.010590578143021915,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "c",
+      "family_label": "cold mineral + moss stain",
+      "seed": 202605214,
+      "id": "m14_tundra_moss_flux50_c_202605214",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_c_202605214\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.013473438701460977,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "c",
+      "family_label": "cold mineral + moss stain",
+      "seed": 202605215,
+      "id": "m14_tundra_moss_flux50_c_202605215",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_c_202605215\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.01049649342350298,
+      "total_seconds": 10.3
+    },
+    {
+      "family": "c",
+      "family_label": "cold mineral + moss stain",
+      "seed": 202605216,
+      "id": "m14_tundra_moss_flux50_c_202605216",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_c_202605216\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.00968920738868464,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "c",
+      "family_label": "cold mineral + moss stain",
+      "seed": 202605217,
+      "id": "m14_tundra_moss_flux50_c_202605217",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_c_202605217\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.009973027201076509,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "c",
+      "family_label": "cold mineral + moss stain",
+      "seed": 202605218,
+      "id": "m14_tundra_moss_flux50_c_202605218",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_c_202605218\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.0166332153648837,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "c",
+      "family_label": "cold mineral + moss stain",
+      "seed": 202605219,
+      "id": "m14_tundra_moss_flux50_c_202605219",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_c_202605219\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.018716574980175895,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "d",
+      "family_label": "pressed organic felt",
+      "seed": 202605220,
+      "id": "m14_tundra_moss_flux50_d_202605220",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_d_202605220\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.019402012221861786,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "d",
+      "family_label": "pressed organic felt",
+      "seed": 202605221,
+      "id": "m14_tundra_moss_flux50_d_202605221",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_d_202605221\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.019116220323913878,
+      "total_seconds": 16.5
+    },
+    {
+      "family": "d",
+      "family_label": "pressed organic felt",
+      "seed": 202605222,
+      "id": "m14_tundra_moss_flux50_d_202605222",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_d_202605222\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.0209109477124183,
+      "total_seconds": 18.3
+    },
+    {
+      "family": "d",
+      "family_label": "pressed organic felt",
+      "seed": 202605223,
+      "id": "m14_tundra_moss_flux50_d_202605223",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_d_202605223\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.011912159873906671,
+      "total_seconds": 16.3
+    },
+    {
+      "family": "d",
+      "family_label": "pressed organic felt",
+      "seed": 202605224,
+      "id": "m14_tundra_moss_flux50_d_202605224",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_d_202605224\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.02071939540981834,
+      "total_seconds": 16.3
+    },
+    {
+      "family": "d",
+      "family_label": "pressed organic felt",
+      "seed": 202605225,
+      "id": "m14_tundra_moss_flux50_d_202605225",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_d_202605225\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.013094112127847463,
+      "total_seconds": 16.3
+    },
+    {
+      "family": "d",
+      "family_label": "pressed organic felt",
+      "seed": 202605226,
+      "id": "m14_tundra_moss_flux50_d_202605226",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_d_202605226\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.017876952749543446,
+      "total_seconds": 16.3
+    },
+    {
+      "family": "d",
+      "family_label": "pressed organic felt",
+      "seed": 202605227,
+      "id": "m14_tundra_moss_flux50_d_202605227",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_d_202605227\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.02288086312956555,
+      "total_seconds": 1784.9
+    },
+    {
+      "family": "d",
+      "family_label": "pressed organic felt",
+      "seed": 202605228,
+      "id": "m14_tundra_moss_flux50_d_202605228",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_d_202605228\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.02393821449382449,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "d",
+      "family_label": "pressed organic felt",
+      "seed": 202605229,
+      "id": "m14_tundra_moss_flux50_d_202605229",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_d_202605229\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.010429247277189062,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "e",
+      "family_label": "damp not-black peat",
+      "seed": 202605230,
+      "id": "m14_tundra_moss_flux50_e_202605230",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_e_202605230\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.03074294404495867,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "e",
+      "family_label": "damp not-black peat",
+      "seed": 202605231,
+      "id": "m14_tundra_moss_flux50_e_202605231",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_e_202605231\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.019648837361231256,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "e",
+      "family_label": "damp not-black peat",
+      "seed": 202605232,
+      "id": "m14_tundra_moss_flux50_e_202605232",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_e_202605232\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.018519730617430796,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "e",
+      "family_label": "damp not-black peat",
+      "seed": 202605233,
+      "id": "m14_tundra_moss_flux50_e_202605233",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_e_202605233\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.01845729406958862,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "e",
+      "family_label": "damp not-black peat",
+      "seed": 202605234,
+      "id": "m14_tundra_moss_flux50_e_202605234",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_e_202605234\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.01704318951845444,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "e",
+      "family_label": "damp not-black peat",
+      "seed": 202605235,
+      "id": "m14_tundra_moss_flux50_e_202605235",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_e_202605235\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.014762906694540561,
+      "total_seconds": 10.3
+    },
+    {
+      "family": "e",
+      "family_label": "damp not-black peat",
+      "seed": 202605236,
+      "id": "m14_tundra_moss_flux50_e_202605236",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_e_202605236\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.019842403988249713,
+      "total_seconds": 10.3
+    },
+    {
+      "family": "e",
+      "family_label": "damp not-black peat",
+      "seed": 202605237,
+      "id": "m14_tundra_moss_flux50_e_202605237",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_e_202605237\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.014499581178212706,
+      "total_seconds": 10.2
+    },
+    {
+      "family": "e",
+      "family_label": "damp not-black peat",
+      "seed": 202605238,
+      "id": "m14_tundra_moss_flux50_e_202605238",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_e_202605238\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.01604758949382449,
+      "total_seconds": 12.3
+    },
+    {
+      "family": "e",
+      "family_label": "damp not-black peat",
+      "seed": 202605239,
+      "id": "m14_tundra_moss_flux50_e_202605239",
+      "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_flux50_e_202605239\\flux2_klein\\final_albedo.png",
+      "final_seam": 0.016485627147611495,
+      "total_seconds": 12.4
+    }
+  ],
+  "family_sheets": [
+    "world3\\docs\\captures\\m14\\m14_tundra_moss_flux50_family_a_contact.png",
+    "world3\\docs\\captures\\m14\\m14_tundra_moss_flux50_family_b_contact.png",
+    "world3\\docs\\captures\\m14\\m14_tundra_moss_flux50_family_c_contact.png",
+    "world3\\docs\\captures\\m14\\m14_tundra_moss_flux50_family_d_contact.png",
+    "world3\\docs\\captures\\m14\\m14_tundra_moss_flux50_family_e_contact.png"
+  ],
+  "combined_sheet": "world3\\docs\\captures\\m14\\m14_tundra_moss_flux50_contact_sheet_final.png"
+}

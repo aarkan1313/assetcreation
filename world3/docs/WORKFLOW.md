@@ -725,12 +725,19 @@ M14 organic materials use a layered review method:
 ```powershell
 # Run a FLUX/Aura/SD bakeoff for a candidate prompt.
 python pipelines/textures/diversity_compare.py --prompt "<material prompt>" --id <m14_id> --seed <seed> --models active --heal-strength 0.35
+
+# When one lane is clearly the viable one, run a broad same-model sweep.
+python pipelines/textures/diversity_compare.py --prompt "<family prompt>" --id <m14_id_family_seed> --seed <seed> --models flux2_klein --heal-strength 0.30
 ```
 
 For organic terrain, do not ask one flat tile to carry the whole readable
 biome. M14 should produce calm substrate/detail candidates; M15 scatter/features
 carry blades, clumps, leaves, sticks, roots, and other readable objects. Record
 the visual veto before staging a sidecar for close/medium/iso/topdown review.
+If a candidate family is cheap enough to run, produce 10-50 same-model samples
+across prompt families and shortlist from 2x2 sheets. This is the production
+method for organic blockers: curation first, PBR/runtime staging only after the
+tile survives object-repeat review.
 
 When a bakeoff survivor is albedo-only, convert and stage it as a quarantined
 sidecar before source-stack runtime review:

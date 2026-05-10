@@ -1,0 +1,38 @@
+[
+  {
+    "model": "flux2_klein",
+    "label": "FLUX.2-klein 4B (baseline)",
+    "pass1": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_peatfelt_v3\\flux2_klein\\pass1_raw.png",
+    "pass1_seam": 0.00918106448691609,
+    "pass1_seconds": 16.1,
+    "pass3": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_peatfelt_v3\\flux2_klein\\pass3_healed_shifted.png",
+    "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_peatfelt_v3\\flux2_klein\\final_albedo.png",
+    "final_seam": 0.010359376689554499,
+    "pass3_seconds": 6.1,
+    "total_seconds": 22.2
+  },
+  {
+    "model": "auraflow_03",
+    "label": "AuraFlow v0.3 Q8_0",
+    "pass1": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_peatfelt_v3\\auraflow_03\\pass1_raw.png",
+    "pass1_seam": 0.007790218061412678,
+    "pass1_seconds": 56.1,
+    "pass3": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_peatfelt_v3\\auraflow_03\\pass3_healed_shifted.png",
+    "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_peatfelt_v3\\auraflow_03\\final_albedo.png",
+    "final_seam": 0.003322104601069901,
+    "pass3_seconds": 46.1,
+    "total_seconds": 102.2
+  },
+  {
+    "model": "sd35_large",
+    "label": "SD 3.5 Large Q8_0",
+    "pass1": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_peatfelt_v3\\sd35_large\\pass1_raw.png",
+    "pass1_seam": 0.0563102420042772,
+    "pass1_seconds": 54.1,
+    "pass3": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_peatfelt_v3\\sd35_large\\pass3_healed_shifted.png",
+    "final": "D:\\tmp\\diversity_compare_2026_05_09\\m14_tundra_moss_peatfelt_v3\\sd35_large\\final_albedo.png",
+    "final_seam": 0.026602964830233566,
+    "pass3_seconds": 36.2,
+    "total_seconds": 90.2
+  }
+]

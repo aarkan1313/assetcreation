@@ -246,7 +246,52 @@
       "pbr_backend": "sm",
       "failure_mode": "moss detail is too high-frequency and can turn into colored speckle in runtime",
       "prompt": "top-down orthographic macro photograph of low tundra moss carpet with exposed dark gritty soil and tiny stone flecks, muted olive and brown tones, soft continuous cushion texture, even overcast lighting, seamless PBR terrain texture, no tall plants, no bright spots, no flower heads, no perspective, no shadows",
-      "source_stack_role": "albedo candidate first; normal/detail disabled until close/mid/far terrain review passes"
+      "source_stack_role": "albedo candidate first; normal/detail disabled until close/mid/far terrain review passes",
+      "latest_tested_candidate": {
+        "status": "m14_flux50_shortlist_for_live_review",
+        "m14_prompt_bakeoff_review": {
+          "status": "m14_flux50_shortlist_for_live_review",
+          "doc": "world3/docs/M14_TUNDRA_MOSS_BAKEOFF_REVIEW_2026_05_10.md",
+          "attempts": [
+            {
+              "id": "m14_tundra_moss_substrate_v1",
+              "grid": "world3/docs/captures/m14/m14_tundra_moss_substrate_v1_grid_final.png",
+              "summary": "world3/docs/captures/m14/m14_tundra_moss_substrate_v1_summary.json",
+              "verdict": "AuraFlow is continuous but too dark; FLUX and SD produce object-like moss/cushion blobs."
+            },
+            {
+              "id": "m14_tundra_moss_substrate_v2",
+              "grid": "world3/docs/captures/m14/m14_tundra_moss_substrate_v2_grid_final.png",
+              "summary": "world3/docs/captures/m14/m14_tundra_moss_substrate_v2_summary.json",
+              "verdict": "Lighter prompt reintroduces plant clumps and object landmarks; no promotion."
+            },
+            {
+              "id": "m14_tundra_moss_peatfelt_v3",
+              "grid": "world3/docs/captures/m14/m14_tundra_moss_peatfelt_v3_grid_final.png",
+              "summary": "world3/docs/captures/m14/m14_tundra_moss_peatfelt_v3_summary.json",
+              "verdict": "AuraFlow was initially plausible by seam score but live review rejected it as effectively black; FLUX is scatter reference only; SD is rejected."
+            },
+            {
+              "id": "m14_tundra_moss_flux10",
+              "grid": "world3/docs/captures/m14/m14_tundra_moss_flux10_contact_sheet_final.png",
+              "summary": "world3/docs/captures/m14/m14_tundra_moss_flux10_summary.json",
+              "verdict": "Fast FLUX-only sweep found brighter candidates; 202605192 is the safest moss-colored fallback, while 202605198 was rejected after 2x2 repeat review."
+            },
+            {
+              "id": "m14_tundra_moss_flux50",
+              "grid": "world3/docs/captures/m14/m14_tundra_moss_flux50_shortlist6_single_2x2.png",
+              "summary": "world3/docs/captures/m14/m14_tundra_moss_flux50_shortlist6_summary.json",
+              "verdict": "50-candidate FLUX family sweep prefers B-family pale peat-loam substrate; b8/202605207, b4/202605203, and b5/202605204 are the current sidecar shortlist pending live user review."
+            }
+          ],
+          "selected_shortlist": [
+            "m14_tundra_moss_flux50_b_202605207",
+            "m14_tundra_moss_flux50_b_202605203",
+            "m14_tundra_moss_flux50_b_202605204"
+          ],
+          "next_action": "Live-review the FLUX 50 shortlist sheet, then stage the chosen B-family tundra substrate sidecar in a close/medium/iso/topdown terrain scene before any M13 promotion."
+        }
+      }
     },
     {
       "material_id": "tundra_lichen",

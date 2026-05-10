@@ -9,10 +9,11 @@ close, medium, iso, and topdown review.
 ## Summary
 
 - Materials tracked: `5`.
+- `m14_flux50_shortlist_for_live_review`: `1`.
 - `m14_sidecar_runtime_pass_conditional`: `1`.
 - `m14_trial_safe_close_conditional`: `1`.
 - `methodology_rework_layered_substrate`: `1`.
-- `queued_for_bakeoff`: `2`.
+- `queued_for_bakeoff`: `1`.
 
 ## Active Model Lanes
 
@@ -29,13 +30,14 @@ close, medium, iso, and topdown review.
 | `grassland_grass` | `m14_trial_safe_close_conditional` | `m8_grassland_grass_calm_v3` | Keep sidecar-only; use M14 bakeoff lanes for stronger close-play candidates. | object-like dry grass blades and noisy yellow clumps dominate close views |
 | `grass` | `methodology_rework_layered_substrate` | `3 M14 attempts through m14_grass_substrate_v3` | Keep M14 grass work limited to substrate/detail candidates; let M15 scatter/features carry actual blades, clumps, dry stems, and vegetation identity. | green organic speckle and small clover/object repetition reads too busy at walk scale |
 | `temperate_forest_grass` | `m14_sidecar_runtime_pass_conditional` | `3 M14 attempts through m14_temperate_forest_humus_v3` | Keep as accepted M14 sidecar evidence; do not M13-promote until true forest-source review plus M15 scatter/features exist. Continue to tundra_moss and tundra_lichen bakeoffs. | leaf-litter objects and high contrast fragments create visual noise in close terrain |
-| `tundra_moss` | `queued_for_bakeoff` | `-` | Run FLUX/Aura/SD batches, then visual-veto before terrain staging. | moss detail is too high-frequency and can turn into colored speckle in runtime |
+| `tundra_moss` | `m14_flux50_shortlist_for_live_review` | `5 M14 attempts through m14_tundra_moss_flux50` | Live-review the FLUX 50 shortlist sheet, then stage the chosen B-family tundra substrate sidecar in a close/medium/iso/topdown terrain scene before any M13 promotion. | moss detail is too high-frequency and can turn into colored speckle in runtime |
 | `tundra_lichen` | `queued_for_bakeoff` | `-` | Run FLUX/Aura/SD batches, then visual-veto before terrain staging. | lichen spots and pale contrast can repeat as visible object clusters |
 
 ## Candidate Gate
 
 - Seam/PBR QA filters candidates but does not promote them.
 - Visual veto rejects object landmarks, box panels, bright islands, central compositions, decorative tile motifs, and hero-shot depth of field.
+- Organic blockers should use broad curation: identify the viable model lane, run 10-50 same-model prompt-family samples when fast enough, then shortlist by 2x2 visual review.
 - Survivors require Godot terrain-context review in close, medium, iso, and topdown bands.
 - Close-play promotion requires source macro to stay low-frequency and generated PBR detail to carry near-field grain.
 - Promotion requires an explicit M13 manifest state change; M14 does not bypass M13.
@@ -49,13 +51,13 @@ close, medium, iso, and topdown review.
 
 ## Next Move
 
-1. Run close/medium/iso/topdown runtime trials for
-   any future sidecar candidates before M13 promotion.
-2. Convert `grass` from a monolithic plant-photo tile target into a
-   layered substrate/detail target, then rerun the active FLUX/Aura/SD
-   lanes only against that corrected brief.
-3. Generate first bakeoff batches for `temperate_forest_grass`,
-   `tundra_moss`, and `tundra_lichen` in queue order.
+1. Live-review the `tundra_moss` FLUX 50 shortlist and choose whether
+   the B-family pale substrate direction is acceptable.
+2. Stage the accepted `tundra_moss` sidecar in a close/medium/iso/topdown
+   terrain-context scene before any M13 promotion.
+3. Start `tundra_lichen` with the same method: small multi-model bakeoff,
+   then 10-50 same-model prompt-family samples if one lane is clearly
+   better.
 4. Feed survivors back into `production_promotion_candidates.json` only
    after the M14 board and gameplay-band captures support them.
 
