@@ -22,7 +22,7 @@ play quality, placeholder scatter, missing bands, or incomplete live review.
 | `m11_three_way_junction_workflow` | `junction_case_library` | `accepted_workflow` | `workflow_ready_not_production` | close:pass, medium:pass, iso:pass, topdown:pass | - |
 | `m10_ecotone_layer_workflow` | `unlike_biome_ecotone` | `accepted_workflow` | `conditional` | close:conditional, medium:pass, iso:pass, topdown:pass | - |
 | `m10_real_procedural_gloss_canyon` | `real_to_procedural_neighbor` | `accepted_workflow` | `conditional` | close:conditional, medium:pass, iso:pass, topdown:pass | - |
-| `m8_grassland_grass_calm_v3` | `comfyui_texture_regen` | `sidecar_candidate` | `conditional` | close:conditional, medium:not_reviewed, iso:not_applicable, topdown:not_applicable | - |
+| `m8_grassland_grass_calm_v3` | `comfyui_texture_regen` | `sidecar_candidate` | `conditional` | close:conditional, medium:pass, iso:pass, topdown:pass | - |
 
 ## Blockers And Notes
 
@@ -52,8 +52,9 @@ play quality, placeholder scatter, missing bands, or incomplete live review.
 - Needs production scatter/features before AAA close-play promotion.
 
 ### m8_grassland_grass_calm_v3
-- Slightly pale/hazy under detail stress.
-- Needs M4/M7 rerender trials before canonical promotion.
+- M14 runtime trial is safe but too subtle for close-play production promotion.
+- Earlier detail-stress review remains slightly pale/hazy.
+- Keep as low-strength sidecar while generating stronger FLUX/Aura/SD organic candidates.
 
 ## Gate Rule
 

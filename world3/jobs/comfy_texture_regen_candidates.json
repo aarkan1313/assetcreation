@@ -61,6 +61,28 @@
           "detail_stress_result": "better_than_current_less_tufted_still_pale_hazy",
           "promotion": "sidecar_candidate_only"
         },
+        "m14_runtime_trial": {
+          "status": "m14_trial_safe_close_conditional",
+          "doc": "world3/docs/M14_GRASSLAND_GRASS_RUNTIME_TRIAL_2026_05_10.md",
+          "contact_sheet": "world3/docs/captures/m14/m14_grassland_comfy_v3_runtime_trial_contact_sheet.png",
+          "captures": {
+            "current_close": "world3/docs/captures/m14/m14_grassland_current_close.png",
+            "candidate_close": "world3/docs/captures/m14/m14_grassland_comfy_v3_close.png",
+            "current_medium": "world3/docs/captures/m14/m14_grassland_current_medium.png",
+            "candidate_medium": "world3/docs/captures/m14/m14_grassland_comfy_v3_medium.png",
+            "current_iso": "world3/docs/captures/m14/m14_grassland_current_iso.png",
+            "candidate_iso": "world3/docs/captures/m14/m14_grassland_comfy_v3_iso.png",
+            "current_topdown": "world3/docs/captures/m14/m14_grassland_current_topdown.png",
+            "candidate_topdown": "world3/docs/captures/m14/m14_grassland_comfy_v3_topdown.png"
+          },
+          "band_status": {
+            "close": "conditional",
+            "medium": "pass",
+            "iso": "pass",
+            "topdown": "pass"
+          },
+          "verdict": "safe sidecar evidence; not a close-play production promotion"
+        },
         "notes": "Moved away from grass-cover wording toward hardpan soil plus flattened straw fragments. Passed candidate terrain-context gate, but do not promote until M4/M7 rerender trials pass without washout."
       }
     },

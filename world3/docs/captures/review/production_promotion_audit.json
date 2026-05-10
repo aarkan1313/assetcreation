@@ -178,9 +178,9 @@
       "production_status": "sidecar_only",
       "band_status": {
         "close": "conditional",
-        "medium": "not_reviewed",
-        "iso": "not_applicable",
-        "topdown": "not_applicable"
+        "medium": "pass",
+        "iso": "pass",
+        "topdown": "pass"
       },
       "missing_files": [],
       "missing_required_captures": [],
@@ -188,13 +188,12 @@
       "conditional_bands": [
         "close"
       ],
-      "not_reviewed_bands": [
-        "medium"
-      ],
+      "not_reviewed_bands": [],
       "readiness": "conditional",
       "blockers": [
-        "Slightly pale/hazy under detail stress.",
-        "Needs M4/M7 rerender trials before canonical promotion."
+        "M14 runtime trial is safe but too subtle for close-play production promotion.",
+        "Earlier detail-stress review remains slightly pale/hazy.",
+        "Keep as low-strength sidecar while generating stronger FLUX/Aura/SD organic candidates."
       ],
       "source_doc": "world3/docs/M8_COMFYUI_TERRAIN_CONTEXT_REVIEW_2026_05_08.md",
       "scene": ""

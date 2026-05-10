@@ -1,6 +1,6 @@
 # M8 Organic Regeneration Queue Status
 
-Date: 2026-05-08
+Date: 2026-05-10
 
 This is the current execution board for the M8 ComfyUI/`aaa_texture.py`
 organic source-material cleanup lane. It turns the queue JSON into an
@@ -10,7 +10,7 @@ promotion.
 ## Summary
 
 - Total blockers: `5`
-- Sidecar candidates needing runtime trials: `1`
+- Sidecar candidates needing runtime trials: `0`
 - Visual rejected: `1`
 - Queued untested: `3`
 
@@ -32,7 +32,7 @@ Organic-specific hard rule:
 
 | Material | Status | Latest | Next Action |
 |----------|--------|--------|-------------|
-| `grassland_grass` | `sidecar_candidate_needs_runtime_trials` | `m8_grassland_grass_calm_v3` | Keep quarantined; run M4/M7 rerender trials and only promote if terrain context stays clean. |
+| `grassland_grass` | `m14_trial_safe_close_conditional` | `m8_grassland_grass_calm_v3` | Keep as sidecar-only; M14 runtime trial was safe but not enough for production promotion. |
 | `grass` | `visual_rejected` | `4 rejected attempts through m8_grass_calm_v4_anchor_v1` | Do not stage; revise prompt and require visual landmark/object veto before any sidecar material. |
 | `temperate_forest_grass` | `queued_untested` | `-` | Generate the first candidate, then run seam/PBR QA, visual veto, noise audit, and terrain-context review. |
 | `tundra_moss` | `queued_untested` | `-` | Generate the first candidate, then run seam/PBR QA, visual veto, noise audit, and terrain-context review. |
@@ -40,8 +40,8 @@ Organic-specific hard rule:
 
 ## Next Execution Order
 
-1. Run M4/M7 runtime trials for `m8_grassland_grass_calm_v3` while it
-   remains sidecar-only.
+1. Keep `m8_grassland_grass_calm_v3` sidecar-only after its M14
+   runtime trial; use it as a safe reference, not a promotion target.
 2. Retry `grass` only after a prompt revision explicitly suppresses
    patch islands, box panels, dark landmarks, and individual plant objects.
 3. Generate the untested blockers in queue order:

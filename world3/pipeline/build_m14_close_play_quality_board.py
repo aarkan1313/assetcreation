@@ -44,6 +44,13 @@ def classify(candidate: dict[str, Any]) -> tuple[str, str]:
             "Run FLUX/Aura/SD batches, then visual-veto before terrain staging.",
         )
 
+    trial = latest.get("m14_runtime_trial")
+    if trial:
+        return (
+            str(trial.get("status", "m14_runtime_trial_recorded")),
+            "Keep sidecar-only; use M14 bakeoff lanes for stronger close-play candidates.",
+        )
+
     status = str(latest.get("status", ""))
     if status == "terrain_context_candidate_pass_not_promoted":
         return (
@@ -197,7 +204,7 @@ def markdown(report: dict[str, Any]) -> str:
             "## Next Move",
             "",
             "1. Run close/medium/iso/topdown runtime trials for",
-            "   `m8_grassland_grass_calm_v3` while it remains sidecar-only.",
+            "   any future sidecar candidates before M13 promotion.",
             "2. Rework `grass` prompt from the darker v1 direction and rerun the active",
             "   FLUX/Aura/SD lanes.",
             "3. Generate first bakeoff batches for `temperate_forest_grass`,",

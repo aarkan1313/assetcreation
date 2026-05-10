@@ -1,0 +1,51 @@
+{
+  "output": "world3\\docs\\captures\\m14\\m14_grassland_comfy_v3_runtime_trial_contact_sheet.png",
+  "title": "M14 grassland_grass runtime trial",
+  "subtitle": "Current grassland_grass vs m8_grassland_grass_calm_v3 across close, medium, iso, topdown",
+  "items": [
+    {
+      "label": "Current close",
+      "path": "world3\\docs\\captures\\m14\\m14_grassland_current_close.png",
+      "note": "baseline source-stack close"
+    },
+    {
+      "label": "Candidate close",
+      "path": "world3\\docs\\captures\\m14\\m14_grassland_comfy_v3_close.png",
+      "note": "m8_grassland_grass_calm_v3 close"
+    },
+    {
+      "label": "Current medium",
+      "path": "world3\\docs\\captures\\m14\\m14_grassland_current_medium.png",
+      "note": "baseline medium band"
+    },
+    {
+      "label": "Candidate medium",
+      "path": "world3\\docs\\captures\\m14\\m14_grassland_comfy_v3_medium.png",
+      "note": "candidate medium band"
+    },
+    {
+      "label": "Current iso",
+      "path": "world3\\docs\\captures\\m14\\m14_grassland_current_iso.png",
+      "note": "baseline iso band"
+    },
+    {
+      "label": "Candidate iso",
+      "path": "world3\\docs\\captures\\m14\\m14_grassland_comfy_v3_iso.png",
+      "note": "candidate iso band"
+    },
+    {
+      "label": "Current topdown",
+      "path": "world3\\docs\\captures\\m14\\m14_grassland_current_topdown.png",
+      "note": "baseline topdown"
+    },
+    {
+      "label": "Candidate topdown",
+      "path": "world3\\docs\\captures\\m14\\m14_grassland_comfy_v3_topdown.png",
+      "note": "candidate topdown"
+    }
+  ],
+  "size_px": [
+    2198,
+    1008
+  ]
+}

@@ -359,6 +359,12 @@ terrain quality.
 active FLUX/Aura/SD bakeoff plan with gameplay-band review and M13 promotion
 gate requirements.
 
+M14 first runtime trial is recorded in
+`M14_GRASSLAND_GRASS_RUNTIME_TRIAL_2026_05_10.md`. The
+`m8_grassland_grass_calm_v3` candidate is safe across medium/iso/topdown but
+still close-conditional and remains sidecar-only. Next M14 work is `grass`
+prompt rework plus first bakeoffs for the remaining untested organic blockers.
+
 2026-05-10 iso renderer note: M16 now includes a source-stack iso impostor
 sidecar ladder. The first rung is a cached 2D iso card from the M12 runtime
 parity bake; later rungs are chunk impostors, 2D heightfield shader, and hybrid

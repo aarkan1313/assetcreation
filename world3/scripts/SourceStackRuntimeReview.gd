@@ -7,7 +7,7 @@ extends Node3D
 @export var chunk_size_m: float = 128.0
 @export var chunk_resolution_m: float = 4.0
 @export var view_radius_chunks: int = 1
-@export_enum("mid_oblique", "close_oblique", "topdown") var review_shot: String = "mid_oblique"
+@export_enum("mid_oblique", "close_oblique", "iso_oblique", "topdown") var review_shot: String = "mid_oblique"
 @export var overlay_text: String = "Source-Stack Runtime Review | OpenTopo macro albedo + tileable real detail"
 
 
@@ -59,6 +59,10 @@ func _add_camera(anchor_position: Vector3, terrain_y: float) -> void:
 		cam.size = 155.0
 		cam.position = target + Vector3(-94.0, 168.0, -126.0)
 		cam.look_at(target + Vector3(16.0, 0.0, 12.0), Vector3.UP)
+	elif review_shot == "iso_oblique":
+		cam.size = 260.0
+		cam.position = target + Vector3(-214.0, 260.0, -214.0)
+		cam.look_at(target + Vector3(0.0, 0.0, 0.0), Vector3.UP)
 	elif review_shot == "topdown":
 		cam.size = 330.0
 		cam.position = target + Vector3(0.0, 740.0, 0.01)

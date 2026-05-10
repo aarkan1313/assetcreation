@@ -238,6 +238,10 @@ the active model lanes to FLUX.2-klein, AuraFlow v0.3, and SD 3.5 Large;
 Qwen-Image is parked and Chroma1-HD is rejected for this phase. First M14 move:
 runtime trials for `m8_grassland_grass_calm_v3`, then active bakeoffs for
 `grass`, `temperate_forest_grass`, `tundra_moss`, and `tundra_lichen`.
+The `m8_grassland_grass_calm_v3` runtime trial is now recorded in
+`world3/docs/M14_GRASSLAND_GRASS_RUNTIME_TRIAL_2026_05_10.md`; it is safe but
+close-conditional, so it remains sidecar-only. Continue with `grass` prompt
+rework and FLUX/Aura/SD bakeoffs for the remaining blockers.
 
 M16 now has an iso renderer research sidecar:
 `world3/docs/M16_ISO_IMPOSTOR_RESEARCH_PLAN_2026_05_10.md`. The first rung is

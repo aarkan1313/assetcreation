@@ -170,5 +170,6 @@ Exit:
 M13 gate hygiene is active for every new artifact. The candidate manifest and
 audit are clean after M12 workflow acceptance and the M16 iso sidecar entry.
 M14 close-play terrain quality is now active. Start with the M14 board's first
-move: runtime trials for `m8_grassland_grass_calm_v3`, then active
-FLUX/Aura/SD bakeoffs for the remaining organic blockers.
+move after the `m8_grassland_grass_calm_v3` runtime trial: rework `grass` from
+the darker v1 direction, then run active FLUX/Aura/SD bakeoffs for the remaining
+organic blockers.

@@ -9,9 +9,9 @@ close, medium, iso, and topdown review.
 ## Summary
 
 - Materials tracked: `5`.
+- `m14_trial_safe_close_conditional`: `1`.
 - `prompt_rework_before_bakeoff`: `1`.
 - `queued_for_bakeoff`: `3`.
-- `sidecar_needs_m14_runtime_trials`: `1`.
 
 ## Active Model Lanes
 
@@ -25,7 +25,7 @@ close, medium, iso, and topdown review.
 
 | Material | Status | Latest | Next Action | Failure Mode |
 |----------|--------|--------|-------------|--------------|
-| `grassland_grass` | `sidecar_needs_m14_runtime_trials` | `m8_grassland_grass_calm_v3` | Run M4/M7-style close/medium/iso/topdown rerenders before any promotion. | object-like dry grass blades and noisy yellow clumps dominate close views |
+| `grassland_grass` | `m14_trial_safe_close_conditional` | `m8_grassland_grass_calm_v3` | Keep sidecar-only; use M14 bakeoff lanes for stronger close-play candidates. | object-like dry grass blades and noisy yellow clumps dominate close views |
 | `grass` | `prompt_rework_before_bakeoff` | `4 attempts through m8_grass_calm_v4_anchor_v1` | Revise prompt from the best failed direction, then rerun active model lanes. | green organic speckle and small clover/object repetition reads too busy at walk scale |
 | `temperate_forest_grass` | `queued_for_bakeoff` | `-` | Run FLUX/Aura/SD batches, then visual-veto before terrain staging. | leaf-litter objects and high contrast fragments create visual noise in close terrain |
 | `tundra_moss` | `queued_for_bakeoff` | `-` | Run FLUX/Aura/SD batches, then visual-veto before terrain staging. | moss detail is too high-frequency and can turn into colored speckle in runtime |
@@ -49,7 +49,7 @@ close, medium, iso, and topdown review.
 ## Next Move
 
 1. Run close/medium/iso/topdown runtime trials for
-   `m8_grassland_grass_calm_v3` while it remains sidecar-only.
+   any future sidecar candidates before M13 promotion.
 2. Rework `grass` prompt from the darker v1 direction and rerun the active
    FLUX/Aura/SD lanes.
 3. Generate first bakeoff batches for `temperate_forest_grass`,

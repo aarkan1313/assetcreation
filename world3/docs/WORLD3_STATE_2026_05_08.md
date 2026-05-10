@@ -644,3 +644,7 @@ These start when chunk + biome + tile + transition is ~80% solved
   `M14_CLOSE_PLAY_QUALITY_BOARD_2026_05_10.md`. M14 now has an auditable
   FLUX/Aura/SD close-play material lane, with Qwen parked and Chroma rejected
   for this phase.
+- **2026-05-10 (M14 first runtime trial)**: Added close/medium/iso/topdown
+  captures for current `grassland_grass` vs `m8_grassland_grass_calm_v3` and
+  recorded `M14_GRASSLAND_GRASS_RUNTIME_TRIAL_2026_05_10.md`. The candidate is
+  safe across the runtime bands but remains close-conditional and sidecar-only.

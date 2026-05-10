@@ -69,7 +69,7 @@
   ],
   "summary": {
     "total": 5,
-    "sidecar_needs_m14_runtime_trials": 1,
+    "m14_trial_safe_close_conditional": 1,
     "prompt_rework_before_bakeoff": 1,
     "queued_for_bakeoff": 3
   },
@@ -80,8 +80,8 @@
       "current_source_asset_id": "wgv3_gl_tall_grass",
       "failure_mode": "object-like dry grass blades and noisy yellow clumps dominate close views",
       "latest": "m8_grassland_grass_calm_v3",
-      "m14_status": "sidecar_needs_m14_runtime_trials",
-      "next_action": "Run M4/M7-style close/medium/iso/topdown rerenders before any promotion."
+      "m14_status": "m14_trial_safe_close_conditional",
+      "next_action": "Keep sidecar-only; use M14 bakeoff lanes for stronger close-play candidates."
     },
     {
       "material_id": "grass",
