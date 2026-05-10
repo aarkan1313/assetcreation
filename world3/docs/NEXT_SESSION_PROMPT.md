@@ -205,8 +205,18 @@ M12 has started with an evidence inventory:
 `world3/pipeline/audit_m12_view_mode_parity.py`. Current finding: newest M10/M11
 proof scenes have the close/medium/iso/topdown capture shape. First M12 template
 is `source_stack_m12_parity_fourway_tour.tscn` with captures under
-`source_stack_m12_parity_fourway_*.png`. Gallery and true walk paths still
-diverge from the source-stack/splat contract; those are the next M12 targets.
+`source_stack_m12_parity_fourway_*.png`.
+
+M12 representative runtime parity now exists:
+`world3/docs/M12_RUNTIME_PARITY_PROOF_2026_05_10.md`. The live scene is
+`source_stack_m12_runtime_fourway_tour.tscn`; captures are
+`source_stack_m12_runtime_fourway_{close,medium,iso,topdown}.png`. It uses
+`CharacterBody3D` + `Walker.gd` + streamed `ChunkLoader` chunks with collision
+for close/medium walk bands, and gallery-style iso/topdown bands over the same
+accepted four-way source/material/height/splat contract. The old bulk
+`RegionGalleryCapture.gd` still uses per-kit material swaps and is now a
+follow-up retrofit candidate, not necessarily an M12 blocker if the runtime
+parity proof passes live review.
 
 M10 review launch/capture note: use explicit `--scene` wrapper launches, not the
 older waited `--script _codex_render_runner.gd` path. The current seam review

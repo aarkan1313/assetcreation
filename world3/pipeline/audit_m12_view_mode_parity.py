@@ -109,7 +109,7 @@ def collect() -> dict[str, Any]:
             "target_scene": scene_res,
             "output_path": output_path,
             "band": band_for(path, output_path),
-            "initial_tour_index": assignments.get("initial_tour_index", ""),
+            "initial_tour_index": assignments.get("initial_tour_index", assignments.get("initial_view_index", "")),
         }
         capture_map[workflow_id].append(capture)
 
@@ -142,17 +142,33 @@ def markdown(report: dict[str, Any]) -> str:
     full = [w for w in workflows if not w["missing_bands"]]
     with_contract = [w for w in workflows if w["has_source_stack_contract"]]
     with_splat = [w for w in workflows if w["has_runtime_splat_weights"]]
+    runtime_proof = next((w for w in workflows if w["id"] == "m12_runtime_fourway"), None)
+
+    if runtime_proof:
+        status_lines = [
+            "M12 runtime parity checkpoint. The audit now includes a representative",
+            "runtime proof that uses one source/material/height/splat contract across",
+            "true walk close/medium bands and gallery-style iso/topdown bands.",
+            "",
+            "This is stronger than the initial camera-template audit, but it does not",
+            "retrofit every historical gallery script. `RegionGalleryCapture.gd` remains",
+            "a legacy bulk-region tool until we decide it needs source-stack promotion.",
+        ]
+    else:
+        status_lines = [
+            "Initial M12 audit. This is an inventory, not closure.",
+            "",
+            "M12 starts from the accepted M10/M11 workflow scenes and asks whether the",
+            "same terrain/material/source decision can be reviewed in close, medium, iso,",
+            "and topdown bands without switching pipelines.",
+        ]
 
     lines = [
         "# M12 View-Mode Parity Audit - 2026-05-10",
         "",
         "## Status",
         "",
-        "Initial M12 audit. This is an inventory, not closure.",
-        "",
-        "M12 starts from the accepted M10/M11 workflow scenes and asks whether the",
-        "same terrain/material/source decision can be reviewed in close, medium, iso,",
-        "and topdown bands without switching pipelines.",
+        *status_lines,
         "",
         "## Summary",
         "",
@@ -192,11 +208,8 @@ def markdown(report: dict[str, Any]) -> str:
             "  close, medium, iso, and topdown review bands.",
             "- Older cross-source and seam-integration proofs often have only one 3D",
             "  capture, which is acceptable as historical evidence but not parity closure.",
-            "- `RegionGalleryCapture.gd` still uses per-mode whole-kit material swaps; that",
-            "  is the main remaining divergence from the source-stack review contract.",
-            "- Walk-mode parity is not solved by capture wrappers alone. The next real M12",
-            "  implementation step is to bind the same material/source stack into a walk",
-            "  scene and capture close/medium bands from that path.",
+            "- `RegionGalleryCapture.gd` still uses per-mode whole-kit material swaps, so",
+            "  the old bulk gallery remains a legacy path rather than parity evidence.",
             "",
             "## M12 Parity Template",
             "",
@@ -205,11 +218,59 @@ def markdown(report: dict[str, Any]) -> str:
             "iso/tactical, and topdown/map. It uses the same source/material/height/splat",
             "contract for every band.",
             "",
-            "## Next M12 Step",
-            "",
-            "Use the parity template as the control scene, then bring one true walk-mode",
-            "scene and one gallery/region view onto the same source-stack/splat contract.",
-            "That is the remaining path divergence M12 needs to resolve.",
+        ]
+    )
+
+    if runtime_proof:
+        lines.extend(
+            [
+                "## M12 Runtime Parity Proof",
+                "",
+                "`source_stack_m12_runtime_fourway_tour.tscn` instantiates the accepted",
+                "four-way proof through the runtime path: a `CharacterBody3D` with",
+                "`Walker.gd`, streamed `ChunkLoader` chunks, collision chunks, the accepted",
+                "four-way material, source macro/mask overrides, and runtime splat weights.",
+                "",
+                "Its close and medium captures are true walk-runtime bands. Its iso and",
+                "topdown captures are gallery-style review bands over the same loaded",
+                "runtime contract, not per-mode kit material swaps.",
+                "",
+            ]
+        )
+    else:
+        lines.extend(
+            [
+                "- Walk-mode parity is not solved by capture wrappers alone. The next real",
+                "  M12 implementation step is to bind the same material/source stack into",
+                "  a walk scene and capture close/medium bands from that path.",
+                "",
+            ]
+        )
+
+    next_lines = [
+        "## Next M12 Step",
+        "",
+    ]
+    if runtime_proof:
+        next_lines.extend(
+            [
+                "Use the runtime parity proof for live review. If it passes, M12 can close",
+                "as representative parity and the full `RegionGalleryCapture.gd` retrofit",
+                "can become follow-up bulk-gallery work instead of a milestone blocker.",
+            ]
+        )
+    else:
+        next_lines.extend(
+            [
+                "Use the parity template as the control scene, then bring one true",
+                "walk-mode scene and one gallery/region view onto the same",
+                "source-stack/splat contract. That is the remaining path divergence M12",
+                "needs to resolve.",
+            ]
+        )
+    lines.extend(
+        next_lines
+        + [
             "",
             "Regenerate:",
             "",

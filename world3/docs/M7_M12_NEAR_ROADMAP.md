@@ -360,9 +360,17 @@ topdown acceptance requirements before promoting assets or workflows.
 `M12_VIEW_MODE_PARITY_AUDIT_2026_05_10.md` inventories source-stack tour scenes
 and capture bands. `source_stack_m12_parity_fourway_tour.tscn` now wraps the
 accepted four-way proof with named close, medium, iso, and topdown camera bands.
-Five workflows have complete close/medium/iso/topdown capture sets, and four use
-runtime splat weights. Region/gallery and true walk-mode parity remain the main
-divergent paths.
+Six workflows have complete close/medium/iso/topdown capture sets after the
+runtime proof, and five use runtime splat weights.
+
+2026-05-10 runtime parity update: representative true walk + gallery parity now
+exists in `source_stack_m12_runtime_fourway_tour.tscn`, documented in
+`M12_RUNTIME_PARITY_PROOF_2026_05_10.md`. The scene instantiates
+`CharacterBody3D` + `Walker.gd` + streamed `ChunkLoader` chunks with collision
+and uses the accepted four-way source/material/height/splat contract for close,
+medium, iso, and topdown bands. The old bulk `RegionGalleryCapture.gd` remains
+a legacy region screenshot tool; if the runtime parity proof passes live review,
+that retrofit can move to follow-up work instead of blocking M12 closure.
 
 Deliverables:
 

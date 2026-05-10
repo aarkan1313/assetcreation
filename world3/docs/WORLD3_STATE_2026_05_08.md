@@ -610,3 +610,14 @@ These start when chunk + biome + tile + transition is ~80% solved
   added `clip_to_source_bounds` plus source valid-mask clipping so missing
   source imagery renders as dataset boundary/empty background instead of fake
   beige terrain.
+- **2026-05-10 (M11 junction/four-way acceptance)**: Accepted the three-way
+  junction and four-way corner source-stack proofs as workflow evidence. The
+  four-way proof uses RGBA splat ownership for grassland, controlled fantasy
+  lava/basalt, canyon rock, and photoreal source domains. T/L/island variants
+  are recorded as future case-library work, not blockers for M12.
+- **2026-05-10 (M12 runtime parity)**: Added
+  `source_stack_m12_runtime_fourway_tour.tscn` and
+  `M12_RUNTIME_PARITY_PROOF_2026_05_10.md`. The scene uses one accepted
+  four-way source/material/height/splat contract across true walk close/medium
+  bands and gallery-style iso/topdown bands through `CharacterBody3D`,
+  `Walker.gd`, streamed `ChunkLoader` chunks, and collision chunks.

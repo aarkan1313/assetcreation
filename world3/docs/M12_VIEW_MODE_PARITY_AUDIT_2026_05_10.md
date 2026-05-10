@@ -2,18 +2,20 @@
 
 ## Status
 
-Initial M12 audit. This is an inventory, not closure.
+M12 runtime parity checkpoint. The audit now includes a representative
+runtime proof that uses one source/material/height/splat contract across
+true walk close/medium bands and gallery-style iso/topdown bands.
 
-M12 starts from the accepted M10/M11 workflow scenes and asks whether the
-same terrain/material/source decision can be reviewed in close, medium, iso,
-and topdown bands without switching pipelines.
+This is stronger than the initial camera-template audit, but it does not
+retrofit every historical gallery script. `RegionGalleryCapture.gd` remains
+a legacy bulk-region tool until we decide it needs source-stack promotion.
 
 ## Summary
 
-- Source-stack tour scenes: `13`.
-- Scenes with complete close/medium/iso/topdown captures: `5`.
-- Scenes with source-stack macro contract: `11`.
-- Scenes with runtime splat weights: `4`.
+- Source-stack tour scenes: `14`.
+- Scenes with complete close/medium/iso/topdown captures: `6`.
+- Scenes with source-stack macro contract: `12`.
+- Scenes with runtime splat weights: `5`.
 
 ## Workflow Inventory
 
@@ -28,6 +30,7 @@ and topdown bands without switching pipelines.
 | `m11_fourway_corner` | `junction_fourway` | close, iso, medium, topdown | none | yes | current workflow evidence |
 | `m11_junction` | `junction_layer` | close, iso, medium, topdown | none | yes | current workflow evidence |
 | `m12_parity_fourway` | `m12_parity` | close, iso, medium, topdown | none | yes | - |
+| `m12_runtime_fourway` | `standard` | close, iso, medium, topdown | none | yes | - |
 | `real_procedural` | `seam_integration` | close, iso, medium, topdown | none | no | current workflow evidence |
 | `same_source_blend` | `same_source_blend` | - | close, medium, iso, topdown | no | tour only |
 | `seam_integration` | `seam_integration` | iso, medium, topdown | close | no | - |
@@ -39,11 +42,8 @@ and topdown bands without switching pipelines.
   close, medium, iso, and topdown review bands.
 - Older cross-source and seam-integration proofs often have only one 3D
   capture, which is acceptable as historical evidence but not parity closure.
-- `RegionGalleryCapture.gd` still uses per-mode whole-kit material swaps; that
-  is the main remaining divergence from the source-stack review contract.
-- Walk-mode parity is not solved by capture wrappers alone. The next real M12
-  implementation step is to bind the same material/source stack into a walk
-  scene and capture close/medium bands from that path.
+- `RegionGalleryCapture.gd` still uses per-mode whole-kit material swaps, so
+  the old bulk gallery remains a legacy path rather than parity evidence.
 
 ## M12 Parity Template
 
@@ -52,11 +52,22 @@ four-way M11 proof through named camera bands: close play, medium play,
 iso/tactical, and topdown/map. It uses the same source/material/height/splat
 contract for every band.
 
+## M12 Runtime Parity Proof
+
+`source_stack_m12_runtime_fourway_tour.tscn` instantiates the accepted
+four-way proof through the runtime path: a `CharacterBody3D` with
+`Walker.gd`, streamed `ChunkLoader` chunks, collision chunks, the accepted
+four-way material, source macro/mask overrides, and runtime splat weights.
+
+Its close and medium captures are true walk-runtime bands. Its iso and
+topdown captures are gallery-style review bands over the same loaded
+runtime contract, not per-mode kit material swaps.
+
 ## Next M12 Step
 
-Use the parity template as the control scene, then bring one true walk-mode
-scene and one gallery/region view onto the same source-stack/splat contract.
-That is the remaining path divergence M12 needs to resolve.
+Use the runtime parity proof for live review. If it passes, M12 can close
+as representative parity and the full `RegionGalleryCapture.gd` retrofit
+can become follow-up bulk-gallery work instead of a milestone blocker.
 
 Regenerate:
 

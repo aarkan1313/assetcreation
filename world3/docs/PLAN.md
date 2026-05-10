@@ -335,7 +335,7 @@ blindly extending the prototype without clear exits.
 | **M9** | Runtime performance and interaction polish | Measures and fixes real interactive chunk/collision hitches if they show up beyond scripted captures. |
 | **M10** | Cross-source blending | Makes real OpenTopo materials and procedural materials coexist through one runtime contract. |
 | **M11** | Corner and junction transitions | First three-way Y proof and first four-way/corner proof are accepted; case matrix recorded, variants deferred. |
-| **M12** | View-mode parity | Audit and first parity template exist; next is true walk-mode and gallery/region parity using the same source/material/height/splat contract. |
+| **M12** | View-mode parity | Audit, control template, and representative runtime parity proof now exist for true walk close/medium plus gallery-style iso/topdown through one source/material/height/splat contract. |
 
 Deferred systems remain deferred until M7-M12 are proven: scatter, vegetation,
 props, buildings/POIs, fantasy biome expansion, real-data-guided procedural
@@ -401,7 +401,8 @@ instead of tuning the failed strip bridge.
 - **Non-alpine per-mode visual review.** Phase E covers all 5 kits
   but only alpine has dedicated capture scenes.
 - **Walk-mode shared-anchor decision.** Deferred from Phase C.
-- **Region gallery walk shot.** Gallery only does iso + topdown.
+- **Bulk region gallery source-stack retrofit.** Representative M12 gallery
+  parity exists; the old bulk gallery still uses per-kit material swaps.
 - **Texture contrast on grassland kit.** DECISIONS-locked as
   intentional 2026-05-07. Revisit if a region needs visible rocky
   variation.
