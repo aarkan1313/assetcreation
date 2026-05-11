@@ -209,6 +209,21 @@ Exit:
 - A user can inspect the slice at close, medium, iso, and topdown bands with
   documented pass/conditional/fail status.
 
+Current evidence 2026-05-10:
+
+- First-pass manifest: `jobs/m18_representative_slice_manifest.json`.
+- Runtime source stack:
+  `textures/source_stack/m18_guided_neighbor_slice_proof/`.
+- Runtime terrain: `toporeview/m18_guided_neighbor_slice_proof/`.
+- Review scene: `scenes/review/source_stack_m18_guided_neighbor_tour.tscn`.
+- Capture sheet:
+  `docs/captures/review/source_stack_m18_guided_neighbor_contact_sheet.png`.
+- Status: conditional workflow evidence. The M17 neighbor can re-enter the
+  runtime source-stack path and all four view bands capture cleanly. This is
+  not M18 closure yet because M15 scatter/features and M11 junction ownership
+  are not physically composed into the same runtime slice, and the procedural
+  side still needs richer close-detail fields.
+
 ## Current First Move
 
 M13 gate hygiene is active for every new artifact. The candidate manifest and
@@ -218,7 +233,7 @@ flat organic textures as the visual bottleneck. M15 proves mask-driven
 scatter/decal placement with procedural review primitives. M16 proves the
 source-stack gallery bridge and first cached iso sidecar. M17 now has a
 first-pass real-data rule extractor and guided procedural-neighbor bundle. None
-of these are production-promoted terrain content. The next active build move is
-M18: assemble one representative slice that uses the M13 gate, M14 sidecars,
-M15 feature policy, M16 gallery/parity controls, and M17 guided neighbor in the
-same close/medium/iso/topdown review loop.
+of these are production-promoted terrain content. M18 is now active with a
+first-pass guided-neighbor runtime slice. The next build move is to add the M15
+feature policy and decide the cleanest way to include M11 junction ownership in
+the same M18 review harness without weakening the source-stack contract.

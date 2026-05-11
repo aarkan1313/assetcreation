@@ -862,6 +862,30 @@ range, slope, and roughness. The M17 neighbor is workflow evidence only: it is a
 compatible procedural bundle for M18 review, not a production-promoted terrain
 asset.
 
+M18 guided-neighbor runtime slice:
+
+```powershell
+python world3/pipeline/build_terrain_seam_integration_proof.py --left-macro world3/textures/source_stack/gloss_scrub_source_stack/source_macro_albedo.png --left-valid-mask world3/textures/source_stack/gloss_scrub_source_stack/source_macro_valid_mask.png --left-heightmap world3/toporeview/gloss_mountain_textured_master/heightmap.png --left-meta world3/toporeview/gloss_mountain_textured_master/meta.json --right-macro world3/toporeview/m17_guided_desert_canyon_neighbor/layers/render_albedo.png --right-valid-mask world3/toporeview/m17_guided_desert_canyon_neighbor/layers/source_valid_mask.png --right-heightmap world3/toporeview/m17_guided_desert_canyon_neighbor/heightmap.png --right-meta world3/toporeview/m17_guided_desert_canyon_neighbor/meta.json --left-crop 229,734,229,457 --right-crop 0,0,512,1024 --output-size 512,1024 --overlap-px 128 --height-feather-px 224 --color-feather-px 384 --profile-blur-px 20 --macro-band-mode blend --macro-bridge-blur-px 26 --macro-bridge-detail-strength 0.12 --artifact-name "M18 guided procedural neighbor representative slice" --integration-kind m18_guided_real_to_procedural_integration_band_proof --policy m17_extracted_rules_rebaked_through_m10_seam_solver_for_m18_runtime_review --texture-out world3/textures/source_stack/m18_guided_neighbor_slice_proof --topo-out world3/toporeview/m18_guided_neighbor_slice_proof --metrics-out world3/docs/captures/review/terrain_seam_m18_guided_neighbor_metrics.json
+```
+
+Visual review scene:
+
+```powershell
+& 'C:/Godot/Godot_v4.5-stable_win64.exe' --path 'D:/assets/world3' --single-window --disable-crash-handler --scene 'res://scenes/review/source_stack_m18_guided_neighbor_tour.tscn'
+```
+
+Capture wrappers:
+
+- `res://scenes/review/capture_source_stack_m18_guided_neighbor_topdown.tscn`
+- `res://scenes/review/capture_source_stack_m18_guided_neighbor_iso.tscn`
+- `res://scenes/review/capture_source_stack_m18_guided_neighbor_close.tscn`
+- `res://scenes/review/capture_source_stack_m18_guided_neighbor_medium.tscn`
+
+M18 first pass is conditional. It proves that M17 procedural output can be
+reviewed in the runtime terrain path, but full M18 closure still needs
+M15 scatter/features and M11 junction ownership in the same representative
+review harness.
+
 ## What's NOT yet documented here (because it doesn't exist yet)
 
 - **Tundra kit textures** — kit schema defined in `biome_kits.json`

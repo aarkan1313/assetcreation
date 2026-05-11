@@ -1,0 +1,140 @@
+{
+  "version": 1,
+  "kind": "terrain_seam_integration_proof",
+  "id": "m18_guided_neighbor_slice_proof",
+  "runtime_macro": "res://textures/source_stack/m18_guided_neighbor_slice_proof/source_macro_albedo.png",
+  "runtime_source_macro_valid_mask": "res://textures/source_stack/m18_guided_neighbor_slice_proof/source_macro_valid_mask.png",
+  "runtime_seam_mask": "res://textures/source_stack/m18_guided_neighbor_slice_proof/seam_integration_mask.png",
+  "runtime_heightmap": "res://toporeview/m18_guided_neighbor_slice_proof/heightmap.png",
+  "runtime_meta": "res://toporeview/m18_guided_neighbor_slice_proof/meta.json",
+  "left_source": {
+    "macro": "res://textures/source_stack/gloss_scrub_source_stack/source_macro_albedo.png",
+    "valid_mask": "res://textures/source_stack/gloss_scrub_source_stack/source_macro_valid_mask.png",
+    "heightmap": "res://toporeview/gloss_mountain_textured_master/heightmap.png",
+    "meta": "res://toporeview/gloss_mountain_textured_master/meta.json",
+    "crop_macro_px": [
+      229,
+      734,
+      229,
+      457
+    ],
+    "crop_world_m": [
+      120.20762936025423,
+      239.97598886006654
+    ]
+  },
+  "right_source": {
+    "macro": "res://toporeview/m17_guided_desert_canyon_neighbor/layers/render_albedo.png",
+    "valid_mask": "res://toporeview/m17_guided_desert_canyon_neighbor/layers/source_valid_mask.png",
+    "heightmap": "res://toporeview/m17_guided_desert_canyon_neighbor/heightmap.png",
+    "meta": "res://toporeview/m17_guided_desert_canyon_neighbor/meta.json",
+    "crop_macro_px": [
+      0,
+      0,
+      512,
+      1024
+    ],
+    "crop_world_m": [
+      120.0,
+      240.0
+    ]
+  },
+  "integration": {
+    "overlap_px": 128,
+    "height_feather_px": 224,
+    "color_feather_px": 384,
+    "profile_blur_px": 20.0,
+    "macro_band_mode": "blend",
+    "macro_bridge_blur_px": 26.0,
+    "macro_bridge_detail_strength": 0.12,
+    "left_output_width_px": 384,
+    "integration_band_output_px": 128,
+    "right_output_width_px": 384,
+    "target_crop_size_px": [
+      512,
+      1024
+    ]
+  },
+  "metrics": {
+    "height_m": {
+      "raw_overlap_delta": {
+        "mean": 6.677679259330034,
+        "median": 6.1812896728515625,
+        "p95": 14.305816650390625,
+        "max": 22.09710693359375
+      },
+      "global_bias": -1.552703857421875,
+      "row_bias": {
+        "mean": 5.821331658706413,
+        "median": 4.480249881744385,
+        "p95": 15.135528707504271,
+        "max": 15.646909713745117
+      },
+      "post_overlap_delta": {
+        "mean": 2.4837879720143974,
+        "median": 1.9038238525390625,
+        "p95": 6.948942565917967,
+        "max": 16.00384521484375
+      },
+      "post_join_steps": {
+        "left_to_band": {
+          "mean": 0.06799599528312683,
+          "median": 0.0439605712890625,
+          "p95": 0.23436889648437492,
+          "max": 1.040985107421875
+        },
+        "band_to_right": {
+          "mean": 0.12933796644210815,
+          "median": 0.09912109375,
+          "p95": 0.3102706909179687,
+          "max": 0.429229736328125
+        }
+      }
+    },
+    "macro_rgb01": {
+      "raw_overlap_delta_rgb01": {
+        "mean": 0.11527662788106834,
+        "median": 0.09019607305526733,
+        "p95": 0.3294117748737335,
+        "max": 0.7215686440467834
+      },
+      "band_mode": "blend",
+      "bridge_blur_px": 26.0,
+      "bridge_detail_strength": 0.12,
+      "global_bias_rgb01": [
+        -0.10196077823638916,
+        -0.08627453446388245,
+        -0.027450978755950928
+      ],
+      "post_overlap_delta_rgb01": {
+        "mean": 0.09082018770216867,
+        "median": 0.06553149223327637,
+        "p95": 0.2723694518208504,
+        "max": 0.6416649222373962
+      },
+      "post_join_steps_rgb01": {
+        "left_to_band": {
+          "mean": 0.027268790639936924,
+          "median": 0.01960901916027069,
+          "p95": 0.086283128708601,
+          "max": 0.17386390268802643
+        },
+        "band_to_right": {
+          "mean": 0.003062553150812164,
+          "median": 0.0023690611124038696,
+          "p95": 0.008898963034152984,
+          "max": 0.01282164454460144
+        }
+      }
+    },
+    "valid_mask": {
+      "left_coverage": 1.0,
+      "right_coverage": 1.0,
+      "band_coverage": 1.0,
+      "output_coverage": 1.0,
+      "output_coverage_before_hole_fill": 1.0,
+      "hole_fill_policy": "filled_to_full_valid_because_coverage_above_0.9950"
+    }
+  },
+  "policy": "m17_extracted_rules_rebaked_through_m10_seam_solver_for_m18_runtime_review"
+}

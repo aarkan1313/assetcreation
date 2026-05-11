@@ -1,0 +1,31 @@
+{
+  "output": "world3\\docs\\captures\\review\\source_stack_m18_guided_neighbor_contact_sheet.png",
+  "title": "M18 Guided Neighbor Runtime Slice",
+  "subtitle": "",
+  "items": [
+    {
+      "label": "Topdown band",
+      "path": "world3\\docs\\captures\\review\\source_stack_m18_guided_neighbor_topdown.png",
+      "note": "M17 guided neighbor integrated with real Gloss source through the M10 seam solver."
+    },
+    {
+      "label": "Iso band",
+      "path": "world3\\docs\\captures\\review\\source_stack_m18_guided_neighbor_iso.png",
+      "note": "Tactical/iso read of the same runtime bundle."
+    },
+    {
+      "label": "Close band",
+      "path": "world3\\docs\\captures\\review\\source_stack_m18_guided_neighbor_close.png",
+      "note": "Close 3D check for seam artifacts and procedural-side quality."
+    },
+    {
+      "label": "Medium band",
+      "path": "world3\\docs\\captures\\review\\source_stack_m18_guided_neighbor_medium.png",
+      "note": "Medium terrain read across the integrated source/procedural slice."
+    }
+  ],
+  "size_px": [
+    1522,
+    1342
+  ]
+}

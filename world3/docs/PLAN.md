@@ -426,6 +426,16 @@ procedural neighbor bundle at `toporeview/m17_guided_desert_canyon_neighbor/`.
 This proves the data-to-procedural-bundle workflow; M18 still has to validate it
 in a representative close/medium/iso/topdown runtime slice.
 
+2026-05-10 M18 first pass: `jobs/m18_representative_slice_manifest.json`
+records the first representative runtime slice scaffold. The M17 guided
+procedural neighbor was rebaked through `build_terrain_seam_integration_proof.py`
+into `textures/source_stack/m18_guided_neighbor_slice_proof/` and
+`toporeview/m18_guided_neighbor_slice_proof/`, then captured through
+`scenes/review/source_stack_m18_guided_neighbor_tour.tscn` across topdown, iso,
+close, and medium bands. Status is conditional workflow evidence, not M18
+closure: the next pass must add M15 feature/scatter policy and settle how M11
+junction ownership appears in the same review harness.
+
 ## M7 current checkpoint
 
 **Status 2026-05-08**: PASS 1 COMPLETE for workflow/runtime validation;
