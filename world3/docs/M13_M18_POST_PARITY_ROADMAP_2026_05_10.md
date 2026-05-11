@@ -88,6 +88,7 @@ Current evidence:
 
 - First pass: `source_stack_m15_feature_scatter_tour.tscn` and
   `M15FeatureScatterOverlay.gd`.
+- Runtime policy: `jobs/m15_feature_scatter_policy.json`.
 - Inputs: M10 ecotone masks (`shrub_carryover`, `dry_grass_density`,
   `rock_cluster`, `soil_exposure`, `wash_line`, `no_scatter`).
 - Capture sheet:

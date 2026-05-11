@@ -9,6 +9,7 @@ visibility over the accepted M10 source-stack ecotone.
 ## Files
 
 - Runtime overlay: `world3/scripts/M15FeatureScatterOverlay.gd`
+- Scatter policy: `world3/jobs/m15_feature_scatter_policy.json`
 - Tour scene: `world3/scenes/review/source_stack_m15_feature_scatter_tour.tscn`
 - Captures:
   - `world3/docs/captures/review/source_stack_m15_feature_scatter_topdown.png`
@@ -33,6 +34,10 @@ visibility over the accepted M10 source-stack ecotone.
 ## What Changed
 
 - `World3AutoReviewTour.gd` now supports `scatter_overlay_mode = "m15_production"`.
+- `M15FeatureScatterOverlay.gd` reads
+  `world3/jobs/m15_feature_scatter_policy.json` for spacing/count/visibility
+  policy so the hardcoded prototype can graduate to authored assets without
+  changing the mask contract.
 - The M15 overlay generates shrubs, dry grass, rocks, dry debris, and lichen/
   decal candidates from the masks.
 - Topdown hides scatter by default to preserve the map read.
@@ -84,7 +89,8 @@ All four capture scenes exited `0`.
 
 1. Build a small authored scatter asset library for shrubs, grass clumps, stones,
    dry sticks, leaf/debris clusters, and decal cards.
-2. Swap M15 primitive mesh factories to consume the authored asset library.
+2. Swap M15 primitive mesh factories to consume the authored asset library while
+   preserving `m15_feature_scatter_policy.json`.
 3. Repeat the same capture sheet and compare prototype primitives versus authored
    assets.
 4. Port the same scatter overlay to the M11 junction/four-way proof once the M10

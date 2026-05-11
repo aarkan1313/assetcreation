@@ -8,6 +8,7 @@ class_name M15FeatureScatterOverlay
 @export var debug_masks_visible: bool = false
 @export var loader_path: NodePath
 @export var meta_path: String = ""
+@export var policy_path: String = "res://jobs/m15_feature_scatter_policy.json"
 @export var shrub_mask_path: String = ""
 @export var grass_mask_path: String = ""
 @export var rock_mask_path: String = ""
@@ -44,10 +45,13 @@ var _no_scatter_mask: Image
 var _scatter_root: Node3D
 var _debug_root: Node3D
 var _summary: Dictionary = {}
+var _policy: Dictionary = {}
 
 
 func _ready() -> void:
 	_loader = get_node_or_null(loader_path)
+	_load_policy()
+	_apply_policy()
 	_load_meta()
 	_load_masks()
 	_rebuild()
@@ -67,6 +71,58 @@ func set_debug_masks_visible(value: bool) -> void:
 
 func get_scatter_summary() -> Dictionary:
 	return _summary.duplicate()
+
+
+func _load_policy() -> void:
+	if policy_path == "":
+		return
+	var f: FileAccess = FileAccess.open(policy_path, FileAccess.READ)
+	if f == null:
+		push_warning("M15FeatureScatterOverlay failed to load policy: " + policy_path)
+		return
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	f.close()
+	if typeof(parsed) == TYPE_DICTIONARY:
+		_policy = parsed
+
+
+func _apply_policy() -> void:
+	shrub_spacing_m = _kind_float("shrub", "spacing_m", shrub_spacing_m)
+	grass_spacing_m = _kind_float("dry_grass", "spacing_m", grass_spacing_m)
+	rock_spacing_m = _kind_float("stone", "spacing_m", rock_spacing_m)
+	debris_spacing_m = _kind_float("dry_debris", "spacing_m", debris_spacing_m)
+	lichen_spacing_m = _kind_float("lichen_decal", "spacing_m", lichen_spacing_m)
+	max_shrubs = _kind_int("shrub", "max_count", max_shrubs)
+	max_grass_tufts = _kind_int("dry_grass", "max_count", max_grass_tufts)
+	max_rocks = _kind_int("stone", "max_count", max_rocks)
+	max_debris = _kind_int("dry_debris", "max_count", max_debris)
+	max_lichen_decals = _kind_int("lichen_decal", "max_count", max_lichen_decals)
+	shrub_visibility_end_m = _kind_float("shrub", "visibility_end_m", shrub_visibility_end_m)
+	grass_visibility_end_m = _kind_float("dry_grass", "visibility_end_m", grass_visibility_end_m)
+	rock_visibility_end_m = _kind_float("stone", "visibility_end_m", rock_visibility_end_m)
+	debris_visibility_end_m = _kind_float("dry_debris", "visibility_end_m", debris_visibility_end_m)
+	lichen_visibility_end_m = _kind_float("lichen_decal", "visibility_end_m", lichen_visibility_end_m)
+
+
+func _kind_float(kind: String, key: String, fallback: float) -> float:
+	var entry: Variant = _policy_entry(kind)
+	if typeof(entry) != TYPE_DICTIONARY:
+		return fallback
+	return float(entry.get(key, fallback))
+
+
+func _kind_int(kind: String, key: String, fallback: int) -> int:
+	var entry: Variant = _policy_entry(kind)
+	if typeof(entry) != TYPE_DICTIONARY:
+		return fallback
+	return int(entry.get(key, fallback))
+
+
+func _policy_entry(kind: String) -> Variant:
+	var kinds: Variant = _policy.get("kinds", {})
+	if typeof(kinds) != TYPE_DICTIONARY:
+		return {}
+	return kinds.get(kind, {})
 
 
 func _load_meta() -> void:
@@ -147,6 +203,7 @@ func _rebuild() -> void:
 
 	_build_debug_overlay()
 	_summary = {
+		"policy_id": str(_policy.get("id", "inline_defaults")),
 		"shrubs": shrubs.size(),
 		"grass_tufts": grass.size(),
 		"rocks": rocks.size(),

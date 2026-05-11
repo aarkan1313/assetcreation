@@ -759,8 +759,11 @@ That scene displays the M12 runtime iso bake without live terrain meshes or a
 3D/iso/topdown validation.
 
 M15 scatter/decal workflow starts from the same source-stack masks used by M10/
-M11 instead of hand placing review props. `World3AutoReviewTour.gd` can select
-the M15 overlay with `scatter_overlay_mode = "m15_production"`:
+M11 instead of hand placing review props. The runtime policy lives at
+`world3/jobs/m15_feature_scatter_policy.json`; it records per-feature spacing,
+max count, visibility range, source mask, and the future authored-asset target.
+`World3AutoReviewTour.gd` can select the M15 overlay with
+`scatter_overlay_mode = "m15_production"`:
 
 ```powershell
 & 'C:/Godot/Godot_v4.5-stable_win64.exe' --path 'D:/assets/world3' --headless --editor --import

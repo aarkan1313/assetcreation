@@ -395,10 +395,10 @@ mask-driven shrubs, dry grass, rocks, dry debris, and lichen/decal candidates on
 top of the M10 ecotone source stack. The review scene is
 `scenes/review/source_stack_m15_feature_scatter_tour.tscn`; captures are
 summarized in `docs/captures/review/source_stack_m15_feature_scatter_sheet.png`.
-This proves the placement/visibility workflow, not final asset quality. The
-next M15 refinement is to swap the procedural review primitives for authored
-scatter library assets while keeping the same masks and gameplay-band LOD
-contract.
+The explicit runtime policy is `jobs/m15_feature_scatter_policy.json`. This
+proves the placement/visibility workflow, not final asset quality. The next M15
+refinement is to swap the procedural review primitives for authored scatter
+library assets while keeping the same masks and gameplay-band LOD contract.
 
 2026-05-10 iso renderer note: M16 now includes a source-stack iso impostor
 sidecar ladder. The first rung is a cached 2D iso card from the M12 runtime
