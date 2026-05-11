@@ -128,6 +128,17 @@ Deliverables:
 - Proof that any non-3D iso view is traceable to the same height/macro/mask/
   splat contract as the 3D source-stack scene.
 
+Current evidence:
+
+- `jobs/m16_source_stack_gallery_manifest.json` indexes the first source-stack
+  gallery card set.
+- `pipeline/build_m16_source_stack_gallery_board.py` validates the manifest and
+  emits JSON, markdown, and a visual board.
+- `docs/captures/review/source_stack_m16_gallery_board.png` currently shows
+  five full topdown/iso/medium/close parity cards plus the cached iso sidecar.
+- Status: bridge/indexer exists; the automated bulk runner that iterates real
+  regions and binds source-stack data is still pending.
+
 Exit:
 
 - Region review is no longer limited to old per-kit material swaps.

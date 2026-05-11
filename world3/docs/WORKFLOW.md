@@ -799,6 +799,29 @@ Current M15 status: placement/visibility pipeline is proven, but the actual
 scatter assets are still procedural review primitives. Do not call this final
 content until authored vegetation/rock/debris assets replace those primitives.
 
+M16 source-stack gallery bridge:
+
+```powershell
+python world3/pipeline/build_m16_source_stack_gallery_board.py
+```
+
+Inputs:
+
+- `world3/jobs/m16_source_stack_gallery_manifest.json`
+- Existing source-stack review captures under `world3/docs/captures/review/`
+
+Outputs:
+
+- `world3/docs/M16_SOURCE_STACK_GALLERY_BOARD.json`
+- `world3/docs/M16_SOURCE_STACK_GALLERY_BOARD_2026_05_10.md`
+- `world3/docs/captures/review/source_stack_m16_gallery_board.png`
+
+This board is the bridge from the old per-kit `RegionGalleryCapture.gd` to a
+real source-stack gallery runner. A card counts as parity evidence only when it
+has topdown, iso, medium, and close captures over the same source-stack
+contract. Cached iso cards remain sidecar renderer evidence until chunked
+impostors or a 2D heightfield renderer exists.
+
 ## What's NOT yet documented here (because it doesn't exist yet)
 
 - **Tundra kit textures** — kit schema defined in `biome_kits.json`

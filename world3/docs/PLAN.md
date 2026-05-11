@@ -405,6 +405,14 @@ sidecar ladder. The first rung is a cached 2D iso card from the M12 runtime
 parity bake; later rungs are chunk impostors, 2D heightfield shader, and hybrid
 tactical renderer. See `M16_ISO_IMPOSTOR_RESEARCH_PLAN_2026_05_10.md`.
 
+2026-05-10 M16 gallery bridge: `jobs/m16_source_stack_gallery_manifest.json`
+now indexes source-stack review cards for topdown/iso/medium/close parity.
+`pipeline/build_m16_source_stack_gallery_board.py` validates the manifest and
+builds `docs/M16_SOURCE_STACK_GALLERY_BOARD_2026_05_10.md` plus
+`docs/captures/review/source_stack_m16_gallery_board.png`. This is a bridge
+from legacy `RegionGalleryCapture.gd` to a source-stack gallery runner, not the
+final automated region iterator.
+
 ## M7 current checkpoint
 
 **Status 2026-05-08**: PASS 1 COMPLETE for workflow/runtime validation;
