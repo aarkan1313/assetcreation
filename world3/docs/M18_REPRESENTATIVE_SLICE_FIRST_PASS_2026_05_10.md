@@ -24,8 +24,12 @@ This is not full M18 closure. It is the first runtime slice scaffold.
   `world3/docs/captures/review/terrain_seam_m18_guided_neighbor_metrics.json`.
 - Derived feature-mask metrics:
   `world3/textures/source_stack/m18_guided_neighbor_slice_proof/layers/feature_mask_metrics.json`.
+- Performance smoke:
+  `world3/docs/captures/review/m18_guided_neighbor_performance_smoke.json`.
 - Tour scene:
   `world3/scenes/review/source_stack_m18_guided_neighbor_tour.tscn`.
+- Closure harness:
+  `world3/scenes/review/source_stack_m18_closure_review.tscn`.
 - Capture sheet:
   `world3/docs/captures/review/source_stack_m18_guided_neighbor_contact_sheet.png`.
 
@@ -37,6 +41,8 @@ This is not full M18 closure. It is the first runtime slice scaffold.
 - Valid-mask coverage: `1.0`.
 - Feature masks: shrub `0.097` mean, dry grass `0.310`, rock `0.131`,
   soil `0.306`, wash `0.112`, no-scatter `0.210`.
+- Performance smoke at 1600x1000: average frame time `4.72 ms`, p95
+  `7.98 ms`, p99 `9.52 ms`, max `11.85 ms`.
 
 ## Visual Read
 
@@ -46,6 +52,7 @@ Accepted as workflow evidence:
 - Derived M15 scatter/decal masks now run on the same M18 terrain bundle.
 - Topdown, iso, close, and medium captures all come from the same runtime
   bundle.
+- First performance smoke is clean enough for workflow review.
 - There is no invalid plateau, missing-data void, or Godot capture failure.
 
 Conditional / not accepted as final:
@@ -66,6 +73,11 @@ Conditional / not accepted as final:
    while preserving the derived-mask workflow.
 3. Improve the procedural neighbor generator with richer drainage, rock
    exposure, and close-detail fields before any production promotion attempt.
+
+Current decision: M11 junction ownership is represented through the M18 closure
+review harness, not physically mashed into the same terrain. That keeps each
+accepted proof traceable to its own source-stack contract and defers physical
+multi-proof composition to a future stream/director pass.
 
 Regenerate the slice:
 

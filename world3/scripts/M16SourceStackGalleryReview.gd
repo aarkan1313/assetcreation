@@ -22,6 +22,7 @@ var _thumbnail_label: Label
 
 func _ready() -> void:
 	set_anchors_preset(Control.PRESET_FULL_RECT)
+	size = get_viewport_rect().size
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	_load_manifest()
 	_setup_overlay()
@@ -41,6 +42,7 @@ func _process(delta: float) -> void:
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_RESIZED:
+		size = get_viewport_rect().size
 		queue_redraw()
 
 

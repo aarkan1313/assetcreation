@@ -8,8 +8,8 @@ play quality, placeholder scatter, missing bands, or incomplete live review.
 
 ## Summary
 
-- Candidates tracked: `7`.
-- `conditional`: `4`.
+- Candidates tracked: `8`.
+- `conditional`: `5`.
 - `workflow_ready_not_production`: `3`.
 
 ## Candidate Table
@@ -22,6 +22,7 @@ play quality, placeholder scatter, missing bands, or incomplete live review.
 | `m11_three_way_junction_workflow` | `junction_case_library` | `accepted_workflow` | `workflow_ready_not_production` | close:pass, medium:pass, iso:pass, topdown:pass | - |
 | `m10_ecotone_layer_workflow` | `unlike_biome_ecotone` | `accepted_workflow` | `conditional` | close:conditional, medium:pass, iso:pass, topdown:pass | - |
 | `m10_real_procedural_gloss_canyon` | `real_to_procedural_neighbor` | `accepted_workflow` | `conditional` | close:conditional, medium:pass, iso:pass, topdown:pass | - |
+| `m18_representative_slice_first_pass` | `representative_runtime_slice` | `ready_for_live_review` | `conditional` | close:conditional, medium:conditional, iso:pass, topdown:conditional | - |
 | `m8_grassland_grass_calm_v3` | `comfyui_texture_regen` | `sidecar_candidate` | `conditional` | close:conditional, medium:pass, iso:pass, topdown:pass | - |
 
 ## Blockers And Notes
@@ -50,6 +51,12 @@ play quality, placeholder scatter, missing bands, or incomplete live review.
 ### m10_real_procedural_gloss_canyon
 - Procedural side needs richer close-range PBR/detail.
 - Needs production scatter/features before AAA close-play promotion.
+
+### m18_representative_slice_first_pass
+- Procedural tan/sand side reads too smooth and broad for AAA close-play.
+- Derived M15 scatter uses procedural review primitives, not authored production assets.
+- M11 junction ownership is represented in the M18 closure harness, not physically composed into the same streamed terrain.
+- No production promotion requested; this remains representative workflow evidence.
 
 ### m8_grassland_grass_calm_v3
 - M14 runtime trial is safe but too subtle for close-play production promotion.

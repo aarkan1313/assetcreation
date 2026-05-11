@@ -881,12 +881,18 @@ Capture wrappers:
 - `res://scenes/review/capture_source_stack_m18_guided_neighbor_iso.tscn`
 - `res://scenes/review/capture_source_stack_m18_guided_neighbor_close.tscn`
 - `res://scenes/review/capture_source_stack_m18_guided_neighbor_medium.tscn`
+- `res://scenes/review/capture_source_stack_m18_closure_review.tscn`
+- `res://scenes/review/capture_source_stack_m18_performance_smoke.tscn`
 
 M18 first pass is conditional. It proves that M17 procedural output can be
 reviewed in the runtime terrain path and that M15-style derived masks can feed
 the existing scatter overlay. Full M18 closure still needs M11 junction
 ownership in the same representative review harness, plus authored scatter
-assets replacing procedural review primitives.
+assets replacing procedural review primitives. The M18 closure harness is:
+
+```powershell
+& 'C:/Godot/Godot_v4.5-stable_win64.exe' --path 'D:/assets/world3' --single-window --disable-crash-handler --scene 'res://scenes/review/source_stack_m18_closure_review.tscn'
+```
 
 ## What's NOT yet documented here (because it doesn't exist yet)
 

@@ -1,7 +1,7 @@
 {
   "updated": "2026-05-10",
   "manifest": "world3\\jobs\\production_promotion_candidates.json",
-  "candidate_count": 7,
+  "candidate_count": 8,
   "band_order": [
     "close",
     "medium",
@@ -9,7 +9,7 @@
     "topdown"
   ],
   "readiness_counts": {
-    "conditional": 4,
+    "conditional": 5,
     "workflow_ready_not_production": 3
   },
   "candidates": [
@@ -169,6 +169,37 @@
       ],
       "source_doc": "world3/docs/M10_TERRAIN_SEAM_INTEGRATION_PROOF_2026_05_09.md",
       "scene": "world3/scenes/review/source_stack_real_procedural_tour.tscn"
+    },
+    {
+      "id": "m18_representative_slice_first_pass",
+      "type": "workflow",
+      "promotion_track": "representative_runtime_slice",
+      "promotion_state": "ready_for_live_review",
+      "production_status": "not_production_art",
+      "band_status": {
+        "close": "conditional",
+        "medium": "conditional",
+        "iso": "pass",
+        "topdown": "conditional"
+      },
+      "missing_files": [],
+      "missing_required_captures": [],
+      "failed_bands": [],
+      "conditional_bands": [
+        "close",
+        "medium",
+        "topdown"
+      ],
+      "not_reviewed_bands": [],
+      "readiness": "conditional",
+      "blockers": [
+        "Procedural tan/sand side reads too smooth and broad for AAA close-play.",
+        "Derived M15 scatter uses procedural review primitives, not authored production assets.",
+        "M11 junction ownership is represented in the M18 closure harness, not physically composed into the same streamed terrain.",
+        "No production promotion requested; this remains representative workflow evidence."
+      ],
+      "source_doc": "world3/docs/M18_REPRESENTATIVE_SLICE_FIRST_PASS_2026_05_10.md",
+      "scene": "world3/scenes/review/source_stack_m18_guided_neighbor_tour.tscn"
     },
     {
       "id": "m8_grassland_grass_calm_v3",

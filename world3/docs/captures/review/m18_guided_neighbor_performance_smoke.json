@@ -1,0 +1,22 @@
+{
+  "fps_estimate": {
+    "average": 211.771931042353,
+    "p95_frame_time": 125.266190655142
+  },
+  "frame_ms": {
+    "average": 4.72206111111111,
+    "max": 11.851,
+    "p95": 7.983,
+    "p99": 9.52
+  },
+  "id": "m18_guided_neighbor_performance_smoke",
+  "sample_frames": 360,
+  "scene": "res://scenes/review/source_stack_m18_guided_neighbor_tour.tscn",
+  "status": "smoke_metric_only_not_optimization_pass",
+  "version": 1,
+  "viewport_size": [
+    1600,
+    1000
+  ],
+  "warmup_frames": 120
+}

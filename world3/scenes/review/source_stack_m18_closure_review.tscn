@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/M16SourceStackGalleryReview.gd" id="script"]
+
+[node name="SourceStackM18ClosureReview" type="Control"]
+script = ExtResource("script")
+manifest_path = "res://jobs/m18_closure_review_manifest.json"
+title = "world3 M18 Closure Review Harness"
+auto_play = true
+seconds_per_band = 3.5
+background_color = Color(0.07, 0.085, 0.08, 1)

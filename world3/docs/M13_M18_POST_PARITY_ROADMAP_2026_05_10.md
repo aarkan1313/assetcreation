@@ -216,10 +216,14 @@ Current evidence 2026-05-10:
   `textures/source_stack/m18_guided_neighbor_slice_proof/`.
 - Runtime terrain: `toporeview/m18_guided_neighbor_slice_proof/`.
 - Review scene: `scenes/review/source_stack_m18_guided_neighbor_tour.tscn`.
+- Closure review harness:
+  `scenes/review/source_stack_m18_closure_review.tscn`.
 - Capture sheet:
   `docs/captures/review/source_stack_m18_guided_neighbor_contact_sheet.png`.
 - Derived feature masks:
   `textures/source_stack/m18_guided_neighbor_slice_proof/layers/`.
+- Performance smoke:
+  `docs/captures/review/m18_guided_neighbor_performance_smoke.json`.
 - Status: conditional workflow evidence. The M17 neighbor can re-enter the
   runtime source-stack path, M15-style derived feature masks feed the existing
   scatter overlay, and all four view bands capture cleanly. This is not M18
@@ -238,6 +242,6 @@ source-stack gallery bridge and first cached iso sidecar. M17 now has a
 first-pass real-data rule extractor and guided procedural-neighbor bundle. None
 of these are production-promoted terrain content. M18 is now active with a
 first-pass guided-neighbor runtime slice and derived M15-style feature masks.
-The next build move is to decide the cleanest way to include M11 junction
-ownership in the same M18 review harness without weakening the source-stack
-contract.
+M11 junction ownership is included in the M18 closure harness rather than
+physically mashed into the same terrain; this keeps provenance intact and
+defers physical multi-proof composition to a later stream/director pass.
