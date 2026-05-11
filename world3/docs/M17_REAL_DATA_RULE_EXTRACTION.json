@@ -1,0 +1,521 @@
+{
+  "version": 1,
+  "id": "m17_real_data_rule_extraction",
+  "sources_manifest": "world3/jobs/m17_rule_extraction_sources.json",
+  "samples": [
+    {
+      "id": "m10_ecotone_layer",
+      "role": "unlike-biome ecotone and feature masks",
+      "manifest": "world3/textures/source_stack/gloss_grassland_ecotone_layer_proof/manifest.json",
+      "runtime_heightmap": "res://toporeview/gloss_grassland_ecotone_layer_proof/heightmap.png",
+      "runtime_macro": "res://textures/source_stack/gloss_grassland_ecotone_layer_proof/source_macro_albedo.png",
+      "landform": {
+        "world_size_x_m": 537.5223251742373,
+        "world_size_z_m": 537.7142507499084,
+        "elevation_min_m": 398.96246337890625,
+        "elevation_max_m": 473.40814208984375,
+        "elevation_range_m": 74.4456787109375,
+        "slope_mean": 0.32204562425613403,
+        "slope_p50": 0.1744304895401001,
+        "slope_p95": 1.0595483779907227,
+        "roughness_std_m": 0.6955832242965698,
+        "roughness_p95_abs_m": 1.586944580078125
+      },
+      "masks": {
+        "wash_line_mask": {
+          "mean": 0.016192369163036346,
+          "coverage_gt_0_25": 0.02322864532470703,
+          "coverage_gt_0_50": 0.01219940185546875,
+          "p95": 0.03529411926865578
+        },
+        "shrub_carryover_mask": {
+          "mean": 0.17705142498016357,
+          "coverage_gt_0_25": 0.2692108154296875,
+          "coverage_gt_0_50": 0.0872488021850586,
+          "p95": 0.6352941393852234
+        },
+        "dry_grass_density_mask": {
+          "mean": 0.3906617760658264,
+          "coverage_gt_0_25": 0.5642862319946289,
+          "coverage_gt_0_50": 0.529510498046875,
+          "p95": 0.7882353067398071
+        },
+        "soil_exposure_mask": {
+          "mean": 0.0496358796954155,
+          "coverage_gt_0_25": 0.02277851104736328,
+          "coverage_gt_0_50": 0.01363372802734375,
+          "p95": 0.23529411852359772
+        },
+        "rock_cluster_mask": {
+          "mean": 0.009001313708722591,
+          "coverage_gt_0_25": 0.012003898620605469,
+          "coverage_gt_0_50": 0.0010395050048828125,
+          "p95": 0.04313725605607033
+        },
+        "no_scatter_mask": {
+          "mean": 0.08453771471977234,
+          "coverage_gt_0_25": 0.10586833953857422,
+          "coverage_gt_0_50": 0.026195526123046875,
+          "p95": 0.35686275362968445
+        },
+        "ecotone_weight": {
+          "mean": 0.15430215001106262,
+          "coverage_gt_0_25": 0.19873523712158203,
+          "coverage_gt_0_50": 0.16025829315185547,
+          "p95": 0.9529411792755127
+        },
+        "splat_weights_rgba": {
+          "entropy_mean": 0.11964835226535797,
+          "transition_coverage": 0.1370983123779297,
+          "dominance_p50": 1.0,
+          "dominance_p05": 0.5256917476654053
+        }
+      },
+      "manifest_metrics": {
+        "height_m": {
+          "min": 398.96246337890625,
+          "max": 473.40814208984375,
+          "range": 74.4456787109375,
+          "boundary_step_p95_m": 0.03028106689453125
+        },
+        "ecotone": {
+          "mean_weight": 0.15481814742088318,
+          "coverage_gt_0_25": 0.19888687133789062,
+          "boundary_x_std_px": 132.20472717285156,
+          "local_width_mean_px": 260.7352294921875,
+          "local_width_std_px": 28.00330924987793,
+          "boundary_diagonal_px": 235.0
+        },
+        "weights": {
+          "max_sum_error": 2.384185791015625e-07,
+          "source_scrub_mean": 0.49538567662239075,
+          "grassland_mean": 0.46374228596687317,
+          "ecotone_soil_mean": 0.03788096457719803,
+          "rock_exposure_mean": 0.00299116806127131,
+          "source_macro_weight_mean": 0.3053508996963501,
+          "macro_guidance_weight_mean": 0.7402725219726562
+        },
+        "feature_masks": {
+          "shrub_carryover_mean": 0.17831000685691833,
+          "dry_grass_density_mean": 0.39187413454055786,
+          "soil_exposure_mean": 0.050131626427173615,
+          "rock_cluster_mean": 0.009151684120297432,
+          "wash_line_mean": 0.016362730413675308,
+          "no_scatter_mean": 0.08595715463161469
+        }
+      },
+      "policy": "macro_guidance_plus_splat_weights_requires_visual_review"
+    },
+    {
+      "id": "m11_three_way_junction",
+      "role": "three-way transition/material ownership",
+      "manifest": "world3/textures/source_stack/m11_three_way_junction_proof/manifest.json",
+      "runtime_heightmap": "res://toporeview/m11_three_way_junction_proof/heightmap.png",
+      "runtime_macro": "res://textures/source_stack/m11_three_way_junction_proof/source_macro_albedo.png",
+      "landform": {
+        "world_size_x_m": 537.5223251742373,
+        "world_size_z_m": 537.7142507499084,
+        "elevation_min_m": 409.8135681152344,
+        "elevation_max_m": 463.3187561035156,
+        "elevation_range_m": 53.50518798828125,
+        "slope_mean": 0.2699330449104309,
+        "slope_p50": 0.1646280437707901,
+        "slope_p95": 0.8142061233520508,
+        "roughness_std_m": 0.603914737701416,
+        "roughness_p95_abs_m": 1.27935791015625
+      },
+      "masks": {
+        "wash_line_mask": {
+          "mean": 0.027937348932027817,
+          "coverage_gt_0_25": 0.04607868194580078,
+          "coverage_gt_0_50": 0.006136894226074219,
+          "p95": 0.23137255012989044
+        },
+        "shrub_carryover_mask": {
+          "mean": 0.07323789596557617,
+          "coverage_gt_0_25": 0.09519386291503906,
+          "coverage_gt_0_50": 0.01933002471923828,
+          "p95": 0.3529411852359772
+        },
+        "dry_grass_density_mask": {
+          "mean": 0.2522037923336029,
+          "coverage_gt_0_25": 0.39353179931640625,
+          "coverage_gt_0_50": 0.33040523529052734,
+          "p95": 0.686274528503418
+        },
+        "soil_exposure_mask": {
+          "mean": 0.0704433023929596,
+          "coverage_gt_0_25": 0.09493064880371094,
+          "coverage_gt_0_50": 0.008386611938476562,
+          "p95": 0.32549020648002625
+        },
+        "rock_cluster_mask": {
+          "mean": 0.08332628756761551,
+          "coverage_gt_0_25": 0.07854747772216797,
+          "coverage_gt_0_50": 0.000579833984375,
+          "p95": 0.2980392277240753
+        },
+        "no_scatter_mask": {
+          "mean": 0.06849125772714615,
+          "coverage_gt_0_25": 0.04078865051269531,
+          "coverage_gt_0_50": 0.00978851318359375,
+          "p95": 0.22745098173618317
+        },
+        "splat_weights_rgba": {
+          "entropy_mean": 0.19501087069511414,
+          "transition_coverage": 0.18226909637451172,
+          "dominance_p50": 0.992094874382019,
+          "dominance_p05": 0.5039682388305664
+        }
+      },
+      "manifest_metrics": {
+        "height_m": {
+          "min": 409.8135681152344,
+          "max": 463.3187561035156,
+          "range": 53.50518798828125,
+          "junction_gradient_p95_m_per_px": 0.39411452412605286
+        },
+        "junction": {
+          "mean_weight": 0.1785079836845398,
+          "coverage_gt_0_25": 0.260223388671875,
+          "triple_core_coverage_gt_0_25": 0.024781227111816406,
+          "dominant_domain_min_coverage": 0.31268787384033203
+        },
+        "weights": {
+          "max_sum_error": 2.384185791015625e-07,
+          "source_scrub_mean": 0.33426010608673096,
+          "grassland_mean": 0.31494998931884766,
+          "junction_soil_mean": 0.03611758351325989,
+          "canyon_rock_mean": 0.3146722912788391,
+          "macro_guidance_weight_mean": 0.7461386919021606
+        },
+        "feature_masks": {
+          "shrub_carryover_mean": 0.07417881488800049,
+          "dry_grass_density_mean": 0.25358784198760986,
+          "soil_exposure_mean": 0.07154911756515503,
+          "rock_cluster_mean": 0.08452431112527847,
+          "wash_line_mean": 0.028467033058404922,
+          "no_scatter_mean": 0.06990338116884232
+        }
+      },
+      "policy": "three_way_junction_macro_guidance_plus_runtime_splat_weights"
+    },
+    {
+      "id": "m11_fourway_corner",
+      "role": "four-way transition/material ownership stress",
+      "manifest": "world3/textures/source_stack/m11_fourway_corner_proof/manifest.json",
+      "runtime_heightmap": "res://toporeview/m11_fourway_corner_proof/heightmap.png",
+      "runtime_macro": "res://textures/source_stack/m11_fourway_corner_proof/source_macro_albedo.png",
+      "landform": {
+        "world_size_x_m": 537.5223251742373,
+        "world_size_z_m": 537.7142507499084,
+        "elevation_min_m": 409.9164123535156,
+        "elevation_max_m": 463.7407531738281,
+        "elevation_range_m": 53.8243408203125,
+        "slope_mean": 0.23762470483779907,
+        "slope_p50": 0.1696743220090866,
+        "slope_p95": 0.6954209804534912,
+        "roughness_std_m": 0.5197908878326416,
+        "roughness_p95_abs_m": 1.05126953125
+      },
+      "masks": {
+        "wash_line_mask": {
+          "mean": 0.06602030992507935,
+          "coverage_gt_0_25": 0.06941890716552734,
+          "coverage_gt_0_50": 0.013863563537597656,
+          "p95": 0.30980393290519714
+        },
+        "shrub_carryover_mask": {
+          "mean": 0.07809709012508392,
+          "coverage_gt_0_25": 0.07785892486572266,
+          "coverage_gt_0_50": 0.015280723571777344,
+          "p95": 0.32156863808631897
+        },
+        "dry_grass_density_mask": {
+          "mean": 0.2374885231256485,
+          "coverage_gt_0_25": 0.3630056381225586,
+          "coverage_gt_0_50": 0.19177818298339844,
+          "p95": 0.6039215922355652
+        },
+        "soil_exposure_mask": {
+          "mean": 0.14862632751464844,
+          "coverage_gt_0_25": 0.13826942443847656,
+          "coverage_gt_0_50": 0.051448822021484375,
+          "p95": 0.5058823823928833
+        },
+        "rock_cluster_mask": {
+          "mean": 0.06033940985798836,
+          "coverage_gt_0_25": 0.01800251007080078,
+          "coverage_gt_0_50": 0.00043392181396484375,
+          "p95": 0.2078431397676468
+        },
+        "no_scatter_mask": {
+          "mean": 0.06671229749917984,
+          "coverage_gt_0_25": 0.054482460021972656,
+          "coverage_gt_0_50": 0.010295867919921875,
+          "p95": 0.25882354378700256
+        },
+        "splat_weights_rgba": {
+          "entropy_mean": 0.37231987714767456,
+          "transition_coverage": 0.4640064239501953,
+          "dominance_p50": 0.8055555820465088,
+          "dominance_p05": 0.4251968264579773
+        }
+      },
+      "manifest_metrics": {
+        "height_m": {
+          "min": 409.9164123535156,
+          "max": 463.7407531738281,
+          "range": 53.8243408203125,
+          "junction_gradient_p95_m_per_px": 0.3166424036026001
+        },
+        "junction": {
+          "mean_weight": 0.4292095899581909,
+          "coverage_gt_0_25": 0.6597318649291992,
+          "quad_core_coverage_gt_0_25": 0.11362838745117188,
+          "dominant_domain_min_coverage": 0.16387271881103516
+        },
+        "weights": {
+          "max_sum_error": 2.384185791015625e-07,
+          "grassland_mean": 0.23562932014465332,
+          "fantasy_lava_mean": 0.28003251552581787,
+          "canyon_rock_mean": 0.23038920760154724,
+          "source_scrub_mean": 0.25394895672798157,
+          "macro_guidance_weight_mean": 0.7600743770599365
+        },
+        "feature_masks": {
+          "shrub_carryover_mean": 0.07979920506477356,
+          "dry_grass_density_mean": 0.2394348382949829,
+          "soil_exposure_mean": 0.15056195855140686,
+          "rock_cluster_mean": 0.06200265511870384,
+          "fantasy_crack_mean": 0.0022133197635412216,
+          "wash_line_mean": 0.06773228943347931,
+          "no_scatter_mean": 0.06828146427869797
+        }
+      },
+      "policy": "four_way_corner_macro_guidance_plus_runtime_splat_weights"
+    },
+    {
+      "id": "m12_runtime_parity",
+      "role": "runtime parity standard using four-way source stack",
+      "manifest": "world3/textures/source_stack/m11_fourway_corner_proof/manifest.json",
+      "runtime_heightmap": "res://toporeview/m11_fourway_corner_proof/heightmap.png",
+      "runtime_macro": "res://textures/source_stack/m11_fourway_corner_proof/source_macro_albedo.png",
+      "landform": {
+        "world_size_x_m": 537.5223251742373,
+        "world_size_z_m": 537.7142507499084,
+        "elevation_min_m": 409.9164123535156,
+        "elevation_max_m": 463.7407531738281,
+        "elevation_range_m": 53.8243408203125,
+        "slope_mean": 0.23762470483779907,
+        "slope_p50": 0.1696743220090866,
+        "slope_p95": 0.6954209804534912,
+        "roughness_std_m": 0.5197908878326416,
+        "roughness_p95_abs_m": 1.05126953125
+      },
+      "masks": {
+        "wash_line_mask": {
+          "mean": 0.06602030992507935,
+          "coverage_gt_0_25": 0.06941890716552734,
+          "coverage_gt_0_50": 0.013863563537597656,
+          "p95": 0.30980393290519714
+        },
+        "shrub_carryover_mask": {
+          "mean": 0.07809709012508392,
+          "coverage_gt_0_25": 0.07785892486572266,
+          "coverage_gt_0_50": 0.015280723571777344,
+          "p95": 0.32156863808631897
+        },
+        "dry_grass_density_mask": {
+          "mean": 0.2374885231256485,
+          "coverage_gt_0_25": 0.3630056381225586,
+          "coverage_gt_0_50": 0.19177818298339844,
+          "p95": 0.6039215922355652
+        },
+        "soil_exposure_mask": {
+          "mean": 0.14862632751464844,
+          "coverage_gt_0_25": 0.13826942443847656,
+          "coverage_gt_0_50": 0.051448822021484375,
+          "p95": 0.5058823823928833
+        },
+        "rock_cluster_mask": {
+          "mean": 0.06033940985798836,
+          "coverage_gt_0_25": 0.01800251007080078,
+          "coverage_gt_0_50": 0.00043392181396484375,
+          "p95": 0.2078431397676468
+        },
+        "no_scatter_mask": {
+          "mean": 0.06671229749917984,
+          "coverage_gt_0_25": 0.054482460021972656,
+          "coverage_gt_0_50": 0.010295867919921875,
+          "p95": 0.25882354378700256
+        },
+        "splat_weights_rgba": {
+          "entropy_mean": 0.37231987714767456,
+          "transition_coverage": 0.4640064239501953,
+          "dominance_p50": 0.8055555820465088,
+          "dominance_p05": 0.4251968264579773
+        }
+      },
+      "manifest_metrics": {
+        "height_m": {
+          "min": 409.9164123535156,
+          "max": 463.7407531738281,
+          "range": 53.8243408203125,
+          "junction_gradient_p95_m_per_px": 0.3166424036026001
+        },
+        "junction": {
+          "mean_weight": 0.4292095899581909,
+          "coverage_gt_0_25": 0.6597318649291992,
+          "quad_core_coverage_gt_0_25": 0.11362838745117188,
+          "dominant_domain_min_coverage": 0.16387271881103516
+        },
+        "weights": {
+          "max_sum_error": 2.384185791015625e-07,
+          "grassland_mean": 0.23562932014465332,
+          "fantasy_lava_mean": 0.28003251552581787,
+          "canyon_rock_mean": 0.23038920760154724,
+          "source_scrub_mean": 0.25394895672798157,
+          "macro_guidance_weight_mean": 0.7600743770599365
+        },
+        "feature_masks": {
+          "shrub_carryover_mean": 0.07979920506477356,
+          "dry_grass_density_mean": 0.2394348382949829,
+          "soil_exposure_mean": 0.15056195855140686,
+          "rock_cluster_mean": 0.06200265511870384,
+          "fantasy_crack_mean": 0.0022133197635412216,
+          "wash_line_mean": 0.06773228943347931,
+          "no_scatter_mean": 0.06828146427869797
+        }
+      },
+      "policy": "four_way_corner_macro_guidance_plus_runtime_splat_weights"
+    },
+    {
+      "id": "m10_real_to_procedural",
+      "role": "existing real-to-procedural seam proof and neighbor shape",
+      "manifest": "world3/textures/source_stack/gloss_procedural_canyon_rock_proof/manifest.json",
+      "runtime_heightmap": "res://toporeview/gloss_procedural_canyon_rock_proof/heightmap.png",
+      "runtime_macro": "res://textures/source_stack/gloss_procedural_canyon_rock_proof/source_macro_albedo.png",
+      "landform": {
+        "world_size_x_m": 210.18167569022245,
+        "world_size_z_m": 239.98799443003327,
+        "elevation_min_m": 416.6089782714844,
+        "elevation_max_m": 446.4930114746094,
+        "elevation_range_m": 29.884033203125,
+        "slope_mean": 0.30919891595840454,
+        "slope_p50": 0.21211813390254974,
+        "slope_p95": 0.9107598066329956,
+        "roughness_std_m": 0.36261141300201416,
+        "roughness_p95_abs_m": 0.816253662109375
+      },
+      "masks": {},
+      "manifest_metrics": {
+        "height_m": {
+          "raw_overlap_delta": {
+            "mean": 16.56202380405739,
+            "median": 16.493011474609375,
+            "p95": 20.423181152343748,
+            "max": 26.1453857421875
+          },
+          "global_bias": 16.493011474609375,
+          "row_bias": {
+            "mean": 1.1890755259506705,
+            "median": 1.1272713541984558,
+            "p95": 3.7047748804092357,
+            "max": 5.97932243347168
+          },
+          "post_overlap_delta": {
+            "mean": 0.8739450715947896,
+            "median": 0.558349609375,
+            "p95": 3.009567260742185,
+            "max": 7.568695068359375
+          },
+          "post_join_steps": {
+            "left_to_band": {
+              "mean": 0.06805437803268433,
+              "median": 0.0441131591796875,
+              "p95": 0.23437805175781243,
+              "max": 1.040985107421875
+            },
+            "band_to_right": {
+              "mean": 0.05559617280960083,
+              "median": 0.0674285888671875,
+              "p95": 0.15171051025390625,
+              "max": 0.155731201171875
+            }
+          }
+        },
+        "macro_rgb01": {
+          "raw_overlap_delta_rgb01": {
+            "mean": 0.12231604605888909,
+            "median": 0.09803920984268188,
+            "p95": 0.3490196168422699,
+            "max": 0.7176470756530762
+          },
+          "band_mode": "blend",
+          "bridge_blur_px": 26.0,
+          "bridge_detail_strength": 0.12,
+          "global_bias_rgb01": [
+            -0.1254901885986328,
+            -0.10196080803871155,
+            -0.03529411554336548
+          ],
+          "post_overlap_delta_rgb01": {
+            "mean": 0.086425724405179,
+            "median": 0.05934548377990723,
+            "p95": 0.2828458398580551,
+            "max": 0.6231012344360352
+          },
+          "post_join_steps_rgb01": {
+            "left_to_band": {
+              "mean": 0.027268824727798346,
+              "median": 0.01960974931716919,
+              "p95": 0.08628580644726754,
+              "max": 0.17386026680469513
+            },
+            "band_to_right": {
+              "mean": 0.0036337107594590634,
+              "median": 0.003607913851737976,
+              "p95": 0.008150346577167511,
+              "max": 0.012756288051605225
+            }
+          }
+        },
+        "valid_mask": {
+          "left_coverage": 1.0,
+          "right_coverage": 1.0,
+          "band_coverage": 1.0,
+          "output_coverage": 1.0,
+          "output_coverage_before_hole_fill": 1.0,
+          "hole_fill_policy": "filled_to_full_valid_because_coverage_above_0.9950"
+        }
+      },
+      "policy": "real_source_to_procedural_material_scale_normalized_then_solved_into_single_runtime_bundle"
+    }
+  ],
+  "rules": {
+    "height": {
+      "target_elevation_range_m": 53.09671630859375,
+      "target_slope_p95": 0.8350712537765503,
+      "target_roughness_p95_abs_m": 1.15701904296875
+    },
+    "drainage_wash": {
+      "target_wash_mean": 0.044042584486305714,
+      "target_wash_coverage_gt_0_25": 0.0416290283203125
+    },
+    "vegetation_scatter": {
+      "target_shrub_mean": 0.1016208752989769,
+      "target_dry_grass_mean": 0.2794606536626816,
+      "target_no_scatter_mean": 0.07161339186131954
+    },
+    "material_transition": {
+      "target_transition_coverage": 0.311845064163208,
+      "target_ecotone_mean": 0.15430215001106262
+    }
+  },
+  "neighbor": {
+    "command": "C:\\Program Files\\Python312\\python.exe D:\\assets\\world3\\pipeline\\build_procedural_neighbor_bundle.py --material-id desert_canyon_rock --out D:\\assets\\world3\\toporeview\\m17_guided_desert_canyon_neighbor --size 512,1024 --world-size-m 120,240 --elev-min-m 416.0 --elev-range-m 53.097 --seed 1701 --name M17 guided desert canyon procedural neighbor",
+    "stdout": "{\n  \"macro\": \"D:\\\\assets\\\\world3\\\\toporeview\\\\m17_guided_desert_canyon_neighbor\\\\layers\\\\render_albedo.png\",\n  \"valid_mask\": \"D:\\\\assets\\\\world3\\\\toporeview\\\\m17_guided_desert_canyon_neighbor\\\\layers\\\\source_valid_mask.png\",\n  \"heightmap\": \"D:\\\\assets\\\\world3\\\\toporeview\\\\m17_guided_desert_canyon_neighbor\\\\heightmap.png\",\n  \"meta\": \"D:\\\\assets\\\\world3\\\\toporeview\\\\m17_guided_desert_canyon_neighbor\\\\meta.json\"\n}\n",
+    "out": "world3/toporeview/m17_guided_desert_canyon_neighbor"
+  }
+}

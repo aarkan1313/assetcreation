@@ -169,6 +169,22 @@ Exit:
 
 - Procedural output can be reviewed through the same M12 bands and M13 gate.
 
+Current evidence 2026-05-10:
+
+- Source manifest: `jobs/m17_rule_extraction_sources.json`.
+- Extractor: `pipeline/build_m17_real_data_rule_extraction.py`.
+- Rule notes and metrics:
+  `docs/M17_REAL_DATA_RULE_EXTRACTION_2026_05_10.md` and
+  `docs/M17_REAL_DATA_RULE_EXTRACTION.json`.
+- Review board:
+  `docs/captures/review/source_stack_m17_rule_extraction_board.png`.
+- Guided procedural-neighbor bundle:
+  `toporeview/m17_guided_desert_canyon_neighbor/`.
+- Status: first-pass workflow evidence is in place. It extracts plausible
+  landform/feature targets from accepted source-stack proofs and emits a
+  height/macro/valid-mask bundle. It is not production terrain; M18 must run it
+  through close/medium/iso/topdown representative review before promotion.
+
 ## M18 - Playable Representative Slice
 
 **Goal**: assemble a small playable terrain slice that exercises the complete
@@ -198,11 +214,11 @@ Exit:
 M13 gate hygiene is active for every new artifact. The candidate manifest and
 audit are clean after M12 workflow acceptance and the M16 iso sidecar entry.
 M14 close-play terrain quality has enough workflow evidence to stop treating
-flat organic textures as the visual bottleneck. Grass, temperate forest floor,
-tundra moss, and tundra lichen now have documented sidecar or methodology
-evidence in the M14 board; none are production-promoted terrain content. The
-lesson is explicit: flat tiles can provide calm substrate/detail, but visible
-organic identity belongs to M15 scatter/decal/features. The next active build
-move is M15: use source-stack masks and accepted M14 sidecars to add authored,
-mask-driven shrubs, grasses, stones, dry debris, lichen decals, and related
-feature layers without breaking close/medium/iso/topdown parity.
+flat organic textures as the visual bottleneck. M15 proves mask-driven
+scatter/decal placement with procedural review primitives. M16 proves the
+source-stack gallery bridge and first cached iso sidecar. M17 now has a
+first-pass real-data rule extractor and guided procedural-neighbor bundle. None
+of these are production-promoted terrain content. The next active build move is
+M18: assemble one representative slice that uses the M13 gate, M14 sidecars,
+M15 feature policy, M16 gallery/parity controls, and M17 guided neighbor in the
+same close/medium/iso/topdown review loop.

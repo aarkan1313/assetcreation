@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "rules": {
+    "height": {
+      "target_elevation_range_m": 53.09671630859375,
+      "target_slope_p95": 0.8350712537765503,
+      "target_roughness_p95_abs_m": 1.15701904296875
+    },
+    "drainage_wash": {
+      "target_wash_mean": 0.044042584486305714,
+      "target_wash_coverage_gt_0_25": 0.0416290283203125
+    },
+    "vegetation_scatter": {
+      "target_shrub_mean": 0.1016208752989769,
+      "target_dry_grass_mean": 0.2794606536626816,
+      "target_no_scatter_mean": 0.07161339186131954
+    },
+    "material_transition": {
+      "target_transition_coverage": 0.311845064163208,
+      "target_ecotone_mean": 0.15430215001106262
+    }
+  },
+  "neighbor": {
+    "id": "m17_guided_desert_canyon_neighbor",
+    "material_id": "desert_canyon_rock",
+    "seed": 1701,
+    "out": "world3/toporeview/m17_guided_desert_canyon_neighbor",
+    "size": "512,1024",
+    "world_size_m": "120,240",
+    "source_hint": "Use the M10 real-to-procedural proof elevation range and source-stack metrics as first procedural-neighbor target."
+  },
+  "build": {
+    "command": "C:\\Program Files\\Python312\\python.exe D:\\assets\\world3\\pipeline\\build_procedural_neighbor_bundle.py --material-id desert_canyon_rock --out D:\\assets\\world3\\toporeview\\m17_guided_desert_canyon_neighbor --size 512,1024 --world-size-m 120,240 --elev-min-m 416.0 --elev-range-m 53.097 --seed 1701 --name M17 guided desert canyon procedural neighbor",
+    "stdout": "{\n  \"macro\": \"D:\\\\assets\\\\world3\\\\toporeview\\\\m17_guided_desert_canyon_neighbor\\\\layers\\\\render_albedo.png\",\n  \"valid_mask\": \"D:\\\\assets\\\\world3\\\\toporeview\\\\m17_guided_desert_canyon_neighbor\\\\layers\\\\source_valid_mask.png\",\n  \"heightmap\": \"D:\\\\assets\\\\world3\\\\toporeview\\\\m17_guided_desert_canyon_neighbor\\\\heightmap.png\",\n  \"meta\": \"D:\\\\assets\\\\world3\\\\toporeview\\\\m17_guided_desert_canyon_neighbor\\\\meta.json\"\n}\n",
+    "out": "world3/toporeview/m17_guided_desert_canyon_neighbor"
+  }
+}

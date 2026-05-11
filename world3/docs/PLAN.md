@@ -414,6 +414,18 @@ from legacy `RegionGalleryCapture.gd` to a source-stack gallery runner, not the
 final automated region iterator. `scenes/review/source_stack_m16_gallery_review.tscn`
 now reads that manifest and cycles card/band captures for interactive review.
 
+2026-05-10 M17 rule extraction: `jobs/m17_rule_extraction_sources.json` indexes
+accepted source-stack proofs and
+`pipeline/build_m17_real_data_rule_extraction.py` extracts first-pass landform,
+wash, vegetation, and transition targets. It writes
+`docs/M17_REAL_DATA_RULE_EXTRACTION_2026_05_10.md`,
+`docs/M17_REAL_DATA_RULE_EXTRACTION.json`,
+`jobs/m17_procedural_neighbor_recipe.json`, the visual board at
+`docs/captures/review/source_stack_m17_rule_extraction_board.png`, and a guided
+procedural neighbor bundle at `toporeview/m17_guided_desert_canyon_neighbor/`.
+This proves the data-to-procedural-bundle workflow; M18 still has to validate it
+in a representative close/medium/iso/topdown runtime slice.
+
 ## M7 current checkpoint
 
 **Status 2026-05-08**: PASS 1 COMPLETE for workflow/runtime validation;

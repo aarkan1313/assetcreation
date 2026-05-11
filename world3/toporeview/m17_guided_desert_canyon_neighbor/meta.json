@@ -1,0 +1,30 @@
+{
+  "name": "M17 guided desert canyon procedural neighbor",
+  "builder": "build_procedural_neighbor_bundle.py",
+  "source": "procedural",
+  "source_material_id": "desert_canyon_rock",
+  "source_material_albedo": "world3/textures/wgv3/desert_canyon_rock/albedo.png",
+  "heightmap_size_px": [
+    512,
+    1024
+  ],
+  "world_size_x_m": 120.0,
+  "world_size_z_m": 240.0,
+  "world_size_m": 240.0,
+  "elevation_min_m": 416.0,
+  "elevation_max_m": 469.09698486328125,
+  "elevation_range_m": 53.09698486328125,
+  "material": "desert_canyon_rock",
+  "texture_is_real_imagery": false,
+  "procedural_neighbor": {
+    "version": 1,
+    "seed": 1701,
+    "macro_policy": "catalog_material_color_with_multiscale_procedural_variation",
+    "height_policy": "synthetic_wash_slope_ridge_heightfield",
+    "target": "M10 real_to_procedural seam proof"
+  },
+  "layers": {
+    "render_albedo": "res://toporeview/m17_guided_desert_canyon_neighbor/layers/render_albedo.png",
+    "source_valid_mask": "res://toporeview/m17_guided_desert_canyon_neighbor/layers/source_valid_mask.png"
+  }
+}

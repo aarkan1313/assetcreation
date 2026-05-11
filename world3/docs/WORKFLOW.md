@@ -834,6 +834,34 @@ Capture smoke:
 & 'C:/Godot/Godot_v4.5-stable_win64.exe' --path 'D:/assets/world3' --single-window --disable-crash-handler --scene 'res://scenes/review/capture_source_stack_m16_gallery_review.tscn'
 ```
 
+M17 real-data-guided procedural extraction:
+
+```powershell
+python world3/pipeline/build_m17_real_data_rule_extraction.py
+```
+
+Inputs:
+
+- `world3/jobs/m17_rule_extraction_sources.json`
+- Accepted source-stack manifests from M10/M11/M12.
+- Runtime heightmaps, runtime macro albedo, feature masks, splat weights, and
+  seam metrics referenced by those manifests.
+
+Outputs:
+
+- `world3/docs/M17_REAL_DATA_RULE_EXTRACTION.json`
+- `world3/docs/M17_REAL_DATA_RULE_EXTRACTION_2026_05_10.md`
+- `world3/jobs/m17_procedural_neighbor_recipe.json`
+- `world3/docs/captures/review/source_stack_m17_rule_extraction_board.png`
+- `world3/toporeview/m17_guided_desert_canyon_neighbor/heightmap.png`
+- `world3/toporeview/m17_guided_desert_canyon_neighbor/layers/render_albedo.png`
+- `world3/toporeview/m17_guided_desert_canyon_neighbor/layers/source_valid_mask.png`
+
+The extractor normalizes Godot/runtime 16-bit height PNGs before measuring
+range, slope, and roughness. The M17 neighbor is workflow evidence only: it is a
+compatible procedural bundle for M18 review, not a production-promoted terrain
+asset.
+
 ## What's NOT yet documented here (because it doesn't exist yet)
 
 - **Tundra kit textures** — kit schema defined in `biome_kits.json`
