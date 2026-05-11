@@ -433,8 +433,11 @@ into `textures/source_stack/m18_guided_neighbor_slice_proof/` and
 `toporeview/m18_guided_neighbor_slice_proof/`, then captured through
 `scenes/review/source_stack_m18_guided_neighbor_tour.tscn` across topdown, iso,
 close, and medium bands. Status is conditional workflow evidence, not M18
-closure: the next pass must add M15 feature/scatter policy and settle how M11
-junction ownership appears in the same review harness.
+closure: `pipeline/build_m18_slice_feature_masks.py` now derives M15-style
+feature masks from the M18 runtime macro/height/seam data and the tour scene
+feeds them into the existing scatter overlay. The next pass must settle how M11
+junction ownership appears in the same review harness and replace procedural
+feature primitives with authored scatter assets.
 
 ## M7 current checkpoint
 

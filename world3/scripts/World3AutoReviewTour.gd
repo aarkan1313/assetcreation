@@ -721,7 +721,7 @@ func _apply_source_macro_overrides(mat: ShaderMaterial) -> void:
 
 
 func _setup_ecotone_scatter() -> void:
-	if tour_profile != "ecotone_layer" and tour_profile != "junction_layer" and tour_profile != "junction_fourway" and tour_profile != "m12_parity":
+	if tour_profile != "ecotone_layer" and tour_profile != "junction_layer" and tour_profile != "junction_fourway" and tour_profile != "m12_parity" and tour_profile != "seam_integration":
 		return
 	if scatter_shrub_mask_path == "" and scatter_grass_mask_path == "" and scatter_rock_mask_path == "":
 		return

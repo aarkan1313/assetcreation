@@ -6,17 +6,17 @@
     {
       "label": "Topdown band",
       "path": "world3\\docs\\captures\\review\\source_stack_m18_guided_neighbor_topdown.png",
-      "note": "M17 guided neighbor integrated with real Gloss source through the M10 seam solver."
+      "note": "M17 guided neighbor integrated with real Gloss source through the M10 seam solver; derived M15 masks active."
     },
     {
       "label": "Iso band",
       "path": "world3\\docs\\captures\\review\\source_stack_m18_guided_neighbor_iso.png",
-      "note": "Tactical/iso read of the same runtime bundle."
+      "note": "Tactical/iso read of the same runtime bundle with feature overlay."
     },
     {
       "label": "Close band",
       "path": "world3\\docs\\captures\\review\\source_stack_m18_guided_neighbor_close.png",
-      "note": "Close 3D check for seam artifacts and procedural-side quality."
+      "note": "Close 3D check for seam artifacts, scatter, and procedural-side quality."
     },
     {
       "label": "Medium band",

@@ -33,6 +33,7 @@
     "heightmap": "world3/toporeview/m18_guided_neighbor_slice_proof/heightmap.png",
     "meta": "world3/toporeview/m18_guided_neighbor_slice_proof/meta.json",
     "metrics": "world3/docs/captures/review/terrain_seam_m18_guided_neighbor_metrics.json",
+    "feature_mask_metrics": "world3/textures/source_stack/m18_guided_neighbor_slice_proof/layers/feature_mask_metrics.json",
     "tour_scene": "world3/scenes/review/source_stack_m18_guided_neighbor_tour.tscn",
     "contact_sheet": "world3/docs/captures/review/source_stack_m18_guided_neighbor_contact_sheet.png"
   },
@@ -48,11 +49,13 @@
     "passes": [
       "M17 procedural output re-enters the source-stack runtime contract.",
       "Close, medium, iso, and topdown captures all run from the same terrain bundle.",
+      "M15-style feature masks are derived from the runtime macro/height/seam data and feed the existing scatter overlay.",
       "Valid-mask coverage is full and capture scenes exited cleanly."
     ],
     "conditional_issues": [
       "Procedural side still reads as broad, smooth tan terrain in close/medium bands.",
-      "This pass does not yet combine M15 scatter/features or M11 junction ownership into the same runtime slice.",
+      "Feature overlay still uses procedural review primitives, not authored production scatter assets.",
+      "This pass does not yet combine M11 junction ownership into the same runtime slice.",
       "Topdown transition is mechanically blended, but not yet a final art-directed ecotone."
     ]
   }

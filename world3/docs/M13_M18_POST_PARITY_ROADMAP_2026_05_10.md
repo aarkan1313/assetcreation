@@ -218,11 +218,14 @@ Current evidence 2026-05-10:
 - Review scene: `scenes/review/source_stack_m18_guided_neighbor_tour.tscn`.
 - Capture sheet:
   `docs/captures/review/source_stack_m18_guided_neighbor_contact_sheet.png`.
+- Derived feature masks:
+  `textures/source_stack/m18_guided_neighbor_slice_proof/layers/`.
 - Status: conditional workflow evidence. The M17 neighbor can re-enter the
-  runtime source-stack path and all four view bands capture cleanly. This is
-  not M18 closure yet because M15 scatter/features and M11 junction ownership
-  are not physically composed into the same runtime slice, and the procedural
-  side still needs richer close-detail fields.
+  runtime source-stack path, M15-style derived feature masks feed the existing
+  scatter overlay, and all four view bands capture cleanly. This is not M18
+  closure yet because M11 junction ownership is not physically composed into the
+  same runtime slice, feature assets are still procedural primitives, and the
+  procedural side still needs richer close-detail fields.
 
 ## Current First Move
 
@@ -234,6 +237,7 @@ scatter/decal placement with procedural review primitives. M16 proves the
 source-stack gallery bridge and first cached iso sidecar. M17 now has a
 first-pass real-data rule extractor and guided procedural-neighbor bundle. None
 of these are production-promoted terrain content. M18 is now active with a
-first-pass guided-neighbor runtime slice. The next build move is to add the M15
-feature policy and decide the cleanest way to include M11 junction ownership in
-the same M18 review harness without weakening the source-stack contract.
+first-pass guided-neighbor runtime slice and derived M15-style feature masks.
+The next build move is to decide the cleanest way to include M11 junction
+ownership in the same M18 review harness without weakening the source-stack
+contract.
