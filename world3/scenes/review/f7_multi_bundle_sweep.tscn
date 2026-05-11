@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/MultiBundleSweepDriver.gd" id="driver"]
+
+[node name="F7MultiBundleSweep" type="Node3D"]
+script = ExtResource("driver")
+world_map_path = "res://worlds/starter_2x2_procedural/world_map.json"
+sweep_duration_sec = 6.0
+start_world = Vector3(128, 0, 128)
+end_world = Vector3(384, 0, 384)
+camera_height = 180.0
+camera_pitch_deg = -55.0
+auto_quit_after_sweep = false

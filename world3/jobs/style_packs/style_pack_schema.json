@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "world3/jobs/style_packs/style_pack_schema.json",
+  "title": "world3 style pack",
+  "description": "A named bundle of capture-time / render-time visual overrides. Applied by the orchestrator on top of bundle defaults; the bundle itself is style-pack-independent so the same bundle can be re-rendered in different styles without rebuild.",
+  "type": "object",
+  "required": ["schema_version", "id", "render"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$",
+      "description": "Style pack identifier, matches the filename (without .json) and the request.style_pack field."
+    },
+    "description": {
+      "type": "string"
+    },
+    "render": {
+      "type": "object",
+      "description": "Render-time knobs passed to OrchestratorCaptureDriver.gd. Any field omitted falls back to World3AutoReviewTour defaults.",
+      "additionalProperties": false,
+      "properties": {
+        "background_color": {
+          "type": "array",
+          "items": {"type": "number", "minimum": 0.0, "maximum": 1.0},
+          "minItems": 3, "maxItems": 4,
+          "description": "RGB or RGBA [0,1] background color."
+        },
+        "sun_energy": {"type": "number", "minimum": 0.0, "maximum": 8.0},
+        "ambient_energy": {"type": "number", "minimum": 0.0, "maximum": 2.0},
+        "tonemap_exposure": {"type": "number", "minimum": 0.0, "maximum": 4.0},
+        "normal_strength": {"type": "number", "minimum": 0.0, "maximum": 1.0},
+        "detail_normal_strength": {"type": "number", "minimum": 0.0, "maximum": 1.0},
+        "detail_rough_strength": {"type": "number", "minimum": 0.0, "maximum": 1.0},
+        "roughness_strength": {"type": "number", "minimum": 0.0, "maximum": 2.0},
+        "roughness_floor": {"type": "number", "minimum": 0.04, "maximum": 1.0},
+        "specular_strength": {"type": "number", "minimum": 0.0, "maximum": 1.0},
+        "albedo_gain": {"type": "number", "minimum": 0.0, "maximum": 1.25},
+        "source_macro_strength": {"type": "number", "minimum": 0.0, "maximum": 1.0}
+      }
+    },
+    "material_suffix": {
+      "type": "string",
+      "description": "Optional per-style material variant suffix (e.g. 'photoreal' -> terrain_blend_<kit>_<mode>.tres; 'topographic' -> terrain_blend_<kit>_<mode>_topographic.tres). Empty/omitted means use the standard per-mode .tres.",
+      "default": ""
+    }
+  }
+}

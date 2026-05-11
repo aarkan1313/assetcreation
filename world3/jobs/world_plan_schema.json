@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "world3/jobs/world_plan_schema.json",
+  "title": "world3 world plan",
+  "description": "Top-level intent for a multi-bundle world. A world plan describes bounds, tile grid, biomes, allowed biome adjacencies, per-biome data sources, and which perspectives + zoom levels the plan needs to support. Phase F.3 reads a plan and emits one region_request.json per tile + a world_map.json. Phase F.4 audits adjacency-pair transitions at catalog time. Phase F.7 streaming director reads world_map.json at runtime. Schema introduced 2026-05-11 as part of Phase F.2.",
+
+  "type": "object",
+  "required": ["schema_version", "id", "bounds_m", "tile_size_m", "seed", "biomes", "biome_layout", "adjacency_rules", "perspectives"],
+  "additionalProperties": false,
+
+  "properties": {
+
+    "schema_version": {
+      "type": "integer",
+      "const": 1,
+      "description": "Bumps when the schema changes incompatibly."
+    },
+
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_]*$",
+      "description": "Stable lowercase identifier for this world. Used as the output directory name under world3/worlds/<id>/."
+    },
+
+    "description": {
+      "type": "string",
+      "description": "Optional human-readable description (provenance only)."
+    },
+
+    "bounds_m": {
+      "type": "array",
+      "items": {"type": "number", "exclusiveMinimum": 0.0},
+      "minItems": 2,
+      "maxItems": 2,
+      "description": "World size in meters [x_m, z_m]. Must be an integer multiple of tile_size_m on both axes (the validator checks this)."
+    },
+
+    "tile_size_m": {
+      "type": "number",
+      "exclusiveMinimum": 0.0,
+      "description": "Square tile size in meters. Phase F.2 starter is 256.0; G may multi-scale per perspective."
+    },
+
+    "seed": {
+      "type": "integer",
+      "description": "Plan-level seed. Per-tile seeds are derived deterministically as hash(seed, tile_xy) so re-running produces byte-identical bundles."
+    },
+
+    "biomes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "biome_kit", "source"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_]*$",
+            "description": "Biome id used in biome_layout + adjacency_rules. Often matches biome_kit but can differ if a plan wants multiple variants of the same kit."
+          },
+          "biome_kit": {
+            "type": "string",
+            "description": "Which world3 biome kit this biome maps to. Phase F starter restricts to: alpine, desert, tundra, grassland, temperate_forest."
+          },
+          "source": {
+            "type": "object",
+            "required": ["type"],
+            "description": "Default data source for tiles in this biome. Per-tile overrides go in biome_layout entries. Mirrors region_request.json source field shape (type=procedural|real|hybrid).",
+            "additionalProperties": true,
+            "properties": {
+              "type": {"type": "string", "enum": ["procedural", "real", "hybrid"]}
+            }
+          },
+          "primary_material_id": {
+            "type": "string",
+            "description": "Catalog material id used as the biome's primary albedo for F.4 transition-pair audit."
+          }
+        }
+      },
+      "minItems": 1,
+      "description": "Biomes used in this plan. Every biome referenced in biome_layout must be declared here."
+    },
+
+    "biome_layout": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["tile_xy", "biome"],
+        "additionalProperties": false,
+        "properties": {
+          "tile_xy": {
+            "type": "array",
+            "items": {"type": "integer", "minimum": 0},
+            "minItems": 2,
+            "maxItems": 2,
+            "description": "Tile grid coordinates [col, row]. World coords are (col * tile_size_m, row * tile_size_m) from the world's SW corner."
+          },
+          "biome": {
+            "type": "string",
+            "description": "Biome id (must be declared in biomes[])."
+          },
+          "source_override": {
+            "type": "object",
+            "description": "Optional per-tile source override (e.g. one tile is real-DEM while the rest of the biome is procedural). Same shape as biomes[].source.",
+            "additionalProperties": true,
+            "properties": {
+              "type": {"type": "string", "enum": ["procedural", "real", "hybrid"]}
+            }
+          }
+        }
+      },
+      "minItems": 1,
+      "description": "Explicit per-tile biome assignment. Every tile in the world's grid must be assigned (validator checks coverage). Future: noise-driven layouts emit the same shape."
+    },
+
+    "adjacency_rules": {
+      "type": "object",
+      "required": ["allowed_pairs"],
+      "additionalProperties": false,
+      "properties": {
+        "allowed_pairs": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {"type": "string"},
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "description": "List of [biome_a, biome_b] pairs allowed to neighbor in the layout. Order-independent. Any pair NOT in this list is forbidden — F.3 refuses to emit bundles if the layout puts a forbidden pair next to each other (4-connected adjacency: N/S/E/W of each tile)."
+        },
+        "self_neighbor_allowed": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether a biome may neighbor itself. Almost always true."
+        }
+      }
+    },
+
+    "perspectives": {
+      "type": "array",
+      "items": {"type": "string", "enum": ["walk", "iso", "topdown", "25d"]},
+      "minItems": 1,
+      "description": "Which view modes this plan needs to support. Drives capture stage selection in F.3 + Phase G.2 introduces 25d."
+    },
+
+    "zoom_levels": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "distance_m"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": ["close", "mid", "far"],
+            "description": "Zoom band identifier."
+          },
+          "distance_m": {
+            "type": "number",
+            "exclusiveMinimum": 0.0,
+            "description": "Nominal camera distance from terrain in meters. Used by G.1 capture-framing heuristics."
+          }
+        }
+      },
+      "default": [],
+      "description": "Optional zoom bands the plan supports. Phase F.2 reserves the field; Phase G.1 wires actual LOD emission. Empty array means single default zoom."
+    },
+
+    "style_pack": {
+      "type": "string",
+      "default": "photoreal",
+      "description": "Style pack id applied to every captured tile by default. Must exist in world3/jobs/style_packs/<id>.json."
+    }
+  }
+}

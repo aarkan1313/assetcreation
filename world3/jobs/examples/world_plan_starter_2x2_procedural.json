@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "id": "starter_2x2_procedural",
+  "description": "Smallest possible world plan: 2x2 tundra tiles, 512m x 512m total at 256m tile size. Proves the schema + F.3 plan-to-bundles + F.7 streaming director on the minimum viable surface. All four tiles are the same biome with self-neighbor allowed.",
+
+  "bounds_m": [512.0, 512.0],
+  "tile_size_m": 256.0,
+  "seed": 2026051101,
+
+  "biomes": [
+    {
+      "id": "tundra",
+      "biome_kit": "tundra",
+      "primary_material_id": "tundra_moss",
+      "source": {
+        "type": "procedural",
+        "material_id": "tundra_moss",
+        "size_px": [512, 1024],
+        "world_size_m": [256.0, 256.0],
+        "elev_min_m": 200.0,
+        "elev_range_m": 24.0
+      }
+    }
+  ],
+
+  "biome_layout": [
+    {"tile_xy": [0, 0], "biome": "tundra"},
+    {"tile_xy": [1, 0], "biome": "tundra"},
+    {"tile_xy": [0, 1], "biome": "tundra"},
+    {"tile_xy": [1, 1], "biome": "tundra"}
+  ],
+
+  "adjacency_rules": {
+    "allowed_pairs": [],
+    "self_neighbor_allowed": true
+  },
+
+  "perspectives": ["iso"],
+
+  "zoom_levels": [],
+
+  "style_pack": "photoreal"
+}

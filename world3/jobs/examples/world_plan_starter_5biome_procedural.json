@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "id": "starter_5biome_procedural",
+  "description": "Phase F starter world: 5x5 tile grid (1280m x 1280m at 256m tiles), all 5 starter biomes laid out in concentric bands. Tests every layer of Phase F: schema validation, multi-biome adjacency, plan-to-bundles emission, transition-pair audit (six cross-biome adjacencies), per-biome procedural sources, multi-perspective capture, deterministic seed propagation.",
+
+  "bounds_m": [1280.0, 1280.0],
+  "tile_size_m": 256.0,
+  "seed": 2026051102,
+
+  "biomes": [
+    {
+      "id": "tundra",
+      "biome_kit": "tundra",
+      "primary_material_id": "tundra_moss",
+      "source": {
+        "type": "procedural",
+        "material_id": "tundra_moss",
+        "size_px": [512, 1024],
+        "world_size_m": [256.0, 256.0],
+        "elev_min_m": 200.0,
+        "elev_range_m": 24.0
+      }
+    },
+    {
+      "id": "alpine",
+      "biome_kit": "alpine",
+      "primary_material_id": "rock_dark",
+      "source": {
+        "type": "procedural",
+        "material_id": "rock_dark",
+        "size_px": [512, 1024],
+        "world_size_m": [256.0, 256.0],
+        "elev_min_m": 800.0,
+        "elev_range_m": 80.0
+      }
+    },
+    {
+      "id": "grassland",
+      "biome_kit": "grassland",
+      "primary_material_id": "grassland_grass",
+      "source": {
+        "type": "procedural",
+        "material_id": "grassland_grass",
+        "size_px": [512, 1024],
+        "world_size_m": [256.0, 256.0],
+        "elev_min_m": 300.0,
+        "elev_range_m": 12.0
+      }
+    },
+    {
+      "id": "temperate_forest",
+      "biome_kit": "temperate_forest",
+      "primary_material_id": "temperate_forest_grass",
+      "source": {
+        "type": "procedural",
+        "material_id": "temperate_forest_grass",
+        "size_px": [512, 1024],
+        "world_size_m": [256.0, 256.0],
+        "elev_min_m": 400.0,
+        "elev_range_m": 30.0
+      }
+    },
+    {
+      "id": "desert",
+      "biome_kit": "desert",
+      "primary_material_id": "desert_canyon_rock",
+      "source": {
+        "type": "procedural",
+        "material_id": "desert_canyon_rock",
+        "size_px": [512, 1024],
+        "world_size_m": [256.0, 256.0],
+        "elev_min_m": 412.0,
+        "elev_range_m": 18.0
+      }
+    }
+  ],
+
+  "biome_layout": [
+    {"tile_xy": [0, 4], "biome": "tundra"},
+    {"tile_xy": [1, 4], "biome": "tundra"},
+    {"tile_xy": [2, 4], "biome": "grassland"},
+    {"tile_xy": [3, 4], "biome": "grassland"},
+    {"tile_xy": [4, 4], "biome": "grassland"},
+
+    {"tile_xy": [0, 3], "biome": "tundra"},
+    {"tile_xy": [1, 3], "biome": "alpine"},
+    {"tile_xy": [2, 3], "biome": "grassland"},
+    {"tile_xy": [3, 3], "biome": "grassland"},
+    {"tile_xy": [4, 3], "biome": "grassland"},
+
+    {"tile_xy": [0, 2], "biome": "temperate_forest"},
+    {"tile_xy": [1, 2], "biome": "alpine"},
+    {"tile_xy": [2, 2], "biome": "alpine"},
+    {"tile_xy": [3, 2], "biome": "grassland"},
+    {"tile_xy": [4, 2], "biome": "grassland"},
+
+    {"tile_xy": [0, 1], "biome": "temperate_forest"},
+    {"tile_xy": [1, 1], "biome": "temperate_forest"},
+    {"tile_xy": [2, 1], "biome": "alpine"},
+    {"tile_xy": [3, 1], "biome": "desert"},
+    {"tile_xy": [4, 1], "biome": "desert"},
+
+    {"tile_xy": [0, 0], "biome": "temperate_forest"},
+    {"tile_xy": [1, 0], "biome": "temperate_forest"},
+    {"tile_xy": [2, 0], "biome": "temperate_forest"},
+    {"tile_xy": [3, 0], "biome": "desert"},
+    {"tile_xy": [4, 0], "biome": "desert"}
+  ],
+
+  "adjacency_rules": {
+    "allowed_pairs": [
+      ["tundra", "grassland"],
+      ["tundra", "alpine"],
+      ["alpine", "grassland"],
+      ["alpine", "temperate_forest"],
+      ["alpine", "desert"],
+      ["temperate_forest", "desert"],
+      ["temperate_forest", "tundra"],
+      ["desert", "grassland"]
+    ],
+    "self_neighbor_allowed": true
+  },
+
+  "perspectives": ["iso", "topdown"],
+
+  "zoom_levels": [
+    {"id": "close", "distance_m": 20.0},
+    {"id": "mid", "distance_m": 200.0},
+    {"id": "far", "distance_m": 1000.0}
+  ],
+
+  "style_pack": "photoreal"
+}

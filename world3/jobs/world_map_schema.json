@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "world3/jobs/world_map_schema.json",
+  "title": "world3 world map",
+  "description": "Emitted by Phase F.3 world_plan_to_bundles.py from a validated world plan. Maps world coordinates -> bundle paths so the Phase F.7 streaming director can resolve 'what bundle covers position (x_m, z_m)' at runtime. Companion to the per-tile region_request files this iterator also emits.",
+
+  "type": "object",
+  "required": ["schema_version", "plan_id", "bounds_m", "tile_size_m", "seed", "tiles"],
+  "additionalProperties": false,
+
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "plan_id": {
+      "type": "string",
+      "description": "Source plan's id. Used as the worlds/<plan_id>/ output dir name."
+    },
+    "bounds_m": {
+      "type": "array",
+      "items": {"type": "number", "exclusiveMinimum": 0.0},
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "tile_size_m": {
+      "type": "number",
+      "exclusiveMinimum": 0.0
+    },
+    "seed": {
+      "type": "integer",
+      "description": "Source plan's seed, copied for provenance."
+    },
+    "grid": {
+      "type": "array",
+      "items": {"type": "integer", "minimum": 1},
+      "minItems": 2,
+      "maxItems": 2,
+      "description": "Grid extent [cols, rows] = bounds_m / tile_size_m."
+    },
+    "tiles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["tile_xy", "world_xy_m", "biome", "bundle_id", "request_path", "bundle_dir"],
+        "additionalProperties": false,
+        "properties": {
+          "tile_xy": {
+            "type": "array",
+            "items": {"type": "integer", "minimum": 0},
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "world_xy_m": {
+            "type": "array",
+            "items": {"type": "number"},
+            "minItems": 2,
+            "maxItems": 2,
+            "description": "World-coord SW corner of this tile in meters."
+          },
+          "biome": {"type": "string"},
+          "source_type": {"type": "string", "enum": ["procedural", "real", "hybrid"]},
+          "bundle_id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_]*$",
+            "description": "Unique id for this tile's bundle, derived as <plan_id>__tile_<col>_<row>."
+          },
+          "request_path": {
+            "type": "string",
+            "description": "Path to the per-tile region_request.json the iterator wrote."
+          },
+          "bundle_dir": {
+            "type": "string",
+            "description": "Path the orchestrator will produce the bundle into."
+          },
+          "tile_seed": {
+            "type": "integer",
+            "description": "Deterministic per-tile seed: int(sha256(plan_seed || col || row)) mod 2^31."
+          }
+        }
+      }
+    },
+    "perspectives": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "style_pack": {"type": "string"},
+    "generated_at": {
+      "type": "string",
+      "description": "ISO 8601 timestamp when the iterator ran. Provenance only; not used for runtime semantics."
+    }
+  }
+}

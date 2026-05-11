@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "world3/jobs/capture_request_schema.json",
+  "title": "world3 orchestrator capture request",
+  "description": "JSON consumed by OrchestratorCaptureDriver.gd via user://orchestrator_capture_request.json. The Python wrapper run_orchestrator_capture.py writes this file before invoking Godot. Schema retrofitted 2026-05-11 (E.8 backfill) for LLM-drivability parity with the region_request/world_plan/style_pack schemas.",
+
+  "type": "object",
+  "required": ["bundle_dir", "material", "mode", "output"],
+  "additionalProperties": false,
+
+  "properties": {
+    "bundle_dir": {
+      "type": "string",
+      "pattern": "^res://",
+      "description": "res:// path to the bundle directory (must contain heightmap.png + meta.json)."
+    },
+    "material": {
+      "type": "string",
+      "pattern": "^res://.*\\.tres$",
+      "description": "res:// path to the terrain_blend .tres material. If style_pack has a material_suffix, this is rewritten by the wrapper before reaching the driver."
+    },
+    "mode": {
+      "type": "string",
+      "enum": ["close", "medium", "iso", "topdown"],
+      "description": "Which tour-index frame to capture. Maps to MODE_TOUR_INDEX in OrchestratorCaptureDriver.gd."
+    },
+    "output": {
+      "type": "string",
+      "pattern": "^res://.*\\.png$",
+      "description": "res:// path for the output PNG. Parent dir must exist (the wrapper ensures this)."
+    },
+
+    "macro_albedo": {
+      "type": "string",
+      "pattern": "^res://",
+      "description": "Optional res:// override for the source macro albedo (e.g. layers/render_albedo.png from the bundle)."
+    },
+    "macro_mask": {
+      "type": "string",
+      "pattern": "^res://",
+      "description": "Optional res:// override for the source macro valid mask."
+    },
+
+    "tour_profile": {
+      "type": "string",
+      "default": "standard",
+      "description": "Which World3AutoReviewTour tour profile to instantiate. Default 'standard' covers close/medium/iso/topdown; alternate profiles exist for seam_integration etc."
+    },
+
+    "warmup_frames": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 600,
+      "default": 60,
+      "description": "Process frames to await before saving the PNG. Higher values give chunks more time to stream and lighting more time to settle. ~60 frames at 60 fps = 1s."
+    },
+
+    "viewport_size": {
+      "type": "array",
+      "items": {"type": "integer", "minimum": 1},
+      "minItems": 2,
+      "maxItems": 2,
+      "default": [1600, 1000],
+      "description": "Output viewport size in pixels [W, H]."
+    },
+
+    "start_x_m": {
+      "type": "number",
+      "default": 64.0,
+      "description": "Tour anchor X in meters. Drives camera framing across all 4 modes."
+    },
+    "start_z_m": {
+      "type": "number",
+      "default": 128.0,
+      "description": "Tour anchor Z in meters."
+    },
+    "chunk_size_m": {
+      "type": "number",
+      "minimum": 1.0,
+      "default": 256.0,
+      "description": "ChunkLoader chunk size for this capture. Should match the bundle's natural scale to avoid grid artifacts (see G.1 for auto-derivation work)."
+    },
+    "chunk_resolution_m": {
+      "type": "number",
+      "minimum": 0.1,
+      "default": 8.0,
+      "description": "ChunkLoader mesh spacing within a chunk."
+    },
+
+    "style": {
+      "type": "object",
+      "description": "Inline style overrides. Normally populated by the wrapper from style_packs/<id>.json. Fields here override World3AutoReviewTour defaults; omitted fields fall back to the tour's hardcoded values. See style_pack_schema.json for the field shape.",
+      "additionalProperties": true
+    },
+
+    "style_pack_id": {
+      "type": "string",
+      "description": "Identifier of the style pack the wrapper loaded from. For provenance only; the driver reads 'style' regardless."
+    }
+  }
+}

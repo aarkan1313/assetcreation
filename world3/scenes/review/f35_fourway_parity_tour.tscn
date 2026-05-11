@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/World3AutoReviewTour.gd" id="script"]
+
+[node name="F35FourwayParityTour" type="Node3D"]
+script = ExtResource("script")
+material_path = "res://worlds/f35_m11_parity/bundles/m11_fourway_parity/material.tres"
+heightmap_path = "res://worlds/f35_m11_parity/bundles/m11_fourway_parity/heightmap.png"
+meta_path = "res://worlds/f35_m11_parity/bundles/m11_fourway_parity/meta.json"
+source_valid_mask_path = "res://worlds/f35_m11_parity/bundles/m11_fourway_parity/layers/source_valid_mask.png"
+splat_weights_path = "res://worlds/f35_m11_parity/bundles/m11_fourway_parity/layers/splat_weights_rgba.png"
+source_macro_albedo_override_path = "res://worlds/f35_m11_parity/bundles/m11_fourway_parity/layers/render_albedo.png"
+source_macro_valid_mask_override_path = "res://worlds/f35_m11_parity/bundles/m11_fourway_parity/layers/source_valid_mask.png"
+transition_rule_id = "f35_m11_fourway_parity"
+start_x_m = 0.0
+start_z_m = 0.0
+boundary_z_m = 128.0
+chunk_size_m = 128.0
+chunk_resolution_m = 4.0
+view_radius_chunks = 4
+source_repeat_mode = "clamp"
+clip_to_source_bounds = true
+review_use_source_macro_valid_mask = true
+review_source_macro_strength = 0.84
+review_normal_strength = 0.050
+review_detail_normal_strength = 0.014
+review_detail_rough_strength = 0.018
+review_roughness_strength = 1.0
+review_roughness_floor = 0.87
+review_specular_strength = 0.0
+review_albedo_gain = 0.95
+review_background_color = Color(0.08, 0.095, 0.1, 1)
+review_tonemap_exposure = 0.58
+review_sun_energy = 0.55
+review_ambient_energy = 0.2
+enable_ecotone_scatter = false
+scatter_shrub_mask_path = "res://worlds/f35_m11_parity/bundles/m11_fourway_parity/layers/shrub_carryover_mask.png"
+scatter_grass_mask_path = "res://worlds/f35_m11_parity/bundles/m11_fourway_parity/layers/dry_grass_density_mask.png"
+scatter_rock_mask_path = "res://worlds/f35_m11_parity/bundles/m11_fourway_parity/layers/rock_cluster_mask.png"
+scatter_soil_mask_path = "res://worlds/f35_m11_parity/bundles/m11_fourway_parity/layers/soil_exposure_mask.png"
+scatter_wash_mask_path = "res://worlds/f35_m11_parity/bundles/m11_fourway_parity/layers/wash_line_mask.png"
+scatter_no_mask_path = "res://worlds/f35_m11_parity/bundles/m11_fourway_parity/layers/no_scatter_mask.png"
+tour_profile = "junction_fourway"
+initial_tour_index = 0
+auto_play = true

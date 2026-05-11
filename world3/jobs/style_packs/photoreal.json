@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "id": "photoreal",
+  "description": "Default world3 photoreal style. Values reproduce the M18 / M10 / Gloss canonical bundle look and match World3AutoReviewTour.gd defaults at the time of Phase E.5 (2026-05-11). Omitting a field falls back to those same defaults, so this pack is the explicit baseline rather than a delta.",
+  "render": {
+    "background_color": [0.50, 0.62, 0.68],
+    "sun_energy": 1.35,
+    "ambient_energy": 0.42,
+    "tonemap_exposure": 0.94,
+    "normal_strength": 0.06,
+    "detail_normal_strength": 0.025,
+    "detail_rough_strength": 0.025,
+    "roughness_strength": 1.0,
+    "roughness_floor": 0.04,
+    "specular_strength": 0.5,
+    "albedo_gain": 1.0,
+    "source_macro_strength": 1.0
+  },
+  "material_suffix": ""
+}
