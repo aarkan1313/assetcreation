@@ -33,12 +33,24 @@ it indexes which source-stack captures are ready to become gallery cards.
 
 `world3/docs/captures/review/source_stack_m16_gallery_board.png`
 
+## Interactive Runner
+
+- Scene: `world3/scenes/review/source_stack_m16_gallery_review.tscn`
+- Script: `world3/scripts/M16SourceStackGalleryReview.gd`
+- Capture: `world3/docs/captures/review/source_stack_m16_gallery_review.png`
+- Controls: `Space` pause, `N/B` card, `V` band, `R` reset, `H` UI.
+
+This runner reads the same manifest and cycles each card's topdown, iso,
+medium, and close bands. It is still a review runner over existing captures, not
+the final region iterator.
+
 ## Next
 
 1. Keep the legacy `RegionGalleryCapture.gd` path available for old regional screenshots.
-2. Add a source-stack gallery runner that consumes this manifest shape instead of whole-kit material swaps.
-3. Promote only cards with topdown/iso/medium/close captures as parity evidence.
-4. Keep cached iso impostors as M16 sidecar renderer evidence until chunked impostors exist.
+2. Use `source_stack_m16_gallery_review.tscn` for quick card/band validation.
+3. Add the true source-stack region iterator that builds cards from data/catalog entries instead of pre-existing captures.
+4. Promote only cards with topdown/iso/medium/close captures as parity evidence.
+5. Keep cached iso impostors as M16 sidecar renderer evidence until chunked impostors exist.
 
 Regenerate:
 

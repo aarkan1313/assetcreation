@@ -136,8 +136,10 @@ Current evidence:
   emits JSON, markdown, and a visual board.
 - `docs/captures/review/source_stack_m16_gallery_board.png` currently shows
   five full topdown/iso/medium/close parity cards plus the cached iso sidecar.
-- Status: bridge/indexer exists; the automated bulk runner that iterates real
-  regions and binds source-stack data is still pending.
+- `scenes/review/source_stack_m16_gallery_review.tscn` now reads the manifest
+  and cycles card/band captures interactively.
+- Status: bridge/indexer and capture-runner exist; the automated bulk runner
+  that iterates real regions and binds source-stack data is still pending.
 
 Exit:
 

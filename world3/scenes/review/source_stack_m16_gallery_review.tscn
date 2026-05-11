@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/M16SourceStackGalleryReview.gd" id="script"]
+
+[node name="SourceStackM16GalleryReview" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("script")
+manifest_path = "res://jobs/m16_source_stack_gallery_manifest.json"
+title = "world3 M16 Source-Stack Gallery Runner"
+auto_play = true
+seconds_per_band = 4.0
+background_color = Color(0.07, 0.085, 0.085, 1)

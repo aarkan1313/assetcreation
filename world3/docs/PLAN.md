@@ -411,7 +411,8 @@ now indexes source-stack review cards for topdown/iso/medium/close parity.
 builds `docs/M16_SOURCE_STACK_GALLERY_BOARD_2026_05_10.md` plus
 `docs/captures/review/source_stack_m16_gallery_board.png`. This is a bridge
 from legacy `RegionGalleryCapture.gd` to a source-stack gallery runner, not the
-final automated region iterator.
+final automated region iterator. `scenes/review/source_stack_m16_gallery_review.tscn`
+now reads that manifest and cycles card/band captures for interactive review.
 
 ## M7 current checkpoint
 

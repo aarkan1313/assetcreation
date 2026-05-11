@@ -822,6 +822,18 @@ has topdown, iso, medium, and close captures over the same source-stack
 contract. Cached iso cards remain sidecar renderer evidence until chunked
 impostors or a 2D heightfield renderer exists.
 
+For interactive review of the same manifest:
+
+```powershell
+& 'C:/Godot/Godot_v4.5-stable_win64.exe' --path 'D:/assets/world3' --single-window --disable-crash-handler --scene 'res://scenes/review/source_stack_m16_gallery_review.tscn'
+```
+
+Capture smoke:
+
+```powershell
+& 'C:/Godot/Godot_v4.5-stable_win64.exe' --path 'D:/assets/world3' --single-window --disable-crash-handler --scene 'res://scenes/review/capture_source_stack_m16_gallery_review.tscn'
+```
+
 ## What's NOT yet documented here (because it doesn't exist yet)
 
 - **Tundra kit textures** — kit schema defined in `biome_kits.json`
