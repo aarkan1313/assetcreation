@@ -96,6 +96,8 @@ python world3/pipeline/audit_production_promotion_candidates.py
 
 ## Next After M18
 
+0. Run the full M1-M18 audit plan:
+   `world3/docs/WORLD3_M1_M18_FULL_AUDIT_PLAN_2026_05_11.md`.
 1. Improve procedural terrain generation using the M17 extraction path plus
    broader catalog data. The immediate visible target is avoiding the current
    smooth tan/sand field.

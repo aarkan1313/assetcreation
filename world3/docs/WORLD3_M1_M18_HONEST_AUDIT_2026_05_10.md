@@ -19,6 +19,8 @@ placeholder scatter assets.
   `world3/docs/M7_M12_CLOSURE_AUDIT_2026_05_10.md`.
 - M13-M18 roadmap and gate:
   `world3/docs/M13_M18_POST_PARITY_ROADMAP_2026_05_10.md`.
+- Full M1-M18 audit plan:
+  `world3/docs/WORLD3_M1_M18_FULL_AUDIT_PLAN_2026_05_11.md`.
 - Current production gate:
   `world3/docs/PRODUCTION_PROMOTION_AUDIT_2026_05_10.md`.
 - Current M18 closure audit:
