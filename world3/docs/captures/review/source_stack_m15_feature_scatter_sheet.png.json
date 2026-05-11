@@ -1,0 +1,31 @@
+{
+  "output": "world3\\docs\\captures\\review\\source_stack_m15_feature_scatter_sheet.png",
+  "title": "M15 Feature Scatter/Decal Proof",
+  "subtitle": "Mask-driven feature layer over M10 source-stack ecotone: topdown clean, iso readable, medium/close with visible authored scatter",
+  "items": [
+    {
+      "label": "Topdown map",
+      "path": "world3\\docs\\captures\\review\\source_stack_m15_feature_scatter_topdown.png",
+      "note": "Scatter hidden in map band so the source-stack terrain read stays clean."
+    },
+    {
+      "label": "Iso tactical",
+      "path": "world3\\docs\\captures\\review\\source_stack_m15_feature_scatter_iso.png",
+      "note": "Scatter visible at iso through visibility ranges; should read as texture-rich terrain, not oversized props."
+    },
+    {
+      "label": "Medium gameplay",
+      "path": "world3\\docs\\captures\\review\\source_stack_m15_feature_scatter_medium.png",
+      "note": "Shrubs and rocks carry organic identity beyond the flat material blend."
+    },
+    {
+      "label": "Close gameplay",
+      "path": "world3\\docs\\captures\\review\\source_stack_m15_feature_scatter_close.png",
+      "note": "Close band exposes shrubs, grass, dry debris, and lichen decal candidates from masks."
+    }
+  ],
+  "size_px": [
+    1602,
+    1344
+  ]
+}

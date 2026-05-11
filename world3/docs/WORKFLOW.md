@@ -758,6 +758,44 @@ That scene displays the M12 runtime iso bake without live terrain meshes or a
 `ChunkLoader`. It is a first M16 renderer experiment, not a replacement for
 3D/iso/topdown validation.
 
+M15 scatter/decal workflow starts from the same source-stack masks used by M10/
+M11 instead of hand placing review props. `World3AutoReviewTour.gd` can select
+the M15 overlay with `scatter_overlay_mode = "m15_production"`:
+
+```powershell
+& 'C:/Godot/Godot_v4.5-stable_win64.exe' --path 'D:/assets/world3' --headless --editor --import
+
+$godot = 'C:/Godot/Godot_v4.5-stable_win64.exe'
+$scenes = @(
+  'res://scenes/review/capture_source_stack_m15_feature_scatter_topdown.tscn',
+  'res://scenes/review/capture_source_stack_m15_feature_scatter_iso.tscn',
+  'res://scenes/review/capture_source_stack_m15_feature_scatter_medium.tscn',
+  'res://scenes/review/capture_source_stack_m15_feature_scatter_close.tscn'
+)
+foreach ($scene in $scenes) {
+  $args = @('--path', 'D:/assets/world3', '--single-window', '--disable-crash-handler', '--scene', $scene)
+  $p = Start-Process -FilePath $godot -ArgumentList $args -WindowStyle Hidden -Wait -PassThru
+  if ($p.ExitCode -ne 0) { throw "Godot capture failed: $scene" }
+}
+```
+
+Then build the sheet:
+
+```powershell
+python world3/pipeline/make_image_comparison_sheet.py `
+  --output world3/docs/captures/review/source_stack_m15_feature_scatter_sheet.png `
+  --title "M15 Feature Scatter/Decal Proof" `
+  --cols 2 `
+  --item "Topdown map|world3/docs/captures/review/source_stack_m15_feature_scatter_topdown.png|Scatter hidden in map band." `
+  --item "Iso tactical|world3/docs/captures/review/source_stack_m15_feature_scatter_iso.png|Scatter visible through tactical LOD." `
+  --item "Medium gameplay|world3/docs/captures/review/source_stack_m15_feature_scatter_medium.png|Feature layer carries organic identity." `
+  --item "Close gameplay|world3/docs/captures/review/source_stack_m15_feature_scatter_close.png|Close-band shrubs, grass, debris, and decals."
+```
+
+Current M15 status: placement/visibility pipeline is proven, but the actual
+scatter assets are still procedural review primitives. Do not call this final
+content until authored vegetation/rock/debris assets replace those primitives.
+
 ## What's NOT yet documented here (because it doesn't exist yet)
 
 - **Tundra kit textures** — kit schema defined in `biome_kits.json`

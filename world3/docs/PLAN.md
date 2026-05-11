@@ -381,6 +381,25 @@ substrate candidate. It is staged in
 passed live review as conditional M14 sidecar evidence. It still needs a true
 forest-source review and M15 scatter/features before any production promotion.
 
+M14 `tundra_moss` and `tundra_lichen` are now recorded as conditional sidecar
+workflow evidence, not production terrain promotions. `tundra_moss` selected a
+FLUX50 B-family pale peat-loam substrate; `tundra_lichen` selected FLUX10
+candidate 09 as a tileable lichen-on-grit sidecar and added an explicit A/B
+comparison board because the runtime-strength layer is intentionally subtle.
+The M14 board now points the next visible-quality push to M15 scatter/decal/
+features instead of forcing flat organic tiles to carry plants, moss cushions,
+leaf litter, or lichen colonies.
+
+2026-05-10 M15 first pass: `M15FeatureScatterOverlay.gd` adds deterministic
+mask-driven shrubs, dry grass, rocks, dry debris, and lichen/decal candidates on
+top of the M10 ecotone source stack. The review scene is
+`scenes/review/source_stack_m15_feature_scatter_tour.tscn`; captures are
+summarized in `docs/captures/review/source_stack_m15_feature_scatter_sheet.png`.
+This proves the placement/visibility workflow, not final asset quality. The
+next M15 refinement is to swap the procedural review primitives for authored
+scatter library assets while keeping the same masks and gameplay-band LOD
+contract.
+
 2026-05-10 iso renderer note: M16 now includes a source-stack iso impostor
 sidecar ladder. The first rung is a cached 2D iso card from the M12 runtime
 parity bake; later rungs are chunk impostors, 2D heightfield shader, and hybrid

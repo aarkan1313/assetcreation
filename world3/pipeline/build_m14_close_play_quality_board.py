@@ -209,20 +209,10 @@ def markdown(report: dict[str, Any]) -> str:
     for lane in report["parked_model_lanes"] + report["rejected_model_lanes"]:
         lines.append(f"| `{lane['id']}` | `{lane['status']}` | {lane['reason']} |")
 
+    lines.extend(["", "## Next Move", ""])
+    lines.extend(next_move_lines(report))
     lines.extend(
         [
-            "",
-            "## Next Move",
-            "",
-            "1. Live-review the `tundra_moss` FLUX 50 shortlist and choose whether",
-            "   the B-family pale substrate direction is acceptable.",
-            "2. Stage the accepted `tundra_moss` sidecar in a close/medium/iso/topdown",
-            "   terrain-context scene before any M13 promotion.",
-            "3. Start `tundra_lichen` with the same method: small multi-model bakeoff,",
-            "   then 10-50 same-model prompt-family samples if one lane is clearly",
-            "   better.",
-            "4. Feed survivors back into `production_promotion_candidates.json` only",
-            "   after the M14 board and gameplay-band captures support them.",
             "",
             "Regenerate:",
             "",
@@ -232,6 +222,34 @@ def markdown(report: dict[str, Any]) -> str:
         ]
     )
     return "\n".join(lines) + "\n"
+
+
+def next_move_lines(report: dict[str, Any]) -> list[str]:
+    rows = report["rows"]
+    queued = [row["material_id"] for row in rows if row["m14_status"] == "queued_for_bakeoff"]
+    if queued:
+        return [
+            f"1. Run active model-lane bakeoffs for `{queued[0]}`.",
+            "2. Visual-veto the results for seams, square/line artifacts, blur, and",
+            "   obvious object landmarks.",
+            "3. Stage only workflow-useful survivors as sidecars; keep production",
+            "   promotion behind M13.",
+        ]
+
+    sidecars = [
+        row["material_id"]
+        for row in rows
+        if "sidecar" in row["m14_status"] or "trial_safe" in row["m14_status"]
+    ]
+    return [
+        "1. Treat current M14 organic results as workflow evidence and sidecar",
+        "   candidates, not production-promoted terrain content.",
+        "2. Do not spend more M14 time trying to make flat ground textures carry",
+        "   all grass, moss, lichen, leaf, or debris identity.",
+        "3. Move the next visual-quality push to M15 scatter/decal/features, using",
+        "   the accepted sidecars and source-stack masks as inputs.",
+        f"4. Current sidecar/material evidence covers: `{', '.join(sidecars)}`.",
+    ]
 
 
 def main() -> int:

@@ -1,6 +1,7 @@
 extends Node3D
 
 const EcotoneScatterOverlayScript = preload("res://scripts/EcotoneScatterOverlay.gd")
+const M15FeatureScatterOverlayScript = preload("res://scripts/M15FeatureScatterOverlay.gd")
 
 
 @export var material_path: String = "res://textures/wgv3/terrain_source_stack_gloss_grassland_comfy_v3_source_stack.tres"
@@ -45,6 +46,7 @@ const EcotoneScatterOverlayScript = preload("res://scripts/EcotoneScatterOverlay
 @export var show_ecotone_scatter_debug: bool = false
 @export var show_ecotone_scatter_in_topdown: bool = false
 @export var show_ecotone_scatter_in_ortho: bool = true
+@export_enum("review", "m15_production") var scatter_overlay_mode: String = "review"
 @export var review_workflow_label: String = ""
 @export var review_view_label: String = ""
 @export var scatter_shrub_mask_path: String = ""
@@ -723,8 +725,9 @@ func _setup_ecotone_scatter() -> void:
 		return
 	if scatter_shrub_mask_path == "" and scatter_grass_mask_path == "" and scatter_rock_mask_path == "":
 		return
-	_scatter = EcotoneScatterOverlayScript.new()
-	_scatter.name = "EcotoneScatterOverlay"
+	var scatter_script: Script = M15FeatureScatterOverlayScript if scatter_overlay_mode == "m15_production" else EcotoneScatterOverlayScript
+	_scatter = scatter_script.new()
+	_scatter.name = "M15FeatureScatterOverlay" if scatter_overlay_mode == "m15_production" else "EcotoneScatterOverlay"
 	_scatter.set("enabled", enable_ecotone_scatter)
 	_scatter.set("debug_masks_visible", show_ecotone_scatter_debug)
 	_scatter.set("loader_path", _loader.get_path())
@@ -887,12 +890,24 @@ func _update_overlay(frame: Dictionary, t: float) -> void:
 	if _scatter != null and _scatter.has_method("get_scatter_summary"):
 		var summary: Dictionary = _scatter.call("get_scatter_summary")
 		var scatter_state: String = "visible" if _scatter_visible_now else ("lod-hidden" if enable_ecotone_scatter else "off")
-		scatter_text = " | scatter %s %d/%d/%d" % [
-			scatter_state,
-			int(summary.get("shrubs", 0)),
-			int(summary.get("grass_tufts", 0)),
-			int(summary.get("rocks", 0))
-		]
+		var debris_count: int = int(summary.get("debris", 0))
+		var decal_count: int = int(summary.get("lichen_decals", 0))
+		if debris_count > 0 or decal_count > 0:
+			scatter_text = " | scatter %s shrub/grass/rock/debris/decal %d/%d/%d/%d/%d" % [
+				scatter_state,
+				int(summary.get("shrubs", 0)),
+				int(summary.get("grass_tufts", 0)),
+				int(summary.get("rocks", 0)),
+				debris_count,
+				decal_count
+			]
+		else:
+			scatter_text = " | scatter %s %d/%d/%d" % [
+				scatter_state,
+				int(summary.get("shrubs", 0)),
+				int(summary.get("grass_tufts", 0)),
+				int(summary.get("rocks", 0))
+			]
 	_overlay_label.text = (
 		"world3 Source-Stack Auto Review | " + workflow_text + "\n"
 		+ "%d/%d  %s  |  %s  |  progress %02d%%" + scatter_text + "\n"

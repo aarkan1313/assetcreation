@@ -77,10 +77,24 @@ Inputs:
 
 Deliverables:
 
-- Small production-style asset library for shrubs, grasses, stones, and dry
-  debris.
+- Small production-style asset library for shrubs, grasses, stones, dry debris,
+  and decal-like close-play ground features.
 - LOD and visibility policy by gameplay band.
 - Runtime scatter review using existing masks, not hand placement.
+- Explicit 3D/iso/topdown captures proving scatter helps close/medium without
+  damaging tactical/map readability.
+
+Current evidence:
+
+- First pass: `source_stack_m15_feature_scatter_tour.tscn` and
+  `M15FeatureScatterOverlay.gd`.
+- Inputs: M10 ecotone masks (`shrub_carryover`, `dry_grass_density`,
+  `rock_cluster`, `soil_exposure`, `wash_line`, `no_scatter`).
+- Capture sheet:
+  `docs/captures/review/source_stack_m15_feature_scatter_sheet.png`.
+- Status: path is proven, but assets remain procedural review assets. Next M15
+  work should replace the generated shrub/grass/rock/debris/decal primitives
+  with authored library assets and run the same mask placement/LOD contract.
 
 Exit:
 
@@ -169,13 +183,12 @@ Exit:
 
 M13 gate hygiene is active for every new artifact. The candidate manifest and
 audit are clean after M12 workflow acceptance and the M16 iso sidecar entry.
-M14 close-play terrain quality is now active. Start with the M14 board's first
-move after the `m8_grassland_grass_calm_v3` runtime trial: rework `grass` from
-the darker v1 direction as a layered substrate/detail target, then run active
-FLUX/Aura/SD bakeoffs for the remaining organic blockers. Do not require a flat
-`grass` tile to contain visible grass plants; M15 scatter/features should carry
-actual blades and clumps. The same rule now applies to `temperate_forest_grass`:
-AuraFlow v3 has the first staged sidecar-worthy dark humus substrate and passed
-live review as conditional M14 sidecar evidence, while whole leaves/twigs
-should move to M15 scatter/features. Next M14 work is `tundra_moss` and
-`tundra_lichen` bakeoffs.
+M14 close-play terrain quality has enough workflow evidence to stop treating
+flat organic textures as the visual bottleneck. Grass, temperate forest floor,
+tundra moss, and tundra lichen now have documented sidecar or methodology
+evidence in the M14 board; none are production-promoted terrain content. The
+lesson is explicit: flat tiles can provide calm substrate/detail, but visible
+organic identity belongs to M15 scatter/decal/features. The next active build
+move is M15: use source-stack masks and accepted M14 sidecars to add authored,
+mask-driven shrubs, grasses, stones, dry debris, lichen decals, and related
+feature layers without breaking close/medium/iso/topdown parity.

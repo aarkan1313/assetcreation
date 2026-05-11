@@ -233,7 +233,7 @@
               "production promotion still requires true forest-source review and M15 scatter/features"
             ]
           },
-          "next_action": "Keep as accepted M14 sidecar evidence; do not M13-promote until true forest-source review plus M15 scatter/features exist. Continue to tundra_moss and tundra_lichen bakeoffs."
+          "next_action": "Keep as accepted M14 sidecar evidence; do not M13-promote until true forest-source review plus M15 scatter/features exist. Move visible organic identity to M15 scatter/decal/features."
         }
       }
     },
@@ -308,7 +308,7 @@
               "M15 scatter/features still required for tundra identity"
             ]
           },
-          "next_action": "Keep as accepted M14 sidecar evidence; do not M13-promote until true tundra/alpine source-context review plus M15 scatter/features exist. Start tundra_lichen with the same broad-candidate method."
+          "next_action": "Keep as accepted M14 sidecar evidence; do not M13-promote until true tundra/alpine source-context review plus M15 scatter/features exist. Move visible tundra identity to M15 scatter/decal/features."
         }
       }
     },
