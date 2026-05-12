@@ -42,8 +42,11 @@ func _ready() -> void:
 		if i == 0:
 			ring.inner_grid_n = 0
 		else:
-			# Round up to even.
-			ring.inner_grid_n = (ring_grid_n - 1) / 2 + ((ring_grid_n - 1) / 2) % 2
+			# Round DOWN to even so the hole is slightly smaller than the
+			# inner ring's outer extent — guaranteeing overlap, not a gap.
+			# (grid_n - 1) / 2 in integer division floors automatically;
+			# then round down to even by masking off the low bit.
+			ring.inner_grid_n = ((ring_grid_n - 1) / 2) & ~1
 		add_child(ring)
 		_rings.append(ring)
 		if debug_mat != null:
