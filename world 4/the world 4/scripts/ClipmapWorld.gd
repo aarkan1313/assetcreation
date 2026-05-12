@@ -466,6 +466,51 @@ func _finalize_ring_upload(r: ClipmapRing, ring_center: Vector2,
 		var inner_band_m: float = _morph_band_m_per_ring[r.ring_index - 1]
 		inner.set_coarse_uniforms(
 			tex, origin, extent, n, inner_band_m, not debug_disable_morph)
+	# Stage 4.1: build a single-layer splat Texture2DArray for this
+	# ring (every texel = 1.0 weight to slot 0) and bind it + a
+	# 1-element biome_pbr_slot pointing at "alpine" (or the first
+	# loaded biome if alpine isn't present).
+	if _pbr_ground_array != null and not _biome_pbr_slot_by_name.is_empty():
+		var splat_bytes: PackedByteArray = _compute_splat_bytes_single_biome(n)
+		var splat_img := Image.create_from_data(n, n, false, Image.FORMAT_R8, splat_bytes)
+		var splat_array := Texture2DArray.new()
+		var splat_err: int = splat_array.create_from_images([splat_img])
+		if splat_err == OK:
+			var first_biome: String = _first_loaded_biome_name()
+			var first_pbr_slot: int = int(_biome_pbr_slot_by_name[first_biome])
+			# Also bind the GLOBAL PBR array to the per-ring material's
+			# uniform. (Setting the same texture on every per-ring
+			# material is fine; they share GPU memory.)
+			var per_mat: ShaderMaterial = _per_ring_shader_material(r)
+			if per_mat != null:
+				per_mat.set_shader_parameter("pbr_ground_array", _pbr_ground_array)
+			r.set_splat_uniforms(splat_array, 1, [first_pbr_slot])
+
+
+# Returns the first biome by catalog order that successfully loaded
+# into the PBR array. Falls back to the catalog's first biome name
+# if for some reason none loaded (the magenta-fallback path still
+# registers a slot, so this rarely fails).
+func _first_loaded_biome_name() -> String:
+	var biomes_arr: Array = _catalog.get("biomes", [])
+	for b in biomes_arr:
+		var n: String = b["name"]
+		if _biome_pbr_slot_by_name.has(n):
+			return n
+	return biomes_arr[0]["name"] if not biomes_arr.is_empty() else ""
+
+
+# The ring's MeshInstance3D's material_override is the per-ring
+# duplicate we built in _spawn_rings. ClipmapRing carries it
+# internally; expose access via the same _get_shader_material
+# pattern we use elsewhere.
+func _per_ring_shader_material(r: ClipmapRing) -> ShaderMaterial:
+	for child in r.get_children():
+		if child is MeshInstance3D:
+			var mi: MeshInstance3D = child
+			if mi.material_override is ShaderMaterial:
+				return mi.material_override
+	return null
 
 
 # AnchorCameraRig duck-types both ScaleWorld and ClipmapWorld via these
