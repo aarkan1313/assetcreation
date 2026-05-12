@@ -73,3 +73,21 @@ def test_resolve_values_sane():
         assert 256 <= cfg["splat_texture_array_size"] <= 8192
         assert cfg["shadow_quality"] in {"off", "low", "high"}
         assert 0.01 <= cfg["update_interval_s"] <= 1.0
+
+
+def test_morph_band_fraction_in_known_keys():
+    """morph_band_fraction must be required across all tiers."""
+    from quality_tiers import KNOWN_KEYS
+    assert "morph_band_fraction" in KNOWN_KEYS
+
+
+def test_morph_band_fraction_range():
+    """morph_band_fraction is a float in (0, 0.5]; lower tiers wider."""
+    fractions = {name: resolve(name)["morph_band_fraction"]
+                 for name in ["low", "medium", "high", "ultra"]}
+    for name, f in fractions.items():
+        assert isinstance(f, float), f"{name}: {type(f).__name__}"
+        assert 0.0 < f <= 0.5, f"{name}: {f} outside (0, 0.5]"
+    # Sanity: low has the widest band (most averaging on weak hw),
+    # ultra the narrowest.
+    assert fractions["low"] >= fractions["medium"] >= fractions["high"] >= fractions["ultra"]

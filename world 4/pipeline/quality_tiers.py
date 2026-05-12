@@ -39,6 +39,7 @@ KNOWN_KEYS = (
     "splat_resolution_per_ring_m",
     "shadow_quality",
     "update_interval_s",
+    "morph_band_fraction",
 )
 
 

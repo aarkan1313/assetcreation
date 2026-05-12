@@ -12,7 +12,8 @@
       "splat_texture_array_size": 1024,
       "splat_resolution_per_ring_m": 4.0,
       "shadow_quality": "off",
-      "update_interval_s": 0.1
+      "update_interval_s": 0.1,
+      "morph_band_fraction": 0.2
     },
     "medium": {
       "ring_count": 4,
@@ -24,7 +25,8 @@
       "splat_texture_array_size": 2048,
       "splat_resolution_per_ring_m": 2.0,
       "shadow_quality": "low",
-      "update_interval_s": 0.07
+      "update_interval_s": 0.07,
+      "morph_band_fraction": 0.12
     },
     "high": {
       "ring_count": 4,
@@ -36,7 +38,8 @@
       "splat_texture_array_size": 4096,
       "splat_resolution_per_ring_m": 1.0,
       "shadow_quality": "high",
-      "update_interval_s": 0.05
+      "update_interval_s": 0.05,
+      "morph_band_fraction": 0.1
     },
     "ultra": {
       "ring_count": 4,
@@ -48,7 +51,8 @@
       "splat_texture_array_size": 4096,
       "splat_resolution_per_ring_m": 0.5,
       "shadow_quality": "high",
-      "update_interval_s": 0.05
+      "update_interval_s": 0.05,
+      "morph_band_fraction": 0.08
     }
   }
 }
