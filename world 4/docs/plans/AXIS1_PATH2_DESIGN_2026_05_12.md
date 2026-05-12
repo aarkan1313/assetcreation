@@ -34,10 +34,13 @@ A 4 km × 4 km W4 world that:
   biomes that look like continuations of what's around the camera.
 
 ### Strategic
-- **Bounded-for-v1, architected-for-infinite.** The world rect is
-  one config value, not baked into shaders, GDScript, or pipeline.
-  Removing the bound later = a one-line config change, not a
-  refactor.
+- **Bounded-for-v1, renderer architected for infinite.** The world
+  rect is one config value on `ClipmapWorld`, not baked into
+  shaders or the kernel system. Setting it to `Vector2.ZERO`
+  disables the clamp and the renderer keeps working. See "What
+  'infinite-ready' means" below for what genuinely-infinite worlds
+  ALSO need on top of the renderer (these are separate sub-projects;
+  this spec ships the renderer piece).
 - **DEM-informed procedural is the long-term endpoint.** Real DEMs
   feed in as a *DEM kernel* (Path 3) alongside noise / erosion /
   river kernels. The biome catalog selects which kernel(s) drive
@@ -50,6 +53,38 @@ A 4 km × 4 km W4 world that:
   locked baseline) is untouched. The existing 1024m scale_demo
   bundle stays as a working reference on the legacy pipeline path
   during the migration; new "scale_v2" bundle is the v1 target.
+
+### What "infinite-ready" means (and what it doesn't)
+
+The renderer (clipmap geometry + heightmap stack + splat array + the
+kernel system) is bound-agnostic. Setting `world_bound_m =
+Vector2.ZERO` disables the clamp at the kernel-sampling layer and
+the rings keep producing terrain wherever the camera goes.
+
+What's NOT shipped here but is needed for actually-infinite worlds:
+
+- **Camera-relative world origin (precision).** float32 mantissa is
+  24 bits, so per-millimeter precision degrades past ~16 km from
+  origin. An infinite world needs the camera (or a "world origin"
+  reference point) to shift periodically so the camera stays near
+  the origin. Real game engines call this "origin rebasing." This
+  spec doesn't ship it; for the bounded 4 km v1 it's irrelevant.
+- **Chunk persistence policy.** If the player drops something in
+  the world and walks away, does it survive? "Pure-function
+  procedural" + "no persistence" means yes for terrain (regenerable)
+  but no for state. Out of scope.
+- **Collision proxy paging.** v1 has one `HeightMapShape3D` per
+  ring × 4 rings. Genuinely infinite worlds may need a collision
+  proxy that streams chunks the way rendering does. Same
+  architectural pattern, more bookkeeping. Out of scope.
+- **Long-distance LOD / fog / horizon impostors.** v1's 4 rings
+  cover out to 2 km. Past that the world ends (wall + skirt).
+  Genuinely infinite worlds want fog-out or distant impostors to
+  hide where rendering stops.
+
+Each of these is its own sub-project. The choice to call this spec
+"infinite-ready" means **the renderer + kernel system don't need
+re-architecting** when the above ship. They become additive layers.
 
 ## Non-goals (out of scope for v1)
 
@@ -85,12 +120,22 @@ A 4 km × 4 km W4 world that:
    transition at world boundaries.
 2. **Walk view at 4 km world scale stays at 60+ FPS** on a 5090
    Laptop. Headroom for decoration / VFX / gameplay later.
-3. **Adding a new kernel** = declare a `Kernel` subclass + register
-   it + reference it in `biome_catalog.json`. No shader / runtime
-   code changes for the engine.
-4. **Removing the world bound** = change one config value. Tested
-   by setting world_size_m to a different value and confirming
-   nothing else needs to update.
+3. **Adding a new kernel** = declare matching `Kernel` subclasses in
+   Python (`pipeline/kernels/`) and GDScript (`scripts/kernels/`) +
+   register them + reference the new kernel's `kind` in
+   `biome_catalog.json`. **The terrain shader does NOT change.**
+   Kernels run on CPU (worker thread) and produce displacement +
+   splat *textures*; the shader only ever samples textures. New
+   kernel = new texture-producer, not new shader code.
+4. **The renderer is world-bound-agnostic.** Setting
+   `world_bound_m = Vector2.ZERO` in the scene file disables the
+   clamp, and the clipmap rings keep evaluating the kernel composer
+   without an architectural change. Note: this is not the same as
+   "fully infinite worlds work for free" — see "What 'infinite-
+   ready' means" below for the additional sub-projects that
+   genuinely-infinite needs (camera-relative coordinates, chunk
+   persistence policy, etc.). The renderer is one of those
+   sub-projects; this spec ships it.
 5. **Per-tile generation is deterministic + pure**:
    `(world_seed, tx, tz) → heightmap` is a function. Walking away
    and returning lands at the same world. No persistence required
@@ -124,13 +169,24 @@ Kernel interface (Python pipeline + GDScript runtime mirror):
 - Pure: same inputs → same outputs. No global state.
 - World-space: takes `(x_m, z_m)` directly. No tile / chunk concept
   at this layer.
-- Cheap-per-fragment expected: kernels run at ~ms cost for chunk
-  generation and at ~µs cost per fragment when sampled directly in
-  the shader (for clipmap splat).
+- **Runs on CPU only (worker thread).** Kernels produce displacement
+  + splat *textures* via per-pixel sample loops. The shader never
+  calls into a kernel — it only samples the resulting textures.
+  This is why "adding a new kernel = no shader change" holds: a new
+  kernel adds a new Python + GDScript class that produces texture
+  data; the shader's contract (sample a Texture2DArray, blend by
+  weight) is unaffected. Future GPU-resident kernels could exist
+  but aren't part of this spec.
+- Expected per-pixel cost: NoiseStackKernel at 4 octaves ≈ 4 µs in
+  GDScript per `height()` call. A 256² grid = 65 536 calls = ~260 ms
+  in single-thread GDScript. This is the budget the worker
+  amortizes off the main thread (see "Async upload via double-buffer"
+  in component 3).
 - v1 ships **`NoiseStackKernel`** only — multi-octave fBm with
   per-biome parameter sets. Future: `ErosionBakedKernel`,
   `DEMPatchKernel`, `RiverNetworkKernel`,
-  `KernelCompositeKernel` (recursive — kernels of kernels).
+  `KernelCompositeKernel` (recursive — kernels of kernels). All are
+  additive Python + GDScript subclasses; the shader doesn't change.
 
 A **`KernelComposer`** combines kernels at the world level:
 
@@ -202,18 +258,71 @@ spacing (to keep vertex positions aligned with the world grid and
 avoid temporal flicker). Camera moves 2m → ring 0 translates 2m.
 Camera moves 4m → ring 1 translates 4m. Etc.
 
-**Why clipmaps over per-tile LOD rings**:
-- No "ring boundary" seam at LOD transitions (vertex density falls
-  off continuously rather than in steps).
+#### Ring boundary stitching (REQUIRED — cracks are visible without it)
+
+Naive clipmap rings produce **visible cracks at ring boundaries**:
+ring 0's outer edge has a vertex every 2m, ring 1's inner edge has
+one every 4m, so half of ring 0's edge vertices sit between ring 1's
+edge vertices. After heightmap displacement these adjacent edges
+disagree on Y by the difference between the heightmap sampled at the
+finer rate vs the coarser rate.
+
+The standard fixes, ordered by how we ship them:
+
+1. **Vertical skirts (v1 — what this plan implements).** Ring N's
+   inner edge has a downward-extruded skirt (~10 m below the
+   displaced surface) that hides the gap. The skirt is shaded the
+   same as the rest of the terrain. Cheap (a few hundred extra
+   verts per ring) and visually clean — viewers don't see the
+   transition unless they get inside the skirt geometry. Standard
+   in every shipping clipmap implementation (Terragen, Cesium,
+   Unreal's older LandscapeProxy).
+2. **Stitch strips (alt, more complex).** A "transition mesh"
+   between rings that has triangles fan-filling between the two
+   resolutions exactly. No skirt geometry, no overshoot below the
+   surface. More complex mesh construction. Not chosen for v1.
+3. **Geomorphing (polish — Stage 6+).** Verts in the ring's outer
+   edge band continuously slide their displaced position to match
+   the next-ring-out's heightmap interpolation as the camera
+   approaches the ring transition. Eliminates the small popping
+   you can see when a ring re-snaps. Optional polish; not v1.
+
+Component 2's mesh builder MUST emit the skirt geometry on every
+ring's inner edge (and on ring 0's outer edge if we want symmetric
+coverage). The skirt verts are placed at the inner-edge XZ
+positions with a Y offset of `-skirt_depth_m` (default 10m).
+Heightmap displacement still applies — the skirt slides downward
+relative to whatever the surface elevation is.
+
+Outermost ring's OUTER edge gets a skirt too, hiding the
+"world rim" — players never see grey beyond the bound.
+
+#### Why clipmaps (with proper stitching) over per-tile LOD rings:
+
 - Constant tri budget regardless of world size (rings 0-3 = ~525k
   tris always, whether the world is 4 km or 40 km).
 - Standard AAA pattern (Witcher 3, Horizon, Hellblade).
 - Pairs naturally with clipmap splat (component 4).
 - Per-fragment cost in the shader is the same as today.
 
+(Per-tile LOD rings ALSO have boundary cracks; skirts or stitching
+are equally required there. So this isn't a clipmap-specific cost
+— but the plan's draft language implied clipmaps avoid it "by
+construction," which was wrong.)
+
 **Counter — per-tile LOD rings**: simpler to reason about, fits the
 current per-tile mesh model, but each ring-boundary transition is
 visible as a vertex density step. Not chosen.
+
+#### Mesh generation method
+
+CPU-built per-ring donut meshes. **Tessellation shaders are NOT
+used.** Godot 4.5's spatial shader pipeline exposes vertex,
+fragment, and light stages — no tessellation stage. (The earlier
+draft of this spec listed tessellation as "use if Godot supports
+it" — Godot 4.5 doesn't.) CPU-built meshes are fine: each ring is
+~131k tris built once on scene init, no re-build needed since rings
+translate with the camera rather than re-tessellating.
 
 ### 3. Heightmap displacement stack
 
@@ -235,19 +344,128 @@ Heightmap textures are **regenerated per ring as the camera moves**:
 - Per-frame budget: at typical walking speeds (5 m/s) ring 0
   updates once every ~0.4s, rings 1-3 less often. Amortizable.
 
-Async generation (the same `WorkerThreadPool.add_task` pattern
-TileTerrain already uses) keeps the main thread free.
+#### Async upload via double-buffer (REQUIRED — main-thread RenderingServer ownership)
 
-**Vertex displacement in the shader** is then a single sampler read
-per vertex per ring — cheap. Normals are derived from the
-displacement field (finite difference) the same way they are today.
+Godot's `RenderingServer` runs on the main thread; `ImageTexture`
+creation, updates, and shader_parameter binding MUST happen on the
+main thread. This is the same constraint that drives TileTerrain's
+existing `WorkerThreadPool.add_task` + `_finalize()` pattern.
+
+Per-ring update flow:
+
+1. **Worker (off-thread)**: thread pool task receives the ring's
+   target grid position. Allocates a flat `PackedFloat32Array` of
+   `grid_n²` floats. Iterates the grid, calling
+   `KernelComposer.sample_height(world_x, world_z, world_seed)` for
+   each cell. Returns the packed array to the main thread via the
+   task's result.
+2. **Main thread `_finalize_ring_update()`**: receives the packed
+   array, builds an `Image.create_from_data(grid_n, grid_n,
+   false, Image.FORMAT_RF, bytes)` (one alloc), creates an
+   `ImageTexture.create_from_image(img)` (one alloc), calls
+   `MaterialInstance3D.set_shader_parameter("displacement", tex)`.
+
+Double-buffering: each ring keeps `_current_displacement` (bound to
+the material) and `_pending_displacement` (the next one being
+prepared). The pending replaces the current atomically on the main
+thread when the worker finishes. No frame ever sees a half-updated
+texture; no shader parameter is set from a worker thread.
+
+Budget: at 256² grid the worker does 65 536 composer.sample_height
+calls. For NoiseStackKernel at 4 octaves that's ~262k Perlin lookups
+per ring update. Walltime estimate: 50-200 ms in single-thread
+GDScript, less if we port to C/GDExtension later. The async pattern
+keeps the main thread free during that time; the ring just keeps
+displaying its previous heightmap until the new one is ready.
+
+#### Normals from the displacement texture (not from mesh)
+
+The vertex shader reads the displacement texture, then samples the
+SAME texture again at `±1 texel` in each axis to derive the
+finite-difference normal in world space. The mesh's authored normals
+(all `(0, 1, 0)`) are NOT used by lighting — the shader writes
+`NORMAL = derived_n` in the vertex stage so the fragment stage's
+`NORMAL` is the surface normal of the displaced geometry.
+
+This is a deviation from `terrain_world_v2.gdshader`, which forwards
+mesh-built normals because TileTerrain.gd computes them on the CPU
+from the shared `world_height_data` (PITFALLS #4 mitigation). The v3
+shader derives normals on the GPU from the displacement texture
+instead. The cross-tile normal-discontinuity bug PITFALLS #4 was
+about is impossible here for a different reason: each ring covers a
+continuous region with one displacement texture, no cross-tile
+sampling needed.
+
+The finite-difference stencil width is one texel = `ring_extent_m /
+grid_n` meters. At ring 0 (2m/texel) that's 2m, matching scale_demo's
+current `normal_stencil`. Pass `stencil_texels: int = 1` as a shader
+uniform so we can widen the stencil for less detailed normals on
+flatter biomes (cosmetic tunable, default 1).
+
+#### Collision proxy
+
+GPU vertex displacement gives the player no collision geometry —
+the CPU-side mesh is flat. Physics queries (camera ground-snap,
+character controller, gameplay raycasts) need either a CPU
+heightfield or an explicit collision proxy.
+
+v1 ships **one `HeightMapShape3D` per ring**, sized to match the
+ring's geometry. The shape's heightmap is the same
+`PackedFloat32Array` the worker generated for the displacement
+texture — the ring keeps the array around after building the texture
+and feeds it to a `CollisionShape3D` child. Updates ride along with
+the displacement update: when a ring's heightmap regenerates, so
+does its `HeightMapShape3D.map_data`.
+
+`HeightMapShape3D.update` IS main-thread (per Godot 4.5 PhysicsServer
+ownership). Same double-buffer pattern as the displacement texture:
+worker computes the array, main thread swaps it onto the
+`HeightMapShape3D` in `_finalize_ring_update()`.
+
+Per-ring memory cost: 256² × 4 bytes = 256 KB per ring × 4 rings =
+1 MB total. Trivial.
+
+Camera + character controllers use the existing physics collision
+detection — no special path. The clipmap rings move with the camera,
+so collision rings move with the camera too; the player is always
+on the densest ring's collision shape.
+
+#### Why not just keep the existing CPU-mesh-with-vertex-array pattern?
+
+That's what the spec rejects in this section. The "build per-tile
+CPU mesh, set per-vertex Y from heightmap" pattern (today's
+TileTerrain.gd) works for scale_demo's 16 tiles but doesn't extend
+to 256-tile worlds. Each tile mesh is 65k verts; at 256 tiles that's
+16M verts, all sitting in RAM whether rendered or not. The
+GPU-displaced clipmap stores ~525k verts total regardless of world
+size, with the heightmap data living in compact textures.
 
 #### Heightmap precision
 
-R16 single-channel suffices for ±32 km of elevation at cm precision.
-Use `Image.FORMAT_RH` (16-bit float per channel) for the displacement
-textures — same accuracy as the current 16-bit PNG path, smaller
-than R32F.
+**Use `Image.FORMAT_RF` (R32 float).** This is what the displacement
+texture stores per pixel.
+
+Why not R16F (`FORMAT_RH`): IEEE half-float has 11 bits of mantissa.
+At absolute altitudes of hundreds of meters (typical W4 terrain at
+500-1000m), the per-sample precision degrades to decimeters,
+producing visible quantization staircase on slopes. The original
+draft of this spec called this format "±32 km at cm precision" —
+that's wrong; half-float doesn't deliver that.
+
+Why not normalized R16 (uint16 + min/range decode): works
+mathematically (16-bit-int precision per sample, decoded via two
+uniform floats), but adds an unpack op in the vertex shader for
+every clipmap vertex with no real upside. The memory difference
+between R32F and R16-normalized is small at clipmap sizes:
+
+- R32F: 4 rings × 256² × 4 bytes = **1 MB total**
+- R16-normalized: 4 rings × 256² × 2 bytes = 0.5 MB
+
+R32F's 0.5 MB extra is trivial; the simpler shader path wins.
+
+Per-pixel precision at R32F: full 24-bit mantissa of float32 → ~6
+decimal digits of precision. At a 1024m max elevation this is
+sub-millimeter accuracy per sample.
 
 ### 4. Clipmap procedural splat
 
@@ -264,7 +482,21 @@ For each ring:
 
 Splat textures are generated by **sampling the `KernelComposer`'s
 `sample_biome_weights` at the ring's grid positions**. Same
-async-regeneration pattern as the heightmap stack.
+double-buffer + main-thread-upload pattern as the heightmap stack:
+worker computes N flat `PackedByteArray`s (one per biome, R8
+weights), main thread builds N `Image.create_from_data` + one
+`Texture2DArray.create_from_images([imgs])` + one
+`set_shader_parameter("ring_splat", arr)`.
+
+`create_from_images` forces uniform-format layers; we
+`img.convert(Image.FORMAT_RGBA8)` + `img.clear_mipmaps()` before
+the call (PITFALLS #5). Cost per ring update: ~5× the heightmap
+cost (one composer call per pixel produces both height + N biome
+weights, so the sample loop is shared — we just emit N+1 arrays
+instead of 1).
+
+The splat update is tied to the heightmap update — they happen
+together in one worker task per ring per snap.
 
 **Shader picks the right ring's splat** based on world distance from
 camera — same selection that picks the right geometry ring. Fragments
@@ -275,8 +507,13 @@ boundaries, just lower-res).
 #### Why this is the right architecture
 
 - **Memory bounded by ring count, not world size**: 4 rings × 256²
-  × 5 biomes × R8 = 1.25 MB. Constant whether world is 4 km or
-  ∞ km.
+  × 5 biomes. Splat textures pack into RGBA8 (forced by Godot 4.5's
+  `Texture2DArray.create_from_images` uniform-format requirement, see
+  PITFALLS #5) — so 4 rings × 256² × 5 layers × 4 bytes/layer =
+  **5 MB total**. Constant whether world is 4 km or ∞ km. (We could
+  pack 4 biomes per RGBA8 layer to amortize the per-layer cost, but
+  with N≤16 biomes the savings don't justify the encoding/decoding
+  complexity.)
 - **Splat fidelity matches what the eye can see**: high-res where the
   camera is, low-res where it isn't. AAA standard.
 - **Same KernelComposer is the source for heightmap + splat**: no
@@ -486,12 +723,10 @@ another Kernel," not "rewrite anything."
 
 ## Open design questions (resolved during implementation)
 
-- **Tessellation shader vs CPU-built ring meshes**: if Godot 4.5's
-  tessellation pipeline matures by the time we hit Stage 2, use
-  tessellation; otherwise CPU-build per-ring donut meshes. Either
-  way the procedural source is the same.
 - **Ring count**: 4 is a starting guess. May want 5-6 for
   high-altitude views (camera looking out 4+ km). Tune in Stage 2.
+- **Skirt depth**: 10m is the starting value. Steep terrain may need
+  more; we'll see in Stage 2's editor verification. Cosmetic-only.
 - **Per-biome generator param tuning**: the noise stack has many
   knobs. Per-biome param tuning is its own iteration loop;
   `build_kernel_preview.py` exists to support it.
