@@ -259,6 +259,21 @@ func _worker_compute_heightmap(payload: Dictionary) -> void:
 		_ring_tasks[ring_idx]["result"] = heights
 
 
+# Stage 4.1: build a single-biome splat buffer. Always returns one
+# R8 layer of width × height × 1 packed as PackedByteArray, where
+# every byte = 255 (full weight for slot 0). Multi-biome generation
+# lands in Stage 4.2 via the biome culler.
+#
+# Same n × step shape as the heightmap so the splat sampler aligns
+# with the displacement sampler exactly.
+func _compute_splat_bytes_single_biome(n: int) -> PackedByteArray:
+	var bytes := PackedByteArray()
+	bytes.resize(n * n)
+	for i in range(n * n):
+		bytes[i] = 255
+	return bytes
+
+
 # Pure-function helper. Same math as the sync path; reused by both
 # _refresh_ring_heightmap and _worker_compute_heightmap so the two
 # paths can't drift.
