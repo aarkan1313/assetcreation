@@ -1,0 +1,22 @@
+[
+  {
+    "edge_seam": 0.021039,
+    "periodic_locality": 13.704,
+    "richness": 0.496,
+    "composite": 0.337,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "audit_windpack_h1.0_d0.0_pbrsm_modenone_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "none",
+      "heal_denoise": 1.0,
+      "pass1_seam_score": 0.021038582291065935,
+      "pass1_seconds": 14.07,
+      "heal_skipped": true,
+      "final_seam_score": 0.021038582291065935
+    }
+  }
+]

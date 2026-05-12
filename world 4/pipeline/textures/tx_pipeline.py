@@ -53,11 +53,16 @@ from tx_qa import qa_albedo
 class PipelineSettings:
     """All pipeline knobs, no silent defaults.
 
-    The audit's findings drive these defaults:
-      - heal_denoise=0.35 honored (vs upstream's silent 1.0)
-      - delight=0.0 (skip; prompt already requests flat lighting)
-      - pbr_backend='derive' (consistent with albedo, not SM-invented)
-      - external_seam_repair=False (the FLUX heal is the seam repair)
+    Defaults driven by the 16-combo audit experiment (2026-05-12,
+    see docs/plans/TEXTURE_PIPELINE_FINDINGS_2026_05_12.md):
+
+      - heal_denoise=1.0 (full denoise — the audit guessed 0.35 would
+        be better but empirically 0.35 leaves edge_continuity above
+        the 0.005 threshold; 1.0 hammers the seam closed)
+      - heal_mode='flux_heal' (skipping it drops grade by ~0.88 steps)
+      - pbr_backend='derive' (sm tanks mip32_stdev on every Snow combo)
+      - delight_strength=0.0 (marginal effect ~0.12; not worth the pass)
+      - external_seam_repair=False (4-pass FLUX is the seam repair)
     """
     # Generation
     unet: str = "flux-2-klein-9b-fp8.safetensors"
@@ -68,8 +73,10 @@ class PipelineSettings:
     seed_base: int = 42
     variants: int = 4
 
-    # Heal pass — the audit's biggest find
-    heal_denoise: float = 0.35
+    # Heal pass — experiment-locked at full denoise. The audit predicted
+    # 0.35 would be the win; turned out 0.35 doesn't close the seam
+    # cross enough (edge_continuity > 0.01 in all 0.35 combos).
+    heal_denoise: float = 1.0
     heal_mode: str = "flux_heal"  # 'flux_heal' or 'none'
 
     # Delight — off by default; prompt handles lighting

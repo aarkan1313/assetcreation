@@ -1,0 +1,1654 @@
+{
+  "prompt": "tileable seamless texture, wind-packed snow with sastrugi ridges, sharp wind-carved striations, bright white, overhead perspective",
+  "n_combos": 16,
+  "elapsed_seconds": 438.3,
+  "results": [
+    {
+      "version": "w4_tx_pipeline_v1",
+      "asset_id": "audit_windpack_h1.0_d0.4_pbrsm_modeflux",
+      "prompt": "tileable seamless texture, wind-packed snow with sastrugi ridges, sharp wind-carved striations, bright white, overhead perspective",
+      "settings": {
+        "unet": "flux-2-klein-9b-fp8.safetensors",
+        "clip": "qwen_3_8b_fp8mixed.safetensors",
+        "vae": "flux2-vae.safetensors",
+        "size": 1024,
+        "steps": 4,
+        "seed_base": 42,
+        "variants": 1,
+        "heal_denoise": 1.0,
+        "heal_mode": "flux_heal",
+        "delight_strength": 0.4,
+        "pbr_backend": "sm",
+        "external_seam_repair": false,
+        "category": "Snow",
+        "host": "http://127.0.0.1:8188"
+      },
+      "started_at": "2026-05-12T16:19:25+00:00",
+      "stages": [
+        {
+          "stage": "variants",
+          "n_variants": 1,
+          "ranking": [
+            {
+              "edge_seam": 0.002575,
+              "periodic_locality": 10.429,
+              "richness": 0.609,
+              "composite": 0.7771,
+              "variant_index": 0,
+              "seed": 42,
+              "path": "v0_albedo.png",
+              "seamless_log": {
+                "asset_id": "audit_windpack_h1.0_d0.4_pbrsm_modeflux_v0",
+                "size": 1024,
+                "seed": 42,
+                "heal_mode": "flux_heal",
+                "heal_denoise": 1.0,
+                "pass1_seam_score": 0.021038582291065935,
+                "pass1_seconds": 5.13,
+                "pass3_seconds": 14.14,
+                "final_seam_score": 0.0025754566771944683,
+                "seam_improvement": 0.018463125613871468
+              }
+            }
+          ]
+        },
+        {
+          "stage": "delight",
+          "strength": 0.4
+        },
+        {
+          "stage": "pbr",
+          "backend": "tx_pbr_sm",
+          "mode": "standard",
+          "size": 512,
+          "maps": [
+            "albedo",
+            "normal",
+            "roughness",
+            "ao",
+            "height",
+            "metallic"
+          ]
+        },
+        {
+          "stage": "external_seam_repair",
+          "skipped": true,
+          "reason": "default off per audit; FLUX heal pass is the repair"
+        },
+        {
+          "stage": "qa",
+          "grade": "B",
+          "passed_checks": 3,
+          "thresholds": {
+            "edge_continuity": 0.005,
+            "junction_visibility": 1.35,
+            "periodic_artifact": 13.0,
+            "richness": 0.45,
+            "mip32_stdev": 12.0
+          },
+          "failed": [
+            "periodic_artifact"
+          ]
+        }
+      ],
+      "grade": "B",
+      "passed": false,
+      "completed_at": "2026-05-12T16:20:10+00:00",
+      "status": "completed",
+      "label": "h1.0_d0.4_pbrsm_modeflux",
+      "combo": {
+        "heal_denoise": 1.0,
+        "delight": 0.4,
+        "pbr": "sm",
+        "heal_mode": "flux_heal"
+      }
+    },
+    {
+      "version": "w4_tx_pipeline_v1",
+      "asset_id": "audit_windpack_h1.0_d0.4_pbrsm_modenone",
+      "prompt": "tileable seamless texture, wind-packed snow with sastrugi ridges, sharp wind-carved striations, bright white, overhead perspective",
+      "settings": {
+        "unet": "flux-2-klein-9b-fp8.safetensors",
+        "clip": "qwen_3_8b_fp8mixed.safetensors",
+        "vae": "flux2-vae.safetensors",
+        "size": 1024,
+        "steps": 4,
+        "seed_base": 42,
+        "variants": 1,
+        "heal_denoise": 1.0,
+        "heal_mode": "none",
+        "delight_strength": 0.4,
+        "pbr_backend": "sm",
+        "external_seam_repair": false,
+        "category": "Snow",
+        "host": "http://127.0.0.1:8188"
+      },
+      "started_at": "2026-05-12T16:20:10+00:00",
+      "stages": [
+        {
+          "stage": "variants",
+          "n_variants": 1,
+          "ranking": [
+            {
+              "edge_seam": 0.021039,
+              "periodic_locality": 13.704,
+              "richness": 0.496,
+              "composite": 0.337,
+              "variant_index": 0,
+              "seed": 42,
+              "path": "v0_albedo.png",
+              "seamless_log": {
+                "asset_id": "audit_windpack_h1.0_d0.4_pbrsm_modenone_v0",
+                "size": 1024,
+                "seed": 42,
+                "heal_mode": "none",
+                "heal_denoise": 1.0,
+                "pass1_seam_score": 0.021038582291065935,
+                "pass1_seconds": 4.5,
+                "heal_skipped": true,
+                "final_seam_score": 0.021038582291065935
+              }
+            }
+          ]
+        },
+        {
+          "stage": "delight",
+          "strength": 0.4
+        },
+        {
+          "stage": "pbr",
+          "backend": "tx_pbr_sm",
+          "mode": "standard",
+          "size": 512,
+          "maps": [
+            "albedo",
+            "normal",
+            "roughness",
+            "ao",
+            "height",
+            "metallic"
+          ]
+        },
+        {
+          "stage": "external_seam_repair",
+          "skipped": true,
+          "reason": "default off per audit; FLUX heal pass is the repair"
+        },
+        {
+          "stage": "qa",
+          "grade": "C",
+          "passed_checks": 2,
+          "thresholds": {
+            "edge_continuity": 0.005,
+            "junction_visibility": 1.35,
+            "periodic_artifact": 13.0,
+            "richness": 0.45,
+            "mip32_stdev": 12.0
+          },
+          "failed": [
+            "periodic_artifact",
+            "mip32_stdev"
+          ]
+        }
+      ],
+      "grade": "C",
+      "passed": false,
+      "completed_at": "2026-05-12T16:20:38+00:00",
+      "status": "completed",
+      "label": "h1.0_d0.4_pbrsm_modenone",
+      "combo": {
+        "heal_denoise": 1.0,
+        "delight": 0.4,
+        "pbr": "sm",
+        "heal_mode": "none"
+      }
+    },
+    {
+      "version": "w4_tx_pipeline_v1",
+      "asset_id": "audit_windpack_h1.0_d0.4_pbrderive_modeflux",
+      "prompt": "tileable seamless texture, wind-packed snow with sastrugi ridges, sharp wind-carved striations, bright white, overhead perspective",
+      "settings": {
+        "unet": "flux-2-klein-9b-fp8.safetensors",
+        "clip": "qwen_3_8b_fp8mixed.safetensors",
+        "vae": "flux2-vae.safetensors",
+        "size": 1024,
+        "steps": 4,
+        "seed_base": 42,
+        "variants": 1,
+        "heal_denoise": 1.0,
+        "heal_mode": "flux_heal",
+        "delight_strength": 0.4,
+        "pbr_backend": "derive",
+        "external_seam_repair": false,
+        "category": "Snow",
+        "host": "http://127.0.0.1:8188"
+      },
+      "started_at": "2026-05-12T16:20:38+00:00",
+      "stages": [
+        {
+          "stage": "variants",
+          "n_variants": 1,
+          "ranking": [
+            {
+              "edge_seam": 0.002575,
+              "periodic_locality": 10.429,
+              "richness": 0.609,
+              "composite": 0.7771,
+              "variant_index": 0,
+              "seed": 42,
+              "path": "v0_albedo.png",
+              "seamless_log": {
+                "asset_id": "audit_windpack_h1.0_d0.4_pbrderive_modeflux_v0",
+                "size": 1024,
+                "seed": 42,
+                "heal_mode": "flux_heal",
+                "heal_denoise": 1.0,
+                "pass1_seam_score": 0.021038582291065935,
+                "pass1_seconds": 6.15,
+                "pass3_seconds": 8.13,
+                "final_seam_score": 0.0025754566771944683,
+                "seam_improvement": 0.018463125613871468
+              }
+            }
+          ]
+        },
+        {
+          "stage": "delight",
+          "strength": 0.4
+        },
+        {
+          "stage": "pbr",
+          "backend": "tx_pbr_derive",
+          "category": "Snow",
+          "snow_mode": true,
+          "normal_strength": 4.0,
+          "maps": [
+            "albedo",
+            "normal",
+            "roughness",
+            "ao",
+            "height",
+            "metallic"
+          ],
+          "preset_used": [
+            0.96,
+            0.04
+          ]
+        },
+        {
+          "stage": "external_seam_repair",
+          "skipped": true,
+          "reason": "default off per audit; FLUX heal pass is the repair"
+        },
+        {
+          "stage": "qa",
+          "grade": "A",
+          "passed_checks": 4,
+          "thresholds": {
+            "edge_continuity": 0.005,
+            "junction_visibility": 1.35,
+            "periodic_artifact": 13.0,
+            "richness": 0.45,
+            "mip32_stdev": 12.0
+          },
+          "failed": []
+        }
+      ],
+      "grade": "A",
+      "passed": true,
+      "completed_at": "2026-05-12T16:20:56+00:00",
+      "status": "completed",
+      "label": "h1.0_d0.4_pbrderive_modeflux",
+      "combo": {
+        "heal_denoise": 1.0,
+        "delight": 0.4,
+        "pbr": "derive",
+        "heal_mode": "flux_heal"
+      }
+    },
+    {
+      "version": "w4_tx_pipeline_v1",
+      "asset_id": "audit_windpack_h1.0_d0.4_pbrderive_modenone",
+      "prompt": "tileable seamless texture, wind-packed snow with sastrugi ridges, sharp wind-carved striations, bright white, overhead perspective",
+      "settings": {
+        "unet": "flux-2-klein-9b-fp8.safetensors",
+        "clip": "qwen_3_8b_fp8mixed.safetensors",
+        "vae": "flux2-vae.safetensors",
+        "size": 1024,
+        "steps": 4,
+        "seed_base": 42,
+        "variants": 1,
+        "heal_denoise": 1.0,
+        "heal_mode": "none",
+        "delight_strength": 0.4,
+        "pbr_backend": "derive",
+        "external_seam_repair": false,
+        "category": "Snow",
+        "host": "http://127.0.0.1:8188"
+      },
+      "started_at": "2026-05-12T16:20:56+00:00",
+      "stages": [
+        {
+          "stage": "variants",
+          "n_variants": 1,
+          "ranking": [
+            {
+              "edge_seam": 0.021039,
+              "periodic_locality": 13.704,
+              "richness": 0.496,
+              "composite": 0.337,
+              "variant_index": 0,
+              "seed": 42,
+              "path": "v0_albedo.png",
+              "seamless_log": {
+                "asset_id": "audit_windpack_h1.0_d0.4_pbrderive_modenone_v0",
+                "size": 1024,
+                "seed": 42,
+                "heal_mode": "none",
+                "heal_denoise": 1.0,
+                "pass1_seam_score": 0.021038582291065935,
+                "pass1_seconds": 4.09,
+                "heal_skipped": true,
+                "final_seam_score": 0.021038582291065935
+              }
+            }
+          ]
+        },
+        {
+          "stage": "delight",
+          "strength": 0.4
+        },
+        {
+          "stage": "pbr",
+          "backend": "tx_pbr_derive",
+          "category": "Snow",
+          "snow_mode": true,
+          "normal_strength": 4.0,
+          "maps": [
+            "albedo",
+            "normal",
+            "roughness",
+            "ao",
+            "height",
+            "metallic"
+          ],
+          "preset_used": [
+            0.96,
+            0.04
+          ]
+        },
+        {
+          "stage": "external_seam_repair",
+          "skipped": true,
+          "reason": "default off per audit; FLUX heal pass is the repair"
+        },
+        {
+          "stage": "qa",
+          "grade": "C",
+          "passed_checks": 2,
+          "thresholds": {
+            "edge_continuity": 0.005,
+            "junction_visibility": 1.35,
+            "periodic_artifact": 13.0,
+            "richness": 0.45,
+            "mip32_stdev": 12.0
+          },
+          "failed": [
+            "edge_continuity",
+            "periodic_artifact"
+          ]
+        }
+      ],
+      "grade": "C",
+      "passed": false,
+      "completed_at": "2026-05-12T16:21:06+00:00",
+      "status": "completed",
+      "label": "h1.0_d0.4_pbrderive_modenone",
+      "combo": {
+        "heal_denoise": 1.0,
+        "delight": 0.4,
+        "pbr": "derive",
+        "heal_mode": "none"
+      }
+    },
+    {
+      "version": "w4_tx_pipeline_v1",
+      "asset_id": "audit_windpack_h1.0_d0.0_pbrsm_modeflux",
+      "prompt": "tileable seamless texture, wind-packed snow with sastrugi ridges, sharp wind-carved striations, bright white, overhead perspective",
+      "settings": {
+        "unet": "flux-2-klein-9b-fp8.safetensors",
+        "clip": "qwen_3_8b_fp8mixed.safetensors",
+        "vae": "flux2-vae.safetensors",
+        "size": 1024,
+        "steps": 4,
+        "seed_base": 42,
+        "variants": 1,
+        "heal_denoise": 1.0,
+        "heal_mode": "flux_heal",
+        "delight_strength": 0.0,
+        "pbr_backend": "sm",
+        "external_seam_repair": false,
+        "category": "Snow",
+        "host": "http://127.0.0.1:8188"
+      },
+      "started_at": "2026-05-12T16:21:06+00:00",
+      "stages": [
+        {
+          "stage": "variants",
+          "n_variants": 1,
+          "ranking": [
+            {
+              "edge_seam": 0.002575,
+              "periodic_locality": 10.429,
+              "richness": 0.609,
+              "composite": 0.7771,
+              "variant_index": 0,
+              "seed": 42,
+              "path": "v0_albedo.png",
+              "seamless_log": {
+                "asset_id": "audit_windpack_h1.0_d0.0_pbrsm_modeflux_v0",
+                "size": 1024,
+                "seed": 42,
+                "heal_mode": "flux_heal",
+                "heal_denoise": 1.0,
+                "pass1_seam_score": 0.021038582291065935,
+                "pass1_seconds": 2.07,
+                "pass3_seconds": 10.29,
+                "final_seam_score": 0.0025754566771944683,
+                "seam_improvement": 0.018463125613871468
+              }
+            }
+          ]
+        },
+        {
+          "stage": "delight",
+          "skipped": true,
+          "reason": "default off per audit; prompt already handles lighting"
+        },
+        {
+          "stage": "pbr",
+          "backend": "tx_pbr_sm",
+          "mode": "standard",
+          "size": 512,
+          "maps": [
+            "albedo",
+            "normal",
+            "roughness",
+            "ao",
+            "height",
+            "metallic"
+          ]
+        },
+        {
+          "stage": "external_seam_repair",
+          "skipped": true,
+          "reason": "default off per audit; FLUX heal pass is the repair"
+        },
+        {
+          "stage": "qa",
+          "grade": "C",
+          "passed_checks": 2,
+          "thresholds": {
+            "edge_continuity": 0.005,
+            "junction_visibility": 1.35,
+            "periodic_artifact": 13.0,
+            "richness": 0.45,
+            "mip32_stdev": 12.0
+          },
+          "failed": [
+            "periodic_artifact",
+            "mip32_stdev"
+          ]
+        }
+      ],
+      "grade": "C",
+      "passed": false,
+      "completed_at": "2026-05-12T16:21:43+00:00",
+      "status": "completed",
+      "label": "h1.0_d0.0_pbrsm_modeflux",
+      "combo": {
+        "heal_denoise": 1.0,
+        "delight": 0.0,
+        "pbr": "sm",
+        "heal_mode": "flux_heal"
+      }
+    },
+    {
+      "version": "w4_tx_pipeline_v1",
+      "asset_id": "audit_windpack_h1.0_d0.0_pbrsm_modenone",
+      "prompt": "tileable seamless texture, wind-packed snow with sastrugi ridges, sharp wind-carved striations, bright white, overhead perspective",
+      "settings": {
+        "unet": "flux-2-klein-9b-fp8.safetensors",
+        "clip": "qwen_3_8b_fp8mixed.safetensors",
+        "vae": "flux2-vae.safetensors",
+        "size": 1024,
+        "steps": 4,
+        "seed_base": 42,
+        "variants": 1,
+        "heal_denoise": 1.0,
+        "heal_mode": "none",
+        "delight_strength": 0.0,
+        "pbr_backend": "sm",
+        "external_seam_repair": false,
+        "category": "Snow",
+        "host": "http://127.0.0.1:8188"
+      },
+      "started_at": "2026-05-12T16:21:43+00:00",
+      "stages": [
+        {
+          "stage": "variants",
+          "n_variants": 1,
+          "ranking": [
+            {
+              "edge_seam": 0.021039,
+              "periodic_locality": 13.704,
+              "richness": 0.496,
+              "composite": 0.337,
+              "variant_index": 0,
+              "seed": 42,
+              "path": "v0_albedo.png",
+              "seamless_log": {
+                "asset_id": "audit_windpack_h1.0_d0.0_pbrsm_modenone_v0",
+                "size": 1024,
+                "seed": 42,
+                "heal_mode": "none",
+                "heal_denoise": 1.0,
+                "pass1_seam_score": 0.021038582291065935,
+                "pass1_seconds": 14.07,
+                "heal_skipped": true,
+                "final_seam_score": 0.021038582291065935
+              }
+            }
+          ]
+        },
+        {
+          "stage": "delight",
+          "skipped": true,
+          "reason": "default off per audit; prompt already handles lighting"
+        },
+        {
+          "stage": "pbr",
+          "backend": "tx_pbr_sm",
+          "mode": "standard",
+          "size": 512,
+          "maps": [
+            "albedo",
+            "normal",
+            "roughness",
+            "ao",
+            "height",
+            "metallic"
+          ]
+        },
+        {
+          "stage": "external_seam_repair",
+          "skipped": true,
+          "reason": "default off per audit; FLUX heal pass is the repair"
+        },
+        {
+          "stage": "qa",
+          "grade": "C",
+          "passed_checks": 2,
+          "thresholds": {
+            "edge_continuity": 0.005,
+            "junction_visibility": 1.35,
+            "periodic_artifact": 13.0,
+            "richness": 0.45,
+            "mip32_stdev": 12.0
+          },
+          "failed": [
+            "periodic_artifact",
+            "mip32_stdev"
+          ]
+        }
+      ],
+      "grade": "C",
+      "passed": false,
+      "completed_at": "2026-05-12T16:22:21+00:00",
+      "status": "completed",
+      "label": "h1.0_d0.0_pbrsm_modenone",
+      "combo": {
+        "heal_denoise": 1.0,
+        "delight": 0.0,
+        "pbr": "sm",
+        "heal_mode": "none"
+      }
+    },
+    {
+      "version": "w4_tx_pipeline_v1",
+      "asset_id": "audit_windpack_h1.0_d0.0_pbrderive_modeflux",
+      "prompt": "tileable seamless texture, wind-packed snow with sastrugi ridges, sharp wind-carved striations, bright white, overhead perspective",
+      "settings": {
+        "unet": "flux-2-klein-9b-fp8.safetensors",
+        "clip": "qwen_3_8b_fp8mixed.safetensors",
+        "vae": "flux2-vae.safetensors",
+        "size": 1024,
+        "steps": 4,
+        "seed_base": 42,
+        "variants": 1,
+        "heal_denoise": 1.0,
+        "heal_mode": "flux_heal",
+        "delight_strength": 0.0,
+        "pbr_backend": "derive",
+        "external_seam_repair": false,
+        "category": "Snow",
+        "host": "http://127.0.0.1:8188"
+      },
+      "started_at": "2026-05-12T16:22:21+00:00",
+      "stages": [
+        {
+          "stage": "variants",
+          "n_variants": 1,
+          "ranking": [
+            {
+              "edge_seam": 0.002575,
+              "periodic_locality": 10.429,
+              "richness": 0.609,
+              "composite": 0.7771,
+              "variant_index": 0,
+              "seed": 42,
+              "path": "v0_albedo.png",
+              "seamless_log": {
+                "asset_id": "audit_windpack_h1.0_d0.0_pbrderive_modeflux_v0",
+                "size": 1024,
+                "seed": 42,
+                "heal_mode": "flux_heal",
+                "heal_denoise": 1.0,
+                "pass1_seam_score": 0.021038582291065935,
+                "pass1_seconds": 15.52,
+                "pass3_seconds": 14.19,
+                "final_seam_score": 0.0025754566771944683,
+                "seam_improvement": 0.018463125613871468
+              }
+            }
+          ]
+        },
+        {
+          "stage": "delight",
+          "skipped": true,
+          "reason": "default off per audit; prompt already handles lighting"
+        },
+        {
+          "stage": "pbr",
+          "backend": "tx_pbr_derive",
+          "category": "Snow",
+          "snow_mode": true,
+          "normal_strength": 4.0,
+          "maps": [
+            "albedo",
+            "normal",
+            "roughness",
+            "ao",
+            "height",
+            "metallic"
+          ],
+          "preset_used": [
+            0.96,
+            0.04
+          ]
+        },
+        {
+          "stage": "external_seam_repair",
+          "skipped": true,
+          "reason": "default off per audit; FLUX heal pass is the repair"
+        },
+        {
+          "stage": "qa",
+          "grade": "A",
+          "passed_checks": 4,
+          "thresholds": {
+            "edge_continuity": 0.005,
+            "junction_visibility": 1.35,
+            "periodic_artifact": 13.0,
+            "richness": 0.45,
+            "mip32_stdev": 12.0
+          },
+          "failed": []
+        }
+      ],
+      "grade": "A",
+      "passed": true,
+      "completed_at": "2026-05-12T16:22:55+00:00",
+      "status": "completed",
+      "label": "h1.0_d0.0_pbrderive_modeflux",
+      "combo": {
+        "heal_denoise": 1.0,
+        "delight": 0.0,
+        "pbr": "derive",
+        "heal_mode": "flux_heal"
+      }
+    },
+    {
+      "version": "w4_tx_pipeline_v1",
+      "asset_id": "audit_windpack_h1.0_d0.0_pbrderive_modenone",
+      "prompt": "tileable seamless texture, wind-packed snow with sastrugi ridges, sharp wind-carved striations, bright white, overhead perspective",
+      "settings": {
+        "unet": "flux-2-klein-9b-fp8.safetensors",
+        "clip": "qwen_3_8b_fp8mixed.safetensors",
+        "vae": "flux2-vae.safetensors",
+        "size": 1024,
+        "steps": 4,
+        "seed_base": 42,
+        "variants": 1,
+        "heal_denoise": 1.0,
+        "heal_mode": "none",
+        "delight_strength": 0.0,
+        "pbr_backend": "derive",
+        "external_seam_repair": false,
+        "category": "Snow",
+        "host": "http://127.0.0.1:8188"
+      },
+      "started_at": "2026-05-12T16:22:55+00:00",
+      "stages": [
+        {
+          "stage": "variants",
+          "n_variants": 1,
+          "ranking": [
+            {
+              "edge_seam": 0.021039,
+              "periodic_locality": 13.704,
+              "richness": 0.496,
+              "composite": 0.337,
+              "variant_index": 0,
+              "seed": 42,
+              "path": "v0_albedo.png",
+              "seamless_log": {
+                "asset_id": "audit_windpack_h1.0_d0.0_pbrderive_modenone_v0",
+                "size": 1024,
+                "seed": 42,
+                "heal_mode": "none",
+                "heal_denoise": 1.0,
+                "pass1_seam_score": 0.021038582291065935,
+                "pass1_seconds": 16.08,
+                "heal_skipped": true,
+                "final_seam_score": 0.021038582291065935
+              }
+            }
+          ]
+        },
+        {
+          "stage": "delight",
+          "skipped": true,
+          "reason": "default off per audit; prompt already handles lighting"
+        },
+        {
+          "stage": "pbr",
+          "backend": "tx_pbr_derive",
+          "category": "Snow",
+          "snow_mode": true,
+          "normal_strength": 4.0,
+          "maps": [
+            "albedo",
+            "normal",
+            "roughness",
+            "ao",
+            "height",
+            "metallic"
+          ],
+          "preset_used": [
+            0.96,
+            0.04
+          ]
+        },
+        {
+          "stage": "external_seam_repair",
+          "skipped": true,
+          "reason": "default off per audit; FLUX heal pass is the repair"
+        },
+        {
+          "stage": "qa",
+          "grade": "C",
+          "passed_checks": 2,
+          "thresholds": {
+            "edge_continuity": 0.005,
+            "junction_visibility": 1.35,
+            "periodic_artifact": 13.0,
+            "richness": 0.45,
+            "mip32_stdev": 12.0
+          },
+          "failed": [
+            "edge_continuity",
+            "periodic_artifact"
+          ]
+        }
+      ],
+      "grade": "C",
+      "passed": false,
+      "completed_at": "2026-05-12T16:23:14+00:00",
+      "status": "completed",
+      "label": "h1.0_d0.0_pbrderive_modenone",
+      "combo": {
+        "heal_denoise": 1.0,
+        "delight": 0.0,
+        "pbr": "derive",
+        "heal_mode": "none"
+      }
+    },
+    {
+      "version": "w4_tx_pipeline_v1",
+      "asset_id": "audit_windpack_h0.35_d0.4_pbrsm_modeflux",
+      "prompt": "tileable seamless texture, wind-packed snow with sastrugi ridges, sharp wind-carved striations, bright white, overhead perspective",
+      "settings": {
+        "unet": "flux-2-klein-9b-fp8.safetensors",
+        "clip": "qwen_3_8b_fp8mixed.safetensors",
+        "vae": "flux2-vae.safetensors",
+        "size": 1024,
+        "steps": 4,
+        "seed_base": 42,
+        "variants": 1,
+        "heal_denoise": 0.35,
+        "heal_mode": "flux_heal",
+        "delight_strength": 0.4,
+        "pbr_backend": "sm",
+        "external_seam_repair": false,
+        "category": "Snow",
+        "host": "http://127.0.0.1:8188"
+      },
+      "started_at": "2026-05-12T16:23:14+00:00",
+      "stages": [
+        {
+          "stage": "variants",
+          "n_variants": 1,
+          "ranking": [
+            {
+              "edge_seam": 0.017189,
+              "periodic_locality": 12.395,
+              "richness": 0.515,
+              "composite": 0.4245,
+              "variant_index": 0,
+              "seed": 42,
+              "path": "v0_albedo.png",
+              "seamless_log": {
+                "asset_id": "audit_windpack_h0.35_d0.4_pbrsm_modeflux_v0",
+                "size": 1024,
+                "seed": 42,
+                "heal_mode": "flux_heal",
+                "heal_denoise": 0.35,
+                "pass1_seam_score": 0.021038582291065935,
+                "pass1_seconds": 2.07,
+                "pass3_seconds": 8.21,
+                "final_seam_score": 0.01718924775026432,
+                "seam_improvement": 0.0038493345408016147
+              }
+            }
+          ]
+        },
+        {
+          "stage": "delight",
+          "strength": 0.4
+        },
+        {
+          "stage": "pbr",
+          "backend": "tx_pbr_sm",
+          "mode": "standard",
+          "size": 512,
+          "maps": [
+            "albedo",
+            "normal",
+            "roughness",
+            "ao",
+            "height",
+            "metallic"
+          ]
+        },
+        {
+          "stage": "external_seam_repair",
+          "skipped": true,
+          "reason": "default off per audit; FLUX heal pass is the repair"
+        },
+        {
+          "stage": "qa",
+          "grade": "C",
+          "passed_checks": 2,
+          "thresholds": {
+            "edge_continuity": 0.005,
+            "junction_visibility": 1.35,
+            "periodic_artifact": 13.0,
+            "richness": 0.45,
+            "mip32_stdev": 12.0
+          },
+          "failed": [
+            "periodic_artifact",
+            "mip32_stdev"
+          ]
+        }
+      ],
+      "grade": "C",
+      "passed": false,
+      "completed_at": "2026-05-12T16:23:47+00:00",
+      "status": "completed",
+      "label": "h0.35_d0.4_pbrsm_modeflux",
+      "combo": {
+        "heal_denoise": 0.35,
+        "delight": 0.4,
+        "pbr": "sm",
+        "heal_mode": "flux_heal"
+      }
+    },
+    {
+      "version": "w4_tx_pipeline_v1",
+      "asset_id": "audit_windpack_h0.35_d0.4_pbrsm_modenone",
+      "prompt": "tileable seamless texture, wind-packed snow with sastrugi ridges, sharp wind-carved striations, bright white, overhead perspective",
+      "settings": {
+        "unet": "flux-2-klein-9b-fp8.safetensors",
+        "clip": "qwen_3_8b_fp8mixed.safetensors",
+        "vae": "flux2-vae.safetensors",
+        "size": 1024,
+        "steps": 4,
+        "seed_base": 42,
+        "variants": 1,
+        "heal_denoise": 0.35,
+        "heal_mode": "none",
+        "delight_strength": 0.4,
+        "pbr_backend": "sm",
+        "external_seam_repair": false,
+        "category": "Snow",
+        "host": "http://127.0.0.1:8188"
+      },
+      "started_at": "2026-05-12T16:23:47+00:00",
+      "stages": [
+        {
+          "stage": "variants",
+          "n_variants": 1,
+          "ranking": [
+            {
+              "edge_seam": 0.021039,
+              "periodic_locality": 13.704,
+              "richness": 0.496,
+              "composite": 0.337,
+              "variant_index": 0,
+              "seed": 42,
+              "path": "v0_albedo.png",
+              "seamless_log": {
+                "asset_id": "audit_windpack_h0.35_d0.4_pbrsm_modenone_v0",
+                "size": 1024,
+                "seed": 42,
+                "heal_mode": "none",
+                "heal_denoise": 0.35,
+                "pass1_seam_score": 0.021038582291065935,
+                "pass1_seconds": 6.4,
+                "heal_skipped": true,
+                "final_seam_score": 0.021038582291065935
+              }
+            }
+          ]
+        },
+        {
+          "stage": "delight",
+          "strength": 0.4
+        },
+        {
+          "stage": "pbr",
+          "backend": "tx_pbr_sm",
+          "mode": "standard",
+          "size": 512,
+          "maps": [
+            "albedo",
+            "normal",
+            "roughness",
+            "ao",
+            "height",
+            "metallic"
+          ]
+        },
+        {
+          "stage": "external_seam_repair",
+          "skipped": true,
+          "reason": "default off per audit; FLUX heal pass is the repair"
+        },
+        {
+          "stage": "qa",
+          "grade": "C",
+          "passed_checks": 2,
+          "thresholds": {
+            "edge_continuity": 0.005,
+            "junction_visibility": 1.35,
+            "periodic_artifact": 13.0,
+            "richness": 0.45,
+            "mip32_stdev": 12.0
+          },
+          "failed": [
+            "periodic_artifact",
+            "mip32_stdev"
+          ]
+        }
+      ],
+      "grade": "C",
+      "passed": false,
+      "completed_at": "2026-05-12T16:24:12+00:00",
+      "status": "completed",
+      "label": "h0.35_d0.4_pbrsm_modenone",
+      "combo": {
+        "heal_denoise": 0.35,
+        "delight": 0.4,
+        "pbr": "sm",
+        "heal_mode": "none"
+      }
+    },
+    {
+      "version": "w4_tx_pipeline_v1",
+      "asset_id": "audit_windpack_h0.35_d0.4_pbrderive_modeflux",
+      "prompt": "tileable seamless texture, wind-packed snow with sastrugi ridges, sharp wind-carved striations, bright white, overhead perspective",
+      "settings": {
+        "unet": "flux-2-klein-9b-fp8.safetensors",
+        "clip": "qwen_3_8b_fp8mixed.safetensors",
+        "vae": "flux2-vae.safetensors",
+        "size": 1024,
+        "steps": 4,
+        "seed_base": 42,
+        "variants": 1,
+        "heal_denoise": 0.35,
+        "heal_mode": "flux_heal",
+        "delight_strength": 0.4,
+        "pbr_backend": "derive",
+        "external_seam_repair": false,
+        "category": "Snow",
+        "host": "http://127.0.0.1:8188"
+      },
+      "started_at": "2026-05-12T16:24:12+00:00",
+      "stages": [
+        {
+          "stage": "variants",
+          "n_variants": 1,
+          "ranking": [
+            {
+              "edge_seam": 0.017189,
+              "periodic_locality": 12.395,
+              "richness": 0.515,
+              "composite": 0.4245,
+              "variant_index": 0,
+              "seed": 42,
+              "path": "v0_albedo.png",
+              "seamless_log": {
+                "asset_id": "audit_windpack_h0.35_d0.4_pbrderive_modeflux_v0",
+                "size": 1024,
+                "seed": 42,
+                "heal_mode": "flux_heal",
+                "heal_denoise": 0.35,
+                "pass1_seam_score": 0.021038582291065935,
+                "pass1_seconds": 8.06,
+                "pass3_seconds": 12.12,
+                "final_seam_score": 0.01718924775026432,
+                "seam_improvement": 0.0038493345408016147
+              }
+            }
+          ]
+        },
+        {
+          "stage": "delight",
+          "strength": 0.4
+        },
+        {
+          "stage": "pbr",
+          "backend": "tx_pbr_derive",
+          "category": "Snow",
+          "snow_mode": true,
+          "normal_strength": 4.0,
+          "maps": [
+            "albedo",
+            "normal",
+            "roughness",
+            "ao",
+            "height",
+            "metallic"
+          ],
+          "preset_used": [
+            0.96,
+            0.04
+          ]
+        },
+        {
+          "stage": "external_seam_repair",
+          "skipped": true,
+          "reason": "default off per audit; FLUX heal pass is the repair"
+        },
+        {
+          "stage": "qa",
+          "grade": "B",
+          "passed_checks": 3,
+          "thresholds": {
+            "edge_continuity": 0.005,
+            "junction_visibility": 1.35,
+            "periodic_artifact": 13.0,
+            "richness": 0.45,
+            "mip32_stdev": 12.0
+          },
+          "failed": [
+            "edge_continuity"
+          ]
+        }
+      ],
+      "grade": "B",
+      "passed": false,
+      "completed_at": "2026-05-12T16:24:37+00:00",
+      "status": "completed",
+      "label": "h0.35_d0.4_pbrderive_modeflux",
+      "combo": {
+        "heal_denoise": 0.35,
+        "delight": 0.4,
+        "pbr": "derive",
+        "heal_mode": "flux_heal"
+      }
+    },
+    {
+      "version": "w4_tx_pipeline_v1",
+      "asset_id": "audit_windpack_h0.35_d0.4_pbrderive_modenone",
+      "prompt": "tileable seamless texture, wind-packed snow with sastrugi ridges, sharp wind-carved striations, bright white, overhead perspective",
+      "settings": {
+        "unet": "flux-2-klein-9b-fp8.safetensors",
+        "clip": "qwen_3_8b_fp8mixed.safetensors",
+        "vae": "flux2-vae.safetensors",
+        "size": 1024,
+        "steps": 4,
+        "seed_base": 42,
+        "variants": 1,
+        "heal_denoise": 0.35,
+        "heal_mode": "none",
+        "delight_strength": 0.4,
+        "pbr_backend": "derive",
+        "external_seam_repair": false,
+        "category": "Snow",
+        "host": "http://127.0.0.1:8188"
+      },
+      "started_at": "2026-05-12T16:24:37+00:00",
+      "stages": [
+        {
+          "stage": "variants",
+          "n_variants": 1,
+          "ranking": [
+            {
+              "edge_seam": 0.021039,
+              "periodic_locality": 13.704,
+              "richness": 0.496,
+              "composite": 0.337,
+              "variant_index": 0,
+              "seed": 42,
+              "path": "v0_albedo.png",
+              "seamless_log": {
+                "asset_id": "audit_windpack_h0.35_d0.4_pbrderive_modenone_v0",
+                "size": 1024,
+                "seed": 42,
+                "heal_mode": "none",
+                "heal_denoise": 0.35,
+                "pass1_seam_score": 0.021038582291065935,
+                "pass1_seconds": 6.06,
+                "heal_skipped": true,
+                "final_seam_score": 0.021038582291065935
+              }
+            }
+          ]
+        },
+        {
+          "stage": "delight",
+          "strength": 0.4
+        },
+        {
+          "stage": "pbr",
+          "backend": "tx_pbr_derive",
+          "category": "Snow",
+          "snow_mode": true,
+          "normal_strength": 4.0,
+          "maps": [
+            "albedo",
+            "normal",
+            "roughness",
+            "ao",
+            "height",
+            "metallic"
+          ],
+          "preset_used": [
+            0.96,
+            0.04
+          ]
+        },
+        {
+          "stage": "external_seam_repair",
+          "skipped": true,
+          "reason": "default off per audit; FLUX heal pass is the repair"
+        },
+        {
+          "stage": "qa",
+          "grade": "C",
+          "passed_checks": 2,
+          "thresholds": {
+            "edge_continuity": 0.005,
+            "junction_visibility": 1.35,
+            "periodic_artifact": 13.0,
+            "richness": 0.45,
+            "mip32_stdev": 12.0
+          },
+          "failed": [
+            "edge_continuity",
+            "periodic_artifact"
+          ]
+        }
+      ],
+      "grade": "C",
+      "passed": false,
+      "completed_at": "2026-05-12T16:24:47+00:00",
+      "status": "completed",
+      "label": "h0.35_d0.4_pbrderive_modenone",
+      "combo": {
+        "heal_denoise": 0.35,
+        "delight": 0.4,
+        "pbr": "derive",
+        "heal_mode": "none"
+      }
+    },
+    {
+      "version": "w4_tx_pipeline_v1",
+      "asset_id": "audit_windpack_h0.35_d0.0_pbrsm_modeflux",
+      "prompt": "tileable seamless texture, wind-packed snow with sastrugi ridges, sharp wind-carved striations, bright white, overhead perspective",
+      "settings": {
+        "unet": "flux-2-klein-9b-fp8.safetensors",
+        "clip": "qwen_3_8b_fp8mixed.safetensors",
+        "vae": "flux2-vae.safetensors",
+        "size": 1024,
+        "steps": 4,
+        "seed_base": 42,
+        "variants": 1,
+        "heal_denoise": 0.35,
+        "heal_mode": "flux_heal",
+        "delight_strength": 0.0,
+        "pbr_backend": "sm",
+        "external_seam_repair": false,
+        "category": "Snow",
+        "host": "http://127.0.0.1:8188"
+      },
+      "started_at": "2026-05-12T16:24:47+00:00",
+      "stages": [
+        {
+          "stage": "variants",
+          "n_variants": 1,
+          "ranking": [
+            {
+              "edge_seam": 0.017189,
+              "periodic_locality": 12.395,
+              "richness": 0.515,
+              "composite": 0.4245,
+              "variant_index": 0,
+              "seed": 42,
+              "path": "v0_albedo.png",
+              "seamless_log": {
+                "asset_id": "audit_windpack_h0.35_d0.0_pbrsm_modeflux_v0",
+                "size": 1024,
+                "seed": 42,
+                "heal_mode": "flux_heal",
+                "heal_denoise": 0.35,
+                "pass1_seam_score": 0.021038582291065935,
+                "pass1_seconds": 2.09,
+                "pass3_seconds": 12.39,
+                "final_seam_score": 0.01718924775026432,
+                "seam_improvement": 0.0038493345408016147
+              }
+            }
+          ]
+        },
+        {
+          "stage": "delight",
+          "skipped": true,
+          "reason": "default off per audit; prompt already handles lighting"
+        },
+        {
+          "stage": "pbr",
+          "backend": "tx_pbr_sm",
+          "mode": "standard",
+          "size": 512,
+          "maps": [
+            "albedo",
+            "normal",
+            "roughness",
+            "ao",
+            "height",
+            "metallic"
+          ]
+        },
+        {
+          "stage": "external_seam_repair",
+          "skipped": true,
+          "reason": "default off per audit; FLUX heal pass is the repair"
+        },
+        {
+          "stage": "qa",
+          "grade": "C",
+          "passed_checks": 2,
+          "thresholds": {
+            "edge_continuity": 0.005,
+            "junction_visibility": 1.35,
+            "periodic_artifact": 13.0,
+            "richness": 0.45,
+            "mip32_stdev": 12.0
+          },
+          "failed": [
+            "periodic_artifact",
+            "mip32_stdev"
+          ]
+        }
+      ],
+      "grade": "C",
+      "passed": false,
+      "completed_at": "2026-05-12T16:25:34+00:00",
+      "status": "completed",
+      "label": "h0.35_d0.0_pbrsm_modeflux",
+      "combo": {
+        "heal_denoise": 0.35,
+        "delight": 0.0,
+        "pbr": "sm",
+        "heal_mode": "flux_heal"
+      }
+    },
+    {
+      "version": "w4_tx_pipeline_v1",
+      "asset_id": "audit_windpack_h0.35_d0.0_pbrsm_modenone",
+      "prompt": "tileable seamless texture, wind-packed snow with sastrugi ridges, sharp wind-carved striations, bright white, overhead perspective",
+      "settings": {
+        "unet": "flux-2-klein-9b-fp8.safetensors",
+        "clip": "qwen_3_8b_fp8mixed.safetensors",
+        "vae": "flux2-vae.safetensors",
+        "size": 1024,
+        "steps": 4,
+        "seed_base": 42,
+        "variants": 1,
+        "heal_denoise": 0.35,
+        "heal_mode": "none",
+        "delight_strength": 0.0,
+        "pbr_backend": "sm",
+        "external_seam_repair": false,
+        "category": "Snow",
+        "host": "http://127.0.0.1:8188"
+      },
+      "started_at": "2026-05-12T16:25:34+00:00",
+      "stages": [
+        {
+          "stage": "variants",
+          "n_variants": 1,
+          "ranking": [
+            {
+              "edge_seam": 0.021039,
+              "periodic_locality": 13.704,
+              "richness": 0.496,
+              "composite": 0.337,
+              "variant_index": 0,
+              "seed": 42,
+              "path": "v0_albedo.png",
+              "seamless_log": {
+                "asset_id": "audit_windpack_h0.35_d0.0_pbrsm_modenone_v0",
+                "size": 1024,
+                "seed": 42,
+                "heal_mode": "none",
+                "heal_denoise": 0.35,
+                "pass1_seam_score": 0.021038582291065935,
+                "pass1_seconds": 10.18,
+                "heal_skipped": true,
+                "final_seam_score": 0.021038582291065935
+              }
+            }
+          ]
+        },
+        {
+          "stage": "delight",
+          "skipped": true,
+          "reason": "default off per audit; prompt already handles lighting"
+        },
+        {
+          "stage": "pbr",
+          "backend": "tx_pbr_sm",
+          "mode": "standard",
+          "size": 512,
+          "maps": [
+            "albedo",
+            "normal",
+            "roughness",
+            "ao",
+            "height",
+            "metallic"
+          ]
+        },
+        {
+          "stage": "external_seam_repair",
+          "skipped": true,
+          "reason": "default off per audit; FLUX heal pass is the repair"
+        },
+        {
+          "stage": "qa",
+          "grade": "C",
+          "passed_checks": 2,
+          "thresholds": {
+            "edge_continuity": 0.005,
+            "junction_visibility": 1.35,
+            "periodic_artifact": 13.0,
+            "richness": 0.45,
+            "mip32_stdev": 12.0
+          },
+          "failed": [
+            "periodic_artifact",
+            "mip32_stdev"
+          ]
+        }
+      ],
+      "grade": "C",
+      "passed": false,
+      "completed_at": "2026-05-12T16:26:11+00:00",
+      "status": "completed",
+      "label": "h0.35_d0.0_pbrsm_modenone",
+      "combo": {
+        "heal_denoise": 0.35,
+        "delight": 0.0,
+        "pbr": "sm",
+        "heal_mode": "none"
+      }
+    },
+    {
+      "version": "w4_tx_pipeline_v1",
+      "asset_id": "audit_windpack_h0.35_d0.0_pbrderive_modeflux",
+      "prompt": "tileable seamless texture, wind-packed snow with sastrugi ridges, sharp wind-carved striations, bright white, overhead perspective",
+      "settings": {
+        "unet": "flux-2-klein-9b-fp8.safetensors",
+        "clip": "qwen_3_8b_fp8mixed.safetensors",
+        "vae": "flux2-vae.safetensors",
+        "size": 1024,
+        "steps": 4,
+        "seed_base": 42,
+        "variants": 1,
+        "heal_denoise": 0.35,
+        "heal_mode": "flux_heal",
+        "delight_strength": 0.0,
+        "pbr_backend": "derive",
+        "external_seam_repair": false,
+        "category": "Snow",
+        "host": "http://127.0.0.1:8188"
+      },
+      "started_at": "2026-05-12T16:26:11+00:00",
+      "stages": [
+        {
+          "stage": "variants",
+          "n_variants": 1,
+          "ranking": [
+            {
+              "edge_seam": 0.017189,
+              "periodic_locality": 12.395,
+              "richness": 0.515,
+              "composite": 0.4245,
+              "variant_index": 0,
+              "seed": 42,
+              "path": "v0_albedo.png",
+              "seamless_log": {
+                "asset_id": "audit_windpack_h0.35_d0.0_pbrderive_modeflux_v0",
+                "size": 1024,
+                "seed": 42,
+                "heal_mode": "flux_heal",
+                "heal_denoise": 0.35,
+                "pass1_seam_score": 0.021038582291065935,
+                "pass1_seconds": 7.55,
+                "pass3_seconds": 12.23,
+                "final_seam_score": 0.01718924775026432,
+                "seam_improvement": 0.0038493345408016147
+              }
+            }
+          ]
+        },
+        {
+          "stage": "delight",
+          "skipped": true,
+          "reason": "default off per audit; prompt already handles lighting"
+        },
+        {
+          "stage": "pbr",
+          "backend": "tx_pbr_derive",
+          "category": "Snow",
+          "snow_mode": true,
+          "normal_strength": 4.0,
+          "maps": [
+            "albedo",
+            "normal",
+            "roughness",
+            "ao",
+            "height",
+            "metallic"
+          ],
+          "preset_used": [
+            0.96,
+            0.04
+          ]
+        },
+        {
+          "stage": "external_seam_repair",
+          "skipped": true,
+          "reason": "default off per audit; FLUX heal pass is the repair"
+        },
+        {
+          "stage": "qa",
+          "grade": "B",
+          "passed_checks": 3,
+          "thresholds": {
+            "edge_continuity": 0.005,
+            "junction_visibility": 1.35,
+            "periodic_artifact": 13.0,
+            "richness": 0.45,
+            "mip32_stdev": 12.0
+          },
+          "failed": [
+            "edge_continuity"
+          ]
+        }
+      ],
+      "grade": "B",
+      "passed": false,
+      "completed_at": "2026-05-12T16:26:34+00:00",
+      "status": "completed",
+      "label": "h0.35_d0.0_pbrderive_modeflux",
+      "combo": {
+        "heal_denoise": 0.35,
+        "delight": 0.0,
+        "pbr": "derive",
+        "heal_mode": "flux_heal"
+      }
+    },
+    {
+      "version": "w4_tx_pipeline_v1",
+      "asset_id": "audit_windpack_h0.35_d0.0_pbrderive_modenone",
+      "prompt": "tileable seamless texture, wind-packed snow with sastrugi ridges, sharp wind-carved striations, bright white, overhead perspective",
+      "settings": {
+        "unet": "flux-2-klein-9b-fp8.safetensors",
+        "clip": "qwen_3_8b_fp8mixed.safetensors",
+        "vae": "flux2-vae.safetensors",
+        "size": 1024,
+        "steps": 4,
+        "seed_base": 42,
+        "variants": 1,
+        "heal_denoise": 0.35,
+        "heal_mode": "none",
+        "delight_strength": 0.0,
+        "pbr_backend": "derive",
+        "external_seam_repair": false,
+        "category": "Snow",
+        "host": "http://127.0.0.1:8188"
+      },
+      "started_at": "2026-05-12T16:26:34+00:00",
+      "stages": [
+        {
+          "stage": "variants",
+          "n_variants": 1,
+          "ranking": [
+            {
+              "edge_seam": 0.021039,
+              "periodic_locality": 13.704,
+              "richness": 0.496,
+              "composite": 0.337,
+              "variant_index": 0,
+              "seed": 42,
+              "path": "v0_albedo.png",
+              "seamless_log": {
+                "asset_id": "audit_windpack_h0.35_d0.0_pbrderive_modenone_v0",
+                "size": 1024,
+                "seed": 42,
+                "heal_mode": "none",
+                "heal_denoise": 0.35,
+                "pass1_seam_score": 0.021038582291065935,
+                "pass1_seconds": 5.64,
+                "heal_skipped": true,
+                "final_seam_score": 0.021038582291065935
+              }
+            }
+          ]
+        },
+        {
+          "stage": "delight",
+          "skipped": true,
+          "reason": "default off per audit; prompt already handles lighting"
+        },
+        {
+          "stage": "pbr",
+          "backend": "tx_pbr_derive",
+          "category": "Snow",
+          "snow_mode": true,
+          "normal_strength": 4.0,
+          "maps": [
+            "albedo",
+            "normal",
+            "roughness",
+            "ao",
+            "height",
+            "metallic"
+          ],
+          "preset_used": [
+            0.96,
+            0.04
+          ]
+        },
+        {
+          "stage": "external_seam_repair",
+          "skipped": true,
+          "reason": "default off per audit; FLUX heal pass is the repair"
+        },
+        {
+          "stage": "qa",
+          "grade": "C",
+          "passed_checks": 2,
+          "thresholds": {
+            "edge_continuity": 0.005,
+            "junction_visibility": 1.35,
+            "periodic_artifact": 13.0,
+            "richness": 0.45,
+            "mip32_stdev": 12.0
+          },
+          "failed": [
+            "edge_continuity",
+            "periodic_artifact"
+          ]
+        }
+      ],
+      "grade": "C",
+      "passed": false,
+      "completed_at": "2026-05-12T16:26:43+00:00",
+      "status": "completed",
+      "label": "h0.35_d0.0_pbrderive_modenone",
+      "combo": {
+        "heal_denoise": 0.35,
+        "delight": 0.0,
+        "pbr": "derive",
+        "heal_mode": "none"
+      }
+    }
+  ]
+}

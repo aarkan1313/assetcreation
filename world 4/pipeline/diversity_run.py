@@ -1,52 +1,35 @@
-"""W4 diversity batch driver — biome-aware, nested-layout edition.
+"""W4 diversity batch driver — calls tx_pipeline (in-process).
 
-Replaces the flat ``diversity_alpine.py`` with a per-biome yaml-driven
-pipeline that produces a nested candidate tree:
+Replaces the prior aaa_texture.py-subprocess version. tx_pipeline writes
+canonical outputs directly into candidates/<biome>/<slot>/<NN>_<tag>/
+with the manifest + qa.json + variants/ — no move/copy step needed.
 
-    candidates/<biome>/<slot>/<NN>_<tag>/
-        albedo.png  normal.png  roughness.png  ao.png
-        qa/             — seam_score.json + previews
-        intermediates/  — all _v0..v3 raw FLUX + pre-delight + variant_select.json
-        prompt.txt      — exact prompt used
-
-Plus per-slot:
-    candidates/<biome>/<slot>/_index.json — prompt + grade + score + status
-                                            per candidate
-    candidates/<biome>/<slot>/_contact_sheet.png — review at-a-glance grid
-
-This driver still calls aaa_texture.py underneath (so the rest of the
-texture infra works unchanged); the new layer happens *after* aaa_texture
-finishes — outputs are pulled out of library/<id>/ and reshaped into the
-nested layout.
+Per-slot _index.json gets one entry per candidate (built from the
+manifest's qa stage).
 
 Usage:
     python diversity_run.py --biome alpine
     python diversity_run.py --biome alpine --slots ground
     python diversity_run.py --biome alpine --only ground/fresh_powder ground/windpack
-    python diversity_run.py --biome alpine --size 512   # default; pass 1024 to override
+    python diversity_run.py --biome alpine --size 1024 --variants 4
 """
 from __future__ import annotations
 
 import argparse
 import json
-import os
-import shutil
-import subprocess
 import sys
+import traceback
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
 import yaml
 
-PY = r"C:\Program Files\Python312\python.exe"
-AAA = r"D:\assets\pipelines\textures\aaa_texture.py"
-LIBRARY = Path(r"D:\assets\world\textures\library")
+sys.path.insert(0, str(Path(__file__).parent / "textures"))
+from tx_pipeline import PipelineSettings, run_pipeline  # noqa: E402
+
 BIOMES_DIR = Path(__file__).parent / "biomes"
 CANDIDATES_ROOT = Path(r"D:\assets\world 4\the world 4\candidates")
-
-UNET = "flux-2-klein-9b-fp8.safetensors"
-CLIP = "qwen_3_8b_fp8mixed.safetensors"
 
 
 def _now_iso() -> str:
@@ -78,175 +61,96 @@ def _load_index(biome: str, slot: str) -> dict[str, Any]:
 def _save_index(biome: str, slot: str, index: dict[str, Any]) -> None:
     p = _index_path(biome, slot)
     p.parent.mkdir(parents=True, exist_ok=True)
-    p.write_text(json.dumps(index, indent=2), encoding="utf-8")
-
-
-def _aaa_id(biome: str, slot: str, idx: int, tag: str) -> str:
-    """The id passed to aaa_texture.py — stays unique within library/."""
-    return f"w4_div_{biome}_{slot}_{idx:02d}_{tag}"
+    p.write_text(json.dumps(index, indent=2, default=float), encoding="utf-8")
 
 
 def _already_done(biome: str, slot: str, idx: int, tag: str) -> bool:
     d = _candidate_dir(biome, slot, idx, tag)
-    return all((d / f"{m}.png").exists()
-               for m in ("albedo", "normal", "roughness", "ao"))
+    return (d / "manifest.json").exists() and \
+           (d / "albedo.png").exists()
 
 
-def _run_aaa_texture(slot_id: str, full_prompt: str, category: str,
-                     size: int) -> int:
-    cmd = [
-        PY, AAA,
-        "--prompt", full_prompt,
-        "--id", slot_id,
-        "--category", category,
-        "--quality", "default",
-        "--size", str(size),
-        "--unet", UNET,
-        "--clip", CLIP,
-        "--no-gate",  # gate decision happens at our index level, after promote
-    ]
-    print(f"  cmd: aaa_texture --id {slot_id} --size {size}")
-    return subprocess.run(cmd).returncode
-
-
-def _promote_to_candidate_dir(slot_id: str, biome: str, slot: str,
-                              idx: int, tag: str, prompt: str,
-                              size: int) -> dict[str, Any]:
-    """Move outputs from library/<slot_id>/ into candidates/<biome>/<slot>/<NN>_<tag>/
-    Returns the index entry built from the QA report."""
-    src = LIBRARY / slot_id
-    if not src.exists():
-        raise FileNotFoundError(f"aaa_texture produced no output dir: {src}")
-
-    dst = _candidate_dir(biome, slot, idx, tag)
-    dst.mkdir(parents=True, exist_ok=True)
-
-    # canonical maps (rename: w4_div_alpine_ground_01_fresh_powder_albedo.png -> albedo.png)
-    maps_found = []
-    for m in ("albedo", "normal", "roughness", "ao"):
-        s = src / f"{slot_id}_{m}.png"
-        if s.exists():
-            shutil.copy2(s, dst / f"{m}.png")
-            maps_found.append(m)
-    # qa/ folder
-    qa_src = src / "qa"
-    qa_dst = dst / "qa"
-    if qa_src.exists():
-        if qa_dst.exists():
-            shutil.rmtree(qa_dst)
-        shutil.copytree(qa_src, qa_dst)
-    # intermediates: pre_delight, variant_select.json, aaa_pipeline.json
-    intermediates_dst = dst / "intermediates"
-    intermediates_dst.mkdir(exist_ok=True)
-    for name in os.listdir(src):
-        p = src / name
-        if not p.is_file():
-            continue
-        if name == "qa":
-            continue
-        # skip the canonical map files (already copied)
-        is_canonical_map = any(name == f"{slot_id}_{m}.png"
-                               for m in ("albedo", "normal", "roughness", "ao"))
-        if is_canonical_map:
-            continue
-        shutil.copy2(p, intermediates_dst / name)
-    # also pull in the _v0..v3 variant siblings if they exist
-    for variant_dir in LIBRARY.glob(f"{slot_id}_v*"):
-        for vp in variant_dir.iterdir():
-            if vp.is_file():
-                shutil.copy2(vp, intermediates_dst / vp.name)
-
-    # prompt.txt
-    (dst / "prompt.txt").write_text(prompt, encoding="utf-8")
-
-    # build the index entry from the QA report
-    qa_json = qa_dst / "seam_score.json"
-    entry: dict[str, Any] = {
+def _entry_from_manifest(manifest: dict, idx: int, tag: str,
+                         prompt: str, size: int) -> dict[str, Any]:
+    """Build the per-candidate _index.json entry from a tx_pipeline manifest."""
+    qa_stage = next((s for s in manifest.get("stages", [])
+                     if s.get("stage") == "qa"), {})
+    failed = qa_stage.get("failed") or []
+    grade = manifest.get("grade")
+    status = "candidate" if grade == "A" else "rejected_auto"
+    if manifest.get("status") == "failed":
+        status = "failed"
+    return {
         "id": f"{idx:02d}_{tag}",
         "prompt": prompt,
         "size": size,
-        "maps_found": maps_found,
-        "generated_at": _now_iso(),
-        "status": "candidate",
+        "grade": grade,
+        "passed_checks": qa_stage.get("passed_checks"),
+        "failed_checks": failed,
+        "thresholds": qa_stage.get("thresholds"),
+        "status": status,
         "promoted_to": None,
+        "generated_at": manifest.get("completed_at") or _now_iso(),
+        "pipeline_version": manifest.get("version"),
     }
-    if qa_json.exists():
-        seam = json.loads(qa_json.read_text(encoding="utf-8"))
-        entry["grade"] = seam.get("grade")
-        checks = seam.get("checks", {})
-        entry["metrics"] = {
-            "periodic": checks.get("periodic_artifact", {}).get("peak_locality_ratio"),
-            "edge": checks.get("edge_continuity", {}).get("overall_mse"),
-            "junction": checks.get("junction_visibility", {}).get("ratio"),
-            "richness": checks.get("richness", {}).get("score"),
-        }
-        reasons = []
-        for k, v in checks.items():
-            if isinstance(v, dict) and v.get("passed") is False:
-                reasons.append(k)
-        entry["below_A_reason"] = ",".join(reasons) if reasons else None
-        if entry["grade"] != "A":
-            entry["status"] = "rejected_auto"
-    else:
-        entry["grade"] = None
-        entry["metrics"] = None
-        entry["below_A_reason"] = "no_qa_json"
-        entry["status"] = "intermediates_only"
-
-    return entry
-
-
-def _cleanup_library_traces(slot_id: str) -> None:
-    """Remove the flat library/<slot_id>/ and library/<slot_id>_v*/ siblings
-    once we've copied everything into the nested tree."""
-    for d in list(LIBRARY.glob(f"{slot_id}")) + list(LIBRARY.glob(f"{slot_id}_v*")):
-        if d.is_dir():
-            shutil.rmtree(d, ignore_errors=True)
 
 
 def run_candidate(biome: str, slot: str, slot_yaml: dict, idx: int,
-                  cand: dict, prefix: str, suffix: str, size: int,
-                  skip_existing: bool, no_cleanup: bool) -> dict | None:
+                  cand: dict, prefix: str, suffix: str,
+                  settings: PipelineSettings,
+                  skip_existing: bool) -> dict | None:
     tag = cand["tag"]
     body = cand["body"]
     if skip_existing and _already_done(biome, slot, idx, tag):
-        print(f"[skip] {biome}/{slot}/{idx:02d}_{tag} — already has 4 maps")
+        print(f"[skip] {biome}/{slot}/{idx:02d}_{tag} — manifest already exists")
         return None
     full_prompt = prefix + body + suffix
-    slot_id = _aaa_id(biome, slot, idx, tag)
-    category = slot_yaml.get("category", "Rock")
+    out_dir = _candidate_dir(biome, slot, idx, tag)
+    category = slot_yaml.get("category", settings.category)
+
+    # Per-candidate settings: clone the base, override category
+    cand_settings = PipelineSettings(
+        **{**settings.__dict__, "category": category}
+    )
+
     print(f"\n========== {biome}/{slot}/{idx:02d}_{tag} ==========")
     print(f"  prompt: {full_prompt}")
-    rc = _run_aaa_texture(slot_id, full_prompt, category, size)
-    if rc != 0:
-        print(f"  !! FAILED rc={rc}")
+    asset_id = f"div_{biome}_{slot}_{idx:02d}_{tag}"
+    try:
+        manifest = run_pipeline(full_prompt, asset_id, out_dir, cand_settings)
+    except Exception as e:
+        print(f"  !! FAILED: {e}")
+        traceback.print_exc()
         return {
             "id": f"{idx:02d}_{tag}",
             "prompt": full_prompt,
-            "size": size,
+            "size": cand_settings.size,
             "status": "failed",
-            "rc": rc,
+            "error": str(e),
             "generated_at": _now_iso(),
         }
-    entry = _promote_to_candidate_dir(slot_id, biome, slot, idx, tag,
-                                      full_prompt, size)
-    if not no_cleanup:
-        _cleanup_library_traces(slot_id)
-    return entry
+    # prompt.txt for convenience
+    (out_dir / "prompt.txt").write_text(full_prompt, encoding="utf-8")
+    return _entry_from_manifest(manifest, idx, tag, full_prompt,
+                                cand_settings.size)
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--biome", required=True, help="biome name (matches biomes/<biome>.yaml)")
-    ap.add_argument("--slots", nargs="*", help="restrict to specific slots (default: all in yaml)")
-    ap.add_argument("--only", nargs="*", default=[],
-                    help="space-separated 'slot/tag' filters; e.g. ground/fresh_powder")
-    ap.add_argument("--size", type=int, default=512,
-                    help="FLUX generation size (default: 512). Pass 1024 to test 1024.")
+    ap.add_argument("--biome", required=True)
+    ap.add_argument("--slots", nargs="*")
+    ap.add_argument("--only", nargs="*", default=[])
+    ap.add_argument("--size", type=int, default=1024)
+    ap.add_argument("--variants", type=int, default=4)
+    ap.add_argument("--seed-base", type=int, default=42)
+    ap.add_argument("--pbr-backend", choices=["derive", "sm"],
+                    default="derive")
+    ap.add_argument("--heal-denoise", type=float, default=1.0)
+    ap.add_argument("--heal-mode", choices=["flux_heal", "none"],
+                    default="flux_heal")
+    ap.add_argument("--delight-strength", type=float, default=0.0)
     ap.add_argument("--no-skip", action="store_true",
-                    help="re-run even if candidate already has 4 maps")
-    ap.add_argument("--no-cleanup", action="store_true",
-                    help="keep library/<slot_id>/ + _v* siblings after promoting")
+                    help="re-run even if manifest already exists")
     args = ap.parse_args()
 
     spec = _load_biome(args.biome)
@@ -259,13 +163,21 @@ def main() -> int:
     else:
         slots_to_run = list(slots_spec.keys())
 
-    only_pairs = set()
-    for f in args.only:
-        if "/" in f:
-            only_pairs.add(f)
-
+    only_pairs = set(args.only)
+    base_settings = PipelineSettings(
+        size=args.size,
+        variants=args.variants,
+        seed_base=args.seed_base,
+        pbr_backend=args.pbr_backend,
+        heal_denoise=args.heal_denoise,
+        heal_mode=args.heal_mode,
+        delight_strength=args.delight_strength,
+    )
     total = sum(len(slots_spec[s]["candidates"]) for s in slots_to_run)
-    print(f"[diversity_run] biome={args.biome} slots={slots_to_run} size={args.size} total={total}")
+    print(f"[diversity_run] biome={args.biome} slots={slots_to_run} "
+          f"size={args.size} variants={args.variants} "
+          f"pbr={args.pbr_backend} heal={args.heal_mode}@{args.heal_denoise} "
+          f"total={total}")
 
     failures: list[str] = []
     for slot in slots_to_run:
@@ -276,26 +188,26 @@ def main() -> int:
             if only_pairs and f"{slot}/{cand['tag']}" not in only_pairs:
                 continue
             entry = run_candidate(args.biome, slot, slot_yaml, i, cand,
-                                  prefix, suffix, args.size,
-                                  skip_existing=not args.no_skip,
-                                  no_cleanup=args.no_cleanup)
+                                  prefix, suffix, base_settings,
+                                  skip_existing=not args.no_skip)
             if entry is not None:
                 index["candidates"][f"{i:02d}_{cand['tag']}"] = entry
                 _save_index(args.biome, slot, index)
-                if entry.get("status") not in ("candidate", "rejected_auto"):
+                if entry.get("status") == "failed":
                     failures.append(f"{slot}/{cand['tag']}")
 
     print(f"\n[diversity_run] done. failures={len(failures)}")
     for f in failures:
         print(f"  - {f}")
 
-    # Print summary by grade per slot
+    # Grade summary
     print("\n[diversity_run] grade summary:")
     for slot in slots_to_run:
         index = _load_index(args.biome, slot)
         by_grade: dict[str, int] = {}
         for e in index.get("candidates", {}).values():
-            by_grade[e.get("grade") or "-"] = by_grade.get(e.get("grade") or "-", 0) + 1
+            g = e.get("grade") or "-"
+            by_grade[g] = by_grade.get(g, 0) + 1
         cnts = " ".join(f"{g}={n}" for g, n in sorted(by_grade.items()))
         print(f"  {args.biome}/{slot}: {cnts}")
     return 0

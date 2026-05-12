@@ -1,0 +1,96 @@
+{
+  "version": "w4_tx_pipeline_v1",
+  "asset_id": "audit_windpack_h1.0_d0.4_pbrderive_modeflux",
+  "prompt": "tileable seamless texture, wind-packed snow with sastrugi ridges, sharp wind-carved striations, bright white, overhead perspective",
+  "settings": {
+    "unet": "flux-2-klein-9b-fp8.safetensors",
+    "clip": "qwen_3_8b_fp8mixed.safetensors",
+    "vae": "flux2-vae.safetensors",
+    "size": 1024,
+    "steps": 4,
+    "seed_base": 42,
+    "variants": 1,
+    "heal_denoise": 1.0,
+    "heal_mode": "flux_heal",
+    "delight_strength": 0.4,
+    "pbr_backend": "derive",
+    "external_seam_repair": false,
+    "category": "Snow",
+    "host": "http://127.0.0.1:8188"
+  },
+  "started_at": "2026-05-12T16:20:38+00:00",
+  "stages": [
+    {
+      "stage": "variants",
+      "n_variants": 1,
+      "ranking": [
+        {
+          "edge_seam": 0.002575,
+          "periodic_locality": 10.429,
+          "richness": 0.609,
+          "composite": 0.7771,
+          "variant_index": 0,
+          "seed": 42,
+          "path": "v0_albedo.png",
+          "seamless_log": {
+            "asset_id": "audit_windpack_h1.0_d0.4_pbrderive_modeflux_v0",
+            "size": 1024,
+            "seed": 42,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 1.0,
+            "pass1_seam_score": 0.021038582291065935,
+            "pass1_seconds": 6.15,
+            "pass3_seconds": 8.13,
+            "final_seam_score": 0.0025754566771944683,
+            "seam_improvement": 0.018463125613871468
+          }
+        }
+      ]
+    },
+    {
+      "stage": "delight",
+      "strength": 0.4
+    },
+    {
+      "stage": "pbr",
+      "backend": "tx_pbr_derive",
+      "category": "Snow",
+      "snow_mode": true,
+      "normal_strength": 4.0,
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ],
+      "preset_used": [
+        0.96,
+        0.04
+      ]
+    },
+    {
+      "stage": "external_seam_repair",
+      "skipped": true,
+      "reason": "default off per audit; FLUX heal pass is the repair"
+    },
+    {
+      "stage": "qa",
+      "grade": "A",
+      "passed_checks": 4,
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.45,
+        "mip32_stdev": 12.0
+      },
+      "failed": []
+    }
+  ],
+  "grade": "A",
+  "passed": true,
+  "completed_at": "2026-05-12T16:20:56+00:00",
+  "status": "completed"
+}

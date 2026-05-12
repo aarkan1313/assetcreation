@@ -1,0 +1,23 @@
+[
+  {
+    "edge_seam": 0.017189,
+    "periodic_locality": 12.395,
+    "richness": 0.515,
+    "composite": 0.4245,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "audit_windpack_h0.35_d0.4_pbrsm_modeflux_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.021038582291065935,
+      "pass1_seconds": 2.07,
+      "pass3_seconds": 8.21,
+      "final_seam_score": 0.01718924775026432,
+      "seam_improvement": 0.0038493345408016147
+    }
+  }
+]
