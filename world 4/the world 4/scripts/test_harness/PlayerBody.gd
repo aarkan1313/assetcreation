@@ -102,6 +102,9 @@ func activate() -> void:
 	_player_camera.current = true
 	if _rig_walk_camera != null:
 		_rig_walk_camera.current = false
+	# Capture the mouse automatically so the user can look around
+	# immediately. Esc/F still toggles it for menu access.
+	_set_mouse_captured(true)
 	_update_hud()
 	_apply_look()
 
@@ -111,6 +114,10 @@ func deactivate() -> void:
 	if _rig_walk_camera != null:
 		_rig_walk_camera.current = true
 	_player_camera.current = false
+	# Release the mouse so the user can interact with the editor UI
+	# (or whatever surrounds the viewport in fly mode). The rig may
+	# re-capture if its own walk mode is active.
+	_set_mouse_captured(false)
 	_update_hud()
 
 
@@ -135,6 +142,12 @@ func _input(event: InputEvent) -> void:
 			if event.keycode == KEY_ESCAPE or event.keycode == KEY_F:
 				_set_mouse_captured(not _mouse_captured)
 				return
+	# Click anywhere in the viewport while active re-captures the
+	# mouse (standard FPS pattern: Esc releases, click re-grabs).
+	if _active and not _mouse_captured \
+			and event is InputEventMouseButton and event.pressed:
+		_set_mouse_captured(true)
+		return
 	# Mouse-look only when this body's camera is active AND mouse is
 	# captured.
 	if _active and _mouse_captured and event is InputEventMouseMotion:
