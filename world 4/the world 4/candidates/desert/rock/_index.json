@@ -222,6 +222,67 @@
       "promoted_to": null,
       "generated_at": "2026-05-12T20:11:01+00:00",
       "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "12_conglomerate": {
+      "id": "12_conglomerate",
+      "prompt": "tileable seamless texture, desert conglomerate rock with embedded smooth rounded pebbles in warm tan matrix, varied stone sizes, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T20:12:11+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "13_caprock": {
+      "id": "13_caprock",
+      "prompt": "tileable seamless texture, weathered desert caprock surface with horizontal ledges and warm tan-grey palette, blocky erosion, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T20:13:26+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "14_salt_weathered": {
+      "id": "14_salt_weathered",
+      "prompt": "tileable seamless texture, salt-weathered desert rock with white efflorescence streaks over warm rusty surface, eroded, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T20:14:32+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
     }
   }
 }
