@@ -56,6 +56,32 @@ uniform int coarse_texel_n = 128;
 uniform float morph_band_m = 25.0;
 uniform bool morph_enabled = true;
 
+// Stage 4.1 splat + biome PBR uniforms.
+//
+// splat_array: per-ring sampler2DArray, one R8 layer per active
+//   biome in this ring. Layer index = "splat slot" (dense, 0..N-1).
+//   Sampled with the same world-XZ → UV mapping as `displacement`.
+// pbr_ground_array: GLOBAL sampler2DArray containing every loaded
+//   biome's ground albedo. Layer index = "PBR slot" (global, shared
+//   across rings).
+// active_biomes_n: how many splat slots this ring uses.
+// biome_pbr_slot: maps splat slot i → PBR slot. Length =
+//   active_biomes_n, padded to MAX_BIOMES_PER_RING with -1.
+// MAX_BIOMES_PER_RING: shader compile-time constant. The loop bound.
+
+const int MAX_BIOMES_PER_RING = 16;
+
+uniform sampler2DArray splat_array : filter_linear, repeat_disable;
+uniform sampler2DArray pbr_ground_array : filter_linear, repeat_enable;
+uniform int active_biomes_n = 0;
+uniform int biome_pbr_slot[MAX_BIOMES_PER_RING];
+
+// Tiling factor for the PBR ground albedo. The PBR texture has its
+// own world-meters-per-tile scale; this uniform divides world XZ
+// into that tile. Defaults to 1m / texel (assumes a 1024² tex covers
+// 1024m, will tune per biome later).
+uniform float pbr_tile_size_m = 4.0;
+
 uniform bool show_debug_color = false;
 uniform float debug_color_strength : hint_range(0.0, 1.0) = 0.5;
 
