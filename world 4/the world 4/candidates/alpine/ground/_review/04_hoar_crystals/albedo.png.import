@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cfgkw45iaojgk"
-path="res://.godot/imported/albedo.png-3cdd466aaf4ea9d13bfd59599e7e6bcc.ctex"
+path="res://.godot/imported/albedo.png-e1eb31a13348c11d979192c1320bc355.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/ground/04_hoar_crystals/albedo.png"
-dest_files=["res://.godot/imported/albedo.png-3cdd466aaf4ea9d13bfd59599e7e6bcc.ctex"]
+source_file="res://candidates/alpine/ground/_review/04_hoar_crystals/albedo.png"
+dest_files=["res://.godot/imported/albedo.png-e1eb31a13348c11d979192c1320bc355.ctex"]
 
 [params]
 

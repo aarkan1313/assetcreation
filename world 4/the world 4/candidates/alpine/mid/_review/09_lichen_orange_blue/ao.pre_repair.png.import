@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c2vobco1lk18m"
-path="res://.godot/imported/ao.pre_repair.png-230575cfa469bab213a22ef50b324f33.ctex"
+path="res://.godot/imported/ao.pre_repair.png-e3ada3c52bdbcde76813a1b0522a2aeb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/mid/09_lichen_orange_blue/ao.pre_repair.png"
-dest_files=["res://.godot/imported/ao.pre_repair.png-230575cfa469bab213a22ef50b324f33.ctex"]
+source_file="res://candidates/alpine/mid/_review/09_lichen_orange_blue/ao.pre_repair.png"
+dest_files=["res://.godot/imported/ao.pre_repair.png-e3ada3c52bdbcde76813a1b0522a2aeb.ctex"]
 
 [params]
 

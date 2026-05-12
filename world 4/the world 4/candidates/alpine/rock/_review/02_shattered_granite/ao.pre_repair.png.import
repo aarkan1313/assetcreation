@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b8uuenhp38tun"
-path="res://.godot/imported/ao.pre_repair.png-9094069b5145042a26537d0829d8050a.ctex"
+path="res://.godot/imported/ao.pre_repair.png-27f4a259d56a2216fdb8f67190d1a1ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/rock/02_shattered_granite/ao.pre_repair.png"
-dest_files=["res://.godot/imported/ao.pre_repair.png-9094069b5145042a26537d0829d8050a.ctex"]
+source_file="res://candidates/alpine/rock/_review/02_shattered_granite/ao.pre_repair.png"
+dest_files=["res://.godot/imported/ao.pre_repair.png-27f4a259d56a2216fdb8f67190d1a1ce.ctex"]
 
 [params]
 

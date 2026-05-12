@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bntjoba4ag0dk"
-path="res://.godot/imported/height.pre_repair.png-d8ad026289abef87730e7cb681500280.ctex"
+path="res://.godot/imported/height.pre_repair.png-7739a3f81e49a816f775a3eab9bd12b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/rock/12_cracked_bedrock/height.pre_repair.png"
-dest_files=["res://.godot/imported/height.pre_repair.png-d8ad026289abef87730e7cb681500280.ctex"]
+source_file="res://candidates/alpine/rock/_review/12_cracked_bedrock/height.pre_repair.png"
+dest_files=["res://.godot/imported/height.pre_repair.png-7739a3f81e49a816f775a3eab9bd12b0.ctex"]
 
 [params]
 

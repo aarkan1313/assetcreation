@@ -1,0 +1,188 @@
+{
+  "version": "w4_tx_pipeline_v1",
+  "asset_id": "div_desert_ground_06_white_dune_sand",
+  "prompt": "tileable seamless texture, fine white gypsum dune sand, very pale, soft ripples, almost glittering, overhead perspective",
+  "settings": {
+    "unet": "flux-2-klein-9b-fp8.safetensors",
+    "clip": "qwen_3_8b_fp8mixed.safetensors",
+    "vae": "flux2-vae.safetensors",
+    "size": 1024,
+    "steps": 4,
+    "seed_base": 42,
+    "variants": 4,
+    "heal_denoise": 0.35,
+    "heal_mode": "flux_heal",
+    "delight_strength": 0.4,
+    "pbr_backend": "hybrid",
+    "seam_repair": true,
+    "seam_repair_patch": 64,
+    "seam_repair_feather": 12,
+    "category": "Sand",
+    "host": "http://127.0.0.1:8188"
+  },
+  "started_at": "2026-05-12T19:20:12+00:00",
+  "stages": [
+    {
+      "stage": "variants",
+      "n_variants": 4,
+      "ranking": [
+        {
+          "edge_seam": 0.000801,
+          "periodic_locality": 9.956,
+          "richness": 0.412,
+          "composite": 0.7832,
+          "variant_index": 1,
+          "seed": 1042,
+          "path": "v1_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_desert_ground_06_white_dune_sand_v1",
+            "size": 1024,
+            "seed": 1042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.0036775568309814735,
+            "pass1_seconds": 4.06,
+            "pass3_seconds": 6.13,
+            "final_seam_score": 0.0008008338139177239,
+            "seam_improvement": 0.0028767230170637496
+          }
+        },
+        {
+          "edge_seam": 0.000835,
+          "periodic_locality": 11.233,
+          "richness": 0.464,
+          "composite": 0.7659,
+          "variant_index": 0,
+          "seed": 42,
+          "path": "v0_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_desert_ground_06_white_dune_sand_v0",
+            "size": 1024,
+            "seed": 42,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.0028294657084264466,
+            "pass1_seconds": 4.04,
+            "pass3_seconds": 6.15,
+            "final_seam_score": 0.0008354008669855044,
+            "seam_improvement": 0.0019940648414409423
+          }
+        },
+        {
+          "edge_seam": 0.00112,
+          "periodic_locality": 15.162,
+          "richness": 0.457,
+          "composite": 0.6762,
+          "variant_index": 2,
+          "seed": 2042,
+          "path": "v2_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_desert_ground_06_white_dune_sand_v2",
+            "size": 1024,
+            "seed": 2042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.0023586781526336023,
+            "pass1_seconds": 4.04,
+            "pass3_seconds": 6.14,
+            "final_seam_score": 0.0011201971597462515,
+            "seam_improvement": 0.0012384809928873508
+          }
+        },
+        {
+          "edge_seam": 0.000998,
+          "periodic_locality": 18.748,
+          "richness": 0.459,
+          "composite": 0.6034,
+          "variant_index": 3,
+          "seed": 3042,
+          "path": "v3_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_desert_ground_06_white_dune_sand_v3",
+            "size": 1024,
+            "seed": 3042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.0026150898711583283,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 8.15,
+            "final_seam_score": 0.0009976381670736617,
+            "seam_improvement": 0.0016174517040846667
+          }
+        }
+      ]
+    },
+    {
+      "stage": "delight",
+      "strength": 0.4
+    },
+    {
+      "stage": "pbr",
+      "backend": "tx_pbr_hybrid",
+      "sm_size": 1024,
+      "category": "Sand",
+      "sm_input": "D:\\assets\\world 4\\the world 4\\candidates\\desert\\ground\\06_white_dune_sand\\albedo.png",
+      "derive_log": {
+        "backend": "tx_pbr_derive",
+        "category": "Sand",
+        "snow_mode": false,
+        "normal_strength": 4.0,
+        "maps": [
+          "albedo",
+          "normal",
+          "roughness",
+          "ao",
+          "height",
+          "metallic"
+        ],
+        "preset_used": [
+          0.92,
+          0.06
+        ]
+      },
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ]
+    },
+    {
+      "stage": "seam_repair",
+      "module": "tx_seam_repair",
+      "patch": 64,
+      "feather": 12,
+      "plan_ops": 32,
+      "maps_processed": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ],
+      "maps_skipped": []
+    },
+    {
+      "stage": "qa",
+      "grade": "B",
+      "passed_checks": 3,
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.8,
+        "mip32_stdev": 6.0
+      },
+      "failed": [
+        "mip32_stdev"
+      ]
+    }
+  ],
+  "grade": "B",
+  "passed": false,
+  "completed_at": "2026-05-12T19:21:17+00:00",
+  "status": "completed"
+}

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c2ka6lvmg85lf"
-path="res://.godot/imported/roughness.png-8dddad7f2925289a25da5e0df4a79897.ctex"
+path="res://.godot/imported/roughness.png-aebe474cb0873c8bfb4104efad9d5c42.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/mid/05_frosted_lichen/roughness.png"
-dest_files=["res://.godot/imported/roughness.png-8dddad7f2925289a25da5e0df4a79897.ctex"]
+source_file="res://candidates/alpine/mid/_review/05_frosted_lichen/roughness.png"
+dest_files=["res://.godot/imported/roughness.png-aebe474cb0873c8bfb4104efad9d5c42.ctex"]
 
 [params]
 

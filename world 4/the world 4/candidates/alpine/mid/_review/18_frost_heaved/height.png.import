@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ci1hvuwhsmcau"
-path="res://.godot/imported/height.png-3c7673829e91b8536bfd12b557d08e48.ctex"
+path="res://.godot/imported/height.png-b098c2d03e00c7e9109a507a0a249277.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/mid/18_frost_heaved/height.png"
-dest_files=["res://.godot/imported/height.png-3c7673829e91b8536bfd12b557d08e48.ctex"]
+source_file="res://candidates/alpine/mid/_review/18_frost_heaved/height.png"
+dest_files=["res://.godot/imported/height.png-b098c2d03e00c7e9109a507a0a249277.ctex"]
 
 [params]
 

@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.003234,
+    "periodic_locality": 10.506,
+    "richness": 0.71,
+    "composite": 0.7825,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_desert_mid_16_petrified_wood_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.03609742571967513,
+      "pass1_seconds": 4.04,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.003233787363559088,
+      "seam_improvement": 0.03286363835611604
+    }
+  },
+  {
+    "edge_seam": 0.00503,
+    "periodic_locality": 15.778,
+    "richness": 0.82,
+    "composite": 0.6575,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_desert_mid_16_petrified_wood_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.03240687175605536,
+      "pass1_seconds": 4.04,
+      "pass3_seconds": 6.18,
+      "final_seam_score": 0.00502995157736808,
+      "seam_improvement": 0.02737692017868728
+    }
+  },
+  {
+    "edge_seam": 0.007225,
+    "periodic_locality": 18.267,
+    "richness": 0.785,
+    "composite": 0.5542,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_desert_mid_16_petrified_wood_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.01825038183931661,
+      "pass1_seconds": 4.04,
+      "pass3_seconds": 8.15,
+      "final_seam_score": 0.00722461012591311,
+      "seam_improvement": 0.0110257717134035
+    }
+  },
+  {
+    "edge_seam": 0.004355,
+    "periodic_locality": 23.14,
+    "richness": 0.815,
+    "composite": 0.5151,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_desert_mid_16_petrified_wood_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.03870111555651672,
+      "pass1_seconds": 4.04,
+      "pass3_seconds": 8.23,
+      "final_seam_score": 0.0043551857496215395,
+      "seam_improvement": 0.03434592980689519
+    }
+  }
+]

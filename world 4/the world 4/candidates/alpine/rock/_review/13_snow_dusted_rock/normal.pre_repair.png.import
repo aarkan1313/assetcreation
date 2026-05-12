@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ccagll46b2j2p"
-path="res://.godot/imported/normal.pre_repair.png-37be29432db5ab1039dfe31af10624e4.ctex"
+path="res://.godot/imported/normal.pre_repair.png-e74116c6783d34f04a3a78d70c3e1dd0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/rock/13_snow_dusted_rock/normal.pre_repair.png"
-dest_files=["res://.godot/imported/normal.pre_repair.png-37be29432db5ab1039dfe31af10624e4.ctex"]
+source_file="res://candidates/alpine/rock/_review/13_snow_dusted_rock/normal.pre_repair.png"
+dest_files=["res://.godot/imported/normal.pre_repair.png-e74116c6783d34f04a3a78d70c3e1dd0.ctex"]
 
 [params]
 

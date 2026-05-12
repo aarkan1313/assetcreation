@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cnm8g8h381a2q"
-path="res://.godot/imported/normal.pre_repair.png-fb14324a4c6271105c8b325117f6399b.ctex"
+path="res://.godot/imported/normal.pre_repair.png-9d089a74da5008c8ca90d961ecc187b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/rock/06_frost_shattered/normal.pre_repair.png"
-dest_files=["res://.godot/imported/normal.pre_repair.png-fb14324a4c6271105c8b325117f6399b.ctex"]
+source_file="res://candidates/alpine/rock/_review/06_frost_shattered/normal.pre_repair.png"
+dest_files=["res://.godot/imported/normal.pre_repair.png-9d089a74da5008c8ca90d961ecc187b2.ctex"]
 
 [params]
 

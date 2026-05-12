@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dy7nidfokun8r"
-path="res://.godot/imported/height.pre_repair.png-967d4ff2799310217ad70bf9c9d5a861.ctex"
+path="res://.godot/imported/height.pre_repair.png-40398113ad56d39f4ec2b4d2b337e138.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/rock/01_dark_slate/height.pre_repair.png"
-dest_files=["res://.godot/imported/height.pre_repair.png-967d4ff2799310217ad70bf9c9d5a861.ctex"]
+source_file="res://candidates/alpine/rock/_review/01_dark_slate/height.pre_repair.png"
+dest_files=["res://.godot/imported/height.pre_repair.png-40398113ad56d39f4ec2b4d2b337e138.ctex"]
 
 [params]
 

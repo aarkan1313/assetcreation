@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dquh08h7x7yfj"
-path="res://.godot/imported/height.png-024b86a6fafc531ca38bebf8ff9a88bf.ctex"
+path="res://.godot/imported/height.png-4042a030cfd0fdb81ea08993d59ed91d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/ground/10_granular_glacier/height.png"
-dest_files=["res://.godot/imported/height.png-024b86a6fafc531ca38bebf8ff9a88bf.ctex"]
+source_file="res://candidates/alpine/ground/_review/10_granular_glacier/height.png"
+dest_files=["res://.godot/imported/height.png-4042a030cfd0fdb81ea08993d59ed91d.ctex"]
 
 [params]
 

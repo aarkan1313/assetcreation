@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b2ttmwmth5rmg"
-path="res://.godot/imported/ao.pre_repair.png-e54f43eee1b4fa27e2a7ae850c7a655d.ctex"
+path="res://.godot/imported/ao.pre_repair.png-b79c8965cec960c4c3c5d97197012af9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/mid/12_lichen_dense_carpet/ao.pre_repair.png"
-dest_files=["res://.godot/imported/ao.pre_repair.png-e54f43eee1b4fa27e2a7ae850c7a655d.ctex"]
+source_file="res://candidates/alpine/mid/_review/12_lichen_dense_carpet/ao.pre_repair.png"
+dest_files=["res://.godot/imported/ao.pre_repair.png-b79c8965cec960c4c3c5d97197012af9.ctex"]
 
 [params]
 

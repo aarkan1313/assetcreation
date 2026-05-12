@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cw07ae2qal83n"
-path="res://.godot/imported/roughness.pre_repair.png-2302c60323ad084ac04b5dcb45365d14.ctex"
+path="res://.godot/imported/roughness.pre_repair.png-0324b0e6819c3157128112c592b0fedb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/rock/12_cracked_bedrock/roughness.pre_repair.png"
-dest_files=["res://.godot/imported/roughness.pre_repair.png-2302c60323ad084ac04b5dcb45365d14.ctex"]
+source_file="res://candidates/alpine/rock/_review/12_cracked_bedrock/roughness.pre_repair.png"
+dest_files=["res://.godot/imported/roughness.pre_repair.png-0324b0e6819c3157128112c592b0fedb.ctex"]
 
 [params]
 

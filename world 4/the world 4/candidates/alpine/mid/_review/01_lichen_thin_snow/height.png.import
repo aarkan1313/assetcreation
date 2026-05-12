@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://csaoascdw6gbc"
-path="res://.godot/imported/height.png-321877afdeef4915bfd942ec66742e7c.ctex"
+path="res://.godot/imported/height.png-961d7916f32e356537de4416d6b6e9c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/mid/01_lichen_thin_snow/height.png"
-dest_files=["res://.godot/imported/height.png-321877afdeef4915bfd942ec66742e7c.ctex"]
+source_file="res://candidates/alpine/mid/_review/01_lichen_thin_snow/height.png"
+dest_files=["res://.godot/imported/height.png-961d7916f32e356537de4416d6b6e9c3.ctex"]
 
 [params]
 

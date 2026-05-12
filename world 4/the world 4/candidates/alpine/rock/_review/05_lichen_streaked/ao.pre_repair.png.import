@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cacmpx1aj8qmb"
-path="res://.godot/imported/ao.pre_repair.png-3bc08f1725ec9ce9621c3aec17380abb.ctex"
+path="res://.godot/imported/ao.pre_repair.png-6e9e37794a92bfadf84813e2182a8967.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/rock/05_lichen_streaked/ao.pre_repair.png"
-dest_files=["res://.godot/imported/ao.pre_repair.png-3bc08f1725ec9ce9621c3aec17380abb.ctex"]
+source_file="res://candidates/alpine/rock/_review/05_lichen_streaked/ao.pre_repair.png"
+dest_files=["res://.godot/imported/ao.pre_repair.png-6e9e37794a92bfadf84813e2182a8967.ctex"]
 
 [params]
 

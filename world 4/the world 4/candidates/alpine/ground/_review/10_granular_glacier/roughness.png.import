@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dcugsp5bv7omq"
-path="res://.godot/imported/roughness.png-3948014fcf4ccb0cd95a344180568b4b.ctex"
+path="res://.godot/imported/roughness.png-0941b0705a0da8d9377c2c9e11d4cbd0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/ground/10_granular_glacier/roughness.png"
-dest_files=["res://.godot/imported/roughness.png-3948014fcf4ccb0cd95a344180568b4b.ctex"]
+source_file="res://candidates/alpine/ground/_review/10_granular_glacier/roughness.png"
+dest_files=["res://.godot/imported/roughness.png-0941b0705a0da8d9377c2c9e11d4cbd0.ctex"]
 
 [params]
 

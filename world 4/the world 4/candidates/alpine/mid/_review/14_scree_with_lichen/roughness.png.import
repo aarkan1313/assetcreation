@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ba455jtt6rxgl"
-path="res://.godot/imported/roughness.png-683b393a063acff157a61363fa4bc5c9.ctex"
+path="res://.godot/imported/roughness.png-dd560b2dec827254ee2c95a167e7eca2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/mid/14_scree_with_lichen/roughness.png"
-dest_files=["res://.godot/imported/roughness.png-683b393a063acff157a61363fa4bc5c9.ctex"]
+source_file="res://candidates/alpine/mid/_review/14_scree_with_lichen/roughness.png"
+dest_files=["res://.godot/imported/roughness.png-dd560b2dec827254ee2c95a167e7eca2.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bvau5632onwyv"
-path="res://.godot/imported/ao.pre_repair.png-71a5db9c1d6e84ec8df171aeda64d6dd.ctex"
+path="res://.godot/imported/ao.pre_repair.png-ef90e8c9c76bbc08f08a2908dfbaa9a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/mid/15_snowmelt_mineral/ao.pre_repair.png"
-dest_files=["res://.godot/imported/ao.pre_repair.png-71a5db9c1d6e84ec8df171aeda64d6dd.ctex"]
+source_file="res://candidates/alpine/mid/_review/15_snowmelt_mineral/ao.pre_repair.png"
+dest_files=["res://.godot/imported/ao.pre_repair.png-ef90e8c9c76bbc08f08a2908dfbaa9a3.ctex"]
 
 [params]
 

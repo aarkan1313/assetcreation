@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b3qqcuo7l6p7d"
-path="res://.godot/imported/v2_albedo.png-a2ca0fe9ef92e2bcb04f2652092c7b49.ctex"
+path="res://.godot/imported/v2_albedo.png-42a42f83e009af4cfccc5c10005bb6c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/rock/12_cracked_bedrock/variants/v2_albedo.png"
-dest_files=["res://.godot/imported/v2_albedo.png-a2ca0fe9ef92e2bcb04f2652092c7b49.ctex"]
+source_file="res://candidates/alpine/rock/_review/12_cracked_bedrock/variants/v2_albedo.png"
+dest_files=["res://.godot/imported/v2_albedo.png-42a42f83e009af4cfccc5c10005bb6c6.ctex"]
 
 [params]
 

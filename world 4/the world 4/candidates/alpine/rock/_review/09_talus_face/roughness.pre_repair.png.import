@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cfff1bf7uwq70"
-path="res://.godot/imported/roughness.pre_repair.png-46c4cc6780653c92fd9036651916487c.ctex"
+path="res://.godot/imported/roughness.pre_repair.png-8dcdfdba9f0e5369a268375d3099ef55.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/rock/09_talus_face/roughness.pre_repair.png"
-dest_files=["res://.godot/imported/roughness.pre_repair.png-46c4cc6780653c92fd9036651916487c.ctex"]
+source_file="res://candidates/alpine/rock/_review/09_talus_face/roughness.pre_repair.png"
+dest_files=["res://.godot/imported/roughness.pre_repair.png-8dcdfdba9f0e5369a268375d3099ef55.ctex"]
 
 [params]
 

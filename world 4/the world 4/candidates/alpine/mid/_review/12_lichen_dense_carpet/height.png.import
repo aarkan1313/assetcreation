@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://wt86300wgi2d"
-path="res://.godot/imported/height.png-b5104b913b105e6060cb6c1dbbdca825.ctex"
+path="res://.godot/imported/height.png-69b93669c45c03201e55d385691370ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/mid/12_lichen_dense_carpet/height.png"
-dest_files=["res://.godot/imported/height.png-b5104b913b105e6060cb6c1dbbdca825.ctex"]
+source_file="res://candidates/alpine/mid/_review/12_lichen_dense_carpet/height.png"
+dest_files=["res://.godot/imported/height.png-69b93669c45c03201e55d385691370ab.ctex"]
 
 [params]
 

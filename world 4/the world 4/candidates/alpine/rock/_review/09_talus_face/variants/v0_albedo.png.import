@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://djr1msvdjvs62"
-path="res://.godot/imported/v0_albedo.png-63b8c3ded19127fb2400313c06d89b2e.ctex"
+path="res://.godot/imported/v0_albedo.png-aadff382dbae440ec6635011e14e37dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/rock/09_talus_face/variants/v0_albedo.png"
-dest_files=["res://.godot/imported/v0_albedo.png-63b8c3ded19127fb2400313c06d89b2e.ctex"]
+source_file="res://candidates/alpine/rock/_review/09_talus_face/variants/v0_albedo.png"
+dest_files=["res://.godot/imported/v0_albedo.png-aadff382dbae440ec6635011e14e37dd.ctex"]
 
 [params]
 

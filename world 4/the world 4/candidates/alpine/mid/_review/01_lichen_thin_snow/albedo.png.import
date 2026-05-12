@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://kqb38vmew2kh"
-path="res://.godot/imported/albedo.png-75fa4585b494c546517fac47e73618b8.ctex"
+path="res://.godot/imported/albedo.png-f04dc49182fe315b351a43e2fd7388b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/mid/01_lichen_thin_snow/albedo.png"
-dest_files=["res://.godot/imported/albedo.png-75fa4585b494c546517fac47e73618b8.ctex"]
+source_file="res://candidates/alpine/mid/_review/01_lichen_thin_snow/albedo.png"
+dest_files=["res://.godot/imported/albedo.png-f04dc49182fe315b351a43e2fd7388b3.ctex"]
 
 [params]
 

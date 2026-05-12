@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bhbt45ii2gh1h"
-path="res://.godot/imported/v3_albedo.png-8ef18d03e254c656226668a9efda1fc1.ctex"
+path="res://.godot/imported/v3_albedo.png-312ebf393ab87ff5abbaf49f3a494f81.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/mid/19_wet_lichen_quartz/variants/v3_albedo.png"
-dest_files=["res://.godot/imported/v3_albedo.png-8ef18d03e254c656226668a9efda1fc1.ctex"]
+source_file="res://candidates/alpine/mid/_review/19_wet_lichen_quartz/variants/v3_albedo.png"
+dest_files=["res://.godot/imported/v3_albedo.png-312ebf393ab87ff5abbaf49f3a494f81.ctex"]
 
 [params]
 

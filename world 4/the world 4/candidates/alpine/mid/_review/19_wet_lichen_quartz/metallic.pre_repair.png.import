@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b3vako0n2i0bt"
-path="res://.godot/imported/metallic.pre_repair.png-574663b4228158122738c123e1e25915.ctex"
+path="res://.godot/imported/metallic.pre_repair.png-3f5bba46205c3626614f1ed1ecf7142c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/mid/19_wet_lichen_quartz/metallic.pre_repair.png"
-dest_files=["res://.godot/imported/metallic.pre_repair.png-574663b4228158122738c123e1e25915.ctex"]
+source_file="res://candidates/alpine/mid/_review/19_wet_lichen_quartz/metallic.pre_repair.png"
+dest_files=["res://.godot/imported/metallic.pre_repair.png-3f5bba46205c3626614f1ed1ecf7142c.ctex"]
 
 [params]
 

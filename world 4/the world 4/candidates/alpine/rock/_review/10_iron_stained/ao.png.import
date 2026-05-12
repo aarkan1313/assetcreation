@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ddj5q08hogjbe"
-path="res://.godot/imported/ao.png-1a75905381bfec4fe160f3a447b6cf9d.ctex"
+path="res://.godot/imported/ao.png-a4dbd993faf5698edd29acb44dbad165.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/rock/10_iron_stained/ao.png"
-dest_files=["res://.godot/imported/ao.png-1a75905381bfec4fe160f3a447b6cf9d.ctex"]
+source_file="res://candidates/alpine/rock/_review/10_iron_stained/ao.png"
+dest_files=["res://.godot/imported/ao.png-a4dbd993faf5698edd29acb44dbad165.ctex"]
 
 [params]
 

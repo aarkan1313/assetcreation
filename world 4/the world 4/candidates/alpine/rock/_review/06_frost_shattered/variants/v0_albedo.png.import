@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dl5lbvoudkecs"
-path="res://.godot/imported/v0_albedo.png-de4700684b0429ceba8880bd30023d85.ctex"
+path="res://.godot/imported/v0_albedo.png-5e1a9b574c42c6ee2a7b9caac08dc683.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/rock/06_frost_shattered/variants/v0_albedo.png"
-dest_files=["res://.godot/imported/v0_albedo.png-de4700684b0429ceba8880bd30023d85.ctex"]
+source_file="res://candidates/alpine/rock/_review/06_frost_shattered/variants/v0_albedo.png"
+dest_files=["res://.godot/imported/v0_albedo.png-5e1a9b574c42c6ee2a7b9caac08dc683.ctex"]
 
 [params]
 

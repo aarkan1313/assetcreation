@@ -1,0 +1,345 @@
+{
+  "biome": "desert",
+  "slot": "ground",
+  "candidates": {
+    "01_fine_sand": {
+      "id": "01_fine_sand",
+      "prompt": "tileable seamless texture, fine warm desert sand, slight ripples, soft yellow-tan tones, no debris, overhead perspective",
+      "size": 1024,
+      "grade": "C",
+      "passed_checks": 2,
+      "failed_checks": [
+        "periodic_artifact",
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.8,
+        "mip32_stdev": 6.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T19:15:24+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "02_rippled_dunes": {
+      "id": "02_rippled_dunes",
+      "prompt": "tileable seamless texture, rippled desert sand with low parallel wind ridges, warm tan color, sharp ripple shadows, overhead perspective",
+      "size": 1024,
+      "grade": "C",
+      "passed_checks": 2,
+      "failed_checks": [
+        "periodic_artifact",
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.8,
+        "mip32_stdev": 6.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T19:16:43+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "03_coarse_sand": {
+      "id": "03_coarse_sand",
+      "prompt": "tileable seamless texture, coarse desert sand with embedded small pebbles, varied grain sizes, sandy yellow with grey flecks, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.8,
+        "mip32_stdev": 6.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T19:17:58+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "04_cracked_dry_earth": {
+      "id": "04_cracked_dry_earth",
+      "prompt": "tileable seamless texture, cracked dry desert ground, polygonal cracks in baked clay, warm pale orange-tan, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.8,
+        "mip32_stdev": 6.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T19:19:04+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "05_red_sand": {
+      "id": "05_red_sand",
+      "prompt": "tileable seamless texture, fine red-orange desert sand, warm saturated tones, smooth surface with subtle drift lines, overhead perspective",
+      "size": 1024,
+      "grade": "C",
+      "passed_checks": 2,
+      "failed_checks": [
+        "periodic_artifact",
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.8,
+        "mip32_stdev": 6.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T19:20:12+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "06_white_dune_sand": {
+      "id": "06_white_dune_sand",
+      "prompt": "tileable seamless texture, fine white gypsum dune sand, very pale, soft ripples, almost glittering, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.8,
+        "mip32_stdev": 6.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T19:21:17+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "07_black_volcanic_sand": {
+      "id": "07_black_volcanic_sand",
+      "prompt": "tileable seamless texture, fine black volcanic sand, dark grey-brown tones, subtle ripples, looks heavy, overhead perspective",
+      "size": 1024,
+      "grade": "C",
+      "passed_checks": 2,
+      "failed_checks": [
+        "periodic_artifact",
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.8,
+        "mip32_stdev": 6.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T19:22:23+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "08_pebble_field": {
+      "id": "08_pebble_field",
+      "prompt": "tileable seamless texture, desert pavement of small flat pebbles tightly packed, weathered desert varnish, brown-and-tan mosaic, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.8,
+        "mip32_stdev": 6.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T19:23:29+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "09_salt_crust": {
+      "id": "09_salt_crust",
+      "prompt": "tileable seamless texture, white salt crust over dry pale earth, brittle crystalline surface with hairline cracks, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.8,
+        "mip32_stdev": 6.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T19:24:37+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "10_wind_carved": {
+      "id": "10_wind_carved",
+      "prompt": "tileable seamless texture, wind-carved desert ground, parallel ridges of sand wrapped over harder underlying rock, warm sandy palette, overhead perspective",
+      "size": 1024,
+      "grade": "C",
+      "passed_checks": 2,
+      "failed_checks": [
+        "periodic_artifact",
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.8,
+        "mip32_stdev": 6.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T19:25:43+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "11_gravel_wash": {
+      "id": "11_gravel_wash",
+      "prompt": "tileable seamless texture, loose dry gravel from an old desert wash, sorted small stones, warm tan with grey accents, overhead perspective",
+      "size": 1024,
+      "grade": "C",
+      "passed_checks": 2,
+      "failed_checks": [
+        "periodic_artifact",
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.8,
+        "mip32_stdev": 6.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T19:26:50+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "12_dry_silt": {
+      "id": "12_dry_silt",
+      "prompt": "tileable seamless texture, fine dry desert silt, smooth pale beige, occasional micro-cracks, soft uniform surface, overhead perspective",
+      "size": 1024,
+      "grade": "C",
+      "passed_checks": 2,
+      "failed_checks": [
+        "periodic_artifact",
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.8,
+        "mip32_stdev": 6.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T19:28:03+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "13_footprint_sand": {
+      "id": "13_footprint_sand",
+      "prompt": "tileable seamless texture, desert sand with shallow scattered footprints and disturbed patches, warm tan with shadow detail, overhead perspective",
+      "size": 1024,
+      "grade": "C",
+      "passed_checks": 2,
+      "failed_checks": [
+        "periodic_artifact",
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.8,
+        "mip32_stdev": 6.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T19:29:28+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "14_dune_slipface": {
+      "id": "14_dune_slipface",
+      "prompt": "tileable seamless texture, smooth dune slipface texture, downhill-streaked fine sand, warm orange palette, overhead perspective",
+      "size": 1024,
+      "grade": "C",
+      "passed_checks": 2,
+      "failed_checks": [
+        "periodic_artifact",
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.8,
+        "mip32_stdev": 6.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T19:30:56+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "15_clay_flats": {
+      "id": "15_clay_flats",
+      "prompt": "tileable seamless texture, dry clay flats with thin polygonal mud-crack pattern, pale buff color, weathered flat surface, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.8,
+        "mip32_stdev": 6.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T19:32:27+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "16_caliche_crust": {
+      "id": "16_caliche_crust",
+      "prompt": "tileable seamless texture, calcium-rich caliche crust over desert soil, pale chalky tan with embedded pebbles, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.8,
+        "mip32_stdev": 6.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T19:33:56+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    }
+  }
+}

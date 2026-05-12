@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dw80goag56641"
-path="res://.godot/imported/roughness.pre_repair.png-97deec0a4c0fb6a0e62c3fd83ba71392.ctex"
+path="res://.godot/imported/roughness.pre_repair.png-cee17bf55ec689949b61bfeedaf73771.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/ground/01_fresh_powder/roughness.pre_repair.png"
-dest_files=["res://.godot/imported/roughness.pre_repair.png-97deec0a4c0fb6a0e62c3fd83ba71392.ctex"]
+source_file="res://candidates/alpine/ground/_review/01_fresh_powder/roughness.pre_repair.png"
+dest_files=["res://.godot/imported/roughness.pre_repair.png-cee17bf55ec689949b61bfeedaf73771.ctex"]
 
 [params]
 

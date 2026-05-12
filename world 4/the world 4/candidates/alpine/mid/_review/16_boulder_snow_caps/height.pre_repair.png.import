@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b3rf0ok60tano"
-path="res://.godot/imported/height.pre_repair.png-cd9c47a68e646cb43da327050d8a21b9.ctex"
+path="res://.godot/imported/height.pre_repair.png-2bdd3cf5f945876b3f47688f649f8074.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/mid/16_boulder_snow_caps/height.pre_repair.png"
-dest_files=["res://.godot/imported/height.pre_repair.png-cd9c47a68e646cb43da327050d8a21b9.ctex"]
+source_file="res://candidates/alpine/mid/_review/16_boulder_snow_caps/height.pre_repair.png"
+dest_files=["res://.godot/imported/height.pre_repair.png-2bdd3cf5f945876b3f47688f649f8074.ctex"]
 
 [params]
 

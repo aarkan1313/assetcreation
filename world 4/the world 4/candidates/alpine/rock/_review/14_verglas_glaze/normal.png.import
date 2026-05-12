@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://u6a5r15rat5s"
-path="res://.godot/imported/normal.png-998a3538152aa8bc263b4d6133b69dee.ctex"
+path="res://.godot/imported/normal.png-c95fb732c25c4e701f252838d993edcd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/rock/14_verglas_glaze/normal.png"
-dest_files=["res://.godot/imported/normal.png-998a3538152aa8bc263b4d6133b69dee.ctex"]
+source_file="res://candidates/alpine/rock/_review/14_verglas_glaze/normal.png"
+dest_files=["res://.godot/imported/normal.png-c95fb732c25c4e701f252838d993edcd.ctex"]
 
 [params]
 

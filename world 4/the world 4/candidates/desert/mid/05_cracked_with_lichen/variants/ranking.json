@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.005963,
+    "periodic_locality": 7.784,
+    "richness": 0.755,
+    "composite": 0.7942,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_desert_mid_05_cracked_with_lichen_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.054126342632641294,
+      "pass1_seconds": 4.08,
+      "pass3_seconds": 8.21,
+      "final_seam_score": 0.005962925917916186,
+      "seam_improvement": 0.048163416714725106
+    }
+  },
+  {
+    "edge_seam": 0.015562,
+    "periodic_locality": 8.295,
+    "richness": 0.84,
+    "composite": 0.6085,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_desert_mid_05_cracked_with_lichen_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.04037995827926759,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 8.16,
+      "final_seam_score": 0.015561657663218475,
+      "seam_improvement": 0.024818300616049116
+    }
+  },
+  {
+    "edge_seam": 0.01574,
+    "periodic_locality": 9.437,
+    "richness": 0.87,
+    "composite": 0.5868,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_desert_mid_05_cracked_with_lichen_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.03596166438389081,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 8.16,
+      "final_seam_score": 0.015740035195297482,
+      "seam_improvement": 0.02022162918859333
+    }
+  },
+  {
+    "edge_seam": 0.01786,
+    "periodic_locality": 11.345,
+    "richness": 0.819,
+    "composite": 0.4941,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_desert_mid_05_cracked_with_lichen_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.0527958297289504,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.01786002341347078,
+      "seam_improvement": 0.03493580631547962
+    }
+  }
+]

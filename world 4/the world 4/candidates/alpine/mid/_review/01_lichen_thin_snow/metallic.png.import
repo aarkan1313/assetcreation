@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dgvaklfiowp3v"
-path="res://.godot/imported/metallic.png-14ca0c56473452bf80249bdb8ad91f57.ctex"
+path="res://.godot/imported/metallic.png-63f0344a39f58d2bd162ac6710e7054c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/mid/01_lichen_thin_snow/metallic.png"
-dest_files=["res://.godot/imported/metallic.png-14ca0c56473452bf80249bdb8ad91f57.ctex"]
+source_file="res://candidates/alpine/mid/_review/01_lichen_thin_snow/metallic.png"
+dest_files=["res://.godot/imported/metallic.png-63f0344a39f58d2bd162ac6710e7054c.ctex"]
 
 [params]
 

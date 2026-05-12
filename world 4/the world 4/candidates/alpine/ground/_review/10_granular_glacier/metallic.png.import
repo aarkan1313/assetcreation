@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://kspsf38fub4i"
-path="res://.godot/imported/metallic.png-bb92daf8a171290166b4d54f295fda60.ctex"
+path="res://.godot/imported/metallic.png-fdae2d854dd6750d51916325257147a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/ground/10_granular_glacier/metallic.png"
-dest_files=["res://.godot/imported/metallic.png-bb92daf8a171290166b4d54f295fda60.ctex"]
+source_file="res://candidates/alpine/ground/_review/10_granular_glacier/metallic.png"
+dest_files=["res://.godot/imported/metallic.png-fdae2d854dd6750d51916325257147a6.ctex"]
 
 [params]
 

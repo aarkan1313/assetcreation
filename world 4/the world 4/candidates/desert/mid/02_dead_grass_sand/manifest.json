@@ -1,0 +1,186 @@
+{
+  "version": "w4_tx_pipeline_v1",
+  "asset_id": "div_desert_mid_02_dead_grass_sand",
+  "prompt": "tileable seamless texture, dry dead grass tufts over sand, warm yellow palette, scattered vegetation, overhead perspective",
+  "settings": {
+    "unet": "flux-2-klein-9b-fp8.safetensors",
+    "clip": "qwen_3_8b_fp8mixed.safetensors",
+    "vae": "flux2-vae.safetensors",
+    "size": 1024,
+    "steps": 4,
+    "seed_base": 42,
+    "variants": 4,
+    "heal_denoise": 0.35,
+    "heal_mode": "flux_heal",
+    "delight_strength": 0.4,
+    "pbr_backend": "hybrid",
+    "seam_repair": true,
+    "seam_repair_patch": 64,
+    "seam_repair_feather": 12,
+    "category": "Mixed",
+    "host": "http://127.0.0.1:8188"
+  },
+  "started_at": "2026-05-12T19:35:08+00:00",
+  "stages": [
+    {
+      "stage": "variants",
+      "n_variants": 4,
+      "ranking": [
+        {
+          "edge_seam": 0.025683,
+          "periodic_locality": 6.05,
+          "richness": 0.922,
+          "composite": 0.5834,
+          "variant_index": 0,
+          "seed": 42,
+          "path": "v0_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_desert_mid_02_dead_grass_sand_v0",
+            "size": 1024,
+            "seed": 42,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.03405083081026528,
+            "pass1_seconds": 4.04,
+            "pass3_seconds": 6.15,
+            "final_seam_score": 0.025683370353349673,
+            "seam_improvement": 0.00836746045691561
+          }
+        },
+        {
+          "edge_seam": 0.023698,
+          "periodic_locality": 6.67,
+          "richness": 0.9,
+          "composite": 0.5658,
+          "variant_index": 2,
+          "seed": 2042,
+          "path": "v2_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_desert_mid_02_dead_grass_sand_v2",
+            "size": 1024,
+            "seed": 2042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.03848184892829681,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 8.16,
+            "final_seam_score": 0.023697862225466167,
+            "seam_improvement": 0.01478398670283064
+          }
+        },
+        {
+          "edge_seam": 0.01835,
+          "periodic_locality": 9.288,
+          "richness": 0.888,
+          "composite": 0.5414,
+          "variant_index": 1,
+          "seed": 1042,
+          "path": "v1_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_desert_mid_02_dead_grass_sand_v1",
+            "size": 1024,
+            "seed": 1042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.05433902750744906,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 8.22,
+            "final_seam_score": 0.01834985905360919,
+            "seam_improvement": 0.03598916845383987
+          }
+        },
+        {
+          "edge_seam": 0.026284,
+          "periodic_locality": 14.182,
+          "richness": 0.916,
+          "composite": 0.411,
+          "variant_index": 3,
+          "seed": 3042,
+          "path": "v3_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_desert_mid_02_dead_grass_sand_v3",
+            "size": 1024,
+            "seed": 3042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.036413372410851595,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 8.17,
+            "final_seam_score": 0.026284386188605343,
+            "seam_improvement": 0.010128986222246252
+          }
+        }
+      ]
+    },
+    {
+      "stage": "delight",
+      "strength": 0.4
+    },
+    {
+      "stage": "pbr",
+      "backend": "tx_pbr_hybrid",
+      "sm_size": 1024,
+      "category": "Mixed",
+      "sm_input": "D:\\assets\\world 4\\the world 4\\candidates\\desert\\mid\\02_dead_grass_sand\\albedo.png",
+      "derive_log": {
+        "backend": "tx_pbr_derive",
+        "category": "Mixed",
+        "snow_mode": true,
+        "normal_strength": 4.0,
+        "maps": [
+          "albedo",
+          "normal",
+          "roughness",
+          "ao",
+          "height",
+          "metallic"
+        ],
+        "preset_used": [
+          0.85,
+          0.12
+        ]
+      },
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ]
+    },
+    {
+      "stage": "seam_repair",
+      "module": "tx_seam_repair",
+      "patch": 64,
+      "feather": 12,
+      "plan_ops": 32,
+      "maps_processed": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ],
+      "maps_skipped": []
+    },
+    {
+      "stage": "qa",
+      "grade": "A",
+      "passed_checks": 4,
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "failed": []
+    }
+  ],
+  "grade": "A",
+  "passed": true,
+  "completed_at": "2026-05-12T19:36:19+00:00",
+  "status": "completed"
+}

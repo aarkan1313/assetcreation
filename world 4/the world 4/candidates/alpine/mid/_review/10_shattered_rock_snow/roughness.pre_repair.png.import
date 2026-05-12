@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://chxmlh81q7823"
-path="res://.godot/imported/roughness.pre_repair.png-1ba7ecf6ef5677f132518c8877792cf5.ctex"
+path="res://.godot/imported/roughness.pre_repair.png-8e3b4f600ffbc82fab1ef62cb6b23e11.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/mid/10_shattered_rock_snow/roughness.pre_repair.png"
-dest_files=["res://.godot/imported/roughness.pre_repair.png-1ba7ecf6ef5677f132518c8877792cf5.ctex"]
+source_file="res://candidates/alpine/mid/_review/10_shattered_rock_snow/roughness.pre_repair.png"
+dest_files=["res://.godot/imported/roughness.pre_repair.png-8e3b4f600ffbc82fab1ef62cb6b23e11.ctex"]
 
 [params]
 

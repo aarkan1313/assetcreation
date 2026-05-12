@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bsjyt2rm181y2"
-path="res://.godot/imported/v0_albedo.png-b4576d9bf1ecc4af3fdcce2c85ca9a8b.ctex"
+path="res://.godot/imported/v0_albedo.png-e8cf707d80a8ab13c9d119f1497e1a26.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/ground/07_shallow_powder_dirt/variants/v0_albedo.png"
-dest_files=["res://.godot/imported/v0_albedo.png-b4576d9bf1ecc4af3fdcce2c85ca9a8b.ctex"]
+source_file="res://candidates/alpine/ground/_review/07_shallow_powder_dirt/variants/v0_albedo.png"
+dest_files=["res://.godot/imported/v0_albedo.png-e8cf707d80a8ab13c9d119f1497e1a26.ctex"]
 
 [params]
 

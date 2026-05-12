@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.002311,
+    "periodic_locality": 10.102,
+    "richness": 0.605,
+    "composite": 0.7884,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_desert_rock_03_pitted_sandstone_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.030719654474841408,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.0023112155161926903,
+      "seam_improvement": 0.028408438958648717
+    }
+  },
+  {
+    "edge_seam": 0.005333,
+    "periodic_locality": 13.543,
+    "richness": 0.793,
+    "composite": 0.6931,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_desert_rock_03_pitted_sandstone_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.03186124327181853,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 8.17,
+      "final_seam_score": 0.005333065163488802,
+      "seam_improvement": 0.026528178108329727
+    }
+  },
+  {
+    "edge_seam": 0.007969,
+    "periodic_locality": 14.346,
+    "richness": 0.778,
+    "composite": 0.6205,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_desert_rock_03_pitted_sandstone_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.03215605175893887,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.15,
+      "final_seam_score": 0.007968900182622068,
+      "seam_improvement": 0.0241871515763168
+    }
+  },
+  {
+    "edge_seam": 0.037783,
+    "periodic_locality": 11.471,
+    "richness": 0.726,
+    "composite": 0.4301,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_desert_rock_03_pitted_sandstone_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.03099753362588908,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 8.18,
+      "final_seam_score": 0.03778276384083045,
+      "seam_improvement": -0.00678523021494137
+    }
+  }
+]

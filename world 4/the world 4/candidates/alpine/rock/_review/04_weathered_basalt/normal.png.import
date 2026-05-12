@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://pcb5fd6b80yf"
-path="res://.godot/imported/normal.png-6c8c4e0ae23a55e8fbb5d95513a9426d.ctex"
+path="res://.godot/imported/normal.png-8c2cd7377c76c9dffa0c164ab25c321b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/rock/04_weathered_basalt/normal.png"
-dest_files=["res://.godot/imported/normal.png-6c8c4e0ae23a55e8fbb5d95513a9426d.ctex"]
+source_file="res://candidates/alpine/rock/_review/04_weathered_basalt/normal.png"
+dest_files=["res://.godot/imported/normal.png-8c2cd7377c76c9dffa0c164ab25c321b.ctex"]
 
 [params]
 

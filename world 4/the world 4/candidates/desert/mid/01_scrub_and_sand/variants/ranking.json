@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.009053,
+    "periodic_locality": 5.623,
+    "richness": 0.757,
+    "composite": 0.7703,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_desert_mid_01_scrub_and_sand_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.04388018956050557,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 8.28,
+      "final_seam_score": 0.009052923041918973,
+      "seam_improvement": 0.0348272665185866
+    }
+  },
+  {
+    "edge_seam": 0.011314,
+    "periodic_locality": 8.608,
+    "richness": 0.851,
+    "composite": 0.689,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_desert_mid_01_scrub_and_sand_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.022003066353686082,
+      "pass1_seconds": 4.04,
+      "pass3_seconds": 8.14,
+      "final_seam_score": 0.011314153322940695,
+      "seam_improvement": 0.010688913030745387
+    }
+  },
+  {
+    "edge_seam": 0.014316,
+    "periodic_locality": 7.675,
+    "richness": 0.883,
+    "composite": 0.655,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_desert_mid_01_scrub_and_sand_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.023066393109020568,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 8.15,
+      "final_seam_score": 0.014315553024978373,
+      "seam_improvement": 0.008750840084042194
+    }
+  },
+  {
+    "edge_seam": 0.008257,
+    "periodic_locality": 13.917,
+    "richness": 0.83,
+    "composite": 0.6342,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_desert_mid_01_scrub_and_sand_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.020570228397731642,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 8.16,
+      "final_seam_score": 0.008256729871023164,
+      "seam_improvement": 0.012313498526708478
+    }
+  }
+]

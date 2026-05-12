@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b8u4qc3db0wwo"
-path="res://.godot/imported/height.pre_repair.png-408ba9fa0ffcb2141bd787efa2627574.ctex"
+path="res://.godot/imported/height.pre_repair.png-780c824915aafbc2a73cb4ffce4888b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/ground/04_hoar_crystals/height.pre_repair.png"
-dest_files=["res://.godot/imported/height.pre_repair.png-408ba9fa0ffcb2141bd787efa2627574.ctex"]
+source_file="res://candidates/alpine/ground/_review/04_hoar_crystals/height.pre_repair.png"
+dest_files=["res://.godot/imported/height.pre_repair.png-780c824915aafbc2a73cb4ffce4888b2.ctex"]
 
 [params]
 

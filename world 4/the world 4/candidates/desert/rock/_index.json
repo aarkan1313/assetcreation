@@ -1,0 +1,206 @@
+{
+  "biome": "desert",
+  "slot": "rock",
+  "candidates": {
+    "01_weathered_sandstone": {
+      "id": "01_weathered_sandstone",
+      "prompt": "tileable seamless texture, weathered warm sandstone outcrop, layered horizontal banding, warm tans and rusty browns, eroded surface, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T19:59:23+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "02_red_sandstone": {
+      "id": "02_red_sandstone",
+      "prompt": "tileable seamless texture, rich red sandstone rock face with thin cross-bedding, deep warm rust tones with darker veining, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T20:00:33+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "03_pitted_sandstone": {
+      "id": "03_pitted_sandstone",
+      "prompt": "tileable seamless texture, heavily pitted weathered sandstone, warm tan surface with small windworn cavities, eroded, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T20:01:42+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "04_desert_varnish": {
+      "id": "04_desert_varnish",
+      "prompt": "tileable seamless texture, weathered desert rock with dark manganese-iron varnish streaks, warm tans with near-black runoff trails, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T20:02:49+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "05_granite_desert": {
+      "id": "05_granite_desert",
+      "prompt": "tileable seamless texture, weathered desert granite with frost-shattered angular fractures, warm grey-pink tones, mineral grain, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T20:03:54+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "06_layered_mudstone": {
+      "id": "06_layered_mudstone",
+      "prompt": "tileable seamless texture, layered desert mudstone with thin parallel sedimentary banding, warm tan-and-cream stripes, weathered, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T20:05:04+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "07_limestone_eroded": {
+      "id": "07_limestone_eroded",
+      "prompt": "tileable seamless texture, eroded desert limestone with rounded cavities and warm cream-tan surface, ancient weathered, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T20:06:22+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "08_gypsum_crust": {
+      "id": "08_gypsum_crust",
+      "prompt": "tileable seamless texture, gypsum crust on desert rock, pale crystalline white-cream surface with weathered edges, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T20:07:40+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "09_basalt_desert": {
+      "id": "09_basalt_desert",
+      "prompt": "tileable seamless texture, dark desert basalt with wind-polished surface and sparse desert varnish, near-black with warm undertones, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T20:08:48+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "10_hoodoo_face": {
+      "id": "10_hoodoo_face",
+      "prompt": "tileable seamless texture, weathered hoodoo rock face with vertical erosion grooves, warm tan with rusty streaks, dramatic texture, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T20:09:55+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    }
+  }
+}

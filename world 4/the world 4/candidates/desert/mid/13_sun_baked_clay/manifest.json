@@ -1,0 +1,186 @@
+{
+  "version": "w4_tx_pipeline_v1",
+  "asset_id": "div_desert_mid_13_sun_baked_clay",
+  "prompt": "tileable seamless texture, sun-baked cracked clay with embedded pebbles and dry plant fragments, warm pale tones, overhead perspective",
+  "settings": {
+    "unet": "flux-2-klein-9b-fp8.safetensors",
+    "clip": "qwen_3_8b_fp8mixed.safetensors",
+    "vae": "flux2-vae.safetensors",
+    "size": 1024,
+    "steps": 4,
+    "seed_base": 42,
+    "variants": 4,
+    "heal_denoise": 0.35,
+    "heal_mode": "flux_heal",
+    "delight_strength": 0.4,
+    "pbr_backend": "hybrid",
+    "seam_repair": true,
+    "seam_repair_patch": 64,
+    "seam_repair_feather": 12,
+    "category": "Mixed",
+    "host": "http://127.0.0.1:8188"
+  },
+  "started_at": "2026-05-12T19:47:51+00:00",
+  "stages": [
+    {
+      "stage": "variants",
+      "n_variants": 4,
+      "ranking": [
+        {
+          "edge_seam": 0.010799,
+          "periodic_locality": 5.527,
+          "richness": 0.71,
+          "composite": 0.7259,
+          "variant_index": 1,
+          "seed": 1042,
+          "path": "v1_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_desert_mid_13_sun_baked_clay_v1",
+            "size": 1024,
+            "seed": 1042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.06604535365003844,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 8.15,
+            "final_seam_score": 0.01079861580431805,
+            "seam_improvement": 0.05524673784572039
+          }
+        },
+        {
+          "edge_seam": 0.018441,
+          "periodic_locality": 8.002,
+          "richness": 0.841,
+          "composite": 0.5572,
+          "variant_index": 3,
+          "seed": 3042,
+          "path": "v3_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_desert_mid_13_sun_baked_clay_v3",
+            "size": 1024,
+            "seed": 3042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.05069610771698385,
+            "pass1_seconds": 4.06,
+            "pass3_seconds": 8.16,
+            "final_seam_score": 0.018440989868680317,
+            "seam_improvement": 0.03225511784830354
+          }
+        },
+        {
+          "edge_seam": 0.013244,
+          "periodic_locality": 13.198,
+          "richness": 0.843,
+          "composite": 0.5522,
+          "variant_index": 2,
+          "seed": 2042,
+          "path": "v2_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_desert_mid_13_sun_baked_clay_v2",
+            "size": 1024,
+            "seed": 2042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.04831714740123991,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.35,
+            "final_seam_score": 0.013243769110738659,
+            "seam_improvement": 0.03507337829050125
+          }
+        },
+        {
+          "edge_seam": 0.017381,
+          "periodic_locality": 10.392,
+          "richness": 0.861,
+          "composite": 0.5321,
+          "variant_index": 0,
+          "seed": 42,
+          "path": "v0_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_desert_mid_13_sun_baked_clay_v0",
+            "size": 1024,
+            "seed": 42,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.04622469798274702,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.15,
+            "final_seam_score": 0.017381064749735678,
+            "seam_improvement": 0.02884363323301134
+          }
+        }
+      ]
+    },
+    {
+      "stage": "delight",
+      "strength": 0.4
+    },
+    {
+      "stage": "pbr",
+      "backend": "tx_pbr_hybrid",
+      "sm_size": 1024,
+      "category": "Mixed",
+      "sm_input": "D:\\assets\\world 4\\the world 4\\candidates\\desert\\mid\\13_sun_baked_clay\\albedo.png",
+      "derive_log": {
+        "backend": "tx_pbr_derive",
+        "category": "Mixed",
+        "snow_mode": true,
+        "normal_strength": 4.0,
+        "maps": [
+          "albedo",
+          "normal",
+          "roughness",
+          "ao",
+          "height",
+          "metallic"
+        ],
+        "preset_used": [
+          0.85,
+          0.12
+        ]
+      },
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ]
+    },
+    {
+      "stage": "seam_repair",
+      "module": "tx_seam_repair",
+      "patch": 64,
+      "feather": 12,
+      "plan_ops": 32,
+      "maps_processed": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ],
+      "maps_skipped": []
+    },
+    {
+      "stage": "qa",
+      "grade": "A",
+      "passed_checks": 4,
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "failed": []
+    }
+  ],
+  "grade": "A",
+  "passed": true,
+  "completed_at": "2026-05-12T19:48:59+00:00",
+  "status": "completed"
+}

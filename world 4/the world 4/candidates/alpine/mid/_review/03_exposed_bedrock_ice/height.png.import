@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b0vgctdnjqcd6"
-path="res://.godot/imported/height.png-944f5229a9f4ffcfc1362b7097f5fb4a.ctex"
+path="res://.godot/imported/height.png-9150acd53715185475c50ef66b6231bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/mid/03_exposed_bedrock_ice/height.png"
-dest_files=["res://.godot/imported/height.png-944f5229a9f4ffcfc1362b7097f5fb4a.ctex"]
+source_file="res://candidates/alpine/mid/_review/03_exposed_bedrock_ice/height.png"
+dest_files=["res://.godot/imported/height.png-9150acd53715185475c50ef66b6231bb.ctex"]
 
 [params]
 

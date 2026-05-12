@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cfa834eef8eu8"
-path="res://.godot/imported/normal.png-ac69627387fa716176067b7c3474cb9b.ctex"
+path="res://.godot/imported/normal.png-72ebba9a74b555a66f096094e999d801.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/ground/03_firn_dense/normal.png"
-dest_files=["res://.godot/imported/normal.png-ac69627387fa716176067b7c3474cb9b.ctex"]
+source_file="res://candidates/alpine/ground/_review/03_firn_dense/normal.png"
+dest_files=["res://.godot/imported/normal.png-72ebba9a74b555a66f096094e999d801.ctex"]
 
 [params]
 

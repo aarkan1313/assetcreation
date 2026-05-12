@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bwkhlskyd86v6"
-path="res://.godot/imported/roughness.png-464381fe096b53a346906def5fc28a07.ctex"
+path="res://.godot/imported/roughness.png-bc89d8e8a4451f8ef7e890a82611b988.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/rock/04_weathered_basalt/roughness.png"
-dest_files=["res://.godot/imported/roughness.png-464381fe096b53a346906def5fc28a07.ctex"]
+source_file="res://candidates/alpine/rock/_review/04_weathered_basalt/roughness.png"
+dest_files=["res://.godot/imported/roughness.png-bc89d8e8a4451f8ef7e890a82611b988.ctex"]
 
 [params]
 

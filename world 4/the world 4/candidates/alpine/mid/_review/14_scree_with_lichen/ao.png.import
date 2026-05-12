@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://whdnb257kj36"
-path="res://.godot/imported/ao.png-4eb2f62655db690a32aff5c63eb47bee.ctex"
+path="res://.godot/imported/ao.png-5be7f5a040af0da2a087f963f3b96117.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/mid/14_scree_with_lichen/ao.png"
-dest_files=["res://.godot/imported/ao.png-4eb2f62655db690a32aff5c63eb47bee.ctex"]
+source_file="res://candidates/alpine/mid/_review/14_scree_with_lichen/ao.png"
+dest_files=["res://.godot/imported/ao.png-5be7f5a040af0da2a087f963f3b96117.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b4kj7qvt8m21a"
-path="res://.godot/imported/metallic.png-981cc0ea7d872812f32b2dbb316333c2.ctex"
+path="res://.godot/imported/metallic.png-f39ead59f9df891f6e76b81de0ab6d63.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/rock/12_cracked_bedrock/metallic.png"
-dest_files=["res://.godot/imported/metallic.png-981cc0ea7d872812f32b2dbb316333c2.ctex"]
+source_file="res://candidates/alpine/rock/_review/12_cracked_bedrock/metallic.png"
+dest_files=["res://.godot/imported/metallic.png-f39ead59f9df891f6e76b81de0ab6d63.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dqh15c73q4xjh"
-path="res://.godot/imported/ao.png-452917e3dec0678161337e61a8d28c0e.ctex"
+path="res://.godot/imported/ao.png-58dc245138d2367bd909d9d5ed9f1730.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/ground/03_firn_dense/ao.png"
-dest_files=["res://.godot/imported/ao.png-452917e3dec0678161337e61a8d28c0e.ctex"]
+source_file="res://candidates/alpine/ground/_review/03_firn_dense/ao.png"
+dest_files=["res://.godot/imported/ao.png-58dc245138d2367bd909d9d5ed9f1730.ctex"]
 
 [params]
 

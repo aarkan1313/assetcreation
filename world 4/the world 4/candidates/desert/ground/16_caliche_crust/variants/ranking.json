@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.004206,
+    "periodic_locality": 7.591,
+    "richness": 0.734,
+    "composite": 0.8292,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_desert_ground_16_caliche_crust_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.041800738447952714,
+      "pass1_seconds": 6.05,
+      "pass3_seconds": 10.16,
+      "final_seam_score": 0.004206374951941561,
+      "seam_improvement": 0.037594363496011154
+    }
+  },
+  {
+    "edge_seam": 0.007806,
+    "periodic_locality": 14.059,
+    "richness": 0.853,
+    "composite": 0.6448,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_desert_ground_16_caliche_crust_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.023150281367142447,
+      "pass1_seconds": 6.05,
+      "pass3_seconds": 10.26,
+      "final_seam_score": 0.007806197492400759,
+      "seam_improvement": 0.015344083874741687
+    }
+  },
+  {
+    "edge_seam": 0.010144,
+    "periodic_locality": 14.195,
+    "richness": 0.787,
+    "composite": 0.5819,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_desert_ground_16_caliche_crust_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.03491662987192426,
+      "pass1_seconds": 6.05,
+      "pass3_seconds": 10.21,
+      "final_seam_score": 0.01014407488255719,
+      "seam_improvement": 0.02477255498936707
+    }
+  },
+  {
+    "edge_seam": 0.012461,
+    "periodic_locality": 15.011,
+    "richness": 0.862,
+    "composite": 0.5334,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_desert_ground_16_caliche_crust_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.03418749699634756,
+      "pass1_seconds": 6.05,
+      "pass3_seconds": 10.17,
+      "final_seam_score": 0.012461117719146483,
+      "seam_improvement": 0.021726379277201075
+    }
+  }
+]

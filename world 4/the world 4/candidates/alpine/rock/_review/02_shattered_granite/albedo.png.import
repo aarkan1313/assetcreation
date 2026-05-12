@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bu1vhjwyvajcl"
-path="res://.godot/imported/albedo.png-2ca899ffa110627c86be7724f51247ab.ctex"
+path="res://.godot/imported/albedo.png-14027b33d21021b2f5d27ef46a646979.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/rock/02_shattered_granite/albedo.png"
-dest_files=["res://.godot/imported/albedo.png-2ca899ffa110627c86be7724f51247ab.ctex"]
+source_file="res://candidates/alpine/rock/_review/02_shattered_granite/albedo.png"
+dest_files=["res://.godot/imported/albedo.png-14027b33d21021b2f5d27ef46a646979.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cbmed0fck8pgg"
-path="res://.godot/imported/metallic.pre_repair.png-7d9d7bbb5ccadd1c0049a70f76d7fee5.ctex"
+path="res://.godot/imported/metallic.pre_repair.png-fb736f4573ec44621b65f0faa5de3cd3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/ground/04_hoar_crystals/metallic.pre_repair.png"
-dest_files=["res://.godot/imported/metallic.pre_repair.png-7d9d7bbb5ccadd1c0049a70f76d7fee5.ctex"]
+source_file="res://candidates/alpine/ground/_review/04_hoar_crystals/metallic.pre_repair.png"
+dest_files=["res://.godot/imported/metallic.pre_repair.png-fb736f4573ec44621b65f0faa5de3cd3.ctex"]
 
 [params]
 

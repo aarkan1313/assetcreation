@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bncqh7sd2gl8w"
-path="res://.godot/imported/roughness.png-4e305cedc7160184fe7a8d932a419875.ctex"
+path="res://.godot/imported/roughness.png-0452621300222bd7eef6dbc4bff11e7c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/mid/11_moss_meltwater/roughness.png"
-dest_files=["res://.godot/imported/roughness.png-4e305cedc7160184fe7a8d932a419875.ctex"]
+source_file="res://candidates/alpine/mid/_review/11_moss_meltwater/roughness.png"
+dest_files=["res://.godot/imported/roughness.png-0452621300222bd7eef6dbc4bff11e7c.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://byjyi7nox7lbk"
-path="res://.godot/imported/v3_albedo.pre_delight.png-313f8c300e2937102abf70e7913fb8fe.ctex"
+path="res://.godot/imported/v3_albedo.pre_delight.png-1229fd331a857286bdf246838d798faf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/mid/16_boulder_snow_caps/variants/v3_albedo.pre_delight.png"
-dest_files=["res://.godot/imported/v3_albedo.pre_delight.png-313f8c300e2937102abf70e7913fb8fe.ctex"]
+source_file="res://candidates/alpine/mid/_review/16_boulder_snow_caps/variants/v3_albedo.pre_delight.png"
+dest_files=["res://.godot/imported/v3_albedo.pre_delight.png-1229fd331a857286bdf246838d798faf.ctex"]
 
 [params]
 

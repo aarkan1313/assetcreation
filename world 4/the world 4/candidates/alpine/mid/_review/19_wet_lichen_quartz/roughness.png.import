@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b73ejiyob0kdt"
-path="res://.godot/imported/roughness.png-7e37afd0f12df4c35ecbd21af7e4bd02.ctex"
+path="res://.godot/imported/roughness.png-8380db7261e82a2e6554adb71b552669.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/mid/19_wet_lichen_quartz/roughness.png"
-dest_files=["res://.godot/imported/roughness.png-7e37afd0f12df4c35ecbd21af7e4bd02.ctex"]
+source_file="res://candidates/alpine/mid/_review/19_wet_lichen_quartz/roughness.png"
+dest_files=["res://.godot/imported/roughness.png-8380db7261e82a2e6554adb71b552669.ctex"]
 
 [params]
 

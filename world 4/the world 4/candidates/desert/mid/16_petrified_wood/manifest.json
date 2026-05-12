@@ -1,0 +1,188 @@
+{
+  "version": "w4_tx_pipeline_v1",
+  "asset_id": "div_desert_mid_16_petrified_wood",
+  "prompt": "tileable seamless texture, desert ground with petrified wood fragments and sand, warm rusty-brown stones over pale tan sand, overhead perspective",
+  "settings": {
+    "unet": "flux-2-klein-9b-fp8.safetensors",
+    "clip": "qwen_3_8b_fp8mixed.safetensors",
+    "vae": "flux2-vae.safetensors",
+    "size": 1024,
+    "steps": 4,
+    "seed_base": 42,
+    "variants": 4,
+    "heal_denoise": 0.35,
+    "heal_mode": "flux_heal",
+    "delight_strength": 0.4,
+    "pbr_backend": "hybrid",
+    "seam_repair": true,
+    "seam_repair_patch": 64,
+    "seam_repair_feather": 12,
+    "category": "Mixed",
+    "host": "http://127.0.0.1:8188"
+  },
+  "started_at": "2026-05-12T19:51:21+00:00",
+  "stages": [
+    {
+      "stage": "variants",
+      "n_variants": 4,
+      "ranking": [
+        {
+          "edge_seam": 0.003234,
+          "periodic_locality": 10.506,
+          "richness": 0.71,
+          "composite": 0.7825,
+          "variant_index": 1,
+          "seed": 1042,
+          "path": "v1_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_desert_mid_16_petrified_wood_v1",
+            "size": 1024,
+            "seed": 1042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.03609742571967513,
+            "pass1_seconds": 4.04,
+            "pass3_seconds": 6.16,
+            "final_seam_score": 0.003233787363559088,
+            "seam_improvement": 0.03286363835611604
+          }
+        },
+        {
+          "edge_seam": 0.00503,
+          "periodic_locality": 15.778,
+          "richness": 0.82,
+          "composite": 0.6575,
+          "variant_index": 0,
+          "seed": 42,
+          "path": "v0_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_desert_mid_16_petrified_wood_v0",
+            "size": 1024,
+            "seed": 42,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.03240687175605536,
+            "pass1_seconds": 4.04,
+            "pass3_seconds": 6.18,
+            "final_seam_score": 0.00502995157736808,
+            "seam_improvement": 0.02737692017868728
+          }
+        },
+        {
+          "edge_seam": 0.007225,
+          "periodic_locality": 18.267,
+          "richness": 0.785,
+          "composite": 0.5542,
+          "variant_index": 3,
+          "seed": 3042,
+          "path": "v3_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_desert_mid_16_petrified_wood_v3",
+            "size": 1024,
+            "seed": 3042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.01825038183931661,
+            "pass1_seconds": 4.04,
+            "pass3_seconds": 8.15,
+            "final_seam_score": 0.00722461012591311,
+            "seam_improvement": 0.0110257717134035
+          }
+        },
+        {
+          "edge_seam": 0.004355,
+          "periodic_locality": 23.14,
+          "richness": 0.815,
+          "composite": 0.5151,
+          "variant_index": 2,
+          "seed": 2042,
+          "path": "v2_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_desert_mid_16_petrified_wood_v2",
+            "size": 1024,
+            "seed": 2042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.03870111555651672,
+            "pass1_seconds": 4.04,
+            "pass3_seconds": 8.23,
+            "final_seam_score": 0.0043551857496215395,
+            "seam_improvement": 0.03434592980689519
+          }
+        }
+      ]
+    },
+    {
+      "stage": "delight",
+      "strength": 0.4
+    },
+    {
+      "stage": "pbr",
+      "backend": "tx_pbr_hybrid",
+      "sm_size": 1024,
+      "category": "Mixed",
+      "sm_input": "D:\\assets\\world 4\\the world 4\\candidates\\desert\\mid\\16_petrified_wood\\albedo.png",
+      "derive_log": {
+        "backend": "tx_pbr_derive",
+        "category": "Mixed",
+        "snow_mode": true,
+        "normal_strength": 4.0,
+        "maps": [
+          "albedo",
+          "normal",
+          "roughness",
+          "ao",
+          "height",
+          "metallic"
+        ],
+        "preset_used": [
+          0.85,
+          0.12
+        ]
+      },
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ]
+    },
+    {
+      "stage": "seam_repair",
+      "module": "tx_seam_repair",
+      "patch": 64,
+      "feather": 12,
+      "plan_ops": 32,
+      "maps_processed": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ],
+      "maps_skipped": []
+    },
+    {
+      "stage": "qa",
+      "grade": "B",
+      "passed_checks": 3,
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "failed": [
+        "periodic_artifact"
+      ]
+    }
+  ],
+  "grade": "B",
+  "passed": false,
+  "completed_at": "2026-05-12T19:52:29+00:00",
+  "status": "completed"
+}

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cdhe8bn2obu3e"
-path="res://.godot/imported/v0_albedo.png-b47220a83c813b3dce48041934f9aa10.ctex"
+path="res://.godot/imported/v0_albedo.png-fe1f2a293b0a79b7d7945af0a7856990.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/mid/15_snowmelt_mineral/variants/v0_albedo.png"
-dest_files=["res://.godot/imported/v0_albedo.png-b47220a83c813b3dce48041934f9aa10.ctex"]
+source_file="res://candidates/alpine/mid/_review/15_snowmelt_mineral/variants/v0_albedo.png"
+dest_files=["res://.godot/imported/v0_albedo.png-fe1f2a293b0a79b7d7945af0a7856990.ctex"]
 
 [params]
 

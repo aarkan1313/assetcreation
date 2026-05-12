@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ibm80kceica"
-path="res://.godot/imported/v3_albedo.png-dc507e716c463e61b9e606b779895b01.ctex"
+path="res://.godot/imported/v3_albedo.png-0d24ff1f98524f1e3122ac729dfb9847.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/mid/12_lichen_dense_carpet/variants/v3_albedo.png"
-dest_files=["res://.godot/imported/v3_albedo.png-dc507e716c463e61b9e606b779895b01.ctex"]
+source_file="res://candidates/alpine/mid/_review/12_lichen_dense_carpet/variants/v3_albedo.png"
+dest_files=["res://.godot/imported/v3_albedo.png-0d24ff1f98524f1e3122ac729dfb9847.ctex"]
 
 [params]
 

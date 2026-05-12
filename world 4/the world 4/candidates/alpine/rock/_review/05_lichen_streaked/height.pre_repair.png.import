@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://6rb4doyfydlx"
-path="res://.godot/imported/height.pre_repair.png-026f1275c595453b3936cb383c37134c.ctex"
+path="res://.godot/imported/height.pre_repair.png-6d74172a8158488ff517ddb34003ff45.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/rock/05_lichen_streaked/height.pre_repair.png"
-dest_files=["res://.godot/imported/height.pre_repair.png-026f1275c595453b3936cb383c37134c.ctex"]
+source_file="res://candidates/alpine/rock/_review/05_lichen_streaked/height.pre_repair.png"
+dest_files=["res://.godot/imported/height.pre_repair.png-6d74172a8158488ff517ddb34003ff45.ctex"]
 
 [params]
 

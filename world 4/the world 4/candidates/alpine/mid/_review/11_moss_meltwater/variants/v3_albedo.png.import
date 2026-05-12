@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c7n2w0i2hd4p4"
-path="res://.godot/imported/v3_albedo.png-d9f927ab6137b8bc7bdf4584f53c0ed8.ctex"
+path="res://.godot/imported/v3_albedo.png-1b27aea2e8c5b4ae3fe766d994ae6fba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/mid/11_moss_meltwater/variants/v3_albedo.png"
-dest_files=["res://.godot/imported/v3_albedo.png-d9f927ab6137b8bc7bdf4584f53c0ed8.ctex"]
+source_file="res://candidates/alpine/mid/_review/11_moss_meltwater/variants/v3_albedo.png"
+dest_files=["res://.godot/imported/v3_albedo.png-1b27aea2e8c5b4ae3fe766d994ae6fba.ctex"]
 
 [params]
 

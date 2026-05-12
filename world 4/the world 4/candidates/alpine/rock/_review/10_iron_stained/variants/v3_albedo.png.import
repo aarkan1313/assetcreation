@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dd1bxnxcvusm5"
-path="res://.godot/imported/v3_albedo.png-45aa17d30308b55d6d44688acfebd6a7.ctex"
+path="res://.godot/imported/v3_albedo.png-a7c4aa37f6289025a7f13e05e86ed978.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/rock/10_iron_stained/variants/v3_albedo.png"
-dest_files=["res://.godot/imported/v3_albedo.png-45aa17d30308b55d6d44688acfebd6a7.ctex"]
+source_file="res://candidates/alpine/rock/_review/10_iron_stained/variants/v3_albedo.png"
+dest_files=["res://.godot/imported/v3_albedo.png-a7c4aa37f6289025a7f13e05e86ed978.ctex"]
 
 [params]
 

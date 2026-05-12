@@ -1,0 +1,124 @@
+# Desert biome — prompt set for diversity batch.
+# Used by pipeline/diversity_run.py.
+#
+# 16 ground (sand + dry-earth ground) / 21 mid (sand+rock mixes, scrub, salt
+# pan transitions) / 14 rock (sandstone, weathered desert rock).
+# Palette: warm sandy yellows, dry oranges, weathered brown rock. Low saturation.
+biome: desert
+prompt_prefix: "tileable seamless texture, "
+prompt_suffix: ", overhead perspective"
+
+slots:
+  ground:
+    category: Sand
+    candidates:
+      - tag: fine_sand
+        body: "fine warm desert sand, slight ripples, soft yellow-tan tones, no debris"
+      - tag: rippled_dunes
+        body: "rippled desert sand with low parallel wind ridges, warm tan color, sharp ripple shadows"
+      - tag: coarse_sand
+        body: "coarse desert sand with embedded small pebbles, varied grain sizes, sandy yellow with grey flecks"
+      - tag: cracked_dry_earth
+        body: "cracked dry desert ground, polygonal cracks in baked clay, warm pale orange-tan"
+      - tag: red_sand
+        body: "fine red-orange desert sand, warm saturated tones, smooth surface with subtle drift lines"
+      - tag: white_dune_sand
+        body: "fine white gypsum dune sand, very pale, soft ripples, almost glittering"
+      - tag: black_volcanic_sand
+        body: "fine black volcanic sand, dark grey-brown tones, subtle ripples, looks heavy"
+      - tag: pebble_field
+        body: "desert pavement of small flat pebbles tightly packed, weathered desert varnish, brown-and-tan mosaic"
+      - tag: salt_crust
+        body: "white salt crust over dry pale earth, brittle crystalline surface with hairline cracks"
+      - tag: wind_carved
+        body: "wind-carved desert ground, parallel ridges of sand wrapped over harder underlying rock, warm sandy palette"
+      - tag: gravel_wash
+        body: "loose dry gravel from an old desert wash, sorted small stones, warm tan with grey accents"
+      - tag: dry_silt
+        body: "fine dry desert silt, smooth pale beige, occasional micro-cracks, soft uniform surface"
+      - tag: footprint_sand
+        body: "desert sand with shallow scattered footprints and disturbed patches, warm tan with shadow detail"
+      - tag: dune_slipface
+        body: "smooth dune slipface texture, downhill-streaked fine sand, warm orange palette"
+      - tag: clay_flats
+        body: "dry clay flats with thin polygonal mud-crack pattern, pale buff color, weathered flat surface"
+      - tag: caliche_crust
+        body: "calcium-rich caliche crust over desert soil, pale chalky tan with embedded pebbles"
+
+  mid:
+    category: Mixed
+    candidates:
+      - tag: scrub_and_sand
+        body: "desert ground with sparse dry scrub bushes and sand patches, warm tan with muted green-grey accents"
+      - tag: dead_grass_sand
+        body: "dry dead grass tufts over sand, warm yellow palette, scattered vegetation"
+      - tag: rock_fragments_sand
+        body: "loose rock fragments over desert sand, warm tan sand with dark brown stones, weathered surface"
+      - tag: sage_dry_ground
+        body: "dry sage shrubs over hard desert ground, muted silver-green and warm tan, sparse coverage"
+      - tag: cracked_with_lichen
+        body: "cracked dry desert ground with patches of pale orange rock lichen, weathered warm palette"
+      - tag: cactus_floor
+        body: "desert floor with scattered cactus fragments and sand drifts, warm pale tones with green-grey debris"
+      - tag: sand_over_bedrock
+        body: "thin sand drift over exposed weathered bedrock, sandstone palette of tans and rusty browns"
+      - tag: wash_with_brush
+        body: "dry desert wash with embedded woody debris and gravel, warm grey-tan, mixed organic textures"
+      - tag: salt_and_dirt
+        body: "patchy salt deposits over reddish desert dirt, warm earth tones with pale white crusts"
+      - tag: tumbleweed_remains
+        body: "desert floor with crushed tumbleweed remains and sand, warm muted yellows and pale browns"
+      - tag: stone_pavement_moss
+        body: "desert pavement with sparse dry moss in cracks, warm grey-tan stones with subtle green accents"
+      - tag: dry_riverbed
+        body: "dry desert riverbed with rounded cobbles and silt, warm grey-tan palette, sorted stone sizes"
+      - tag: sun_baked_clay
+        body: "sun-baked cracked clay with embedded pebbles and dry plant fragments, warm pale tones"
+      - tag: rocky_outwash
+        body: "rocky desert outwash with mixed sand and angular fragments, warm brown-tan palette, weathered"
+      - tag: agave_remains
+        body: "desert ground with spiny agave fragments scattered over sand, warm tan with darker green-grey debris"
+      - tag: petrified_wood
+        body: "desert ground with petrified wood fragments and sand, warm rusty-brown stones over pale tan sand"
+      - tag: yardang_base
+        body: "wind-eroded yardang base with sand drifts and weathered rock fragments, warm tan-and-brown palette"
+      - tag: lichen_streaked_sand
+        body: "desert sand with orange and grey rock lichen streaks over embedded pebbles, warm desaturated palette"
+      - tag: dry_lake_edge
+        body: "edge of a dry desert lakebed with cracked clay transitioning to salt crust, pale warm palette"
+      - tag: dune_with_brush
+        body: "low desert dune base with sparse dry brush poking through sand, warm yellow-tan with green-brown accents"
+      - tag: mixed_sand_pebbles
+        body: "mixed warm desert sand and small pebbles, sorted by wind, tan and brown grain mosaic"
+
+  rock:
+    category: Rock
+    candidates:
+      - tag: weathered_sandstone
+        body: "weathered warm sandstone outcrop, layered horizontal banding, warm tans and rusty browns, eroded surface"
+      - tag: red_sandstone
+        body: "rich red sandstone rock face with thin cross-bedding, deep warm rust tones with darker veining"
+      - tag: pitted_sandstone
+        body: "heavily pitted weathered sandstone, warm tan surface with small windworn cavities, eroded"
+      - tag: desert_varnish
+        body: "weathered desert rock with dark manganese-iron varnish streaks, warm tans with near-black runoff trails"
+      - tag: granite_desert
+        body: "weathered desert granite with frost-shattered angular fractures, warm grey-pink tones, mineral grain"
+      - tag: layered_mudstone
+        body: "layered desert mudstone with thin parallel sedimentary banding, warm tan-and-cream stripes, weathered"
+      - tag: limestone_eroded
+        body: "eroded desert limestone with rounded cavities and warm cream-tan surface, ancient weathered"
+      - tag: gypsum_crust
+        body: "gypsum crust on desert rock, pale crystalline white-cream surface with weathered edges"
+      - tag: basalt_desert
+        body: "dark desert basalt with wind-polished surface and sparse desert varnish, near-black with warm undertones"
+      - tag: hoodoo_face
+        body: "weathered hoodoo rock face with vertical erosion grooves, warm tan with rusty streaks, dramatic texture"
+      - tag: striated_red_orange
+        body: "striated red-and-orange sandstone with multiple narrow color bands, warm saturated desert palette"
+      - tag: conglomerate
+        body: "desert conglomerate rock with embedded smooth rounded pebbles in warm tan matrix, varied stone sizes"
+      - tag: caprock
+        body: "weathered desert caprock surface with horizontal ledges and warm tan-grey palette, blocky erosion"
+      - tag: salt_weathered
+        body: "salt-weathered desert rock with white efflorescence streaks over warm rusty surface, eroded"

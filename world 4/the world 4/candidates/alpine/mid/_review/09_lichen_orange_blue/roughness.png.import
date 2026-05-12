@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dyjsaqvfggba5"
-path="res://.godot/imported/roughness.png-e7add8ea3c34689d2ddeddd28914e57f.ctex"
+path="res://.godot/imported/roughness.png-b40b050a21058bb1651bda8670ae8c44.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/mid/09_lichen_orange_blue/roughness.png"
-dest_files=["res://.godot/imported/roughness.png-e7add8ea3c34689d2ddeddd28914e57f.ctex"]
+source_file="res://candidates/alpine/mid/_review/09_lichen_orange_blue/roughness.png"
+dest_files=["res://.godot/imported/roughness.png-b40b050a21058bb1651bda8670ae8c44.ctex"]
 
 [params]
 

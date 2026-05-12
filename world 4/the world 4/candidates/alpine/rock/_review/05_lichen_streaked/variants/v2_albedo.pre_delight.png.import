@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://41iv1btq3oxf"
-path="res://.godot/imported/v2_albedo.pre_delight.png-361b167772d57080cc0e94a6f1f0ff67.ctex"
+path="res://.godot/imported/v2_albedo.pre_delight.png-b6497abe0b559a1f2a2ade109b9131fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/rock/05_lichen_streaked/variants/v2_albedo.pre_delight.png"
-dest_files=["res://.godot/imported/v2_albedo.pre_delight.png-361b167772d57080cc0e94a6f1f0ff67.ctex"]
+source_file="res://candidates/alpine/rock/_review/05_lichen_streaked/variants/v2_albedo.pre_delight.png"
+dest_files=["res://.godot/imported/v2_albedo.pre_delight.png-b6497abe0b559a1f2a2ade109b9131fa.ctex"]
 
 [params]
 

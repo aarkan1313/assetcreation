@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dabht8uksunn7"
-path="res://.godot/imported/v2_albedo.png-2f6301e14010493589e170f4e701aa6d.ctex"
+path="res://.godot/imported/v2_albedo.png-ed00afdf1a070b176340ce05926d7b7b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/ground/10_granular_glacier/variants/v2_albedo.png"
-dest_files=["res://.godot/imported/v2_albedo.png-2f6301e14010493589e170f4e701aa6d.ctex"]
+source_file="res://candidates/alpine/ground/_review/10_granular_glacier/variants/v2_albedo.png"
+dest_files=["res://.godot/imported/v2_albedo.png-ed00afdf1a070b176340ce05926d7b7b.ctex"]
 
 [params]
 

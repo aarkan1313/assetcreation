@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://brwylee6wx5lj"
-path="res://.godot/imported/roughness.png-add0d2c48c59f26fbca1f1b499d252bc.ctex"
+path="res://.godot/imported/roughness.png-0a98edbddd4583757d316b9777cefe7a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/rock/02_shattered_granite/roughness.png"
-dest_files=["res://.godot/imported/roughness.png-add0d2c48c59f26fbca1f1b499d252bc.ctex"]
+source_file="res://candidates/alpine/rock/_review/02_shattered_granite/roughness.png"
+dest_files=["res://.godot/imported/roughness.png-0a98edbddd4583757d316b9777cefe7a.ctex"]
 
 [params]
 

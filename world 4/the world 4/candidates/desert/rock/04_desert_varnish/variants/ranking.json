@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.006611,
+    "periodic_locality": 8.426,
+    "richness": 0.886,
+    "composite": 0.794,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_desert_rock_04_desert_varnish_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.07576179384131103,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 8.17,
+      "final_seam_score": 0.006610723639946175,
+      "seam_improvement": 0.06915107020136485
+    }
+  },
+  {
+    "edge_seam": 0.003603,
+    "periodic_locality": 10.781,
+    "richness": 0.755,
+    "composite": 0.7783,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_desert_rock_04_desert_varnish_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.061363241451605155,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.2,
+      "final_seam_score": 0.0036033717782073,
+      "seam_improvement": 0.05775986967339786
+    }
+  },
+  {
+    "edge_seam": 0.008159,
+    "periodic_locality": 11.451,
+    "richness": 0.801,
+    "composite": 0.6822,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_desert_rock_04_desert_varnish_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.05938220501129373,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.15,
+      "final_seam_score": 0.008159436875240293,
+      "seam_improvement": 0.051222768136053434
+    }
+  },
+  {
+    "edge_seam": 0.032338,
+    "periodic_locality": 9.659,
+    "richness": 0.862,
+    "composite": 0.4954,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_desert_rock_04_desert_varnish_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.06614418883362168,
+      "pass1_seconds": 4.07,
+      "pass3_seconds": 8.18,
+      "final_seam_score": 0.03233761879445406,
+      "seam_improvement": 0.03380657003916762
+    }
+  }
+]

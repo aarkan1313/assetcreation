@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://eu5kly6pqsf3"
-path="res://.godot/imported/ao.png-d88cc77b6f685c17f28b2124cb1c42e9.ctex"
+path="res://.godot/imported/ao.png-5bce34d106ede35383f998e3bfc2dc7d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/mid/21_spring_thaw/ao.png"
-dest_files=["res://.godot/imported/ao.png-d88cc77b6f685c17f28b2124cb1c42e9.ctex"]
+source_file="res://candidates/alpine/mid/_review/21_spring_thaw/ao.png"
+dest_files=["res://.godot/imported/ao.png-5bce34d106ede35383f998e3bfc2dc7d.ctex"]
 
 [params]
 

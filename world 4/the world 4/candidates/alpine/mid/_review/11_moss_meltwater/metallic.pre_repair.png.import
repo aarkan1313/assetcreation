@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dfjry12mmf8h7"
-path="res://.godot/imported/metallic.pre_repair.png-971713b1afd1404cb1565903687bc31e.ctex"
+path="res://.godot/imported/metallic.pre_repair.png-e942fb162f0350bb8b2b5c68639db0a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/mid/11_moss_meltwater/metallic.pre_repair.png"
-dest_files=["res://.godot/imported/metallic.pre_repair.png-971713b1afd1404cb1565903687bc31e.ctex"]
+source_file="res://candidates/alpine/mid/_review/11_moss_meltwater/metallic.pre_repair.png"
+dest_files=["res://.godot/imported/metallic.pre_repair.png-e942fb162f0350bb8b2b5c68639db0a2.ctex"]
 
 [params]
 

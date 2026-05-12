@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dlbeuwhxda78v"
-path="res://.godot/imported/roughness.pre_repair.png-b4c155575829eced162c36be4878d002.ctex"
+path="res://.godot/imported/roughness.pre_repair.png-ed6c95ba2a647b4f33c0c7074a3c0c9c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/rock/11_schist_layered/roughness.pre_repair.png"
-dest_files=["res://.godot/imported/roughness.pre_repair.png-b4c155575829eced162c36be4878d002.ctex"]
+source_file="res://candidates/alpine/rock/_review/11_schist_layered/roughness.pre_repair.png"
+dest_files=["res://.godot/imported/roughness.pre_repair.png-ed6c95ba2a647b4f33c0c7074a3c0c9c.ctex"]
 
 [params]
 

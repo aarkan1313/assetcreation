@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://clvfsuvqiyw63"
-path="res://.godot/imported/metallic.png-bfef260199c97086912da1a4a165b11d.ctex"
+path="res://.godot/imported/metallic.png-63ddf8858ff9f049c346564525aa3cd9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://candidates/alpine/mid/16_boulder_snow_caps/metallic.png"
-dest_files=["res://.godot/imported/metallic.png-bfef260199c97086912da1a4a165b11d.ctex"]
+source_file="res://candidates/alpine/mid/_review/16_boulder_snow_caps/metallic.png"
+dest_files=["res://.godot/imported/metallic.png-63ddf8858ff9f049c346564525aa3cd9.ctex"]
 
 [params]
 
