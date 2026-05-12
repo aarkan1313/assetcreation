@@ -47,6 +47,16 @@ progress. Plan at `plans/AXIS1_PATH2_PLAN_2026_05_12.md`. Status:
   PNGs (1024×1024 each) as the global PBR array. Proves the texture-
   array plumbing end-to-end. Build-note:
   `build-notes/STAGE4_1_BUILD_NOTES_2026_05_12.md`.
+- ✅ **Player controller (test harness)**: complete pending editor
+  verification. New `scripts/test_harness/PlayerBody.gd`
+  (CharacterBody3D + 1.8m × 0.4m capsule + own PlayerCamera + G
+  hotkey to toggle fly ↔ walk-physics). Sits BESIDE
+  AnchorCameraRig in opt-in test scenes — rig is untouched, anchor
+  + scale_demo + clipmap captures unaffected by construction. Test
+  scene `scenes/test_harness/clipmap_walk_test.tscn`. Landing-test
+  capture confirms capsule collides with Stage 3.5
+  HeightMapShape3D proxies. Build-note:
+  `build-notes/PLAYER_CONTROLLER_BUILD_NOTES_2026_05_12.md`.
 - ⏳ **Stage 4.2 — Biome culler + multi-biome shader loop**:
   pending. CPU culler picks top-N biomes per ring; worker builds
   N-layer splat; shader loop iterates and blends. Per the parent
