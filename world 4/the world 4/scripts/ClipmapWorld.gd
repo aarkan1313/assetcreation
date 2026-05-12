@@ -26,6 +26,11 @@ extends Node3D
 @export var override_ring_grid_step_base_m: float = 0.0
 @export var override_update_interval_s: float = 0.0
 
+# Debug toggle: disable morph zones on every ring. Lets us A/B the
+# cliff vs no-cliff comparison without editing the .tres (the .tres
+# default would otherwise be overwritten by set_coarse_uniforms()).
+@export var debug_disable_morph: bool = false
+
 # Resolved at _ready, never changes during the session.
 var _ring_count: int = 0
 var _ring_grid_n: int = 0
@@ -334,7 +339,7 @@ func _finalize_ring_upload(r: ClipmapRing, ring_center: Vector2,
 		var inner: ClipmapRing = _rings[r.ring_index - 1]
 		var inner_band_m: float = _morph_band_m_per_ring[r.ring_index - 1]
 		inner.set_coarse_uniforms(
-			tex, origin, extent, n, inner_band_m, true)
+			tex, origin, extent, n, inner_band_m, not debug_disable_morph)
 
 
 # AnchorCameraRig duck-types both ScaleWorld and ClipmapWorld via these
