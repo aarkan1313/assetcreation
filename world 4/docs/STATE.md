@@ -1,6 +1,6 @@
 # W4 — current state snapshot
 
-> **What we have right now.** Last updated: 2026-05-12 (post-Stage-3.6).
+> **What we have right now.** Last updated: 2026-05-12 (post-Stage-4.1).
 >
 > For *what to do next* see `ROADMAP.md`. For *how to take over* see
 > `HANDOFF.md`. This doc is "running inventory" — refresh whenever a
@@ -38,8 +38,19 @@ progress. Plan at `plans/AXIS1_PATH2_PLAN_2026_05_12.md`. Status:
   in `build-notes/MORPH_ZONES_BUILD_NOTES_2026_05_12.md`. Adds
   PITFALLS #11 (missing morph zone). Also fixes the missing half-
   texel offset PITFALLS #8 had documented.
-- ⏳ **Stage 4 — Clipmap splat + biome rendering**: pending. Wires
-  Axis 6 world-splat pattern into the clipmap renderer.
+- ✅ **Stage 4.1 — Single-biome rendering proof**: complete pending
+  editor verification. Per-ring splat `sampler2DArray` (one layer,
+  full weight) + global PBR ground `sampler2DArray` (one layer per
+  catalog biome). Shader fragment loop samples splat × PBR; falls
+  back to `base_albedo` when uniforms aren't bound or weights are
+  zero. Loads scale_demo's existing alpine + desert ground albedo
+  PNGs (1024×1024 each) as the global PBR array. Proves the texture-
+  array plumbing end-to-end. Build-note:
+  `build-notes/STAGE4_1_BUILD_NOTES_2026_05_12.md`.
+- ⏳ **Stage 4.2 — Biome culler + multi-biome shader loop**:
+  pending. CPU culler picks top-N biomes per ring; worker builds
+  N-layer splat; shader loop iterates and blends. Per the parent
+  spec `superpowers/specs/2026-05-12-clipmap-splat-biomes-design.md`.
 
 **Quality-tier system.** Shipped 2026-05-12. JSON source of truth at
 `config/quality_tiers.json`. Python resolver at
@@ -83,12 +94,12 @@ stays for legacy / small-world / 2D-bake cases.
 |---|---|---|
 | Procedural kernels | `pipeline/kernels/`, `scripts/kernels/` | Pure-function height generators. `NoiseStackKernel` (fBm) is v1. `KernelComposer` blends per-biome kernels via softmax. Python + GDScript impls pinned bit-equivalent by cross-impl test. |
 | Quality tiers | `pipeline/quality_tiers.py`, `scripts/QualityTiers.gd`, `config/quality_tiers.json` | Resolves `low`/`medium`/`high`/`ultra` → typed dict. Consumed by every perf-sensitive subsystem. Default `high`. |
-| Clipmap renderer | `scripts/ClipmapWorld.gd`, `scripts/ClipmapRing.gd`, `shaders/clipmap_debug.gdshader`, `shaders/terrain_world_v3.gdshader` | Stages 1+2+3 shipped. Donut meshes + skirts, camera-snap, async displacement via WorkerThreadPool, lit PBR shader with per-fragment normals, HeightMapShape3D collision on inner rings. |
+| Clipmap renderer | `scripts/ClipmapWorld.gd`, `scripts/ClipmapRing.gd`, `shaders/clipmap_debug.gdshader`, `shaders/terrain_world_v3.gdshader` | Stages 1+2+3+3.6+4.1 shipped. Donut meshes + skirts, camera-snap, async heightmap + splat via WorkerThreadPool, lit PBR shader with per-fragment normals + morph zones, single-biome rendering via per-ring splat + global PBR Texture2DArrays, HeightMapShape3D collision on inner rings. |
 | ScaleWorld renderer | `scripts/ScaleWorld.gd`, `shaders/terrain_world_v2.gdshader` | Shipped Axis 6 stack. Tile-paging + world-splat. |
 | Anchor renderer | `scripts/AnchorTerrain.gd`, `shaders/terrain_anchor_v2.gdshader` | Regression baseline. Locked. |
 | Camera rig | `scripts/AnchorCameraRig.gd` | Walk / iso / topdown. Reused by every world. |
 | Biome catalog | `pipeline/biome_catalog.py`, `the world 4/worlds/*/biome_catalog.json` | Per-world biome list + slot mapping. |
-| Texture stack | `pipeline/aaa_texture.py`, `pipeline/generate_biome_kits.py`, `pipeline/build_biome_arrays.py` | ComfyUI-driven texture generation + Texture2DArray packing. |
+| Texture stack | `pipeline/textures/` (W4-owned `tx_*` modules), `pipeline/diversity_run.py`, `pipeline/build_biome_arrays.py` | W4 texture pipeline: 4-pass FLUX → variant rank → delight → hybrid PBR (SM tileable albedo + derive_pbr_v2 maps) → QA. Rebuilt 2026-05-12. See `features/textures.md`. |
 | Splat builders | `pipeline/build_world_splat.py`, `pipeline/build_tile_splats.py` | World-spanning splat (current) + per-tile splat (legacy, kept for 2D bakes). |
 
 Full one-line-per-tool index: `reference/TOOLS.md`.
