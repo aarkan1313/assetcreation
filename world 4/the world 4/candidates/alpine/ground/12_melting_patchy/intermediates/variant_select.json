@@ -1,0 +1,29 @@
+{
+  "id": "w4_alpine_div_12_ground_melting_patchy",
+  "prompt": "tileable seamless texture, melting patchy snow with exposed dark wet earth and frosted edges, half-cold-half-warm mix, overhead perspective",
+  "n_variants": 4,
+  "best_seed": 1042,
+  "best_score": 0.0032468030343647874,
+  "all_scores": [
+    {
+      "id": "w4_alpine_div_12_ground_melting_patchy_v1",
+      "seed": 1042,
+      "score": 0.0032468030343647874
+    },
+    {
+      "id": "w4_alpine_div_12_ground_melting_patchy_v2",
+      "seed": 2042,
+      "score": 0.004373933703383314
+    },
+    {
+      "id": "w4_alpine_div_12_ground_melting_patchy_v3",
+      "seed": 3042,
+      "score": 0.0065001943926314395
+    },
+    {
+      "id": "w4_alpine_div_12_ground_melting_patchy_v0",
+      "seed": 42,
+      "score": 0.008467746780084584
+    }
+  ]
+}

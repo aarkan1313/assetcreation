@@ -1,0 +1,29 @@
+{
+  "id": "w4_alpine_div_15_ground_compact_blue",
+  "prompt": "tileable seamless texture, compact glacial blue-white snow, dense smooth surface with subtle blue ice undertones, overhead perspective",
+  "n_variants": 4,
+  "best_seed": 1042,
+  "best_score": 0.00032268238177623993,
+  "all_scores": [
+    {
+      "id": "w4_alpine_div_15_ground_compact_blue_v1",
+      "seed": 1042,
+      "score": 0.00032268238177623993
+    },
+    {
+      "id": "w4_alpine_div_15_ground_compact_blue_v0",
+      "seed": 42,
+      "score": 0.0003889829935545373
+    },
+    {
+      "id": "w4_alpine_div_15_ground_compact_blue_v3",
+      "seed": 3042,
+      "score": 0.00046561619906368646
+    },
+    {
+      "id": "w4_alpine_div_15_ground_compact_blue_v2",
+      "seed": 2042,
+      "score": 0.00047835168541508977
+    }
+  ]
+}

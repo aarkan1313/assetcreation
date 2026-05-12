@@ -1,0 +1,29 @@
+{
+  "id": "w4_alpine_div_21_mid_frosted_lichen",
+  "prompt": "tileable seamless texture, frosted lichen on cold-grey alpine rock, frost-rim accents, mostly grey with faint green-blue, overhead perspective",
+  "n_variants": 4,
+  "best_seed": 1042,
+  "best_score": 0.011048925180519512,
+  "all_scores": [
+    {
+      "id": "w4_alpine_div_21_mid_frosted_lichen_v1",
+      "seed": 1042,
+      "score": 0.011048925180519512
+    },
+    {
+      "id": "w4_alpine_div_21_mid_frosted_lichen_v2",
+      "seed": 2042,
+      "score": 0.0133679354094579
+    },
+    {
+      "id": "w4_alpine_div_21_mid_frosted_lichen_v3",
+      "seed": 3042,
+      "score": 0.014420825411200018
+    },
+    {
+      "id": "w4_alpine_div_21_mid_frosted_lichen_v0",
+      "seed": 42,
+      "score": 0.01729017047229431
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "w4_alpine_div_16_ground_dusty_old_snow",
+  "prompt": "tileable seamless texture, old snow with thin dust film, faintly tan-grey white, weathered alpine surface, overhead perspective",
+  "n_variants": 4,
+  "best_seed": 1042,
+  "best_score": 0.0006929175682317197,
+  "all_scores": [
+    {
+      "id": "w4_alpine_div_16_ground_dusty_old_snow_v1",
+      "seed": 1042,
+      "score": 0.0006929175682317197
+    },
+    {
+      "id": "w4_alpine_div_16_ground_dusty_old_snow_v0",
+      "seed": 42,
+      "score": 0.004877180651672434
+    },
+    {
+      "id": "w4_alpine_div_16_ground_dusty_old_snow_v3",
+      "seed": 3042,
+      "score": 0.008418191208008938
+    }
+  ]
+}

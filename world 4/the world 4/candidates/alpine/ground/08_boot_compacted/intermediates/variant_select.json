@@ -1,0 +1,29 @@
+{
+  "id": "w4_alpine_div_08_ground_boot_compacted",
+  "prompt": "tileable seamless texture, boot-compacted snow path texture, ridged compressed snow with grain detail, cold white, overhead perspective",
+  "n_variants": 4,
+  "best_seed": 1042,
+  "best_score": 0.00024601415321030373,
+  "all_scores": [
+    {
+      "id": "w4_alpine_div_08_ground_boot_compacted_v1",
+      "seed": 1042,
+      "score": 0.00024601415321030373
+    },
+    {
+      "id": "w4_alpine_div_08_ground_boot_compacted_v2",
+      "seed": 2042,
+      "score": 0.0006633816916683186
+    },
+    {
+      "id": "w4_alpine_div_08_ground_boot_compacted_v3",
+      "seed": 3042,
+      "score": 0.0008097646933984225
+    },
+    {
+      "id": "w4_alpine_div_08_ground_boot_compacted_v0",
+      "seed": 42,
+      "score": 0.001496765066320646
+    }
+  ]
+}

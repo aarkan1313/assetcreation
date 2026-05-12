@@ -1,0 +1,65 @@
+{
+  "id": "w4_alpine_div_09_ground_wind_swept_thin",
+  "seam": {
+    "version": 3,
+    "category": "Snow",
+    "thresholds_applied": {
+      "edge_continuity": 0.005,
+      "junction_visibility": 1.35,
+      "periodic_artifact": 18.0,
+      "richness": 0.45
+    },
+    "checks": {
+      "edge_continuity": {
+        "edge_lr_mse": 0.0012843568110838532,
+        "edge_tb_mse": 0.0012200935743749142,
+        "overall_mse": 0.0012843568110838532,
+        "passed": true,
+        "threshold": 0.005
+      },
+      "junction_visibility": {
+        "seam_energy": 0.010239005088806152,
+        "interior_energy": 0.009584091603755951,
+        "ratio": 1.0683333916376117,
+        "band_pixels": [
+          40,
+          40
+        ],
+        "passed": true,
+        "threshold": 1.35
+      },
+      "periodic_artifact": {
+        "peak_locality_ratio": 18.981414264764943,
+        "peak_pos": [
+          -17,
+          -1
+        ],
+        "peak_period_px": [
+          60.23529411764706,
+          1024.0
+        ],
+        "passed": false,
+        "threshold": 18.0
+      },
+      "richness": {
+        "luminance_entropy": 5.067120923548632,
+        "gradient_p99": 0.10980415344238281,
+        "mean_luminance": 0.8178836107254028,
+        "gradient_p99_normalized": 0.13425400876414992,
+        "score": 0.6745296033100506,
+        "passed": true,
+        "threshold": 0.45
+      }
+    },
+    "grade": "B",
+    "richness_passed": true,
+    "passed": false
+  },
+  "sanity_ok": true,
+  "notes": [],
+  "previews": [
+    "qa/tile_2x2.png",
+    "qa/sphere_preview.png",
+    "qa/plane_preview.png"
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "biome": "alpine",
+  "slot": "mid",
+  "candidates": {
+    "01_lichen_thin_snow": {
+      "id": "01_lichen_thin_snow",
+      "prompt": "tileable seamless texture, thin snow patches over lichen-spotted dark rock, cool grey-blue palette, mixed alpine surface, overhead perspective",
+      "size": 1024,
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": null,
+      "migrated_from_flat": true,
+      "grade": "B",
+      "metrics": {
+        "periodic": 13.938968977306214,
+        "edge": 0.003644246608018875,
+        "junction": 1.0327793969885635,
+        "richness": 0.9514673041798608
+      },
+      "below_A_reason": "periodic_artifact"
+    },
+    "02_moss_grey_rock": {
+      "id": "02_moss_grey_rock",
+      "prompt": "tileable seamless texture, patchy moss on grey alpine rock with snow remnants, muted cool palette, weathered, overhead perspective",
+      "size": 1024,
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": null,
+      "migrated_from_flat": true,
+      "grade": "B",
+      "metrics": {
+        "periodic": 15.681862759897054,
+        "edge": 0.003044557524845004,
+        "junction": 1.0429681551755392,
+        "richness": 0.9315002033692232
+      },
+      "below_A_reason": "periodic_artifact"
+    },
+    "03_exposed_bedrock_ice": {
+      "id": "03_exposed_bedrock_ice",
+      "prompt": "tileable seamless texture, exposed dark bedrock fringed with ice and snow crusts, sharp grey-and-white contrast, overhead perspective",
+      "size": 1024,
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": null,
+      "migrated_from_flat": true,
+      "grade": "A",
+      "metrics": {
+        "periodic": 8.329311686452966,
+        "edge": 0.0007462474168278277,
+        "junction": 0.7944846776326507,
+        "richness": 0.7862385363040041
+      },
+      "below_A_reason": null
+    },
+    "04_lichen_yellow_rock": {
+      "id": "04_lichen_yellow_rock",
+      "prompt": "tileable seamless texture, yellow-green lichen splotches on weathered grey rock with snow dust, alpine high-altitude, overhead perspective",
+      "size": 1024,
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": null,
+      "migrated_from_flat": true,
+      "grade": "B",
+      "metrics": {
+        "periodic": 16.39006724527552,
+        "edge": 0.0042040422558784485,
+        "junction": 1.0874162796057798,
+        "richness": 1.0799475668277605
+      },
+      "below_A_reason": "periodic_artifact"
+    },
+    "05_frosted_lichen": {
+      "id": "05_frosted_lichen",
+      "prompt": "tileable seamless texture, frosted lichen on cold-grey alpine rock, frost-rim accents, mostly grey with faint green-blue, overhead perspective",
+      "size": 1024,
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": null,
+      "migrated_from_flat": true,
+      "grade": "A",
+      "metrics": {
+        "periodic": 12.329789000086713,
+        "edge": 0.003060822142288089,
+        "junction": 1.131805605365988,
+        "richness": 1.105723745277689
+      },
+      "below_A_reason": null
+    },
+    "06_mixed_scree_snow": {
+      "id": "06_mixed_scree_snow",
+      "prompt": "tileable seamless texture, loose scree fragments mixed with crusty snow, mid-grey rock and bright snow patches, overhead perspective",
+      "size": 1024,
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": null,
+      "migrated_from_flat": true,
+      "grade": "B",
+      "metrics": {
+        "periodic": 13.108047027337333,
+        "edge": 0.0007463274523615837,
+        "junction": 1.0103591022539133,
+        "richness": 0.824728484612872
+      },
+      "below_A_reason": "periodic_artifact"
+    },
+    "07_mossy_wet_slate": {
+      "id": "07_mossy_wet_slate",
+      "prompt": "tileable seamless texture, wet dark slate with dense moss carpet, cool damp palette of dark green and slate grey, overhead perspective",
+      "size": 1024,
+      "status": "intermediates_only",
+      "promoted_to": null,
+      "generated_at": null,
+      "migrated_from_flat": true,
+      "grade": null,
+      "metrics": null,
+      "below_A_reason": "no_qa_json"
+    }
+  }
+}

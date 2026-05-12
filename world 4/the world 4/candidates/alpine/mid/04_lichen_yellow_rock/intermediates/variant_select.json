@@ -1,0 +1,29 @@
+{
+  "id": "w4_alpine_div_20_mid_lichen_yellow_rock",
+  "prompt": "tileable seamless texture, yellow-green lichen splotches on weathered grey rock with snow dust, alpine high-altitude, overhead perspective",
+  "n_variants": 4,
+  "best_seed": 1042,
+  "best_score": 0.00810568182159506,
+  "all_scores": [
+    {
+      "id": "w4_alpine_div_20_mid_lichen_yellow_rock_v1",
+      "seed": 1042,
+      "score": 0.00810568182159506
+    },
+    {
+      "id": "w4_alpine_div_20_mid_lichen_yellow_rock_v0",
+      "seed": 42,
+      "score": 0.010392767918288639
+    },
+    {
+      "id": "w4_alpine_div_20_mid_lichen_yellow_rock_v2",
+      "seed": 2042,
+      "score": 0.010945710296220204
+    },
+    {
+      "id": "w4_alpine_div_20_mid_lichen_yellow_rock_v3",
+      "seed": 3042,
+      "score": 0.011272907543072376
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "id": "w4_alpine_div_15_ground_compact_blue",
+  "prompt": "tileable seamless texture, compact glacial blue-white snow, dense smooth surface with subtle blue ice undertones, overhead perspective",
+  "category": "Snow",
+  "quality": "default",
+  "preset": {
+    "variants": 4,
+    "pbr": "sm",
+    "flux_size": 512,
+    "pbr_size": 512,
+    "use_repair": true,
+    "seam_max": 0.01,
+    "delight": 0.4,
+    "min_grade": "B"
+  },
+  "n_variants": 4,
+  "flux_size": 1024,
+  "pbr_size": 1024,
+  "steps": 4,
+  "seed_base": 42,
+  "unet": "flux-2-klein-9b-fp8.safetensors",
+  "clip": "qwen_3_8b_fp8mixed.safetensors",
+  "started_at": "2026-05-12T15:48:52.234070+00:00",
+  "stages": [
+    {
+      "stage": "variants",
+      "seam_score": 0.00032268238177623993
+    },
+    {
+      "stage": "delight",
+      "strength": 0.4
+    },
+    {
+      "stage": "pbr",
+      "method": "stablematerials_standard"
+    },
+    {
+      "stage": "seam_repair"
+    },
+    {
+      "stage": "qa",
+      "grade": "C",
+      "edge_mse": 0.0054577612318098545,
+      "junction_ratio": 0.8383382601598713,
+      "periodic_locality": 16.11768642368908,
+      "sanity_ok": true
+    },
+    {
+      "stage": "blender_preview",
+      "ok": true
+    }
+  ],
+  "passed_gate": false,
+  "grade": "C",
+  "gate": {
+    "min_grade": "B",
+    "grade_pass": false,
+    "sanity_pass": true,
+    "maps_pass": true,
+    "core_maps_present": 4,
+    "failures": [
+      "grade=C below min=B (failed: edge_continuity,periodic_artifact)"
+    ]
+  },
+  "completed_at": "2026-05-12T15:50:38.044784+00:00"
+}

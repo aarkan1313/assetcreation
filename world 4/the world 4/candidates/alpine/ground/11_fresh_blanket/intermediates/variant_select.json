@@ -1,0 +1,29 @@
+{
+  "id": "w4_alpine_div_11_ground_fresh_blanket",
+  "prompt": "tileable seamless texture, fresh untouched snow blanket, soft uniform white, subtle drifts, pristine, overhead perspective",
+  "n_variants": 4,
+  "best_seed": 1042,
+  "best_score": 9.451493259944718e-05,
+  "all_scores": [
+    {
+      "id": "w4_alpine_div_11_ground_fresh_blanket_v1",
+      "seed": 1042,
+      "score": 9.451493259944718e-05
+    },
+    {
+      "id": "w4_alpine_div_11_ground_fresh_blanket_v3",
+      "seed": 3042,
+      "score": 9.667255382545175e-05
+    },
+    {
+      "id": "w4_alpine_div_11_ground_fresh_blanket_v2",
+      "seed": 2042,
+      "score": 0.00012608832829001315
+    },
+    {
+      "id": "w4_alpine_div_11_ground_fresh_blanket_v0",
+      "seed": 42,
+      "score": 0.00018507504637357776
+    }
+  ]
+}

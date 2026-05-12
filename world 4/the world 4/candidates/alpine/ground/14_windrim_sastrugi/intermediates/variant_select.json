@@ -1,0 +1,29 @@
+{
+  "id": "w4_alpine_div_14_ground_windrim_sastrugi",
+  "prompt": "tileable seamless texture, sharp sastrugi wind-ridges in hard snow, alternating bright crest and shadow trough, overhead perspective",
+  "n_variants": 4,
+  "best_seed": 1042,
+  "best_score": 0.0004145891306172055,
+  "all_scores": [
+    {
+      "id": "w4_alpine_div_14_ground_windrim_sastrugi_v1",
+      "seed": 1042,
+      "score": 0.0004145891306172055
+    },
+    {
+      "id": "w4_alpine_div_14_ground_windrim_sastrugi_v0",
+      "seed": 42,
+      "score": 0.0017764601364634396
+    },
+    {
+      "id": "w4_alpine_div_14_ground_windrim_sastrugi_v2",
+      "seed": 2042,
+      "score": 0.002584502833570622
+    },
+    {
+      "id": "w4_alpine_div_14_ground_windrim_sastrugi_v3",
+      "seed": 3042,
+      "score": 0.004863904507881584
+    }
+  ]
+}

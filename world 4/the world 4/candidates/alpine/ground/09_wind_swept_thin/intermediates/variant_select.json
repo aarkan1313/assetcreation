@@ -1,0 +1,29 @@
+{
+  "id": "w4_alpine_div_09_ground_wind_swept_thin",
+  "prompt": "tileable seamless texture, thin wind-swept snow over rocky substrate, scattered ice patches and grey stone, cold palette, overhead perspective",
+  "n_variants": 4,
+  "best_seed": 1042,
+  "best_score": 0.0018332843127868489,
+  "all_scores": [
+    {
+      "id": "w4_alpine_div_09_ground_wind_swept_thin_v1",
+      "seed": 1042,
+      "score": 0.0018332843127868489
+    },
+    {
+      "id": "w4_alpine_div_09_ground_wind_swept_thin_v2",
+      "seed": 2042,
+      "score": 0.00399743572559232
+    },
+    {
+      "id": "w4_alpine_div_09_ground_wind_swept_thin_v0",
+      "seed": 42,
+      "score": 0.005437637323235054
+    },
+    {
+      "id": "w4_alpine_div_09_ground_wind_swept_thin_v3",
+      "seed": 3042,
+      "score": 0.005452404968191321
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "version": 3,
+  "category": "Snow",
+  "thresholds_applied": {
+    "edge_continuity": 0.005,
+    "junction_visibility": 1.35,
+    "periodic_artifact": 13.0,
+    "richness": 0.45
+  },
+  "checks": {
+    "edge_continuity": {
+      "edge_lr_mse": 0.0021481423173099756,
+      "edge_tb_mse": 0.003060822142288089,
+      "overall_mse": 0.003060822142288089,
+      "passed": true,
+      "threshold": 0.005
+    },
+    "junction_visibility": {
+      "seam_energy": 0.02049163170158863,
+      "interior_energy": 0.01810525730252266,
+      "ratio": 1.131805605365988,
+      "band_pixels": [
+        40,
+        40
+      ],
+      "passed": true,
+      "threshold": 1.35
+    },
+    "periodic_artifact": {
+      "peak_locality_ratio": 12.329789000086713,
+      "peak_pos": [
+        -6,
+        17
+      ],
+      "peak_period_px": [
+        170.66666666666666,
+        60.23529411764706
+      ],
+      "passed": true,
+      "threshold": 13.0
+    },
+    "richness": {
+      "luminance_entropy": 7.6910445419232065,
+      "gradient_p99": 0.09673213958740234,
+      "mean_luminance": 0.3592045307159424,
+      "gradient_p99_normalized": 0.26929543286829466,
+      "score": 1.105723745277689,
+      "passed": true,
+      "threshold": 0.45
+    }
+  },
+  "grade": "A",
+  "richness_passed": true,
+  "passed": true
+}

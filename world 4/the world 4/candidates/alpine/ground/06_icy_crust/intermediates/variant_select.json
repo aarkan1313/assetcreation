@@ -1,0 +1,29 @@
+{
+  "id": "w4_alpine_div_06_ground_icy_crust",
+  "prompt": "tileable seamless texture, icy crust over snow, hard glassy surface with reflective crystalline patches, cold blue-white, overhead perspective",
+  "n_variants": 4,
+  "best_seed": 2042,
+  "best_score": 0.001105289070572316,
+  "all_scores": [
+    {
+      "id": "w4_alpine_div_06_ground_icy_crust_v2",
+      "seed": 2042,
+      "score": 0.001105289070572316
+    },
+    {
+      "id": "w4_alpine_div_06_ground_icy_crust_v1",
+      "seed": 1042,
+      "score": 0.0014346095242439806
+    },
+    {
+      "id": "w4_alpine_div_06_ground_icy_crust_v0",
+      "seed": 42,
+      "score": 0.005632744260771098
+    },
+    {
+      "id": "w4_alpine_div_06_ground_icy_crust_v3",
+      "seed": 3042,
+      "score": 0.013278851771253845
+    }
+  ]
+}

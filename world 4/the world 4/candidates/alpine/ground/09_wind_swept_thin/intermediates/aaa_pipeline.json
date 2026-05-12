@@ -1,0 +1,64 @@
+{
+  "id": "w4_alpine_div_09_ground_wind_swept_thin",
+  "prompt": "tileable seamless texture, thin wind-swept snow over rocky substrate, scattered ice patches and grey stone, cold palette, overhead perspective",
+  "category": "Snow",
+  "quality": "default",
+  "preset": {
+    "variants": 4,
+    "pbr": "sm",
+    "flux_size": 512,
+    "pbr_size": 512,
+    "use_repair": true,
+    "seam_max": 0.01,
+    "delight": 0.4,
+    "min_grade": "B"
+  },
+  "n_variants": 4,
+  "flux_size": 1024,
+  "pbr_size": 1024,
+  "steps": 4,
+  "seed_base": 42,
+  "unet": "flux-2-klein-9b-fp8.safetensors",
+  "clip": "qwen_3_8b_fp8mixed.safetensors",
+  "started_at": "2026-05-12T15:39:39.718711+00:00",
+  "stages": [
+    {
+      "stage": "variants",
+      "seam_score": 0.0018332843127868489
+    },
+    {
+      "stage": "delight",
+      "strength": 0.4
+    },
+    {
+      "stage": "pbr",
+      "method": "stablematerials_standard"
+    },
+    {
+      "stage": "seam_repair"
+    },
+    {
+      "stage": "qa",
+      "grade": "B",
+      "edge_mse": 0.0012843568110838532,
+      "junction_ratio": 1.0683333916376117,
+      "periodic_locality": 18.981414264764943,
+      "sanity_ok": true
+    },
+    {
+      "stage": "blender_preview",
+      "ok": true
+    }
+  ],
+  "passed_gate": true,
+  "grade": "B",
+  "gate": {
+    "min_grade": "B",
+    "grade_pass": true,
+    "sanity_pass": true,
+    "maps_pass": true,
+    "core_maps_present": 4,
+    "failures": []
+  },
+  "completed_at": "2026-05-12T15:41:26.002906+00:00"
+}

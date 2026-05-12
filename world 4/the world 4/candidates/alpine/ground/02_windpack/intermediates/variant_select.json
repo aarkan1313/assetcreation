@@ -1,0 +1,29 @@
+{
+  "id": "w4_alpine_div_02_ground_windpack",
+  "prompt": "tileable seamless texture, wind-packed snow with sastrugi ridges, sharp wind-carved striations, bright white, overhead perspective",
+  "n_variants": 4,
+  "best_seed": 1042,
+  "best_score": 0.0007325958169822004,
+  "all_scores": [
+    {
+      "id": "w4_alpine_div_02_ground_windpack_v1",
+      "seed": 1042,
+      "score": 0.0007325958169822004
+    },
+    {
+      "id": "w4_alpine_div_02_ground_windpack_v2",
+      "seed": 2042,
+      "score": 0.0017202368079584775
+    },
+    {
+      "id": "w4_alpine_div_02_ground_windpack_v0",
+      "seed": 42,
+      "score": 0.0019788813196847366
+    },
+    {
+      "id": "w4_alpine_div_02_ground_windpack_v3",
+      "seed": 3042,
+      "score": 0.006592581579200308
+    }
+  ]
+}

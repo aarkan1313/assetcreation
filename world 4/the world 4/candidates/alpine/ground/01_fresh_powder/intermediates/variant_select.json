@@ -1,0 +1,29 @@
+{
+  "id": "w4_alpine_div_01_ground_fresh_powder",
+  "prompt": "tileable seamless texture, fresh powder snow, soft undisturbed surface, bright cold white with subtle blue shadow tones, overhead perspective",
+  "n_variants": 4,
+  "best_seed": 3042,
+  "best_score": 0.0002406225970780469,
+  "all_scores": [
+    {
+      "id": "w4_alpine_div_01_ground_fresh_powder_v3",
+      "seed": 3042,
+      "score": 0.0002406225970780469
+    },
+    {
+      "id": "w4_alpine_div_01_ground_fresh_powder_v1",
+      "seed": 1042,
+      "score": 0.0002515658943619191
+    },
+    {
+      "id": "w4_alpine_div_01_ground_fresh_powder_v0",
+      "seed": 42,
+      "score": 0.0003964120468145515
+    },
+    {
+      "id": "w4_alpine_div_01_ground_fresh_powder_v2",
+      "seed": 2042,
+      "score": 0.0004257427129045169
+    }
+  ]
+}

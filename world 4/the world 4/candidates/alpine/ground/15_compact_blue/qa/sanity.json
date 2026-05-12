@@ -1,0 +1,58 @@
+{
+  "expected_maps": [
+    "albedo",
+    "normal",
+    "roughness"
+  ],
+  "found_maps": [
+    "albedo",
+    "ao",
+    "height",
+    "metallic",
+    "normal",
+    "roughness"
+  ],
+  "missing_maps": [],
+  "category": "Snow",
+  "uniform_roughness_ok": true,
+  "stats": {
+    "albedo": {
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.8530187606811523,
+      "std": 0.2077224999666214
+    },
+    "ao": {
+      "min": 0.6784313917160034,
+      "max": 1.0,
+      "mean": 0.9865200519561768,
+      "std": 0.02699139527976513
+    },
+    "height": {
+      "min": 0.06666667014360428,
+      "max": 1.0,
+      "mean": 0.5032930970191956,
+      "std": 0.1596103012561798
+    },
+    "metallic": {
+      "min": 0.0,
+      "max": 0.2705882489681244,
+      "mean": 0.00428427942097187,
+      "std": 0.008638190105557442
+    },
+    "normal": {
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.6626266241073608,
+      "std": 0.2367796003818512
+    },
+    "roughness": {
+      "min": 0.40392157435417175,
+      "max": 1.0,
+      "mean": 0.7500733733177185,
+      "std": 0.058113887906074524
+    }
+  },
+  "notes": [],
+  "ok": true
+}

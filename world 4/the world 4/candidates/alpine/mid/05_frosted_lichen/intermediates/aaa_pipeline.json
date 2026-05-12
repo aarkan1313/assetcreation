@@ -1,0 +1,64 @@
+{
+  "id": "w4_alpine_div_21_mid_frosted_lichen",
+  "prompt": "tileable seamless texture, frosted lichen on cold-grey alpine rock, frost-rim accents, mostly grey with faint green-blue, overhead perspective",
+  "category": "Snow",
+  "quality": "default",
+  "preset": {
+    "variants": 4,
+    "pbr": "sm",
+    "flux_size": 512,
+    "pbr_size": 512,
+    "use_repair": true,
+    "seam_max": 0.01,
+    "delight": 0.4,
+    "min_grade": "B"
+  },
+  "n_variants": 4,
+  "flux_size": 1024,
+  "pbr_size": 1024,
+  "steps": 4,
+  "seed_base": 42,
+  "unet": "flux-2-klein-9b-fp8.safetensors",
+  "clip": "qwen_3_8b_fp8mixed.safetensors",
+  "started_at": "2026-05-12T15:56:24.506175+00:00",
+  "stages": [
+    {
+      "stage": "variants",
+      "seam_score": 0.011048925180519512
+    },
+    {
+      "stage": "delight",
+      "strength": 0.4
+    },
+    {
+      "stage": "pbr",
+      "method": "stablematerials_standard"
+    },
+    {
+      "stage": "seam_repair"
+    },
+    {
+      "stage": "qa",
+      "grade": "A",
+      "edge_mse": 0.003060822142288089,
+      "junction_ratio": 1.131805605365988,
+      "periodic_locality": 12.329789000086713,
+      "sanity_ok": true
+    },
+    {
+      "stage": "blender_preview",
+      "ok": true
+    }
+  ],
+  "passed_gate": true,
+  "grade": "A",
+  "gate": {
+    "min_grade": "B",
+    "grade_pass": true,
+    "sanity_pass": true,
+    "maps_pass": true,
+    "core_maps_present": 4,
+    "failures": []
+  },
+  "completed_at": "2026-05-12T15:57:35.074159+00:00"
+}
