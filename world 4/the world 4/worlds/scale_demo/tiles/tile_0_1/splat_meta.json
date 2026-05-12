@@ -1,6 +1,6 @@
 {
   "splat_size": 64,
-  "mode": "hard",
+  "mode": "feather",
   "channels": [
     {
       "biome": "forest",
@@ -18,16 +18,34 @@
       }
     },
     {
-      "biome": null,
-      "ground": null,
-      "mid": null,
-      "rock": null
+      "biome": "alpine",
+      "ground": {
+        "tier": "standard",
+        "layer": 1
+      },
+      "mid": {
+        "tier": "standard",
+        "layer": 2
+      },
+      "rock": {
+        "tier": "standard",
+        "layer": 3
+      }
     },
     {
-      "biome": null,
-      "ground": null,
-      "mid": null,
-      "rock": null
+      "biome": "wetland",
+      "ground": {
+        "tier": "standard",
+        "layer": 9
+      },
+      "mid": {
+        "tier": "standard",
+        "layer": 10
+      },
+      "rock": {
+        "tier": "standard",
+        "layer": 11
+      }
     },
     {
       "biome": null,

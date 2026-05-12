@@ -1,6 +1,6 @@
 {
   "splat_size": 64,
-  "mode": "hard",
+  "mode": "feather",
   "channels": [
     {
       "biome": "rocky",

@@ -120,3 +120,107 @@ def test_hard_mode_handles_unknown_biome(tmp_path: Path):
     with pytest.raises(bts.SplatError, match="tropical"):
         bts.build_splats(bundle_dir=bundle, manifest=fake_manifest(),
                          mode="hard", splat_size=8, feather_width_m=0.0)
+
+
+# ---- feather mode ----
+
+def test_feather_mode_writes_per_tile_splat_and_meta(tmp_path: Path):
+    bundle = make_world(tmp_path)
+    bts.build_splats(
+        bundle_dir=bundle, manifest=fake_manifest(),
+        mode="feather", splat_size=16, feather_width_m=64.0,
+    )
+    for tx, tz in [(0, 0), (1, 0), (0, 1), (1, 1)]:
+        splat_path = bundle / "tiles" / f"tile_{tx}_{tz}" / "splat.png"
+        meta_path = bundle / "tiles" / f"tile_{tx}_{tz}" / "splat_meta.json"
+        assert splat_path.is_file()
+        assert meta_path.is_file()
+
+
+def test_feather_mode_ramps_at_boundary(tmp_path: Path):
+    """A tile with a different-biome east neighbor should have a smooth
+    ramp on its easternmost feather strip from this-biome (ch0) to the
+    east-neighbor's channel."""
+    bundle = make_world(tmp_path)
+    # 4 tiles: (0,0)=wetland with neighbors (1,0)=desert (E), (0,1)=forest (N).
+    # NESW iteration order means channels become: [wetland, forest, desert, _].
+    bts.build_splats(bundle_dir=bundle, manifest=fake_manifest(),
+                     mode="feather", splat_size=16, feather_width_m=64.0)
+    splat = np.asarray(
+        Image.open(bundle / "tiles" / "tile_0_0" / "splat.png").convert("RGBA"))
+    meta = json.loads(
+        (bundle / "tiles" / "tile_0_0" / "splat_meta.json").read_text())
+    # Find which channel holds the east neighbor (desert).
+    east_ch = next(i for i, c in enumerate(meta["channels"])
+                   if c["biome"] == "desert")
+    # splat_size=16, tile_size_m=256 -> 16m/pixel. feather_width_m=64m = 4
+    # pixels of ramp. Use mid row (row 8) so the north ramp (forest) is
+    # already 0 at this row (it dies off after 4 rows from the north edge).
+    mid_row = 8
+    # Mid-tile column (col 4): pure this-biome (wetland).
+    assert splat[mid_row, 4, 0] > 240, "mid-tile column should be ~255 in ch0"
+    assert splat[mid_row, 4, east_ch] < 20, "mid-tile column should be ~0 in east neighbor ch"
+    # East edge (col 15): east neighbor should have meaningful weight.
+    assert splat[mid_row, 15, east_ch] >= 100, \
+        f"easternmost column row 8 should have substantial east-neighbor weight (got {splat[mid_row, 15, east_ch]})"
+    # Ramp monotonicity: east neighbor weight non-decreasing as we move east.
+    east_strip = splat[mid_row, 12:16, east_ch].astype(np.int32)
+    assert (np.diff(east_strip) >= 0).all(), \
+        f"east-neighbor weight should be monotonically non-decreasing on east strip, got {east_strip}"
+
+
+def test_feather_mode_channels_list_neighbor_biomes(tmp_path: Path):
+    """splat_meta.json must list this-biome in channel 0 and each unique
+    different-biome neighbor in channels 1..3."""
+    bundle = make_world(tmp_path)
+    bts.build_splats(bundle_dir=bundle, manifest=fake_manifest(),
+                     mode="feather", splat_size=16, feather_width_m=64.0)
+    # tile_0_0 = wetland. East = desert (different), north = forest (different).
+    # No other neighbors (south/west off-world). So channels: wetland, desert,
+    # forest, (empty).
+    meta = json.loads(
+        (bundle / "tiles" / "tile_0_0" / "splat_meta.json").read_text())
+    assert meta["channels"][0]["biome"] == "wetland"
+    biomes_in_meta = sorted([
+        meta["channels"][i]["biome"] for i in range(4)
+        if meta["channels"][i]["biome"] is not None
+    ])
+    assert biomes_in_meta == ["desert", "forest", "wetland"]
+
+
+def test_feather_mode_interior_tile_unchanged(tmp_path: Path):
+    """A tile whose neighbors all match its biome should have a pure
+    hard splat (every pixel = (255, 0, 0, 0)) — no boundary to feather."""
+    bundle = tmp_path / "scale_demo"
+    bundle.mkdir()
+    for tx in range(3):
+        for tz in range(3):
+            td = bundle / "tiles" / f"tile_{tx}_{tz}"
+            td.mkdir(parents=True)
+            (td / "meta.json").write_text(json.dumps({
+                "tile_x": tx, "tile_z": tz, "tile_size_m": 256.0,
+                "biome": "alpine",
+            }), encoding="utf-8")
+    bts.build_splats(bundle_dir=bundle, manifest=fake_manifest(),
+                     mode="feather", splat_size=8, feather_width_m=32.0)
+    splat = np.asarray(
+        Image.open(bundle / "tiles" / "tile_1_1" / "splat.png").convert("RGBA"))
+    assert (splat[..., 0] == 255).all(), "interior tile must be pure ch0"
+    assert (splat[..., 1] == 0).all()
+    assert (splat[..., 2] == 0).all()
+    assert (splat[..., 3] == 0).all()
+
+
+def test_feather_mode_weight_sum_normalised(tmp_path: Path):
+    """At every pixel, the four channel weights should sum to ~255
+    (255 = weight 1.0 after dividing by 255 in the shader)."""
+    bundle = make_world(tmp_path)
+    bts.build_splats(bundle_dir=bundle, manifest=fake_manifest(),
+                     mode="feather", splat_size=16, feather_width_m=64.0)
+    splat = np.asarray(
+        Image.open(bundle / "tiles" / "tile_0_0" / "splat.png").convert("RGBA")
+    ).astype(np.int32)
+    sums = splat.sum(axis=-1)
+    # Allow small rounding error from float->uint8 quantization (±2).
+    assert sums.min() >= 253, f"min sum {sums.min()} should be ~255"
+    assert sums.max() <= 257, f"max sum {sums.max()} should be ~255"
