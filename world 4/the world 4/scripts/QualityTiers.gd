@@ -16,6 +16,16 @@ extends RefCounted
 const CONFIG_PATH := "res://config/quality_tiers.json"
 const PROJECT_SETTING_KEY := "world/quality_tier"
 
+# Keys that must be integer-typed after JSON parse. Godot's JSON.parse_string
+# returns all numbers as float, so `range(cfg["ring_count"])` blows up
+# unless we coerce. List drives _coerce_int_keys below.
+const _INT_KEYS := [
+	"ring_count",
+	"ring_grid_n",
+	"collision_rings",
+	"splat_texture_array_size",
+]
+
 static var _cached_resolved: Dictionary = {}
 
 
@@ -73,5 +83,12 @@ static func _resolve(tier: String) -> Dictionary:
 			return {}
 		tier = fallback
 	var out: Dictionary = (tiers[tier] as Dictionary).duplicate(true)
+	_coerce_int_keys(out)
 	out["_tier"] = tier
 	return out
+
+
+static func _coerce_int_keys(d: Dictionary) -> void:
+	for k in _INT_KEYS:
+		if d.has(k):
+			d[k] = int(d[k])

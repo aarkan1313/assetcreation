@@ -42,6 +42,7 @@ def test_python_matches_godot(tmp_path: Path):
     assert set(resolved.keys()) == {"low", "medium", "high", "ultra"}
 
     mismatches = []
+    type_mismatches = []
     for tier_name, godot_dict in resolved.items():
         py_dict = resolve(tier_name)
         for key in KNOWN_KEYS:
@@ -52,10 +53,26 @@ def test_python_matches_godot(tmp_path: Path):
                     "tier": tier_name, "key": key,
                     "godot": g, "python": p,
                 })
+            # Type check: int vs float must agree exactly. Godot's
+            # JSON.parse_string returns all numbers as float; the
+            # GDScript resolver coerces int-typed keys back to int.
+            # If that coercion drifts, downstream consumers break
+            # (range() can't take float, etc).
+            if type(g) is not type(p):
+                type_mismatches.append({
+                    "tier": tier_name, "key": key,
+                    "godot_type": type(g).__name__,
+                    "python_type": type(p).__name__,
+                    "godot_value": g, "python_value": p,
+                })
         assert godot_dict.get("_tier") == tier_name
         assert py_dict.get("_tier") == tier_name
 
     assert not mismatches, (
-        "Python/GDScript QualityTiers disagree:\n"
+        "Python/GDScript QualityTiers value mismatch:\n"
         + "\n".join(repr(m) for m in mismatches)
+    )
+    assert not type_mismatches, (
+        "Python/GDScript QualityTiers type mismatch:\n"
+        + "\n".join(repr(m) for m in type_mismatches)
     )
