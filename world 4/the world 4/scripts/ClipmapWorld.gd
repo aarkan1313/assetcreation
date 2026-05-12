@@ -65,6 +65,13 @@ var _last_snap_per_ring: Array[Vector2] = []
 # (RenderingServer is main-thread-only in Godot 4.5).
 var _ring_tasks: Dictionary = {}
 
+# Set by _exit_tree / _notification before draining worker tasks.
+# Workers check this at the top of _worker_compute_heightmap and bail
+# out without touching _composer or _ring_tasks. Prevents
+# use-after-free crashes when the editor stops the scene while
+# workers are mid-flight.
+var _shutting_down: bool = false
+
 
 func _ready() -> void:
 	_resolve_config()
@@ -233,11 +240,20 @@ func _enqueue_ring_refresh(r: ClipmapRing, ring_center: Vector2) -> void:
 # Worker thread entry. Pure: reads _composer + world_seed only, both
 # of which are unchanged after _ready. The result is stored in the
 # task entry; main thread picks it up on next _poll_ring_tasks tick.
+#
+# Shutdown discipline: _shutting_down is set by _exit_tree BEFORE
+# Godot frees children. Workers that haven't started yet bail
+# immediately; workers mid-loop will finish their _compute call (the
+# null-guard there returns a zero buffer) then skip the result store.
 func _worker_compute_heightmap(payload: Dictionary) -> void:
+	if _shutting_down:
+		return
 	var n: int = int(payload["grid_n"])
 	var step: float = float(payload["grid_step_m"])
 	var ring_center: Vector2 = payload["ring_center"]
 	var heights: PackedFloat32Array = _compute_heightmap_floats(n, step, ring_center)
+	if _shutting_down:
+		return
 	var ring_idx: int = int(payload["ring_idx"])
 	if _ring_tasks.has(ring_idx):
 		_ring_tasks[ring_idx]["result"] = heights
@@ -268,10 +284,32 @@ func _compute_heightmap_floats(n: int, step: float,
 	return floats
 
 
-# Drain in-flight worker tasks before the scene frees _composer.
-# Without this, shutdown causes a flurry of "null instance" errors
-# from workers that started before quit() and haven't run yet.
+# Drain in-flight worker tasks before children get freed. Without
+# this, shutdown causes a flurry of "null instance" errors at best,
+# editor crash at worst (worker writes to _ring_tasks after `self`
+# has been deleted).
+#
+# Order matters:
+#   1. Set _shutting_down so any unstarted workers bail.
+#   2. wait_for_task_completion on each in-flight task. Workers
+#      mid-loop drop their result; workers not yet started no-op.
+#   3. Clear _ring_tasks last.
 func _exit_tree() -> void:
+	_drain_pending_workers()
+
+
+func _notification(what: int) -> void:
+	# Editor F6 stop and window-close-while-running both fire
+	# NOTIFICATION_WM_CLOSE_REQUEST on the root viewport before child
+	# nodes are torn down. Belt-and-suspenders alongside _exit_tree.
+	if what == NOTIFICATION_WM_CLOSE_REQUEST or what == NOTIFICATION_PREDELETE:
+		_drain_pending_workers()
+
+
+func _drain_pending_workers() -> void:
+	if _shutting_down:
+		return
+	_shutting_down = true
 	for ring_idx_v in _ring_tasks.keys():
 		var task: Dictionary = _ring_tasks[ring_idx_v]
 		var task_id: int = int(task["task_id"])
@@ -282,6 +320,8 @@ func _exit_tree() -> void:
 # Drains finished worker tasks. For each completed non-superseded task,
 # uploads the resulting heightmap to the GPU on the main thread.
 func _poll_ring_tasks() -> void:
+	if _shutting_down:
+		return
 	var done: Array[int] = []
 	for ring_idx_v in _ring_tasks.keys():
 		var ring_idx: int = int(ring_idx_v)
