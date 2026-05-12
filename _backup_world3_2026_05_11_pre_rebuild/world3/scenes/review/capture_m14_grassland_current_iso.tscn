@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/capture_visual_remediation/source_stack_runtime_grassland_current_iso.tscn" id="scene"]
+[ext_resource type="Script" path="res://scripts/HeadlessCapture.gd" id="cap_script"]
+
+[node name="CaptureM14GrasslandCurrentIso" type="Node"]
+
+[node name="Inner" parent="." instance=ExtResource("scene")]
+
+[node name="Capture" type="Node" parent="."]
+script = ExtResource("cap_script")
+output_path = "res://docs/captures/m14/m14_grassland_current_iso.png"
+warmup_frames = 120
+viewport_size = Vector2i(1600, 1000)

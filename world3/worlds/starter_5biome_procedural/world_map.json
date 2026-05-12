@@ -1,0 +1,422 @@
+{
+  "schema_version": 1,
+  "plan_id": "starter_5biome_procedural",
+  "bounds_m": [
+    1280.0,
+    1280.0
+  ],
+  "tile_size_m": 256.0,
+  "seed": 2026051102,
+  "grid": [
+    5,
+    5
+  ],
+  "tiles": [
+    {
+      "tile_xy": [
+        0,
+        0
+      ],
+      "world_xy_m": [
+        0.0,
+        0.0
+      ],
+      "biome": "temperate_forest",
+      "source_type": "procedural",
+      "bundle_id": "starter_5biome_procedural__tile_0_0",
+      "request_path": "world3/worlds/starter_5biome_procedural/requests/starter_5biome_procedural__tile_0_0.json",
+      "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_0_0",
+      "tile_seed": 1377365690
+    },
+    {
+      "tile_xy": [
+        1,
+        0
+      ],
+      "world_xy_m": [
+        256.0,
+        0.0
+      ],
+      "biome": "temperate_forest",
+      "source_type": "procedural",
+      "bundle_id": "starter_5biome_procedural__tile_1_0",
+      "request_path": "world3/worlds/starter_5biome_procedural/requests/starter_5biome_procedural__tile_1_0.json",
+      "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_1_0",
+      "tile_seed": 1784103395
+    },
+    {
+      "tile_xy": [
+        2,
+        0
+      ],
+      "world_xy_m": [
+        512.0,
+        0.0
+      ],
+      "biome": "temperate_forest",
+      "source_type": "procedural",
+      "bundle_id": "starter_5biome_procedural__tile_2_0",
+      "request_path": "world3/worlds/starter_5biome_procedural/requests/starter_5biome_procedural__tile_2_0.json",
+      "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_2_0",
+      "tile_seed": 786723028
+    },
+    {
+      "tile_xy": [
+        3,
+        0
+      ],
+      "world_xy_m": [
+        768.0,
+        0.0
+      ],
+      "biome": "desert",
+      "source_type": "procedural",
+      "bundle_id": "starter_5biome_procedural__tile_3_0",
+      "request_path": "world3/worlds/starter_5biome_procedural/requests/starter_5biome_procedural__tile_3_0.json",
+      "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_3_0",
+      "tile_seed": 2001338690
+    },
+    {
+      "tile_xy": [
+        4,
+        0
+      ],
+      "world_xy_m": [
+        1024.0,
+        0.0
+      ],
+      "biome": "desert",
+      "source_type": "procedural",
+      "bundle_id": "starter_5biome_procedural__tile_4_0",
+      "request_path": "world3/worlds/starter_5biome_procedural/requests/starter_5biome_procedural__tile_4_0.json",
+      "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_4_0",
+      "tile_seed": 2141141875
+    },
+    {
+      "tile_xy": [
+        0,
+        1
+      ],
+      "world_xy_m": [
+        0.0,
+        256.0
+      ],
+      "biome": "temperate_forest",
+      "source_type": "procedural",
+      "bundle_id": "starter_5biome_procedural__tile_0_1",
+      "request_path": "world3/worlds/starter_5biome_procedural/requests/starter_5biome_procedural__tile_0_1.json",
+      "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_0_1",
+      "tile_seed": 1923427491
+    },
+    {
+      "tile_xy": [
+        1,
+        1
+      ],
+      "world_xy_m": [
+        256.0,
+        256.0
+      ],
+      "biome": "temperate_forest",
+      "source_type": "procedural",
+      "bundle_id": "starter_5biome_procedural__tile_1_1",
+      "request_path": "world3/worlds/starter_5biome_procedural/requests/starter_5biome_procedural__tile_1_1.json",
+      "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_1_1",
+      "tile_seed": 1220838537
+    },
+    {
+      "tile_xy": [
+        2,
+        1
+      ],
+      "world_xy_m": [
+        512.0,
+        256.0
+      ],
+      "biome": "alpine",
+      "source_type": "procedural",
+      "bundle_id": "starter_5biome_procedural__tile_2_1",
+      "request_path": "world3/worlds/starter_5biome_procedural/requests/starter_5biome_procedural__tile_2_1.json",
+      "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_2_1",
+      "tile_seed": 1470591918
+    },
+    {
+      "tile_xy": [
+        3,
+        1
+      ],
+      "world_xy_m": [
+        768.0,
+        256.0
+      ],
+      "biome": "desert",
+      "source_type": "procedural",
+      "bundle_id": "starter_5biome_procedural__tile_3_1",
+      "request_path": "world3/worlds/starter_5biome_procedural/requests/starter_5biome_procedural__tile_3_1.json",
+      "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_3_1",
+      "tile_seed": 440119485
+    },
+    {
+      "tile_xy": [
+        4,
+        1
+      ],
+      "world_xy_m": [
+        1024.0,
+        256.0
+      ],
+      "biome": "desert",
+      "source_type": "procedural",
+      "bundle_id": "starter_5biome_procedural__tile_4_1",
+      "request_path": "world3/worlds/starter_5biome_procedural/requests/starter_5biome_procedural__tile_4_1.json",
+      "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_4_1",
+      "tile_seed": 2078274353
+    },
+    {
+      "tile_xy": [
+        0,
+        2
+      ],
+      "world_xy_m": [
+        0.0,
+        512.0
+      ],
+      "biome": "temperate_forest",
+      "source_type": "procedural",
+      "bundle_id": "starter_5biome_procedural__tile_0_2",
+      "request_path": "world3/worlds/starter_5biome_procedural/requests/starter_5biome_procedural__tile_0_2.json",
+      "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_0_2",
+      "tile_seed": 1634594478
+    },
+    {
+      "tile_xy": [
+        1,
+        2
+      ],
+      "world_xy_m": [
+        256.0,
+        512.0
+      ],
+      "biome": "alpine",
+      "source_type": "procedural",
+      "bundle_id": "starter_5biome_procedural__tile_1_2",
+      "request_path": "world3/worlds/starter_5biome_procedural/requests/starter_5biome_procedural__tile_1_2.json",
+      "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_1_2",
+      "tile_seed": 1132991009
+    },
+    {
+      "tile_xy": [
+        2,
+        2
+      ],
+      "world_xy_m": [
+        512.0,
+        512.0
+      ],
+      "biome": "alpine",
+      "source_type": "procedural",
+      "bundle_id": "starter_5biome_procedural__tile_2_2",
+      "request_path": "world3/worlds/starter_5biome_procedural/requests/starter_5biome_procedural__tile_2_2.json",
+      "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_2_2",
+      "tile_seed": 1029097532
+    },
+    {
+      "tile_xy": [
+        3,
+        2
+      ],
+      "world_xy_m": [
+        768.0,
+        512.0
+      ],
+      "biome": "grassland",
+      "source_type": "procedural",
+      "bundle_id": "starter_5biome_procedural__tile_3_2",
+      "request_path": "world3/worlds/starter_5biome_procedural/requests/starter_5biome_procedural__tile_3_2.json",
+      "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_3_2",
+      "tile_seed": 1943123527
+    },
+    {
+      "tile_xy": [
+        4,
+        2
+      ],
+      "world_xy_m": [
+        1024.0,
+        512.0
+      ],
+      "biome": "grassland",
+      "source_type": "procedural",
+      "bundle_id": "starter_5biome_procedural__tile_4_2",
+      "request_path": "world3/worlds/starter_5biome_procedural/requests/starter_5biome_procedural__tile_4_2.json",
+      "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_4_2",
+      "tile_seed": 25419520
+    },
+    {
+      "tile_xy": [
+        0,
+        3
+      ],
+      "world_xy_m": [
+        0.0,
+        768.0
+      ],
+      "biome": "tundra",
+      "source_type": "procedural",
+      "bundle_id": "starter_5biome_procedural__tile_0_3",
+      "request_path": "world3/worlds/starter_5biome_procedural/requests/starter_5biome_procedural__tile_0_3.json",
+      "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_0_3",
+      "tile_seed": 183544416
+    },
+    {
+      "tile_xy": [
+        1,
+        3
+      ],
+      "world_xy_m": [
+        256.0,
+        768.0
+      ],
+      "biome": "alpine",
+      "source_type": "procedural",
+      "bundle_id": "starter_5biome_procedural__tile_1_3",
+      "request_path": "world3/worlds/starter_5biome_procedural/requests/starter_5biome_procedural__tile_1_3.json",
+      "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_1_3",
+      "tile_seed": 1336933382
+    },
+    {
+      "tile_xy": [
+        2,
+        3
+      ],
+      "world_xy_m": [
+        512.0,
+        768.0
+      ],
+      "biome": "grassland",
+      "source_type": "procedural",
+      "bundle_id": "starter_5biome_procedural__tile_2_3",
+      "request_path": "world3/worlds/starter_5biome_procedural/requests/starter_5biome_procedural__tile_2_3.json",
+      "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_2_3",
+      "tile_seed": 516122704
+    },
+    {
+      "tile_xy": [
+        3,
+        3
+      ],
+      "world_xy_m": [
+        768.0,
+        768.0
+      ],
+      "biome": "grassland",
+      "source_type": "procedural",
+      "bundle_id": "starter_5biome_procedural__tile_3_3",
+      "request_path": "world3/worlds/starter_5biome_procedural/requests/starter_5biome_procedural__tile_3_3.json",
+      "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_3_3",
+      "tile_seed": 796459966
+    },
+    {
+      "tile_xy": [
+        4,
+        3
+      ],
+      "world_xy_m": [
+        1024.0,
+        768.0
+      ],
+      "biome": "grassland",
+      "source_type": "procedural",
+      "bundle_id": "starter_5biome_procedural__tile_4_3",
+      "request_path": "world3/worlds/starter_5biome_procedural/requests/starter_5biome_procedural__tile_4_3.json",
+      "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_4_3",
+      "tile_seed": 1885980942
+    },
+    {
+      "tile_xy": [
+        0,
+        4
+      ],
+      "world_xy_m": [
+        0.0,
+        1024.0
+      ],
+      "biome": "tundra",
+      "source_type": "procedural",
+      "bundle_id": "starter_5biome_procedural__tile_0_4",
+      "request_path": "world3/worlds/starter_5biome_procedural/requests/starter_5biome_procedural__tile_0_4.json",
+      "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_0_4",
+      "tile_seed": 1045327341
+    },
+    {
+      "tile_xy": [
+        1,
+        4
+      ],
+      "world_xy_m": [
+        256.0,
+        1024.0
+      ],
+      "biome": "tundra",
+      "source_type": "procedural",
+      "bundle_id": "starter_5biome_procedural__tile_1_4",
+      "request_path": "world3/worlds/starter_5biome_procedural/requests/starter_5biome_procedural__tile_1_4.json",
+      "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_1_4",
+      "tile_seed": 1278905368
+    },
+    {
+      "tile_xy": [
+        2,
+        4
+      ],
+      "world_xy_m": [
+        512.0,
+        1024.0
+      ],
+      "biome": "grassland",
+      "source_type": "procedural",
+      "bundle_id": "starter_5biome_procedural__tile_2_4",
+      "request_path": "world3/worlds/starter_5biome_procedural/requests/starter_5biome_procedural__tile_2_4.json",
+      "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_2_4",
+      "tile_seed": 442230731
+    },
+    {
+      "tile_xy": [
+        3,
+        4
+      ],
+      "world_xy_m": [
+        768.0,
+        1024.0
+      ],
+      "biome": "grassland",
+      "source_type": "procedural",
+      "bundle_id": "starter_5biome_procedural__tile_3_4",
+      "request_path": "world3/worlds/starter_5biome_procedural/requests/starter_5biome_procedural__tile_3_4.json",
+      "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_3_4",
+      "tile_seed": 735683270
+    },
+    {
+      "tile_xy": [
+        4,
+        4
+      ],
+      "world_xy_m": [
+        1024.0,
+        1024.0
+      ],
+      "biome": "grassland",
+      "source_type": "procedural",
+      "bundle_id": "starter_5biome_procedural__tile_4_4",
+      "request_path": "world3/worlds/starter_5biome_procedural/requests/starter_5biome_procedural__tile_4_4.json",
+      "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_4_4",
+      "tile_seed": 1918278965
+    }
+  ],
+  "perspectives": [
+    "iso",
+    "topdown"
+  ],
+  "style_pack": "photoreal",
+  "generated_at": "2026-05-11T16:42:44Z"
+}

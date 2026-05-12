@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "kind": "runtime_image_cache",
+  "source_path": "res://textures/m4_splat/alpine_height_slope_weights_rgba.png",
+  "source_sha256": "203db2087dd24a5548ffeb68bfc63c1ffcbd8c0cb0cce56c197ce5fb7a002c95",
+  "width": 1024,
+  "height": 1024,
+  "format": "rgba8",
+  "data_path": "res://textures/source_stack/gloss_procedural_canyon_rock_proof_e1_example/runtime_cache/alpine_splat_rgba8.bin"
+}

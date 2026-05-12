@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "plan_id": "starter_2x2_procedural",
+  "bounds_m": [
+    512.0,
+    512.0
+  ],
+  "tile_size_m": 256.0,
+  "seed": 2026051101,
+  "grid": [
+    2,
+    2
+  ],
+  "tiles": [
+    {
+      "tile_xy": [
+        0,
+        0
+      ],
+      "world_xy_m": [
+        0.0,
+        0.0
+      ],
+      "biome": "tundra",
+      "source_type": "procedural",
+      "bundle_id": "starter_2x2_procedural__tile_0_0",
+      "request_path": "world3/worlds/starter_2x2_procedural/requests/starter_2x2_procedural__tile_0_0.json",
+      "bundle_dir": "world3/worlds/starter_2x2_procedural/bundles/starter_2x2_procedural__tile_0_0",
+      "tile_seed": 760130546
+    },
+    {
+      "tile_xy": [
+        1,
+        0
+      ],
+      "world_xy_m": [
+        256.0,
+        0.0
+      ],
+      "biome": "tundra",
+      "source_type": "procedural",
+      "bundle_id": "starter_2x2_procedural__tile_1_0",
+      "request_path": "world3/worlds/starter_2x2_procedural/requests/starter_2x2_procedural__tile_1_0.json",
+      "bundle_dir": "world3/worlds/starter_2x2_procedural/bundles/starter_2x2_procedural__tile_1_0",
+      "tile_seed": 468677613
+    },
+    {
+      "tile_xy": [
+        0,
+        1
+      ],
+      "world_xy_m": [
+        0.0,
+        256.0
+      ],
+      "biome": "tundra",
+      "source_type": "procedural",
+      "bundle_id": "starter_2x2_procedural__tile_0_1",
+      "request_path": "world3/worlds/starter_2x2_procedural/requests/starter_2x2_procedural__tile_0_1.json",
+      "bundle_dir": "world3/worlds/starter_2x2_procedural/bundles/starter_2x2_procedural__tile_0_1",
+      "tile_seed": 291792909
+    },
+    {
+      "tile_xy": [
+        1,
+        1
+      ],
+      "world_xy_m": [
+        256.0,
+        256.0
+      ],
+      "biome": "tundra",
+      "source_type": "procedural",
+      "bundle_id": "starter_2x2_procedural__tile_1_1",
+      "request_path": "world3/worlds/starter_2x2_procedural/requests/starter_2x2_procedural__tile_1_1.json",
+      "bundle_dir": "world3/worlds/starter_2x2_procedural/bundles/starter_2x2_procedural__tile_1_1",
+      "tile_seed": 692862317
+    }
+  ],
+  "perspectives": [
+    "iso"
+  ],
+  "style_pack": "photoreal",
+  "generated_at": "2026-05-11T16:08:17Z"
+}

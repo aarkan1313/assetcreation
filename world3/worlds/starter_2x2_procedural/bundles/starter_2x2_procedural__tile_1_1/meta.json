@@ -1,0 +1,33 @@
+{
+  "name": "Phase F.3 emitted from plan 'starter_2x2_procedural' tile (1, 1) biome 'tundra'",
+  "builder": "build_procedural_neighbor_bundle.py (F.3.4 lib-driven)",
+  "source": "procedural",
+  "source_material_id": "tundra_moss",
+  "source_material_albedo": "world3/textures/wgv3/tundra_moss/albedo.png",
+  "heightmap_size_px": [
+    512,
+    1024
+  ],
+  "world_size_x_m": 256.0,
+  "world_size_z_m": 256.0,
+  "world_size_m": 256.0,
+  "elevation_min_m": 200.0,
+  "elevation_max_m": 224.0,
+  "elevation_range_m": 24.0,
+  "material": "tundra_moss",
+  "texture_is_real_imagery": false,
+  "procedural_neighbor": {
+    "version": 2,
+    "seed": 692862317,
+    "macro_policy": "m11_bundle_lib_general_domain_composition",
+    "height_policy": "domain_weighted_heightfield_with_junction_softening",
+    "target": "F.3.4 plan-driven M11-shape bundle"
+  },
+  "layers": {
+    "render_albedo": "res://worlds/starter_2x2_procedural/bundles/starter_2x2_procedural__tile_1_1/layers/render_albedo.png",
+    "source_valid_mask": "res://worlds/starter_2x2_procedural/bundles/starter_2x2_procedural__tile_1_1/layers/source_valid_mask.png",
+    "splat_weights_rgba": "res://worlds/starter_2x2_procedural/bundles/starter_2x2_procedural__tile_1_1/layers/splat_weights_rgba.png"
+  },
+  "bundle_material_path": "res://worlds/starter_2x2_procedural/bundles/starter_2x2_procedural__tile_1_1/material.tres",
+  "biome_kit": "tundra"
+}

@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "updated": "2026-05-08",
+  "thresholds": {
+    "high_frequency_energy": 0.055,
+    "gradient_p95": 0.13,
+    "green_dominance": 0.045
+  },
+  "results": [
+    {
+      "id": "m8_grassland_grass_calm_v3",
+      "source": "procedural",
+      "color_family": "pale-dry-grassland-straw",
+      "albedo": "world3/textures/wgv3_comfy_candidates/m8_grassland_grass_calm_v3/albedo.png",
+      "high_frequency_energy": 0.037443,
+      "gradient_p95": 0.096886,
+      "green_dominance": 0.000248,
+      "saturation_mean": 0.327361,
+      "noise_score": 0.049726,
+      "flags": [],
+      "status": "ok"
+    }
+  ]
+}

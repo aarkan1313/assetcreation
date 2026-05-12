@@ -1,0 +1,212 @@
+{
+  "schema_version": 1,
+  "plan_id": "starter_5biome_procedural",
+  "generated_at": "2026-05-11T14:51:59Z",
+  "biome_count": 5,
+  "results": [
+    {
+      "biome": "tundra",
+      "material_id": "tundra_moss",
+      "tile_xy": [
+        0,
+        4
+      ],
+      "capture_path": "docs/captures/review/in_context_starter_5biome_procedural_tundra_iso.png",
+      "catalog_metrics": {
+        "median_lab": [
+          22.125736236572266,
+          -5.770951271057129,
+          9.97917652130127
+        ],
+        "luminance_p5_p95": [
+          0.06103129684925079,
+          0.6461144089698792
+        ],
+        "luminance_range": 0.5850831121206284,
+        "high_freq_energy": 0.02347635105252266
+      },
+      "rendered_metrics": {
+        "median_lab": [
+          59.56298065185547,
+          -7.979929447174072,
+          10.97109317779541
+        ],
+        "luminance_p5_p95": [
+          0.29996782541275024,
+          1.0
+        ],
+        "luminance_range": 0.7000321745872498,
+        "high_freq_energy": 0.028903421014547348
+      },
+      "verdict": "warn",
+      "notes": [
+        "palette drift Lab=37.5"
+      ]
+    },
+    {
+      "biome": "alpine",
+      "material_id": "rock_dark",
+      "tile_xy": [
+        1,
+        3
+      ],
+      "capture_path": "docs/captures/review/in_context_starter_5biome_procedural_alpine_iso.png",
+      "catalog_metrics": {
+        "median_lab": [
+          21.183753967285156,
+          3.167778253555298,
+          6.143701076507568
+        ],
+        "luminance_p5_p95": [
+          0.15984706580638885,
+          0.21781647205352783
+        ],
+        "luminance_range": 0.05796940624713898,
+        "high_freq_energy": 0.003820385318249464
+      },
+      "rendered_metrics": {
+        "median_lab": [
+          100.0,
+          0.0,
+          0.0
+        ],
+        "luminance_p5_p95": [
+          0.4929482340812683,
+          1.0
+        ],
+        "luminance_range": 0.5070517659187317,
+        "high_freq_energy": 0.003671487793326378
+      },
+      "verdict": "fail",
+      "notes": [
+        "palette drift Lab=79.1 (catalog vs rendered)",
+        "luminance range drift=0.45"
+      ]
+    },
+    {
+      "biome": "grassland",
+      "material_id": "grassland_grass",
+      "tile_xy": [
+        2,
+        4
+      ],
+      "capture_path": "docs/captures/review/in_context_starter_5biome_procedural_grassland_iso.png",
+      "catalog_metrics": {
+        "median_lab": [
+          67.23983764648438,
+          0.722348690032959,
+          43.403255462646484
+        ],
+        "luminance_p5_p95": [
+          0.33813804388046265,
+          0.8786572217941284
+        ],
+        "luminance_range": 0.5405191779136658,
+        "high_freq_energy": 0.035111360251903534
+      },
+      "rendered_metrics": {
+        "median_lab": [
+          96.7247085571289,
+          -9.896069526672363,
+          40.60801315307617
+        ],
+        "luminance_p5_p95": [
+          0.9015419483184814,
+          0.9861263036727905
+        ],
+        "luminance_range": 0.08458435535430908,
+        "high_freq_energy": 0.0076487804763019085
+      },
+      "verdict": "fail",
+      "notes": [
+        "palette drift Lab=31.5",
+        "luminance range drift=0.46",
+        "high-freq energy ratio=4.59"
+      ]
+    },
+    {
+      "biome": "temperate_forest",
+      "material_id": "temperate_forest_grass",
+      "tile_xy": [
+        0,
+        2
+      ],
+      "capture_path": "docs/captures/review/in_context_starter_5biome_procedural_temperate_forest_iso.png",
+      "catalog_metrics": {
+        "median_lab": [
+          37.52687454223633,
+          1.6191303730010986,
+          7.724893093109131
+        ],
+        "luminance_p5_p95": [
+          0.19743607938289642,
+          0.6815968751907349
+        ],
+        "luminance_range": 0.48416079580783844,
+        "high_freq_energy": 0.021781962364912033
+      },
+      "rendered_metrics": {
+        "median_lab": [
+          70.04119110107422,
+          9.369850158691406,
+          24.119640350341797
+        ],
+        "luminance_p5_p95": [
+          0.45776471495628357,
+          0.9266611933708191
+        ],
+        "luminance_range": 0.4688964784145355,
+        "high_freq_energy": 0.02164156176149845
+      },
+      "verdict": "warn",
+      "notes": [
+        "palette drift Lab=37.2"
+      ]
+    },
+    {
+      "biome": "desert",
+      "material_id": "desert_canyon_rock",
+      "tile_xy": [
+        3,
+        1
+      ],
+      "capture_path": "docs/captures/review/in_context_starter_5biome_procedural_desert_iso.png",
+      "catalog_metrics": {
+        "median_lab": [
+          64.03534698486328,
+          5.2778425216674805,
+          17.150901794433594
+        ],
+        "luminance_p5_p95": [
+          0.5518172979354858,
+          0.6625270843505859
+        ],
+        "luminance_range": 0.1107097864151001,
+        "high_freq_energy": 0.011069903150200844
+      },
+      "rendered_metrics": {
+        "median_lab": [
+          91.3642578125,
+          -0.06204843521118164,
+          36.592830657958984
+        ],
+        "luminance_p5_p95": [
+          0.5638392567634583,
+          0.9920721650123596
+        ],
+        "luminance_range": 0.42823290824890137,
+        "high_freq_energy": 0.0021487826015800238
+      },
+      "verdict": "fail",
+      "notes": [
+        "palette drift Lab=34.0",
+        "luminance range drift=0.32",
+        "high-freq energy ratio=5.15"
+      ]
+    }
+  ],
+  "pass_count": 0,
+  "warn_count": 2,
+  "fail_count": 3,
+  "error_count": 0
+}

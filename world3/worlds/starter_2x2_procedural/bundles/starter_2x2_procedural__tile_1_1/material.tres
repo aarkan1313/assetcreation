@@ -1,0 +1,111 @@
+[gd_resource type="ShaderMaterial" load_steps=40 format=3]
+
+[ext_resource type="Shader" path="res://shaders/terrain_splat_unified.gdshader" id="shader"]
+[ext_resource type="Texture2D" path="res://worlds/starter_2x2_procedural/bundles/starter_2x2_procedural__tile_1_1/layers/render_albedo.png" id="source_macro_albedo"]
+[ext_resource type="Texture2D" path="res://worlds/starter_2x2_procedural/bundles/starter_2x2_procedural__tile_1_1/layers/source_valid_mask.png" id="source_macro_valid_mask"]
+[ext_resource type="Texture2D" path="res://worlds/starter_2x2_procedural/bundles/starter_2x2_procedural__tile_1_1/layers/splat_weights_rgba.png" id="splat_weights"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_moss/albedo.png" id="grass_albedo"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_moss/normal.png" id="grass_normal"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_moss/roughness.png" id="grass_rough"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_moss/ao.png" id="grass_ao"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_moss/albedo.png" id="grass_detail_albedo"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_moss/normal.png" id="grass_detail_normal"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_moss/roughness.png" id="grass_detail_rough"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_lichen/albedo.png" id="dirt_albedo"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_lichen/normal.png" id="dirt_normal"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_lichen/roughness.png" id="dirt_rough"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_lichen/ao.png" id="dirt_ao"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_lichen/albedo.png" id="dirt_detail_albedo"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_lichen/normal.png" id="dirt_detail_normal"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_lichen/roughness.png" id="dirt_detail_rough"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_frost_rock/albedo.png" id="rock_light_albedo"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_frost_rock/normal.png" id="rock_light_normal"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_frost_rock/roughness.png" id="rock_light_rough"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_frost_rock/ao.png" id="rock_light_ao"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_frost_rock/albedo.png" id="rock_light_detail_albedo"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_frost_rock/normal.png" id="rock_light_detail_normal"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_frost_rock/roughness.png" id="rock_light_detail_rough"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_dark_rock/albedo.png" id="rock_dark_albedo"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_dark_rock/normal.png" id="rock_dark_normal"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_dark_rock/roughness.png" id="rock_dark_rough"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_dark_rock/ao.png" id="rock_dark_ao"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_dark_rock/albedo.png" id="rock_dark_detail_albedo"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_dark_rock/normal.png" id="rock_dark_detail_normal"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_dark_rock/roughness.png" id="rock_dark_detail_rough"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_ice/albedo.png" id="snow_albedo"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_ice/normal.png" id="snow_normal"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_ice/roughness.png" id="snow_rough"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_ice/ao.png" id="snow_ao"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_ice/albedo.png" id="snow_detail_albedo"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_ice/normal.png" id="snow_detail_normal"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/tundra_ice/roughness.png" id="snow_detail_rough"]
+
+[resource]
+shader = ExtResource("shader")
+shader_parameter/use_source_macro_albedo = true
+shader_parameter/source_macro_albedo = ExtResource("source_macro_albedo")
+shader_parameter/source_macro_strength = 0.76
+shader_parameter/use_source_macro_valid_mask = true
+shader_parameter/source_macro_valid_mask = ExtResource("source_macro_valid_mask")
+shader_parameter/use_source_macro_world_uv = true
+shader_parameter/use_splat_weights = true
+shader_parameter/splat_weights = ExtResource("splat_weights")
+shader_parameter/splat_uv_scale = 1.0
+shader_parameter/splat_weight_power = 1.48
+shader_parameter/grass_albedo = ExtResource("grass_albedo")
+shader_parameter/grass_normal = ExtResource("grass_normal")
+shader_parameter/grass_rough = ExtResource("grass_rough")
+shader_parameter/grass_ao = ExtResource("grass_ao")
+shader_parameter/grass_detail_albedo = ExtResource("grass_detail_albedo")
+shader_parameter/grass_detail_normal = ExtResource("grass_detail_normal")
+shader_parameter/grass_detail_rough = ExtResource("grass_detail_rough")
+shader_parameter/dirt_albedo = ExtResource("dirt_albedo")
+shader_parameter/dirt_normal = ExtResource("dirt_normal")
+shader_parameter/dirt_rough = ExtResource("dirt_rough")
+shader_parameter/dirt_ao = ExtResource("dirt_ao")
+shader_parameter/dirt_detail_albedo = ExtResource("dirt_detail_albedo")
+shader_parameter/dirt_detail_normal = ExtResource("dirt_detail_normal")
+shader_parameter/dirt_detail_rough = ExtResource("dirt_detail_rough")
+shader_parameter/rock_light_albedo = ExtResource("rock_light_albedo")
+shader_parameter/rock_light_normal = ExtResource("rock_light_normal")
+shader_parameter/rock_light_rough = ExtResource("rock_light_rough")
+shader_parameter/rock_light_ao = ExtResource("rock_light_ao")
+shader_parameter/rock_light_detail_albedo = ExtResource("rock_light_detail_albedo")
+shader_parameter/rock_light_detail_normal = ExtResource("rock_light_detail_normal")
+shader_parameter/rock_light_detail_rough = ExtResource("rock_light_detail_rough")
+shader_parameter/rock_dark_albedo = ExtResource("rock_dark_albedo")
+shader_parameter/rock_dark_normal = ExtResource("rock_dark_normal")
+shader_parameter/rock_dark_rough = ExtResource("rock_dark_rough")
+shader_parameter/rock_dark_ao = ExtResource("rock_dark_ao")
+shader_parameter/rock_dark_detail_albedo = ExtResource("rock_dark_detail_albedo")
+shader_parameter/rock_dark_detail_normal = ExtResource("rock_dark_detail_normal")
+shader_parameter/rock_dark_detail_rough = ExtResource("rock_dark_detail_rough")
+shader_parameter/snow_albedo = ExtResource("snow_albedo")
+shader_parameter/snow_normal = ExtResource("snow_normal")
+shader_parameter/snow_rough = ExtResource("snow_rough")
+shader_parameter/snow_ao = ExtResource("snow_ao")
+shader_parameter/snow_detail_albedo = ExtResource("snow_detail_albedo")
+shader_parameter/snow_detail_normal = ExtResource("snow_detail_normal")
+shader_parameter/snow_detail_rough = ExtResource("snow_detail_rough")
+shader_parameter/world_uv_scale = 0.012
+shader_parameter/hex_strength = 1.0
+shader_parameter/blend_sharpness = 8.0
+shader_parameter/roughness_strength = 1.0
+shader_parameter/normal_strength = 0.054
+shader_parameter/macro_scale = 180.0
+shader_parameter/macro_value_strength = 0.0
+shader_parameter/macro_hue_strength = 0.0
+shader_parameter/detail_uv_scale_mult = 11.0
+shader_parameter/detail_albedo_strength = 0.03
+shader_parameter/detail_normal_strength = 0.03
+shader_parameter/detail_rough_strength = 0.025
+shader_parameter/detail_fade_start_m = 6.0
+shader_parameter/detail_fade_end_m = 52.0
+shader_parameter/elev_min_m = 0.0
+shader_parameter/elev_range_m = 1.0
+shader_parameter/slope_threshold = 1.0
+shader_parameter/slope_softness = 0.15
+shader_parameter/h_grass_dirt = 0.2
+shader_parameter/h_dirt_rockdark = 0.55
+shader_parameter/h_rockdark_snow = 0.85
+shader_parameter/h_band_softness = 0.08

@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "kind": "organic_repair_candidate",
+  "source_material_id": "tundra_lichen",
+  "candidate_id": "tundra_lichen_repair_calm",
+  "source_albedo": "world3/textures/wgv3/tundra_lichen/albedo.png",
+  "candidate_dir": "world3/textures/wgv3_repair/tundra_lichen_repair_calm",
+  "sheet": "world3/docs/captures/visual_remediation/tundra_lichen_repair_calm_before_after.png",
+  "metrics_before": {
+    "high_frequency_energy": 0.042001,
+    "gradient_p95": 0.142026,
+    "green_dominance": 0.044482,
+    "saturation_mean": 0.332659,
+    "noise_score": 0.060953
+  },
+  "metrics_after": {
+    "high_frequency_energy": 0.002713,
+    "gradient_p95": 0.006895,
+    "green_dominance": 0.018263,
+    "saturation_mean": 0.074432,
+    "noise_score": 0.003021
+  },
+  "target": "reduce_object_silhouette_noise_before_terrain_context_review"
+}

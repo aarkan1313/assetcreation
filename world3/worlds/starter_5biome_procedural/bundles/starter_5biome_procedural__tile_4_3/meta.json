@@ -1,0 +1,33 @@
+{
+  "name": "Phase F.3 emitted from plan 'starter_5biome_procedural' tile (4, 3) biome 'grassland'",
+  "builder": "build_procedural_neighbor_bundle.py (F.3.4 lib-driven)",
+  "source": "procedural",
+  "source_material_id": "grassland_grass",
+  "source_material_albedo": "world3/textures/wgv3/grassland_grass/albedo.png",
+  "heightmap_size_px": [
+    512,
+    1024
+  ],
+  "world_size_x_m": 256.0,
+  "world_size_z_m": 256.0,
+  "world_size_m": 256.0,
+  "elevation_min_m": 300.0,
+  "elevation_max_m": 312.0,
+  "elevation_range_m": 12.0,
+  "material": "grassland_grass",
+  "texture_is_real_imagery": false,
+  "procedural_neighbor": {
+    "version": 2,
+    "seed": 1885980942,
+    "macro_policy": "m11_bundle_lib_general_domain_composition",
+    "height_policy": "domain_weighted_heightfield_with_junction_softening",
+    "target": "F.3.4 plan-driven M11-shape bundle"
+  },
+  "layers": {
+    "render_albedo": "res://worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_4_3/layers/render_albedo.png",
+    "source_valid_mask": "res://worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_4_3/layers/source_valid_mask.png",
+    "splat_weights_rgba": "res://worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_4_3/layers/splat_weights_rgba.png"
+  },
+  "bundle_material_path": "res://worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_4_3/material.tres",
+  "biome_kit": "grassland"
+}

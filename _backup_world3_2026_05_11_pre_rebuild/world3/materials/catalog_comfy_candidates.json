@@ -1,0 +1,299 @@
+{
+  "version": 1,
+  "updated": "2026-05-10",
+  "role": "quarantined_comfy_regeneration_candidates_not_canonical_catalog",
+  "materials": [
+    {
+      "id": "m8_grassland_grass_calm_v3",
+      "source": "procedural",
+      "asset_status": "comfy_regen_candidate",
+      "provenance": {
+        "type": "comfy_regeneration_candidate",
+        "source_material_id": "grassland_grass",
+        "source_asset_id": "m8_grassland_grass_calm_v3",
+        "tool": "pipelines/textures/aaa_texture.py",
+        "prompt": "top-down orthographic photogrammetry texture of dry savanna hardpan soil with sparse flattened straw fibers and chopped dry grass fragments, continuous low ground material, mostly tan soil and muted straw, even overcast lighting, seamless PBR terrain texture, no green grass blades, no tufts, no radial clumps, no living plants, no perspective, no shadows",
+        "quality": "strict",
+        "pbr_backend": "sm",
+        "qa_grade": "A",
+        "passed_gate": true,
+        "seam_checks": {
+          "edge_continuity_mse": 0.0025115341413766146,
+          "junction_ratio": 0.9831596139090968,
+          "periodic_locality": 13.710696519018054
+        },
+        "policy": "sidecar_candidate_passed_first_terrain_context_not_canonical",
+        "terrain_context_review": {
+          "doc": "world3/docs/M8_COMFYUI_TERRAIN_CONTEXT_REVIEW_2026_05_08.md",
+          "normal_source_stack_result": "safe_no_visible_regression_source_macro_dominant",
+          "detail_stress_result": "better_than_current_less_tufted_still_pale_hazy",
+          "promotion": "do_not_promote_until_m4_m7_rerender_trials_pass",
+          "captures": [
+            "world3/docs/captures/visual_remediation/grassland_comfy_v3_terrain_context_contact_sheet.png",
+            "world3/docs/captures/visual_remediation/grassland_comfy_v3_detail_stress_contact_sheet.png"
+          ],
+          "noise_audit": "world3/docs/M8_COMFYUI_CANDIDATE_NOISE_AUDIT.md"
+        },
+        "settings": {
+          "world_uv_scale": 0.015625,
+          "hex_strength": 1.0,
+          "blend_sharpness": 8.0,
+          "roughness_strength": 1.0,
+          "normal_strength": 0.0,
+          "detail_uv_scale_mult": 10.0,
+          "detail_albedo_strength": 0.05,
+          "detail_normal_strength": 0.0,
+          "detail_rough_strength": 0.015,
+          "detail_fade_start_m": 4.0,
+          "detail_fade_end_m": 42.0
+        }
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "pale-dry-grassland-straw",
+      "runtime_texture_dir": "world3/textures/wgv3_comfy_candidates/m8_grassland_grass_calm_v3",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3_comfy_candidates/m8_grassland_grass_calm_v3/albedo.png",
+        "normal": "world3/textures/wgv3_comfy_candidates/m8_grassland_grass_calm_v3/normal.png",
+        "roughness": "world3/textures/wgv3_comfy_candidates/m8_grassland_grass_calm_v3/roughness.png",
+        "metallic": "world3/textures/wgv3_comfy_candidates/m8_grassland_grass_calm_v3/metallic.png",
+        "height": "world3/textures/wgv3_comfy_candidates/m8_grassland_grass_calm_v3/height.png",
+        "ao": "world3/textures/wgv3_comfy_candidates/m8_grassland_grass_calm_v3/ao.png",
+        "tile_2x2": "world3/textures/wgv3_comfy_candidates/m8_grassland_grass_calm_v3/qa_tile_2x2.png",
+        "blender_combo": "world3/textures/wgv3_comfy_candidates/m8_grassland_grass_calm_v3/qa_blender_combo.png",
+        "detail_albedo": "world3/textures/wgv3_comfy_candidates/m8_grassland_grass_calm_v3/albedo.png",
+        "detail_normal": "world3/textures/wgv3_comfy_candidates/m8_grassland_grass_calm_v3/normal.png",
+        "detail_roughness": "world3/textures/wgv3_comfy_candidates/m8_grassland_grass_calm_v3/roughness.png"
+      },
+      "shader_binding": "terrain_hex_detail",
+      "validated_views": {
+        "close": "candidate_pass_not_canonical",
+        "mid": "candidate_pass_not_canonical",
+        "far": "candidate_pass_not_canonical"
+      }
+    },
+    {
+      "id": "m14_temperate_forest_humus_v3_auraflow",
+      "source": "procedural",
+      "asset_status": "comfy_regen_candidate",
+      "provenance": {
+        "type": "comfy_regeneration_candidate",
+        "source_material_id": "temperate_forest_grass",
+        "source_asset_id": "m14_temperate_forest_humus_v3_auraflow",
+        "tool": "pipelines/textures/diversity_compare.py + pipelines/textures/derive_pbr_v2.py",
+        "prompt": "top-down orthographic macro terrain material of fine decomposed temperate forest humus soil, dark brown black loam with crumbly granular organic texture and subtle tan fiber specks, continuous edge-to-edge terrain substrate, low contrast, muted natural colors, even overcast lighting, no whole leaves, no leaf silhouettes, no leaf veins, no twigs, no branches, no moss clumps, no green plants, no scattered objects, no cracked mud plates, no central focal object, no perspective, no shadows",
+        "quality": "m14_visual_bakeoff",
+        "pbr_backend": "derive_pbr_v2",
+        "qa_grade": "visual_sidecar_candidate",
+        "passed_gate": false,
+        "seam_checks": {
+          "edge_continuity_mse": 0.00181,
+          "junction_ratio": null,
+          "periodic_locality": null
+        },
+        "policy": "sidecar_candidate_terrain_context_required_not_promoted",
+        "terrain_context_review": {
+          "doc": "world3/docs/M14_TEMPERATE_FOREST_FLOOR_BAKEOFF_REVIEW_2026_05_10.md",
+          "scene": "world3/scenes/review/source_stack_gloss_temperate_forest_humus_v3_tour.tscn",
+          "smoke_captures": [
+            "world3/docs/captures/m14/m14_temperate_forest_humus_v3_gloss_tour_smoke.png",
+            "world3/docs/captures/m14/m14_temperate_forest_humus_v3_gloss_tour_close_smoke.png",
+            "world3/docs/captures/m14/m14_temperate_forest_humus_v3_gloss_tour_3d_smoke.png"
+          ],
+          "status": "runtime_live_review_pass_conditional",
+          "live_review": {
+            "date": "2026-05-10",
+            "user_read": "looked pretty great",
+            "verdict": "accepted_as_m14_sidecar_evidence",
+            "limits": [
+              "clean Gloss source-stack review, not true forest-source promotion",
+              "substrate/detail only; forest identity belongs to M15 scatter/features"
+            ]
+          }
+        },
+        "settings": {
+          "world_uv_scale": 0.015625,
+          "hex_strength": 1.0,
+          "blend_sharpness": 8.0,
+          "roughness_strength": 1.0,
+          "normal_strength": 0.0,
+          "detail_uv_scale_mult": 10.0,
+          "detail_albedo_strength": 0.05,
+          "detail_normal_strength": 0.0,
+          "detail_rough_strength": 0.015,
+          "detail_fade_start_m": 4.0,
+          "detail_fade_end_m": 42.0
+        }
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "dark-forest-humus",
+      "runtime_texture_dir": "world3/textures/wgv3_comfy_candidates/m14_temperate_forest_humus_v3_auraflow",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3_comfy_candidates/m14_temperate_forest_humus_v3_auraflow/albedo.png",
+        "normal": "world3/textures/wgv3_comfy_candidates/m14_temperate_forest_humus_v3_auraflow/normal.png",
+        "roughness": "world3/textures/wgv3_comfy_candidates/m14_temperate_forest_humus_v3_auraflow/roughness.png",
+        "metallic": "world3/textures/wgv3_comfy_candidates/m14_temperate_forest_humus_v3_auraflow/metallic.png",
+        "height": "world3/textures/wgv3_comfy_candidates/m14_temperate_forest_humus_v3_auraflow/height.png",
+        "ao": "world3/textures/wgv3_comfy_candidates/m14_temperate_forest_humus_v3_auraflow/ao.png",
+        "detail_albedo": "world3/textures/wgv3_comfy_candidates/m14_temperate_forest_humus_v3_auraflow/albedo.png",
+        "detail_normal": "world3/textures/wgv3_comfy_candidates/m14_temperate_forest_humus_v3_auraflow/normal.png",
+        "detail_roughness": "world3/textures/wgv3_comfy_candidates/m14_temperate_forest_humus_v3_auraflow/roughness.png"
+      },
+      "shader_binding": "terrain_hex_detail",
+      "validated_views": {
+        "close": "conditional_pass_gloss_source",
+        "mid": "conditional_pass_gloss_source",
+        "far": "conditional_pass_gloss_source",
+        "iso": "conditional_pass_gloss_source",
+        "topdown": "conditional_pass_gloss_source"
+      }
+    },
+    {
+      "id": "m14_tundra_moss_flux50_b_202605207",
+      "source": "procedural",
+      "asset_status": "comfy_regen_candidate",
+      "provenance": {
+        "type": "comfy_regeneration_candidate",
+        "source_material_id": "tundra_moss",
+        "source_asset_id": "m14_tundra_moss_flux50_b_202605207",
+        "tool": "pipelines/textures/diversity_compare.py + pipelines/textures/derive_pbr_v2.py",
+        "prompt": "pale sage-gray tundra peat loam substrate, faint olive moss film, fine mineral grit and organic fibers, flat overhead terrain material, medium-light value, low object count, no black crush, no moss cushions, no tufts, no clumps, no individual plants, no stones as focal objects, no perspective, no shadows",
+        "quality": "m14_flux50_visual_bakeoff",
+        "pbr_backend": "derive_pbr_v2",
+        "qa_grade": "visual_sidecar_candidate",
+        "passed_gate": false,
+        "seam_checks": {
+          "edge_continuity_mse": 0.007448407106791859,
+          "junction_ratio": null,
+          "periodic_locality": null
+        },
+        "policy": "sidecar_candidate_terrain_context_required_not_promoted",
+        "terrain_context_review": {
+          "doc": "world3/docs/M14_TUNDRA_MOSS_RUNTIME_SIDECAR_REVIEW_2026_05_10.md",
+          "scene": "world3/scenes/review/source_stack_gloss_tundra_moss_flux50_b8_tour.tscn",
+          "status": "conditional_smoke_pass_gloss_source",
+          "smoke_captures": [
+            "world3/docs/captures/m14/m14_tundra_moss_flux50_b8_gloss_topdown.png",
+            "world3/docs/captures/m14/m14_tundra_moss_flux50_b8_gloss_iso.png",
+            "world3/docs/captures/m14/m14_tundra_moss_flux50_b8_gloss_3d.png",
+            "world3/docs/captures/m14/m14_tundra_moss_flux50_b8_gloss_close.png",
+            "world3/docs/captures/m14/m14_tundra_moss_flux50_b8_gloss_contact_sheet.png"
+          ],
+          "limits": [
+            "Gloss Mountain is a clean real-source terrain context, not a true tundra-region promotion",
+            "candidate is substrate/detail only; M15 scatter/features still carry moss cushions, lichen islands, stones, and plants"
+          ]
+        },
+        "settings": {
+          "world_uv_scale": 0.015625,
+          "hex_strength": 1.0,
+          "blend_sharpness": 8.0,
+          "roughness_strength": 1.0,
+          "normal_strength": 0.0,
+          "detail_uv_scale_mult": 10.0,
+          "detail_albedo_strength": 0.05,
+          "detail_normal_strength": 0.0,
+          "detail_rough_strength": 0.015,
+          "detail_fade_start_m": 4.0,
+          "detail_fade_end_m": 42.0
+        }
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "pale-sage-peat-loam",
+      "runtime_texture_dir": "world3/textures/wgv3_comfy_candidates/m14_tundra_moss_flux50_b_202605207",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3_comfy_candidates/m14_tundra_moss_flux50_b_202605207/albedo.png",
+        "normal": "world3/textures/wgv3_comfy_candidates/m14_tundra_moss_flux50_b_202605207/normal.png",
+        "roughness": "world3/textures/wgv3_comfy_candidates/m14_tundra_moss_flux50_b_202605207/roughness.png",
+        "metallic": "world3/textures/wgv3_comfy_candidates/m14_tundra_moss_flux50_b_202605207/metallic.png",
+        "height": "world3/textures/wgv3_comfy_candidates/m14_tundra_moss_flux50_b_202605207/height.png",
+        "ao": "world3/textures/wgv3_comfy_candidates/m14_tundra_moss_flux50_b_202605207/ao.png",
+        "detail_albedo": "world3/textures/wgv3_comfy_candidates/m14_tundra_moss_flux50_b_202605207/albedo.png",
+        "detail_normal": "world3/textures/wgv3_comfy_candidates/m14_tundra_moss_flux50_b_202605207/normal.png",
+        "detail_roughness": "world3/textures/wgv3_comfy_candidates/m14_tundra_moss_flux50_b_202605207/roughness.png"
+      },
+      "shader_binding": "terrain_hex_detail",
+      "validated_views": {
+        "close": "conditional_pass_gloss_source",
+        "mid": "conditional_pass_gloss_source",
+        "far": "conditional_pass_gloss_source",
+        "iso": "conditional_pass_gloss_source",
+        "topdown": "conditional_pass_gloss_source"
+      }
+    },
+    {
+      "id": "m14_tundra_lichen_flux10_09_202605259",
+      "source": "procedural",
+      "asset_status": "comfy_regen_candidate",
+      "provenance": {
+        "type": "comfy_regeneration_candidate",
+        "source_material_id": "tundra_lichen",
+        "source_asset_id": "m14_tundra_lichen_flux10_09_202605259",
+        "tool": "pipelines/textures/diversity_compare.py + pipelines/textures/derive_pbr_v2.py",
+        "prompt": "top-down orthographic macro seamless PBR terrain material of arctic tundra biocrust soil, pale sage gray lichen-colored mineral crust dispersed as fine dusty mottling through compact dark brown gray gritty soil, continuous matte low-contrast substrate, tiny grit and tiny stone chips only, subtle off-white gray-green speckling, no visible lichen colonies, no round disks, no rosettes, no circular spots, no moss tufts, no green plants, no large stones, no object clusters, no central focal object, no perspective, no shadows, even overcast lighting",
+        "quality": "m14_flux10_visual_bakeoff",
+        "pbr_backend": "derive_pbr_v2",
+        "qa_grade": "visual_sidecar_candidate",
+        "passed_gate": false,
+        "seam_checks": {
+          "edge_continuity_mse": 0.01487297891487611,
+          "junction_ratio": null,
+          "periodic_locality": null
+        },
+        "policy": "sidecar_candidate_terrain_context_required_not_promoted",
+        "terrain_context_review": {
+          "doc": "world3/docs/M14_TUNDRA_LICHEN_BAKEOFF_REVIEW_2026_05_10.md",
+          "scene": "world3/scenes/review/source_stack_gloss_tundra_lichen_flux10_09_tour.tscn",
+          "status": "conditional_smoke_pass_gloss_source",
+          "smoke_captures": [
+            "world3/docs/captures/m14/m14_tundra_lichen_flux10_09_gloss_topdown.png",
+            "world3/docs/captures/m14/m14_tundra_lichen_flux10_09_gloss_iso.png",
+            "world3/docs/captures/m14/m14_tundra_lichen_flux10_09_gloss_3d.png",
+            "world3/docs/captures/m14/m14_tundra_lichen_flux10_09_gloss_close.png",
+            "world3/docs/captures/m14/m14_tundra_lichen_flux10_09_gloss_contact_sheet.png"
+          ],
+          "limits": [
+            "Gloss Mountain is a clean real-source terrain context, not a true tundra-region promotion",
+            "candidate validates generated-texture sidecar workflow, not final tundra content",
+            "M15 scatter/decal/features should carry larger lichen colonies and biome identity"
+          ]
+        },
+        "settings": {
+          "world_uv_scale": 0.015625,
+          "hex_strength": 1.0,
+          "blend_sharpness": 8.0,
+          "roughness_strength": 1.0,
+          "normal_strength": 0.0,
+          "detail_uv_scale_mult": 10.0,
+          "detail_albedo_strength": 0.05,
+          "detail_normal_strength": 0.0,
+          "detail_rough_strength": 0.015,
+          "detail_fade_start_m": 4.0,
+          "detail_fade_end_m": 42.0
+        }
+      },
+      "scale_m_per_repeat": 10.0,
+      "color_family": "pale-sage-lichen-grit",
+      "runtime_texture_dir": "world3/textures/wgv3_comfy_candidates/m14_tundra_lichen_flux10_09_202605259",
+      "pbr_maps": {
+        "albedo": "world3/textures/wgv3_comfy_candidates/m14_tundra_lichen_flux10_09_202605259/albedo.png",
+        "normal": "world3/textures/wgv3_comfy_candidates/m14_tundra_lichen_flux10_09_202605259/normal.png",
+        "roughness": "world3/textures/wgv3_comfy_candidates/m14_tundra_lichen_flux10_09_202605259/roughness.png",
+        "metallic": "world3/textures/wgv3_comfy_candidates/m14_tundra_lichen_flux10_09_202605259/metallic.png",
+        "height": "world3/textures/wgv3_comfy_candidates/m14_tundra_lichen_flux10_09_202605259/height.png",
+        "ao": "world3/textures/wgv3_comfy_candidates/m14_tundra_lichen_flux10_09_202605259/ao.png",
+        "tile_2x2": "world3/textures/wgv3_comfy_candidates/m14_tundra_lichen_flux10_09_202605259/qa_tile_2x2.png",
+        "detail_albedo": "world3/textures/wgv3_comfy_candidates/m14_tundra_lichen_flux10_09_202605259/albedo.png",
+        "detail_normal": "world3/textures/wgv3_comfy_candidates/m14_tundra_lichen_flux10_09_202605259/normal.png",
+        "detail_roughness": "world3/textures/wgv3_comfy_candidates/m14_tundra_lichen_flux10_09_202605259/roughness.png"
+      },
+      "shader_binding": "terrain_hex_detail",
+      "validated_views": {
+        "close": "conditional_pass_gloss_source",
+        "mid": "conditional_pass_gloss_source",
+        "far": "conditional_pass_gloss_source",
+        "iso": "conditional_pass_gloss_source",
+        "topdown": "conditional_pass_gloss_source"
+      }
+    }
+  ]
+}

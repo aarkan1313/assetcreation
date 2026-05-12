@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/M12SourceStackParityRuntime.gd" id="script"]
+
+[node name="SourceStackM12RuntimeFourwayTour" type="Node3D"]
+script = ExtResource("script")
+material_path = "res://textures/wgv3/terrain_m11_fourway_corner.tres"
+heightmap_path = "res://toporeview/m11_fourway_corner_proof/heightmap.png"
+meta_path = "res://toporeview/m11_fourway_corner_proof/meta.json"
+source_valid_mask_path = "res://textures/source_stack/m11_fourway_corner_proof/source_macro_valid_mask.png"
+splat_weights_path = "res://textures/source_stack/m11_fourway_corner_proof/layers/splat_weights_rgba.png"
+source_macro_albedo_override_path = "res://textures/source_stack/m11_fourway_corner_proof/source_macro_albedo.png"
+source_macro_valid_mask_override_path = "res://textures/source_stack/m11_fourway_corner_proof/source_macro_weight_mask.png"
+start_x_m = 0.0
+start_z_m = 0.0
+chunk_size_m = 128.0
+chunk_resolution_m = 4.0
+view_radius_chunks = 2
+build_collision_chunks = true
+source_repeat_mode = "clamp"
+clip_to_source_bounds = true
+review_source_macro_strength = 0.84
+review_normal_strength = 0.050
+review_detail_normal_strength = 0.014
+review_detail_rough_strength = 0.018
+review_roughness_strength = 1.0
+review_roughness_floor = 0.87
+review_specular_strength = 0.0
+review_albedo_gain = 1.0
+review_background_color = Color(0.08, 0.095, 0.1, 1)
+review_tonemap_exposure = 0.66
+review_sun_energy = 0.62
+review_ambient_energy = 0.34
+initial_view_index = 0
+auto_play = true

@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "run_id": "procedural_desert_canyon_rock_m10_e1_example_20260511T092912Z",
+  "request_id": "procedural_desert_canyon_rock_m10_e1_example",
+  "request_path": "D:\\assets\\world3\\jobs\\examples\\desert_canyon_procedural.json",
+  "request": {
+    "schema_version": 1,
+    "id": "procedural_desert_canyon_rock_m10_e1_example",
+    "description": "Example procedural-source request that reproduces the M10 procedural canyon-rock neighbor. Provenance matches world3/toporeview/procedural_desert_canyon_rock_m10/meta.json. Used as Phase E.1 schema validation evidence.",
+    "source": {
+      "type": "procedural",
+      "material_id": "desert_canyon_rock",
+      "size_px": [
+        512,
+        1024
+      ],
+      "world_size_m": [
+        120.0,
+        240.0
+      ],
+      "elev_min_m": 412.0,
+      "elev_range_m": 18.0,
+      "seed": 1021
+    },
+    "world_type": {
+      "biome_kit": "desert",
+      "style_pack": "photoreal",
+      "view_modes": [
+        "walk",
+        "iso",
+        "topdown"
+      ]
+    },
+    "options": {
+      "render_captures": true,
+      "promote_to_gate": false
+    },
+    "output": {
+      "bundle_dir": "world3/toporeview/procedural_desert_canyon_rock_m10_e1_example",
+      "overwrite": false
+    }
+  },
+  "started_at": "2026-05-11T09:29:12.970971+00:00",
+  "completed_at": "2026-05-11T09:29:12.971976+00:00",
+  "ok": true,
+  "stages": [
+    {
+      "id": "deploy_kit_materials",
+      "script": "pipelines/textures/deploy_kit_to_world3.py",
+      "started_at": "2026-05-11T09:29:12.970971+00:00",
+      "args": [
+        "--kit",
+        "desert"
+      ],
+      "status": "dry_run",
+      "preview_cmd": [
+        "C:\\Program Files\\Python312\\python.exe",
+        "D:\\assets\\pipelines\\textures\\deploy_kit_to_world3.py",
+        "--kit",
+        "desert"
+      ],
+      "completed_at": "2026-05-11T09:29:12.970971+00:00",
+      "wall_time_sec": 0.0
+    },
+    {
+      "id": "validate_request",
+      "script": "world3/pipeline/validate_region_request.py",
+      "started_at": "2026-05-11T09:29:12.970971+00:00",
+      "args": [],
+      "status": "dry_run",
+      "preview_cmd": [
+        "C:\\Program Files\\Python312\\python.exe",
+        "D:\\assets\\world3\\pipeline\\validate_region_request.py"
+      ],
+      "completed_at": "2026-05-11T09:29:12.970971+00:00",
+      "wall_time_sec": 0.0
+    },
+    {
+      "id": "build_procedural_neighbor",
+      "script": "world3/pipeline/build_procedural_neighbor_bundle.py",
+      "started_at": "2026-05-11T09:29:12.971976+00:00",
+      "args": [
+        "--material-id",
+        "desert_canyon_rock",
+        "--out",
+        "D:\\assets\\world3\\toporeview\\procedural_desert_canyon_rock_m10_e1_example",
+        "--size",
+        "512,1024",
+        "--world-size-m",
+        "120.0,240.0",
+        "--elev-min-m",
+        "412.0",
+        "--elev-range-m",
+        "18.0",
+        "--seed",
+        "1021",
+        "--name",
+        "Example procedural-source request that reproduces the M10 procedural canyon-rock neighbor. Provenance matches world3/toporeview/procedural_desert_canyon_rock_m10/meta.json. Used as Phase E.1 schema validation evidence."
+      ],
+      "status": "dry_run",
+      "preview_cmd": [
+        "C:\\Program Files\\Python312\\python.exe",
+        "D:\\assets\\world3\\pipeline\\build_procedural_neighbor_bundle.py",
+        "--material-id",
+        "desert_canyon_rock",
+        "--out",
+        "D:\\assets\\world3\\toporeview\\procedural_desert_canyon_rock_m10_e1_example",
+        "--size",
+        "512,1024",
+        "--world-size-m",
+        "120.0,240.0",
+        "--elev-min-m",
+        "412.0",
+        "--elev-range-m",
+        "18.0",
+        "--seed",
+        "1021",
+        "--name",
+        "Example procedural-source request that reproduces the M10 procedural canyon-rock neighbor. Provenance matches world3/toporeview/procedural_desert_canyon_rock_m10/meta.json. Used as Phase E.1 schema validation evidence."
+      ],
+      "completed_at": "2026-05-11T09:29:12.971976+00:00",
+      "wall_time_sec": 0.0
+    },
+    {
+      "id": "emit_per_mode_materials",
+      "script": "pipelines/textures/emit_per_mode_materials.py",
+      "started_at": "2026-05-11T09:29:12.971976+00:00",
+      "args": [
+        "--kit",
+        "desert"
+      ],
+      "status": "dry_run",
+      "preview_cmd": [
+        "C:\\Program Files\\Python312\\python.exe",
+        "D:\\assets\\pipelines\\textures\\emit_per_mode_materials.py",
+        "--kit",
+        "desert"
+      ],
+      "completed_at": "2026-05-11T09:29:12.971976+00:00",
+      "wall_time_sec": 0.0
+    },
+    {
+      "id": "build_runtime_image_cache",
+      "script": "world3/pipeline/build_runtime_image_cache.py",
+      "started_at": "2026-05-11T09:29:12.971976+00:00",
+      "args": [
+        "__STAGE_PLACEHOLDER__"
+      ],
+      "status": "skipped_placeholder",
+      "completed_at": "2026-05-11T09:29:12.971976+00:00",
+      "wall_time_sec": 0.0
+    },
+    {
+      "id": "render_captures_walk",
+      "script": "godot scenes capture (Phase E.4 orchestrator_capture_driver)",
+      "started_at": "2026-05-11T09:29:12.971976+00:00",
+      "args": [
+        "__STAGE_PLACEHOLDER__"
+      ],
+      "status": "skipped_placeholder",
+      "completed_at": "2026-05-11T09:29:12.971976+00:00",
+      "wall_time_sec": 0.0
+    },
+    {
+      "id": "render_captures_iso",
+      "script": "godot scenes capture (Phase E.4 orchestrator_capture_driver)",
+      "started_at": "2026-05-11T09:29:12.971976+00:00",
+      "args": [
+        "__STAGE_PLACEHOLDER__"
+      ],
+      "status": "skipped_placeholder",
+      "completed_at": "2026-05-11T09:29:12.971976+00:00",
+      "wall_time_sec": 0.0
+    },
+    {
+      "id": "render_captures_topdown",
+      "script": "godot scenes capture (Phase E.4 orchestrator_capture_driver)",
+      "started_at": "2026-05-11T09:29:12.971976+00:00",
+      "args": [
+        "__STAGE_PLACEHOLDER__"
+      ],
+      "status": "skipped_placeholder",
+      "completed_at": "2026-05-11T09:29:12.971976+00:00",
+      "wall_time_sec": 0.0
+    }
+  ],
+  "dry_run": true
+}

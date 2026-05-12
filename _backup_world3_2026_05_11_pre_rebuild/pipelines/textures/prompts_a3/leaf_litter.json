@@ -1,0 +1,18 @@
+[
+  {
+    "label": "cookbook",
+    "prompt": "forest floor with brown leaves, pine needles, twigs, dark soil, top-down photo, even lighting, photoreal"
+  },
+  {
+    "label": "minimal",
+    "prompt": "forest floor with mixed leaves and twigs, top-down photo"
+  },
+  {
+    "label": "species",
+    "prompt": "fallen oak and beech leaves over loam soil with pine needles and twig fragments, top-down photo, photoreal"
+  },
+  {
+    "label": "ground_level_lead",
+    "prompt": "ground-level photograph of autumn leaf litter, damp dark soil visible underneath, no plants growing, top-down view"
+  }
+]

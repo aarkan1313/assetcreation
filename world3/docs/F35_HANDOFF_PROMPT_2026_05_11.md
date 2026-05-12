@@ -6,6 +6,11 @@
 >
 > Read this doc, then `WORLD3_LONG_ARC_2026_05_11.md`, then
 > `F35_M11_PARITY_REFACTOR_2026_05_11.md`. That's the spine.
+>
+> **Handoff revision: git commit `0d76446`.** Run `git show 0d76446
+> --stat` to see exactly what this session shipped. There are also
+> ~150 other uncommitted changes from earlier sessions sitting in the
+> working tree — those are intentional, left for the user to triage.
 
 ## What world3 is
 

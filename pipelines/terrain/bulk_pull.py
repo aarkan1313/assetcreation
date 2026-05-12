@@ -126,6 +126,10 @@ def main() -> int:
                          "OT+ subscriber tier). 50 free non-academic; 400 OT+; 400 academic.")
     ap.add_argument("--throttle-sec", type=float, default=2.0,
                     help="minimum seconds between API calls (default: 2s)")
+    ap.add_argument("--no-catalog-refresh", action="store_true",
+                    help="skip refreshing world3/data_catalog.json after pulls. "
+                         "Default: catalog refresh runs after a successful pull "
+                         "so downstream tools see new DEMs immediately.")
     args = ap.parse_args()
 
     if not args.wishlist.exists():
@@ -192,7 +196,44 @@ def main() -> int:
         print("\nfailed:")
         for fid, reason in failures[:30]:
             print(f"  {fid}: {reason}")
+
+    # Post-hook: refresh world3/data_catalog.json so downstream tools see new DEMs.
+    # Skip on --no-catalog-refresh, dry-run, or zero successful pulls.
+    if not args.no_catalog_refresh and not args.dry_run and successes > 0:
+        refresh_master_catalog()
+
     return 0 if not failures else 1
+
+
+def refresh_master_catalog() -> None:
+    """Call build_master_catalog.py so world3/data_catalog.json reflects
+    any new DEMs/textures/bundles. Added 2026-05-11 (Phase D.3) so the
+    catalog doesn't drift after bulk pulls."""
+    import subprocess
+    catalog_builder = Path(__file__).resolve().parent / "build_master_catalog.py"
+    if not catalog_builder.exists():
+        print(f"\n[catalog-refresh] skipped: {catalog_builder} not found")
+        return
+    print(f"\n=== refreshing world3/data_catalog.json ===")
+    try:
+        result = subprocess.run(
+            [sys.executable, str(catalog_builder)],
+            check=False,
+            capture_output=True,
+            text=True,
+            timeout=60,
+        )
+        # Surface only the summary lines (build_master_catalog prints
+        # totals at the end) — full output is too verbose to inline.
+        for line in result.stdout.splitlines()[-12:]:
+            print(f"  {line}")
+        if result.returncode != 0:
+            print(f"  [warn] catalog refresh exit={result.returncode}; "
+                  "run `python pipelines/terrain/build_master_catalog.py` manually")
+    except subprocess.TimeoutExpired:
+        print("  [warn] catalog refresh timed out (>60s)")
+    except Exception as e:
+        print(f"  [warn] catalog refresh failed: {type(e).__name__}: {e}")
 
 
 if __name__ == "__main__":

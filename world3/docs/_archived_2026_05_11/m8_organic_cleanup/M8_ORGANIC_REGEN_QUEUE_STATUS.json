@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "updated": "2026-05-10",
+  "kind": "m8_organic_regen_queue_status",
+  "source_queue": "world3/jobs/comfy_texture_regen_candidates.json",
+  "summary": {
+    "sidecar_candidate_needs_runtime_trials": 0,
+    "m14_trial_safe_close_conditional": 1,
+    "methodology_rework_layered_substrate": 1,
+    "visual_rejected": 0,
+    "queued_untested": 3,
+    "latest_status_unknown": 0,
+    "total": 5
+  },
+  "rows": [
+    {
+      "material_id": "grassland_grass",
+      "regen_id": "m8_grassland_grass_calm_v1",
+      "current_source_asset_id": "wgv3_gl_tall_grass",
+      "status": "m14_trial_safe_close_conditional",
+      "failure_mode": "object-like dry grass blades and noisy yellow clumps dominate close views",
+      "next_action": "Keep as sidecar-only; M14 runtime trial was safe but not enough for production promotion.",
+      "latest_candidate_id": "m8_grassland_grass_calm_v3",
+      "latest_review_doc": "world3/docs/M8_COMFYUI_TERRAIN_CONTEXT_REVIEW_2026_05_08.md"
+    },
+    {
+      "material_id": "grass",
+      "regen_id": "m8_grass_calm_v5",
+      "current_source_asset_id": "wgv3_grass",
+      "status": "methodology_rework_layered_substrate",
+      "failure_mode": "green organic speckle and small clover/object repetition reads too busy at walk scale",
+      "next_action": "Treat as a layered substrate/detail target; actual blades and clumps belong to M15 scatter/features.",
+      "latest_candidate_id": "4 rejected attempts through m8_grass_calm_v4_anchor_v1",
+      "latest_review_doc": "world3/docs/M8_GRASS_REGEN_ATTEMPTS_REVIEW_2026_05_08.md"
+    },
+    {
+      "material_id": "temperate_forest_grass",
+      "regen_id": "m8_temperate_forest_floor_calm_v1",
+      "current_source_asset_id": "wgv3_tf_leaf_litter",
+      "status": "queued_untested",
+      "failure_mode": "leaf-litter objects and high contrast fragments create visual noise in close terrain",
+      "next_action": "Generate the first candidate, then run seam/PBR QA, visual veto, noise audit, and terrain-context review.",
+      "latest_candidate_id": "",
+      "latest_review_doc": ""
+    },
+    {
+      "material_id": "tundra_moss",
+      "regen_id": "m8_tundra_moss_calm_v1",
+      "current_source_asset_id": "tundra_moss",
+      "status": "queued_untested",
+      "failure_mode": "moss detail is too high-frequency and can turn into colored speckle in runtime",
+      "next_action": "Generate the first candidate, then run seam/PBR QA, visual veto, noise audit, and terrain-context review.",
+      "latest_candidate_id": "",
+      "latest_review_doc": ""
+    },
+    {
+      "material_id": "tundra_lichen",
+      "regen_id": "m8_tundra_lichen_calm_v1",
+      "current_source_asset_id": "tundra_lichen",
+      "status": "queued_untested",
+      "failure_mode": "lichen spots and pale contrast can repeat as visible object clusters",
+      "next_action": "Generate the first candidate, then run seam/PBR QA, visual veto, noise audit, and terrain-context review.",
+      "latest_candidate_id": "",
+      "latest_review_doc": ""
+    }
+  ]
+}

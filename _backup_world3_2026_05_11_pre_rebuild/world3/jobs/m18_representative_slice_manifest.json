@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "id": "m18_representative_slice_first_pass",
+  "status": "conditional_workflow_evidence_2026_05_10",
+  "purpose": "First M18 runtime slice using the M17 guided procedural neighbor rebaked through the M10 seam solver.",
+  "inputs": {
+    "left_real_source": {
+      "macro": "world3/textures/source_stack/gloss_scrub_source_stack/source_macro_albedo.png",
+      "valid_mask": "world3/textures/source_stack/gloss_scrub_source_stack/source_macro_valid_mask.png",
+      "heightmap": "world3/toporeview/gloss_mountain_textured_master/heightmap.png",
+      "meta": "world3/toporeview/gloss_mountain_textured_master/meta.json",
+      "crop_macro_px": [229, 734, 229, 457]
+    },
+    "right_procedural_source": {
+      "id": "m17_guided_desert_canyon_neighbor",
+      "macro": "world3/toporeview/m17_guided_desert_canyon_neighbor/layers/render_albedo.png",
+      "valid_mask": "world3/toporeview/m17_guided_desert_canyon_neighbor/layers/source_valid_mask.png",
+      "heightmap": "world3/toporeview/m17_guided_desert_canyon_neighbor/heightmap.png",
+      "meta": "world3/toporeview/m17_guided_desert_canyon_neighbor/meta.json",
+      "crop_macro_px": [0, 0, 512, 1024]
+    },
+    "solver": "world3/pipeline/build_terrain_seam_integration_proof.py",
+    "solver_policy": "m17_extracted_rules_rebaked_through_m10_seam_solver_for_m18_runtime_review",
+    "overlap_px": 128,
+    "height_feather_px": 224,
+    "color_feather_px": 384
+  },
+  "outputs": {
+    "runtime_macro": "world3/textures/source_stack/m18_guided_neighbor_slice_proof/source_macro_albedo.png",
+    "runtime_valid_mask": "world3/textures/source_stack/m18_guided_neighbor_slice_proof/source_macro_valid_mask.png",
+    "runtime_seam_mask": "world3/textures/source_stack/m18_guided_neighbor_slice_proof/seam_integration_mask.png",
+    "manifest": "world3/textures/source_stack/m18_guided_neighbor_slice_proof/manifest.json",
+    "heightmap": "world3/toporeview/m18_guided_neighbor_slice_proof/heightmap.png",
+    "meta": "world3/toporeview/m18_guided_neighbor_slice_proof/meta.json",
+    "metrics": "world3/docs/captures/review/terrain_seam_m18_guided_neighbor_metrics.json",
+    "feature_mask_metrics": "world3/textures/source_stack/m18_guided_neighbor_slice_proof/layers/feature_mask_metrics.json",
+    "performance_smoke": "world3/docs/captures/review/m18_guided_neighbor_performance_smoke.json",
+    "tour_scene": "world3/scenes/review/source_stack_m18_guided_neighbor_tour.tscn",
+    "contact_sheet": "world3/docs/captures/review/source_stack_m18_guided_neighbor_contact_sheet.png"
+  },
+  "captures": {
+    "topdown": "world3/docs/captures/review/source_stack_m18_guided_neighbor_topdown.png",
+    "iso": "world3/docs/captures/review/source_stack_m18_guided_neighbor_iso.png",
+    "close": "world3/docs/captures/review/source_stack_m18_guided_neighbor_close.png",
+    "medium": "world3/docs/captures/review/source_stack_m18_guided_neighbor_medium.png"
+  },
+  "assessment": {
+    "accepted_for": "runtime-contract proof and first M18 slice scaffold",
+    "not_accepted_for": "production terrain promotion or complete M18 closure",
+    "passes": [
+      "M17 procedural output re-enters the source-stack runtime contract.",
+      "Close, medium, iso, and topdown captures all run from the same terrain bundle.",
+      "M15-style feature masks are derived from the runtime macro/height/seam data and feed the existing scatter overlay.",
+      "Valid-mask coverage is full and capture scenes exited cleanly."
+    ],
+    "conditional_issues": [
+      "Procedural side still reads as broad, smooth tan terrain in close/medium bands.",
+      "Feature overlay still uses procedural review primitives, not authored production scatter assets.",
+      "This pass does not yet combine M11 junction ownership into the same runtime slice.",
+      "Topdown transition is mechanically blended, but not yet a final art-directed ecotone."
+    ]
+  }
+}

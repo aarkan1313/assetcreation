@@ -1,0 +1,123 @@
+{
+  "version": 1,
+  "id": "m18_closure_review_manifest",
+  "status": "active_2026_05_10",
+  "purpose": "M18 closure harness: one visual runner that reviews the representative runtime slice plus the accepted source-stack evidence M18 depends on.",
+  "required_bands": ["topdown", "iso", "medium", "close"],
+  "closure_policy": {
+    "physical_slice": "m18_guided_neighbor_runtime_slice",
+    "representative_harness": "source-stack card review for ecotone, junction ownership, scatter/features, parity, and guided procedural neighbor",
+    "reason": "Physically composing every proof into one terrain would create a new stream-director problem and weaken traceability. M18 closes as workflow evidence when each required subsystem is visible through the same source-stack review harness and the physical runtime slice covers the new M17/M15 integration."
+  },
+  "cards": [
+    {
+      "id": "m18_guided_neighbor_runtime_slice",
+      "title": "M18 Guided Neighbor Runtime Slice",
+      "scene": "world3/scenes/review/source_stack_m18_guided_neighbor_tour.tscn",
+      "source_stack": "world3/textures/source_stack/m18_guided_neighbor_slice_proof",
+      "status": "conditional_workflow_evidence",
+      "representative_band": "close",
+      "captures": {
+        "topdown": "world3/docs/captures/review/source_stack_m18_guided_neighbor_topdown.png",
+        "iso": "world3/docs/captures/review/source_stack_m18_guided_neighbor_iso.png",
+        "medium": "world3/docs/captures/review/source_stack_m18_guided_neighbor_medium.png",
+        "close": "world3/docs/captures/review/source_stack_m18_guided_neighbor_close.png"
+      },
+      "contract_inputs": ["heightmap", "meta", "source_macro", "valid_mask", "feature_masks", "runtime_chunk_loader"],
+      "honest_read": "Proves M17 procedural neighbor plus derived M15 masks can enter the runtime path; procedural side is still too smooth/broad for AAA close-play."
+    },
+    {
+      "id": "m10_ecotone_layer",
+      "title": "M10 Ecotone Layer",
+      "scene": "world3/scenes/review/source_stack_ecotone_layer_tour.tscn",
+      "source_stack": "world3/textures/source_stack/gloss_grassland_ecotone_layer_proof",
+      "status": "accepted_source_stack_evidence",
+      "representative_band": "iso",
+      "captures": {
+        "topdown": "world3/docs/captures/review/source_stack_ecotone_layer_tour_topdown.png",
+        "iso": "world3/docs/captures/review/source_stack_ecotone_layer_tour_iso.png",
+        "medium": "world3/docs/captures/review/source_stack_ecotone_layer_tour_medium.png",
+        "close": "world3/docs/captures/review/source_stack_ecotone_layer_tour_close.png"
+      },
+      "contract_inputs": ["heightmap", "meta", "source_macro", "valid_mask", "splat_weights", "feature_masks"],
+      "honest_read": "Workflow accepted; close band remains conditional because feature assets/materials are still proof quality."
+    },
+    {
+      "id": "m11_three_way_junction",
+      "title": "M11 Three-Way Junction",
+      "scene": "world3/scenes/review/source_stack_m11_junction_tour.tscn",
+      "source_stack": "world3/textures/source_stack/m11_three_way_junction_proof",
+      "status": "accepted_source_stack_evidence",
+      "representative_band": "iso",
+      "captures": {
+        "topdown": "world3/docs/captures/review/source_stack_m11_junction_tour_topdown.png",
+        "iso": "world3/docs/captures/review/source_stack_m11_junction_tour_iso.png",
+        "medium": "world3/docs/captures/review/source_stack_m11_junction_tour_medium.png",
+        "close": "world3/docs/captures/review/source_stack_m11_junction_tour_close.png"
+      },
+      "contract_inputs": ["heightmap", "meta", "source_macro", "valid_mask", "splat_weights", "feature_masks"],
+      "honest_read": "Accepted junction ownership workflow; not a production terrain asset."
+    },
+    {
+      "id": "m11_fourway_corner",
+      "title": "M11 Four-Way Corner",
+      "scene": "world3/scenes/review/source_stack_m11_fourway_corner_tour.tscn",
+      "source_stack": "world3/textures/source_stack/m11_fourway_corner_proof",
+      "status": "accepted_source_stack_evidence",
+      "representative_band": "iso",
+      "captures": {
+        "topdown": "world3/docs/captures/review/source_stack_m11_fourway_corner_tour_topdown.png",
+        "iso": "world3/docs/captures/review/source_stack_m11_fourway_corner_tour_iso.png",
+        "medium": "world3/docs/captures/review/source_stack_m11_fourway_corner_tour_medium.png",
+        "close": "world3/docs/captures/review/source_stack_m11_fourway_corner_tour_close.png"
+      },
+      "contract_inputs": ["heightmap", "meta", "source_macro", "valid_mask", "splat_weights", "feature_masks"],
+      "honest_read": "Accepted four-way ownership stress case; fantasy quadrant is a workflow stress input, not promoted art."
+    },
+    {
+      "id": "m15_feature_scatter",
+      "title": "M15 Feature Scatter",
+      "scene": "world3/scenes/review/source_stack_m15_feature_scatter_tour.tscn",
+      "source_stack": "world3/textures/source_stack/gloss_grassland_ecotone_layer_proof",
+      "status": "workflow_proven_assets_not_final",
+      "representative_band": "close",
+      "captures": {
+        "topdown": "world3/docs/captures/review/source_stack_m15_feature_scatter_topdown.png",
+        "iso": "world3/docs/captures/review/source_stack_m15_feature_scatter_iso.png",
+        "medium": "world3/docs/captures/review/source_stack_m15_feature_scatter_medium.png",
+        "close": "world3/docs/captures/review/source_stack_m15_feature_scatter_close.png"
+      },
+      "contract_inputs": ["heightmap", "meta", "source_macro", "valid_mask", "splat_weights", "feature_masks", "scatter_policy"],
+      "honest_read": "Scatter placement and LOD path proven; assets remain procedural review primitives."
+    },
+    {
+      "id": "m12_runtime_parity",
+      "title": "M12 Runtime Parity",
+      "scene": "world3/scenes/review/source_stack_m12_runtime_fourway_tour.tscn",
+      "source_stack": "world3/textures/source_stack/m11_fourway_corner_proof",
+      "status": "accepted_runtime_parity_evidence",
+      "representative_band": "close",
+      "captures": {
+        "topdown": "world3/docs/captures/review/source_stack_m12_runtime_fourway_topdown.png",
+        "iso": "world3/docs/captures/review/source_stack_m12_runtime_fourway_iso.png",
+        "medium": "world3/docs/captures/review/source_stack_m12_runtime_fourway_medium.png",
+        "close": "world3/docs/captures/review/source_stack_m12_runtime_fourway_close.png"
+      },
+      "contract_inputs": ["heightmap", "meta", "source_macro", "valid_mask", "splat_weights", "runtime_chunk_loader"],
+      "honest_read": "Runtime parity standard for close/medium/iso/topdown review."
+    },
+    {
+      "id": "m16_cached_iso_impostor",
+      "title": "M16 Cached Iso Card",
+      "scene": "world3/scenes/review/source_stack_m16_iso_impostor_card.tscn",
+      "source_stack": "world3/docs/captures/review/source_stack_m12_runtime_fourway_iso_clean.png",
+      "status": "sidecar_rung_1_conditional",
+      "representative_band": "iso",
+      "captures": {
+        "iso": "world3/docs/captures/review/source_stack_m16_iso_impostor_card.png"
+      },
+      "contract_inputs": ["cached_iso_bake", "m12_runtime_parity_trace"],
+      "honest_read": "Useful iso optimization research seed; not a full parity card or art pipeline."
+    }
+  ]
+}

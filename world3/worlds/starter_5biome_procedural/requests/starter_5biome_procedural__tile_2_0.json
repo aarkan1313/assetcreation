@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "id": "starter_5biome_procedural__tile_2_0",
+  "description": "Phase F.3 emitted from plan 'starter_5biome_procedural' tile (2, 0) biome 'temperate_forest'",
+  "source": {
+    "type": "procedural",
+    "material_id": "temperate_forest_grass",
+    "size_px": [
+      512,
+      1024
+    ],
+    "world_size_m": [
+      256.0,
+      256.0
+    ],
+    "elev_min_m": 400.0,
+    "elev_range_m": 30.0,
+    "seed": 786723028,
+    "neighbor_west_edge": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_1_0/edges/east_edge.json",
+    "this_biome": "temperate_forest",
+    "neighbor_east_biome": "desert",
+    "neighbor_south_biome": "alpine"
+  },
+  "world_type": {
+    "biome_kit": "temperate_forest",
+    "style_pack": "photoreal",
+    "view_modes": [
+      "iso",
+      "topdown"
+    ]
+  },
+  "options": {
+    "render_captures": false,
+    "promote_to_gate": false
+  },
+  "output": {
+    "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_2_0",
+    "overwrite": true
+  }
+}

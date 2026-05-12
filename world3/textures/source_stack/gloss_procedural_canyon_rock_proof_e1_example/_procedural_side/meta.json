@@ -1,0 +1,30 @@
+{
+  "name": "Example hybrid (real + procedural seam-integration) request that reproduces the M10 real-to-procedural Gloss-canyon-rock proof. Provenance matches world3/textures/source_stack/gloss_procedural_canyon_rock_proof/manifest.json. Used as Phase E.1 schema validation evidence.",
+  "builder": "build_procedural_neighbor_bundle.py",
+  "source": "procedural",
+  "source_material_id": "desert_canyon_rock",
+  "source_material_albedo": "world3/textures/wgv3/desert_canyon_rock/albedo.png",
+  "heightmap_size_px": [
+    512,
+    1024
+  ],
+  "world_size_x_m": 120.0,
+  "world_size_z_m": 240.0,
+  "world_size_m": 240.0,
+  "elevation_min_m": 412.0,
+  "elevation_max_m": 430.0,
+  "elevation_range_m": 18.0,
+  "material": "desert_canyon_rock",
+  "texture_is_real_imagery": false,
+  "procedural_neighbor": {
+    "version": 1,
+    "seed": 1021,
+    "macro_policy": "catalog_material_color_with_multiscale_procedural_variation",
+    "height_policy": "synthetic_wash_slope_ridge_heightfield",
+    "target": "M10 real_to_procedural seam proof"
+  },
+  "layers": {
+    "render_albedo": "res://textures/source_stack/gloss_procedural_canyon_rock_proof_e1_example/_procedural_side/layers/render_albedo.png",
+    "source_valid_mask": "res://textures/source_stack/gloss_procedural_canyon_rock_proof_e1_example/_procedural_side/layers/source_valid_mask.png"
+  }
+}

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/review/m14_tundra_lichen_compare_board.tscn" id="scene"]
+[ext_resource type="Script" path="res://scripts/HeadlessCapture.gd" id="cap_script"]
+
+[node name="CaptureM14TundraLichenCompareBoard" type="Node"]
+
+[node name="Inner" parent="." instance=ExtResource("scene")]
+
+[node name="Capture" type="Node" parent="."]
+script = ExtResource("cap_script")
+output_path = "res://docs/captures/m14/m14_tundra_lichen_compare_board_scene.png"
+warmup_frames = 20
+viewport_size = Vector2i(1600, 1000)

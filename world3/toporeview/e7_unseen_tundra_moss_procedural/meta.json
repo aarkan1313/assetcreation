@@ -1,0 +1,30 @@
+{
+  "name": "Phase E.7 final validation. Procedural-only bundle on the tundra_moss catalog material \u2014 never used as a procedural source in any prior bundle. Tests the full orchestrator path (request validate -> stage resolve -> subprocess -> provenance) end-to-end on unseen content, then drives a capture through OrchestratorCaptureDriver with the photoreal style pack.",
+  "builder": "build_procedural_neighbor_bundle.py",
+  "source": "procedural",
+  "source_material_id": "tundra_moss",
+  "source_material_albedo": "world3/textures/wgv3/tundra_moss/albedo.png",
+  "heightmap_size_px": [
+    512,
+    1024
+  ],
+  "world_size_x_m": 120.0,
+  "world_size_z_m": 240.0,
+  "world_size_m": 240.0,
+  "elevation_min_m": 200.0,
+  "elevation_max_m": 224.0,
+  "elevation_range_m": 24.0,
+  "material": "tundra_moss",
+  "texture_is_real_imagery": false,
+  "procedural_neighbor": {
+    "version": 1,
+    "seed": 31415,
+    "macro_policy": "catalog_material_color_with_multiscale_procedural_variation",
+    "height_policy": "synthetic_wash_slope_ridge_heightfield",
+    "target": "M10 real_to_procedural seam proof"
+  },
+  "layers": {
+    "render_albedo": "res://toporeview/e7_unseen_tundra_moss_procedural/layers/render_albedo.png",
+    "source_valid_mask": "res://toporeview/e7_unseen_tundra_moss_procedural/layers/source_valid_mask.png"
+  }
+}

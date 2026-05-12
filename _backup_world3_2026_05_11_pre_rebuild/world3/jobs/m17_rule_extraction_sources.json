@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "id": "m17_rule_extraction_sources",
+  "status": "active_2026_05_10",
+  "purpose": "Accepted source-stack proofs used to extract first procedural-neighbor rules.",
+  "sources": [
+    {
+      "id": "m10_ecotone_layer",
+      "role": "unlike-biome ecotone and feature masks",
+      "manifest": "world3/textures/source_stack/gloss_grassland_ecotone_layer_proof/manifest.json"
+    },
+    {
+      "id": "m11_three_way_junction",
+      "role": "three-way transition/material ownership",
+      "manifest": "world3/textures/source_stack/m11_three_way_junction_proof/manifest.json"
+    },
+    {
+      "id": "m11_fourway_corner",
+      "role": "four-way transition/material ownership stress",
+      "manifest": "world3/textures/source_stack/m11_fourway_corner_proof/manifest.json"
+    },
+    {
+      "id": "m12_runtime_parity",
+      "role": "runtime parity standard using four-way source stack",
+      "manifest": "world3/textures/source_stack/m11_fourway_corner_proof/manifest.json"
+    },
+    {
+      "id": "m10_real_to_procedural",
+      "role": "existing real-to-procedural seam proof and neighbor shape",
+      "manifest": "world3/textures/source_stack/gloss_procedural_canyon_rock_proof/manifest.json"
+    }
+  ],
+  "neighbor_target": {
+    "id": "m17_guided_desert_canyon_neighbor",
+    "material_id": "desert_canyon_rock",
+    "seed": 1701,
+    "out": "world3/toporeview/m17_guided_desert_canyon_neighbor",
+    "size": "512,1024",
+    "world_size_m": "120,240",
+    "source_hint": "Use the M10 real-to-procedural proof elevation range and source-stack metrics as first procedural-neighbor target."
+  }
+}

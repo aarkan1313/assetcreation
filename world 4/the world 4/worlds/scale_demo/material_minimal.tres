@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3]
+
+[ext_resource type="Shader" path="res://shaders/terrain_anchor_v2_minimal.gdshader" id="shader"]
+[ext_resource type="Texture2D" path="res://materials/anchor_v2/scrub_dense/albedo.png" id="ground_albedo"]
+
+[resource]
+shader = ExtResource("shader")
+shader_parameter/world_uv_scale = 0.04
+shader_parameter/ground_albedo = ExtResource("ground_albedo")

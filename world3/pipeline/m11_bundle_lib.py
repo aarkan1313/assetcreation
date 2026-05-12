@@ -125,6 +125,12 @@ class BundleSpec:
     neighbor_west_edge_meters: np.ndarray | None = None
     neighbor_north_edge_meters: np.ndarray | None = None
     neighbor_edge_feather_px: int = 32
+    # F.3.6 — optional per-slot material override (grass/dirt/rock_light/
+    # rock_dark/snow → catalog id). When None, the macro composite resolves
+    # the 5 slot materials via BIOME_KIT_SLOTS[biome_kit]. Multi-biome
+    # boundary tiles can override individual slots here to blend in a
+    # neighbor biome's material via the splat's explicit channels.
+    slot_materials: dict[str, str] | None = None
 
 
 # ----------------------------------------------------------------------
@@ -485,30 +491,124 @@ def build_layers_general(spec: BundleSpec, height_m: np.ndarray,
 # Macro preview composition
 # ----------------------------------------------------------------------
 
+def _resolve_slot_materials(spec: BundleSpec) -> dict[str, str]:
+    """Return the 5 slot → catalog-material-id mapping for a spec.
+
+    Order of precedence:
+      1. spec.slot_materials (per-bundle override, e.g. boundary tiles)
+      2. BIOME_KIT_SLOTS[spec.biome_kit] from f33_bundle_material
+
+    Raises if neither path resolves all 5 slots."""
+    from f33_bundle_material import BIOME_KIT_SLOTS
+    base = BIOME_KIT_SLOTS.get(spec.biome_kit, {})
+    override = spec.slot_materials or {}
+    resolved: dict[str, str] = {}
+    for slot in SLOTS:
+        mid = override.get(slot) or base.get(slot)
+        if not mid:
+            raise KeyError(
+                f"slot '{slot}' not resolvable for biome_kit '{spec.biome_kit}' "
+                f"(override={override}, base={base})"
+            )
+        resolved[slot] = mid
+    return resolved
+
+
 def build_macro_preview_general(spec: BundleSpec, layers: dict[str, np.ndarray],
-                                  catalog: dict[str, dict]) -> np.ndarray:
-    """Per-pixel macro composited from each domain's catalog albedo.
-    For a single-domain bundle, the macro is just that material's
-    tiled albedo (plus M11's light/shadow/noise tinting)."""
+                                  catalog: dict[str, dict],
+                                  height_m: np.ndarray | None = None) -> np.ndarray:
+    """Per-pixel macro composited from the 5 slot materials weighted by
+    the splat. Mirrors how `build_fourway_macro_preview` composites the
+    4 quadrant RGBs via the fourway splat — same idea, generalized to
+    the slot mapping.
+
+    Why splat-driven, not domain-driven: at runtime the shader paints
+    each pixel by sampling the slot material that the splat weights
+    say dominates. The macro should reflect that same per-pixel
+    composition so the baked macro reads with M11-style character
+    instead of a single tiled albedo. Domains drive height blending
+    and (for fourway) the per-quadrant macro mix; for single-biome
+    bundles the splat alone carries the per-pixel slot dominance.
+
+    M11-style shading: brightness modulation from low/fine noise +
+    optional lambertian light from height gradient (matches
+    `build_fourway_macro_preview`'s formula)."""
     w, h = spec.width_px, spec.height_px
     seed = spec.seed
     low = smooth_noise(w, h, 72, seed + 501)
     fine = smooth_noise(w, h, 24, seed + 503)
+    ridge_noise = smooth_noise(w, h, 36, seed + 509)
 
-    # Sum each domain's macro weighted by its weight field.
-    preview = np.zeros((h, w, 3), dtype=np.float32)
-    total_w = np.zeros((h, w), dtype=np.float32)
-    for i, d in enumerate(spec.domains):
-        rgb = build_procedural_macro(d.material_id, catalog, w, h, seed + 200 + i * 100)
-        # M11-style brightness modulation
-        rgb = np.clip(rgb * (0.88 + low[:, :, None] * 0.12 + fine[:, :, None] * 0.04), 0.0, 1.0)
-        preview += rgb * d.weight_field[:, :, None]
-        total_w += d.weight_field
+    if height_m is not None:
+        grad_y, grad_x = np.gradient(height_m)
+        light = normalize01(-(grad_x * 0.48 + grad_y * 0.82), 1.0, 99.0)
+        slope = normalize01(np.sqrt(grad_x * grad_x + grad_y * grad_y), 42.0, 99.7)
+    else:
+        light = np.full((h, w), 0.5, dtype=np.float32)
+        slope = np.zeros((h, w), dtype=np.float32)
 
-    # Normalize where domain weights covered <1 (shouldn't happen after
-    # weight normalization but defensive)
-    nz = total_w > 1e-3
-    preview[nz] = preview[nz] / total_w[nz, None]
+    # 5 slot albedos, each tiled with M11's procedural macro variation.
+    slot_materials = _resolve_slot_materials(spec)
+    slot_rgbs: dict[str, np.ndarray] = {}
+    for i, slot in enumerate(SLOTS):
+        slot_rgbs[slot] = build_procedural_macro(
+            slot_materials[slot], catalog, w, h, seed + 200 + i * 100
+        )
+
+    # Splat weights (4 explicit channels; snow is implicit remainder).
+    # The splat already sums to ~1.0 per pixel, so the implicit snow
+    # weight is max(0, 1 - sum_of_explicit).
+    sg = layers["splat_grass"]
+    sd = layers["splat_dirt"]
+    sl = layers["splat_rock_light"]
+    sk = layers["splat_rock_dark"]
+    explicit_sum = sg + sd + sl + sk
+    ss = np.clip(1.0 - explicit_sum, 0.0, 1.0)
+
+    # Per-slot M11-style tinting (mirrors build_fourway_macro_preview's
+    # per-quadrant treatment: grass gets dry-patch overlay, rock gets
+    # warm/shadow alpha, etc., scaled by the relevant scatter mask).
+    grass_color = np.clip(slot_rgbs["grass"] * (0.88 + low[:, :, None] * 0.12 + fine[:, :, None] * 0.04), 0.0, 1.0)
+    if "dry_grass_density_mask" in layers:
+        grass_patch_alpha = np.clip((ridge_noise - 0.42) * 0.56 * layers["dry_grass_density_mask"], 0.0, 0.22)
+        straw = np.array([0.54, 0.47, 0.29], dtype=np.float32)
+        olive = np.array([0.25, 0.33, 0.19], dtype=np.float32)
+        patch_color = straw[None, None, :] * (1.0 - ridge_noise[:, :, None]) + olive[None, None, :] * ridge_noise[:, :, None]
+        grass_color = grass_color * (1.0 - grass_patch_alpha[:, :, None]) + patch_color * grass_patch_alpha[:, :, None]
+
+    dirt_color = np.clip(slot_rgbs["dirt"] * (0.86 + light[:, :, None] * 0.18 + fine[:, :, None] * 0.035), 0.0, 1.0)
+    if "soil_exposure_mask" in layers:
+        soil_warm = np.array([0.42, 0.32, 0.18], dtype=np.float32)
+        soil_alpha = np.clip(layers["soil_exposure_mask"] * 0.18, 0.0, 0.22)
+        dirt_color = dirt_color * (1.0 - soil_alpha[:, :, None]) + soil_warm[None, None, :] * soil_alpha[:, :, None]
+
+    rock_light_color = np.clip(slot_rgbs["rock_light"] * (0.80 + light[:, :, None] * 0.32 + fine[:, :, None] * 0.035), 0.0, 1.0)
+    if "rock_cluster_mask" in layers:
+        rock_warm = np.array([0.74, 0.45, 0.24], dtype=np.float32)
+        rock_alpha = np.clip(layers["rock_cluster_mask"] * 0.18, 0.0, 0.30)
+        rock_light_color = rock_light_color * (1.0 - rock_alpha[:, :, None]) + rock_warm[None, None, :] * rock_alpha[:, :, None]
+
+    rock_dark_color = np.clip(slot_rgbs["rock_dark"] * (0.78 + light[:, :, None] * 0.30 + fine[:, :, None] * 0.035), 0.0, 1.0)
+    if "rock_cluster_mask" in layers:
+        rock_shadow = np.array([0.18, 0.14, 0.11], dtype=np.float32)
+        shadow_alpha = np.clip(layers["rock_cluster_mask"] * slope * 0.22, 0.0, 0.30)
+        rock_dark_color = rock_dark_color * (1.0 - shadow_alpha[:, :, None]) + rock_shadow[None, None, :] * shadow_alpha[:, :, None]
+
+    snow_color = np.clip(slot_rgbs["snow"] * (0.92 + light[:, :, None] * 0.10 + fine[:, :, None] * 0.025), 0.0, 1.0)
+
+    preview = (
+        grass_color * sg[:, :, None]
+        + dirt_color * sd[:, :, None]
+        + rock_light_color * sl[:, :, None]
+        + rock_dark_color * sk[:, :, None]
+        + snow_color * ss[:, :, None]
+    )
+
+    # Optional wash-line darkening if a wash mask is present
+    if "wash_line_mask" in layers:
+        wash_tint = np.array([0.28, 0.22, 0.16], dtype=np.float32)
+        wash_alpha = np.clip(layers["wash_line_mask"][:, :, None] * 0.12, 0.0, 0.14)
+        preview = preview * (1.0 - wash_alpha) + wash_tint[None, None, :] * wash_alpha
 
     return np.clip(preview, 0.0, 1.0)
 
@@ -680,9 +780,15 @@ def build_fourway_layers(spec: FourwayBundleSpec, height_m: np.ndarray,
 
 def build_fourway_macro_preview(spec: FourwayBundleSpec, layers: dict[str, np.ndarray],
                                   source_rgb: np.ndarray | None,
-                                  quad_rgbs: list[np.ndarray]) -> np.ndarray:
+                                  quad_rgbs: list[np.ndarray],
+                                  height_m: np.ndarray | None = None) -> np.ndarray:
     """Direct port of M11's build_macro_preview. Composites per-quadrant
-    catalog macros + tinted shading + scatter-mask alpha overlays."""
+    catalog macros + tinted shading + scatter-mask alpha overlays.
+
+    When `height_m` is supplied, the lambertian light field is derived
+    from `np.gradient(height_m)` exactly like M11. Otherwise (legacy
+    callers) it falls back to a flat 0.5 field, but the per-quadrant
+    brightness tinting will look washed-out — always pass height_m."""
     nw_rgb, ne_rgb, se_rgb, sw_rgb = quad_rgbs
     w, h = spec.width_px, spec.height_px
     seed = spec.seed
@@ -690,12 +796,11 @@ def build_fourway_macro_preview(spec: FourwayBundleSpec, layers: dict[str, np.nd
     fine = smooth_noise(w, h, 24, seed + 503)
     ridge_noise = smooth_noise(w, h, 36, seed + 509)
 
-    # Height is the actual rendered height (passed in via layers).
-    # We compute slope + lambertian light from a separate pass — pull
-    # from layers if available, else derive from a synthesized height.
-    # (M11 uses the actual height_out array; we can pass it via the
-    # layers dict for cleanliness. Skipping for the simpler v1.)
-    light = np.full((h, w), 0.5, dtype=np.float32)
+    if height_m is not None:
+        grad_y, grad_x = np.gradient(height_m)
+        light = normalize01(-(grad_x * 0.48 + grad_y * 0.82), 1.0, 99.0)
+    else:
+        light = np.full((h, w), 0.5, dtype=np.float32)
 
     rock_warm = np.array([0.74, 0.45, 0.24], dtype=np.float32)
     rock_shadow = np.array([0.18, 0.14, 0.11], dtype=np.float32)
@@ -757,7 +862,8 @@ def build_fourway_bundle(spec: FourwayBundleSpec, catalog: dict[str, dict] | Non
     layers = build_fourway_layers(spec, height_m, fields, spec.source_rgb,
                                     [nw_rgb, ne_rgb, se_rgb, sw_rgb])
     preview = build_fourway_macro_preview(spec, layers, spec.source_rgb,
-                                            [nw_rgb, ne_rgb, se_rgb, sw_rgb])
+                                            [nw_rgb, ne_rgb, se_rgb, sw_rgb],
+                                            height_m=height_m)
 
     # Encode
     actual_min = float(np.min(height_m))
@@ -925,7 +1031,7 @@ def build_bundle(spec: BundleSpec, catalog: dict[str, dict] | None = None) -> di
     aux = build_domain_aux_fields(spec.domains, spec.width_px, spec.height_px, spec.seed)
     height_m = build_height_general(spec, aux)
     layers = build_layers_general(spec, height_m, aux)
-    preview = build_macro_preview_general(spec, layers, catalog)
+    preview = build_macro_preview_general(spec, layers, catalog, height_m=height_m)
 
     spec.bundle_dir.mkdir(parents=True, exist_ok=True)
     spec.layers_dir.mkdir(parents=True, exist_ok=True)

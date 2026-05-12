@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/World3AutoReviewTour.gd" id="script"]
+
+[node name="F365BiomeSingleTileDiag" type="Node3D"]
+script = ExtResource("script")
+material_path = "res://worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_2_3/material.tres"
+heightmap_path = "res://worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_2_3/heightmap.png"
+meta_path = "res://worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_2_3/meta.json"
+source_valid_mask_path = "res://worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_2_3/layers/source_valid_mask.png"
+splat_weights_path = "res://worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_2_3/layers/splat_weights_rgba.png"
+source_macro_albedo_override_path = "res://worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_2_3/layers/render_albedo.png"
+source_macro_valid_mask_override_path = "res://worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_2_3/layers/source_valid_mask.png"
+transition_rule_id = "f36_5biome_diag"
+start_x_m = 0.0
+start_z_m = 0.0
+boundary_z_m = 128.0
+chunk_size_m = 64.0
+chunk_resolution_m = 2.0
+view_radius_chunks = 4
+source_repeat_mode = "clamp"
+clip_to_source_bounds = true
+review_use_source_macro_valid_mask = true
+review_source_macro_strength = 0.84
+review_normal_strength = 0.050
+review_detail_normal_strength = 0.014
+review_detail_rough_strength = 0.018
+review_roughness_strength = 1.0
+review_roughness_floor = 0.87
+review_specular_strength = 0.0
+review_albedo_gain = 0.95
+review_background_color = Color(0.08, 0.095, 0.1, 1)
+review_tonemap_exposure = 0.58
+review_sun_energy = 0.55
+review_ambient_energy = 0.2
+enable_ecotone_scatter = false
+tour_profile = "junction_fourway"
+initial_tour_index = 0
+auto_play = true

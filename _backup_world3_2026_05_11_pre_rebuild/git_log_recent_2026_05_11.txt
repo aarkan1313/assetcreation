@@ -1,0 +1,50 @@
+c5b0cff world3: m1-m18 audit report + matrix + contact sheet
+a7e74a1 world3: add m1-m18 full audit plan
+70a2754 world3: close m18 workflow audit
+ec66fad world3: add m18 derived feature masks
+567639a world3: add m18 guided neighbor runtime slice
+f47aea1 world3: add m17 real-data rule extraction
+5e1d1e4 world3: add m16 gallery review runner
+fe44c5a world3: add m16 source-stack gallery board
+65aa7ab world3: add m15 scatter policy
+a2cff46 world3: add m15 feature scatter proof
+8641d32 world3: add m14 lichen comparison board
+3db0565 world3: stage m14 tundra lichen sidecar
+9af92d7 world3: stage m14 tundra moss sidecar
+d344a08 textures: add flux 9b setup lane
+3c05f95 world3: record m14 tundra moss flux sweep
+d1b593c world3: accept m14 forest humus sidecar review
+030359f world3: stage m14 forest humus sidecar tour
+d6762ba world3: record m14 forest substrate bakeoff
+db583fc world3: record m14 grass bakeoff correction
+27e36be world3: add m14 grassland runtime trial
+75cbb3a world3: start m14 close play quality board
+6dbd503 world3: accept m12 workflow under m13 gate
+701f072 world3: add m16 iso impostor sidecar
+4e7a19d world3: add post parity promotion gate
+9b5ad4c world3: add m12 runtime parity proof
+92c5bef world3: accept m11 and start m12 parity
+d09b5e6 world3: add m11 four-way corner proof
+5a18e32 world3: add m11 three-way junction proof
+2c57da6 world3: refine ecotone scatter review assets
+4629e39 world3: add mask-driven ecotone scatter
+8e34aa1 world3: add macro-guided ecotone layer proof
+7b576df world3: record unlike biome method correction
+693638b world3: add m10 real procedural proof
+e4ae615 world3: record m10 acceptance and gameplay view plan
+0c3f5c4 world3: add second m10 clean crop proof
+38876de world3: record texture bakeoff workflow
+1576d69 world3: reject weak Chuculay seam source
+3635615 world3: harden seam scanner and add second proof
+2b07d58 world3: record cross-source seam validation
+67a7625 world3: add cross-source seam proof candidate
+6679978 roadmap: long-term unified pipeline UX direction + gaps queue
+3f371a3 world3: tune seam review lighting
+d3f20e3 docs: future model watchlist — track HiDream-O1 (hold, no install)
+3cc2a10 world3: add nonoverlap seam proof
+33cc12d world3: add terrain seam integration proof
+594cb24 world3: add terrain seam integration roadmap
+f1107eb opentopo: megastack pull queue + tracker tools
+4fbce5d opentopo wishlist: +64 mega-stack entries (3x3 stitched)
+e583439 catalog: master data inventory — single source of truth
+35fcced mega-stack: Great Sand Dunes 9/9 complete - highest-relief stack to date

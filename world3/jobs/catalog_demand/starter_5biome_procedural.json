@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "plan_id": "starter_5biome_procedural",
+  "generated_at": "2026-05-11T16:42:43Z",
+  "have": [
+    {
+      "material_id": "tundra_moss",
+      "biome_id": "tundra",
+      "role": "source",
+      "passed_gate": true
+    },
+    {
+      "material_id": "rock_dark",
+      "biome_id": "alpine",
+      "role": "source",
+      "passed_gate": true
+    },
+    {
+      "material_id": "desert_canyon_rock",
+      "biome_id": "desert",
+      "role": "source",
+      "passed_gate": true
+    }
+  ],
+  "need": [],
+  "below_promotion_bar": [
+    {
+      "material_id": "grassland_grass",
+      "biome_id": "grassland",
+      "role": "source",
+      "passed_gate": false,
+      "reason": "catalog entry exists but passed_gate=false"
+    },
+    {
+      "material_id": "temperate_forest_grass",
+      "biome_id": "temperate_forest",
+      "role": "source",
+      "passed_gate": false,
+      "reason": "catalog entry exists but passed_gate=false"
+    }
+  ],
+  "transition_audit": {
+    "audit_path": "world3/jobs/transition_audits/starter_5biome_procedural.json",
+    "pass": 0,
+    "warn": 1,
+    "fail": 7,
+    "error": 0
+  },
+  "work_queue": [
+    {
+      "material_id": "desert_canyon_rock",
+      "biome_id": "desert",
+      "action": "palette_lock",
+      "priority": 0,
+      "reason": "transition audit warn: pair (alpine <-> desert) \u2014 palette_delta_lab=44.3, high_freq_energy_ratio=2.90, seam_band_internal_max_delta_rgb01=0.17",
+      "driver_hint": "pipelines/textures/palette_lock.py",
+      "transition_pair": [
+        "alpine",
+        "desert"
+      ]
+    },
+    {
+      "material_id": "rock_dark",
+      "biome_id": "alpine",
+      "action": "palette_lock",
+      "priority": 0,
+      "reason": "transition audit warn: pair (alpine <-> desert) \u2014 palette_delta_lab=44.3, high_freq_energy_ratio=2.90, seam_band_internal_max_delta_rgb01=0.17",
+      "driver_hint": "pipelines/textures/palette_lock.py",
+      "transition_pair": [
+        "alpine",
+        "desert"
+      ]
+    },
+    {
+      "material_id": "grassland_grass",
+      "biome_id": "grassland",
+      "action": "regenerate",
+      "priority": 1,
+      "reason": "material exists but passed_gate=false (catalog rejection or not yet graded)",
+      "driver_hint": "pipelines/textures/aaa_texture.py (regenerate); or finish M13 gate review"
+    },
+    {
+      "material_id": "rock_dark",
+      "biome_id": "alpine",
+      "action": "regenerate",
+      "priority": 1,
+      "reason": "transition audit fail: pair (tundra <-> alpine) \u2014 high_freq_energy_ratio=6.14 >= 5.0, seam_band_internal_max_delta_rgb01=0.38 >= 0.3",
+      "driver_hint": "pipelines/textures/aaa_texture.py",
+      "transition_pair": [
+        "tundra",
+        "alpine"
+      ]
+    },
+    {
+      "material_id": "temperate_forest_grass",
+      "biome_id": "temperate_forest",
+      "action": "regenerate",
+      "priority": 1,
+      "reason": "material exists but passed_gate=false (catalog rejection or not yet graded)",
+      "driver_hint": "pipelines/textures/aaa_texture.py (regenerate); or finish M13 gate review"
+    },
+    {
+      "material_id": "tundra_moss",
+      "biome_id": "tundra",
+      "action": "regenerate",
+      "priority": 1,
+      "reason": "transition audit fail: pair (tundra <-> alpine) \u2014 high_freq_energy_ratio=6.14 >= 5.0, seam_band_internal_max_delta_rgb01=0.38 >= 0.3",
+      "driver_hint": "pipelines/textures/aaa_texture.py",
+      "transition_pair": [
+        "tundra",
+        "alpine"
+      ]
+    }
+  ]
+}

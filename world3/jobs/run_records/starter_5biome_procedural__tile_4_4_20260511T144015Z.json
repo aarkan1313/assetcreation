@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "run_id": "starter_5biome_procedural__tile_4_4_20260511T144015Z",
+  "request_id": "starter_5biome_procedural__tile_4_4",
+  "request_path": "D:\\assets\\world3\\worlds\\starter_5biome_procedural\\requests\\starter_5biome_procedural__tile_4_4.json",
+  "request": {
+    "schema_version": 1,
+    "id": "starter_5biome_procedural__tile_4_4",
+    "description": "Phase F.3 emitted from plan 'starter_5biome_procedural' tile (4, 4) biome 'grassland'",
+    "source": {
+      "type": "procedural",
+      "material_id": "grassland_grass",
+      "size_px": [
+        512,
+        1024
+      ],
+      "world_size_m": [
+        256.0,
+        256.0
+      ],
+      "elev_min_m": 300.0,
+      "elev_range_m": 12.0,
+      "seed": 1918278965
+    },
+    "world_type": {
+      "biome_kit": "grassland",
+      "style_pack": "photoreal",
+      "view_modes": [
+        "iso",
+        "topdown"
+      ]
+    },
+    "options": {
+      "render_captures": false,
+      "promote_to_gate": false
+    },
+    "output": {
+      "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_4_4",
+      "overwrite": true
+    },
+    "__request_path__": "D:\\assets\\world3\\worlds\\starter_5biome_procedural\\requests\\starter_5biome_procedural__tile_4_4.json"
+  },
+  "started_at": "2026-05-11T14:40:15.241213+00:00",
+  "completed_at": "2026-05-11T14:40:15.894401+00:00",
+  "ok": true,
+  "stages": [
+    {
+      "id": "emit_per_mode_materials",
+      "script": "pipelines/textures/emit_per_mode_materials.py",
+      "started_at": "2026-05-11T14:40:15.241213+00:00",
+      "args": [
+        "--kit",
+        "grassland"
+      ],
+      "exit_code": 0,
+      "wall_time_sec": 0.05,
+      "stdout_tail": [
+        "[grassland]",
+        "  grassland: terrain_blend_grassland_walk.tres",
+        "  grassland: terrain_blend_grassland_iso.tres",
+        "  grassland: terrain_blend_grassland_topdown.tres",
+        "wrote 3 per-mode .tres files"
+      ],
+      "stderr_tail": [],
+      "status": "ok",
+      "completed_at": "2026-05-11T14:40:15.289511+00:00"
+    },
+    {
+      "id": "build_procedural_neighbor",
+      "script": "world3/pipeline/build_procedural_neighbor_bundle.py",
+      "started_at": "2026-05-11T14:40:15.289511+00:00",
+      "args": [
+        "--material-id",
+        "grassland_grass",
+        "--out",
+        "D:\\assets\\world3\\worlds\\starter_5biome_procedural\\bundles\\starter_5biome_procedural__tile_4_4",
+        "--size",
+        "512,1024",
+        "--world-size-m",
+        "256.0,256.0",
+        "--elev-min-m",
+        "300.0",
+        "--elev-range-m",
+        "12.0",
+        "--seed",
+        "1918278965",
+        "--name",
+        "Phase F.3 emitted from plan 'starter_5biome_procedural' tile (4, 4) biome 'grassland'"
+      ],
+      "exit_code": 0,
+      "wall_time_sec": 0.48,
+      "stdout_tail": [
+        "  \"macro\": \"D:\\\\assets\\\\world3\\\\worlds\\\\starter_5biome_procedural\\\\bundles\\\\starter_5biome_procedural__tile_4_4\\\\layers\\\\render_albedo.png\",",
+        "  \"valid_mask\": \"D:\\\\assets\\\\world3\\\\worlds\\\\starter_5biome_procedural\\\\bundles\\\\starter_5biome_procedural__tile_4_4\\\\layers\\\\source_valid_mask.png\",",
+        "  \"heightmap\": \"D:\\\\assets\\\\world3\\\\worlds\\\\starter_5biome_procedural\\\\bundles\\\\starter_5biome_procedural__tile_4_4\\\\heightmap.png\",",
+        "  \"meta\": \"D:\\\\assets\\\\world3\\\\worlds\\\\starter_5biome_procedural\\\\bundles\\\\starter_5biome_procedural__tile_4_4\\\\meta.json\"",
+        "}"
+      ],
+      "stderr_tail": [],
+      "status": "ok",
+      "completed_at": "2026-05-11T14:40:15.767585+00:00"
+    },
+    {
+      "id": "validate_request",
+      "script": "world3/pipeline/validate_region_request.py",
+      "started_at": "2026-05-11T14:40:15.767585+00:00",
+      "args": [
+        "D:\\assets\\world3\\worlds\\starter_5biome_procedural\\requests\\starter_5biome_procedural__tile_4_4.json"
+      ],
+      "exit_code": 0,
+      "wall_time_sec": 0.13,
+      "stdout_tail": [
+        "  [OK  ] D:\\assets\\world3\\worlds\\starter_5biome_procedural\\requests\\starter_5biome_procedural__tile_4_4.json"
+      ],
+      "stderr_tail": [],
+      "status": "ok",
+      "completed_at": "2026-05-11T14:40:15.894401+00:00"
+    }
+  ],
+  "dry_run": false
+}

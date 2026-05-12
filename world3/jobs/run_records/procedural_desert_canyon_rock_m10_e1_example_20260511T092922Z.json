@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "run_id": "procedural_desert_canyon_rock_m10_e1_example_20260511T092922Z",
+  "request_id": "procedural_desert_canyon_rock_m10_e1_example",
+  "request_path": "D:\\assets\\world3\\jobs\\examples\\desert_canyon_procedural.json",
+  "request": {
+    "schema_version": 1,
+    "id": "procedural_desert_canyon_rock_m10_e1_example",
+    "description": "Example procedural-source request that reproduces the M10 procedural canyon-rock neighbor. Provenance matches world3/toporeview/procedural_desert_canyon_rock_m10/meta.json. Used as Phase E.1 schema validation evidence.",
+    "source": {
+      "type": "procedural",
+      "material_id": "desert_canyon_rock",
+      "size_px": [
+        512,
+        1024
+      ],
+      "world_size_m": [
+        120.0,
+        240.0
+      ],
+      "elev_min_m": 412.0,
+      "elev_range_m": 18.0,
+      "seed": 1021
+    },
+    "world_type": {
+      "biome_kit": "desert",
+      "style_pack": "photoreal",
+      "view_modes": [
+        "walk",
+        "iso",
+        "topdown"
+      ]
+    },
+    "options": {
+      "render_captures": true,
+      "promote_to_gate": false
+    },
+    "output": {
+      "bundle_dir": "world3/toporeview/procedural_desert_canyon_rock_m10_e1_example",
+      "overwrite": false
+    }
+  },
+  "started_at": "2026-05-11T09:29:22.409473+00:00",
+  "completed_at": "2026-05-11T09:29:22.973431+00:00",
+  "ok": true,
+  "stages": [
+    {
+      "id": "build_procedural_neighbor",
+      "script": "world3/pipeline/build_procedural_neighbor_bundle.py",
+      "started_at": "2026-05-11T09:29:22.409473+00:00",
+      "args": [
+        "--material-id",
+        "desert_canyon_rock",
+        "--out",
+        "D:\\assets\\world3\\toporeview\\procedural_desert_canyon_rock_m10_e1_example",
+        "--size",
+        "512,1024",
+        "--world-size-m",
+        "120.0,240.0",
+        "--elev-min-m",
+        "412.0",
+        "--elev-range-m",
+        "18.0",
+        "--seed",
+        "1021",
+        "--name",
+        "Example procedural-source request that reproduces the M10 procedural canyon-rock neighbor. Provenance matches world3/toporeview/procedural_desert_canyon_rock_m10/meta.json. Used as Phase E.1 schema validation evidence."
+      ],
+      "exit_code": 0,
+      "wall_time_sec": 0.56,
+      "stdout_tail": [
+        "  \"macro\": \"D:\\\\assets\\\\world3\\\\toporeview\\\\procedural_desert_canyon_rock_m10_e1_example\\\\layers\\\\render_albedo.png\",",
+        "  \"valid_mask\": \"D:\\\\assets\\\\world3\\\\toporeview\\\\procedural_desert_canyon_rock_m10_e1_example\\\\layers\\\\source_valid_mask.png\",",
+        "  \"heightmap\": \"D:\\\\assets\\\\world3\\\\toporeview\\\\procedural_desert_canyon_rock_m10_e1_example\\\\heightmap.png\",",
+        "  \"meta\": \"D:\\\\assets\\\\world3\\\\toporeview\\\\procedural_desert_canyon_rock_m10_e1_example\\\\meta.json\"",
+        "}"
+      ],
+      "stderr_tail": [],
+      "status": "ok",
+      "completed_at": "2026-05-11T09:29:22.973431+00:00"
+    }
+  ],
+  "dry_run": false
+}

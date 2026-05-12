@@ -1,0 +1,50 @@
+[gd_resource type="ShaderMaterial" load_steps=17 format=3]
+
+[ext_resource type="Shader" path="res://shaders/terrain_blend.gdshader" id="shader"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/temperate_forest_grass/albedo.png" id="r1"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/temperate_forest_grass/normal.png" id="r2"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/temperate_forest_grass/roughness.png" id="r3"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/temperate_forest_dirt/albedo.png" id="r4"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/temperate_forest_dirt/normal.png" id="r5"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/temperate_forest_dirt/roughness.png" id="r6"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/temperate_forest_rock_light/albedo.png" id="r7"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/temperate_forest_rock_light/normal.png" id="r8"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/temperate_forest_rock_light/roughness.png" id="r9"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/temperate_forest_rock_dark/albedo.png" id="r10"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/temperate_forest_rock_dark/normal.png" id="r11"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/temperate_forest_rock_dark/roughness.png" id="r12"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/temperate_forest_snow/albedo.png" id="r13"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/temperate_forest_snow/normal.png" id="r14"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/temperate_forest_snow/roughness.png" id="r15"]
+
+[resource]
+shader = ExtResource("shader")
+shader_parameter/grass_albedo = ExtResource("r1")
+shader_parameter/grass_normal = ExtResource("r2")
+shader_parameter/grass_rough = ExtResource("r3")
+shader_parameter/dirt_albedo = ExtResource("r4")
+shader_parameter/dirt_normal = ExtResource("r5")
+shader_parameter/dirt_rough = ExtResource("r6")
+shader_parameter/rock_light_albedo = ExtResource("r7")
+shader_parameter/rock_light_normal = ExtResource("r8")
+shader_parameter/rock_light_rough = ExtResource("r9")
+shader_parameter/rock_dark_albedo = ExtResource("r10")
+shader_parameter/rock_dark_normal = ExtResource("r11")
+shader_parameter/rock_dark_rough = ExtResource("r12")
+shader_parameter/snow_albedo = ExtResource("r13")
+shader_parameter/snow_normal = ExtResource("r14")
+shader_parameter/snow_rough = ExtResource("r15")
+shader_parameter/world_uv_scale = 0.1
+shader_parameter/hex_strength = 1.0
+shader_parameter/blend_sharpness = 8.0
+shader_parameter/normal_strength = 1.0
+shader_parameter/macro_scale = 80.0
+shader_parameter/macro_value_strength = 0.15
+shader_parameter/elev_min_m = 0.0
+shader_parameter/elev_range_m = 1.0
+shader_parameter/slope_threshold = 0.45
+shader_parameter/slope_softness = 0.15
+shader_parameter/h_grass_dirt = 0.3
+shader_parameter/h_dirt_rockdark = 0.65
+shader_parameter/h_rockdark_snow = 0.9
+shader_parameter/h_band_softness = 0.08

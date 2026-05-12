@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/ScaleWorld.gd" id="world_script"]
+[ext_resource type="Script" path="res://scripts/AnchorCameraRig.gd" id="rig_script"]
+[ext_resource type="Script" path="res://scripts/PerfHud.gd" id="perf_hud_script"]
+
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_scale"]
+sky_top_color = Color(0.27, 0.42, 0.65, 1)
+sky_horizon_color = Color(0.78, 0.84, 0.88, 1)
+sky_curve = 0.13
+sky_energy_multiplier = 1.6
+ground_bottom_color = Color(0.66, 0.70, 0.74, 1)
+ground_horizon_color = Color(0.74, 0.80, 0.84, 1)
+ground_curve = 0.04
+sun_angle_max = 30.0
+sun_curve = 0.15
+
+[sub_resource type="Sky" id="Sky_scale"]
+sky_material = SubResource("SkyMat_scale")
+
+[sub_resource type="Environment" id="Environment_scale"]
+background_mode = 2
+sky = SubResource("Sky_scale")
+ambient_light_source = 2
+ambient_light_color = Color(0.60, 0.66, 0.76, 1)
+ambient_light_sky_contribution = 0.6
+ambient_light_energy = 1.0
+reflected_light_source = 2
+tonemap_mode = 2
+tonemap_exposure = 1.0
+tonemap_white = 1.0
+ssao_enabled = false
+glow_enabled = false
+
+[node name="ScaleDemo" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_scale")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.9659, 0.1294, 0.2241, 0, 0.866, -0.5, -0.2588, 0.4830, 0.8365, 0, 200, 0)
+light_energy = 1.0
+light_color = Color(1.0, 0.96, 0.88, 1)
+shadow_enabled = false
+shadow_bias = 0.5
+shadow_normal_bias = 2.0
+shadow_blur = 1.0
+directional_shadow_mode = 2
+directional_shadow_split_1 = 0.15
+directional_shadow_split_2 = 0.35
+directional_shadow_split_3 = 0.65
+directional_shadow_max_distance = 800.0
+
+[node name="World" type="Node3D" parent="."]
+script = ExtResource("world_script")
+bundle_dir = "res://worlds/scale_demo/"
+material_override_path = ""
+biome_materials = {
+"forest": "res://worlds/scale_demo/material_scale_v1.tres",
+"alpine": "res://worlds/scale_demo/biomes/material_alpine.tres",
+"desert": "res://worlds/scale_demo/biomes/material_desert.tres",
+"rocky": "res://worlds/scale_demo/biomes/material_rocky.tres",
+"wetland": "res://worlds/scale_demo/biomes/material_wetland.tres"
+}
+view_material_walk = ""
+view_material_iso = "res://worlds/scale_demo/material_view_iso.tres"
+view_material_topdown = "res://worlds/scale_demo/material_view_topdown.tres"
+view_radius_walk = 1
+view_radius_iso = 8
+view_radius_topdown = 8
+load_mode = 1
+view_radius_tiles = 1
+tile_subset = PackedStringArray()
+tile_resolution_m = 1.0
+
+[node name="CameraRig" type="Node3D" parent="."]
+script = ExtResource("rig_script")
+terrain_path = NodePath("../World")
+walk_speed = 12.0
+walk_eye_height = 1.8
+
+[node name="PerfHud" type="CanvasLayer" parent="."]
+script = ExtResource("perf_hud_script")

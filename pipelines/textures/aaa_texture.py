@@ -194,6 +194,16 @@ def main():
     ap.add_argument("--ladder-tiers", default="2k,1k,512",
                     help="comma-separated tier list for the mip ladder "
                          "(default: 2k,1k,512). Used only with --ladder.")
+    ap.add_argument("--unet", default=None,
+                    help="override FLUX 2 transformer checkpoint name "
+                         "(under ComfyUI/models/diffusion_models/). "
+                         "Default: variant_select's default (klein-4B). "
+                         "Use 'flux-2-klein-9b-fp8.safetensors' or "
+                         "'flux-2-klein-9b-nvfp4.safetensors' for klein-9B.")
+    ap.add_argument("--clip", default=None,
+                    help="override CLIP/text-encoder name. Default: "
+                         "variant_select's default (qwen_3_4b for klein-4B). "
+                         "Klein-9B requires 'qwen_3_8b_fp8mixed.safetensors'.")
     ap.add_argument("--pbr-backend",
                     choices=["derive", "sm", "chord", "chord_sm_rough"],
                     default=None,
@@ -229,12 +239,13 @@ def main():
         "n_variants": n_variants,
         "flux_size": flux_size, "pbr_size": pbr_size,
         "steps": args.steps, "seed_base": args.seed_base,
+        "unet": args.unet, "clip": args.clip,
         "started_at": datetime.now(timezone.utc).isoformat(),
         "stages": [],
     }
 
     # ---- STAGE 1: variant generation + best-pick ----
-    python_subprocess([
+    stage1_cmd = [
         str(PIPELINE_DIR / "variant_select.py"),
         "--prompt", args.prompt, "--id", args.id,
         "--variants", str(n_variants),
@@ -242,7 +253,12 @@ def main():
         "--seed-base", str(args.seed_base),
         "--heal-strength", str(args.heal_strength),
         "--host", args.host,
-    ], "STAGE 1: variant gen + best-pick")
+    ]
+    if args.unet:
+        stage1_cmd += ["--unet", args.unet]
+    if args.clip:
+        stage1_cmd += ["--clip", args.clip]
+    python_subprocess(stage1_cmd, "STAGE 1: variant gen + best-pick")
     albedo_path = out_dir / f"{args.id}_albedo.png"
     pre_score = edge_seam_score(albedo_path)
     log["stages"].append({"stage": "variants", "seam_score": pre_score})

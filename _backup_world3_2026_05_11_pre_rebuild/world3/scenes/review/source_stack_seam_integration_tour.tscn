@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/World3AutoReviewTour.gd" id="script"]
+
+[node name="SourceStackSeamIntegrationTour" type="Node3D"]
+script = ExtResource("script")
+material_path = "res://textures/wgv3/terrain_source_stack_gloss_scrub_source_stack.tres"
+heightmap_path = "res://toporeview/gloss_mountain_seam_integration_proof/heightmap.png"
+meta_path = "res://toporeview/gloss_mountain_seam_integration_proof/meta.json"
+source_valid_mask_path = "res://textures/source_stack/gloss_scrub_seam_integration_proof/source_macro_valid_mask.png"
+source_macro_albedo_override_path = "res://textures/source_stack/gloss_scrub_seam_integration_proof/source_macro_albedo.png"
+source_macro_valid_mask_override_path = "res://textures/source_stack/gloss_scrub_seam_integration_proof/source_macro_valid_mask.png"
+transition_rule_id = "opentopo_scrub_sparse__dry_wash_neighbor"
+start_x_m = 0.0
+start_z_m = 0.0
+boundary_z_m = 128.0
+chunk_size_m = 128.0
+chunk_resolution_m = 4.0
+view_radius_chunks = 4
+source_repeat_mode = "clamp"
+source_repeat_blend_width_m = 0.0
+source_repeat_blend_macro_color = false
+source_repeat_blend_macro_fade = 0.0
+clip_to_source_bounds = true
+transition_width_m = 72.0
+transition_repeat_m = 128.0
+transition_strength = 0.28
+enable_transition_boundary = false
+show_footprint_debug_views = false
+review_use_source_macro_valid_mask = true
+review_source_macro_strength = 0.96
+review_normal_strength = 0.055
+review_detail_normal_strength = 0.018
+review_detail_rough_strength = 0.018
+review_roughness_strength = 1.0
+review_roughness_floor = 0.86
+review_specular_strength = 0.0
+review_albedo_gain = 0.92
+review_background_color = Color(0.08, 0.095, 0.1, 1)
+review_tonemap_exposure = 0.58
+review_sun_energy = 0.55
+review_ambient_energy = 0.2
+tour_profile = "seam_integration"
+initial_tour_index = 0
+auto_play = true

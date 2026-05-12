@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "starter_5biome_procedural__tile_4_0",
+  "description": "Phase F.3 emitted from plan 'starter_5biome_procedural' tile (4, 0) biome 'desert'",
+  "source": {
+    "type": "procedural",
+    "material_id": "desert_canyon_rock",
+    "size_px": [
+      512,
+      1024
+    ],
+    "world_size_m": [
+      256.0,
+      256.0
+    ],
+    "elev_min_m": 412.0,
+    "elev_range_m": 18.0,
+    "seed": 2141141875,
+    "neighbor_west_edge": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_3_0/edges/east_edge.json",
+    "this_biome": "desert"
+  },
+  "world_type": {
+    "biome_kit": "desert",
+    "style_pack": "photoreal",
+    "view_modes": [
+      "iso",
+      "topdown"
+    ]
+  },
+  "options": {
+    "render_captures": false,
+    "promote_to_gate": false
+  },
+  "output": {
+    "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_4_0",
+    "overwrite": true
+  }
+}

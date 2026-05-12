@@ -1,0 +1,63 @@
+{
+  "pair": [
+    "tundra_moss",
+    "temperate_forest_grass"
+  ],
+  "rule_id": "biome_tundra__temperate_forest_base",
+  "seed": 16272299386617983414,
+  "tile_px": 512,
+  "tiles_wide": 8,
+  "noise_strength": 0.18,
+  "tuning": {
+    "albedo_match_strength": 0.35,
+    "albedo_frequency_dampen_strength": 0.0,
+    "albedo_frequency_blur_radius_px": 1.25,
+    "roughness_match_strength": 0.7,
+    "normal_match_strength": 0.9
+  },
+  "outputs": {
+    "albedo": "world3/textures/transitions/tundra_moss__temperate_forest_grass/albedo.png",
+    "normal": "world3/textures/transitions/tundra_moss__temperate_forest_grass/normal.png",
+    "roughness": "world3/textures/transitions/tundra_moss__temperate_forest_grass/roughness.png",
+    "height": "world3/textures/transitions/tundra_moss__temperate_forest_grass/height.png",
+    "ao": "world3/textures/transitions/tundra_moss__temperate_forest_grass/ao.png"
+  },
+  "mask": "world3/textures/transitions/tundra_moss__temperate_forest_grass/mask.png",
+  "preview": "world3/docs/captures/transitions/tundra_moss__temperate_forest_grass_hard_vs_transition.png",
+  "hard_edge_mean_abs_albedo_delta": 0.287778,
+  "raw_scores": {
+    "source_hue_delta": 0.178208,
+    "source_value_delta": 0.169383,
+    "source_saturation_delta": 0.19634,
+    "roughness_mean_abs_delta": 0.494944,
+    "normal_energy_delta": 0.611044,
+    "normal_mean_abs_delta": 0.215603,
+    "visible_frequency_delta": 0.010571,
+    "hard_edge_mean_abs_albedo_delta": 0.287778,
+    "transition_center_albedo_delta": 0.032526,
+    "edge_delta_improvement_ratio": 0.886974,
+    "transition_gradient_p95": 0.120546
+  },
+  "scores": {
+    "source_hue_delta": 0.120329,
+    "source_value_delta": 0.108409,
+    "source_saturation_delta": 0.125751,
+    "roughness_mean_abs_delta": 0.148489,
+    "normal_energy_delta": 0.383937,
+    "normal_mean_abs_delta": 0.146318,
+    "visible_frequency_delta": 0.005724,
+    "hard_edge_mean_abs_albedo_delta": 0.287778,
+    "transition_center_albedo_delta": 0.032655,
+    "edge_delta_improvement_ratio": 0.886526,
+    "transition_gradient_p95": 0.120614
+  },
+  "review_hints": [
+    "normal_energy_mismatch"
+  ],
+  "raw_review_hints": [
+    "palette_grade_before_runtime",
+    "roughness_grade_before_runtime",
+    "normal_energy_mismatch"
+  ],
+  "status": "prototype_transition_strip"
+}

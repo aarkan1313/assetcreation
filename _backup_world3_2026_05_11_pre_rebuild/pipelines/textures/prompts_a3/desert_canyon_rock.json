@@ -1,0 +1,18 @@
+[
+  {
+    "label": "cookbook",
+    "prompt": "weathered tan canyon sandstone with horizontal striations, top-down photo, photoreal"
+  },
+  {
+    "label": "no_striations",
+    "prompt": "weathered tan canyon sandstone, top-down photo, photoreal"
+  },
+  {
+    "label": "mineral",
+    "prompt": "weathered red-tan sandstone with iron oxide bands and quartz inclusions, top-down photo, photoreal"
+  },
+  {
+    "label": "ground_level_lead",
+    "prompt": "ground-level photograph of weathered desert sandstone surface, fine grain detail, top-down view, photoreal"
+  }
+]

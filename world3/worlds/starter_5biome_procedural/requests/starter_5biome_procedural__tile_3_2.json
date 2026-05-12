@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "starter_5biome_procedural__tile_3_2",
+  "description": "Phase F.3 emitted from plan 'starter_5biome_procedural' tile (3, 2) biome 'grassland'",
+  "source": {
+    "type": "procedural",
+    "material_id": "grassland_grass",
+    "size_px": [
+      512,
+      1024
+    ],
+    "world_size_m": [
+      256.0,
+      256.0
+    ],
+    "elev_min_m": 300.0,
+    "elev_range_m": 12.0,
+    "seed": 1943123527,
+    "neighbor_west_edge": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_2_2/edges/east_edge.json",
+    "neighbor_north_edge": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_3_1/edges/south_edge.json",
+    "this_biome": "grassland"
+  },
+  "world_type": {
+    "biome_kit": "grassland",
+    "style_pack": "photoreal",
+    "view_modes": [
+      "iso",
+      "topdown"
+    ]
+  },
+  "options": {
+    "render_captures": false,
+    "promote_to_gate": false
+  },
+  "output": {
+    "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_3_2",
+    "overwrite": true
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "run_id": "starter_5biome_procedural__tile_4_1_20260511T164258Z",
+  "request_id": "starter_5biome_procedural__tile_4_1",
+  "request_path": "D:\\assets\\world3\\worlds\\starter_5biome_procedural\\requests\\starter_5biome_procedural__tile_4_1.json",
+  "request": {
+    "schema_version": 1,
+    "id": "starter_5biome_procedural__tile_4_1",
+    "description": "Phase F.3 emitted from plan 'starter_5biome_procedural' tile (4, 1) biome 'desert'",
+    "source": {
+      "type": "procedural",
+      "material_id": "desert_canyon_rock",
+      "size_px": [
+        512,
+        1024
+      ],
+      "world_size_m": [
+        256.0,
+        256.0
+      ],
+      "elev_min_m": 412.0,
+      "elev_range_m": 18.0,
+      "seed": 2078274353,
+      "neighbor_west_edge": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_3_1/edges/east_edge.json",
+      "neighbor_north_edge": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_4_0/edges/south_edge.json",
+      "this_biome": "desert",
+      "neighbor_south_biome": "grassland"
+    },
+    "world_type": {
+      "biome_kit": "desert",
+      "style_pack": "photoreal",
+      "view_modes": [
+        "iso",
+        "topdown"
+      ]
+    },
+    "options": {
+      "render_captures": false,
+      "promote_to_gate": false
+    },
+    "output": {
+      "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_4_1",
+      "overwrite": true
+    },
+    "__request_path__": "D:\\assets\\world3\\worlds\\starter_5biome_procedural\\requests\\starter_5biome_procedural__tile_4_1.json"
+  },
+  "started_at": "2026-05-11T16:42:57.545607+00:00",
+  "completed_at": "2026-05-11T16:42:58.906249+00:00",
+  "ok": true,
+  "stages": [
+    {
+      "id": "build_procedural_neighbor",
+      "script": "world3/pipeline/build_procedural_neighbor_bundle.py",
+      "started_at": "2026-05-11T16:42:57.545607+00:00",
+      "args": [
+        "--material-id",
+        "desert_canyon_rock",
+        "--out",
+        "D:\\assets\\world3\\worlds\\starter_5biome_procedural\\bundles\\starter_5biome_procedural__tile_4_1",
+        "--size",
+        "512,1024",
+        "--world-size-m",
+        "256.0,256.0",
+        "--elev-min-m",
+        "412.0",
+        "--elev-range-m",
+        "18.0",
+        "--seed",
+        "2078274353",
+        "--name",
+        "Phase F.3 emitted from plan 'starter_5biome_procedural' tile (4, 1) biome 'desert'",
+        "--neighbor-west-edge",
+        "D:\\assets\\world3\\worlds\\starter_5biome_procedural\\bundles\\starter_5biome_procedural__tile_3_1\\edges\\east_edge.json",
+        "--neighbor-north-edge",
+        "D:\\assets\\world3\\worlds\\starter_5biome_procedural\\bundles\\starter_5biome_procedural__tile_4_0\\edges\\south_edge.json",
+        "--this-biome",
+        "desert",
+        "--neighbor-south-biome",
+        "grassland",
+        "--biome-kit",
+        "desert"
+      ],
+      "exit_code": 0,
+      "wall_time_sec": 1.2,
+      "stdout_tail": [
+        "  \"macro\": \"D:\\\\assets\\\\world3\\\\worlds\\\\starter_5biome_procedural\\\\bundles\\\\starter_5biome_procedural__tile_4_1\\\\layers\\\\render_albedo.png\",",
+        "  \"valid_mask\": \"D:\\\\assets\\\\world3\\\\worlds\\\\starter_5biome_procedural\\\\bundles\\\\starter_5biome_procedural__tile_4_1\\\\layers\\\\source_valid_mask.png\",",
+        "  \"heightmap\": \"D:\\\\assets\\\\world3\\\\worlds\\\\starter_5biome_procedural\\\\bundles\\\\starter_5biome_procedural__tile_4_1\\\\heightmap.png\",",
+        "  \"meta\": \"D:\\\\assets\\\\world3\\\\worlds\\\\starter_5biome_procedural\\\\bundles\\\\starter_5biome_procedural__tile_4_1\\\\meta.json\"",
+        "}"
+      ],
+      "stderr_tail": [],
+      "status": "ok",
+      "completed_at": "2026-05-11T16:42:58.748350+00:00"
+    },
+    {
+      "id": "validate_request",
+      "script": "world3/pipeline/validate_region_request.py",
+      "started_at": "2026-05-11T16:42:58.749977+00:00",
+      "args": [
+        "D:\\assets\\world3\\worlds\\starter_5biome_procedural\\requests\\starter_5biome_procedural__tile_4_1.json"
+      ],
+      "exit_code": 0,
+      "wall_time_sec": 0.11,
+      "stdout_tail": [
+        "  [OK  ] D:\\assets\\world3\\worlds\\starter_5biome_procedural\\requests\\starter_5biome_procedural__tile_4_1.json"
+      ],
+      "stderr_tail": [],
+      "status": "ok",
+      "completed_at": "2026-05-11T16:42:58.859549+00:00"
+    },
+    {
+      "id": "emit_per_mode_materials",
+      "script": "pipelines/textures/emit_per_mode_materials.py",
+      "started_at": "2026-05-11T16:42:58.863885+00:00",
+      "args": [
+        "--kit",
+        "desert"
+      ],
+      "exit_code": 0,
+      "wall_time_sec": 0.04,
+      "stdout_tail": [
+        "[desert]",
+        "  desert: terrain_blend_desert_walk.tres",
+        "  desert: terrain_blend_desert_iso.tres",
+        "  desert: terrain_blend_desert_topdown.tres",
+        "wrote 3 per-mode .tres files"
+      ],
+      "stderr_tail": [],
+      "status": "ok",
+      "completed_at": "2026-05-11T16:42:58.906249+00:00"
+    }
+  ],
+  "dry_run": false
+}

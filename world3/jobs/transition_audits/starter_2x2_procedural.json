@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "plan_id": "starter_2x2_procedural",
+  "generated_at": "2026-05-11T14:55:15Z",
+  "audit_params": {
+    "tile_size_px": [
+      512,
+      1024
+    ],
+    "overlap_px": 128,
+    "color_feather_px": 384,
+    "thresholds": {
+      "palette_lab_warn": 30.0,
+      "palette_lab_fail": 60.0,
+      "luminance_range_warn": 0.3,
+      "luminance_range_fail": 0.55,
+      "hf_ratio_warn": 2.5,
+      "hf_ratio_fail": 5.0,
+      "seam_band_warn": 0.15,
+      "seam_band_fail": 0.3
+    }
+  },
+  "pair_count": 0,
+  "pass_count": 0,
+  "warn_count": 0,
+  "fail_count": 0,
+  "error_count": 0,
+  "pairs": []
+}

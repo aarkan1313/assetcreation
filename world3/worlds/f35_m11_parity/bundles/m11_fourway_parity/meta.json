@@ -1,0 +1,36 @@
+{
+  "name": "F.3.5 fourway parity bundle (m11_fourway_parity)",
+  "builder": "build_fourway_bundle.py",
+  "source": "fourway",
+  "heightmap_size_px": [
+    1024,
+    1024
+  ],
+  "world_size_x_m": 240.0,
+  "world_size_z_m": 240.0,
+  "world_size_m": 240.0,
+  "elevation_min_m": 409.84686279296875,
+  "elevation_max_m": 465.81890869140625,
+  "elevation_range_m": 55.9720458984375,
+  "biome_kit": "grassland",
+  "fourway": {
+    "nw_material": "m8_grassland_grass_calm_v3",
+    "ne_material": "fantasy_lava_field_controlled",
+    "se_material": "desert_canyon_rock",
+    "sw_material": "scrub_sparse",
+    "slot_materials": {
+      "grass": "m8_grassland_grass_calm_v3",
+      "dirt": "fantasy_lava_field_controlled",
+      "rock_light": "desert_canyon_rock",
+      "rock_dark": "scrub_sparse",
+      "snow": "grassland_dirt"
+    },
+    "source_anchored": true
+  },
+  "layers": {
+    "render_albedo": "res://worlds/f35_m11_parity/bundles/m11_fourway_parity/layers/render_albedo.png",
+    "source_valid_mask": "res://worlds/f35_m11_parity/bundles/m11_fourway_parity/layers/source_valid_mask.png",
+    "splat_weights_rgba": "res://worlds/f35_m11_parity/bundles/m11_fourway_parity/layers/splat_weights_rgba.png"
+  },
+  "bundle_material_path": "res://worlds/f35_m11_parity/bundles/m11_fourway_parity/material.tres"
+}

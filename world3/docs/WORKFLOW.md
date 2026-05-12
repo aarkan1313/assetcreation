@@ -1,5 +1,18 @@
 # world3 Workflow
 
+> **Updated 2026-05-11 after Phase F.1.** The single-command orchestrator
+> path now works on procedural, real-DEM, and hybrid lanes. The legacy
+> per-script flow below remains accurate as the substrate the
+> orchestrator drives, but for everyday use prefer:
+>
+> ```powershell
+> python world3/pipeline/world3_make.py <region_request.json>
+> ```
+>
+> See the "Orchestrator-driven workflow (Phase E + F)" section below
+> for the new entry point. Roadmap context lives in
+> [WORLD3_LONG_ARC_2026_05_11.md](WORLD3_LONG_ARC_2026_05_11.md).
+
 The full top-to-bottom sequence we've used to get from "raw OpenTopography
 DEM tile" to "Tetons mountain rendered with hex-tile + macro-variation
 shader in iso/topdown/walk modes." This is the *as-built* workflow
@@ -8,6 +21,301 @@ captured 2026-05-07 — not aspirational, this is what we actually run.
 If anything in here goes wrong, this is the place to come check the
 expected outputs at each step. Roadmap, planning, and decision context
 live in their own docs (`ROADMAP.md`, `PLAN.md`, `DECISIONS.md`).
+
+---
+
+## Orchestrator-driven workflow (Phase E + F)
+
+As of Phase F.1 (2026-05-11), the orchestrator drives all three lanes:
+
+### One command, end-to-end
+
+```powershell
+python world3/pipeline/world3_make.py world3/jobs/examples/desert_canyon_procedural.json   # procedural-only, ~5s
+python world3/pipeline/world3_make.py world3/jobs/examples/gloss_real.json                 # real-DEM, ~5min
+python world3/pipeline/world3_make.py world3/jobs/examples/gloss_canyon_hybrid.json        # hybrid real+procedural, ~3s
+```
+
+### What each lane runs
+
+**Procedural-only** (`source.type == "procedural"`):
+1. `build_procedural_neighbor_bundle.py` — catalog material → heightmap + macro + valid mask + meta
+2. `build_runtime_image_cache.py` — heightmap.png → float32 bin for ChunkLoader
+3. (optional captures via `render_captures_*` stages)
+
+**Real-DEM** (`source.type == "real"`, with orthophoto):
+1. `build_opentopo_textured_master_stack.py` — DEM + ortho → 8-step chain (see "DEM chain" section below)
+2. `build_runtime_image_cache.py`
+3. (optional captures)
+
+**Hybrid** (`source.type == "hybrid"`):
+1. `build_procedural_neighbor_bundle.py` (writes to `_procedural_side/`)
+2. `build_terrain_seam_integration_proof.py` (joins real-source crop to procedural neighbor through integration band)
+3. `build_runtime_image_cache.py`
+4. (optional captures)
+
+### What the orchestrator gives you on top of the scripts
+
+- **Schema-validated requests** — `validate_region_request.py` runs before any subprocess; rejects malformed requests
+- **Stage manifest as authority** — `world3/jobs/stages.json` declares every stage; `audit_stages.py` proves all 12 resolve cleanly
+- **Provenance per run** — `world3/jobs/run_records/<id>_<timestamp>.json` records every stage invocation + timing + status
+- **Determinism** — two independent runs produce byte-identical output for all three lanes. Real-DEM reproduces the canonical Gloss Mountain bundle hash-for-hash.
+- **`--dry-run`, `--from-stage`, `--only-stages`, `--skip-validation`** flags for partial / debug runs
+
+### The DEM chain (what real-DEM actually does)
+
+`build_opentopo_textured_master_stack.py` is 8 steps:
+
+1. Read DEM (rasterio) → extract values + nodata mask
+2. Repair DEM — fill nodata holes via distance-weighted nearest-valid out to `--fill-distance-px`, clamp residuals to median
+3. Reproject orthophoto onto DEM's grid (CRS + resolution match) — bulk of wall time on large rasters
+4. Crop to valid DEM (optional) — tighten bbox to real data with margin
+5. Compute derived layers — hillshade, slope, roughness, cliff mask
+6. Compose review macro — orthophoto where valid, hillshade fallback elsewhere, with `render_fill_mask` recording origin
+7. Downsample for review at `--review-max-dim` resolution (PNG layers)
+8. Emit `meta.json` + `stack_manifest.json`
+
+**Output roster:**
+```
+<bundle_dir>/
+  heightmap.png              # 16-bit normalized DEM, runtime input
+  meta.json                  # elevation_min_m, world_size_*_m, source provenance
+  stack_manifest.json        # roster of every file + role
+  master/                    # native-res floats + uint8 masks
+    dem_repaired_float32.tif
+    source_valid_mask.tif
+    orthophoto_rgb_aligned_to_dem.tif
+    texture_coverage_mask.tif
+  layers/                    # 8-bit derived PNGs for runtime
+    hillshade.png, slope_deg.png, roughness.png, elevation_gray.png
+    orthophoto_rgb.png, render_albedo.png, render_fill_mask.png
+    cliff_mask.png, source_valid_mask.png, texture_coverage_mask.png
+  qa/textured_master_report.json
+```
+
+Then `build_runtime_image_cache.py` reads `heightmap.png` + a splat-weights PNG and emits:
+```
+<bundle_dir>/runtime_cache/
+  heightmap_rf32.bin + .json   # raw float32 height for ChunkLoader
+  alpine_splat_rgba8.bin + .json   # raw RGBA8 splat weights
+```
+
+That's what Godot's `ChunkLoader` actually streams at runtime.
+
+### Authoring a new region request
+
+Copy one of the existing examples, edit:
+
+```powershell
+cp world3/jobs/examples/desert_canyon_procedural.json world3/jobs/examples/my_new_region.json
+# edit material_id, seed, output.bundle_dir, etc.
+python world3/pipeline/validate_region_request.py world3/jobs/examples/my_new_region.json   # check schema first
+python world3/pipeline/world3_make.py world3/jobs/examples/my_new_region.json
+```
+
+Schema reference: `world3/jobs/region_request_schema.json`. The validator gives line-level error messages on malformed fields.
+
+### Authoring a world plan (Phase F.2)
+
+A **world plan** is the top-level intent for a multi-bundle world.
+It declares bounds, tile grid, biomes, allowed adjacencies, per-biome
+sources, perspectives, and zoom levels. The Phase F.3 iterator (next
+sub-phase) will read a plan and emit one region request per tile;
+today the plan is a validated schema only.
+
+```powershell
+cp world3/jobs/examples/world_plan_starter_5biome_procedural.json world3/jobs/examples/my_world.json
+# edit bounds_m, biomes, biome_layout, adjacency_rules, ...
+python world3/pipeline/validate_world_plan.py world3/jobs/examples/my_world.json
+```
+
+Schema reference: `world3/jobs/world_plan_schema.json`. Validator
+enforces seven semantic rules beyond schema:
+
+1. `bounds_m` must be integer-multiple of `tile_size_m`
+2. `biome_layout` must cover every tile exactly once
+3. No duplicate `tile_xy` entries
+4. Every biome referenced must be declared in `biomes[]`
+5. Every 4-connected adjacency must be in `adjacency_rules.allowed_pairs`
+6. `style_pack` file must exist
+7. Schema version must be 1
+
+Two starter examples ship:
+- `world_plan_starter_2x2_procedural.json` — 2×2 single-biome, smallest possible
+- `world_plan_starter_5biome_procedural.json` — 5×5 all-five-biomes, exercises adjacency rules
+
+### Building a world from a plan (Phase F.3)
+
+The iterator expands a plan into N per-tile region requests + a `world_map.json`,
+optionally invoking the orchestrator on every emitted request:
+
+```powershell
+# emit only (preview the world_map without building bundles)
+python world3/pipeline/world_plan_to_bundles.py world3/jobs/examples/world_plan_starter_2x2_procedural.json
+
+# emit + run orchestrator on every tile (full chain plan -> bundles)
+python world3/pipeline/world_plan_to_bundles.py world3/jobs/examples/world_plan_starter_5biome_procedural.json --run
+
+# dry-run: validate + preview without writing files
+python world3/pipeline/world_plan_to_bundles.py <plan> --dry-run
+
+# validate an emitted world_map.json
+python world3/pipeline/validate_world_map.py world3/worlds/<plan_id>/world_map.json
+python world3/pipeline/validate_world_map.py --schema-self-test
+```
+
+Output structure per plan:
+
+```
+world3/worlds/<plan_id>/
+  world_map.json              # the F.7 streaming director's entry point
+  requests/
+    <plan_id>__tile_<col>_<row>.json   # one per tile
+  bundles/
+    <plan_id>__tile_<col>_<row>/       # one per tile (after --run)
+      heightmap.png + meta.json + layers/ + ...
+```
+
+Per-tile seed derivation: `int(sha256(plan_seed:col:row)[:4]) & 0x7FFFFFFF`.
+Deterministic across runs and machines — re-running produces byte-identical bundles.
+
+**Heightmap contiguity (F.3.1):** the iterator emits bundles in row-major order
+(north to south, west to east) and threads each tile's W and N neighbor edge
+heights into its `source.neighbor_west_edge` / `source.neighbor_north_edge`
+fields. The procedural builder reads those and forces matching boundary samples
+with a feathered inward blend. Result: adjacent bundles' shared boundaries
+agree within 16-bit PNG quantization noise (~0.01m on 80m elev ranges).
+
+**M11 parity bundle shape (F.3.4 + F.3.5):** the procedural builder is a thin
+wrapper around `world3/pipeline/m11_bundle_lib.py`. Each bundle emits the
+same artifact shape M11 fourway emits:
+
+```
+<bundle_dir>/
+  heightmap.png
+  meta.json
+  material.tres                    # per-bundle ShaderMaterial, 5 slots × 7 maps
+  edges/                           # F.3.1 contiguity sidecars
+    east_edge.json
+    south_edge.json
+  layers/
+    render_albedo.png              # composited macro
+    source_valid_mask.png
+    splat_weights_rgba.png         # height+slope+noise driven splat
+    dry_grass_density_mask.png     # scatter mask sidecars (M11 set)
+    rock_cluster_mask.png
+    shrub_carryover_mask.png
+    soil_exposure_mask.png
+    fantasy_crack_mask.png         (fourway only)
+    wash_line_mask.png
+    no_scatter_mask.png
+```
+
+For M11-style fourway corner bundles (4 explicit domains in one bundle),
+use `build_fourway_bundle.py` directly — see
+[F35_M11_PARITY_REFACTOR_2026_05_11.md](F35_M11_PARITY_REFACTOR_2026_05_11.md)
+for the example invocation that recreates M11's exact content.
+
+Validated on starter plans:
+- 2×2 (4 tiles): emit + run + byte-identical reproduction; all 4 cross-tile seams within 0.0004m
+- 5×5 (25 tiles): 40 cross-tile seams within 0.0103m, ~15s total wall time
+
+### Catalog-time transition pair audit (Phase F.4)
+
+Before building bundles for a multi-biome plan, audit whether the
+catalog materials behind each declared adjacency pair will blend
+cleanly at a seam band. Catches "these textures don't blend"
+*before* compute is spent on N bundles.
+
+```powershell
+# audit all allowed pairs in a plan; writes JSON to world3/jobs/transition_audits/<plan_id>.json
+python world3/pipeline/audit_transition_pairs.py world3/jobs/examples/world_plan_starter_5biome_procedural.json
+
+# strict mode: exit 1 if any pair fails
+python world3/pipeline/audit_transition_pairs.py <plan> --strict
+
+# JSON to stdout (in addition to file write)
+python world3/pipeline/audit_transition_pairs.py <plan> --json
+```
+
+Per-pair verdict + actionable `recommended_action`:
+- `palette_lock` — palette mismatch dominates; cross-material palette work via `pipelines/textures/palette_lock.py`
+- `regenerate` — luminance range or frequency badly off; rebuild material via `aaa_texture.py`
+- `shader_blend_band` — runtime-mitigatable wider seam band (G.3 / G.5 shader work)
+- `none` — pass
+
+Four diagnostic metrics per pair: `palette_delta_lab`, `luminance_range_delta`,
+`high_freq_energy_ratio`, `seam_band_internal_max_delta_rgb01`.
+
+`world_plan_to_bundles.py` reads the audit if present and prints the
+summary as a soft warning (does not block emission).
+
+**Note:** The starter 5×5 plan's first audit fails 7 of 8 pairs because
+the existing catalog wasn't authored with cross-material blend in mind.
+This is the audit working as designed — F.5 will consume the audit to
+prioritize remediation.
+
+### Catalog demand + requisition (Phase F.5)
+
+Given a plan + an F.4 audit, derive which materials need work, then
+dispatch the texture pipeline to do it:
+
+```powershell
+# F.5a — derive demand: which materials does this plan need, what's missing/below-gate
+python world3/pipeline/derive_catalog_demand.py world3/jobs/examples/world_plan_starter_5biome_procedural.json
+# writes world3/jobs/catalog_demand/<plan_id>.json with buckets (have/need/below) and prioritized work_queue
+
+# F.5b — preview what the catalog requisition runner would do (DRY-RUN by default)
+python world3/pipeline/run_catalog_requisition.py world3/jobs/catalog_demand/<plan_id>.json
+
+# F.5b — actually run it (user-gated, real ComfyUI work)
+python world3/pipeline/run_catalog_requisition.py <demand> --run
+
+# Filter to one action class + cap items for a smoke check
+python world3/pipeline/run_catalog_requisition.py <demand> --only-action palette_lock --max-items 1 --run
+```
+
+Work queue priorities: `fix_catalog` (missing) > `palette_lock` (cheap)
+> `regenerate` (heavy) > `shader_blend_band` (runtime; excluded from
+catalog work). Each item carries the source `reason` + a `driver_hint`
+pointing at the right script.
+
+The runner is **dry-run by default** to make LLM-driven catalog
+remediation safe. The actual generation pass requires `--run`.
+
+Run records: `world3/jobs/catalog_requisition_records/<plan_id>_<ts>.json`.
+
+### In-context material re-audit (Phase F.6)
+
+After F.3 builds the world, re-capture each biome's material through
+the orchestrator capture driver and compare rendered metrics to
+catalog metrics. Catches catalog→runtime drift (shader/lighting/
+scatter changing the material's appearance).
+
+```powershell
+python world3/pipeline/audit_materials_in_context.py world3/jobs/examples/world_plan_starter_5biome_procedural.json
+# captures each biome's first tile in iso, writes audit JSON
+
+# reuse existing in_context_*.png captures (skip re-render)
+python world3/pipeline/audit_materials_in_context.py <plan> --skip-render
+```
+
+Per-biome verdict: `pass / warn / fail` on three drift metrics
+(palette Lab, luminance range, high-freq energy ratio). Output:
+`world3/jobs/in_context_audits/<plan_id>.json`.
+
+**F.4 + F.6 together:**
+- F.4 catches catalog-time blend issues (between two materials)
+- F.6 catches catalog→runtime drift (one material, on-disk vs rendered)
+- The two audits cover orthogonal diagnostic axes
+
+---
+
+## Legacy per-script workflow (still accurate)
+
+What follows is the original 2026-05-07 as-built workflow. The
+orchestrator above drives these same scripts; this section remains
+the reference for what happens *inside* each stage.
 
 ---
 
@@ -466,6 +774,60 @@ res://scenes/review/capture_source_stack_real_procedural_iso.tscn
 res://scenes/review/capture_source_stack_real_procedural_close.tscn
 res://scenes/review/capture_source_stack_real_procedural_medium.tscn
 ```
+
+### Orchestrator capture driver (E.4)
+
+`res://scenes/review/orchestrator_capture_driver.tscn` is the parameterized
+capture scene used by Phase E.3+ orchestrator runs. Instead of authoring a
+new `capture_*.tscn` per bundle, write a JSON request to Godot's `user://`
+directory and invoke the driver scene; it reads the request, instantiates
+`World3AutoReviewTour` with the bundle paths, runs warmup, saves the PNG.
+
+Request file path (Windows):
+`C:/Users/josep/AppData/Roaming/Godot/app_userdata/world3/orchestrator_capture_request.json`
+
+Request schema (all paths are `res://`):
+
+```json
+{
+  "bundle_dir":     "res://toporeview/<bundle>",
+  "material":       "res://textures/wgv3/terrain_blend_<kit>.tres",
+  "mode":           "close|medium|iso|topdown",
+  "output":         "res://docs/captures/review/<id>_<mode>.png",
+  "macro_albedo":   "res://...",
+  "macro_mask":     "res://...",
+  "warmup_frames":  60,
+  "viewport_size":  [1600, 1000],
+  "start_x_m":      60.0,
+  "start_z_m":      120.0,
+  "chunk_size_m":   120.0,
+  "chunk_resolution_m": 4.0
+}
+```
+
+Invocation (validated 2026-05-11 on M10 procedural bundle, all 4 modes):
+
+```powershell
+& "C:\Godot\Godot_v4.5-stable_win64.exe" `
+  --rendering-driver opengl3 `
+  --path "D:/assets/world3" `
+  --single-window `
+  --disable-crash-handler `
+  --log-file "D:/tmp/orchestrator_capture_<run-id>.log" `
+  "res://scenes/review/orchestrator_capture_driver.tscn"
+```
+
+Notes:
+- **Use the regular binary**, not the mono build at
+  `C:/Users/josep/Downloads/Godot_v4.5-stable_mono_win64/...`. The mono
+  binary exits 0 in ~3s with no log and no PNG on this machine.
+- `--log-file` is essential for debugging; the per-project `user://logs/`
+  files only land on successful runs and can mislead diagnosis.
+- Pass the scene as a positional argument (the `--scene` flag is not
+  required and both forms work).
+- `--rendering-driver opengl3` is required: `--headless` makes
+  `get_viewport().get_texture().get_image()` return null because the dummy
+  rendering server has no GPU readback.
 
 Open the live non-overlap review scene with:
 

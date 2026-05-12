@@ -43,10 +43,14 @@
     "overlap_px": 128,
     "height_feather_px": 224,
     "color_feather_px": 384,
-    "profile_blur_px": 20.0,
+    "profile_blur_px": 12.0,
     "macro_band_mode": "blend",
     "macro_bridge_blur_px": 26.0,
     "macro_bridge_detail_strength": 0.12,
+    "dark_spot_repair_side": "left",
+    "dark_spot_threshold": 0.07058823529411765,
+    "dark_spot_min_area_px": 4,
+    "dark_spot_max_area_px": 5000,
     "left_output_width_px": 384,
     "integration_band_output_px": 128,
     "right_output_width_px": 384,
@@ -65,65 +69,65 @@
       },
       "global_bias": -1.552703857421875,
       "row_bias": {
-        "mean": 5.821331658706413,
-        "median": 4.480249881744385,
-        "p95": 15.135528707504271,
-        "max": 15.646909713745117
+        "mean": 5.916106188730737,
+        "median": 4.554173946380615,
+        "p95": 15.391037225723267,
+        "max": 15.792325019836426
       },
       "post_overlap_delta": {
-        "mean": 2.4837879720143974,
-        "median": 1.9038238525390625,
-        "p95": 6.948942565917967,
-        "max": 16.00384521484375
+        "mean": 2.452631404157728,
+        "median": 1.872222900390625,
+        "p95": 6.917509460449217,
+        "max": 15.827850341796875
       },
       "post_join_steps": {
         "left_to_band": {
-          "mean": 0.06799599528312683,
+          "mean": 0.06799539923667908,
           "median": 0.0439605712890625,
           "p95": 0.23436889648437492,
           "max": 1.040985107421875
         },
         "band_to_right": {
-          "mean": 0.12933796644210815,
-          "median": 0.09912109375,
-          "p95": 0.3102706909179687,
-          "max": 0.429229736328125
+          "mean": 0.12946170568466187,
+          "median": 0.1004638671875,
+          "p95": 0.31155700683593746,
+          "max": 0.428436279296875
         }
       }
     },
     "macro_rgb01": {
       "raw_overlap_delta_rgb01": {
-        "mean": 0.11527662788106834,
-        "median": 0.09019607305526733,
-        "p95": 0.3294117748737335,
-        "max": 0.7215686440467834
+        "mean": 0.15241378864163835,
+        "median": 0.13333332538604736,
+        "p95": 0.3764706254005432,
+        "max": 0.7411764860153198
       },
       "band_mode": "blend",
       "bridge_blur_px": 26.0,
       "bridge_detail_strength": 0.12,
       "global_bias_rgb01": [
-        -0.10196077823638916,
-        -0.08627453446388245,
-        -0.027450978755950928
+        -0.16470587253570557,
+        -0.1411764919757843,
+        -0.07843136787414551
       ],
       "post_overlap_delta_rgb01": {
-        "mean": 0.09082018770216867,
-        "median": 0.06553149223327637,
-        "p95": 0.2723694518208504,
-        "max": 0.6416649222373962
+        "mean": 0.08906168025123407,
+        "median": 0.06373381614685059,
+        "p95": 0.27438193559646606,
+        "max": 0.6101540923118591
       },
       "post_join_steps_rgb01": {
         "left_to_band": {
-          "mean": 0.027268790639936924,
-          "median": 0.01960901916027069,
-          "p95": 0.086283128708601,
-          "max": 0.17386390268802643
+          "mean": 0.026898552550846944,
+          "median": 0.019608795642852783,
+          "p95": 0.08367153629660606,
+          "max": 0.17386402189731598
         },
         "band_to_right": {
-          "mean": 0.003062553150812164,
-          "median": 0.0023690611124038696,
-          "p95": 0.008898963034152984,
-          "max": 0.01282164454460144
+          "mean": 0.010026094096247107,
+          "median": 0.007397636771202087,
+          "p95": 0.027759791910648264,
+          "max": 0.05534428358078003
         }
       }
     },
@@ -134,9 +138,28 @@
       "output_coverage": 1.0,
       "output_coverage_before_hole_fill": 1.0,
       "hole_fill_policy": "filled_to_full_valid_because_coverage_above_0.9950"
+    },
+    "dark_spot_repair": {
+      "side": "left",
+      "left": {
+        "enabled": true,
+        "threshold_luma01": 0.07058823529411765,
+        "min_area_px": 4,
+        "max_area_px": 5000,
+        "candidate_components": 240,
+        "candidate_pixels": 18518,
+        "selected_components": 147,
+        "selected_pixels": 16377,
+        "largest_selected_area_px": 1372,
+        "input_dark_fraction": 0.035320281982421875,
+        "output_dark_fraction": 0.0040836334228515625
+      },
+      "right": {
+        "enabled": false
+      }
     }
   },
-  "policy": "m17_extracted_rules_rebaked_through_m10_seam_solver_for_m18_runtime_review",
+  "policy": "adjacent_overlap_sources_solved_into_single_runtime_bundle",
   "layers": {
     "shrub_carryover_mask": "res://textures/source_stack/m18_guided_neighbor_slice_proof/layers/shrub_carryover_mask.png",
     "dry_grass_density_mask": "res://textures/source_stack/m18_guided_neighbor_slice_proof/layers/dry_grass_density_mask.png",
@@ -152,40 +175,40 @@
     "policy": "derived_from_m18_runtime_macro_height_seam_mask_for_m15_overlay",
     "metrics": {
       "shrub_carryover_mask": {
-        "mean": 0.09674323350191116,
-        "coverage_gt_0_25": 0.07389722551618304,
-        "coverage_gt_0_50": 0.00191497802734375,
-        "p95": 0.2823529541492462
+        "mean": 0.0945189818739891,
+        "coverage_gt_0_25": 0.07764216831752233,
+        "coverage_gt_0_50": 0.001953125,
+        "p95": 0.29019609093666077
       },
       "dry_grass_density_mask": {
-        "mean": 0.3101026713848114,
-        "coverage_gt_0_25": 0.7439389910016742,
-        "coverage_gt_0_50": 0.013616289411272322,
-        "p95": 0.4431372582912445
-      },
-      "rock_cluster_mask": {
-        "mean": 0.13112080097198486,
-        "coverage_gt_0_25": 0.19422476632254465,
-        "coverage_gt_0_50": 0.030318123953683034,
-        "p95": 0.4470588266849518
-      },
-      "soil_exposure_mask": {
-        "mean": 0.3062197268009186,
-        "coverage_gt_0_25": 0.7077004568917411,
-        "coverage_gt_0_50": 0.032679966517857144,
+        "mean": 0.3295057713985443,
+        "coverage_gt_0_25": 0.7510201590401786,
+        "coverage_gt_0_50": 0.025643484933035716,
         "p95": 0.48235294222831726
       },
+      "rock_cluster_mask": {
+        "mean": 0.12834088504314423,
+        "coverage_gt_0_25": 0.18538338797433035,
+        "coverage_gt_0_50": 0.029269627162388394,
+        "p95": 0.4431372582912445
+      },
+      "soil_exposure_mask": {
+        "mean": 0.3397049605846405,
+        "coverage_gt_0_25": 0.7237178257533482,
+        "coverage_gt_0_50": 0.16367013113839285,
+        "p95": 0.5411764979362488
+      },
       "wash_line_mask": {
-        "mean": 0.111993208527565,
-        "coverage_gt_0_25": 0.16214534214564733,
-        "coverage_gt_0_50": 0.06518990652901786,
-        "p95": 0.572549045085907
+        "mean": 0.11202609539031982,
+        "coverage_gt_0_25": 0.16176278250558035,
+        "coverage_gt_0_50": 0.06530979701450892,
+        "p95": 0.5764706134796143
       },
       "no_scatter_mask": {
-        "mean": 0.20994210243225098,
-        "coverage_gt_0_25": 0.25088609967912945,
-        "coverage_gt_0_50": 0.1412691388811384,
-        "p95": 0.7819255590438843
+        "mean": 0.20990923047065735,
+        "coverage_gt_0_25": 0.2509852818080357,
+        "coverage_gt_0_50": 0.14126804896763392,
+        "p95": 0.7811357975006104
       }
     }
   }

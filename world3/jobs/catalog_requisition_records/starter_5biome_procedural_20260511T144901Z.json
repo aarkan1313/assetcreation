@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "plan_id": "starter_5biome_procedural",
+  "started_at": "20260511T144901Z",
+  "mode": "dry_run",
+  "filter_action": null,
+  "max_items": null,
+  "dispatched": 6,
+  "items": [
+    {
+      "material_id": "desert_canyon_rock",
+      "action": "palette_lock",
+      "cmd": [
+        "C:\\Program Files\\Python312\\python.exe",
+        "D:\\assets\\pipelines\\textures\\palette_lock.py",
+        "--kit",
+        "alpine_desert",
+        "--anchor",
+        "desert_canyon_rock"
+      ],
+      "reason": "transition audit warn: pair (alpine <-> desert) \u2014 palette_delta_lab=44.3, high_freq_energy_ratio=2.90, seam_band_internal_max_delta_rgb01=0.17"
+    },
+    {
+      "material_id": "rock_dark",
+      "action": "palette_lock",
+      "cmd": [
+        "C:\\Program Files\\Python312\\python.exe",
+        "D:\\assets\\pipelines\\textures\\palette_lock.py",
+        "--kit",
+        "alpine_desert",
+        "--anchor",
+        "rock_dark"
+      ],
+      "reason": "transition audit warn: pair (alpine <-> desert) \u2014 palette_delta_lab=44.3, high_freq_energy_ratio=2.90, seam_band_internal_max_delta_rgb01=0.17"
+    },
+    {
+      "material_id": "grassland_grass",
+      "action": "regenerate",
+      "cmd": [
+        "C:\\Program Files\\Python312\\python.exe",
+        "D:\\assets\\pipelines\\textures\\aaa_texture.py",
+        "--prompt",
+        "tall savanna grass, golden-yellow, dry season, close-packed stems, top-down photo, even diffuse light, photoreal",
+        "--id",
+        "grassland_grass",
+        "--category",
+        "Ground",
+        "--quality",
+        "default",
+        "--seed",
+        "42"
+      ],
+      "reason": "material exists but passed_gate=false (catalog rejection or not yet graded)"
+    },
+    {
+      "material_id": "rock_dark",
+      "action": "regenerate",
+      "cmd": [
+        "C:\\Program Files\\Python312\\python.exe",
+        "D:\\assets\\pipelines\\textures\\aaa_texture.py",
+        "--prompt",
+        "dark grey volcanic rock surface, weathered, sharp edges and small cracks, top-down photo, even lighting, photoreal",
+        "--id",
+        "rock_dark",
+        "--category",
+        "Ground",
+        "--quality",
+        "default",
+        "--seed",
+        "42"
+      ],
+      "reason": "transition audit fail: pair (tundra <-> alpine) \u2014 high_freq_energy_ratio=6.14 >= 5.0, seam_band_internal_max_delta_rgb01=0.38 >= 0.3"
+    },
+    {
+      "material_id": "temperate_forest_grass",
+      "action": "regenerate",
+      "cmd": [
+        "C:\\Program Files\\Python312\\python.exe",
+        "D:\\assets\\pipelines\\textures\\aaa_texture.py",
+        "--prompt",
+        "forest floor covered in deciduous leaf litter, brown and orange oak leaves, damp humus soil visible below, top-down photo, even diffuse light, photoreal",
+        "--id",
+        "temperate_forest_grass",
+        "--category",
+        "Ground",
+        "--quality",
+        "default",
+        "--seed",
+        "200"
+      ],
+      "reason": "material exists but passed_gate=false (catalog rejection or not yet graded)"
+    },
+    {
+      "material_id": "tundra_moss",
+      "action": "regenerate",
+      "cmd": [
+        "C:\\Program Files\\Python312\\python.exe",
+        "D:\\assets\\pipelines\\textures\\aaa_texture.py",
+        "--prompt",
+        "close-up photograph of arctic tundra moss ground cover, mixed dark green and reddish-brown moss with small lichen patches, damp permafrost soil visible underneath, top-down view, soft overcast daylight, photoreal, sharp focus",
+        "--id",
+        "tundra_moss",
+        "--category",
+        "Ground",
+        "--quality",
+        "default",
+        "--seed",
+        "500"
+      ],
+      "reason": "transition audit fail: pair (tundra <-> alpine) \u2014 high_freq_energy_ratio=6.14 >= 5.0, seam_band_internal_max_delta_rgb01=0.38 >= 0.3"
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "_comment": "Biome kits = sets of 5 catalog material ids bound to the 5 slots in terrain_blend.gdshader, plus per-kit height-band tuning. Slots reference world3/materials/catalog.json ids; provenance.source_asset_id may differ from the deployed runtime texture dir.",
+  "material_catalog": "world3/materials/catalog.json",
+  "kits": {
+    "alpine": {
+      "description": "High-elevation rocky terrain with snow caps. Default — matches Tetons, Cascades, Sierra.",
+      "anchor": "rock_dark",
+      "slots": {
+        "grass": "grass",
+        "dirt": "dirt",
+        "rock_light": "rock_light",
+        "rock_dark": "rock_dark",
+        "snow": "snow"
+      },
+      "height_bands": {
+        "h_grass_dirt": 0.2,
+        "h_dirt_rockdark": 0.55,
+        "h_rockdark_snow": 0.85
+      },
+      "slope_threshold": 0.45,
+      "regions": [
+        "tcf_pnw_cascades_usa",
+        "tcf_sierra_madre_mexico",
+        "tbm_appalachians_usa",
+        "tcf_bc_coast_canada"
+      ]
+    },
+    "desert": {
+      "description": "Arid landform: sand low, dry rock high, no snow. Mojave, mesa, dune fields.",
+      "anchor": "desert_sand",
+      "slots": {
+        "grass": "desert_dry_brush",
+        "dirt": "desert_sand",
+        "rock_light": "desert_canyon_rock",
+        "rock_dark": "desert_dark_rock",
+        "snow": "desert_salt_pan"
+      },
+      "height_bands": {
+        "_comment": "No real snow — top band is salt-pan / sun-bleached. Push high band up so it appears only on rare plateau tops.",
+        "h_grass_dirt": 0.15,
+        "h_dirt_rockdark": 0.5,
+        "h_rockdark_snow": 0.92
+      },
+      "slope_threshold": 0.4,
+      "regions": [
+        "des_mojave_usa"
+      ]
+    },
+    "tundra": {
+      "description": "Cold low-relief terrain. Moss/lichen low, frosted rock mid, ice/snow even at moderate elevation.",
+      "anchor": "tundra_moss",
+      "slots": {
+        "grass": "tundra_moss",
+        "dirt": "tundra_lichen",
+        "rock_light": "tundra_frost_rock",
+        "rock_dark": "tundra_dark_rock",
+        "snow": "tundra_ice"
+      },
+      "height_bands": {
+        "_comment": "Snow band lower (60% instead of 85%) — even modest elevation has frost cover at high latitudes.",
+        "h_grass_dirt": 0.15,
+        "h_dirt_rockdark": 0.4,
+        "h_rockdark_snow": 0.6
+      },
+      "slope_threshold": 0.4,
+      "regions": [
+        "tun_arctic_alaska",
+        "bor_alaska_interior",
+        "bor_yukon_canada"
+      ]
+    },
+    "temperate_forest": {
+      "description": "Lowland forest with bare rock peaks. Forest floor low, grass/dirt mid, rock above tree line.",
+      "anchor": "temperate_forest_grass",
+      "slots": {
+        "grass": "temperate_forest_grass",
+        "dirt": "temperate_forest_dirt",
+        "rock_light": "temperate_forest_rock_light",
+        "rock_dark": "temperate_forest_rock_dark",
+        "snow": "temperate_forest_snow"
+      },
+      "height_bands": {
+        "_comment": "Tree line (rock takes over) is around 60-70% elevation in temperate latitudes.",
+        "h_grass_dirt": 0.3,
+        "h_dirt_rockdark": 0.65,
+        "h_rockdark_snow": 0.9
+      },
+      "slope_threshold": 0.45,
+      "regions": [
+        "med_california_chaparral",
+        "tdf_yucatan_mexico",
+        "tmf_amazon_brazil"
+      ]
+    },
+    "grassland": {
+      "description": "Open plains with subtle relief. Mostly grass + dirt; rock only on rare hilltops.",
+      "anchor": "grassland_grass",
+      "slots": {
+        "grass": "grassland_grass",
+        "dirt": "grassland_dirt",
+        "rock_light": "grassland_rock_light",
+        "rock_dark": "grassland_rock_dark",
+        "snow": "grassland_snow"
+      },
+      "height_bands": {
+        "_comment": "Loose bands by design — grassland regions (Serengeti, Tibet, Great Plains, Pantanal) are biologically near-uniform tall_grass with rare rocky outcrops. Tightening these adds fake variation that doesn't match real savanna/plateau imagery. The visual flatness in renders is faithful to the biome; visible variation comes from the macro_value_strength (Phase E topdown) not from triggering different slots. If a region needs a specific rocky landform (e.g. East African kopjes), it should be modeled in the heightmap or get its own kit, not handled by widening the height bands here.",
+        "h_grass_dirt": 0.4,
+        "h_dirt_rockdark": 0.75,
+        "h_rockdark_snow": 0.95
+      },
+      "slope_threshold": 0.5,
+      "regions": [
+        "tgr_great_plains_usa",
+        "tgs_serengeti_tanzania",
+        "mgs_tibetan_plateau",
+        "fgs_pantanal_brazil"
+      ]
+    }
+  },
+  "default_kit": "alpine"
+}

@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "run_id": "e7_unseen_tundra_moss_procedural_20260511T133201Z",
+  "request_id": "e7_unseen_tundra_moss_procedural",
+  "request_path": "D:\\assets\\world3\\jobs\\examples\\e7_unseen_tundra_moss_procedural.json",
+  "request": {
+    "schema_version": 1,
+    "id": "e7_unseen_tundra_moss_procedural",
+    "description": "Phase E.7 final validation. Procedural-only bundle on the tundra_moss catalog material \u2014 never used as a procedural source in any prior bundle. Tests the full orchestrator path (request validate -> stage resolve -> subprocess -> provenance) end-to-end on unseen content, then drives a capture through OrchestratorCaptureDriver with the photoreal style pack.",
+    "source": {
+      "type": "procedural",
+      "material_id": "tundra_moss",
+      "size_px": [
+        512,
+        1024
+      ],
+      "world_size_m": [
+        120.0,
+        240.0
+      ],
+      "elev_min_m": 200.0,
+      "elev_range_m": 24.0,
+      "seed": 31415
+    },
+    "world_type": {
+      "biome_kit": "tundra",
+      "style_pack": "photoreal",
+      "view_modes": [
+        "iso"
+      ]
+    },
+    "output": {
+      "bundle_dir": "world3/toporeview/e7_unseen_tundra_moss_procedural"
+    },
+    "options": {
+      "render_captures": false
+    },
+    "__request_path__": "world3\\jobs\\examples\\e7_unseen_tundra_moss_procedural.json"
+  },
+  "started_at": "2026-05-11T13:32:01.367117+00:00",
+  "completed_at": "2026-05-11T13:32:01.993571+00:00",
+  "ok": true,
+  "stages": [
+    {
+      "id": "build_procedural_neighbor",
+      "script": "world3/pipeline/build_procedural_neighbor_bundle.py",
+      "started_at": "2026-05-11T13:32:01.367117+00:00",
+      "args": [
+        "--material-id",
+        "tundra_moss",
+        "--out",
+        "D:\\assets\\world3\\toporeview\\e7_unseen_tundra_moss_procedural",
+        "--size",
+        "512,1024",
+        "--world-size-m",
+        "120.0,240.0",
+        "--elev-min-m",
+        "200.0",
+        "--elev-range-m",
+        "24.0",
+        "--seed",
+        "31415",
+        "--name",
+        "Phase E.7 final validation. Procedural-only bundle on the tundra_moss catalog material \u2014 never used as a procedural source in any prior bundle. Tests the full orchestrator path (request validate -> stage resolve -> subprocess -> provenance) end-to-end on unseen content, then drives a capture through OrchestratorCaptureDriver with the photoreal style pack."
+      ],
+      "exit_code": 0,
+      "wall_time_sec": 0.5,
+      "stdout_tail": [
+        "  \"macro\": \"D:\\\\assets\\\\world3\\\\toporeview\\\\e7_unseen_tundra_moss_procedural\\\\layers\\\\render_albedo.png\",",
+        "  \"valid_mask\": \"D:\\\\assets\\\\world3\\\\toporeview\\\\e7_unseen_tundra_moss_procedural\\\\layers\\\\source_valid_mask.png\",",
+        "  \"heightmap\": \"D:\\\\assets\\\\world3\\\\toporeview\\\\e7_unseen_tundra_moss_procedural\\\\heightmap.png\",",
+        "  \"meta\": \"D:\\\\assets\\\\world3\\\\toporeview\\\\e7_unseen_tundra_moss_procedural\\\\meta.json\"",
+        "}"
+      ],
+      "stderr_tail": [],
+      "status": "ok",
+      "completed_at": "2026-05-11T13:32:01.867475+00:00"
+    },
+    {
+      "id": "validate_request",
+      "script": "world3/pipeline/validate_region_request.py",
+      "started_at": "2026-05-11T13:32:01.868492+00:00",
+      "args": [
+        "D:\\assets\\world3\\jobs\\examples\\e7_unseen_tundra_moss_procedural.json"
+      ],
+      "exit_code": 0,
+      "wall_time_sec": 0.13,
+      "stdout_tail": [
+        "  [OK  ] D:\\assets\\world3\\jobs\\examples\\e7_unseen_tundra_moss_procedural.json"
+      ],
+      "stderr_tail": [],
+      "status": "ok",
+      "completed_at": "2026-05-11T13:32:01.993571+00:00"
+    }
+  ],
+  "dry_run": false
+}

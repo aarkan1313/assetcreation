@@ -1,0 +1,62 @@
+{
+  "pair": [
+    "dry_wash",
+    "desert_dry_brush"
+  ],
+  "rule_id": "mixed_real_dry_wash__procedural_desert_brush",
+  "seed": 5513914794428438422,
+  "tile_px": 512,
+  "tiles_wide": 8,
+  "noise_strength": 0.18,
+  "tuning": {
+    "albedo_match_strength": 0.2,
+    "albedo_frequency_dampen_strength": 0.0,
+    "albedo_frequency_blur_radius_px": 1.25,
+    "roughness_match_strength": 0.85,
+    "normal_match_strength": 0.9
+  },
+  "outputs": {
+    "albedo": "world3/textures/transitions/dry_wash__desert_dry_brush/albedo.png",
+    "normal": "world3/textures/transitions/dry_wash__desert_dry_brush/normal.png",
+    "roughness": "world3/textures/transitions/dry_wash__desert_dry_brush/roughness.png",
+    "height": "world3/textures/transitions/dry_wash__desert_dry_brush/height.png",
+    "ao": "world3/textures/transitions/dry_wash__desert_dry_brush/ao.png"
+  },
+  "mask": "world3/textures/transitions/dry_wash__desert_dry_brush/mask.png",
+  "preview": "world3/docs/captures/transitions/dry_wash__desert_dry_brush_hard_vs_transition.png",
+  "hard_edge_mean_abs_albedo_delta": 0.135151,
+  "raw_scores": {
+    "source_hue_delta": 0.009525,
+    "source_value_delta": 0.143665,
+    "source_saturation_delta": 0.48152,
+    "roughness_mean_abs_delta": 0.861734,
+    "normal_energy_delta": 0.544815,
+    "normal_mean_abs_delta": 0.166031,
+    "visible_frequency_delta": 0.01054,
+    "hard_edge_mean_abs_albedo_delta": 0.135151,
+    "transition_center_albedo_delta": 0.01413,
+    "edge_delta_improvement_ratio": 0.895454,
+    "transition_gradient_p95": 0.036375
+  },
+  "scores": {
+    "source_hue_delta": 0.007057,
+    "source_value_delta": 0.114957,
+    "source_saturation_delta": 0.38173,
+    "roughness_mean_abs_delta": 0.12926,
+    "normal_energy_delta": 0.319896,
+    "normal_mean_abs_delta": 0.10056,
+    "visible_frequency_delta": 0.006457,
+    "hard_edge_mean_abs_albedo_delta": 0.135151,
+    "transition_center_albedo_delta": 0.014219,
+    "edge_delta_improvement_ratio": 0.894789,
+    "transition_gradient_p95": 0.03629
+  },
+  "review_hints": [
+    "normal_energy_mismatch"
+  ],
+  "raw_review_hints": [
+    "roughness_grade_before_runtime",
+    "normal_energy_mismatch"
+  ],
+  "status": "prototype_transition_strip"
+}

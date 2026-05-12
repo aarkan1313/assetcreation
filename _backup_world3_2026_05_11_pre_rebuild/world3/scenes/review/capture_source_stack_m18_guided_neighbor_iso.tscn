@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/review/source_stack_m18_guided_neighbor_tour.tscn" id="scene"]
+[ext_resource type="Script" path="res://scripts/HeadlessCapture.gd" id="cap_script"]
+
+[node name="CaptureSourceStackM18GuidedNeighborIso" type="Node"]
+
+[node name="Inner" parent="." instance=ExtResource("scene")]
+initial_tour_index = 1
+initial_tour_progress = 0.48
+
+[node name="Capture" type="Node" parent="."]
+script = ExtResource("cap_script")
+output_path = "res://docs/captures/review/source_stack_m18_guided_neighbor_iso.png"
+warmup_frames = 120
+viewport_size = Vector2i(1600, 1000)

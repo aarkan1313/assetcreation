@@ -1,0 +1,251 @@
+{
+  "version": 1,
+  "id": "m16_source_stack_gallery_manifest",
+  "status": "bridge_board_active_2026_05_10",
+  "purpose": "M16 bridge from legacy per-kit RegionGalleryCapture to source-stack parity evidence. This manifest indexes representative source-stack review scenes and their topdown/iso/medium/close captures.",
+  "legacy_gallery_status": {
+    "scene": "world3/scenes/region_gallery.tscn",
+    "script": "world3/scripts/RegionGalleryCapture.gd",
+    "status": "legacy_per_kit_material_swap",
+    "reason": "Useful regional screenshot tool, but not parity evidence until it can bind source macro, valid masks, splat weights, feature masks, and source-stack materials."
+  },
+  "required_bands": [
+    "topdown",
+    "iso",
+    "medium",
+    "close"
+  ],
+  "cards": [
+    {
+      "id": "m10_ecotone_layer",
+      "title": "M10 Ecotone Layer",
+      "scene": "world3/scenes/review/source_stack_ecotone_layer_tour.tscn",
+      "source_stack": "world3/textures/source_stack/gloss_grassland_ecotone_layer_proof",
+      "status": "accepted_source_stack_evidence",
+      "representative_band": "iso",
+      "representative_path": "world3/docs/captures/review/source_stack_ecotone_layer_tour_iso.png",
+      "representative_exists": true,
+      "capture_status": {
+        "topdown": {
+          "path": "world3/docs/captures/review/source_stack_ecotone_layer_tour_topdown.png",
+          "exists": true
+        },
+        "iso": {
+          "path": "world3/docs/captures/review/source_stack_ecotone_layer_tour_iso.png",
+          "exists": true
+        },
+        "medium": {
+          "path": "world3/docs/captures/review/source_stack_ecotone_layer_tour_medium.png",
+          "exists": true
+        },
+        "close": {
+          "path": "world3/docs/captures/review/source_stack_ecotone_layer_tour_close.png",
+          "exists": true
+        }
+      },
+      "full_parity_capture_set": true,
+      "contract_inputs": [
+        "heightmap",
+        "meta",
+        "source_macro",
+        "valid_mask",
+        "splat_weights",
+        "feature_masks"
+      ],
+      "next": "Keep as first source-stack gallery card; retrofit gallery compiler to consume this contract."
+    },
+    {
+      "id": "m11_three_way_junction",
+      "title": "M11 Three-Way Junction",
+      "scene": "world3/scenes/review/source_stack_m11_junction_tour.tscn",
+      "source_stack": "world3/textures/source_stack/m11_three_way_junction_proof",
+      "status": "accepted_source_stack_evidence",
+      "representative_band": "iso",
+      "representative_path": "world3/docs/captures/review/source_stack_m11_junction_tour_iso.png",
+      "representative_exists": true,
+      "capture_status": {
+        "topdown": {
+          "path": "world3/docs/captures/review/source_stack_m11_junction_tour_topdown.png",
+          "exists": true
+        },
+        "iso": {
+          "path": "world3/docs/captures/review/source_stack_m11_junction_tour_iso.png",
+          "exists": true
+        },
+        "medium": {
+          "path": "world3/docs/captures/review/source_stack_m11_junction_tour_medium.png",
+          "exists": true
+        },
+        "close": {
+          "path": "world3/docs/captures/review/source_stack_m11_junction_tour_close.png",
+          "exists": true
+        }
+      },
+      "full_parity_capture_set": true,
+      "contract_inputs": [
+        "heightmap",
+        "meta",
+        "source_macro",
+        "valid_mask",
+        "splat_weights",
+        "feature_masks"
+      ],
+      "next": "Use as junction gallery card once bulk scene selection exists."
+    },
+    {
+      "id": "m11_fourway_corner",
+      "title": "M11 Four-Way Corner",
+      "scene": "world3/scenes/review/source_stack_m11_fourway_corner_tour.tscn",
+      "source_stack": "world3/textures/source_stack/m11_fourway_corner_proof",
+      "status": "accepted_source_stack_evidence",
+      "representative_band": "iso",
+      "representative_path": "world3/docs/captures/review/source_stack_m11_fourway_corner_tour_iso.png",
+      "representative_exists": true,
+      "capture_status": {
+        "topdown": {
+          "path": "world3/docs/captures/review/source_stack_m11_fourway_corner_tour_topdown.png",
+          "exists": true
+        },
+        "iso": {
+          "path": "world3/docs/captures/review/source_stack_m11_fourway_corner_tour_iso.png",
+          "exists": true
+        },
+        "medium": {
+          "path": "world3/docs/captures/review/source_stack_m11_fourway_corner_tour_medium.png",
+          "exists": true
+        },
+        "close": {
+          "path": "world3/docs/captures/review/source_stack_m11_fourway_corner_tour_close.png",
+          "exists": true
+        }
+      },
+      "full_parity_capture_set": true,
+      "contract_inputs": [
+        "heightmap",
+        "meta",
+        "source_macro",
+        "valid_mask",
+        "splat_weights",
+        "feature_masks"
+      ],
+      "next": "Use as four-way gallery card and parity stress case."
+    },
+    {
+      "id": "m12_runtime_parity",
+      "title": "M12 Runtime Parity",
+      "scene": "world3/scenes/review/source_stack_m12_runtime_fourway_tour.tscn",
+      "source_stack": "world3/textures/source_stack/m11_fourway_corner_proof",
+      "status": "accepted_runtime_parity_evidence",
+      "representative_band": "iso",
+      "representative_path": "world3/docs/captures/review/source_stack_m12_runtime_fourway_iso.png",
+      "representative_exists": true,
+      "capture_status": {
+        "topdown": {
+          "path": "world3/docs/captures/review/source_stack_m12_runtime_fourway_topdown.png",
+          "exists": true
+        },
+        "iso": {
+          "path": "world3/docs/captures/review/source_stack_m12_runtime_fourway_iso.png",
+          "exists": true
+        },
+        "medium": {
+          "path": "world3/docs/captures/review/source_stack_m12_runtime_fourway_medium.png",
+          "exists": true
+        },
+        "close": {
+          "path": "world3/docs/captures/review/source_stack_m12_runtime_fourway_close.png",
+          "exists": true
+        }
+      },
+      "full_parity_capture_set": true,
+      "contract_inputs": [
+        "heightmap",
+        "meta",
+        "source_macro",
+        "valid_mask",
+        "splat_weights",
+        "runtime_chunk_loader"
+      ],
+      "next": "Use as the standard for any promoted region-gallery parity card."
+    },
+    {
+      "id": "m15_feature_scatter",
+      "title": "M15 Feature Scatter",
+      "scene": "world3/scenes/review/source_stack_m15_feature_scatter_tour.tscn",
+      "source_stack": "world3/textures/source_stack/gloss_grassland_ecotone_layer_proof",
+      "status": "workflow_proven_assets_not_final",
+      "representative_band": "close",
+      "representative_path": "world3/docs/captures/review/source_stack_m15_feature_scatter_close.png",
+      "representative_exists": true,
+      "capture_status": {
+        "topdown": {
+          "path": "world3/docs/captures/review/source_stack_m15_feature_scatter_topdown.png",
+          "exists": true
+        },
+        "iso": {
+          "path": "world3/docs/captures/review/source_stack_m15_feature_scatter_iso.png",
+          "exists": true
+        },
+        "medium": {
+          "path": "world3/docs/captures/review/source_stack_m15_feature_scatter_medium.png",
+          "exists": true
+        },
+        "close": {
+          "path": "world3/docs/captures/review/source_stack_m15_feature_scatter_close.png",
+          "exists": true
+        }
+      },
+      "full_parity_capture_set": true,
+      "contract_inputs": [
+        "heightmap",
+        "meta",
+        "source_macro",
+        "valid_mask",
+        "splat_weights",
+        "feature_masks",
+        "scatter_policy"
+      ],
+      "next": "Keep in M16 board as scatter/features parity case; final art still M15 follow-up."
+    },
+    {
+      "id": "m16_cached_iso_impostor",
+      "title": "M16 Cached Iso Card",
+      "scene": "world3/scenes/review/source_stack_m16_iso_impostor_card.tscn",
+      "source_stack": "world3/docs/captures/review/source_stack_m12_runtime_fourway_iso_clean.png",
+      "status": "sidecar_rung_1_conditional",
+      "representative_band": "iso",
+      "representative_path": "world3/docs/captures/review/source_stack_m16_iso_impostor_card.png",
+      "representative_exists": true,
+      "capture_status": {
+        "topdown": {
+          "path": null,
+          "exists": false
+        },
+        "iso": {
+          "path": "world3/docs/captures/review/source_stack_m16_iso_impostor_card.png",
+          "exists": true
+        },
+        "medium": {
+          "path": null,
+          "exists": false
+        },
+        "close": {
+          "path": null,
+          "exists": false
+        }
+      },
+      "full_parity_capture_set": false,
+      "contract_inputs": [
+        "cached_iso_bake",
+        "m12_runtime_parity_trace"
+      ],
+      "next": "Use only as iso renderer sidecar evidence; not a full gallery parity card."
+    }
+  ],
+  "summary": {
+    "cards_total": 6,
+    "full_parity_capture_sets": 5,
+    "representative_images_present": 6,
+    "sidecar_only_cards": 1
+  }
+}

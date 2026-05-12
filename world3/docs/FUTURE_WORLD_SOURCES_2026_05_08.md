@@ -1,21 +1,43 @@
 # Future World Sources — 2026-05-08
 
+> ⚠️ **Reorganized 2026-05-11.** This doc surveys alternative world
+> data sources (NLCD, bathymetry, planetary, fantasy generators,
+> sketch-to-heightmap, interiors). Its scope was rolled into
+> **Phase H.1 — Catalog scaleup beyond 5-biome starter** in the
+> unified roadmap. Items here remain a useful menu for H.1
+> selection, but the **canonical sequencing authority** is now
+> [WORLD3_LONG_ARC_2026_05_11.md](WORLD3_LONG_ARC_2026_05_11.md)
+> and [PHASE_H_CHARTER_2026_05_11.md](PHASE_H_CHARTER_2026_05_11.md).
+
 **Status**: forward-looking, not in scope. M1–M5 owns current iteration.
 This doc is a queued-options register for "what could feed the world3
 pipeline next, after the current iteration closes."
 
-Two unrelated tracks captured here:
+Tracks captured here:
 
 - **Track A**: alternative heightmap / world sources that plug into the
   existing terrain pipeline (NLCD land-cover, bathymetry, planetary
-  DEMs, sketch-to-heightmap, fantasy world generators).
+  DEMs, sketch-to-heightmap, fantasy world generators, photo+depth,
+  gaussian splat capture).
 - **Track B**: explorable interiors / structures (castle interiors,
   building insides). Different pipeline shape — not heightmap-based.
   Belongs adjacent to props/POI work but worth pre-planning.
+- **Track D** (added 2026-05-10): astronomical data sources — real
+  stellar catalogs, nebula imagery, cosmic-structure data. Used the
+  same way M19-M24 uses real DEMs: extract statistical signatures,
+  generate new "real-but-not-Earth" instances. Feeds VFX/spells (all
+  modes), scatter density (iso/topdown), sky+clouds (walk only),
+  fantasy ground textures (composes with M22 patch seeding), and
+  strategic-map decoration (topdown).
 
-Neither track starts work today. This is the "shape of the option" so
-when the orchestrator picks one up after M1–M5, the design space is
-already mapped.
+(Track C lives in a sibling doc:
+[`FUTURE_PROCEDURAL_STRUCTURES_2026_05_08.md`](FUTURE_PROCEDURAL_STRUCTURES_2026_05_08.md)
+— procedural structure generators for trees/crystals/scree/ripples that
+don't fit the heightmap mold.)
+
+No track starts work today. This is the "shape of the option" so
+when the orchestrator picks one up after the current M-chain closes,
+the design space is already mapped.
 
 ---
 
@@ -254,10 +276,69 @@ If I were picking the next-after-M1–M5 source-axis project, ranked:
    stress-testing the kit system.
 5. **Sketch-to-heightmap** — orthogonal direction; uncertain quality.
 6. **Photo + depth** — cheap experiment; uncertain payoff.
+7. **Gaussian splat capture (A8, added 2026-05-11)** — asset capture
+   technique for hero props / texture-reference enhancement, not a
+   primary heightmap source. Smaller scope than A1-A6 but composable
+   with the FLUX texture lane and M22 patch seeding.
 
 NLCD is the technical winner. Azgaar is the breadth winner. Both pair
 nicely with M4 splat work, so consider sequencing one of them after
 M4 lands.
+
+### A8. Gaussian splat capture (added 2026-05-11)
+
+**What**: phone/camera video → 3D Gaussian Splatting reconstruction
+(via gsplat or original INRIA codebase) → mesh export (via SuGaR) →
+world3 catalog ingest. Used as an **asset capture method**, not a
+render method. Same role as OpenTopo orthophotos but for ground-level
+and mid-scale features that orthophotos can't capture well: real
+rock formations, real moss patches, real cliff faces, real tree
+bark, real architectural ruins.
+
+**Why queued, not promoted**:
+- Splats are a *capture* technique; downstream pipeline still consumes
+  meshes + textures + masks via the bundle contract.
+- Composes with the existing texture pipeline as an enhanced reference
+  source: multi-view-consistent anchors for FLUX img2img (stronger
+  than the single-photo `--reference-image` mode from A.10).
+- Composes with M22 patch seeding: captured topology → procedural
+  seed for hero locations.
+- Could feed the operability G7 POI/landmark layer.
+
+**Tooling state (2026-05-11)**: real and working on consumer hardware.
+- 3D Gaussian Splatting (INRIA original) — mature, slow training
+- gsplat (UC Berkeley) — faster training, cleaner Python API
+- SuGaR — splat → mesh conversion
+- Polycam / Luma / Postshot — consumer-grade splat capture from phone video
+- ComfyUI doesn't have first-class splat support yet (some custom nodes
+  exist but immature)
+
+**Where it would slot**:
+- **Texture lane**: alternate reference source for FLUX img2img. Pairs
+  with the FLUX 2 9B + dev bakeoff currently staged. Multi-view
+  consistency = stronger anchor pull than single-photo references.
+- **Hero props / POI**: split-out asset capture path for unique
+  landmark assets the M19-M24 procedural lane can't generate.
+- **M22 patch seeding** (long-term): captured real topology as a
+  procedural seed for hero locations.
+
+**Pipeline shape** (if pursued):
+1. `pipelines/splat/capture.py` — record reference video, validate frame coverage
+2. `pipelines/splat/train.py` — train splat via gsplat
+3. `pipelines/splat/to_mesh.py` — convert via SuGaR
+4. `pipelines/splat/ingest.py` — wrap output in world3 contract bundle
+5. Optional: `pipelines/splat/to_reference.py` — emit multi-view render
+   set for FLUX img2img anchor
+
+**Effort**: ~3-5 sessions for first-class ingest. Smaller if just used
+as photoreference enhancement.
+
+**Status**: queued. No active commitment. Revisit when:
+- M14 FLUX 2 bakeoff completes and we know whether texture quality
+  needs the photoreference upgrade
+- M22 patch seeding lands and we know whether procedural hero
+  topology needs a real-capture path
+- A specific user asset (a real rock, a real ruin) needs ingestion
 
 ---
 
@@ -478,18 +559,285 @@ Specifically:
 
 ---
 
+## Track D: astronomical data sources (added 2026-05-10)
+
+The world3 pipeline's "real data → procedural derivative" thesis (used
+in the M19-M24 hybrid procedural roadmap for terrain) extends naturally
+to **astronomical data**. Real star catalogs, sky imagery, and nebula
+data offer statistical signatures that procedural noise cannot
+replicate from scratch.
+
+The user-stated principle here matches the M19-M24 erosion approach:
+**don't paste real data; extract its statistics; generate new
+instances**. The Pillars of Creation should never appear in the game,
+but a cloud field with the Pillars' fluid-dynamics fingerprint should
+be everywhere it makes sense.
+
+### View-mode applicability matrix
+
+This is the constraint that shapes Track D differently from A/B/C:
+
+| Mode | Sky | Clouds | VFX/spells | Scatter density | World/strategic map |
+|---|---|---|---|---|---|
+| Walk (3D) | high value | high value | high value | medium | n/a |
+| Iso (2.5D) | low value (clipped) | low (shadows + tint only) | high value | high value | n/a |
+| Topdown | none | none (or 2D tactical overlay) | high value | high value | high value |
+
+Track D is **not** "astronomical sky for everything." It's:
+- Real-derived **sky + clouds** for walk mode
+- Real-derived **VFX/spell turbulence** for all modes
+- Real-derived **density distributions** for scatter (iso/topdown)
+- Real-derived **map decorations** for the strategic/world map tier
+
+### D1. Nebula-statistics → procedural cloud/VFX field generator (PROMOTED — scheduled as M33)
+
+> **Status update 2026-05-10**: Promoted from queued option to
+> scheduled work as **M33 in the M25-M39 water+weather roadmap**.
+> Becomes the source for the weather track's volumetric cloud
+> system. See [`M25_M39_WATER_WEATHER_ROADMAP_2026_05_10.md`](M25_M39_WATER_WEATHER_ROADMAP_2026_05_10.md)
+> M33 for the scheduled deliverables. The original spec below is
+> retained as design context.
+
+**What**: extract per-class statistical signatures from Hubble/JWST
+nebula imagery — radial power spectrum, structure function, anisotropy,
+density correlations — then synthesize new fluid-dynamics-plausible
+cloud fields with matching statistics. Cluster into ~6 nebula classes
+(HII region, planetary nebula, supernova remnant, dark molecular cloud,
+reflection nebula, emission nebula); each class becomes a "signature."
+
+**Why high value**:
+- Plugs directly into SpellLab's "bake-once, react-cheap" runtime
+  philosophy in `docs/plans/LONG_TERM_VISION.md`. Pre-bake six cloud
+  signatures; runtime samples + advects them cheaply.
+- Real nebula imagery captures **physically-driven turbulence** that
+  Perlin/curl noise cannot. Shock fronts, Rayleigh-Taylor instabilities,
+  bow shocks around bright sources — these are the shapes that make
+  volumetric VFX look "real" instead of "noise."
+- Applies in every view mode. Volumetric clouds in walk; cast-shadow
+  fields in iso; flat tactical-readability overlays in topdown; spell
+  particles everywhere.
+- License-clean: NASA imagery (Hubble, JWST, Spitzer) is public domain
+  with attribution courtesy.
+
+**Pipeline shape**:
+1. `pipelines/sky/fetch_nebula_corpus.py` — pulls FITS imagery from
+   MAST archive at known angular scales.
+2. `pipelines/sky/nebula_statistics.py` — radial power spectrum +
+   structure function + curl/divergence stats per patch.
+3. `pipelines/sky/nebula_class_clustering.py` — KMeans into ~6 classes.
+4. `pipelines/sky/synthesize_cloud_field.py` — generates new cloud
+   fields with matching class statistics. Outputs PNGs (2D) and 3D
+   volume textures (4D EXR or per-slice PNG stack).
+5. Hand off to: SpellLab effect baker; world3 sky shader; M15 scatter
+   density masks.
+
+**Effort**: 2-3 sessions for prototype; ~1 additional per applied class
+once the generator works.
+
+**Direct M-chain hookpoints**:
+- **M14** close-play textures could pull cloud-class signatures for
+  "fog patch" / "magical haze" close-play materials.
+- **M15** scatter masks gain a "nebula-cluster" distribution option
+  alongside Perlin and cosmic-web (D2 below).
+- **M19-M24** hybrid procedural world gains a "skybox + cloud" layer
+  that wasn't in the original M19-M24 scope.
+- **SpellLab v2** baker gains nebula-statistics as a turbulence prior.
+
+### D2. Stellar/cosmic-web density → scatter mask generator (HIGH LEVERAGE)
+
+**What**: real galaxy distribution has a specific fractal character
+(filaments, voids, walls) that Perlin underspecifies. Extract the
+two-point correlation function from SDSS or Gaia density maps;
+generate **new** density fields with matching correlation.
+
+**Why high value**:
+- Direct M15 input. Forest scatter density that clusters like real
+  forests cluster (groves, thin strips, clearings) instead of uniform
+  jitter. Settlement placement with filament-like topology. Cave
+  network branching.
+- Works in iso + topdown where scatter density patterns are most
+  visible.
+- The "cosmic web" 2-point correlation is famous in cosmology and
+  well-characterized; implementation is a single Python script.
+
+**Pipeline shape**:
+1. `pipelines/scatter/cosmic_web_stats.py` — fit correlation function
+   from public SDSS density maps.
+2. `pipelines/scatter/cosmic_web_generator.py` — generate density
+   fields with matching statistics.
+3. Wire into the M15 scatter mask pipeline as one option among Perlin,
+   Voronoi, cosmic-web.
+
+**Effort**: ~2 sessions; pairs with M15.
+
+### D3. Procedural night sky derived from real stellar statistics (WALK-MODE ONLY)
+
+**What**: don't paste the HYG catalog into the skybox. Extract its
+statistics (magnitude distribution, spectral-type distribution, density
+gradient across the Milky Way band, double-star fraction) and
+**synthesize a new star field** with matching statistics. Same feel as
+real night sky — Milky Way band, magnitude distribution, cluster
+density — but the specific constellations are unrecognizable.
+
+**Why limited but real**:
+- Walk-mode only. Iso/topdown don't show sky.
+- Solves the "real-but-not-Earth" constraint cleanly: feels
+  astronomically right without giving away "oh that's Sirius."
+- Compact: HYG is a 71 MB CSV; the synthesis is shader-level.
+
+**Pipeline shape**:
+1. `pipelines/sky/stellar_statistics.py` — fit distributions from HYG
+   v4.2 or AT-HYG v3.
+2. `pipelines/sky/synthesize_starfield.py` — generate point-sprite or
+   shader-input star field with matching stats + spectral coloring.
+3. Output: cubemap or equirectangular skybox at multiple resolutions
+   (per-mode-`.tres`-style — walk needs 4K, iso could downsize, topdown
+   skip entirely).
+
+**Effort**: 1-2 sessions. Mostly statistics fitting + a shader pass.
+
+### D4. Spectral-type → blackbody color shader for stellar/magical glows (TINY, UNIVERSAL)
+
+**What**: OBAFGKM stellar classification has a known blackbody
+temperature → RGB color curve. Two lines of shader code map a "spell
+class" or "magic source type" to a real spectroscopic color.
+
+**Why useful**:
+- Unifies spell color logic with a physical anchor. M-class red dwarf
+  = fire ember. O-class blue supergiant = lightning. G-class yellow
+  = healing/sun magic. Free narrative coherence.
+- Same code in every view mode. Walk torch flicker, iso particle
+  trail, topdown spell icon — all consistent.
+
+**Effort**: half a session. Self-contained; doesn't depend on D1-D3.
+
+### D5. Real-DEM + nebula-statistics combined → fantasy ground textures (HIGH LEVERAGE, M19-M24 ALIGNMENT)
+
+**What**: combine real planetary DEMs (Mars/Moon — alien-feeling macro
+shapes) with nebula-derived micro-turbulence statistics. Output:
+ground textures that look like nothing on Earth but feel physically
+coherent. Crystalline lava plains. Frozen methane lakes. Mana-storm
+wastelands.
+
+**Why this is the fantasy-biome unlock**:
+- FLUX gives us "weird-but-Earth-like" because its training set is
+  Earth. Mars heightmap + nebula turbulence statistics gives us
+  "weird and not Earth-like, coherent at every scale."
+- Pairs with **M22** (real-DEM patch seeding) in the M19-M24 plan.
+  D5 is the M22 patch-seed source for fantasy biomes.
+- Becomes the fourth **style pack** in M24 (photoreal /
+  painterly / topographic / **alien-real**).
+
+**Pipeline shape**:
+1. Pull lunar/martian DEMs from USGS Astrogeology (already in Track A2
+   list — planetary DEMs).
+2. Run M19 spectral fitting on planetary patches → "alien macro
+   signature."
+3. Run D1 nebula-statistics → "alien micro signature."
+4. Compose: macro from #2, micro detail from #3, M20 erosion to
+   harmonize.
+5. Hand off to M24 as the alien-real style pack.
+
+**Effort**: 3-4 sessions. Depends on M19-M22 being live first
+(planetary DEMs are also Track A item A2).
+
+### D6. Strategic-map decorations from real astronomical imagery (LOW EFFORT, FLAVOR)
+
+**What**: galactic-filament patterns as faction-territory borders;
+constellation polygons (IAU's 88 official boundaries) as
+ancient-surveyor reckoning lines; cluster/void shapes as biome-region
+masks on the world map.
+
+**Why low priority but worth listing**:
+- Pure UI flavor; doesn't change asset generation.
+- Topdown-only. Doesn't fight gameplay readability if used as
+  decoration tier, not gameplay tier.
+- Could be a single-session UI improvement when the world map gets
+  built out.
+
+**Effort**: 1 session, standalone.
+
+### Cross-cutting: data corpus
+
+| Source | What | License | Disk cost | Already in plan? |
+|---|---|---|---|---|
+| Hubble/JWST imagery (FITS) | Nebula source for D1, D5 | Public domain w/ attribution | ~5-10 GB curated corpus | NEW |
+| HYG v4.2 stellar catalog | D3, D4 | CC-BY-SA 4.0 | 71 MB | NEW |
+| Gaia DR3 (via astroquery) | D2, D3 | CC-BY 4.0 | Query-time only (no local cache needed) | NEW |
+| SDSS galaxy density | D2, D6 | Non-commercial credit | ~1 GB | NEW |
+| Mars/Moon DEMs (USGS Astrogeology) | D5 | Public domain | ~10 GB curated | **Already in Track A2** |
+| NASA constellation polygons (IAU) | D6 | Public domain | <1 MB | NEW |
+
+Pull cost is modest (~16-21 GB total if everything pulled). Most of D1
++ D2 + D3 can run on a 1-2 GB subset.
+
+### Sequencing recommendation (if pursued)
+
+1. **D1 nebula-statistics generator** — **PROMOTED TO M33** in the
+   M25-M39 water+weather roadmap. Becomes the weather-track cloud
+   source. No longer queued; scheduled.
+2. **D4 spectral-color shader** — half-session win, unifies spell color
+   logic. Can ship any time.
+3. **D2 cosmic-web scatter masks** — pairs with M15.
+4. **D3 procedural night sky** — when world3 walk-mode captures need
+   atmospheric backdrops.
+5. **D5 fantasy-ground textures** — gated on M19-M22 (the hybrid
+   procedural infrastructure).
+6. **D6 map decorations** — flavor pass, low priority.
+
+After D1's promotion, the remaining D2-D6 stay queued and consumer-side
+per `WORLD3_COMPLETION_BAR_2026_05_10.md`.
+
+### Cross-cutting integration constraints
+
+D1-D5 inherit the M1 catalog / M2 transition / M4 splat / M5 chunk
+constraints. Specifically:
+
+- **D1 cloud signatures** should emit as 2D + 3D texture data, with
+  metadata declaring "class" so the M1 catalog can include
+  `material_role: cloud_field` and `geometry_class: volumetric` (this
+  was reserved as a future role in the Cross-cutting integration
+  constraints section already).
+- **D2 scatter density** must emit per-chunk so it composes with
+  M3/M5 chunk format and M15 scatter masks.
+- **D3 starfield** is whole-region (not chunked); ships as cubemap
+  alongside the per-region `meta.json`.
+- **D5 fantasy-ground textures** go through `aaa_texture.py` like any
+  other material; their generation pathway is novel but their output
+  contract is the same.
+
+No new shader/material taxonomy needed. Track D rides on existing
+infrastructure.
+
+### Out-of-scope for Track D
+
+- **Real-time astronomical simulation** (orbits, day/night, celestial
+  events at game time). Different problem. If we want a "real sky over
+  time," that's a separate sim system, not a Track D item.
+- **Direct paste of real imagery** (Hubble panels as skybox texture).
+  Violates the "real-but-not-Earth" principle. The whole Track is
+  about derivative statistics, not reuse.
+- **VR / planetarium-grade accuracy**. Astronomical precision isn't a
+  goal; aesthetic plausibility is.
+
+---
+
 ## Status + next-decision pointer
 
 This doc is **not a plan**. It's an option register.
 
-When M1–M5 closes and the orchestrator asks "what next," this doc
-gives a starting list:
+When M1–M5 closes (now: when M14-M18 closes) and the orchestrator asks
+"what next," this doc gives a starting list:
 
 - Track A: NLCD land-cover ingest (highest leverage; pairs with M4)
 - Track A: bathymetry + coastal (extends domain; medium cost)
-- Track A: planetary DEMs (variety + stress-test for kits)
+- Track A: planetary DEMs (variety + stress-test for kits; **also a
+  D5 prerequisite**)
 - Track A: fantasy world generators (fills fantasy axis cheaply)
 - Track B: explorable interiors (B-stage 0 — pick one sub-category)
+- **Track D: nebula-statistics → VFX/cloud generator (D1, highest
+  leverage)**
+- **Track D: spectral-color spell shader (D4, half-session win)**
 
 User should pick the next direction; this doc is here to make the
 picking easier.
@@ -501,3 +849,18 @@ picking easier.
 - **2026-05-08**: Initial draft. Two tracks (alternative world
   sources + explorable interiors). Forward-looking only; not in
   scope for current M1–M5.
+- **2026-05-10**: Added Track D — astronomical data sources. Six
+  items (D1-D6): nebula-statistics cloud/VFX generator (highest
+  leverage), cosmic-web scatter density, procedural night sky,
+  spectral-color spell shader, real-DEM+nebula fantasy ground
+  textures (composes with M22), strategic-map decorations. Pattern
+  matches the M19-M24 real-data-derived-procedural approach.
+  Sequencing guide + view-mode applicability matrix included.
+- **2026-05-10 (later)**: D1 promoted from queued option to
+  scheduled work as **M33** in `M25_M39_WATER_WEATHER_ROADMAP_2026_05_10.md`
+  (weather-track volumetric cloud source). D2-D6 remain queued.
+- **2026-05-11**: Added Track A8 — Gaussian splat capture as asset
+  capture technique (not heightmap source). Queued; composes with
+  texture lane as multi-view-consistent reference for FLUX img2img +
+  hero prop capture + long-term M22 patch seeding seed for hero
+  locations. No active commitment.

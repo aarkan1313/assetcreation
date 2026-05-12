@@ -1,0 +1,287 @@
+{
+  "schema_version": 1,
+  "updated": "2026-05-10",
+  "purpose": "Track which world3 artifacts are workflow evidence, sidecar candidates, or production-promotion candidates.",
+  "band_order": ["close", "medium", "iso", "topdown"],
+  "band_status_values": ["pass", "conditional", "fail", "not_reviewed", "not_applicable"],
+  "promotion_state_values": [
+    "accepted_workflow",
+    "ready_for_live_review",
+    "sidecar_candidate",
+    "negative_evidence",
+    "production_candidate",
+    "production_promoted"
+  ],
+  "candidates": [
+    {
+      "id": "m12_runtime_fourway_parity",
+      "type": "workflow",
+      "promotion_track": "view_mode_parity",
+      "promotion_state": "accepted_workflow",
+      "source_doc": "world3/docs/M12_RUNTIME_PARITY_PROOF_2026_05_10.md",
+      "scene": "world3/scenes/review/source_stack_m12_runtime_fourway_tour.tscn",
+      "contract": {
+        "material": "world3/textures/wgv3/terrain_m11_fourway_corner.tres",
+        "heightmap": "world3/toporeview/m11_fourway_corner_proof/heightmap.png",
+        "meta": "world3/toporeview/m11_fourway_corner_proof/meta.json",
+        "source_macro": "world3/textures/source_stack/m11_fourway_corner_proof/source_macro_albedo.png",
+        "source_mask": "world3/textures/source_stack/m11_fourway_corner_proof/source_macro_weight_mask.png",
+        "splat_weights": "world3/textures/source_stack/m11_fourway_corner_proof/layers/splat_weights_rgba.png"
+      },
+      "captures": {
+        "close": "world3/docs/captures/review/source_stack_m12_runtime_fourway_close.png",
+        "medium": "world3/docs/captures/review/source_stack_m12_runtime_fourway_medium.png",
+        "iso": "world3/docs/captures/review/source_stack_m12_runtime_fourway_iso.png",
+        "topdown": "world3/docs/captures/review/source_stack_m12_runtime_fourway_topdown.png"
+      },
+      "band_status": {
+        "close": "pass",
+        "medium": "pass",
+        "iso": "pass",
+        "topdown": "pass"
+      },
+      "production_status": "not_production_art",
+      "blockers": [
+        "No production promotion requested; this remains workflow evidence.",
+        "Bulk RegionGalleryCapture.gd is an M16 follow-up, not an M12 blocker."
+      ]
+    },
+    {
+      "id": "m11_fourway_corner_workflow",
+      "type": "workflow",
+      "promotion_track": "junction_case_library",
+      "promotion_state": "accepted_workflow",
+      "source_doc": "world3/docs/M11_FOURWAY_CORNER_PROOF_2026_05_10.md",
+      "scene": "world3/scenes/review/source_stack_m11_fourway_corner_tour.tscn",
+      "contract": {
+        "material": "world3/textures/wgv3/terrain_m11_fourway_corner.tres",
+        "heightmap": "world3/toporeview/m11_fourway_corner_proof/heightmap.png",
+        "meta": "world3/toporeview/m11_fourway_corner_proof/meta.json",
+        "source_macro": "world3/textures/source_stack/m11_fourway_corner_proof/source_macro_albedo.png",
+        "source_mask": "world3/textures/source_stack/m11_fourway_corner_proof/source_macro_weight_mask.png",
+        "splat_weights": "world3/textures/source_stack/m11_fourway_corner_proof/layers/splat_weights_rgba.png"
+      },
+      "captures": {
+        "close": "world3/docs/captures/review/source_stack_m11_fourway_corner_tour_close.png",
+        "medium": "world3/docs/captures/review/source_stack_m11_fourway_corner_tour_medium.png",
+        "iso": "world3/docs/captures/review/source_stack_m11_fourway_corner_tour_iso.png",
+        "topdown": "world3/docs/captures/review/source_stack_m11_fourway_corner_tour_topdown.png"
+      },
+      "band_status": {
+        "close": "pass",
+        "medium": "pass",
+        "iso": "pass",
+        "topdown": "pass"
+      },
+      "production_status": "not_production_art",
+      "blockers": [
+        "T/L/island variants are still future case-library work.",
+        "Fantasy domain is accepted as a stress case, not production promotion."
+      ]
+    },
+    {
+      "id": "m16_cached_iso_impostor_seed",
+      "type": "renderer_experiment",
+      "promotion_track": "iso_runtime_strategy",
+      "promotion_state": "sidecar_candidate",
+      "source_doc": "world3/docs/M16_ISO_IMPOSTOR_RESEARCH_PLAN_2026_05_10.md",
+      "scene": "world3/scenes/review/source_stack_m16_iso_impostor_card.tscn",
+      "contract": {
+        "source_bake": "world3/docs/captures/review/source_stack_m12_runtime_fourway_iso_clean.png",
+        "source_scene": "world3/scenes/review/source_stack_m12_runtime_fourway_tour.tscn",
+        "material": "world3/textures/wgv3/terrain_m11_fourway_corner.tres",
+        "heightmap": "world3/toporeview/m11_fourway_corner_proof/heightmap.png",
+        "meta": "world3/toporeview/m11_fourway_corner_proof/meta.json",
+        "source_macro": "world3/textures/source_stack/m11_fourway_corner_proof/source_macro_albedo.png",
+        "source_mask": "world3/textures/source_stack/m11_fourway_corner_proof/source_macro_weight_mask.png",
+        "splat_weights": "world3/textures/source_stack/m11_fourway_corner_proof/layers/splat_weights_rgba.png"
+      },
+      "captures": {
+        "iso": "world3/docs/captures/review/source_stack_m16_iso_impostor_card.png"
+      },
+      "band_status": {
+        "close": "not_applicable",
+        "medium": "not_applicable",
+        "iso": "conditional",
+        "topdown": "not_applicable"
+      },
+      "production_status": "renderer_sidecar_only",
+      "blockers": [
+        "First proof is a single cached card, not chunked runtime impostors.",
+        "Needs depth, picking, object-overlay, and streaming experiments before tactical use.",
+        "Must remain tied to the M12 source-stack contract; it is not a separate art path."
+      ]
+    },
+    {
+      "id": "m11_three_way_junction_workflow",
+      "type": "workflow",
+      "promotion_track": "junction_case_library",
+      "promotion_state": "accepted_workflow",
+      "source_doc": "world3/docs/M11_JUNCTION_LAYER_PROOF_2026_05_10.md",
+      "scene": "world3/scenes/review/source_stack_m11_junction_tour.tscn",
+      "contract": {
+        "material": "world3/textures/wgv3/terrain_m11_three_way_junction.tres",
+        "heightmap": "world3/toporeview/m11_three_way_junction_proof/heightmap.png",
+        "meta": "world3/toporeview/m11_three_way_junction_proof/meta.json",
+        "source_macro": "world3/textures/source_stack/m11_three_way_junction_proof/source_macro_albedo.png",
+        "source_mask": "world3/textures/source_stack/m11_three_way_junction_proof/source_macro_weight_mask.png",
+        "splat_weights": "world3/textures/source_stack/m11_three_way_junction_proof/layers/splat_weights_rgba.png"
+      },
+      "captures": {
+        "close": "world3/docs/captures/review/source_stack_m11_junction_tour_close.png",
+        "medium": "world3/docs/captures/review/source_stack_m11_junction_tour_medium.png",
+        "iso": "world3/docs/captures/review/source_stack_m11_junction_tour_iso.png",
+        "topdown": "world3/docs/captures/review/source_stack_m11_junction_tour_topdown.png"
+      },
+      "band_status": {
+        "close": "pass",
+        "medium": "pass",
+        "iso": "pass",
+        "topdown": "pass"
+      },
+      "production_status": "not_production_art",
+      "blockers": [
+        "Canyon geometry is proof heightfield quality.",
+        "Scatter assets are placeholder review meshes."
+      ]
+    },
+    {
+      "id": "m10_ecotone_layer_workflow",
+      "type": "workflow",
+      "promotion_track": "unlike_biome_ecotone",
+      "promotion_state": "accepted_workflow",
+      "source_doc": "world3/docs/M10_ECOTONE_LAYER_PROOF_2026_05_09.md",
+      "scene": "world3/scenes/review/source_stack_ecotone_layer_tour.tscn",
+      "contract": {
+        "material": "world3/textures/wgv3/terrain_ecotone_layer_gloss_grassland.tres",
+        "heightmap": "world3/toporeview/gloss_grassland_ecotone_layer_proof/heightmap.png",
+        "meta": "world3/toporeview/gloss_grassland_ecotone_layer_proof/meta.json",
+        "source_macro": "world3/textures/source_stack/gloss_grassland_ecotone_layer_proof/source_macro_albedo.png",
+        "source_mask": "world3/textures/source_stack/gloss_grassland_ecotone_layer_proof/source_macro_weight_mask.png",
+        "splat_weights": "world3/textures/source_stack/gloss_grassland_ecotone_layer_proof/layers/splat_weights_rgba.png"
+      },
+      "captures": {
+        "close": "world3/docs/captures/review/source_stack_ecotone_layer_tour_close.png",
+        "medium": "world3/docs/captures/review/source_stack_ecotone_layer_tour_medium.png",
+        "iso": "world3/docs/captures/review/source_stack_ecotone_layer_tour_iso.png",
+        "topdown": "world3/docs/captures/review/source_stack_ecotone_layer_tour_topdown.png"
+      },
+      "band_status": {
+        "close": "conditional",
+        "medium": "pass",
+        "iso": "pass",
+        "topdown": "pass"
+      },
+      "production_status": "not_production_art",
+      "blockers": [
+        "Scatter uses composite low-poly review meshes.",
+        "Grassland material still needs stronger close-play candidates."
+      ]
+    },
+    {
+      "id": "m10_real_procedural_gloss_canyon",
+      "type": "workflow",
+      "promotion_track": "real_to_procedural_neighbor",
+      "promotion_state": "accepted_workflow",
+      "source_doc": "world3/docs/M10_TERRAIN_SEAM_INTEGRATION_PROOF_2026_05_09.md",
+      "scene": "world3/scenes/review/source_stack_real_procedural_tour.tscn",
+      "contract": {
+        "material": "world3/textures/wgv3/terrain_source_stack_gloss_scrub_source_stack.tres",
+        "heightmap": "world3/toporeview/gloss_procedural_canyon_rock_proof/heightmap.png",
+        "meta": "world3/toporeview/gloss_procedural_canyon_rock_proof/meta.json",
+        "source_macro": "world3/textures/source_stack/gloss_procedural_canyon_rock_proof/source_macro_albedo.png",
+        "source_mask": "world3/textures/source_stack/gloss_procedural_canyon_rock_proof/source_macro_valid_mask.png",
+        "splat_weights": ""
+      },
+      "captures": {
+        "close": "world3/docs/captures/review/source_stack_real_procedural_tour_close.png",
+        "medium": "world3/docs/captures/review/source_stack_real_procedural_tour_medium.png",
+        "iso": "world3/docs/captures/review/source_stack_real_procedural_tour_iso.png",
+        "topdown": "world3/docs/captures/review/source_stack_real_procedural_tour_topdown.png"
+      },
+      "band_status": {
+        "close": "conditional",
+        "medium": "pass",
+        "iso": "pass",
+        "topdown": "pass"
+      },
+      "production_status": "not_production_art",
+      "blockers": [
+        "Procedural side needs richer close-range PBR/detail.",
+        "Needs production scatter/features before AAA close-play promotion."
+      ]
+    },
+    {
+      "id": "m18_representative_slice_first_pass",
+      "type": "workflow",
+      "promotion_track": "representative_runtime_slice",
+      "promotion_state": "ready_for_live_review",
+      "source_doc": "world3/docs/M18_REPRESENTATIVE_SLICE_FIRST_PASS_2026_05_10.md",
+      "scene": "world3/scenes/review/source_stack_m18_guided_neighbor_tour.tscn",
+      "contract": {
+        "material": "world3/textures/wgv3/terrain_source_stack_gloss_scrub_source_stack.tres",
+        "heightmap": "world3/toporeview/m18_guided_neighbor_slice_proof/heightmap.png",
+        "meta": "world3/toporeview/m18_guided_neighbor_slice_proof/meta.json",
+        "source_macro": "world3/textures/source_stack/m18_guided_neighbor_slice_proof/source_macro_albedo.png",
+        "source_mask": "world3/textures/source_stack/m18_guided_neighbor_slice_proof/source_macro_valid_mask.png",
+        "feature_masks": "world3/textures/source_stack/m18_guided_neighbor_slice_proof/layers/feature_mask_metrics.json",
+        "splat_weights": ""
+      },
+      "captures": {
+        "close": "world3/docs/captures/review/source_stack_m18_guided_neighbor_close.png",
+        "medium": "world3/docs/captures/review/source_stack_m18_guided_neighbor_medium.png",
+        "iso": "world3/docs/captures/review/source_stack_m18_guided_neighbor_iso.png",
+        "topdown": "world3/docs/captures/review/source_stack_m18_guided_neighbor_topdown.png",
+        "closure_harness": "world3/docs/captures/review/source_stack_m18_closure_review.png"
+      },
+      "band_status": {
+        "close": "conditional",
+        "medium": "conditional",
+        "iso": "pass",
+        "topdown": "conditional"
+      },
+      "production_status": "not_production_art",
+      "blockers": [
+        "Procedural tan/sand side reads too smooth and broad for AAA close-play.",
+        "Derived M15 scatter uses procedural review primitives, not authored production assets.",
+        "M11 junction ownership is represented in the M18 closure harness, not physically composed into the same streamed terrain.",
+        "No production promotion requested; this remains representative workflow evidence."
+      ]
+    },
+    {
+      "id": "m8_grassland_grass_calm_v3",
+      "type": "texture",
+      "promotion_track": "comfyui_texture_regen",
+      "promotion_state": "sidecar_candidate",
+      "source_doc": "world3/docs/M8_COMFYUI_TERRAIN_CONTEXT_REVIEW_2026_05_08.md",
+      "scene": "",
+      "contract": {
+        "material": "world3/textures/wgv3_comfy_candidates/m8_grassland_grass_calm_v3",
+        "heightmap": "",
+        "meta": "",
+        "source_macro": "",
+        "source_mask": "",
+        "splat_weights": ""
+      },
+      "captures": {
+        "close": "world3/docs/captures/m14/m14_grassland_comfy_v3_close.png",
+        "medium": "world3/docs/captures/m14/m14_grassland_comfy_v3_medium.png",
+        "iso": "world3/docs/captures/m14/m14_grassland_comfy_v3_iso.png",
+        "topdown": "world3/docs/captures/m14/m14_grassland_comfy_v3_topdown.png",
+        "contact_sheet": "world3/docs/captures/m14/m14_grassland_comfy_v3_runtime_trial_contact_sheet.png"
+      },
+      "band_status": {
+        "close": "conditional",
+        "medium": "pass",
+        "iso": "pass",
+        "topdown": "pass"
+      },
+      "production_status": "sidecar_only",
+      "blockers": [
+        "M14 runtime trial is safe but too subtle for close-play production promotion.",
+        "Earlier detail-stress review remains slightly pale/hazy.",
+        "Keep as low-strength sidecar while generating stronger FLUX/Aura/SD organic candidates."
+      ]
+    }
+  ]
+}

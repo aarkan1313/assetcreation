@@ -27,6 +27,10 @@ class_name ChunkLoader
 @export var source_repeat_blend_macro_color: bool = true
 @export_range(0.0, 1.0, 0.01) var source_repeat_blend_macro_fade: float = 0.0
 @export var clip_to_source_bounds: bool = false
+# Phase F.7 — extra tolerance beyond the source bounds before clipping
+# rejects a cell. Used by MultiBundleStreamer so per-bundle loaders
+# don't leave a sub-mesh-step gap at adjacent bundle boundaries.
+@export var clip_bounds_tolerance_m: float = 0.0
 @export var target_path: NodePath
 @export var auto_update: bool = true
 @export var build_collision_chunks: bool = false
@@ -530,8 +534,8 @@ func _cell_inside_source_bounds(min_x: float, min_z: float, x: int, z: int, step
 
 
 func _inside_source_bounds(global_x: float, global_z: float) -> bool:
-	var half_x: float = _source_size_x_m * 0.5
-	var half_z: float = _source_size_z_m * 0.5
+	var half_x: float = _source_size_x_m * 0.5 + clip_bounds_tolerance_m
+	var half_z: float = _source_size_z_m * 0.5 + clip_bounds_tolerance_m
 	var in_bounds: bool = (
 		global_x >= -half_x
 		and global_x <= half_x

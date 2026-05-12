@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "plan_id": "starter_2x2_procedural",
+  "generated_at": "2026-05-11T14:55:24Z",
+  "biome_count": 1,
+  "results": [
+    {
+      "biome": "tundra",
+      "material_id": "tundra_moss",
+      "tile_xy": [
+        0,
+        0
+      ],
+      "capture_path": "docs/captures/review/in_context_starter_2x2_procedural_tundra_iso.png",
+      "catalog_metrics": {
+        "median_lab": [
+          22.125736236572266,
+          -5.770951271057129,
+          9.97917652130127
+        ],
+        "luminance_p5_p95": [
+          0.06103129684925079,
+          0.6461144089698792
+        ],
+        "luminance_range": 0.5850831121206284,
+        "high_freq_energy": 0.02347635105252266
+      },
+      "rendered_metrics": {
+        "median_lab": [
+          100.0,
+          0.0,
+          0.0
+        ],
+        "luminance_p5_p95": [
+          0.47144103050231934,
+          1.0
+        ],
+        "luminance_range": 0.5285589694976807,
+        "high_freq_energy": 0.006269135978072882
+      },
+      "verdict": "fail",
+      "notes": [
+        "palette drift Lab=78.7 (catalog vs rendered)",
+        "high-freq energy ratio=3.74"
+      ]
+    }
+  ],
+  "pass_count": 0,
+  "warn_count": 0,
+  "fail_count": 1,
+  "error_count": 0
+}

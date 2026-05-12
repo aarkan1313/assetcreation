@@ -1,5 +1,5 @@
 {
-  "name": "M18 guided procedural neighbor representative slice",
+  "name": "M18 guided neighbor slice proof",
   "builder": "build_terrain_seam_integration_proof.py",
   "source_dem": "D:\\assets\\world3\\opentopo\\raw\\dataspace\\Gloss_Mountain_2021\\Gloss_Mountain_DEM.tif",
   "source_orthophoto": "D:\\assets\\world3\\opentopo\\raw\\dataspace\\Gloss_Mountain_2021\\Gloss_Mountain_Orthomosaic.tif",
@@ -25,8 +25,8 @@
     1024
   ],
   "elevation_min_m": 415.07440185546875,
-  "elevation_max_m": 467.5576477050781,
-  "elevation_range_m": 52.483245849609375,
+  "elevation_max_m": 467.5616149902344,
+  "elevation_range_m": 52.487213134765625,
   "world_size_m": 239.98799443003327,
   "world_size_x_m": 210.18167569022245,
   "world_size_z_m": 239.98799443003327,
@@ -43,7 +43,7 @@
   },
   "terrain_seam_integration": {
     "version": 1,
-    "kind": "m18_guided_real_to_procedural_integration_band_proof",
+    "kind": "m17_extracted_rules_rebaked_through_m10_seam_solver_for_m18_runtime_review",
     "left_source_macro": "res://textures/source_stack/gloss_scrub_source_stack/source_macro_albedo.png",
     "left_source_heightmap": "res://toporeview/gloss_mountain_textured_master/heightmap.png",
     "right_source_macro": "res://toporeview/m17_guided_desert_canyon_neighbor/layers/render_albedo.png",
@@ -74,6 +74,6 @@
       120.0,
       240.0
     ],
-    "policy": "m17_extracted_rules_rebaked_through_m10_seam_solver_for_m18_runtime_review"
+    "policy": "adjacent_overlap_sources_solved_into_single_runtime_bundle"
   }
 }

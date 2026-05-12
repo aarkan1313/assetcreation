@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "run_id": "starter_5biome_procedural__tile_1_3_20260511T144051Z",
+  "request_id": "starter_5biome_procedural__tile_1_3",
+  "request_path": "D:\\assets\\world3\\worlds\\starter_5biome_procedural\\requests\\starter_5biome_procedural__tile_1_3.json",
+  "request": {
+    "schema_version": 1,
+    "id": "starter_5biome_procedural__tile_1_3",
+    "description": "Phase F.3 emitted from plan 'starter_5biome_procedural' tile (1, 3) biome 'alpine'",
+    "source": {
+      "type": "procedural",
+      "material_id": "rock_dark",
+      "size_px": [
+        512,
+        1024
+      ],
+      "world_size_m": [
+        256.0,
+        256.0
+      ],
+      "elev_min_m": 800.0,
+      "elev_range_m": 80.0,
+      "seed": 1336933382
+    },
+    "world_type": {
+      "biome_kit": "alpine",
+      "style_pack": "photoreal",
+      "view_modes": [
+        "iso",
+        "topdown"
+      ]
+    },
+    "options": {
+      "render_captures": false,
+      "promote_to_gate": false
+    },
+    "output": {
+      "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_1_3",
+      "overwrite": true
+    },
+    "__request_path__": "D:\\assets\\world3\\worlds\\starter_5biome_procedural\\requests\\starter_5biome_procedural__tile_1_3.json"
+  },
+  "started_at": "2026-05-11T14:40:51.131158+00:00",
+  "completed_at": "2026-05-11T14:40:51.942969+00:00",
+  "ok": true,
+  "stages": [
+    {
+      "id": "emit_per_mode_materials",
+      "script": "pipelines/textures/emit_per_mode_materials.py",
+      "started_at": "2026-05-11T14:40:51.131158+00:00",
+      "args": [
+        "--kit",
+        "alpine"
+      ],
+      "exit_code": 0,
+      "wall_time_sec": 0.05,
+      "stdout_tail": [
+        "[alpine]",
+        "  alpine: terrain_blend_alpine_walk.tres",
+        "  alpine: terrain_blend_alpine_iso.tres",
+        "  alpine: terrain_blend_alpine_topdown.tres",
+        "wrote 3 per-mode .tres files"
+      ],
+      "stderr_tail": [],
+      "status": "ok",
+      "completed_at": "2026-05-11T14:40:51.182131+00:00"
+    },
+    {
+      "id": "validate_request",
+      "script": "world3/pipeline/validate_region_request.py",
+      "started_at": "2026-05-11T14:40:51.182131+00:00",
+      "args": [
+        "D:\\assets\\world3\\worlds\\starter_5biome_procedural\\requests\\starter_5biome_procedural__tile_1_3.json"
+      ],
+      "exit_code": 0,
+      "wall_time_sec": 0.15,
+      "stdout_tail": [
+        "  [OK  ] D:\\assets\\world3\\worlds\\starter_5biome_procedural\\requests\\starter_5biome_procedural__tile_1_3.json"
+      ],
+      "stderr_tail": [],
+      "status": "ok",
+      "completed_at": "2026-05-11T14:40:51.329363+00:00"
+    },
+    {
+      "id": "build_procedural_neighbor",
+      "script": "world3/pipeline/build_procedural_neighbor_bundle.py",
+      "started_at": "2026-05-11T14:40:51.329363+00:00",
+      "args": [
+        "--material-id",
+        "rock_dark",
+        "--out",
+        "D:\\assets\\world3\\worlds\\starter_5biome_procedural\\bundles\\starter_5biome_procedural__tile_1_3",
+        "--size",
+        "512,1024",
+        "--world-size-m",
+        "256.0,256.0",
+        "--elev-min-m",
+        "800.0",
+        "--elev-range-m",
+        "80.0",
+        "--seed",
+        "1336933382",
+        "--name",
+        "Phase F.3 emitted from plan 'starter_5biome_procedural' tile (1, 3) biome 'alpine'"
+      ],
+      "exit_code": 0,
+      "wall_time_sec": 0.61,
+      "stdout_tail": [
+        "  \"macro\": \"D:\\\\assets\\\\world3\\\\worlds\\\\starter_5biome_procedural\\\\bundles\\\\starter_5biome_procedural__tile_1_3\\\\layers\\\\render_albedo.png\",",
+        "  \"valid_mask\": \"D:\\\\assets\\\\world3\\\\worlds\\\\starter_5biome_procedural\\\\bundles\\\\starter_5biome_procedural__tile_1_3\\\\layers\\\\source_valid_mask.png\",",
+        "  \"heightmap\": \"D:\\\\assets\\\\world3\\\\worlds\\\\starter_5biome_procedural\\\\bundles\\\\starter_5biome_procedural__tile_1_3\\\\heightmap.png\",",
+        "  \"meta\": \"D:\\\\assets\\\\world3\\\\worlds\\\\starter_5biome_procedural\\\\bundles\\\\starter_5biome_procedural__tile_1_3\\\\meta.json\"",
+        "}"
+      ],
+      "stderr_tail": [],
+      "status": "ok",
+      "completed_at": "2026-05-11T14:40:51.942969+00:00"
+    }
+  ],
+  "dry_run": false
+}

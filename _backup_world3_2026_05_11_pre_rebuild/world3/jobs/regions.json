@@ -1,0 +1,1474 @@
+[
+  {
+    "id": "bor_alaska_interior",
+    "landform": "boreal_plain",
+    "biome_kit": "tundra",
+    "biome_kit_material": "res://textures/wgv3/terrain_blend_tundra.tres",
+    "preferred_dataset": "COP30",
+    "datasets": [
+      "COP30",
+      "COP30_COG"
+    ],
+    "bundles": [
+      {
+        "site": "bor_alaska_interior",
+        "dataset": "COP30",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/bor_alaska_interior/COP30/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/bor_alaska_interior/COP30/meta.json",
+        "elevation_min_m": 123.52992248535156,
+        "elevation_max_m": 339.6436462402344,
+        "elevation_range_m": 216.1137237548828,
+        "world_size_m": 19999.0115459307,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -147.91125001111112,
+          "right": -147.48930556666667,
+          "bottom": 64.70986112222221,
+          "top": 64.89069445555555
+        }
+      },
+      {
+        "site": "bor_alaska_interior",
+        "dataset": "COP30_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/bor_alaska_interior/COP30_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/bor_alaska_interior/COP30_COG/meta.json",
+        "elevation_min_m": 123.52992248535156,
+        "elevation_max_m": 339.6436462402344,
+        "elevation_range_m": 216.1137237548828,
+        "world_size_m": 19999.2175944081,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -147.91097223333333,
+          "right": -147.48902778888888,
+          "bottom": 64.70958334444444,
+          "top": 64.89041667777778
+        }
+      }
+    ]
+  },
+  {
+    "id": "bor_yukon_canada",
+    "landform": "boreal_basin",
+    "biome_kit": "tundra",
+    "biome_kit_material": "res://textures/wgv3/terrain_blend_tundra.tres",
+    "preferred_dataset": "CA_MRDEM_DTM_COG",
+    "datasets": [
+      "CA_MRDEM_DSM_COG",
+      "CA_MRDEM_DTM_COG"
+    ],
+    "bundles": [
+      {
+        "site": "bor_yukon_canada",
+        "dataset": "CA_MRDEM_DSM_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/bor_yukon_canada/CA_MRDEM_DSM_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/bor_yukon_canada/CA_MRDEM_DSM_COG/meta.json",
+        "elevation_min_m": 494.72418212890625,
+        "elevation_max_m": 1733.35693359375,
+        "elevation_range_m": 1238.6327514648438,
+        "world_size_m": 27240.0,
+        "source_crs": "EPSG:3979",
+        "source_bounds": {
+          "left": -1820520.0,
+          "right": -1793280.0,
+          "bottom": 2197110.0,
+          "top": 2224380.0
+        }
+      },
+      {
+        "site": "bor_yukon_canada",
+        "dataset": "CA_MRDEM_DTM_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/bor_yukon_canada/CA_MRDEM_DTM_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/bor_yukon_canada/CA_MRDEM_DTM_COG/meta.json",
+        "elevation_min_m": 490.4081726074219,
+        "elevation_max_m": 1732.9803466796875,
+        "elevation_range_m": 1242.5721740722656,
+        "world_size_m": 27240.0,
+        "source_crs": "EPSG:3979",
+        "source_bounds": {
+          "left": -1820520.0,
+          "right": -1793280.0,
+          "bottom": 2197110.0,
+          "top": 2224380.0
+        }
+      }
+    ]
+  },
+  {
+    "id": "des_mojave_usa",
+    "landform": "desert",
+    "biome_kit": "desert",
+    "biome_kit_material": "res://textures/wgv3/terrain_blend_desert.tres",
+    "preferred_dataset": "COP30",
+    "datasets": [
+      "AW3D30_COG",
+      "COP30",
+      "COP30_COG",
+      "NASADEM_COG",
+      "SRTMGL1_COG",
+      "USGS10m_API"
+    ],
+    "bundles": [
+      {
+        "site": "des_mojave_usa",
+        "dataset": "AW3D30_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/des_mojave_usa/AW3D30_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/des_mojave_usa/AW3D30_COG/meta.json",
+        "elevation_min_m": 661.0,
+        "elevation_max_m": 1946.0,
+        "elevation_range_m": 1285.0,
+        "world_size_m": 19988.230818847256,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -116.11111111110236,
+          "right": -115.88916666665789,
+          "bottom": 35.90972222221538,
+          "top": 36.09055555554874
+        }
+      },
+      {
+        "site": "des_mojave_usa",
+        "dataset": "COP30",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/des_mojave_usa/COP30/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/des_mojave_usa/COP30/meta.json",
+        "elevation_min_m": 660.83447265625,
+        "elevation_max_m": 1944.8143310546875,
+        "elevation_range_m": 1283.9798583984375,
+        "world_size_m": 19988.195612740525,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -116.11125001111111,
+          "right": -115.88930556666666,
+          "bottom": 35.90986112222222,
+          "top": 36.09069445555555
+        }
+      },
+      {
+        "site": "des_mojave_usa",
+        "dataset": "COP30_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/des_mojave_usa/COP30_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/des_mojave_usa/COP30_COG/meta.json",
+        "elevation_min_m": 660.3195190429688,
+        "elevation_max_m": 1944.8143310546875,
+        "elevation_range_m": 1284.4948120117188,
+        "world_size_m": 19988.266019195442,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -116.11125001111111,
+          "right": -115.88930556666666,
+          "bottom": 35.90958334444444,
+          "top": 36.090416677777775
+        }
+      },
+      {
+        "site": "des_mojave_usa",
+        "dataset": "NASADEM_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/des_mojave_usa/NASADEM_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/des_mojave_usa/NASADEM_COG/meta.json",
+        "elevation_min_m": 659.0,
+        "elevation_max_m": 1935.0,
+        "elevation_range_m": 1276.0,
+        "world_size_m": 19988.266022015094,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -116.11124999999166,
+          "right": -115.88930555554718,
+          "bottom": 35.90958333333,
+          "top": 36.09041666666336
+        }
+      },
+      {
+        "site": "des_mojave_usa",
+        "dataset": "SRTMGL1_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/des_mojave_usa/SRTMGL1_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/des_mojave_usa/SRTMGL1_COG/meta.json",
+        "elevation_min_m": 661.0,
+        "elevation_max_m": 1939.0,
+        "elevation_range_m": 1278.0,
+        "world_size_m": 19988.266022015057,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -116.11124999999154,
+          "right": -115.88930555554707,
+          "bottom": 35.90958333333014,
+          "top": 36.0904166666635
+        }
+      },
+      {
+        "site": "des_mojave_usa",
+        "dataset": "USGS10m_API",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/des_mojave_usa/USGS10m_API/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/des_mojave_usa/USGS10m_API/meta.json",
+        "elevation_min_m": 767.1461791992188,
+        "elevation_max_m": 835.0916748046875,
+        "elevation_range_m": 67.94549560546875,
+        "world_size_m": 2001.3270897303616,
+        "source_crs": "EPSG:4269",
+        "source_bounds": {
+          "left": -116.0111110649125,
+          "right": -115.98888884267404,
+          "bottom": 35.99101849307816,
+          "top": 36.00907404864684
+        }
+      }
+    ]
+  },
+  {
+    "id": "fgs_pantanal_brazil",
+    "landform": "flooded_basin",
+    "biome_kit": "grassland",
+    "biome_kit_material": "res://textures/wgv3/terrain_blend_grassland.tres",
+    "preferred_dataset": "COP30_COG",
+    "datasets": [
+      "COP30_COG",
+      "GEBCOIceTopo_COG",
+      "NASADEM_COG",
+      "SRTM15Plus_COG",
+      "SRTMGL1_COG"
+    ],
+    "bundles": [
+      {
+        "site": "fgs_pantanal_brazil",
+        "dataset": "COP30_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/fgs_pantanal_brazil/COP30_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/fgs_pantanal_brazil/COP30_COG/meta.json",
+        "elevation_min_m": 91.27297973632812,
+        "elevation_max_m": 121.56062316894531,
+        "elevation_range_m": 30.287643432617188,
+        "world_size_m": 19994.930198179274,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -57.09430556666666,
+          "right": -56.90597223333333,
+          "bottom": -17.590416655555565,
+          "top": -17.409583322222232
+        }
+      },
+      {
+        "site": "fgs_pantanal_brazil",
+        "dataset": "GEBCOIceTopo_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/fgs_pantanal_brazil/GEBCOIceTopo_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/fgs_pantanal_brazil/GEBCOIceTopo_COG/meta.json",
+        "elevation_min_m": 90.0,
+        "elevation_max_m": 119.0,
+        "elevation_range_m": 29.0,
+        "world_size_m": 80068.19393029188,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -57.37916666666666,
+          "right": -56.62499999999999,
+          "bottom": -17.862500000000004,
+          "top": -17.137500000000003
+        }
+      },
+      {
+        "site": "fgs_pantanal_brazil",
+        "dataset": "NASADEM_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/fgs_pantanal_brazil/NASADEM_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/fgs_pantanal_brazil/NASADEM_COG/meta.json",
+        "elevation_min_m": 72.0,
+        "elevation_max_m": 157.0,
+        "elevation_range_m": 85.0,
+        "world_size_m": 19994.930196958565,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -57.094305555539364,
+          "right": -56.905972222206,
+          "bottom": -17.59041666667711,
+          "top": -17.409583333343754
+        }
+      },
+      {
+        "site": "fgs_pantanal_brazil",
+        "dataset": "SRTM15Plus_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/fgs_pantanal_brazil/SRTM15Plus_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/fgs_pantanal_brazil/SRTM15Plus_COG/meta.json",
+        "elevation_min_m": 90.0,
+        "elevation_max_m": 119.0,
+        "elevation_range_m": 29.0,
+        "world_size_m": 80068.19393029113,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -57.37916666666672,
+          "right": -56.62500000000006,
+          "bottom": -17.86249999999996,
+          "top": -17.13749999999996
+        }
+      },
+      {
+        "site": "fgs_pantanal_brazil",
+        "dataset": "SRTMGL1_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/fgs_pantanal_brazil/SRTMGL1_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/fgs_pantanal_brazil/SRTMGL1_COG/meta.json",
+        "elevation_min_m": 78.0,
+        "elevation_max_m": 124.0,
+        "elevation_range_m": 46.0,
+        "world_size_m": 19994.930196958587,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -57.09430555553928,
+          "right": -56.90597222220592,
+          "bottom": -17.59041666667694,
+          "top": -17.409583333343583
+        }
+      }
+    ]
+  },
+  {
+    "id": "man_sundarbans",
+    "landform": "delta_coast",
+    "biome_kit": "alpine",
+    "biome_kit_material": "res://textures/wgv3/terrain_blend_alpine.tres",
+    "preferred_dataset": "COP30_COG",
+    "datasets": [
+      "COP30_COG",
+      "GEBCOIceTopo_COG",
+      "NASADEM_COG",
+      "SRTM15Plus_COG",
+      "SRTMGL1_COG"
+    ],
+    "bundles": [
+      {
+        "site": "man_sundarbans",
+        "dataset": "COP30_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/man_sundarbans/COP30_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/man_sundarbans/COP30_COG/meta.json",
+        "elevation_min_m": -0.7337343096733093,
+        "elevation_max_m": 11.887721061706543,
+        "elevation_range_m": 12.621455371379852,
+        "world_size_m": 19997.458902181897,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": 89.00319443333333,
+          "right": 89.19680554444444,
+          "bottom": 21.80958334444444,
+          "top": 21.990416677777773
+        }
+      },
+      {
+        "site": "man_sundarbans",
+        "dataset": "GEBCOIceTopo_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/man_sundarbans/GEBCOIceTopo_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/man_sundarbans/GEBCOIceTopo_COG/meta.json",
+        "elevation_min_m": -29.0,
+        "elevation_max_m": 13.0,
+        "elevation_range_m": 42.0,
+        "world_size_m": 80047.21713262211,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": 88.71249999999998,
+          "right": 89.48749999999998,
+          "bottom": 21.5375,
+          "top": 22.262500000000003
+        }
+      },
+      {
+        "site": "man_sundarbans",
+        "dataset": "NASADEM_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/man_sundarbans/NASADEM_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/man_sundarbans/NASADEM_COG/meta.json",
+        "elevation_min_m": -8.0,
+        "elevation_max_m": 24.0,
+        "elevation_range_m": 32.0,
+        "world_size_m": 19997.45890374451,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": 89.00319444448007,
+          "right": 89.19680555559121,
+          "bottom": 21.809583333328124,
+          "top": 21.99041666666148
+        }
+      },
+      {
+        "site": "man_sundarbans",
+        "dataset": "SRTM15Plus_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/man_sundarbans/SRTM15Plus_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/man_sundarbans/SRTM15Plus_COG/meta.json",
+        "elevation_min_m": -29.07417106628418,
+        "elevation_max_m": 13.0,
+        "elevation_range_m": 42.07417106628418,
+        "world_size_m": 80047.2171326221,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": 88.71249999999986,
+          "right": 89.48749999999987,
+          "bottom": 21.53750000000003,
+          "top": 22.26250000000003
+        }
+      },
+      {
+        "site": "man_sundarbans",
+        "dataset": "SRTMGL1_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/man_sundarbans/SRTMGL1_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/man_sundarbans/SRTMGL1_COG/meta.json",
+        "elevation_min_m": -7.0,
+        "elevation_max_m": 25.0,
+        "elevation_range_m": 32.0,
+        "world_size_m": 19997.458903744493,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": 89.00319444448007,
+          "right": 89.19680555559121,
+          "bottom": 21.809583333328273,
+          "top": 21.99041666666163
+        }
+      }
+    ]
+  },
+  {
+    "id": "med_california_chaparral",
+    "landform": "mediterranean_hills",
+    "biome_kit": "temperate_forest",
+    "biome_kit_material": "res://textures/wgv3/terrain_blend_temperate_forest.tres",
+    "preferred_dataset": "COP30_COG",
+    "datasets": [
+      "COP30_COG",
+      "NASADEM_COG",
+      "SRTMGL1_COG",
+      "USGS10m_API",
+      "USGS1m_API"
+    ],
+    "bundles": [
+      {
+        "site": "med_california_chaparral",
+        "dataset": "COP30_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/med_california_chaparral/COP30_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/med_california_chaparral/COP30_COG/meta.json",
+        "elevation_min_m": 135.01123046875,
+        "elevation_max_m": 2043.031982421875,
+        "elevation_range_m": 1908.020751953125,
+        "world_size_m": 20004.793315155912,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -119.10902778888888,
+          "right": -118.89097223333333,
+          "bottom": 34.40958334444444,
+          "top": 34.590416677777775
+        }
+      },
+      {
+        "site": "med_california_chaparral",
+        "dataset": "NASADEM_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/med_california_chaparral/NASADEM_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/med_california_chaparral/NASADEM_COG/meta.json",
+        "elevation_min_m": 134.0,
+        "elevation_max_m": 2042.0,
+        "elevation_range_m": 1908.0,
+        "world_size_m": 20004.793317825628,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -119.10902777776982,
+          "right": -118.89097222221424,
+          "bottom": 34.4095833333298,
+          "top": 34.59041666666316
+        }
+      },
+      {
+        "site": "med_california_chaparral",
+        "dataset": "SRTMGL1_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/med_california_chaparral/SRTMGL1_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/med_california_chaparral/SRTMGL1_COG/meta.json",
+        "elevation_min_m": 136.0,
+        "elevation_max_m": 2042.0,
+        "elevation_range_m": 1906.0,
+        "world_size_m": 20004.793317825595,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -119.10902777776971,
+          "right": -118.89097222221413,
+          "bottom": 34.40958333332994,
+          "top": 34.5904166666633
+        }
+      },
+      {
+        "site": "med_california_chaparral",
+        "dataset": "USGS10m_API",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/med_california_chaparral/USGS10m_API/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/med_california_chaparral/USGS10m_API/meta.json",
+        "elevation_min_m": 933.2813720703125,
+        "elevation_max_m": 1461.80419921875,
+        "elevation_range_m": 528.5228271484375,
+        "world_size_m": 1996.2309230997525,
+        "source_crs": "EPSG:4269",
+        "source_bounds": {
+          "left": -119.01092588191833,
+          "right": -118.98916662264317,
+          "bottom": 34.491018491987624,
+          "top": 34.509074047556304
+        }
+      },
+      {
+        "site": "med_california_chaparral",
+        "dataset": "USGS1m_API",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/med_california_chaparral/USGS1m_API/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/med_california_chaparral/USGS1m_API/meta.json",
+        "elevation_min_m": 937.1210327148438,
+        "elevation_max_m": 1462.79150390625,
+        "elevation_range_m": 525.6704711914062,
+        "world_size_m": 1962.0,
+        "source_crs": "EPSG:26911",
+        "source_bounds": {
+          "left": 315398.9997,
+          "right": 317360.9997,
+          "bottom": 3818390.0,
+          "top": 3820436.0
+        }
+      }
+    ]
+  },
+  {
+    "id": "mgs_tibetan_plateau",
+    "landform": "high_plateau",
+    "biome_kit": "grassland",
+    "biome_kit_material": "res://textures/wgv3/terrain_blend_grassland.tres",
+    "preferred_dataset": "COP30_COG",
+    "datasets": [
+      "COP30_COG",
+      "NASADEM_COG",
+      "SRTMGL1_COG"
+    ],
+    "bundles": [
+      {
+        "site": "mgs_tibetan_plateau",
+        "dataset": "COP30_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/mgs_tibetan_plateau/COP30_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/mgs_tibetan_plateau/COP30_COG/meta.json",
+        "elevation_min_m": 4657.33642578125,
+        "elevation_max_m": 5285.36376953125,
+        "elevation_range_m": 628.02734375,
+        "world_size_m": 20011.436233672957,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": 89.89458332222225,
+          "right": 90.10541665555557,
+          "bottom": 31.409583344444442,
+          "top": 31.590416677777775
+        }
+      },
+      {
+        "site": "mgs_tibetan_plateau",
+        "dataset": "NASADEM_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/mgs_tibetan_plateau/NASADEM_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/mgs_tibetan_plateau/NASADEM_COG/meta.json",
+        "elevation_min_m": 4654.0,
+        "elevation_max_m": 5287.0,
+        "elevation_range_m": 633.0,
+        "world_size_m": 20011.436236054604,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": 89.89458333336904,
+          "right": 90.1054166667024,
+          "bottom": 31.409583333329405,
+          "top": 31.59041666666276
+        }
+      },
+      {
+        "site": "mgs_tibetan_plateau",
+        "dataset": "SRTMGL1_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/mgs_tibetan_plateau/SRTMGL1_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/mgs_tibetan_plateau/SRTMGL1_COG/meta.json",
+        "elevation_min_m": 4656.0,
+        "elevation_max_m": 5288.0,
+        "elevation_range_m": 632.0,
+        "world_size_m": 20011.43623605457,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": 89.8945833333691,
+          "right": 90.10541666670245,
+          "bottom": 31.409583333329547,
+          "top": 31.590416666662904
+        }
+      }
+    ]
+  },
+  {
+    "id": "tbm_appalachians_usa",
+    "landform": "rolling_mountain",
+    "biome_kit": "alpine",
+    "biome_kit_material": "res://textures/wgv3/terrain_blend_alpine.tres",
+    "preferred_dataset": "COP30",
+    "datasets": [
+      "COP30",
+      "COP30_COG",
+      "NASADEM",
+      "NASADEM_COG",
+      "SRTMGL1_COG",
+      "USGS10m_API",
+      "USGS1m_API"
+    ],
+    "bundles": [
+      {
+        "site": "tbm_appalachians_usa",
+        "dataset": "COP30",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tbm_appalachians_usa/COP30/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tbm_appalachians_usa/COP30/meta.json",
+        "elevation_min_m": 447.9534606933594,
+        "elevation_max_m": 2028.777587890625,
+        "elevation_range_m": 1580.8241271972656,
+        "world_size_m": 19988.52214369928,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -83.61069445555555,
+          "right": -83.38986112222221,
+          "bottom": 35.50986112222222,
+          "top": 35.69069445555555
+        }
+      },
+      {
+        "site": "tbm_appalachians_usa",
+        "dataset": "COP30_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tbm_appalachians_usa/COP30_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tbm_appalachians_usa/COP30_COG/meta.json",
+        "elevation_min_m": 447.9534606933594,
+        "elevation_max_m": 2028.777587890625,
+        "elevation_range_m": 1580.8241271972656,
+        "world_size_m": 19988.59152283726,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -83.61069445555555,
+          "right": -83.38986112222221,
+          "bottom": 35.509583344444444,
+          "top": 35.690416677777776
+        }
+      },
+      {
+        "site": "tbm_appalachians_usa",
+        "dataset": "NASADEM",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tbm_appalachians_usa/NASADEM/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tbm_appalachians_usa/NASADEM/meta.json",
+        "elevation_min_m": 443.0,
+        "elevation_max_m": 2025.0,
+        "elevation_range_m": 1582.0,
+        "world_size_m": 19988.522146477873,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -83.61069444443177,
+          "right": -83.38986111109841,
+          "bottom": 35.50986111110772,
+          "top": 35.69069444444108
+        }
+      },
+      {
+        "site": "tbm_appalachians_usa",
+        "dataset": "NASADEM_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tbm_appalachians_usa/NASADEM_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tbm_appalachians_usa/NASADEM_COG/meta.json",
+        "elevation_min_m": 443.0,
+        "elevation_max_m": 2025.0,
+        "elevation_range_m": 1582.0,
+        "world_size_m": 19988.591525615833,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -83.61069444443177,
+          "right": -83.38986111109841,
+          "bottom": 35.50958333332995,
+          "top": 35.69041666666331
+        }
+      },
+      {
+        "site": "tbm_appalachians_usa",
+        "dataset": "SRTMGL1_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tbm_appalachians_usa/SRTMGL1_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tbm_appalachians_usa/SRTMGL1_COG/meta.json",
+        "elevation_min_m": 447.0,
+        "elevation_max_m": 2029.0,
+        "elevation_range_m": 1582.0,
+        "world_size_m": 19988.591525615797,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -83.61069444443169,
+          "right": -83.38986111109833,
+          "bottom": 35.50958333333009,
+          "top": 35.69041666666345
+        }
+      },
+      {
+        "site": "tbm_appalachians_usa",
+        "dataset": "USGS10m_API",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tbm_appalachians_usa/USGS10m_API/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tbm_appalachians_usa/USGS10m_API/meta.json",
+        "elevation_min_m": 1025.974609375,
+        "elevation_max_m": 1626.8016357421875,
+        "elevation_range_m": 600.8270263671875,
+        "world_size_m": 2003.048476331648,
+        "source_crs": "EPSG:4269",
+        "source_bounds": {
+          "left": -83.51111104117514,
+          "right": -83.48898141152935,
+          "bottom": 35.59101849278735,
+          "top": 35.60907404835603
+        }
+      },
+      {
+        "site": "tbm_appalachians_usa",
+        "dataset": "USGS1m_API",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tbm_appalachians_usa/USGS1m_API/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tbm_appalachians_usa/USGS1m_API/meta.json",
+        "elevation_min_m": 1028.4310302734375,
+        "elevation_max_m": 1629.539306640625,
+        "elevation_range_m": 601.1082763671875,
+        "world_size_m": 1951.0,
+        "source_crs": "EPSG:26917",
+        "source_bounds": {
+          "left": 272548.99996264005,
+          "right": 274499.99996264005,
+          "bottom": 3941433.000050785,
+          "top": 3943491.000050785
+        }
+      }
+    ]
+  },
+  {
+    "id": "tcf_bc_coast_canada",
+    "landform": "fjord",
+    "biome_kit": "alpine",
+    "biome_kit_material": "res://textures/wgv3/terrain_blend_alpine.tres",
+    "preferred_dataset": "CA_MRDEM_DTM_COG",
+    "datasets": [
+      "CA_MRDEM_DSM_COG",
+      "CA_MRDEM_DTM_COG"
+    ],
+    "bundles": [
+      {
+        "site": "tcf_bc_coast_canada",
+        "dataset": "CA_MRDEM_DSM_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tcf_bc_coast_canada/CA_MRDEM_DSM_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tcf_bc_coast_canada/CA_MRDEM_DSM_COG/meta.json",
+        "elevation_min_m": 308.68109130859375,
+        "elevation_max_m": 2657.51220703125,
+        "elevation_range_m": 2348.8311157226562,
+        "world_size_m": 26610.0,
+        "source_crs": "EPSG:3979",
+        "source_bounds": {
+          "left": -1949310.0,
+          "right": -1922700.0,
+          "bottom": 530820.0,
+          "top": 557460.0
+        }
+      },
+      {
+        "site": "tcf_bc_coast_canada",
+        "dataset": "CA_MRDEM_DTM_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tcf_bc_coast_canada/CA_MRDEM_DTM_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tcf_bc_coast_canada/CA_MRDEM_DTM_COG/meta.json",
+        "elevation_min_m": 297.4452819824219,
+        "elevation_max_m": 2640.76171875,
+        "elevation_range_m": 2343.316436767578,
+        "world_size_m": 26610.0,
+        "source_crs": "EPSG:3979",
+        "source_bounds": {
+          "left": -1949310.0,
+          "right": -1922700.0,
+          "bottom": 530820.0,
+          "top": 557460.0
+        }
+      }
+    ]
+  },
+  {
+    "id": "tcf_pnw_cascades_usa",
+    "landform": "alpine",
+    "biome_kit": "alpine",
+    "biome_kit_material": "res://textures/wgv3/terrain_blend_alpine.tres",
+    "preferred_dataset": "COP30",
+    "datasets": [
+      "COP30",
+      "COP30_COG",
+      "NASADEM",
+      "NASADEM_COG",
+      "SRTMGL1_COG"
+    ],
+    "bundles": [
+      {
+        "site": "tcf_pnw_cascades_usa",
+        "dataset": "COP30",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tcf_pnw_cascades_usa/COP30/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tcf_pnw_cascades_usa/COP30/meta.json",
+        "elevation_min_m": 482.7822570800781,
+        "elevation_max_m": 4312.40576171875,
+        "elevation_range_m": 3829.623504638672,
+        "world_size_m": 20003.38997866798,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -122.0312500111111,
+          "right": -121.7687500111111,
+          "bottom": 46.70986112222222,
+          "top": 46.890694455555554
+        }
+      },
+      {
+        "site": "tcf_pnw_cascades_usa",
+        "dataset": "COP30_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tcf_pnw_cascades_usa/COP30_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tcf_pnw_cascades_usa/COP30_COG/meta.json",
+        "elevation_min_m": 482.7822570800781,
+        "elevation_max_m": 4312.40576171875,
+        "elevation_range_m": 3829.623504638672,
+        "world_size_m": 20003.49325176448,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -122.0312500111111,
+          "right": -121.7687500111111,
+          "bottom": 46.70958334444444,
+          "top": 46.89041667777777
+        }
+      },
+      {
+        "site": "tcf_pnw_cascades_usa",
+        "dataset": "NASADEM",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tcf_pnw_cascades_usa/NASADEM/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tcf_pnw_cascades_usa/NASADEM/meta.json",
+        "elevation_min_m": 481.0,
+        "elevation_max_m": 4276.0,
+        "elevation_range_m": 3795.0,
+        "world_size_m": 20003.389982801782,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -122.03124999999244,
+          "right": -121.76874999999241,
+          "bottom": 46.70986111110921,
+          "top": 46.89069444444257
+        }
+      },
+      {
+        "site": "tcf_pnw_cascades_usa",
+        "dataset": "NASADEM_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tcf_pnw_cascades_usa/NASADEM_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tcf_pnw_cascades_usa/NASADEM_COG/meta.json",
+        "elevation_min_m": 481.0,
+        "elevation_max_m": 4276.0,
+        "elevation_range_m": 3795.0,
+        "world_size_m": 20003.493255898265,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -122.03124999999244,
+          "right": -121.76874999999241,
+          "bottom": 46.70958333333143,
+          "top": 46.89041666666479
+        }
+      },
+      {
+        "site": "tcf_pnw_cascades_usa",
+        "dataset": "SRTMGL1_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tcf_pnw_cascades_usa/SRTMGL1_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tcf_pnw_cascades_usa/SRTMGL1_COG/meta.json",
+        "elevation_min_m": 483.0,
+        "elevation_max_m": 4277.0,
+        "elevation_range_m": 3794.0,
+        "world_size_m": 20003.493255898207,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -122.03124999999233,
+          "right": -121.7687499999923,
+          "bottom": 46.70958333333157,
+          "top": 46.89041666666493
+        }
+      }
+    ]
+  },
+  {
+    "id": "tcf_sierra_madre_mexico",
+    "landform": "mountain",
+    "biome_kit": "alpine",
+    "biome_kit_material": "res://textures/wgv3/terrain_blend_alpine.tres",
+    "preferred_dataset": "COP30",
+    "datasets": [
+      "COP30",
+      "COP30_COG",
+      "NASADEM",
+      "NASADEM_COG",
+      "SRTMGL1_COG"
+    ],
+    "bundles": [
+      {
+        "site": "tcf_sierra_madre_mexico",
+        "dataset": "COP30",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tcf_sierra_madre_mexico/COP30/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tcf_sierra_madre_mexico/COP30/meta.json",
+        "elevation_min_m": 178.1741485595703,
+        "elevation_max_m": 1428.908447265625,
+        "elevation_range_m": 1250.7342987060547,
+        "world_size_m": 20009.84102696833,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -107.09930556666666,
+          "right": -106.90097223333332,
+          "bottom": 24.909861122222217,
+          "top": 25.09069445555555
+        }
+      },
+      {
+        "site": "tcf_sierra_madre_mexico",
+        "dataset": "COP30_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tcf_sierra_madre_mexico/COP30_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tcf_sierra_madre_mexico/COP30_COG/meta.json",
+        "elevation_min_m": 178.1741485595703,
+        "elevation_max_m": 1428.908447265625,
+        "elevation_range_m": 1250.7342987060547,
+        "world_size_m": 20009.886264020075,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -107.09930556666666,
+          "right": -106.90097223333332,
+          "bottom": 24.909583344444442,
+          "top": 25.090416677777775
+        }
+      },
+      {
+        "site": "tcf_sierra_madre_mexico",
+        "dataset": "NASADEM",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tcf_sierra_madre_mexico/NASADEM/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tcf_sierra_madre_mexico/NASADEM/meta.json",
+        "elevation_min_m": 177.0,
+        "elevation_max_m": 1436.0,
+        "elevation_range_m": 1259.0,
+        "world_size_m": 20009.841028781466,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -107.09930555554601,
+          "right": -106.90097222221264,
+          "bottom": 24.90986111110632,
+          "top": 25.090694444439677
+        }
+      },
+      {
+        "site": "tcf_sierra_madre_mexico",
+        "dataset": "NASADEM_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tcf_sierra_madre_mexico/NASADEM_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tcf_sierra_madre_mexico/NASADEM_COG/meta.json",
+        "elevation_min_m": 177.0,
+        "elevation_max_m": 1436.0,
+        "elevation_range_m": 1259.0,
+        "world_size_m": 20009.886265833193,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -107.09930555554601,
+          "right": -106.90097222221264,
+          "bottom": 24.909583333328538,
+          "top": 25.090416666661895
+        }
+      },
+      {
+        "site": "tcf_sierra_madre_mexico",
+        "dataset": "SRTMGL1_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tcf_sierra_madre_mexico/SRTMGL1_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tcf_sierra_madre_mexico/SRTMGL1_COG/meta.json",
+        "elevation_min_m": 178.0,
+        "elevation_max_m": 1438.0,
+        "elevation_range_m": 1260.0,
+        "world_size_m": 20009.88626583317,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -107.09930555554591,
+          "right": -106.90097222221254,
+          "bottom": 24.909583333328687,
+          "top": 25.090416666662044
+        }
+      }
+    ]
+  },
+  {
+    "id": "tdf_yucatan_mexico",
+    "landform": "karst_lowland",
+    "biome_kit": "temperate_forest",
+    "biome_kit_material": "res://textures/wgv3/terrain_blend_temperate_forest.tres",
+    "preferred_dataset": "COP30",
+    "datasets": [
+      "COP30",
+      "COP30_COG",
+      "NASADEM",
+      "NASADEM_COG",
+      "SRTMGL1_COG"
+    ],
+    "bundles": [
+      {
+        "site": "tdf_yucatan_mexico",
+        "dataset": "COP30",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tdf_yucatan_mexico/COP30/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tdf_yucatan_mexico/COP30/meta.json",
+        "elevation_min_m": 27.902620315551758,
+        "elevation_max_m": 159.7915802001953,
+        "elevation_range_m": 131.88895988464355,
+        "world_size_m": 19991.44494171881,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -89.09569445555555,
+          "right": -88.90458334444443,
+          "bottom": 19.909861122222217,
+          "top": 20.09069445555555
+        }
+      },
+      {
+        "site": "tdf_yucatan_mexico",
+        "dataset": "COP30_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tdf_yucatan_mexico/COP30_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tdf_yucatan_mexico/COP30_COG/meta.json",
+        "elevation_min_m": 27.902620315551758,
+        "elevation_max_m": 159.7915802001953,
+        "elevation_range_m": 131.88895988464355,
+        "world_size_m": 19991.48021846978,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -89.09569445555555,
+          "right": -88.90458334444443,
+          "bottom": 19.909583344444442,
+          "top": 20.090416677777775
+        }
+      },
+      {
+        "site": "tdf_yucatan_mexico",
+        "dataset": "NASADEM",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tdf_yucatan_mexico/NASADEM/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tdf_yucatan_mexico/NASADEM/meta.json",
+        "elevation_min_m": 24.0,
+        "elevation_max_m": 157.0,
+        "elevation_range_m": 133.0,
+        "world_size_m": 19991.444943133552,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -89.09569444443251,
+          "right": -88.90458333332137,
+          "bottom": 19.909861111105652,
+          "top": 20.09069444443901
+        }
+      },
+      {
+        "site": "tdf_yucatan_mexico",
+        "dataset": "NASADEM_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tdf_yucatan_mexico/NASADEM_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tdf_yucatan_mexico/NASADEM_COG/meta.json",
+        "elevation_min_m": 24.0,
+        "elevation_max_m": 157.0,
+        "elevation_range_m": 133.0,
+        "world_size_m": 19991.480219884503,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -89.09569444443251,
+          "right": -88.90458333332137,
+          "bottom": 19.909583333327877,
+          "top": 20.090416666661234
+        }
+      },
+      {
+        "site": "tdf_yucatan_mexico",
+        "dataset": "SRTMGL1_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tdf_yucatan_mexico/SRTMGL1_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tdf_yucatan_mexico/SRTMGL1_COG/meta.json",
+        "elevation_min_m": 23.0,
+        "elevation_max_m": 157.0,
+        "elevation_range_m": 134.0,
+        "world_size_m": 19991.480219884485,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -89.09569444443241,
+          "right": -88.90458333332127,
+          "bottom": 19.909583333328026,
+          "top": 20.090416666661383
+        }
+      }
+    ]
+  },
+  {
+    "id": "tgr_great_plains_usa",
+    "landform": "grassland_plain",
+    "biome_kit": "grassland",
+    "biome_kit_material": "res://textures/wgv3/terrain_blend_grassland.tres",
+    "preferred_dataset": "COP30",
+    "datasets": [
+      "COP30",
+      "COP30_COG",
+      "NASADEM",
+      "NASADEM_COG",
+      "SRTMGL1_COG"
+    ],
+    "bundles": [
+      {
+        "site": "tgr_great_plains_usa",
+        "dataset": "COP30",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tgr_great_plains_usa/COP30/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tgr_great_plains_usa/COP30/meta.json",
+        "elevation_min_m": 870.8235473632812,
+        "elevation_max_m": 987.297119140625,
+        "elevation_range_m": 116.47357177734375,
+        "world_size_m": 19993.780161096412,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -101.11569445555556,
+          "right": -100.88458334444445,
+          "bottom": 38.90986112222222,
+          "top": 39.09069445555555
+        }
+      },
+      {
+        "site": "tgr_great_plains_usa",
+        "dataset": "COP30_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tgr_great_plains_usa/COP30_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tgr_great_plains_usa/COP30_COG/meta.json",
+        "elevation_min_m": 870.8235473632812,
+        "elevation_max_m": 987.297119140625,
+        "elevation_range_m": 116.47357177734375,
+        "world_size_m": 19993.858656096447,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -101.11569445555556,
+          "right": -100.88458334444445,
+          "bottom": 38.90958334444444,
+          "top": 39.090416677777775
+        }
+      },
+      {
+        "site": "tgr_great_plains_usa",
+        "dataset": "NASADEM",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tgr_great_plains_usa/NASADEM/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tgr_great_plains_usa/NASADEM/meta.json",
+        "elevation_min_m": 871.0,
+        "elevation_max_m": 989.0,
+        "elevation_range_m": 118.0,
+        "world_size_m": 19993.78016424073,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -101.1156944444341,
+          "right": -100.88458333332295,
+          "bottom": 38.90986111110818,
+          "top": 39.09069444444154
+        }
+      },
+      {
+        "site": "tgr_great_plains_usa",
+        "dataset": "NASADEM_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tgr_great_plains_usa/NASADEM_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tgr_great_plains_usa/NASADEM_COG/meta.json",
+        "elevation_min_m": 871.0,
+        "elevation_max_m": 989.0,
+        "elevation_range_m": 118.0,
+        "world_size_m": 19993.858659240756,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -101.1156944444341,
+          "right": -100.88458333332295,
+          "bottom": 38.909583333330396,
+          "top": 39.09041666666376
+        }
+      },
+      {
+        "site": "tgr_great_plains_usa",
+        "dataset": "SRTMGL1_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tgr_great_plains_usa/SRTMGL1_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tgr_great_plains_usa/SRTMGL1_COG/meta.json",
+        "elevation_min_m": 873.0,
+        "elevation_max_m": 993.0,
+        "elevation_range_m": 120.0,
+        "world_size_m": 19993.858659240712,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -101.115694444434,
+          "right": -100.88458333332285,
+          "bottom": 38.90958333333054,
+          "top": 39.0904166666639
+        }
+      }
+    ]
+  },
+  {
+    "id": "tgs_serengeti_tanzania",
+    "landform": "savanna",
+    "biome_kit": "grassland",
+    "biome_kit_material": "res://textures/wgv3/terrain_blend_grassland.tres",
+    "preferred_dataset": "COP30",
+    "datasets": [
+      "COP30",
+      "COP30_COG",
+      "GEDI_L3_ELEV_COG",
+      "GEDI_L3_RH100_COG",
+      "NASADEM",
+      "NASADEM_COG",
+      "SRTMGL1_COG"
+    ],
+    "bundles": [
+      {
+        "site": "tgs_serengeti_tanzania",
+        "dataset": "COP30",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tgs_serengeti_tanzania/COP30/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tgs_serengeti_tanzania/COP30/meta.json",
+        "elevation_min_m": 1328.8065185546875,
+        "elevation_max_m": 1801.7515869140625,
+        "elevation_range_m": 472.945068359375,
+        "world_size_m": 19990.564192924976,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": 34.70986110000001,
+          "right": 34.88958332222224,
+          "bottom": -2.3901388777777806,
+          "top": -2.2093055444444474
+        }
+      },
+      {
+        "site": "tgs_serengeti_tanzania",
+        "dataset": "COP30_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tgs_serengeti_tanzania/COP30_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tgs_serengeti_tanzania/COP30_COG/meta.json",
+        "elevation_min_m": 1328.8065185546875,
+        "elevation_max_m": 1801.7515869140625,
+        "elevation_range_m": 472.945068359375,
+        "world_size_m": 19990.56030057226,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": 34.70986110000001,
+          "right": 34.88958332222224,
+          "bottom": -2.390416655555563,
+          "top": -2.2095833222222296
+        }
+      },
+      {
+        "site": "tgs_serengeti_tanzania",
+        "dataset": "GEDI_L3_ELEV_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tgs_serengeti_tanzania/GEDI_L3_ELEV_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tgs_serengeti_tanzania/GEDI_L3_ELEV_COG/meta.json",
+        "elevation_min_m": 1233.615966796875,
+        "elevation_max_m": 1908.38720703125,
+        "elevation_range_m": 674.771240234375,
+        "world_size_m": 79974.79989996477,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": 34.44116747061736,
+          "right": 35.16016551745933,
+          "bottom": -2.6520483059640028,
+          "top": -1.9330502591220267
+        }
+      },
+      {
+        "site": "tgs_serengeti_tanzania",
+        "dataset": "GEDI_L3_RH100_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tgs_serengeti_tanzania/GEDI_L3_RH100_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tgs_serengeti_tanzania/GEDI_L3_RH100_COG/meta.json",
+        "elevation_min_m": 2.799999952316284,
+        "elevation_max_m": 9.717692375183105,
+        "elevation_range_m": 6.917692422866821,
+        "world_size_m": 79974.79989996477,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": 34.44116747061736,
+          "right": 35.16016551745933,
+          "bottom": -2.6520483059640028,
+          "top": -1.9330502591220267
+        }
+      },
+      {
+        "site": "tgs_serengeti_tanzania",
+        "dataset": "NASADEM",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tgs_serengeti_tanzania/NASADEM/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tgs_serengeti_tanzania/NASADEM/meta.json",
+        "elevation_min_m": 1330.0,
+        "elevation_max_m": 1799.0,
+        "elevation_range_m": 469.0,
+        "world_size_m": 19990.564192771548,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": 34.7098611111395,
+          "right": 34.88958333336175,
+          "bottom": -2.390138888897308,
+          "top": -2.209305555563951
+        }
+      },
+      {
+        "site": "tgs_serengeti_tanzania",
+        "dataset": "NASADEM_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tgs_serengeti_tanzania/NASADEM_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tgs_serengeti_tanzania/NASADEM_COG/meta.json",
+        "elevation_min_m": 1330.0,
+        "elevation_max_m": 1799.0,
+        "elevation_range_m": 469.0,
+        "world_size_m": 19990.56030041881,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": 34.7098611111395,
+          "right": 34.88958333336175,
+          "bottom": -2.3904166666750903,
+          "top": -2.209583333341733
+        }
+      },
+      {
+        "site": "tgs_serengeti_tanzania",
+        "dataset": "SRTMGL1_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tgs_serengeti_tanzania/SRTMGL1_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tgs_serengeti_tanzania/SRTMGL1_COG/meta.json",
+        "elevation_min_m": 1334.0,
+        "elevation_max_m": 1802.0,
+        "elevation_range_m": 468.0,
+        "world_size_m": 19990.56030041881,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": 34.70986111113956,
+          "right": 34.889583333361806,
+          "bottom": -2.390416666674934,
+          "top": -2.209583333341577
+        }
+      }
+    ]
+  },
+  {
+    "id": "tmf_amazon_brazil",
+    "landform": "lowland_jungle",
+    "biome_kit": "temperate_forest",
+    "biome_kit_material": "res://textures/wgv3/terrain_blend_temperate_forest.tres",
+    "preferred_dataset": "COP30",
+    "datasets": [
+      "COP30",
+      "COP30_COG",
+      "GEDI_L3_ELEV_COG",
+      "GEDI_L3_RH100_COG",
+      "NASADEM",
+      "NASADEM_COG",
+      "SRTMGL1_COG"
+    ],
+    "bundles": [
+      {
+        "site": "tmf_amazon_brazil",
+        "dataset": "COP30",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tmf_amazon_brazil/COP30/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tmf_amazon_brazil/COP30/meta.json",
+        "elevation_min_m": 2.846006155014038,
+        "elevation_max_m": 54.94198226928711,
+        "elevation_range_m": 52.09597611427307,
+        "world_size_m": 20002.33613731978,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -60.0901389,
+          "right": -59.9101389,
+          "bottom": -3.490138877777775,
+          "top": -3.3093055444444417
+        }
+      },
+      {
+        "site": "tmf_amazon_brazil",
+        "dataset": "COP30_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tmf_amazon_brazil/COP30_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tmf_amazon_brazil/COP30_COG/meta.json",
+        "elevation_min_m": 2.846006155014038,
+        "elevation_max_m": 54.94198226928711,
+        "elevation_range_m": 52.09597611427307,
+        "world_size_m": 20002.33037623566,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -60.0901389,
+          "right": -59.9101389,
+          "bottom": -3.490416655555557,
+          "top": -3.309583322222224
+        }
+      },
+      {
+        "site": "tmf_amazon_brazil",
+        "dataset": "GEDI_L3_ELEV_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tmf_amazon_brazil/GEDI_L3_ELEV_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tmf_amazon_brazil/GEDI_L3_ELEV_COG/meta.json",
+        "elevation_min_m": 3.3455543518066406,
+        "elevation_max_m": 78.10497283935547,
+        "elevation_range_m": 74.75941848754883,
+        "world_size_m": 79898.62642333806,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -60.360839705634945,
+          "right": -59.64184165879297,
+          "bottom": -3.751692377604671,
+          "top": -3.032694330762695
+        }
+      },
+      {
+        "site": "tmf_amazon_brazil",
+        "dataset": "GEDI_L3_RH100_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tmf_amazon_brazil/GEDI_L3_RH100_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tmf_amazon_brazil/GEDI_L3_RH100_COG/meta.json",
+        "elevation_min_m": 1.5700000524520874,
+        "elevation_max_m": 36.383331298828125,
+        "elevation_range_m": 34.81333124637604,
+        "world_size_m": 79898.62642333806,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -60.360839705634945,
+          "right": -59.64184165879297,
+          "bottom": -3.751692377604671,
+          "top": -3.032694330762695
+        }
+      },
+      {
+        "site": "tmf_amazon_brazil",
+        "dataset": "NASADEM",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tmf_amazon_brazil/NASADEM/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tmf_amazon_brazil/NASADEM/meta.json",
+        "elevation_min_m": -13.0,
+        "elevation_max_m": 52.0,
+        "elevation_range_m": 65.0,
+        "world_size_m": 20002.33613709154,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -60.0901388888731,
+          "right": -59.91013888887308,
+          "bottom": -3.4901388888974587,
+          "top": -3.3093055555641016
+        }
+      },
+      {
+        "site": "tmf_amazon_brazil",
+        "dataset": "NASADEM_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tmf_amazon_brazil/NASADEM_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tmf_amazon_brazil/NASADEM_COG/meta.json",
+        "elevation_min_m": -13.0,
+        "elevation_max_m": 52.0,
+        "elevation_range_m": 65.0,
+        "world_size_m": 20002.330376007398,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -60.0901388888731,
+          "right": -59.91013888887308,
+          "bottom": -3.490416666675241,
+          "top": -3.309583333341884
+        }
+      },
+      {
+        "site": "tmf_amazon_brazil",
+        "dataset": "SRTMGL1_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tmf_amazon_brazil/SRTMGL1_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tmf_amazon_brazil/SRTMGL1_COG/meta.json",
+        "elevation_min_m": -4.0,
+        "elevation_max_m": 50.0,
+        "elevation_range_m": 54.0,
+        "world_size_m": 20002.3303760074,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -60.090138888873014,
+          "right": -59.91013888887299,
+          "bottom": -3.4904166666750776,
+          "top": -3.3095833333417204
+        }
+      }
+    ]
+  },
+  {
+    "id": "tun_arctic_alaska",
+    "landform": "tundra",
+    "biome_kit": "tundra",
+    "biome_kit_material": "res://textures/wgv3/terrain_blend_tundra.tres",
+    "preferred_dataset": "COP30_COG",
+    "datasets": [
+      "COP30_COG"
+    ],
+    "bundles": [
+      {
+        "site": "tun_arctic_alaska",
+        "dataset": "COP30_COG",
+        "heightmap_path": "D:/assets/world3/opentopo/processed/heightmaps/tun_arctic_alaska/COP30_COG/heightmap.png",
+        "meta_path": "D:/assets/world3/opentopo/processed/heightmaps/tun_arctic_alaska/COP30_COG/meta.json",
+        "elevation_min_m": 196.04312133789062,
+        "elevation_max_m": 511.2067565917969,
+        "elevation_range_m": 315.16363525390625,
+        "world_size_m": 20002.316624567018,
+        "source_crs": "EPSG:4326",
+        "source_bounds": {
+          "left": -148.75430556666666,
+          "right": -148.24597223333333,
+          "bottom": 69.20958334444444,
+          "top": 69.39041667777778
+        }
+      }
+    ]
+  }
+]

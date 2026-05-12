@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "plan_id": "starter_5biome_procedural",
+  "started_at": "20260511T144908Z",
+  "mode": "dry_run",
+  "filter_action": "palette_lock",
+  "max_items": null,
+  "dispatched": 2,
+  "items": [
+    {
+      "material_id": "desert_canyon_rock",
+      "action": "palette_lock",
+      "cmd": [
+        "C:\\Program Files\\Python312\\python.exe",
+        "D:\\assets\\pipelines\\textures\\palette_lock.py",
+        "--kit",
+        "alpine_desert",
+        "--anchor",
+        "desert_canyon_rock"
+      ],
+      "reason": "transition audit warn: pair (alpine <-> desert) \u2014 palette_delta_lab=44.3, high_freq_energy_ratio=2.90, seam_band_internal_max_delta_rgb01=0.17"
+    },
+    {
+      "material_id": "rock_dark",
+      "action": "palette_lock",
+      "cmd": [
+        "C:\\Program Files\\Python312\\python.exe",
+        "D:\\assets\\pipelines\\textures\\palette_lock.py",
+        "--kit",
+        "alpine_desert",
+        "--anchor",
+        "rock_dark"
+      ],
+      "reason": "transition audit warn: pair (alpine <-> desert) \u2014 palette_delta_lab=44.3, high_freq_energy_ratio=2.90, seam_band_internal_max_delta_rgb01=0.17"
+    }
+  ]
+}

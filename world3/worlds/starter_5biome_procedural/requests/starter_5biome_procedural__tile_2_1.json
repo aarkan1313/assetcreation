@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "id": "starter_5biome_procedural__tile_2_1",
+  "description": "Phase F.3 emitted from plan 'starter_5biome_procedural' tile (2, 1) biome 'alpine'",
+  "source": {
+    "type": "procedural",
+    "material_id": "rock_dark",
+    "size_px": [
+      512,
+      1024
+    ],
+    "world_size_m": [
+      256.0,
+      256.0
+    ],
+    "elev_min_m": 800.0,
+    "elev_range_m": 80.0,
+    "seed": 1470591918,
+    "neighbor_west_edge": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_1_1/edges/east_edge.json",
+    "neighbor_north_edge": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_2_0/edges/south_edge.json",
+    "this_biome": "alpine",
+    "neighbor_east_biome": "desert"
+  },
+  "world_type": {
+    "biome_kit": "alpine",
+    "style_pack": "photoreal",
+    "view_modes": [
+      "iso",
+      "topdown"
+    ]
+  },
+  "options": {
+    "render_captures": false,
+    "promote_to_gate": false
+  },
+  "output": {
+    "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_2_1",
+    "overwrite": true
+  }
+}

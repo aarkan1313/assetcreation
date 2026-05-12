@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/WorldStreamerTourDriver.gd" id="driver"]
+
+[node name="F36WorldStreamerTour" type="Node3D"]
+script = ExtResource("driver")
+world_map_path = "res://worlds/starter_5biome_procedural/world_map.json"
+sweep_duration_sec = 6.0
+start_world = Vector3(640, 0, 640)
+end_world = Vector3(640, 0, 640)
+camera_height = 900.0
+camera_pitch_deg = -55.0
+auto_quit_after_sweep = false
+chunk_size_m = 128.0
+chunk_resolution_m = 4.0
+view_radius_chunks = 6

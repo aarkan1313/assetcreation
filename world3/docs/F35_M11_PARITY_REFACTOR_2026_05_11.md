@@ -159,15 +159,29 @@ not new design.
 
 ## Known issues going into handoff
 
-1. **Per-quad light field stubbed at 0.5.** `build_fourway_macro_preview`
-   should derive `light` from `np.gradient(height_m)` like M11 does.
-   Easy 4-line fix in `m11_bundle_lib.py`.
+1. ~~**Per-quad light field stubbed at 0.5.**~~ ✅ Fixed 2026-05-11.
+   `build_fourway_macro_preview` now derives `light` from
+   `np.gradient(height_m)` using M11's formula:
+   `normalize01(-(grad_x*0.48 + grad_y*0.82), 1, 99)`. The fourway
+   macro now reads with directional terrain shading; per-quadrant std
+   went from washed-out to within ~0.01 of M11's std per quadrant.
+   Brightness still slightly higher than M11 (~0.40 vs 0.33 mean), but
+   that's a tunable parameter range, not a missing feature.
 
-2. **5-biome bundles still use the old single-domain `build_bundle`
-   path, not `build_fourway_bundle`.** Single-biome bundles don't need
-   fourway, but they should get M11-style splat weights driven by
-   slope + height. F.3.4's `build_layers_general` does this but the
-   tuning is conservative; F.3.6 should sharpen it.
+2. ~~**Single-biome macro is essentially the tiled material albedo.**~~
+   ✅ Fixed 2026-05-11. `build_macro_preview_general` now composites
+   all 5 slot materials (resolved from `BIOME_KIT_SLOTS[biome_kit]`
+   or a per-spec `slot_materials` override) per-pixel via the splat's
+   4 explicit channels plus the implicit snow remainder. Each slot
+   gets M11-style brightness/lambertian-light tinting, plus scatter-
+   mask overlays (dry grass patches on grass, soil-exposure warm tint
+   on dirt, rock-cluster warm/shadow overlays on rock). 5-biome
+   rebuild now shows per-biome character: tundra cool mossy, alpine
+   green-shifted, grassland warm yellow, desert sandy, temperate
+   balanced earth — and within each tile the per-pixel slot mix
+   reads visibly. New BundleSpec field: `slot_materials: dict | None`
+   for per-bundle overrides (multi-biome boundary tiles will use this
+   to inject neighbor biome materials into specific slots).
 
 3. **Multi-biome boundary tiles still emit as single-domain bundles
    with R=1 splat.** The iterator needs to populate the BundleSpec
@@ -181,10 +195,21 @@ not new design.
    chunk_size / view_radius interaction with the per-bundle 256m
    tile size).
 
-5. **5x5 starter plan never rebuilt with the F.3.4+ pipeline.** It was
-   built earlier under F.3.2 and the bundles still reflect that
-   shape. A rebuild via `world3_make_world.py` will regenerate them
-   through the new pipeline.
+5. ~~**5x5 starter plan never rebuilt with the F.3.4+ pipeline.**~~
+   ✅ Rebuilt 2026-05-11 via `world3_make_world.py`. All 25 tiles
+   built clean in 29s; splat channel means vary per tile (e.g.
+   0.39/0.11/0.23/0.26 → 0.44/0.13/0.21/0.22 across the row 0
+   strip), and macro brightness clusters by biome. Single-biome
+   macro tiling still reads as repetition (see issue 2 above).
+
+### Also fixed 2026-05-11
+
+- **Region request schema self-test was failing** because it walked all
+  `jobs/examples/*.json` and tried to validate world plans as region
+  requests. Now filters out `world_plan_*.json` (mirroring how
+  `validate_world_plan.py` filters its self-test). Full self-test chain
+  (`validate_region_request`, `validate_world_plan`, `validate_world_map`,
+  `validate_style_pack`, `audit_stages`) now passes clean.
 
 ## Six-box check
 
@@ -217,10 +242,13 @@ not new design.
 - [x] M11-equivalent bundle builds with real Gloss source loaded
 - [x] f35_fourway_parity_tour.tscn + capture_f35_fourway_parity.tscn
 - [x] Closure doc (this doc)
-- [ ] Per-quad light field derived from height gradient (F.3.5 tuning)
+- [x] Per-quad light field derived from height gradient (2026-05-11)
+- [x] 5-biome starter rebuild through F.3.4+ pipeline (2026-05-11)
+- [x] Schema self-test chain green (2026-05-11)
+- [x] Single-biome macro composited per-splat (2026-05-11)
 - [ ] Visual parity with M11 fourway capture (close but not pixel-equivalent)
-- [ ] 5-biome starter rebuild through F.3.4+ pipeline
 - [ ] F.7 streamer revalidation with M11-shape bundles
+- [ ] Multi-biome boundary tiles use new `slot_materials` override (iterator side)
 
 **Phase F.3.5 SHIP (architecture).** Final visual tuning + 5-biome
 revalidation + streamer revalidation queued for the next session.

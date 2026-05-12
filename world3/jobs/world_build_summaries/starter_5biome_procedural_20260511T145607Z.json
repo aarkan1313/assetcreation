@@ -1,0 +1,50 @@
+{
+  "plan_id": "starter_5biome_procedural",
+  "generated_at": "20260511T145607Z",
+  "overall_status": "fail",
+  "step_count": 3,
+  "records": [
+    {
+      "step": 1,
+      "name": "validate_world_plan",
+      "cmd": [
+        "C:\\Program Files\\Python312\\python.exe",
+        "D:\\assets\\world3\\pipeline\\validate_world_plan.py",
+        "D:\\assets\\world3\\jobs\\examples\\world_plan_starter_5biome_procedural.json"
+      ],
+      "started_at": "2026-05-11T14:56:06.340653+00:00",
+      "exit": 0,
+      "elapsed_sec": 0.13268,
+      "completed_at": "2026-05-11T14:56:06.473333+00:00",
+      "status": "ok"
+    },
+    {
+      "step": 2,
+      "name": "audit_transition_pairs",
+      "cmd": [
+        "C:\\Program Files\\Python312\\python.exe",
+        "D:\\assets\\world3\\pipeline\\audit_transition_pairs.py",
+        "D:\\assets\\world3\\jobs\\examples\\world_plan_starter_5biome_procedural.json"
+      ],
+      "started_at": "2026-05-11T14:56:06.473333+00:00",
+      "exit": 0,
+      "elapsed_sec": 0.951194,
+      "completed_at": "2026-05-11T14:56:07.424527+00:00",
+      "status": "ok"
+    },
+    {
+      "step": 3,
+      "name": "derive_catalog_demand",
+      "cmd": [
+        "C:\\Program Files\\Python312\\python.exe",
+        "D:\\assets\\world3\\pipeline\\derive_catalog_demand.py",
+        "D:\\assets\\world3\\jobs\\examples\\world_plan_starter_5biome_procedural.json"
+      ],
+      "started_at": "2026-05-11T14:56:07.424527+00:00",
+      "exit": 0,
+      "elapsed_sec": 0.057727,
+      "completed_at": "2026-05-11T14:56:07.482254+00:00",
+      "status": "ok"
+    }
+  ]
+}

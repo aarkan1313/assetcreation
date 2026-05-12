@@ -32,6 +32,23 @@ const WorldMapServiceScript = preload("res://scripts/WorldMapService.gd")
 @export var preload_ahead_m: float = 256.0
 @export var build_collision_chunks: bool = false
 
+# F.3.6 — M11 tour parity. The streamer originally trusted each bundle's
+# .tres to render correctly on its own. In practice the macro never
+# bound through Godot's ExtResource path after .duplicate() on the per-
+# bundle material, so all bundles rendered as the dominant slot's flat
+# color. World3AutoReviewTour solves this by explicitly re-binding the
+# macro via RuntimeImageCache and applying a `review_*` shader-param
+# bundle. The streamer now mirrors that exact pattern per bundle.
+@export var review_use_source_macro_valid_mask: bool = true
+@export_range(0.0, 1.0, 0.01) var review_source_macro_strength: float = 0.84
+@export var review_normal_strength: float = 0.050
+@export var review_detail_normal_strength: float = 0.014
+@export var review_detail_rough_strength: float = 0.018
+@export_range(0.0, 2.0, 0.01) var review_roughness_strength: float = 1.0
+@export_range(0.04, 1.0, 0.01) var review_roughness_floor: float = 0.87
+@export_range(0.0, 1.0, 0.01) var review_specular_strength: float = 0.0
+@export_range(0.0, 1.25, 0.01) var review_albedo_gain: float = 0.95
+
 # Diagnostics
 var loaded_bundles_count: int = 0
 var bundles_loaded: int = 0
@@ -205,15 +222,20 @@ func _instantiate_bundle_loader(tile: Dictionary) -> Node3D:
 	loader.build_collision_chunks = build_collision_chunks
 	loader.auto_update = false  # we drive update_for_position manually
 
-	# F.3.3 — load the per-bundle .tres. Already binds the bundle's
-	# macro + weight_mask + splat_weights + 35 slot textures (5 mats × 7 maps),
-	# so no manual shader_parameter sets needed. Just set the source-world
-	# size so the shader's world-UV macro sampling maps cleanly across
-	# the bundle's footprint.
+	# F.3.6 — load the per-bundle .tres, then apply the M11 tour's
+	# exact macro-override + review_* shader_param sequence so the
+	# streamer renders bundles the same way World3AutoReviewTour does.
+	# Trusting the .tres alone wasn't enough: after duplicate() the
+	# ExtResource macro binding silently fails and bundles render as
+	# the dominant slot's flat color. Re-binding the macro via
+	# RuntimeImageCache (same pattern the M11 tour uses) makes the
+	# baked macro visible per pixel.
 	if ResourceLoader.exists(material_path):
 		var base_mat: Resource = load(material_path)
 		if base_mat is ShaderMaterial:
 			var mat: ShaderMaterial = (base_mat as ShaderMaterial).duplicate()
+			_apply_review_overrides(mat)
+			_rebind_macro_overrides(mat, macro_path, mask_path)
 			mat.set_shader_parameter("source_world_size_m",
 									 Vector2(_map.tile_size_m(), _map.tile_size_m()))
 			loader.terrain_material = mat
@@ -299,3 +321,36 @@ func sample_height_global(world_x: float, world_z: float) -> float:
 
 func get_loaded_bundle_ids() -> Array:
 	return _bundle_loaders.keys()
+
+
+# F.3.6 — these mirror World3AutoReviewTour's _setup_terrain / _apply_source_macro_overrides
+# pattern. The streamer applies them per bundle so every streamed bundle
+# goes through the same shader-parameter sequence the M11 review tour
+# uses (which renders correctly), not the .tres-alone path (which
+# silently drops the macro after .duplicate()).
+func _apply_review_overrides(mat: ShaderMaterial) -> void:
+	mat.set_shader_parameter("use_transition_strip", false)
+	mat.set_shader_parameter("use_transition_mask", false)
+	mat.set_shader_parameter("use_source_macro_valid_mask", review_use_source_macro_valid_mask)
+	mat.set_shader_parameter("source_macro_strength", review_source_macro_strength)
+	mat.set_shader_parameter("normal_strength", review_normal_strength)
+	mat.set_shader_parameter("detail_normal_strength", review_detail_normal_strength)
+	mat.set_shader_parameter("detail_rough_strength", review_detail_rough_strength)
+	mat.set_shader_parameter("roughness_strength", review_roughness_strength)
+	mat.set_shader_parameter("roughness_floor", review_roughness_floor)
+	mat.set_shader_parameter("specular_strength", review_specular_strength)
+	mat.set_shader_parameter("albedo_gain", review_albedo_gain)
+
+
+func _rebind_macro_overrides(mat: ShaderMaterial, macro_path: String, mask_path: String) -> void:
+	if macro_path != "" and (ResourceLoader.exists(macro_path) or FileAccess.file_exists(macro_path)):
+		var albedo_tex: Texture2D = RuntimeImageCache.load_texture("", macro_path)
+		if albedo_tex != null:
+			mat.set_shader_parameter("source_macro_albedo", albedo_tex)
+			mat.set_shader_parameter("use_source_macro_albedo", true)
+		else:
+			push_warning("MultiBundleStreamer failed to load source macro: " + macro_path)
+	if mask_path != "" and (ResourceLoader.exists(mask_path) or FileAccess.file_exists(mask_path)):
+		var mask_tex: Texture2D = RuntimeImageCache.load_texture("", mask_path)
+		if mask_tex != null:
+			mat.set_shader_parameter("source_macro_valid_mask", mask_tex)

@@ -1,0 +1,31 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3]
+
+[ext_resource type="Shader" path="res://shaders/terrain_hex_detail.gdshader" id="shader"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/rock_dark/albedo.png" id="albedo"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/rock_dark/normal.png" id="normal"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/rock_dark/roughness.png" id="rough"]
+[ext_resource type="Texture2D" path="res://textures/wgv3/rock_dark/ao.png" id="ao"]
+
+[resource]
+shader = ExtResource("shader")
+shader_parameter/albedo_tex = ExtResource("albedo")
+shader_parameter/normal_tex = ExtResource("normal")
+shader_parameter/rough_tex = ExtResource("rough")
+shader_parameter/ao_tex = ExtResource("ao")
+shader_parameter/detail_albedo_tex = ExtResource("albedo")
+shader_parameter/detail_normal_tex = ExtResource("normal")
+shader_parameter/detail_rough_tex = ExtResource("rough")
+shader_parameter/world_uv_scale = 0.1
+shader_parameter/hex_strength = 1.0
+shader_parameter/blend_sharpness = 8.0
+shader_parameter/roughness_strength = 1.0
+shader_parameter/normal_strength = 1.0
+shader_parameter/macro_scale = 80.0
+shader_parameter/macro_value_strength = 0.15
+shader_parameter/macro_hue_strength = 0.03
+shader_parameter/detail_uv_scale_mult = 8.0
+shader_parameter/detail_albedo_strength = 0.5
+shader_parameter/detail_normal_strength = 0.6
+shader_parameter/detail_rough_strength = 0.4
+shader_parameter/detail_fade_start_m = 8.0
+shader_parameter/detail_fade_end_m = 30.0

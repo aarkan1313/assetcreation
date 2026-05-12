@@ -143,7 +143,7 @@ func _reset_camera() -> void:
 	var width: float = plane_size * 3.0 + gap_m * 2.0
 	cam.near = 0.05
 	cam.far = 4000.0
-	cam.projection = Camera3D.PROJECTION_PERSPECTIVE
+	cam.projection = Camera3D.PROJECTION_PERSPECTIVE	
 	if camera_preset == "close_finished":
 		var right_center := Vector3(plane_size + gap_m, 0.0, 0.0)
 		cam.fov = 44.0

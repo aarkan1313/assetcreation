@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "kind": "m10_unlike_biome_ecotone_layer_proof",
+  "id": "gloss_grassland_ecotone_layer_proof",
+  "runtime_macro": "res://textures/source_stack/gloss_grassland_ecotone_layer_proof/source_macro_albedo.png",
+  "runtime_source_macro_valid_mask": "res://textures/source_stack/gloss_grassland_ecotone_layer_proof/source_macro_valid_mask.png",
+  "runtime_source_macro_weight_mask": "res://textures/source_stack/gloss_grassland_ecotone_layer_proof/source_macro_weight_mask.png",
+  "runtime_splat_weights": "res://textures/source_stack/gloss_grassland_ecotone_layer_proof/layers/splat_weights_rgba.png",
+  "runtime_material": "res://textures/wgv3/terrain_ecotone_layer_gloss_grassland.tres",
+  "runtime_heightmap": "res://toporeview/gloss_grassland_ecotone_layer_proof/heightmap.png",
+  "runtime_meta": "res://toporeview/gloss_grassland_ecotone_layer_proof/meta.json",
+  "derived_macro_preview": "res://textures/source_stack/gloss_grassland_ecotone_layer_proof/layers/derived_macro_preview.png",
+  "source_photo_payload": "res://textures/source_stack/gloss_grassland_ecotone_layer_proof/layers/source_photo_payload.png",
+  "contact_sheet": "res://docs/captures/review/m10_ecotone_layer_contact_sheet.png",
+  "right_procedural_macro_reference": "res://textures/source_stack/gloss_grassland_ecotone_layer_proof/layers/right_procedural_macro_reference.png",
+  "left_source": {
+    "macro": "res://textures/source_stack/gloss_scrub_source_stack/source_macro_albedo.png",
+    "valid_mask": "res://textures/source_stack/gloss_scrub_source_stack/source_macro_valid_mask.png",
+    "heightmap": "res://toporeview/gloss_mountain_textured_master/heightmap.png",
+    "meta": "res://toporeview/gloss_mountain_textured_master/meta.json",
+    "crop_macro_px": [
+      520,
+      880,
+      512,
+      1024
+    ]
+  },
+  "right_source": {
+    "kind": "procedural_material_macro",
+    "material_id": "m8_grassland_grass_calm_v3",
+    "catalog": "res://materials/catalog_comfy_candidates.json"
+  },
+  "layers": {
+    "biome_a_weight": "res://textures/source_stack/gloss_grassland_ecotone_layer_proof/layers/biome_a_weight.png",
+    "biome_b_weight": "res://textures/source_stack/gloss_grassland_ecotone_layer_proof/layers/biome_b_weight.png",
+    "ecotone_weight": "res://textures/source_stack/gloss_grassland_ecotone_layer_proof/layers/ecotone_weight.png",
+    "source_scrub_weight": "res://textures/source_stack/gloss_grassland_ecotone_layer_proof/layers/source_scrub_weight.png",
+    "grassland_weight": "res://textures/source_stack/gloss_grassland_ecotone_layer_proof/layers/grassland_weight.png",
+    "ecotone_soil_weight": "res://textures/source_stack/gloss_grassland_ecotone_layer_proof/layers/ecotone_soil_weight.png",
+    "rock_exposure_weight": "res://textures/source_stack/gloss_grassland_ecotone_layer_proof/layers/rock_exposure_weight.png",
+    "shrub_carryover_mask": "res://textures/source_stack/gloss_grassland_ecotone_layer_proof/layers/shrub_carryover_mask.png",
+    "dry_grass_density_mask": "res://textures/source_stack/gloss_grassland_ecotone_layer_proof/layers/dry_grass_density_mask.png",
+    "soil_exposure_mask": "res://textures/source_stack/gloss_grassland_ecotone_layer_proof/layers/soil_exposure_mask.png",
+    "rock_cluster_mask": "res://textures/source_stack/gloss_grassland_ecotone_layer_proof/layers/rock_cluster_mask.png",
+    "wash_line_mask": "res://textures/source_stack/gloss_grassland_ecotone_layer_proof/layers/wash_line_mask.png",
+    "no_scatter_mask": "res://textures/source_stack/gloss_grassland_ecotone_layer_proof/layers/no_scatter_mask.png",
+    "splat_weights_rgba": "res://textures/source_stack/gloss_grassland_ecotone_layer_proof/layers/splat_weights_rgba.png"
+  },
+  "metrics": {
+    "height_m": {
+      "min": 398.96246337890625,
+      "max": 473.40814208984375,
+      "range": 74.4456787109375,
+      "boundary_step_p95_m": 0.03028106689453125
+    },
+    "ecotone": {
+      "mean_weight": 0.15481814742088318,
+      "coverage_gt_0_25": 0.19888687133789062,
+      "boundary_x_std_px": 132.20472717285156,
+      "local_width_mean_px": 260.7352294921875,
+      "local_width_std_px": 28.00330924987793,
+      "boundary_diagonal_px": 235.0
+    },
+    "weights": {
+      "max_sum_error": 2.384185791015625e-07,
+      "source_scrub_mean": 0.49538567662239075,
+      "grassland_mean": 0.46374228596687317,
+      "ecotone_soil_mean": 0.03788096457719803,
+      "rock_exposure_mean": 0.00299116806127131,
+      "source_macro_weight_mean": 0.3053508996963501,
+      "macro_guidance_weight_mean": 0.7402725219726562
+    },
+    "feature_masks": {
+      "shrub_carryover_mean": 0.17831000685691833,
+      "dry_grass_density_mean": 0.39187413454055786,
+      "soil_exposure_mean": 0.050131626427173615,
+      "rock_cluster_mean": 0.009151684120297432,
+      "wash_line_mean": 0.016362730413675308,
+      "no_scatter_mean": 0.08595715463161469
+    }
+  },
+  "policy": "macro_guidance_plus_splat_weights_requires_visual_review"
+}

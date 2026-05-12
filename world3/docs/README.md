@@ -1,5 +1,54 @@
 # world3 — Docs Index
 
+> **Phase E orchestrator is live (2026-05-11).** The one-command
+> world-build path is real and validated:
+>
+> Single bundle: `python world3/pipeline/world3_make.py <region_request.json>`
+>
+> **Whole world (Phase F.8):**
+> ```
+> python world3/pipeline/world3_make_world.py <world_plan.json>
+> ```
+>
+> **The canonical "how to use this" doc is [WORLD3_PIPELINE_GUIDE.md](WORLD3_PIPELINE_GUIDE.md).**
+>
+> See per-sub-phase closure docs (E1-E8 + F1-F8) for evidence on each
+> layer's individual proof.
+
+> ⚠️ The doc table below dates from the pre-rebuild period. Some "Read"
+> targets point at `_archived_2026_05_11/` paths. **Canonical current state
+> lives in [ROADMAP.md](ROADMAP.md) and the Phase E.* docs above.** The
+> OpenTopo-domain links in the lower half are still accurate.
+
+## Orchestrator quick start (Phase E + F.1)
+
+All three pipeline lanes work end-to-end through the orchestrator as of F.1 (2026-05-11):
+
+| You want to...                                                    | Read or run                                                                                                              |
+|-------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
+| Generate a **procedural** bundle (~5s)                             | `python world3/pipeline/world3_make.py world3/jobs/examples/desert_canyon_procedural.json`                              |
+| Generate a **real-DEM** bundle (~5min, byte-identical to canonical) | `python world3/pipeline/world3_make.py world3/jobs/examples/gloss_real.json`                                            |
+| Generate a **hybrid** bundle (real + procedural seam, ~3s)         | `python world3/pipeline/world3_make.py world3/jobs/examples/gloss_canyon_hybrid.json`                                   |
+| Author a new region request                                       | Copy one of `world3/jobs/examples/*.json`, edit, validate with `python world3/pipeline/validate_region_request.py <path>` |
+| Author a **world plan** (multi-bundle world intent)                | Copy one of `world3/jobs/examples/world_plan_*.json`, edit, validate with `python world3/pipeline/validate_world_plan.py <path>` |
+| Build a **whole world from a plan** (~15s for 25 tiles)            | `python world3/pipeline/world_plan_to_bundles.py world3/jobs/examples/world_plan_starter_5biome_procedural.json --run` |
+| Inspect / validate a world map                                     | `python world3/pipeline/validate_world_map.py world3/worlds/<plan_id>/world_map.json` |
+| **Audit transition pairs** at catalog time (F.4)                   | `python world3/pipeline/audit_transition_pairs.py <plan>` → per-pair verdict + recommended_action (palette_lock / regenerate / shader_blend_band / none) |
+| Derive **catalog demand** from a plan (F.5a)                       | `python world3/pipeline/derive_catalog_demand.py <plan>` → have/need/below + prioritized work_queue |
+| Dispatch **catalog requisition** (F.5b, DRY-RUN by default)        | `python world3/pipeline/run_catalog_requisition.py <demand>` (preview) or `--run` (user-gated real generation) |
+| **In-context re-audit** (F.6) — catalog→runtime drift              | `python world3/pipeline/audit_materials_in_context.py <plan>` → captures each biome iso + scores drift |
+| **Build the whole world** end-to-end (F.8) — one command           | `python world3/pipeline/world3_make_world.py <plan>` → validate + audit + emit + build + re-audit |
+| See what stages exist                                             | `world3/jobs/stages.json` + `python world3/pipeline/audit_stages.py`                                                     |
+| Capture an arbitrary bundle (any mode)                            | `python world3/pipeline/run_orchestrator_capture.py --bundle-dir ... --mode iso --output ... --style-pack photoreal`     |
+| Add a new style pack                                              | Copy `world3/jobs/style_packs/photoreal.json`, edit the 12 render knobs, save as `<your_id>.json`, pass `--style-pack <your_id>`  |
+| Understand what real-DEM actually does internally                 | [WORKFLOW.md](WORKFLOW.md) → "Orchestrator-driven workflow (Phase E + F)" → "The DEM chain" |
+| Cold-start as a new agent                                         | [ORCHESTRATOR_HANDOFF_2026_05_11.md](ORCHESTRATOR_HANDOFF_2026_05_11.md)                                                |
+| Where is the project going overall?                               | [WORLD3_LONG_ARC_2026_05_11.md](WORLD3_LONG_ARC_2026_05_11.md) |
+| **Taking over from a previous session?**                          | [F35_HANDOFF_PROMPT_2026_05_11.md](F35_HANDOFF_PROMPT_2026_05_11.md) |
+| Build an M11-equivalent fourway bundle (parity benchmark)         | `python world3/pipeline/build_fourway_bundle.py ...` — see [F35_M11_PARITY_REFACTOR_2026_05_11.md](F35_M11_PARITY_REFACTOR_2026_05_11.md) |
+
+## Legacy index (pre-rebuild)
+
 What lives where, in one page. Read this first if you're trying to
 find something.
 
@@ -64,7 +113,7 @@ find something.
 | "What prompts work, what we learned from sweeps"             | [../../pipelines/textures/TEXTURE_RND.md](../../pipelines/textures/TEXTURE_RND.md) |
 | "What did we learn that surprised us?"                       | [../../pipelines/textures/LESSONS.md](../../pipelines/textures/LESSONS.md)   |
 | "What does the rest of the world do for tileable PBR?"       | [../../pipelines/textures/EXTERNAL_TECHNIQUES.md](../../pipelines/textures/EXTERNAL_TECHNIQUES.md) (snapshot, 2026-05-07) |
-| "What was broken about the texture pipeline + how was it fixed?" | [TEXTURE_PIPELINE_FIX_PLAN.md](TEXTURE_PIPELINE_FIX_PLAN.md) |
+| "What was broken about the texture pipeline + how was it fixed?" | [_archived_2026_05_11/retired_planning/TEXTURE_PIPELINE_FIX_PLAN.md](_archived_2026_05_11/retired_planning/TEXTURE_PIPELINE_FIX_PLAN.md) (archived 2026-05-11; current pipeline state in [../../pipelines/textures/PIPELINE.md](../../pipelines/textures/PIPELINE.md)) |
 | "How do I view the OpenTopo pilot scenes?"                   | [../toporeview/README.md](../toporeview/README.md) |
 | "How do I pull/process OpenTopography data?"                 | [OPENTOPO_GUIDE.md](OPENTOPO_GUIDE.md), [OPENTOPO_DATA_TYPES.md](OPENTOPO_DATA_TYPES.md), [OPENTOPO_MOSAIC_FUSION_WORKFLOWS.md](OPENTOPO_MOSAIC_FUSION_WORKFLOWS.md), [../opentopo/STATUS.md](../opentopo/STATUS.md) |
 | "What OpenTopo tooling/knobs do we have, and what should I turn?" | [OPENTOPO_TOOLING_KNOBS_GUIDE.md](OPENTOPO_TOOLING_KNOBS_GUIDE.md) |

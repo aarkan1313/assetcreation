@@ -1,0 +1,379 @@
+{
+  "schema_version": 1,
+  "plan_id": "starter_5biome_procedural",
+  "generated_at": "2026-05-11T16:42:43Z",
+  "audit_params": {
+    "tile_size_px": [
+      512,
+      1024
+    ],
+    "overlap_px": 128,
+    "color_feather_px": 384,
+    "thresholds": {
+      "palette_lab_warn": 30.0,
+      "palette_lab_fail": 60.0,
+      "luminance_range_warn": 0.3,
+      "luminance_range_fail": 0.55,
+      "hf_ratio_warn": 2.5,
+      "hf_ratio_fail": 5.0,
+      "seam_band_warn": 0.15,
+      "seam_band_fail": 0.3
+    }
+  },
+  "pair_count": 8,
+  "pass_count": 0,
+  "warn_count": 1,
+  "fail_count": 7,
+  "error_count": 0,
+  "pairs": [
+    {
+      "biome_a": "tundra",
+      "biome_b": "grassland",
+      "material_a": "tundra_moss",
+      "material_b": "grassland_grass",
+      "verdict": "fail",
+      "recommended_action": "shader_blend_band",
+      "notes": [
+        "seam_band_internal_max_delta_rgb01=0.38 >= 0.3"
+      ],
+      "metrics": {
+        "palette_delta_lab": 56.52091598510742,
+        "luminance_range_delta": 0.044564757496118546,
+        "high_freq_energy_ratio": 1.4958492436667563,
+        "seam_band_internal_max_delta_rgb01": 0.38177359104156494,
+        "seam_band_internal_mean_delta_rgb01": 0.05058075487613678,
+        "median_lab_a": [
+          22.125736236572266,
+          -5.770951271057129,
+          9.97917652130127
+        ],
+        "median_lab_b": [
+          67.23983764648438,
+          0.722348690032959,
+          43.403255462646484
+        ],
+        "luminance_p5_p95_a": [
+          0.061030592769384384,
+          0.6461145281791687
+        ],
+        "luminance_p5_p95_b": [
+          0.33813804388046265,
+          0.8786572217941284
+        ],
+        "high_freq_energy_a": 0.023476719856262207,
+        "high_freq_energy_b": 0.035117633640766144,
+        "global_bias_rgb": [
+          -0.5215686559677124,
+          -0.4000000059604645,
+          -0.20000001788139343
+        ]
+      }
+    },
+    {
+      "biome_a": "tundra",
+      "biome_b": "alpine",
+      "material_a": "tundra_moss",
+      "material_b": "rock_dark",
+      "verdict": "fail",
+      "recommended_action": "regenerate",
+      "notes": [
+        "high_freq_energy_ratio=6.14 >= 5.0",
+        "seam_band_internal_max_delta_rgb01=0.38 >= 0.3"
+      ],
+      "metrics": {
+        "palette_delta_lab": 9.772363662719727,
+        "luminance_range_delta": 0.5271145291626453,
+        "high_freq_energy_ratio": 6.144829224480264,
+        "seam_band_internal_max_delta_rgb01": 0.38171660900115967,
+        "seam_band_internal_mean_delta_rgb01": 0.0212168637663126,
+        "median_lab_a": [
+          22.125736236572266,
+          -5.770951271057129,
+          9.97917652130127
+        ],
+        "median_lab_b": [
+          21.183753967285156,
+          3.167778253555298,
+          6.143701076507568
+        ],
+        "luminance_p5_p95_a": [
+          0.061030592769384384,
+          0.6461145281791687
+        ],
+        "luminance_p5_p95_b": [
+          0.15984706580638885,
+          0.21781647205352783
+        ],
+        "high_freq_energy_a": 0.023476719856262207,
+        "high_freq_energy_b": 0.003820565063506365,
+        "global_bias_rgb": [
+          -0.054901957511901855,
+          -0.011764705181121826,
+          -0.05882353335618973
+        ]
+      }
+    },
+    {
+      "biome_a": "alpine",
+      "biome_b": "grassland",
+      "material_a": "rock_dark",
+      "material_b": "grassland_grass",
+      "verdict": "fail",
+      "recommended_action": "regenerate",
+      "notes": [
+        "high_freq_energy_ratio=9.19 >= 5.0",
+        "seam_band_internal_max_delta_rgb01=0.36 >= 0.3"
+      ],
+      "metrics": {
+        "palette_delta_lab": 59.29095458984375,
+        "luminance_range_delta": 0.4825497716665268,
+        "high_freq_energy_ratio": 9.191738147900184,
+        "seam_band_internal_max_delta_rgb01": 0.3555575907230377,
+        "seam_band_internal_mean_delta_rgb01": 0.039387159049510956,
+        "median_lab_a": [
+          21.183753967285156,
+          3.167778253555298,
+          6.143701076507568
+        ],
+        "median_lab_b": [
+          67.23983764648438,
+          0.722348690032959,
+          43.403255462646484
+        ],
+        "luminance_p5_p95_a": [
+          0.15984706580638885,
+          0.21781647205352783
+        ],
+        "luminance_p5_p95_b": [
+          0.33813804388046265,
+          0.8786572217941284
+        ],
+        "high_freq_energy_a": 0.003820565063506365,
+        "high_freq_energy_b": 0.035117633640766144,
+        "global_bias_rgb": [
+          -0.5098039507865906,
+          -0.4431372880935669,
+          -0.16862745583057404
+        ]
+      }
+    },
+    {
+      "biome_a": "alpine",
+      "biome_b": "temperate_forest",
+      "material_a": "rock_dark",
+      "material_b": "temperate_forest_grass",
+      "verdict": "fail",
+      "recommended_action": "regenerate",
+      "notes": [
+        "high_freq_energy_ratio=5.70 >= 5.0",
+        "seam_band_internal_max_delta_rgb01=0.36 >= 0.3"
+      ],
+      "metrics": {
+        "palette_delta_lab": 16.4923038482666,
+        "luminance_range_delta": 0.42619138956069946,
+        "high_freq_energy_ratio": 5.70383276407957,
+        "seam_band_internal_max_delta_rgb01": 0.3594124913215637,
+        "seam_band_internal_mean_delta_rgb01": 0.02209782972931862,
+        "median_lab_a": [
+          21.183753967285156,
+          3.167778253555298,
+          6.143701076507568
+        ],
+        "median_lab_b": [
+          37.52687454223633,
+          1.6191303730010986,
+          7.724893093109131
+        ],
+        "luminance_p5_p95_a": [
+          0.15984706580638885,
+          0.21781647205352783
+        ],
+        "luminance_p5_p95_b": [
+          0.19743607938289642,
+          0.6815968751907349
+        ],
+        "high_freq_energy_a": 0.003820565063506365,
+        "high_freq_energy_b": 0.021791864186525345,
+        "global_bias_rgb": [
+          -0.16470588743686676,
+          -0.16862745583057404,
+          -0.14509804546833038
+        ]
+      }
+    },
+    {
+      "biome_a": "alpine",
+      "biome_b": "desert",
+      "material_a": "rock_dark",
+      "material_b": "desert_canyon_rock",
+      "verdict": "warn",
+      "recommended_action": "palette_lock",
+      "notes": [
+        "palette_delta_lab=44.3",
+        "high_freq_energy_ratio=2.90",
+        "seam_band_internal_max_delta_rgb01=0.17"
+      ],
+      "metrics": {
+        "palette_delta_lab": 44.292999267578125,
+        "luminance_range_delta": 0.05274038016796112,
+        "high_freq_energy_ratio": 2.8979120374043785,
+        "seam_band_internal_max_delta_rgb01": 0.17143602669239044,
+        "seam_band_internal_mean_delta_rgb01": 0.011812541633844376,
+        "median_lab_a": [
+          21.183753967285156,
+          3.167778253555298,
+          6.143701076507568
+        ],
+        "median_lab_b": [
+          64.03534698486328,
+          5.2778425216674805,
+          17.150901794433594
+        ],
+        "luminance_p5_p95_a": [
+          0.15984706580638885,
+          0.21781647205352783
+        ],
+        "luminance_p5_p95_b": [
+          0.5518172979354858,
+          0.6625270843505859
+        ],
+        "high_freq_energy_a": 0.003820565063506365,
+        "high_freq_energy_b": 0.011071661487221718,
+        "global_bias_rgb": [
+          -0.4705882668495178,
+          -0.4117647409439087,
+          -0.33725494146347046
+        ]
+      }
+    },
+    {
+      "biome_a": "temperate_forest",
+      "biome_b": "desert",
+      "material_a": "temperate_forest_grass",
+      "material_b": "desert_canyon_rock",
+      "verdict": "fail",
+      "recommended_action": "shader_blend_band",
+      "notes": [
+        "seam_band_internal_max_delta_rgb01=0.36 >= 0.3"
+      ],
+      "metrics": {
+        "palette_delta_lab": 28.371374130249023,
+        "luminance_range_delta": 0.37345100939273834,
+        "high_freq_energy_ratio": 1.9682560031009144,
+        "seam_band_internal_max_delta_rgb01": 0.3623623549938202,
+        "seam_band_internal_mean_delta_rgb01": 0.027596212923526764,
+        "median_lab_a": [
+          37.52687454223633,
+          1.6191303730010986,
+          7.724893093109131
+        ],
+        "median_lab_b": [
+          64.03534698486328,
+          5.2778425216674805,
+          17.150901794433594
+        ],
+        "luminance_p5_p95_a": [
+          0.19743607938289642,
+          0.6815968751907349
+        ],
+        "luminance_p5_p95_b": [
+          0.5518172979354858,
+          0.6625270843505859
+        ],
+        "high_freq_energy_a": 0.021791864186525345,
+        "high_freq_energy_b": 0.011071661487221718,
+        "global_bias_rgb": [
+          -0.2980392277240753,
+          -0.24705883860588074,
+          -0.19607844948768616
+        ]
+      }
+    },
+    {
+      "biome_a": "temperate_forest",
+      "biome_b": "tundra",
+      "material_a": "temperate_forest_grass",
+      "material_b": "tundra_moss",
+      "verdict": "fail",
+      "recommended_action": "shader_blend_band",
+      "notes": [
+        "seam_band_internal_max_delta_rgb01=0.40 >= 0.3"
+      ],
+      "metrics": {
+        "palette_delta_lab": 17.230501174926758,
+        "luminance_range_delta": 0.10092313960194588,
+        "high_freq_energy_ratio": 1.0773158117779875,
+        "seam_band_internal_max_delta_rgb01": 0.4035399556159973,
+        "seam_band_internal_mean_delta_rgb01": 0.037164196372032166,
+        "median_lab_a": [
+          37.52687454223633,
+          1.6191303730010986,
+          7.724893093109131
+        ],
+        "median_lab_b": [
+          22.125736236572266,
+          -5.770951271057129,
+          9.97917652130127
+        ],
+        "luminance_p5_p95_a": [
+          0.19743607938289642,
+          0.6815968751907349
+        ],
+        "luminance_p5_p95_b": [
+          0.061030592769384384,
+          0.6461145281791687
+        ],
+        "high_freq_energy_a": 0.021791864186525345,
+        "high_freq_energy_b": 0.023476719856262207,
+        "global_bias_rgb": [
+          0.2196078598499298,
+          0.15294116735458374,
+          0.16470587253570557
+        ]
+      }
+    },
+    {
+      "biome_a": "desert",
+      "biome_b": "grassland",
+      "material_a": "desert_canyon_rock",
+      "material_b": "grassland_grass",
+      "verdict": "fail",
+      "recommended_action": "shader_blend_band",
+      "notes": [
+        "seam_band_internal_max_delta_rgb01=0.36 >= 0.3"
+      ],
+      "metrics": {
+        "palette_delta_lab": 26.836679458618164,
+        "luminance_range_delta": 0.4298093914985657,
+        "high_freq_energy_ratio": 3.171848568644997,
+        "seam_band_internal_max_delta_rgb01": 0.35712215304374695,
+        "seam_band_internal_mean_delta_rgb01": 0.0413336344063282,
+        "median_lab_a": [
+          64.03534698486328,
+          5.2778425216674805,
+          17.150901794433594
+        ],
+        "median_lab_b": [
+          67.23983764648438,
+          0.722348690032959,
+          43.403255462646484
+        ],
+        "luminance_p5_p95_a": [
+          0.5518172979354858,
+          0.6625270843505859
+        ],
+        "luminance_p5_p95_b": [
+          0.33813804388046265,
+          0.8786572217941284
+        ],
+        "high_freq_energy_a": 0.011071661487221718,
+        "high_freq_energy_b": 0.035117633640766144,
+        "global_bias_rgb": [
+          -0.047058820724487305,
+          -0.039215683937072754,
+          0.15294116735458374
+        ]
+      }
+    }
+  ]
+}

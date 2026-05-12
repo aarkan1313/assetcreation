@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "kind": "organic_repair_candidate",
+  "source_material_id": "temperate_forest_grass",
+  "candidate_id": "temperate_forest_grass_repair_calm",
+  "source_albedo": "world3/textures/wgv3/temperate_forest_grass/albedo.png",
+  "candidate_dir": "world3/textures/wgv3_repair/temperate_forest_grass_repair_calm",
+  "sheet": "world3/docs/captures/visual_remediation/temperate_forest_grass_repair_calm_before_after.png",
+  "metrics_before": {
+    "high_frequency_energy": 0.040315,
+    "gradient_p95": 0.131602,
+    "green_dominance": 0.000515,
+    "saturation_mean": 0.243741,
+    "noise_score": 0.050194
+  },
+  "metrics_after": {
+    "high_frequency_energy": 0.002728,
+    "gradient_p95": 0.007193,
+    "green_dominance": 0.0,
+    "saturation_mean": 0.24456,
+    "noise_score": 0.003395
+  },
+  "target": "reduce_object_silhouette_noise_before_terrain_context_review"
+}

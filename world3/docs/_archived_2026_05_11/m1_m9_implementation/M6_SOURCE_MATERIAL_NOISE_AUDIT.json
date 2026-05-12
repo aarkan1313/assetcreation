@@ -1,0 +1,254 @@
+{
+  "version": 1,
+  "updated": "2026-05-08",
+  "thresholds": {
+    "high_frequency_energy": 0.055,
+    "gradient_p95": 0.13,
+    "green_dominance": 0.045
+  },
+  "results": [
+    {
+      "id": "grassland_dirt",
+      "source": "procedural",
+      "color_family": "tan-dry-thatch",
+      "albedo": "world3/textures/wgv3/grassland_dirt/albedo.png",
+      "high_frequency_energy": 0.080442,
+      "gradient_p95": 0.214291,
+      "green_dominance": 1e-06,
+      "saturation_mean": 0.451562,
+      "noise_score": 0.116766,
+      "flags": [
+        "high_frequency_noise",
+        "sharp_micro_contrast"
+      ],
+      "status": "flagged"
+    },
+    {
+      "id": "grassland_grass",
+      "source": "procedural",
+      "color_family": "yellow-dry-grass",
+      "albedo": "world3/textures/wgv3/grassland_grass/albedo.png",
+      "high_frequency_energy": 0.061187,
+      "gradient_p95": 0.178127,
+      "green_dominance": 0.0,
+      "saturation_mean": 0.528222,
+      "noise_score": 0.093508,
+      "flags": [
+        "high_frequency_noise",
+        "sharp_micro_contrast"
+      ],
+      "status": "flagged"
+    },
+    {
+      "id": "grass",
+      "source": "procedural",
+      "color_family": "green-organic",
+      "albedo": "world3/textures/wgv3/grass/albedo.png",
+      "high_frequency_energy": 0.034363,
+      "gradient_p95": 0.127072,
+      "green_dominance": 0.287614,
+      "saturation_mean": 0.626185,
+      "noise_score": 0.088025,
+      "flags": [
+        "green_organic_speckle"
+      ],
+      "status": "flagged"
+    },
+    {
+      "id": "temperate_forest_dirt",
+      "source": "procedural",
+      "color_family": "dark-brown-earth",
+      "albedo": "world3/textures/wgv3/temperate_forest_dirt/albedo.png",
+      "high_frequency_energy": 0.054547,
+      "gradient_p95": 0.145082,
+      "green_dominance": 7.2e-05,
+      "saturation_mean": 0.405536,
+      "noise_score": 0.076679,
+      "flags": [
+        "sharp_micro_contrast"
+      ],
+      "status": "flagged"
+    },
+    {
+      "id": "grassland_rock_light",
+      "source": "procedural",
+      "color_family": "pale-hardpan",
+      "albedo": "world3/textures/wgv3/grassland_rock_light/albedo.png",
+      "high_frequency_energy": 0.049959,
+      "gradient_p95": 0.13811,
+      "green_dominance": 0.0,
+      "saturation_mean": 0.477659,
+      "noise_score": 0.073823,
+      "flags": [
+        "sharp_micro_contrast"
+      ],
+      "status": "flagged"
+    },
+    {
+      "id": "tundra_moss",
+      "source": "procedural",
+      "color_family": "olive-moss",
+      "albedo": "world3/textures/wgv3/tundra_moss/albedo.png",
+      "high_frequency_energy": 0.043535,
+      "gradient_p95": 0.136708,
+      "green_dominance": 0.037008,
+      "saturation_mean": 0.440082,
+      "noise_score": 0.067335,
+      "flags": [
+        "sharp_micro_contrast"
+      ],
+      "status": "flagged"
+    },
+    {
+      "id": "tundra_lichen",
+      "source": "procedural",
+      "color_family": "pale-green-lichen",
+      "albedo": "world3/textures/wgv3/tundra_lichen/albedo.png",
+      "high_frequency_energy": 0.042001,
+      "gradient_p95": 0.142026,
+      "green_dominance": 0.044482,
+      "saturation_mean": 0.332659,
+      "noise_score": 0.060953,
+      "flags": [
+        "sharp_micro_contrast"
+      ],
+      "status": "flagged"
+    },
+    {
+      "id": "temperate_forest_rock_light",
+      "source": "procedural",
+      "color_family": "mossy-grey-rock",
+      "albedo": "world3/textures/wgv3/temperate_forest_rock_light/albedo.png",
+      "high_frequency_energy": 0.047766,
+      "gradient_p95": 0.133915,
+      "green_dominance": 0.002858,
+      "saturation_mean": 0.264006,
+      "noise_score": 0.060721,
+      "flags": [
+        "sharp_micro_contrast"
+      ],
+      "status": "flagged"
+    },
+    {
+      "id": "temperate_forest_snow",
+      "source": "procedural",
+      "color_family": "green-fern-organic",
+      "albedo": "world3/textures/wgv3/temperate_forest_snow/albedo.png",
+      "high_frequency_energy": 0.042819,
+      "gradient_p95": 0.145952,
+      "green_dominance": 0.014487,
+      "saturation_mean": 0.319316,
+      "noise_score": 0.058129,
+      "flags": [
+        "sharp_micro_contrast"
+      ],
+      "status": "flagged"
+    },
+    {
+      "id": "temperate_forest_grass",
+      "source": "procedural",
+      "color_family": "brown-leaf-litter",
+      "albedo": "world3/textures/wgv3/temperate_forest_grass/albedo.png",
+      "high_frequency_energy": 0.040315,
+      "gradient_p95": 0.131602,
+      "green_dominance": 0.000515,
+      "saturation_mean": 0.243741,
+      "noise_score": 0.050194,
+      "flags": [
+        "sharp_micro_contrast"
+      ],
+      "status": "flagged"
+    },
+    {
+      "id": "temperate_forest_rock_dark",
+      "source": "procedural",
+      "color_family": "dark-forest-rock",
+      "albedo": "world3/textures/wgv3/temperate_forest_rock_dark/albedo.png",
+      "high_frequency_energy": 0.034619,
+      "gradient_p95": 0.091884,
+      "green_dominance": 0.000204,
+      "saturation_mean": 0.333169,
+      "noise_score": 0.046172,
+      "flags": [],
+      "status": "ok"
+    },
+    {
+      "id": "grassland_rock_dark",
+      "source": "procedural",
+      "color_family": "dark-rock-yellow-grass",
+      "albedo": "world3/textures/wgv3/grassland_rock_dark/albedo.png",
+      "high_frequency_energy": 0.030075,
+      "gradient_p95": 0.087942,
+      "green_dominance": 2.5e-05,
+      "saturation_mean": 0.523985,
+      "noise_score": 0.045836,
+      "flags": [],
+      "status": "ok"
+    },
+    {
+      "id": "grassland_snow",
+      "source": "procedural",
+      "color_family": "pale-weathered-stone",
+      "albedo": "world3/textures/wgv3/grassland_snow/albedo.png",
+      "high_frequency_energy": 0.027039,
+      "gradient_p95": 0.064721,
+      "green_dominance": 0.0,
+      "saturation_mean": 0.327295,
+      "noise_score": 0.035888,
+      "flags": [],
+      "status": "ok"
+    },
+    {
+      "id": "rock_light",
+      "source": "procedural",
+      "color_family": "tan-rock",
+      "albedo": "world3/textures/wgv3/rock_light/albedo.png",
+      "high_frequency_energy": 0.019886,
+      "gradient_p95": 0.060259,
+      "green_dominance": 1e-06,
+      "saturation_mean": 0.418147,
+      "noise_score": 0.028201,
+      "flags": [],
+      "status": "ok"
+    },
+    {
+      "id": "desert_dry_brush",
+      "source": "procedural",
+      "color_family": "dry-tan-organic",
+      "albedo": "world3/textures/wgv3/desert_dry_brush/albedo.png",
+      "high_frequency_energy": 0.01657,
+      "gradient_p95": 0.046493,
+      "green_dominance": 0.0,
+      "saturation_mean": 0.584535,
+      "noise_score": 0.026256,
+      "flags": [],
+      "status": "ok"
+    },
+    {
+      "id": "scrub_dense",
+      "source": "real",
+      "color_family": "dense-green-scrub",
+      "albedo": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_scrub_dense/scrub_dense_064m_soft_composite/finished_material/albedo_balanced.png",
+      "high_frequency_energy": 0.003214,
+      "gradient_p95": 0.008394,
+      "green_dominance": 0.000146,
+      "saturation_mean": 0.255459,
+      "noise_score": 0.004036,
+      "flags": [],
+      "status": "ok"
+    },
+    {
+      "id": "scrub_sparse",
+      "source": "real",
+      "color_family": "sparse-olive-scrub",
+      "albedo": "world3/opentopo/processed/textures/Guadalupe_Cypress_variants_scrub_sparse/scrub_sparse_064m_soft_composite/finished_material/albedo_balanced.png",
+      "high_frequency_energy": 0.001999,
+      "gradient_p95": 0.005609,
+      "green_dominance": 7e-06,
+      "saturation_mean": 0.196384,
+      "noise_score": 0.002391,
+      "flags": [],
+      "status": "ok"
+    }
+  ]
+}

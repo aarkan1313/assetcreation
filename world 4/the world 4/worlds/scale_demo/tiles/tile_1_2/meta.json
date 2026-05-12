@@ -1,0 +1,15 @@
+{
+  "tile_x": 1,
+  "tile_z": 2,
+  "tile_size_m": 256.0,
+  "heightmap_size_px": [
+    256,
+    256
+  ],
+  "elevation_min_m": 504.88092041015625,
+  "elevation_range_m": 522.3184204101562,
+  "elevation_max_m": 1027.1993408203125,
+  "world_origin_x_m": -256.0,
+  "world_origin_z_m": 0.0,
+  "biome": "forest"
+}

@@ -1,0 +1,140 @@
+{
+  "version": 1,
+  "kind": "terrain_seam_integration_proof",
+  "id": "gloss_procedural_canyon_rock_proof_e1_example",
+  "runtime_macro": "res://textures/source_stack/gloss_procedural_canyon_rock_proof_e1_example/source_macro_albedo.png",
+  "runtime_source_macro_valid_mask": "res://textures/source_stack/gloss_procedural_canyon_rock_proof_e1_example/source_macro_valid_mask.png",
+  "runtime_seam_mask": "res://textures/source_stack/gloss_procedural_canyon_rock_proof_e1_example/seam_integration_mask.png",
+  "runtime_heightmap": "res://textures/source_stack/gloss_procedural_canyon_rock_proof_e1_example/heightmap.png",
+  "runtime_meta": "res://textures/source_stack/gloss_procedural_canyon_rock_proof_e1_example/meta.json",
+  "left_source": {
+    "macro": "res://textures/source_stack/gloss_scrub_source_stack/source_macro_albedo.png",
+    "valid_mask": "res://textures/source_stack/gloss_scrub_source_stack/source_macro_valid_mask.png",
+    "heightmap": "res://toporeview/gloss_mountain_textured_master/heightmap.png",
+    "meta": "res://toporeview/gloss_mountain_textured_master/meta.json",
+    "crop_macro_px": [
+      229,
+      734,
+      229,
+      457
+    ],
+    "crop_world_m": [
+      120.20762936025423,
+      239.97598886006654
+    ]
+  },
+  "right_source": {
+    "macro": "res://textures/source_stack/gloss_procedural_canyon_rock_proof_e1_example/_procedural_side/layers/render_albedo.png",
+    "valid_mask": "res://textures/source_stack/gloss_procedural_canyon_rock_proof_e1_example/_procedural_side/layers/source_valid_mask.png",
+    "heightmap": "res://textures/source_stack/gloss_procedural_canyon_rock_proof_e1_example/_procedural_side/heightmap.png",
+    "meta": "res://textures/source_stack/gloss_procedural_canyon_rock_proof_e1_example/_procedural_side/meta.json",
+    "crop_macro_px": [
+      0,
+      0,
+      512,
+      1024
+    ],
+    "crop_world_m": [
+      120.0,
+      240.0
+    ]
+  },
+  "integration": {
+    "overlap_px": 128,
+    "height_feather_px": 224,
+    "color_feather_px": 384,
+    "profile_blur_px": 12.0,
+    "macro_band_mode": "blend",
+    "macro_bridge_blur_px": 26.0,
+    "macro_bridge_detail_strength": 0.12,
+    "left_output_width_px": 384,
+    "integration_band_output_px": 128,
+    "right_output_width_px": 384,
+    "target_crop_size_px": [
+      512,
+      1024
+    ]
+  },
+  "metrics": {
+    "height_m": {
+      "raw_overlap_delta": {
+        "mean": 16.56202380405739,
+        "median": 16.493011474609375,
+        "p95": 20.423181152343748,
+        "max": 26.1453857421875
+      },
+      "global_bias": 16.493011474609375,
+      "row_bias": {
+        "mean": 1.210323708146916,
+        "median": 1.079759657382965,
+        "p95": 3.755974996089929,
+        "max": 6.11757755279541
+      },
+      "post_overlap_delta": {
+        "mean": 0.8596282319631428,
+        "median": 0.5299224853515625,
+        "p95": 2.972181701660156,
+        "max": 7.5623779296875
+      },
+      "post_join_steps": {
+        "left_to_band": {
+          "mean": 0.06805452704429626,
+          "median": 0.0441131591796875,
+          "p95": 0.23437805175781243,
+          "max": 1.041015625
+        },
+        "band_to_right": {
+          "mean": 0.055716246366500854,
+          "median": 0.0674591064453125,
+          "p95": 0.1515625,
+          "max": 0.156463623046875
+        }
+      }
+    },
+    "macro_rgb01": {
+      "raw_overlap_delta_rgb01": {
+        "mean": 0.15829631112160314,
+        "median": 0.14117646217346191,
+        "p95": 0.3843137323856354,
+        "max": 0.7450980544090271
+      },
+      "band_mode": "blend",
+      "bridge_blur_px": 26.0,
+      "bridge_detail_strength": 0.12,
+      "global_bias_rgb01": [
+        -0.1725490391254425,
+        -0.14901962876319885,
+        -0.09019607305526733
+      ],
+      "post_overlap_delta_rgb01": {
+        "mean": 0.08480996722361549,
+        "median": 0.05917629599571228,
+        "p95": 0.2745779752731323,
+        "max": 0.6168839931488037
+      },
+      "post_join_steps_rgb01": {
+        "left_to_band": {
+          "mean": 0.027268865225778427,
+          "median": 0.019610032439231873,
+          "p95": 0.08628493770956994,
+          "max": 0.17385943233966827
+        },
+        "band_to_right": {
+          "mean": 0.010974469769280404,
+          "median": 0.008671611547470093,
+          "p95": 0.03170898854732505,
+          "max": 0.05834439396858215
+        }
+      }
+    },
+    "valid_mask": {
+      "left_coverage": 1.0,
+      "right_coverage": 1.0,
+      "band_coverage": 1.0,
+      "output_coverage": 1.0,
+      "output_coverage_before_hole_fill": 1.0,
+      "hole_fill_policy": "filled_to_full_valid_because_coverage_above_0.9950"
+    }
+  },
+  "policy": "adjacent_overlap_sources_solved_into_single_runtime_bundle"
+}

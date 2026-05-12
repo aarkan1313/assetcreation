@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "run_id": "gloss_mountain_textured_master_e1_example_20260511T141741Z",
+  "request_id": "gloss_mountain_textured_master_e1_example",
+  "request_path": "D:\\assets\\world3\\jobs\\examples\\gloss_real.json",
+  "request": {
+    "schema_version": 1,
+    "id": "gloss_mountain_textured_master_e1_example",
+    "description": "Example real-source request that reproduces the existing Gloss Mountain Textured Master Stack. Provenance matches world3/opentopo/processed/master_stacks/gloss_mountain_textured_master/meta.json. Used as Phase E.1 schema validation evidence.",
+    "source": {
+      "type": "real",
+      "dem": "world3/opentopo/raw/dataspace/Gloss_Mountain_2021/Gloss_Mountain_DEM.tif",
+      "orthophoto": "world3/opentopo/raw/dataspace/Gloss_Mountain_2021/Gloss_Mountain_Orthomosaic.tif",
+      "crop": {
+        "to_valid_dem": true,
+        "margin_px": 16
+      },
+      "review_max_dim": 8192
+    },
+    "world_type": {
+      "biome_kit": "desert",
+      "style_pack": "photoreal",
+      "view_modes": [
+        "walk",
+        "iso",
+        "topdown"
+      ]
+    },
+    "options": {
+      "render_captures": true,
+      "promote_to_gate": false
+    },
+    "output": {
+      "bundle_dir": "world3/opentopo/processed/master_stacks/gloss_mountain_textured_master_e1_example",
+      "overwrite": false
+    },
+    "__request_path__": "world3\\jobs\\examples\\gloss_real.json"
+  },
+  "started_at": "2026-05-11T14:17:41.702002+00:00",
+  "completed_at": "2026-05-11T14:17:41.703002+00:00",
+  "ok": true,
+  "stages": [
+    {
+      "id": "build_real_master_stack",
+      "script": "world3/pipeline/build_opentopo_textured_master_stack.py",
+      "started_at": "2026-05-11T14:17:41.702002+00:00",
+      "args": [
+        "--dem",
+        "D:\\assets\\world3\\opentopo\\raw\\dataspace\\Gloss_Mountain_2021\\Gloss_Mountain_DEM.tif",
+        "--orthophoto",
+        "D:\\assets\\world3\\opentopo\\raw\\dataspace\\Gloss_Mountain_2021\\Gloss_Mountain_Orthomosaic.tif",
+        "--output-dir",
+        "D:\\assets\\world3\\opentopo\\processed\\master_stacks\\gloss_mountain_textured_master_e1_example",
+        "--name",
+        "Example real-source request that reproduces the existing Gloss Mountain Textured Master Stack. Provenance matches world3/opentopo/processed/master_stacks/gloss_mountain_textured_master/meta.json. Used as Phase E.1 schema validation evidence.",
+        "--material",
+        "real_desert_orthophoto",
+        "--review-max-dim",
+        "8192",
+        "--fill-distance-px",
+        "64.0",
+        "--crop-to-valid-dem",
+        "--crop-margin-px",
+        "16"
+      ],
+      "status": "dry_run",
+      "preview_cmd": [
+        "C:\\Program Files\\Python312\\python.exe",
+        "D:\\assets\\world3\\pipeline\\build_opentopo_textured_master_stack.py",
+        "--dem",
+        "D:\\assets\\world3\\opentopo\\raw\\dataspace\\Gloss_Mountain_2021\\Gloss_Mountain_DEM.tif",
+        "--orthophoto",
+        "D:\\assets\\world3\\opentopo\\raw\\dataspace\\Gloss_Mountain_2021\\Gloss_Mountain_Orthomosaic.tif",
+        "--output-dir",
+        "D:\\assets\\world3\\opentopo\\processed\\master_stacks\\gloss_mountain_textured_master_e1_example",
+        "--name",
+        "Example real-source request that reproduces the existing Gloss Mountain Textured Master Stack. Provenance matches world3/opentopo/processed/master_stacks/gloss_mountain_textured_master/meta.json. Used as Phase E.1 schema validation evidence.",
+        "--material",
+        "real_desert_orthophoto",
+        "--review-max-dim",
+        "8192",
+        "--fill-distance-px",
+        "64.0",
+        "--crop-to-valid-dem",
+        "--crop-margin-px",
+        "16"
+      ],
+      "completed_at": "2026-05-11T14:17:41.702002+00:00",
+      "wall_time_sec": 0.0
+    },
+    {
+      "id": "validate_request",
+      "script": "world3/pipeline/validate_region_request.py",
+      "started_at": "2026-05-11T14:17:41.702002+00:00",
+      "args": [
+        "D:\\assets\\world3\\jobs\\examples\\gloss_real.json"
+      ],
+      "status": "dry_run",
+      "preview_cmd": [
+        "C:\\Program Files\\Python312\\python.exe",
+        "D:\\assets\\world3\\pipeline\\validate_region_request.py",
+        "D:\\assets\\world3\\jobs\\examples\\gloss_real.json"
+      ],
+      "completed_at": "2026-05-11T14:17:41.702002+00:00",
+      "wall_time_sec": 0.0
+    },
+    {
+      "id": "emit_per_mode_materials",
+      "script": "pipelines/textures/emit_per_mode_materials.py",
+      "started_at": "2026-05-11T14:17:41.702002+00:00",
+      "args": [
+        "--kit",
+        "desert"
+      ],
+      "status": "dry_run",
+      "preview_cmd": [
+        "C:\\Program Files\\Python312\\python.exe",
+        "D:\\assets\\pipelines\\textures\\emit_per_mode_materials.py",
+        "--kit",
+        "desert"
+      ],
+      "completed_at": "2026-05-11T14:17:41.702002+00:00",
+      "wall_time_sec": 0.0
+    },
+    {
+      "id": "build_runtime_image_cache",
+      "script": "world3/pipeline/build_runtime_image_cache.py",
+      "started_at": "2026-05-11T14:17:41.702002+00:00",
+      "args": [
+        "__STAGE_PLACEHOLDER__"
+      ],
+      "status": "skipped_placeholder",
+      "completed_at": "2026-05-11T14:17:41.702002+00:00",
+      "wall_time_sec": 0.0
+    },
+    {
+      "id": "render_captures_walk",
+      "script": "world3/pipeline/run_orchestrator_capture.py",
+      "started_at": "2026-05-11T14:17:41.703002+00:00",
+      "args": [
+        "__STAGE_PLACEHOLDER__"
+      ],
+      "status": "skipped_placeholder",
+      "completed_at": "2026-05-11T14:17:41.703002+00:00",
+      "wall_time_sec": 0.0
+    },
+    {
+      "id": "render_captures_iso",
+      "script": "world3/pipeline/run_orchestrator_capture.py",
+      "started_at": "2026-05-11T14:17:41.703002+00:00",
+      "args": [
+        "__STAGE_PLACEHOLDER__"
+      ],
+      "status": "skipped_placeholder",
+      "completed_at": "2026-05-11T14:17:41.703002+00:00",
+      "wall_time_sec": 0.0
+    },
+    {
+      "id": "render_captures_topdown",
+      "script": "world3/pipeline/run_orchestrator_capture.py",
+      "started_at": "2026-05-11T14:17:41.703002+00:00",
+      "args": [
+        "__STAGE_PLACEHOLDER__"
+      ],
+      "status": "skipped_placeholder",
+      "completed_at": "2026-05-11T14:17:41.703002+00:00",
+      "wall_time_sec": 0.0
+    }
+  ],
+  "dry_run": true
+}

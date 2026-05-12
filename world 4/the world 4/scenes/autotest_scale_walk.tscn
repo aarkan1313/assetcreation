@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/scale_demo.tscn" id="scale_scene"]
+[ext_resource type="Script" path="res://scripts/AutoWalker.gd" id="autowalker_script"]
+
+[node name="AutoTestScaleWalk" type="Node"]
+
+[node name="Inner" parent="." instance=ExtResource("scale_scene")]
+
+[node name="AutoWalker" type="Node" parent="."]
+script = ExtResource("autowalker_script")
+enabled = true
+leg_distance_m = 600.0
+walk_speed = 12.0
+leg_count = 4
+sample_interval_s = 0.1
+force_camera_mode = "walk"
+quit_on_finish = true

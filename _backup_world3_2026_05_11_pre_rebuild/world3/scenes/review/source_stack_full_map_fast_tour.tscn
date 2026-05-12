@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/World3AutoReviewTour.gd" id="script"]
+
+[node name="SourceStackFullMapFastTour" type="Node3D"]
+script = ExtResource("script")
+material_path = "res://textures/wgv3/terrain_source_stack_gloss_grassland_comfy_v3_source_stack.tres"
+heightmap_path = "res://toporeview/gloss_mountain_textured_master/heightmap.png"
+meta_path = "res://toporeview/gloss_mountain_textured_master/meta.json"
+source_valid_mask_path = "res://textures/source_stack/gloss_grassland_comfy_v3_source_stack/source_macro_valid_mask.png"
+transition_rule_id = "opentopo_scrub_sparse__dry_wash_neighbor"
+start_x_m = 0.0
+start_z_m = 0.0
+boundary_z_m = 128.0
+chunk_size_m = 256.0
+chunk_resolution_m = 8.0
+view_radius_chunks = 4
+source_repeat_mode = "clamp"
+clip_to_source_bounds = true
+transition_width_m = 72.0
+transition_repeat_m = 128.0
+transition_strength = 0.28
+enable_transition_boundary = false
+show_footprint_debug_views = false
+review_normal_strength = 0.06
+review_detail_normal_strength = 0.025
+review_detail_rough_strength = 0.025
+tour_profile = "full_map_fast"
+initial_tour_index = 0
+auto_play = true

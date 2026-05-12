@@ -1,0 +1,22 @@
+{
+  "plan_id": "starter_5biome_procedural",
+  "generated_at": "20260511T145622Z",
+  "overall_status": "fail",
+  "step_count": 1,
+  "records": [
+    {
+      "step": 3,
+      "name": "derive_catalog_demand",
+      "cmd": [
+        "C:\\Program Files\\Python312\\python.exe",
+        "D:\\assets\\world3\\pipeline\\derive_catalog_demand.py",
+        "D:\\assets\\world3\\jobs\\examples\\world_plan_starter_5biome_procedural.json"
+      ],
+      "started_at": "2026-05-11T14:56:22.029221+00:00",
+      "exit": 0,
+      "elapsed_sec": 0.050914,
+      "completed_at": "2026-05-11T14:56:22.080135+00:00",
+      "status": "ok"
+    }
+  ]
+}

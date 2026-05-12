@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3]
+
+[ext_resource type="Shader" path="res://shaders/terrain_anchor_rebuild.gdshader" id="shader"]
+[ext_resource type="Texture2D" path="res://materials/anchor_v2/scrub_dense/albedo.png" id="ground_albedo"]
+[ext_resource type="Texture2D" path="res://materials/anchor_v2/tundra_lichen/albedo.png" id="mid_albedo"]
+[ext_resource type="Texture2D" path="res://materials/anchor_v2/rocky_slope/albedo.png" id="rock_albedo"]
+
+[resource]
+shader = ExtResource("shader")
+shader_parameter/texture_stage = 3
+shader_parameter/world_uv_scale = 0.04
+shader_parameter/min_luma = 0.07
+shader_parameter/slope_tint_strength = 0.08
+shader_parameter/roughness_value = 0.82
+shader_parameter/specular_value = 0.08
+shader_parameter/ground_albedo = ExtResource("ground_albedo")
+shader_parameter/mid_albedo = ExtResource("mid_albedo")
+shader_parameter/rock_albedo = ExtResource("rock_albedo")

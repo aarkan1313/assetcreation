@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "id": "e7_unseen_tundra_moss_procedural",
+  "description": "Phase E.7 final validation. Procedural-only bundle on the tundra_moss catalog material — never used as a procedural source in any prior bundle. Tests the full orchestrator path (request validate -> stage resolve -> subprocess -> provenance) end-to-end on unseen content, then drives a capture through OrchestratorCaptureDriver with the photoreal style pack.",
+  "source": {
+    "type": "procedural",
+    "material_id": "tundra_moss",
+    "size_px": [512, 1024],
+    "world_size_m": [120.0, 240.0],
+    "elev_min_m": 200.0,
+    "elev_range_m": 24.0,
+    "seed": 31415
+  },
+  "world_type": {
+    "biome_kit": "tundra",
+    "style_pack": "photoreal",
+    "view_modes": ["iso"]
+  },
+  "output": {
+    "bundle_dir": "world3/toporeview/e7_unseen_tundra_moss_procedural"
+  },
+  "options": {
+    "render_captures": false
+  }
+}

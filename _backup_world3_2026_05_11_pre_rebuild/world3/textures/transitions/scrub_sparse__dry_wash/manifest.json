@@ -1,0 +1,57 @@
+{
+  "pair": [
+    "scrub_sparse",
+    "dry_wash"
+  ],
+  "rule_id": "opentopo_scrub_sparse__dry_wash_neighbor",
+  "seed": 3073375898574248816,
+  "tile_px": 512,
+  "tiles_wide": 6,
+  "noise_strength": 0.2,
+  "tuning": {
+    "albedo_match_strength": 0.0,
+    "albedo_frequency_dampen_strength": 0.0,
+    "albedo_frequency_blur_radius_px": 1.25,
+    "roughness_match_strength": 0.0,
+    "normal_match_strength": 0.0
+  },
+  "outputs": {
+    "albedo": "world3/textures/transitions/scrub_sparse__dry_wash/albedo.png",
+    "normal": "world3/textures/transitions/scrub_sparse__dry_wash/normal.png",
+    "roughness": "world3/textures/transitions/scrub_sparse__dry_wash/roughness.png",
+    "height": "world3/textures/transitions/scrub_sparse__dry_wash/height.png",
+    "ao": "world3/textures/transitions/scrub_sparse__dry_wash/ao.png"
+  },
+  "mask": "world3/textures/transitions/scrub_sparse__dry_wash/mask.png",
+  "preview": "world3/docs/captures/transitions/scrub_sparse__dry_wash_hard_vs_transition.png",
+  "hard_edge_mean_abs_albedo_delta": 0.033954,
+  "raw_scores": {
+    "source_hue_delta": 0.000178,
+    "source_value_delta": 0.000648,
+    "source_saturation_delta": 0.093394,
+    "roughness_mean_abs_delta": 0.002457,
+    "normal_energy_delta": 4.6e-05,
+    "normal_mean_abs_delta": 0.000992,
+    "visible_frequency_delta": 0.005822,
+    "hard_edge_mean_abs_albedo_delta": 0.033954,
+    "transition_center_albedo_delta": 0.008808,
+    "edge_delta_improvement_ratio": 0.740581,
+    "transition_gradient_p95": 0.023812
+  },
+  "scores": {
+    "source_hue_delta": 0.000178,
+    "source_value_delta": 0.000648,
+    "source_saturation_delta": 0.093394,
+    "roughness_mean_abs_delta": 0.002457,
+    "normal_energy_delta": 4.6e-05,
+    "normal_mean_abs_delta": 0.000992,
+    "visible_frequency_delta": 0.005822,
+    "hard_edge_mean_abs_albedo_delta": 0.033954,
+    "transition_center_albedo_delta": 0.008808,
+    "edge_delta_improvement_ratio": 0.740581,
+    "transition_gradient_p95": 0.023812
+  },
+  "review_hints": [],
+  "raw_review_hints": [],
+  "status": "prototype_transition_strip"
+}

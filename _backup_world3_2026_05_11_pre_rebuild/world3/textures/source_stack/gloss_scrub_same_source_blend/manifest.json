@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "kind": "same_source_blend_source_stack",
+  "id": "gloss_scrub_same_source_blend",
+  "source_macro": "res://textures/source_stack/gloss_scrub_source_stack/source_macro_albedo.png",
+  "runtime_macro": "res://textures/source_stack/gloss_scrub_same_source_blend/source_macro_albedo.png",
+  "runtime_source_macro_valid_mask": "res://textures/source_stack/gloss_scrub_same_source_blend/source_macro_valid_mask.png",
+  "source_macro_runtime_size_px": [
+    1180,
+    2048
+  ],
+  "conditioned_runtime_size_px": [
+    700,
+    1100
+  ],
+  "valid_crop_box_px": [
+    180,
+    620,
+    880,
+    1720
+  ],
+  "edge_condition_band_px": 8,
+  "edge_condition_blur_radius_px": 0.15,
+  "internal_heal_band_px": 0,
+  "source_roll_fraction": {
+    "x": 0.0,
+    "y": 0.0
+  },
+  "source_roll_px": {
+    "x_px": 0,
+    "y_px": 0
+  },
+  "mask_policy": "review_only_full_valid_after_edge_conditioning",
+  "before": {
+    "x_edge_mean_abs_rgb": 0.19142723083496094,
+    "y_edge_mean_abs_rgb": 0.194689080119133
+  },
+  "after": {
+    "x_edge_mean_abs_rgb": 0.002132974797859788,
+    "y_edge_mean_abs_rgb": 0.0021962737664580345
+  },
+  "policy": "same_source_repeat_poc_condition_source_edges_before_runtime_height_blend"
+}

@@ -1,0 +1,268 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "world3/jobs/region_request_schema.json",
+  "title": "world3 region request",
+  "description": "Declarative config that the world3 orchestrator (world3_make.py, Phase E.3) consumes to produce a world-data bundle. One config -> one bundle, deterministic, reproducible. The schema is rooted in real existing manifest shapes (build_world.py meta.json, build_opentopo_textured_master_stack.py stack_manifest.json, build_procedural_neighbor_bundle.py meta.json) so requests describe real pipeline behavior, not aspirational behavior.",
+
+  "type": "object",
+  "required": ["schema_version", "id", "source", "world_type", "output"],
+  "additionalProperties": false,
+
+  "properties": {
+
+    "schema_version": {
+      "type": "integer",
+      "const": 1,
+      "description": "Bumps when the schema changes incompatibly. Orchestrator rejects requests with unknown versions."
+    },
+
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_]*$",
+      "description": "Stable lowercase identifier for this bundle. Used as the output directory name and as the gate manifest key."
+    },
+
+    "description": {
+      "type": "string",
+      "description": "Optional human-readable description (for run.json provenance only; not used by stages)."
+    },
+
+    "source": {
+      "type": "object",
+      "description": "Where the heightmap and (optionally) source orthophoto come from.",
+      "required": ["type"],
+      "oneOf": [
+        {
+          "type": "object",
+          "description": "Real DEM ingest (Chain 1).",
+          "required": ["type", "dem"],
+          "properties": {
+            "type": { "const": "real" },
+            "dem": {
+              "type": "string",
+              "description": "Path to source DEM GeoTIFF. Absolute or relative to repo root (D:/assets)."
+            },
+            "orthophoto": {
+              "type": "string",
+              "description": "Optional path to source RGB orthophoto GeoTIFF aligned to the DEM (or coarsely overlapping; the build script reprojects)."
+            },
+            "crop": {
+              "type": "object",
+              "description": "Optional crop window inside the DEM. Mirrors build_opentopo_textured_master_stack.py args.",
+              "properties": {
+                "to_valid_dem": { "type": "boolean", "default": false },
+                "margin_px": { "type": "integer", "minimum": 0, "default": 16 },
+                "bbox": {
+                  "type": "array",
+                  "items": { "type": "number" },
+                  "minItems": 4,
+                  "maxItems": 4,
+                  "description": "[left, bottom, right, top] in source CRS"
+                }
+              }
+            },
+            "fill_distance_px": {
+              "type": "number",
+              "default": 64.0,
+              "description": "Max search distance for DEM no-data fill (rasterio fillnodata)."
+            },
+            "review_max_dim": {
+              "type": "integer",
+              "default": 8192,
+              "description": "Max edge length of the Godot review heightmap PNG."
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "description": "Procedural neighbor (Chain 3). Heightmap synthesized from catalog material rules.",
+          "required": ["type", "material_id"],
+          "properties": {
+            "type": { "const": "procedural" },
+            "material_id": {
+              "type": "string",
+              "description": "Catalog material id to use as procedural seed (e.g. desert_canyon_rock, alpine_granite). Must exist in world3/materials/catalog.json."
+            },
+            "size_px": {
+              "type": "array",
+              "items": { "type": "integer", "minimum": 64 },
+              "minItems": 2,
+              "maxItems": 2,
+              "default": [512, 1024],
+              "description": "[width, height] of the procedural heightmap PNG."
+            },
+            "world_size_m": {
+              "type": "array",
+              "items": { "type": "number", "exclusiveMinimum": 0 },
+              "minItems": 2,
+              "maxItems": 2,
+              "default": [120.0, 240.0],
+              "description": "[width, height] in meters of the procedural world region."
+            },
+            "elev_min_m": { "type": "number", "default": 412.0 },
+            "elev_range_m": { "type": "number", "exclusiveMinimum": 0, "default": 18.0 },
+            "seed": { "type": "integer", "default": 1021 },
+            "neighbor_west_edge": {
+              "type": "string",
+              "description": "F.3.1: optional repo-relative path to the west neighbor's east_edge.json so this bundle's western column matches its neighbor's eastern column. Set by world_plan_to_bundles.py iterator."
+            },
+            "neighbor_north_edge": {
+              "type": "string",
+              "description": "F.3.1: optional repo-relative path to the north neighbor's south_edge.json so this bundle's top row matches its neighbor's bottom row. Set by world_plan_to_bundles.py iterator."
+            },
+            "neighbor_edge_feather_px": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 32,
+              "description": "F.3.1: feather distance (pixels) for inward blend of neighbor edge constraints."
+            },
+            "this_biome": {
+              "type": "string",
+              "description": "F.3.2: this bundle's biome id (matches plan.biomes[].id). Used by the procedural builder to decide whether east/south neighbors carry a different biome that needs splat crossfade."
+            },
+            "neighbor_east_biome": {
+              "type": "string",
+              "description": "F.3.2: east neighbor's biome id (or empty if same biome / no neighbor)."
+            },
+            "neighbor_south_biome": {
+              "type": "string",
+              "description": "F.3.2: south neighbor's biome id (or empty if same biome / no neighbor)."
+            },
+            "neighbor_splat_feather_px": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 64,
+              "description": "F.3.2: feather distance (pixels) for splat-weight boundary crossfade."
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "description": "Hybrid (real + procedural) seam-integration bundle (Chain 3 extended). Joins a real source region to a procedurally-generated neighbor.",
+          "required": ["type", "real", "procedural"],
+          "properties": {
+            "type": { "const": "hybrid" },
+            "real": {
+              "type": "object",
+              "description": "Real source region reference. Either a bundle path (already-built) or a nested 'real' source spec (build first, then use).",
+              "required": ["bundle_path"],
+              "properties": {
+                "bundle_path": {
+                  "type": "string",
+                  "description": "Path to an existing real source bundle directory (must contain heightmap.png + meta.json)."
+                },
+                "crop_macro_px": {
+                  "type": "array",
+                  "items": { "type": "integer" },
+                  "minItems": 4,
+                  "maxItems": 4,
+                  "description": "[left, top, width, height] crop window in the real source's macro pixel space."
+                }
+              }
+            },
+            "procedural": {
+              "type": "object",
+              "description": "Procedural neighbor spec, same shape as type=procedural source above.",
+              "required": ["material_id"],
+              "properties": {
+                "material_id": { "type": "string" },
+                "size_px": { "type": "array", "items": { "type": "integer" }, "minItems": 2, "maxItems": 2 },
+                "world_size_m": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 },
+                "elev_min_m": { "type": "number" },
+                "elev_range_m": { "type": "number" },
+                "seed": { "type": "integer" }
+              }
+            },
+            "seam": {
+              "type": "object",
+              "description": "Seam-integration parameters (matches build_terrain_seam_integration_proof.py).",
+              "properties": {
+                "overlap_px": { "type": "integer", "default": 128 },
+                "height_feather_px": { "type": "integer", "default": 224 },
+                "color_feather_px": { "type": "integer", "default": 384 },
+                "macro_band_mode": { "type": "string", "enum": ["blend", "left", "right"], "default": "blend" }
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+
+    "world_type": {
+      "type": "object",
+      "required": ["biome_kit"],
+      "properties": {
+        "biome_kit": {
+          "type": "string",
+          "description": "Biome kit id; must exist in world3/jobs/biome_kits.json (alpine, desert, tundra, temperate_forest, grassland, or any future addition)."
+        },
+        "style_pack": {
+          "type": "string",
+          "default": "photoreal",
+          "description": "Style pack id; must match a file in world3/jobs/style_packs/<id>.json (validated against style_pack_schema.json). Applied at capture/render time by OrchestratorCaptureDriver.gd via run_orchestrator_capture.py --style-pack. Bundles themselves are style-pack-independent: the same bundle can be re-rendered in different styles without rebuild. Phase E.5 ships 'photoreal' as the default (reproduces World3AutoReviewTour.gd defaults byte-identically)."
+        },
+        "view_modes": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["walk", "iso", "topdown"] },
+          "default": ["walk", "iso", "topdown"],
+          "description": "Which per-mode .tres material variants to deploy. Phase E swaps per the per-mode tres system (Phase E shipped 2026-05-07)."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "options": {
+      "type": "object",
+      "default": {},
+      "properties": {
+        "water": {
+          "type": "boolean",
+          "default": false,
+          "description": "Generate water layer (rivers, lakes, masks). Not yet implemented; reserved for future work."
+        },
+        "weather": {
+          "type": "boolean",
+          "default": false,
+          "description": "Generate weather layer (precipitation, clouds, etc.). Not yet implemented."
+        },
+        "scatter_density": {
+          "type": "string",
+          "enum": ["sparse", "default", "dense"],
+          "default": "default",
+          "description": "Scatter mask density preset (vegetation, rocks, debris). Used by M15 scatter pipeline."
+        },
+        "render_captures": {
+          "type": "boolean",
+          "default": true,
+          "description": "Run Godot capture scenes for each view mode after build completes."
+        },
+        "promote_to_gate": {
+          "type": "boolean",
+          "default": false,
+          "description": "Register this bundle in world3/jobs/production_promotion_candidates.json. Default false; the operator/user reviews captures first."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "output": {
+      "type": "object",
+      "required": ["bundle_dir"],
+      "properties": {
+        "bundle_dir": {
+          "type": "string",
+          "description": "Path to the output bundle directory (absolute or relative to repo root)."
+        },
+        "overwrite": {
+          "type": "boolean",
+          "default": false,
+          "description": "Overwrite existing bundle if present. Default false (safer)."
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

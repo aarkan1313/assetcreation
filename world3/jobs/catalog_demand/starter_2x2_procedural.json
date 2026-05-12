@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "plan_id": "starter_2x2_procedural",
+  "generated_at": "2026-05-11T14:56:22Z",
+  "have": [
+    {
+      "material_id": "tundra_moss",
+      "biome_id": "tundra",
+      "role": "source",
+      "passed_gate": true
+    }
+  ],
+  "need": [],
+  "below_promotion_bar": [],
+  "transition_audit": {
+    "audit_path": "world3/jobs/transition_audits/starter_2x2_procedural.json",
+    "pass": 0,
+    "warn": 0,
+    "fail": 0,
+    "error": 0
+  },
+  "work_queue": []
+}

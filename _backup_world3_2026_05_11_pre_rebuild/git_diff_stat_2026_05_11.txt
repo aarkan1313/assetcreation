@@ -1,0 +1,19 @@
+ docs/plans/LONG_TERM_VISION.md                     |  35 +
+ docs/plans/ROADMAP.md                              |  38 +
+ pipelines/textures/DIVERSITY_COMPARE_2026_05_09.md |  69 +-
+ .../textures/FLUX2_KLEIN_9B_SETUP_2026_05_10.md    | 273 +++---
+ pipelines/textures/diversity_compare.py            | 168 +++-
+ world3/docs/FUTURE_WORLD_SOURCES_2026_05_08.md     | 372 +++++++-
+ .../docs/M12_VIEW_MODE_PARITY_AUDIT_2026_05_10.md  |  15 +-
+ world3/docs/M14_CLOSE_PLAY_QUALITY_BOARD.json      |  81 +-
+ .../M14_CLOSE_PLAY_QUALITY_BOARD_2026_05_10.md     |  33 +-
+ .../M16_SOURCE_STACK_GALLERY_BOARD_2026_05_10.md   |  18 +-
+ world3/docs/ROADMAP.md                             | 974 +++++----------------
+ world3/docs/WORLD3_STATE_2026_05_08.md             |  12 +
+ .../review/m12_view_mode_parity_audit.json         | 233 +++++
+ world3/jobs/m14_texture_bakeoff_plan.json          |  66 +-
+ .../albedo.png.import                              |  13 +-
+ .../fantasy_lava_field_controlled/ao.png.import    |  13 +-
+ .../normal.png.import                              |  15 +-
+ .../roughness.png.import                           |  13 +-
+ 18 files changed, 1447 insertions(+), 994 deletions(-)

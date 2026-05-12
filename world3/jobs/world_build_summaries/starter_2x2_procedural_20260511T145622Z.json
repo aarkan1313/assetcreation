@@ -1,0 +1,22 @@
+{
+  "plan_id": "starter_2x2_procedural",
+  "generated_at": "20260511T145622Z",
+  "overall_status": "ok",
+  "step_count": 1,
+  "records": [
+    {
+      "step": 3,
+      "name": "derive_catalog_demand",
+      "cmd": [
+        "C:\\Program Files\\Python312\\python.exe",
+        "D:\\assets\\world3\\pipeline\\derive_catalog_demand.py",
+        "D:\\assets\\world3\\jobs\\examples\\world_plan_starter_2x2_procedural.json"
+      ],
+      "started_at": "2026-05-11T14:56:22.145243+00:00",
+      "exit": 0,
+      "elapsed_sec": 0.05119,
+      "completed_at": "2026-05-11T14:56:22.196433+00:00",
+      "status": "ok"
+    }
+  ]
+}

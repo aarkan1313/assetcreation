@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "run_id": "gloss_procedural_canyon_rock_proof_e1_example_20260511T141751Z",
+  "request_id": "gloss_procedural_canyon_rock_proof_e1_example",
+  "request_path": "D:\\assets\\world3\\jobs\\examples\\gloss_canyon_hybrid.json",
+  "request": {
+    "schema_version": 1,
+    "id": "gloss_procedural_canyon_rock_proof_e1_example",
+    "description": "Example hybrid (real + procedural seam-integration) request that reproduces the M10 real-to-procedural Gloss-canyon-rock proof. Provenance matches world3/textures/source_stack/gloss_procedural_canyon_rock_proof/manifest.json. Used as Phase E.1 schema validation evidence.",
+    "source": {
+      "type": "hybrid",
+      "real": {
+        "bundle_path": "world3/textures/source_stack/gloss_scrub_source_stack",
+        "crop_macro_px": [
+          229,
+          734,
+          229,
+          457
+        ]
+      },
+      "procedural": {
+        "material_id": "desert_canyon_rock",
+        "size_px": [
+          512,
+          1024
+        ],
+        "world_size_m": [
+          120.0,
+          240.0
+        ],
+        "elev_min_m": 412.0,
+        "elev_range_m": 18.0,
+        "seed": 1021
+      },
+      "seam": {
+        "overlap_px": 128,
+        "height_feather_px": 224,
+        "color_feather_px": 384,
+        "macro_band_mode": "blend"
+      }
+    },
+    "world_type": {
+      "biome_kit": "desert",
+      "style_pack": "photoreal",
+      "view_modes": [
+        "walk",
+        "iso",
+        "topdown"
+      ]
+    },
+    "options": {
+      "render_captures": true,
+      "promote_to_gate": false
+    },
+    "output": {
+      "bundle_dir": "world3/textures/source_stack/gloss_procedural_canyon_rock_proof_e1_example",
+      "overwrite": false
+    },
+    "__request_path__": "world3\\jobs\\examples\\gloss_canyon_hybrid.json"
+  },
+  "started_at": "2026-05-11T14:17:51.435740+00:00",
+  "completed_at": "2026-05-11T14:17:51.436741+00:00",
+  "ok": true,
+  "stages": [
+    {
+      "id": "validate_request",
+      "script": "world3/pipeline/validate_region_request.py",
+      "started_at": "2026-05-11T14:17:51.435740+00:00",
+      "args": [
+        "D:\\assets\\world3\\jobs\\examples\\gloss_canyon_hybrid.json"
+      ],
+      "status": "dry_run",
+      "preview_cmd": [
+        "C:\\Program Files\\Python312\\python.exe",
+        "D:\\assets\\world3\\pipeline\\validate_region_request.py",
+        "D:\\assets\\world3\\jobs\\examples\\gloss_canyon_hybrid.json"
+      ],
+      "completed_at": "2026-05-11T14:17:51.435740+00:00",
+      "wall_time_sec": 0.0
+    },
+    {
+      "id": "emit_per_mode_materials",
+      "script": "pipelines/textures/emit_per_mode_materials.py",
+      "started_at": "2026-05-11T14:17:51.435740+00:00",
+      "args": [
+        "--kit",
+        "desert"
+      ],
+      "status": "dry_run",
+      "preview_cmd": [
+        "C:\\Program Files\\Python312\\python.exe",
+        "D:\\assets\\pipelines\\textures\\emit_per_mode_materials.py",
+        "--kit",
+        "desert"
+      ],
+      "completed_at": "2026-05-11T14:17:51.435740+00:00",
+      "wall_time_sec": 0.0
+    },
+    {
+      "id": "build_procedural_neighbor",
+      "script": "world3/pipeline/build_procedural_neighbor_bundle.py",
+      "started_at": "2026-05-11T14:17:51.435740+00:00",
+      "args": [
+        "--material-id",
+        "desert_canyon_rock",
+        "--out",
+        "D:\\assets\\world3\\textures\\source_stack\\gloss_procedural_canyon_rock_proof_e1_example\\_procedural_side",
+        "--size",
+        "512,1024",
+        "--world-size-m",
+        "120.0,240.0",
+        "--elev-min-m",
+        "412.0",
+        "--elev-range-m",
+        "18.0",
+        "--seed",
+        "1021",
+        "--name",
+        "Example hybrid (real + procedural seam-integration) request that reproduces the M10 real-to-procedural Gloss-canyon-rock proof. Provenance matches world3/textures/source_stack/gloss_procedural_canyon_rock_proof/manifest.json. Used as Phase E.1 schema validation evidence."
+      ],
+      "status": "dry_run",
+      "preview_cmd": [
+        "C:\\Program Files\\Python312\\python.exe",
+        "D:\\assets\\world3\\pipeline\\build_procedural_neighbor_bundle.py",
+        "--material-id",
+        "desert_canyon_rock",
+        "--out",
+        "D:\\assets\\world3\\textures\\source_stack\\gloss_procedural_canyon_rock_proof_e1_example\\_procedural_side",
+        "--size",
+        "512,1024",
+        "--world-size-m",
+        "120.0,240.0",
+        "--elev-min-m",
+        "412.0",
+        "--elev-range-m",
+        "18.0",
+        "--seed",
+        "1021",
+        "--name",
+        "Example hybrid (real + procedural seam-integration) request that reproduces the M10 real-to-procedural Gloss-canyon-rock proof. Provenance matches world3/textures/source_stack/gloss_procedural_canyon_rock_proof/manifest.json. Used as Phase E.1 schema validation evidence."
+      ],
+      "completed_at": "2026-05-11T14:17:51.435740+00:00",
+      "wall_time_sec": 0.0
+    },
+    {
+      "id": "build_seam_integration",
+      "script": "world3/pipeline/build_terrain_seam_integration_proof.py",
+      "started_at": "2026-05-11T14:17:51.435740+00:00",
+      "args": [
+        "__STAGE_PLACEHOLDER__"
+      ],
+      "status": "skipped_placeholder",
+      "completed_at": "2026-05-11T14:17:51.435740+00:00",
+      "wall_time_sec": 0.0
+    },
+    {
+      "id": "build_runtime_image_cache",
+      "script": "world3/pipeline/build_runtime_image_cache.py",
+      "started_at": "2026-05-11T14:17:51.435740+00:00",
+      "args": [
+        "__STAGE_PLACEHOLDER__"
+      ],
+      "status": "skipped_placeholder",
+      "completed_at": "2026-05-11T14:17:51.435740+00:00",
+      "wall_time_sec": 0.0
+    },
+    {
+      "id": "render_captures_walk",
+      "script": "world3/pipeline/run_orchestrator_capture.py",
+      "started_at": "2026-05-11T14:17:51.436741+00:00",
+      "args": [
+        "__STAGE_PLACEHOLDER__"
+      ],
+      "status": "skipped_placeholder",
+      "completed_at": "2026-05-11T14:17:51.436741+00:00",
+      "wall_time_sec": 0.0
+    },
+    {
+      "id": "render_captures_iso",
+      "script": "world3/pipeline/run_orchestrator_capture.py",
+      "started_at": "2026-05-11T14:17:51.436741+00:00",
+      "args": [
+        "__STAGE_PLACEHOLDER__"
+      ],
+      "status": "skipped_placeholder",
+      "completed_at": "2026-05-11T14:17:51.436741+00:00",
+      "wall_time_sec": 0.0
+    },
+    {
+      "id": "render_captures_topdown",
+      "script": "world3/pipeline/run_orchestrator_capture.py",
+      "started_at": "2026-05-11T14:17:51.436741+00:00",
+      "args": [
+        "__STAGE_PLACEHOLDER__"
+      ],
+      "status": "skipped_placeholder",
+      "completed_at": "2026-05-11T14:17:51.436741+00:00",
+      "wall_time_sec": 0.0
+    }
+  ],
+  "dry_run": true
+}

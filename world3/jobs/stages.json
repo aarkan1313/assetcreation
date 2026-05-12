@@ -1,0 +1,268 @@
+{
+  "schema_version": 1,
+  "description": "Pipeline stage manifest. Used by world3_make.py (Phase E.3 orchestrator) to resolve which scripts to invoke given a region_request.json. Each stage declares its script path, inputs (where args come from in the request), outputs (files produced relative to the bundle dir), and required_if conditions for inclusion in the chain. Rooted in real existing scripts validated through Phase A inventory + Phase B cold-runs.",
+  "updated": "2026-05-11",
+  "generator": "Phase E.2 manual authoring (rooted in WORKFLOW_INVENTORY_2026_05_11.md)",
+
+  "stages": [
+
+    {
+      "id": "validate_request",
+      "script": "world3/pipeline/validate_region_request.py",
+      "description": "Validates the region_request.json against region_request_schema.json. Run before any other stage. Refuses malformed requests.",
+      "required_if": "always",
+      "inputs": {
+        "request_path": "<request file path>"
+      },
+      "outputs": [],
+      "prerequisites": []
+    },
+
+    {
+      "id": "build_real_master_stack",
+      "script": "world3/pipeline/build_opentopo_textured_master_stack.py",
+      "description": "Real DEM + orthophoto -> textured master stack (heightmap.png + master/*.tif + layers/*.png + meta.json + stack_manifest.json). The Chain 1 entry-point.",
+      "required_if": "source.type == 'real' and source.orthophoto is not None",
+      "inputs": {
+        "--dem": "source.dem",
+        "--orthophoto": "source.orthophoto",
+        "--output-dir": "output.bundle_dir",
+        "--name": "id (with a human-readable suffix)",
+        "--material": "computed from world_type.biome_kit",
+        "--crop-to-valid-dem": "source.crop.to_valid_dem (flag)",
+        "--crop-margin-px": "source.crop.margin_px",
+        "--review-max-dim": "source.review_max_dim",
+        "--fill-distance-px": "source.fill_distance_px"
+      },
+      "outputs": [
+        "heightmap.png",
+        "meta.json",
+        "stack_manifest.json",
+        "qa/textured_master_report.json",
+        "master/dem_repaired_float32.tif",
+        "master/orthophoto_rgb_aligned_to_dem.tif",
+        "master/source_valid_mask.tif",
+        "master/texture_coverage_mask.tif",
+        "layers/cliff_mask.png",
+        "layers/elevation_gray.png",
+        "layers/hillshade.png",
+        "layers/orthophoto_rgb.png",
+        "layers/render_albedo.png",
+        "layers/render_fill_mask.png",
+        "layers/roughness.png",
+        "layers/slope_deg.png",
+        "layers/source_valid_mask.png",
+        "layers/texture_coverage_mask.png"
+      ],
+      "prerequisites": ["rasterio", "PIL", "numpy"],
+      "wall_time_estimate_min": 4
+    },
+
+    {
+      "id": "build_real_heightmap_only",
+      "script": "world3/pipeline/build_world.py",
+      "description": "Real DEM -> heightmap.png + meta.json only (no orthophoto). Used when source.orthophoto is missing.",
+      "required_if": "source.type == 'real' and source.orthophoto is None",
+      "inputs": {
+        "dem": "source.dem (positional)",
+        "out": "output.bundle_dir (positional)",
+        "--material": "computed from world_type.biome_kit",
+        "--bbox": "source.crop.bbox (if set)"
+      },
+      "outputs": [
+        "heightmap.png",
+        "meta.json",
+        "layers/source_valid_mask.png",
+        "layers/render_fill_mask.png",
+        "layers/render_fill_buffer.png",
+        "layers/cliff_mask.png"
+      ],
+      "prerequisites": ["rasterio", "PIL", "numpy"],
+      "wall_time_estimate_min": 1
+    },
+
+    {
+      "id": "build_procedural_neighbor",
+      "script": "world3/pipeline/build_procedural_neighbor_bundle.py",
+      "description": "Catalog material -> procedural heightmap + macro albedo + valid mask + meta.json. Used as a procedural source or as the procedural side of a hybrid seam-integration.",
+      "required_if": "source.type == 'procedural' or source.type == 'hybrid'",
+      "inputs": {
+        "--material-id": "source.material_id (or source.procedural.material_id for hybrid)",
+        "--out": "output.bundle_dir (or computed sub-dir for hybrid)",
+        "--size": "source.size_px (or source.procedural.size_px) as 'W,H'",
+        "--world-size-m": "source.world_size_m (or source.procedural.world_size_m) as 'W,H'",
+        "--elev-min-m": "source.elev_min_m (or source.procedural.elev_min_m)",
+        "--elev-range-m": "source.elev_range_m (or source.procedural.elev_range_m)",
+        "--seed": "source.seed (or source.procedural.seed)",
+        "--name": "id (with a human-readable suffix)"
+      },
+      "outputs": [
+        "heightmap.png",
+        "meta.json",
+        "layers/render_albedo.png",
+        "layers/source_valid_mask.png"
+      ],
+      "prerequisites": ["PIL", "numpy"],
+      "wall_time_estimate_sec": 1
+    },
+
+    {
+      "id": "build_seam_integration",
+      "script": "world3/pipeline/build_terrain_seam_integration_proof.py",
+      "description": "Hybrid only. Joins a real source crop to a procedural neighbor through a seam-integration band. Inputs are two existing bundles (real + procedural).",
+      "required_if": "source.type == 'hybrid'",
+      "inputs": {
+        "real source bundle": "source.real.bundle_path",
+        "procedural source bundle": "output of build_procedural_neighbor",
+        "seam parameters": "source.seam.{overlap_px, height_feather_px, color_feather_px, macro_band_mode}"
+      },
+      "outputs": [
+        "source_macro_albedo.png",
+        "source_macro_valid_mask.png",
+        "seam_integration_mask.png",
+        "manifest.json"
+      ],
+      "prerequisites": ["PIL", "numpy"],
+      "wall_time_estimate_sec": 5
+    },
+
+    {
+      "id": "build_runtime_image_cache",
+      "script": "world3/pipeline/build_runtime_image_cache.py",
+      "description": "Build export-safe runtime image caches for Godot CPU/GPU terrain inputs. Required for any bundle to be loadable in walk mode.",
+      "required_if": "world_type.view_modes contains 'walk'",
+      "inputs": {
+        "bundle_dir": "output.bundle_dir"
+      },
+      "outputs": [
+        "runtime_cache/<computed paths>"
+      ],
+      "prerequisites": ["PIL", "numpy"],
+      "wall_time_estimate_sec": 10
+    },
+
+    {
+      "id": "deploy_kit_materials",
+      "script": "pipelines/textures/deploy_kit_to_world3.py",
+      "description": "Copy biome kit textures from world/textures/library/ into world3/textures/wgv3/ and emit terrain_blend_<kit>.tres. Per-mode variants (walk/iso/topdown) handled by emit_per_mode_materials.py.",
+      "required_if": "world_type.biome_kit exists and kit's .tres files are stale or missing",
+      "inputs": {
+        "kit": "world_type.biome_kit"
+      },
+      "outputs": [
+        "world3/textures/wgv3/<kit>_<slot>/<maps>.png",
+        "world3/textures/terrain_blend_<kit>.tres"
+      ],
+      "prerequisites": ["PIL"],
+      "wall_time_estimate_sec": 30
+    },
+
+    {
+      "id": "emit_per_mode_materials",
+      "script": "pipelines/textures/emit_per_mode_materials.py",
+      "description": "Emit per-mode terrain_blend_<kit>_<mode>.tres for each (kit, view_mode) pair.",
+      "required_if": "world_type.view_modes has more than one entry",
+      "inputs": {
+        "kits": "world_type.biome_kit",
+        "modes": "world_type.view_modes"
+      },
+      "outputs": [
+        "world3/textures/terrain_blend_<kit>_<mode>.tres"
+      ],
+      "prerequisites": [],
+      "wall_time_estimate_sec": 5
+    },
+
+    {
+      "id": "render_captures_walk",
+      "script": "world3/pipeline/run_orchestrator_capture.py",
+      "description": "Render walk-mode captures (close + medium) via OrchestratorCaptureDriver.gd. Writes user://orchestrator_capture_request.json then invokes Godot with the parameterized driver scene.",
+      "required_if": "options.render_captures and 'walk' in world_type.view_modes",
+      "inputs": {
+        "--bundle-dir": "output.bundle_dir",
+        "--material": "world_type.terrain_material (computed)",
+        "--mode": "close (then medium in a second invocation)",
+        "--output": "world3/docs/captures/review/<id>_walk_<mode>.png",
+        "--macro-albedo": "<bundle>/layers/render_albedo.png (if exists)",
+        "--macro-mask": "<bundle>/layers/source_valid_mask.png (if exists)"
+      },
+      "outputs": [
+        "world3/docs/captures/review/<id>_walk_close.png",
+        "world3/docs/captures/review/<id>_walk_medium.png"
+      ],
+      "prerequisites": ["Godot 4.5 regular binary at C:/Godot/Godot_v4.5-stable_win64.exe (not mono)"],
+      "wall_time_estimate_sec": 30
+    },
+
+    {
+      "id": "render_captures_iso",
+      "script": "world3/pipeline/run_orchestrator_capture.py",
+      "description": "Render iso-mode capture via OrchestratorCaptureDriver.gd.",
+      "required_if": "options.render_captures and 'iso' in world_type.view_modes",
+      "inputs": {
+        "--bundle-dir": "output.bundle_dir",
+        "--material": "world_type.terrain_material (computed)",
+        "--mode": "iso",
+        "--output": "world3/docs/captures/review/<id>_iso.png"
+      },
+      "outputs": [
+        "world3/docs/captures/review/<id>_iso.png"
+      ],
+      "prerequisites": ["Godot 4.5 regular binary at C:/Godot/Godot_v4.5-stable_win64.exe (not mono)"],
+      "wall_time_estimate_sec": 15
+    },
+
+    {
+      "id": "render_captures_topdown",
+      "script": "world3/pipeline/run_orchestrator_capture.py",
+      "description": "Render topdown-mode capture via OrchestratorCaptureDriver.gd.",
+      "required_if": "options.render_captures and 'topdown' in world_type.view_modes",
+      "inputs": {
+        "--bundle-dir": "output.bundle_dir",
+        "--material": "world_type.terrain_material (computed)",
+        "--mode": "topdown",
+        "--output": "world3/docs/captures/review/<id>_topdown.png"
+      },
+      "outputs": [
+        "world3/docs/captures/review/<id>_topdown.png"
+      ],
+      "prerequisites": ["Godot 4.5 regular binary at C:/Godot/Godot_v4.5-stable_win64.exe (not mono)"],
+      "wall_time_estimate_sec": 15
+    },
+
+    {
+      "id": "register_promotion_candidate",
+      "script": "world3/pipeline/audit_production_promotion_candidates.py (extend)",
+      "description": "Register the bundle in world3/jobs/production_promotion_candidates.json with promotion_state='accepted_workflow' and per-band 'not_reviewed'. Operator/user advances states after review.",
+      "required_if": "options.promote_to_gate",
+      "inputs": {
+        "id": "id",
+        "bundle_dir": "output.bundle_dir",
+        "captures": "outputs of render_captures_* stages"
+      },
+      "outputs": [
+        "world3/jobs/production_promotion_candidates.json (updated)"
+      ],
+      "prerequisites": [],
+      "wall_time_estimate_sec": 2
+    }
+  ],
+
+  "stage_dependencies": [
+    {"after": "build_real_master_stack",   "before": "build_runtime_image_cache"},
+    {"after": "build_real_heightmap_only", "before": "build_runtime_image_cache"},
+    {"after": "build_procedural_neighbor", "before": "build_runtime_image_cache"},
+    {"after": "build_procedural_neighbor", "before": "build_seam_integration"},
+    {"after": "build_seam_integration",    "before": "build_runtime_image_cache"},
+    {"after": "deploy_kit_materials",      "before": "emit_per_mode_materials"},
+    {"after": "build_runtime_image_cache", "before": "render_captures_walk"},
+    {"after": "build_runtime_image_cache", "before": "render_captures_iso"},
+    {"after": "build_runtime_image_cache", "before": "render_captures_topdown"},
+    {"after": "emit_per_mode_materials",   "before": "render_captures_walk"},
+    {"after": "emit_per_mode_materials",   "before": "render_captures_iso"},
+    {"after": "emit_per_mode_materials",   "before": "render_captures_topdown"},
+    {"after": "render_captures_walk",      "before": "register_promotion_candidate"},
+    {"after": "render_captures_iso",       "before": "register_promotion_candidate"},
+    {"after": "render_captures_topdown",   "before": "register_promotion_candidate"}
+  ]
+}

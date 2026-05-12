@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "run_id": "gloss_mountain_textured_master_e1_example_20260511T142410Z",
+  "request_id": "gloss_mountain_textured_master_e1_example",
+  "request_path": "D:\\assets\\world3\\jobs\\examples\\gloss_real.json",
+  "request": {
+    "schema_version": 1,
+    "id": "gloss_mountain_textured_master_e1_example",
+    "description": "Example real-source request that reproduces the existing Gloss Mountain Textured Master Stack. Provenance matches world3/opentopo/processed/master_stacks/gloss_mountain_textured_master/meta.json. Used as Phase E.1 schema validation evidence.",
+    "source": {
+      "type": "real",
+      "dem": "world3/opentopo/raw/dataspace/Gloss_Mountain_2021/Gloss_Mountain_DEM.tif",
+      "orthophoto": "world3/opentopo/raw/dataspace/Gloss_Mountain_2021/Gloss_Mountain_Orthomosaic.tif",
+      "crop": {
+        "to_valid_dem": true,
+        "margin_px": 16
+      },
+      "review_max_dim": 8192
+    },
+    "world_type": {
+      "biome_kit": "desert",
+      "style_pack": "photoreal",
+      "view_modes": [
+        "walk",
+        "iso",
+        "topdown"
+      ]
+    },
+    "options": {
+      "render_captures": true,
+      "promote_to_gate": false
+    },
+    "output": {
+      "bundle_dir": "world3/opentopo/processed/master_stacks/gloss_mountain_textured_master_e1_example",
+      "overwrite": false
+    },
+    "__request_path__": "world3\\jobs\\examples\\gloss_real.json"
+  },
+  "started_at": "2026-05-11T14:19:21.868564+00:00",
+  "completed_at": "2026-05-11T14:24:10.724233+00:00",
+  "ok": true,
+  "stages": [
+    {
+      "id": "build_real_master_stack",
+      "script": "world3/pipeline/build_opentopo_textured_master_stack.py",
+      "started_at": "2026-05-11T14:19:21.868564+00:00",
+      "args": [
+        "--dem",
+        "D:\\assets\\world3\\opentopo\\raw\\dataspace\\Gloss_Mountain_2021\\Gloss_Mountain_DEM.tif",
+        "--orthophoto",
+        "D:\\assets\\world3\\opentopo\\raw\\dataspace\\Gloss_Mountain_2021\\Gloss_Mountain_Orthomosaic.tif",
+        "--output-dir",
+        "D:\\assets\\world3\\opentopo\\processed\\master_stacks\\gloss_mountain_textured_master_e1_example",
+        "--name",
+        "Example real-source request that reproduces the existing Gloss Mountain Textured Master Stack. Provenance matches world3/opentopo/processed/master_stacks/gloss_mountain_textured_master/meta.json. Used as Phase E.1 schema validation evidence.",
+        "--material",
+        "real_desert_orthophoto",
+        "--review-max-dim",
+        "8192",
+        "--fill-distance-px",
+        "64.0",
+        "--crop-to-valid-dem",
+        "--crop-margin-px",
+        "16"
+      ],
+      "exit_code": 0,
+      "wall_time_sec": 287.6,
+      "stdout_tail": [
+        "OK D:\\assets\\world3\\opentopo\\processed\\master_stacks\\gloss_mountain_textured_master_e1_example",
+        "review 4718x8192, world 619.4 x 1075.4 m"
+      ],
+      "stderr_tail": [
+        "D:\\assets\\world3\\pipeline\\build_opentopo_textured_master_stack.py:132: NodataShadowWarning: The dataset's nodata attribute is shadowing the alpha band. All masks will be determined by the nodata attribute",
+        "  raw = src.read("
+      ],
+      "status": "ok",
+      "completed_at": "2026-05-11T14:24:09.467152+00:00"
+    },
+    {
+      "id": "build_runtime_image_cache",
+      "script": "world3/pipeline/build_runtime_image_cache.py",
+      "started_at": "2026-05-11T14:24:09.467152+00:00",
+      "args": [
+        "--height-source",
+        "D:\\assets\\world3\\opentopo\\processed\\master_stacks\\gloss_mountain_textured_master_e1_example\\heightmap.png",
+        "--splat-source",
+        "D:\\assets\\world3\\textures\\m4_splat\\alpine_height_slope_weights_rgba.png",
+        "--out-dir",
+        "D:\\assets\\world3\\opentopo\\processed\\master_stacks\\gloss_mountain_textured_master_e1_example\\runtime_cache"
+      ],
+      "exit_code": 0,
+      "wall_time_sec": 1.26,
+      "stdout_tail": [
+        "wrote runtime caches under D:\\assets\\world3\\opentopo\\processed\\master_stacks\\gloss_mountain_textured_master_e1_example\\runtime_cache"
+      ],
+      "stderr_tail": [],
+      "status": "ok",
+      "completed_at": "2026-05-11T14:24:10.724233+00:00"
+    }
+  ],
+  "dry_run": false
+}

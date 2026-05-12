@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "kind": "organic_repair_candidate",
+  "source_material_id": "grassland_grass",
+  "candidate_id": "grassland_grass_repair_calm",
+  "source_albedo": "world3/textures/wgv3/grassland_grass/albedo.png",
+  "candidate_dir": "world3/textures/wgv3_repair/grassland_grass_repair_calm",
+  "sheet": "world3/docs/captures/visual_remediation/grassland_grass_repair_calm_before_after.png",
+  "metrics_before": {
+    "high_frequency_energy": 0.061187,
+    "gradient_p95": 0.178127,
+    "green_dominance": 0.0,
+    "saturation_mean": 0.528222,
+    "noise_score": 0.093508
+  },
+  "metrics_after": {
+    "high_frequency_energy": 0.002578,
+    "gradient_p95": 0.006705,
+    "green_dominance": 0.0,
+    "saturation_mean": 0.362513,
+    "noise_score": 0.003512
+  },
+  "target": "reduce_object_silhouette_noise_before_terrain_context_review"
+}

@@ -4,10 +4,38 @@ Generate a tileable PBR texture set from a prompt. Output goes to
 `world/textures/library/<id>/`. End-to-end runtime: a few minutes per
 texture on the RTX 5090.
 
-This is the working contract after the 2026-05-07 fix pass. The
-defects that made the previous version produce false-pass textures
-are fixed and verified — see `world3/docs/TEXTURE_PIPELINE_FIX_PLAN.md`
-for the audit and what changed.
+This is the working contract after the 2026-05-07 fix pass + 2026-05-11
+preflight pass. The 2026-05-07 defects that made the previous version
+produce false-pass textures are fixed and verified — historical audit
+at `world3/docs/_archived_2026_05_11/retired_planning/TEXTURE_PIPELINE_FIX_PLAN.md`.
+
+## Python environment
+
+The orchestrator (`aaa_texture.py`) runs on **system Python 3.12** with
+`numpy`, `PIL`, and `requests`. Heavy lifting happens in ComfyUI (separate
+process) and the StableMaterials backend (`animators/mesa-env/venv`).
+
+There is **no per-lane venv** at `pipelines/textures/.venv`; this is by
+design — the orchestrator is a thin HTTP client that dispatches work to
+ComfyUI and to the mesa-env venv. The deps it actually needs are small
+and standard.
+
+If your system Python lacks one of the three modules above, install it
+with `pip install numpy Pillow requests`. The preflight script (next
+section) will surface this clearly.
+
+## Preflight
+
+Run preflight first to catch missing prereqs before queuing work:
+
+```bash
+python pipelines/textures/preflight.py
+```
+
+Checks: system Python modules, ComfyUI server health, FLUX 2 klein-4B
+model file on disk, StableMaterials backend (mesa-env venv), CHORD
+optional backend (if installed), ComfyUI-GGUF custom node. Exit 0 if all
+green, exit 1 with specific repair instructions if anything is missing.
 
 ## Run
 

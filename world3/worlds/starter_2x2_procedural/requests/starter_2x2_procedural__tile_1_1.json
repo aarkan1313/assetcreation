@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "starter_2x2_procedural__tile_1_1",
+  "description": "Phase F.3 emitted from plan 'starter_2x2_procedural' tile (1, 1) biome 'tundra'",
+  "source": {
+    "type": "procedural",
+    "material_id": "tundra_moss",
+    "size_px": [
+      512,
+      1024
+    ],
+    "world_size_m": [
+      256.0,
+      256.0
+    ],
+    "elev_min_m": 200.0,
+    "elev_range_m": 24.0,
+    "seed": 692862317,
+    "neighbor_west_edge": "world3/worlds/starter_2x2_procedural/bundles/starter_2x2_procedural__tile_0_1/edges/east_edge.json",
+    "neighbor_north_edge": "world3/worlds/starter_2x2_procedural/bundles/starter_2x2_procedural__tile_1_0/edges/south_edge.json",
+    "this_biome": "tundra"
+  },
+  "world_type": {
+    "biome_kit": "tundra",
+    "style_pack": "photoreal",
+    "view_modes": [
+      "iso"
+    ]
+  },
+  "options": {
+    "render_captures": false,
+    "promote_to_gate": false
+  },
+  "output": {
+    "bundle_dir": "world3/worlds/starter_2x2_procedural/bundles/starter_2x2_procedural__tile_1_1",
+    "overwrite": true
+  }
+}

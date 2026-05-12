@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/MultiBundleSweepDriver.gd" id="driver"]
+
+[node name="F36MultiBundleSweep5Biome" type="Node3D"]
+script = ExtResource("driver")
+world_map_path = "res://worlds/starter_5biome_procedural/world_map.json"
+sweep_duration_sec = 6.0
+start_world = Vector3(256, 0, 256)
+end_world = Vector3(1024, 0, 1024)
+camera_height = 360.0
+camera_pitch_deg = -55.0
+auto_quit_after_sweep = false

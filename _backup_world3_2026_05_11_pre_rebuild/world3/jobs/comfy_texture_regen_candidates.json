@@ -1,0 +1,372 @@
+{
+  "version": 1,
+  "updated": "2026-05-08",
+  "purpose": "M8 regeneration queue for ComfyUI/aaa_texture materials that block terrain visual closure.",
+  "operating_policy": [
+    "OpenTopo and ComfyUI are peer texture-source lanes, not alternatives.",
+    "Regenerate priority organic blockers through prompt and variant control before relying on deterministic filtering.",
+    "Treat regenerated outputs as candidates until Godot terrain-context close/mid/far captures pass.",
+    "Use albedo-only or low-strength detail first; promote normal/detail maps only after terrain review."
+  ],
+  "shared_gate": [
+    "aaa_texture.py gate passes at the requested quality preset",
+    "2x2 tile sheet has no object-like repetition or visible seam",
+    "Blender plane and sphere previews read as material, not objects",
+    "M6 source-material noise audit improves against the current blocker",
+    "source-stack runtime review passes close, mid, and topdown/iso context"
+  ],
+  "command_templates": {
+    "generate": "python pipelines/textures/aaa_texture.py --prompt \"<prompt>\" --id <regen_id> --category Ground --quality strict --pbr-backend sm",
+    "inventory": "python world3/pipeline/build_comfy_material_candidate_catalog.py"
+  },
+  "candidates": [
+    {
+      "material_id": "grassland_grass",
+      "current_source_asset_id": "wgv3_gl_tall_grass",
+      "regen_id": "m8_grassland_grass_calm_v1",
+      "category": "Ground",
+      "quality": "strict",
+      "pbr_backend": "sm",
+      "failure_mode": "object-like dry grass blades and noisy yellow clumps dominate close views",
+      "prompt": "top-down orthographic photogrammetry texture of dry savanna hardpan soil with sparse flattened straw fibers and chopped dry grass fragments, continuous low ground material, mostly tan soil and muted straw, even overcast lighting, seamless PBR terrain texture, no green grass blades, no tufts, no radial clumps, no living plants, no perspective, no shadows",
+      "source_stack_role": "albedo candidate first; normal/detail disabled until close/mid/far terrain review passes",
+      "latest_tested_candidate": {
+        "id": "m8_grassland_grass_calm_v3",
+        "status": "terrain_context_candidate_pass_not_promoted",
+        "settings": {
+          "variants": 12,
+          "heal_strength": 0.45,
+          "seed_base": 44,
+          "pbr_backend": "sm"
+        },
+        "qa": {
+          "grade": "A",
+          "edge_mse": 0.0025,
+          "junction_ratio": 0.98,
+          "periodic_locality": 13.7,
+          "sanity_ok": true
+        },
+        "noise_audit": {
+          "current_material_noise_score": 0.093508,
+          "candidate_noise_score": 0.049726,
+          "current_flags": [
+            "high_frequency_noise",
+            "sharp_micro_contrast"
+          ],
+          "candidate_flags": []
+        },
+        "terrain_context_review": {
+          "doc": "world3/docs/M8_COMFYUI_TERRAIN_CONTEXT_REVIEW_2026_05_08.md",
+          "normal_source_stack_result": "safe_no_visible_regression_source_macro_dominant",
+          "detail_stress_result": "better_than_current_less_tufted_still_pale_hazy",
+          "promotion": "sidecar_candidate_only"
+        },
+        "m14_runtime_trial": {
+          "status": "m14_trial_safe_close_conditional",
+          "doc": "world3/docs/M14_GRASSLAND_GRASS_RUNTIME_TRIAL_2026_05_10.md",
+          "contact_sheet": "world3/docs/captures/m14/m14_grassland_comfy_v3_runtime_trial_contact_sheet.png",
+          "captures": {
+            "current_close": "world3/docs/captures/m14/m14_grassland_current_close.png",
+            "candidate_close": "world3/docs/captures/m14/m14_grassland_comfy_v3_close.png",
+            "current_medium": "world3/docs/captures/m14/m14_grassland_current_medium.png",
+            "candidate_medium": "world3/docs/captures/m14/m14_grassland_comfy_v3_medium.png",
+            "current_iso": "world3/docs/captures/m14/m14_grassland_current_iso.png",
+            "candidate_iso": "world3/docs/captures/m14/m14_grassland_comfy_v3_iso.png",
+            "current_topdown": "world3/docs/captures/m14/m14_grassland_current_topdown.png",
+            "candidate_topdown": "world3/docs/captures/m14/m14_grassland_comfy_v3_topdown.png"
+          },
+          "band_status": {
+            "close": "conditional",
+            "medium": "pass",
+            "iso": "pass",
+            "topdown": "pass"
+          },
+          "verdict": "safe sidecar evidence; not a close-play production promotion"
+        },
+        "notes": "Moved away from grass-cover wording toward hardpan soil plus flattened straw fragments. Passed candidate terrain-context gate, but do not promote until M4/M7 rerender trials pass without washout."
+      }
+    },
+    {
+      "material_id": "grass",
+      "current_source_asset_id": "wgv3_grass",
+      "regen_id": "m8_grass_calm_v5",
+      "category": "Ground",
+      "quality": "strict",
+      "pbr_backend": "sm",
+      "failure_mode": "green organic speckle and small clover/object repetition reads too busy at walk scale",
+      "prompt": "top-down orthographic photogrammetry texture of dark muted vegetated loam carpet, extremely fine short green-brown ground nap blended into soil, continuous small-scale granular terrain material, low contrast, even overcast lighting, seamless PBR terrain texture, no soil holes, no sod panels, no pasture lanes, no rectangular patches, no bright green islands, no dark landmark blotches, no colored patches, no clover leaves, no flowers, no individual plant objects, no tufts, no radial clumps, no perspective, no shadows",
+      "source_stack_role": "albedo candidate first; normal/detail disabled until close/mid/far terrain review passes",
+      "latest_tested_candidate": {
+        "status": "visual_rejected_no_sidecar_stage",
+        "review_doc": "world3/docs/M8_GRASS_REGEN_ATTEMPTS_REVIEW_2026_05_08.md",
+        "contact_sheet": "world3/docs/captures/visual_remediation/m8_grass_regen_attempts_contact_sheet.png",
+        "visual_veto_audit": "world3/docs/M8_GRASS_VISUAL_VETO_AUDIT.md",
+        "attempts": [
+          {
+            "id": "m8_grass_calm_v1",
+            "qa": {
+              "grade": "A",
+              "edge_mse": 0.0003,
+              "junction_ratio": 1.05,
+              "periodic_locality": 10.0,
+              "sanity_ok": true
+            },
+            "visual_result": "best_direction_darker_dirtier_but_has_landmark_blotches_and_colored_patches",
+            "verdict": "reject_for_staging_keep_as_direction_reference"
+          },
+          {
+            "id": "m8_grass_calm_v2",
+            "qa": {
+              "grade": "A",
+              "edge_mse": 0.0003,
+              "junction_ratio": 0.94,
+              "periodic_locality": 14.0,
+              "sanity_ok": true
+            },
+            "visual_result": "pale_sod_panel_box_shapes_and_washout",
+            "verdict": "reject"
+          },
+          {
+            "id": "m8_grass_calm_v3",
+            "qa": {
+              "grade": "A",
+              "edge_mse": 0.0014,
+              "junction_ratio": 1.01,
+              "periodic_locality": 16.4,
+              "sanity_ok": true
+            },
+            "visual_result": "bright_green_patch_islands_and_repeated_dark_landmarks",
+            "verdict": "reject"
+          },
+          {
+            "id": "m8_grass_calm_v4_anchor_v1",
+            "qa": {
+              "stage": "albedo_only_reference_anchor_test"
+            },
+            "visual_result": "individual_plant_objects",
+            "verdict": "reject_do_not_pbr"
+          }
+        ],
+        "workflow_lesson": "Strict seam/PBR QA is necessary but not sufficient. Organic ComfyUI materials need visual landmark/object veto before sidecar staging."
+        ,
+        "m14_prompt_bakeoff_review": {
+          "status": "methodology_rework_layered_substrate",
+          "doc": "world3/docs/M14_GRASS_PROMPT_BAKEOFF_REVIEW_2026_05_10.md",
+          "attempts": [
+            {
+              "id": "m14_grass_rework_v1",
+              "grid": "world3/docs/captures/m14/m14_grass_rework_v1_grid_final.png",
+              "summary": "world3/docs/captures/m14/m14_grass_rework_v1_summary.json",
+              "verdict": "FLUX is useful sparse vegetated dirt, Aura is forest/moss sidecar, SD is rejected for visible seams."
+            },
+            {
+              "id": "m14_grass_rework_v2",
+              "grid": "world3/docs/captures/m14/m14_grass_rework_v2_grid_final.png",
+              "summary": "world3/docs/captures/m14/m14_grass_rework_v2_summary.json",
+              "verdict": "FLUX overcorrects into clumped plant objects, Aura is too dark, SD is lawn-like but saturated and seam-failed."
+            },
+            {
+              "id": "m14_grass_substrate_v3",
+              "grid": "world3/docs/captures/m14/m14_grass_substrate_v3_grid_final.png",
+              "summary": "world3/docs/captures/m14/m14_grass_substrate_v3_summary.json",
+              "verdict": "FLUX is useful dry sparse groundcover dirt, Aura is a damp forest/moss sidecar direction, SD is rejected as cracked dry mud."
+            }
+          ],
+          "next_action": "Keep M14 grass work limited to substrate/detail candidates; let M15 scatter/features carry actual blades, clumps, dry stems, and vegetation identity."
+        }
+      }
+    },
+    {
+      "material_id": "temperate_forest_grass",
+      "current_source_asset_id": "wgv3_tf_leaf_litter",
+      "regen_id": "m8_temperate_forest_floor_calm_v1",
+      "category": "Ground",
+      "quality": "strict",
+      "pbr_backend": "sm",
+      "failure_mode": "leaf-litter objects and high contrast fragments create visual noise in close terrain",
+      "prompt": "top-down orthographic macro photograph of damp temperate forest floor, decomposed brown leaf mulch blended with dark loam, fine granular organic matter, muted natural color, even overcast lighting, seamless PBR terrain texture, no whole fresh leaves, no branches, no green plants, no strong outlines, no perspective, no shadows",
+      "source_stack_role": "albedo candidate first; normal/detail disabled until close/mid/far terrain review passes",
+      "latest_tested_candidate": {
+        "status": "m14_sidecar_runtime_pass_conditional",
+        "m14_prompt_bakeoff_review": {
+          "status": "m14_sidecar_runtime_pass_conditional",
+          "doc": "world3/docs/M14_TEMPERATE_FOREST_FLOOR_BAKEOFF_REVIEW_2026_05_10.md",
+          "attempts": [
+            {
+              "id": "m14_temperate_forest_floor_v1",
+              "grid": "world3/docs/captures/m14/m14_temperate_forest_floor_v1_grid_final.png",
+              "summary": "world3/docs/captures/m14/m14_temperate_forest_floor_v1_summary.json",
+              "verdict": "FLUX is decorative repeated leaves, Aura is plausible but too dark/object-like, SD has loose leaf objects."
+            },
+            {
+              "id": "m14_temperate_forest_duff_v2",
+              "grid": "world3/docs/captures/m14/m14_temperate_forest_duff_v2_grid_final.png",
+              "summary": "world3/docs/captures/m14/m14_temperate_forest_duff_v2_summary.json",
+              "verdict": "Aura improves seam quality but retains visible leaf/object landmarks; FLUX and SD are rejected."
+            },
+            {
+              "id": "m14_temperate_forest_humus_v3",
+              "grid": "world3/docs/captures/m14/m14_temperate_forest_humus_v3_grid_final.png",
+              "summary": "world3/docs/captures/m14/m14_temperate_forest_humus_v3_summary.json",
+              "verdict": "AuraFlow is a sidecar-worthy dark humus substrate; FLUX is a dry straw-flecked loam reference; SD is rejected."
+            }
+          ],
+          "runtime_staging": {
+            "material_id": "m14_temperate_forest_humus_v3_auraflow",
+            "candidate_catalog": "world3/materials/catalog_comfy_candidates.json",
+            "source_stack_material": "world3/textures/wgv3/terrain_source_stack_gloss_temperate_forest_humus_v3_source_stack.tres",
+            "review_scene": "world3/scenes/review/source_stack_gloss_temperate_forest_humus_v3_tour.tscn",
+            "smoke_captures": [
+              "world3/docs/captures/m14/m14_temperate_forest_humus_v3_gloss_tour_smoke.png",
+              "world3/docs/captures/m14/m14_temperate_forest_humus_v3_gloss_tour_close_smoke.png",
+              "world3/docs/captures/m14/m14_temperate_forest_humus_v3_gloss_tour_3d_smoke.png"
+            ]
+          },
+          "runtime_live_review": {
+            "date": "2026-05-10",
+            "scene": "world3/scenes/review/source_stack_gloss_temperate_forest_humus_v3_tour.tscn",
+            "verdict": "sidecar_runtime_pass_conditional",
+            "user_read": "looked pretty great",
+            "limits": [
+              "review source is clean Gloss terrain, not semantically a forest region",
+              "candidate is a substrate/detail sidecar, not complete forest-floor dressing",
+              "production promotion still requires true forest-source review and M15 scatter/features"
+            ]
+          },
+          "next_action": "Keep as accepted M14 sidecar evidence; do not M13-promote until true forest-source review plus M15 scatter/features exist. Move visible organic identity to M15 scatter/decal/features."
+        }
+      }
+    },
+    {
+      "material_id": "tundra_moss",
+      "current_source_asset_id": "tundra_moss",
+      "regen_id": "m8_tundra_moss_calm_v1",
+      "category": "Ground",
+      "quality": "strict",
+      "pbr_backend": "sm",
+      "failure_mode": "moss detail is too high-frequency and can turn into colored speckle in runtime",
+      "prompt": "top-down orthographic macro photograph of low tundra moss carpet with exposed dark gritty soil and tiny stone flecks, muted olive and brown tones, soft continuous cushion texture, even overcast lighting, seamless PBR terrain texture, no tall plants, no bright spots, no flower heads, no perspective, no shadows",
+      "source_stack_role": "albedo candidate first; normal/detail disabled until close/mid/far terrain review passes",
+      "latest_tested_candidate": {
+        "status": "m14_sidecar_runtime_smoke_pass_conditional",
+        "m14_prompt_bakeoff_review": {
+          "status": "m14_sidecar_runtime_smoke_pass_conditional",
+          "doc": "world3/docs/M14_TUNDRA_MOSS_BAKEOFF_REVIEW_2026_05_10.md",
+          "attempts": [
+            {
+              "id": "m14_tundra_moss_substrate_v1",
+              "grid": "world3/docs/captures/m14/m14_tundra_moss_substrate_v1_grid_final.png",
+              "summary": "world3/docs/captures/m14/m14_tundra_moss_substrate_v1_summary.json",
+              "verdict": "AuraFlow is continuous but too dark; FLUX and SD produce object-like moss/cushion blobs."
+            },
+            {
+              "id": "m14_tundra_moss_substrate_v2",
+              "grid": "world3/docs/captures/m14/m14_tundra_moss_substrate_v2_grid_final.png",
+              "summary": "world3/docs/captures/m14/m14_tundra_moss_substrate_v2_summary.json",
+              "verdict": "Lighter prompt reintroduces plant clumps and object landmarks; no promotion."
+            },
+            {
+              "id": "m14_tundra_moss_peatfelt_v3",
+              "grid": "world3/docs/captures/m14/m14_tundra_moss_peatfelt_v3_grid_final.png",
+              "summary": "world3/docs/captures/m14/m14_tundra_moss_peatfelt_v3_summary.json",
+              "verdict": "AuraFlow was initially plausible by seam score but live review rejected it as effectively black; FLUX is scatter reference only; SD is rejected."
+            },
+            {
+              "id": "m14_tundra_moss_flux10",
+              "grid": "world3/docs/captures/m14/m14_tundra_moss_flux10_contact_sheet_final.png",
+              "summary": "world3/docs/captures/m14/m14_tundra_moss_flux10_summary.json",
+              "verdict": "Fast FLUX-only sweep found brighter candidates; 202605192 is the safest moss-colored fallback, while 202605198 was rejected after 2x2 repeat review."
+            },
+            {
+              "id": "m14_tundra_moss_flux50",
+              "grid": "world3/docs/captures/m14/m14_tundra_moss_flux50_shortlist6_single_2x2.png",
+              "summary": "world3/docs/captures/m14/m14_tundra_moss_flux50_shortlist6_summary.json",
+              "verdict": "50-candidate FLUX family sweep prefers B-family pale peat-loam substrate; b8/202605207, b4/202605203, and b5/202605204 are the current sidecar shortlist pending live user review."
+            }
+          ],
+          "selected_shortlist": [
+            "m14_tundra_moss_flux50_b_202605207",
+            "m14_tundra_moss_flux50_b_202605203",
+            "m14_tundra_moss_flux50_b_202605204"
+          ],
+          "runtime_staging": {
+            "material_id": "m14_tundra_moss_flux50_b_202605207",
+            "candidate_catalog": "world3/materials/catalog_comfy_candidates.json",
+            "source_stack_material": "world3/textures/wgv3/terrain_source_stack_gloss_tundra_moss_flux50_b8_source_stack.tres",
+            "review_scene": "world3/scenes/review/source_stack_gloss_tundra_moss_flux50_b8_tour.tscn",
+            "doc": "world3/docs/M14_TUNDRA_MOSS_RUNTIME_SIDECAR_REVIEW_2026_05_10.md",
+            "captures": {
+              "topdown": "world3/docs/captures/m14/m14_tundra_moss_flux50_b8_gloss_topdown.png",
+              "iso": "world3/docs/captures/m14/m14_tundra_moss_flux50_b8_gloss_iso.png",
+              "medium_3d": "world3/docs/captures/m14/m14_tundra_moss_flux50_b8_gloss_3d.png",
+              "close": "world3/docs/captures/m14/m14_tundra_moss_flux50_b8_gloss_close.png",
+              "contact_sheet": "world3/docs/captures/m14/m14_tundra_moss_flux50_b8_gloss_contact_sheet.png"
+            },
+            "status": "conditional_smoke_pass_gloss_source",
+            "limits": [
+              "Gloss Mountain is clean real-source runtime context, not true tundra biome context",
+              "M15 scatter/features still required for tundra identity"
+            ]
+          },
+          "next_action": "Keep as accepted M14 sidecar evidence; do not M13-promote until true tundra/alpine source-context review plus M15 scatter/features exist. Move visible tundra identity to M15 scatter/decal/features."
+        }
+      }
+    },
+    {
+      "material_id": "tundra_lichen",
+      "current_source_asset_id": "tundra_lichen",
+      "regen_id": "m8_tundra_lichen_calm_v1",
+      "category": "Ground",
+      "quality": "strict",
+      "pbr_backend": "sm",
+      "failure_mode": "lichen spots and pale contrast can repeat as visible object clusters",
+      "prompt": "top-down orthographic macro photograph of pale tundra lichen crust blended into gritty dark soil and small stone chips, muted sage gray and off-white tones, irregular continuous crust texture, even overcast lighting, seamless PBR terrain texture, no circular spot clusters, no plant stems, no bright isolated blobs, no perspective, no shadows",
+      "source_stack_role": "albedo candidate first; normal/detail disabled until close/mid/far terrain review passes",
+      "latest_tested_candidate": {
+        "status": "m14_sidecar_runtime_smoke_pass_conditional",
+        "m14_prompt_bakeoff_review": {
+          "status": "m14_sidecar_runtime_smoke_pass_conditional",
+          "doc": "world3/docs/M14_TUNDRA_LICHEN_BAKEOFF_REVIEW_2026_05_10.md",
+          "attempts": [
+            {
+              "id": "m14_tundra_lichen_substrate_v1",
+              "grid": "world3/docs/captures/m14/m14_tundra_lichen_substrate_v1_grid_final.png",
+              "summary": "world3/docs/captures/m14/m14_tundra_lichen_substrate_v1_summary.json",
+              "verdict": "FLUX reads as explicit lichen colonies, AuraFlow loses lichen into gray substrate, and SD makes patterned green blotches. Useful for lane diagnosis, not the selected sidecar."
+            },
+            {
+              "id": "m14_tundra_lichen_biocrust_flux10",
+              "grid": "world3/docs/captures/m14/m14_tundra_lichen_biocrust_flux10_contact_sheet.png",
+              "summary": "world3/docs/captures/m14/m14_tundra_lichen_flux10_shortlist3_summary.json",
+              "verdict": "Fast FLUX-only sweep produced several usable workflow candidates. Candidate 09 / seed 202605259 was selected after user review for clean tiling, usable lichen-on-grit read, and no obvious square/line/blur artifacts."
+            }
+          ],
+          "selected_shortlist": [
+            "m14_tundra_lichen_flux10_09_202605259"
+          ],
+          "runtime_staging": {
+            "material_id": "m14_tundra_lichen_flux10_09_202605259",
+            "candidate_catalog": "world3/materials/catalog_comfy_candidates.json",
+            "source_stack_material": "world3/textures/wgv3/terrain_source_stack_gloss_tundra_lichen_flux10_09_source_stack.tres",
+            "review_scene": "world3/scenes/review/source_stack_gloss_tundra_lichen_flux10_09_tour.tscn",
+            "doc": "world3/docs/M14_TUNDRA_LICHEN_BAKEOFF_REVIEW_2026_05_10.md",
+            "captures": {
+              "topdown": "world3/docs/captures/m14/m14_tundra_lichen_flux10_09_gloss_topdown.png",
+              "iso": "world3/docs/captures/m14/m14_tundra_lichen_flux10_09_gloss_iso.png",
+              "medium_3d": "world3/docs/captures/m14/m14_tundra_lichen_flux10_09_gloss_3d.png",
+              "close": "world3/docs/captures/m14/m14_tundra_lichen_flux10_09_gloss_close.png",
+              "contact_sheet": "world3/docs/captures/m14/m14_tundra_lichen_flux10_09_gloss_contact_sheet.png"
+            },
+            "status": "conditional_smoke_pass_gloss_source",
+            "limits": [
+              "Gloss Mountain is clean real-source runtime context, not a true tundra biome context",
+              "candidate validates the generated-texture sidecar workflow, not final tundra content",
+              "M15 scatter/decal/features should carry larger lichen colonies and biome identity"
+            ]
+          },
+          "next_action": "Keep as accepted M14 sidecar workflow evidence; do not M13-promote until true tundra/alpine source-context review plus M15 scatter/decal features exist."
+        }
+      }
+    }
+  ]
+}

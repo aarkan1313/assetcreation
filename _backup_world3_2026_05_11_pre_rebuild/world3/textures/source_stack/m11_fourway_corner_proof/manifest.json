@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "kind": "m11_fourway_corner_layer_proof",
+  "id": "m11_fourway_corner_proof",
+  "runtime_macro": "res://textures/source_stack/m11_fourway_corner_proof/source_macro_albedo.png",
+  "runtime_source_macro_valid_mask": "res://textures/source_stack/m11_fourway_corner_proof/source_macro_valid_mask.png",
+  "runtime_source_macro_weight_mask": "res://textures/source_stack/m11_fourway_corner_proof/source_macro_weight_mask.png",
+  "runtime_splat_weights": "res://textures/source_stack/m11_fourway_corner_proof/layers/splat_weights_rgba.png",
+  "runtime_material": "res://textures/wgv3/terrain_m11_fourway_corner.tres",
+  "runtime_heightmap": "res://toporeview/m11_fourway_corner_proof/heightmap.png",
+  "runtime_meta": "res://toporeview/m11_fourway_corner_proof/meta.json",
+  "contact_sheet": "res://docs/captures/review/m11_fourway_corner_contact_sheet.png",
+  "layers": {
+    "grassland_domain": "res://textures/source_stack/m11_fourway_corner_proof/layers/grassland_domain.png",
+    "fantasy_lava_domain": "res://textures/source_stack/m11_fourway_corner_proof/layers/fantasy_lava_domain.png",
+    "canyon_domain": "res://textures/source_stack/m11_fourway_corner_proof/layers/canyon_domain.png",
+    "source_scrub_domain": "res://textures/source_stack/m11_fourway_corner_proof/layers/source_scrub_domain.png",
+    "junction_weight": "res://textures/source_stack/m11_fourway_corner_proof/layers/junction_weight.png",
+    "quad_core_weight": "res://textures/source_stack/m11_fourway_corner_proof/layers/quad_core_weight.png",
+    "cross_wash_weight": "res://textures/source_stack/m11_fourway_corner_proof/layers/cross_wash_weight.png",
+    "grassland_weight": "res://textures/source_stack/m11_fourway_corner_proof/layers/grassland_weight.png",
+    "fantasy_lava_weight": "res://textures/source_stack/m11_fourway_corner_proof/layers/fantasy_lava_weight.png",
+    "canyon_rock_weight": "res://textures/source_stack/m11_fourway_corner_proof/layers/canyon_rock_weight.png",
+    "source_scrub_weight": "res://textures/source_stack/m11_fourway_corner_proof/layers/source_scrub_weight.png",
+    "shrub_carryover_mask": "res://textures/source_stack/m11_fourway_corner_proof/layers/shrub_carryover_mask.png",
+    "dry_grass_density_mask": "res://textures/source_stack/m11_fourway_corner_proof/layers/dry_grass_density_mask.png",
+    "soil_exposure_mask": "res://textures/source_stack/m11_fourway_corner_proof/layers/soil_exposure_mask.png",
+    "rock_cluster_mask": "res://textures/source_stack/m11_fourway_corner_proof/layers/rock_cluster_mask.png",
+    "fantasy_crack_mask": "res://textures/source_stack/m11_fourway_corner_proof/layers/fantasy_crack_mask.png",
+    "wash_line_mask": "res://textures/source_stack/m11_fourway_corner_proof/layers/wash_line_mask.png",
+    "no_scatter_mask": "res://textures/source_stack/m11_fourway_corner_proof/layers/no_scatter_mask.png",
+    "splat_weights_rgba": "res://textures/source_stack/m11_fourway_corner_proof/layers/splat_weights_rgba.png"
+  },
+  "metrics": {
+    "height_m": {
+      "min": 409.9164123535156,
+      "max": 463.7407531738281,
+      "range": 53.8243408203125,
+      "junction_gradient_p95_m_per_px": 0.3166424036026001
+    },
+    "junction": {
+      "mean_weight": 0.4292095899581909,
+      "coverage_gt_0_25": 0.6597318649291992,
+      "quad_core_coverage_gt_0_25": 0.11362838745117188,
+      "dominant_domain_min_coverage": 0.16387271881103516
+    },
+    "weights": {
+      "max_sum_error": 2.384185791015625e-07,
+      "grassland_mean": 0.23562932014465332,
+      "fantasy_lava_mean": 0.28003251552581787,
+      "canyon_rock_mean": 0.23038920760154724,
+      "source_scrub_mean": 0.25394895672798157,
+      "macro_guidance_weight_mean": 0.7600743770599365
+    },
+    "feature_masks": {
+      "shrub_carryover_mean": 0.07979920506477356,
+      "dry_grass_density_mean": 0.2394348382949829,
+      "soil_exposure_mean": 0.15056195855140686,
+      "rock_cluster_mean": 0.06200265511870384,
+      "fantasy_crack_mean": 0.0022133197635412216,
+      "wash_line_mean": 0.06773228943347931,
+      "no_scatter_mean": 0.06828146427869797
+    }
+  },
+  "policy": "four_way_corner_macro_guidance_plus_runtime_splat_weights"
+}

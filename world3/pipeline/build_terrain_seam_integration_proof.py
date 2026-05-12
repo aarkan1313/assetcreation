@@ -16,6 +16,11 @@ from typing import Any
 import numpy as np
 from PIL import Image, ImageFilter
 
+try:
+    from scipy import ndimage
+except Exception:  # pragma: no cover - optional speed/quality path
+    ndimage = None
+
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MACRO = ROOT / "textures/source_stack/gloss_scrub_source_stack/source_macro_albedo.png"
@@ -25,6 +30,7 @@ DEFAULT_META = ROOT / "toporeview/gloss_mountain_textured_master/meta.json"
 DEFAULT_TEXTURE_OUT = ROOT / "textures/source_stack/gloss_scrub_seam_integration_proof"
 DEFAULT_TOPO_OUT = ROOT / "toporeview/gloss_mountain_seam_integration_proof"
 DEFAULT_METRICS = ROOT / "docs/captures/review/terrain_seam_integration_gloss_metrics.json"
+LUMA_WEIGHTS = np.array([0.2126, 0.7152, 0.0722], dtype=np.float32)
 
 
 def smoothstep(x: np.ndarray) -> np.ndarray:
@@ -94,6 +100,163 @@ def resize_array(arr: np.ndarray, out_size: tuple[int, int] | None, resampling: 
         return np.asarray(img.resize((out_w, out_h), resampling), dtype=np.float32) / 255.0
     img = Image.fromarray(arr.astype(np.float32), mode=mode)
     return np.asarray(img.resize((out_w, out_h), resampling), dtype=np.float32)
+
+
+def _connected_components(mask: np.ndarray) -> list[tuple[int, int, int, int, int, bool]]:
+    """Return (area, min_x, min_y, max_x, max_y, touches_border) for true islands."""
+    if not mask.any():
+        return []
+
+    if ndimage is not None:
+        labels, count = ndimage.label(mask, structure=np.ones((3, 3), dtype=np.uint8))
+        objects = ndimage.find_objects(labels)
+        h, w = mask.shape
+        comps: list[tuple[int, int, int, int, int, bool]] = []
+        for label_index, slices in enumerate(objects, start=1):
+            if slices is None:
+                continue
+            ys, xs = slices
+            component = labels[slices] == label_index
+            area = int(np.count_nonzero(component))
+            min_y = int(ys.start)
+            max_y = int(ys.stop - 1)
+            min_x = int(xs.start)
+            max_x = int(xs.stop - 1)
+            touches = min_x == 0 or min_y == 0 or max_x == w - 1 or max_y == h - 1
+            comps.append((area, min_x, min_y, max_x, max_y, touches))
+        comps.sort(reverse=True, key=lambda item: item[0])
+        return comps
+
+    h, w = mask.shape
+    seen = np.zeros_like(mask, dtype=bool)
+    comps = []
+    ys, xs = np.nonzero(mask)
+    for y, x in zip(ys, xs):
+        if seen[y, x]:
+            continue
+        stack = [(int(y), int(x))]
+        seen[y, x] = True
+        area = 0
+        min_x = w
+        max_x = 0
+        min_y = h
+        max_y = 0
+        touches = False
+        while stack:
+            cy, cx = stack.pop()
+            area += 1
+            min_x = min(min_x, cx)
+            max_x = max(max_x, cx)
+            min_y = min(min_y, cy)
+            max_y = max(max_y, cy)
+            if cx == 0 or cy == 0 or cx == w - 1 or cy == h - 1:
+                touches = True
+            for ny in range(cy - 1, cy + 2):
+                for nx in range(cx - 1, cx + 2):
+                    if ny == cy and nx == cx:
+                        continue
+                    if 0 <= ny < h and 0 <= nx < w and mask[ny, nx] and not seen[ny, nx]:
+                        seen[ny, nx] = True
+                        stack.append((ny, nx))
+        comps.append((area, min_x, min_y, max_x, max_y, touches))
+    comps.sort(reverse=True, key=lambda item: item[0])
+    return comps
+
+
+def _nearest_fill_rgb(rgb: np.ndarray, repair_mask: np.ndarray) -> np.ndarray:
+    if not repair_mask.any():
+        return rgb
+
+    out = np.array(rgb, copy=True)
+    if ndimage is not None:
+        indices = ndimage.distance_transform_edt(
+            repair_mask,
+            return_distances=False,
+            return_indices=True,
+        )
+        nearest = rgb[tuple(indices)]
+        out[repair_mask] = nearest[repair_mask]
+    else:
+        grown = ~repair_mask
+        for _ in range(max(rgb.shape[:2]) * 2):
+            if grown.all():
+                break
+            next_grown = grown.copy()
+            neighbor_sum = np.zeros_like(out)
+            neighbor_count = np.zeros(repair_mask.shape, dtype=np.float32)
+            for dy in (-1, 0, 1):
+                for dx in (-1, 0, 1):
+                    if dy == 0 and dx == 0:
+                        continue
+                    src_y0 = max(0, -dy)
+                    src_y1 = repair_mask.shape[0] - max(0, dy)
+                    src_x0 = max(0, -dx)
+                    src_x1 = repair_mask.shape[1] - max(0, dx)
+                    dst_y0 = max(0, dy)
+                    dst_y1 = repair_mask.shape[0] - max(0, -dy)
+                    dst_x0 = max(0, dx)
+                    dst_x1 = repair_mask.shape[1] - max(0, -dx)
+                    src_valid = grown[src_y0:src_y1, src_x0:src_x1]
+                    target = (~grown[dst_y0:dst_y1, dst_x0:dst_x1]) & src_valid
+                    if target.any():
+                        dst_sum = neighbor_sum[dst_y0:dst_y1, dst_x0:dst_x1]
+                        dst_count = neighbor_count[dst_y0:dst_y1, dst_x0:dst_x1]
+                        dst_grown = next_grown[dst_y0:dst_y1, dst_x0:dst_x1]
+                        dst_sum[target] += out[src_y0:src_y1, src_x0:src_x1][target]
+                        dst_count[target] += 1.0
+                        dst_grown[target] = True
+            fill = repair_mask & (neighbor_count > 0)
+            if fill.any():
+                out[fill] = neighbor_sum[fill] / neighbor_count[fill, None]
+            if np.array_equal(next_grown, grown):
+                break
+            grown = next_grown
+    return np.clip(out, 0.0, 1.0)
+
+
+def repair_dark_spots(
+    rgb: np.ndarray,
+    valid_mask: np.ndarray | None,
+    *,
+    threshold: float,
+    min_area_px: int,
+    max_area_px: int,
+) -> tuple[np.ndarray, dict[str, Any]]:
+    if threshold <= 0.0:
+        return rgb, {"enabled": False}
+
+    gray = np.tensordot(rgb, LUMA_WEIGHTS, axes=([2], [0])).astype(np.float32)
+    candidate = gray <= threshold
+    if valid_mask is not None:
+        candidate &= valid_mask >= 0.98
+
+    comps = _connected_components(candidate)
+    selected = [
+        comp for comp in comps
+        if min_area_px <= comp[0] <= max_area_px and not comp[5]
+    ]
+    repair_mask = np.zeros(candidate.shape, dtype=bool)
+    for area, min_x, min_y, max_x, max_y, _touches in selected:
+        del area
+        patch = candidate[min_y:max_y + 1, min_x:max_x + 1]
+        repair_mask[min_y:max_y + 1, min_x:max_x + 1] |= patch
+
+    repaired = _nearest_fill_rgb(rgb, repair_mask)
+    repaired_gray = np.tensordot(repaired, LUMA_WEIGHTS, axes=([2], [0])).astype(np.float32)
+    metrics = {
+        "enabled": True,
+        "threshold_luma01": float(threshold),
+        "min_area_px": int(min_area_px),
+        "max_area_px": int(max_area_px),
+        "candidate_components": int(len(comps)),
+        "candidate_pixels": int(np.count_nonzero(candidate)),
+        "selected_components": int(len(selected)),
+        "selected_pixels": int(np.count_nonzero(repair_mask)),
+        "largest_selected_area_px": int(max((comp[0] for comp in selected), default=0)),
+        "input_dark_fraction": float(np.mean(candidate)),
+        "output_dark_fraction": float(np.mean(repaired_gray <= threshold)),
+    }
+    return repaired, metrics
 
 
 def parse_size(value: str) -> tuple[int, int]:
@@ -334,6 +497,28 @@ def write_outputs(args: argparse.Namespace) -> dict[str, Any]:
     left_h = crop_height_from_macro_space(left_source["height_m"], (left_macro_w, left_macro_h), left_crop, output_size)
     right_h = crop_height_from_macro_space(right_source["height_m"], (right_macro_w, right_macro_h), right_crop, output_size)
 
+    dark_spot_metrics: dict[str, Any] = {
+        "side": args.dark_spot_repair_side,
+        "left": {"enabled": False},
+        "right": {"enabled": False},
+    }
+    if args.dark_spot_repair_side in ("left", "both"):
+        left_rgb, dark_spot_metrics["left"] = repair_dark_spots(
+            left_rgb,
+            left_mask,
+            threshold=args.dark_spot_threshold,
+            min_area_px=args.dark_spot_min_area_px,
+            max_area_px=args.dark_spot_max_area_px,
+        )
+    if args.dark_spot_repair_side in ("right", "both"):
+        right_rgb, dark_spot_metrics["right"] = repair_dark_spots(
+            right_rgb,
+            right_mask,
+            threshold=args.dark_spot_threshold,
+            min_area_px=args.dark_spot_min_area_px,
+            max_area_px=args.dark_spot_max_area_px,
+        )
+
     height_out, height_metrics = integrate_scalar(
         left_h,
         right_h,
@@ -454,6 +639,10 @@ def write_outputs(args: argparse.Namespace) -> dict[str, Any]:
             "macro_band_mode": args.macro_band_mode,
             "macro_bridge_blur_px": args.macro_bridge_blur_px,
             "macro_bridge_detail_strength": args.macro_bridge_detail_strength,
+            "dark_spot_repair_side": args.dark_spot_repair_side,
+            "dark_spot_threshold": args.dark_spot_threshold,
+            "dark_spot_min_area_px": args.dark_spot_min_area_px,
+            "dark_spot_max_area_px": args.dark_spot_max_area_px,
             "left_output_width_px": left_width,
             "integration_band_output_px": args.overlap_px,
             "right_output_width_px": target_crop_w - args.overlap_px,
@@ -463,6 +652,7 @@ def write_outputs(args: argparse.Namespace) -> dict[str, Any]:
             "height_m": height_metrics,
             "macro_rgb01": rgb_metrics,
             "valid_mask": mask_metrics,
+            "dark_spot_repair": dark_spot_metrics,
         },
         "policy": args.policy,
     }
@@ -498,6 +688,20 @@ def main() -> int:
     parser.add_argument("--macro-band-mode", choices=["blend", "lowpass_bridge"], default="blend")
     parser.add_argument("--macro-bridge-blur-px", type=float, default=28.0)
     parser.add_argument("--macro-bridge-detail-strength", type=float, default=0.0)
+    parser.add_argument(
+        "--dark-spot-repair-side",
+        choices=["none", "left", "right", "both"],
+        default="none",
+        help="Opt-in repair for valid interior dark islands after crop/resize.",
+    )
+    parser.add_argument(
+        "--dark-spot-threshold",
+        type=float,
+        default=18.0 / 255.0,
+        help="Luma threshold in 0..1 for dark-island repair candidates.",
+    )
+    parser.add_argument("--dark-spot-min-area-px", type=int, default=4)
+    parser.add_argument("--dark-spot-max-area-px", type=int, default=5000)
     parser.add_argument("--fill-valid-mask-above", type=float, default=0.995)
     parser.add_argument("--artifact-name", default="Gloss Mountain terrain seam integration proof")
     parser.add_argument("--integration-kind", default="overlap_integration_band_proof")

@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/Terrain.gd" id="terrain_script"]
+[ext_resource type="Material" path="res://textures/wgv3/terrain_blend_alpine_walk.tres" id="terrain_mat"]
+[ext_resource type="Script" path="res://scripts/Walker.gd" id="walker_script"]
+[ext_resource type="Script" path="res://scripts/ChunkLoader.gd" id="chunk_loader"]
+[ext_resource type="Material" path="res://textures/wgv3/terrain_splat_alpine.tres" id="splat_mat"]
+
+[sub_resource type="Environment" id="env"]
+background_mode = 1
+background_color = Color(0.55, 0.7, 0.9, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.55, 0.62, 0.75, 1)
+ambient_light_energy = 0.3
+tonemap_mode = 2
+fog_enabled = true
+fog_density = 0.00005
+fog_light_color = Color(0.7, 0.78, 0.88, 1)
+
+[sub_resource type="CapsuleShape3D" id="player_shape"]
+height = 1.8
+radius = 0.4
+
+[node name="Walk" type="Node3D"]
+
+[node name="WorldEnv" type="WorldEnvironment" parent="."]
+environment = SubResource("env")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.7071, -0.5, 0.5, 0, 0.7071, 0.7071, -0.7071, -0.5, 0.5, 0, 8000, 0)
+light_color = Color(1, 0.97, 0.92, 1)
+light_energy = 1.8
+shadow_enabled = true
+directional_shadow_max_distance = 20000.0
+
+[node name="TerrainBody" type="StaticBody3D" parent="."]
+
+[node name="Terrain" type="MeshInstance3D" parent="."]
+visible = false
+script = ExtResource("terrain_script")
+material_override = ExtResource("terrain_mat")
+heightmap_cache_path = "res://runtime_cache/heightmap_rf32.json"
+subdivisions = 256
+collision_target = NodePath("../TerrainBody")
+defer_initial_build = true
+
+[node name="ChunkLoader" type="Node3D" parent="."]
+script = ExtResource("chunk_loader")
+heightmap_cache_path = "res://runtime_cache/heightmap_rf32.json"
+terrain_material = ExtResource("splat_mat")
+splat_weights_path = "res://textures/m4_splat/alpine_height_slope_weights_rgba.png"
+splat_weights_cache_path = "res://runtime_cache/alpine_splat_rgba8.json"
+chunk_size_m = 256.0
+view_radius_chunks = 1
+chunk_resolution_m = 8.0
+target_path = NodePath("../Player")
+build_collision_chunks = true
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3421, 1500)
+script = ExtResource("walker_script")
+
+[node name="Collider" type="CollisionShape3D" parent="Player"]
+shape = SubResource("player_shape")
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+near = 0.5
+far = 30000.0
+fov = 70.0
+current = true

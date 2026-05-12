@@ -1,0 +1,124 @@
+{
+  "version": 1,
+  "kind": "terrain_seam_integration_proof",
+  "id": "gloss_scrub_seam_integration_proof",
+  "runtime_macro": "res://textures/source_stack/gloss_scrub_seam_integration_proof/source_macro_albedo.png",
+  "runtime_source_macro_valid_mask": "res://textures/source_stack/gloss_scrub_seam_integration_proof/source_macro_valid_mask.png",
+  "runtime_seam_mask": "res://textures/source_stack/gloss_scrub_seam_integration_proof/seam_integration_mask.png",
+  "runtime_heightmap": "res://toporeview/gloss_mountain_seam_integration_proof/heightmap.png",
+  "runtime_meta": "res://toporeview/gloss_mountain_seam_integration_proof/meta.json",
+  "left_source": {
+    "macro": "res://textures/source_stack/gloss_scrub_source_stack/source_macro_albedo.png",
+    "heightmap": "res://toporeview/gloss_mountain_textured_master/heightmap.png",
+    "crop_macro_px": [
+      240,
+      520,
+      416,
+      1024
+    ]
+  },
+  "right_source": {
+    "macro": "res://textures/source_stack/gloss_scrub_source_stack/source_macro_albedo.png",
+    "heightmap": "res://toporeview/gloss_mountain_textured_master/heightmap.png",
+    "crop_macro_px": [
+      592,
+      520,
+      416,
+      1024
+    ]
+  },
+  "integration": {
+    "overlap_px": 64,
+    "height_feather_px": 128,
+    "color_feather_px": 96,
+    "profile_blur_px": 12.0,
+    "macro_band_mode": "blend",
+    "macro_bridge_blur_px": 28.0,
+    "macro_bridge_detail_strength": 0.0,
+    "left_output_width_px": 352,
+    "integration_band_output_px": 64,
+    "right_output_width_px": 352
+  },
+  "metrics": {
+    "height_m": {
+      "raw_overlap_delta": {
+        "mean": 0.011095871217548847,
+        "median": 0.008544921875,
+        "p95": 0.02874755859375,
+        "max": 0.28265380859375
+      },
+      "global_bias": -0.007171630859375,
+      "row_bias": {
+        "mean": 0.00458949215759219,
+        "median": 0.005498464917764068,
+        "p95": 0.006867920886725187,
+        "max": 0.007938376627862453
+      },
+      "post_overlap_delta": {
+        "mean": 0.007459774147719145,
+        "median": 0.00421142578125,
+        "p95": 0.023834228515625,
+        "max": 0.27728271484375
+      },
+      "post_join_steps": {
+        "left_to_band": {
+          "mean": 0.14495280385017395,
+          "median": 0.0608673095703125,
+          "p95": 0.5311904907226557,
+          "max": 2.498291015625
+        },
+        "band_to_right": {
+          "mean": 0.27214884757995605,
+          "median": 0.2365875244140625,
+          "p95": 0.6948272705078125,
+          "max": 2.21868896484375
+        }
+      }
+    },
+    "macro_rgb01": {
+      "raw_overlap_delta_rgb01": {
+        "mean": 0.0,
+        "median": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      },
+      "band_mode": "blend",
+      "bridge_blur_px": 28.0,
+      "bridge_detail_strength": 0.0,
+      "global_bias_rgb01": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "post_overlap_delta_rgb01": {
+        "mean": 0.0,
+        "median": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      },
+      "post_join_steps_rgb01": {
+        "left_to_band": {
+          "mean": 0.06767004026551149,
+          "median": 0.04444444179534912,
+          "p95": 0.22333334535360325,
+          "max": 0.7372549176216125
+        },
+        "band_to_right": {
+          "mean": 0.05923202784606474,
+          "median": 0.04313725419342518,
+          "p95": 0.16320265755057323,
+          "max": 0.3803921937942505
+        }
+      }
+    },
+    "valid_mask": {
+      "left_coverage": 1.0,
+      "right_coverage": 0.999904990196228,
+      "band_coverage": 1.0,
+      "output_coverage": 1.0,
+      "output_coverage_before_hole_fill": 0.9999485015869141,
+      "hole_fill_policy": "filled_to_full_valid_because_coverage_above_0.9950"
+    }
+  },
+  "policy": "production_path_proof_not_tile_wrap"
+}

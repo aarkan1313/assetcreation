@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/review/f36_5biome_single_tile_diag.tscn" id="scene"]
+[ext_resource type="Script" path="res://scripts/HeadlessCapture.gd" id="cap_script"]
+
+[node name="CaptureF365BiomeSingleTileIso" type="Node"]
+
+[node name="Inner" parent="." instance=ExtResource("scene")]
+
+[node name="Capture" type="Node" parent="."]
+script = ExtResource("cap_script")
+output_path = "res://docs/captures/review/f36_5biome_single_tile_iso.png"
+warmup_frames = 90
+viewport_size = Vector2i(1280, 800)

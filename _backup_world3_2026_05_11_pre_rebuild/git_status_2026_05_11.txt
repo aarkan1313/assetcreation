@@ -1,0 +1,39 @@
+ M docs/plans/LONG_TERM_VISION.md
+ M docs/plans/ROADMAP.md
+ M pipelines/textures/DIVERSITY_COMPARE_2026_05_09.md
+ M pipelines/textures/FLUX2_KLEIN_9B_SETUP_2026_05_10.md
+ M pipelines/textures/diversity_compare.py
+ M world3/docs/FUTURE_WORLD_SOURCES_2026_05_08.md
+ M world3/docs/M12_VIEW_MODE_PARITY_AUDIT_2026_05_10.md
+ M world3/docs/M14_CLOSE_PLAY_QUALITY_BOARD.json
+ M world3/docs/M14_CLOSE_PLAY_QUALITY_BOARD_2026_05_10.md
+ M world3/docs/M16_SOURCE_STACK_GALLERY_BOARD_2026_05_10.md
+ M world3/docs/ROADMAP.md
+ M world3/docs/WORLD3_STATE_2026_05_08.md
+ M world3/docs/captures/review/m12_view_mode_parity_audit.json
+ M world3/jobs/m14_texture_bakeoff_plan.json
+ M world3/textures/wgv3/fantasy_lava_field_controlled/albedo.png.import
+ M world3/textures/wgv3/fantasy_lava_field_controlled/ao.png.import
+ M world3/textures/wgv3/fantasy_lava_field_controlled/normal.png.import
+ M world3/textures/wgv3/fantasy_lava_field_controlled/roughness.png.import
+?? _backup_world3_2026_05_11_pre_rebuild/
+?? pipelines/terrain/README.md
+?? pipelines/terrain/landlab_smoke_test.py
+?? pipelines/textures/HANDOFF_FLUX2_BAKEOFF_2026_05_10.md
+?? pipelines/textures/WORKFLOW_GUIDE_FLUX2_2026_05_10.md
+?? world3/docs/ATMOSPHERE_ARC_2026_05_10.md
+?? world3/docs/CONFORMANCE_ARC_2026_05_10.md
+?? world3/docs/M19_M24_HYBRID_PROCEDURAL_ROADMAP_2026_05_10.md
+?? world3/docs/M25_M39_WATER_WEATHER_ROADMAP_2026_05_10.md
+?? world3/docs/M_SEQUENCE_2026_05_10.md
+?? world3/docs/ORCHESTRATOR_HANDOFF_2026_05_11.md
+?? world3/docs/ROADMAP_HISTORY_2026_05_10.md
+?? world3/docs/SKY_ARC_2026_05_10.md
+?? world3/docs/WATER_ARC_2026_05_10.md
+?? world3/docs/WEATHER_ARC_2026_05_10.md
+?? world3/docs/WORLD3_ARCHITECTURE_TEMP_2026_05_10.md
+?? world3/docs/WORLD3_COMPLETION_BAR_2026_05_10.md
+?? world3/docs/WORLD3_CONTRACT_2026_05_10.md
+?? world3/docs/WORLD3_EXEC_SUMMARY_2026_05_10.md
+?? world3/docs/WORLD3_OPERABILITY_GAPS_2026_05_10.md
+?? world3/scripts/M14LichenSidecarCompareBoard.gd.uid

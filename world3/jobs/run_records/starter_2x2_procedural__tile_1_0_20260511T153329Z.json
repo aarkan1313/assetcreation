@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "run_id": "starter_2x2_procedural__tile_1_0_20260511T153329Z",
+  "request_id": "starter_2x2_procedural__tile_1_0",
+  "request_path": "D:\\assets\\world3\\worlds\\starter_2x2_procedural\\requests\\starter_2x2_procedural__tile_1_0.json",
+  "request": {
+    "schema_version": 1,
+    "id": "starter_2x2_procedural__tile_1_0",
+    "description": "Phase F.3 emitted from plan 'starter_2x2_procedural' tile (1, 0) biome 'tundra'",
+    "source": {
+      "type": "procedural",
+      "material_id": "tundra_moss",
+      "size_px": [
+        512,
+        1024
+      ],
+      "world_size_m": [
+        256.0,
+        256.0
+      ],
+      "elev_min_m": 200.0,
+      "elev_range_m": 24.0,
+      "seed": 468677613,
+      "neighbor_west_edge": "world3/worlds/starter_2x2_procedural/bundles/starter_2x2_procedural__tile_0_0/edges/east_edge.json"
+    },
+    "world_type": {
+      "biome_kit": "tundra",
+      "style_pack": "photoreal",
+      "view_modes": [
+        "iso"
+      ]
+    },
+    "options": {
+      "render_captures": false,
+      "promote_to_gate": false
+    },
+    "output": {
+      "bundle_dir": "world3/worlds/starter_2x2_procedural/bundles/starter_2x2_procedural__tile_1_0",
+      "overwrite": true
+    },
+    "__request_path__": "D:\\assets\\world3\\worlds\\starter_2x2_procedural\\requests\\starter_2x2_procedural__tile_1_0.json"
+  },
+  "started_at": "2026-05-11T15:33:28.975675+00:00",
+  "completed_at": "2026-05-11T15:33:29.614769+00:00",
+  "ok": true,
+  "stages": [
+    {
+      "id": "build_procedural_neighbor",
+      "script": "world3/pipeline/build_procedural_neighbor_bundle.py",
+      "started_at": "2026-05-11T15:33:28.975675+00:00",
+      "args": [
+        "--material-id",
+        "tundra_moss",
+        "--out",
+        "D:\\assets\\world3\\worlds\\starter_2x2_procedural\\bundles\\starter_2x2_procedural__tile_1_0",
+        "--size",
+        "512,1024",
+        "--world-size-m",
+        "256.0,256.0",
+        "--elev-min-m",
+        "200.0",
+        "--elev-range-m",
+        "24.0",
+        "--seed",
+        "468677613",
+        "--name",
+        "Phase F.3 emitted from plan 'starter_2x2_procedural' tile (1, 0) biome 'tundra'",
+        "--neighbor-west-edge",
+        "D:\\assets\\world3\\worlds\\starter_2x2_procedural\\bundles\\starter_2x2_procedural__tile_0_0\\edges\\east_edge.json"
+      ],
+      "exit_code": 0,
+      "wall_time_sec": 0.51,
+      "stdout_tail": [
+        "  \"macro\": \"D:\\\\assets\\\\world3\\\\worlds\\\\starter_2x2_procedural\\\\bundles\\\\starter_2x2_procedural__tile_1_0\\\\layers\\\\render_albedo.png\",",
+        "  \"valid_mask\": \"D:\\\\assets\\\\world3\\\\worlds\\\\starter_2x2_procedural\\\\bundles\\\\starter_2x2_procedural__tile_1_0\\\\layers\\\\source_valid_mask.png\",",
+        "  \"heightmap\": \"D:\\\\assets\\\\world3\\\\worlds\\\\starter_2x2_procedural\\\\bundles\\\\starter_2x2_procedural__tile_1_0\\\\heightmap.png\",",
+        "  \"meta\": \"D:\\\\assets\\\\world3\\\\worlds\\\\starter_2x2_procedural\\\\bundles\\\\starter_2x2_procedural__tile_1_0\\\\meta.json\"",
+        "}"
+      ],
+      "stderr_tail": [],
+      "status": "ok",
+      "completed_at": "2026-05-11T15:33:29.489750+00:00"
+    },
+    {
+      "id": "validate_request",
+      "script": "world3/pipeline/validate_region_request.py",
+      "started_at": "2026-05-11T15:33:29.489750+00:00",
+      "args": [
+        "D:\\assets\\world3\\worlds\\starter_2x2_procedural\\requests\\starter_2x2_procedural__tile_1_0.json"
+      ],
+      "exit_code": 0,
+      "wall_time_sec": 0.13,
+      "stdout_tail": [
+        "  [OK  ] D:\\assets\\world3\\worlds\\starter_2x2_procedural\\requests\\starter_2x2_procedural__tile_1_0.json"
+      ],
+      "stderr_tail": [],
+      "status": "ok",
+      "completed_at": "2026-05-11T15:33:29.614769+00:00"
+    }
+  ],
+  "dry_run": false
+}

@@ -1,5 +1,13 @@
 # Future Procedural Structure Generators — 2026-05-08
 
+> ⚠️ **Reorganized 2026-05-11.** This doc surveys 11 structure-generator
+> families (trees, crystals, scree, lattices, fractals, etc.). Its scope
+> was rolled into **Phase H.4 — POI / landmark layer** in the unified
+> roadmap. Items here remain a useful menu for H.4 implementation,
+> but the **canonical sequencing authority** is now
+> [WORLD3_LONG_ARC_2026_05_11.md](WORLD3_LONG_ARC_2026_05_11.md)
+> and [PHASE_H_CHARTER_2026_05_11.md](PHASE_H_CHARTER_2026_05_11.md).
+
 **Status**: forward-looking, not in scope. Sibling to
 [`FUTURE_WORLD_SOURCES_2026_05_08.md`](FUTURE_WORLD_SOURCES_2026_05_08.md)
 (which captures alternative heightmap/world sources) and the props/POI

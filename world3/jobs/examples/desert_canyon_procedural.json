@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "id": "procedural_desert_canyon_rock_m10_e1_example",
+  "description": "Example procedural-source request that reproduces the M10 procedural canyon-rock neighbor. Provenance matches world3/toporeview/procedural_desert_canyon_rock_m10/meta.json. Used as Phase E.1 schema validation evidence.",
+  "source": {
+    "type": "procedural",
+    "material_id": "desert_canyon_rock",
+    "size_px": [512, 1024],
+    "world_size_m": [120.0, 240.0],
+    "elev_min_m": 412.0,
+    "elev_range_m": 18.0,
+    "seed": 1021
+  },
+  "world_type": {
+    "biome_kit": "desert",
+    "style_pack": "photoreal",
+    "view_modes": ["walk", "iso", "topdown"]
+  },
+  "options": {
+    "render_captures": true,
+    "promote_to_gate": false
+  },
+  "output": {
+    "bundle_dir": "world3/toporeview/procedural_desert_canyon_rock_m10_e1_example",
+    "overwrite": false
+  }
+}

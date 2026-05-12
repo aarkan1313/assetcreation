@@ -1,0 +1,31 @@
+{
+  "name": "scale_demo",
+  "builder": "world 4/pipeline/slice_to_tiles.py",
+  "version": 1,
+  "source": {
+    "tile": "USGS1m_-78.3520_+38.5147_-78.1980_+38.6500.tif",
+    "path": "D:/assets/dems/USGS1m_-78.3520_+38.5147_-78.1980_+38.6500.tif",
+    "crs": "EPSG:26917",
+    "native_res_m": [
+      1.000000000000122,
+      1.0000000000001046
+    ],
+    "crop_px": [
+      1280,
+      5888,
+      1024,
+      1024
+    ]
+  },
+  "world_size_x_m": 1024.0,
+  "world_size_z_m": 1024.0,
+  "world_size_m": 1024.0,
+  "grid_n": 4,
+  "tile_size_m": 256.0,
+  "tile_size_px": 256,
+  "upsample_factor": 1,
+  "smooth_sigma_px": 1.0,
+  "elevation_min_m": 504.88092041015625,
+  "elevation_max_m": 1027.1993408203125,
+  "elevation_range_m": 522.3184204101562
+}

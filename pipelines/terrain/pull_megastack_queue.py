@@ -194,7 +194,41 @@ def main() -> int:
             completed += 1
 
     print(f"\n=== Done: {completed}/{len(todo)} mega-stacks completed ===")
+
+    # Post-hook: refresh world3/data_catalog.json so downstream tools see
+    # new mega-stacks. Skip on opt-out env var or zero new completions.
+    import os
+    if completed > 0 and not os.environ.get("WORLD3_NO_CATALOG_REFRESH"):
+        refresh_master_catalog()
+
     return 0
+
+
+def refresh_master_catalog() -> None:
+    """Call build_master_catalog.py so world3/data_catalog.json reflects
+    new mega-stacks. Added 2026-05-11 (Phase D.3)."""
+    catalog_builder = Path(__file__).resolve().parent / "build_master_catalog.py"
+    if not catalog_builder.exists():
+        print(f"\n[catalog-refresh] skipped: {catalog_builder} not found")
+        return
+    print(f"\n=== refreshing world3/data_catalog.json ===")
+    try:
+        result = subprocess.run(
+            [sys.executable, str(catalog_builder)],
+            check=False,
+            capture_output=True,
+            text=True,
+            timeout=60,
+        )
+        for line in result.stdout.splitlines()[-12:]:
+            print(f"  {line}")
+        if result.returncode != 0:
+            print(f"  [warn] catalog refresh exit={result.returncode}; "
+                  "run `python pipelines/terrain/build_master_catalog.py` manually")
+    except subprocess.TimeoutExpired:
+        print("  [warn] catalog refresh timed out (>60s)")
+    except Exception as e:
+        print(f"  [warn] catalog refresh failed: {type(e).__name__}: {e}")
 
 
 if __name__ == "__main__":

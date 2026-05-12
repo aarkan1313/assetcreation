@@ -1,0 +1,30 @@
+{
+  "name": "anchor",
+  "builder": "world 4/pipeline/pick_dem_crop.py",
+  "version": 1,
+  "source": {
+    "tile": "USGS1m_-78.3520_+38.5147_-78.1980_+38.6500.tif",
+    "path": "D:/assets/dems/USGS1m_-78.3520_+38.5147_-78.1980_+38.6500.tif",
+    "crs": "EPSG:26917",
+    "native_res_m": [
+      1.000000000000122,
+      1.0000000000001046
+    ],
+    "crop_px": [
+      1536,
+      6336,
+      256,
+      256
+    ]
+  },
+  "world_size_x_m": 256.0,
+  "world_size_z_m": 256.0,
+  "world_size_m": 256.0,
+  "heightmap_size_px": [
+    256,
+    256
+  ],
+  "elevation_min_m": 692.3396606445312,
+  "elevation_max_m": 924.6671752929688,
+  "elevation_range_m": 232.3275146484375
+}

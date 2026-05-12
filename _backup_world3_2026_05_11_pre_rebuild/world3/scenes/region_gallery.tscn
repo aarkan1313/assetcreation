@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/Terrain.gd" id="terrain_script"]
+[ext_resource type="Material" path="res://textures/wgv3/terrain_blend_tetons.tres" id="terrain_mat"]
+[ext_resource type="Script" path="res://scripts/RegionGalleryCapture.gd" id="gallery_script"]
+
+[sub_resource type="Environment" id="env"]
+background_mode = 1
+background_color = Color(0.55, 0.7, 0.9, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.55, 0.62, 0.75, 1)
+ambient_light_energy = 0.25
+tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 8.0
+ssao_intensity = 2.0
+
+[sub_resource type="CameraAttributesPractical" id="cam_attrs"]
+
+[node name="RegionGallery" type="Node3D"]
+
+[node name="WorldEnv" type="WorldEnvironment" parent="."]
+environment = SubResource("env")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.7071, -0.5, 0.5, 0, 0.7071, 0.7071, -0.7071, -0.5, 0.5, 0, 8000, 0)
+light_color = Color(1, 0.97, 0.92, 1)
+light_energy = 1.8
+shadow_enabled = true
+directional_shadow_max_distance = 30000.0
+
+[node name="Terrain" type="MeshInstance3D" parent="."]
+script = ExtResource("terrain_script")
+material_override = ExtResource("terrain_mat")
+subdivisions = 256
+defer_initial_build = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.7071, -0.5, 0.5, 0, 0.7071, 0.7071, -0.7071, -0.5, 0.5, 10000, 10000, 10000)
+projection = 1
+size = 20000.0
+near = 1.0
+far = 200000.0
+attributes = SubResource("cam_attrs")
+current = true
+
+[node name="Capture" type="Node" parent="."]
+script = ExtResource("gallery_script")
+only_regions = PackedStringArray("tcf_pnw_cascades_usa", "des_mojave_usa", "tbm_appalachians_usa", "mgs_tibetan_plateau", "tgs_serengeti_tanzania", "tun_arctic_alaska", "med_california_chaparral")

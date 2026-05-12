@@ -1,0 +1,84 @@
+[gd_scene load_steps=5 format=3]
+
+; Phase F.3 — 2x2 stitch test. Four Terrain instances, same Tetons heightmap,
+; translated to form an 8km x 8km grid. Test: do the seams between tiles read
+; cleanly, or are there visible discontinuities?
+;
+; Each tile is the full 4km Tetons region. Tile centers at:
+;   (-2000, 0, -2000), (+2000, 0, -2000),
+;   (-2000, 0, +2000), (+2000, 0, +2000)
+; (Terrain.gd builds meshes centered on local origin, so each tile occupies
+; (-2000..+2000, *, -2000..+2000) in its own frame; translate by ±2000 to
+; assemble.)
+;
+; Expected outcome: tile edges meet at matching elevations (because the
+; heightmap is identical) so vertex Y is continuous. Normals at tile borders
+; are computed per-tile, so they may show a faint seam from finite-difference
+; sampling — Phase F will need to address this in F.4 with edge-overlap
+; sampling or per-chunk boundary sharing. For F.3 we just verify the basic
+; geometric stitch.
+
+[ext_resource type="Script" path="res://scripts/Terrain.gd" id="terrain_script"]
+[ext_resource type="Material" path="res://textures/wgv3/terrain_blend_alpine_iso.tres" id="terrain_mat"]
+[ext_resource type="Script" path="res://scripts/IsoCam.gd" id="iso_script"]
+[ext_resource type="Script" path="res://scripts/PlayerAnchor.gd" id="anchor_script"]
+
+[sub_resource type="Environment" id="env"]
+background_mode = 1
+background_color = Color(0.55, 0.7, 0.9, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.55, 0.62, 0.75, 1)
+ambient_light_energy = 0.25
+tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 8.0
+ssao_intensity = 2.0
+
+[node name="Tetons2x2" type="Node3D"]
+
+[node name="WorldEnv" type="WorldEnvironment" parent="."]
+environment = SubResource("env")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.7071, -0.5, 0.5, 0, 0.7071, 0.7071, -0.7071, -0.5, 0.5, 0, 8000, 0)
+light_color = Color(1, 0.97, 0.92, 1)
+light_energy = 1.8
+shadow_enabled = true
+directional_shadow_max_distance = 30000.0
+
+[node name="TileNW" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2000, 0, -2000)
+script = ExtResource("terrain_script")
+material_override = ExtResource("terrain_mat")
+subdivisions = 64
+
+[node name="TileNE" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2000, 0, -2000)
+script = ExtResource("terrain_script")
+material_override = ExtResource("terrain_mat")
+subdivisions = 64
+
+[node name="TileSW" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2000, 0, 2000)
+script = ExtResource("terrain_script")
+material_override = ExtResource("terrain_mat")
+subdivisions = 64
+
+[node name="TileSE" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2000, 0, 2000)
+script = ExtResource("terrain_script")
+material_override = ExtResource("terrain_mat")
+subdivisions = 64
+
+[node name="PlayerAnchor" type="Node3D" parent="."]
+script = ExtResource("anchor_script")
+snap_to_terrain = false
+
+[node name="IsoCam" type="Camera3D" parent="."]
+script = ExtResource("iso_script")
+projection = 1
+near = 1.0
+far = 80000.0
+current = true
+anchor_path = NodePath("../PlayerAnchor")
+visible_diameter_m = 10000.0

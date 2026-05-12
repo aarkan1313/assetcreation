@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "id": "gloss_mountain_textured_master_e1_example",
+  "description": "Example real-source request that reproduces the existing Gloss Mountain Textured Master Stack. Provenance matches world3/opentopo/processed/master_stacks/gloss_mountain_textured_master/meta.json. Used as Phase E.1 schema validation evidence.",
+  "source": {
+    "type": "real",
+    "dem": "world3/opentopo/raw/dataspace/Gloss_Mountain_2021/Gloss_Mountain_DEM.tif",
+    "orthophoto": "world3/opentopo/raw/dataspace/Gloss_Mountain_2021/Gloss_Mountain_Orthomosaic.tif",
+    "crop": {
+      "to_valid_dem": true,
+      "margin_px": 16
+    },
+    "review_max_dim": 8192
+  },
+  "world_type": {
+    "biome_kit": "desert",
+    "style_pack": "photoreal",
+    "view_modes": ["walk", "iso", "topdown"]
+  },
+  "options": {
+    "render_captures": true,
+    "promote_to_gate": false
+  },
+  "output": {
+    "bundle_dir": "world3/opentopo/processed/master_stacks/gloss_mountain_textured_master_e1_example",
+    "overwrite": false
+  }
+}

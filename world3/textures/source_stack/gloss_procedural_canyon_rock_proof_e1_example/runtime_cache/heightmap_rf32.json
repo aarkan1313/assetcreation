@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "kind": "runtime_image_cache",
+  "source_path": "res://textures/source_stack/gloss_procedural_canyon_rock_proof_e1_example/heightmap.png",
+  "source_sha256": "99c66847782f6f60e645957ce98e8f6af789e431a9d214f10d0e7555e0e1a88e",
+  "width": 896,
+  "height": 1024,
+  "format": "rf32",
+  "data_path": "res://textures/source_stack/gloss_procedural_canyon_rock_proof_e1_example/runtime_cache/heightmap_rf32.bin"
+}

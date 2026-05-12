@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "run_id": "starter_2x2_procedural__tile_1_1_20260511T153331Z",
+  "request_id": "starter_2x2_procedural__tile_1_1",
+  "request_path": "D:\\assets\\world3\\worlds\\starter_2x2_procedural\\requests\\starter_2x2_procedural__tile_1_1.json",
+  "request": {
+    "schema_version": 1,
+    "id": "starter_2x2_procedural__tile_1_1",
+    "description": "Phase F.3 emitted from plan 'starter_2x2_procedural' tile (1, 1) biome 'tundra'",
+    "source": {
+      "type": "procedural",
+      "material_id": "tundra_moss",
+      "size_px": [
+        512,
+        1024
+      ],
+      "world_size_m": [
+        256.0,
+        256.0
+      ],
+      "elev_min_m": 200.0,
+      "elev_range_m": 24.0,
+      "seed": 692862317,
+      "neighbor_west_edge": "world3/worlds/starter_2x2_procedural/bundles/starter_2x2_procedural__tile_0_1/edges/east_edge.json",
+      "neighbor_north_edge": "world3/worlds/starter_2x2_procedural/bundles/starter_2x2_procedural__tile_1_0/edges/south_edge.json"
+    },
+    "world_type": {
+      "biome_kit": "tundra",
+      "style_pack": "photoreal",
+      "view_modes": [
+        "iso"
+      ]
+    },
+    "options": {
+      "render_captures": false,
+      "promote_to_gate": false
+    },
+    "output": {
+      "bundle_dir": "world3/worlds/starter_2x2_procedural/bundles/starter_2x2_procedural__tile_1_1",
+      "overwrite": true
+    },
+    "__request_path__": "D:\\assets\\world3\\worlds\\starter_2x2_procedural\\requests\\starter_2x2_procedural__tile_1_1.json"
+  },
+  "started_at": "2026-05-11T15:33:30.633424+00:00",
+  "completed_at": "2026-05-11T15:33:31.288644+00:00",
+  "ok": true,
+  "stages": [
+    {
+      "id": "validate_request",
+      "script": "world3/pipeline/validate_region_request.py",
+      "started_at": "2026-05-11T15:33:30.633424+00:00",
+      "args": [
+        "D:\\assets\\world3\\worlds\\starter_2x2_procedural\\requests\\starter_2x2_procedural__tile_1_1.json"
+      ],
+      "exit_code": 0,
+      "wall_time_sec": 0.12,
+      "stdout_tail": [
+        "  [OK  ] D:\\assets\\world3\\worlds\\starter_2x2_procedural\\requests\\starter_2x2_procedural__tile_1_1.json"
+      ],
+      "stderr_tail": [],
+      "status": "ok",
+      "completed_at": "2026-05-11T15:33:30.757979+00:00"
+    },
+    {
+      "id": "build_procedural_neighbor",
+      "script": "world3/pipeline/build_procedural_neighbor_bundle.py",
+      "started_at": "2026-05-11T15:33:30.758979+00:00",
+      "args": [
+        "--material-id",
+        "tundra_moss",
+        "--out",
+        "D:\\assets\\world3\\worlds\\starter_2x2_procedural\\bundles\\starter_2x2_procedural__tile_1_1",
+        "--size",
+        "512,1024",
+        "--world-size-m",
+        "256.0,256.0",
+        "--elev-min-m",
+        "200.0",
+        "--elev-range-m",
+        "24.0",
+        "--seed",
+        "692862317",
+        "--name",
+        "Phase F.3 emitted from plan 'starter_2x2_procedural' tile (1, 1) biome 'tundra'",
+        "--neighbor-west-edge",
+        "D:\\assets\\world3\\worlds\\starter_2x2_procedural\\bundles\\starter_2x2_procedural__tile_0_1\\edges\\east_edge.json",
+        "--neighbor-north-edge",
+        "D:\\assets\\world3\\worlds\\starter_2x2_procedural\\bundles\\starter_2x2_procedural__tile_1_0\\edges\\south_edge.json"
+      ],
+      "exit_code": 0,
+      "wall_time_sec": 0.53,
+      "stdout_tail": [
+        "  \"macro\": \"D:\\\\assets\\\\world3\\\\worlds\\\\starter_2x2_procedural\\\\bundles\\\\starter_2x2_procedural__tile_1_1\\\\layers\\\\render_albedo.png\",",
+        "  \"valid_mask\": \"D:\\\\assets\\\\world3\\\\worlds\\\\starter_2x2_procedural\\\\bundles\\\\starter_2x2_procedural__tile_1_1\\\\layers\\\\source_valid_mask.png\",",
+        "  \"heightmap\": \"D:\\\\assets\\\\world3\\\\worlds\\\\starter_2x2_procedural\\\\bundles\\\\starter_2x2_procedural__tile_1_1\\\\heightmap.png\",",
+        "  \"meta\": \"D:\\\\assets\\\\world3\\\\worlds\\\\starter_2x2_procedural\\\\bundles\\\\starter_2x2_procedural__tile_1_1\\\\meta.json\"",
+        "}"
+      ],
+      "stderr_tail": [],
+      "status": "ok",
+      "completed_at": "2026-05-11T15:33:31.288644+00:00"
+    }
+  ],
+  "dry_run": false
+}

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/opentopo_samples.tscn" id="scene"]
+[ext_resource type="Script" path="res://scripts/HeadlessCapture.gd" id="cap_script"]
+
+[node name="CaptureOpenTopoSamples" type="Node"]
+
+[node name="Inner" parent="." instance=ExtResource("scene")]
+
+[node name="Capture" type="Node" parent="."]
+script = ExtResource("cap_script")
+output_path = "D:/tmp/world3_screens/opentopo_samples.png"
+warmup_frames = 12

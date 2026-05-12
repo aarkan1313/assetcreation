@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "run_id": "starter_5biome_procedural__tile_0_0_20260511T144104Z",
+  "request_id": "starter_5biome_procedural__tile_0_0",
+  "request_path": "D:\\assets\\world3\\worlds\\starter_5biome_procedural\\requests\\starter_5biome_procedural__tile_0_0.json",
+  "request": {
+    "schema_version": 1,
+    "id": "starter_5biome_procedural__tile_0_0",
+    "description": "Phase F.3 emitted from plan 'starter_5biome_procedural' tile (0, 0) biome 'temperate_forest'",
+    "source": {
+      "type": "procedural",
+      "material_id": "temperate_forest_grass",
+      "size_px": [
+        512,
+        1024
+      ],
+      "world_size_m": [
+        256.0,
+        256.0
+      ],
+      "elev_min_m": 400.0,
+      "elev_range_m": 30.0,
+      "seed": 1377365690
+    },
+    "world_type": {
+      "biome_kit": "temperate_forest",
+      "style_pack": "photoreal",
+      "view_modes": [
+        "iso",
+        "topdown"
+      ]
+    },
+    "options": {
+      "render_captures": false,
+      "promote_to_gate": false
+    },
+    "output": {
+      "bundle_dir": "world3/worlds/starter_5biome_procedural/bundles/starter_5biome_procedural__tile_0_0",
+      "overwrite": true
+    },
+    "__request_path__": "D:\\assets\\world3\\worlds\\starter_5biome_procedural\\requests\\starter_5biome_procedural__tile_0_0.json"
+  },
+  "started_at": "2026-05-11T14:41:03.801661+00:00",
+  "completed_at": "2026-05-11T14:41:04.495832+00:00",
+  "ok": true,
+  "stages": [
+    {
+      "id": "build_procedural_neighbor",
+      "script": "world3/pipeline/build_procedural_neighbor_bundle.py",
+      "started_at": "2026-05-11T14:41:03.801661+00:00",
+      "args": [
+        "--material-id",
+        "temperate_forest_grass",
+        "--out",
+        "D:\\assets\\world3\\worlds\\starter_5biome_procedural\\bundles\\starter_5biome_procedural__tile_0_0",
+        "--size",
+        "512,1024",
+        "--world-size-m",
+        "256.0,256.0",
+        "--elev-min-m",
+        "400.0",
+        "--elev-range-m",
+        "30.0",
+        "--seed",
+        "1377365690",
+        "--name",
+        "Phase F.3 emitted from plan 'starter_5biome_procedural' tile (0, 0) biome 'temperate_forest'"
+      ],
+      "exit_code": 0,
+      "wall_time_sec": 0.53,
+      "stdout_tail": [
+        "  \"macro\": \"D:\\\\assets\\\\world3\\\\worlds\\\\starter_5biome_procedural\\\\bundles\\\\starter_5biome_procedural__tile_0_0\\\\layers\\\\render_albedo.png\",",
+        "  \"valid_mask\": \"D:\\\\assets\\\\world3\\\\worlds\\\\starter_5biome_procedural\\\\bundles\\\\starter_5biome_procedural__tile_0_0\\\\layers\\\\source_valid_mask.png\",",
+        "  \"heightmap\": \"D:\\\\assets\\\\world3\\\\worlds\\\\starter_5biome_procedural\\\\bundles\\\\starter_5biome_procedural__tile_0_0\\\\heightmap.png\",",
+        "  \"meta\": \"D:\\\\assets\\\\world3\\\\worlds\\\\starter_5biome_procedural\\\\bundles\\\\starter_5biome_procedural__tile_0_0\\\\meta.json\"",
+        "}"
+      ],
+      "stderr_tail": [],
+      "status": "ok",
+      "completed_at": "2026-05-11T14:41:04.332271+00:00"
+    },
+    {
+      "id": "validate_request",
+      "script": "world3/pipeline/validate_region_request.py",
+      "started_at": "2026-05-11T14:41:04.332271+00:00",
+      "args": [
+        "D:\\assets\\world3\\worlds\\starter_5biome_procedural\\requests\\starter_5biome_procedural__tile_0_0.json"
+      ],
+      "exit_code": 0,
+      "wall_time_sec": 0.12,
+      "stdout_tail": [
+        "  [OK  ] D:\\assets\\world3\\worlds\\starter_5biome_procedural\\requests\\starter_5biome_procedural__tile_0_0.json"
+      ],
+      "stderr_tail": [],
+      "status": "ok",
+      "completed_at": "2026-05-11T14:41:04.450101+00:00"
+    },
+    {
+      "id": "emit_per_mode_materials",
+      "script": "pipelines/textures/emit_per_mode_materials.py",
+      "started_at": "2026-05-11T14:41:04.450101+00:00",
+      "args": [
+        "--kit",
+        "temperate_forest"
+      ],
+      "exit_code": 0,
+      "wall_time_sec": 0.05,
+      "stdout_tail": [
+        "[temperate_forest]",
+        "  temperate_forest: terrain_blend_temperate_forest_walk.tres",
+        "  temperate_forest: terrain_blend_temperate_forest_iso.tres",
+        "  temperate_forest: terrain_blend_temperate_forest_topdown.tres",
+        "wrote 3 per-mode .tres files"
+      ],
+      "stderr_tail": [],
+      "status": "ok",
+      "completed_at": "2026-05-11T14:41:04.495832+00:00"
+    }
+  ],
+  "dry_run": false
+}

@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "run_id": "gloss_procedural_canyon_rock_proof_e1_example_20260511T142457Z",
+  "request_id": "gloss_procedural_canyon_rock_proof_e1_example",
+  "request_path": "D:\\assets\\world3\\jobs\\examples\\gloss_canyon_hybrid.json",
+  "request": {
+    "schema_version": 1,
+    "id": "gloss_procedural_canyon_rock_proof_e1_example",
+    "description": "Example hybrid (real + procedural seam-integration) request that reproduces the M10 real-to-procedural Gloss-canyon-rock proof. Provenance matches world3/textures/source_stack/gloss_procedural_canyon_rock_proof/manifest.json. Used as Phase E.1 schema validation evidence.",
+    "source": {
+      "type": "hybrid",
+      "real": {
+        "bundle_path": "world3/textures/source_stack/gloss_scrub_source_stack",
+        "crop_macro_px": [
+          229,
+          734,
+          229,
+          457
+        ]
+      },
+      "procedural": {
+        "material_id": "desert_canyon_rock",
+        "size_px": [
+          512,
+          1024
+        ],
+        "world_size_m": [
+          120.0,
+          240.0
+        ],
+        "elev_min_m": 412.0,
+        "elev_range_m": 18.0,
+        "seed": 1021
+      },
+      "seam": {
+        "overlap_px": 128,
+        "height_feather_px": 224,
+        "color_feather_px": 384,
+        "macro_band_mode": "blend"
+      }
+    },
+    "world_type": {
+      "biome_kit": "desert",
+      "style_pack": "photoreal",
+      "view_modes": [
+        "walk",
+        "iso",
+        "topdown"
+      ]
+    },
+    "options": {
+      "render_captures": true,
+      "promote_to_gate": false
+    },
+    "output": {
+      "bundle_dir": "world3/textures/source_stack/gloss_procedural_canyon_rock_proof_e1_example",
+      "overwrite": false
+    },
+    "__request_path__": "world3\\jobs\\examples\\gloss_canyon_hybrid.json"
+  },
+  "started_at": "2026-05-11T14:24:54.670879+00:00",
+  "completed_at": "2026-05-11T14:24:57.408901+00:00",
+  "ok": true,
+  "stages": [
+    {
+      "id": "build_procedural_neighbor",
+      "script": "world3/pipeline/build_procedural_neighbor_bundle.py",
+      "started_at": "2026-05-11T14:24:54.670879+00:00",
+      "args": [
+        "--material-id",
+        "desert_canyon_rock",
+        "--out",
+        "D:\\assets\\world3\\textures\\source_stack\\gloss_procedural_canyon_rock_proof_e1_example\\_procedural_side",
+        "--size",
+        "512,1024",
+        "--world-size-m",
+        "120.0,240.0",
+        "--elev-min-m",
+        "412.0",
+        "--elev-range-m",
+        "18.0",
+        "--seed",
+        "1021",
+        "--name",
+        "Example hybrid (real + procedural seam-integration) request that reproduces the M10 real-to-procedural Gloss-canyon-rock proof. Provenance matches world3/textures/source_stack/gloss_procedural_canyon_rock_proof/manifest.json. Used as Phase E.1 schema validation evidence."
+      ],
+      "exit_code": 0,
+      "wall_time_sec": 0.59,
+      "stdout_tail": [
+        "  \"macro\": \"D:\\\\assets\\\\world3\\\\textures\\\\source_stack\\\\gloss_procedural_canyon_rock_proof_e1_example\\\\_procedural_side\\\\layers\\\\render_albedo.png\",",
+        "  \"valid_mask\": \"D:\\\\assets\\\\world3\\\\textures\\\\source_stack\\\\gloss_procedural_canyon_rock_proof_e1_example\\\\_procedural_side\\\\layers\\\\source_valid_mask.png\",",
+        "  \"heightmap\": \"D:\\\\assets\\\\world3\\\\textures\\\\source_stack\\\\gloss_procedural_canyon_rock_proof_e1_example\\\\_procedural_side\\\\heightmap.png\",",
+        "  \"meta\": \"D:\\\\assets\\\\world3\\\\textures\\\\source_stack\\\\gloss_procedural_canyon_rock_proof_e1_example\\\\_procedural_side\\\\meta.json\"",
+        "}"
+      ],
+      "stderr_tail": [],
+      "status": "ok",
+      "completed_at": "2026-05-11T14:24:55.262238+00:00"
+    },
+    {
+      "id": "build_seam_integration",
+      "script": "world3/pipeline/build_terrain_seam_integration_proof.py",
+      "started_at": "2026-05-11T14:24:55.262805+00:00",
+      "args": [
+        "--left-macro",
+        "D:\\assets\\world3\\textures\\source_stack\\gloss_scrub_source_stack\\source_macro_albedo.png",
+        "--left-valid-mask",
+        "D:\\assets\\world3\\textures\\source_stack\\gloss_scrub_source_stack\\source_macro_valid_mask.png",
+        "--left-heightmap",
+        "D:\\assets\\world3\\toporeview\\gloss_mountain_textured_master\\heightmap.png",
+        "--left-meta",
+        "D:\\assets\\world3\\toporeview\\gloss_mountain_textured_master\\meta.json",
+        "--right-macro",
+        "D:\\assets\\world3\\textures\\source_stack\\gloss_procedural_canyon_rock_proof_e1_example\\_procedural_side\\layers\\render_albedo.png",
+        "--right-valid-mask",
+        "D:\\assets\\world3\\textures\\source_stack\\gloss_procedural_canyon_rock_proof_e1_example\\_procedural_side\\layers\\source_valid_mask.png",
+        "--right-heightmap",
+        "D:\\assets\\world3\\textures\\source_stack\\gloss_procedural_canyon_rock_proof_e1_example\\_procedural_side\\heightmap.png",
+        "--right-meta",
+        "D:\\assets\\world3\\textures\\source_stack\\gloss_procedural_canyon_rock_proof_e1_example\\_procedural_side\\meta.json",
+        "--left-crop",
+        "229,734,229,457",
+        "--right-crop",
+        "0,0,512,1024",
+        "--output-size",
+        "512,1024",
+        "--overlap-px",
+        "128",
+        "--height-feather-px",
+        "224",
+        "--color-feather-px",
+        "384",
+        "--macro-band-mode",
+        "blend",
+        "--macro-bridge-blur-px",
+        "26.0",
+        "--macro-bridge-detail-strength",
+        "0.12",
+        "--texture-out",
+        "D:\\assets\\world3\\textures\\source_stack\\gloss_procedural_canyon_rock_proof_e1_example",
+        "--topo-out",
+        "D:\\assets\\world3\\textures\\source_stack\\gloss_procedural_canyon_rock_proof_e1_example",
+        "--metrics-out",
+        "D:\\assets\\world3\\textures\\source_stack\\gloss_procedural_canyon_rock_proof_e1_example\\seam_metrics.json",
+        "--artifact-name",
+        "Example hybrid (real + procedural seam-integration) request that reproduces the M10 real-to-procedural Gloss-canyon-rock proof. Provenance matches world3/textures/source_stack/gloss_procedural_canyon_rock_proof/manifest.json. Used as Phase E.1 schema validation evidence.",
+        "--integration-kind",
+        "world3_make_hybrid_seam_integration"
+      ],
+      "exit_code": 0,
+      "wall_time_sec": 1.9,
+      "stdout_tail": [
+        "    \"hole_fill_policy\": \"filled_to_full_valid_because_coverage_above_0.9950\"",
+        "  }",
+        "}",
+        "wrote D:\\assets\\world3\\textures\\source_stack\\gloss_procedural_canyon_rock_proof_e1_example",
+        "wrote D:\\assets\\world3\\textures\\source_stack\\gloss_procedural_canyon_rock_proof_e1_example"
+      ],
+      "stderr_tail": [],
+      "status": "ok",
+      "completed_at": "2026-05-11T14:24:57.165270+00:00"
+    },
+    {
+      "id": "build_runtime_image_cache",
+      "script": "world3/pipeline/build_runtime_image_cache.py",
+      "started_at": "2026-05-11T14:24:57.165270+00:00",
+      "args": [
+        "--height-source",
+        "D:\\assets\\world3\\textures\\source_stack\\gloss_procedural_canyon_rock_proof_e1_example\\heightmap.png",
+        "--splat-source",
+        "D:\\assets\\world3\\textures\\m4_splat\\alpine_height_slope_weights_rgba.png",
+        "--out-dir",
+        "D:\\assets\\world3\\textures\\source_stack\\gloss_procedural_canyon_rock_proof_e1_example\\runtime_cache"
+      ],
+      "exit_code": 0,
+      "wall_time_sec": 0.24,
+      "stdout_tail": [
+        "wrote runtime caches under D:\\assets\\world3\\textures\\source_stack\\gloss_procedural_canyon_rock_proof_e1_example\\runtime_cache"
+      ],
+      "stderr_tail": [],
+      "status": "ok",
+      "completed_at": "2026-05-11T14:24:57.408901+00:00"
+    }
+  ],
+  "dry_run": false
+}

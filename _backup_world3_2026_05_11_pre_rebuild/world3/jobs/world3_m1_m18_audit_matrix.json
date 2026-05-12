@@ -1,0 +1,458 @@
+{
+  "schema_version": 1,
+  "generated": "2026-05-11",
+  "plan": "world3/docs/WORLD3_M1_M18_FULL_AUDIT_PLAN_2026_05_11.md",
+  "report": "world3/docs/WORLD3_M1_M18_AUDIT_REPORT_2026_05_11.md",
+  "promotion_audit": "world3/docs/PRODUCTION_PROMOTION_AUDIT_2026_05_10.md",
+  "promotion_manifest": "world3/jobs/production_promotion_candidates.json",
+  "state_values": [
+    "workflow_pass",
+    "visual_pass",
+    "conditional",
+    "pipeline_only",
+    "negative_evidence",
+    "production_candidate",
+    "production_promoted"
+  ],
+  "verdict": {
+    "headline": "M1-M18 is workflow-closed and visually conditional. Strong engineering backbone. No production-promoted terrain.",
+    "production_promoted_count": 0,
+    "next_M": "M19",
+    "next_M_first_target": "Replace the M18 smooth tan/sand procedural neighbor with a real-data-guided procedural terrain that has material identity and close-range detail.",
+    "orchestration_arc": "Promote O1-O3 alongside M19; keep O4-O10 deferred unless they directly unblock M19-M24."
+  },
+  "milestones": [
+    {
+      "id": "M1",
+      "name": "Material catalog / provenance / validation",
+      "state": "workflow_pass",
+      "bands": {
+        "close": "not_applicable",
+        "medium": "not_applicable",
+        "iso": "not_applicable",
+        "topdown": "not_applicable"
+      },
+      "primary_evidence": [
+        "world3/jobs/biome_kits.json",
+        "world3/docs/M1_M7_VALIDATION_SUMMARY.md",
+        "world3/docs/M1_M7_VISUAL_AUDIT_2026_05_08.md"
+      ],
+      "notes": "Catalog schema, provenance, and validation labels are honest. Visual labels are diagnostic-only at this layer.",
+      "blockers": []
+    },
+    {
+      "id": "M2",
+      "name": "Transition strip workflow + rules",
+      "state": "workflow_pass",
+      "bands": {
+        "close": "conditional",
+        "medium": "pass",
+        "iso": "pass",
+        "topdown": "conditional"
+      },
+      "primary_evidence": [
+        "world3/jobs/biome_transition_rules.json"
+      ],
+      "notes": "Strip generation and rules are reproducible. Treat early strip visuals as workflow proof, not art.",
+      "blockers": [
+        "Standalone strip visuals are not gameplay-band evidence."
+      ]
+    },
+    {
+      "id": "M3",
+      "name": "Chunk-size decision (256 m)",
+      "state": "workflow_pass",
+      "bands": {
+        "close": "not_applicable",
+        "medium": "not_applicable",
+        "iso": "not_applicable",
+        "topdown": "not_applicable"
+      },
+      "primary_evidence": [
+        "world3/docs/M3_SOURCE_STACK_SEAM_REVIEW_2026_05_08.md",
+        "world3/docs/M5_STREAMING_BUDGET.md"
+      ],
+      "notes": "256 m base chunk is justified by sweep + budget evidence. Diagnostic visuals only.",
+      "blockers": []
+    },
+    {
+      "id": "M4",
+      "name": "Unified splat / source shader path",
+      "state": "workflow_pass",
+      "bands": {
+        "close": "conditional",
+        "medium": "pass",
+        "iso": "pass",
+        "topdown": "pass"
+      },
+      "primary_evidence": [
+        "world3/docs/M4_SOURCE_STACK_CONTEXT_REVIEW_2026_05_08.md"
+      ],
+      "notes": "Five-slot shader handles height/slope fallback, RGBA splat, source macro/detail. Source-stack rerenders carry visuals.",
+      "blockers": [
+        "Early stand-alone shader screenshots are diagnostics, not visual passes."
+      ]
+    },
+    {
+      "id": "M5",
+      "name": "Streamed walk through ChunkLoader",
+      "state": "workflow_pass",
+      "bands": {
+        "close": "conditional",
+        "medium": "pass",
+        "iso": "pass",
+        "topdown": "pass"
+      },
+      "primary_evidence": [
+        "world3/docs/M5_WALK_SPLAT_STREAMING.md",
+        "world3/docs/M5_STREAMING_BUDGET.md",
+        "world3/docs/M5_SOURCE_STACK_WALK_REVIEW_2026_05_08.md"
+      ],
+      "notes": "Streamed walk works; collision + cache evidence exists. Close-band requires source-stack rerender to read.",
+      "blockers": []
+    },
+    {
+      "id": "M6",
+      "name": "Runtime hardening + finite-source policy",
+      "state": "workflow_pass",
+      "bands": {
+        "close": "conditional",
+        "medium": "pass",
+        "iso": "pass",
+        "topdown": "pass"
+      },
+      "primary_evidence": [
+        "world3/docs/M6_RUNTIME_HARDENING.md",
+        "world3/docs/M6_SOURCE_MATERIAL_NOISE_AUDIT.md",
+        "world3/docs/M6_SOURCE_STACK_RUNTIME_REVIEW_2026_05_08.md"
+      ],
+      "notes": "Runtime caches, mirrored/wrap sampling policy, and source-noise audit are in place. Organic noise is real and tracked.",
+      "blockers": [
+        "Source-material noise is real on green/organic classes; M8 owns remediation."
+      ]
+    },
+    {
+      "id": "M7",
+      "name": "Rule-driven runtime transition masks",
+      "state": "workflow_pass",
+      "bands": {
+        "close": "conditional",
+        "medium": "pass",
+        "iso": "pass",
+        "topdown": "pass"
+      },
+      "primary_evidence": [
+        "world3/docs/M7_BOUNDARY_RUNTIME_INTEGRATION.md",
+        "world3/docs/M7_TRANSITION_MASK_METRICS_2026_05_08.md",
+        "world3/docs/M7_SOURCE_STACK_BOUNDARY_REVIEW_2026_05_08.md"
+      ],
+      "notes": "Same-source mask QA is measurable and passes. Cross-material stress remains workflow conditional.",
+      "blockers": []
+    },
+    {
+      "id": "M8",
+      "name": "Organic source-material cleanup lane",
+      "state": "conditional",
+      "bands": {
+        "close": "conditional",
+        "medium": "pass",
+        "iso": "pass",
+        "topdown": "pass"
+      },
+      "primary_evidence": [
+        "world3/docs/M8_COMFYUI_TEXTURE_REGEN_PASS_2026_05_08.md",
+        "world3/docs/M8_COMFYUI_TERRAIN_CONTEXT_REVIEW_2026_05_08.md",
+        "world3/docs/M8_ORGANIC_REGEN_QUEUE_STATUS_2026_05_08.md"
+      ],
+      "notes": "Regeneration queue is functioning. m8_grassland_grass_calm_v3 is a sidecar candidate; multiple organic classes are still blocked.",
+      "blockers": [
+        "Organic textures still slightly pale/hazy under detail stress.",
+        "FLUX 2 / Aura / SD 3.5 bakeoff (m14_texture_bakeoff_plan.json) is staged but not yet selected."
+      ]
+    },
+    {
+      "id": "M9",
+      "name": "Runtime polish / perf path",
+      "state": "conditional",
+      "bands": {
+        "close": "not_applicable",
+        "medium": "not_applicable",
+        "iso": "not_applicable",
+        "topdown": "not_applicable"
+      },
+      "primary_evidence": [
+        "world3/docs/captures/review/m18_guided_neighbor_performance_smoke.json"
+      ],
+      "notes": "M18 smoke: avg 4.72 ms / p95 7.98 ms / max 11.85 ms @ 1600x1000. Clean for a workflow scene but a single sample, not a streamed-area sweep.",
+      "blockers": [
+        "No dedicated multi-area perf pass; treat current numbers as smoke only."
+      ]
+    },
+    {
+      "id": "M10",
+      "name": "Seam/ecotone integration",
+      "state": "workflow_pass",
+      "bands": {
+        "close": "conditional",
+        "medium": "pass",
+        "iso": "pass",
+        "topdown": "pass"
+      },
+      "primary_evidence": [
+        "world3/docs/M10_TERRAIN_SEAM_INTEGRATION_PROOF_2026_05_09.md",
+        "world3/docs/M10_ECOTONE_LAYER_PROOF_2026_05_09.md",
+        "world3/docs/M10_UNLIKE_BIOME_METHOD_REVIEW_2026_05_09.md"
+      ],
+      "captures": {
+        "close": "world3/docs/captures/review/source_stack_ecotone_layer_tour_close.png",
+        "medium": "world3/docs/captures/review/source_stack_ecotone_layer_tour_medium.png",
+        "iso": "world3/docs/captures/review/source_stack_ecotone_layer_tour_iso.png",
+        "topdown": "world3/docs/captures/review/source_stack_ecotone_layer_tour_topdown.png"
+      },
+      "notes": "Same-source, real-to-real, real-to-procedural, and ecotone-layer workflows accepted. First muted-strip unlike-biome attempt is negative_evidence, rebuilt as ecotone-layer.",
+      "blockers": [
+        "Ecotone scatter uses composite low-poly review meshes.",
+        "Real-to-procedural close-range PBR/detail still weak."
+      ]
+    },
+    {
+      "id": "M11",
+      "name": "Junction/corner case library",
+      "state": "workflow_pass",
+      "bands": {
+        "close": "pass",
+        "medium": "pass",
+        "iso": "pass",
+        "topdown": "pass"
+      },
+      "primary_evidence": [
+        "world3/docs/M11_JUNCTION_LAYER_PROOF_2026_05_10.md",
+        "world3/docs/M11_FOURWAY_CORNER_PROOF_2026_05_10.md",
+        "world3/docs/M11_JUNCTION_CASE_MATRIX_2026_05_10.md"
+      ],
+      "captures": {
+        "close": "world3/docs/captures/review/source_stack_m11_fourway_corner_tour_close.png",
+        "medium": "world3/docs/captures/review/source_stack_m11_fourway_corner_tour_medium.png",
+        "iso": "world3/docs/captures/review/source_stack_m11_fourway_corner_tour_iso.png",
+        "topdown": "world3/docs/captures/review/source_stack_m11_fourway_corner_tour_topdown.png"
+      },
+      "notes": "Three-way and four-way representative cases accepted workflow. Scatter still placeholder. T/L/island variants future work.",
+      "blockers": [
+        "T/L/island junction variants still unbuilt.",
+        "Scatter assets are placeholder review meshes."
+      ]
+    },
+    {
+      "id": "M12",
+      "name": "View-mode parity (close/medium/iso/topdown)",
+      "state": "workflow_pass",
+      "bands": {
+        "close": "pass",
+        "medium": "pass",
+        "iso": "pass",
+        "topdown": "pass"
+      },
+      "primary_evidence": [
+        "world3/docs/M12_VIEW_MODE_PARITY_AUDIT_2026_05_10.md",
+        "world3/docs/M12_RUNTIME_PARITY_PROOF_2026_05_10.md",
+        "world3/docs/captures/review/m12_view_mode_parity_audit.json"
+      ],
+      "captures": {
+        "close": "world3/docs/captures/review/source_stack_m12_runtime_fourway_close.png",
+        "medium": "world3/docs/captures/review/source_stack_m12_runtime_fourway_medium.png",
+        "iso": "world3/docs/captures/review/source_stack_m12_runtime_fourway_iso.png",
+        "topdown": "world3/docs/captures/review/source_stack_m12_runtime_fourway_topdown.png"
+      },
+      "notes": "Same contract inspectable across four bands; runtime parity proof accepted. Strongest workflow evidence in the project.",
+      "blockers": [
+        "Not production art; workflow proof only."
+      ]
+    },
+    {
+      "id": "M13",
+      "name": "Production promotion gate",
+      "state": "workflow_pass",
+      "bands": {
+        "close": "not_applicable",
+        "medium": "not_applicable",
+        "iso": "not_applicable",
+        "topdown": "not_applicable"
+      },
+      "primary_evidence": [
+        "world3/docs/PRODUCTION_PROMOTION_AUDIT_2026_05_10.md",
+        "world3/jobs/production_promotion_candidates.json",
+        "world3/pipeline/audit_production_promotion_candidates.py"
+      ],
+      "notes": "Gate is active and necessary. Candidates: 8 (3 workflow_ready_not_production, 5 conditional). Production-promoted count: 0.",
+      "blockers": []
+    },
+    {
+      "id": "M14",
+      "name": "Close-play material bakeoff / quality board",
+      "state": "conditional",
+      "bands": {
+        "close": "conditional",
+        "medium": "pass",
+        "iso": "pass",
+        "topdown": "pass"
+      },
+      "primary_evidence": [
+        "world3/docs/M14_CLOSE_PLAY_QUALITY_BOARD_2026_05_10.md",
+        "world3/docs/M14_GRASS_PROMPT_BAKEOFF_REVIEW_2026_05_10.md",
+        "world3/docs/M14_TEMPERATE_FOREST_FLOOR_BAKEOFF_REVIEW_2026_05_10.md",
+        "world3/docs/M14_TUNDRA_MOSS_BAKEOFF_REVIEW_2026_05_10.md",
+        "world3/docs/M14_TUNDRA_LICHEN_BAKEOFF_REVIEW_2026_05_10.md",
+        "world3/jobs/m14_texture_bakeoff_plan.json"
+      ],
+      "notes": "Quality board and bakeoff lanes work. FLUX 2 9B + dev bakeoff staged 2026-05-10 but no winner selected; current sidecars not yet production-grade.",
+      "blockers": [
+        "No FLUX 2 bakeoff winner selected yet.",
+        "m8_grassland_grass_calm_v3 sidecar still slightly pale/hazy at close detail stress."
+      ]
+    },
+    {
+      "id": "M15",
+      "name": "Feature/scatter mask workflow",
+      "state": "workflow_pass",
+      "bands": {
+        "close": "conditional",
+        "medium": "pass",
+        "iso": "pass",
+        "topdown": "pass"
+      },
+      "primary_evidence": [
+        "world3/docs/M15_FEATURE_SCATTER_PROOF_2026_05_10.md",
+        "world3/jobs/m15_feature_scatter_policy.json"
+      ],
+      "notes": "Mask-driven scatter wired into runtime review. Density semantics documented.",
+      "blockers": [
+        "All scatter primitives are procedural review meshes (rock/grass/decal), not authored assets.",
+        "Authored asset import path is the unblocker, not the mask workflow."
+      ]
+    },
+    {
+      "id": "M16",
+      "name": "Source-stack gallery + iso sidecar",
+      "state": "workflow_pass",
+      "bands": {
+        "close": "pass",
+        "medium": "pass",
+        "iso": "conditional",
+        "topdown": "pass"
+      },
+      "primary_evidence": [
+        "world3/docs/M16_SOURCE_STACK_GALLERY_BOARD_2026_05_10.md",
+        "world3/docs/M16_ISO_IMPOSTOR_RESEARCH_PLAN_2026_05_10.md",
+        "world3/jobs/m16_source_stack_gallery_manifest.json"
+      ],
+      "captures": {
+        "gallery_board": "world3/docs/captures/review/source_stack_m16_gallery_board.png",
+        "iso_sidecar": "world3/docs/captures/review/source_stack_m16_iso_impostor_card.png"
+      },
+      "notes": "Bulk gallery board reviewable. Cached iso impostor remains a renderer sidecar seed, not chunked runtime impostors. Iso band conditional because the sidecar is a single cached card.",
+      "blockers": [
+        "Cached iso card is sidecar only; needs depth/picking/streaming before tactical use."
+      ]
+    },
+    {
+      "id": "M17",
+      "name": "Real-data-guided procedural extraction",
+      "state": "workflow_pass",
+      "bands": {
+        "close": "not_applicable",
+        "medium": "not_applicable",
+        "iso": "not_applicable",
+        "topdown": "not_applicable"
+      },
+      "primary_evidence": [
+        "world3/docs/M17_REAL_DATA_RULE_EXTRACTION_2026_05_10.md",
+        "world3/docs/M17_REAL_DATA_RULE_EXTRACTION.json",
+        "world3/jobs/m17_procedural_neighbor_recipe.json",
+        "world3/jobs/m17_rule_extraction_sources.json"
+      ],
+      "captures": {
+        "board": "world3/docs/captures/review/source_stack_m17_rule_extraction_board.png"
+      },
+      "notes": "Extraction board produces a compatible neighbor bundle. Proves the path, not procedural quality.",
+      "blockers": [
+        "Procedural neighbor visual quality is the open M19 problem."
+      ]
+    },
+    {
+      "id": "M18",
+      "name": "Representative runtime slice + closure harness",
+      "state": "conditional",
+      "bands": {
+        "close": "conditional",
+        "medium": "conditional",
+        "iso": "pass",
+        "topdown": "conditional"
+      },
+      "primary_evidence": [
+        "world3/docs/M18_REPRESENTATIVE_SLICE_FIRST_PASS_2026_05_10.md",
+        "world3/docs/M18_CLOSURE_AUDIT_2026_05_10.md",
+        "world3/jobs/m18_closure_review_manifest.json",
+        "world3/jobs/m18_representative_slice_manifest.json"
+      ],
+      "captures": {
+        "close": "world3/docs/captures/review/source_stack_m18_guided_neighbor_close.png",
+        "medium": "world3/docs/captures/review/source_stack_m18_guided_neighbor_medium.png",
+        "iso": "world3/docs/captures/review/source_stack_m18_guided_neighbor_iso.png",
+        "topdown": "world3/docs/captures/review/source_stack_m18_guided_neighbor_topdown.png",
+        "contact_sheet": "world3/docs/captures/review/source_stack_m18_guided_neighbor_contact_sheet.png",
+        "closure_harness": "world3/docs/captures/review/source_stack_m18_closure_review.png",
+        "perf_smoke": "world3/docs/captures/review/m18_guided_neighbor_performance_smoke.json"
+      },
+      "notes": "Workflow-closed, visually conditional. Real-source side carries; procedural tan/sand side triggers the broad-smooth-tan visual veto on its own and is the project's biggest visible weakness. M11 junction ownership lives in the closure harness, not in the streamed terrain.",
+      "blockers": [
+        "Procedural sand/tan side is too smooth and broad for AAA close play.",
+        "Scatter primitives are not authored assets.",
+        "Closure harness is a sidecar grid, not a single streamed composition.",
+        "Performance figure is a smoke sample, not a streamed-area sweep."
+      ]
+    }
+  ],
+  "visual_vetos_observed": [
+    {
+      "veto": "broad smooth tan/sand field standing in for real material identity",
+      "where": "M18 procedural neighbor side (close/medium/topdown)",
+      "evidence": [
+        "world3/docs/captures/review/source_stack_m18_guided_neighbor_close.png",
+        "world3/docs/captures/review/source_stack_m18_guided_neighbor_medium.png",
+        "world3/docs/captures/review/source_stack_m18_guided_neighbor_topdown.png"
+      ],
+      "consequence": "Prevents M18 visual_pass on close/medium/topdown; drives M19 first target."
+    }
+  ],
+  "promotion_gate_findings": {
+    "candidates": 8,
+    "workflow_ready_not_production": 3,
+    "conditional": 5,
+    "production_candidate": 0,
+    "production_promoted": 0,
+    "missing_evidence_after_rerun": 0,
+    "stale_entries": 0,
+    "gate_assessment": "Active and necessary. Every M14-M18 artifact either has a candidate entry or is explicitly outside the gate (M17 extraction, M16 gallery board). All four bands present for every workflow_ready_not_production item."
+  },
+  "roadmap_decisions": {
+    "m18_closure": "Workflow-closed / visually conditional. Confirmed.",
+    "m19_can_start": true,
+    "m19_first_target": "Replace the smooth tan/sand procedural neighbor with material-identity-bearing close-range procedural terrain.",
+    "orchestration_arc": "Promote O1-O3 as near-term operability work alongside M19.",
+    "stale_active_state_to_correct": [
+      "world3/docs/M_SEQUENCE_2026_05_10.md line 44: 'M14 active'",
+      "world3/docs/WORLD3_EXEC_SUMMARY_2026_05_10.md lines 15, 23, 174, 227: 'M14 active'",
+      "world3/docs/WORLD3_STATE_2026_05_08.md line 18: 'M14 (active) -> M18 closure'"
+    ]
+  },
+  "definition_of_done": {
+    "every_milestone_classified": true,
+    "every_visual_pass_band_evidenced": true,
+    "blockers_assigned": true,
+    "promotion_gate_active": true,
+    "audit_report_committed": "world3/docs/WORLD3_M1_M18_AUDIT_REPORT_2026_05_11.md",
+    "audit_matrix_committed": "world3/jobs/world3_m1_m18_audit_matrix.json",
+    "contact_sheet": "world3/docs/captures/review/world3_m1_m18_audit_contact_sheet.png",
+    "live_review": "pending"
+  }
+}

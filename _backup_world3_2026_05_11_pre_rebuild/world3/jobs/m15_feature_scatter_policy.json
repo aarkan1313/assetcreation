@@ -1,0 +1,80 @@
+{
+  "id": "m15_feature_scatter_policy_v1",
+  "status": "prototype_policy_active_2026_05_10",
+  "purpose": "Mask-driven feature scatter/decal policy for M15. Current runtime uses procedural review primitives; authored assets should replace the recipes without changing masks or visibility bands.",
+  "source_stack": "gloss_grassland_ecotone_layer_proof",
+  "mask_contract": {
+    "shrub": "shrub_carryover_mask",
+    "dry_grass": "dry_grass_density_mask",
+    "stone": "rock_cluster_mask + soil_exposure_mask",
+    "dry_debris": "wash_line_mask + soil_exposure_mask + shrub_carryover_mask",
+    "lichen_decal": "rock_cluster_mask + soil_exposure_mask, suppressed by wash/no-scatter"
+  },
+  "gameplay_bands": {
+    "topdown": {
+      "scatter_default_visible": false,
+      "reason": "Map/strategy read should stay terrain-first."
+    },
+    "iso": {
+      "scatter_default_visible": true,
+      "reason": "Tactical view should see shrubs and stone masses but avoid close-only clutter."
+    },
+    "medium_3d": {
+      "scatter_default_visible": true,
+      "reason": "Organic identity shifts from flat terrain tiles to feature layers."
+    },
+    "close_3d": {
+      "scatter_default_visible": true,
+      "reason": "Close band validates asset shape, density, and prototype-to-authored replacement."
+    }
+  },
+  "kinds": {
+    "shrub": {
+      "mask": "shrub_carryover_mask",
+      "spacing_m": 7.5,
+      "max_count": 980,
+      "visibility_end_m": 420.0,
+      "prototype_recipe": "multi-lobed low shrub with woody core",
+      "authored_asset_target": "scrub brush / low desert shrub GLB variants"
+    },
+    "dry_grass": {
+      "mask": "dry_grass_density_mask",
+      "spacing_m": 7.0,
+      "max_count": 1150,
+      "visibility_end_m": 210.0,
+      "prototype_recipe": "crossed blade cards plus seed heads",
+      "authored_asset_target": "dry grass clump cards with LOD billboard fallback"
+    },
+    "stone": {
+      "mask": "rock_cluster_mask",
+      "spacing_m": 8.0,
+      "max_count": 780,
+      "visibility_end_m": 360.0,
+      "prototype_recipe": "warm box slabs plus lighter caps",
+      "authored_asset_target": "world/props rock_small variants or OpenTopo-derived stones"
+    },
+    "dry_debris": {
+      "mask": "wash_line_mask",
+      "spacing_m": 8.5,
+      "max_count": 520,
+      "visibility_end_m": 180.0,
+      "prototype_recipe": "short tan/brown twig slivers",
+      "authored_asset_target": "sticks, dry stems, leaf-litter/debris clusters"
+    },
+    "lichen_decal": {
+      "mask": "rock_cluster_mask + soil_exposure_mask",
+      "spacing_m": 6.5,
+      "max_count": 760,
+      "visibility_end_m": 145.0,
+      "prototype_recipe": "flat pale/green decal disks",
+      "authored_asset_target": "irregular decal cards or projected terrain decals"
+    }
+  },
+  "promotion_gate": [
+    "No hand placement; placement must remain mask-driven and deterministic.",
+    "Topdown must remain readable with scatter hidden by default.",
+    "Iso/medium/close must be captured before promotion.",
+    "Authored replacement assets must keep explicit LOD/visibility ranges.",
+    "Do not promote prototype primitives as final content."
+  ]
+}

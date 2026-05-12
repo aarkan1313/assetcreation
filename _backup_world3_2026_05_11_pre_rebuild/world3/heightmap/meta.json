@@ -1,0 +1,16 @@
+{
+  "source_dem": "D:\\assets\\dems\\COP30_-110.8500_+43.6500_-110.6500_+43.8500.tif",
+  "source_crs": "EPSG:4326",
+  "source_bounds": {
+    "left": -110.82786768924178,
+    "right": -110.77813231075821,
+    "bottom": 43.72303377650018,
+    "top": 43.75896622349982
+  },
+  "heightmap_size_px": 1024,
+  "elevation_min_m": 2497.792724609375,
+  "elevation_max_m": 4059.05615234375,
+  "elevation_range_m": 1561.263427734375,
+  "world_size_m": 3999.999999999707,
+  "material": "rock_light"
+}

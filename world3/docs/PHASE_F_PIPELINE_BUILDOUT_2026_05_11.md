@@ -398,7 +398,7 @@ for the backfill closure.
 - [x] **F.3.1** — Edge-constraint plan iterator + procedural builder — [F31_EDGE_CONSTRAINT_CONTIGUITY_2026_05_11.md](F31_EDGE_CONSTRAINT_CONTIGUITY_2026_05_11.md)
 - [x] **F.3.4** — M11 bundle library refactor (builder converged on M11 emit shape) — [F34_M11_LIB_REFACTOR_2026_05_11.md](F34_M11_LIB_REFACTOR_2026_05_11.md)
 - [x] **F.3.5** — M11 parity refactor (fourway support in lib + CLI driver; ~70% visual parity, architecture converged) — [F35_M11_PARITY_REFACTOR_2026_05_11.md](F35_M11_PARITY_REFACTOR_2026_05_11.md)
-- [ ] **F.3.6** — final visual tuning + 5-biome rebuild through new pipeline + multi-domain boundary tiles + F.7 revalidation
+- [~] **F.3.6** — visual tuning + 5-biome rebuild + multi-domain boundary tiles + F.7 revalidation. **Progress 2026-05-11 (takeover session):** per-quad light-field fix landed; schema self-test chain green; 5-biome starter rebuilt clean (25/25 tiles); **splat-driven per-pixel macro compositing now in `build_macro_preview_general`** — single-biome bundles composite all 5 slot albedos per-pixel via the splat with M11-style per-slot tinting (scatter-mask overlays on grass/dirt/rock, lambertian light from height gradient). New `BundleSpec.slot_materials` field lets multi-biome boundary tiles override individual slots. **Remaining:** (a) iterator-side multi-biome boundary crossfade using the new `slot_materials` field; (b) F.7 streamer revalidation against new bundles; (c) optional brightness tuning to close the ~0.07-mean gap vs M11 on the parity fourway.
 - [x] F.8 — Pipeline guide + top-level entry point — [F8_TOP_LEVEL_ENTRY_2026_05_11.md](F8_TOP_LEVEL_ENTRY_2026_05_11.md) + [WORLD3_PIPELINE_GUIDE.md](WORLD3_PIPELINE_GUIDE.md)
 
 ## What ships at end of Phase F
