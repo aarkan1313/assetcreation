@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "default_tier": "high",
+  "tiers": {
+    "low": {
+      "ring_count": 3,
+      "ring_grid_n": 64,
+      "ring_grid_step_base_m": 4.0,
+      "heightmap_format_inner": "RF",
+      "heightmap_format_outer": "RH",
+      "collision_rings": 1,
+      "splat_texture_array_size": 1024,
+      "splat_resolution_per_ring_m": 4.0,
+      "shadow_quality": "off",
+      "update_interval_s": 0.1
+    },
+    "medium": {
+      "ring_count": 4,
+      "ring_grid_n": 96,
+      "ring_grid_step_base_m": 2.0,
+      "heightmap_format_inner": "RF",
+      "heightmap_format_outer": "RH",
+      "collision_rings": 1,
+      "splat_texture_array_size": 2048,
+      "splat_resolution_per_ring_m": 2.0,
+      "shadow_quality": "low",
+      "update_interval_s": 0.07
+    },
+    "high": {
+      "ring_count": 4,
+      "ring_grid_n": 128,
+      "ring_grid_step_base_m": 2.0,
+      "heightmap_format_inner": "RF",
+      "heightmap_format_outer": "RH",
+      "collision_rings": 2,
+      "splat_texture_array_size": 4096,
+      "splat_resolution_per_ring_m": 1.0,
+      "shadow_quality": "high",
+      "update_interval_s": 0.05
+    },
+    "ultra": {
+      "ring_count": 4,
+      "ring_grid_n": 256,
+      "ring_grid_step_base_m": 2.0,
+      "heightmap_format_inner": "RF",
+      "heightmap_format_outer": "RF",
+      "collision_rings": 2,
+      "splat_texture_array_size": 4096,
+      "splat_resolution_per_ring_m": 0.5,
+      "shadow_quality": "high",
+      "update_interval_s": 0.05
+    }
+  }
+}
