@@ -26,7 +26,7 @@
 | `build-notes/` | "What was just shipped" per axis cycle | Once per shipped axis |
 | `handoffs/` | Big-bang takeover prompts (`HANDOFF_YYYY_MM_DD_*`) | Each compaction or pickup point |
 | `historical/` | Closed bugs / audit trails that future you should remember | Rare — once-per-debugging-saga |
-| `features/` | Per-feature docs (e.g. view-modes, world-pipeline) | When a feature reaches "shipped + documented" |
+| `features/` | Per-feature docs (e.g. view-modes, world-pipeline, textures) | When a feature reaches "shipped + documented" |
 
 ## Update protocol
 

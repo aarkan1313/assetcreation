@@ -14,8 +14,11 @@
 |---|---|
 | Build the anchor world from a DEM | `ORCHESTRATOR_GUIDE.md` "TL;DR" |
 | Build the scale_demo world | `pipeline/pick_dem_crop_scale.py` → `slice_to_tiles.py` → `write_material_tres_scale_v1.py` → Godot `--import` |
-| Generate a single texture from a prompt | `D:/assets/pipelines/textures/aaa_texture.py` — see `pipelines/textures/PIPELINE.md` |
-| Generate a biome kit (3 slots × 4 maps via klein-9B) | `pipeline/generate_biome_kits.py` (calls aaa_texture per slot, installs into W4 materials/) |
+| Generate a single texture from a prompt (W4 pipeline) | `pipeline/textures/tx_pipeline.py` — see `features/textures.md` |
+| Generate the full diversity batch for a biome | `pipeline/diversity_run.py --biome <name>` (reads `pipeline/biomes/<name>.yaml`) |
+| Review below-A candidates | `pipeline/diversity_review.py --biome <name>` |
+| Build a contact sheet for slot review | `pipeline/build_contact_sheet.py --biome <name>` |
+| (Legacy) Generate a biome kit via shared infra | `pipeline/generate_biome_kits.py` — superseded by `diversity_run.py` |
 | Emit `.tres` materials for the 4 new biomes (legacy pre-Axis-6 path) | `pipeline/write_material_tres_biomes.py` |
 | Build the Axis 6 layer manifest (biomes → texture-array layers per tier) | `pipeline/build_biome_arrays.py` |
 | Build the world-spanning splat array (one R8 PNG per biome) | `pipeline/build_world_splat.py` |
@@ -151,18 +154,27 @@ replaces the other yet.
 | `clipmap_debug.tscn` | `the world 4/scenes/clipmap_debug.tscn` | Stage 2 runnable scene: ClipmapWorld + AnchorCameraRig, sine-wave material. |
 | `capture_clipmap_debug.tscn` / `_topdown.tscn` | `the world 4/scenes/` | Headless capture scenes for the Stage 2 debug clipmap. |
 
-### Texture generation
+### Texture generation (W4-owned)
+
+The W4 texture pipeline lives at `pipeline/textures/` (the `tx_*`
+modules). Canonical doc: `features/textures.md`. Code-side
+quick-reference: `pipeline/textures/README.md`.
 
 | Script | What it does | When to run |
 |---|---|---|
-| `generate_biome_kits.py` | Batch driver: calls `aaa_texture.py` for each W4 biome slot with klein-9B fp8 + qwen_3_8b. Installs PBR maps into `materials/biome_<name>/<slot>/`. Supports `--only <slot_id>...` for partial reruns. | Generating / regenerating any biome ground/mid/rock texture. |
-| `fix_texture_imports.py` | Patches `.import` settings on existing PNGs (compression, filter, mipmaps). | One-off when import settings drift. |
+| `pipeline/diversity_run.py` | Biome × slot × candidate driver. Reads `pipeline/biomes/<biome>.yaml`, calls `tx_pipeline` per candidate, writes to `the world 4/candidates/<biome>/<slot>/<NN>_<tag>/` with `_index.json` per slot. | Generating any biome's candidate pool. |
+| `pipeline/textures/tx_pipeline.py` | Orchestrator for a single material. Stages: 4-pass FLUX → variant rank → delight → hybrid PBR → seam_repair → QA. | Single-prompt runs, debugging. |
+| `pipeline/diversity_review.py` | Surfaces every below-A candidate with metric breakdown + reason for spot-check. | Reviewing a batch; calibrating QA thresholds. |
+| `pipeline/build_contact_sheet.py` | Builds per-slot review grid (`_contact_sheet.png`) of all candidates' albedos with grade badge + tag + key metric. | After a diversity run completes. |
+| `pipeline/diversity_migrate.py` | One-shot tool that migrated legacy flat library outputs into the nested candidate layout. | Used 2026-05-12; preserved for reference. |
+| `pipeline/textures/experiment_audit_matrix.py` | 16-combo audit experiment on the `windpack` prompt. Run-history of how audit predictions diverged from reality. | Reproducibility; not normally re-run. |
+| `pipeline/fix_texture_imports.py` | Patches `.import` settings on existing PNGs (compression, filter, mipmaps). | One-off when import settings drift. |
+| (Legacy) `pipeline/generate_biome_kits.py` | Original batch driver that called `aaa_texture.py` for each W4 biome slot. **Superseded** by `diversity_run.py`. | Don't run — kept as historical reference. |
 
-The full texture pipeline (`aaa_texture.py`, `flux_seamless.py`,
-`variant_select.py`, `stablematerials_image2pbr.py`, `texture_qa.py`,
-`palette_lock.py`, etc.) lives at `D:/assets/pipelines/textures/` and is
-documented in `pipelines/textures/PIPELINE.md`. W4 only drives it via
-`generate_biome_kits.py`.
+The W4 `tx_*` modules reuse some pure functions from the shared
+infra at `D:/assets/pipelines/textures/` (offset image math, delight
+LAB-blur, derive_pbr_v2 helpers, StableMaterials subprocess wrapper)
+but the orchestration is W4-owned. The shared infra stays untouched.
 
 ## Shaders (`world 4/the world 4/shaders/`)
 
@@ -211,7 +223,8 @@ documented in `pipelines/textures/PIPELINE.md`. W4 only drives it via
 | Godot (non-mono) | `C:/Godot/Godot_v4.5-stable_win64.exe` |
 | ComfyUI server | `D:/assets/animators/ComfyUI/venv/Scripts/python.exe D:/assets/animators/ComfyUI/main.py --listen 127.0.0.1 --port 8188` |
 | FLUX2-klein 9B (canonical) | `flux-2-klein-9b-fp8.safetensors` + `qwen_3_8b_fp8mixed.safetensors` (under ComfyUI `models/diffusion_models/` and `models/text_encoders/`) |
-| Texture pipeline (`aaa_texture.py` etc.) | `D:/assets/pipelines/textures/` |
+| Texture pipeline (W4-owned, current) | `pipeline/textures/` — see `features/textures.md` |
+| Texture pipeline (shared infra, legacy) | `D:/assets/pipelines/textures/` — W4 reuses some pure functions only |
 | DEM cache | `D:/assets/dems/` |
 | W3 (parts depot, not build target) | `D:/assets/world3/` |
 

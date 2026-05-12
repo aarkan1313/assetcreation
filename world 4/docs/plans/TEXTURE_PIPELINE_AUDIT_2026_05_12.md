@@ -1,5 +1,12 @@
 # W4 Texture Pipeline Audit — 2026-05-12
 
+> **HISTORICAL.** This is the audit document that started the texture
+> pipeline rebuild. **Most of its predictions turned out wrong** — see
+> `TEXTURE_PIPELINE_FINDINGS_2026_05_12.md` for what we actually
+> learned. The canonical "this is the W4 texture pipeline" doc lives
+> at `../features/textures.md`. This audit is kept as a record of
+> reasoning, not as current guidance.
+
 ## Why this audit exists
 
 The texture pipeline at `D:/assets/pipelines/textures/` was built for

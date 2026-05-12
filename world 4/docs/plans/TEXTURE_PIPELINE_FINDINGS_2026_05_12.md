@@ -1,4 +1,10 @@
-# W4 Texture Pipeline — Final Findings + Workflow Record — 2026-05-12
+# W4 Texture Pipeline — Findings + Diagnostic Record — 2026-05-12
+
+> **Canonical "this is the W4 texture pipeline" doc:** `../features/textures.md`.
+> This doc is the diagnostic record — *why* the pipeline is the way it
+> is. For operational reference (how to use it, layout, commands), go
+> to the features doc. This doc is kept so future-us understand the
+> reasoning chain that led to the current defaults.
 
 After the audit, two experiments, and a diagnostic chain that overturned
 most of the audit's predictions, this is the locked-in W4 texture
