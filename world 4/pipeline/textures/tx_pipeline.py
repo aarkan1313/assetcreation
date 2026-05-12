@@ -53,16 +53,22 @@ from tx_qa import qa_albedo
 class PipelineSettings:
     """All pipeline knobs, no silent defaults.
 
-    Defaults driven by the 16-combo audit experiment (2026-05-12,
-    see docs/plans/TEXTURE_PIPELINE_FINDINGS_2026_05_12.md):
+    Defaults locked 2026-05-12 after the audit + post-audit diagnosis
+    chain (see TEXTURE_PIPELINE_AUDIT_2026_05_12.md and
+    TEXTURE_PIPELINE_FINDINGS_2026_05_12.md). Key findings:
 
-      - heal_denoise=1.0 (full denoise — the audit guessed 0.35 would
-        be better but empirically 0.35 leaves edge_continuity above
-        the 0.005 threshold; 1.0 hammers the seam closed)
-      - heal_mode='flux_heal' (skipping it drops grade by ~0.88 steps)
-      - pbr_backend='derive' (sm tanks mip32_stdev on every Snow combo)
-      - delight_strength=0.0 (marginal effect ~0.12; not worth the pass)
-      - external_seam_repair=False (4-pass FLUX is the seam repair)
+      - The audit was wrong about delight, pbr=derive, and
+        seam_repair-as-duplicate-work. Tracing back to the shipped
+        materials/biome_alpine/ground/ showed: SM's tileable=True
+        diffusion is what cleans the midline seam that FLUX's 4-pass
+        heal leaves behind. Removing SM exposed the seam.
+      - pbr_backend='hybrid': SM cleans midline (use its albedo only);
+        derive_pbr_v2 builds the rest of the PBR maps from the cleaned
+        albedo. Best of both — clean tileable albedo + consistent PBR.
+      - delight=0.4: matches upstream's working recipe. Marginal effect
+        on QA grade but consistent with what was shipping clean.
+      - heal_denoise=0.35 (with Flux2Scheduler which silently ignores
+        it — same effective behavior as upstream).
     """
     # Generation
     unet: str = "flux-2-klein-9b-fp8.safetensors"
@@ -73,20 +79,30 @@ class PipelineSettings:
     seed_base: int = 42
     variants: int = 4
 
-    # Heal pass — experiment-locked at full denoise. The audit predicted
-    # 0.35 would be the win; turned out 0.35 doesn't close the seam
-    # cross enough (edge_continuity > 0.01 in all 0.35 combos).
-    heal_denoise: float = 1.0
+    # Heal pass — Flux2Scheduler silently ignores `denoise`, so this
+    # value is informational. The 4-pass FLUX heal partially closes
+    # the wrap seam; the SM tileable pass in stage 3 closes the rest.
+    heal_denoise: float = 0.35
     heal_mode: str = "flux_heal"  # 'flux_heal' or 'none'
 
-    # Delight — off by default; prompt handles lighting
-    delight_strength: float = 0.0
+    # Delight — match upstream's working recipe at 0.4.
+    delight_strength: float = 0.4
 
     # PBR backend
-    pbr_backend: str = "derive"  # 'derive' or 'sm'
+    # - 'hybrid' (default): SM tileable albedo + derive PBR maps
+    # - 'derive': just derive_pbr_v2 (NO seam fix — for fast iteration only)
+    # - 'sm': SM for everything (audit found this fails mip32_stdev on terrain)
+    pbr_backend: str = "hybrid"
 
-    # External seam_repair (legacy PatchMatch) — off by default
-    external_seam_repair: bool = False
+    # PatchMatch seam repair over the midline. ON by default — the
+    # 2026-05-12 follow-up found the audit got this wrong: FLUX heal
+    # closes the WRAP seam, this closes the MIDLINE seam created by
+    # the reverse-shift. Without it, every texture has visible cross-
+    # lines at 50% when tiled (confirmed against the audit's "A-grade"
+    # output: ratio 22 vs shipped 1.3).
+    seam_repair: bool = True
+    seam_repair_patch: int = 64
+    seam_repair_feather: int = 12
 
     # QA category — drives thresholds
     category: str = "Rock"
@@ -188,33 +204,38 @@ def run_pipeline(prompt: str, asset_id: str, out_dir: Path,
 
     # ----- STAGE 3: PBR backend -----
     print(f"\n=== STAGE 3: PBR ({settings.pbr_backend}) ===")
-    if settings.pbr_backend == "derive":
+    if settings.pbr_backend == "hybrid":
+        from tx_pbr_hybrid import derive_pbr as derive_pbr_hybrid
+        pbr_log = derive_pbr_hybrid(canonical_albedo, out_dir,
+                                    category=settings.category,
+                                    sm_size=settings.size)
+    elif settings.pbr_backend == "derive":
         pbr_log = derive_pbr_heuristic(canonical_albedo, out_dir,
                                        category=settings.category)
     elif settings.pbr_backend == "sm":
-        # Import lazily — SM needs the mesa-env subprocess
         from tx_pbr_sm import derive_pbr as derive_pbr_sm
         pbr_log = derive_pbr_sm(canonical_albedo, out_dir, size=512)
     else:
         raise ValueError(f"unknown pbr_backend: {settings.pbr_backend!r}")
     manifest["stages"].append({"stage": "pbr", **pbr_log})
 
-    # ----- STAGE 4: external seam_repair (default OFF per audit) -----
-    if settings.external_seam_repair:
-        print(f"\n=== STAGE 4: external seam_repair (PatchMatch) ===")
-        # Shell out to upstream seam_repair, but feed it a temp dir
-        # because it writes <id>_<map>.png and we use canonical names.
-        # Skipped here: implement only if a real-data run needs it.
-        manifest["stages"].append({
-            "stage": "external_seam_repair",
-            "skipped": True,
-            "reason": "implementation deferred; default OFF makes this rare",
-        })
+    # ----- STAGE 4: tx_seam_repair (PatchMatch over midline) -----
+    # ON by default — closes the MIDLINE seam that Pass 4's reverse-
+    # shift creates. The audit got this wrong; see findings doc.
+    if settings.seam_repair:
+        print(f"\n=== STAGE 4: tx_seam_repair (patch={settings.seam_repair_patch}) ===")
+        from tx_seam_repair import repair_material_dir
+        sr_log = repair_material_dir(
+            out_dir,
+            patch=settings.seam_repair_patch,
+            feather=settings.seam_repair_feather,
+        )
+        manifest["stages"].append({"stage": "seam_repair", **sr_log})
     else:
         manifest["stages"].append({
-            "stage": "external_seam_repair",
+            "stage": "seam_repair",
             "skipped": True,
-            "reason": "default off per audit; FLUX heal pass is the repair",
+            "reason": "disabled by --no-seam-repair (NOT recommended for production)",
         })
 
     # ----- STAGE 5: QA -----
@@ -264,16 +285,19 @@ def main() -> int:
     ap.add_argument("--clip", default="qwen_3_8b_fp8mixed.safetensors")
     ap.add_argument("--vae", default="flux2-vae.safetensors")
     # audit knobs
-    ap.add_argument("--heal-denoise", type=float, default=0.35)
+    ap.add_argument("--heal-denoise", type=float, default=0.35,
+                    help="Flux2Scheduler silently ignores this; kept for log clarity")
     ap.add_argument("--heal-mode", choices=["flux_heal", "none"],
                     default="flux_heal")
-    ap.add_argument("--delight-strength", type=float, default=0.0,
-                    help="default 0.0 (skip) per audit")
-    ap.add_argument("--pbr-backend", choices=["derive", "sm"],
-                    default="derive",
-                    help="default 'derive' (heuristic, consistent with albedo)")
-    ap.add_argument("--external-seam-repair", action="store_true",
-                    help="opt-in PatchMatch fallback; default off")
+    ap.add_argument("--delight-strength", type=float, default=0.4,
+                    help="match upstream's working recipe at 0.4")
+    ap.add_argument("--pbr-backend", choices=["hybrid", "derive", "sm"],
+                    default="hybrid",
+                    help="default 'hybrid' — SM cleans midline, derive builds PBR")
+    ap.add_argument("--no-seam-repair", action="store_true",
+                    help="disable tx_seam_repair stage. NOT RECOMMENDED for "
+                         "production — without it, textures have visible "
+                         "midline seams at 50%% when tiled. Default ON.")
     ap.add_argument("--host", default="http://127.0.0.1:8188")
     args = ap.parse_args()
 
@@ -284,7 +308,7 @@ def main() -> int:
         heal_denoise=args.heal_denoise, heal_mode=args.heal_mode,
         delight_strength=args.delight_strength,
         pbr_backend=args.pbr_backend,
-        external_seam_repair=args.external_seam_repair,
+        seam_repair=not args.no_seam_repair,
         category=args.category,
         host=args.host,
     )

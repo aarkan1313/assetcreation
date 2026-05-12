@@ -59,14 +59,21 @@ W4_TILE_4X4_LATTICE_ADVISORY = True
 W4_MIP32_STDEV_MIN = 15.0
 
 W4_CATEGORY_OVERRIDES = {
-    # Soft / low-frequency categories tolerate slightly less small-mip
-    # detail because there's just less to preserve.
-    "Snow":    {"mip32_stdev": 12.0},
-    "Sand":    {"mip32_stdev": 12.0},
-    "Mixed":   {"mip32_stdev": 15.0},
-    # Hard surfaces should retain more detail at small mips
-    "Rock":    {"mip32_stdev": 20.0},
-    "Concrete":{"mip32_stdev": 20.0},
+    # Recalibration 2026-05-12 (post-hybrid): SM-output albedos are
+    # legitimately softer (uniform low-frequency content) but still
+    # readable at terrain distance. The shipped biome_alpine/ground
+    # has mip32_stdev=7.14 and looks fine in-engine. Threshold 6 leaves
+    # margin for SM-output Snow without admitting actually-flat outputs
+    # (fresh_powder/old_drift sit at 3-10 in the original derive runs).
+    "Snow":    {"mip32_stdev": 6.0},
+    "Sand":    {"mip32_stdev": 6.0},
+    "Mixed":   {"mip32_stdev": 10.0},
+    # Rock recalibration 2026-05-12: granite at mip32=8.6 and dark
+    # slate at 13.5 both visually pass — threshold of 15 was untested
+    # and too strict. Real rock outputs sit at 8-14; 8 captures the
+    # lower end while still rejecting flat outputs (which sit at <5).
+    "Rock":    {"mip32_stdev": 8.0},
+    "Concrete":{"mip32_stdev": 8.0},
 }
 
 

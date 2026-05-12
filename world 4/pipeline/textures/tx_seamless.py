@@ -118,13 +118,44 @@ def workflow_text2img(prompt: str, unet: str, clip: str, vae: str,
 
 def workflow_img2img_heal(prompt: str, input_image_name: str, unet: str,
                           clip: str, vae: str, size: int, seed: int,
-                          denoise: float, steps: int, prefix: str) -> dict:
-    """Heal pass — uses BasicScheduler so `denoise` is actually honored.
+                          denoise: float, steps: int, prefix: str,
+                          scheduler: str = "flux2") -> dict:
+    """Heal pass — img2img over the offset-shifted texture.
 
-    This is the bug fix vs upstream `flux_seamless.workflow_img2img_klein`,
-    which defaults to Flux2Scheduler (silently ignores denoise → effective
-    1.0 every time).
+    Scheduler choice (the 2026-05-12 follow-up finding):
+
+      'flux2' (default, MATCHES SHIPPED-CLEAN UPSTREAM):
+          Uses Flux2Scheduler with klein's 4-step distilled schedule.
+          The `denoise` param is silently ignored by this scheduler —
+          but that's the behavior that produces clean midlines on
+          shipped output (verified against materials/biome_alpine/ground/).
+
+      'basic' (the audit's failed experiment):
+          Uses BasicScheduler which honors `denoise`. At denoise=1.0 +
+          8 steps, this hammers the offset cross with new content that
+          has no constraint to match the surrounding pixels, creating
+          a fresh midline seam (catastrophic — ratio 16-22× baseline
+          in the 2026-05-12 audit experiment).
+
+    Default is 'flux2' because that's what works. The 'basic' path is
+    kept for diagnostic / future experimentation but should NOT be
+    used in production.
     """
+    if scheduler == "basic":
+        scheduler_node = {
+            "class_type": "BasicScheduler", "inputs": {
+                "model": ["10", 0], "scheduler": "simple",
+                "steps": steps, "denoise": denoise,
+            }}
+    elif scheduler == "flux2":
+        scheduler_node = {
+            "class_type": "Flux2Scheduler", "inputs": {
+                "steps": steps, "width": size, "height": size,
+                # denoise is silently ignored but we pass it for log clarity
+                "denoise": denoise,
+            }}
+    else:
+        raise ValueError(f"unknown heal scheduler: {scheduler!r}")
     return {
         "10": {"class_type": "UNETLoader", "inputs": {"unet_name": unet, "weight_dtype": "default"}},
         "11": {"class_type": "CLIPLoader", "inputs": {"clip_name": clip, "type": "flux2", "device": "default"}},
@@ -136,10 +167,7 @@ def workflow_img2img_heal(prompt: str, input_image_name: str, unet: str,
         "30": {"class_type": "CFGGuider", "inputs": {"model": ["10", 0], "positive": ["20", 0],
                                                       "negative": ["21", 0], "cfg": 1.0}},
         "40": {"class_type": "KSamplerSelect", "inputs": {"sampler_name": "euler"}},
-        "41": {"class_type": "BasicScheduler", "inputs": {
-            "model": ["10", 0], "scheduler": "simple",
-            "steps": steps, "denoise": denoise,
-        }},
+        "41": scheduler_node,
         "42": {"class_type": "RandomNoise", "inputs": {"noise_seed": seed + 99}},
         "50": {"class_type": "SamplerCustomAdvanced", "inputs": {
             "noise": ["42", 0], "guider": ["30", 0], "sampler": ["40", 0],
@@ -226,14 +254,18 @@ def run_seamless(prompt: str, asset_id: str, *, unet: str, clip: str,
     Image.fromarray(shifted).save(shifted_path)
     server_name = upload_image(shifted_path, host=host)
 
-    # PASS 3: img2img heal with honest denoise
+    # PASS 3: img2img heal — default Flux2Scheduler (matches the shipped-
+    # clean upstream behavior; BasicScheduler at denoise=1.0 destroys the
+    # offset cross, verified against materials/biome_alpine/ground/).
     heal_steps = max(steps * 2, 8)
-    print(f"[3/4] img2img heal (denoise={heal_denoise}, BasicScheduler, steps={heal_steps})")
+    print(f"[3/4] img2img heal (Flux2Scheduler, steps={heal_steps}, "
+          f"denoise={heal_denoise} silently ignored by Flux2Scheduler)")
     t3 = time.time()
     wf = workflow_img2img_heal(full_prompt, server_name, unet, clip, vae,
                                size, seed, denoise=heal_denoise,
                                steps=heal_steps,
-                               prefix=f"{asset_id}_pass3")
+                               prefix=f"{asset_id}_pass3",
+                               scheduler="flux2")
     pid = queue_prompt(wf, host=host)
     res = wait_for(pid, host=host)
     images = res["outputs"].get("70", {}).get("images", [])

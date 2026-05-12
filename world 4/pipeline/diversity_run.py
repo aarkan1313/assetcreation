@@ -143,12 +143,12 @@ def main() -> int:
     ap.add_argument("--size", type=int, default=1024)
     ap.add_argument("--variants", type=int, default=4)
     ap.add_argument("--seed-base", type=int, default=42)
-    ap.add_argument("--pbr-backend", choices=["derive", "sm"],
-                    default="derive")
-    ap.add_argument("--heal-denoise", type=float, default=1.0)
+    ap.add_argument("--pbr-backend", choices=["hybrid", "derive", "sm"],
+                    default="hybrid")
+    ap.add_argument("--heal-denoise", type=float, default=0.35)
     ap.add_argument("--heal-mode", choices=["flux_heal", "none"],
                     default="flux_heal")
-    ap.add_argument("--delight-strength", type=float, default=0.0)
+    ap.add_argument("--delight-strength", type=float, default=0.4)
     ap.add_argument("--no-skip", action="store_true",
                     help="re-run even if manifest already exists")
     args = ap.parse_args()

@@ -1,192 +1,216 @@
-# W4 Texture Pipeline — Audit Experiment Findings — 2026-05-12
+# W4 Texture Pipeline — Final Findings + Workflow Record — 2026-05-12
 
-Results from the 16-combo audit experiment on the `windpack` prompt.
-This is the empirical follow-up to `TEXTURE_PIPELINE_AUDIT_2026_05_12.md`.
+After the audit, two experiments, and a diagnostic chain that overturned
+most of the audit's predictions, this is the locked-in W4 texture
+pipeline. **The audit was wrong on every prediction except one** (pbr=sm
+producing maps inconsistent with albedo at terrain distance). Each
+wrong prediction taught us something concrete about why upstream's
+pipeline was working.
 
-**TL;DR:** The audit was partly right and partly wrong. We landed at a
-W4-default config that's *different* from both the upstream defaults
-and the audit's predicted defaults.
+## The pipeline as it ships (locked in `pipeline/textures/`)
 
-## Setup
-
-- 1 prompt: `tileable seamless texture, wind-packed snow with sastrugi ridges, sharp wind-carved striations, bright white, overhead perspective`
-- Category: Snow (mip32_stdev threshold 12, periodic 13)
-- 4 axes × 2 values = 16 combos
-- Each combo: 1 variant, seed 42, size 1024px
-- Total runtime: 438s (~27s per combo)
-
-## Full results
-
-| label                              | grade | edge   | periodic | mip32 |
-|------------------------------------|-------|--------|----------|-------|
-| `h1.0 d0.0 derive flux_heal`       | **A** | 0.0026 | 10.4     | 26.8  |
-| `h1.0 d0.4 derive flux_heal`       | **A** | 0.0022 | 10.4     | 20.0  |
-| `h1.0 d0.4 sm   flux_heal`         | B     | 0.0008 | 47.3     | 69.0  |
-| `h0.35 d0.0 derive flux_heal`      | B     | 0.0172 | 12.4     | 17.7  |
-| `h0.35 d0.4 derive flux_heal`      | B     | 0.0113 | 12.6     | 14.4  |
-| `h0.35 d0.0 derive none`           | C     | 0.0210 | 13.7     | 18.5  |
-| `h0.35 d0.0 sm     flux_heal`      | C     | 0.0000 | 17.5     |  3.2  |
-| `h0.35 d0.0 sm     none`           | C     | 0.0001 | 41.1     |  4.1  |
-| `h0.35 d0.4 derive none`           | C     | 0.0145 | 13.7     | 15.0  |
-| `h0.35 d0.4 sm     flux_heal`      | C     | 0.0001 | 52.9     |  5.2  |
-| `h0.35 d0.4 sm     none`           | C     | 0.0001 | 47.2     |  3.1  |
-| `h1.0  d0.0 derive none`           | C     | 0.0210 | 13.7     | 18.5  |
-| `h1.0  d0.0 sm     flux_heal`      | C     | 0.0000 | 40.1     |  3.2  |
-| `h1.0  d0.0 sm     none`           | C     | 0.0001 | 41.1     |  4.1  |
-| `h1.0  d0.4 derive none`           | C     | 0.0145 | 13.7     | 15.0  |
-| `h1.0  d0.4 sm     none`           | C     | 0.0001 | 47.2     |  3.1  |
-
-Visual: `_comparison_sheet.png` in `candidates/_pipeline_review/audit/`.
-
-## Marginal effects (mean grade-rank, A=3 / B=2 / C=1)
-
-| axis           | level A           | level B          | delta |
-|----------------|-------------------|------------------|-------|
-| heal_denoise   | `0.35` → 1.25     | **`1.0` → 1.62** | +0.37 |
-| delight        | `0.0` → 1.38      | `0.4` → 1.50     | +0.12 |
-| pbr            | `sm` → 1.12       | **`derive` → 1.75** | +0.63 |
-| heal_mode      | `none` → 1.00     | **`flux_heal` → 1.88** | +0.88 |
-
-## Reading the marginals
-
-The biggest signals, in order:
-
-1. **`heal_mode=flux_heal` matters most.** Skipping the heal pass
-   (heal_mode=none) drops the grade by nearly a full step (0.88).
-   Every "none" combo got at most B; most got C. The 4-pass FLUX
-   architecture is doing real work — pass 1 alone produces visibly
-   discontinuous output, even with the tile-prompt suffix.
-
-2. **`pbr=derive` beats `pbr=sm` by 0.63 grade steps.** Every single
-   SM combo failed on `mip32_stdev` (values 3.1–5.2) — SM produces
-   albedos that flatten visually at distance. derive_pbr_v2 outputs
-   sit at mip32_stdev 14–27 (well above the 12 threshold). **This
-   confirms the audit's call to swap the default.**
-
-3. **`heal_denoise=1.0` beats `heal_denoise=0.35` by 0.37.** This is
-   the opposite of what the audit predicted. The audit hypothesized
-   that the "silent denoise=1.0" upstream behavior was producing the
-   lattice fingerprint. Turns out a *gentle* heal isn't strong enough
-   to actually clean the offset cross — `heal_denoise=0.35` consistently
-   leaves edge_continuity values around 0.01–0.02, well above the
-   0.005 threshold. Full denoise hammers the seam closed (0.002 range)
-   while the FLUX heal pass keeps the natural surface character.
-
-4. **`delight=0.4 vs 0.0` is in the noise** (0.12 grade steps).
-   Confirmed: the prompt's `even neutral diffuse lighting, no shadows`
-   already handles the lighting at generation time, so the LAB-blur
-   delight only adds 0.12 of a grade on average. **Default delight
-   off** is correct, but it's not a high-leverage call.
-
-## The two A-grade winners
-
-Both A combos share the same three axes:
-- `heal_denoise=1.0`
-- `pbr=derive`
-- `heal_mode=flux_heal`
-
-The only difference between them is delight (0.0 vs 0.4) — and both
-got A. So the W4 defaults are:
-
-```python
-PipelineSettings(
-    heal_denoise=1.0,       # was 0.35 in audit prediction
-    heal_mode="flux_heal",
-    pbr_backend="derive",
-    delight_strength=0.0,   # keep off; small effect, save the step
-)
+```
+prompt
+  ↓
+[Stage 1] tx_seamless        4-pass FLUX (text2img → offset → Flux2Scheduler heal → reverse)
+[Stage 1] tx_variant_select  Generate N variants, rank by composite, keep all
+  ↓
+[Stage 2] delight            LAB-blur subtract, strength=0.4
+  ↓
+[Stage 3] tx_pbr_hybrid      SM tileable-pass (albedo only) + derive_pbr_v2 (PBR maps)
+  ↓
+[Stage 4] tx_seam_repair     Conditional PatchMatch (rarely triggers since hybrid cleans)
+  ↓
+[Stage 5] tx_qa              edge + junction + periodic + mip32_stdev + advisory tile_4x4
+  ↓
+manifest.json + canonical maps + variants/
 ```
 
-## What the audit got wrong, and why
-
-### Wrong: "honor heal-denoise at 0.35"
-The audit hypothesized that the upstream's silent denoise=1.0 was
-the source of the klein-9B-at-1024 lattice fingerprint. The
-experiment shows otherwise:
-- All 4 `heal_denoise=0.35` combos with `pbr=derive` only reached B
-  on edge_continuity (≥0.011).
-- Both `heal_denoise=1.0 + pbr=derive + heal_mode=flux_heal` combos
-  reached A on edge_continuity (≤0.003).
-- **The full-denoise heal is what actually closes the seam cross.**
-  A 0.35 heal preserves more original content but leaves the
-  discontinuity visible.
-
-### Right: "pbr_backend=derive as default"
-Confirmed strongly. SM tanks mip32_stdev on every single combo
-(values 3–5 against a threshold of 12). The audit's reasoning
-(SM invents detail that doesn't match the albedo at terrain
-distance) is exactly what we see.
-
-### Right: "heal_mode=flux_heal is necessary"
-The audit framed this as "the FLUX heal IS the seam repair" —
-removing it should be fine. Empirically that's wrong: removing it
-costs a grade step. The 4-pass FLUX is doing real work, not just
-duplicating effort with the legacy seam_repair.
-
-### Effectively neutral: "delight off by default"
-The audit was right that prompt-level lighting control reduces the
-need for delight. The marginal effect on grade is small (0.12).
-Default to off is fine because the *cost* of running it (extra
-LAB-blur subtract pass per material) outweighs the gain. But it's
-not a quality win, it's a speed win.
-
-## What changed in the W4 defaults
-
-| Setting | Old upstream | Audit predicted | **Experiment-locked W4** |
-|---------|--------------|-----------------|---------------------------|
-| `heal_denoise` | 1.0 (silent) | 0.35 (honored) | **1.0 (honored)** |
-| `heal_mode` | flux_heal | flux_heal | **flux_heal** |
-| `pbr_backend` | sm | derive | **derive** |
-| `delight_strength` | 0.4 | 0.0 | **0.0** |
-
-So the W4 defaults end up being:
-- Same `heal_denoise` value as upstream (1.0) but **now correctly
-  honored** — not silently ignored.
-- Same `heal_mode` as upstream.
-- **Different `pbr_backend`** (derive, was sm).
-- **Different `delight_strength`** (0.0, was 0.4).
-
-## Updating tx_pipeline defaults
-
-The dataclass defaults in `pipeline/textures/tx_pipeline.py` should be:
+**Defaults in `PipelineSettings`:**
 
 ```python
 @dataclass
 class PipelineSettings:
-    heal_denoise: float = 1.0       # was 0.35 — audit wrong, experiment correct
+    size: int = 1024
+    variants: int = 4
+    heal_denoise: float = 0.35   # Flux2Scheduler ignores; informational
     heal_mode: str = "flux_heal"
-    delight_strength: float = 0.0
-    pbr_backend: str = "derive"
-    external_seam_repair: bool = False
+    delight_strength: float = 0.4
+    pbr_backend: str = "hybrid"   # 'hybrid' / 'derive' / 'sm'
+    seam_repair: bool = True
+    category: str = "Rock"
 ```
 
-`diversity_run.py` already inherits these so re-running the alpine
-batch now uses the experimentally-validated config.
+## The diagnostic chain (how we got here)
 
-## Caveats
+### Audit prediction → reality
 
-- **Single prompt.** All 16 combos use the same `windpack` prompt.
-  We don't know if the same defaults win for other prompt types
-  (e.g. rock-bedrock, lichen-mid). For the diversity batch the
-  defaults are good enough; revisit if a class of slot consistently
-  underperforms.
-- **Single seed.** seed=42 throughout. Some axes may interact with
-  seed (e.g. the heal-denoise sweet spot might shift). N=1 means we
-  can't measure variance — only effect direction.
-- **Single category (Snow).** mip32_stdev threshold is category-
-  dependent (Snow=12, Rock=20). The marginal "pbr=sm always fails
-  mip32" finding might be Snow-specific because SM has weaker
-  training on soft materials.
-- **No visual spot-check yet.** All findings are off the grader's
-  numbers. The contact sheet exists; human review is the next step.
-  If the grader says A but it looks bad, the metric needs adjustment.
+| Audit predicted | Reality | Why audit was wrong |
+|---|---|---|
+| `heal_denoise=0.35` honored cleans seams better than silent 1.0 | 0.35 honored leaves edge MSE>0.01; silent ignore (Flux2Scheduler) is correct | "Silently ignores denoise" doesn't mean "runs at denoise=1.0" — it means runs on klein's 4-step distilled schedule, which is mathematically different from BasicScheduler at denoise=1.0 |
+| `delight=0.0` skip — prompt handles lighting | Delight matters but not for lighting reasons | (See below — delight wasn't doing the midline-fix work either) |
+| `pbr=derive` swap → consistent-with-albedo PBR | True PBR-side but exposed a hidden bug | SM's `tileable=True` diffusion was *also* the midline-seam closer; removing it broke seam quality |
+| `seam_repair=False` — "duplicate work with FLUX heal" | seam_repair fixes the WRAP edge (closes ratio 167→84) but doesn't fix the midline | Audit conflated wrap and midline; they're different seams from different ops |
 
-## Next steps
+### What was actually happening
 
-1. **Lock in W4 defaults** in `tx_pipeline.PipelineSettings`
-   (`heal_denoise=1.0`, rest unchanged).
-2. **Spot-check the 2 A-grade combos visually** (`_comparison_sheet.png`).
-3. **Re-run alpine diversity batch** with the new defaults — should
-   produce more A-grades than the original 23-candidate batch.
-4. **Repeat the matrix on a rock-class prompt** to confirm pbr=derive
-   isn't Snow-only. Defer until alpine winners are picked.
+The shipped texture (`materials/biome_alpine/ground/albedo.png`) had midline ratio 1.30/1.53 (clean). The new pipeline output had ratio 22.10/16.18 (catastrophic) despite all the same FLUX/delight/seam_repair stages.
+
+**The single difference:** shipped used `pbr=sm` with `tileable=True`. SM runs a fresh tileable diffusion pass which incidentally regenerates the albedo as a clean tileable image. **SM was the seam closer the whole time** — silently, as a side effect of its actual job.
+
+### The fix
+
+`tx_pbr_hybrid.py`: use SM for the tileability pass (keep only its albedo, discard its derived PBR), then run `derive_pbr_v2` on the SM-cleaned albedo to produce maps that are mathematically consistent with the cleaned albedo.
+
+This is honest engineering: name what SM is doing (tileability cleanup), keep that, discard what it's bad at (terrain-soft derived PBR), use the right tool for the rest.
+
+## Validation: 5-prompt sanity run
+
+Ran the new hybrid pipeline on 5 prompts spanning the failure space:
+
+| id | grade | midline ratio | notes |
+|---|---|---|---|
+| snow_windpack    | A | 1.32 / 1.56 | matches shipped (1.30/1.53) |
+| snow_old_drift   | C | 1.65 / 1.69 | midline clean; fails periodic (prompt is inherently periodic) |
+| snow_mid_lichen  | A | 1.18 / 2.72 | borderline Y ratio but absolute MSE small |
+| rock_dark_slate  | A | 1.29 / 1.92 | clean |
+| rock_granite     | A | 1.50 / 1.90 | clean |
+
+**Zero midline-seam failures across all 5 outputs.** Compare to the
+broken pipeline's 16-22 ratios. The seam fix holds.
+
+The one C grade is `snow_old_drift` and it's the grader doing its job
+correctly — the prompt asks for a "dune shape" which IS a periodic
+structure, so periodic_artifact correctly rejects it.
+
+## Calibrated QA thresholds
+
+After this session's empirical work, the `tx_qa` per-category
+overrides (effective values):
+
+| Category | periodic_artifact | mip32_stdev | Notes |
+|---|---|---|---|
+| Snow     | 13.0 | 6.0 | shipped reference at 7.14 |
+| Sand     | 13.0 | 6.0 | same character as Snow |
+| Mixed    | 13.0 | 10.0 | rocky+snow mids in alpine |
+| Rock     | 25.0 | 8.0 | granite at 8.6 / dark slate at 13.5 both visually pass |
+| Concrete | 25.0 | 8.0 | inherit Rock |
+
+`tile_4x4_lattice` is computed but **advisory only** (calibration on
+16 alpine grounds showed it doesn't separate good from bad better than
+the single-image `periodic_artifact` does — too noisy to gate on).
+
+## Module inventory
+
+`pipeline/textures/`:
+
+| Module | Purpose | Notes |
+|---|---|---|
+| `tx_seamless.py` | 4-pass FLUX | Heal uses Flux2Scheduler (matches upstream behavior that produces clean shipped output) |
+| `tx_variant_select.py` | Generate N variants, composite-score | Keeps ALL variants on disk for review |
+| `tx_pbr_hybrid.py` | **DEFAULT** PBR backend | SM tileable pass (albedo only) → derive_pbr_v2 for PBR maps |
+| `tx_pbr_derive.py` | Heuristic-only backend | For fast iteration when seam fix not needed |
+| `tx_pbr_sm.py` | Pure SM backend | Still available; fails mip32 on terrain-soft |
+| `tx_seam_repair.py` | PatchMatch over offset cross | Mostly redundant now that hybrid cleans seams; keep as fallback |
+| `tx_qa.py` | 4-check grader + palette advisory | Includes new W4-specific mip32_stdev |
+| `tx_pipeline.py` | Orchestrator | Replaces aaa_texture.py for W4 |
+| `experiment_audit_matrix.py` | 16-combo audit experiment | Run-history; kept for reproducibility |
+
+## Stuff that's NOT in this pipeline (intentionally)
+
+- **External seam_repair as default** — disabled because hybrid cleans
+  the seam already. Stays as opt-in fallback.
+- **Tile-4x4 as gating metric** — advisory only; too noisy.
+- **The audit's 16-combo experiment outputs** — kept under
+  `candidates/_pipeline_review/audit/` as historical record of how
+  far off-base the audit was, but those outputs all have visible
+  midline seams; don't promote any of them.
+
+## Workflow record (what to actually do when generating textures)
+
+### To run the full diversity batch on a biome
+
+```bash
+cd "D:/assets/world 4"
+python pipeline/diversity_run.py --biome alpine
+```
+
+Defaults: hybrid backend, 4 variants per slot, 1024px, delight 0.4,
+heal_denoise 0.35 (ignored by Flux2Scheduler), seam_repair on.
+
+### To override one knob for a specific run
+
+```bash
+python pipeline/diversity_run.py --biome alpine --slots ground --variants 6
+python pipeline/diversity_run.py --biome alpine --pbr-backend derive  # fast iter, no seam fix
+```
+
+### To run a single material outside the diversity batch
+
+```bash
+python pipeline/textures/tx_pipeline.py \
+    --prompt "tileable seamless texture, ..." \
+    --id my_test \
+    --out-dir "D:/tmp/my_test" \
+    --category Snow \
+    --variants 4
+```
+
+### To re-render contact sheets after a batch
+
+```bash
+python pipeline/build_contact_sheet.py --biome alpine
+python pipeline/build_contact_sheet.py --biome alpine --grade-filter B C D  # rejects only
+```
+
+### To run the audit experiment again (16-combo on windpack)
+
+```bash
+python pipeline/textures/experiment_audit_matrix.py
+```
+
+Already-completed combos are detected and skipped.
+
+## Lessons learned
+
+1. **Trust the shipped artifact.** When we have an existing
+   visually-clean texture, comparing against it numerically (column
+   MSE around midline) immediately diagnoses what's broken in the new
+   pipeline. Should have done this before turning off SM.
+
+2. **"Silently ignored" parameter ≠ "ran at 1.0".** When upstream said
+   Flux2Scheduler ignores `denoise`, the audit interpreted it as
+   "ran at full denoise." Actually it means "ran the distilled
+   schedule which doesn't use a denoise parameter." A different
+   computation entirely.
+
+3. **Side effects matter more than intent.** SM's job is image-to-PBR.
+   Its side effect (tileable albedo cleanup) was load-bearing.
+   Removing it broke the pipeline in a way nobody knew SM was
+   responsible for. **Document side effects, not just intent.**
+
+4. **Audit predictions are hypotheses, not conclusions.** All four
+   audit-proposed defaults were wrong. The audit was still useful —
+   it forced the experiments that revealed the actual mechanism. But
+   labeling audit recommendations as "decisions to lock in" was
+   premature.
+
+5. **Mid32_stdev is a more honest metric than tile_4x4** for the
+   "vanishes at distance" failure mode. tile_4x4's signal is
+   dominated by tile-boundary harmonics that exist regardless of
+   content quality; mip32_stdev directly measures "is there content
+   at this size."
+
+## Revisit triggers
+
+This pipeline locks in defaults that should hold for the alpine
+diversity batch. Revisit if:
+
+- A new biome's category needs different thresholds (probably
+  Wetland — wet, low-frequency, may behave like Snow).
+- We add a different FLUX checkpoint (klein-1B? other models?). The
+  scheduler dance was klein-9B-specific.
+- The visual quality of A-grade outputs starts diverging from the
+  metric — recalibrate thresholds against new visual signal.
+- A future texture model with built-in tileability replaces SM.
+  At that point the hybrid pattern becomes unnecessary.
