@@ -172,6 +172,26 @@ func set_ring_uniforms(origin_m: Vector2, extent_m: float, texel_n: int,
 	mat.set_shader_parameter("ring_index", ring_idx)
 
 
+# Stage 3.6+: morph-zone uniforms describing the NEXT COARSER ring.
+# ClipmapWorld calls this whenever the coarser ring's heightmap
+# regenerates. The outermost ring's caller should pass
+# `enable_morph = false` (with any other values) so its shader
+# bypasses the blend.
+func set_coarse_uniforms(coarse_tex: ImageTexture, coarse_origin_m: Vector2,
+						 coarse_extent_m: float, coarse_texel_n: int,
+						 morph_band_m: float, enable_morph: bool) -> void:
+	var mat := _get_shader_material()
+	if mat == null:
+		return
+	if coarse_tex != null:
+		mat.set_shader_parameter("coarse_displacement", coarse_tex)
+	mat.set_shader_parameter("coarse_origin_m", coarse_origin_m)
+	mat.set_shader_parameter("coarse_extent_m", coarse_extent_m)
+	mat.set_shader_parameter("coarse_texel_n", coarse_texel_n)
+	mat.set_shader_parameter("morph_band_m", morph_band_m)
+	mat.set_shader_parameter("morph_enabled", enable_morph)
+
+
 func _get_shader_material() -> ShaderMaterial:
 	if _mesh_instance == null:
 		return null
