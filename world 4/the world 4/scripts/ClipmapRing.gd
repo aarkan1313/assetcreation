@@ -27,6 +27,8 @@ extends Node3D
 # If true, this is the outermost ring; we add an outer-edge skirt
 # too to hide the "world rim" behind the bound.
 @export var outermost: bool = false
+@export var cull_y_min_m: float = -128.0
+@export var cull_y_max_m: float = 4096.0
 
 var _mesh_instance: MeshInstance3D
 var _mesh: ArrayMesh
@@ -38,6 +40,7 @@ func _ready() -> void:
 	_mesh_instance = MeshInstance3D.new()
 	_mesh_instance.mesh = _mesh
 	_mesh_instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	_apply_displaced_custom_aabb()
 	add_child(_mesh_instance)
 
 
@@ -58,6 +61,17 @@ func get_world_rect_m() -> Rect2:
 	var origin: Vector2 = Vector2(global_position.x - half,
 								  global_position.z - half)
 	return Rect2(origin, Vector2(half * 2.0, half * 2.0))
+
+
+func _apply_displaced_custom_aabb() -> void:
+	var extent: float = (float(grid_n) - 1.0) * grid_step_m
+	var half: float = extent * 0.5
+	var y_min: float = minf(cull_y_min_m, -skirt_depth_m)
+	var y_max: float = maxf(cull_y_max_m, y_min + 1.0)
+	_mesh_instance.custom_aabb = AABB(
+		Vector3(-half, y_min, -half),
+		Vector3(extent, y_max - y_min, extent)
+	)
 
 
 # Build the donut mesh. Mirrors pipeline/build_clipmap_mesh_debug.py.

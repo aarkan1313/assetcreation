@@ -43,6 +43,9 @@ uniform vec2 ring_origin_m = vec2(0.0, 0.0);
 uniform float ring_extent_m = 512.0;
 uniform int ring_texel_n = 128;
 uniform int ring_index = 0;
+uniform vec2 inner_clip_center_m = vec2(0.0, 0.0);
+uniform float inner_clip_half_m = 0.0;
+uniform float inner_overlap_sink_m = 0.25;
 
 // Morph-zone uniforms (Stage 3.6+). The "coarse" texture is the
 // next-coarser ring's heightmap; the inner ring blends its own
@@ -105,6 +108,15 @@ const vec3 RING_COLORS[4] = vec3[4](
 );
 
 varying vec3 v_world_pos;
+
+
+bool inside_finer_ring_coverage(vec2 world_xz) {
+	if (inner_clip_half_m <= 0.0) {
+		return false;
+	}
+	vec2 d_xz = abs(world_xz - inner_clip_center_m);
+	return max(d_xz.x, d_xz.y) < inner_clip_half_m;
+}
 
 
 // Sample heightmap with NaN guard + half-texel-correct UV.
@@ -196,6 +208,9 @@ void vertex() {
 		h = mix(h_inner, h_outer, m);
 	} else {
 		h = h_inner;
+	}
+	if (inside_finer_ring_coverage(model_world.xz)) {
+		h -= inner_overlap_sink_m;
 	}
 	// `+=`, not `=` — preserves skirt depth (see PITFALLS #7).
 	VERTEX.y += h;

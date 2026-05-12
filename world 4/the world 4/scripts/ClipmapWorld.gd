@@ -64,19 +64,42 @@ var _last_snap_per_ring: Array[Vector2] = []
 var _pbr_ground_array: Texture2DArray = null
 var _biome_pbr_slot_by_name: Dictionary = {}  # String -> int
 
-# Async heightmap regen. ring_idx → { task_id, payload, superseded, result }.
+# Async heightmap regen. ring_idx -> { task_id, job, superseded, pending_center }.
 # _process polls task completion via WorkerThreadPool.is_task_completed.
-# Worker reads from _composer + world_seed (both read-only after _ready);
-# main thread owns ImageTexture creation + shader uniform updates
-# (RenderingServer is main-thread-only in Godot 4.5).
+# Worker jobs own their composer ref and never write scene-owned state;
+# main thread owns ImageTexture creation + shader uniform updates.
 var _ring_tasks: Dictionary = {}
 
 # Set by _exit_tree / _notification before draining worker tasks.
-# Workers check this at the top of _worker_compute_heightmap and bail
-# out without touching _composer or _ring_tasks. Prevents
-# use-after-free crashes when the editor stops the scene while
-# workers are mid-flight.
+# Prevents new work from being queued while teardown waits for all
+# tracked worker tasks.
 var _shutting_down: bool = false
+
+
+class HeightmapRefreshJob:
+	extends RefCounted
+
+	var ring_idx: int
+	var ring_center: Vector2
+	var grid_n: int
+	var grid_step_m: float
+	var seed: int
+	var composer: KernelComposer
+	var result: PackedFloat32Array = PackedFloat32Array()
+
+	func _init(p_ring_idx: int, p_ring_center: Vector2, p_grid_n: int,
+			   p_grid_step_m: float, p_seed: int,
+			   p_composer: KernelComposer) -> void:
+		ring_idx = p_ring_idx
+		ring_center = p_ring_center
+		grid_n = p_grid_n
+		grid_step_m = p_grid_step_m
+		seed = p_seed
+		composer = p_composer
+
+	func run() -> void:
+		result = ClipmapWorld._compute_heightmap_floats_for_composer(
+			composer, grid_n, grid_step_m, ring_center, seed)
 
 
 func _ready() -> void:
@@ -203,19 +226,21 @@ func _spawn_rings() -> void:
 		ring.grid_step_m = _ring_grid_step_base_m * pow(2.0, float(i))
 		ring.skirt_depth_m = 10.0
 		ring.outermost = (i == _ring_count - 1)
-		# inner_grid_n: round DOWN to even so this ring's hole is
-		# slightly smaller than the inner ring's outer extent → guaranteed
-		# overlap, no gap. See Stage 2 fix.
 		if i == 0:
 			ring.inner_grid_n = 0
 		else:
-			ring.inner_grid_n = ((_ring_grid_n - 1) / 2) & ~1
+			# Shrink the hole beyond the original round-down rule so the
+			# overlap survives adjacent rings snapping to different grids.
+			ring.inner_grid_n = _inner_grid_n_for_snap_safe_overlap(_ring_grid_n)
 		add_child(ring)
 		_rings.append(ring)
 		_last_snap_per_ring.append(Vector2(NAN, NAN))
 		if _base_material != null:
 			var per: ShaderMaterial = _base_material.duplicate(false)
 			per.set_shader_parameter("ring_index", i)
+			per.set_shader_parameter("inner_clip_center_m", Vector2.ZERO)
+			per.set_shader_parameter("inner_clip_half_m",
+				_inner_clip_half_m_for_ring(i, ring.grid_step_m))
 			ring.set_shared_material(per)
 		# Inner rings get HeightMapShape3D collision so the player can
 		# walk on them; outer rings are too coarse to matter for player
@@ -243,6 +268,18 @@ func _spawn_rings() -> void:
 		_refresh_ring_heightmap(r, Vector2.ZERO)
 
 
+func _inner_grid_n_for_snap_safe_overlap(grid_n: int) -> int:
+	var minimal_overlap_even: int = int(floor(float(grid_n - 1) * 0.5)) & ~1
+	return minimal_overlap_even - 2 if minimal_overlap_even >= 2 else 0
+
+
+func _inner_clip_half_m_for_ring(ring_idx: int, ring_step_m: float) -> float:
+	if ring_idx <= 0:
+		return 0.0
+	var child_step_m: float = ring_step_m * 0.5
+	return (float(_ring_grid_n) - 1.0) * child_step_m * 0.5
+
+
 func _process(delta: float) -> void:
 	_update_clock += delta
 	if _update_clock < _update_interval_s:
@@ -261,11 +298,22 @@ func _process(delta: float) -> void:
 								  _camera.global_position.z)
 	for i in range(_rings.size()):
 		var r: ClipmapRing = _rings[i]
-		r.snap_to_camera(cam_xz)
-		var snap: Vector2 = Vector2(r.global_position.x, r.global_position.z)
-		if snap != _last_snap_per_ring[i]:
-			_enqueue_ring_refresh(r, snap)
-			_last_snap_per_ring[i] = snap
+		var snap: Vector2 = _snap_center_for_ring(r, cam_xz)
+		if snap == _last_snap_per_ring[i]:
+			if _ring_tasks.has(i):
+				var current: Dictionary = _ring_tasks[i]
+				current["superseded"] = true
+				current["pending_center"] = null
+				_ring_tasks[i] = current
+			continue
+		_enqueue_ring_refresh(r, snap)
+
+
+func _snap_center_for_ring(r: ClipmapRing, cam_world_xz: Vector2) -> Vector2:
+	var snap: float = r.grid_step_m
+	return Vector2(
+		roundf(cam_world_xz.x / snap) * snap,
+		roundf(cam_world_xz.y / snap) * snap)
 
 
 # Synchronous fallback used for the initial heightmap eval at startup
@@ -280,54 +328,35 @@ func _refresh_ring_heightmap(r: ClipmapRing, ring_center: Vector2) -> void:
 	_finalize_ring_upload(r, ring_center, origin, floats, n, step)
 
 
-# Enqueue an off-thread refresh. Cheap: only constructs the worker
-# task + result holder. If a task for this ring is already in flight,
-# mark it superseded so its result is discarded when it lands; the new
-# task fires immediately.
-#
-# WorkerThreadPool can't cancel running tasks, hence the superseded
-# flag instead of true cancellation. The cost is one wasted worker run.
+# Enqueue an off-thread refresh. A ring may have at most one tracked
+# worker task. If the camera moves again before that task completes,
+# store the newest requested center as pending and start it only after
+# the current task is waited. This prevents orphaned WorkerThreadPool
+# tasks that the shutdown path cannot drain.
 func _enqueue_ring_refresh(r: ClipmapRing, ring_center: Vector2) -> void:
+	if _shutting_down or _composer == null:
+		return
 	var ring_idx: int = r.ring_index
 	if _ring_tasks.has(ring_idx):
-		_ring_tasks[ring_idx]["superseded"] = true
-	var payload: Dictionary = {
-		"ring_idx": ring_idx,
-		"ring_center": ring_center,
-		"grid_n": r.grid_n,
-		"grid_step_m": r.grid_step_m,
-	}
+		var existing: Dictionary = _ring_tasks[ring_idx]
+		var existing_job: HeightmapRefreshJob = existing["job"]
+		if existing_job.ring_center == ring_center:
+			return
+		existing["superseded"] = true
+		existing["pending_center"] = ring_center
+		_ring_tasks[ring_idx] = existing
+		return
+	var job := HeightmapRefreshJob.new(
+		ring_idx, ring_center, r.grid_n, r.grid_step_m, world_seed, _composer)
 	var task_id: int = WorkerThreadPool.add_task(
-		_worker_compute_heightmap.bind(payload), false, "clipmap_ring_refresh"
+		job.run, false, "clipmap_ring_refresh"
 	)
 	_ring_tasks[ring_idx] = {
 		"task_id": task_id,
-		"payload": payload,
+		"job": job,
 		"superseded": false,
-		"result": null,
+		"pending_center": null,
 	}
-
-
-# Worker thread entry. Pure: reads _composer + world_seed only, both
-# of which are unchanged after _ready. The result is stored in the
-# task entry; main thread picks it up on next _poll_ring_tasks tick.
-#
-# Shutdown discipline: _shutting_down is set by _exit_tree BEFORE
-# Godot frees children. Workers that haven't started yet bail
-# immediately; workers mid-loop will finish their _compute call (the
-# null-guard there returns a zero buffer) then skip the result store.
-func _worker_compute_heightmap(payload: Dictionary) -> void:
-	if _shutting_down:
-		return
-	var n: int = int(payload["grid_n"])
-	var step: float = float(payload["grid_step_m"])
-	var ring_center: Vector2 = payload["ring_center"]
-	var heights: PackedFloat32Array = _compute_heightmap_floats(n, step, ring_center)
-	if _shutting_down:
-		return
-	var ring_idx: int = int(payload["ring_idx"])
-	if _ring_tasks.has(ring_idx):
-		_ring_tasks[ring_idx]["result"] = heights
 
 
 # Stage 4.1: build a single-biome splat buffer. Always returns one
@@ -346,26 +375,30 @@ func _compute_splat_bytes_single_biome(n: int) -> PackedByteArray:
 
 
 # Pure-function helper. Same math as the sync path; reused by both
-# _refresh_ring_heightmap and _worker_compute_heightmap so the two
-# paths can't drift.
+# _refresh_ring_heightmap and HeightmapRefreshJob so the two paths
+# can't drift.
 func _compute_heightmap_floats(n: int, step: float,
 							   ring_center: Vector2) -> PackedFloat32Array:
+	return _compute_heightmap_floats_for_composer(
+		_composer, n, step, ring_center, world_seed)
+
+
+static func _compute_heightmap_floats_for_composer(composer: KernelComposer,
+												   n: int, step: float,
+												   ring_center: Vector2,
+												   seed: int) -> PackedFloat32Array:
 	var half_extent: float = (float(n) - 1.0) * step * 0.5
 	var origin: Vector2 = ring_center - Vector2(half_extent, half_extent)
 	var floats := PackedFloat32Array()
 	floats.resize(n * n)
-	# Defense-in-depth: workers may still be in flight when the scene
-	# tears down and frees _composer. _exit_tree drains pending tasks,
-	# but if a worker is mid-loop when shutdown begins this guard
-	# returns a zero-filled buffer instead of crashing.
-	if _composer == null:
+	if composer == null or not is_instance_valid(composer):
 		return floats
 	var idx: int = 0
 	for i in range(n):
 		var z: float = origin.y + float(i) * step
 		for j in range(n):
 			var x: float = origin.x + float(j) * step
-			floats[idx] = float(_composer.sample_height(x, z, world_seed))
+			floats[idx] = float(composer.sample_height(x, z, seed))
 			idx += 1
 	return floats
 
@@ -377,8 +410,7 @@ func _compute_heightmap_floats(n: int, step: float,
 #
 # Order matters:
 #   1. Set _shutting_down so any unstarted workers bail.
-#   2. wait_for_task_completion on each in-flight task. Workers
-#      mid-loop drop their result; workers not yet started no-op.
+#   2. wait_for_task_completion on each tracked in-flight task.
 #   3. Clear _ring_tasks last.
 func _exit_tree() -> void:
 	_drain_pending_workers()
@@ -409,6 +441,7 @@ func _poll_ring_tasks() -> void:
 	if _shutting_down:
 		return
 	var done: Array[int] = []
+	var pending: Array = []
 	for ring_idx_v in _ring_tasks.keys():
 		var ring_idx: int = int(ring_idx_v)
 		var task: Dictionary = _ring_tasks[ring_idx]
@@ -417,22 +450,30 @@ func _poll_ring_tasks() -> void:
 			continue
 		WorkerThreadPool.wait_for_task_completion(task_id)
 		done.append(ring_idx)
+		var pending_center_v = task.get("pending_center", null)
+		if pending_center_v != null:
+			pending.append([ring_idx, pending_center_v])
 		if bool(task.get("superseded", false)):
 			continue
-		var result = task.get("result")
-		if result == null:
+		var job: HeightmapRefreshJob = task["job"]
+		var heights: PackedFloat32Array = job.result
+		if heights.size() != job.grid_n * job.grid_n:
 			continue
-		var heights: PackedFloat32Array = result
-		var payload: Dictionary = task["payload"]
-		var n: int = int(payload["grid_n"])
-		var step: float = float(payload["grid_step_m"])
-		var ring_center: Vector2 = payload["ring_center"]
+		var n: int = job.grid_n
+		var step: float = job.grid_step_m
+		var ring_center: Vector2 = job.ring_center
 		var half_extent: float = (float(n) - 1.0) * step * 0.5
 		var origin: Vector2 = ring_center - Vector2(half_extent, half_extent)
 		var r: ClipmapRing = _rings[ring_idx]
 		_finalize_ring_upload(r, ring_center, origin, heights, n, step)
 	for ring_idx in done:
 		_ring_tasks.erase(ring_idx)
+	for entry in pending:
+		var ring_idx: int = int(entry[0])
+		var ring_center: Vector2 = entry[1]
+		if ring_idx >= 0 and ring_idx < _rings.size():
+			if ring_center != _last_snap_per_ring[ring_idx]:
+				_enqueue_ring_refresh(_rings[ring_idx], ring_center)
 
 
 # Main thread only. Owns GPU upload + per-ring shader uniforms.
@@ -442,6 +483,9 @@ func _poll_ring_tasks() -> void:
 func _finalize_ring_upload(r: ClipmapRing, ring_center: Vector2,
 						   origin: Vector2, heights: PackedFloat32Array,
 						   n: int, step: float) -> void:
+	r.global_position = Vector3(ring_center.x, 0.0, ring_center.y)
+	if r.ring_index >= 0 and r.ring_index < _last_snap_per_ring.size():
+		_last_snap_per_ring[r.ring_index] = ring_center
 	var extent: float = (float(n) - 1.0) * step
 	# Heightmap format intent: tier knob is honored when GDScript gets a
 	# float32→float16 helper. Until then, both inner and outer rings
@@ -466,6 +510,12 @@ func _finalize_ring_upload(r: ClipmapRing, ring_center: Vector2,
 		var inner_band_m: float = _morph_band_m_per_ring[r.ring_index - 1]
 		inner.set_coarse_uniforms(
 			tex, origin, extent, n, inner_band_m, not debug_disable_morph)
+	if r.ring_index < _rings.size() - 1:
+		var outer: ClipmapRing = _rings[r.ring_index + 1]
+		var outer_mat: ShaderMaterial = _per_ring_shader_material(outer)
+		if outer_mat != null:
+			outer_mat.set_shader_parameter("inner_clip_center_m", ring_center)
+			outer_mat.set_shader_parameter("inner_clip_half_m", extent * 0.5)
 	# Stage 4.1: build a single-layer splat Texture2DArray for this
 	# ring (every texel = 1.0 weight to slot 0) and bind it + a
 	# 1-element biome_pbr_slot pointing at "alpine" (or the first
@@ -546,5 +596,3 @@ func get_elev_range() -> Vector2:
 		lo = 0.0
 		hi = 1000.0
 	return Vector2(lo, hi)
-
-
