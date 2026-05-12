@@ -132,7 +132,22 @@ vec3 compute_normal(vec2 world_xz) {
 	float hR = sample_height(world_xz + vec2(texel_m, 0.0));
 	float hD = sample_height(world_xz - vec2(0.0, texel_m));
 	float hU = sample_height(world_xz + vec2(0.0, texel_m));
-	// Central differences: dH/dx ~ (hR - hL) / (2 * texel_m), same for z.
+	if (morph_enabled) {
+		// Blend toward the coarse ring's local normal so lighting
+		// matches the morphed geometry. Sample coarse heights at the
+		// SAME texel_m offsets — coarse-texture finite-differencing
+		// uses inner-ring spacing, which intentionally low-passes the
+		// coarse normal (less aliasing than its own native step).
+		float m = compute_morph_factor(world_xz);
+		float cL = sample_coarse_height(world_xz - vec2(texel_m, 0.0));
+		float cR = sample_coarse_height(world_xz + vec2(texel_m, 0.0));
+		float cD = sample_coarse_height(world_xz - vec2(0.0, texel_m));
+		float cU = sample_coarse_height(world_xz + vec2(0.0, texel_m));
+		hL = mix(hL, cL, m);
+		hR = mix(hR, cR, m);
+		hD = mix(hD, cD, m);
+		hU = mix(hU, cU, m);
+	}
 	float dhdx = (hR - hL) / (2.0 * texel_m);
 	float dhdz = (hU - hD) / (2.0 * texel_m);
 	return normalize(vec3(-dhdx, 1.0, -dhdz));
@@ -141,8 +156,16 @@ vec3 compute_normal(vec2 world_xz) {
 
 void vertex() {
 	vec3 model_world = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
-	float h = sample_height(model_world.xz);
-	// `+=`, not `=` — see header note #1.
+	float h_inner = sample_height(model_world.xz);
+	float h;
+	if (morph_enabled) {
+		float h_outer = sample_coarse_height(model_world.xz);
+		float m = compute_morph_factor(model_world.xz);
+		h = mix(h_inner, h_outer, m);
+	} else {
+		h = h_inner;
+	}
+	// `+=`, not `=` — preserves skirt depth (see PITFALLS #7).
 	VERTEX.y += h;
 	v_world_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
 }
