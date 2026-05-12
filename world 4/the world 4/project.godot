@@ -22,3 +22,7 @@ window/size/viewport_height=1480
 [dotnet]
 
 project/assembly_name="world 4.1"
+
+[world]
+
+quality_tier="high"
