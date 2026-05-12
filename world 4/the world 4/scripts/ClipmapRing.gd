@@ -149,14 +149,36 @@ var _displacement: ImageTexture = null
 
 func set_displacement_texture(tex: ImageTexture) -> void:
 	_displacement = tex
-	if _mesh_instance != null and _mesh_instance.material_override != null:
-		var mat: Material = _mesh_instance.material_override
-		if mat is ShaderMaterial:
-			(mat as ShaderMaterial).set_shader_parameter("displacement", tex)
+	var mat := _get_shader_material()
+	if mat != null:
+		mat.set_shader_parameter("displacement", tex)
 
 
 func get_displacement_texture() -> ImageTexture:
 	return _displacement
+
+
+# Stage 3+: per-ring shader uniforms. ClipmapWorld calls this each
+# time the ring's snap position changes (which is also when the
+# displacement texture is regenerated).
+func set_ring_uniforms(origin_m: Vector2, extent_m: float, texel_n: int,
+					   ring_idx: int) -> void:
+	var mat := _get_shader_material()
+	if mat == null:
+		return
+	mat.set_shader_parameter("ring_origin_m", origin_m)
+	mat.set_shader_parameter("ring_extent_m", extent_m)
+	mat.set_shader_parameter("ring_texel_n", texel_n)
+	mat.set_shader_parameter("ring_index", ring_idx)
+
+
+func _get_shader_material() -> ShaderMaterial:
+	if _mesh_instance == null:
+		return null
+	var mat: Material = _mesh_instance.material_override
+	if mat is ShaderMaterial:
+		return mat
+	return null
 
 
 func _add_skirt_strip(positions: PackedVector3Array, indices: Array,

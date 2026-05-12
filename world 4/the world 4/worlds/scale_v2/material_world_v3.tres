@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3]
+
+[ext_resource type="Shader" path="res://shaders/terrain_world_v3.gdshader" id="shader"]
+
+[resource]
+shader = ExtResource("shader")
+shader_parameter/ring_origin_m = Vector2(0.0, 0.0)
+shader_parameter/ring_extent_m = 512.0
+shader_parameter/ring_texel_n = 128
+shader_parameter/ring_index = 0
+shader_parameter/show_debug_color = true
+shader_parameter/debug_color_strength = 0.5
+shader_parameter/base_albedo = Color(0.55, 0.52, 0.48, 1.0)
+shader_parameter/base_roughness = 0.85
+shader_parameter/base_metallic = 0.0

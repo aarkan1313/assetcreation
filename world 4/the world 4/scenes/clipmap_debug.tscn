@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://scripts/ClipmapWorld.gd" id="world_script"]
 [ext_resource type="Script" path="res://scripts/AnchorCameraRig.gd" id="rig_script"]
@@ -7,12 +7,16 @@
 
 [node name="World" type="Node3D" parent="."]
 script = ExtResource("world_script")
-ring_count = 4
-ring_grid_n = 64
-ring_grid_step_base_m = 2.0
-debug_material_path = "res://worlds/scale_v2/material_clipmap_debug.tres"
+bundle_dir = "res://worlds/scale_v2/"
+world_v3_material_path = "res://worlds/scale_v2/material_world_v3.tres"
 camera_path = NodePath("../CameraRig/WalkCamera")
-update_interval_s = 0.05
+world_seed = 42
 
 [node name="CameraRig" type="Node3D" parent="."]
 script = ExtResource("rig_script")
+terrain_path = NodePath("../World")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866, 0.354, -0.354, 0.0, 0.707, 0.707, 0.5, -0.612, 0.612, 0.0, 1500.0, 0.0)
+light_energy = 1.2
+shadow_enabled = false

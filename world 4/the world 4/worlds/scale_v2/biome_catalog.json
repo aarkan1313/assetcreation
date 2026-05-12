@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "tiers": [
+    {
+      "name": "standard",
+      "resolution": 1024
+    }
+  ],
+  "slots": [
+    "ground",
+    "mid",
+    "rock"
+  ],
+  "maps": [
+    "albedo",
+    "normal",
+    "roughness",
+    "ao"
+  ],
+  "biome_scale_m": 1024.0,
+  "biomes": [
+    {
+      "name": "alpine",
+      "kit_dir": "materials/biome_alpine",
+      "slots": {
+        "ground": {
+          "source": "ground",
+          "tier": "standard"
+        },
+        "mid": {
+          "source": "mid",
+          "tier": "standard"
+        },
+        "rock": {
+          "source": "rock",
+          "tier": "standard"
+        }
+      },
+      "generator": {
+        "kernel": "noise_stack",
+        "params": {
+          "elevation_base_m": 800.0,
+          "elevation_amplitude_m": 600.0,
+          "octaves": 5,
+          "lacunarity": 2.0,
+          "persistence": 0.5,
+          "base_frequency_per_m": 0.001953125,
+          "seed_offset": 0
+        }
+      }
+    },
+    {
+      "name": "desert",
+      "kit_dir": "materials/biome_desert",
+      "slots": {
+        "ground": {
+          "source": "ground",
+          "tier": "standard"
+        },
+        "mid": {
+          "source": "mid",
+          "tier": "standard"
+        },
+        "rock": {
+          "source": "rock",
+          "tier": "standard"
+        }
+      },
+      "generator": {
+        "kernel": "noise_stack",
+        "params": {
+          "elevation_base_m": 200.0,
+          "elevation_amplitude_m": 80.0,
+          "octaves": 3,
+          "lacunarity": 2.0,
+          "persistence": 0.5,
+          "base_frequency_per_m": 0.00390625,
+          "seed_offset": 1
+        }
+      }
+    }
+  ]
+}
