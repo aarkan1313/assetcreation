@@ -65,31 +65,53 @@ while reusing all of W4's terrain authoring.
 | Axis 2 (Biome) — texture kits | 2026-05-12 | 48 texture maps for 4 new biomes (alpine, desert, rocky highlands, wetland) via ComfyUI FLUX2-klein 9B + aaa_texture.py at 1024². 4 new `material_<biome>.tres` files. All 12 slots passed near-black + normal sanity validation. Per-biome walk captures saved. See `build-notes/BIOME_KITS_BUILD_NOTES_2026_05_12.md`. |
 | Axis 2 (Biome) — per-tile wiring | 2026-05-12 | ScaleWorld reads each tile's biome label from meta.json and routes to the matching `material_<biome>.tres` at spawn. 4×4 layout from BIOMES.md realized — hard borders visible at every biome adjacency. Walk + topdown captures saved. See `build-notes/AXIS2_WIRING_BUILD_NOTES_2026_05_12.md`. |
 | Doc audit + TOOLS.md index | 2026-05-12 | Refreshed stale `AXES.md` Axis 1+2 state, rewrote `HANDOFF.md` as stable "how to take over" prompt (now points at ROADMAP), wrote `reference/TOOLS.md` as a one-line-per-item index of every pipeline script, shader, GDScript, scene. |
+| Axis 6 (Textures) — Stage 5a foundation | 2026-05-12 | Texture-array + per-tile splat architecture landed end-to-end on branch `axis6-transitions`. Catalog → manifest builder (auto-upsample + L→RGB convert) → splat builder (hard mode + per-slot tier/layer meta) → `terrain_world_v2.gdshader` (per-slot uniforms) → global material → ScaleWorld runtime (builds 8 Texture2DArrays at init + per-tile uniform binding). Hard-mode capture is regression-equivalent to 2026-05-12 per-tile-material baseline. 15 pytest cases. 3 new Godot pitfalls documented as PITFALLS #5/#5b. Stages 5b-5f remaining (feather splats, slot-pool indirection refactor, two-tier verification, portability doc, final build-note). See `build-notes/AXIS6_5A_BUILD_NOTES_2026_05_12.md`. |
 
 ## What's next, ranked
 
 Order reflects current judgement. Reranking happens any time the
 calculus changes (new info, new constraints, new user priorities).
 
-### 1. Textures axis (Axis 6) — soft transition workflow
-**What:** Soft transitions at biome boundaries via texture-array
-infrastructure + per-tile splat maps + slot-pool-ready streaming
-abstraction. Design spec at
-`plans/AXIS6_TRANSITIONS_DESIGN_2026_05_12.md`. Brainstormed
-2026-05-12: chose texture-array + slot-pool combo over per-pair
-authoring (combinatorial trap) and over W3's M10 ecotone-layer path
-(coupled to chunk-loader specifics).
+### 1. Textures axis (Axis 6) — Stages 5b-5f
+**What:** Finish the soft-transition workflow. Stage 5a (foundation:
+catalog → arrays → splat → shader → ScaleWorld wiring) landed
+2026-05-12 in hard-mode; the array+splat path renders scale_demo
+regression-equivalent to the per-tile-material baseline. Remaining:
+
+- **5b — Feather splat blends.** Extend `pipeline/build_tile_splats.py`
+  with `--mode feather --feather-width-m N`. Boundary regions of
+  adjacent tiles with different biomes get smooth weight ramps. No
+  shader change.
+- **5c — Slot-pool indirection refactor.** Splats reference slot-pool
+  indices, not raw array layers. Identity in v1 (no behavioural
+  change). Streaming-ready.
+- **5d — Two-tier verification.** Close-up capture inside a forest
+  tile to confirm hero-tier (4K) sampling works for `scrub_dense` +
+  `rocky_slope`.
+- **5e — Portability doc.** "Drop this into another Godot project"
+  guide — pipeline + shader contracts + integration points.
+- **5f — Build-note + roadmap rerank.** Move Axis 6 to shipped, pick
+  the next strand-A vs strand-B candidate.
+
+Design + plan: `plans/AXIS6_TRANSITIONS_DESIGN_2026_05_12.md` +
+`plans/AXIS6_TRANSITIONS_PLAN_2026_05_12.md`. Brainstormed 2026-05-12:
+chose texture-array + slot-pool combo over per-pair authoring
+(combinatorial trap) and over W3's M10 ecotone-layer path (coupled to
+chunk-loader specifics). Option C per-slot tier/layer addressing
+adopted mid-execution so a biome's 3 slots can live in different
+tiers (e.g. forest: ground+rock hero, mid standard).
 
 **What it unblocks:** Soft biome transitions on scale_demo. The
 texture-array foundation also unlocks: scalable biome count (≥15
 biomes at constant per-fragment cost), per-game biome packs (swap
 arrays without shader changes), forward path to biome streaming.
 
-**Cost:** ~3-4 sessions across 6 sub-stages (5a catalog/arrays, 5b
-splat blends, 5c slot-pool refactor, 5d two-tier verification, 5e
-portability doc, 5f build-note).
+**Cost:** ~2 sessions remaining. 5b is small (one mode in the splat
+builder), 5c is small (pool indirection in shader + scaler), 5d is a
+capture, 5e is doc work, 5f is bookkeeping.
 
-**Gate:** None. Ready to start; spec approved.
+**Gate:** None. Stage 5a foundation working; 5b ready to start on
+branch `axis6-transitions`.
 
 ### 2. Axis 2 follow-ups (parked unless prioritized)
 

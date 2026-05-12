@@ -250,22 +250,35 @@ freshly generated). Top of axis = the full texture creation workflow
 including blending/transitions/biome-cohesive kits.
 
 **Current state:** *creation pipeline shipped; transition workflow
-pending and now the top-ranked roadmap item (2026-05-12).* The
-creation half — biome-cohesive kit generation via FLUX2-klein 9B,
-real-ortho + ComfyUI mix, palette discipline via prompt-encoded
-palettes — is working end-to-end. 5 biomes × 12 slots × 4 PBR maps
-rendered on the scale_demo world. The transition half is the open
-problem: hard borders are visible at every biome adjacency in
-`captures/biomes_wired_walk_2026_05_12.png` and
-`biomes_wired_topdown_2026_05_12.png`.
+foundation (Stage 5a) landed 2026-05-12, soft-blend stages (5b-5f) in
+flight on branch `axis6-transitions`.* The creation half — biome-
+cohesive kit generation via FLUX2-klein 9B, real-ortho + ComfyUI mix,
+palette discipline via prompt-encoded palettes — is working end-to-end.
+5 biomes × 12 slots × 4 PBR maps rendered on the scale_demo world.
 
-**Next experiment (when ready):** the blending/transition workflow.
-W3 attempted this with per-pixel splat-weighted compositing and per-
-boundary ecotone layers — both worked partially. W4's job is to figure
-out which approach is right (or invent a new one) now that we have a
-concrete multi-biome world to look at, rather than designing in the
-abstract. See ROADMAP.md candidate #1 for the open questions to
-brainstorm at the start of the session.
+The transition architecture is now in place: one global terrain
+material (`material_world_v2.tres`) + 8 `Texture2DArray`s (2 tiers ×
+4 PBR maps) built at scene init + per-tile splat textures with
+per-slot `(tier, layer)` indices. `terrain_world_v2.gdshader` does
+the per-fragment weighted blend across up to 4 biomes. Stage 5a
+shipped the foundation in hard-mode splats (every pixel = pure
+channel 0 = this tile's own biome) — regression-equivalent to the
+2026-05-12 per-tile-material baseline, validating the array+splat
+plumbing end-to-end. Capture: `captures/axis6_5a_walk_2026_05_12.png`.
+
+Three new Godot 4.5 pitfalls hit and documented as PITFALLS #5 +
+#5b — Texture2DArray layer uniformity (format + mipmap state) and
+the non-serialisable `Texture2DArray.tres` constraint that pushed
+array construction into ScaleWorld at scene init rather than in the
+pipeline.
+
+**Next experiment (in flight):** Stage 5b. Switch the splat builder
+from `--mode hard` to `--mode feather --feather-width-m N` so
+boundary regions of adjacent tiles with different biomes get smooth
+weight ramps. No shader change — the array+splat path is built to
+consume those ramps once the splats encode them. Then 5c (slot-pool
+indirection refactor — streaming-ready, identity in v1), 5d (two-tier
+verification), 5e (portability doc), 5f (build-note + roadmap rewire).
 
 *Exit criterion:* a multi-biome world has visually pleasant transitions
 between adjacent biome materials. No hard color blocks, no smeared

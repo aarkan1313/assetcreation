@@ -17,6 +17,10 @@
 | Generate a single texture from a prompt | `D:/assets/pipelines/textures/aaa_texture.py` — see `pipelines/textures/PIPELINE.md` |
 | Generate a biome kit (3 slots × 4 maps via klein-9B) | `pipeline/generate_biome_kits.py` (calls aaa_texture per slot, installs into W4 materials/) |
 | Emit `.tres` materials for the 4 new biomes | `pipeline/write_material_tres_biomes.py` |
+| Build the Axis 6 layer manifest (biomes → texture-array layers per tier) | `pipeline/build_biome_arrays.py` |
+| Emit per-tile splat maps for Axis 6 (controls biome blending per tile) | `pipeline/build_tile_splats.py` |
+| Emit the global terrain material that binds `terrain_world_v2.gdshader` | `pipeline/write_global_terrain_material.py` |
+| Run all the Axis 6 pipeline tests | `cd "world 4" && python -m pytest tests/ -v` |
 | Reimport Godot after changing files outside the editor | `"C:/Godot/Godot_v4.5-stable_win64.exe" --headless --path "D:/assets/world 4/the world 4" --import` |
 | Headless capture a scene | `"C:/Godot/Godot_v4.5-stable_win64.exe" --rendering-driver opengl3 --path "D:/assets/world 4/the world 4" --single-window --disable-crash-handler "res://scenes/<capture_scene>.tscn"` |
 | Debug a visual artifact | `reference/PITFALLS.md` (match symptom → root cause → fix) |
@@ -43,12 +47,57 @@ System Python 3.12. No per-lane venv — small dep set
 | `write_material_tres.py` | v1 anchor material.tres (splat+macro) | `terrain_anchor.gdshader` (legacy) |
 | `write_material_tres_v2.py` | **v2 anchor material.tres** (3-slot slope-blend) | `terrain_anchor_v2.gdshader` |
 | `write_material_tres_scale.py` | Old scale material.tres | (legacy) |
-| `write_material_tres_scale_v1.py` | **scale_demo material_scale_v1.tres** (3-slot, unshaded with manual lighting) | `terrain_scale_v1.gdshader` |
+| `write_material_tres_scale_v1.py` | scale_demo material_scale_v1.tres (3-slot, unshaded with manual lighting; pre-Axis-6 single-biome path) | `terrain_scale_v1.gdshader` |
 | `write_material_tres_views.py` | scale_demo per-view materials (iso, topdown) | `terrain_view_iso.gdshader`, `terrain_view_topdown.gdshader` |
-| `write_material_tres_biomes.py` | **4 biome materials** (alpine, desert, rocky, wetland) for scale_demo | `terrain_scale_v1.gdshader`, per-biome ambient tints |
+| `write_material_tres_biomes.py` | 4 per-biome materials (alpine, desert, rocky, wetland) for the pre-Axis-6 biome path | `terrain_scale_v1.gdshader`, per-biome ambient tints |
+| `write_global_terrain_material.py` | **scale_demo material_world_v2.tres** (single global material binding the Axis 6 shader + lighting defaults; texture arrays bound at runtime by ScaleWorld) | `terrain_world_v2.gdshader` |
 
-The bold lines are the currently-canonical emitters. Anything else is
-either legacy v1 (kept for reference) or older naming we haven't deleted.
+The bold line is the currently-canonical emitter. The biome-per-tile
+emitters (`write_material_tres_biomes.py`,
+`write_material_tres_scale_v1.py`) are kept as fallback for the pre-
+Axis-6 paths and remain wired through `ScaleWorld.biome_materials` /
+`material_override_path`.
+
+### Axis 6 — texture-array + splat pipeline
+
+The Axis 6 (transitions) path replaces per-tile single-material
+binding with one global terrain material + texture arrays + per-tile
+splat maps. Pipeline order:
+
+| Stage | Script | Output |
+|---|---|---|
+| 1. Catalog declares biomes / slots / tiers (hand-authored) | n/a | `worlds/scale_demo/biome_catalog.json` |
+| 2. Pure-Python catalog loader/validator (used by all axis-6 pipeline scripts) | `pipeline/biome_catalog.py` | (module; no output file) |
+| 3. Build the layer manifest (per-biome PBR maps → per-tier texture-array layers) | `pipeline/build_biome_arrays.py` | `worlds/scale_demo/arrays/layer_manifest.json` + `__upsampled` and `__rgb` sibling PNGs for any sub-tier-resolution or non-RGB source |
+| 4. Build per-tile splat maps + per-slot (tier, layer) meta | `pipeline/build_tile_splats.py` | `worlds/scale_demo/tiles/tile_X_Z/splat.png` + `splat_meta.json` |
+| 5. Emit the global terrain material (shader + lighting defaults) | `pipeline/write_global_terrain_material.py` | `worlds/scale_demo/material_world_v2.tres` |
+| 6. Godot reimport + scale_demo run | (`--import` then run scale_demo.tscn) | ScaleWorld builds 8 Texture2DArrays from layer_manifest at scene init, sets per-tile uniforms |
+
+Run the lot end-to-end:
+
+```bash
+# steps 3, 4, 5 (re-run any time the catalog or biome PNGs change)
+python "world 4/pipeline/build_biome_arrays.py" --catalog ".../biome_catalog.json" --w4-root ".../the world 4" --out ".../arrays/layer_manifest.json"
+python "world 4/pipeline/build_tile_splats.py"  --bundle ".../scale_demo" --manifest ".../arrays/layer_manifest.json" --mode hard --splat-size 64
+python "world 4/pipeline/write_global_terrain_material.py" --w4-root ".../the world 4" --out "worlds/scale_demo/material_world_v2.tres"
+# step 6
+"C:/Godot/Godot_v4.5-stable_win64.exe" --headless --path "the world 4" --import
+```
+
+`build_tile_splats.py --mode hard` = every tile is its own biome with
+no blending (used for the Stage 5a regression check). `--mode feather
+--feather-width-m N` (Stage 5b) is where soft transitions enter the
+splats.
+
+### Tests (`world 4/tests/`)
+
+| File | What it tests |
+|---|---|
+| `tests/test_biome_catalog.py` | Catalog schema validation: layer indexing, tier validation, missing-slot rejection, slot path lookup. |
+| `tests/test_build_biome_arrays.py` | Manifest builder: per-tier layer ordering, oversize rejection, undersize auto-upsample, missing-map rejection, JSON roundtrip. |
+| `tests/test_build_tile_splats.py` | Splat builder hard-mode: file shapes, channel-0 weight, per-slot tier/layer encoding, forest-spans-tiers, unknown-biome rejection. |
+| `tests/conftest.py` | Inserts `pipeline/` into `sys.path` for test imports. |
+| `pytest.ini` | Sets `testpaths = tests`. Run all tests via `python -m pytest tests/ -v` from the W4 dir. |
 
 ### Texture generation
 
@@ -71,9 +120,10 @@ documented in `pipelines/textures/PIPELINE.md`. W4 only drives it via
 | `terrain_anchor_rebuild.gdshader` | lit PBR | (none) | Debug-bisect leftover; can delete |
 | `terrain_anchor_v2.gdshader` | lit PBR | anchor demo | **Canonical anchor shader.** Has all guardrails: `luma_floor`, `ao_floor`, NaN guards. Locked baseline. |
 | `terrain_anchor_v2_minimal.gdshader` | lit PBR | (none) | 3-line bisect minimal — kept for future PBR-bug bisects |
-| `terrain_scale_v1.gdshader` | **unshaded** + manual lighting | scale_demo walk view + biome materials | **Canonical scale-axis shader.** Bypasses Godot's PBR pipeline (PITFALLS #3). Manual lambertian + ambient. |
-| `terrain_view_iso.gdshader` | unshaded | scale_demo iso view | Flatter lambertian + form-light term |
-| `terrain_view_topdown.gdshader` | unshaded | scale_demo topdown view | Cartographic hillshade + sepia bias |
+| `terrain_scale_v1.gdshader` | **unshaded** + manual lighting | (pre-Axis-6 scale_demo walk + biome materials) | Pre-Axis-6 canonical. Same unshaded model as v2 but 3 fixed sampler2D slots per material → one material per tile. Kept as the fallback path through `ScaleWorld.biome_materials`. |
+| `terrain_world_v2.gdshader` | **unshaded** + manual lighting | scale_demo walk view (Axis 6 path) | **Canonical scale-axis shader.** Same unshaded model as v1 but with `sampler2DArray` per tier × map (8 array uniforms) + per-tile splat texture + per-slot (tier, layer) `ivec4` indices. Lets a biome span tiers; lets one global material serve every tile. |
+| `terrain_view_iso.gdshader` | unshaded | scale_demo iso view | Flatter lambertian + form-light term. Still single-material (no per-biome routing in iso/topdown yet). |
+| `terrain_view_topdown.gdshader` | unshaded | scale_demo topdown view | Cartographic hillshade + sepia bias. Still single-material. |
 | `water_anchor.gdshader` | lit | anchor water plane | Fresnel + depth fade |
 
 ## GDScripts (`world 4/the world 4/scripts/`)
@@ -83,8 +133,8 @@ documented in `pipelines/textures/PIPELINE.md`. W4 only drives it via
 | `AnchorTerrain.gd` | Anchor: build one 257×257 ArrayMesh from heightmap.png, apply material, generate tangents. The anchor's whole runtime. |
 | `AnchorWater.gd` | Sizes a water plane to the anchor's underwater region. Sets `cast_shadow = OFF`. |
 | `AnchorCameraRig.gd` | 3-camera rig (walk / iso / topdown) + hotkey 1/2/3 switch + WASD pan on iso/topdown + scroll-wheel zoom on topdown. Calls `ScaleWorld.set_view_mode` on switch. |
-| `ScaleWorld.gd` | scale_demo runtime: loads world meta + world_heightmap.png, spawns `TileTerrain` children per tile, handles radius paging (3×3 window), drives view-mode swaps, owns the cross-tile shared heightmap buffer. |
-| `TileTerrain.gd` | Per-tile runtime: builds 257×257 mesh from this tile's heightmap.png, samples the shared world heightmap for cross-tile normals at borders (PITFALLS #4 mitigation), applies material. Async via `WorkerThreadPool.add_task`. |
+| `ScaleWorld.gd` | scale_demo runtime: loads world meta + world_heightmap.png, spawns `TileTerrain` children per tile, handles radius paging (3×3 window), drives view-mode swaps, owns the cross-tile shared heightmap buffer. **Axis 6 additions:** when `world_v2_material_path` is set, reads `arrays/layer_manifest.json`, builds 8 `Texture2DArray`s at scene init (with forced `FORMAT_RGBA8` + `clear_mipmaps()` for uniform format across layers — see PITFALLS #5), and per-tile sets `splat` + `splat_ground/mid/rock_indices` + `tile_origin_m` + `tile_size_m` on a per-tile-duplicated global material. Legacy `material_override_path` / `biome_materials` paths remain as fallback. |
+| `TileTerrain.gd` | Per-tile runtime: builds 257×257 mesh from this tile's heightmap.png, samples the shared world heightmap for cross-tile normals at borders (PITFALLS #4 mitigation), applies material. Async via `WorkerThreadPool.add_task`. **Axis 6 addition:** `shared_material: Material` export — when set by ScaleWorld it wins over `shared_material_path` (avoids re-loading the same .tres for every tile). |
 | `AutoWalker.gd` | Optional debug helper: drives the camera on a fixed path for hitch profiling. Used by `autotest_scale_walk.tscn`. |
 | `HeadlessCapture.gd` | Captures the current viewport to a PNG after N warmup frames. Used by all `capture_*.tscn` scenes. |
 | `PerfHud.gd` | Top-right FPS / peak-ms / draw-calls overlay. |

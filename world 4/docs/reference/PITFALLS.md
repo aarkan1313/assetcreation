@@ -20,6 +20,7 @@
 | **Stationary** pure-black mesh quads at world scale, aligned to mesh edges | **#3 — Godot PBR pipeline at large scale** |
 | Contour-aligned fingerprint bands across slopes | **#4 — Normal stencil too narrow vs heightmap pixel scale** |
 | Hard cliff/seam at tile boundaries | (Not yet documented — file an entry if you hit this) |
+| `Texture2DArray.create_from_images` returns err=31 / `ERR_INVALID_DATA` at scene init | **#5 — Texture2DArray layer uniformity** |
 
 ## Pitfall #1 — Source-texture black texels become speckle noise
 
@@ -320,6 +321,100 @@ To rebuild against a non-striated crop later: set
 2. Confirm: temporarily set `TileTerrain.normal_stencil = 1`. Banding
    should get **much worse**. Then set it to 8 or 16 — banding should
    collapse.
+
+---
+
+## Pitfall #5 — Texture2DArray layer uniformity in Godot 4.5
+
+### Symptom
+- `Texture2DArray.create_from_images(imgs)` returns err=31
+  (`ERR_INVALID_DATA`) at scene init
+- Source PNGs all look fine individually — same dimensions, all valid
+- Affected: any pipeline that bundles per-biome PBR maps into a shared
+  array (W4 Axis 6 array+splat path uses this)
+- Often only affects ONE array (e.g. AO) while the others
+  (albedo/normal/roughness) build successfully
+
+### What's actually happening
+`create_from_images` requires every layer to share three things, not
+just resolution:
+
+1. **Pixel format.** `Image.get_format()` must match across all layers.
+   PIL saves L-mode PNGs as `FORMAT_L8`, RGB-mode as `FORMAT_RGB8`,
+   RGBA-mode as `FORMAT_RGBA8`. A single L-mode source in an otherwise
+   RGB array breaks the whole array.
+2. **Mipmap state.** `Image.has_mipmaps()` must match across all
+   layers. Godot's import pipeline bakes mipmaps into some PNGs (the
+   defaults for albedo/normal) and not others (depending on import
+   preset, .import file age, or the file's source pipeline). One
+   layer with mipmaps + one without → err=31.
+3. **Resolution.** Already documented in the array builder; this one
+   you'd notice immediately.
+
+The error code is the same (err=31) for all three causes, and Godot
+doesn't print which dimension mismatched. Hence the symptom of "all my
+files are fine individually."
+
+### Working fix (W4 implementation)
+Two-pronged: convert in the Python pipeline + force at runtime in the
+GDScript array builder.
+
+**At pipeline time** (`pipeline/build_biome_arrays.py`):
+- The `_ensure_resolution` helper now does mode conversion alongside
+  upsampling. L-mode → RGB; mismatched-resolution → LANCZOS upsample.
+- Output siblings get suffixes like `__upsampled1024_rgb.png` so the
+  cache check can find them on rerun.
+
+**At runtime** (`ScaleWorld.gd::_build_v2_arrays_if_needed`):
+- Decompress imported textures (`img.decompress()` if compressed).
+- Force `FORMAT_RGBA8`: `img.convert(Image.FORMAT_RGBA8)` always.
+- Drop mipmaps: `img.clear_mipmaps()` always. The `Texture2DArray`
+  regenerates them as needed at sampling time, and uniformity is
+  guaranteed.
+
+The runtime forcing is what we ship — even if the pipeline gets the
+formats right, Godot's import path can re-introduce mismatches
+(mipmaps on/off varies by import preset). Belt and suspenders.
+
+### What DIDN'T fix it (don't waste time)
+- Re-running `--import` repeatedly. Godot caches `.ctex` outputs and
+  re-running doesn't force the format/mipmap state to converge.
+- Deleting `.godot/imported/` and re-running. Useful but didn't
+  resolve the underlying mismatch; the import preset itself encodes
+  the format inconsistency.
+- Setting `compress/mode = 0` in `.import` files. Affected on-disk
+  compression but didn't change in-memory Image format after load.
+- Changing the .tres / catalog format — the bug is downstream of
+  catalog loading.
+
+### How to recognize it next time
+1. The first build of a multi-layer Texture2DArray throws err=31.
+2. Add a diagnostic print before `create_from_images`:
+   ```gdscript
+   for k in range(imgs.size()):
+       var im_d: Image = imgs[k]
+       print("[%d] sz=%s fmt=%d mips=%s" % [
+           k, im_d.get_size(), im_d.get_format(),
+           str(im_d.has_mipmaps())])
+   ```
+3. If any column varies across layers, that's the mismatch. Fix in
+   ScaleWorld with `convert(FORMAT_RGBA8)` + `clear_mipmaps()` for
+   uniform state.
+
+### Bonus pitfall #5b — Texture2DArray doesn't serialize to .tres cleanly
+Godot 4.5 saves a `Texture2DArray` with `_images = Array[Image]([null, null, ...])`
+even with `ResourceSaver.FLAG_BUNDLE_RESOURCES`. The supported paths
+for shipping a Texture2DArray are:
+- **Editor sprite-sheet import preset** (one big PNG, sliced via
+  `.import` config). Works but rigid.
+- **Runtime construction** from `Image` / `Texture2D` resources
+  (W4's choice for Axis 6 — see `ScaleWorld._build_v2_arrays_if_needed`).
+
+Trying to hand-write a `Texture2DArray.tres` that references external
+PNGs via `_data = [ExtResource("layer0"), ...]` does NOT work. The
+property is `_images` (not `_data`), and even when set to ExtResource
+references it deserialises to null images. Tracked at
+[godot-proposals#10601](https://github.com/godotengine/godot-proposals/issues/10601).
 
 ---
 
