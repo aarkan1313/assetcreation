@@ -201,6 +201,27 @@
       "promoted_to": null,
       "generated_at": "2026-05-12T20:09:55+00:00",
       "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "11_striated_red_orange": {
+      "id": "11_striated_red_orange",
+      "prompt": "tileable seamless texture, striated red-and-orange sandstone with multiple narrow color bands, warm saturated desert palette, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T20:11:01+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
     }
   }
 }

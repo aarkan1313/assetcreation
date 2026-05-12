@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.001441,
+    "periodic_locality": 1696.108,
+    "richness": 0.702,
+    "composite": 0.5116,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_desert_rock_11_striated_red_orange_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.042081579951220686,
+      "pass1_seconds": 4.04,
+      "pass3_seconds": 6.14,
+      "final_seam_score": 0.001440681830042832,
+      "seam_improvement": 0.040640898121177854
+    }
+  },
+  {
+    "edge_seam": 0.001311,
+    "periodic_locality": 104.892,
+    "richness": 0.622,
+    "composite": 0.4982,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_desert_rock_11_striated_red_orange_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.01559179462226067,
+      "pass1_seconds": 4.04,
+      "pass3_seconds": 6.14,
+      "final_seam_score": 0.0013110242445438652,
+      "seam_improvement": 0.014280770377716804
+    }
+  },
+  {
+    "edge_seam": 0.002503,
+    "periodic_locality": 759.373,
+    "richness": 0.702,
+    "composite": 0.4903,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_desert_rock_11_striated_red_orange_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.011785651664924549,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 8.17,
+      "final_seam_score": 0.002503193961982771,
+      "seam_improvement": 0.009282457702941779
+    }
+  },
+  {
+    "edge_seam": 0.020223,
+    "periodic_locality": 59.137,
+    "richness": 0.671,
+    "composite": 0.1342,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_desert_rock_11_striated_red_orange_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.029169124029820262,
+      "pass1_seconds": 4.04,
+      "pass3_seconds": 6.35,
+      "final_seam_score": 0.020222565014057094,
+      "seam_improvement": 0.008946559015763168
+    }
+  }
+]
