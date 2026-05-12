@@ -1,0 +1,39 @@
+{
+  "splat_size": 64,
+  "mode": "hard",
+  "channels": [
+    {
+      "biome": "desert",
+      "ground": {
+        "tier": "standard",
+        "layer": 4
+      },
+      "mid": {
+        "tier": "standard",
+        "layer": 5
+      },
+      "rock": {
+        "tier": "standard",
+        "layer": 6
+      }
+    },
+    {
+      "biome": null,
+      "ground": null,
+      "mid": null,
+      "rock": null
+    },
+    {
+      "biome": null,
+      "ground": null,
+      "mid": null,
+      "rock": null
+    },
+    {
+      "biome": null,
+      "ground": null,
+      "mid": null,
+      "rock": null
+    }
+  ]
+}

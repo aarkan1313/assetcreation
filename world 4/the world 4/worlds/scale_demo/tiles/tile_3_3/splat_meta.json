@@ -1,0 +1,39 @@
+{
+  "splat_size": 64,
+  "mode": "hard",
+  "channels": [
+    {
+      "biome": "rocky",
+      "ground": {
+        "tier": "standard",
+        "layer": 7
+      },
+      "mid": {
+        "tier": "standard",
+        "layer": 8
+      },
+      "rock": {
+        "tier": "hero",
+        "layer": 2
+      }
+    },
+    {
+      "biome": null,
+      "ground": null,
+      "mid": null,
+      "rock": null
+    },
+    {
+      "biome": null,
+      "ground": null,
+      "mid": null,
+      "rock": null
+    },
+    {
+      "biome": null,
+      "ground": null,
+      "mid": null,
+      "rock": null
+    }
+  ]
+}
