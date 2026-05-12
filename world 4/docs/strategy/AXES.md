@@ -250,27 +250,38 @@ freshly generated). Top of axis = the full texture creation workflow
 including blending/transitions/biome-cohesive kits.
 
 **Current state:** *shipped end-to-end, 2026-05-12.* Texture creation
-(48 PBR maps via FLUX2-klein 9B) + soft transitions (texture-array +
-per-tile splat blending) both working on branch `axis6-transitions`.
-The transition architecture: one global terrain material
-(`material_world_v2.tres`) + 8 `Texture2DArray`s (2 tiers × 4 PBR
-maps) built at scene init + per-tile splat textures with per-slot
-(tier, slot-pool-index) addressing. `terrain_world_v2.gdshader` does
-per-fragment weighted blend across up to 4 biomes. Slot-pool
-indirection in place (identity in v1, streaming-ready).
+(48 PBR maps via FLUX2-klein 9B) + soft transitions (texture-array
+biomes + world-spanning splat array) both working on branch
+`axis6-transitions`. The transition architecture: one global terrain
+material (`material_world_v2.tres`) + 8 PBR `Texture2DArray`s (2
+tiers × 4 maps) + **one world-spanning splat `Texture2DArray` (one
+layer per biome, R8 weights, sampled at world XZ)** built at scene
+init. `terrain_world_v2.gdshader` iterates active biomes per fragment
+with per-biome packed `(tier, layer)` arrays driving the within-biome
+ground/mid/rock slot lookup. **N biomes (not 4)** — MAX_BIOMES=16
+hard cap in shader, bumpable. Boundaries seamless by construction
+because adjacent tiles share splat texels at their shared edge.
 
-Captures: `axis6_5a_walk` (hard regression baseline),
-`axis6_5b_walk` + `axis6_5b_topdown` (feather mode, soft transitions
-visible), `axis6_5c_walk` (slot-pool refactor, no visual change),
-`axis6_5d_forest_closeup` (hero-tier 4K confirmed).
+Captures (chronological): `axis6_5a_walk` (per-tile hard regression
+baseline), `axis6_5b_walk` + `axis6_5b_topdown` (per-tile feather
+mode), `axis6_5c_walk` (slot-pool refactor), `axis6_5d_forest_closeup`
+(hero-tier 4K confirmed), `axis6_world_splat_walk_2026_05_12.png`
+(world-splat architecture, smooth boundaries),
+`axis6_world_splat_2m_walk_2026_05_12.png` (with 2m/quad mesh density
+perf pass).
 
-Three new Godot 4.5 pitfalls hit and documented as PITFALLS #5 +
-#5b — Texture2DArray layer uniformity (format + mipmap state) and
-the non-serialisable `Texture2DArray.tres` constraint.
+Four Godot 4.5 pitfalls hit and documented:
+- PITFALLS #5 — Texture2DArray layer uniformity (format + mipmap state).
+- PITFALLS #5b — Texture2DArray.tres non-serialisable.
+- PITFALLS #6 — per-tile splat boundaries can't bilinear-interpolate.
+  Pivoted to a world-spanning splat array (sampled at world XZ) so
+  adjacent tiles share splat texels by construction.
 
-22 pytest cases cover the pipeline (catalog, manifest builder, splat
-builder). Portability guide at `plans/AXIS6_PORTABILITY_README.md`.
+27 pytest cases cover the pipeline (catalog, layer manifest, world
+splat). Portability guide at `plans/AXIS6_PORTABILITY_README.md`.
 Full session writeup at `build-notes/AXIS6_BUILD_NOTES_2026_05_12.md`.
+Per-tile splat builder (`build_tile_splats.py`) + per-tile splat files
+remain on disk as legacy; ScaleWorld no longer reads them.
 
 **Next experiment (parked, not next-this-session):** biome streaming
 (LRU eviction + async layer-load on top of the slot-pool indirection

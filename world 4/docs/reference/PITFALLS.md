@@ -21,6 +21,7 @@
 | Contour-aligned fingerprint bands across slopes | **#4 — Normal stencil too narrow vs heightmap pixel scale** |
 | Hard cliff/seam at tile boundaries | (Not yet documented — file an entry if you hit this) |
 | `Texture2DArray.create_from_images` returns err=31 / `ERR_INVALID_DATA` at scene init | **#5 — Texture2DArray layer uniformity** |
+| Hard diagonal color lines at tile boundaries between biomes in walk view (editor only — headless captures hide it) | **#6 — Per-tile splat boundaries can't bilinear-interpolate** |
 
 ## Pitfall #1 — Source-texture black texels become speckle noise
 
@@ -415,6 +416,79 @@ PNGs via `_data = [ExtResource("layer0"), ...]` does NOT work. The
 property is `_images` (not `_data`), and even when set to ExtResource
 references it deserialises to null images. Tracked at
 [godot-proposals#10601](https://github.com/godotengine/godot-proposals/issues/10601).
+
+---
+
+## Pitfall #6 — Per-tile splat boundaries can't bilinear-interpolate
+
+### Symptom
+- Hard diagonal color lines at tile boundaries between adjacent
+  different-biome tiles in walk view
+- Visible only in editor (Forward+ Vulkan), invisible in headless
+  OpenGL Compatibility captures — so passes the regression suite
+  but breaks the live view
+- Persists even after fixing pixel-center continuity in the splat
+  builder
+
+### What's actually happening
+Per-tile splat textures (one RGBA8 per tile, mapped 0..1 across the
+tile) sample independently at each tile's edge. When the GPU's
+bilinear filter samples fragments near a tile boundary, it
+interpolates between two pixels INSIDE that tile — it can't cross
+into the neighbor tile's splat. Even if both tiles' edge pixel
+centers contain identical weights (`[128, 128, 0, 0]`) by
+construction, fragments at intermediate world positions read
+*different* texels from the *two different splats* and get
+*different* colors. Hard line.
+
+### Working fix
+**One world-spanning Texture2DArray splat, sampled by world XZ.**
+Adjacent tiles are different meshes but share the SAME splat
+texture. Fragments at any world XZ — including the tile-edge zone —
+sample the same texels with continuous bilinear interpolation.
+Boundary problem dissolves.
+
+Architecture lives in:
+- `pipeline/build_world_splat.py` — emits N R8 PNGs (one per biome)
+  at world resolution.
+- `terrain_world_v2.gdshader` — `world_splat: sampler2DArray` +
+  `num_biomes: int` loop bound + per-biome packed `(tier, layer)`
+  arrays for the within-biome ground/mid/rock slot lookup.
+- `ScaleWorld.gd::_build_v2_arrays_if_needed` — builds the splat
+  array at scene init and binds it to the global terrain material.
+  Every tile uses the SAME global material.
+
+### Why this is also the right answer for N > 4 biomes
+A single RGBA8 splat caps at 4 active biomes per fragment. The
+sampler2DArray splat has one layer per biome with no channel cap.
+For our 5-biome scale_demo we have 5 layers; for a future 15-biome
+world we'd have 15. The shader's per-fragment cost stays small
+because the loop early-outs on near-zero weights — most fragments
+read 1-2 active layers.
+
+### What DIDN'T fix it (don't waste time)
+- Pixel-center continuity in the per-tile splat builder
+  (`(px - 1) * m_per_px` instead of `(px - 0.5) * m_per_px`).
+  Adjacent edge pixels agreed exactly but interior fragments still
+  read different texels from different tiles → hard line.
+- Adding shader hints `filter_linear, repeat_disable` on the
+  per-tile `splat: sampler2D`. Sampling was already correct; the
+  problem was the two tiles' splats being separate textures.
+- Wider feather widths in the per-tile splat builder. More smoothing
+  inside each tile didn't help because the discontinuity is AT the
+  tile boundary, not inside the feather zone.
+
+### How to recognize it next time
+Look for hard lines that align with tile-edge XZ coordinates. If
+the seam is along tile boundaries specifically (not biome
+boundaries), this is the cause. The fix is a world-splat refactor,
+not a splat-builder tweak.
+
+### Bonus pitfall #6b — Trusting headless captures over editor
+Headless captures hid this bug entirely. Don't approve a
+splat/blend change based on the headless walk capture alone — open
+the editor and walk across at least one biome boundary first. See
+methodology section.
 
 ---
 
