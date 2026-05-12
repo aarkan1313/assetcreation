@@ -92,10 +92,16 @@ CATEGORY_THRESHOLDS = {
     "Tile":     {"periodic": 80.0},
     "Cobble":   {"periodic": 80.0},
     "Rock":     {"periodic": 25.0,  "richness": 0.83},
-    "Snow":     {"periodic": 18.0,  "richness": 0.45},  # legit low spatial energy
-    "Sand":     {"periodic": 18.0,  "richness": 0.80},
-    "Water":    {"periodic": 18.0,  "richness": 0.45},
-    "Liquid":   {"periodic": 18.0,  "richness": 0.45},
+    # Snow at 18 was calibrated for 512px FLUX. At 1024 the lattice peak is
+    # stronger (klein-9B's healing seam shows up consistently at period ~60px)
+    # and 18 lets visibly-tiled outputs through (e.g. snow drifts with
+    # repeating sweep). Tightened to 13 on 2026-05-12 against a 12-sample
+    # diversity batch + 30-sample historical Snow corpus — natural good-snow
+    # sits at 9-11, bad-tiled-snow at 15+. 13 splits the natural gap.
+    "Snow":     {"periodic": 13.0,  "richness": 0.45},
+    "Sand":     {"periodic": 13.0,  "richness": 0.80},  # same lattice fingerprint as Snow
+    "Water":    {"periodic": 13.0,  "richness": 0.45},
+    "Liquid":   {"periodic": 13.0,  "richness": 0.45},
     "Ground":   {"periodic": 22.0,  "richness": 0.83},
     "Foliage":  {"periodic": 25.0,  "richness": 0.83},
     "Metal":    {"periodic": 30.0,  "richness": 0.60},  # polished metal has
