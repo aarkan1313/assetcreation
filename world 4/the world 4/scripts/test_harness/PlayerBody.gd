@@ -20,6 +20,9 @@ extends CharacterBody3D
 @export var sprint_multiplier: float = 2.5
 @export var mouse_sensitivity: float = 0.003
 @export var eye_height: float = 1.6
+# Initial upward velocity on jump. With 9.81 gravity, jump_speed=5.5
+# clears ~1.5m vertical (v² / 2g). Tune to taste.
+@export var jump_speed: float = 5.5
 
 const GRAVITY_M_S2 := 9.81
 const CAPSULE_HEIGHT := 1.8
@@ -80,7 +83,7 @@ func _build_hud() -> void:
 	canvas.layer = 100  # above rig's HUD
 	add_child(canvas)
 	_hud_label = Label.new()
-	_hud_label.text = "[G] toggle walk-physics  (currently: fly)"
+	_hud_label.text = "[G] toggle walk-physics  •  [Space] jump  (currently: fly)"
 	_hud_label.position = Vector2(20, 160)
 	_hud_label.add_theme_color_override("font_color", Color(1.0, 1.0, 0.6))
 	canvas.add_child(_hud_label)
@@ -124,7 +127,7 @@ func deactivate() -> void:
 func _update_hud() -> void:
 	if _hud_label == null:
 		return
-	_hud_label.text = "[G] toggle walk-physics  (currently: %s)" % (
+	_hud_label.text = "[G] toggle walk-physics  •  [Space] jump  (currently: %s)" % (
 		"PHYSICS" if _active else "fly"
 	)
 
@@ -177,8 +180,13 @@ func _apply_look() -> void:
 func _physics_process(delta: float) -> void:
 	if not _active:
 		return
-	if is_on_floor():
+	var grounded := is_on_floor()
+	if grounded:
 		velocity.y = 0.0
+		# Jump (Space): set initial upward velocity. Gravity does the
+		# rest. Only fires when grounded — no double-jump.
+		if Input.is_key_pressed(KEY_SPACE):
+			velocity.y = jump_speed
 	else:
 		velocity.y -= GRAVITY_M_S2 * delta
 	var dir := _walk_input_direction()
