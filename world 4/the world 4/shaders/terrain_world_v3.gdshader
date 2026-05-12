@@ -197,17 +197,45 @@ void vertex() {
 }
 
 
+// Sample this ring's albedo by summing per-biome contributions.
+// uv_ring: same UV used for heightmap (per-ring, half-texel-offset).
+// uv_pbr:  world_xz / pbr_tile_size_m, wraps via repeat_enable on the
+//          PBR sampler — gives a tiling material at a fixed world scale.
+vec3 sample_biome_albedo(vec2 world_xz) {
+	float n = float(ring_texel_n);
+	float extent_n = ring_extent_m * n / max(n - 1.0, 1.0);
+	vec2 uv_ring = (world_xz - ring_origin_m) / extent_n + vec2(0.5 / n);
+	vec2 uv_pbr = world_xz / pbr_tile_size_m;
+
+	vec3 albedo = vec3(0.0);
+	float total_w = 0.0;
+	for (int i = 0; i < MAX_BIOMES_PER_RING; i++) {
+		if (i >= active_biomes_n) {
+			break;
+		}
+		int pbr_slot = biome_pbr_slot[i];
+		if (pbr_slot < 0) {
+			continue;
+		}
+		float w = texture(splat_array, vec3(uv_ring, float(i))).r;
+		vec3 c = texture(pbr_ground_array, vec3(uv_pbr, float(pbr_slot))).rgb;
+		albedo += w * c;
+		total_w += w;
+	}
+	// If no biomes contributed (active_biomes_n == 0, or weights all
+	// zero), fall back to base_albedo so we don't render pure black.
+	if (total_w < 1e-4) {
+		return base_albedo;
+	}
+	// Renormalize in case splat weights don't quite sum to 1.0.
+	return albedo / max(total_w, 1e-4);
+}
+
 void fragment() {
-	// Per-fragment heightmap-derived normal. Smoother than
-	// per-vertex normals interpolated across the triangle, especially
-	// on outer rings where vertex density is low.
 	vec3 world_normal = compute_normal(v_world_pos.xz);
-	// MODEL_MATRIX here is a pure translation (ClipmapRing's
-	// camera-snap), so world space == view-of-model space and we can
-	// hand world_normal directly to the lighting pipeline.
 	NORMAL = (VIEW_MATRIX * vec4(world_normal, 0.0)).xyz;
 
-	vec3 albedo = base_albedo;
+	vec3 albedo = sample_biome_albedo(v_world_pos.xz);
 	if (show_debug_color) {
 		int safe_ring = clamp(ring_index, 0, 3);
 		albedo = mix(albedo, RING_COLORS[safe_ring], debug_color_strength);
