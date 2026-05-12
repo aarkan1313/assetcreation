@@ -34,6 +34,12 @@ var _update_interval_s: float = 0.0
 var _fmt_inner: String = "RF"
 var _fmt_outer: String = "RH"
 var _collision_rings: int = 1
+var _morph_band_fraction: float = 0.10
+
+# Per-ring morph band width in meters. Index = ring_index.
+# Resolved once at _spawn_rings, used by _finalize_ring_upload to
+# push uniforms into ring (i-1)'s coarse-side material slot.
+var _morph_band_m_per_ring: Array[float] = []
 
 # How many of the innermost rings get the inner heightmap format.
 # Outer rings (further from camera) get the cheaper format.
@@ -71,9 +77,11 @@ func _resolve_config() -> void:
 	_fmt_inner = String(qt["heightmap_format_inner"])
 	_fmt_outer = String(qt["heightmap_format_outer"])
 	_collision_rings = int(qt["collision_rings"])
-	print("[ClipmapWorld] tier=%s rings=%d grid_n=%d step=%.1fm formats=%s/%s collision_rings=%d" % [
+	_morph_band_fraction = float(qt["morph_band_fraction"])
+	print("[ClipmapWorld] tier=%s rings=%d grid_n=%d step=%.1fm formats=%s/%s collision_rings=%d morph_band=%.2f" % [
 		qt.get("_tier", "?"), _ring_count, _ring_grid_n,
-		_ring_grid_step_base_m, _fmt_inner, _fmt_outer, _collision_rings])
+		_ring_grid_step_base_m, _fmt_inner, _fmt_outer, _collision_rings,
+		_morph_band_fraction])
 
 
 func _load_catalog_and_composer() -> void:
@@ -132,6 +140,20 @@ func _spawn_rings() -> void:
 		# `collision_rings` (1 on low/medium, 2 on high/ultra).
 		if i < _collision_rings:
 			ring.enable_collision()
+	# Precompute each ring's morph band width in meters. The morph
+	# happens INSIDE this ring's edge — so it's a fraction of THIS
+	# ring's outer half-extent, not of the coarser ring.
+	_morph_band_m_per_ring.clear()
+	for ring_i in _rings:
+		var half_extent: float = (float(ring_i.grid_n) - 1.0) * ring_i.grid_step_m * 0.5
+		_morph_band_m_per_ring.append(half_extent * _morph_band_fraction)
+	# The outermost ring has no coarser ring to blend toward. Disable
+	# its morph blend up front; subsequent _finalize_ring_upload calls
+	# won't touch its coarse-side uniforms again.
+	var outermost_idx: int = _rings.size() - 1
+	if outermost_idx >= 0:
+		_rings[outermost_idx].set_coarse_uniforms(
+			null, Vector2.ZERO, 1.0, 1, 0.0, false)
 	# Force first heightmap eval at world origin (rings will re-snap
 	# to camera position on the first _process tick).
 	for r in _rings:
@@ -305,6 +327,14 @@ func _finalize_ring_upload(r: ClipmapRing, ring_center: Vector2,
 	# at the ring's snap position so collision coordinates match the
 	# rendered geometry. ClipmapRing's global_position is already at
 	# ring_center, so the child collision sits there automatically.
+	# Morph plumbing: this ring's freshly-uploaded texture is the
+	# COARSE input for ring (ring_index - 1). Push it. (If ring_index
+	# is 0, no inner ring exists; skip.)
+	if r.ring_index > 0:
+		var inner: ClipmapRing = _rings[r.ring_index - 1]
+		var inner_band_m: float = _morph_band_m_per_ring[r.ring_index - 1]
+		inner.set_coarse_uniforms(
+			tex, origin, extent, n, inner_band_m, true)
 
 
 # AnchorCameraRig duck-types both ScaleWorld and ClipmapWorld via these
