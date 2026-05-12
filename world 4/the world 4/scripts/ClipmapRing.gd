@@ -181,6 +181,61 @@ func _get_shader_material() -> ShaderMaterial:
 	return null
 
 
+# Collision proxy (Stage 3.5).
+#
+# GPU-displaced clipmap meshes have flat geometry on the CPU side —
+# physics sees a flat plane. We attach a HeightMapShape3D mirroring
+# the heightmap so character controllers + raycasts hit real terrain.
+#
+# Only ring 0 (and, on higher tiers, ring 1) get collision. Outer
+# rings are too coarse to matter for player physics and would cost
+# unnecessary VRAM/CPU. ClipmapWorld decides via the tier's
+# `collision_rings` knob and calls `enable_collision()` accordingly.
+
+var _static_body: StaticBody3D = null
+var _collision_shape: CollisionShape3D = null
+var _height_shape: HeightMapShape3D = null
+var _collision_enabled: bool = false
+
+
+func enable_collision() -> void:
+	_collision_enabled = true
+	_ensure_collision()
+
+
+func has_collision() -> bool:
+	return _collision_enabled
+
+
+func _ensure_collision() -> void:
+	if _static_body != null:
+		return
+	_static_body = StaticBody3D.new()
+	_static_body.name = "Collision"
+	add_child(_static_body)
+	_collision_shape = CollisionShape3D.new()
+	_static_body.add_child(_collision_shape)
+	_height_shape = HeightMapShape3D.new()
+	_height_shape.map_width = grid_n
+	_height_shape.map_depth = grid_n
+	_collision_shape.shape = _height_shape
+	# HeightMapShape3D samples are at unit spacing in shape-local space;
+	# scaling the CollisionShape3D by grid_step_m on X/Z makes the
+	# collision mirror the mesh's actual vertex spacing.
+	_collision_shape.scale = Vector3(grid_step_m, 1.0, grid_step_m)
+
+
+# Called by ClipmapWorld each time the heightmap is finalized on the
+# main thread. No-op if collision wasn't enabled for this ring.
+func update_collision_heightmap(heights: PackedFloat32Array, n: int) -> void:
+	if not _collision_enabled:
+		return
+	_ensure_collision()
+	_height_shape.map_width = n
+	_height_shape.map_depth = n
+	_height_shape.map_data = heights
+
+
 func _add_skirt_strip(positions: PackedVector3Array, indices: Array,
 					  idx_buf: PackedInt32Array, p_grid_n: int,
 					  inner_edge: bool, skirt_depth: float) -> void:

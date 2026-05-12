@@ -33,6 +33,7 @@ var _ring_grid_step_base_m: float = 0.0
 var _update_interval_s: float = 0.0
 var _fmt_inner: String = "RF"
 var _fmt_outer: String = "RH"
+var _collision_rings: int = 1
 
 # How many of the innermost rings get the inner heightmap format.
 # Outer rings (further from camera) get the cheaper format.
@@ -69,9 +70,10 @@ func _resolve_config() -> void:
 	_update_interval_s = override_update_interval_s if override_update_interval_s > 0.0 else float(qt["update_interval_s"])
 	_fmt_inner = String(qt["heightmap_format_inner"])
 	_fmt_outer = String(qt["heightmap_format_outer"])
-	print("[ClipmapWorld] tier=%s rings=%d grid_n=%d step=%.1fm formats=%s/%s" % [
+	_collision_rings = int(qt["collision_rings"])
+	print("[ClipmapWorld] tier=%s rings=%d grid_n=%d step=%.1fm formats=%s/%s collision_rings=%d" % [
 		qt.get("_tier", "?"), _ring_count, _ring_grid_n,
-		_ring_grid_step_base_m, _fmt_inner, _fmt_outer])
+		_ring_grid_step_base_m, _fmt_inner, _fmt_outer, _collision_rings])
 
 
 func _load_catalog_and_composer() -> void:
@@ -124,6 +126,12 @@ func _spawn_rings() -> void:
 			var per: ShaderMaterial = _base_material.duplicate(false)
 			per.set_shader_parameter("ring_index", i)
 			ring.set_shared_material(per)
+		# Inner rings get HeightMapShape3D collision so the player can
+		# walk on them; outer rings are too coarse to matter for player
+		# physics and skip collision to save VRAM/CPU. Tier knob:
+		# `collision_rings` (1 on low/medium, 2 on high/ultra).
+		if i < _collision_rings:
+			ring.enable_collision()
 	# Force first heightmap eval at world origin (rings will re-snap
 	# to camera position on the first _process tick).
 	for r in _rings:
@@ -291,6 +299,12 @@ func _finalize_ring_upload(r: ClipmapRing, ring_center: Vector2,
 	var tex: ImageTexture = ImageTexture.create_from_image(img)
 	r.set_displacement_texture(tex)
 	r.set_ring_uniforms(origin, extent, n, r.ring_index)
+	# Update collision proxy if this ring has one. No-op if not.
+	r.update_collision_heightmap(heights, n)
+	# Position the ring's StaticBody3D (parent of CollisionShape3D)
+	# at the ring's snap position so collision coordinates match the
+	# rendered geometry. ClipmapRing's global_position is already at
+	# ring_center, so the child collision sits there automatically.
 
 
 # AnchorCameraRig duck-types both ScaleWorld and ClipmapWorld via these
