@@ -72,7 +72,16 @@ uniform bool morph_enabled = true;
 const int MAX_BIOMES_PER_RING = 16;
 
 uniform sampler2DArray splat_array : filter_linear, repeat_disable;
-uniform sampler2DArray pbr_ground_array : filter_linear, repeat_enable;
+// source_color tells Godot the texture is sRGB-encoded so the GPU
+// sampler applies sRGB→linear before returning. Without it, albedo
+// reads as raw linear bytes — output looks washed-out gray. See
+// terrain_world_v2.gdshader for the working precedent.
+// repeat hint omitted: Texture2DArray repeat is governed by the
+// Godot import settings of the source images + the sampler's per-
+// axis mode, not by a shader hint. Sampling at uv_pbr = world_xz /
+// pbr_tile_size_m relies on Godot's default Texture2DArray repeat
+// (which IS enabled by default).
+uniform sampler2DArray pbr_ground_array : source_color;
 uniform int active_biomes_n = 0;
 uniform int biome_pbr_slot[MAX_BIOMES_PER_RING];
 
