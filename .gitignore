@@ -197,3 +197,6 @@ Thumbs.db
 D:/tmp/
 /tmp/
 **/tmp/
+
+# W4 trash root — discarded texture candidates, never commit
+world 4/_to_delete/
