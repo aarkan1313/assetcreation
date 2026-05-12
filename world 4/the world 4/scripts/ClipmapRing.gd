@@ -142,6 +142,23 @@ func _build_donut_mesh(p_grid_n: int, p_grid_step_m: float,
 # inner_edge=false: walks the outer-mesh-edge perimeter (i==0 or
 #   i==grid_n-1 or j==0 or j==grid_n-1). Triangle winding produces
 #   outward-facing normals (visible from outside the world).
+# Heightmap displacement support (Stage 3+).
+
+var _displacement: ImageTexture = null
+
+
+func set_displacement_texture(tex: ImageTexture) -> void:
+	_displacement = tex
+	if _mesh_instance != null and _mesh_instance.material_override != null:
+		var mat: Material = _mesh_instance.material_override
+		if mat is ShaderMaterial:
+			(mat as ShaderMaterial).set_shader_parameter("displacement", tex)
+
+
+func get_displacement_texture() -> ImageTexture:
+	return _displacement
+
+
 func _add_skirt_strip(positions: PackedVector3Array, indices: Array,
 					  idx_buf: PackedInt32Array, p_grid_n: int,
 					  inner_edge: bool, skirt_depth: float) -> void:
