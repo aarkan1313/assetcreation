@@ -230,13 +230,15 @@ uniform sampler2DArray hero_normal : hint_normal;
 uniform sampler2DArray hero_roughness;
 uniform sampler2DArray hero_ao : hint_default_white;
 
-// Per-tile uniforms (set by TileTerrain at material instantiation)
+// Per-tile uniforms (set by TileTerrain at material instantiation).
+// Per-slot (tier, layer) addressing — each of a biome's 3 slots can
+// live in a different tier (e.g. forest: ground+rock hero, mid standard).
 uniform sampler2D splat;                  // 64x64 RGBA, weights
-uniform ivec4 splat_layer_indices;        // up to 4 (tier_id, layer_idx) pairs
-                                          // packed: tier_id in bit 31 (0=standard, 1=hero),
-                                          // layer_idx in bits 0-30
-uniform vec4 splat_layer_slots;           // which slot (ground/mid/rock) each maps to
-                                          // (0=ground, 1=mid, 2=rock as floats)
+uniform ivec4 splat_ground_indices;       // (tier, layer) per channel, ground slot
+uniform ivec4 splat_mid_indices;          // (tier, layer) per channel, mid slot
+uniform ivec4 splat_rock_indices;         // (tier, layer) per channel, rock slot
+// Each int packs tier in bit 30 (0=standard, 1=hero) and layer in
+// bits 0..29. A value of -1 means "channel empty, skip."
 
 // Existing uniforms (lighting, slope, world_uv_scale, luma_floor, etc.)
 // ... unchanged from terrain_scale_v1
@@ -245,9 +247,11 @@ uniform vec4 splat_layer_slots;           // which slot (ground/mid/rock) each m
 Per fragment:
 1. Sample splat at world position → 4 weights, summed to 1.0.
 2. For each of the 4 channels with weight > epsilon:
-   - Decode `(tier, layer)` from `splat_layer_indices[i]`.
-   - Decode slot from `splat_layer_slots[i]`.
-   - Sample appropriate array (tier-branched) at `(world_uv, layer)`.
+   - Decode 3 (tier, layer) pairs from
+     `splat_ground_indices[i]`, `splat_mid_indices[i]`,
+     `splat_rock_indices[i]`.
+   - Sample appropriate array (tier-branched) for each slot at
+     `(world_uv, layer)`.
    - Apply slope blend within the biome (existing ground/mid/rock logic).
 3. Weighted sum of the 4 contributions.
 4. Apply lighting (lambertian + ambient) as before.
@@ -293,7 +297,7 @@ ScaleWorld loads global material with 8 arrays
   ↓ per tile spawned
 TileTerrain loads splat.png + splat_meta.json, sets per-tile shader uniforms
   ↓ frame render
-fragment: splat → 4 weights → 4 (tier, layer, slot) reads → blend → lit
+fragment: splat → 4 weights → for each channel, 3 (tier, layer) reads (g/m/r) → blend → lit
 ```
 
 ## Splat semantics — worked example
@@ -306,9 +310,16 @@ For scale_demo's 4×4 layout, tile `(2, 1)` is **desert**, neighbor
   `(forest_weight, desert_weight) = (1.0, 0.0)` at the very edge to
   `(0.0, 1.0)` 32m in
 - pixels in column 8..63 are `(0.0, 1.0)` (pure desert)
-- splat_layer_indices for this tile: `[forest_layer, desert_layer, 0, 0]`
-- splat_layer_slots: `[0, 0, 0, 0]` (all are ground slot — the within-biome
-  slope blend still applies on top)
+- This tile has 2 contributing biomes (desert in channel 0, forest in
+  channel 1). For each channel, the three slot-uniforms encode the
+  (tier, layer) of that biome's ground/mid/rock slots:
+  - `splat_ground_indices = [pack(desert_g_tier, desert_g_layer),
+     pack(forest_g_tier, forest_g_layer), -1, -1]`
+  - `splat_mid_indices    = [pack(desert_m_*), pack(forest_m_*), -1, -1]`
+  - `splat_rock_indices   = [pack(desert_r_*), pack(forest_r_*), -1, -1]`
+  Forest's ground+rock live in `hero` (bit 30 set) while mid lives in
+  `standard` (bit 30 clear). Desert's all-three live in `standard`.
+  The within-biome slope blend still applies on top.
 
 For tile `(1, 1)` (forest, adjacent to alpine to the north and desert
 to the east): two boundaries to feather. The corner pixel in the NE is
