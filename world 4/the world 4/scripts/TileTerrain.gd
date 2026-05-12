@@ -20,7 +20,11 @@ class_name TileTerrain
 
 @export var tile_dir: String = ""              # "res://worlds/scale_demo/tiles/tile_0_0/"
 @export var shared_material_path: String = ""  # "res://worlds/scale_demo/material.tres"
-@export var resolution_m: float = 1.0          # 1m per quad
+# v2 path: ScaleWorld pre-builds a per-tile material (with arrays + splat
+# + per-slot indices uniforms) and hands it in directly. If set, this
+# wins over shared_material_path.
+@export var shared_material: Material = null
+@export var resolution_m: float = 2.0          # 2m per quad — see PITFALLS #6
 # Tangents are only required when the shader samples a normal map. The
 # unshaded scale_v1 shader doesn't, so skipping `SurfaceTool.generate_tangents()`
 # saves ~120ms per tile build. Anchor's lit v2 shader DOES use a normal
@@ -481,6 +485,10 @@ func _finalize_async_build() -> void:
 
 
 func _apply_material() -> void:
+	# v2 path takes priority when ScaleWorld pre-built a material instance.
+	if shared_material != null:
+		_mesh_instance.material_override = shared_material
+		return
 	if shared_material_path.is_empty():
 		push_error("TileTerrain: shared_material_path empty")
 		return

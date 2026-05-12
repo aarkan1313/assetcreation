@@ -773,7 +773,24 @@ git -C "D:/assets/world 4" add pipeline/build_biome_arrays.py tests/test_build_b
 git -C "D:/assets/world 4" commit -m "axis6: layer manifest builder + tests"
 ```
 
-### Task 5a.5: Emit Texture2DArray .tres files (Godot-side)
+### Task 5a.5: Runtime Texture2DArray construction in ScaleWorld
+
+**Architectural change from the original plan:** Godot 4.5 doesn't
+cleanly serialize a `Texture2DArray` to `.tres` with referenced
+external images (probe confirmed: `_images = Array[Image]([null, ...])`
+even with `FLAG_BUNDLE_RESOURCES`). The supported paths are (1) editor
+sprite-sheet import or (2) runtime construction.
+
+We pick (2). At scene init, ScaleWorld reads `layer_manifest.json`,
+loads each layer's PNG as a `Texture2D`, calls
+`Texture2DArray.create_from_images([img, ...])`, and sets the 8
+resulting arrays as shader_parameters on the global terrain material.
+
+Cost: ~50-200ms one-time at scene init; acceptable.
+
+Implementation moves entirely into Task 5a.9 (ScaleWorld wiring). This
+task is a no-op now — the manifest from 5a.4 is the contract; no
+intermediate `.tres` files needed.
 
 We can't unit-test this — Godot owns the import pipeline. We write a Python script that emits a `.tres` per (tier, map) that references the layer PNGs in catalog order; Godot's importer materializes the array on `--import`.
 

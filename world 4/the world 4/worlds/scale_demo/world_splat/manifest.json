@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "splat_resolution": 256,
+  "world_size_m": 1024.0,
+  "meters_per_pixel": 4.0,
+  "feather_width_m": 48.0,
+  "smooth_sigma_px": 1.5,
+  "layers": [
+    {
+      "layer": 0,
+      "biome": "forest",
+      "file": "layer_forest.png"
+    },
+    {
+      "layer": 1,
+      "biome": "alpine",
+      "file": "layer_alpine.png"
+    },
+    {
+      "layer": 2,
+      "biome": "desert",
+      "file": "layer_desert.png"
+    },
+    {
+      "layer": 3,
+      "biome": "rocky",
+      "file": "layer_rocky.png"
+    },
+    {
+      "layer": 4,
+      "biome": "wetland",
+      "file": "layer_wetland.png"
+    }
+  ]
+}

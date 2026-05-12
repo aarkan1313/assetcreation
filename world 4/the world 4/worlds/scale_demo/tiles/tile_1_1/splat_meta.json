@@ -1,0 +1,57 @@
+{
+  "splat_size": 64,
+  "mode": "feather",
+  "channels": [
+    {
+      "biome": "forest",
+      "ground": {
+        "tier": "hero",
+        "slot": 0
+      },
+      "mid": {
+        "tier": "standard",
+        "slot": 0
+      },
+      "rock": {
+        "tier": "hero",
+        "slot": 1
+      }
+    },
+    {
+      "biome": "desert",
+      "ground": {
+        "tier": "standard",
+        "slot": 4
+      },
+      "mid": {
+        "tier": "standard",
+        "slot": 5
+      },
+      "rock": {
+        "tier": "standard",
+        "slot": 6
+      }
+    },
+    {
+      "biome": "wetland",
+      "ground": {
+        "tier": "standard",
+        "slot": 9
+      },
+      "mid": {
+        "tier": "standard",
+        "slot": 10
+      },
+      "rock": {
+        "tier": "standard",
+        "slot": 11
+      }
+    },
+    {
+      "biome": null,
+      "ground": null,
+      "mid": null,
+      "rock": null
+    }
+  ]
+}

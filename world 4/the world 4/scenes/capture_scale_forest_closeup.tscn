@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/scale_demo.tscn" id="scale_scene"]
+[ext_resource type="Script" path="res://scripts/HeadlessCaptureCloseup.gd" id="closeup_script"]
+
+[node name="CaptureScaleForestCloseup" type="Node"]
+
+[node name="Inner" parent="." instance=ExtResource("scale_scene")]
+
+[node name="Capture" type="Node" parent="."]
+script = ExtResource("closeup_script")
+output_path = "res://captures/axis6_5d_forest_closeup_2026_05_12.png"
+warmup_frames = 120
+viewport_size = Vector2i(1280, 800)
+camera_pos = Vector3(-128.0, 800.0, -100.0)
+camera_look_at = Vector3(-128.0, 750.0, -128.0)

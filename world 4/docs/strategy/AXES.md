@@ -249,23 +249,44 @@ Anchor = vanilla PBR sets (some reused from W3 catalog, possibly a few
 freshly generated). Top of axis = the full texture creation workflow
 including blending/transitions/biome-cohesive kits.
 
-**Current state:** *creation pipeline shipped; transition workflow
-pending and now the top-ranked roadmap item (2026-05-12).* The
-creation half — biome-cohesive kit generation via FLUX2-klein 9B,
-real-ortho + ComfyUI mix, palette discipline via prompt-encoded
-palettes — is working end-to-end. 5 biomes × 12 slots × 4 PBR maps
-rendered on the scale_demo world. The transition half is the open
-problem: hard borders are visible at every biome adjacency in
-`captures/biomes_wired_walk_2026_05_12.png` and
-`biomes_wired_topdown_2026_05_12.png`.
+**Current state:** *shipped end-to-end, 2026-05-12.* Texture creation
+(48 PBR maps via FLUX2-klein 9B) + soft transitions (texture-array
+biomes + world-spanning splat array) both working on branch
+`axis6-transitions`. The transition architecture: one global terrain
+material (`material_world_v2.tres`) + 8 PBR `Texture2DArray`s (2
+tiers × 4 maps) + **one world-spanning splat `Texture2DArray` (one
+layer per biome, R8 weights, sampled at world XZ)** built at scene
+init. `terrain_world_v2.gdshader` iterates active biomes per fragment
+with per-biome packed `(tier, layer)` arrays driving the within-biome
+ground/mid/rock slot lookup. **N biomes (not 4)** — MAX_BIOMES=16
+hard cap in shader, bumpable. Boundaries seamless by construction
+because adjacent tiles share splat texels at their shared edge.
 
-**Next experiment (when ready):** the blending/transition workflow.
-W3 attempted this with per-pixel splat-weighted compositing and per-
-boundary ecotone layers — both worked partially. W4's job is to figure
-out which approach is right (or invent a new one) now that we have a
-concrete multi-biome world to look at, rather than designing in the
-abstract. See ROADMAP.md candidate #1 for the open questions to
-brainstorm at the start of the session.
+Captures (chronological): `axis6_5a_walk` (per-tile hard regression
+baseline), `axis6_5b_walk` + `axis6_5b_topdown` (per-tile feather
+mode), `axis6_5c_walk` (slot-pool refactor), `axis6_5d_forest_closeup`
+(hero-tier 4K confirmed), `axis6_world_splat_walk_2026_05_12.png`
+(world-splat architecture, smooth boundaries),
+`axis6_world_splat_2m_walk_2026_05_12.png` (with 2m/quad mesh density
+perf pass).
+
+Four Godot 4.5 pitfalls hit and documented:
+- PITFALLS #5 — Texture2DArray layer uniformity (format + mipmap state).
+- PITFALLS #5b — Texture2DArray.tres non-serialisable.
+- PITFALLS #6 — per-tile splat boundaries can't bilinear-interpolate.
+  Pivoted to a world-spanning splat array (sampled at world XZ) so
+  adjacent tiles share splat texels by construction.
+
+27 pytest cases cover the pipeline (catalog, layer manifest, world
+splat). Portability guide at `plans/AXIS6_PORTABILITY_README.md`.
+Full session writeup at `build-notes/AXIS6_BUILD_NOTES_2026_05_12.md`.
+Per-tile splat builder (`build_tile_splats.py`) + per-tile splat files
+remain on disk as legacy; ScaleWorld no longer reads them.
+
+**Next experiment (parked, not next-this-session):** biome streaming
+(LRU eviction + async layer-load on top of the slot-pool indirection
+already in place). Plan for it when biome counts exceed ~30. v1's
+~250 MB VRAM footprint for 5 biomes is well within budget.
 
 *Exit criterion:* a multi-biome world has visually pleasant transitions
 between adjacent biome materials. No hard color blocks, no smeared

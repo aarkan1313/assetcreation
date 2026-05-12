@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "tiers": {
+    "standard": {
+      "resolution": 1024,
+      "layers": [
+        {
+          "biome": "forest",
+          "slot": "mid",
+          "layer": 0,
+          "maps": {
+            "albedo": "materials/anchor_v2/tundra_lichen/albedo.png",
+            "normal": "materials/anchor_v2/tundra_lichen/normal.png",
+            "roughness": "materials/anchor_v2/tundra_lichen/roughness__rgb.png",
+            "ao": "materials/anchor_v2/tundra_lichen/ao.png"
+          }
+        },
+        {
+          "biome": "alpine",
+          "slot": "ground",
+          "layer": 1,
+          "maps": {
+            "albedo": "materials/biome_alpine/ground/albedo.png",
+            "normal": "materials/biome_alpine/ground/normal.png",
+            "roughness": "materials/biome_alpine/ground/roughness__rgb.png",
+            "ao": "materials/biome_alpine/ground/ao__upsampled1024_rgb.png"
+          }
+        },
+        {
+          "biome": "alpine",
+          "slot": "mid",
+          "layer": 2,
+          "maps": {
+            "albedo": "materials/biome_alpine/mid/albedo.png",
+            "normal": "materials/biome_alpine/mid/normal.png",
+            "roughness": "materials/biome_alpine/mid/roughness__rgb.png",
+            "ao": "materials/biome_alpine/mid/ao__upsampled1024_rgb.png"
+          }
+        },
+        {
+          "biome": "alpine",
+          "slot": "rock",
+          "layer": 3,
+          "maps": {
+            "albedo": "materials/biome_alpine/rock/albedo.png",
+            "normal": "materials/biome_alpine/rock/normal.png",
+            "roughness": "materials/biome_alpine/rock/roughness__rgb.png",
+            "ao": "materials/biome_alpine/rock/ao__upsampled1024_rgb.png"
+          }
+        },
+        {
+          "biome": "desert",
+          "slot": "ground",
+          "layer": 4,
+          "maps": {
+            "albedo": "materials/biome_desert/ground/albedo.png",
+            "normal": "materials/biome_desert/ground/normal.png",
+            "roughness": "materials/biome_desert/ground/roughness__rgb.png",
+            "ao": "materials/biome_desert/ground/ao__upsampled1024_rgb.png"
+          }
+        },
+        {
+          "biome": "desert",
+          "slot": "mid",
+          "layer": 5,
+          "maps": {
+            "albedo": "materials/biome_desert/mid/albedo.png",
+            "normal": "materials/biome_desert/mid/normal.png",
+            "roughness": "materials/biome_desert/mid/roughness__rgb.png",
+            "ao": "materials/biome_desert/mid/ao__upsampled1024_rgb.png"
+          }
+        },
+        {
+          "biome": "desert",
+          "slot": "rock",
+          "layer": 6,
+          "maps": {
+            "albedo": "materials/biome_desert/rock/albedo.png",
+            "normal": "materials/biome_desert/rock/normal.png",
+            "roughness": "materials/biome_desert/rock/roughness__rgb.png",
+            "ao": "materials/biome_desert/rock/ao__upsampled1024_rgb.png"
+          }
+        },
+        {
+          "biome": "rocky",
+          "slot": "ground",
+          "layer": 7,
+          "maps": {
+            "albedo": "materials/biome_rocky/ground/albedo.png",
+            "normal": "materials/biome_rocky/ground/normal.png",
+            "roughness": "materials/biome_rocky/ground/roughness__rgb.png",
+            "ao": "materials/biome_rocky/ground/ao__upsampled1024_rgb.png"
+          }
+        },
+        {
+          "biome": "rocky",
+          "slot": "mid",
+          "layer": 8,
+          "maps": {
+            "albedo": "materials/biome_rocky/mid/albedo.png",
+            "normal": "materials/biome_rocky/mid/normal.png",
+            "roughness": "materials/biome_rocky/mid/roughness__rgb.png",
+            "ao": "materials/biome_rocky/mid/ao__upsampled1024_rgb.png"
+          }
+        },
+        {
+          "biome": "wetland",
+          "slot": "ground",
+          "layer": 9,
+          "maps": {
+            "albedo": "materials/biome_wetland/ground/albedo.png",
+            "normal": "materials/biome_wetland/ground/normal.png",
+            "roughness": "materials/biome_wetland/ground/roughness__rgb.png",
+            "ao": "materials/biome_wetland/ground/ao__upsampled1024_rgb.png"
+          }
+        },
+        {
+          "biome": "wetland",
+          "slot": "mid",
+          "layer": 10,
+          "maps": {
+            "albedo": "materials/biome_wetland/mid/albedo.png",
+            "normal": "materials/biome_wetland/mid/normal.png",
+            "roughness": "materials/biome_wetland/mid/roughness__rgb.png",
+            "ao": "materials/biome_wetland/mid/ao__upsampled1024_rgb.png"
+          }
+        },
+        {
+          "biome": "wetland",
+          "slot": "rock",
+          "layer": 11,
+          "maps": {
+            "albedo": "materials/biome_wetland/rock/albedo.png",
+            "normal": "materials/biome_wetland/rock/normal.png",
+            "roughness": "materials/biome_wetland/rock/roughness__rgb.png",
+            "ao": "materials/biome_wetland/rock/ao__upsampled1024_rgb.png"
+          }
+        }
+      ],
+      "slot_pool": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    "hero": {
+      "resolution": 4096,
+      "layers": [
+        {
+          "biome": "forest",
+          "slot": "ground",
+          "layer": 0,
+          "maps": {
+            "albedo": "materials/anchor_v2/scrub_dense/albedo.png",
+            "normal": "materials/anchor_v2/scrub_dense/normal.png",
+            "roughness": "materials/anchor_v2/scrub_dense/roughness__rgb.png",
+            "ao": "materials/anchor_v2/scrub_dense/ao__upsampled4096_rgb.png"
+          }
+        },
+        {
+          "biome": "forest",
+          "slot": "rock",
+          "layer": 1,
+          "maps": {
+            "albedo": "materials/anchor_v2/rocky_slope/albedo.png",
+            "normal": "materials/anchor_v2/rocky_slope/normal.png",
+            "roughness": "materials/anchor_v2/rocky_slope/roughness__rgb.png",
+            "ao": "materials/anchor_v2/rocky_slope/ao__upsampled4096_rgb.png"
+          }
+        },
+        {
+          "biome": "rocky",
+          "slot": "rock",
+          "layer": 2,
+          "maps": {
+            "albedo": "materials/biome_rocky/rock/albedo.png",
+            "normal": "materials/biome_rocky/rock/normal.png",
+            "roughness": "materials/biome_rocky/rock/roughness__rgb.png",
+            "ao": "materials/biome_rocky/rock/ao__upsampled4096_rgb.png"
+          }
+        }
+      ],
+      "slot_pool": [
+        0,
+        1,
+        2
+      ]
+    }
+  }
+}
