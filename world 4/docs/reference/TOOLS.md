@@ -137,6 +137,7 @@ documented in `pipelines/textures/PIPELINE.md`. W4 only drives it via
 | `TileTerrain.gd` | Per-tile runtime: builds 257×257 mesh from this tile's heightmap.png, samples the shared world heightmap for cross-tile normals at borders (PITFALLS #4 mitigation), applies material. Async via `WorkerThreadPool.add_task`. **Axis 6 addition:** `shared_material: Material` export — when set by ScaleWorld it wins over `shared_material_path` (avoids re-loading the same .tres for every tile). |
 | `AutoWalker.gd` | Optional debug helper: drives the camera on a fixed path for hitch profiling. Used by `autotest_scale_walk.tscn`. |
 | `HeadlessCapture.gd` | Captures the current viewport to a PNG after N warmup frames. Used by all `capture_*.tscn` scenes. |
+| `HeadlessCaptureCloseup.gd` | Variant of `HeadlessCapture.gd` that overrides the walk camera to a fixed position + look-at for tile-specific captures. Used by `capture_scale_forest_closeup.tscn` (Stage 5d two-tier verification). |
 | `PerfHud.gd` | Top-right FPS / peak-ms / draw-calls overlay. |
 
 ## Scenes (`world 4/the world 4/scenes/`)
@@ -148,6 +149,7 @@ documented in `pipelines/textures/PIPELINE.md`. W4 only drives it via
 | `capture_anchor_walk.tscn` / `_iso.tscn` / `_topdown.tscn` | Anchor headless captures, one per view. |
 | `capture_scale_walk.tscn` / `_iso.tscn` / `_topdown.tscn` | scale_demo headless captures, one per view. |
 | `autotest_scale_walk.tscn` | AutoWalker-driven scale_demo run for hitch profiling. |
+| `capture_scale_forest_closeup.tscn` | Top-down close-up of tile_1_1 (forest) for hero-tier verification. Used by Axis 6 Stage 5d. |
 | `anchor.tscn.bak_20260511_165755` | Backup; safe to delete after a couple of clean sessions. |
 
 ## External tools / paths

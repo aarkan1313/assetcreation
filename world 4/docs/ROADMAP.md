@@ -15,11 +15,14 @@ generator. Architectural decisions preserve "drop into any project"
 generic-ness. The first game on the W4 engine will likely be a 2.5D
 wizard game, but the engine itself stays game-agnostic.
 
-### Near-term (in flight)
+### Near-term (just shipped)
 
 **Axis 6 transitions** — soft biome blending, texture-array
-infrastructure, slot-pool-ready streaming abstraction. Design spec at
-`plans/AXIS6_TRANSITIONS_DESIGN_2026_05_12.md`. Estimated 3-4 sessions.
+infrastructure, slot-pool indirection (streaming-ready). Shipped
+2026-05-12 on branch `axis6-transitions`. Captures
+`axis6_5{a,b,c,d}_*_2026_05_12.png`. Full writeup
+`build-notes/AXIS6_BUILD_NOTES_2026_05_12.md`. Portability guide
+`plans/AXIS6_PORTABILITY_README.md`. Ready to merge to main.
 
 ### Parallel strands (medium-term, after Axis 6)
 
@@ -65,74 +68,57 @@ while reusing all of W4's terrain authoring.
 | Axis 2 (Biome) — texture kits | 2026-05-12 | 48 texture maps for 4 new biomes (alpine, desert, rocky highlands, wetland) via ComfyUI FLUX2-klein 9B + aaa_texture.py at 1024². 4 new `material_<biome>.tres` files. All 12 slots passed near-black + normal sanity validation. Per-biome walk captures saved. See `build-notes/BIOME_KITS_BUILD_NOTES_2026_05_12.md`. |
 | Axis 2 (Biome) — per-tile wiring | 2026-05-12 | ScaleWorld reads each tile's biome label from meta.json and routes to the matching `material_<biome>.tres` at spawn. 4×4 layout from BIOMES.md realized — hard borders visible at every biome adjacency. Walk + topdown captures saved. See `build-notes/AXIS2_WIRING_BUILD_NOTES_2026_05_12.md`. |
 | Doc audit + TOOLS.md index | 2026-05-12 | Refreshed stale `AXES.md` Axis 1+2 state, rewrote `HANDOFF.md` as stable "how to take over" prompt (now points at ROADMAP), wrote `reference/TOOLS.md` as a one-line-per-item index of every pipeline script, shader, GDScript, scene. |
-| Axis 6 (Textures) — Stage 5a foundation | 2026-05-12 | Texture-array + per-tile splat architecture landed end-to-end on branch `axis6-transitions`. Catalog → manifest builder (auto-upsample + L→RGB convert) → splat builder (hard mode + per-slot tier/layer meta) → `terrain_world_v2.gdshader` (per-slot uniforms) → global material → ScaleWorld runtime (builds 8 Texture2DArrays at init + per-tile uniform binding). Hard-mode capture is regression-equivalent to 2026-05-12 per-tile-material baseline. 15 pytest cases. 3 new Godot pitfalls documented as PITFALLS #5/#5b. Stages 5b-5f remaining (feather splats, slot-pool indirection refactor, two-tier verification, portability doc, final build-note). See `build-notes/AXIS6_5A_BUILD_NOTES_2026_05_12.md`. |
+| Axis 6 (Textures) — Stage 5a foundation | 2026-05-12 | Texture-array + per-tile splat architecture landed end-to-end. Catalog → manifest builder (auto-upsample + L→RGB convert) → splat builder (hard mode + per-slot tier/layer meta) → `terrain_world_v2.gdshader` → global material → ScaleWorld runtime (builds 8 Texture2DArrays at init + per-tile uniform binding). 3 Godot pitfalls documented as PITFALLS #5/#5b. See `build-notes/AXIS6_5A_BUILD_NOTES_2026_05_12.md`. |
+| Axis 6 (Textures) — soft transitions shipped | 2026-05-12 | Stages 5b (feather splats) + 5c (slot-pool indirection refactor) + 5d (two-tier verification, hero-tier 4K confirmed on forest closeup) + 5e (portability README) + 5f (this row + final build-note). Soft transitions visible at every biome boundary on scale_demo walk + topdown. 22 pytest cases total. Architecture is streaming-ready (slot-pool indirection in place, identity v1). Portability doc at `plans/AXIS6_PORTABILITY_README.md`. Full session writeup at `build-notes/AXIS6_BUILD_NOTES_2026_05_12.md`. Branch `axis6-transitions` ready to merge to main. |
 
 ## What's next, ranked
 
 Order reflects current judgement. Reranking happens any time the
 calculus changes (new info, new constraints, new user priorities).
 
-### 1. Textures axis (Axis 6) — Stages 5b-5f
-**What:** Finish the soft-transition workflow. Stage 5a (foundation:
-catalog → arrays → splat → shader → ScaleWorld wiring) landed
-2026-05-12 in hard-mode; the array+splat path renders scale_demo
-regression-equivalent to the per-tile-material baseline. Remaining:
+### 1. Pick a strand (Strand A vs Strand B)
+**What:** Axis 6 shipped. The next session's first decision is which
+strand of the parallel-path plan to push:
 
-- **5b — Feather splat blends.** Extend `pipeline/build_tile_splats.py`
-  with `--mode feather --feather-width-m N`. Boundary regions of
-  adjacent tiles with different biomes get smooth weight ramps. No
-  shader change.
-- **5c — Slot-pool indirection refactor.** Splats reference slot-pool
-  indices, not raw array layers. Identity in v1 (no behavioural
-  change). Streaming-ready.
-- **5d — Two-tier verification.** Close-up capture inside a forest
-  tile to confirm hero-tier (4K) sampling works for `scrub_dense` +
-  `rocky_slope`.
-- **5e — Portability doc.** "Drop this into another Godot project"
-  guide — pipeline + shader contracts + integration points.
-- **5f — Build-note + roadmap rerank.** Move Axis 6 to shipped, pick
-  the next strand-A vs strand-B candidate.
+- **Strand A — 3D depth.** Real-game scale (Axis 1 follow-up: 4-8 km
+  worlds, LOD rings, multi-DEM stitching). Procedural biome assignment
+  (Axis 2 follow-up). Per-view × per-biome shading (Axis 4 ↔ Axis 2
+  follow-up). Real-ortho rock backfill (Axis 2 follow-up). Makes the
+  3D pipeline more capable.
+- **Strand B — Output models.** Offline bake renderer (render world to
+  static image at build time). 2D-game integration recipe (Godot 2D
+  scene consuming a bake). Per-game packaging as a Godot
+  addon/plugin. Unlocks 2.5D / topdown / 2D game output models
+  without giving up the W4 terrain pipeline.
 
-Design + plan: `plans/AXIS6_TRANSITIONS_DESIGN_2026_05_12.md` +
-`plans/AXIS6_TRANSITIONS_PLAN_2026_05_12.md`. Brainstormed 2026-05-12:
-chose texture-array + slot-pool combo over per-pair authoring
-(combinatorial trap) and over W3's M10 ecotone-layer path (coupled to
-chunk-loader specifics). Option C per-slot tier/layer addressing
-adopted mid-execution so a biome's 3 slots can live in different
-tiers (e.g. forest: ground+rock hero, mid standard).
+The 2.5D wizard game leans Strand B. Real-game scale + decoration
+leans Strand A. Either path is unblocked; the choice is about what
+game ships first.
 
-**What it unblocks:** Soft biome transitions on scale_demo. The
-texture-array foundation also unlocks: scalable biome count (≥15
-biomes at constant per-fragment cost), per-game biome packs (swap
-arrays without shader changes), forward path to biome streaming.
+### 2. Parked follow-ups (any time, low priority)
 
-**Cost:** ~2 sessions remaining. 5b is small (one mode in the splat
-builder), 5c is small (pool indirection in shader + scaler), 5d is a
-capture, 5e is doc work, 5f is bookkeeping.
+These don't block either strand and can run independently when an
+afternoon opens up:
 
-**Gate:** None. Stage 5a foundation working; 5b ready to start on
-branch `axis6-transitions`.
-
-### 2. Axis 2 follow-ups (parked unless prioritized)
-
-These don't block Axis 6 and can run independently:
-
-- **Backfill real-ortho rock textures** for alpine + desert. Current
-  alpine/desert rocks are ComfyUI-generated as a session-1 tactical
-  deviation. Real-ortho versions need paired orthophoto + DTM stacks
-  for high-altitude / arid regions (the W3 `_soft_composite`
-  pipeline). Visually plausible without — backfill when authenticity
-  matters.
-- **Procedural biome assignment from heightmap.** Currently the 4×4
-  layout is hand-coded in `assign_biomes_scale_demo.py`. A procedural
-  rule (high+steep = alpine, low+flat = wetland, etc.) becomes
-  meaningful at larger world sizes. Not urgent at 16 tiles.
-- **Per-view × per-biome shading.** Iso/topdown currently fall back to
-  single-material view shaders, losing biome distinction in those
-  views. Wiring per-biome iso + topdown materials means generating
-  4× the .tres files; the right answer is probably a single shader
-  with per-view shader_parameter overrides on the biome materials.
-  Cross-cut Axis 4 ↔ Axis 2.
+- **Biome streaming** — LRU eviction + async layer-load. Slot-pool
+  indirection is already in place; just needs the policy + loader.
+  Plan for it when biome count exceeds ~30 (current scale_demo has
+  5 biomes, ~250 MB compressed in VRAM).
+- **Per-pair feather widths** — author per-biome-pair widths so
+  alpine↔desert can be wider than alpine↔forest.
+- **4-way junction handling** — currently drops the 4th distinct
+  neighbor at a 4-way tile junction. Rare; v1 limitation.
+- **Iso/topdown per-biome shading** (also listed under Strand A) —
+  currently single-material in iso/topdown views. Cross-cut Axis 4 ↔ 2.
+- **Real-ortho rock textures** for alpine + desert (also listed under
+  Strand A). Currently ComfyUI placeholders. Authenticity-only.
+- **Procedural biome assignment** (also listed under Strand A). 4×4
+  layout is hand-coded in `assign_biomes_scale_demo.py`. Becomes
+  meaningful at larger world sizes.
+- **Hand-painted / procedural splats** — splats are produced by
+  `build_tile_splats.py`'s hard + feather modes. Other splat sources
+  (noise masks, painted boundaries) plug in via the same on-disk
+  contract.
 
 ## What's not next-this-session (and why)
 

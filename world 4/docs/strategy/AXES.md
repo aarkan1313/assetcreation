@@ -249,36 +249,33 @@ Anchor = vanilla PBR sets (some reused from W3 catalog, possibly a few
 freshly generated). Top of axis = the full texture creation workflow
 including blending/transitions/biome-cohesive kits.
 
-**Current state:** *creation pipeline shipped; transition workflow
-foundation (Stage 5a) landed 2026-05-12, soft-blend stages (5b-5f) in
-flight on branch `axis6-transitions`.* The creation half — biome-
-cohesive kit generation via FLUX2-klein 9B, real-ortho + ComfyUI mix,
-palette discipline via prompt-encoded palettes — is working end-to-end.
-5 biomes × 12 slots × 4 PBR maps rendered on the scale_demo world.
+**Current state:** *shipped end-to-end, 2026-05-12.* Texture creation
+(48 PBR maps via FLUX2-klein 9B) + soft transitions (texture-array +
+per-tile splat blending) both working on branch `axis6-transitions`.
+The transition architecture: one global terrain material
+(`material_world_v2.tres`) + 8 `Texture2DArray`s (2 tiers × 4 PBR
+maps) built at scene init + per-tile splat textures with per-slot
+(tier, slot-pool-index) addressing. `terrain_world_v2.gdshader` does
+per-fragment weighted blend across up to 4 biomes. Slot-pool
+indirection in place (identity in v1, streaming-ready).
 
-The transition architecture is now in place: one global terrain
-material (`material_world_v2.tres`) + 8 `Texture2DArray`s (2 tiers ×
-4 PBR maps) built at scene init + per-tile splat textures with
-per-slot `(tier, layer)` indices. `terrain_world_v2.gdshader` does
-the per-fragment weighted blend across up to 4 biomes. Stage 5a
-shipped the foundation in hard-mode splats (every pixel = pure
-channel 0 = this tile's own biome) — regression-equivalent to the
-2026-05-12 per-tile-material baseline, validating the array+splat
-plumbing end-to-end. Capture: `captures/axis6_5a_walk_2026_05_12.png`.
+Captures: `axis6_5a_walk` (hard regression baseline),
+`axis6_5b_walk` + `axis6_5b_topdown` (feather mode, soft transitions
+visible), `axis6_5c_walk` (slot-pool refactor, no visual change),
+`axis6_5d_forest_closeup` (hero-tier 4K confirmed).
 
 Three new Godot 4.5 pitfalls hit and documented as PITFALLS #5 +
 #5b — Texture2DArray layer uniformity (format + mipmap state) and
-the non-serialisable `Texture2DArray.tres` constraint that pushed
-array construction into ScaleWorld at scene init rather than in the
-pipeline.
+the non-serialisable `Texture2DArray.tres` constraint.
 
-**Next experiment (in flight):** Stage 5b. Switch the splat builder
-from `--mode hard` to `--mode feather --feather-width-m N` so
-boundary regions of adjacent tiles with different biomes get smooth
-weight ramps. No shader change — the array+splat path is built to
-consume those ramps once the splats encode them. Then 5c (slot-pool
-indirection refactor — streaming-ready, identity in v1), 5d (two-tier
-verification), 5e (portability doc), 5f (build-note + roadmap rewire).
+22 pytest cases cover the pipeline (catalog, manifest builder, splat
+builder). Portability guide at `plans/AXIS6_PORTABILITY_README.md`.
+Full session writeup at `build-notes/AXIS6_BUILD_NOTES_2026_05_12.md`.
+
+**Next experiment (parked, not next-this-session):** biome streaming
+(LRU eviction + async layer-load on top of the slot-pool indirection
+already in place). Plan for it when biome counts exceed ~30. v1's
+~250 MB VRAM footprint for 5 biomes is well within budget.
 
 *Exit criterion:* a multi-biome world has visually pleasant transitions
 between adjacent biome materials. No hard color blocks, no smeared
