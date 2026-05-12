@@ -46,6 +46,13 @@ var _catalog: Dictionary = {}
 var _base_material: ShaderMaterial = null
 var _last_snap_per_ring: Array[Vector2] = []
 
+# Async heightmap regen. ring_idx → { task_id, payload, superseded, result }.
+# _process polls task completion via WorkerThreadPool.is_task_completed.
+# Worker reads from _composer + world_seed (both read-only after _ready);
+# main thread owns ImageTexture creation + shader uniform updates
+# (RenderingServer is main-thread-only in Godot 4.5).
+var _ring_tasks: Dictionary = {}
+
 
 func _ready() -> void:
 	_resolve_config()
@@ -128,6 +135,9 @@ func _process(delta: float) -> void:
 	if _update_clock < _update_interval_s:
 		return
 	_update_clock = 0.0
+	# Drain finished worker tasks every tick, regardless of camera state.
+	# This keeps the per-frame poll cost tiny.
+	_poll_ring_tasks()
 	if _camera == null and camera_path != NodePath(""):
 		var node := get_node_or_null(camera_path)
 		if node is Camera3D:
@@ -141,31 +151,78 @@ func _process(delta: float) -> void:
 		r.snap_to_camera(cam_xz)
 		var snap: Vector2 = Vector2(r.global_position.x, r.global_position.z)
 		if snap != _last_snap_per_ring[i]:
-			_refresh_ring_heightmap(r, snap)
+			_enqueue_ring_refresh(r, snap)
 			_last_snap_per_ring[i] = snap
 
 
-# Sample the composer on this ring's grid and write the heightmap to
-# the ring's displacement texture (bulk path: PackedByteArray →
-# Image.create_from_data → ImageTexture).
-#
-# Stage 3.4 will move the inner loop to WorkerThreadPool. The bulk
-# byte-buffer build is already correct for that path — only the
-# scheduling changes.
+# Synchronous fallback used for the initial heightmap eval at startup
+# (before WorkerThreadPool is reliably warm). All later refreshes go
+# through _enqueue_ring_refresh.
 func _refresh_ring_heightmap(r: ClipmapRing, ring_center: Vector2) -> void:
 	var n: int = r.grid_n
 	var step: float = r.grid_step_m
 	var half_extent: float = (float(n) - 1.0) * step * 0.5
 	var origin: Vector2 = ring_center - Vector2(half_extent, half_extent)
-	var extent: float = (float(n) - 1.0) * step
+	var floats := _compute_heightmap_floats(n, step, ring_center)
+	_finalize_ring_upload(r, ring_center, origin, floats, n, step)
 
-	var fmt_string: String = _fmt_inner if r.ring_index < _INNER_FORMAT_RING_COUNT else _fmt_outer
-	var fmt: int = _image_format_from_string(fmt_string)
 
-	# Sample composer onto a float buffer. Bulk PackedFloat32Array
-	# → bytes is much faster than per-pixel set_pixel() in GDScript.
+# Enqueue an off-thread refresh. Cheap: only constructs the worker
+# task + result holder. If a task for this ring is already in flight,
+# mark it superseded so its result is discarded when it lands; the new
+# task fires immediately.
+#
+# WorkerThreadPool can't cancel running tasks, hence the superseded
+# flag instead of true cancellation. The cost is one wasted worker run.
+func _enqueue_ring_refresh(r: ClipmapRing, ring_center: Vector2) -> void:
+	var ring_idx: int = r.ring_index
+	if _ring_tasks.has(ring_idx):
+		_ring_tasks[ring_idx]["superseded"] = true
+	var payload: Dictionary = {
+		"ring_idx": ring_idx,
+		"ring_center": ring_center,
+		"grid_n": r.grid_n,
+		"grid_step_m": r.grid_step_m,
+	}
+	var task_id: int = WorkerThreadPool.add_task(
+		_worker_compute_heightmap.bind(payload), false, "clipmap_ring_refresh"
+	)
+	_ring_tasks[ring_idx] = {
+		"task_id": task_id,
+		"payload": payload,
+		"superseded": false,
+		"result": null,
+	}
+
+
+# Worker thread entry. Pure: reads _composer + world_seed only, both
+# of which are unchanged after _ready. The result is stored in the
+# task entry; main thread picks it up on next _poll_ring_tasks tick.
+func _worker_compute_heightmap(payload: Dictionary) -> void:
+	var n: int = int(payload["grid_n"])
+	var step: float = float(payload["grid_step_m"])
+	var ring_center: Vector2 = payload["ring_center"]
+	var heights: PackedFloat32Array = _compute_heightmap_floats(n, step, ring_center)
+	var ring_idx: int = int(payload["ring_idx"])
+	if _ring_tasks.has(ring_idx):
+		_ring_tasks[ring_idx]["result"] = heights
+
+
+# Pure-function helper. Same math as the sync path; reused by both
+# _refresh_ring_heightmap and _worker_compute_heightmap so the two
+# paths can't drift.
+func _compute_heightmap_floats(n: int, step: float,
+							   ring_center: Vector2) -> PackedFloat32Array:
+	var half_extent: float = (float(n) - 1.0) * step * 0.5
+	var origin: Vector2 = ring_center - Vector2(half_extent, half_extent)
 	var floats := PackedFloat32Array()
 	floats.resize(n * n)
+	# Defense-in-depth: workers may still be in flight when the scene
+	# tears down and frees _composer. _exit_tree drains pending tasks,
+	# but if a worker is mid-loop when shutdown begins this guard
+	# returns a zero-filled buffer instead of crashing.
+	if _composer == null:
+		return floats
 	var idx: int = 0
 	for i in range(n):
 		var z: float = origin.y + float(i) * step
@@ -173,23 +230,64 @@ func _refresh_ring_heightmap(r: ClipmapRing, ring_center: Vector2) -> void:
 			var x: float = origin.x + float(j) * step
 			floats[idx] = float(_composer.sample_height(x, z, world_seed))
 			idx += 1
+	return floats
 
-	var img: Image
-	if fmt == Image.FORMAT_RF:
-		img = Image.create_from_data(n, n, false, fmt, floats.to_byte_array())
-	else:
-		# FORMAT_RH: half-float. Pack manually — Godot has no float32→
-		# float16 helper exposed to GDScript, so we go via float32 and
-		# let create_from_data refuse the wrong byte count below if
-		# something's off. Workaround: write FORMAT_RF and rely on
-		# Godot's renderer to upload as the texture's storage format
-		# (it does — sampler reads .r as float either way).
-		# For now, store as RF on outer rings too; the tier knob's job
-		# is documenting intent. Real VRAM savings on outer rings
-		# require either a GDScript float16 helper or moving to a
-		# native script. Track as a Phase-2 follow-up.
-		img = Image.create_from_data(n, n, false, Image.FORMAT_RF, floats.to_byte_array())
 
+# Drain in-flight worker tasks before the scene frees _composer.
+# Without this, shutdown causes a flurry of "null instance" errors
+# from workers that started before quit() and haven't run yet.
+func _exit_tree() -> void:
+	for ring_idx_v in _ring_tasks.keys():
+		var task: Dictionary = _ring_tasks[ring_idx_v]
+		var task_id: int = int(task["task_id"])
+		WorkerThreadPool.wait_for_task_completion(task_id)
+	_ring_tasks.clear()
+
+
+# Drains finished worker tasks. For each completed non-superseded task,
+# uploads the resulting heightmap to the GPU on the main thread.
+func _poll_ring_tasks() -> void:
+	var done: Array[int] = []
+	for ring_idx_v in _ring_tasks.keys():
+		var ring_idx: int = int(ring_idx_v)
+		var task: Dictionary = _ring_tasks[ring_idx]
+		var task_id: int = int(task["task_id"])
+		if not WorkerThreadPool.is_task_completed(task_id):
+			continue
+		WorkerThreadPool.wait_for_task_completion(task_id)
+		done.append(ring_idx)
+		if bool(task.get("superseded", false)):
+			continue
+		var result = task.get("result")
+		if result == null:
+			continue
+		var heights: PackedFloat32Array = result
+		var payload: Dictionary = task["payload"]
+		var n: int = int(payload["grid_n"])
+		var step: float = float(payload["grid_step_m"])
+		var ring_center: Vector2 = payload["ring_center"]
+		var half_extent: float = (float(n) - 1.0) * step * 0.5
+		var origin: Vector2 = ring_center - Vector2(half_extent, half_extent)
+		var r: ClipmapRing = _rings[ring_idx]
+		_finalize_ring_upload(r, ring_center, origin, heights, n, step)
+	for ring_idx in done:
+		_ring_tasks.erase(ring_idx)
+
+
+# Main thread only. Owns GPU upload + per-ring shader uniforms.
+# Bulk PackedByteArray → Image.create_from_data → ImageTexture is
+# much faster than per-pixel set_pixel (which is what GDScript per-vert
+# code paths default to).
+func _finalize_ring_upload(r: ClipmapRing, ring_center: Vector2,
+						   origin: Vector2, heights: PackedFloat32Array,
+						   n: int, step: float) -> void:
+	var extent: float = (float(n) - 1.0) * step
+	# Heightmap format intent: tier knob is honored when GDScript gets a
+	# float32→float16 helper. Until then, both inner and outer rings
+	# store FORMAT_RF; the sampler reads .r as float either way so the
+	# shader is correct. Tracked as a follow-up.
+	var img := Image.create_from_data(n, n, false, Image.FORMAT_RF,
+									  heights.to_byte_array())
 	var tex: ImageTexture = ImageTexture.create_from_image(img)
 	r.set_displacement_texture(tex)
 	r.set_ring_uniforms(origin, extent, n, r.ring_index)
@@ -230,10 +328,3 @@ func get_elev_range() -> Vector2:
 	return Vector2(lo, hi)
 
 
-static func _image_format_from_string(s: String) -> int:
-	if s == "RF":
-		return Image.FORMAT_RF
-	if s == "RH":
-		return Image.FORMAT_RH
-	push_error("ClipmapWorld: unknown heightmap format " + s)
-	return Image.FORMAT_RF
