@@ -223,6 +223,11 @@ def _feather_splat(*, tx: int, tz: int, this_biome: str, this_rec: dict,
 
     if dir_to_channel:
         # Per-pixel distance to each tile edge, in METERS.
+        # Boundary-continuity convention: the edge PIXEL CENTERS (not the
+        # mathematical tile edges) are the 50/50 mixing line. The
+        # neighbor tile's mirror-side edge pixel center sits at the same
+        # 50/50 mix, so summed across the boundary the transition is
+        # exactly continuous. Half-pixel offset baked into the distances.
         m_per_px = tile_size_m / px
         j = np.arange(px, dtype=np.float32)
         i = np.arange(px, dtype=np.float32)
@@ -234,15 +239,23 @@ def _feather_splat(*, tx: int, tz: int, this_biome: str, this_rec: dict,
         # size, where +Z is "up" in UV. Since PNG-row-0 is the top of
         # the image, and +Z is up in world, PNG-row-0 corresponds to
         # the north edge. So:
-        #   - row 0 = north edge -> dist_N small there
-        #   - row px-1 = south edge -> dist_S small there
-        dist_N = (i + 0.5) * m_per_px           # shape (px,)
-        dist_S = (px - 0.5 - i) * m_per_px      # shape (px,)
-        dist_W = (j + 0.5) * m_per_px           # shape (px,)
-        dist_E = (px - 0.5 - j) * m_per_px      # shape (px,)
+        #   - row 0 = north edge   -> dist_N = 0 at row 0 (pixel center)
+        #   - row px-1 = south edge -> dist_S = 0 at row px-1
+        # We measure distance to the nearest edge PIXEL CENTER, not the
+        # mathematical edge — this is the key continuity fix.
+        dist_N = i * m_per_px                   # shape (px,)
+        dist_S = (px - 1 - i) * m_per_px        # shape (px,)
+        dist_W = j * m_per_px                   # shape (px,)
+        dist_E = (px - 1 - j) * m_per_px        # shape (px,)
 
         def edge_ramp(d_m: np.ndarray) -> np.ndarray:
-            # 0 at distance >= feather_width_m, 0.5 at the edge (d=0).
+            # 0 beyond feather_width_m, 0.5 at the edge-pixel center (d=0).
+            # Self-weight starts at 1.0, subtracts each direction's ramp,
+            # so at the edge: self = 1 - 0.5 = 0.5, neighbor = 0.5.
+            # After per-pixel normalization the boundary pixel is 50/50.
+            # The neighbor tile's mirror edge pixel is also 50/50 (same
+            # neighbor-vs-self order swapped), so the rendered colour at
+            # the boundary is identical on both sides.
             r = np.clip(1.0 - d_m / feather_width_m, 0.0, 1.0)
             return 0.5 * r
 

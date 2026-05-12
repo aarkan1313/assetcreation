@@ -233,6 +233,57 @@ def test_feather_mode_interior_tile_unchanged(tmp_path: Path):
     assert (splat[..., 3] == 0).all()
 
 
+def test_feather_mode_boundary_is_continuous(tmp_path: Path):
+    """Regression test for the hard-line bug observed in editor 2026-05-12:
+    at the shared edge between two adjacent tiles with different biomes,
+    the rendered weight for biome A on tile A's edge pixel must equal the
+    rendered weight for biome A on tile B's mirror edge pixel.
+
+    Specifically: tile A's east-edge pixel should mix (A=50%, B=50%), and
+    tile B's west-edge pixel should also mix (A=50%, B=50%). If they don't
+    agree (e.g. 53/47 vs 47/53), the rendered colour at the boundary jumps
+    and you see a hard line."""
+    bundle = make_world(tmp_path)
+    # 4 tiles: (0,0)=wetland, (1,0)=desert, etc. Pick the (0,0)<->(1,0)
+    # east-west boundary: wetland | desert.
+    bts.build_splats(bundle_dir=bundle, manifest=fake_manifest(),
+                     mode="feather", splat_size=16, feather_width_m=64.0)
+    a = np.asarray(
+        Image.open(bundle / "tiles" / "tile_0_0" / "splat.png").convert("RGBA"))
+    b = np.asarray(
+        Image.open(bundle / "tiles" / "tile_1_0" / "splat.png").convert("RGBA"))
+    meta_a = json.loads(
+        (bundle / "tiles" / "tile_0_0" / "splat_meta.json").read_text())
+    meta_b = json.loads(
+        (bundle / "tiles" / "tile_1_0" / "splat_meta.json").read_text())
+    # Find which channel holds each biome in each tile's splat.
+    def ch_for(meta, biome):
+        return next(i for i, c in enumerate(meta["channels"])
+                    if c["biome"] == biome)
+    # tile_0_0 has wetland in ch0, desert somewhere in ch1+.
+    a_wet_ch = ch_for(meta_a, "wetland")
+    a_des_ch = ch_for(meta_a, "desert")
+    b_wet_ch = ch_for(meta_b, "wetland")
+    b_des_ch = ch_for(meta_b, "desert")
+    # Mid-row (row 8) to avoid the north-edge ramp interaction.
+    row = 8
+    # Tile A's east edge (col 15) vs Tile B's west edge (col 0).
+    a_wet = a[row, 15, a_wet_ch]
+    a_des = a[row, 15, a_des_ch]
+    b_wet = b[row, 0, b_wet_ch]
+    b_des = b[row, 0, b_des_ch]
+    # Same biome should have the same weight on both sides.
+    assert abs(int(a_wet) - int(b_wet)) <= 2, (
+        f"wetland weight at boundary differs: tile_0_0 east={a_wet}, "
+        f"tile_1_0 west={b_wet} (>2 = visible hard line)")
+    assert abs(int(a_des) - int(b_des)) <= 2, (
+        f"desert weight at boundary differs: tile_0_0 east={a_des}, "
+        f"tile_1_0 west={b_des}")
+    # Both should be ~50/50 at the boundary.
+    assert 120 <= a_wet <= 135, f"boundary should be ~50% wetland, got {a_wet}"
+    assert 120 <= a_des <= 135, f"boundary should be ~50% desert, got {a_des}"
+
+
 def test_feather_mode_weight_sum_normalised(tmp_path: Path):
     """At every pixel, the four channel weights should sum to ~255
     (255 = weight 1.0 after dividing by 255 in the shader)."""
