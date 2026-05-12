@@ -72,7 +72,7 @@ view_radius_topdown = 8
 load_mode = 1
 view_radius_tiles = 1
 tile_subset = PackedStringArray()
-tile_resolution_m = 1.0
+tile_resolution_m = 2.0
 
 [node name="CameraRig" type="Node3D" parent="."]
 script = ExtResource("rig_script")

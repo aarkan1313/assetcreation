@@ -24,7 +24,7 @@ class_name TileTerrain
 # + per-slot indices uniforms) and hands it in directly. If set, this
 # wins over shared_material_path.
 @export var shared_material: Material = null
-@export var resolution_m: float = 1.0          # 1m per quad
+@export var resolution_m: float = 2.0          # 2m per quad — see PITFALLS #6
 # Tangents are only required when the shader samples a normal map. The
 # unshaded scale_v1 shader doesn't, so skipping `SurfaceTool.generate_tangents()`
 # saves ~120ms per tile build. Anchor's lit v2 shader DOES use a normal

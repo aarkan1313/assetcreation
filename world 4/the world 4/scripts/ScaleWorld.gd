@@ -55,7 +55,7 @@ enum LoadMode { LOAD_ALL, RADIUS }
 # Mesh quad size in meters. 0.5 = 512x512 quads per 256m tile, supersamples
 # the 1m/pixel heightmap so bilinear filtering can smooth out per-pixel
 # terracing on steep crops.
-@export var tile_resolution_m: float = 1.0
+@export var tile_resolution_m: float = 2.0
 # Radius-mode settings (active when load_mode = RADIUS).
 # view_radius_tiles = 1 means a 3x3 window of tiles around the camera.
 # Larger = wider view + more vertices loaded.
@@ -346,16 +346,22 @@ func _resolve_tile_material_path(tile_dir: String) -> String:
 
 # ---- v2 (Axis 6 transitions) path ----
 #
-# Lazy-built at first access. Holds the global terrain material with the
-# 8 Texture2DArrays bound + lighting defaults, ready to be duplicated
-# per tile and have per-tile uniforms set.
+# Single global terrain material. 8 PBR Texture2DArrays (2 tiers × 4
+# maps) + one world-spanning splat Texture2DArray (one layer per biome)
+# all bound at scene init. Per-biome (tier, layer) packed ints for the
+# 3 slots set as fixed-size shader uniforms (cap MAX_BIOMES=16 — bump
+# in shader to scale higher). Every tile shares the SAME material —
+# no per-tile duplication, no per-tile splat lookup. Splat sampling at
+# world XZ guarantees continuous boundaries by construction.
 var _v2_base_material: ShaderMaterial = null
-var _v2_manifest: Dictionary = {}
+var _v2_layer_manifest: Dictionary = {}
+var _v2_world_splat_manifest: Dictionary = {}
 var _v2_arrays_built: bool = false
+const MAX_BIOMES_PER_WORLD: int = 16
 
 
 func _build_v2_arrays_if_needed() -> bool:
-	# Returns true once arrays are built and bound to _v2_base_material;
+	# Returns true once arrays + biome indices are bound on _v2_base_material;
 	# false if v2 path is disabled or any required resource is missing.
 	if _v2_arrays_built:
 		return true
@@ -366,7 +372,7 @@ func _build_v2_arrays_if_needed() -> bool:
 	if not (base_res is ShaderMaterial):
 		push_error("ScaleWorld v2: world_v2_material_path is not a ShaderMaterial: " + world_v2_material_path)
 		return false
-	# Load the manifest.
+	# Load the layer manifest (per-biome PBR layout per tier).
 	var manifest_path: String = bundle_dir + "arrays/layer_manifest.json"
 	var mf: FileAccess = FileAccess.open(manifest_path, FileAccess.READ)
 	if mf == null:
@@ -377,9 +383,21 @@ func _build_v2_arrays_if_needed() -> bool:
 	if typeof(parsed) != TYPE_DICTIONARY:
 		push_error("ScaleWorld v2: layer_manifest is not a dict")
 		return false
-	_v2_manifest = parsed
-	# Build the 8 arrays (2 tiers x 4 map types).
-	var tiers: Dictionary = _v2_manifest.get("tiers", {})
+	_v2_layer_manifest = parsed
+	# Load the world-splat manifest (per-biome world-spanning weight map).
+	var ws_path: String = bundle_dir + "world_splat/manifest.json"
+	var wsf: FileAccess = FileAccess.open(ws_path, FileAccess.READ)
+	if wsf == null:
+		push_error("ScaleWorld v2: missing world_splat manifest at " + ws_path + " (run pipeline/build_world_splat.py)")
+		return false
+	var ws_parsed: Variant = JSON.parse_string(wsf.get_as_text())
+	wsf.close()
+	if typeof(ws_parsed) != TYPE_DICTIONARY:
+		push_error("ScaleWorld v2: world_splat manifest is not a dict")
+		return false
+	_v2_world_splat_manifest = ws_parsed
+	# Build the 8 PBR arrays (2 tiers × 4 map types) — unchanged from 5a.
+	var tiers: Dictionary = _v2_layer_manifest.get("tiers", {})
 	for tier_name in ["standard", "hero"]:
 		if not tiers.has(tier_name):
 			continue
@@ -387,8 +405,6 @@ func _build_v2_arrays_if_needed() -> bool:
 		var layers: Array = tdata.get("layers", [])
 		if layers.is_empty():
 			continue
-		# For each map type, build an array with one layer per manifest entry,
-		# ordered by layer index.
 		for map_name in ["albedo", "normal", "roughness", "ao"]:
 			var sorted_layers: Array = layers.duplicate()
 			sorted_layers.sort_custom(func(a, b): return int(a["layer"]) < int(b["layer"]))
@@ -403,51 +419,118 @@ func _build_v2_arrays_if_needed() -> bool:
 				if img == null:
 					push_error("ScaleWorld v2: texture has no image: %s" % rel)
 					return false
-				# Decompress if needed so Texture2DArray.create_from_images
-				# accepts uniform formats.
 				if img.is_compressed():
 					var decomp_err: int = img.decompress()
 					if decomp_err != OK:
 						push_error("ScaleWorld v2: failed to decompress %s (err=%d)" % [rel, decomp_err])
 						return false
-				# Force a uniform pixel format across all layers — RGBA8 covers
-				# albedo (which may have alpha) and gives us RGB ports for the
-				# roughness/AO/normal layers free of the L8 vs RGB8 vs RGBA8 mix
-				# that breaks Texture2DArray.create_from_images.
+				# Force uniform RGBA8 format + no mipmaps so create_from_images
+				# doesn't err=31 from heterogeneous layer formats / mipmap states.
+				# See PITFALLS #5.
 				if img.get_format() != Image.FORMAT_RGBA8:
 					img.convert(Image.FORMAT_RGBA8)
-				# Force uniform mipmap state. Godot's import pipeline may bake
-				# mipmaps into some PNGs and not others (depending on import
-				# preset / file age); create_from_images requires all layers
-				# to share has_mipmaps(). Drop mipmaps — Texture2DArray
-				# regenerates them as needed at sampling time.
 				if img.has_mipmaps():
 					img.clear_mipmaps()
 				imgs.append(img)
-			# Diagnostic: print first 3 layers' formats + sizes + mipmap flag.
-			var fmts: Array = []
-			for k in range(min(imgs.size(), 5)):
-				var im_diag: Image = imgs[k]
-				fmts.append("[%d] sz=%s fmt=%d mips=%s" % [
-					k, str(im_diag.get_size()), im_diag.get_format(),
-					str(im_diag.has_mipmaps())
-				])
-			print("[v2 arr] %s_%s: %s" % [tier_name, map_name, ", ".join(fmts)])
 			var arr: Texture2DArray = Texture2DArray.new()
 			var err: int = arr.create_from_images(imgs)
 			if err != OK:
 				push_error("ScaleWorld v2: create_from_images failed for %s_%s (err=%d, %d layers)" % [tier_name, map_name, err, imgs.size()])
 				return false
-			# Map manifest names -> shader uniform names. The shader uses
-			# "rough" not "roughness" so the uniform names match terrain_scale_v1.
 			var uniform_name: String = map_name if map_name != "roughness" else "rough"
 			base_res.set_shader_parameter("%s_%s" % [tier_name, uniform_name], arr)
+	# Build the WORLD SPLAT Texture2DArray (one layer per biome). Loaded
+	# from per-biome R8 PNGs at <bundle>/world_splat/layer_<biome>.png.
+	var ws_layers: Array = _v2_world_splat_manifest.get("layers", [])
+	if ws_layers.size() == 0:
+		push_error("ScaleWorld v2: world_splat manifest has no layers")
+		return false
+	if ws_layers.size() > MAX_BIOMES_PER_WORLD:
+		push_error("ScaleWorld v2: world_splat has %d layers but shader caps at %d (bump MAX_BIOMES in terrain_world_v2.gdshader + MAX_BIOMES_PER_WORLD here)" % [ws_layers.size(), MAX_BIOMES_PER_WORLD])
+		return false
+	# Same uniform-format + no-mipmap discipline as the PBR arrays.
+	var splat_imgs: Array = []
+	for layer_rec in ws_layers:
+		var rel: String = "worlds/" + bundle_dir.replace("res://worlds/", "").replace("res://", "") + "world_splat/" + String(layer_rec["file"])
+		# Simpler: just compose the path directly.
+		var splat_path: String = bundle_dir + "world_splat/" + String(layer_rec["file"])
+		var tex: Texture2D = load(splat_path) as Texture2D
+		if tex == null:
+			push_error("ScaleWorld v2: failed to load world splat layer " + splat_path)
+			return false
+		var img: Image = tex.get_image()
+		if img == null:
+			push_error("ScaleWorld v2: world splat layer has no image: " + splat_path)
+			return false
+		if img.is_compressed():
+			var decomp_err2: int = img.decompress()
+			if decomp_err2 != OK:
+				push_error("ScaleWorld v2: failed to decompress world splat " + splat_path)
+				return false
+		if img.get_format() != Image.FORMAT_RGBA8:
+			img.convert(Image.FORMAT_RGBA8)
+		if img.has_mipmaps():
+			img.clear_mipmaps()
+		splat_imgs.append(img)
+	var splat_arr: Texture2DArray = Texture2DArray.new()
+	var splat_err: int = splat_arr.create_from_images(splat_imgs)
+	if splat_err != OK:
+		push_error("ScaleWorld v2: create_from_images failed for world_splat (err=%d, %d layers)" % [splat_err, splat_imgs.size()])
+		return false
+	base_res.set_shader_parameter("world_splat", splat_arr)
+	base_res.set_shader_parameter("num_biomes", ws_layers.size())
+	# Build per-biome packed-int slot indirection (fixed-size arrays).
+	# For each catalog biome (matching world_splat layer order), look up
+	# its ground/mid/rock (tier, layer) in the layer manifest.
+	var ground_packed: Array[int] = []
+	var mid_packed: Array[int] = []
+	var rock_packed: Array[int] = []
+	ground_packed.resize(MAX_BIOMES_PER_WORLD)
+	mid_packed.resize(MAX_BIOMES_PER_WORLD)
+	rock_packed.resize(MAX_BIOMES_PER_WORLD)
+	for i in range(MAX_BIOMES_PER_WORLD):
+		ground_packed[i] = -1
+		mid_packed[i] = -1
+		rock_packed[i] = -1
+	for i in range(ws_layers.size()):
+		var biome_name: String = String(ws_layers[i]["biome"])
+		var found_g: int = -1
+		var found_m: int = -1
+		var found_r: int = -1
+		for tier_name in ["standard", "hero"]:
+			if not tiers.has(tier_name):
+				continue
+			var tdata2: Dictionary = tiers[tier_name]
+			for layer_rec in tdata2.get("layers", []):
+				if String(layer_rec["biome"]) != biome_name:
+					continue
+				var slot_name: String = String(layer_rec["slot"])
+				var raw_layer: int = int(layer_rec["layer"])
+				var packed: int = _v2_pack(tier_name, raw_layer)
+				if slot_name == "ground":
+					found_g = packed
+				elif slot_name == "mid":
+					found_m = packed
+				elif slot_name == "rock":
+					found_r = packed
+		ground_packed[i] = found_g
+		mid_packed[i] = found_m
+		rock_packed[i] = found_r
+		if found_g < 0 or found_m < 0 or found_r < 0:
+			push_warning("ScaleWorld v2: biome %s missing one of ground/mid/rock in layer manifest" % biome_name)
+	base_res.set_shader_parameter("biome_ground_packed", ground_packed)
+	base_res.set_shader_parameter("biome_mid_packed", mid_packed)
+	base_res.set_shader_parameter("biome_rock_packed", rock_packed)
+	# World rect (in meters) for splat UV computation.
+	var world_origin: Vector2 = Vector2(
+		-_world_size_m * 0.5, -_world_size_m * 0.5
+	)
+	base_res.set_shader_parameter("world_origin_m", world_origin)
+	base_res.set_shader_parameter("world_size_m", _world_size_m)
 	_v2_base_material = base_res
 	_v2_arrays_built = true
-	print("[ScaleWorld v2] arrays built and bound (%d tiers, %d total layers)" % [
-		tiers.size(),
-		(tiers.get("standard", {}).get("layers", []) as Array).size() +
-		(tiers.get("hero", {}).get("layers", []) as Array).size(),
+	print("[ScaleWorld v2] arrays built: %d tiers, %d biomes, world splat %d layers" % [
+		tiers.size(), ws_layers.size(), splat_imgs.size(),
 	])
 	return true
 
@@ -458,93 +541,14 @@ func _v2_pack(tier_name: String, layer: int) -> int:
 	return (tier_bit << 30) | (layer & 0x3FFFFFFF)
 
 
-# Translate a slot-pool index for a given tier into a raw array layer.
-# The manifest's per-tier slot_pool array maps pool_idx -> raw_layer.
-# In v1 the pool is identity so this returns pool_idx unchanged; the
-# indirection becomes meaningful once streaming pages biomes across
-# array layers and the pool changes per frame.
-func _v2_pool_to_layer(tier_name: String, pool_idx: int) -> int:
-	if _v2_manifest.is_empty():
-		return pool_idx
-	var tier_data: Variant = _v2_manifest.get("tiers", {}).get(tier_name, null)
-	if typeof(tier_data) != TYPE_DICTIONARY:
-		return pool_idx
-	var pool: Array = tier_data.get("slot_pool", [])
-	if pool_idx < 0 or pool_idx >= pool.size():
-		return pool_idx
-	return int(pool[pool_idx])
-
-
-# Read either "slot" (post-5c slot-pool indirection) or "layer"
-# (pre-5c on-disk splats from earlier sessions) from a slot record.
-func _v2_read_slot_or_layer(d: Dictionary) -> int:
-	if d.has("slot"):
-		return int(d["slot"])
-	if d.has("layer"):
-		return int(d["layer"])
-	return -1
-
-
-# Build the per-tile v2 material from the tile's splat_meta + splat.png.
-# Returns null if the v2 path is inactive or resources are missing.
+# Return the GLOBAL v2 material for a tile. Every tile uses the same
+# instance now — the world splat is sampled at world XZ, so no per-tile
+# uniforms are needed and there's no per-tile material duplication.
+# Returns null if the v2 path is inactive or arrays haven't built.
 func _make_v2_tile_material(tile_dir: String, coord: Vector2i) -> ShaderMaterial:
 	if not _build_v2_arrays_if_needed():
 		return null
-	var splat_path: String = tile_dir + "splat.png"
-	var meta_path: String  = tile_dir + "splat_meta.json"
-	var splat_tex: Texture2D = load(splat_path) as Texture2D
-	if splat_tex == null:
-		push_error("ScaleWorld v2: missing splat at " + splat_path)
-		return null
-	var meta_file: FileAccess = FileAccess.open(meta_path, FileAccess.READ)
-	if meta_file == null:
-		push_error("ScaleWorld v2: missing splat_meta at " + meta_path)
-		return null
-	var meta_parsed: Variant = JSON.parse_string(meta_file.get_as_text())
-	meta_file.close()
-	if typeof(meta_parsed) != TYPE_DICTIONARY:
-		push_error("ScaleWorld v2: splat_meta is not a dict at " + meta_path)
-		return null
-	var channels: Array = meta_parsed.get("channels", [])
-	var ground_idx: Array[int] = [-1, -1, -1, -1]
-	var mid_idx:    Array[int] = [-1, -1, -1, -1]
-	var rock_idx:   Array[int] = [-1, -1, -1, -1]
-	for i in range(min(4, channels.size())):
-		var ch: Dictionary = channels[i]
-		if ch.get("biome", null) == null:
-			continue
-		var g: Dictionary = ch.get("ground", {})
-		var m: Dictionary = ch.get("mid", {})
-		var r: Dictionary = ch.get("rock", {})
-		if g.is_empty() or m.is_empty() or r.is_empty():
-			continue
-		# Splat_meta carries slot-pool indices; translate to raw array
-		# layer via the manifest's slot_pool map, then pack with tier bit
-		# for the shader. (v1 pool is identity, so the translation is
-		# a no-op numerically — but the indirection lives here, ready
-		# for the streaming follow-up.)
-		var g_layer: int = _v2_pool_to_layer(String(g["tier"]), _v2_read_slot_or_layer(g))
-		var m_layer: int = _v2_pool_to_layer(String(m["tier"]), _v2_read_slot_or_layer(m))
-		var r_layer: int = _v2_pool_to_layer(String(r["tier"]), _v2_read_slot_or_layer(r))
-		ground_idx[i] = _v2_pack(String(g["tier"]), g_layer)
-		mid_idx[i]    = _v2_pack(String(m["tier"]), m_layer)
-		rock_idx[i]   = _v2_pack(String(r["tier"]), r_layer)
-	var inst: ShaderMaterial = _v2_base_material.duplicate(false)
-	inst.set_shader_parameter("splat", splat_tex)
-	inst.set_shader_parameter("splat_ground_indices",
-		Vector4i(ground_idx[0], ground_idx[1], ground_idx[2], ground_idx[3]))
-	inst.set_shader_parameter("splat_mid_indices",
-		Vector4i(mid_idx[0], mid_idx[1], mid_idx[2], mid_idx[3]))
-	inst.set_shader_parameter("splat_rock_indices",
-		Vector4i(rock_idx[0], rock_idx[1], rock_idx[2], rock_idx[3]))
-	# Tile origin in world XZ: tile (tx, tz) covers
-	#   x in [tile_x_world_origin, +tile_size_m), z in [..., +tile_size_m)
-	# where the world is centered on (0,0) so x0 = (tx - grid_n/2) * tile_size_m.
-	var origin_x: float = float(coord.x) * _tile_size_m - _world_size_m * 0.5
-	var origin_z: float = float(coord.y) * _tile_size_m - _world_size_m * 0.5
-	inst.set_shader_parameter("tile_origin_m", Vector2(origin_x, origin_z))
-	inst.set_shader_parameter("tile_size_m", _tile_size_m)
-	return inst
+	return _v2_base_material
 
 
 func _spawn_tile(coord: Vector2i) -> void:
