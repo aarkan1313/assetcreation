@@ -58,6 +58,12 @@ var _catalog: Dictionary = {}
 var _base_material: ShaderMaterial = null
 var _last_snap_per_ring: Array[Vector2] = []
 
+# Stage 4.1: per-biome PBR ground albedo array (global, all rings
+# share it). Index = "PBR slot" — same name space the shader's
+# biome_pbr_slot[] uniform refers to. Built once at _ready.
+var _pbr_ground_array: Texture2DArray = null
+var _biome_pbr_slot_by_name: Dictionary = {}  # String -> int
+
 # Async heightmap regen. ring_idx → { task_id, payload, superseded, result }.
 # _process polls task completion via WorkerThreadPool.is_task_completed.
 # Worker reads from _composer + world_seed (both read-only after _ready);
@@ -77,6 +83,7 @@ func _ready() -> void:
 	_resolve_config()
 	_load_catalog_and_composer()
 	_load_base_material()
+	_load_pbr_ground_array()
 	_spawn_rings()
 
 
@@ -121,6 +128,70 @@ func _load_base_material() -> void:
 		push_error("ClipmapWorld: world_v3_material is not ShaderMaterial")
 		return
 	_base_material = res
+
+
+# Stage 4.1: load every biome's ground/albedo.png into a single
+# global Texture2DArray. Records the layer index per biome in
+# _biome_pbr_slot_by_name. v1 scans only for biomes named in the
+# catalog. Missing files get a magenta debug color.
+func _load_pbr_ground_array() -> void:
+	if _catalog.is_empty():
+		push_error("ClipmapWorld: _load_pbr_ground_array before catalog loaded")
+		return
+	var biome_dicts: Array = _catalog.get("biomes", [])
+	if biome_dicts.is_empty():
+		return
+	# Load each biome's ground albedo as an Image. Use the first
+	# successfully-loaded one to determine the array's edge size; all
+	# subsequent ones must match (resize policy is "first wins" v1).
+	var images: Array = []
+	var edge: int = 0
+	for b in biome_dicts:
+		var biome_name: String = b["name"]
+		var kit_dir: String = b.get("kit_dir", "")
+		# Try the catalog-specified kit_dir first, then a known fallback
+		# location used by Axis 6.
+		var candidates: Array[String] = [
+			"res://" + kit_dir + "/ground/albedo.png",
+			"res://worlds/scale_demo/biomes/" + biome_name + "/ground/albedo.png",
+		]
+		var img: Image = null
+		for path in candidates:
+			if ResourceLoader.exists(path):
+				var tex := load(path)
+				if tex is Texture2D:
+					img = tex.get_image()
+					if img != null:
+						break
+		if img == null:
+			push_warning("ClipmapWorld: no ground/albedo.png for biome %s, using debug magenta" % biome_name)
+			img = Image.create(256, 256, false, Image.FORMAT_RGBA8)
+			img.fill(Color(1.0, 0.0, 1.0, 1.0))
+		if edge == 0:
+			edge = img.get_width()
+		elif img.get_width() != edge or img.get_height() != edge:
+			# Resize to match first-loaded for v1 simplicity.
+			img.resize(edge, edge, Image.INTERPOLATE_LANCZOS)
+		# Texture2DArray requires every layer the same format.
+		# Godot's importer may have stored the PNG as a compressed
+		# format (BPTC / VRAM-compressed). decompress() is a no-op on
+		# already-uncompressed images so it's safe to call unconditionally.
+		if img.is_compressed():
+			img.decompress()
+		img.convert(Image.FORMAT_RGBA8)
+		_biome_pbr_slot_by_name[biome_name] = images.size()
+		images.append(img)
+	if images.is_empty():
+		push_error("ClipmapWorld: no biome images loaded")
+		return
+	_pbr_ground_array = Texture2DArray.new()
+	var err: int = _pbr_ground_array.create_from_images(images)
+	if err != OK:
+		push_error("ClipmapWorld: Texture2DArray.create_from_images failed: %d" % err)
+		_pbr_ground_array = null
+		return
+	print("[ClipmapWorld] loaded %d biome PBR ground textures (%dx%d)" % [
+		images.size(), edge, edge])
 
 
 func _spawn_rings() -> void:
