@@ -40,7 +40,7 @@
       "slots": {
         "ground": {"source": "ground", "tier": "standard"},
         "mid":    {"source": "mid",    "tier": "standard"},
-        "rock":   {"source": "rock",   "tier": "standard"}
+        "rock":   {"source": "rock",   "tier": "hero"}
       }
     },
     {
