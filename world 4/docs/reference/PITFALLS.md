@@ -22,6 +22,10 @@
 | Hard cliff/seam at tile boundaries | (Not yet documented — file an entry if you hit this) |
 | `Texture2DArray.create_from_images` returns err=31 / `ERR_INVALID_DATA` at scene init | **#5 — Texture2DArray layer uniformity** |
 | Hard diagonal color lines at tile boundaries between biomes in walk view (editor only — headless captures hide it) | **#6 — Per-tile splat boundaries can't bilinear-interpolate** |
+| Clipmap skirts collapse onto surface; gaps visible at ring boundaries | **#7 — Heightmap displacement clobbers skirt offset** |
+| Adjacent clipmap rings disagree at shared edge by ~half a texel | **#8 — Half-texel UV offset for heightmap sampling** |
+| Clipmap rings don't overlap; thin dark gap visible at every ring boundary | **#9 — `inner_grid_n` rounded UP creates gap, not overlap** |
+| Worker-thread errors on scene shutdown: "null instance" from worker functions | **#10 — `WorkerThreadPool` outlives its shared dependencies** |
 
 ## Pitfall #1 — Source-texture black texels become speckle noise
 
@@ -491,6 +495,164 @@ the editor and walk across at least one biome boundary first. See
 methodology section.
 
 ---
+
+## Pitfall #7 — Heightmap displacement clobbers skirt offset
+
+### Symptom
+- Clipmap terrain renders correctly across rings BUT thin dark bands /
+  z-fight pepper appear at ring boundaries from certain camera angles
+- Looking topdown, no actual gap visible — but the bands persist
+- Walk view shows the bands as horizon-aligned slivers between adjacent
+  rings
+
+### What's actually happening
+Skirt verts in the donut mesh arrive with `VERTEX.y = -skirt_depth_m`
+(typically -10m). A vertex shader that writes `VERTEX.y = h` (where `h`
+is the heightmap sample) **clobbers** the skirt offset — surface and
+skirt verts both end up at `h`, collapsing the skirt onto the surface.
+The skirt no longer hides the ring-boundary discontinuity it was built
+for.
+
+### Fix
+```glsl
+void vertex() {
+    float h = sample_heightmap(world_xz);
+    VERTEX.y += h;   // ADD, don't replace
+}
+```
+
+Skirt verts then sit at `h - skirt_depth_m`, properly tucked under the
+surface, hiding the crack.
+
+### What this is NOT
+Not a heightmap precision issue. Not a UV alignment issue. The skirt
+math is correct in the GDScript mesh builder; the shader is what's
+breaking it.
+
+## Pitfall #8 — Half-texel UV offset for heightmap sampling
+
+### Symptom
+- Adjacent clipmap rings render at *slightly* different heights at
+  their shared boundary
+- The disagreement is consistent — same direction every time, about
+  half a texel worth
+- Visible as a faint cliff at every ring boundary; not a gap, but
+  not flat either
+
+### What's actually happening
+A clipmap ring with N×N vertices spaced `step` meters apart spans
+`(N-1) * step` meters edge-to-edge. The displacement texture stored
+for the ring is N×N texels. With `filter_linear, repeat_disable`, UV
+(0, 0) samples the **center** of texel (0, 0), not its corner.
+
+So vertex (i, j) at world XZ `(origin + i*step, origin + j*step)`
+should sample at UV `((i + 0.5) / N, (j + 0.5) / N)`, which equals
+`(world - origin) / (extent * N/(N-1))` — NOT `(world - origin) / extent + 0.5`.
+
+If the shader uses the naive `(world - origin) / extent`, sampling
+lands half a texel off-grid. Adjacent rings sample the same world XZ
+from different texture grids, with the offset error in different
+directions, producing a height mismatch at the boundary.
+
+### Fix
+```glsl
+float extent_n = ring_extent_m * float(n) / max(float(n) - 1.0, 1.0);
+vec2 uv = (world_xz - ring_origin_m) / extent_n;
+```
+
+`extent_n` is "the world-XZ distance covered by N texels including
+half a texel of padding at each edge" — exactly what
+`filter_linear`'s sampling assumes.
+
+### What this is NOT
+Not a heightmap math bug. The kernel produces the right values; the
+sampler is reading them at the wrong UV.
+
+## Pitfall #9 — `inner_grid_n` rounded UP creates gap, not overlap
+
+### Symptom
+- Clipmap rings render with a thin dark band between every adjacent
+  pair
+- Bands scale with ring step (1m wide between rings 0 and 1, 2m
+  between 1 and 2, etc)
+- Visible in topdown view; partially hidden by skirts in walk view
+
+### What's actually happening
+Ring `i+1`'s hole (in meters) should cover *less* world XZ than ring
+`i`'s outer extent. Otherwise there's a strip of world where ring
+`i+1` has a hole AND ring `i` has ended — i.e. a real gap.
+
+Math: ring `i`'s outer half-extent is `(N - 1) * step_i / 2`. Ring
+`i+1`'s hole half-extent is `inner_grid_n * step_(i+1) / 2 = inner_grid_n * step_i`.
+
+For overlap: `inner_grid_n * step_i ≤ (N - 1) * step_i / 2 → inner_grid_n ≤ (N - 1) / 2`.
+
+For N = 64, the boundary is `inner_grid_n = 31.5`. The plan rounded UP
+to 32, giving a half-step gap on each side. **Round DOWN** instead —
+`((N - 1) / 2) & ~1` floors to the nearest even integer = 30 for N=64,
+guaranteeing the hole is smaller than the inner ring's outer extent.
+
+### Fix
+```gdscript
+ring.inner_grid_n = ((ring_grid_n - 1) / 2) & ~1
+```
+
+The trade-off is a thin overlap zone (z-fight pepper at boundaries),
+which is the standard clipmap artifact addressable by a morph zone in
+a future stage. **Overlap is the correct default**; the morph
+smooths it; rounding UP is just wrong.
+
+### What this is NOT
+Not a camera-snap issue. Not a skirt issue. Pure clipmap geometry math.
+
+## Pitfall #10 — `WorkerThreadPool` outlives its shared dependencies
+
+### Symptom
+- During scene shutdown (e.g. `HeadlessCapture` calling `quit()`),
+  a flurry of "null instance" errors stream from a worker thread
+  function
+- The errors don't actually crash the scene; they appear AFTER the
+  real work is done
+- Visible only in logs; visual output is unaffected
+- Will look like log spam in any shipping build
+
+### What's actually happening
+`WorkerThreadPool.add_task` enqueues tasks that may not start
+immediately. When the scene tears down, the scene tree frees nodes
+in some order — including the resource(s) the worker function reads
+from (e.g. the kernel composer, the catalog dict).
+
+If the worker function starts after the resource is freed, accessing
+it throws "null instance" errors. The errors are harmless in the
+sense that no data is corrupted (the result is discarded anyway),
+but they pollute logs and can mask real errors.
+
+### Fix
+Two-layer defense:
+
+1. **`_exit_tree` drains pending tasks**: before the scene frees the
+   shared resource, wait for in-flight tasks to complete.
+   ```gdscript
+   func _exit_tree() -> void:
+       for ring_idx_v in _ring_tasks.keys():
+           var task: Dictionary = _ring_tasks[ring_idx_v]
+           WorkerThreadPool.wait_for_task_completion(int(task["task_id"]))
+       _ring_tasks.clear()
+   ```
+
+2. **Null-guard inside the worker function** (defense-in-depth in case
+   a worker starts mid-shutdown):
+   ```gdscript
+   func _worker_compute(payload):
+       if _shared_resource == null:
+           return  # or return a zero-filled buffer
+       # ... do work
+   ```
+
+### What this is NOT
+Not a data corruption issue. The errors are noisy but harmless. Skipping
+the fix means production logs will contain shutdown spam — annoying for
+debugging real issues later.
 
 ## Methodology lessons (not rules — just what costs the most time)
 
