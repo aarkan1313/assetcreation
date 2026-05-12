@@ -124,3 +124,18 @@ def test_write_manifest_roundtrip(tmp_path: Path):
     bba.write_manifest(m, out)
     reloaded = json.loads(out.read_text(encoding="utf-8"))
     assert reloaded == m
+
+
+def test_manifest_includes_identity_slot_pool(tmp_path: Path):
+    """Each tier in the manifest must include a `slot_pool` array that
+    maps slot-pool index -> array layer index. In v1 (no streaming) the
+    map is identity (pool[i] == i)."""
+    w4 = tmp_path / "w4"
+    catalog_path = write_catalog(tmp_path, w4)
+    cat = bc.load_catalog(catalog_path)
+    m = bba.build_manifest(cat, w4_root=w4)
+    for tier_name, tdata in m["tiers"].items():
+        assert "slot_pool" in tdata, f"tier {tier_name} missing slot_pool"
+        n = len(tdata["layers"])
+        assert tdata["slot_pool"] == list(range(n)), \
+            f"tier {tier_name} slot_pool must be identity in v1"

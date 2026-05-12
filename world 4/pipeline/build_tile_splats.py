@@ -4,10 +4,20 @@ For each tile under `<bundle_dir>/tiles/tile_X_Z/`:
 - Read the tile's meta.json (must have a "biome" field).
 - Write a splat.png (RGBA8) at splat_size x splat_size.
 - Write a splat_meta.json describing the 4 RGBA channels: each channel
-  is one contributing biome with per-slot (tier, layer) addressing so
+  is one contributing biome with per-slot (tier, slot) addressing so
   the shader can sample the right Texture2DArray layer for ground/mid/
   rock independently. This lets a single biome span tiers (e.g. forest:
   ground+rock at hero, mid at standard).
+
+Slot-pool indirection (Stage 5c):
+- The `slot` value emitted is a *slot-pool index*, not a raw array
+  layer. The manifest's `slot_pool` array maps slot index -> array
+  layer index. In v1 the pool is identity (pool[i] == i), so the
+  numbers in splat_meta are unchanged from the raw-layer scheme; the
+  semantic shift makes streaming (paging biomes in/out of array
+  slots) a CPU-side change instead of a splat-regenerate.
+- ScaleWorld owns the pool->layer lookup at material-init time. The
+  shader sees only packed (tier, layer) ints as uniforms.
 
 Modes:
 - "hard"    : every pixel = (255, 0, 0, 0), channel 0 = the tile's own biome.
@@ -20,12 +30,15 @@ splat_meta.json schema:
     "splat_size": <int>,
     "mode": "<hard|feather>",
     "channels": [
-      {"biome": "<name>", "ground": {"tier": "...", "layer": <i>},
-                          "mid":    {"tier": "...", "layer": <j>},
-                          "rock":   {"tier": "...", "layer": <k>}},
+      {"biome": "<name>", "ground": {"tier": "...", "slot": <i>},
+                          "mid":    {"tier": "...", "slot": <j>},
+                          "rock":   {"tier": "...", "slot": <k>}},
       ...  // 4 channels total; empty channels have all values null
     ]
   }
+
+(Pre-5c builds emit `"layer"` in place of `"slot"`. ScaleWorld accepts
+both for backwards-compat with on-disk splats from earlier sessions.)
 
 Usage:
     python build_tile_splats.py \\
@@ -49,18 +62,41 @@ class SplatError(RuntimeError):
 
 
 def _biome_slots(manifest: dict, biome: str) -> Optional[dict]:
-    """Return {ground, mid, rock} -> {tier, layer} dict for a biome.
+    """Return {ground, mid, rock} -> {tier, slot} dict for a biome.
 
     Walks both tiers' layers in the manifest looking for matches on the
-    given biome name. Returns None if the biome is unknown OR if it's
-    missing any of the 3 slots.
+    given biome name. The emitted `slot` value is a slot-pool index, not
+    a raw array layer index — ScaleWorld translates pool -> layer via
+    the manifest's `slot_pool` map at material-init time.
+
+    In v1 the slot pool is identity (pool[i] == i), so the numbers we
+    emit equal the raw layer indices we receive. The semantic shift is
+    what matters: streaming layer paging becomes a CPU-side concern.
+
+    Returns None if the biome is unknown OR if it's missing any of the
+    3 slots.
     """
     found: dict[str, dict] = {}
     for tier_name, tdata in manifest["tiers"].items():
+        slot_pool = tdata.get("slot_pool")
         for layer in tdata["layers"]:
             if layer["biome"] != biome:
                 continue
-            found[layer["slot"]] = {"tier": tier_name, "layer": int(layer["layer"])}
+            raw_layer = int(layer["layer"])
+            # Translate raw layer -> slot-pool index (the position in
+            # slot_pool whose value == raw_layer). v1 is identity so this
+            # equals raw_layer, but writing it via the lookup ensures the
+            # contract is honoured if a future manifest uses a non-identity
+            # pool (streaming follow-up).
+            if slot_pool is None:
+                slot_idx = raw_layer  # legacy pre-5c manifest
+            else:
+                try:
+                    slot_idx = list(slot_pool).index(raw_layer)
+                except ValueError:
+                    # Pool doesn't reference this layer; skip.
+                    continue
+            found[layer["slot"]] = {"tier": tier_name, "slot": slot_idx}
     if not all(s in found for s in ("ground", "mid", "rock")):
         return None
     return found

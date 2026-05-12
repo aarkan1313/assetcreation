@@ -106,6 +106,13 @@ def build_manifest(cat: bc.Catalog, w4_root: Path | str) -> dict:
         tiers_out[tier.name] = {
             "resolution": tier.resolution,
             "layers": layers,
+            # v1 slot pool is the identity map: slot_pool[i] = i.
+            # Streaming follow-up: slot_pool[i] points to a layer that may
+            # change over time as biomes are paged in/out of the array.
+            # Consumers (shader, ScaleWorld) treat the splat's per-channel
+            # index as a slot-pool index and look up the actual layer via
+            # this map. v1 = pass-through; semantics gain meaning later.
+            "slot_pool": list(range(len(layers))),
         }
     return {
         "schema_version": 1,

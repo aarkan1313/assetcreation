@@ -6,15 +6,15 @@
       "biome": "desert",
       "ground": {
         "tier": "standard",
-        "layer": 4
+        "slot": 4
       },
       "mid": {
         "tier": "standard",
-        "layer": 5
+        "slot": 5
       },
       "rock": {
         "tier": "standard",
-        "layer": 6
+        "slot": 6
       }
     },
     {

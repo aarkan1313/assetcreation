@@ -6,45 +6,45 @@
       "biome": "forest",
       "ground": {
         "tier": "hero",
-        "layer": 0
+        "slot": 0
       },
       "mid": {
         "tier": "standard",
-        "layer": 0
+        "slot": 0
       },
       "rock": {
         "tier": "hero",
-        "layer": 1
+        "slot": 1
       }
     },
     {
       "biome": "rocky",
       "ground": {
         "tier": "standard",
-        "layer": 7
+        "slot": 7
       },
       "mid": {
         "tier": "standard",
-        "layer": 8
+        "slot": 8
       },
       "rock": {
         "tier": "hero",
-        "layer": 2
+        "slot": 2
       }
     },
     {
       "biome": "desert",
       "ground": {
         "tier": "standard",
-        "layer": 4
+        "slot": 4
       },
       "mid": {
         "tier": "standard",
-        "layer": 5
+        "slot": 5
       },
       "rock": {
         "tier": "standard",
-        "layer": 6
+        "slot": 6
       }
     },
     {

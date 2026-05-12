@@ -458,6 +458,33 @@ func _v2_pack(tier_name: String, layer: int) -> int:
 	return (tier_bit << 30) | (layer & 0x3FFFFFFF)
 
 
+# Translate a slot-pool index for a given tier into a raw array layer.
+# The manifest's per-tier slot_pool array maps pool_idx -> raw_layer.
+# In v1 the pool is identity so this returns pool_idx unchanged; the
+# indirection becomes meaningful once streaming pages biomes across
+# array layers and the pool changes per frame.
+func _v2_pool_to_layer(tier_name: String, pool_idx: int) -> int:
+	if _v2_manifest.is_empty():
+		return pool_idx
+	var tier_data: Variant = _v2_manifest.get("tiers", {}).get(tier_name, null)
+	if typeof(tier_data) != TYPE_DICTIONARY:
+		return pool_idx
+	var pool: Array = tier_data.get("slot_pool", [])
+	if pool_idx < 0 or pool_idx >= pool.size():
+		return pool_idx
+	return int(pool[pool_idx])
+
+
+# Read either "slot" (post-5c slot-pool indirection) or "layer"
+# (pre-5c on-disk splats from earlier sessions) from a slot record.
+func _v2_read_slot_or_layer(d: Dictionary) -> int:
+	if d.has("slot"):
+		return int(d["slot"])
+	if d.has("layer"):
+		return int(d["layer"])
+	return -1
+
+
 # Build the per-tile v2 material from the tile's splat_meta + splat.png.
 # Returns null if the v2 path is inactive or resources are missing.
 func _make_v2_tile_material(tile_dir: String, coord: Vector2i) -> ShaderMaterial:
@@ -491,9 +518,17 @@ func _make_v2_tile_material(tile_dir: String, coord: Vector2i) -> ShaderMaterial
 		var r: Dictionary = ch.get("rock", {})
 		if g.is_empty() or m.is_empty() or r.is_empty():
 			continue
-		ground_idx[i] = _v2_pack(String(g["tier"]), int(g["layer"]))
-		mid_idx[i]    = _v2_pack(String(m["tier"]), int(m["layer"]))
-		rock_idx[i]   = _v2_pack(String(r["tier"]), int(r["layer"]))
+		# Splat_meta carries slot-pool indices; translate to raw array
+		# layer via the manifest's slot_pool map, then pack with tier bit
+		# for the shader. (v1 pool is identity, so the translation is
+		# a no-op numerically — but the indirection lives here, ready
+		# for the streaming follow-up.)
+		var g_layer: int = _v2_pool_to_layer(String(g["tier"]), _v2_read_slot_or_layer(g))
+		var m_layer: int = _v2_pool_to_layer(String(m["tier"]), _v2_read_slot_or_layer(m))
+		var r_layer: int = _v2_pool_to_layer(String(r["tier"]), _v2_read_slot_or_layer(r))
+		ground_idx[i] = _v2_pack(String(g["tier"]), g_layer)
+		mid_idx[i]    = _v2_pack(String(m["tier"]), m_layer)
+		rock_idx[i]   = _v2_pack(String(r["tier"]), r_layer)
 	var inst: ShaderMaterial = _v2_base_material.duplicate(false)
 	inst.set_shader_parameter("splat", splat_tex)
 	inst.set_shader_parameter("splat_ground_indices",

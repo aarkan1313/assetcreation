@@ -6,30 +6,30 @@
       "biome": "forest",
       "ground": {
         "tier": "hero",
-        "layer": 0
+        "slot": 0
       },
       "mid": {
         "tier": "standard",
-        "layer": 0
+        "slot": 0
       },
       "rock": {
         "tier": "hero",
-        "layer": 1
+        "slot": 1
       }
     },
     {
       "biome": "alpine",
       "ground": {
         "tier": "standard",
-        "layer": 1
+        "slot": 1
       },
       "mid": {
         "tier": "standard",
-        "layer": 2
+        "slot": 2
       },
       "rock": {
         "tier": "standard",
-        "layer": 3
+        "slot": 3
       }
     },
     {

@@ -28,7 +28,7 @@ def fake_manifest():
     return {
         "schema_version": 1,
         "tiers": {
-            "standard": {"resolution": 1024, "layers": [
+            "standard": {"resolution": 1024, "slot_pool": list(range(10)), "layers": [
                 {"biome": "forest",  "slot": "mid",    "layer": 0, "maps": {}},
                 {"biome": "alpine",  "slot": "ground", "layer": 1, "maps": {}},
                 {"biome": "alpine",  "slot": "mid",    "layer": 2, "maps": {}},
@@ -40,7 +40,7 @@ def fake_manifest():
                 {"biome": "wetland", "slot": "mid",    "layer": 8, "maps": {}},
                 {"biome": "wetland", "slot": "rock",   "layer": 9, "maps": {}},
             ]},
-            "hero":     {"resolution": 4096, "layers": [
+            "hero": {"resolution": 4096, "slot_pool": [0, 1], "layers": [
                 {"biome": "forest", "slot": "ground", "layer": 0, "maps": {}},
                 {"biome": "forest", "slot": "rock",   "layer": 1, "maps": {}},
             ]},
@@ -76,20 +76,21 @@ def test_hard_mode_splat_is_pure_first_channel(tmp_path: Path):
     assert (arr[..., 3] == 0).all()
 
 
-def test_hard_mode_splat_meta_has_per_slot_tier_layer(tmp_path: Path):
-    """Each channel's record must carry (tier, layer) for ground/mid/rock."""
+def test_hard_mode_splat_meta_has_per_slot_tier_slot(tmp_path: Path):
+    """Each channel's record must carry (tier, slot) for ground/mid/rock.
+    `slot` is a slot-pool index — in v1 the pool is identity so the
+    numbers match the raw layer indices, but the field name reflects
+    the indirection."""
     bundle = make_world(tmp_path)
     bts.build_splats(bundle_dir=bundle, manifest=fake_manifest(),
                      mode="hard", splat_size=8, feather_width_m=0.0)
-    # tile_0_0 = wetland — standard ground/mid/rock at layers 7/8/9.
     meta = json.loads((bundle / "tiles" / "tile_0_0" / "splat_meta.json").read_text())
     assert len(meta["channels"]) == 4
     c0 = meta["channels"][0]
     assert c0["biome"] == "wetland"
-    assert c0["ground"] == {"tier": "standard", "layer": 7}
-    assert c0["mid"]    == {"tier": "standard", "layer": 8}
-    assert c0["rock"]   == {"tier": "standard", "layer": 9}
-    # Channels 1..3 empty.
+    assert c0["ground"] == {"tier": "standard", "slot": 7}
+    assert c0["mid"]    == {"tier": "standard", "slot": 8}
+    assert c0["rock"]   == {"tier": "standard", "slot": 9}
     for i in range(1, 4):
         assert meta["channels"][i]["biome"] is None
         assert meta["channels"][i]["ground"] is None
@@ -102,13 +103,34 @@ def test_hard_mode_forest_spans_tiers(tmp_path: Path):
     bundle = make_world(tmp_path)
     bts.build_splats(bundle_dir=bundle, manifest=fake_manifest(),
                      mode="hard", splat_size=8, feather_width_m=0.0)
-    # tile_0_1 = forest.
     meta = json.loads((bundle / "tiles" / "tile_0_1" / "splat_meta.json").read_text())
     c0 = meta["channels"][0]
     assert c0["biome"] == "forest"
-    assert c0["ground"] == {"tier": "hero",     "layer": 0}
-    assert c0["mid"]    == {"tier": "standard", "layer": 0}
-    assert c0["rock"]   == {"tier": "hero",     "layer": 1}
+    assert c0["ground"] == {"tier": "hero",     "slot": 0}
+    assert c0["mid"]    == {"tier": "standard", "slot": 0}
+    assert c0["rock"]   == {"tier": "hero",     "slot": 1}
+
+
+def test_hard_mode_non_identity_pool(tmp_path: Path):
+    """When the manifest's slot_pool is NOT identity (streaming-style),
+    the emitted slot index reflects the pool position, not the raw
+    layer. Simulates a streaming setup where biome layers have been
+    paged into different array slots."""
+    bundle = make_world(tmp_path)
+    m = fake_manifest()
+    # Reverse the standard tier's slot_pool. Now pool[0] = layer 9,
+    # pool[1] = layer 8, ..., pool[9] = layer 0. wetland.ground (raw
+    # layer 7) sits at pool position 2.
+    m["tiers"]["standard"]["slot_pool"] = list(reversed(range(10)))
+    bts.build_splats(bundle_dir=bundle, manifest=m,
+                     mode="hard", splat_size=8, feather_width_m=0.0)
+    meta = json.loads((bundle / "tiles" / "tile_0_0" / "splat_meta.json").read_text())
+    c0 = meta["channels"][0]
+    assert c0["biome"] == "wetland"
+    # Raw layers 7/8/9 reversed -> pool positions 2/1/0.
+    assert c0["ground"] == {"tier": "standard", "slot": 2}
+    assert c0["mid"]    == {"tier": "standard", "slot": 1}
+    assert c0["rock"]   == {"tier": "standard", "slot": 0}
 
 
 def test_hard_mode_handles_unknown_biome(tmp_path: Path):
