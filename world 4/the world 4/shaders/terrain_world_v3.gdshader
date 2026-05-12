@@ -44,6 +44,18 @@ uniform float ring_extent_m = 512.0;
 uniform int ring_texel_n = 128;
 uniform int ring_index = 0;
 
+// Morph-zone uniforms (Stage 3.6+). The "coarse" texture is the
+// next-coarser ring's heightmap; the inner ring blends its own
+// heightmap toward it inside a band near its outer edge. The
+// outermost ring has no coarser ring; ClipmapWorld sets
+// `morph_enabled = false` on the outermost ring's per-ring material.
+uniform sampler2D coarse_displacement : filter_linear, repeat_disable, hint_default_black;
+uniform vec2 coarse_origin_m = vec2(0.0, 0.0);
+uniform float coarse_extent_m = 1024.0;
+uniform int coarse_texel_n = 128;
+uniform float morph_band_m = 25.0;
+uniform bool morph_enabled = true;
+
 uniform bool show_debug_color = false;
 uniform float debug_color_strength : hint_range(0.0, 1.0) = 0.5;
 
@@ -66,15 +78,46 @@ varying vec3 v_world_pos;
 // Sample heightmap with NaN guard + half-texel-correct UV.
 float sample_height(vec2 world_xz) {
 	float n = float(ring_texel_n);
-	// "extent_n" maps world XZ to UV such that vertex (i,j) lands at
-	// the center of texel (i,j). See header note #2.
+	// extent_n + (0.5 / n) maps world XZ to UV such that vertex (i,j)
+	// lands at the center of texel (i,j). See PITFALLS #8 for why
+	// the `+ 0.5/n` term is mandatory with filter_linear.
 	float extent_n = ring_extent_m * n / max(n - 1.0, 1.0);
-	vec2 uv = (world_xz - ring_origin_m) / extent_n;
+	vec2 uv = (world_xz - ring_origin_m) / extent_n + vec2(0.5 / n);
 	float h = texture(displacement, uv).r;
 	if (isnan(h) || isinf(h)) {
 		h = 0.0;
 	}
 	return h;
+}
+
+
+// Sample the next-coarser ring's heightmap at the same world XZ.
+// Same shape as sample_height; differs only in the sampler + uniforms
+// it reads. Used by vertex() for the morph blend.
+float sample_coarse_height(vec2 world_xz) {
+	float n = float(coarse_texel_n);
+	float extent_n = coarse_extent_m * n / max(n - 1.0, 1.0);
+	vec2 uv = (world_xz - coarse_origin_m) / extent_n + vec2(0.5 / n);
+	float h = texture(coarse_displacement, uv).r;
+	if (isnan(h) || isinf(h)) {
+		h = 0.0;
+	}
+	return h;
+}
+
+
+// Morph factor in [0, 1]. 0 inside the ring's safe interior;
+// linearly ramps to 1 at the ring's outer edge over a band of
+// `morph_band_m` meters. Uses Chebyshev (max-axis) distance from
+// the ring's snap center to give square-shaped morph bands matching
+// the square ring geometry.
+float compute_morph_factor(vec2 world_xz) {
+	vec2 center = ring_origin_m + vec2(ring_extent_m * 0.5);
+	vec2 d_xz = abs(world_xz - center);
+	float d = max(d_xz.x, d_xz.y);
+	float R = ring_extent_m * 0.5;
+	float band = max(morph_band_m, 1e-6);
+	return clamp((d - (R - band)) / band, 0.0, 1.0);
 }
 
 
