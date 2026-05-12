@@ -100,8 +100,56 @@ reads them; they remain on disk until a follow-up cleanup pass.
 | `tests/test_build_biome_arrays.py` | Manifest builder: per-tier layer ordering, oversize rejection, undersize auto-upsample, missing-map rejection, JSON roundtrip. |
 | `tests/test_build_tile_splats.py` | **Legacy** — per-tile splat builder tests (hard + feather + slot-pool indirection). Kept for the legacy path; ScaleWorld no longer reads per-tile splats. |
 | `tests/test_build_world_splat.py` | World-splat builder: layer-per-biome emission, per-pixel weight-sum-to-1, deep-interior purity, boundary continuity (regression test for PITFALLS #6 hard-line bug), unknown-biome rejection. |
+| `tests/test_kernel_base.py` | Kernel abstract base + registry: instantiation rejection, register/get, duplicate-registration. |
+| `tests/test_noise_stack_kernel.py` | NoiseStackKernel correctness: pure-function, position-varying, envelope bound, seed offset, missing-param rejection. |
+| `tests/test_kernel_composer.py` | KernelComposer: softmax sums to 1, weighted height at dominant biomes, unknown-kernel rejection, missing-generator rejection. |
+| `tests/test_kernel_cross_impl.py` | Cross-impl gate: runs `KernelDump.gd` headless, asserts Python NoiseStackKernel produces same output (max delta < 1e-4 m). |
+| `tests/test_quality_tiers.py` | Quality-tier resolver: every tier has every KNOWN_KEY, default is `high`, unknown-tier rejection, result-is-independent-copy, sanity ranges. |
+| `tests/test_quality_tiers_cross_impl.py` | Quality-tier cross-impl: runs `QualityTiersDump.gd`, asserts Python and GDScript resolve identical values AND types per tier. |
 | `tests/conftest.py` | Inserts `pipeline/` into `sys.path` for test imports. |
 | `pytest.ini` | Sets `testpaths = tests`. Run all tests via `python -m pytest tests/ -v` from the W4 dir. |
+
+### Kernel system (Axis 1 Path 2 — clipmap renderer)
+
+The kernel system produces height + biome-weight values as pure
+functions of world XZ + seed. Pipeline-side (Python) used by preview
+tools; runtime-side (GDScript) used by the clipmap renderer.
+
+| Component | Path | Purpose |
+|---|---|---|
+| `Kernel` base + `KernelRegistry` | `pipeline/kernels/base.py`, `the world 4/scripts/kernels/Kernel.gd` | Abstract kernel interface. Subclasses implement `height(x, z, seed, params)` + `biome_weight(...)`. Registry maps `kind` strings → kernel instances. |
+| `NoiseStackKernel` | `pipeline/kernels/noise_stack.py`, `the world 4/scripts/kernels/NoiseStackKernel.gd` | v1 kernel: multi-octave fBm over hand-rolled gradient noise. Python + GDScript impls pinned bit-equivalent by cross-impl test (max delta 4.5e-6 m). |
+| `KernelComposer` | `pipeline/kernel_composer.py`, `the world 4/scripts/kernels/KernelComposer.gd` | Combines per-biome kernels into world-level height + biome-weight functions. Softmax over per-biome scalar fields with `biome_scale_m` parameter. |
+| `KernelDump.gd` | `the world 4/scripts/kernels/KernelDump.gd` | Headless SceneTree script that dumps GDScript NoiseStackKernel output at a fixed grid to JSON. Consumed by `test_kernel_cross_impl.py`. |
+| `build_kernel_preview.py` | `pipeline/build_kernel_preview.py` | CLI: samples the composer on a grid, writes `height.png` (16-bit grayscale) + `biome_dominant.png` + `meta.json`. Used for biome param tuning. |
+
+### Quality tiers
+
+User-facing perf settings consumed by every perf-sensitive subsystem.
+
+| Component | Path | Purpose |
+|---|---|---|
+| JSON source of truth | `the world 4/config/quality_tiers.json` | Four tiers (`low`, `medium`, `high` (default), `ultra`) × 10 knobs. |
+| GDScript resolver | `the world 4/scripts/QualityTiers.gd` | `QualityTiers.get_current()` → typed dict. Reads `ProjectSettings("world/quality_tier")`. Caches per session. Coerces int-typed keys (Godot JSON returns all numbers as float). |
+| Python resolver | `pipeline/quality_tiers.py` | `resolve(tier=None)` → typed dict. CLI: `python pipeline/quality_tiers.py --tier high` prints resolved JSON. |
+| Dump tool | `the world 4/scripts/QualityTiersDump.gd` | Headless: writes resolved values for all 4 tiers to JSON. Consumed by cross-impl test. |
+| Workflow doc | `workflows/working-with-quality-tiers.md` | How to add a new knob; how to consume a knob in a new subsystem. |
+
+### Clipmap renderer (Axis 1 Path 2)
+
+Nested-ring terrain renderer for real-game scale (4 km worlds and
+beyond). Coexists with `ScaleWorld` — they're parallel paths, neither
+replaces the other yet.
+
+| Component | Path | Purpose |
+|---|---|---|
+| `ClipmapWorld.gd` | `the world 4/scripts/ClipmapWorld.gd` | Scene-root runtime. Spawns N rings, snaps them to camera each frame, drives heightmap regen. v1 uses a debug sine-wave material; v2+ wires `KernelComposer` (Stage 3). |
+| `ClipmapRing.gd` | `the world 4/scripts/ClipmapRing.gd` | One ring: donut mesh with skirts, camera-snap transform, displacement-texture slot. Mesh builder mirrors `pipeline/build_clipmap_mesh_debug.py`. |
+| `clipmap_debug.gdshader` | `the world 4/shaders/clipmap_debug.gdshader` | Stage 2 sine-wave vertex displacement + per-ring debug coloring. Skirt-safe: uses `VERTEX.y += h` (PITFALLS #7). |
+| `terrain_world_v3.gdshader` (WIP) | `the world 4/shaders/terrain_world_v3.gdshader` | Stage 3+ canonical clipmap shader. Samples per-ring `displacement` texture. Layered with splat + biome PBR in Stage 4. |
+| `build_clipmap_mesh_debug.py` | `pipeline/build_clipmap_mesh_debug.py` | Python OBJ-mesh sanity-check builder. Matches GDScript donut math; useful for Blender-side inspection. |
+| `clipmap_debug.tscn` | `the world 4/scenes/clipmap_debug.tscn` | Stage 2 runnable scene: ClipmapWorld + AnchorCameraRig, sine-wave material. |
+| `capture_clipmap_debug.tscn` / `_topdown.tscn` | `the world 4/scenes/` | Headless capture scenes for the Stage 2 debug clipmap. |
 
 ### Texture generation
 

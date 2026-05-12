@@ -14,19 +14,28 @@ world-generation system. Working directory: `D:\assets\world 4\`.
 These are the live sources of truth. Anything older / dated / archived is
 not authoritative.
 
-1. **`docs/ROADMAP.md`** — what's done, what's next, ranked. Single
+1. **`docs/README.md`** — index of everything in `docs/`. Tells you
+   where to look for what.
+2. **`docs/STATE.md`** — snapshot of what we have right now.
+3. **`docs/ROADMAP.md`** — what's done, what's next, ranked. Single
    source for "what to work on now."
-2. **`docs/strategy/AXES.md`** — the 6 axes of expansion and what state
+4. **`docs/strategy/AXES.md`** — the 6 axes of expansion and what state
    each axis is currently in.
-3. **`docs/strategy/ANCHOR.md`** — the regression baseline. Anything we
+5. **`docs/strategy/ANCHOR.md`** — the regression baseline. Anything we
    build must not break the anchor demo.
-4. **`docs/reference/PITFALLS.md`** — the 4 known terrain artifact
+6. **`docs/reference/PITFALLS.md`** — the documented terrain artifact
    classes with root causes + working fixes. Check this whenever a
    visual artifact appears.
-5. **`docs/reference/TOOLS.md`** — index of every pipeline script,
+7. **`docs/reference/TOOLS.md`** — index of every pipeline script,
    shader, and runtime component, plus when to run each.
-6. **`docs/reference/ORCHESTRATOR_GUIDE.md`** — how to actually run the
-   pipeline end-to-end (commands + file layout + common failure modes).
+8. **`docs/workflows/`** — recipes for recurring tasks (adding a
+   feature, verifying a visual change, debugging an artifact, working
+   with the quality-tier system).
+9. **`CLAUDE.md`** (project root) — binding project rules including the
+   Quality ≥ Performance ethos.
+10. **`docs/reference/ORCHESTRATOR_GUIDE.md`** — how to actually run the
+    anchor pipeline end-to-end (commands + file layout + common failure
+    modes). Predates the kernel system; some sections stale.
 
 If a specific axis is the focus, also read its build-note in
 `docs/build-notes/`:
@@ -48,8 +57,10 @@ If a specific axis is the focus, also read its build-note in
 - **Run `--headless --import`** after editing any shader, texture, or
   imported asset from outside Godot, or "nothing changes in the
   editor."
-- **Quality > Performance > Organization.** Per AXES.md. KISS / YAGNI
-  serve these, they don't outrank them.
+- **Quality ≥ Performance > everything else > time-to-ship.** Per
+  `CLAUDE.md` (project root). No deadlines on this project — always pick
+  the architecturally-correct option even if it costs more sessions now.
+  KISS / YAGNI serve quality, they don't outrank it.
 
 ## Operator mode (from `handoffs/COMPACTION_HANDOFF.md`)
 
