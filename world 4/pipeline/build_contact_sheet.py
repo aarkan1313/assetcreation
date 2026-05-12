@@ -61,11 +61,16 @@ def _candidate_cells(slot_dir: Path, grade_filter: set[str] | None
     if not index_path.exists():
         return []
     index = json.loads(index_path.read_text(encoding="utf-8"))
+    # Post-reorg layout puts candidates under a subdir (e.g. _review/).
+    # The _index.json declares it via "candidate_subdir"; default to
+    # the slot dir directly for backward compat.
+    subdir = index.get("candidate_subdir")
+    base = slot_dir / subdir if subdir else slot_dir
     cells = []
     for cid, entry in sorted(index.get("candidates", {}).items()):
         if grade_filter is not None and entry.get("grade") not in grade_filter:
             continue
-        cand_dir = slot_dir / cid
+        cand_dir = base / cid
         albedo = cand_dir / "albedo.png"
         if not albedo.exists():
             continue
