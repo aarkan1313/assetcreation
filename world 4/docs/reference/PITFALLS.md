@@ -26,6 +26,7 @@
 | Adjacent clipmap rings disagree at shared edge by ~half a texel | **#8 — Half-texel UV offset for heightmap sampling** |
 | Clipmap rings don't overlap; thin dark gap visible at every ring boundary | **#9 — `inner_grid_n` rounded UP creates gap, not overlap** |
 | Worker-thread errors on scene shutdown: "null instance" from worker functions | **#10 — `WorkerThreadPool` outlives its shared dependencies** |
+| Elevation cliff at every clipmap ring boundary; persists with no other artifacts | **#11 — Clipmap rendering without morph zones** |
 
 ## Pitfall #1 — Source-texture black texels become speckle noise
 
@@ -653,6 +654,65 @@ Two-layer defense:
 Not a data corruption issue. The errors are noisy but harmless. Skipping
 the fix means production logs will contain shutdown spam — annoying for
 debugging real issues later.
+
+## Pitfall #11 — Clipmap rendering without morph zones
+
+### Symptom
+- Visible elevation cliff / step at every ring boundary on a clipmap
+  terrain renderer
+- Cliff persists from any camera angle and any walking direction
+- Cliff is stable (doesn't flicker) when the camera is still — it's
+  a real geometric mismatch, not a timing bug
+- More dramatic on outer rings (coarser grids alias the heightmap more)
+
+### What's actually happening
+Each clipmap ring stores its heightmap at its own grid resolution. Ring
+0 at 2m grid captures fine kernel detail; ring 1 at 4m grid stores a
+downsampled (effectively low-pass-filtered) version of the same world
+heightfield. In the rings' overlap zone they sample the same world XZ
+but their textures encode different values — ring 0 the fine truth,
+ring 1 the blurred version.
+
+The geometry has to be at *some* elevation, and the GPU's z-fight
+arbitrarily picks one ring's fragment per pixel. Adjacent pixels can
+land on different rings → visible step.
+
+### Working fix
+**Morph zones (geomorphing).** Each non-outermost ring's vertex shader
+samples both this ring's heightmap AND the next coarser ring's, blends
+them by a `[0..1]` factor that's 0 in the ring interior and ramps to 1
+inside a thin band near the ring's outer edge:
+
+```glsl
+float h_inner = sample_height(world_xz);
+float h_outer = sample_coarse_height(world_xz);
+float m = compute_morph_factor(world_xz);
+float h = mix(h_inner, h_outer, m);
+```
+
+At the precise boundary, `m = 1` → inner ring's vertices displace
+using the outer ring's heightmap, which is exactly what the outer ring
+shows. Heights converge → cliff disappears.
+
+Per-fragment normals must morph identically so lighting matches the
+morphed geometry.
+
+The morph band is a quality-tier knob (`morph_band_fraction`); wider on
+low tiers (more averaging acceptable on weak hw), narrower on ultra.
+
+### What this is NOT
+Not the same as PITFALLS #8 (half-texel UV offset) — that's a sampling
+alignment issue. The morph cliff exists even with #8 fixed because the
+two rings' heightmaps genuinely encode different values.
+
+Not the same as PITFALLS #6 (per-tile splat boundaries) — that was
+RGBA color discontinuity in the tile-paging renderer; this is height
+geometry in the clipmap renderer.
+
+### How to recognize it next time
+If you build a clipmap-style renderer with per-ring heightmaps and you
+see boundary cliffs even after fixing UV alignment and async-latency
+issues — you need morph zones.
 
 ## Methodology lessons (not rules — just what costs the most time)
 

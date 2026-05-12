@@ -1,6 +1,6 @@
 # W4 — current state snapshot
 
-> **What we have right now.** Last updated: 2026-05-12 (post-Stage-3).
+> **What we have right now.** Last updated: 2026-05-12 (post-Stage-3.6).
 >
 > For *what to do next* see `ROADMAP.md`. For *how to take over* see
 > `HANDOFF.md`. This doc is "running inventory" — refresh whenever a
@@ -28,6 +28,16 @@ progress. Plan at `plans/AXIS1_PATH2_PLAN_2026_05_12.md`. Status:
   rapid snap changes). `HeightMapShape3D` collision on the inner
   `collision_rings` (tier knob). All deviations from plan documented
   in `build-notes/AXIS1_PATH2_STAGE3_BUILD_NOTES_2026_05_12.md`.
+- ✅ **Stage 3.6 — Morph zones**: complete pending editor
+  verification. Eliminates the elevation cliff at every ring boundary
+  by sampling both this ring's heightmap and the next coarser ring's
+  in the vertex shader, blending by Chebyshev distance from ring
+  center. Per-fragment normals morph identically.
+  `morph_band_fraction` tier knob (Low 0.20 → Ultra 0.08). A/B
+  captures in `captures/axis1_clipmap_morph_{on,off}_*`. Full writeup
+  in `build-notes/MORPH_ZONES_BUILD_NOTES_2026_05_12.md`. Adds
+  PITFALLS #11 (missing morph zone). Also fixes the missing half-
+  texel offset PITFALLS #8 had documented.
 - ⏳ **Stage 4 — Clipmap splat + biome rendering**: pending. Wires
   Axis 6 world-splat pattern into the clipmap renderer.
 
@@ -85,10 +95,10 @@ Full one-line-per-tool index: `reference/TOOLS.md`.
 
 ## Test inventory
 
-**54 pytest tests passing as of 2026-05-12.** Breakdown:
+**56 pytest tests passing as of 2026-05-12.** Breakdown:
 
 - Kernel system: 17 tests (`test_kernel_base`, `test_noise_stack_kernel`, `test_kernel_composer`, `test_kernel_cross_impl`).
-- Quality tiers: 9 tests (`test_quality_tiers`, `test_quality_tiers_cross_impl`).
+- Quality tiers: 11 tests (`test_quality_tiers`, `test_quality_tiers_cross_impl`) — added `test_morph_band_fraction_*`.
 - Biome catalog: 5 tests (`test_biome_catalog`).
 - Texture-array builders: 4 tests (`test_build_biome_arrays`).
 - Splat builders: 19 tests (`test_build_tile_splats`, `test_build_world_splat`).
@@ -98,7 +108,7 @@ Run all: `cd "world 4" && python -m pytest tests/ -v`.
 ## Known pitfalls (≥ 1 per session)
 
 See `reference/PITFALLS.md` for the canonical list with diagnosis +
-fix per entry. Current count: **10 documented pitfall classes**:
+fix per entry. Current count: **11 documented pitfall classes**:
 
 - #1–#4: source-DEM + PBR-at-scale issues (anchor / scale_demo era)
 - #5, #5b: Texture2DArray gotchas (Axis 6)
@@ -107,6 +117,7 @@ fix per entry. Current count: **10 documented pitfall classes**:
 - #8: half-texel UV offset for heightmap sampling (Stage 3)
 - #9: `inner_grid_n` rounded UP → gap (Stage 2 — round DOWN)
 - #10: `WorkerThreadPool` outlives shared deps → shutdown crashes (Stage 3.4)
+- #11: clipmap without morph zones → cliff at every ring boundary (Stage 3.6)
 
 ## What's documented now (and not)
 
