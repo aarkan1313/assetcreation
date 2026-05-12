@@ -109,6 +109,33 @@ out so you don't trip over them:
   session).
 - `.gitignore` rule added to skip `world 4/_to_delete/` trash root.
 
+## DO THIS FIRST — Phase 0: Scene componentization
+
+Before any Tier 1 roadmap work, execute the plan at
+`docs/plans/PHASE_0_SCENE_COMPONENTIZATION_2026_05_12.md`.
+
+**Why first:** the current 19 .tscn files have heavy duplication
+(e.g. `clipmap_debug.tscn` and `test_harness/clipmap_walk_test.tscn`
+differ by exactly 1 line). The new roadmap adds more test scenes
+(skybox, infinite-world, stochastic-texture, decoration). Without a
+componentization pass the duplication cost compounds with every Tier 1
+feature.
+
+**Scope:** factor `World + CameraRig + Sun` into a reusable
+`clipmap_world.tscn` PackedScene under `scenes/components/`. Migrate
+the 6 clipmap-related scenes to instance it. Verify captures unchanged
+bytewise.
+
+**Estimate:** 1-2 sessions. 9 tasks in the plan doc, with verification
+checklist at the bottom.
+
+**Outcome:** new scene work after Phase 0 is "instance the prefab + add
+test-specific bits" (5 minutes), not "copy-paste 27 lines + edit one
+param" (30 minutes).
+
+The code infrastructure is already universal — only the scene wiring
+is tangled. This is a pure refactor; no behavior changes.
+
 ## The new tiered roadmap (2026-05-12)
 
 The previous "Strand A vs Strand B" framing is gone. User reset
@@ -157,7 +184,11 @@ The wizard game's 2.5D framing leans on Tier 4 eventually. Path to
 
 ## Where to start
 
-Read ROADMAP.md, then pick from Tier 1. The natural next pieces:
+**Phase 0 first** — `docs/plans/PHASE_0_SCENE_COMPONENTIZATION_2026_05_12.md`.
+Read that plan, confirm scope with user (Task 1 in the plan), then
+execute. ~1-2 sessions. Unlocks all Tier 1+ work.
+
+After Phase 0, read ROADMAP.md and pick from Tier 1:
 
 - **If Axis 1 Path 2 editor verification is the blocker**: ask the user
   whether they've verified stages 2-3.6 + 4.1 in the editor yet. If
@@ -167,6 +198,9 @@ Read ROADMAP.md, then pick from Tier 1. The natural next pieces:
 - **If the user wants the "true infinite" item first**: it's smaller
   scope (remove the 4 km bound from `ClipmapWorld`) and probably 1-2
   sessions.
+- **If skybox is the priority**: Phase 0 specifically de-risks this
+  one — the new skybox test scene will be a 5-minute drop with the
+  component pattern in place.
 
 ## Methodological rules to remember
 
