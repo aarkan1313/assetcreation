@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "tiers": [
+    {"name": "standard", "resolution": 1024},
+    {"name": "hero",     "resolution": 4096}
+  ],
+  "slots": ["ground", "mid", "rock"],
+  "maps":  ["albedo", "normal", "roughness", "ao"],
+  "biomes": [
+    {
+      "name": "forest",
+      "kit_dir": "materials/anchor_v2",
+      "slots": {
+        "ground": {"source": "scrub_dense",   "tier": "hero"},
+        "mid":    {"source": "tundra_lichen", "tier": "standard"},
+        "rock":   {"source": "rocky_slope",   "tier": "hero"}
+      }
+    },
+    {
+      "name": "alpine",
+      "kit_dir": "materials/biome_alpine",
+      "slots": {
+        "ground": {"source": "ground", "tier": "standard"},
+        "mid":    {"source": "mid",    "tier": "standard"},
+        "rock":   {"source": "rock",   "tier": "standard"}
+      }
+    },
+    {
+      "name": "desert",
+      "kit_dir": "materials/biome_desert",
+      "slots": {
+        "ground": {"source": "ground", "tier": "standard"},
+        "mid":    {"source": "mid",    "tier": "standard"},
+        "rock":   {"source": "rock",   "tier": "standard"}
+      }
+    },
+    {
+      "name": "rocky",
+      "kit_dir": "materials/biome_rocky",
+      "slots": {
+        "ground": {"source": "ground", "tier": "standard"},
+        "mid":    {"source": "mid",    "tier": "standard"},
+        "rock":   {"source": "rock",   "tier": "standard"}
+      }
+    },
+    {
+      "name": "wetland",
+      "kit_dir": "materials/biome_wetland",
+      "slots": {
+        "ground": {"source": "ground", "tier": "standard"},
+        "mid":    {"source": "mid",    "tier": "standard"},
+        "rock":   {"source": "rock",   "tier": "standard"}
+      }
+    }
+  ]
+}
