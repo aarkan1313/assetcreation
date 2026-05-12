@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.000256,
+    "periodic_locality": 7.825,
+    "richness": 0.432,
+    "composite": 0.8428,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_ground_05_old_drift_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.004714527709444685,
+      "pass1_seconds": 4.04,
+      "pass3_seconds": 6.15,
+      "final_seam_score": 0.0002563667517357357,
+      "seam_improvement": 0.0044581609577089495
+    }
+  },
+  {
+    "edge_seam": 0.000124,
+    "periodic_locality": 10.321,
+    "richness": 0.367,
+    "composite": 0.7799,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_ground_05_old_drift_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.004009500552672049,
+      "pass1_seconds": 4.04,
+      "pass3_seconds": 6.13,
+      "final_seam_score": 0.00012385560841983852,
+      "seam_improvement": 0.0038856449442522104
+    }
+  },
+  {
+    "edge_seam": 0.000204,
+    "periodic_locality": 11.383,
+    "richness": 0.346,
+    "composite": 0.7519,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_ground_05_old_drift_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.002346473233326725,
+      "pass1_seconds": 4.04,
+      "pass3_seconds": 6.14,
+      "final_seam_score": 0.0002041232187167721,
+      "seam_improvement": 0.002142350014609953
+    }
+  },
+  {
+    "edge_seam": 0.000256,
+    "periodic_locality": 14.35,
+    "richness": 0.399,
+    "composite": 0.6988,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_ground_05_old_drift_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.004195161472600683,
+      "pass1_seconds": 4.04,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.00025621656911366725,
+      "seam_improvement": 0.003938944903487016
+    }
+  }
+]

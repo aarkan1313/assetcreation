@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.011604,
+    "periodic_locality": 5.907,
+    "richness": 0.888,
+    "composite": 0.7455,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_mid_14_scree_with_lichen_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.0755387651384083,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 6.13,
+      "final_seam_score": 0.01160375985948914,
+      "seam_improvement": 0.06393500527891917
+    }
+  },
+  {
+    "edge_seam": 0.018408,
+    "periodic_locality": 9.405,
+    "richness": 0.923,
+    "composite": 0.5448,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_mid_14_scree_with_lichen_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.04449731999110919,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.18,
+      "final_seam_score": 0.018408310130118222,
+      "seam_improvement": 0.026089009860990966
+    }
+  },
+  {
+    "edge_seam": 0.020235,
+    "periodic_locality": 10.564,
+    "richness": 0.943,
+    "composite": 0.4926,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_mid_14_scree_with_lichen_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.05729630730968858,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 8.16,
+      "final_seam_score": 0.020235270463884084,
+      "seam_improvement": 0.037061036845804494
+    }
+  },
+  {
+    "edge_seam": 0.019441,
+    "periodic_locality": 18.719,
+    "richness": 0.933,
+    "composite": 0.33,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_mid_14_scree_with_lichen_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.04594159998558247,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 8.16,
+      "final_seam_score": 0.01944084569336313,
+      "seam_improvement": 0.02650075429221934
+    }
+  }
+]

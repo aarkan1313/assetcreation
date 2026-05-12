@@ -6,115 +6,418 @@
       "id": "01_lichen_thin_snow",
       "prompt": "tileable seamless texture, thin snow patches over lichen-spotted dark rock, cool grey-blue palette, mixed alpine surface, overhead perspective",
       "size": 1024,
-      "status": "rejected_auto",
-      "promoted_to": null,
-      "generated_at": null,
-      "migrated_from_flat": true,
-      "grade": "B",
-      "metrics": {
-        "periodic": 13.938968977306214,
-        "edge": 0.003644246608018875,
-        "junction": 1.0327793969885635,
-        "richness": 0.9514673041798608
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.45,
+        "mip32_stdev": 6.0
       },
-      "below_A_reason": "periodic_artifact"
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T17:51:59+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
     },
     "02_moss_grey_rock": {
       "id": "02_moss_grey_rock",
       "prompt": "tileable seamless texture, patchy moss on grey alpine rock with snow remnants, muted cool palette, weathered, overhead perspective",
       "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.45,
+        "mip32_stdev": 6.0
+      },
       "status": "rejected_auto",
       "promoted_to": null,
-      "generated_at": null,
-      "migrated_from_flat": true,
-      "grade": "B",
-      "metrics": {
-        "periodic": 15.681862759897054,
-        "edge": 0.003044557524845004,
-        "junction": 1.0429681551755392,
-        "richness": 0.9315002033692232
-      },
-      "below_A_reason": "periodic_artifact"
+      "generated_at": "2026-05-12T17:53:26+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
     },
     "03_exposed_bedrock_ice": {
       "id": "03_exposed_bedrock_ice",
       "prompt": "tileable seamless texture, exposed dark bedrock fringed with ice and snow crusts, sharp grey-and-white contrast, overhead perspective",
       "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.45,
+        "mip32_stdev": 6.0
+      },
       "status": "candidate",
       "promoted_to": null,
-      "generated_at": null,
-      "migrated_from_flat": true,
-      "grade": "A",
-      "metrics": {
-        "periodic": 8.329311686452966,
-        "edge": 0.0007462474168278277,
-        "junction": 0.7944846776326507,
-        "richness": 0.7862385363040041
-      },
-      "below_A_reason": null
+      "generated_at": "2026-05-12T17:54:30+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
     },
     "04_lichen_yellow_rock": {
       "id": "04_lichen_yellow_rock",
       "prompt": "tileable seamless texture, yellow-green lichen splotches on weathered grey rock with snow dust, alpine high-altitude, overhead perspective",
       "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.45,
+        "mip32_stdev": 6.0
+      },
       "status": "rejected_auto",
       "promoted_to": null,
-      "generated_at": null,
-      "migrated_from_flat": true,
-      "grade": "B",
-      "metrics": {
-        "periodic": 16.39006724527552,
-        "edge": 0.0042040422558784485,
-        "junction": 1.0874162796057798,
-        "richness": 1.0799475668277605
-      },
-      "below_A_reason": "periodic_artifact"
+      "generated_at": "2026-05-12T17:55:34+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
     },
     "05_frosted_lichen": {
       "id": "05_frosted_lichen",
       "prompt": "tileable seamless texture, frosted lichen on cold-grey alpine rock, frost-rim accents, mostly grey with faint green-blue, overhead perspective",
       "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.45,
+        "mip32_stdev": 6.0
+      },
       "status": "candidate",
       "promoted_to": null,
-      "generated_at": null,
-      "migrated_from_flat": true,
-      "grade": "A",
-      "metrics": {
-        "periodic": 12.329789000086713,
-        "edge": 0.003060822142288089,
-        "junction": 1.131805605365988,
-        "richness": 1.105723745277689
-      },
-      "below_A_reason": null
+      "generated_at": "2026-05-12T17:56:38+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
     },
     "06_mixed_scree_snow": {
       "id": "06_mixed_scree_snow",
       "prompt": "tileable seamless texture, loose scree fragments mixed with crusty snow, mid-grey rock and bright snow patches, overhead perspective",
       "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.45,
+        "mip32_stdev": 6.0
+      },
       "status": "rejected_auto",
       "promoted_to": null,
-      "generated_at": null,
-      "migrated_from_flat": true,
-      "grade": "B",
-      "metrics": {
-        "periodic": 13.108047027337333,
-        "edge": 0.0007463274523615837,
-        "junction": 1.0103591022539133,
-        "richness": 0.824728484612872
-      },
-      "below_A_reason": "periodic_artifact"
+      "generated_at": "2026-05-12T17:57:39+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
     },
     "07_mossy_wet_slate": {
       "id": "07_mossy_wet_slate",
       "prompt": "tileable seamless texture, wet dark slate with dense moss carpet, cool damp palette of dark green and slate grey, overhead perspective",
       "size": 1024,
-      "status": "intermediates_only",
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.45,
+        "mip32_stdev": 6.0
+      },
+      "status": "rejected_auto",
       "promoted_to": null,
-      "generated_at": null,
-      "migrated_from_flat": true,
-      "grade": null,
-      "metrics": null,
-      "below_A_reason": "no_qa_json"
+      "generated_at": "2026-05-12T17:58:42+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "08_alpine_grass_snow": {
+      "id": "08_alpine_grass_snow",
+      "prompt": "tileable seamless texture, tufts of brown alpine grass poking through thin snow, muted earth-brown and cold white, overhead perspective",
+      "size": 1024,
+      "grade": "C",
+      "passed_checks": 2,
+      "failed_checks": [
+        "edge_continuity",
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.45,
+        "mip32_stdev": 6.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T17:59:46+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "09_lichen_orange_blue": {
+      "id": "09_lichen_orange_blue",
+      "prompt": "tileable seamless texture, vivid orange lichen and grey-blue lichen mosaic on alpine rock with snow trim, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.45,
+        "mip32_stdev": 6.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T18:00:50+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "10_shattered_rock_snow": {
+      "id": "10_shattered_rock_snow",
+      "prompt": "tileable seamless texture, shattered rock fragments with snow filling cracks, sharp dark edges against bright snow, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.45,
+        "mip32_stdev": 6.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T18:01:58+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "11_moss_meltwater": {
+      "id": "11_moss_meltwater",
+      "prompt": "tileable seamless texture, moss-covered rock with meltwater pooling, wet dark-green moss and grey rock, subtle highlights, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.45,
+        "mip32_stdev": 6.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T18:03:06+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "12_lichen_dense_carpet": {
+      "id": "12_lichen_dense_carpet",
+      "prompt": "tileable seamless texture, dense pale lichen carpet on dark alpine rock, faded mint and grey palette, weathered, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.45,
+        "mip32_stdev": 6.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T18:04:11+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "13_permafrost_polygon": {
+      "id": "13_permafrost_polygon",
+      "prompt": "tileable seamless texture, polygonal permafrost terrain with frost cracks and small stones, muted ochre and grey, overhead perspective",
+      "size": 1024,
+      "grade": "C",
+      "passed_checks": 2,
+      "failed_checks": [
+        "periodic_artifact",
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.45,
+        "mip32_stdev": 6.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T18:05:17+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "14_scree_with_lichen": {
+      "id": "14_scree_with_lichen",
+      "prompt": "tileable seamless texture, scree slope with sparse lichen growth, mid-grey rock fragments and pale green spots, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.45,
+        "mip32_stdev": 6.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T18:06:22+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "15_snowmelt_mineral": {
+      "id": "15_snowmelt_mineral",
+      "prompt": "tileable seamless texture, snowmelt rivulets over mineral-stained alpine rock, rusty streaks and grey base, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.45,
+        "mip32_stdev": 6.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T18:07:29+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "16_boulder_snow_caps": {
+      "id": "16_boulder_snow_caps",
+      "prompt": "tileable seamless texture, scattered alpine boulders with snow caps and lichen flanks, dark rock and bright snow, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.45,
+        "mip32_stdev": 6.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T18:08:36+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "17_tundra_dwarf": {
+      "id": "17_tundra_dwarf",
+      "prompt": "tileable seamless texture, alpine tundra with dwarf shrubs and crusty snow patches, brown vegetation and cold white, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.45,
+        "mip32_stdev": 6.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T18:09:46+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "18_frost_heaved": {
+      "id": "18_frost_heaved",
+      "prompt": "tileable seamless texture, frost-heaved soil with stone polygons, cracked alpine ground, muted browns and greys, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.45,
+        "mip32_stdev": 6.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T18:10:51+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "19_wet_lichen_quartz": {
+      "id": "19_wet_lichen_quartz",
+      "prompt": "tileable seamless texture, wet lichen on quartz-veined rock, dark surface with bright white veins and green patches, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.45,
+        "mip32_stdev": 6.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T18:12:06+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "20_windscoured_ice": {
+      "id": "20_windscoured_ice",
+      "prompt": "tileable seamless texture, wind-scoured ice over rock fragments, glassy clear ice with embedded grey stones, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.45,
+        "mip32_stdev": 6.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T18:13:24+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "21_spring_thaw": {
+      "id": "21_spring_thaw",
+      "prompt": "tileable seamless texture, spring thaw transition: patchy snow, wet rock, emerging moss, mixed cold-and-warm tones, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.45,
+        "mip32_stdev": 6.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T18:31:32+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
     }
   }
 }

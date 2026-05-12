@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.007393,
+    "periodic_locality": 7.703,
+    "richness": 0.768,
+    "composite": 0.7699,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_mid_07_mossy_wet_slate_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.048330149461745485,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.14,
+      "final_seam_score": 0.007393420555645665,
+      "seam_improvement": 0.04093672890609982
+    }
+  },
+  {
+    "edge_seam": 0.009554,
+    "periodic_locality": 11.889,
+    "richness": 0.84,
+    "composite": 0.6529,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_mid_07_mossy_wet_slate_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.022525912134155134,
+      "pass1_seconds": 4.04,
+      "pass3_seconds": 6.13,
+      "final_seam_score": 0.009553691976943965,
+      "seam_improvement": 0.012972220157211169
+    }
+  },
+  {
+    "edge_seam": 0.010183,
+    "periodic_locality": 12.664,
+    "richness": 0.887,
+    "composite": 0.6335,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_mid_07_mossy_wet_slate_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.05516087187019415,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 8.13,
+      "final_seam_score": 0.010183237817185697,
+      "seam_improvement": 0.044977634053008454
+    }
+  },
+  {
+    "edge_seam": 0.014613,
+    "periodic_locality": 20.483,
+    "richness": 0.766,
+    "composite": 0.356,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_mid_07_mossy_wet_slate_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.02856086939218089,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 6.12,
+      "final_seam_score": 0.014613209350069685,
+      "seam_improvement": 0.013947660042111206
+    }
+  }
+]

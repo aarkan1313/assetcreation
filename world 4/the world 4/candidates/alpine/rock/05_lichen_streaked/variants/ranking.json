@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.008867,
+    "periodic_locality": 6.875,
+    "richness": 0.94,
+    "composite": 0.7922,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_rock_05_lichen_streaked_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.04501244638480392,
+      "pass1_seconds": 4.07,
+      "pass3_seconds": 8.14,
+      "final_seam_score": 0.008866972551122164,
+      "seam_improvement": 0.03614547383368176
+    }
+  },
+  {
+    "edge_seam": 0.00633,
+    "periodic_locality": 16.094,
+    "richness": 0.889,
+    "composite": 0.6386,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_rock_05_lichen_streaked_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.04813219374759708,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.19,
+      "final_seam_score": 0.006329531554119809,
+      "seam_improvement": 0.041802662193477266
+    }
+  },
+  {
+    "edge_seam": 0.008456,
+    "periodic_locality": 16.95,
+    "richness": 0.933,
+    "composite": 0.5869,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_rock_05_lichen_streaked_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.051709288494809685,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.00845643802864283,
+      "seam_improvement": 0.04325285046616686
+    }
+  },
+  {
+    "edge_seam": 0.020734,
+    "periodic_locality": 8.844,
+    "richness": 0.926,
+    "composite": 0.5254,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_rock_05_lichen_streaked_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.04543831924620338,
+      "pass1_seconds": 4.16,
+      "pass3_seconds": 8.17,
+      "final_seam_score": 0.020734458726811802,
+      "seam_improvement": 0.02470386051939158
+    }
+  }
+]

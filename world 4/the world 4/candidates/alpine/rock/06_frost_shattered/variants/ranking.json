@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.00961,
+    "periodic_locality": 8.287,
+    "richness": 0.912,
+    "composite": 0.742,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_rock_06_frost_shattered_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.03609032208165129,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 6.14,
+      "final_seam_score": 0.009610486351403307,
+      "seam_improvement": 0.026479835730247984
+    }
+  },
+  {
+    "edge_seam": 0.010823,
+    "periodic_locality": 9.296,
+    "richness": 0.934,
+    "composite": 0.7009,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_rock_06_frost_shattered_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.05413140754157055,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 8.15,
+      "final_seam_score": 0.010823150951557094,
+      "seam_improvement": 0.04330825659001346
+    }
+  },
+  {
+    "edge_seam": 0.012181,
+    "periodic_locality": 10.09,
+    "richness": 0.934,
+    "composite": 0.657,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_rock_06_frost_shattered_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.053612436472750866,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.15,
+      "final_seam_score": 0.012181247709715013,
+      "seam_improvement": 0.04143118876303585
+    }
+  },
+  {
+    "edge_seam": 0.014946,
+    "periodic_locality": 13.054,
+    "richness": 0.946,
+    "composite": 0.5418,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_rock_06_frost_shattered_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.052835538014225296,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.014946199891568148,
+      "seam_improvement": 0.03788933812265715
+    }
+  }
+]

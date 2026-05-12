@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.00662,
+    "periodic_locality": 9.503,
+    "richness": 0.836,
+    "composite": 0.761,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_mid_01_lichen_thin_snow_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.10280707089821223,
+      "pass1_seconds": 4.16,
+      "pass3_seconds": 8.16,
+      "final_seam_score": 0.006619824706843522,
+      "seam_improvement": 0.0961872461913687
+    }
+  },
+  {
+    "edge_seam": 0.008056,
+    "periodic_locality": 10.708,
+    "richness": 0.891,
+    "composite": 0.718,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_mid_01_lichen_thin_snow_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.06268948165969819,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 8.2,
+      "final_seam_score": 0.008056456651287966,
+      "seam_improvement": 0.054633025008410226
+    }
+  },
+  {
+    "edge_seam": 0.00819,
+    "periodic_locality": 10.568,
+    "richness": 0.797,
+    "composite": 0.6995,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_mid_01_lichen_thin_snow_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.11826286764705882,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 8.17,
+      "final_seam_score": 0.008189859181264417,
+      "seam_improvement": 0.1100730084657944
+    }
+  },
+  {
+    "edge_seam": 0.003927,
+    "periodic_locality": 15.464,
+    "richness": 0.757,
+    "composite": 0.6737,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_mid_01_lichen_thin_snow_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.2008356761822376,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 8.2,
+      "final_seam_score": 0.003927010166237145,
+      "seam_improvement": 0.19690866601600046
+    }
+  }
+]

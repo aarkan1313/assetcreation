@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.001833,
+    "periodic_locality": 6.216,
+    "richness": 0.515,
+    "composite": 0.8618,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_ground_09_wind_swept_thin_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.05071117478854287,
+      "pass1_seconds": 4.07,
+      "pass3_seconds": 6.14,
+      "final_seam_score": 0.0018332843127868489,
+      "seam_improvement": 0.04887789047575602
+    }
+  },
+  {
+    "edge_seam": 0.003997,
+    "periodic_locality": 10.797,
+    "richness": 0.669,
+    "composite": 0.7528,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_ground_09_wind_swept_thin_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.045661524413687045,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.13,
+      "final_seam_score": 0.00399743572559232,
+      "seam_improvement": 0.04166408868809472
+    }
+  },
+  {
+    "edge_seam": 0.005452,
+    "periodic_locality": 9.364,
+    "richness": 0.573,
+    "composite": 0.7348,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_ground_09_wind_swept_thin_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.0527134207696559,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 8.15,
+      "final_seam_score": 0.005452404968191321,
+      "seam_improvement": 0.04726101580146458
+    }
+  },
+  {
+    "edge_seam": 0.005438,
+    "periodic_locality": 12.642,
+    "richness": 0.659,
+    "composite": 0.6833,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_ground_09_wind_swept_thin_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.07636294484092657,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 6.14,
+      "final_seam_score": 0.005437637323235054,
+      "seam_improvement": 0.07092530751769151
+    }
+  }
+]

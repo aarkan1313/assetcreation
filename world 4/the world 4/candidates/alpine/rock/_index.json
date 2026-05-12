@@ -1,0 +1,278 @@
+{
+  "biome": "alpine",
+  "slot": "rock",
+  "candidates": {
+    "01_dark_slate": {
+      "id": "01_dark_slate",
+      "prompt": "tileable seamless texture, weathered dark slate rock with sharp cleavage planes, cool grey palette, alpine bedrock, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T18:15:41+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "02_shattered_granite": {
+      "id": "02_shattered_granite",
+      "prompt": "tileable seamless texture, shattered alpine granite with angular fractures, mid-grey with subtle pink-feldspar grain, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T18:16:46+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "03_quartz_veined": {
+      "id": "03_quartz_veined",
+      "prompt": "tileable seamless texture, dark alpine rock with bright white quartz veins running through, cool grey with high contrast, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T18:17:54+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "04_weathered_basalt": {
+      "id": "04_weathered_basalt",
+      "prompt": "tileable seamless texture, weathered dark basalt outcrop with frost-shattered surface, cool grey-blue palette, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T18:19:04+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "05_lichen_streaked": {
+      "id": "05_lichen_streaked",
+      "prompt": "tileable seamless texture, alpine rock heavily streaked with yellow and grey lichen, cool grey base with dappled accents, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T18:20:10+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "06_frost_shattered": {
+      "id": "06_frost_shattered",
+      "prompt": "tileable seamless texture, frost-shattered alpine bedrock, sharp angular fragments, mid-grey palette, weathered, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T18:21:15+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "07_mossy_dark_slate": {
+      "id": "07_mossy_dark_slate",
+      "prompt": "tileable seamless texture, dark slate with patchy moss in cracks, near-black rock with bright green crack-fill, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T18:22:20+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "08_glacial_polished": {
+      "id": "08_glacial_polished",
+      "prompt": "tileable seamless texture, glacially polished alpine rock, smooth grey surface with faint striations, cool palette, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T18:23:25+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "09_talus_face": {
+      "id": "09_talus_face",
+      "prompt": "tileable seamless texture, tightly packed talus rock face, angular fragments of dark grey alpine stone, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T18:24:33+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "10_iron_stained": {
+      "id": "10_iron_stained",
+      "prompt": "tileable seamless texture, iron-stained alpine rock with rusty streaks over grey bedrock, weathered alpine surface, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T18:25:41+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "11_schist_layered": {
+      "id": "11_schist_layered",
+      "prompt": "tileable seamless texture, layered schist rock with shimmering mica flecks, mid-grey foliation with subtle sparkle, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T18:26:49+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "12_cracked_bedrock": {
+      "id": "12_cracked_bedrock",
+      "prompt": "tileable seamless texture, cracked alpine bedrock with deep frost-cracks and lichen in fissures, cool grey palette, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T18:27:56+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "13_snow_dusted_rock": {
+      "id": "13_snow_dusted_rock",
+      "prompt": "tileable seamless texture, alpine rock lightly dusted with snow in surface depressions, dark grey with bright accents, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T18:29:07+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "14_verglas_glaze": {
+      "id": "14_verglas_glaze",
+      "prompt": "tileable seamless texture, verglas ice glaze over dark alpine rock, glassy reflective surface with subtle grey base, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T18:30:13+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    }
+  }
+}

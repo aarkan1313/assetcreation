@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.002412,
+    "periodic_locality": 9.802,
+    "richness": 0.505,
+    "composite": 0.7728,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_rock_07_mossy_dark_slate_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.02230826184640523,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.13,
+      "final_seam_score": 0.0024121983112715063,
+      "seam_improvement": 0.019896063535133724
+    }
+  },
+  {
+    "edge_seam": 0.003923,
+    "periodic_locality": 9.838,
+    "richness": 0.658,
+    "composite": 0.7724,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_rock_07_mossy_dark_slate_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.023343175926927143,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 8.14,
+      "final_seam_score": 0.003922735124035828,
+      "seam_improvement": 0.019420440802891317
+    }
+  },
+  {
+    "edge_seam": 0.00401,
+    "periodic_locality": 10.754,
+    "richness": 0.61,
+    "composite": 0.7418,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_rock_07_mossy_dark_slate_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.017473183015546904,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.15,
+      "final_seam_score": 0.004009710808342945,
+      "seam_improvement": 0.01346347220720396
+    }
+  },
+  {
+    "edge_seam": 0.01296,
+    "periodic_locality": 11.173,
+    "richness": 0.675,
+    "composite": 0.5669,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_alpine_rock_07_mossy_dark_slate_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.02687567018995098,
+      "pass1_seconds": 4.15,
+      "pass3_seconds": 6.35,
+      "final_seam_score": 0.012959878900242696,
+      "seam_improvement": 0.013915791289708284
+    }
+  }
+]

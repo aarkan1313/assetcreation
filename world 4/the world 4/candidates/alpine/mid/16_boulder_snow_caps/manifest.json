@@ -1,0 +1,186 @@
+{
+  "version": "w4_tx_pipeline_v1",
+  "asset_id": "div_alpine_mid_16_boulder_snow_caps",
+  "prompt": "tileable seamless texture, scattered alpine boulders with snow caps and lichen flanks, dark rock and bright snow, overhead perspective",
+  "settings": {
+    "unet": "flux-2-klein-9b-fp8.safetensors",
+    "clip": "qwen_3_8b_fp8mixed.safetensors",
+    "vae": "flux2-vae.safetensors",
+    "size": 1024,
+    "steps": 4,
+    "seed_base": 42,
+    "variants": 4,
+    "heal_denoise": 0.35,
+    "heal_mode": "flux_heal",
+    "delight_strength": 0.4,
+    "pbr_backend": "hybrid",
+    "seam_repair": true,
+    "seam_repair_patch": 64,
+    "seam_repair_feather": 12,
+    "category": "Snow",
+    "host": "http://127.0.0.1:8188"
+  },
+  "started_at": "2026-05-12T18:07:29+00:00",
+  "stages": [
+    {
+      "stage": "variants",
+      "n_variants": 4,
+      "ranking": [
+        {
+          "edge_seam": 0.004442,
+          "periodic_locality": 10.774,
+          "richness": 0.671,
+          "composite": 0.7448,
+          "variant_index": 3,
+          "seed": 3042,
+          "path": "v3_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_alpine_mid_16_boulder_snow_caps_v3",
+            "size": 1024,
+            "seed": 3042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.14279722642733564,
+            "pass1_seconds": 4.06,
+            "pass3_seconds": 8.14,
+            "final_seam_score": 0.004442251778162245,
+            "seam_improvement": 0.1383549746491734
+          }
+        },
+        {
+          "edge_seam": 0.006012,
+          "periodic_locality": 10.051,
+          "richness": 0.659,
+          "composite": 0.7264,
+          "variant_index": 1,
+          "seed": 1042,
+          "path": "v1_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_alpine_mid_16_boulder_snow_caps_v1",
+            "size": 1024,
+            "seed": 1042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.09907883236014994,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.13,
+            "final_seam_score": 0.006011564906676519,
+            "seam_improvement": 0.09306726745347342
+          }
+        },
+        {
+          "edge_seam": 0.00773,
+          "periodic_locality": 11.978,
+          "richness": 0.863,
+          "composite": 0.6922,
+          "variant_index": 0,
+          "seed": 42,
+          "path": "v0_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_alpine_mid_16_boulder_snow_caps_v0",
+            "size": 1024,
+            "seed": 42,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.09543124189013841,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.17,
+            "final_seam_score": 0.007730475414353855,
+            "seam_improvement": 0.08770076647578455
+          }
+        },
+        {
+          "edge_seam": 0.006657,
+          "periodic_locality": 12.54,
+          "richness": 0.797,
+          "composite": 0.6886,
+          "variant_index": 2,
+          "seed": 2042,
+          "path": "v2_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_alpine_mid_16_boulder_snow_caps_v2",
+            "size": 1024,
+            "seed": 2042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.03741685514585736,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 8.15,
+            "final_seam_score": 0.006657130070165321,
+            "seam_improvement": 0.030759725075692038
+          }
+        }
+      ]
+    },
+    {
+      "stage": "delight",
+      "strength": 0.4
+    },
+    {
+      "stage": "pbr",
+      "backend": "tx_pbr_hybrid",
+      "sm_size": 1024,
+      "category": "Snow",
+      "sm_input": "D:\\assets\\world 4\\the world 4\\candidates\\alpine\\mid\\16_boulder_snow_caps\\albedo.png",
+      "derive_log": {
+        "backend": "tx_pbr_derive",
+        "category": "Snow",
+        "snow_mode": true,
+        "normal_strength": 4.0,
+        "maps": [
+          "albedo",
+          "normal",
+          "roughness",
+          "ao",
+          "height",
+          "metallic"
+        ],
+        "preset_used": [
+          0.96,
+          0.04
+        ]
+      },
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ]
+    },
+    {
+      "stage": "seam_repair",
+      "module": "tx_seam_repair",
+      "patch": 64,
+      "feather": 12,
+      "plan_ops": 32,
+      "maps_processed": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ],
+      "maps_skipped": []
+    },
+    {
+      "stage": "qa",
+      "grade": "A",
+      "passed_checks": 4,
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 13.0,
+        "richness": 0.45,
+        "mip32_stdev": 6.0
+      },
+      "failed": []
+    }
+  ],
+  "grade": "A",
+  "passed": true,
+  "completed_at": "2026-05-12T18:08:36+00:00",
+  "status": "completed"
+}
