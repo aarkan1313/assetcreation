@@ -129,7 +129,7 @@ Run all: `cd "world 4" && python -m pytest tests/ -v`.
 ## Known pitfalls (≥ 1 per session)
 
 See `reference/PITFALLS.md` for the canonical list with diagnosis +
-fix per entry. Current count: **11 documented pitfall classes**:
+fix per entry. Current count: **12 documented pitfall classes**:
 
 - #1–#4: source-DEM + PBR-at-scale issues (anchor / scale_demo era)
 - #5, #5b: Texture2DArray gotchas (Axis 6)
@@ -139,6 +139,7 @@ fix per entry. Current count: **11 documented pitfall classes**:
 - #9: `inner_grid_n` rounded UP → gap (Stage 2 — round DOWN)
 - #10: `WorkerThreadPool` outlives shared deps → shutdown crashes (Stage 3.4)
 - #11: clipmap without morph zones → cliff at every ring boundary (Stage 3.6)
+- #12: clipmap overlap rendered as two visible ground surfaces -> seam/flash
 
 ## What's documented now (and not)
 

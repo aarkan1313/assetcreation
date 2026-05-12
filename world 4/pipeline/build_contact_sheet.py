@@ -78,6 +78,24 @@ def _candidate_cells(slot_dir: Path, grade_filter: set[str] | None
     return cells
 
 
+def _failed_checks_short(albedo: Path) -> str:
+    """Read qa.json from albedo's sibling and return short fail list."""
+    qa_path = albedo.parent / "qa.json"
+    if not qa_path.exists():
+        return ""
+    try:
+        qa = json.loads(qa_path.read_text(encoding="utf-8"))
+    except Exception:
+        return ""
+    short = {"edge_continuity": "edge", "junction_visibility": "junc",
+             "periodic_artifact": "period", "mip32_stdev": "mip32"}
+    checks = qa.get("checks", {})
+    failed = [short[k] for k in short
+              if isinstance(checks.get(k), dict)
+              and checks[k].get("passed") is False]
+    return "fail: " + ",".join(failed) if failed else ""
+
+
 def _draw_cell(albedo: Path, entry: dict, thumb: int) -> Image.Image:
     cell = Image.new("RGB", (thumb, thumb + LABEL_HEIGHT), (16, 16, 16))
     img = Image.open(albedo).convert("RGB").resize((thumb, thumb), Image.LANCZOS)
@@ -90,18 +108,13 @@ def _draw_cell(albedo: Path, entry: dict, thumb: int) -> Image.Image:
     draw.rectangle([0, thumb, 28, thumb + LABEL_HEIGHT], fill=color)
     draw.text((6, thumb + 7), grade or "-", font=_load_font(20),
               fill=(0, 0, 0))
-    # tag + metric
+    # tag + fail reason
     tag = entry["id"]
-    metrics = entry.get("metrics") or {}
-    period = metrics.get("periodic")
-    period_s = f" p={period:.1f}" if period is not None else ""
-    draw.text((34, thumb + 4), tag[:30], font=font, fill=(230, 230, 230))
-    draw.text((34, thumb + 20), period_s, font=_load_font(12),
-              fill=(180, 180, 180))
-    reason = entry.get("below_A_reason")
-    if reason:
-        # red overlay strip on the right edge of the thumb area
-        draw.rectangle([thumb - 6, 0, thumb, thumb], fill=(220, 60, 60))
+    draw.text((34, thumb + 2), tag[:30], font=font, fill=(230, 230, 230))
+    fail_short = _failed_checks_short(albedo)
+    if fail_short:
+        draw.text((34, thumb + 19), fail_short[:38], font=_load_font(11),
+                  fill=(220, 130, 130))
     return cell
 
 

@@ -17,42 +17,77 @@ wizard game, but the engine itself stays game-agnostic.
 
 ### Near-term (just shipped)
 
+**Texture pipeline rebuild** — W4-owned `tx_*` modules at
+`pipeline/textures/`, hybrid PBR backend (SM tileable + derive maps),
+canonical doc `features/textures.md`. Shipped 2026-05-12.
+
 **Axis 6 transitions** — soft biome blending, texture-array
 infrastructure, slot-pool indirection (streaming-ready). Shipped
-2026-05-12 on branch `axis6-transitions`. Captures
-`axis6_5{a,b,c,d}_*_2026_05_12.png`. Full writeup
-`build-notes/AXIS6_BUILD_NOTES_2026_05_12.md`. Portability guide
-`plans/AXIS6_PORTABILITY_README.md`. Ready to merge to main.
+2026-05-12. Full writeup `build-notes/AXIS6_BUILD_NOTES_2026_05_12.md`.
 
-### Parallel strands (medium-term, after Axis 6)
+**Axis 1 Path 2 stages 1-4.1** — kernel system + clipmap geometry +
+heightmap stack + morph zones + single-biome rendering proof.
+Still pending: editor verification + Stage 4.2 multi-biome culler.
 
-Two strands that can run in any order. Pick whichever is more
-game-blocking when its turn comes.
+### Priority-ranked goals (2026-05-12 revision)
 
-- **Strand A — 3D depth.** Real-game scale (Axis 1 follow-up: 4-8 km
-  worlds, LOD rings, DEM stitching). Procedural biome assignment from
-  heightmap (Axis 2 follow-up). Per-view × per-biome shading (Axis 4 ↔
-  Axis 2 follow-up). Real-ortho rock backfill (Axis 2 follow-up).
-  *Makes the 3D pipeline more capable.*
+User priority order. Each tier builds on the previous; can branch
+out within a tier when an item bites.
 
-- **Strand B — Output models.** Offline bake renderer (render world to
-  static image at build time). 2D-game integration recipe (Godot 2D
-  scene consuming a W4 bake). Per-game packaging as a Godot
-  addon/plugin. *Unlocks 2D/2.5D game output models without giving up
-  the W4 terrain pipeline.*
+**Tier 0 — Cross-cutting concerns (always apply).**
 
-The Strand B story matters for the 2.5D wizard game specifically: a
-baked image consumed by a 2D scene runs at sprite-game framerates
-while reusing all of W4's terrain authoring.
+- **Performance / mid-tier hardware floor.** RTX 3060 / 4060 target.
+  Every shipped feature must benchmark on that floor or be gated
+  behind a quality tier. Quality-tier system already in place
+  (`config/quality_tiers.json`); route new tunables through it.
+- **LLM-drivability** — every layer is schema + validator + deterministic.
 
-### Long-term
+**Tier 1 — World scope (the foundation for "real game").**
 
-- **Decoration (Axis 5).** Vegetation, rocks, scatter. Density maps
-  per biome. Needed in both strands (3D scatter + 2D sprite scatter).
-- **LLM-drivability cross-cut.** LLM authors biome catalog + tile
-  layout + DEM source. Becomes interesting once core engine stable.
-- **Per-game packaging.** Final form of "drop into any project" — the
-  W4 system as a Godot plugin shipped per game.
+- **Infinite world via kernels.** Axis 1 Path 2 already lays the
+  groundwork (kernel system + clipmap rings + procedural heightmaps).
+  Remove the soft world-bound assumption from `ClipmapWorld` so the
+  player can walk past 4 km indefinitely. Distant tiles generate
+  on-demand from kernels.
+- **Biome-to-biome transitions** — Axis 6 shipped. Polish items
+  parked (per-pair feather widths, 4-way junction).
+- **Intra-biome regional variation** — same biome reads differently
+  across regions. NEW work. Three scales, build in order: tile-scale
+  → cluster-scale → sub-biome-scale. See wishlist
+  "Stochastic ground texturing" for the architecture. Tier 7 below
+  also picks at this from the texture-pipeline side.
+- **Skybox + atmosphere** — procedural sky, fog, distance haze,
+  time-of-day. NEW work; net new shader + scene setup.
+
+**Tier 2 — Inhabiting the world.**
+
+- **Procedural decoration v0 (Axis 5)** — rocks, plants, debris.
+  Designed with a hand-authored-per-instance hook so it's easy to
+  replace procedural with handcrafted later. See wishlist
+  "Vegetation + organic-asset system" for the long-arc plan.
+
+**Tier 3 — Texture / biome workflow polish.**
+
+- **Stochastic per-tile texturing** — sibling system + stochastic UV
+  sampling. Wishlist "Stochastic ground texturing" MVP-floor and
+  MVP-good tiers. Also addresses Tier 1's tile-scale intra-biome
+  variation goal.
+- **Easier biome-author loop** — `promote_candidate.py` script,
+  palette-lock authoring, diversity batch UX.
+- **AAA-target compositor** — building-block composition per the
+  wishlist's AAA section. Heavy investment; only worth it once
+  Tier 1-2 ship and the visible-tile-repeat problem is empirical.
+
+**Tier 4 — Output models (deferred).**
+
+- **Offline bake renderer** — render world to static image at build
+  time. Unlocks 2D/2.5D consumer recipes for the wizard game.
+- **2D-game integration recipe** — Godot 2D scene consuming a bake.
+- **Per-game packaging** — W4 as a Godot plugin shipped per game.
+
+The wizard game's 2.5D framing leans on Tier 4 eventually. The path
+to "real game" still goes through Tier 1-2 first; output-model work
+is post-foundation polish.
 
 ## What's done
 
@@ -75,68 +110,91 @@ while reusing all of W4's terrain authoring.
 
 ## What's next, ranked
 
-Order reflects current judgement. Reranking happens any time the
-calculus changes (new info, new constraints, new user priorities).
+User priority order (2026-05-12 revision). Tiered — finish a tier
+before fully moving on, but you can branch between items within
+a tier as scope demands.
 
-### 1. Pick a strand (Strand A vs Strand B)
-**What:** Axis 6 shipped. The next session's first decision is which
-strand of the parallel-path plan to push:
+### Tier 0 — Cross-cutting (always)
 
-- **Strand A — 3D depth.** Real-game scale (Axis 1 follow-up: 4-8 km
-  worlds, LOD rings, multi-DEM stitching). Procedural biome assignment
-  (Axis 2 follow-up). Per-view × per-biome shading (Axis 4 ↔ Axis 2
-  follow-up). Real-ortho rock backfill (Axis 2 follow-up). Makes the
-  3D pipeline more capable.
-- **Strand B — Output models.** Offline bake renderer (render world to
-  static image at build time). 2D-game integration recipe (Godot 2D
-  scene consuming a bake). Per-game packaging as a Godot
-  addon/plugin. Unlocks 2.5D / topdown / 2D game output models
-  without giving up the W4 terrain pipeline.
+- **Performance on RTX 3060 / 4060.** New features must benchmark
+  or be gated behind a quality tier. Use `config/quality_tiers.json`
+  + `pipeline/quality_tiers.py` + `scripts/QualityTiers.gd`. Default
+  tier is `high` (3060-class target).
 
-The 2.5D wizard game leans Strand B. Real-game scale + decoration
-leans Strand A. Either path is unblocked; the choice is about what
-game ships first.
+### Tier 1 — World scope
 
-### 2. Parked follow-ups (any time, low priority)
+1. **Finish Axis 1 Path 2 — Stage 4.2 + editor verification.**
+   Multi-biome rendering in the clipmap. Validate all stages 1-3.5
+   visually in the editor.
+2. **Remove world-bound for infinite world.** Currently `ClipmapWorld`
+   has a soft 4 km bound. Remove that assumption so distant tiles
+   generate from kernels on-demand. True procedural infinite via
+   `NoiseStackKernel` (and future kernels).
+3. **Skybox + atmosphere.** Procedural sky, fog, distance haze,
+   minimal time-of-day. NEW shader + scene setup.
+4. **Intra-biome regional variation v0 — tile scale.** Wishlist
+   "Stochastic ground texturing" MVP-floor: pick from N siblings
+   per tile. Cheapest first slice. Sets up infrastructure for
+   later cluster-scale and sub-biome-scale variation.
 
-These don't block either strand and can run independently when an
-afternoon opens up:
+### Tier 2 — Inhabiting the world
+
+5. **Procedural decoration v0 (Axis 5).** Rocks + plants + debris
+   scatter. Density maps per biome. Designed so individual
+   instances can be hand-authored-overridden later (replace-seam).
+   See wishlist "Vegetation + organic-asset system" for the
+   long-arc plan.
+
+### Tier 3 — Texture / biome workflow polish
+
+6. **Stochastic per-tile texturing — MVP-good.** Add stochastic UV
+   sampling on top of Tier 1's MVP-floor.
+7. **Easier biome-author loop.** `promote_candidate.py` script,
+   palette-lock authoring, diversity batch UX, per-biome workflow
+   docs.
+8. **Intra-biome regional variation — cluster-scale and beyond.**
+   Wishlist "Stochastic ground texturing" mid tiers. Continues the
+   Tier 1 work at coarser scales.
+9. **AAA-target compositor.** Wishlist "Stochastic ground texturing"
+   AAA-target section. Building-block composition. Heavy investment;
+   only worth promoting if the Tier-1 + Tier-3 stochastic work
+   doesn't visually close the gap.
+
+### Tier 4 — Output models (deferred)
+
+10. **Offline bake renderer.** Render world to static image at
+    build time. Unlocks 2D/2.5D consumer recipes.
+11. **2D-game integration recipe.** Godot 2D scene consuming a bake.
+    Wizard-game integration path.
+12. **Per-game packaging.** W4 as a Godot plugin.
+
+### Parked follow-ups (small, no specific tier — pick up when convenient)
 
 - **Biome streaming** — LRU eviction + async layer-load. Slot-pool
-  indirection is already in place; just needs the policy + loader.
-  Plan for it when biome count exceeds ~30 (current scale_demo has
-  5 biomes, ~250 MB compressed in VRAM).
-- **Per-pair feather widths** — author per-biome-pair widths so
-  alpine↔desert can be wider than alpine↔forest.
-- **4-way junction handling** — currently drops the 4th distinct
-  neighbor at a 4-way tile junction. Rare; v1 limitation.
-- **Iso/topdown per-biome shading** (also listed under Strand A) —
-  currently single-material in iso/topdown views. Cross-cut Axis 4 ↔ 2.
-- **Real-ortho rock textures** for alpine + desert (also listed under
-  Strand A). Currently ComfyUI placeholders. Authenticity-only.
-- **Procedural biome assignment** (also listed under Strand A). 4×4
-  layout is hand-coded in `assign_biomes_scale_demo.py`. Becomes
-  meaningful at larger world sizes.
-- **Hand-painted / procedural splats** — splats are produced by
-  `build_tile_splats.py`'s hard + feather modes. Other splat sources
-  (noise masks, painted boundaries) plug in via the same on-disk
-  contract.
+  indirection already in place. Plan for when biome count > ~30.
+- **Per-pair feather widths** — wider feather for alpine↔desert
+  vs alpine↔forest.
+- **4-way junction handling** — currently drops 4th distinct
+  neighbor at 4-way tile junctions. Rare; v1 limitation.
+- **Iso/topdown per-biome shading** — currently single-material in
+  iso/topdown views.
+- **Real-ortho rock textures** for alpine + desert — current
+  ComfyUI rocks are placeholders. Authenticity-only follow-up.
+- **Procedural biome assignment from DEM features** — rules infer
+  biome from elevation + slope + climate. Replaces hand-painted
+  splats at larger world sizes.
+- **Hand-painted / procedural splats** — alternative splat sources
+  plug in via the on-disk contract.
 
-## What's not next-this-session (and why)
+## What's not next (and why)
 
-These are real concerns; they're parked behind Axis 6 + the strands
-above, not abandoned. See "Strategic shape" for where they live in the
-multi-month picture.
-
-- **Source axis (Axis 3) — procedural amplification.** Real DEMs work
-  fine and we have hundreds cached. Procedural makes sense once we
-  want non-Earth or specifically-shaped terrain. Not urgent.
-- **Decoration (Axis 5).** Listed in the long-term section of
-  Strategic shape. Needs both strands (3D scatter + 2D sprite scatter)
-  so it makes sense as a follow-on after either strand A or B has
-  matured.
-- **LLM-drivability cross-cut.** Long-term per Strategic shape.
-  Becomes interesting once core engine is stable across both strands.
+- **Source axis (Axis 3) — procedural amplification.** Real DEMs
+  work fine. Kernel-based generation is being built as part of
+  Tier 1 anyway. Axis 3 in its W3-era sense (DEM-to-procedural
+  hybrid kernels) is parked.
+- **LLM-drivability cross-cut.** Long-term. Layered into the design
+  via schema + validator + deterministic outputs at every layer,
+  but not active feature work yet.
 
 ## How to use this doc
 

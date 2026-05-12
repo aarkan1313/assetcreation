@@ -27,6 +27,7 @@
 | Clipmap rings don't overlap; thin dark gap visible at every ring boundary | **#9 — `inner_grid_n` rounded UP creates gap, not overlap** |
 | Worker-thread errors on scene shutdown: "null instance" from worker functions | **#10 — `WorkerThreadPool` outlives its shared dependencies** |
 | Elevation cliff at every clipmap ring boundary; persists with no other artifacts | **#11 — Clipmap rendering without morph zones** |
+| Same-texture clipmap ring boundary flickers/pepper-lines, especially during screenshots | **#12 — Overlap rendered as two visible ground surfaces** |
 
 ## Pitfall #1 — Source-texture black texels become speckle noise
 
@@ -674,6 +675,8 @@ The signal you've hit this variant vs the log-spam variant: **Godot
 crashes when you stop the scene in the editor** but works fine in
 headless captures.
 
+## Pitfall #11 — Clipmap rendering without morph zones
+
 ### Symptom
 - Visible elevation cliff / step at every ring boundary on a clipmap
   terrain renderer
@@ -730,6 +733,33 @@ geometry in the clipmap renderer.
 If you build a clipmap-style renderer with per-ring heightmaps and you
 see boundary cliffs even after fixing UV alignment and async-latency
 issues — you need morph zones.
+
+## Pitfall #12 — Overlap rendered as two visible ground surfaces
+
+### Symptom
+- The same ground texture shows a faint but clear clipmap ring boundary.
+- The seam may look like bad texture blending even with only one biome.
+- Screenshots can briefly reveal a flash or pepper at the boundary.
+
+### What's actually happening
+Snap-safe clipmap holes intentionally leave a small overlap so adjacent
+rings cannot expose a gap when their snapped centers differ. If both top
+surfaces remain visible in that overlap, the GPU depth test can choose
+different rings frame-to-frame or pixel-to-pixel. Even with identical
+albedo, the rings have different mesh density, height samples, and
+normals, so the overlap reads as a texture/lighting seam.
+
+### Fix
+Keep the overlap, but make it non-competing: update the coarser ring
+with the finer ring's finalized coverage center and half extent, then
+sink the coarser overlap slightly in the vertex shader. Do not hard
+discard the overlap unless the clip rect is proven to match the finer
+ring's actual snapped coverage; a center mismatch creates pinholes.
+
+### Follow-up watch item
+If screenshot-time flashing persists after overlap sinking, reproduce it
+separately with editor capture/video. Treat it as a render-timing or
+depth-order bug, not as proof the texture sampler is discontinuous.
 
 ## Methodology lessons (not rules — just what costs the most time)
 
