@@ -11,7 +11,7 @@
           "maps": {
             "albedo": "materials/anchor_v2/tundra_lichen/albedo.png",
             "normal": "materials/anchor_v2/tundra_lichen/normal.png",
-            "roughness": "materials/anchor_v2/tundra_lichen/roughness.png",
+            "roughness": "materials/anchor_v2/tundra_lichen/roughness__rgb.png",
             "ao": "materials/anchor_v2/tundra_lichen/ao.png"
           }
         },
@@ -22,8 +22,8 @@
           "maps": {
             "albedo": "materials/biome_alpine/ground/albedo.png",
             "normal": "materials/biome_alpine/ground/normal.png",
-            "roughness": "materials/biome_alpine/ground/roughness.png",
-            "ao": "materials/biome_alpine/ground/ao__upsampled1024.png"
+            "roughness": "materials/biome_alpine/ground/roughness__rgb.png",
+            "ao": "materials/biome_alpine/ground/ao__upsampled1024_rgb.png"
           }
         },
         {
@@ -33,8 +33,8 @@
           "maps": {
             "albedo": "materials/biome_alpine/mid/albedo.png",
             "normal": "materials/biome_alpine/mid/normal.png",
-            "roughness": "materials/biome_alpine/mid/roughness.png",
-            "ao": "materials/biome_alpine/mid/ao__upsampled1024.png"
+            "roughness": "materials/biome_alpine/mid/roughness__rgb.png",
+            "ao": "materials/biome_alpine/mid/ao__upsampled1024_rgb.png"
           }
         },
         {
@@ -44,8 +44,8 @@
           "maps": {
             "albedo": "materials/biome_alpine/rock/albedo.png",
             "normal": "materials/biome_alpine/rock/normal.png",
-            "roughness": "materials/biome_alpine/rock/roughness.png",
-            "ao": "materials/biome_alpine/rock/ao__upsampled1024.png"
+            "roughness": "materials/biome_alpine/rock/roughness__rgb.png",
+            "ao": "materials/biome_alpine/rock/ao__upsampled1024_rgb.png"
           }
         },
         {
@@ -55,8 +55,8 @@
           "maps": {
             "albedo": "materials/biome_desert/ground/albedo.png",
             "normal": "materials/biome_desert/ground/normal.png",
-            "roughness": "materials/biome_desert/ground/roughness.png",
-            "ao": "materials/biome_desert/ground/ao__upsampled1024.png"
+            "roughness": "materials/biome_desert/ground/roughness__rgb.png",
+            "ao": "materials/biome_desert/ground/ao__upsampled1024_rgb.png"
           }
         },
         {
@@ -66,8 +66,8 @@
           "maps": {
             "albedo": "materials/biome_desert/mid/albedo.png",
             "normal": "materials/biome_desert/mid/normal.png",
-            "roughness": "materials/biome_desert/mid/roughness.png",
-            "ao": "materials/biome_desert/mid/ao__upsampled1024.png"
+            "roughness": "materials/biome_desert/mid/roughness__rgb.png",
+            "ao": "materials/biome_desert/mid/ao__upsampled1024_rgb.png"
           }
         },
         {
@@ -77,8 +77,8 @@
           "maps": {
             "albedo": "materials/biome_desert/rock/albedo.png",
             "normal": "materials/biome_desert/rock/normal.png",
-            "roughness": "materials/biome_desert/rock/roughness.png",
-            "ao": "materials/biome_desert/rock/ao__upsampled1024.png"
+            "roughness": "materials/biome_desert/rock/roughness__rgb.png",
+            "ao": "materials/biome_desert/rock/ao__upsampled1024_rgb.png"
           }
         },
         {
@@ -88,8 +88,8 @@
           "maps": {
             "albedo": "materials/biome_rocky/ground/albedo.png",
             "normal": "materials/biome_rocky/ground/normal.png",
-            "roughness": "materials/biome_rocky/ground/roughness.png",
-            "ao": "materials/biome_rocky/ground/ao__upsampled1024.png"
+            "roughness": "materials/biome_rocky/ground/roughness__rgb.png",
+            "ao": "materials/biome_rocky/ground/ao__upsampled1024_rgb.png"
           }
         },
         {
@@ -99,8 +99,8 @@
           "maps": {
             "albedo": "materials/biome_rocky/mid/albedo.png",
             "normal": "materials/biome_rocky/mid/normal.png",
-            "roughness": "materials/biome_rocky/mid/roughness.png",
-            "ao": "materials/biome_rocky/mid/ao__upsampled1024.png"
+            "roughness": "materials/biome_rocky/mid/roughness__rgb.png",
+            "ao": "materials/biome_rocky/mid/ao__upsampled1024_rgb.png"
           }
         },
         {
@@ -110,8 +110,8 @@
           "maps": {
             "albedo": "materials/biome_wetland/ground/albedo.png",
             "normal": "materials/biome_wetland/ground/normal.png",
-            "roughness": "materials/biome_wetland/ground/roughness.png",
-            "ao": "materials/biome_wetland/ground/ao__upsampled1024.png"
+            "roughness": "materials/biome_wetland/ground/roughness__rgb.png",
+            "ao": "materials/biome_wetland/ground/ao__upsampled1024_rgb.png"
           }
         },
         {
@@ -121,8 +121,8 @@
           "maps": {
             "albedo": "materials/biome_wetland/mid/albedo.png",
             "normal": "materials/biome_wetland/mid/normal.png",
-            "roughness": "materials/biome_wetland/mid/roughness.png",
-            "ao": "materials/biome_wetland/mid/ao__upsampled1024.png"
+            "roughness": "materials/biome_wetland/mid/roughness__rgb.png",
+            "ao": "materials/biome_wetland/mid/ao__upsampled1024_rgb.png"
           }
         },
         {
@@ -132,8 +132,8 @@
           "maps": {
             "albedo": "materials/biome_wetland/rock/albedo.png",
             "normal": "materials/biome_wetland/rock/normal.png",
-            "roughness": "materials/biome_wetland/rock/roughness.png",
-            "ao": "materials/biome_wetland/rock/ao__upsampled1024.png"
+            "roughness": "materials/biome_wetland/rock/roughness__rgb.png",
+            "ao": "materials/biome_wetland/rock/ao__upsampled1024_rgb.png"
           }
         }
       ]
@@ -148,8 +148,8 @@
           "maps": {
             "albedo": "materials/anchor_v2/scrub_dense/albedo.png",
             "normal": "materials/anchor_v2/scrub_dense/normal.png",
-            "roughness": "materials/anchor_v2/scrub_dense/roughness.png",
-            "ao": "materials/anchor_v2/scrub_dense/ao__upsampled4096.png"
+            "roughness": "materials/anchor_v2/scrub_dense/roughness__rgb.png",
+            "ao": "materials/anchor_v2/scrub_dense/ao__upsampled4096_rgb.png"
           }
         },
         {
@@ -159,8 +159,8 @@
           "maps": {
             "albedo": "materials/anchor_v2/rocky_slope/albedo.png",
             "normal": "materials/anchor_v2/rocky_slope/normal.png",
-            "roughness": "materials/anchor_v2/rocky_slope/roughness.png",
-            "ao": "materials/anchor_v2/rocky_slope/ao__upsampled4096.png"
+            "roughness": "materials/anchor_v2/rocky_slope/roughness__rgb.png",
+            "ao": "materials/anchor_v2/rocky_slope/ao__upsampled4096_rgb.png"
           }
         },
         {
@@ -170,8 +170,8 @@
           "maps": {
             "albedo": "materials/biome_rocky/rock/albedo.png",
             "normal": "materials/biome_rocky/rock/normal.png",
-            "roughness": "materials/biome_rocky/rock/roughness.png",
-            "ao": "materials/biome_rocky/rock/ao__upsampled4096.png"
+            "roughness": "materials/biome_rocky/rock/roughness__rgb.png",
+            "ao": "materials/biome_rocky/rock/ao__upsampled4096_rgb.png"
           }
         }
       ]

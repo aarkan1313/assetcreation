@@ -26,6 +26,13 @@ enum LoadMode { LOAD_ALL, RADIUS }
 # behavior. Hard borders only — soft blending is Axis 6.
 @export var biome_materials: Dictionary = {}
 
+# When set, switches scale_demo to the texture-array + splat path
+# (Axis 6 transitions). The material at this path is loaded once,
+# texture arrays are constructed from the layer manifest at scene init,
+# and per-tile uniforms (splat texture + splat_*_indices + tile_origin_m
+# + tile_size_m) are set on per-tile duplicates of the material.
+@export var world_v2_material_path: String = ""
+
 # Per-view materials. When set, AnchorCameraRig (or anyone else) calls
 # set_view_mode("walk"/"iso"/"topdown") to swap the per-tile material
 # at runtime. If a view's path is empty, the active material doesn't
@@ -337,6 +344,174 @@ func _resolve_tile_material_path(tile_dir: String) -> String:
 	return bundle_dir + "material.tres"
 
 
+# ---- v2 (Axis 6 transitions) path ----
+#
+# Lazy-built at first access. Holds the global terrain material with the
+# 8 Texture2DArrays bound + lighting defaults, ready to be duplicated
+# per tile and have per-tile uniforms set.
+var _v2_base_material: ShaderMaterial = null
+var _v2_manifest: Dictionary = {}
+var _v2_arrays_built: bool = false
+
+
+func _build_v2_arrays_if_needed() -> bool:
+	# Returns true once arrays are built and bound to _v2_base_material;
+	# false if v2 path is disabled or any required resource is missing.
+	if _v2_arrays_built:
+		return true
+	if world_v2_material_path.is_empty():
+		return false
+	# Load the base material (.tres has shader + lighting defaults; no arrays).
+	var base_res: Resource = load(world_v2_material_path)
+	if not (base_res is ShaderMaterial):
+		push_error("ScaleWorld v2: world_v2_material_path is not a ShaderMaterial: " + world_v2_material_path)
+		return false
+	# Load the manifest.
+	var manifest_path: String = bundle_dir + "arrays/layer_manifest.json"
+	var mf: FileAccess = FileAccess.open(manifest_path, FileAccess.READ)
+	if mf == null:
+		push_error("ScaleWorld v2: missing layer_manifest at " + manifest_path)
+		return false
+	var parsed: Variant = JSON.parse_string(mf.get_as_text())
+	mf.close()
+	if typeof(parsed) != TYPE_DICTIONARY:
+		push_error("ScaleWorld v2: layer_manifest is not a dict")
+		return false
+	_v2_manifest = parsed
+	# Build the 8 arrays (2 tiers x 4 map types).
+	var tiers: Dictionary = _v2_manifest.get("tiers", {})
+	for tier_name in ["standard", "hero"]:
+		if not tiers.has(tier_name):
+			continue
+		var tdata: Dictionary = tiers[tier_name]
+		var layers: Array = tdata.get("layers", [])
+		if layers.is_empty():
+			continue
+		# For each map type, build an array with one layer per manifest entry,
+		# ordered by layer index.
+		for map_name in ["albedo", "normal", "roughness", "ao"]:
+			var sorted_layers: Array = layers.duplicate()
+			sorted_layers.sort_custom(func(a, b): return int(a["layer"]) < int(b["layer"]))
+			var imgs: Array = []
+			for layer_rec in sorted_layers:
+				var rel: String = String(layer_rec["maps"][map_name])
+				var tex: Texture2D = load("res://" + rel) as Texture2D
+				if tex == null:
+					push_error("ScaleWorld v2: failed to load %s" % rel)
+					return false
+				var img: Image = tex.get_image()
+				if img == null:
+					push_error("ScaleWorld v2: texture has no image: %s" % rel)
+					return false
+				# Decompress if needed so Texture2DArray.create_from_images
+				# accepts uniform formats.
+				if img.is_compressed():
+					var decomp_err: int = img.decompress()
+					if decomp_err != OK:
+						push_error("ScaleWorld v2: failed to decompress %s (err=%d)" % [rel, decomp_err])
+						return false
+				# Force a uniform pixel format across all layers — RGBA8 covers
+				# albedo (which may have alpha) and gives us RGB ports for the
+				# roughness/AO/normal layers free of the L8 vs RGB8 vs RGBA8 mix
+				# that breaks Texture2DArray.create_from_images.
+				if img.get_format() != Image.FORMAT_RGBA8:
+					img.convert(Image.FORMAT_RGBA8)
+				# Force uniform mipmap state. Godot's import pipeline may bake
+				# mipmaps into some PNGs and not others (depending on import
+				# preset / file age); create_from_images requires all layers
+				# to share has_mipmaps(). Drop mipmaps — Texture2DArray
+				# regenerates them as needed at sampling time.
+				if img.has_mipmaps():
+					img.clear_mipmaps()
+				imgs.append(img)
+			# Diagnostic: print first 3 layers' formats + sizes + mipmap flag.
+			var fmts: Array = []
+			for k in range(min(imgs.size(), 5)):
+				var im_diag: Image = imgs[k]
+				fmts.append("[%d] sz=%s fmt=%d mips=%s" % [
+					k, str(im_diag.get_size()), im_diag.get_format(),
+					str(im_diag.has_mipmaps())
+				])
+			print("[v2 arr] %s_%s: %s" % [tier_name, map_name, ", ".join(fmts)])
+			var arr: Texture2DArray = Texture2DArray.new()
+			var err: int = arr.create_from_images(imgs)
+			if err != OK:
+				push_error("ScaleWorld v2: create_from_images failed for %s_%s (err=%d, %d layers)" % [tier_name, map_name, err, imgs.size()])
+				return false
+			# Map manifest names -> shader uniform names. The shader uses
+			# "rough" not "roughness" so the uniform names match terrain_scale_v1.
+			var uniform_name: String = map_name if map_name != "roughness" else "rough"
+			base_res.set_shader_parameter("%s_%s" % [tier_name, uniform_name], arr)
+	_v2_base_material = base_res
+	_v2_arrays_built = true
+	print("[ScaleWorld v2] arrays built and bound (%d tiers, %d total layers)" % [
+		tiers.size(),
+		(tiers.get("standard", {}).get("layers", []) as Array).size() +
+		(tiers.get("hero", {}).get("layers", []) as Array).size(),
+	])
+	return true
+
+
+# Encode (tier, layer) into a packed int: tier in bit 30, layer in bits 0..29.
+func _v2_pack(tier_name: String, layer: int) -> int:
+	var tier_bit: int = 0 if tier_name == "standard" else 1
+	return (tier_bit << 30) | (layer & 0x3FFFFFFF)
+
+
+# Build the per-tile v2 material from the tile's splat_meta + splat.png.
+# Returns null if the v2 path is inactive or resources are missing.
+func _make_v2_tile_material(tile_dir: String, coord: Vector2i) -> ShaderMaterial:
+	if not _build_v2_arrays_if_needed():
+		return null
+	var splat_path: String = tile_dir + "splat.png"
+	var meta_path: String  = tile_dir + "splat_meta.json"
+	var splat_tex: Texture2D = load(splat_path) as Texture2D
+	if splat_tex == null:
+		push_error("ScaleWorld v2: missing splat at " + splat_path)
+		return null
+	var meta_file: FileAccess = FileAccess.open(meta_path, FileAccess.READ)
+	if meta_file == null:
+		push_error("ScaleWorld v2: missing splat_meta at " + meta_path)
+		return null
+	var meta_parsed: Variant = JSON.parse_string(meta_file.get_as_text())
+	meta_file.close()
+	if typeof(meta_parsed) != TYPE_DICTIONARY:
+		push_error("ScaleWorld v2: splat_meta is not a dict at " + meta_path)
+		return null
+	var channels: Array = meta_parsed.get("channels", [])
+	var ground_idx: Array[int] = [-1, -1, -1, -1]
+	var mid_idx:    Array[int] = [-1, -1, -1, -1]
+	var rock_idx:   Array[int] = [-1, -1, -1, -1]
+	for i in range(min(4, channels.size())):
+		var ch: Dictionary = channels[i]
+		if ch.get("biome", null) == null:
+			continue
+		var g: Dictionary = ch.get("ground", {})
+		var m: Dictionary = ch.get("mid", {})
+		var r: Dictionary = ch.get("rock", {})
+		if g.is_empty() or m.is_empty() or r.is_empty():
+			continue
+		ground_idx[i] = _v2_pack(String(g["tier"]), int(g["layer"]))
+		mid_idx[i]    = _v2_pack(String(m["tier"]), int(m["layer"]))
+		rock_idx[i]   = _v2_pack(String(r["tier"]), int(r["layer"]))
+	var inst: ShaderMaterial = _v2_base_material.duplicate(false)
+	inst.set_shader_parameter("splat", splat_tex)
+	inst.set_shader_parameter("splat_ground_indices",
+		Vector4i(ground_idx[0], ground_idx[1], ground_idx[2], ground_idx[3]))
+	inst.set_shader_parameter("splat_mid_indices",
+		Vector4i(mid_idx[0], mid_idx[1], mid_idx[2], mid_idx[3]))
+	inst.set_shader_parameter("splat_rock_indices",
+		Vector4i(rock_idx[0], rock_idx[1], rock_idx[2], rock_idx[3]))
+	# Tile origin in world XZ: tile (tx, tz) covers
+	#   x in [tile_x_world_origin, +tile_size_m), z in [..., +tile_size_m)
+	# where the world is centered on (0,0) so x0 = (tx - grid_n/2) * tile_size_m.
+	var origin_x: float = float(coord.x) * _tile_size_m - _world_size_m * 0.5
+	var origin_z: float = float(coord.y) * _tile_size_m - _world_size_m * 0.5
+	inst.set_shader_parameter("tile_origin_m", Vector2(origin_x, origin_z))
+	inst.set_shader_parameter("tile_size_m", _tile_size_m)
+	return inst
+
+
 func _spawn_tile(coord: Vector2i) -> void:
 	if _tiles.has(coord):
 		return
@@ -355,8 +530,15 @@ func _spawn_tile(coord: Vector2i) -> void:
 	tile_node.set_script(_tile_script)
 	var tile_dir: String = "%stiles/tile_%d_%d/" % [bundle_dir, coord.x, coord.y]
 	tile_node.set("tile_dir", tile_dir)
-	var mat_path: String = _resolve_tile_material_path(tile_dir)
-	tile_node.set("shared_material_path", mat_path)
+	# v2 path: per-tile duplicate of the global terrain material with arrays
+	# + splat + per-slot indices uniforms set. Falls through to the legacy
+	# path-based binding if world_v2_material_path is empty.
+	var v2_mat: ShaderMaterial = _make_v2_tile_material(tile_dir, coord)
+	if v2_mat != null:
+		tile_node.set("shared_material", v2_mat)
+	else:
+		var mat_path: String = _resolve_tile_material_path(tile_dir)
+		tile_node.set("shared_material_path", mat_path)
 	tile_node.set("resolution_m", tile_resolution_m)
 	# Hand the world heightmap reference in so the tile can sample with
 	# world coordinates and seamlessly read neighbor data at boundaries.

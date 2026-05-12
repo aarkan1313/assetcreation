@@ -62,6 +62,7 @@ biome_materials = {
 "rocky": "res://worlds/scale_demo/biomes/material_rocky.tres",
 "wetland": "res://worlds/scale_demo/biomes/material_wetland.tres"
 }
+world_v2_material_path = "res://worlds/scale_demo/material_world_v2.tres"
 view_material_walk = ""
 view_material_iso = "res://worlds/scale_demo/material_view_iso.tres"
 view_material_topdown = "res://worlds/scale_demo/material_view_topdown.tres"

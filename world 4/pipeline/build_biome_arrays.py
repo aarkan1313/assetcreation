@@ -41,29 +41,45 @@ class BuildError(RuntimeError):
 
 
 def _ensure_resolution(file_path: Path, target_res: int) -> Path:
-    """Return the path of a PNG at target_res. If the file is already at
-    target_res, return as-is. If smaller, write a LANCZOS-upsampled
-    sibling and return that. If larger, raise."""
+    """Return the path of a PNG at target_res, in RGB mode (so all layers
+    in a Texture2DArray share format=RGB8/RGBA8, not mixed L/RGB which
+    breaks Godot's Texture2DArray.create_from_images).
+
+    If the file is already at target_res AND in an acceptable mode
+    (RGB or RGBA), return as-is. If smaller OR single-channel L, write
+    a converted+upsampled sibling and return that. If larger, raise."""
     with Image.open(file_path) as im:
         w, h = im.size
-    if w == target_res and h == target_res:
+        mode = im.mode
+    needs_upsample = (w, h) != (target_res, target_res)
+    needs_convert = mode not in ("RGB", "RGBA")
+    if not needs_upsample and not needs_convert:
         return file_path
     if w > target_res or h > target_res:
         raise BuildError(
             f"resolution mismatch in {file_path}: expected "
             f"{target_res}x{target_res}, got {w}x{h} (larger than tier — "
             f"misconfigured catalog or wrong tier)")
-    # Upsample to target.
+    suffix_bits: list[str] = []
+    if needs_upsample:
+        suffix_bits.append(f"upsampled{target_res}")
+    if needs_convert:
+        suffix_bits.append("rgb")
+    suffix = "_".join(suffix_bits)
     out_path = file_path.with_name(
-        f"{file_path.stem}__upsampled{target_res}{file_path.suffix}")
+        f"{file_path.stem}__{suffix}{file_path.suffix}")
+    # Cache check: if the sibling already exists at correct size+mode, reuse.
     if out_path.is_file():
         with Image.open(out_path) as im2:
-            if im2.size == (target_res, target_res):
+            if im2.size == (target_res, target_res) and im2.mode in ("RGB", "RGBA"):
                 return out_path
     with Image.open(file_path) as im:
-        up = im.resize((target_res, target_res), Image.LANCZOS)
-        up.save(out_path)
-    print(f"  upsampled {file_path.name} ({w}x{h}) -> {out_path.name} ({target_res}x{target_res})")
+        if needs_upsample:
+            im = im.resize((target_res, target_res), Image.LANCZOS)
+        if needs_convert:
+            im = im.convert("RGB")
+        im.save(out_path)
+    print(f"  {file_path.name} ({w}x{h} {mode}) -> {out_path.name} ({target_res}x{target_res} RGB)")
     return out_path
 
 
