@@ -655,7 +655,24 @@ Not a data corruption issue. The errors are noisy but harmless. Skipping
 the fix means production logs will contain shutdown spam — annoying for
 debugging real issues later.
 
-## Pitfall #11 — Clipmap rendering without morph zones
+### Worse variant: editor F6 stop → hard crash (not just log spam)
+
+The "log spam" version above happens in `--headless` mode where the
+scene exits cleanly via `quit()`. The editor's F6-stop path is more
+aggressive: it tears down child nodes before all `_exit_tree`
+notifications have fired, so a mid-flight worker writes to the
+parent's member dictionary AFTER the parent has been effectively
+freed — a hard crash, not just an error.
+
+A drain in `_exit_tree` alone isn't enough. The fix: a `_shutting_down`
+flag set BEFORE the drain, plus `_notification` handlers for
+`NOTIFICATION_WM_CLOSE_REQUEST` and `NOTIFICATION_PREDELETE` as
+belt-and-suspenders. Workers check the flag at the top of every
+work iteration and bail before touching shared state.
+
+The signal you've hit this variant vs the log-spam variant: **Godot
+crashes when you stop the scene in the editor** but works fine in
+headless captures.
 
 ### Symptom
 - Visible elevation cliff / step at every ring boundary on a clipmap
