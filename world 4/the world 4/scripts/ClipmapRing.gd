@@ -192,6 +192,33 @@ func set_coarse_uniforms(coarse_tex: ImageTexture, coarse_origin_m: Vector2,
 	mat.set_shader_parameter("morph_enabled", enable_morph)
 
 
+# Stage 4.1+: splat + biome PBR uniforms. ClipmapWorld calls this
+# whenever the ring's heightmap regenerates (the splat regenerates
+# at the same cadence and uses the same world XZ origin).
+#
+# `splat_tex` is a Texture2DArray with one R8 layer per active biome.
+# `biome_pbr_slot` is an Array[int] of length active_biomes_n; pads
+# to MAX_BIOMES_PER_RING (= 16) with -1 so the shader can ignore
+# unused slots. The pad happens here, not at the call site.
+const MAX_BIOMES_PER_RING := 16
+
+
+func set_splat_uniforms(splat_tex: Texture2DArray, active_biomes_n: int,
+						biome_pbr_slot: Array[int]) -> void:
+	var mat := _get_shader_material()
+	if mat == null:
+		return
+	if splat_tex != null:
+		mat.set_shader_parameter("splat_array", splat_tex)
+	mat.set_shader_parameter("active_biomes_n", active_biomes_n)
+	# Pad to fixed length so the shader's fixed-size array uniform
+	# always receives valid data; -1 in unused slots is the sentinel.
+	var padded: Array[int] = []
+	for i in range(MAX_BIOMES_PER_RING):
+		padded.append(biome_pbr_slot[i] if i < biome_pbr_slot.size() else -1)
+	mat.set_shader_parameter("biome_pbr_slot", padded)
+
+
 func _get_shader_material() -> ShaderMaterial:
 	if _mesh_instance == null:
 		return null
