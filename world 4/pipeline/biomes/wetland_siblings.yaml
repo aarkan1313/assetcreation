@@ -1,0 +1,72 @@
+# Wetland — SIBLINGS BATCH (30 prompts × 1 slot tag).
+# Anchor: wetland mid "skunk_cabbage" — wetland with large dark-green
+# leaves over wet brown ground. Bold contrast, naturally varied.
+
+biome: wetland_siblings
+prompt_prefix: "tileable seamless texture, "
+prompt_suffix: ", overhead perspective"
+
+slots:
+  mid:
+    category: Mixed
+    candidates:
+      - tag: s01_skc
+        body: "wetland floor with large dark-green leaves over wet brown soil, bold leaf shapes with damp base"
+      - tag: s02_skc
+        body: "marsh ground with broad dark leaves over wet earth, varied green-brown organic palette"
+      - tag: s03_skc
+        body: "wet forest floor with large dark plant leaves and damp brown soil, bold varied texture"
+      - tag: s04_skc
+        body: "wetland with broad leafy plants over wet ground, dark green over rich-brown damp base"
+      - tag: s05_skc
+        body: "marsh ground with prominent broad leaves and wet soil, varied bold green-brown surface"
+      - tag: s06_skc
+        body: "wet ground with large dark-green plant leaves, damp organic palette with varied texture"
+      - tag: s07_skc
+        body: "wetland floor with broad leaves over wet brown earth, bold leaf shapes with shadow detail"
+      - tag: s08_skc
+        body: "marsh with large dark-green plants over damp soil, varied green-brown wet palette"
+      - tag: s09_skc
+        body: "wet bog floor with prominent broad leaves and dark soil, bold varied organic surface"
+      - tag: s10_skc
+        body: "wetland with broad leafy ground cover over wet earth, varied dark greens with damp brown base"
+      - tag: s11_skc
+        body: "marsh ground with dark glossy leaves over wet brown soil, bold leaf shapes with depth"
+      - tag: s12_skc
+        body: "wet forest with large broad leaves carpeting damp ground, varied dark-green over brown"
+      - tag: s13_skc
+        body: "wetland floor with prominent broad-leaf plants and damp earth, varied bold organic palette"
+      - tag: s14_skc
+        body: "marsh with broad dark leaves and wet ground showing through, varied green-brown depth"
+      - tag: s15_skc
+        body: "wet bog with large plant leaves over rich brown soil, bold dark-green varied texture"
+      - tag: s16_skc
+        body: "wetland with broad leafy plants over damp earth, varied palette of dark greens and browns"
+      - tag: s17_skc
+        body: "marsh ground with prominent dark leaves over wet soil, bold varied green-brown surface"
+      - tag: s18_skc
+        body: "wet floor with large broad plant leaves and damp brown ground, varied organic palette"
+      - tag: s19_skc
+        body: "wetland with dark-green broad leaves over wet earth, bold leaf shapes with shadow"
+      - tag: s20_skc
+        body: "marsh ground with prominent leafy plants and wet soil, varied bold green-brown texture"
+      - tag: s21_skc
+        body: "wet bog floor with broad dark leaves over damp ground, varied organic varied palette"
+      - tag: s22_skc
+        body: "wetland with large dark-green plant cover over wet brown soil, bold varied texture"
+      - tag: s23_skc
+        body: "marsh with broad leafy plants over rich damp earth, varied dark-green-brown palette"
+      - tag: s24_skc
+        body: "wet ground with prominent broad leaves and brown soil showing, bold varied surface"
+      - tag: s25_skc
+        body: "wetland floor with dark glossy plant leaves over wet earth, varied bold organic detail"
+      - tag: s26_skc
+        body: "marsh with broad-leaf ground cover and damp brown soil, varied dark-green palette"
+      - tag: s27_skc
+        body: "wet bog with prominent leafy plants over rich soil, bold dark-green varied texture"
+      - tag: s28_skc
+        body: "wetland with large dark leaves over damp ground, varied palette with bold leaf shapes"
+      - tag: s29_skc
+        body: "marsh ground with broad plant leaves and wet earth, varied organic green-brown surface"
+      - tag: s30_skc
+        body: "wet floor with prominent dark-green broad leaves over brown soil, bold varied palette"

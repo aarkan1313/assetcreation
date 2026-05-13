@@ -1,0 +1,73 @@
+# Desert — SIBLINGS BATCH (30 prompts × 1 slot tag).
+# Anchor: desert mid "rock_fragments_sand" — warm sand with embedded
+# rock fragments. The "embedded variation" lesson from earlier batches:
+# pure sand fails mip32_stdev, sand-with-stuff passes.
+
+biome: desert_siblings
+prompt_prefix: "tileable seamless texture, "
+prompt_suffix: ", overhead perspective"
+
+slots:
+  mid:
+    category: Mixed
+    candidates:
+      - tag: s01_rfs
+        body: "warm desert sand with embedded small rock fragments, varied tan-brown palette"
+      - tag: s02_rfs
+        body: "sand with scattered weathered stones, warm tan with darker brown embedded fragments"
+      - tag: s03_rfs
+        body: "desert ground mixing fine sand and small rock chunks, warm earth-tan varied surface"
+      - tag: s04_rfs
+        body: "sandy desert floor with embedded weathered fragments, warm muted palette with debris"
+      - tag: s05_rfs
+        body: "loose desert sand mixed with rock fragments, warm tan-orange with grey-brown embeds"
+      - tag: s06_rfs
+        body: "sand surface with scattered angular stones, warm tan palette with embedded varied debris"
+      - tag: s07_rfs
+        body: "warm sand floor with small weathered rocks scattered through, varied tan-brown surface"
+      - tag: s08_rfs
+        body: "desert sand with mixed rock and pebble debris, warm earth palette with varied embeds"
+      - tag: s09_rfs
+        body: "sand mixed with weathered desert stones, warm tan base with darker fragment accents"
+      - tag: s10_rfs
+        body: "loose desert ground with embedded rocks and small stones, warm muted-tan varied palette"
+      - tag: s11_rfs
+        body: "warm sand surface with scattered small angular rock fragments, tan-orange varied detail"
+      - tag: s12_rfs
+        body: "desert sand interspersed with weathered stone debris, warm earth tones with embeds"
+      - tag: s13_rfs
+        body: "sandy floor with embedded fragments and pebbles, warm tan with grey-brown accents"
+      - tag: s14_rfs
+        body: "warm desert ground with mixed sand and rock fragment debris, varied tan surface"
+      - tag: s15_rfs
+        body: "loose sand with scattered desert stones, warm muted palette with darker embeds"
+      - tag: s16_rfs
+        body: "desert mid-floor with sand and small rock fragments, warm earth-tan varied texture"
+      - tag: s17_rfs
+        body: "warm sand surface with embedded angular weathered stones, tan-brown palette"
+      - tag: s18_rfs
+        body: "desert ground mixing fine sand with small rock chunks, warm muted varied surface"
+      - tag: s19_rfs
+        body: "sand with scattered embedded fragments, warm tan-orange with darker debris accents"
+      - tag: s20_rfs
+        body: "desert floor of sand and rock fragments, warm earth palette with varied embed detail"
+      - tag: s21_rfs
+        body: "warm sandy ground with weathered stones embedded, tan-brown varied desert surface"
+      - tag: s22_rfs
+        body: "desert sand with mixed pebble and rock debris, warm muted-tan with embedded fragments"
+      - tag: s23_rfs
+        body: "loose desert sand mixed with small weathered rocks, warm earth-tan varied palette"
+      - tag: s24_rfs
+        body: "sandy floor with embedded angular fragments, warm tan with grey-brown stone accents"
+      - tag: s25_rfs
+        body: "warm desert ground with sand and embedded rocks, tan-orange varied muted surface"
+      - tag: s26_rfs
+        body: "desert sand with scattered weathered stone fragments, warm muted tan-brown palette"
+      - tag: s27_rfs
+        body: "sand and small rocks mixed together on desert floor, warm earth varied surface"
+      - tag: s28_rfs
+        body: "warm sand surface with embedded rock chunks, tan-orange with darker fragment detail"
+      - tag: s29_rfs
+        body: "desert ground of sand mixed with weathered rock debris, warm muted earth palette"
+      - tag: s30_rfs
+        body: "sandy mid-floor with embedded stones, warm tan-brown varied desert surface"

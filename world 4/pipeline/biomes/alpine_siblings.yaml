@@ -1,0 +1,78 @@
+# Alpine — SIBLINGS BATCH (30 prompts × 1 slot tag).
+#
+# Purpose: pool of palette-coherent siblings for the stochastic-texturing
+# wishlist work. Same conceptual content as the shipped alpine
+# ground winner (firn_dense / wind-packed snow), generated with seed
+# variation to produce 30 variants that share palette + character.
+#
+# Anchor reference: alpine ground "firn_dense" — dense compacted snow.
+# All 30 prompts describe the same character with phrasing variation.
+
+biome: alpine_siblings
+prompt_prefix: "tileable seamless texture, "
+prompt_suffix: ", overhead perspective"
+
+slots:
+  ground:
+    category: Snow
+    candidates:
+      - tag: s01_firn
+        body: "dense firn snow, compacted granular cold-white surface"
+      - tag: s02_firn
+        body: "compacted granular alpine snow with subtle crystal structure, cold white"
+      - tag: s03_firn
+        body: "wind-packed alpine snow, dense granular surface, off-white"
+      - tag: s04_firn
+        body: "old compacted snow with faint crystalline texture, cool white-grey palette"
+      - tag: s05_firn
+        body: "consolidated alpine snow surface, dense fine-grain texture, pale cold-white"
+      - tag: s06_firn
+        body: "compacted granular snow with subtle wind-pack ridges, cool white tones"
+      - tag: s07_firn
+        body: "old wind-packed snow, dense compacted surface, muted cold whites and pale blues"
+      - tag: s08_firn
+        body: "alpine firn surface, fine-grain compacted snow, off-white with subtle shadow detail"
+      - tag: s09_firn
+        body: "compacted alpine snow with weathered surface, pale cold-white granular texture"
+      - tag: s10_firn
+        body: "dense old snow with embedded ice crystals, cool white palette, packed surface"
+      - tag: s11_firn
+        body: "consolidated snow surface, alpine compacted granular detail, cold pale palette"
+      - tag: s12_firn
+        body: "alpine snow firn with subtle wind-carved texture, dense pale-grey-white surface"
+      - tag: s13_firn
+        body: "compacted alpine snow with weathered grain detail, cold white with hints of blue"
+      - tag: s14_firn
+        body: "old firn snow with consolidated dense surface, muted cold-white granular palette"
+      - tag: s15_firn
+        body: "alpine snow with packed surface and subtle crystalline highlights, cool pale palette"
+      - tag: s16_firn
+        body: "wind-consolidated snow with fine-grain surface and faint ridge detail, off-white"
+      - tag: s17_firn
+        body: "dense alpine snow firn, compacted weathered granular surface, pale cold-white"
+      - tag: s18_firn
+        body: "old compacted snow with weathered density and crystal pattern, cool white-grey"
+      - tag: s19_firn
+        body: "alpine firn snow with subtle texture variation, cold pale palette, dense surface"
+      - tag: s20_firn
+        body: "compacted weathered alpine snow, fine-grain density, off-white with shadow detail"
+      - tag: s21_firn
+        body: "consolidated firn surface with subtle wind-pack pattern, alpine cold-white"
+      - tag: s22_firn
+        body: "dense old snow surface with embedded grain detail, cool muted-white palette"
+      - tag: s23_firn
+        body: "alpine snow with compacted granular density, pale cool palette, weathered detail"
+      - tag: s24_firn
+        body: "wind-packed firn snow with subtle crystalline highlights, cold white tones"
+      - tag: s25_firn
+        body: "old compacted alpine snow, dense weathered granular surface, off-white"
+      - tag: s26_firn
+        body: "alpine firn with subtle ridge pattern from wind, cool pale palette, dense"
+      - tag: s27_firn
+        body: "consolidated snow with fine-grain crystalline detail, pale cold-white surface"
+      - tag: s28_firn
+        body: "dense alpine snow firn, compacted with subtle wind-carved variation, muted whites"
+      - tag: s29_firn
+        body: "old wind-packed firn snow surface, dense weathered detail, cool pale palette"
+      - tag: s30_firn
+        body: "alpine snow with consolidated density and subtle crystal pattern, off-white tones"

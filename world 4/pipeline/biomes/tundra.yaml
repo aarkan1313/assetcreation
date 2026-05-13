@@ -1,0 +1,128 @@
+# Treeless arctic tundra biome — prompt set for diversity batch.
+#
+# 16 ground (frozen ground, permafrost polygons, lichen mats, cotton
+# grass) / 21 mid (low arctic shrubs, dwarf willow, berries, sedge
+# meadows) / 14 rock (frost-shattered exposed bedrock, glacial erratics).
+#
+# Palette: muted greens + warm browns + rust-orange autumn tones + grey
+# rock. Distinct from alpine (no snow as dominant) and forest (no trees).
+# Low-lying ground-hugging vegetation. Arctic floor at low elevation.
+
+biome: tundra
+prompt_prefix: "tileable seamless texture, "
+prompt_suffix: ", overhead perspective"
+
+slots:
+  ground:
+    category: Mixed
+    candidates:
+      - tag: tussock_grass
+        body: "arctic tundra tussock grass mounds, muted yellow-brown grass tufts on dark wet ground, varied vertical texture"
+      - tag: cotton_grass_meadow
+        body: "cotton grass meadow with white fluffy seedheads over dark damp tundra, vivid white over muted brown-green"
+      - tag: lichen_mat_dense
+        body: "dense reindeer lichen mat carpet, pale grey-green fungal mass with intricate branching texture"
+      - tag: permafrost_polygon
+        body: "permafrost polygon ground with frost-heave cracks forming geometric patterns, muted earth tones"
+      - tag: arctic_moss_carpet
+        body: "arctic moss carpet with varied tones from rust-red to dark green, soft organic ground coverage"
+      - tag: dwarf_birch_floor
+        body: "dwarf arctic birch ground cover with small dark leaves over wet brown soil, low ground-hugging vegetation"
+      - tag: rust_autumn_tundra
+        body: "autumn tundra ground with rust-orange and red ground cover plants, vivid warm palette on dark base"
+      - tag: arctic_heath
+        body: "arctic heath ground with mixed crowberry and other dwarf shrubs, muted greens and dark woody stems"
+      - tag: sphagnum_with_cranberry
+        body: "sphagnum moss carpet with scattered red cranberries, dark green moss with vivid red accents"
+      - tag: frost_heave_stones
+        body: "frost-heaved tundra ground with stones sorted into surface patterns, mixed rock and brown soil"
+      - tag: arctic_wet_meadow
+        body: "wet arctic meadow with mixed sedges, mosses, and small pools, muted green-brown varied surface"
+      - tag: lichen_yellow_orange
+        body: "tundra ground with vivid yellow-orange lichen patches on dark damp soil, vivid color over muted base"
+      - tag: dryas_mat
+        body: "mountain avens (dryas) mat with small white flowers and dark glossy leaves, low cushion vegetation"
+      - tag: post_thaw_mud
+        body: "post-thaw tundra mud with embedded plant fragments and small stones, dark wet brown varied surface"
+      - tag: arctic_grass_tundra
+        body: "arctic grass tundra with mixed sedges and small flowers, muted yellow-green low ground coverage"
+      - tag: peat_with_lichen
+        body: "wet peaty tundra ground with patches of pale grey-green lichen, dark organic base with muted accents"
+
+  mid:
+    category: Mixed
+    candidates:
+      - tag: dwarf_willow_low
+        body: "dwarf arctic willow shrubs hugging the ground, small twisted woody stems with green leaves, low coverage"
+      - tag: berry_shrubs
+        body: "arctic berry shrubs with red and blue berries, mixed crowberry and blueberry, dark leaves with vivid accents"
+      - tag: cushion_plants_mixed
+        body: "mixed cushion plants forming dense tight mounds, varied green tones with small white flowers"
+      - tag: arctic_sedge
+        body: "stiff arctic sedge tussocks viewed from above, vertical green-brown stalks with shadow gaps"
+      - tag: cloudberry_patch
+        body: "cloudberry patch with golden-orange berries and dark green leaves on dark wet tundra ground"
+      - tag: arctic_poppies
+        body: "scattered arctic poppy flowers with bright yellow blooms above tundra ground vegetation"
+      - tag: saxifrage_mat
+        body: "purple saxifrage mat with small flowers and tiny dark leaves, vivid magenta accents over cushion base"
+      - tag: arctic_dryad_field
+        body: "field of mountain avens with white star flowers and dark mat foliage, varied vegetation patterns"
+      - tag: bog_with_cottongrass
+        body: "tundra bog with scattered cotton grass tufts and dark sphagnum, white-on-dark contrast vegetation"
+      - tag: dwarf_birch_field
+        body: "field of dwarf birch shrubs with small dark leaves over wet tundra, twisted woody low canopy"
+      - tag: rust_red_autumn
+        body: "autumn tundra with rust-red bearberry and blueberry leaves, vivid warm fall palette over dark soil"
+      - tag: arctic_meadow_flowers
+        body: "arctic meadow with mixed yellow, purple, and white wildflowers, varied vivid blooms over green base"
+      - tag: shrub_with_lichen
+        body: "low arctic shrubs intermixed with pale lichen patches, muted greens with grey-green organic accents"
+      - tag: post_burn_recovery
+        body: "post-burn arctic recovery with charred stems and new green growth, dark base with sparse vivid accents"
+      - tag: lichen_cushion_mix
+        body: "mixed lichen cushions and dwarf shrubs forming patchwork ground cover, varied muted organic palette"
+      - tag: arctic_with_caribou_tracks
+        body: "arctic tundra with caribou hoof prints in soft ground, mixed vegetation patches with subtle disturbance"
+      - tag: bog_with_orchids
+        body: "tundra bog with northern green orchid spikes and surrounding sedges, vertical vegetation with depth"
+      - tag: arctic_grass_with_rocks
+        body: "arctic grass tundra interspersed with small lichen-covered rocks, mixed green and grey-stone surface"
+      - tag: spring_emergence
+        body: "spring tundra with emerging new growth, sparse green shoots over winter-dead matter, transitional palette"
+      - tag: dwarf_shrub_dense
+        body: "dense dwarf arctic shrub mat with thick foliage and woody stems, muted dark green low canopy"
+      - tag: arctic_rosette_plants
+        body: "arctic rosette-form plants scattered over wet ground, circular leaf arrangements on dark soil"
+
+  rock:
+    category: Rock
+    candidates:
+      - tag: frost_shattered_tundra
+        body: "frost-shattered tundra bedrock with angular fragments still in place, weathered mid-grey rock"
+      - tag: glacial_erratic
+        body: "glacial erratic boulder surface with lichen patches, mid-grey rock with scattered organic accents"
+      - tag: weathered_arctic_bedrock
+        body: "weathered arctic bedrock with parallel joint fractures, cool grey palette with frost-weathering detail"
+      - tag: arctic_rock_with_orange_lichen
+        body: "arctic rock surface with vivid orange map lichen patches, cool grey base with bright color accents"
+      - tag: striated_bedrock
+        body: "glacially striated bedrock with parallel grooves, smooth grey rock surface with directional weathering"
+      - tag: arctic_granite
+        body: "weathered arctic granite with frost-shattered surface, pinkish-grey mineral grain with cracks"
+      - tag: lichen_streaked_arctic
+        body: "arctic rock streaked with mixed colored lichen, grey base with orange-yellow-grey lichen mosaic"
+      - tag: tundra_outcrop
+        body: "tundra rock outcrop with surrounding dwarf shrubs at base, weathered rock with organic transition"
+      - tag: mossy_arctic_rock
+        body: "arctic rock with dense moss colonization in cracks and shadows, grey stone with vivid green accents"
+      - tag: schist_arctic
+        body: "arctic schist bedrock with foliated banding and mica sparkle, mid-grey layered weathered surface"
+      - tag: gneiss_arctic
+        body: "arctic gneiss bedrock with alternating dark and light mineral bands, weathered cool palette"
+      - tag: cracked_with_ice
+        body: "cracked arctic rock with ice in fissures, dark grey rock with bright white ice crack-fill"
+      - tag: iron_stained_arctic
+        body: "iron-stained arctic rock with vivid rust-orange streaks, dark grey base with high-contrast accents"
+      - tag: blocky_arctic_outcrop
+        body: "blocky arctic rock outcrop with horizontal jointing, mid-grey rock with frost-shattered edges"

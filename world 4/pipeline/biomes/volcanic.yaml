@@ -1,0 +1,129 @@
+# Volcanic / basalt biome — prompt set for diversity batch.
+#
+# 16 ground (ash, scoria, lava-crust ground) / 21 mid (cracked lava
+# with embedded debris, sulfur deposits, glowing/cooled mixes) /
+# 14 rock (basalt outcrops, obsidian, columnar joints, weathered
+# volcanic rock).
+#
+# Palette: near-black basalt + dark grey ash + occasional rust-red/
+# sulfur-yellow mineral accents. Glowing crack details deferred (no
+# emissive PBR support yet); this set is cooled/post-eruption volcanic.
+
+biome: volcanic
+prompt_prefix: "tileable seamless texture, "
+prompt_suffix: ", overhead perspective"
+
+slots:
+  ground:
+    category: Rock
+    candidates:
+      - tag: fresh_basalt_ash
+        body: "fresh dark volcanic ash with embedded small scoria fragments, near-black palette with grey-and-rust accents"
+      - tag: aa_lava_crust
+        body: "aa lava crust surface with sharp jagged fragments and cooled black rock chunks, near-black varied texture"
+      - tag: pahoehoe_ropy
+        body: "pahoehoe ropy lava surface, smooth flowing black basalt with rope-like ridges and cooled folds"
+      - tag: scoria_field
+        body: "loose volcanic scoria pebble field, dark vesicular basalt fragments with rust-red oxidation"
+      - tag: obsidian_chips
+        body: "obsidian glass fragment field with sharp black volcanic glass chips, glossy black with sparse grey ash"
+      - tag: tephra_mixed
+        body: "mixed volcanic tephra with varied dark fragment sizes, near-black with grey ash matrix"
+      - tag: cinder_cone_base
+        body: "cinder cone base with loose dark scoria and ash, varied dark fragment field with subtle warm undertones"
+      - tag: lava_with_gas_pockets
+        body: "cooled lava surface pocked with gas vesicles, dark basalt with circular pit detail, weathered"
+      - tag: ash_with_rocks
+        body: "fine volcanic ash bed with scattered embedded basalt fragments, dark grey palette with darker accents"
+      - tag: sulfur_stained_ash
+        body: "volcanic ash with bright yellow sulfur mineral staining, dark grey base with vivid color accents"
+      - tag: black_sand
+        body: "fine black volcanic sand with subtle ripples, near-black palette with weathered surface detail"
+      - tag: cooled_flow_edge
+        body: "edge of a cooled lava flow with broken crust fragments, dark basalt with sharp angular debris"
+      - tag: pumice_field
+        body: "scattered pale pumice rocks on dark volcanic ground, light vesicular fragments over near-black base"
+      - tag: ash_with_crystals
+        body: "volcanic ash with embedded small olivine crystal fragments, dark base with green-yellow mineral accents"
+      - tag: weathered_basalt_field
+        body: "weathered basalt field with iron-oxide rust staining, dark grey-brown palette with embedded fragments"
+      - tag: pyroclastic_debris
+        body: "pyroclastic deposit with mixed pumice and dark scoria fragments, varied volcanic debris field"
+
+  mid:
+    category: Mixed
+    candidates:
+      - tag: cracked_lava_with_moss
+        body: "cracked cooled lava surface with small moss patches in crevices, dark basalt with sparse green accents"
+      - tag: basalt_with_lichen
+        body: "weathered basalt rock with pale grey-green lichen patches, dark base with muted organic accents"
+      - tag: sulfur_deposits
+        body: "active volcanic surface with bright yellow sulfur crystal deposits and dark rock, vivid contrast"
+      - tag: pioneer_plants_lava
+        body: "pioneer plants colonizing old lava field, sparse green vegetation over near-black basalt fragments"
+      - tag: cracked_with_minerals
+        body: "cracked volcanic rock with mineral staining in fissures, dark base with rust-orange and yellow accents"
+      - tag: ash_with_dead_plants
+        body: "volcanic ash with scattered dead plant remains, dark grey base with bleached organic fragments"
+      - tag: warm_ground_steam
+        body: "geothermal warm ground with subtle steam vents and mineral staining, dark base with white-yellow accents"
+      - tag: cooled_with_grass
+        body: "old cooled lava with sparse grass tufts in cracks, dark basalt with muted green vegetation"
+      - tag: obsidian_with_ash
+        body: "obsidian fragments embedded in volcanic ash matrix, glossy black with dark grey base, varied"
+      - tag: basalt_columns_top
+        body: "top view of weathered basalt columns with cracks and lichen, polygonal pattern with organic accents"
+      - tag: caldera_floor
+        body: "caldera floor with mixed volcanic debris, mineral staining, and sparse vegetation, dark varied palette"
+      - tag: lapilli_with_plants
+        body: "volcanic lapilli (small ejecta) with pioneer ferns, dark fragment field with sparse green vertical accents"
+      - tag: tephra_meadow
+        body: "volcanic tephra ground with established meadow grasses, dark base with rich green grass coverage"
+      - tag: post_eruption_recovery
+        body: "post-eruption volcanic ground with mixed ash, fragments, and new plant growth, dark with green accents"
+      - tag: dead_forest_lava
+        body: "dead forest remnants on lava field, bleached wood fragments over dark basalt, dramatic contrast"
+      - tag: volcanic_with_rust
+        body: "volcanic rock with heavy iron-oxide rust staining streaks, dark base with vivid rust-orange runoff"
+      - tag: spatter_cone_debris
+        body: "spatter cone debris field with welded volcanic fragments, dark fused rock with varied texture"
+      - tag: ash_layered
+        body: "layered volcanic ash deposits visible in cross-section pattern, alternating dark and pale grey bands"
+      - tag: lava_tube_floor
+        body: "lava tube floor with smooth flowing basalt and ceiling drip stones, dark with subtle texture variation"
+      - tag: hot_spring_edge
+        body: "hot spring edge with bright mineral terraces and dark volcanic ground, vivid white-yellow over dark base"
+      - tag: mossy_basalt
+        body: "weathered basalt with dense moss coverage, dark stone heavily colonized by deep green moss"
+
+  rock:
+    category: Rock
+    candidates:
+      - tag: columnar_basalt_face
+        body: "columnar basalt cliff face viewed at slight angle, polygonal vertical columns of dark rock, weathered"
+      - tag: weathered_obsidian
+        body: "weathered obsidian rock surface with conchoidal fractures, glossy black with subtle weathering"
+      - tag: vesicular_basalt
+        body: "vesicular basalt rock surface heavily pocked with gas vesicles, dark stone with circular cavities"
+      - tag: lava_bomb
+        body: "volcanic lava bomb rock surface, dark aerodynamically-shaped basalt with weathered crust"
+      - tag: cooled_lava_face
+        body: "cooled lava flow rock face with rope-like ridge patterns, dark basalt with flowing surface texture"
+      - tag: tuff_layered
+        body: "layered volcanic tuff rock with horizontal banding, mixed light and dark grey volcanic deposits"
+      - tag: basalt_with_olivine
+        body: "basalt rock surface with embedded green olivine crystals, dark stone with sparse green mineral accents"
+      - tag: weathered_scoria_rock
+        body: "weathered scoria boulder surface with dense vesicles, dark rust-brown vesicular volcanic rock"
+      - tag: black_glass_rock
+        body: "black volcanic glass rock surface with sharp conchoidal fractures, glossy obsidian-like texture"
+      - tag: basalt_with_streaks
+        body: "basalt rock with vertical mineral-staining streaks, dark stone with rust-orange runoff trails"
+      - tag: pillow_basalt
+        body: "pillow basalt rock surface from underwater eruption, dark rounded basalt forms with cracks"
+      - tag: ignimbrite
+        body: "ignimbrite rock surface with welded volcanic fragments and flattened pumice, varied dark fragments"
+      - tag: rhyolite_banded
+        body: "banded rhyolite rock surface with flow-aligned layers, mixed dark and pale volcanic rock"
+      - tag: weathered_aa
+        body: "weathered aa lava rock surface, sharp jagged dark basalt with iron-oxide weathering accents"

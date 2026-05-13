@@ -1,0 +1,72 @@
+# Forest — SIBLINGS BATCH (30 prompts × 1 slot tag).
+# Anchor: forest mid "lichen_on_rock_brown" — pale lichen on warm-brown
+# weathered rock. Forest understory character.
+
+biome: forest_siblings
+prompt_prefix: "tileable seamless texture, "
+prompt_suffix: ", overhead perspective"
+
+slots:
+  mid:
+    category: Mixed
+    candidates:
+      - tag: s01_lor
+        body: "pale lichen patches on warm-brown weathered rock, muted earth palette with grey-green accents"
+      - tag: s02_lor
+        body: "forest rock with pale grey-green lichen colonization, warm-brown base with organic accents"
+      - tag: s03_lor
+        body: "weathered brown rock with lichen patches, muted forest palette with sparse green-grey detail"
+      - tag: s04_lor
+        body: "warm-brown forest rock surface with pale lichen growth, muted earth palette with accents"
+      - tag: s05_lor
+        body: "lichen-spotted weathered rock in forest understory, warm-brown base with grey-green patches"
+      - tag: s06_lor
+        body: "forest rock with sparse lichen colonization, warm earth-brown with pale organic accents"
+      - tag: s07_lor
+        body: "weathered warm-brown rock with pale lichen detail, muted forest palette varied surface"
+      - tag: s08_lor
+        body: "lichen patches on forest rock, warm brown base with pale grey-green colonization detail"
+      - tag: s09_lor
+        body: "warm rock surface with sparse pale lichen, muted forest understory palette with accents"
+      - tag: s10_lor
+        body: "forest rock weathered with lichen patches, warm-brown base with subtle grey-green accents"
+      - tag: s11_lor
+        body: "lichen-covered warm-brown forest rock, muted earth palette with pale organic detail"
+      - tag: s12_lor
+        body: "weathered forest rock with pale lichen colonization, warm-brown with grey-green patches"
+      - tag: s13_lor
+        body: "warm-brown rock surface with sparse lichen growth, muted varied forest palette with accents"
+      - tag: s14_lor
+        body: "lichen patches on weathered forest rock, warm earth-brown with pale grey-green detail"
+      - tag: s15_lor
+        body: "forest understory rock with sparse pale lichen, warm-brown base with organic varied accents"
+      - tag: s16_lor
+        body: "weathered warm rock with lichen colonization, muted forest palette with grey-green patches"
+      - tag: s17_lor
+        body: "forest rock surface with sparse pale lichen patches, warm-brown muted varied palette"
+      - tag: s18_lor
+        body: "warm-brown forest rock with weathered lichen growth, muted earth with grey-green accents"
+      - tag: s19_lor
+        body: "lichen-spotted forest rock, warm-brown base with pale grey-green organic detail"
+      - tag: s20_lor
+        body: "weathered rock with sparse lichen in forest understory, warm-brown muted varied palette"
+      - tag: s21_lor
+        body: "forest rock with pale lichen patches, warm-brown weathered surface with organic accents"
+      - tag: s22_lor
+        body: "warm-brown rock with lichen colonization, muted forest understory palette with detail"
+      - tag: s23_lor
+        body: "weathered forest rock with sparse pale lichen growth, warm-brown with grey-green patches"
+      - tag: s24_lor
+        body: "lichen patches on warm forest rock, muted earth-brown base with pale organic accents"
+      - tag: s25_lor
+        body: "forest rock surface with weathered lichen colonization, warm-brown with subtle grey-green"
+      - tag: s26_lor
+        body: "warm-brown weathered forest rock with sparse pale lichen, muted varied surface"
+      - tag: s27_lor
+        body: "lichen-covered forest understory rock, warm-brown base with pale grey-green colonization"
+      - tag: s28_lor
+        body: "forest rock with sparse pale lichen patches, warm earth palette with organic accents"
+      - tag: s29_lor
+        body: "weathered warm-brown rock with lichen detail, muted forest palette with grey-green"
+      - tag: s30_lor
+        body: "warm-brown forest rock with pale lichen growth, muted varied palette with accents"

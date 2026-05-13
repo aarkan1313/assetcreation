@@ -1,0 +1,71 @@
+# Rocky highlands — SIBLINGS BATCH (30 prompts × 1 slot tag).
+# Anchor: rocky ground "mossy_scree" — scree fragments with moss patches.
+
+biome: rocky_siblings
+prompt_prefix: "tileable seamless texture, "
+prompt_suffix: ", overhead perspective"
+
+slots:
+  ground:
+    category: Rock
+    candidates:
+      - tag: s01_msc
+        body: "scree slope with sparse moss patches between rock fragments, cool grey-and-green palette"
+      - tag: s02_msc
+        body: "loose rock fragments with green moss in gaps, mid-grey rock with organic accents"
+      - tag: s03_msc
+        body: "mossy scree of grey rock chunks with moss colonization, cool varied palette"
+      - tag: s04_msc
+        body: "weathered rock fragments with scattered moss patches, cool grey base with green accents"
+      - tag: s05_msc
+        body: "alpine scree with moss in crevices between angular rocks, varied grey-green surface"
+      - tag: s06_msc
+        body: "small rock fragment field with sparse moss growth, mid-grey palette with organic accents"
+      - tag: s07_msc
+        body: "loose scree with moss patches between stones, cool weathered grey with green detail"
+      - tag: s08_msc
+        body: "rock fragments with moss colonization in gaps, varied mid-grey palette with organics"
+      - tag: s09_msc
+        body: "mossy scree slope of angular grey rock with green patches, cool varied texture"
+      - tag: s10_msc
+        body: "weathered rock chunks with moss in crevices, mid-grey base with sparse green accents"
+      - tag: s11_msc
+        body: "alpine scree with sparse moss growth between fragments, varied grey-green palette"
+      - tag: s12_msc
+        body: "loose grey rock fragments with moss patches, cool weathered surface with organic detail"
+      - tag: s13_msc
+        body: "mossy weathered scree of small rock chunks, mid-grey palette with green organic accents"
+      - tag: s14_msc
+        body: "rock fragment field with scattered moss colonization, cool varied grey-green palette"
+      - tag: s15_msc
+        body: "scree slope with moss in gaps between angular grey rocks, weathered varied surface"
+      - tag: s16_msc
+        body: "mossy small rock fragments, mid-grey weathered base with sparse green moss accents"
+      - tag: s17_msc
+        body: "weathered scree with moss patches in crevices, cool grey palette with organic accents"
+      - tag: s18_msc
+        body: "alpine rock fragment field with moss colonization, varied grey-green muted surface"
+      - tag: s19_msc
+        body: "loose scree with moss between fragments, cool mid-grey weathered varied palette"
+      - tag: s20_msc
+        body: "mossy weathered grey rock chunks, varied palette with moss patches between fragments"
+      - tag: s21_msc
+        body: "scree slope with sparse green moss colonization, cool grey base with organic detail"
+      - tag: s22_msc
+        body: "rock fragment ground with moss in gaps, weathered mid-grey varied surface"
+      - tag: s23_msc
+        body: "mossy alpine scree of angular grey rocks, varied cool palette with green accents"
+      - tag: s24_msc
+        body: "loose weathered rock chunks with moss patches, mid-grey base with scattered greens"
+      - tag: s25_msc
+        body: "scree with moss colonization between fragments, varied cool grey-green surface"
+      - tag: s26_msc
+        body: "weathered rock fragments and moss patches, mid-grey palette with organic varied accents"
+      - tag: s27_msc
+        body: "mossy scree slope with sparse green growth in crevices, cool weathered varied palette"
+      - tag: s28_msc
+        body: "alpine rock fragments with moss between stones, varied mid-grey with green accents"
+      - tag: s29_msc
+        body: "loose scree with moss colonization, weathered cool grey base with organic detail"
+      - tag: s30_msc
+        body: "mossy weathered rock chunks, varied palette of mid-grey with sparse green moss"
