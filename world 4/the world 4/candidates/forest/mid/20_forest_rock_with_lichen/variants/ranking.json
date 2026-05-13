@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.008675,
+    "periodic_locality": 10.907,
+    "richness": 0.946,
+    "composite": 0.7125,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_20_forest_rock_with_lichen_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.07084347066032295,
+      "pass1_seconds": 4.23,
+      "pass3_seconds": 6.2,
+      "final_seam_score": 0.008674643053452998,
+      "seam_improvement": 0.06216882760686995
+    }
+  },
+  {
+    "edge_seam": 0.014004,
+    "periodic_locality": 13.706,
+    "richness": 0.963,
+    "composite": 0.5503,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_20_forest_rock_with_lichen_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.05431419105632449,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 8.23,
+      "final_seam_score": 0.014003668773728854,
+      "seam_improvement": 0.040310522282595636
+    }
+  },
+  {
+    "edge_seam": 0.017091,
+    "periodic_locality": 11.901,
+    "richness": 0.955,
+    "composite": 0.5249,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_20_forest_rock_with_lichen_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.06978018520520954,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 6.37,
+      "final_seam_score": 0.017091017051734908,
+      "seam_improvement": 0.05268916815347463
+    }
+  },
+  {
+    "edge_seam": 0.018962,
+    "periodic_locality": 13.268,
+    "richness": 0.95,
+    "composite": 0.4577,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_20_forest_rock_with_lichen_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.06736555651672434,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.21,
+      "final_seam_score": 0.01896163171917051,
+      "seam_improvement": 0.04840392479755383
+    }
+  }
+]

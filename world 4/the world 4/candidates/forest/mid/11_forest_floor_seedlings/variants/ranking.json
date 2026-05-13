@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.014469,
+    "periodic_locality": 8.931,
+    "richness": 0.943,
+    "composite": 0.6374,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_11_forest_floor_seedlings_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.0974609525182622,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.32,
+      "final_seam_score": 0.014469404796232219,
+      "seam_improvement": 0.08299154772202998
+    }
+  },
+  {
+    "edge_seam": 0.01582,
+    "periodic_locality": 9.636,
+    "richness": 0.957,
+    "composite": 0.5985,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_11_forest_floor_seedlings_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.07197523939109958,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 8.2,
+      "final_seam_score": 0.015820321886413878,
+      "seam_improvement": 0.0561549175046857
+    }
+  },
+  {
+    "edge_seam": 0.017117,
+    "periodic_locality": 9.698,
+    "richness": 0.942,
+    "composite": 0.5682,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_11_forest_floor_seedlings_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.05998763997020377,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.2,
+      "final_seam_score": 0.017117434174956748,
+      "seam_improvement": 0.042870205795247016
+    }
+  },
+  {
+    "edge_seam": 0.013052,
+    "periodic_locality": 14.088,
+    "richness": 0.953,
+    "composite": 0.5593,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_11_forest_floor_seedlings_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.06332782914023452,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 6.4,
+      "final_seam_score": 0.013052412045547386,
+      "seam_improvement": 0.050275417094687136
+    }
+  }
+]

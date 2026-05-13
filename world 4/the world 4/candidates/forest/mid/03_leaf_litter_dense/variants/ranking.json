@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.00799,
+    "periodic_locality": 8.49,
+    "richness": 0.865,
+    "composite": 0.7607,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_03_leaf_litter_dense_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.06987253249951941,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.007989700475778547,
+      "seam_improvement": 0.06188283202374087
+    }
+  },
+  {
+    "edge_seam": 0.00876,
+    "periodic_locality": 10.744,
+    "richness": 0.943,
+    "composite": 0.7135,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_03_leaf_litter_dense_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.05028939064902922,
+      "pass1_seconds": 4.11,
+      "pass3_seconds": 6.18,
+      "final_seam_score": 0.00875952627144608,
+      "seam_improvement": 0.041529864377583145
+    }
+  },
+  {
+    "edge_seam": 0.008344,
+    "periodic_locality": 12.707,
+    "richness": 0.893,
+    "composite": 0.6705,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_03_leaf_litter_dense_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.04952487099312764,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.18,
+      "final_seam_score": 0.008343936226451364,
+      "seam_improvement": 0.04118093476667628
+    }
+  },
+  {
+    "edge_seam": 0.012301,
+    "periodic_locality": 21.382,
+    "richness": 0.946,
+    "composite": 0.4194,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_03_leaf_litter_dense_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.05225003979839485,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.012301438862156382,
+      "seam_improvement": 0.03994860093623846
+    }
+  }
+]

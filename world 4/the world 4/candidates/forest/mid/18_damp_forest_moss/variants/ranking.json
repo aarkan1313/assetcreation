@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.006542,
+    "periodic_locality": 8.368,
+    "richness": 0.853,
+    "composite": 0.7899,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_18_damp_forest_moss_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.0448011882449058,
+      "pass1_seconds": 4.28,
+      "pass3_seconds": 8.28,
+      "final_seam_score": 0.006542045126874279,
+      "seam_improvement": 0.038259143118031524
+    }
+  },
+  {
+    "edge_seam": 0.012071,
+    "periodic_locality": 10.965,
+    "richness": 0.919,
+    "composite": 0.6379,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_18_damp_forest_moss_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.05078083324322376,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 8.25,
+      "final_seam_score": 0.01207055279219531,
+      "seam_improvement": 0.03871028045102845
+    }
+  },
+  {
+    "edge_seam": 0.013749,
+    "periodic_locality": 12.844,
+    "richness": 0.885,
+    "composite": 0.5579,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_18_damp_forest_moss_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.04434409617094387,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.18,
+      "final_seam_score": 0.013749433999243079,
+      "seam_improvement": 0.03059466217170079
+    }
+  },
+  {
+    "edge_seam": 0.016134,
+    "periodic_locality": 13.412,
+    "richness": 0.899,
+    "composite": 0.501,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_18_damp_forest_moss_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.04196426855055748,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 8.22,
+      "final_seam_score": 0.01613395388792772,
+      "seam_improvement": 0.02583031466262976
+    }
+  }
+]

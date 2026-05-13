@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.00575,
+    "periodic_locality": 9.158,
+    "richness": 0.893,
+    "composite": 0.7972,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_01_lichen_on_rock_brown_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.06205562088499616,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.35,
+      "final_seam_score": 0.005750142016441993,
+      "seam_improvement": 0.056305478868554165
+    }
+  },
+  {
+    "edge_seam": 0.011534,
+    "periodic_locality": 11.629,
+    "richness": 0.928,
+    "composite": 0.6364,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_01_lichen_on_rock_brown_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.04912619620458478,
+      "pass1_seconds": 4.07,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.011534315415044695,
+      "seam_improvement": 0.03759188078954008
+    }
+  },
+  {
+    "edge_seam": 0.012501,
+    "periodic_locality": 13.097,
+    "richness": 0.953,
+    "composite": 0.5912,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_01_lichen_on_rock_brown_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.031205200523836987,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.01250123149750096,
+      "seam_improvement": 0.018703969026336024
+    }
+  },
+  {
+    "edge_seam": 0.015591,
+    "periodic_locality": 14.052,
+    "richness": 0.943,
+    "composite": 0.5073,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_01_lichen_on_rock_brown_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.03120095035563245,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.015591228621503748,
+      "seam_improvement": 0.0156097217341287
+    }
+  }
+]

@@ -1,0 +1,188 @@
+{
+  "version": "w4_tx_pipeline_v1",
+  "asset_id": "div_forest_mid_08_pine_needles",
+  "prompt": "tileable seamless texture, dense pine needle litter with scattered cones, warm orange-brown palette with embedded organic debris, overhead perspective",
+  "settings": {
+    "unet": "flux-2-klein-9b-fp8.safetensors",
+    "clip": "qwen_3_8b_fp8mixed.safetensors",
+    "vae": "flux2-vae.safetensors",
+    "size": 1024,
+    "steps": 4,
+    "seed_base": 42,
+    "variants": 4,
+    "heal_denoise": 0.35,
+    "heal_mode": "flux_heal",
+    "delight_strength": 0.4,
+    "pbr_backend": "hybrid",
+    "seam_repair": true,
+    "seam_repair_patch": 64,
+    "seam_repair_feather": 12,
+    "category": "Mixed",
+    "host": "http://127.0.0.1:8188"
+  },
+  "started_at": "2026-05-13T01:30:38+00:00",
+  "stages": [
+    {
+      "stage": "variants",
+      "n_variants": 4,
+      "ranking": [
+        {
+          "edge_seam": 0.035673,
+          "periodic_locality": 8.349,
+          "richness": 0.94,
+          "composite": 0.5386,
+          "variant_index": 3,
+          "seed": 3042,
+          "path": "v3_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_forest_mid_08_pine_needles_v3",
+            "size": 1024,
+            "seed": 3042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.06905825734092656,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.28,
+            "final_seam_score": 0.03567299836601307,
+            "seam_improvement": 0.03338525897491349
+          }
+        },
+        {
+          "edge_seam": 0.036135,
+          "periodic_locality": 12.598,
+          "richness": 0.948,
+          "composite": 0.4507,
+          "variant_index": 2,
+          "seed": 2042,
+          "path": "v2_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_forest_mid_08_pine_needles_v2",
+            "size": 1024,
+            "seed": 2042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.06332879030901577,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.33,
+            "final_seam_score": 0.03613476111952134,
+            "seam_improvement": 0.02719402918949443
+          }
+        },
+        {
+          "edge_seam": 0.035287,
+          "periodic_locality": 13.024,
+          "richness": 0.935,
+          "composite": 0.4392,
+          "variant_index": 0,
+          "seed": 42,
+          "path": "v0_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_forest_mid_08_pine_needles_v0",
+            "size": 1024,
+            "seed": 42,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.06971964659025374,
+            "pass1_seconds": 6.1,
+            "pass3_seconds": 6.28,
+            "final_seam_score": 0.03528725805579585,
+            "seam_improvement": 0.034432388534457896
+          }
+        },
+        {
+          "edge_seam": 0.022519,
+          "periodic_locality": 14.565,
+          "richness": 0.93,
+          "composite": 0.4057,
+          "variant_index": 1,
+          "seed": 1042,
+          "path": "v1_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_forest_mid_08_pine_needles_v1",
+            "size": 1024,
+            "seed": 1042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.09313873420078816,
+            "pass1_seconds": 4.06,
+            "pass3_seconds": 6.24,
+            "final_seam_score": 0.022519003733539985,
+            "seam_improvement": 0.07061973046724818
+          }
+        }
+      ]
+    },
+    {
+      "stage": "delight",
+      "strength": 0.4
+    },
+    {
+      "stage": "pbr",
+      "backend": "tx_pbr_hybrid",
+      "sm_size": 1024,
+      "category": "Mixed",
+      "sm_input": "D:\\assets\\world 4\\the world 4\\candidates\\forest\\mid\\08_pine_needles\\albedo.png",
+      "derive_log": {
+        "backend": "tx_pbr_derive",
+        "category": "Mixed",
+        "snow_mode": true,
+        "normal_strength": 4.0,
+        "maps": [
+          "albedo",
+          "normal",
+          "roughness",
+          "ao",
+          "height",
+          "metallic"
+        ],
+        "preset_used": [
+          0.85,
+          0.12
+        ]
+      },
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ]
+    },
+    {
+      "stage": "seam_repair",
+      "module": "tx_seam_repair",
+      "patch": 64,
+      "feather": 12,
+      "plan_ops": 32,
+      "maps_processed": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ],
+      "maps_skipped": []
+    },
+    {
+      "stage": "qa",
+      "grade": "B",
+      "passed_checks": 3,
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "failed": [
+        "periodic_artifact"
+      ]
+    }
+  ],
+  "grade": "B",
+  "passed": false,
+  "completed_at": "2026-05-13T01:31:53+00:00",
+  "status": "completed"
+}

@@ -1,0 +1,419 @@
+{
+  "biome": "forest",
+  "slot": "mid",
+  "candidates": {
+    "01_lichen_on_rock_brown": {
+      "id": "01_lichen_on_rock_brown",
+      "prompt": "tileable seamless texture, pale lichen patches on warm-brown weathered rock, muted earth palette with green-grey accents, forest understory, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:23:33+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "02_moss_on_bark_chunks": {
+      "id": "02_moss_on_bark_chunks",
+      "prompt": "tileable seamless texture, fragments of mossy bark and woody debris over warm forest floor, varied brown and green organic surface, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:24:41+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "03_leaf_litter_dense": {
+      "id": "03_leaf_litter_dense",
+      "prompt": "tileable seamless texture, dense temperate forest leaf litter, mixed brown deciduous leaves with green accents, varied autumnal palette, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:25:49+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "04_roots_with_moss": {
+      "id": "04_roots_with_moss",
+      "prompt": "tileable seamless texture, exposed tree roots covered in moss snaking across warm-brown soil, organic curving patterns, dense vegetation, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:26:59+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "05_fern_understory": {
+      "id": "05_fern_understory",
+      "prompt": "tileable seamless texture, small fern fronds emerging through forest floor litter, fresh greens over warm brown duff, varied textures, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:28:09+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "06_mossy_log_fragments": {
+      "id": "06_mossy_log_fragments",
+      "prompt": "tileable seamless texture, fallen mossy log fragments embedded in forest floor, dark-brown rotting wood with bright green moss coverage, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:29:19+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "07_lichen_carpet_grey": {
+      "id": "07_lichen_carpet_grey",
+      "prompt": "tileable seamless texture, dense grey-green lichen carpet over forest rock substrate, muted cool palette with warm undertones, weathered, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:30:38+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "08_pine_needles": {
+      "id": "08_pine_needles",
+      "prompt": "tileable seamless texture, dense pine needle litter with scattered cones, warm orange-brown palette with embedded organic debris, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:31:53+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "09_oak_leaf_brown": {
+      "id": "09_oak_leaf_brown",
+      "prompt": "tileable seamless texture, oak leaf litter on forest floor, mixed shades of warm brown with curled leaf textures, varied organic, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:33:04+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "10_woody_debris_moss": {
+      "id": "10_woody_debris_moss",
+      "prompt": "tileable seamless texture, woody debris with patches of bright green moss between fragments, contrast of dark wood and vibrant moss, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:34:17+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "11_forest_floor_seedlings": {
+      "id": "11_forest_floor_seedlings",
+      "prompt": "tileable seamless texture, forest floor with small green seedlings emerging through leaf litter, varied organic with vertical accents, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:35:29+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "12_mossy_rock_outcrop_base": {
+      "id": "12_mossy_rock_outcrop_base",
+      "prompt": "tileable seamless texture, base of mossy forest rock outcrop with surrounding leaf litter and moss spread, warm-cool transition, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:36:42+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "13_lichen_orange_rust": {
+      "id": "13_lichen_orange_rust",
+      "prompt": "tileable seamless texture, vivid orange-rust lichen patches on grey-brown forest rock, high color contrast with weathered base, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:37:54+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "14_forest_grass_tufts": {
+      "id": "14_forest_grass_tufts",
+      "prompt": "tileable seamless texture, scattered grass tufts emerging through forest floor leaf litter, fresh green over warm brown debris, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:39:05+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "15_mushrooms_in_litter": {
+      "id": "15_mushrooms_in_litter",
+      "prompt": "tileable seamless texture, small mushrooms scattered in temperate forest leaf litter, brown caps over warm-brown forest floor, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:40:18+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "16_bark_pieces_lichen": {
+      "id": "16_bark_pieces_lichen",
+      "prompt": "tileable seamless texture, loose bark pieces with attached lichen coverage on forest floor, varied browns with grey-green accents, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:41:35+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "17_forest_root_tangle": {
+      "id": "17_forest_root_tangle",
+      "prompt": "tileable seamless texture, tangled exposed forest tree roots with moss in crevices, warm-cool organic varied surface, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:42:47+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "18_damp_forest_moss": {
+      "id": "18_damp_forest_moss",
+      "prompt": "tileable seamless texture, damp temperate forest moss bed with varied green tones and small twig fragments, soft organic carpet, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:44:04+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "19_leaf_litter_with_acorns": {
+      "id": "19_leaf_litter_with_acorns",
+      "prompt": "tileable seamless texture, forest leaf litter with scattered acorns and small seed pods, warm-brown palette with embedded debris, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:45:18+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "20_forest_rock_with_lichen": {
+      "id": "20_forest_rock_with_lichen",
+      "prompt": "tileable seamless texture, weathered forest rock fragments with patches of pale lichen, warm-cool palette balance, mid-elevation, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:46:31+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "21_deciduous_decay": {
+      "id": "21_deciduous_decay",
+      "prompt": "tileable seamless texture, deeply decomposed deciduous leaves over rich dark forest soil, fine organic detail with dark base, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:47:40+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    }
+  }
+}

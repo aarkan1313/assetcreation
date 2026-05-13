@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.005107,
+    "periodic_locality": 5.565,
+    "richness": 0.813,
+    "composite": 0.8605,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_09_oak_leaf_brown_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.06362283286476356,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.19,
+      "final_seam_score": 0.0051066198059340154,
+      "seam_improvement": 0.05851621305882954
+    }
+  },
+  {
+    "edge_seam": 0.007265,
+    "periodic_locality": 7.222,
+    "richness": 0.85,
+    "composite": 0.7989,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_09_oak_leaf_brown_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.06131434949899077,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.2,
+      "final_seam_score": 0.0072654447808535175,
+      "seam_improvement": 0.05404890471813725
+    }
+  },
+  {
+    "edge_seam": 0.008038,
+    "periodic_locality": 14.411,
+    "richness": 0.861,
+    "composite": 0.6343,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_09_oak_leaf_brown_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.04513504796832949,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.42,
+      "final_seam_score": 0.008037934440779989,
+      "seam_improvement": 0.037097113527549505
+    }
+  },
+  {
+    "edge_seam": 0.006555,
+    "periodic_locality": 22.832,
+    "richness": 0.911,
+    "composite": 0.4967,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_09_oak_leaf_brown_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.04911431675917916,
+      "pass1_seconds": 4.1,
+      "pass3_seconds": 6.34,
+      "final_seam_score": 0.006554915777585544,
+      "seam_improvement": 0.042559400981593616
+    }
+  }
+]

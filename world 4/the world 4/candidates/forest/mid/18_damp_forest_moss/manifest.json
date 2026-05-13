@@ -1,0 +1,186 @@
+{
+  "version": "w4_tx_pipeline_v1",
+  "asset_id": "div_forest_mid_18_damp_forest_moss",
+  "prompt": "tileable seamless texture, damp temperate forest moss bed with varied green tones and small twig fragments, soft organic carpet, overhead perspective",
+  "settings": {
+    "unet": "flux-2-klein-9b-fp8.safetensors",
+    "clip": "qwen_3_8b_fp8mixed.safetensors",
+    "vae": "flux2-vae.safetensors",
+    "size": 1024,
+    "steps": 4,
+    "seed_base": 42,
+    "variants": 4,
+    "heal_denoise": 0.35,
+    "heal_mode": "flux_heal",
+    "delight_strength": 0.4,
+    "pbr_backend": "hybrid",
+    "seam_repair": true,
+    "seam_repair_patch": 64,
+    "seam_repair_feather": 12,
+    "category": "Mixed",
+    "host": "http://127.0.0.1:8188"
+  },
+  "started_at": "2026-05-13T01:42:47+00:00",
+  "stages": [
+    {
+      "stage": "variants",
+      "n_variants": 4,
+      "ranking": [
+        {
+          "edge_seam": 0.006542,
+          "periodic_locality": 8.368,
+          "richness": 0.853,
+          "composite": 0.7899,
+          "variant_index": 1,
+          "seed": 1042,
+          "path": "v1_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_forest_mid_18_damp_forest_moss_v1",
+            "size": 1024,
+            "seed": 1042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.0448011882449058,
+            "pass1_seconds": 4.28,
+            "pass3_seconds": 8.28,
+            "final_seam_score": 0.006542045126874279,
+            "seam_improvement": 0.038259143118031524
+          }
+        },
+        {
+          "edge_seam": 0.012071,
+          "periodic_locality": 10.965,
+          "richness": 0.919,
+          "composite": 0.6379,
+          "variant_index": 3,
+          "seed": 3042,
+          "path": "v3_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_forest_mid_18_damp_forest_moss_v3",
+            "size": 1024,
+            "seed": 3042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.05078083324322376,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 8.25,
+            "final_seam_score": 0.01207055279219531,
+            "seam_improvement": 0.03871028045102845
+          }
+        },
+        {
+          "edge_seam": 0.013749,
+          "periodic_locality": 12.844,
+          "richness": 0.885,
+          "composite": 0.5579,
+          "variant_index": 0,
+          "seed": 42,
+          "path": "v0_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_forest_mid_18_damp_forest_moss_v0",
+            "size": 1024,
+            "seed": 42,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.04434409617094387,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.18,
+            "final_seam_score": 0.013749433999243079,
+            "seam_improvement": 0.03059466217170079
+          }
+        },
+        {
+          "edge_seam": 0.016134,
+          "periodic_locality": 13.412,
+          "richness": 0.899,
+          "composite": 0.501,
+          "variant_index": 2,
+          "seed": 2042,
+          "path": "v2_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_forest_mid_18_damp_forest_moss_v2",
+            "size": 1024,
+            "seed": 2042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.04196426855055748,
+            "pass1_seconds": 4.06,
+            "pass3_seconds": 8.22,
+            "final_seam_score": 0.01613395388792772,
+            "seam_improvement": 0.02583031466262976
+          }
+        }
+      ]
+    },
+    {
+      "stage": "delight",
+      "strength": 0.4
+    },
+    {
+      "stage": "pbr",
+      "backend": "tx_pbr_hybrid",
+      "sm_size": 1024,
+      "category": "Mixed",
+      "sm_input": "D:\\assets\\world 4\\the world 4\\candidates\\forest\\mid\\18_damp_forest_moss\\albedo.png",
+      "derive_log": {
+        "backend": "tx_pbr_derive",
+        "category": "Mixed",
+        "snow_mode": true,
+        "normal_strength": 4.0,
+        "maps": [
+          "albedo",
+          "normal",
+          "roughness",
+          "ao",
+          "height",
+          "metallic"
+        ],
+        "preset_used": [
+          0.85,
+          0.12
+        ]
+      },
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ]
+    },
+    {
+      "stage": "seam_repair",
+      "module": "tx_seam_repair",
+      "patch": 64,
+      "feather": 12,
+      "plan_ops": 32,
+      "maps_processed": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ],
+      "maps_skipped": []
+    },
+    {
+      "stage": "qa",
+      "grade": "A",
+      "passed_checks": 4,
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "failed": []
+    }
+  ],
+  "grade": "A",
+  "passed": true,
+  "completed_at": "2026-05-13T01:44:04+00:00",
+  "status": "completed"
+}

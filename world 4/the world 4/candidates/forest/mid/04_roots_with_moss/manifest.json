@@ -1,0 +1,186 @@
+{
+  "version": "w4_tx_pipeline_v1",
+  "asset_id": "div_forest_mid_04_roots_with_moss",
+  "prompt": "tileable seamless texture, exposed tree roots covered in moss snaking across warm-brown soil, organic curving patterns, dense vegetation, overhead perspective",
+  "settings": {
+    "unet": "flux-2-klein-9b-fp8.safetensors",
+    "clip": "qwen_3_8b_fp8mixed.safetensors",
+    "vae": "flux2-vae.safetensors",
+    "size": 1024,
+    "steps": 4,
+    "seed_base": 42,
+    "variants": 4,
+    "heal_denoise": 0.35,
+    "heal_mode": "flux_heal",
+    "delight_strength": 0.4,
+    "pbr_backend": "hybrid",
+    "seam_repair": true,
+    "seam_repair_patch": 64,
+    "seam_repair_feather": 12,
+    "category": "Mixed",
+    "host": "http://127.0.0.1:8188"
+  },
+  "started_at": "2026-05-13T01:25:49+00:00",
+  "stages": [
+    {
+      "stage": "variants",
+      "n_variants": 4,
+      "ranking": [
+        {
+          "edge_seam": 0.009128,
+          "periodic_locality": 10.759,
+          "richness": 0.9,
+          "composite": 0.6973,
+          "variant_index": 3,
+          "seed": 3042,
+          "path": "v3_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_forest_mid_04_roots_with_moss_v3",
+            "size": 1024,
+            "seed": 3042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.024275864451172625,
+            "pass1_seconds": 4.04,
+            "pass3_seconds": 6.24,
+            "final_seam_score": 0.009127774060757881,
+            "seam_improvement": 0.015148090390414743
+          }
+        },
+        {
+          "edge_seam": 0.009294,
+          "periodic_locality": 12.988,
+          "richness": 0.856,
+          "composite": 0.6382,
+          "variant_index": 1,
+          "seed": 1042,
+          "path": "v1_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_forest_mid_04_roots_with_moss_v1",
+            "size": 1024,
+            "seed": 1042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.033216960574058055,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.39,
+            "final_seam_score": 0.00929378593119233,
+            "seam_improvement": 0.023923174642865724
+          }
+        },
+        {
+          "edge_seam": 0.009884,
+          "periodic_locality": 14.892,
+          "richness": 0.906,
+          "composite": 0.5964,
+          "variant_index": 2,
+          "seed": 2042,
+          "path": "v2_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_forest_mid_04_roots_with_moss_v2",
+            "size": 1024,
+            "seed": 2042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.022997804705521915,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.28,
+            "final_seam_score": 0.009884234541702711,
+            "seam_improvement": 0.013113570163819204
+          }
+        },
+        {
+          "edge_seam": 0.013982,
+          "periodic_locality": 15.01,
+          "richness": 0.885,
+          "composite": 0.5077,
+          "variant_index": 0,
+          "seed": 42,
+          "path": "v0_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_forest_mid_04_roots_with_moss_v0",
+            "size": 1024,
+            "seed": 42,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.024321219603037292,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.24,
+            "final_seam_score": 0.013982462987492792,
+            "seam_improvement": 0.0103387566155445
+          }
+        }
+      ]
+    },
+    {
+      "stage": "delight",
+      "strength": 0.4
+    },
+    {
+      "stage": "pbr",
+      "backend": "tx_pbr_hybrid",
+      "sm_size": 1024,
+      "category": "Mixed",
+      "sm_input": "D:\\assets\\world 4\\the world 4\\candidates\\forest\\mid\\04_roots_with_moss\\albedo.png",
+      "derive_log": {
+        "backend": "tx_pbr_derive",
+        "category": "Mixed",
+        "snow_mode": true,
+        "normal_strength": 4.0,
+        "maps": [
+          "albedo",
+          "normal",
+          "roughness",
+          "ao",
+          "height",
+          "metallic"
+        ],
+        "preset_used": [
+          0.85,
+          0.12
+        ]
+      },
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ]
+    },
+    {
+      "stage": "seam_repair",
+      "module": "tx_seam_repair",
+      "patch": 64,
+      "feather": 12,
+      "plan_ops": 32,
+      "maps_processed": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ],
+      "maps_skipped": []
+    },
+    {
+      "stage": "qa",
+      "grade": "A",
+      "passed_checks": 4,
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "failed": []
+    }
+  ],
+  "grade": "A",
+  "passed": true,
+  "completed_at": "2026-05-13T01:26:59+00:00",
+  "status": "completed"
+}

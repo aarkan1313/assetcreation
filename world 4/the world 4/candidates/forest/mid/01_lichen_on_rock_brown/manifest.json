@@ -1,0 +1,186 @@
+{
+  "version": "w4_tx_pipeline_v1",
+  "asset_id": "div_forest_mid_01_lichen_on_rock_brown",
+  "prompt": "tileable seamless texture, pale lichen patches on warm-brown weathered rock, muted earth palette with green-grey accents, forest understory, overhead perspective",
+  "settings": {
+    "unet": "flux-2-klein-9b-fp8.safetensors",
+    "clip": "qwen_3_8b_fp8mixed.safetensors",
+    "vae": "flux2-vae.safetensors",
+    "size": 1024,
+    "steps": 4,
+    "seed_base": 42,
+    "variants": 4,
+    "heal_denoise": 0.35,
+    "heal_mode": "flux_heal",
+    "delight_strength": 0.4,
+    "pbr_backend": "hybrid",
+    "seam_repair": true,
+    "seam_repair_patch": 64,
+    "seam_repair_feather": 12,
+    "category": "Mixed",
+    "host": "http://127.0.0.1:8188"
+  },
+  "started_at": "2026-05-13T01:22:23+00:00",
+  "stages": [
+    {
+      "stage": "variants",
+      "n_variants": 4,
+      "ranking": [
+        {
+          "edge_seam": 0.00575,
+          "periodic_locality": 9.158,
+          "richness": 0.893,
+          "composite": 0.7972,
+          "variant_index": 1,
+          "seed": 1042,
+          "path": "v1_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_forest_mid_01_lichen_on_rock_brown_v1",
+            "size": 1024,
+            "seed": 1042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.06205562088499616,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.35,
+            "final_seam_score": 0.005750142016441993,
+            "seam_improvement": 0.056305478868554165
+          }
+        },
+        {
+          "edge_seam": 0.011534,
+          "periodic_locality": 11.629,
+          "richness": 0.928,
+          "composite": 0.6364,
+          "variant_index": 0,
+          "seed": 42,
+          "path": "v0_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_forest_mid_01_lichen_on_rock_brown_v0",
+            "size": 1024,
+            "seed": 42,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.04912619620458478,
+            "pass1_seconds": 4.07,
+            "pass3_seconds": 6.16,
+            "final_seam_score": 0.011534315415044695,
+            "seam_improvement": 0.03759188078954008
+          }
+        },
+        {
+          "edge_seam": 0.012501,
+          "periodic_locality": 13.097,
+          "richness": 0.953,
+          "composite": 0.5912,
+          "variant_index": 2,
+          "seed": 2042,
+          "path": "v2_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_forest_mid_01_lichen_on_rock_brown_v2",
+            "size": 1024,
+            "seed": 2042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.031205200523836987,
+            "pass1_seconds": 4.06,
+            "pass3_seconds": 6.16,
+            "final_seam_score": 0.01250123149750096,
+            "seam_improvement": 0.018703969026336024
+          }
+        },
+        {
+          "edge_seam": 0.015591,
+          "periodic_locality": 14.052,
+          "richness": 0.943,
+          "composite": 0.5073,
+          "variant_index": 3,
+          "seed": 3042,
+          "path": "v3_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_forest_mid_01_lichen_on_rock_brown_v3",
+            "size": 1024,
+            "seed": 3042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.03120095035563245,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.16,
+            "final_seam_score": 0.015591228621503748,
+            "seam_improvement": 0.0156097217341287
+          }
+        }
+      ]
+    },
+    {
+      "stage": "delight",
+      "strength": 0.4
+    },
+    {
+      "stage": "pbr",
+      "backend": "tx_pbr_hybrid",
+      "sm_size": 1024,
+      "category": "Mixed",
+      "sm_input": "D:\\assets\\world 4\\the world 4\\candidates\\forest\\mid\\01_lichen_on_rock_brown\\albedo.png",
+      "derive_log": {
+        "backend": "tx_pbr_derive",
+        "category": "Mixed",
+        "snow_mode": true,
+        "normal_strength": 4.0,
+        "maps": [
+          "albedo",
+          "normal",
+          "roughness",
+          "ao",
+          "height",
+          "metallic"
+        ],
+        "preset_used": [
+          0.85,
+          0.12
+        ]
+      },
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ]
+    },
+    {
+      "stage": "seam_repair",
+      "module": "tx_seam_repair",
+      "patch": 64,
+      "feather": 12,
+      "plan_ops": 32,
+      "maps_processed": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ],
+      "maps_skipped": []
+    },
+    {
+      "stage": "qa",
+      "grade": "A",
+      "passed_checks": 4,
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "failed": []
+    }
+  ],
+  "grade": "A",
+  "passed": true,
+  "completed_at": "2026-05-13T01:23:33+00:00",
+  "status": "completed"
+}

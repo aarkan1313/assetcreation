@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.013299,
+    "periodic_locality": 9.765,
+    "richness": 0.919,
+    "composite": 0.6386,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_06_mossy_log_fragments_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.031549280174692426,
+      "pass1_seconds": 4.04,
+      "pass3_seconds": 6.31,
+      "final_seam_score": 0.013298731257208766,
+      "seam_improvement": 0.01825054891748366
+    }
+  },
+  {
+    "edge_seam": 0.011764,
+    "periodic_locality": 13.637,
+    "richness": 0.887,
+    "composite": 0.5814,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_06_mossy_log_fragments_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.0338376653510669,
+      "pass1_seconds": 4.18,
+      "pass3_seconds": 6.19,
+      "final_seam_score": 0.01176390991445598,
+      "seam_improvement": 0.02207375543661092
+    }
+  },
+  {
+    "edge_seam": 0.016489,
+    "periodic_locality": 9.403,
+    "richness": 0.911,
+    "composite": 0.5809,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_06_mossy_log_fragments_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.028014405517108803,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.29,
+      "final_seam_score": 0.016489406117839292,
+      "seam_improvement": 0.01152499939926951
+    }
+  },
+  {
+    "edge_seam": 0.013331,
+    "periodic_locality": 14.217,
+    "richness": 0.868,
+    "composite": 0.5341,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_06_mossy_log_fragments_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.040467173082468284,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 6.23,
+      "final_seam_score": 0.01333078022875817,
+      "seam_improvement": 0.027136392853710112
+    }
+  }
+]

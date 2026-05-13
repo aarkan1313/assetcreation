@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.011703,
+    "periodic_locality": 7.404,
+    "richness": 0.925,
+    "composite": 0.7213,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_10_woody_debris_moss_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.049853861045030756,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.26,
+      "final_seam_score": 0.011702700170907824,
+      "seam_improvement": 0.03815116087412293
+    }
+  },
+  {
+    "edge_seam": 0.009437,
+    "periodic_locality": 11.715,
+    "richness": 0.931,
+    "composite": 0.6771,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_10_woody_debris_moss_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.041272917868127645,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.25,
+      "final_seam_score": 0.009437025422914264,
+      "seam_improvement": 0.031835892445213385
+    }
+  },
+  {
+    "edge_seam": 0.016345,
+    "periodic_locality": 8.25,
+    "richness": 0.93,
+    "composite": 0.6118,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_10_woody_debris_moss_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.04905408977316417,
+      "pass1_seconds": 4.07,
+      "pass3_seconds": 6.41,
+      "final_seam_score": 0.016344990508458286,
+      "seam_improvement": 0.03270909926470588
+    }
+  },
+  {
+    "edge_seam": 0.014716,
+    "periodic_locality": 10.86,
+    "richness": 0.929,
+    "composite": 0.5893,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_10_woody_debris_moss_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.04673398227244329,
+      "pass1_seconds": 4.04,
+      "pass3_seconds": 8.25,
+      "final_seam_score": 0.01471576436947328,
+      "seam_improvement": 0.03201821790297001
+    }
+  }
+]

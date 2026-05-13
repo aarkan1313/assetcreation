@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.011872,
+    "periodic_locality": 8.081,
+    "richness": 0.945,
+    "composite": 0.7078,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_16_bark_pieces_lichen_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.06078673542027105,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.28,
+      "final_seam_score": 0.011871580529423779,
+      "seam_improvement": 0.04891515489084727
+    }
+  },
+  {
+    "edge_seam": 0.022119,
+    "periodic_locality": 7.443,
+    "richness": 0.954,
+    "composite": 0.5603,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_16_bark_pieces_lichen_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.05946955497885429,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 8.19,
+      "final_seam_score": 0.022119281421208187,
+      "seam_improvement": 0.0373502735576461
+    }
+  },
+  {
+    "edge_seam": 0.017582,
+    "periodic_locality": 11.267,
+    "richness": 0.942,
+    "composite": 0.5258,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_16_bark_pieces_lichen_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.07820430393358324,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 8.2,
+      "final_seam_score": 0.017581765051302385,
+      "seam_improvement": 0.060622538882280856
+    }
+  },
+  {
+    "edge_seam": 0.022403,
+    "periodic_locality": 9.27,
+    "richness": 0.953,
+    "composite": 0.5217,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_forest_mid_16_bark_pieces_lichen_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.06504042916186083,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 8.2,
+      "final_seam_score": 0.02240316224529027,
+      "seam_improvement": 0.042637266916570556
+    }
+  }
+]
