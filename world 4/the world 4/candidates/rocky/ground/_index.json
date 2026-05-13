@@ -1,0 +1,314 @@
+{
+  "biome": "rocky",
+  "slot": "ground",
+  "candidates": {
+    "01_fine_scree": {
+      "id": "01_fine_scree",
+      "prompt": "tileable seamless texture, fine scree slope of small angular rock fragments, mid-grey palette, loose talus, sharp edges, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:21:36+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "02_coarse_talus": {
+      "id": "02_coarse_talus",
+      "prompt": "tileable seamless texture, coarse talus field with larger angular boulders and smaller infill, weathered grey rock, varied sizes, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:22:40+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "03_rock_dust": {
+      "id": "03_rock_dust",
+      "prompt": "tileable seamless texture, weathered rock fragments mixed with grey rock dust, low contrast mid-grey palette, eroded fines, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:23:45+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "04_shattered_slabs": {
+      "id": "04_shattered_slabs",
+      "prompt": "tileable seamless texture, shattered flat slabs of dark grey rock, frost-shattered fragments, angular plate-like pieces, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:24:51+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "05_rounded_pebbles": {
+      "id": "05_rounded_pebbles",
+      "prompt": "tileable seamless texture, weathered rounded grey pebbles tightly packed, river-worn smooth stones, mid-grey palette, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:25:57+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "06_mossy_scree": {
+      "id": "06_mossy_scree",
+      "prompt": "tileable seamless texture, scree slope with sparse green moss patches between rock fragments, cool grey-and-green palette, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:27:04+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "07_lichen_dusted": {
+      "id": "07_lichen_dusted",
+      "prompt": "tileable seamless texture, rock fragments dusted with pale grey-green lichen, weathered scree, muted desaturated palette, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:28:07+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "08_angular_basalt": {
+      "id": "08_angular_basalt",
+      "prompt": "tileable seamless texture, angular dark basalt fragments, near-black rock with sharp fractures, weathered cool palette, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:29:11+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "09_granite_chips": {
+      "id": "09_granite_chips",
+      "prompt": "tileable seamless texture, weathered granite chip field with pinkish-grey grain, sparse mineral flecks, sharp edges, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:30:15+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "10_schist_flakes": {
+      "id": "10_schist_flakes",
+      "prompt": "tileable seamless texture, thin schist flakes with mica sparkle scattered over grey rock, layered fragments, weathered, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:31:19+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "11_gravel_with_moss": {
+      "id": "11_gravel_with_moss",
+      "prompt": "tileable seamless texture, gravel-grade rock with patchy dry moss tufts, cool grey palette with dusty green accents, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:32:23+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "12_wet_pebbles": {
+      "id": "12_wet_pebbles",
+      "prompt": "tileable seamless texture, wet weathered pebbles with darker tones, glistening grey rock, packed tightly together, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:33:27+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "13_dry_loose_scree": {
+      "id": "13_dry_loose_scree",
+      "prompt": "tileable seamless texture, dry loose scree slope, fragmented grey rock with no organic content, dusty weathered surface, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:34:33+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "14_mixed_grey_brown": {
+      "id": "14_mixed_grey_brown",
+      "prompt": "tileable seamless texture, mixed grey-and-brown rock fragments, weathered varied lithology, cool low-saturation palette, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:35:39+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "15_ice_scoured": {
+      "id": "15_ice_scoured",
+      "prompt": "tileable seamless texture, ice-scoured rock fragments with parallel grooves, polished grey rock, weathered glacial action, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:36:46+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "16_post_avalanche": {
+      "id": "16_post_avalanche",
+      "prompt": "tileable seamless texture, post-avalanche rock debris field, fresh angular fragments mixed with older weathered stones, grey palette, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:37:50+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    }
+  }
+}

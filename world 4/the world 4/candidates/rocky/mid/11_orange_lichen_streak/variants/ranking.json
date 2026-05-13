@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.005361,
+    "periodic_locality": 8.928,
+    "richness": 0.769,
+    "composite": 0.785,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_11_orange_lichen_streak_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.03402788666017878,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.18,
+      "final_seam_score": 0.005360828767781623,
+      "seam_improvement": 0.02866705789239716
+    }
+  },
+  {
+    "edge_seam": 0.00595,
+    "periodic_locality": 15.193,
+    "richness": 0.794,
+    "composite": 0.6463,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_11_orange_lichen_streak_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.05202886209630911,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.2,
+      "final_seam_score": 0.005950110177726115,
+      "seam_improvement": 0.046078751918582996
+    }
+  },
+  {
+    "edge_seam": 0.008758,
+    "periodic_locality": 18.658,
+    "richness": 0.924,
+    "composite": 0.5431,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_11_orange_lichen_streak_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.04848976355247982,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.008757934335652154,
+      "seam_improvement": 0.03973182921682766
+    }
+  },
+  {
+    "edge_seam": 0.014605,
+    "periodic_locality": 18.275,
+    "richness": 0.838,
+    "composite": 0.4171,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_11_orange_lichen_streak_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.05914382388985006,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 6.19,
+      "final_seam_score": 0.014604964324118128,
+      "seam_improvement": 0.044538859565731934
+    }
+  }
+]

@@ -465,9 +465,85 @@ year-scale project on its own. Here's how it factors:
    altitude/moisture constraints, Poisson-disk distribution,
    wind-shadow + clearings. Authored at biome level, runtime fast
    via GPU instancing.
-5. **LOD ladder + impostors** — hero / mid / billboard / atlased
-   billboard sheet. The 1000+ trees in view problem is solved with
-   billboards + a single atlas draw call, not with mesh.
+5. **LOD ladder + impostors** — 4 tiers, see below. The 1000+ trees
+   in view problem is solved with billboards + a single atlas draw
+   call, not with mesh.
+
+### The 4-LOD ladder (explicit)
+
+| Tier | Distance | Geometry | Per-instance cost |
+|---|---|---|---|
+| Hero | 0–5m | Full mesh ~20k polys, real foliage geometry or dense leaf-cards | High; player-noticeable assets only |
+| Mid | 5–30m | ~5k polys, simplified trunk, billboard-cluster canopy | Moderate |
+| Low | 30–150m | ~500 polys low-poly trunk + single billboard canopy | Low |
+| Distant | 150m+ | **2 crossed billboards** through the vertical axis, 4 triangles total | Trivial; entire forest costs less than one hero tree |
+
+### Distant tier — 2 crossed billboards (the standard AAA trick)
+
+Two alpha-cutout quads sharing the vertical axis, rotated 90° from
+each other. From any horizontal viewing angle you see at least one
+near-face-on (canopy visible) and at least one near-edge-on (gives
+the tree visible thickness). Worst case is exactly 45° between the
+quads — both face the camera at 45°, but still reads as a 3D tree.
+
+**Strictly better than single-billboard** at trivial extra cost:
+- Same texture, used twice; one alpha PNG per species
+- 4 triangles per instance vs 2 — meaningless cost difference
+- No "spinning to face camera" giveaway
+- Random Y-axis rotation per instance gives cheap variety
+
+The transition from Low → Distant is the visible-fall-off threshold;
+fog/haze (Tier 1 roadmap item) helps mask it.
+
+### Distant-tier impostor generation pipeline
+
+Reuse the existing W4 texture pipeline; don't build a dedicated
+impostor baker.
+
+1. **Source image** — either (a) TRELLIS render of the hero mesh
+   from the canonical front-orthographic angle, or (b) a real
+   photograph of the species at known scale.
+2. **Alpha cutout** — run SAM (Segment Anything) on the source to
+   produce a tight alpha mask. The texture pipeline can already
+   shell out to SAM if we wire it in (the AAA-target compositor
+   in the stochastic-texturing entry needs SAM segmentation too,
+   so this is shared infra).
+3. **Color cleanup** — chroma-key + small dilate-erode to clean
+   the alpha edge, optionally a slight inner-blur for soft edges.
+4. **PBR maps** — distant-tier impostors don't need full PBR.
+   Albedo alone is fine; optionally a flat normal pointing up so
+   lighting matches the world's directional light direction.
+5. **Output** — one ~512² or 1024² PNG per species. ~1MB compressed.
+   100 species = ~100MB. Manageable storage even for a large catalog.
+
+### Important: this pipeline generalizes WAY beyond trees
+
+The 2-crossed-billboards + alpha-PNG-from-W4-texture-pipeline pattern
+works for **any cylindrically-symmetric or mostly-distance-viewed
+asset**. When implementing distant-tier infrastructure, name it
+generically ("ImpostorBillboard") not "TreeBillboard", because the
+same pipeline serves:
+
+- **Plants** — flowers, ferns, succulents, tall grass tufts
+- **Bushes / shrubs**
+- **Cacti / agaves**
+- **Mushrooms / fungi**
+- **Crystals + alien geological growths**
+- **Totems / monoliths / standing stones**
+- **Stalagmites / stalactites** (in caves)
+- **Fence posts / signposts / gravestones / lampposts**
+- **Distant decorative rocks** (the bigger ones; small rocks still
+  use mesh because the player sees them up close)
+- **Coral / kelp / underwater organic growths**
+
+What it fails for: anything with a strong front/back asymmetry
+(faces, statues, crafted objects with a "front side"), anything
+wider than tall (sprawling vines, fallen logs), and anything that
+benefits visibly from realtime self-shadowing.
+
+When the vegetation system gets promoted, design the impostor layer
+generically and bring trees in as the first consumer, not as the
+only consumer. Future-us will thank present-us for it.
 
 ### Scope creep direction (this is the fun part)
 

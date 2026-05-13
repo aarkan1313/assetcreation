@@ -1,0 +1,129 @@
+{
+  "version": "w4_tx_qa_v1",
+  "category": "Rock",
+  "thresholds_applied": {
+    "edge_continuity": 0.005,
+    "junction_visibility": 1.35,
+    "periodic_artifact": 25.0,
+    "richness": 0.83,
+    "mip32_stdev": 8.0
+  },
+  "checks": {
+    "edge_continuity": {
+      "edge_lr_mse": 0.00010446703527122736,
+      "edge_tb_mse": 0.0001772004907252267,
+      "overall_mse": 0.0001772004907252267,
+      "passed": true,
+      "threshold": 0.005
+    },
+    "junction_visibility": {
+      "seam_energy": 0.008122396655380726,
+      "interior_energy": 0.009357198141515255,
+      "ratio": 0.8680372620671499,
+      "band_pixels": [
+        40,
+        40
+      ],
+      "passed": true,
+      "threshold": 1.35
+    },
+    "periodic_artifact": {
+      "peak_locality_ratio": 24.87289575578906,
+      "peak_pos": [
+        -12,
+        17
+      ],
+      "peak_period_px": [
+        85.33333333333333,
+        60.23529411764706
+      ],
+      "passed": true,
+      "threshold": 25.0
+    },
+    "mip32_stdev": {
+      "by_size": {
+        "256": 18.0725154876709,
+        "128": 17.596542358398438,
+        "64": 16.740270614624023,
+        "32": 15.013479232788086
+      },
+      "smallest_size": 32,
+      "stdev_at_smallest": 15.013479232788086,
+      "passed": true,
+      "threshold": 8.0
+    },
+    "richness": {
+      "luminance_entropy": 5.9988841904920935,
+      "gradient_p99": 0.043137311935424805,
+      "mean_luminance": 0.2844204306602478,
+      "gradient_p99_normalized": 0.15166741656106322,
+      "score": 0.7894726897505383,
+      "passed": false,
+      "threshold": 0.83
+    }
+  },
+  "advisory": {
+    "richness": {
+      "luminance_entropy": 5.9988841904920935,
+      "gradient_p99": 0.043137311935424805,
+      "mean_luminance": 0.2844204306602478,
+      "gradient_p99_normalized": 0.15166741656106322,
+      "score": 0.7894726897505383,
+      "passed": false,
+      "threshold": 0.83
+    },
+    "tile_4x4_lattice": {
+      "mosaic_size": [
+        2048,
+        2048
+      ],
+      "peak_locality_ratio": 147.5325869330528,
+      "peak_period_px": [
+        85.33333333333333,
+        56.888888888888886
+      ],
+      "passed": true,
+      "threshold": 999.0
+    },
+    "palette": {
+      "n_colors": 5,
+      "colors_rgb": [
+        [
+          74,
+          78,
+          68
+        ],
+        [
+          63,
+          67,
+          58
+        ],
+        [
+          92,
+          93,
+          85
+        ],
+        [
+          45,
+          44,
+          42
+        ],
+        [
+          130,
+          126,
+          116
+        ]
+      ],
+      "weights": [
+        0.404,
+        0.307,
+        0.148,
+        0.097,
+        0.044
+      ]
+    }
+  },
+  "grade": "A",
+  "passed_checks": 4,
+  "passed": true
+}

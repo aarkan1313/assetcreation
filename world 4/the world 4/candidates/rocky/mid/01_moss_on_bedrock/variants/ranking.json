@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.006542,
+    "periodic_locality": 12.874,
+    "richness": 0.933,
+    "composite": 0.7111,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_01_moss_on_bedrock_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.07666285953719723,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.006542060145136486,
+      "seam_improvement": 0.07012079939206074
+    }
+  },
+  {
+    "edge_seam": 0.0118,
+    "periodic_locality": 10.434,
+    "richness": 0.937,
+    "composite": 0.658,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_01_moss_on_bedrock_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.05015716986856017,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 6.23,
+      "final_seam_score": 0.011799988473483757,
+      "seam_improvement": 0.03835718139507641
+    }
+  },
+  {
+    "edge_seam": 0.009333,
+    "periodic_locality": 14.873,
+    "richness": 0.955,
+    "composite": 0.6175,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_01_moss_on_bedrock_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.054057217326268746,
+      "pass1_seconds": 4.07,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.00933336937716263,
+      "seam_improvement": 0.04472384794910612
+    }
+  },
+  {
+    "edge_seam": 0.027055,
+    "periodic_locality": 10.321,
+    "richness": 0.948,
+    "composite": 0.4985,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_01_moss_on_bedrock_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.07663759882016533,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.027054958204176277,
+      "seam_improvement": 0.04958264061598905
+    }
+  }
+]

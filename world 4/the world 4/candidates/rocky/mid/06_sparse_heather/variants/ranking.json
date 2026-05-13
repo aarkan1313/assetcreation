@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.01588,
+    "periodic_locality": 5.626,
+    "richness": 0.906,
+    "composite": 0.6635,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_06_sparse_heather_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.02981252703287197,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.015879670304089773,
+      "seam_improvement": 0.013932856728782198
+    }
+  },
+  {
+    "edge_seam": 0.013735,
+    "periodic_locality": 10.41,
+    "richness": 0.905,
+    "composite": 0.6134,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_06_sparse_heather_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.034580645064398306,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.18,
+      "final_seam_score": 0.013734526496720011,
+      "seam_improvement": 0.020846118567678297
+    }
+  },
+  {
+    "edge_seam": 0.015301,
+    "periodic_locality": 10.286,
+    "richness": 0.885,
+    "composite": 0.5808,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_06_sparse_heather_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.037953405090590156,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.015301045759143117,
+      "seam_improvement": 0.02265235933144704
+    }
+  },
+  {
+    "edge_seam": 0.015557,
+    "periodic_locality": 13.058,
+    "richness": 0.911,
+    "composite": 0.5225,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_06_sparse_heather_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.02539951581122645,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.21,
+      "final_seam_score": 0.015557443163386678,
+      "seam_improvement": 0.009842072647839773
+    }
+  }
+]

@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.013546,
+    "periodic_locality": 10.728,
+    "richness": 0.911,
+    "composite": 0.6118,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_04_alpine_grass_rock_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.02436072326448962,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.19,
+      "final_seam_score": 0.013545807013828817,
+      "seam_improvement": 0.010814916250660802
+    }
+  },
+  {
+    "edge_seam": 0.01304,
+    "periodic_locality": 11.375,
+    "richness": 0.905,
+    "composite": 0.6071,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_04_alpine_grass_rock_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.03992435676782968,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.013039821109969723,
+      "seam_improvement": 0.026884535657859962
+    }
+  },
+  {
+    "edge_seam": 0.017585,
+    "periodic_locality": 10.747,
+    "richness": 0.921,
+    "composite": 0.5325,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_04_alpine_grass_rock_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.023506950076292773,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.15,
+      "final_seam_score": 0.017585328134010956,
+      "seam_improvement": 0.005921621942281817
+    }
+  },
+  {
+    "edge_seam": 0.019675,
+    "periodic_locality": 11.143,
+    "richness": 0.902,
+    "composite": 0.4785,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_04_alpine_grass_rock_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.022782833300293157,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.21,
+      "final_seam_score": 0.019675470371972318,
+      "seam_improvement": 0.0031073629283208393
+    }
+  }
+]

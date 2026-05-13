@@ -1,0 +1,415 @@
+{
+  "biome": "rocky",
+  "slot": "mid",
+  "candidates": {
+    "01_moss_on_bedrock": {
+      "id": "01_moss_on_bedrock",
+      "prompt": "tileable seamless texture, patchy moss on weathered grey bedrock, cool palette with green accents, transitional alpine surface, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:38:57+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "02_dense_lichen_rock": {
+      "id": "02_dense_lichen_rock",
+      "prompt": "tileable seamless texture, dense pale lichen coverage on cool grey rock, near-uniform muted green-grey, weathered organic surface, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:40:07+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "03_cracked_with_moss": {
+      "id": "03_cracked_with_moss",
+      "prompt": "tileable seamless texture, cracked grey bedrock with moss filling the cracks, contrasting hard rock and soft green growth, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:41:18+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "04_alpine_grass_rock": {
+      "id": "04_alpine_grass_rock",
+      "prompt": "tileable seamless texture, tufts of brown alpine grass between exposed rock fragments, cool muted palette with earth tones, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:42:23+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "05_stones_in_dirt": {
+      "id": "05_stones_in_dirt",
+      "prompt": "tileable seamless texture, embedded stones in dry mountain dirt, mixed grey rock and warm-grey earth, sparse vegetation, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:43:30+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "06_sparse_heather": {
+      "id": "06_sparse_heather",
+      "prompt": "tileable seamless texture, sparse dry heather scrub between exposed rock, muted brown-and-grey palette, weathered upland, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:44:37+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "07_peat_and_rock": {
+      "id": "07_peat_and_rock",
+      "prompt": "tileable seamless texture, dark peaty soil with embedded weathered grey rocks, contrasting dark organic and cool stone, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:45:46+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "08_cushion_plants": {
+      "id": "08_cushion_plants",
+      "prompt": "tileable seamless texture, small cushion-form alpine plants between weathered rocks, tight green mounds on grey base, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:46:52+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "09_dwarf_shrub_rock": {
+      "id": "09_dwarf_shrub_rock",
+      "prompt": "tileable seamless texture, dwarf alpine shrubs with woody stems clinging to exposed grey bedrock, muted earth palette, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:48:00+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "10_sedge_grass_rock": {
+      "id": "10_sedge_grass_rock",
+      "prompt": "tileable seamless texture, stiff alpine sedge grass tufts between angular rock fragments, muted yellow-green and grey, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:49:06+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "11_orange_lichen_streak": {
+      "id": "11_orange_lichen_streak",
+      "prompt": "tileable seamless texture, orange map lichen streaking across cool grey rock, vivid color accents on muted base, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:50:12+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "12_dry_lichen_carpet": {
+      "id": "12_dry_lichen_carpet",
+      "prompt": "tileable seamless texture, dry pale-yellow reindeer lichen carpet over rock fragments, soft cushion texture on hard base, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:51:21+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "13_meltwater_rock": {
+      "id": "13_meltwater_rock",
+      "prompt": "tileable seamless texture, rock surface with meltwater runnels and damp moss patches, cool wet palette with dark streaks, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:52:28+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "14_bog_with_stones": {
+      "id": "14_bog_with_stones",
+      "prompt": "tileable seamless texture, alpine bog edge with dark wet soil and embedded grey stones, muted brown-and-stone palette, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:53:36+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "15_barren_with_streaks": {
+      "id": "15_barren_with_streaks",
+      "prompt": "tileable seamless texture, barren rocky ground with mineral-stained streaks from old runoff, cool grey with rust accents, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:54:42+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "16_glacial_till": {
+      "id": "16_glacial_till",
+      "prompt": "tileable seamless texture, glacial till deposit with sorted stones of varied sizes embedded in fine grey-brown silt, ancient deposit, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:55:51+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "17_rock_with_succulents": {
+      "id": "17_rock_with_succulents",
+      "prompt": "tileable seamless texture, exposed rock with small alpine succulent rosettes in crevices, muted greys and dusty greens, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:57:01+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "18_trampled_path": {
+      "id": "18_trampled_path",
+      "prompt": "tileable seamless texture, lightly trampled alpine path with crushed plants over rock fragments, muted earth palette, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:58:09+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "19_frost_polygons": {
+      "id": "19_frost_polygons",
+      "prompt": "tileable seamless texture, frost-polygon ground with stones arranged in geometric patterns by freeze cycles, grey palette, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-12T23:59:17+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "20_krummholz_base": {
+      "id": "20_krummholz_base",
+      "prompt": "tileable seamless texture, krummholz base \u2014 gnarled woody alpine shrub remnants over rock, weathered brown and grey, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:00:28+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "21_pioneer_moss": {
+      "id": "21_pioneer_moss",
+      "prompt": "tileable seamless texture, pioneer moss colonies on freshly exposed grey rock, scattered green starts on bare stone, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:01:40+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    }
+  }
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.002898,
+    "periodic_locality": 12.18,
+    "richness": 0.644,
+    "composite": 0.7407,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_ground_08_angular_basalt_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.010741756663602942,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 6.14,
+      "final_seam_score": 0.00289770352936671,
+      "seam_improvement": 0.007844053134236232
+    }
+  },
+  {
+    "edge_seam": 0.001728,
+    "periodic_locality": 17.358,
+    "richness": 0.629,
+    "composite": 0.6521,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_ground_08_angular_basalt_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.01599026478698097,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.14,
+      "final_seam_score": 0.0017284167156637472,
+      "seam_improvement": 0.014261848071317224
+    }
+  },
+  {
+    "edge_seam": 0.004747,
+    "periodic_locality": 16.457,
+    "richness": 0.694,
+    "composite": 0.6237,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_ground_08_angular_basalt_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.023701310793925415,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.14,
+      "final_seam_score": 0.004747287701845444,
+      "seam_improvement": 0.01895402309207997
+    }
+  },
+  {
+    "edge_seam": 0.002967,
+    "periodic_locality": 18.531,
+    "richness": 0.701,
+    "composite": 0.617,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_ground_08_angular_basalt_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.015472895040369089,
+      "pass1_seconds": 4.04,
+      "pass3_seconds": 6.14,
+      "final_seam_score": 0.0029673683198769706,
+      "seam_improvement": 0.012505526720492119
+    }
+  }
+]

@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.007062,
+    "periodic_locality": 9.207,
+    "richness": 0.921,
+    "composite": 0.7755,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_09_dwarf_shrub_rock_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.04355540462202038,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.2,
+      "final_seam_score": 0.007062172601883891,
+      "seam_improvement": 0.03649323202013649
+    }
+  },
+  {
+    "edge_seam": 0.010015,
+    "periodic_locality": 8.078,
+    "richness": 0.955,
+    "composite": 0.747,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_09_dwarf_shrub_rock_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.058740039137591314,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.18,
+      "final_seam_score": 0.010015348663975394,
+      "seam_improvement": 0.04872469047361592
+    }
+  },
+  {
+    "edge_seam": 0.012247,
+    "periodic_locality": 10.53,
+    "richness": 0.931,
+    "composite": 0.646,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_09_dwarf_shrub_rock_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.029612249119929834,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 6.21,
+      "final_seam_score": 0.012246631591515282,
+      "seam_improvement": 0.01736561752841455
+    }
+  },
+  {
+    "edge_seam": 0.049597,
+    "periodic_locality": 10.695,
+    "richness": 0.957,
+    "composite": 0.4925,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_09_dwarf_shrub_rock_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.06707740862889273,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 6.19,
+      "final_seam_score": 0.04959713136173587,
+      "seam_improvement": 0.01748027726715686
+    }
+  }
+]

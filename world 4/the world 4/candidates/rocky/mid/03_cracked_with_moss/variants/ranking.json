@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.007891,
+    "periodic_locality": 6.38,
+    "richness": 0.892,
+    "composite": 0.8126,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_03_cracked_with_moss_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.033534457900807384,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.21,
+      "final_seam_score": 0.007891055836397059,
+      "seam_improvement": 0.025643402064410327
+    }
+  },
+  {
+    "edge_seam": 0.006575,
+    "periodic_locality": 11.77,
+    "richness": 0.884,
+    "composite": 0.7239,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_03_cracked_with_moss_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.041536398260284504,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.19,
+      "final_seam_score": 0.006575075447994762,
+      "seam_improvement": 0.034961322812289745
+    }
+  },
+  {
+    "edge_seam": 0.008861,
+    "periodic_locality": 10.576,
+    "richness": 0.933,
+    "composite": 0.7131,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_03_cracked_with_moss_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.06228130031117839,
+      "pass1_seconds": 4.08,
+      "pass3_seconds": 6.19,
+      "final_seam_score": 0.008860529716635429,
+      "seam_improvement": 0.05342077059454296
+    }
+  },
+  {
+    "edge_seam": 0.007127,
+    "periodic_locality": 12.687,
+    "richness": 0.928,
+    "composite": 0.7023,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_03_cracked_with_moss_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.057308520911428296,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.18,
+      "final_seam_score": 0.007127441969434833,
+      "seam_improvement": 0.05018107894199346
+    }
+  }
+]

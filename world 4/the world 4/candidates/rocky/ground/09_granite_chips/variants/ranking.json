@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.006767,
+    "periodic_locality": 11.624,
+    "richness": 0.862,
+    "composite": 0.7187,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_ground_09_granite_chips_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.06511110510380623,
+      "pass1_seconds": 4.07,
+      "pass3_seconds": 6.15,
+      "final_seam_score": 0.00676656814686659,
+      "seam_improvement": 0.05834453695693964
+    }
+  },
+  {
+    "edge_seam": 0.012879,
+    "periodic_locality": 8.948,
+    "richness": 0.93,
+    "composite": 0.6664,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_ground_09_granite_chips_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.06324429005670895,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.15,
+      "final_seam_score": 0.012878555010392638,
+      "seam_improvement": 0.050365735046316314
+    }
+  },
+  {
+    "edge_seam": 0.011644,
+    "periodic_locality": 10.071,
+    "richness": 0.893,
+    "composite": 0.6601,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_ground_09_granite_chips_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.06614427894319493,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.15,
+      "final_seam_score": 0.011643578904447808,
+      "seam_improvement": 0.054500700038747116
+    }
+  },
+  {
+    "edge_seam": 0.017382,
+    "periodic_locality": 25.748,
+    "richness": 0.915,
+    "composite": 0.2354,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_ground_09_granite_chips_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.06507994971885814,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.0173822061376634,
+      "seam_improvement": 0.04769774358119474
+    }
+  }
+]

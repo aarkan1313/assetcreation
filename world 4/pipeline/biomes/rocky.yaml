@@ -1,0 +1,129 @@
+# Rocky highlands / scree biome — prompt set for diversity batch.
+# Used by pipeline/diversity_run.py.
+#
+# 16 ground (scree, talus, weathered fragments) / 21 mid (moss-on-rock,
+# patchy lichen, exposed bedrock with vegetation) / 14 rock (weathered
+# bedrock, outcrops, slabs).
+# Palette: mid-grey rock + sparse moss + dust. Cool low-saturation.
+# This is the transition biome between forest and alpine — lots of
+# exposed rock with sparse organic accents.
+biome: rocky
+prompt_prefix: "tileable seamless texture, "
+prompt_suffix: ", overhead perspective"
+
+slots:
+  ground:
+    # Treat scree/talus as Rock category — content is hard surfaces,
+    # not soft uniform ground. Should pass mip32_stdev easily.
+    category: Rock
+    candidates:
+      - tag: fine_scree
+        body: "fine scree slope of small angular rock fragments, mid-grey palette, loose talus, sharp edges"
+      - tag: coarse_talus
+        body: "coarse talus field with larger angular boulders and smaller infill, weathered grey rock, varied sizes"
+      - tag: rock_dust
+        body: "weathered rock fragments mixed with grey rock dust, low contrast mid-grey palette, eroded fines"
+      - tag: shattered_slabs
+        body: "shattered flat slabs of dark grey rock, frost-shattered fragments, angular plate-like pieces"
+      - tag: rounded_pebbles
+        body: "weathered rounded grey pebbles tightly packed, river-worn smooth stones, mid-grey palette"
+      - tag: mossy_scree
+        body: "scree slope with sparse green moss patches between rock fragments, cool grey-and-green palette"
+      - tag: lichen_dusted
+        body: "rock fragments dusted with pale grey-green lichen, weathered scree, muted desaturated palette"
+      - tag: angular_basalt
+        body: "angular dark basalt fragments, near-black rock with sharp fractures, weathered cool palette"
+      - tag: granite_chips
+        body: "weathered granite chip field with pinkish-grey grain, sparse mineral flecks, sharp edges"
+      - tag: schist_flakes
+        body: "thin schist flakes with mica sparkle scattered over grey rock, layered fragments, weathered"
+      - tag: gravel_with_moss
+        body: "gravel-grade rock with patchy dry moss tufts, cool grey palette with dusty green accents"
+      - tag: wet_pebbles
+        body: "wet weathered pebbles with darker tones, glistening grey rock, packed tightly together"
+      - tag: dry_loose_scree
+        body: "dry loose scree slope, fragmented grey rock with no organic content, dusty weathered surface"
+      - tag: mixed_grey_brown
+        body: "mixed grey-and-brown rock fragments, weathered varied lithology, cool low-saturation palette"
+      - tag: ice_scoured
+        body: "ice-scoured rock fragments with parallel grooves, polished grey rock, weathered glacial action"
+      - tag: post_avalanche
+        body: "post-avalanche rock debris field, fresh angular fragments mixed with older weathered stones, grey palette"
+
+  mid:
+    category: Mixed
+    candidates:
+      - tag: moss_on_bedrock
+        body: "patchy moss on weathered grey bedrock, cool palette with green accents, transitional alpine surface"
+      - tag: dense_lichen_rock
+        body: "dense pale lichen coverage on cool grey rock, near-uniform muted green-grey, weathered organic surface"
+      - tag: cracked_with_moss
+        body: "cracked grey bedrock with moss filling the cracks, contrasting hard rock and soft green growth"
+      - tag: alpine_grass_rock
+        body: "tufts of brown alpine grass between exposed rock fragments, cool muted palette with earth tones"
+      - tag: stones_in_dirt
+        body: "embedded stones in dry mountain dirt, mixed grey rock and warm-grey earth, sparse vegetation"
+      - tag: sparse_heather
+        body: "sparse dry heather scrub between exposed rock, muted brown-and-grey palette, weathered upland"
+      - tag: peat_and_rock
+        body: "dark peaty soil with embedded weathered grey rocks, contrasting dark organic and cool stone"
+      - tag: cushion_plants
+        body: "small cushion-form alpine plants between weathered rocks, tight green mounds on grey base"
+      - tag: dwarf_shrub_rock
+        body: "dwarf alpine shrubs with woody stems clinging to exposed grey bedrock, muted earth palette"
+      - tag: sedge_grass_rock
+        body: "stiff alpine sedge grass tufts between angular rock fragments, muted yellow-green and grey"
+      - tag: orange_lichen_streak
+        body: "orange map lichen streaking across cool grey rock, vivid color accents on muted base"
+      - tag: dry_lichen_carpet
+        body: "dry pale-yellow reindeer lichen carpet over rock fragments, soft cushion texture on hard base"
+      - tag: meltwater_rock
+        body: "rock surface with meltwater runnels and damp moss patches, cool wet palette with dark streaks"
+      - tag: bog_with_stones
+        body: "alpine bog edge with dark wet soil and embedded grey stones, muted brown-and-stone palette"
+      - tag: barren_with_streaks
+        body: "barren rocky ground with mineral-stained streaks from old runoff, cool grey with rust accents"
+      - tag: glacial_till
+        body: "glacial till deposit with sorted stones of varied sizes embedded in fine grey-brown silt, ancient deposit"
+      - tag: rock_with_succulents
+        body: "exposed rock with small alpine succulent rosettes in crevices, muted greys and dusty greens"
+      - tag: trampled_path
+        body: "lightly trampled alpine path with crushed plants over rock fragments, muted earth palette"
+      - tag: frost_polygons
+        body: "frost-polygon ground with stones arranged in geometric patterns by freeze cycles, grey palette"
+      - tag: krummholz_base
+        body: "krummholz base — gnarled woody alpine shrub remnants over rock, weathered brown and grey"
+      - tag: pioneer_moss
+        body: "pioneer moss colonies on freshly exposed grey rock, scattered green starts on bare stone"
+
+  rock:
+    category: Rock
+    candidates:
+      - tag: weathered_grey_bedrock
+        body: "weathered exposed grey bedrock with thin parallel fractures, cool low-saturation palette, alpine outcrop"
+      - tag: blocky_outcrop
+        body: "blocky angular bedrock outcrop with horizontal jointing, mid-grey weathered surface, sharp edges"
+      - tag: lichen_streaked_grey
+        body: "grey bedrock heavily streaked with mixed orange and pale-green lichen, cool base with vivid accents"
+      - tag: glacial_polished_grey
+        body: "glacially polished grey bedrock with faint parallel striations, smooth cool surface, weathered"
+      - tag: dark_metamorphic
+        body: "dark metamorphic bedrock with foliated banding, near-black layered rock, cool weathered surface"
+      - tag: frost_shattered_alpine
+        body: "frost-shattered alpine bedrock with angular sharp fragments still in place, cool grey palette, weathered"
+      - tag: quartz_veined_grey
+        body: "grey bedrock cut by bright white quartz veins, high-contrast cool palette, weathered surface"
+      - tag: pink_granite
+        body: "weathered pink-grey granite bedrock with visible mineral grain, sparse lichen, cool-warm balance"
+      - tag: mica_schist
+        body: "mica schist bedrock with shimmering parallel foliation, mid-grey with subtle sparkle"
+      - tag: gneiss_bands
+        body: "gneiss bedrock with alternating dark and light mineral bands, weathered cool palette"
+      - tag: jointed_columns
+        body: "columnar jointed bedrock viewed from above, polygonal pattern of weathered rock columns, cool grey"
+      - tag: erratic_boulder
+        body: "weathered erratic boulder surface with lichen patches, mid-grey rock with scattered organic accents"
+      - tag: wet_mossy_slab
+        body: "wet flat bedrock slab with moss colonization, dark wet grey rock with green organic patches"
+      - tag: scree_slope_view
+        body: "rock outcrop emerging from scree slope, mix of intact bedrock and loose fragments, cool palette"

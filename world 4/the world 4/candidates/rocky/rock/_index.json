@@ -1,0 +1,286 @@
+{
+  "biome": "rocky",
+  "slot": "rock",
+  "candidates": {
+    "01_weathered_grey_bedrock": {
+      "id": "01_weathered_grey_bedrock",
+      "prompt": "tileable seamless texture, weathered exposed grey bedrock with thin parallel fractures, cool low-saturation palette, alpine outcrop, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:02:54+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "02_blocky_outcrop": {
+      "id": "02_blocky_outcrop",
+      "prompt": "tileable seamless texture, blocky angular bedrock outcrop with horizontal jointing, mid-grey weathered surface, sharp edges, overhead perspective",
+      "size": 1024,
+      "grade": "C",
+      "passed_checks": 2,
+      "failed_checks": [
+        "periodic_artifact",
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:04:06+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "03_lichen_streaked_grey": {
+      "id": "03_lichen_streaked_grey",
+      "prompt": "tileable seamless texture, grey bedrock heavily streaked with mixed orange and pale-green lichen, cool base with vivid accents, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:05:15+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "04_glacial_polished_grey": {
+      "id": "04_glacial_polished_grey",
+      "prompt": "tileable seamless texture, glacially polished grey bedrock with faint parallel striations, smooth cool surface, weathered, overhead perspective",
+      "size": 1024,
+      "grade": "C",
+      "passed_checks": 2,
+      "failed_checks": [
+        "periodic_artifact",
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:06:25+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "05_dark_metamorphic": {
+      "id": "05_dark_metamorphic",
+      "prompt": "tileable seamless texture, dark metamorphic bedrock with foliated banding, near-black layered rock, cool weathered surface, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:07:34+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "06_frost_shattered_alpine": {
+      "id": "06_frost_shattered_alpine",
+      "prompt": "tileable seamless texture, frost-shattered alpine bedrock with angular sharp fragments still in place, cool grey palette, weathered, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:08:44+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "07_quartz_veined_grey": {
+      "id": "07_quartz_veined_grey",
+      "prompt": "tileable seamless texture, grey bedrock cut by bright white quartz veins, high-contrast cool palette, weathered surface, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:09:54+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "08_pink_granite": {
+      "id": "08_pink_granite",
+      "prompt": "tileable seamless texture, weathered pink-grey granite bedrock with visible mineral grain, sparse lichen, cool-warm balance, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:10:59+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "09_mica_schist": {
+      "id": "09_mica_schist",
+      "prompt": "tileable seamless texture, mica schist bedrock with shimmering parallel foliation, mid-grey with subtle sparkle, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:12:05+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "10_gneiss_bands": {
+      "id": "10_gneiss_bands",
+      "prompt": "tileable seamless texture, gneiss bedrock with alternating dark and light mineral bands, weathered cool palette, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:13:11+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "11_jointed_columns": {
+      "id": "11_jointed_columns",
+      "prompt": "tileable seamless texture, columnar jointed bedrock viewed from above, polygonal pattern of weathered rock columns, cool grey, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:14:17+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "12_erratic_boulder": {
+      "id": "12_erratic_boulder",
+      "prompt": "tileable seamless texture, weathered erratic boulder surface with lichen patches, mid-grey rock with scattered organic accents, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:15:23+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "13_wet_mossy_slab": {
+      "id": "13_wet_mossy_slab",
+      "prompt": "tileable seamless texture, wet flat bedrock slab with moss colonization, dark wet grey rock with green organic patches, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:16:29+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "14_scree_slope_view": {
+      "id": "14_scree_slope_view",
+      "prompt": "tileable seamless texture, rock outcrop emerging from scree slope, mix of intact bedrock and loose fragments, cool palette, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:17:35+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    }
+  }
+}

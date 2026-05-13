@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.020141,
+    "periodic_locality": 6.755,
+    "richness": 0.947,
+    "composite": 0.5735,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_10_sedge_grass_rock_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.058672607140282586,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.020141241124207034,
+      "seam_improvement": 0.038531366016075555
+    }
+  },
+  {
+    "edge_seam": 0.024885,
+    "periodic_locality": 7.617,
+    "richness": 0.929,
+    "composite": 0.5518,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_10_sedge_grass_rock_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.06222949481569589,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.2,
+      "final_seam_score": 0.024884894406598423,
+      "seam_improvement": 0.03734460040909747
+    }
+  },
+  {
+    "edge_seam": 0.021807,
+    "periodic_locality": 8.122,
+    "richness": 0.933,
+    "composite": 0.5419,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_10_sedge_grass_rock_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.04354270668132449,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.18,
+      "final_seam_score": 0.021807027345251827,
+      "seam_improvement": 0.021735679336072664
+    }
+  },
+  {
+    "edge_seam": 0.026564,
+    "periodic_locality": 11.113,
+    "richness": 0.928,
+    "composite": 0.478,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_10_sedge_grass_rock_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.03457522347174164,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.02656356066476836,
+      "seam_improvement": 0.008011662806973283
+    }
+  }
+]

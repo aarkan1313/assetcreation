@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.003606,
+    "periodic_locality": 10.88,
+    "richness": 0.659,
+    "composite": 0.757,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_rock_05_dark_metamorphic_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.013506528626309593,
+      "pass1_seconds": 4.04,
+      "pass3_seconds": 6.19,
+      "final_seam_score": 0.0036059497567792437,
+      "seam_improvement": 0.009900578869530349
+    }
+  },
+  {
+    "edge_seam": 0.004791,
+    "periodic_locality": 15.904,
+    "richness": 0.767,
+    "composite": 0.649,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_rock_05_dark_metamorphic_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.022694997116493656,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.004791271029321655,
+      "seam_improvement": 0.017903726087172
+    }
+  },
+  {
+    "edge_seam": 0.010632,
+    "periodic_locality": 17.799,
+    "richness": 0.694,
+    "composite": 0.4778,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_rock_05_dark_metamorphic_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.013680650358335737,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 8.18,
+      "final_seam_score": 0.010632008835243656,
+      "seam_improvement": 0.0030486415230920813
+    }
+  },
+  {
+    "edge_seam": 0.016645,
+    "periodic_locality": 27.862,
+    "richness": 0.687,
+    "composite": 0.2044,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_rock_05_dark_metamorphic_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.02123438663915321,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.19,
+      "final_seam_score": 0.01664534073433295,
+      "seam_improvement": 0.00458904590482026
+    }
+  }
+]

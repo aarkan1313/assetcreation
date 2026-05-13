@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.003569,
+    "periodic_locality": 14.015,
+    "richness": 0.826,
+    "composite": 0.7252,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_19_frost_polygons_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.02410642278510669,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 6.18,
+      "final_seam_score": 0.003568709629033905,
+      "seam_improvement": 0.020537713156072786
+    }
+  },
+  {
+    "edge_seam": 0.010711,
+    "periodic_locality": 9.111,
+    "richness": 0.877,
+    "composite": 0.6958,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_19_frost_polygons_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.020828912332396195,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 6.22,
+      "final_seam_score": 0.010710914784878412,
+      "seam_improvement": 0.010117997547517783
+    }
+  },
+  {
+    "edge_seam": 0.007293,
+    "periodic_locality": 13.484,
+    "richness": 0.879,
+    "composite": 0.6723,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_19_frost_polygons_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.039288720083621685,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 8.17,
+      "final_seam_score": 0.007293308819774846,
+      "seam_improvement": 0.03199541126384684
+    }
+  },
+  {
+    "edge_seam": 0.005473,
+    "periodic_locality": 16.083,
+    "richness": 0.899,
+    "composite": 0.6581,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_mid_19_frost_polygons_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.0301071496689975,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.005472919914365869,
+      "seam_improvement": 0.02463422975463163
+    }
+  }
+]

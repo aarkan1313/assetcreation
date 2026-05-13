@@ -1,0 +1,188 @@
+{
+  "version": "w4_tx_pipeline_v1",
+  "asset_id": "div_rocky_rock_13_wet_mossy_slab",
+  "prompt": "tileable seamless texture, wet flat bedrock slab with moss colonization, dark wet grey rock with green organic patches, overhead perspective",
+  "settings": {
+    "unet": "flux-2-klein-9b-fp8.safetensors",
+    "clip": "qwen_3_8b_fp8mixed.safetensors",
+    "vae": "flux2-vae.safetensors",
+    "size": 1024,
+    "steps": 4,
+    "seed_base": 42,
+    "variants": 4,
+    "heal_denoise": 0.35,
+    "heal_mode": "flux_heal",
+    "delight_strength": 0.4,
+    "pbr_backend": "hybrid",
+    "seam_repair": true,
+    "seam_repair_patch": 64,
+    "seam_repair_feather": 12,
+    "category": "Rock",
+    "host": "http://127.0.0.1:8188"
+  },
+  "started_at": "2026-05-13T00:15:23+00:00",
+  "stages": [
+    {
+      "stage": "variants",
+      "n_variants": 4,
+      "ranking": [
+        {
+          "edge_seam": 0.007123,
+          "periodic_locality": 11.129,
+          "richness": 0.879,
+          "composite": 0.7253,
+          "variant_index": 3,
+          "seed": 3042,
+          "path": "v3_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_rocky_rock_13_wet_mossy_slab_v3",
+            "size": 1024,
+            "seed": 3042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.02415637915705498,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.17,
+            "final_seam_score": 0.007122510816903354,
+            "seam_improvement": 0.017033868340151623
+          }
+        },
+        {
+          "edge_seam": 0.007495,
+          "periodic_locality": 12.513,
+          "richness": 0.905,
+          "composite": 0.694,
+          "variant_index": 2,
+          "seed": 2042,
+          "path": "v2_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_rocky_rock_13_wet_mossy_slab_v2",
+            "size": 1024,
+            "seed": 2042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.0507501959883218,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.19,
+            "final_seam_score": 0.007494708409175557,
+            "seam_improvement": 0.04325548757914624
+          }
+        },
+        {
+          "edge_seam": 0.012241,
+          "periodic_locality": 10.303,
+          "richness": 0.837,
+          "composite": 0.6321,
+          "variant_index": 1,
+          "seed": 1042,
+          "path": "v1_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_rocky_rock_13_wet_mossy_slab_v1",
+            "size": 1024,
+            "seed": 1042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.04836049010596886,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.19,
+            "final_seam_score": 0.012240674973267493,
+            "seam_improvement": 0.03611981513270136
+          }
+        },
+        {
+          "edge_seam": 0.012524,
+          "periodic_locality": 18.829,
+          "richness": 0.828,
+          "composite": 0.445,
+          "variant_index": 0,
+          "seed": 42,
+          "path": "v0_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_rocky_rock_13_wet_mossy_slab_v0",
+            "size": 1024,
+            "seed": 42,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.024130968257401,
+            "pass1_seconds": 4.04,
+            "pass3_seconds": 6.16,
+            "final_seam_score": 0.012524299548250673,
+            "seam_improvement": 0.011606668709150326
+          }
+        }
+      ]
+    },
+    {
+      "stage": "delight",
+      "strength": 0.4
+    },
+    {
+      "stage": "pbr",
+      "backend": "tx_pbr_hybrid",
+      "sm_size": 1024,
+      "category": "Rock",
+      "sm_input": "D:\\assets\\world 4\\the world 4\\candidates\\rocky\\rock\\13_wet_mossy_slab\\albedo.png",
+      "derive_log": {
+        "backend": "tx_pbr_derive",
+        "category": "Rock",
+        "snow_mode": false,
+        "normal_strength": 4.0,
+        "maps": [
+          "albedo",
+          "normal",
+          "roughness",
+          "ao",
+          "height",
+          "metallic"
+        ],
+        "preset_used": [
+          0.85,
+          0.15
+        ]
+      },
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ]
+    },
+    {
+      "stage": "seam_repair",
+      "module": "tx_seam_repair",
+      "patch": 64,
+      "feather": 12,
+      "plan_ops": 32,
+      "maps_processed": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ],
+      "maps_skipped": []
+    },
+    {
+      "stage": "qa",
+      "grade": "B",
+      "passed_checks": 3,
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "failed": [
+        "periodic_artifact"
+      ]
+    }
+  ],
+  "grade": "B",
+  "passed": false,
+  "completed_at": "2026-05-13T00:16:29+00:00",
+  "status": "completed"
+}

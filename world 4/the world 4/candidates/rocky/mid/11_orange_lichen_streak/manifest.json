@@ -1,0 +1,188 @@
+{
+  "version": "w4_tx_pipeline_v1",
+  "asset_id": "div_rocky_mid_11_orange_lichen_streak",
+  "prompt": "tileable seamless texture, orange map lichen streaking across cool grey rock, vivid color accents on muted base, overhead perspective",
+  "settings": {
+    "unet": "flux-2-klein-9b-fp8.safetensors",
+    "clip": "qwen_3_8b_fp8mixed.safetensors",
+    "vae": "flux2-vae.safetensors",
+    "size": 1024,
+    "steps": 4,
+    "seed_base": 42,
+    "variants": 4,
+    "heal_denoise": 0.35,
+    "heal_mode": "flux_heal",
+    "delight_strength": 0.4,
+    "pbr_backend": "hybrid",
+    "seam_repair": true,
+    "seam_repair_patch": 64,
+    "seam_repair_feather": 12,
+    "category": "Mixed",
+    "host": "http://127.0.0.1:8188"
+  },
+  "started_at": "2026-05-12T23:49:06+00:00",
+  "stages": [
+    {
+      "stage": "variants",
+      "n_variants": 4,
+      "ranking": [
+        {
+          "edge_seam": 0.005361,
+          "periodic_locality": 8.928,
+          "richness": 0.769,
+          "composite": 0.785,
+          "variant_index": 1,
+          "seed": 1042,
+          "path": "v1_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_rocky_mid_11_orange_lichen_streak_v1",
+            "size": 1024,
+            "seed": 1042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.03402788666017878,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.18,
+            "final_seam_score": 0.005360828767781623,
+            "seam_improvement": 0.02866705789239716
+          }
+        },
+        {
+          "edge_seam": 0.00595,
+          "periodic_locality": 15.193,
+          "richness": 0.794,
+          "composite": 0.6463,
+          "variant_index": 0,
+          "seed": 42,
+          "path": "v0_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_rocky_mid_11_orange_lichen_streak_v0",
+            "size": 1024,
+            "seed": 42,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.05202886209630911,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.2,
+            "final_seam_score": 0.005950110177726115,
+            "seam_improvement": 0.046078751918582996
+          }
+        },
+        {
+          "edge_seam": 0.008758,
+          "periodic_locality": 18.658,
+          "richness": 0.924,
+          "composite": 0.5431,
+          "variant_index": 2,
+          "seed": 2042,
+          "path": "v2_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_rocky_mid_11_orange_lichen_streak_v2",
+            "size": 1024,
+            "seed": 2042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.04848976355247982,
+            "pass1_seconds": 4.06,
+            "pass3_seconds": 6.17,
+            "final_seam_score": 0.008757934335652154,
+            "seam_improvement": 0.03973182921682766
+          }
+        },
+        {
+          "edge_seam": 0.014605,
+          "periodic_locality": 18.275,
+          "richness": 0.838,
+          "composite": 0.4171,
+          "variant_index": 3,
+          "seed": 3042,
+          "path": "v3_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_rocky_mid_11_orange_lichen_streak_v3",
+            "size": 1024,
+            "seed": 3042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.05914382388985006,
+            "pass1_seconds": 4.06,
+            "pass3_seconds": 6.19,
+            "final_seam_score": 0.014604964324118128,
+            "seam_improvement": 0.044538859565731934
+          }
+        }
+      ]
+    },
+    {
+      "stage": "delight",
+      "strength": 0.4
+    },
+    {
+      "stage": "pbr",
+      "backend": "tx_pbr_hybrid",
+      "sm_size": 1024,
+      "category": "Mixed",
+      "sm_input": "D:\\assets\\world 4\\the world 4\\candidates\\rocky\\mid\\11_orange_lichen_streak\\albedo.png",
+      "derive_log": {
+        "backend": "tx_pbr_derive",
+        "category": "Mixed",
+        "snow_mode": true,
+        "normal_strength": 4.0,
+        "maps": [
+          "albedo",
+          "normal",
+          "roughness",
+          "ao",
+          "height",
+          "metallic"
+        ],
+        "preset_used": [
+          0.85,
+          0.12
+        ]
+      },
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ]
+    },
+    {
+      "stage": "seam_repair",
+      "module": "tx_seam_repair",
+      "patch": 64,
+      "feather": 12,
+      "plan_ops": 32,
+      "maps_processed": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ],
+      "maps_skipped": []
+    },
+    {
+      "stage": "qa",
+      "grade": "B",
+      "passed_checks": 3,
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "failed": [
+        "periodic_artifact"
+      ]
+    }
+  ],
+  "grade": "B",
+  "passed": false,
+  "completed_at": "2026-05-12T23:50:12+00:00",
+  "status": "completed"
+}

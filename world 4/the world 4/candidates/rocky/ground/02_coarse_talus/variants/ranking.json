@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.005285,
+    "periodic_locality": 15.036,
+    "richness": 0.833,
+    "composite": 0.6707,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_ground_02_coarse_talus_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.06487364385092272,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 6.15,
+      "final_seam_score": 0.005285136726259131,
+      "seam_improvement": 0.059588507124663584
+    }
+  },
+  {
+    "edge_seam": 0.005987,
+    "periodic_locality": 15.845,
+    "richness": 0.882,
+    "composite": 0.6493,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_ground_02_coarse_talus_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.045410678134611686,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.15,
+      "final_seam_score": 0.005986960299974769,
+      "seam_improvement": 0.03942371783463692
+    }
+  },
+  {
+    "edge_seam": 0.008369,
+    "periodic_locality": 15.312,
+    "richness": 0.891,
+    "composite": 0.6147,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_ground_02_coarse_talus_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.0289134888023837,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.15,
+      "final_seam_score": 0.00836936683757449,
+      "seam_improvement": 0.02054412196480921
+    }
+  },
+  {
+    "edge_seam": 0.008503,
+    "periodic_locality": 18.586,
+    "richness": 0.903,
+    "composite": 0.5455,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_rocky_ground_02_coarse_talus_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.03295269547770088,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.15,
+      "final_seam_score": 0.008503269663410707,
+      "seam_improvement": 0.024449425814290174
+    }
+  }
+]
