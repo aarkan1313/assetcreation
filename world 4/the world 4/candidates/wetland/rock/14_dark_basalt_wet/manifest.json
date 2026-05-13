@@ -1,0 +1,188 @@
+{
+  "version": "w4_tx_pipeline_v1",
+  "asset_id": "div_wetland_rock_14_dark_basalt_wet",
+  "prompt": "tileable seamless texture, wet dark basalt rock face, near-black surface with subtle texture and damp glistening, weathered, overhead perspective",
+  "settings": {
+    "unet": "flux-2-klein-9b-fp8.safetensors",
+    "clip": "qwen_3_8b_fp8mixed.safetensors",
+    "vae": "flux2-vae.safetensors",
+    "size": 1024,
+    "steps": 4,
+    "seed_base": 42,
+    "variants": 4,
+    "heal_denoise": 0.35,
+    "heal_mode": "flux_heal",
+    "delight_strength": 0.4,
+    "pbr_backend": "hybrid",
+    "seam_repair": true,
+    "seam_repair_patch": 64,
+    "seam_repair_feather": 12,
+    "category": "Rock",
+    "host": "http://127.0.0.1:8188"
+  },
+  "started_at": "2026-05-13T01:17:15+00:00",
+  "stages": [
+    {
+      "stage": "variants",
+      "n_variants": 4,
+      "ranking": [
+        {
+          "edge_seam": 0.003294,
+          "periodic_locality": 7.474,
+          "richness": 0.619,
+          "composite": 0.8269,
+          "variant_index": 0,
+          "seed": 42,
+          "path": "v0_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_wetland_rock_14_dark_basalt_wet_v0",
+            "size": 1024,
+            "seed": 42,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.027479274798154554,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.17,
+            "final_seam_score": 0.00329368019323998,
+            "seam_improvement": 0.024185594604914575
+          }
+        },
+        {
+          "edge_seam": 0.004502,
+          "periodic_locality": 8.622,
+          "richness": 0.766,
+          "composite": 0.808,
+          "variant_index": 2,
+          "seed": 2042,
+          "path": "v2_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_wetland_rock_14_dark_basalt_wet_v2",
+            "size": 1024,
+            "seed": 2042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.049785625570693964,
+            "pass1_seconds": 4.2,
+            "pass3_seconds": 6.17,
+            "final_seam_score": 0.004502465153877115,
+            "seam_improvement": 0.04528316041681685
+          }
+        },
+        {
+          "edge_seam": 0.002216,
+          "periodic_locality": 15.886,
+          "richness": 0.576,
+          "composite": 0.6628,
+          "variant_index": 1,
+          "seed": 1042,
+          "path": "v1_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_wetland_rock_14_dark_basalt_wet_v1",
+            "size": 1024,
+            "seed": 1042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.06469010566849288,
+            "pass1_seconds": 4.04,
+            "pass3_seconds": 6.17,
+            "final_seam_score": 0.0022164803181919214,
+            "seam_improvement": 0.06247362535030096
+          }
+        },
+        {
+          "edge_seam": 0.014825,
+          "periodic_locality": 23.709,
+          "richness": 0.689,
+          "composite": 0.2685,
+          "variant_index": 3,
+          "seed": 3042,
+          "path": "v3_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_wetland_rock_14_dark_basalt_wet_v3",
+            "size": 1024,
+            "seed": 3042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.07187795859765475,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.18,
+            "final_seam_score": 0.014824977172241446,
+            "seam_improvement": 0.057052981425413304
+          }
+        }
+      ]
+    },
+    {
+      "stage": "delight",
+      "strength": 0.4
+    },
+    {
+      "stage": "pbr",
+      "backend": "tx_pbr_hybrid",
+      "sm_size": 1024,
+      "category": "Rock",
+      "sm_input": "D:\\assets\\world 4\\the world 4\\candidates\\wetland\\rock\\14_dark_basalt_wet\\albedo.png",
+      "derive_log": {
+        "backend": "tx_pbr_derive",
+        "category": "Rock",
+        "snow_mode": false,
+        "normal_strength": 4.0,
+        "maps": [
+          "albedo",
+          "normal",
+          "roughness",
+          "ao",
+          "height",
+          "metallic"
+        ],
+        "preset_used": [
+          0.85,
+          0.15
+        ]
+      },
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ]
+    },
+    {
+      "stage": "seam_repair",
+      "module": "tx_seam_repair",
+      "patch": 64,
+      "feather": 12,
+      "plan_ops": 32,
+      "maps_processed": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ],
+      "maps_skipped": []
+    },
+    {
+      "stage": "qa",
+      "grade": "B",
+      "passed_checks": 3,
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "failed": [
+        "mip32_stdev"
+      ]
+    }
+  ],
+  "grade": "B",
+  "passed": false,
+  "completed_at": "2026-05-13T01:18:23+00:00",
+  "status": "completed"
+}

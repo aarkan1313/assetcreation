@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.005256,
+    "periodic_locality": 9.203,
+    "richness": 0.837,
+    "composite": 0.7948,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_rock_10_waterfall_rock_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.07219591773596694,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.005256106425413303,
+      "seam_improvement": 0.06693981131055364
+    }
+  },
+  {
+    "edge_seam": 0.009546,
+    "periodic_locality": 9.276,
+    "richness": 0.921,
+    "composite": 0.7244,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_rock_10_waterfall_rock_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.08421380148260285,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.009545562403883122,
+      "seam_improvement": 0.07466823907871972
+    }
+  },
+  {
+    "edge_seam": 0.0087,
+    "periodic_locality": 11.151,
+    "richness": 0.847,
+    "composite": 0.6869,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_rock_10_waterfall_rock_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.07986754643646675,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.18,
+      "final_seam_score": 0.00869956398230248,
+      "seam_improvement": 0.07116798245416427
+    }
+  },
+  {
+    "edge_seam": 0.021272,
+    "periodic_locality": 6.105,
+    "richness": 0.9,
+    "composite": 0.5778,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_rock_10_waterfall_rock_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.059581715115580546,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.18,
+      "final_seam_score": 0.021271530556156285,
+      "seam_improvement": 0.03831018455942426
+    }
+  }
+]

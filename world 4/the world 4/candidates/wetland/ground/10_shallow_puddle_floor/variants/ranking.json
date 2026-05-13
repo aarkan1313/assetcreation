@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.001763,
+    "periodic_locality": 9.9,
+    "richness": 0.504,
+    "composite": 0.7834,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_10_shallow_puddle_floor_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.033796710550028836,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.0017628736543637063,
+      "seam_improvement": 0.03203383689566513
+    }
+  },
+  {
+    "edge_seam": 0.003795,
+    "periodic_locality": 8.526,
+    "richness": 0.558,
+    "composite": 0.7825,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_10_shallow_puddle_floor_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.030666174443122838,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.0037947844579008074,
+      "seam_improvement": 0.02687138998522203
+    }
+  },
+  {
+    "edge_seam": 0.006306,
+    "periodic_locality": 9.96,
+    "richness": 0.598,
+    "composite": 0.7101,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_10_shallow_puddle_floor_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.023809583078022875,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.00630628844675125,
+      "seam_improvement": 0.017503294631271624
+    }
+  },
+  {
+    "edge_seam": 0.006506,
+    "periodic_locality": 17.221,
+    "richness": 0.707,
+    "composite": 0.5751,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_10_shallow_puddle_floor_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.01693885201905517,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.19,
+      "final_seam_score": 0.006505635696757257,
+      "seam_improvement": 0.010433216322297914
+    }
+  }
+]

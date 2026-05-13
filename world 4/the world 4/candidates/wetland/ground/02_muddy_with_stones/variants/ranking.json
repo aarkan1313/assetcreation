@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.008671,
+    "periodic_locality": 7.433,
+    "richness": 0.795,
+    "composite": 0.7554,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_02_muddy_with_stones_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.025697382391988658,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.15,
+      "final_seam_score": 0.008670804010176374,
+      "seam_improvement": 0.017026578381812284
+    }
+  },
+  {
+    "edge_seam": 0.003951,
+    "periodic_locality": 12.499,
+    "richness": 0.773,
+    "composite": 0.7388,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_02_muddy_with_stones_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.04072154114403114,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 6.15,
+      "final_seam_score": 0.003951289768358323,
+      "seam_improvement": 0.036770251375672816
+    }
+  },
+  {
+    "edge_seam": 0.00999,
+    "periodic_locality": 10.523,
+    "richness": 0.887,
+    "composite": 0.6824,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_02_muddy_with_stones_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.024860745040969818,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 6.15,
+      "final_seam_score": 0.00998952757803489,
+      "seam_improvement": 0.014871217462934927
+    }
+  },
+  {
+    "edge_seam": 0.005657,
+    "periodic_locality": 16.36,
+    "richness": 0.774,
+    "composite": 0.6235,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_02_muddy_with_stones_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.038547628916762784,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.005656518169844531,
+      "seam_improvement": 0.03289111074691825
+    }
+  }
+]

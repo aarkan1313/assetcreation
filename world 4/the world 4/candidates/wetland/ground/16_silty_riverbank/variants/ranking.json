@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.00561,
+    "periodic_locality": 11.84,
+    "richness": 0.727,
+    "composite": 0.7102,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_16_silty_riverbank_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.036376127120578625,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.005610467484711409,
+      "seam_improvement": 0.030765659635867214
+    }
+  },
+  {
+    "edge_seam": 0.00794,
+    "periodic_locality": 11.299,
+    "richness": 0.874,
+    "composite": 0.7044,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_16_silty_riverbank_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.034588953917964245,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.007940114867178489,
+      "seam_improvement": 0.026648839050785758
+    }
+  },
+  {
+    "edge_seam": 0.009482,
+    "periodic_locality": 13.377,
+    "richness": 0.794,
+    "composite": 0.6139,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_16_silty_riverbank_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.030459068852724914,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.00948228577199875,
+      "seam_improvement": 0.020976783080726164
+    }
+  },
+  {
+    "edge_seam": 0.006845,
+    "periodic_locality": 19.643,
+    "richness": 0.795,
+    "composite": 0.5348,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_16_silty_riverbank_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.017756812283737024,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.15,
+      "final_seam_score": 0.006845203767781622,
+      "seam_improvement": 0.010911608515955401
+    }
+  }
+]

@@ -1,0 +1,415 @@
+{
+  "biome": "wetland",
+  "slot": "mid",
+  "candidates": {
+    "01_reed_tufts_close": {
+      "id": "01_reed_tufts_close",
+      "prompt": "tileable seamless texture, dense marsh reed tufts viewed from above, vertical green-brown stalks with shadow gaps, packed cluster, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:40:04+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "02_sedge_grass": {
+      "id": "02_sedge_grass",
+      "prompt": "tileable seamless texture, stiff marsh sedge grass tufts with brown seedheads, muted green-and-tan upright vegetation, varied density, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:41:11+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "03_cattail_base": {
+      "id": "03_cattail_base",
+      "prompt": "tileable seamless texture, cattail plant bases in wet ground, brown stems and dark green strap leaves over wet peat, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:42:17+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "04_bog_with_pitcher_plants": {
+      "id": "04_bog_with_pitcher_plants",
+      "prompt": "tileable seamless texture, bog ground with scattered pitcher plants and sphagnum moss, deep greens and rust-red, varied vegetation, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:43:23+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "05_marsh_with_flowers": {
+      "id": "05_marsh_with_flowers",
+      "prompt": "tileable seamless texture, marsh ground with small white and yellow wildflowers among grass tufts, muted greens with color accents, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:44:29+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "06_dense_moss_carpet": {
+      "id": "06_dense_moss_carpet",
+      "prompt": "tileable seamless texture, dense wet moss carpet with varied green tones and small twig fragments, soft organic surface, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:45:36+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "07_fern_unfurling": {
+      "id": "07_fern_unfurling",
+      "prompt": "tileable seamless texture, wet ground with unfurling fern fronds emerging from dark soil, fresh green over deep brown, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:46:43+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "08_skunk_cabbage": {
+      "id": "08_skunk_cabbage",
+      "prompt": "tileable seamless texture, wetland with skunk cabbage leaves, large dark-green leaves over wet brown ground, bold varied texture, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:47:50+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "09_bog_rosemary": {
+      "id": "09_bog_rosemary",
+      "prompt": "tileable seamless texture, bog rosemary and small shrub clusters over wet moss, muted blue-greens and dark wet browns, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:48:56+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "10_marsh_iris_base": {
+      "id": "10_marsh_iris_base",
+      "prompt": "tileable seamless texture, marsh iris plant bases with sword-shaped leaves emerging from dark wet ground, varied vertical greens, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:50:03+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "11_lily_pads_floating": {
+      "id": "11_lily_pads_floating",
+      "prompt": "tileable seamless texture, floating lily pads on dark still water with small ripples, dark green discs on muted reflective surface, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:51:10+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "12_duckweed_water": {
+      "id": "12_duckweed_water",
+      "prompt": "tileable seamless texture, still water covered in dense duckweed, bright green floating mat with darker water gaps, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:52:17+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "13_cotton_grass": {
+      "id": "13_cotton_grass",
+      "prompt": "tileable seamless texture, cotton grass tufts with white fluffy seedheads over dark bog, contrast of bright white and dark brown, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:53:24+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "14_marsh_marigold": {
+      "id": "14_marsh_marigold",
+      "prompt": "tileable seamless texture, marsh marigold yellow flowers among dark wet ground and green leaves, vivid color accents on muted base, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:54:31+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "15_alder_seedlings": {
+      "id": "15_alder_seedlings",
+      "prompt": "tileable seamless texture, small alder seedlings emerging from wet marsh ground, mixed sapling stems and ground vegetation, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:55:38+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "16_stones_in_marsh": {
+      "id": "16_stones_in_marsh",
+      "prompt": "tileable seamless texture, small dark stones scattered through marsh vegetation, mix of stone and wet plant matter, varied, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:56:49+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "17_peat_with_heather": {
+      "id": "17_peat_with_heather",
+      "prompt": "tileable seamless texture, wet peat ground with low heather shrubs and dwarf bog plants, muted purples and dark greens, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:57:59+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "18_bog_with_sticks": {
+      "id": "18_bog_with_sticks",
+      "prompt": "tileable seamless texture, bog ground with scattered fallen sticks and twigs over wet moss, varied brown debris on dark organic base, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:59:06+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "19_marsh_dead_grass": {
+      "id": "19_marsh_dead_grass",
+      "prompt": "tileable seamless texture, wetland with dead pale-tan marsh grass over wet dark ground, dramatic light-dark contrast, weathered, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:00:13+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "20_shoreline_organic": {
+      "id": "20_shoreline_organic",
+      "prompt": "tileable seamless texture, wet shoreline with mixed organic debris, small driftwood, and damp sand-mud transition, varied dark palette, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:01:22+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "21_spring_growth_mix": {
+      "id": "21_spring_growth_mix",
+      "prompt": "tileable seamless texture, spring marsh ground with new green shoots emerging through dark wet soil and old plant matter, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:02:29+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    }
+  }
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.006154,
+    "periodic_locality": 9.486,
+    "richness": 0.864,
+    "composite": 0.7764,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_mid_14_marsh_marigold_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.05758478184472318,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.18,
+      "final_seam_score": 0.00615429847069036,
+      "seam_improvement": 0.051430483374032825
+    }
+  },
+  {
+    "edge_seam": 0.00581,
+    "periodic_locality": 13.707,
+    "richness": 0.867,
+    "composite": 0.6949,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_mid_14_marsh_marigold_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.05058088010020185,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.00580981989724505,
+      "seam_improvement": 0.0447710602029568
+    }
+  },
+  {
+    "edge_seam": 0.00832,
+    "periodic_locality": 15.733,
+    "richness": 0.92,
+    "composite": 0.6128,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_mid_14_marsh_marigold_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.03355135344579008,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.18,
+      "final_seam_score": 0.008319616966731546,
+      "seam_improvement": 0.025231736479058534
+    }
+  },
+  {
+    "edge_seam": 0.009654,
+    "periodic_locality": 16.018,
+    "richness": 0.915,
+    "composite": 0.579,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_mid_14_marsh_marigold_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.04406773010981353,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.18,
+      "final_seam_score": 0.009654069348327566,
+      "seam_improvement": 0.03441366076148597
+    }
+  }
+]

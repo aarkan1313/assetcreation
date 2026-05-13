@@ -1,0 +1,276 @@
+{
+  "biome": "wetland",
+  "slot": "rock",
+  "candidates": {
+    "01_wet_dark_boulder": {
+      "id": "01_wet_dark_boulder",
+      "prompt": "tileable seamless texture, wet dark rounded boulder surface, water-darkened grey-black rock with subtle moss patches, weathered, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:03:37+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "02_river_worn_stone": {
+      "id": "02_river_worn_stone",
+      "prompt": "tileable seamless texture, river-worn smooth stone surface with water marks and faint algae growth, dark wet palette, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:04:44+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "03_mossy_wet_rock": {
+      "id": "03_mossy_wet_rock",
+      "prompt": "tileable seamless texture, rock surface with dense wet moss coverage, dark green organic over near-black stone, varied texture, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:05:53+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "04_shoreline_pebble": {
+      "id": "04_shoreline_pebble",
+      "prompt": "tileable seamless texture, wet shoreline pebbles tightly packed, water-smoothed varied grey stones with damp dark tones, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:07:00+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "05_algae_stained_rock": {
+      "id": "05_algae_stained_rock",
+      "prompt": "tileable seamless texture, rock surface stained with dark green algae growth, blackish-green over weathered grey base, wet appearance, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:08:07+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "06_shale_with_water": {
+      "id": "06_shale_with_water",
+      "prompt": "tileable seamless texture, wet weathered shale with water runnels, dark layered grey rock with damp surface and small puddles, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:09:15+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "07_granite_in_marsh": {
+      "id": "07_granite_in_marsh",
+      "prompt": "tileable seamless texture, granite outcrop emerging from marsh ground, weathered grey rock with moss at base, wet stone surface, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:10:24+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "08_mineral_stained_wet": {
+      "id": "08_mineral_stained_wet",
+      "prompt": "tileable seamless texture, wet rock with iron-mineral staining streaks, dark base with rust-orange runoff trails, weathered damp, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:11:34+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "09_lichen_wet_rock": {
+      "id": "09_lichen_wet_rock",
+      "prompt": "tileable seamless texture, wet rock with dense lichen mosaic, dark grey base with patches of grey-green and orange lichen accents, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:12:42+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "10_waterfall_rock": {
+      "id": "10_waterfall_rock",
+      "prompt": "tileable seamless texture, rock surface under waterfall mist, glistening wet dark stone with faint algae growth, varied wet tones, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:13:50+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "11_tidal_rock": {
+      "id": "11_tidal_rock",
+      "prompt": "tileable seamless texture, tidal-zone rock with attached barnacles and small shells, weathered wet grey with white-and-brown accents, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:14:58+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "12_cracked_wet_slab": {
+      "id": "12_cracked_wet_slab",
+      "prompt": "tileable seamless texture, cracked wet stone slab with moss growing in fissures, dark slate-grey rock with bright green crack-fill, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:16:07+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "13_bog_rock_outcrop": {
+      "id": "13_bog_rock_outcrop",
+      "prompt": "tileable seamless texture, rock outcrop in bog setting with dark mineral-stained surface and surrounding wet moss, dramatic damp, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:17:15+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "14_dark_basalt_wet": {
+      "id": "14_dark_basalt_wet",
+      "prompt": "tileable seamless texture, wet dark basalt rock face, near-black surface with subtle texture and damp glistening, weathered, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T01:18:23+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    }
+  }
+}

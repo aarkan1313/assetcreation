@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.007463,
+    "periodic_locality": 12.089,
+    "richness": 0.831,
+    "composite": 0.6888,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_05_wet_grass_mat_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.04222476406310073,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.007462664600153787,
+      "seam_improvement": 0.03476209946294694
+    }
+  },
+  {
+    "edge_seam": 0.012701,
+    "periodic_locality": 9.481,
+    "richness": 0.877,
+    "composite": 0.6481,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_05_wet_grass_mat_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.026728001249519417,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.15,
+      "final_seam_score": 0.012701405221249039,
+      "seam_improvement": 0.014026596028270378
+    }
+  },
+  {
+    "edge_seam": 0.010026,
+    "periodic_locality": 12.49,
+    "richness": 0.885,
+    "composite": 0.6398,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_05_wet_grass_mat_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.02261075968377547,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.010026046359873607,
+      "seam_improvement": 0.012584713323901865
+    }
+  },
+  {
+    "edge_seam": 0.012875,
+    "periodic_locality": 12.691,
+    "richness": 0.855,
+    "composite": 0.5726,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_05_wet_grass_mat_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.02516982087718666,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.0128747403717921,
+      "seam_improvement": 0.01229508050539456
+    }
+  }
+]

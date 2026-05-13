@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.003294,
+    "periodic_locality": 7.474,
+    "richness": 0.619,
+    "composite": 0.8269,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_rock_14_dark_basalt_wet_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.027479274798154554,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.00329368019323998,
+      "seam_improvement": 0.024185594604914575
+    }
+  },
+  {
+    "edge_seam": 0.004502,
+    "periodic_locality": 8.622,
+    "richness": 0.766,
+    "composite": 0.808,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_rock_14_dark_basalt_wet_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.049785625570693964,
+      "pass1_seconds": 4.2,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.004502465153877115,
+      "seam_improvement": 0.04528316041681685
+    }
+  },
+  {
+    "edge_seam": 0.002216,
+    "periodic_locality": 15.886,
+    "richness": 0.576,
+    "composite": 0.6628,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_rock_14_dark_basalt_wet_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.06469010566849288,
+      "pass1_seconds": 4.04,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.0022164803181919214,
+      "seam_improvement": 0.06247362535030096
+    }
+  },
+  {
+    "edge_seam": 0.014825,
+    "periodic_locality": 23.709,
+    "richness": 0.689,
+    "composite": 0.2685,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_rock_14_dark_basalt_wet_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.07187795859765475,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.18,
+      "final_seam_score": 0.014824977172241446,
+      "seam_improvement": 0.057052981425413304
+    }
+  }
+]

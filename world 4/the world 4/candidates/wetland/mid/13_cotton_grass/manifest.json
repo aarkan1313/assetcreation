@@ -1,0 +1,186 @@
+{
+  "version": "w4_tx_pipeline_v1",
+  "asset_id": "div_wetland_mid_13_cotton_grass",
+  "prompt": "tileable seamless texture, cotton grass tufts with white fluffy seedheads over dark bog, contrast of bright white and dark brown, overhead perspective",
+  "settings": {
+    "unet": "flux-2-klein-9b-fp8.safetensors",
+    "clip": "qwen_3_8b_fp8mixed.safetensors",
+    "vae": "flux2-vae.safetensors",
+    "size": 1024,
+    "steps": 4,
+    "seed_base": 42,
+    "variants": 4,
+    "heal_denoise": 0.35,
+    "heal_mode": "flux_heal",
+    "delight_strength": 0.4,
+    "pbr_backend": "hybrid",
+    "seam_repair": true,
+    "seam_repair_patch": 64,
+    "seam_repair_feather": 12,
+    "category": "Mixed",
+    "host": "http://127.0.0.1:8188"
+  },
+  "started_at": "2026-05-13T00:52:17+00:00",
+  "stages": [
+    {
+      "stage": "variants",
+      "n_variants": 4,
+      "ranking": [
+        {
+          "edge_seam": 0.032445,
+          "periodic_locality": 10.574,
+          "richness": 0.968,
+          "composite": 0.4972,
+          "variant_index": 2,
+          "seed": 2042,
+          "path": "v2_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_wetland_mid_13_cotton_grass_v2",
+            "size": 1024,
+            "seed": 2042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.09267477502643214,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.15,
+            "final_seam_score": 0.03244544991709919,
+            "seam_improvement": 0.060229325109332946
+          }
+        },
+        {
+          "edge_seam": 0.019083,
+          "periodic_locality": 16.346,
+          "richness": 0.944,
+          "composite": 0.3893,
+          "variant_index": 0,
+          "seed": 42,
+          "path": "v0_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_wetland_mid_13_cotton_grass_v0",
+            "size": 1024,
+            "seed": 42,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.08113590626201461,
+            "pass1_seconds": 4.06,
+            "pass3_seconds": 6.17,
+            "final_seam_score": 0.019082750249303154,
+            "seam_improvement": 0.062053156012711455
+          }
+        },
+        {
+          "edge_seam": 0.038837,
+          "periodic_locality": 20.754,
+          "richness": 0.968,
+          "composite": 0.2829,
+          "variant_index": 3,
+          "seed": 3042,
+          "path": "v3_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_wetland_mid_13_cotton_grass_v3",
+            "size": 1024,
+            "seed": 3042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.1157388985005767,
+            "pass1_seconds": 4.04,
+            "pass3_seconds": 6.17,
+            "final_seam_score": 0.038837094657103034,
+            "seam_improvement": 0.07690180384347367
+          }
+        },
+        {
+          "edge_seam": 0.02689,
+          "periodic_locality": 36.466,
+          "richness": 0.936,
+          "composite": 0.1872,
+          "variant_index": 1,
+          "seed": 1042,
+          "path": "v1_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_wetland_mid_13_cotton_grass_v1",
+            "size": 1024,
+            "seed": 1042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.14733832840734332,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.18,
+            "final_seam_score": 0.02688988309784698,
+            "seam_improvement": 0.12044844530949633
+          }
+        }
+      ]
+    },
+    {
+      "stage": "delight",
+      "strength": 0.4
+    },
+    {
+      "stage": "pbr",
+      "backend": "tx_pbr_hybrid",
+      "sm_size": 1024,
+      "category": "Mixed",
+      "sm_input": "D:\\assets\\world 4\\the world 4\\candidates\\wetland\\mid\\13_cotton_grass\\albedo.png",
+      "derive_log": {
+        "backend": "tx_pbr_derive",
+        "category": "Mixed",
+        "snow_mode": true,
+        "normal_strength": 4.0,
+        "maps": [
+          "albedo",
+          "normal",
+          "roughness",
+          "ao",
+          "height",
+          "metallic"
+        ],
+        "preset_used": [
+          0.85,
+          0.12
+        ]
+      },
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ]
+    },
+    {
+      "stage": "seam_repair",
+      "module": "tx_seam_repair",
+      "patch": 64,
+      "feather": 12,
+      "plan_ops": 32,
+      "maps_processed": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ],
+      "maps_skipped": []
+    },
+    {
+      "stage": "qa",
+      "grade": "A",
+      "passed_checks": 4,
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "failed": []
+    }
+  ],
+  "grade": "A",
+  "passed": true,
+  "completed_at": "2026-05-13T00:53:24+00:00",
+  "status": "completed"
+}

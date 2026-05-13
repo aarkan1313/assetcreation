@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.004846,
+    "periodic_locality": 6.101,
+    "richness": 0.646,
+    "composite": 0.8302,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_mid_20_shoreline_organic_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.02194207719086409,
+      "pass1_seconds": 4.04,
+      "pass3_seconds": 6.2,
+      "final_seam_score": 0.004845932810547626,
+      "seam_improvement": 0.017096144380316463
+    }
+  },
+  {
+    "edge_seam": 0.004544,
+    "periodic_locality": 7.126,
+    "richness": 0.602,
+    "composite": 0.8058,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_mid_20_shoreline_organic_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.03153488517036716,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.004543619885530805,
+      "seam_improvement": 0.026991265284836356
+    }
+  },
+  {
+    "edge_seam": 0.005626,
+    "periodic_locality": 9.954,
+    "richness": 0.703,
+    "composite": 0.7448,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_mid_20_shoreline_organic_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.0298810553633218,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.29,
+      "final_seam_score": 0.00562564062274726,
+      "seam_improvement": 0.02425541474057454
+    }
+  },
+  {
+    "edge_seam": 0.006805,
+    "periodic_locality": 10.281,
+    "richness": 0.768,
+    "composite": 0.7274,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_mid_20_shoreline_organic_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.022585529003267973,
+      "pass1_seconds": 4.26,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.006805159918210544,
+      "seam_improvement": 0.01578036908505743
+    }
+  }
+]

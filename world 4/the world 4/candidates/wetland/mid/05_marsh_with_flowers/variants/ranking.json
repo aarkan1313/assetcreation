@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.023711,
+    "periodic_locality": 9.457,
+    "richness": 0.918,
+    "composite": 0.5108,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_mid_05_marsh_with_flowers_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.04743865039888504,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.02371065215301807,
+      "seam_improvement": 0.023727998245866973
+    }
+  },
+  {
+    "edge_seam": 0.017651,
+    "periodic_locality": 13.309,
+    "richness": 0.89,
+    "composite": 0.4711,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_mid_05_marsh_with_flowers_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.06380561262495194,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.017650548692209726,
+      "seam_improvement": 0.04615506393274221
+    }
+  },
+  {
+    "edge_seam": 0.020111,
+    "periodic_locality": 12.223,
+    "richness": 0.919,
+    "composite": 0.4527,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_mid_05_marsh_with_flowers_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.03312267592392349,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.020110675206050557,
+      "seam_improvement": 0.013012000717872934
+    }
+  },
+  {
+    "edge_seam": 0.01947,
+    "periodic_locality": 16.176,
+    "richness": 0.91,
+    "composite": 0.3784,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_mid_05_marsh_with_flowers_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.06265013381271627,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.01947012004096982,
+      "seam_improvement": 0.04318001377174645
+    }
+  }
+]

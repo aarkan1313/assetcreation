@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.006154,
+    "periodic_locality": 7.21,
+    "richness": 0.833,
+    "composite": 0.818,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_rock_03_mossy_wet_rock_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.049459211150759325,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.00615370290272972,
+      "seam_improvement": 0.0433055082480296
+    }
+  },
+  {
+    "edge_seam": 0.010423,
+    "periodic_locality": 6.033,
+    "richness": 0.866,
+    "composite": 0.764,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_rock_03_mossy_wet_rock_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.030879745395400806,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.18,
+      "final_seam_score": 0.010422729351391291,
+      "seam_improvement": 0.020457016044009513
+    }
+  },
+  {
+    "edge_seam": 0.008972,
+    "periodic_locality": 10.265,
+    "richness": 0.882,
+    "composite": 0.7072,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_rock_03_mossy_wet_rock_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.025830224553056516,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.008971785003063726,
+      "seam_improvement": 0.01685843954999279
+    }
+  },
+  {
+    "edge_seam": 0.008875,
+    "periodic_locality": 10.762,
+    "richness": 0.877,
+    "composite": 0.6976,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_rock_03_mossy_wet_rock_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.023869455257593233,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.18,
+      "final_seam_score": 0.00887504205113418,
+      "seam_improvement": 0.014994413206459053
+    }
+  }
+]

@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.010979,
+    "periodic_locality": 7.796,
+    "richness": 0.845,
+    "composite": 0.7117,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_15_trampled_wet_grass_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.023847078046905036,
+      "pass1_seconds": 4.23,
+      "pass3_seconds": 6.18,
+      "final_seam_score": 0.01097937091503268,
+      "seam_improvement": 0.012867707131872356
+    }
+  },
+  {
+    "edge_seam": 0.013015,
+    "periodic_locality": 8.49,
+    "richness": 0.88,
+    "composite": 0.6633,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_15_trampled_wet_grass_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.031508302846261056,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.013014886101499423,
+      "seam_improvement": 0.018493416744761633
+    }
+  },
+  {
+    "edge_seam": 0.009794,
+    "periodic_locality": 12.675,
+    "richness": 0.785,
+    "composite": 0.6205,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_15_trampled_wet_grass_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.04594971360173972,
+      "pass1_seconds": 4.07,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.009793518606125049,
+      "seam_improvement": 0.03615619499561467
+    }
+  },
+  {
+    "edge_seam": 0.016775,
+    "periodic_locality": 16.219,
+    "richness": 0.866,
+    "composite": 0.4225,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_15_trampled_wet_grass_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.026091872717224143,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.016775122924476162,
+      "seam_improvement": 0.009316749792747981
+    }
+  }
+]

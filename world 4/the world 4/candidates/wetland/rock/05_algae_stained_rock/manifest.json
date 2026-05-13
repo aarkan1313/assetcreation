@@ -1,0 +1,186 @@
+{
+  "version": "w4_tx_pipeline_v1",
+  "asset_id": "div_wetland_rock_05_algae_stained_rock",
+  "prompt": "tileable seamless texture, rock surface stained with dark green algae growth, blackish-green over weathered grey base, wet appearance, overhead perspective",
+  "settings": {
+    "unet": "flux-2-klein-9b-fp8.safetensors",
+    "clip": "qwen_3_8b_fp8mixed.safetensors",
+    "vae": "flux2-vae.safetensors",
+    "size": 1024,
+    "steps": 4,
+    "seed_base": 42,
+    "variants": 4,
+    "heal_denoise": 0.35,
+    "heal_mode": "flux_heal",
+    "delight_strength": 0.4,
+    "pbr_backend": "hybrid",
+    "seam_repair": true,
+    "seam_repair_patch": 64,
+    "seam_repair_feather": 12,
+    "category": "Rock",
+    "host": "http://127.0.0.1:8188"
+  },
+  "started_at": "2026-05-13T01:07:00+00:00",
+  "stages": [
+    {
+      "stage": "variants",
+      "n_variants": 4,
+      "ranking": [
+        {
+          "edge_seam": 0.005301,
+          "periodic_locality": 7.809,
+          "richness": 0.864,
+          "composite": 0.8287,
+          "variant_index": 1,
+          "seed": 1042,
+          "path": "v1_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_wetland_rock_05_algae_stained_rock_v1",
+            "size": 1024,
+            "seed": 1042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.0528670350646386,
+            "pass1_seconds": 4.07,
+            "pass3_seconds": 6.17,
+            "final_seam_score": 0.005300555319017926,
+            "seam_improvement": 0.04756647974562067
+          }
+        },
+        {
+          "edge_seam": 0.00883,
+          "periodic_locality": 14.344,
+          "richness": 0.931,
+          "composite": 0.6339,
+          "variant_index": 2,
+          "seed": 2042,
+          "path": "v2_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_wetland_rock_05_algae_stained_rock_v2",
+            "size": 1024,
+            "seed": 2042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.053717440407535566,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.18,
+            "final_seam_score": 0.00882950668012303,
+            "seam_improvement": 0.04488793372741254
+          }
+        },
+        {
+          "edge_seam": 0.009689,
+          "periodic_locality": 17.034,
+          "richness": 0.887,
+          "composite": 0.5514,
+          "variant_index": 0,
+          "seed": 42,
+          "path": "v0_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_wetland_rock_05_algae_stained_rock_v0",
+            "size": 1024,
+            "seed": 42,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.06023591812644175,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.18,
+            "final_seam_score": 0.009689106954056132,
+            "seam_improvement": 0.05054681117238562
+          }
+        },
+        {
+          "edge_seam": 0.02743,
+          "periodic_locality": 16.396,
+          "richness": 0.939,
+          "composite": 0.369,
+          "variant_index": 3,
+          "seed": 3042,
+          "path": "v3_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_wetland_rock_05_algae_stained_rock_v3",
+            "size": 1024,
+            "seed": 3042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.04645769881175509,
+            "pass1_seconds": 4.06,
+            "pass3_seconds": 6.17,
+            "final_seam_score": 0.02743005995290273,
+            "seam_improvement": 0.019027638858852364
+          }
+        }
+      ]
+    },
+    {
+      "stage": "delight",
+      "strength": 0.4
+    },
+    {
+      "stage": "pbr",
+      "backend": "tx_pbr_hybrid",
+      "sm_size": 1024,
+      "category": "Rock",
+      "sm_input": "D:\\assets\\world 4\\the world 4\\candidates\\wetland\\rock\\05_algae_stained_rock\\albedo.png",
+      "derive_log": {
+        "backend": "tx_pbr_derive",
+        "category": "Rock",
+        "snow_mode": false,
+        "normal_strength": 4.0,
+        "maps": [
+          "albedo",
+          "normal",
+          "roughness",
+          "ao",
+          "height",
+          "metallic"
+        ],
+        "preset_used": [
+          0.85,
+          0.15
+        ]
+      },
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ]
+    },
+    {
+      "stage": "seam_repair",
+      "module": "tx_seam_repair",
+      "patch": 64,
+      "feather": 12,
+      "plan_ops": 32,
+      "maps_processed": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ],
+      "maps_skipped": []
+    },
+    {
+      "stage": "qa",
+      "grade": "A",
+      "passed_checks": 4,
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "failed": []
+    }
+  ],
+  "grade": "A",
+  "passed": true,
+  "completed_at": "2026-05-13T01:08:07+00:00",
+  "status": "completed"
+}

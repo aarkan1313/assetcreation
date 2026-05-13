@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.005767,
+    "periodic_locality": 7.739,
+    "richness": 0.805,
+    "composite": 0.8091,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_mid_08_skunk_cabbage_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.035561589142397154,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.005767052579686899,
+      "seam_improvement": 0.029794536562710257
+    }
+  },
+  {
+    "edge_seam": 0.003364,
+    "periodic_locality": 11.378,
+    "richness": 0.749,
+    "composite": 0.7692,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_mid_08_skunk_cabbage_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.028190965839460784,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.003363539986498582,
+      "seam_improvement": 0.0248274258529622
+    }
+  },
+  {
+    "edge_seam": 0.006351,
+    "periodic_locality": 10.293,
+    "richness": 0.788,
+    "composite": 0.7401,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_mid_08_skunk_cabbage_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.03331274329584775,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.18,
+      "final_seam_score": 0.00635136341416162,
+      "seam_improvement": 0.026961379881686127
+    }
+  },
+  {
+    "edge_seam": 0.006284,
+    "periodic_locality": 12.834,
+    "richness": 0.803,
+    "composite": 0.6911,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_mid_08_skunk_cabbage_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.03223207795679546,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.006284396982981305,
+      "seam_improvement": 0.025947680973814155
+    }
+  }
+]

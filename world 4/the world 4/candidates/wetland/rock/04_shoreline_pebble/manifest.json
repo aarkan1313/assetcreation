@@ -1,0 +1,186 @@
+{
+  "version": "w4_tx_pipeline_v1",
+  "asset_id": "div_wetland_rock_04_shoreline_pebble",
+  "prompt": "tileable seamless texture, wet shoreline pebbles tightly packed, water-smoothed varied grey stones with damp dark tones, overhead perspective",
+  "settings": {
+    "unet": "flux-2-klein-9b-fp8.safetensors",
+    "clip": "qwen_3_8b_fp8mixed.safetensors",
+    "vae": "flux2-vae.safetensors",
+    "size": 1024,
+    "steps": 4,
+    "seed_base": 42,
+    "variants": 4,
+    "heal_denoise": 0.35,
+    "heal_mode": "flux_heal",
+    "delight_strength": 0.4,
+    "pbr_backend": "hybrid",
+    "seam_repair": true,
+    "seam_repair_patch": 64,
+    "seam_repair_feather": 12,
+    "category": "Rock",
+    "host": "http://127.0.0.1:8188"
+  },
+  "started_at": "2026-05-13T01:05:53+00:00",
+  "stages": [
+    {
+      "stage": "variants",
+      "n_variants": 4,
+      "ranking": [
+        {
+          "edge_seam": 0.00774,
+          "periodic_locality": 10.881,
+          "richness": 0.869,
+          "composite": 0.7163,
+          "variant_index": 3,
+          "seed": 3042,
+          "path": "v3_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_wetland_rock_04_shoreline_pebble_v3",
+            "size": 1024,
+            "seed": 3042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.05468734606281238,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.16,
+            "final_seam_score": 0.007740492595245819,
+            "seam_improvement": 0.04694685346756656
+          }
+        },
+        {
+          "edge_seam": 0.006078,
+          "periodic_locality": 14.172,
+          "richness": 0.844,
+          "composite": 0.6753,
+          "variant_index": 0,
+          "seed": 42,
+          "path": "v0_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_wetland_rock_04_shoreline_pebble_v0",
+            "size": 1024,
+            "seed": 42,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.03706603229527105,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.16,
+            "final_seam_score": 0.006077845660322953,
+            "seam_improvement": 0.030988186634948095
+          }
+        },
+        {
+          "edge_seam": 0.008613,
+          "periodic_locality": 16.994,
+          "richness": 0.911,
+          "composite": 0.5784,
+          "variant_index": 2,
+          "seed": 2042,
+          "path": "v2_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_wetland_rock_04_shoreline_pebble_v2",
+            "size": 1024,
+            "seed": 2042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.025587039464989428,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.17,
+            "final_seam_score": 0.008613338507124663,
+            "seam_improvement": 0.016973700957864764
+          }
+        },
+        {
+          "edge_seam": 0.003605,
+          "periodic_locality": 22.156,
+          "richness": 0.822,
+          "composite": 0.5521,
+          "variant_index": 1,
+          "seed": 1042,
+          "path": "v1_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_wetland_rock_04_shoreline_pebble_v1",
+            "size": 1024,
+            "seed": 1042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.041219268880959246,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.18,
+            "final_seam_score": 0.0036046682766243754,
+            "seam_improvement": 0.03761460060433487
+          }
+        }
+      ]
+    },
+    {
+      "stage": "delight",
+      "strength": 0.4
+    },
+    {
+      "stage": "pbr",
+      "backend": "tx_pbr_hybrid",
+      "sm_size": 1024,
+      "category": "Rock",
+      "sm_input": "D:\\assets\\world 4\\the world 4\\candidates\\wetland\\rock\\04_shoreline_pebble\\albedo.png",
+      "derive_log": {
+        "backend": "tx_pbr_derive",
+        "category": "Rock",
+        "snow_mode": false,
+        "normal_strength": 4.0,
+        "maps": [
+          "albedo",
+          "normal",
+          "roughness",
+          "ao",
+          "height",
+          "metallic"
+        ],
+        "preset_used": [
+          0.85,
+          0.15
+        ]
+      },
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ]
+    },
+    {
+      "stage": "seam_repair",
+      "module": "tx_seam_repair",
+      "patch": 64,
+      "feather": 12,
+      "plan_ops": 32,
+      "maps_processed": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ],
+      "maps_skipped": []
+    },
+    {
+      "stage": "qa",
+      "grade": "A",
+      "passed_checks": 4,
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 25.0,
+        "richness": 0.83,
+        "mip32_stdev": 8.0
+      },
+      "failed": []
+    }
+  ],
+  "grade": "A",
+  "passed": true,
+  "completed_at": "2026-05-13T01:07:00+00:00",
+  "status": "completed"
+}

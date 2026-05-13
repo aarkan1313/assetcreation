@@ -1,0 +1,137 @@
+# Coastal wetland / marsh biome — prompt set for diversity batch.
+# Used by pipeline/diversity_run.py.
+#
+# 16 ground (wet peat, muddy soil, marsh floor) / 21 mid (reeds + grass tufts,
+# bog edges, organic mats) / 14 rock (waterworn dark rocks, mossy boulders,
+# wet stone slabs).
+#
+# Palette: muted greens + dark wet browns + faded blue-greys. Wet-soil
+# saturation. This is the lowest-elevation biome — valley bottom, near
+# water, dark and damp.
+#
+# Lesson from desert sand batch: pure-uniform prompts fail mip32_stdev.
+# So this set leans toward "wet surface WITH stuff in it" rather than
+# "pure peat" — every prompt has embedded variation (debris, organic
+# matter, stones, ripples, scattered tufts).
+biome: wetland
+prompt_prefix: "tileable seamless texture, "
+prompt_suffix: ", overhead perspective"
+
+slots:
+  ground:
+    # Use Mixed (not pure Sand-like category) since these prompts all
+    # have embedded variation. Mixed threshold for mip32_stdev=10 is the
+    # right floor — soft enough for wet content, strict enough to reject
+    # blank canvases.
+    category: Mixed
+    candidates:
+      - tag: peat_with_debris
+        body: "dark wet peat soil scattered with small twigs and leaf debris, deep brown palette, organic varied surface"
+      - tag: muddy_with_stones
+        body: "wet muddy ground with embedded small dark stones, mottled brown and grey, damp organic surface"
+      - tag: marsh_floor
+        body: "marsh floor with mixed wet soil, fallen reed fragments, and small puddles, muted dark-green and brown"
+      - tag: reed_stubble
+        body: "wet ground covered in cut reed stubble, broken brown stems over dark peat, organic and varied"
+      - tag: wet_grass_mat
+        body: "flattened wet marsh grass mat with embedded mud patches, dark green and wet-brown varied surface"
+      - tag: tidal_mud
+        body: "tidal flat mud with worm casts and small surface ripples, varied dark wet-brown palette"
+      - tag: bog_with_moss_chunks
+        body: "bog ground with chunks of dark moss and exposed wet peat, deep dark-green and brown organic surface"
+      - tag: leaf_litter_wet
+        body: "wet decomposing leaf litter on dark forest floor, mixed brown and black with organic detail"
+      - tag: marsh_edge_mud
+        body: "marsh edge with wet brown mud and embedded fragments of plant matter, varied damp surface"
+      - tag: shallow_puddle_floor
+        body: "shallow puddle bottom with dark wet silt and scattered small pebbles, muted brown-and-grey"
+      - tag: rotting_wood_floor
+        body: "wet ground with patches of rotting brown wood fragments and damp soil, dark varied organic surface"
+      - tag: cranberry_bog
+        body: "cranberry bog ground with scattered red cranberries on dark wet moss, muted browns and red accents"
+      - tag: sphagnum_clumps
+        body: "sphagnum moss clumps over wet dark peat, varied moss colors of dark green and rust-red"
+      - tag: salt_marsh_floor
+        body: "salt marsh floor with mixed grasses, mud, and small embedded shells, muted green-brown coastal palette"
+      - tag: trampled_wet_grass
+        body: "trampled wet marsh grass with exposed mud patches and footprint depressions, dark mixed surface"
+      - tag: silty_riverbank
+        body: "silty riverbank with embedded twigs, small pebbles, and wet brown mud, varied organic surface"
+
+  mid:
+    category: Mixed
+    candidates:
+      - tag: reed_tufts_close
+        body: "dense marsh reed tufts viewed from above, vertical green-brown stalks with shadow gaps, packed cluster"
+      - tag: sedge_grass
+        body: "stiff marsh sedge grass tufts with brown seedheads, muted green-and-tan upright vegetation, varied density"
+      - tag: cattail_base
+        body: "cattail plant bases in wet ground, brown stems and dark green strap leaves over wet peat"
+      - tag: bog_with_pitcher_plants
+        body: "bog ground with scattered pitcher plants and sphagnum moss, deep greens and rust-red, varied vegetation"
+      - tag: marsh_with_flowers
+        body: "marsh ground with small white and yellow wildflowers among grass tufts, muted greens with color accents"
+      - tag: dense_moss_carpet
+        body: "dense wet moss carpet with varied green tones and small twig fragments, soft organic surface"
+      - tag: fern_unfurling
+        body: "wet ground with unfurling fern fronds emerging from dark soil, fresh green over deep brown"
+      - tag: skunk_cabbage
+        body: "wetland with skunk cabbage leaves, large dark-green leaves over wet brown ground, bold varied texture"
+      - tag: bog_rosemary
+        body: "bog rosemary and small shrub clusters over wet moss, muted blue-greens and dark wet browns"
+      - tag: marsh_iris_base
+        body: "marsh iris plant bases with sword-shaped leaves emerging from dark wet ground, varied vertical greens"
+      - tag: lily_pads_floating
+        body: "floating lily pads on dark still water with small ripples, dark green discs on muted reflective surface"
+      - tag: duckweed_water
+        body: "still water covered in dense duckweed, bright green floating mat with darker water gaps"
+      - tag: cotton_grass
+        body: "cotton grass tufts with white fluffy seedheads over dark bog, contrast of bright white and dark brown"
+      - tag: marsh_marigold
+        body: "marsh marigold yellow flowers among dark wet ground and green leaves, vivid color accents on muted base"
+      - tag: alder_seedlings
+        body: "small alder seedlings emerging from wet marsh ground, mixed sapling stems and ground vegetation"
+      - tag: stones_in_marsh
+        body: "small dark stones scattered through marsh vegetation, mix of stone and wet plant matter, varied"
+      - tag: peat_with_heather
+        body: "wet peat ground with low heather shrubs and dwarf bog plants, muted purples and dark greens"
+      - tag: bog_with_sticks
+        body: "bog ground with scattered fallen sticks and twigs over wet moss, varied brown debris on dark organic base"
+      - tag: marsh_dead_grass
+        body: "wetland with dead pale-tan marsh grass over wet dark ground, dramatic light-dark contrast, weathered"
+      - tag: shoreline_organic
+        body: "wet shoreline with mixed organic debris, small driftwood, and damp sand-mud transition, varied dark palette"
+      - tag: spring_growth_mix
+        body: "spring marsh ground with new green shoots emerging through dark wet soil and old plant matter"
+
+  rock:
+    category: Rock
+    candidates:
+      - tag: wet_dark_boulder
+        body: "wet dark rounded boulder surface, water-darkened grey-black rock with subtle moss patches, weathered"
+      - tag: river_worn_stone
+        body: "river-worn smooth stone surface with water marks and faint algae growth, dark wet palette"
+      - tag: mossy_wet_rock
+        body: "rock surface with dense wet moss coverage, dark green organic over near-black stone, varied texture"
+      - tag: shoreline_pebble
+        body: "wet shoreline pebbles tightly packed, water-smoothed varied grey stones with damp dark tones"
+      - tag: algae_stained_rock
+        body: "rock surface stained with dark green algae growth, blackish-green over weathered grey base, wet appearance"
+      - tag: shale_with_water
+        body: "wet weathered shale with water runnels, dark layered grey rock with damp surface and small puddles"
+      - tag: granite_in_marsh
+        body: "granite outcrop emerging from marsh ground, weathered grey rock with moss at base, wet stone surface"
+      - tag: mineral_stained_wet
+        body: "wet rock with iron-mineral staining streaks, dark base with rust-orange runoff trails, weathered damp"
+      - tag: lichen_wet_rock
+        body: "wet rock with dense lichen mosaic, dark grey base with patches of grey-green and orange lichen accents"
+      - tag: waterfall_rock
+        body: "rock surface under waterfall mist, glistening wet dark stone with faint algae growth, varied wet tones"
+      - tag: tidal_rock
+        body: "tidal-zone rock with attached barnacles and small shells, weathered wet grey with white-and-brown accents"
+      - tag: cracked_wet_slab
+        body: "cracked wet stone slab with moss growing in fissures, dark slate-grey rock with bright green crack-fill"
+      - tag: bog_rock_outcrop
+        body: "rock outcrop in bog setting with dark mineral-stained surface and surrounding wet moss, dramatic damp"
+      - tag: dark_basalt_wet
+        body: "wet dark basalt rock face, near-black surface with subtle texture and damp glistening, weathered"

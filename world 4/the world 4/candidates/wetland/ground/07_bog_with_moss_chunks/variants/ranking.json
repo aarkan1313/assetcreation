@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.006469,
+    "periodic_locality": 6.816,
+    "richness": 0.752,
+    "composite": 0.8038,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_07_bog_with_moss_chunks_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.0267215490286188,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.006468876153402537,
+      "seam_improvement": 0.02025267287521626
+    }
+  },
+  {
+    "edge_seam": 0.008102,
+    "periodic_locality": 6.5,
+    "richness": 0.851,
+    "composite": 0.7977,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_07_bog_with_moss_chunks_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.01651835569552576,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.15,
+      "final_seam_score": 0.008101807109945694,
+      "seam_improvement": 0.008416548585580066
+    }
+  },
+  {
+    "edge_seam": 0.010295,
+    "periodic_locality": 7.195,
+    "richness": 0.86,
+    "composite": 0.741,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_07_bog_with_moss_chunks_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.01851642659974529,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.010295293764717897,
+      "seam_improvement": 0.008221132835027394
+    }
+  },
+  {
+    "edge_seam": 0.01101,
+    "periodic_locality": 14.118,
+    "richness": 0.82,
+    "composite": 0.573,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_07_bog_with_moss_chunks_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.018184066825259516,
+      "pass1_seconds": 4.04,
+      "pass3_seconds": 6.15,
+      "final_seam_score": 0.01101048406111832,
+      "seam_improvement": 0.007173582764141196
+    }
+  }
+]

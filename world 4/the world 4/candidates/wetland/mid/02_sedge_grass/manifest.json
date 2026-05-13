@@ -1,0 +1,188 @@
+{
+  "version": "w4_tx_pipeline_v1",
+  "asset_id": "div_wetland_mid_02_sedge_grass",
+  "prompt": "tileable seamless texture, stiff marsh sedge grass tufts with brown seedheads, muted green-and-tan upright vegetation, varied density, overhead perspective",
+  "settings": {
+    "unet": "flux-2-klein-9b-fp8.safetensors",
+    "clip": "qwen_3_8b_fp8mixed.safetensors",
+    "vae": "flux2-vae.safetensors",
+    "size": 1024,
+    "steps": 4,
+    "seed_base": 42,
+    "variants": 4,
+    "heal_denoise": 0.35,
+    "heal_mode": "flux_heal",
+    "delight_strength": 0.4,
+    "pbr_backend": "hybrid",
+    "seam_repair": true,
+    "seam_repair_patch": 64,
+    "seam_repair_feather": 12,
+    "category": "Mixed",
+    "host": "http://127.0.0.1:8188"
+  },
+  "started_at": "2026-05-13T00:40:04+00:00",
+  "stages": [
+    {
+      "stage": "variants",
+      "n_variants": 4,
+      "ranking": [
+        {
+          "edge_seam": 0.024501,
+          "periodic_locality": 9.242,
+          "richness": 0.937,
+          "composite": 0.5191,
+          "variant_index": 3,
+          "seed": 3042,
+          "path": "v3_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_wetland_mid_02_sedge_grass_v3",
+            "size": 1024,
+            "seed": 3042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.04469026711481161,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.18,
+            "final_seam_score": 0.02450142373125721,
+            "seam_improvement": 0.0201888433835544
+          }
+        },
+        {
+          "edge_seam": 0.020624,
+          "periodic_locality": 10.579,
+          "richness": 0.93,
+          "composite": 0.4896,
+          "variant_index": 0,
+          "seed": 42,
+          "path": "v0_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_wetland_mid_02_sedge_grass_v0",
+            "size": 1024,
+            "seed": 42,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.03795904820261438,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.17,
+            "final_seam_score": 0.020623837961961745,
+            "seam_improvement": 0.017335210240652633
+          }
+        },
+        {
+          "edge_seam": 0.026179,
+          "periodic_locality": 10.95,
+          "richness": 0.944,
+          "composite": 0.4847,
+          "variant_index": 2,
+          "seed": 2042,
+          "path": "v2_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_wetland_mid_02_sedge_grass_v2",
+            "size": 1024,
+            "seed": 2042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.049379411614523264,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.16,
+            "final_seam_score": 0.02617875899593906,
+            "seam_improvement": 0.023200652618584203
+          }
+        },
+        {
+          "edge_seam": 0.022713,
+          "periodic_locality": 12.204,
+          "richness": 0.926,
+          "composite": 0.4545,
+          "variant_index": 1,
+          "seed": 1042,
+          "path": "v1_albedo.png",
+          "seamless_log": {
+            "asset_id": "div_wetland_mid_02_sedge_grass_v1",
+            "size": 1024,
+            "seed": 1042,
+            "heal_mode": "flux_heal",
+            "heal_denoise": 0.35,
+            "pass1_seam_score": 0.08567618223760093,
+            "pass1_seconds": 4.05,
+            "pass3_seconds": 6.18,
+            "final_seam_score": 0.022712713034049405,
+            "seam_improvement": 0.06296346920355153
+          }
+        }
+      ]
+    },
+    {
+      "stage": "delight",
+      "strength": 0.4
+    },
+    {
+      "stage": "pbr",
+      "backend": "tx_pbr_hybrid",
+      "sm_size": 1024,
+      "category": "Mixed",
+      "sm_input": "D:\\assets\\world 4\\the world 4\\candidates\\wetland\\mid\\02_sedge_grass\\albedo.png",
+      "derive_log": {
+        "backend": "tx_pbr_derive",
+        "category": "Mixed",
+        "snow_mode": true,
+        "normal_strength": 4.0,
+        "maps": [
+          "albedo",
+          "normal",
+          "roughness",
+          "ao",
+          "height",
+          "metallic"
+        ],
+        "preset_used": [
+          0.85,
+          0.12
+        ]
+      },
+      "maps": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ]
+    },
+    {
+      "stage": "seam_repair",
+      "module": "tx_seam_repair",
+      "patch": 64,
+      "feather": 12,
+      "plan_ops": 32,
+      "maps_processed": [
+        "albedo",
+        "normal",
+        "roughness",
+        "ao",
+        "height",
+        "metallic"
+      ],
+      "maps_skipped": []
+    },
+    {
+      "stage": "qa",
+      "grade": "B",
+      "passed_checks": 3,
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "failed": [
+        "periodic_artifact"
+      ]
+    }
+  ],
+  "grade": "B",
+  "passed": false,
+  "completed_at": "2026-05-13T00:41:11+00:00",
+  "status": "completed"
+}

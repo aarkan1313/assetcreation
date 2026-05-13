@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.007344,
+    "periodic_locality": 11.352,
+    "richness": 0.858,
+    "composite": 0.712,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_12_cranberry_bog_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.050946229364907725,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 6.19,
+      "final_seam_score": 0.007344145637345012,
+      "seam_improvement": 0.04360208372756271
+    }
+  },
+  {
+    "edge_seam": 0.010956,
+    "periodic_locality": 8.845,
+    "richness": 0.894,
+    "composite": 0.6997,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_12_cranberry_bog_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.04195613240700692,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.010956232466178873,
+      "seam_improvement": 0.03099989994082805
+    }
+  },
+  {
+    "edge_seam": 0.012019,
+    "periodic_locality": 16.161,
+    "richness": 0.893,
+    "composite": 0.5244,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_12_cranberry_bog_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.038261936514801996,
+      "pass1_seconds": 4.07,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.012019470989222895,
+      "seam_improvement": 0.0262424655255791
+    }
+  },
+  {
+    "edge_seam": 0.012959,
+    "periodic_locality": 17.166,
+    "richness": 0.868,
+    "composite": 0.4793,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_12_cranberry_bog_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.037061695772058825,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.012958502851967993,
+      "seam_improvement": 0.024103192920090832
+    }
+  }
+]

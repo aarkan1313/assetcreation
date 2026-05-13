@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.003366,
+    "periodic_locality": 7.535,
+    "richness": 0.673,
+    "composite": 0.8349,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_06_tidal_mud_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.029068282030949636,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.0033663033467446414,
+      "seam_improvement": 0.025701978684204995
+    }
+  },
+  {
+    "edge_seam": 0.002511,
+    "periodic_locality": 8.543,
+    "richness": 0.556,
+    "composite": 0.8075,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_06_tidal_mud_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.034259122843377544,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.0025111536409523983,
+      "seam_improvement": 0.03174796920242515
+    }
+  },
+  {
+    "edge_seam": 0.004703,
+    "periodic_locality": 12.574,
+    "richness": 0.746,
+    "composite": 0.7167,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_06_tidal_mud_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.014351200747609092,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.18,
+      "final_seam_score": 0.0047025985160455116,
+      "seam_improvement": 0.00964860223156358
+    }
+  },
+  {
+    "edge_seam": 0.003545,
+    "periodic_locality": 13.878,
+    "richness": 0.566,
+    "composite": 0.6764,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_ground_06_tidal_mud_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.021267201542075162,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.15,
+      "final_seam_score": 0.003545245940939182,
+      "seam_improvement": 0.01772195560113598
+    }
+  }
+]

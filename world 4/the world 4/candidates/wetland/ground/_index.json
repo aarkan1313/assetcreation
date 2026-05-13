@@ -1,0 +1,328 @@
+{
+  "biome": "wetland",
+  "slot": "ground",
+  "candidates": {
+    "01_peat_with_debris": {
+      "id": "01_peat_with_debris",
+      "prompt": "tileable seamless texture, dark wet peat soil scattered with small twigs and leaf debris, deep brown palette, organic varied surface, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:22:29+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "02_muddy_with_stones": {
+      "id": "02_muddy_with_stones",
+      "prompt": "tileable seamless texture, wet muddy ground with embedded small dark stones, mottled brown and grey, damp organic surface, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:23:34+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "03_marsh_floor": {
+      "id": "03_marsh_floor",
+      "prompt": "tileable seamless texture, marsh floor with mixed wet soil, fallen reed fragments, and small puddles, muted dark-green and brown, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:24:38+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "04_reed_stubble": {
+      "id": "04_reed_stubble",
+      "prompt": "tileable seamless texture, wet ground covered in cut reed stubble, broken brown stems over dark peat, organic and varied, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:25:44+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "05_wet_grass_mat": {
+      "id": "05_wet_grass_mat",
+      "prompt": "tileable seamless texture, flattened wet marsh grass mat with embedded mud patches, dark green and wet-brown varied surface, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:26:49+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "06_tidal_mud": {
+      "id": "06_tidal_mud",
+      "prompt": "tileable seamless texture, tidal flat mud with worm casts and small surface ripples, varied dark wet-brown palette, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:27:55+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "07_bog_with_moss_chunks": {
+      "id": "07_bog_with_moss_chunks",
+      "prompt": "tileable seamless texture, bog ground with chunks of dark moss and exposed wet peat, deep dark-green and brown organic surface, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:29:00+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "08_leaf_litter_wet": {
+      "id": "08_leaf_litter_wet",
+      "prompt": "tileable seamless texture, wet decomposing leaf litter on dark forest floor, mixed brown and black with organic detail, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:30:06+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "09_marsh_edge_mud": {
+      "id": "09_marsh_edge_mud",
+      "prompt": "tileable seamless texture, marsh edge with wet brown mud and embedded fragments of plant matter, varied damp surface, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:31:13+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "10_shallow_puddle_floor": {
+      "id": "10_shallow_puddle_floor",
+      "prompt": "tileable seamless texture, shallow puddle bottom with dark wet silt and scattered small pebbles, muted brown-and-grey, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:32:19+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "11_rotting_wood_floor": {
+      "id": "11_rotting_wood_floor",
+      "prompt": "tileable seamless texture, wet ground with patches of rotting brown wood fragments and damp soil, dark varied organic surface, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "mip32_stdev"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:33:24+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "12_cranberry_bog": {
+      "id": "12_cranberry_bog",
+      "prompt": "tileable seamless texture, cranberry bog ground with scattered red cranberries on dark wet moss, muted browns and red accents, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:34:30+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "13_sphagnum_clumps": {
+      "id": "13_sphagnum_clumps",
+      "prompt": "tileable seamless texture, sphagnum moss clumps over wet dark peat, varied moss colors of dark green and rust-red, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:35:37+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "14_salt_marsh_floor": {
+      "id": "14_salt_marsh_floor",
+      "prompt": "tileable seamless texture, salt marsh floor with mixed grasses, mud, and small embedded shells, muted green-brown coastal palette, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:36:43+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "15_trampled_wet_grass": {
+      "id": "15_trampled_wet_grass",
+      "prompt": "tileable seamless texture, trampled wet marsh grass with exposed mud patches and footprint depressions, dark mixed surface, overhead perspective",
+      "size": 1024,
+      "grade": "B",
+      "passed_checks": 3,
+      "failed_checks": [
+        "periodic_artifact"
+      ],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "rejected_auto",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:37:51+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    },
+    "16_silty_riverbank": {
+      "id": "16_silty_riverbank",
+      "prompt": "tileable seamless texture, silty riverbank with embedded twigs, small pebbles, and wet brown mud, varied organic surface, overhead perspective",
+      "size": 1024,
+      "grade": "A",
+      "passed_checks": 4,
+      "failed_checks": [],
+      "thresholds": {
+        "edge_continuity": 0.005,
+        "junction_visibility": 1.35,
+        "periodic_artifact": 18.0,
+        "richness": 0.83,
+        "mip32_stdev": 10.0
+      },
+      "status": "candidate",
+      "promoted_to": null,
+      "generated_at": "2026-05-13T00:38:57+00:00",
+      "pipeline_version": "w4_tx_pipeline_v1"
+    }
+  }
+}

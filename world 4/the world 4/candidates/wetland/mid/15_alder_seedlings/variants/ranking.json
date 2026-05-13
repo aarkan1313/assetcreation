@@ -1,0 +1,86 @@
+[
+  {
+    "edge_seam": 0.016122,
+    "periodic_locality": 8.941,
+    "richness": 0.943,
+    "composite": 0.6042,
+    "variant_index": 2,
+    "seed": 2042,
+    "path": "v2_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_mid_15_alder_seedlings_v2",
+      "size": 1024,
+      "seed": 2042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.07630088187235678,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.16,
+      "final_seam_score": 0.016122284698193004,
+      "seam_improvement": 0.06017859717416378
+    }
+  },
+  {
+    "edge_seam": 0.013711,
+    "periodic_locality": 12.536,
+    "richness": 0.936,
+    "composite": 0.5755,
+    "variant_index": 3,
+    "seed": 3042,
+    "path": "v3_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_mid_15_alder_seedlings_v3",
+      "size": 1024,
+      "seed": 3042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.06508186454728951,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.013711098007677336,
+      "seam_improvement": 0.05137076653961217
+    }
+  },
+  {
+    "edge_seam": 0.025102,
+    "periodic_locality": 6.775,
+    "richness": 0.913,
+    "composite": 0.5663,
+    "variant_index": 0,
+    "seed": 42,
+    "path": "v0_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_mid_15_alder_seedlings_v0",
+      "size": 1024,
+      "seed": 42,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.069414715794406,
+      "pass1_seconds": 4.06,
+      "pass3_seconds": 6.18,
+      "final_seam_score": 0.025101544102628798,
+      "seam_improvement": 0.0443131716917772
+    }
+  },
+  {
+    "edge_seam": 0.01873,
+    "periodic_locality": 11.969,
+    "richness": 0.909,
+    "composite": 0.4815,
+    "variant_index": 1,
+    "seed": 1042,
+    "path": "v1_albedo.png",
+    "seamless_log": {
+      "asset_id": "div_wetland_mid_15_alder_seedlings_v1",
+      "size": 1024,
+      "seed": 1042,
+      "heal_mode": "flux_heal",
+      "heal_denoise": 0.35,
+      "pass1_seam_score": 0.09087904892349097,
+      "pass1_seconds": 4.05,
+      "pass3_seconds": 6.17,
+      "final_seam_score": 0.018730316690095155,
+      "seam_improvement": 0.07214873223339581
+    }
+  }
+]
